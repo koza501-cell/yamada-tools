@@ -1,0 +1,342 @@
+import path from 'path';
+import fs from 'fs';
+import { useState } from 'react';
+
+function getDynamicBlogs() {
+  try {
+    const blogsPath = path.join(process.cwd(), 'src/data/dynamicBlogs.json');
+    if (fs.existsSync(blogsPath)) {
+      const fileContent = fs.readFileSync(blogsPath, 'utf-8');
+      return JSON.parse(fileContent);
+    }
+  } catch (error) {
+    console.error('Error loading dynamic blogs:', error);
+  }
+  return [];
+}
+import Link from 'next/link';
+
+function getDynamicBlogs() {
+  try {
+    const blogsPath = path.join(process.cwd(), 'src/data/dynamicBlogs.json');
+    if (fs.existsSync(blogsPath)) {
+      const fileContent = fs.readFileSync(blogsPath, 'utf-8');
+      return JSON.parse(fileContent);
+    }
+  } catch (error) {
+    console.error('Error loading dynamic blogs:', error);
+  }
+  return [];
+}
+import { getPublishedPosts, isNewBlog } from '@/data/blogPosts';
+import fs from 'fs';
+import path from 'path';
+
+function getDynamicBlogs() {
+  try {
+    const blogsPath = path.join(process.cwd(), 'src/data/dynamicBlogs.json');
+    if (fs.existsSync(blogsPath)) {
+      const fileContent = fs.readFileSync(blogsPath, 'utf-8');
+      return JSON.parse(fileContent);
+    }
+  } catch (error) {
+    console.error('Error loading dynamic blogs:', error);
+  }
+  return [];
+}
+
+function getDynamicBlogs() {
+  try {
+    const blogsPath = path.join(process.cwd(), 'src/data/dynamicBlogs.json');
+    if (fs.existsSync(blogsPath)) {
+      const fileContent = fs.readFileSync(blogsPath, 'utf-8');
+      return JSON.parse(fileContent);
+    }
+  } catch (error) {
+    console.error('Error loading dynamic blogs:', error);
+  }
+  return [];
+}
+import BlogThumbnail from '@/components/BlogThumbnail';
+
+function getDynamicBlogs() {
+  try {
+    const blogsPath = path.join(process.cwd(), 'src/data/dynamicBlogs.json');
+    if (fs.existsSync(blogsPath)) {
+      const fileContent = fs.readFileSync(blogsPath, 'utf-8');
+      return JSON.parse(fileContent);
+    }
+  } catch (error) {
+    console.error('Error loading dynamic blogs:', error);
+  }
+  return [];
+}
+import HomePageSchema from '@/components/HomePageSchema';
+
+function getDynamicBlogs() {
+  try {
+    const blogsPath = path.join(process.cwd(), 'src/data/dynamicBlogs.json');
+    if (fs.existsSync(blogsPath)) {
+      const fileContent = fs.readFileSync(blogsPath, 'utf-8');
+      return JSON.parse(fileContent);
+    }
+  } catch (error) {
+    console.error('Error loading dynamic blogs:', error);
+  }
+  return [];
+}
+
+const allTools = [
+  // PDF Tools (20)
+  { name: 'PDF結合', href: '/pdf/merge', icon: '📄', category: 'PDF', popular: true },
+  { name: 'PDF圧縮', href: '/pdf/compress', icon: '📄', category: 'PDF', popular: true },
+  { name: 'PDF分割', href: '/pdf/split', icon: '📄', category: 'PDF' },
+  { name: 'PDF回転', href: '/pdf/rotate', icon: '📄', category: 'PDF' },
+  { name: 'PDFパスワード解除', href: '/pdf/unlock', icon: '🔓', category: 'PDF', popular: true },
+  { name: 'PDFパスワード設定', href: '/pdf/protect', icon: '🔒', category: 'PDF' },
+  { name: 'PDF透かし', href: '/pdf/watermark', icon: '💧', category: 'PDF' },
+  { name: 'PDFページ番号', href: '/pdf/page-numbers', icon: '🔢', category: 'PDF' },
+  { name: 'PDF署名', href: '/pdf/sign', icon: '✍️', category: 'PDF' },
+  { name: 'PDF→Word', href: '/pdf/pdf-to-word', icon: '📝', category: 'PDF', popular: true },
+  { name: 'Word→PDF', href: '/pdf/word-to-pdf', icon: '📄', category: 'PDF' },
+  { name: 'Excel→PDF', href: '/pdf/excel-to-pdf', icon: '📊', category: 'PDF' },
+  { name: 'PDF→Excel', href: '/pdf/pdf-to-excel', icon: '📊', category: 'PDF' },
+  { name: 'PowerPoint→PDF', href: '/pdf/ppt-to-pdf', icon: '📊', category: 'PDF' },
+  { name: 'PDF→PowerPoint', href: '/pdf/pdf-to-ppt', icon: '📊', category: 'PDF' },
+  { name: '画像→PDF', href: '/pdf/image-to-pdf', icon: '🖼️', category: 'PDF' },
+  { name: 'PDF→画像', href: '/pdf/pdf-to-image', icon: '🖼️', category: 'PDF' },
+  { name: 'PDF OCR', href: '/pdf/ocr', icon: '👁️', category: 'PDF' },
+  { name: 'PDFページ削除', href: '/pdf/delete-pages', icon: '🗑️', category: 'PDF' },
+  { name: 'PDFページ並び替え', href: '/pdf/reorder', icon: '🔄', category: 'PDF' },
+  
+  // Image Tools (6)
+  { name: '画像リサイズ', href: '/image/resize', icon: '📐', category: '画像', popular: true },
+  { name: '画像圧縮', href: '/image/compress', icon: '🗜️', category: '画像' },
+  { name: '画像切り抜き', href: '/image/crop', icon: '✂️', category: '画像' },
+  { name: '画像回転', href: '/image/rotate', icon: '🔄', category: '画像' },
+  { name: '画像形式変換', href: '/image/format-convert', icon: '🔄', category: '画像' },
+  { name: 'QRコード生成', href: '/image/qr-code', icon: '📱', category: '画像', popular: true },
+  
+  // Document Tools (10)
+  { name: '請求書作成', href: '/document/invoice', icon: '📄', category: '文書', popular: true },
+  { name: '見積書作成', href: '/document/quotation', icon: '📄', category: '文書' },
+  { name: '領収書作成', href: '/document/receipt', icon: '🧾', category: '文書' },
+  { name: '納品書作成', href: '/document/delivery-slip', icon: '📦', category: '文書' },
+  { name: '名刺作成', href: '/document/business-card', icon: '💼', category: '文書' },
+  { name: '履歴書作成', href: '/document/resume', icon: '📝', category: '文書' },
+  { name: 'FAX送付状', href: '/document/fax-cover', icon: '📠', category: '文書' },
+  { name: 'ビジネスメール', href: '/document/business-email', icon: '✉️', category: '文書' },
+  { name: '送付状作成', href: '/document/cover-letter', icon: '📧', category: '文書' },
+  { name: '縦書き文書', href: '/document/vertical-text', icon: '📜', category: '文書' },
+  
+  // Conversion Tools (10)
+  { name: '和暦西暦変換', href: '/convert/wareki-seireki', icon: '📅', category: '変換', popular: true },
+  { name: '全角半角変換', href: '/convert/zenkaku-hankaku', icon: 'Ａ', category: '変換' },
+  { name: '日付計算', href: '/convert/date-converter', icon: '📆', category: '変換' },
+  { name: '単位換算', href: '/convert/unit', icon: '📏', category: '変換', popular: true },
+  { name: 'Base64変換', href: '/convert/base64', icon: '🔢', category: '変換' },
+  { name: 'URLエンコード', href: '/convert/url-encode', icon: '🔗', category: '変換' },
+  { name: '郵便番号検索', href: '/convert/postcode', icon: '📮', category: '変換' },
+  { name: '電話番号整形', href: '/convert/phone-formatter', icon: '📞', category: '変換' },
+  { name: 'ふりがな変換', href: '/convert/furigana', icon: 'あ', category: '変換' },
+  { name: '銀行口座形式変換', href: '/convert/bank-format', icon: '🏦', category: '変換' },
+  
+  // Generator Tools (25)
+  { name: 'パスワード生成', href: '/generator/password', icon: '🔐', category: '生成', popular: true },
+  { name: 'QRコード読取', href: '/generator/qr-reader', icon: '📷', category: '生成' },
+  { name: 'ハッシュ生成', href: '/generator/hash', icon: '#️⃣', category: '生成' },
+  { name: 'ランダム抽選', href: '/generator/random-picker', icon: '🎲', category: '生成', popular: true },
+  { name: '文字数カウント', href: '/generator/character-count', icon: '🔢', category: '生成' },
+  { name: 'Lorem Ipsum生成', href: '/generator/lorem-ipsum', icon: '📝', category: '生成' },
+  { name: 'JSON整形', href: '/generator/json-format', icon: '{ }', category: '生成' },
+  { name: '正規表現テスト', href: '/generator/regex-test', icon: '.*', category: '生成' },
+  { name: 'テキスト差分比較', href: '/generator/text-diff', icon: '⚖️', category: '生成' },
+  { name: '大文字小文字変換', href: '/generator/text-case', icon: 'Aa', category: '生成' },
+  { name: '年齢計算', href: '/generator/age-calc', icon: '👶', category: '生成' },
+  { name: '給与計算', href: '/generator/salary-calc', icon: '💰', category: '生成' },
+  { name: '税金計算', href: '/generator/tax-calculator', icon: '💴', category: '生成' },
+  { name: '年末調整計算', href: '/generator/nenmatsu-calc', icon: '📊', category: '生成' },
+  { name: 'インボイス番号チェック', href: '/generator/t-number', icon: 'T️', category: '生成' },
+  { name: '祝日判定', href: '/generator/holiday-checker', icon: '🎌', category: '生成' },
+  { name: 'デジタル判子', href: '/generator/hanko', icon: '🔴', category: '生成', popular: true },
+  { name: '封筒印刷', href: '/generator/envelope-print', icon: '✉️', category: '生成' },
+  { name: 'カラーコード変換', href: '/generator/color-convert', icon: '🎨', category: '生成' },
+  { name: 'ZIP暗号化', href: '/generator/password-zip', icon: '🔒', category: '生成' },
+  { name: 'パスワード生成器', href: '/generator/password-gen', icon: '🔑', category: '生成' },
+  { name: '文字カウンター', href: '/generator/char-count', icon: '📏', category: '生成' },
+  { name: '単位変換器', href: '/generator/unit-convert', icon: '📐', category: '生成' },
+];
+
+export default function HomePage() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [showSuggestions, setShowSuggestions] = useState(false);
+
+  const recentPosts = getPublishedPosts().slice(0, 3);
+  const popularTools = allTools.filter(t => t.popular);
+  
+  const filteredTools = searchQuery.length > 0
+    ? allTools.filter(tool => tool.name.toLowerCase().includes(searchQuery.toLowerCase()))
+    : [];
+
+  const categories = [
+    { name: 'PDFツール', href: '/pdf', icon: '📄', count: 20, color: 'bg-red-50 hover:bg-red-100' },
+    { name: '画像ツール', href: '/image', icon: '🖼️', count: 6, color: 'bg-blue-50 hover:bg-blue-100' },
+    { name: '文書作成', href: '/document', icon: '📝', count: 10, color: 'bg-green-50 hover:bg-green-100' },
+    { name: '変換ツール', href: '/convert', icon: '🔄', count: 10, color: 'bg-yellow-50 hover:bg-yellow-100' },
+    { name: '生成・計算', href: '/generator', icon: '⚙️', count: 25, color: 'bg-purple-50 hover:bg-purple-100' },
+  ];
+
+  return (
+    <>
+      <HomePageSchema />
+      <div className="min-h-screen bg-gray-50">
+        {/* Hero Section */}
+        <section className="bg-gradient-to-b from-kon to-kon/90 text-white py-20">
+          <div className="max-w-6xl mx-auto px-4 text-center">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">🛠️ 山田ツール</h1>
+            <p className="text-2xl md:text-3xl mb-4 text-sakura font-medium">日本最大級の無料オンラインツール集</p>
+            <p className="text-xl md:text-2xl mb-8 text-gray-200">登録不要・即座に利用開始</p>
+            
+            <div className="flex flex-wrap justify-center gap-6 mb-10 text-lg">
+              <div className="flex items-center gap-2"><span className="text-2xl">✅</span><span>71種類のツールが完全無料</span></div>
+              <div className="flex items-center gap-2"><span className="text-2xl">✅</span><span>登録不要・即座に利用</span></div>
+              <div className="flex items-center gap-2"><span className="text-2xl">✅</span><span>日本国内サーバーで安心</span></div>
+            </div>
+
+            <div className="max-w-2xl mx-auto relative">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="🔍 ツールを検索 (例: PDF, 画像, 請求書...)"
+                  className="w-full px-6 py-4 rounded-full text-gray-900 text-lg focus:outline-none focus:ring-4 focus:ring-sakura/50 shadow-2xl"
+                  value={searchQuery}
+                  onChange={(e) => {
+                    setSearchQuery(e.target.value);
+                    setShowSuggestions(e.target.value.length > 0);
+                  }}
+                  onFocus={() => setShowSuggestions(searchQuery.length > 0)}
+                  onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
+                />
+                
+                {showSuggestions && filteredTools.length > 0 && (
+                  <div className="absolute top-full mt-2 w-full bg-white rounded-2xl shadow-2xl max-h-96 overflow-y-auto z-50">
+                    {filteredTools.slice(0, 8).map((tool) => (
+                      <Link
+                        key={tool.href}
+                        href={tool.href}
+                        className="flex items-center gap-3 px-6 py-3 hover:bg-gray-50 transition-colors border-b last:border-b-0"
+                      >
+                        <span className="text-2xl">{tool.icon}</span>
+                        <span className="font-medium text-gray-900">{tool.name}</span>
+                        <span className="text-xs text-gray-500 ml-auto">{tool.category}</span>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Popular Tools */}
+        <section className="max-w-6xl mx-auto px-4 py-12">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">🔥 人気のツール</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {popularTools.map((tool) => (
+              <Link key={tool.href} href={tool.href} className="bg-white rounded-xl p-4 text-center hover:shadow-xl transition-all border-2 border-transparent hover:border-sakura">
+                <div className="text-4xl mb-2">{tool.icon}</div>
+                <div className="font-bold text-sm text-gray-900">{tool.name}</div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Categories */}
+        <section className="max-w-6xl mx-auto px-4 py-16">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">📚 カテゴリーから探す</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {categories.map((cat) => (
+              <Link key={cat.name} href={cat.href} className={`${cat.color} rounded-xl p-6 text-center transition-all shadow-md hover:shadow-xl border-2 border-transparent hover:border-sakura`}>
+                <div className="text-5xl mb-3">{cat.icon}</div>
+                <div className="font-bold text-gray-900 mb-1">{cat.name}</div>
+                <div className="text-sm text-gray-600">{cat.count}種類</div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Blog Section */}
+        <section className="bg-white py-16">
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="flex items-center justify-between mb-8">
+              <h2 className="text-3xl font-bold text-gray-900">📚 お役立ち記事</h2>
+              <Link href="/blog" className="text-sakura font-bold hover:underline">記事一覧へ →</Link>
+            </div>
+            
+            <p className="text-gray-600 mb-8">ツールの使い方や業務効率化のヒント</p>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {recentPosts.map((post) => (
+                <Link key={post.slug} href={`/blog/${post.slug}`} className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all border border-gray-100 relative">
+                  {isNewBlog(post.publishDate) && (
+                    <div className="absolute top-4 left-4 z-10 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-pulse">
+                      🆕 NEW
+                    </div>
+                  )}
+                  
+                  {post.imageType === 'css' ? (
+                    <BlogThumbnail type={post.image || "default"} />
+                  ) : (
+                    <img src={post.image ?? ""} alt={post.title} className="w-full h-48 object-cover" />
+                  )}
+                  <div className="p-4">
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="inline-block bg-sakura text-white text-xs font-bold px-3 py-1 rounded">
+                        {post.category}
+                      </span>
+                      <span className="text-xs text-gray-500">
+                        {new Date(post.publishDate).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' })}
+                      </span>
+                    </div>
+                    <h3 className="font-bold text-gray-900 group-hover:text-sakura transition-colors mb-2 line-clamp-2">
+                      {post.title}
+                    </h3>
+                    <p className="text-sm text-gray-600 mb-3 line-clamp-2">{post.excerpt}</p>
+                    <div className="text-xs text-gray-500">
+                      ⏱️ {post.readTime}
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Security Section */}
+        <section className="bg-gradient-to-br from-kon to-kon/95 text-white py-16">
+          <div className="max-w-4xl mx-auto px-4 text-center">
+            <div className="text-6xl mb-6">🛡️</div>
+            <h2 className="text-3xl font-bold mb-4">安心・安全の理由</h2>
+            <div className="grid md:grid-cols-3 gap-8 mt-10">
+              <div className="bg-white/10 rounded-xl p-6 backdrop-blur">
+                <div className="text-5xl mb-4">🇯🇵</div>
+                <h3 className="font-bold text-xl mb-2">日本国内サーバー</h3>
+                <p className="text-sm text-gray-200">大切なファイルは日本国内で処理。データ主権を守ります。</p>
+              </div>
+              <div className="bg-white/10 rounded-xl p-6 backdrop-blur">
+                <div className="text-5xl mb-4">🔒</div>
+                <h3 className="font-bold text-xl mb-2">SSL暗号化通信</h3>
+                <p className="text-sm text-gray-200">通信内容を完全保護。安心してご利用いただけます。</p>
+              </div>
+              <div className="bg-white/10 rounded-xl p-6 backdrop-blur">
+                <div className="text-5xl mb-4">🗑️</div>
+                <h3 className="font-bold text-xl mb-2">60分以内に自動削除</h3>
+                <p className="text-sm text-gray-200">処理完了後、すぐに削除。データは保存しません。</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </>
+  );
+}

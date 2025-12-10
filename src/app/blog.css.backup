@@ -1,0 +1,144 @@
+/* Blog content styling - Japanese blog standard */
+
+.blog-content {
+  line-height: 1.9;
+  color: #333;
+}
+
+/* Headings */
+.blog-content h1 {
+  @apply text-4xl font-bold text-gray-900 mb-6 mt-8;
+  line-height: 1.4;
+}
+
+.blog-content h2 {
+  @apply text-3xl font-bold text-gray-900 mb-6 mt-10 pb-3 border-b-2 border-gray-200;
+  line-height: 1.4;
+}
+
+.blog-content h3 {
+  @apply text-2xl font-bold text-gray-900 mb-4 mt-8;
+  line-height: 1.4;
+}
+
+.blog-content h4 {
+  @apply text-xl font-bold text-gray-900 mb-3 mt-6;
+}
+
+/* Paragraphs */
+.blog-content p {
+  @apply mb-6 text-gray-700;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+/* Strong/Bold */
+.blog-content strong {
+  @apply font-bold text-gray-900;
+}
+
+/* Links */
+.blog-content a {
+  @apply text-kon hover:text-ai underline transition-colors;
+}
+
+/* Lists */
+.blog-content ul {
+  @apply mb-6 ml-6 space-y-2;
+}
+
+.blog-content ul li {
+  @apply relative pl-6;
+  list-style: none;
+}
+
+.blog-content ul li:before {
+  content: "•";
+  @apply absolute left-0 text-kon font-bold text-xl;
+}
+
+.blog-content ol {
+  @apply mb-6 ml-6 space-y-2;
+  list-style: decimal;
+}
+
+.blog-content ol li {
+  @apply pl-2 text-gray-700;
+}
+
+/* Tables */
+.blog-content table {
+  @apply w-full my-8 border-collapse;
+}
+
+.blog-content thead {
+  @apply bg-kon text-white;
+}
+
+.blog-content th {
+  @apply border border-gray-300 p-3 text-left font-bold;
+}
+
+.blog-content td {
+  @apply border border-gray-300 p-3;
+}
+
+.blog-content tbody tr:nth-child(even) {
+  @apply bg-gray-50;
+}
+
+/* Blockquotes - Used for tip boxes */
+.blog-content blockquote {
+  @apply my-6 p-5 rounded-xl border-l-4;
+}
+
+/* Warning box (contains ⚠️ or 注意) */
+.blog-content blockquote:has(*:contains("⚠️")),
+.blog-content blockquote:has(*:contains("注意")) {
+  @apply bg-orange-50 border-orange-500;
+}
+
+/* Tip box (contains 💡 or ヒント or ポイント) */
+.blog-content blockquote:has(*:contains("💡")),
+.blog-content blockquote:has(*:contains("ヒント")),
+.blog-content blockquote:has(*:contains("ポイント")) {
+  @apply bg-blue-50 border-blue-500;
+}
+
+/* Success box (contains ✅ or 解決) */
+.blog-content blockquote:has(*:contains("✅")),
+.blog-content blockquote:has(*:contains("解決")) {
+  @apply bg-green-50 border-green-500;
+}
+
+/* Default blockquote */
+.blog-content blockquote:not(:has(*:contains("⚠️")):not(:has(*:contains("注意")):not(:has(*:contains("💡")):not(:has(*:contains("ヒント")):not(:has(*:contains("ポイント")):not(:has(*:contains("✅")):not(:has(*:contains("解決"))))))))) {
+  @apply bg-gray-50 border-gray-400;
+}
+
+.blog-content blockquote p {
+  @apply mb-3 last:mb-0;
+}
+
+/* Code blocks */
+.blog-content pre {
+  @apply bg-gray-900 text-gray-100 p-4 rounded-xl mb-6 overflow-x-auto;
+}
+
+.blog-content code {
+  @apply bg-gray-100 text-red-600 px-2 py-1 rounded text-sm;
+}
+
+.blog-content pre code {
+  @apply bg-transparent text-gray-100 p-0;
+}
+
+/* Horizontal rule */
+.blog-content hr {
+  @apply my-8 border-t-2 border-gray-200;
+}
+
+/* Images (will be added by user) */
+.blog-content img {
+  @apply rounded-xl my-6 w-full;
+}

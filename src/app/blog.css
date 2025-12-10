@@ -1,0 +1,215 @@
+/* Modern Japanese Blog Styling - 2025 */
+
+.blog-content {
+  line-height: 2.0;
+  color: #333;
+  font-size: 18px;
+}
+
+/* Headings - Larger & More Prominent */
+.blog-content h1 {
+  @apply text-5xl font-bold mb-8 mt-10;
+  color: #1a1a1a;
+  line-height: 1.3;
+  border-bottom: 4px solid #223A70;
+  padding-bottom: 16px;
+}
+
+.blog-content h2 {
+  @apply text-4xl font-bold mb-8 mt-12 pb-4;
+  color: #223A70;
+  line-height: 1.4;
+  border-bottom: 3px solid #e0e0e0;
+  background: linear-gradient(to right, #f8f9fa 0%, transparent 100%);
+  padding-left: 16px;
+  margin-left: -16px;
+  padding-right: 16px;
+}
+
+.blog-content h3 {
+  @apply text-3xl font-bold mb-6 mt-10;
+  color: #2c3e50;
+  line-height: 1.4;
+  border-left: 6px solid #223A70;
+  padding-left: 16px;
+}
+
+.blog-content h4 {
+  @apply text-2xl font-bold mb-4 mt-8;
+  color: #34495e;
+}
+
+/* Paragraphs - Larger with Better Spacing */
+.blog-content p {
+  @apply mb-8;
+  font-size: 18px;
+  line-height: 2.0;
+  color: #444;
+}
+
+/* Strong/Bold - More Prominent */
+.blog-content strong {
+  @apply font-bold;
+  color: #223A70;
+  font-size: 1.05em;
+}
+
+/* Links - More Visible */
+.blog-content a {
+  @apply text-blue-600 hover:text-blue-800 underline font-medium;
+  transition: all 0.2s;
+}
+
+/* Lists - Better Styling */
+.blog-content ul {
+  @apply mb-8 space-y-4;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.blog-content ul li {
+  @apply relative pl-8 text-lg;
+  list-style: none;
+  line-height: 1.9;
+}
+
+.blog-content ul li:before {
+  content: "✓";
+  @apply absolute left-0 font-bold text-2xl;
+  color: #223A70;
+  top: -2px;
+}
+
+.blog-content ol {
+  @apply mb-8 space-y-4;
+  margin-left: 2rem;
+}
+
+.blog-content ol li {
+  @apply text-lg;
+  line-height: 1.9;
+  padding-left: 0.5rem;
+}
+
+/* Tables - Beautiful Japanese Blog Style */
+.blog-content table {
+  @apply w-full my-10 shadow-lg;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: 17px;
+}
+
+.blog-content thead {
+  background: linear-gradient(135deg, #223A70 0%, #2c5282 100%);
+}
+
+.blog-content th {
+  @apply text-white font-bold;
+  padding: 20px 16px;
+  text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  font-size: 18px;
+}
+
+.blog-content th:last-child {
+  border-right: none;
+}
+
+.blog-content td {
+  @apply border-b border-gray-200;
+  padding: 18px 16px;
+  text-align: center;
+  background: white;
+}
+
+.blog-content tbody tr:nth-child(even) td {
+  background: #f8f9fa;
+}
+
+.blog-content tbody tr:hover td {
+  background: #e3f2fd;
+  transition: background 0.2s;
+}
+
+.blog-content tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Blockquotes - Colorful Japanese Blog Boxes */
+.blog-content blockquote {
+  @apply my-10 p-6 rounded-2xl border-l-8 shadow-md;
+  font-size: 17px;
+  line-height: 1.9;
+  background: linear-gradient(135deg, #fff3cd 0%, #fff8e1 100%);
+  border-left-color: #ff9800;
+  box-shadow: 0 4px 12px rgba(255, 152, 0, 0.15);
+}
+
+.blog-content blockquote strong {
+  color: #f57c00;
+  font-size: 1.15em;
+}
+
+.blog-content blockquote p {
+  @apply mb-4 last:mb-0;
+}
+
+/* Code blocks */
+.blog-content pre {
+  @apply bg-gray-900 text-gray-100 p-6 rounded-2xl mb-8 overflow-x-auto shadow-lg;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.blog-content code {
+  @apply bg-pink-100 text-pink-700 px-3 py-1 rounded-lg;
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+.blog-content pre code {
+  @apply bg-transparent text-gray-100 p-0;
+  font-weight: normal;
+}
+
+/* Horizontal rule */
+.blog-content hr {
+  @apply my-12 border-t-4 border-gray-300;
+  border-style: dashed;
+}
+
+/* Images */
+.blog-content img {
+  @apply rounded-2xl my-10 w-full shadow-lg;
+  border: 1px solid #e0e0e0;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .blog-content {
+    font-size: 17px;
+  }
+  
+  .blog-content h1 {
+    @apply text-4xl;
+  }
+  
+  .blog-content h2 {
+    @apply text-3xl;
+  }
+  
+  .blog-content h3 {
+    @apply text-2xl;
+  }
+  
+  .blog-content table {
+    font-size: 15px;
+  }
+  
+  .blog-content th,
+  .blog-content td {
+    padding: 12px 8px;
+  }
+}

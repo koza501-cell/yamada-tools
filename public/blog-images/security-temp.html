@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body { margin: 0; font-family: 'Noto Sans JP', sans-serif; }
+.container { width: 1200px; height: 630px; background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%); display: flex; align-items: center; justify-content: space-around; padding: 40px; }
+.box { background: white; border-radius: 20px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; width: 450px; }
+.danger { border: 4px solid #ff4444; }
+.safe { border: 4px solid #51cf66; }
+.icon { font-size: 100px; margin-bottom: 20px; }
+.title { font-size: 32px; font-weight: bold; margin-bottom: 30px; }
+.danger .title { color: #ff4444; }
+.safe .title { color: #51cf66; }
+.feature { font-size: 22px; margin: 15px 0; text-align: left; padding-left: 40px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="box danger">
+    <div class="icon">🌍</div>
+    <div class="title">⚠️ 海外サーバー</div>
+    <div class="feature">❓ データ保存期間不明</div>
+    <div class="feature">❓ 外国の法律が適用</div>
+    <div class="feature">❌ AI学習に使用される可能性</div>
+  </div>
+  <div class="box safe">
+    <div class="icon">🇯🇵</div>
+    <div class="title">✅ 国内サーバー</div>
+    <div class="feature">🗑️ 60分以内に自動削除</div>
+    <div class="feature">🛡️ 日本の法律で保護</div>
+    <div class="feature">🔒 データは保存しない</div>
+  </div>
+</div>
+</body>
+</html>

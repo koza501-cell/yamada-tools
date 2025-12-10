@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Japanese Traditional Colors */
+:root {
+  --kon: #223A70;
+  --ai: #264348;
+  --sumi: #343434;
+  --sakura: #FEDFE1;
+  --gin: #97867C;
+  --shiro: #FFFFFF;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Selection color */
+::selection {
+  background-color: var(--sakura);
+  color: var(--sumi);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gin);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--kon);
+}
+
+/* Mobile responsive improvements */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+  
+  /* Prevent horizontal scroll */
+  body {
+    overflow-x: hidden;
+  }
+  
+  /* Better touch targets */
+  button, a {
+    min-height: 44px;
+  }
+}
+
+/* Touch device improvements */
+@media (hover: none) {
+  /* Disable hover effects on touch devices */
+  .hover\:bg-kon:hover {
+    background-color: inherit;
+  }
+}
+
+/* PWA - Standalone mode adjustments */
+@media (display-mode: standalone) {
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
+/* iOS notch support */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: max(12px, env(safe-area-inset-left));
+    padding-right: max(12px, env(safe-area-inset-right));
+  }
+}
+
+/* Prevent pull-to-refresh on mobile */
+body {
+  overscroll-behavior-y: contain;
+}
+
+/* Better focus states for accessibility */
+:focus-visible {
+  outline: 2px solid var(--kon);
+  outline-offset: 2px;
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Print styles */
+@media print {
+  header, footer, nav {
+    display: none !important;
+  }
+  
+  main {
+    padding: 0 !important;
+  }
+}
+
+/* Dark mode support (future) */
+@media (prefers-color-scheme: dark) {
+  /* Placeholder for dark mode - currently using light mode only */
+}
+
+/* Loading states */
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* File drop zone active state */
+.drop-zone-active {
+  border-color: var(--kon) !important;
+  background-color: rgba(34, 58, 112, 0.05);
+}

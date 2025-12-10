@@ -1,0 +1,148 @@
+import type { Metadata, Viewport } from "next";
+import "./globals.css";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import BetaBanner from "@/components/common/BetaBanner";
+
+// Base URL for the site
+const siteUrl = "https://yamada-tools.jp";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#223A70",
+};
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "山田ツール | 日本国内サーバーの無料オンラインツール【安全・安心】",
+    template: "%s | 山田ツール",
+  },
+  description: "海外サーバーを使わない、日本国内完結のオンラインツール。PDF結合・圧縮・分割・変換、画像編集、Officeファイル変換など。登録不要、ファイルは処理後すぐに自動削除。",
+  keywords: [
+    "PDF 結合", "PDF 圧縮", "PDF 分割", "PDF 変換", "PDF 編集",
+    "日本国内サーバー", "国内サーバー", "安全なPDFツール",
+    "Word PDF 変換", "Excel PDF 変換", "PowerPoint PDF 変換",
+    "画像 PDF 変換", "PDF 画像 変換", "PDF パスワード",
+    "無料 PDF ツール", "オンライン PDF", "日本 PDF ツール",
+    "ファイル 変換", "ドキュメント 変換", "プライバシー保護",
+  ],
+  authors: [{ name: "合同会社山田トレード", url: siteUrl }],
+  creator: "合同会社山田トレード",
+  publisher: "合同会社山田トレード",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    type: "website",
+    locale: "ja_JP",
+    url: siteUrl,
+    siteName: "山田ツール",
+    title: "山田ツール | 日本国内サーバーの無料オンラインツール【安全・安心】",
+    description: "海外サーバーを使わない、日本国内完結のオンラインツール。PDF結合・圧縮・分割・変換など。登録不要、処理後すぐに自動削除。",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "山田ツール - 日本国内サーバーの無料オンラインツール",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "山田ツール | 日本国内サーバーの無料オンラインツール",
+    description: "海外サーバーを使わない、日本国内完結のオンラインツール。登録不要、安全・安心。",
+    images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: siteUrl,
+    languages: {
+      "ja-JP": siteUrl,
+    },
+  },
+  verification: {
+    google: "", // Add Google Search Console verification code
+    yandex: "", // Add Yandex verification if needed
+  },
+  category: "technology",
+};
+
+// JSON-LD Structured Data
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "山田ツール",
+  url: siteUrl,
+  description: "日本国内サーバーで安全・安心。PDF結合・圧縮・分割・変換など無料オンラインツール。",
+  applicationCategory: "UtilitiesApplication",
+  operatingSystem: "Web Browser",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "JPY",
+  },
+  provider: {
+    "@type": "Organization",
+    name: "合同会社山田トレード",
+    url: siteUrl,
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "JP",
+      addressRegion: "千葉県",
+      addressLocality: "東金市",
+      postalCode: "283-0811",
+      streetAddress: "台方937番地13",
+    },
+  },
+  featureList: [
+    "PDF結合", "PDF圧縮", "PDF分割", "PDF変換",
+    "Word変換", "Excel変換", "PowerPoint変換",
+    "画像変換", "OCR", "パスワード保護",
+    "日本国内サーバー", "自動削除", "プライバシー保護",
+  ],
+  inLanguage: "ja",
+  isAccessibleForFree: true,
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="ja">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <body className="font-sans antialiased bg-white text-sumi min-h-screen flex flex-col">
+        <BetaBanner />
+        <Header />
+        <main className="flex-grow">{children}</main>
+        <Footer />
+      </body>
+    </html>
+  );
+}

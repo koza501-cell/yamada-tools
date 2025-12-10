@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body { margin: 0; font-family: 'Noto Sans JP', sans-serif; }
+.container { width: 1200px; height: 630px; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); display: flex; align-items: center; justify-content: space-around; padding: 40px; }
+.step { text-align: center; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+.phone { font-size: 100px; }
+.label { font-size: 28px; font-weight: bold; margin-top: 20px; padding: 15px 30px; border-radius: 30px; }
+.error { background: #ff4444; color: white; }
+.process { background: #4dabf7; color: white; }
+.success { background: #51cf66; color: white; }
+.arrow { font-size: 80px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="step">
+    <div class="phone">📱</div>
+    <div class="label error">サイズエラー</div>
+    <div style="font-size: 18px; color: #666; margin-top: 10px;">画像が大きすぎます</div>
+  </div>
+  <div class="arrow">→</div>
+  <div class="step">
+    <div class="phone">🔧</div>
+    <div class="label process">リサイズ</div>
+    <div style="font-size: 18px; color: #666; margin-top: 10px;">自動調整</div>
+  </div>
+  <div class="arrow">→</div>
+  <div class="step">
+    <div class="phone">📱</div>
+    <div class="label success">アップロード完了</div>
+    <div style="font-size: 18px; color: #666; margin-top: 10px;">出品成功！</div>
+  </div>
+</div>
+</body>
+</html>

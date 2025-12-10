@@ -1,0 +1,218 @@
+import { NextRequest, NextResponse } from 'next/server';
+import Anthropic from '@anthropic-ai/sdk';
+import fs from 'fs';
+import path from 'path';
+import { revalidatePath } from 'next/cache';
+
+const anthropic = new Anthropic({
+  apiKey: process.env.ANTHROPIC_API_KEY,
+});
+
+const TOOLS = [
+  { name: 'PDF結合', link: '/pdf/merge', keywords: ['結合', '統合', 'マージ', '複数', '1つ'] },
+  { name: 'PDF圧縮', link: '/pdf/compress', keywords: ['圧縮', 'サイズ', '小さく', '軽量化'] },
+  { name: 'PDF分割', link: '/pdf/split', keywords: ['分割', 'スプリット', 'ページ抽出'] },
+  { name: 'PDF回転', link: '/pdf/rotate', keywords: ['回転', '向き', '横', '縦'] },
+  { name: 'PDFパスワード保護', link: '/pdf/protect', keywords: ['保護', 'パスワード', 'セキュリティ', '暗号化'] },
+  { name: 'PDFパスワード解除', link: '/pdf/unlock', keywords: ['解除', 'ロック解除', 'パスワード削除'] },
+  { name: 'PDF透かし', link: '/pdf/watermark', keywords: ['透かし', 'ウォーターマーク', 'スタンプ'] },
+  { name: 'PDF署名', link: '/pdf/sign', keywords: ['署名', 'サイン', '電子署名'] },
+  { name: 'PDFページ番号', link: '/pdf/page-numbers', keywords: ['ページ番号', 'ナンバリング', '番号付け'] },
+  { name: 'PDFページ削除', link: '/pdf/delete-pages', keywords: ['削除', 'ページ削除', '不要ページ'] },
+  { name: 'PDFページ並べ替え', link: '/pdf/reorder', keywords: ['並べ替え', '順序', '入れ替え'] },
+  { name: 'PDF→画像', link: '/pdf/pdf-to-image', keywords: ['画像変換', 'JPG', 'PNG', '画像化'] },
+  { name: '画像→PDF', link: '/pdf/image-to-pdf', keywords: ['画像', 'JPG', 'PNG', 'PDF化'] },
+  { name: 'Word→PDF', link: '/pdf/word-to-pdf', keywords: ['Word', 'ワード', 'DOCX', 'DOC'] },
+  { name: 'PDF→Word', link: '/pdf/pdf-to-word', keywords: ['Word変換', 'ワード変換', '編集可能'] },
+  { name: 'Excel→PDF', link: '/pdf/excel-to-pdf', keywords: ['Excel', 'エクセル', 'XLSX'] },
+  { name: 'PDF→Excel', link: '/pdf/pdf-to-excel', keywords: ['Excel変換', 'エクセル変換', '表'] },
+  { name: 'PPT→PDF', link: '/pdf/ppt-to-pdf', keywords: ['PowerPoint', 'パワポ', 'PPTX'] },
+  { name: 'PDF→PPT', link: '/pdf/pdf-to-ppt', keywords: ['PowerPoint変換', 'プレゼン'] },
+  { name: 'PDF OCR', link: '/pdf/ocr', keywords: ['OCR', 'テキスト抽出', '文字認識', 'スキャン'] },
+];
+
+function findBestToolLink(text: string): string {
+  const lowerText = text.toLowerCase();
+  for (const tool of TOOLS) {
+    const matchCount = tool.keywords.filter(keyword => lowerText.includes(keyword.toLowerCase())).length;
+    if (matchCount >= 2) {
+      return tool.link;
+    }
+  }
+  return '/pdf';
+}
+
+function enhanceContentWithToolLinks(content: string): string {
+  let enhanced = content;
+  const toolLinkPattern = /\[TOOL_LINK:([^\]]+)\]/g;
+  
+  enhanced = enhanced.replace(toolLinkPattern, (match, toolName) => {
+    const tool = TOOLS.find(t => t.name === toolName);
+    if (tool) {
+      return `[${toolName}](${tool.link})`;
+    }
+    return `[${toolName}](/pdf)`;
+  });
+  
+  return enhanced;
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    const { 
+      topic, 
+      category, 
+      style,
+      featuredImage,
+      scheduledDate,
+      status = 'published'
+    } = await request.json();
+
+    if (!topic || !category) {
+      return NextResponse.json({ 
+        success: false, 
+        error: 'Topic and category required' 
+      }, { status: 400 });
+    }
+
+    const prompt = `あなたは日本のビジネスパーソン向けのブログライターです。
+
+トピック: ${topic}
+カテゴリー: ${category}
+文章スタイル: ${style || '専門的だが親しみやすい'}
+
+以下の形式で、必ず指定された形式通りに高品質な日本語ブログ記事を作成してください。
+
+形式を厳密に守ってください：
+
+===METADATA===
+title: 魅力的なタイトル（35-45文字、SEOキーワード含む）
+slug: url-friendly-slug
+description: メタディスクリプション（120-150文字）
+keywords: キーワード1, キーワード2, キーワード3, キーワード4, キーワード5
+tags: タグ1, タグ2, タグ3, タグ4
+readTime: 5分
+===CONTENT===
+
+## 見出し1
+
+本文内容をここに書く。
+
+## 見出し2
+
+本文内容。
+
+## まとめ
+
+まとめの内容。
+
+===END===
+
+記事作成のルール：
+1. 日本のビジネス文化に適した丁寧な文体
+2. 見出しは## または ###を使用
+3. 具体例を3つ以上含める
+4. 箇条書きを効果的に使用
+5. yamada-tools.jpの関連ツールへ自然にリンク
+6. SEOを意識した自然なキーワード配置
+7. 最後に「まとめ」セクション
+8. 文字数：2000-3000文字
+
+ツールリンクは [TOOL_LINK:ツール名] 形式で挿入。
+
+利用可能なツール：${TOOLS.map(t => t.name).join(', ')}
+
+必ず上記の形式を守ってください。===METADATA===、===CONTENT===、===END=== のマーカーは必須です。`;
+
+    const message = await anthropic.messages.create({
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: 4000,
+      messages: [{ role: 'user', content: prompt }],
+    });
+
+    const articleContent = message.content[0]?.type === 'text' 
+      ? message.content[0].text 
+      : '';
+
+    if (!articleContent) {
+      return NextResponse.json({ 
+        success: false, 
+        error: 'AI returned empty content' 
+      }, { status: 500 });
+    }
+
+    const metadataMatch = articleContent.match(/===METADATA===([\s\S]*?)===CONTENT===/);
+    const contentMatch = articleContent.match(/===CONTENT===([\s\S]*?)===END===/);
+
+    if (!metadataMatch || !contentMatch) {
+      console.error('AI Response format error. Response:', articleContent);
+      return NextResponse.json({ 
+        success: false, 
+        error: 'AI did not follow the required format. Please try again.',
+        debug: articleContent.substring(0, 500)
+      }, { status: 400 });
+    }
+
+    const metadataText = metadataMatch[1].trim();
+    const rawContent = contentMatch[1].trim();
+
+    const metadata: any = {};
+    metadataText.split('\n').forEach(line => {
+      const colonIndex = line.indexOf(':');
+      if (colonIndex > 0) {
+        const key = line.substring(0, colonIndex).trim();
+        const value = line.substring(colonIndex + 1).trim();
+        if (key && value) {
+          metadata[key] = value;
+        }
+      }
+    });
+
+    const enhancedContent = enhanceContentWithToolLinks(rawContent);
+
+    const blogPost = {
+      title: metadata.title || topic,
+      slug: metadata.slug || topic.toLowerCase().replace(/[^a-z0-9]+/g, '-').substring(0, 60),
+      description: metadata.description || '',
+      category,
+      tags: metadata.tags ? metadata.tags.split(',').map((t: string) => t.trim()) : [],
+      keywords: metadata.keywords ? metadata.keywords.split(',').map((k: string) => k.trim()) : [],
+      content: enhancedContent,
+      readTime: metadata.readTime || '5分',
+      publishDate: scheduledDate || new Date().toISOString().split('T')[0],
+      author: 'Yamada Tools編集部',
+      featuredImage: featuredImage || '',
+      status: status,
+      toolLink: findBestToolLink(topic + ' ' + rawContent),
+    };
+
+    const blogsPath = path.join(process.cwd(), 'src/data/dynamicBlogs.json');
+    let blogs = [];
+
+    if (fs.existsSync(blogsPath)) {
+      const fileContent = fs.readFileSync(blogsPath, 'utf-8');
+      blogs = JSON.parse(fileContent);
+    }
+
+    blogs.push(blogPost);
+    fs.writeFileSync(blogsPath, JSON.stringify(blogs, null, 2));
+
+    // ⭐ AUTO-REFRESH blog pages
+    revalidatePath('/blog');
+    revalidatePath('/');
+    revalidatePath(`/blog/${blogPost.slug}`);
+
+    return NextResponse.json({ 
+      success: true, 
+      blog: blogPost,
+      message: status === 'draft' ? '下書きとして保存しました' : '公開しました'
+    });
+
+  } catch (error: any) {
+    console.error('Blog generation error:', error);
+    return NextResponse.json({ 
+      success: false, 
+      error: error.message 
+    }, { status: 500 });
+  }
+}

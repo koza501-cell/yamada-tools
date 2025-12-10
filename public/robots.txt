@@ -1,0 +1,41 @@
+# robots.txt for yamada-tools.jp
+# https://yamada-tools.jp/robots.txt
+
+User-agent: *
+Allow: /
+
+# Block admin area
+Disallow: /admin/
+Disallow: /api/
+
+# Specifically allow Google (Gemini)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Specifically allow OpenAI (ChatGPT)
+User-agent: GPTBot
+Allow: /
+
+# Allow other AI bots
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Yahoo Japan specific
+User-agent: Y!J-BRW
+Allow: /
+
+# Bing specific
+User-agent: Bingbot
+Allow: /
+
+# Sitemap location
+Sitemap: https://yamada-tools.jp/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1

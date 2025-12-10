@@ -1,0 +1,57 @@
+import { Metadata } from "next";
+import { pdfTools } from "@/config/tools";
+import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
+import CompressClient from "./client";
+
+const tool = pdfTools.find((t) => t.id === "compress")!;
+
+const faq = [
+  {
+    question: "PDF圧縮は無料ですか？",
+    answer: "はい、完全無料でご利用いただけます。登録も不要です。",
+  },
+  {
+    question: "圧縮後の画質は落ちますか？",
+    answer: "圧縮レベルを選択できます。「高品質」を選ぶと画質を維持したまま圧縮できます。",
+  },
+  {
+    question: "どのくらい圧縮できますか？",
+    answer: "ファイルの内容によりますが、通常30%〜70%のサイズ削減が可能です。",
+  },
+  {
+    question: "圧縮したPDFは安全ですか？",
+    answer: "はい。日本国内サーバーで処理され、10分後に自動削除されます。",
+  },
+];
+
+export const metadata: Metadata = generateToolMetadata({
+  tool,
+  longDescription:
+    "PDFファイルを無料で圧縮してファイルサイズを小さくします。メール添付やクラウド保存に最適。高品質・標準・最大圧縮から選択可能。日本国内サーバーで処理するため機密文書も安心。",
+  keywords: [
+    "PDF圧縮",
+    "PDF サイズ 小さく",
+    "PDF ファイルサイズ 削減",
+    "PDF 軽くする",
+    "PDF compress",
+    "PDF サイズダウン",
+    "無料 PDF圧縮",
+  ],
+});
+
+const jsonLd = generateToolJsonLd(tool, faq);
+
+export default function CompressPage() {
+  return (
+    <>
+      {jsonLd.map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
+      <CompressClient faq={faq} />
+    </>
+  );
+}

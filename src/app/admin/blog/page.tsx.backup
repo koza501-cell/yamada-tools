@@ -1,0 +1,522 @@
+'use client';
+import { useState, useEffect } from 'react';
+import { getPublishedPosts } from '@/data/blogPosts';
+
+export default function BlogAdminPage() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [password, setPassword] = useState('');
+  const [step, setStep] = useState(1);
+  
+  const [topic, setTopic] = useState('');
+  const [generatedPrompt, setGeneratedPrompt] = useState('');
+  
+  const [blogContent, setBlogContent] = useState('');
+  const [autoCategory, setAutoCategory] = useState('');
+  const [autoTags, setAutoTags] = useState<string[]>([]);
+  const [autoToolLink, setAutoToolLink] = useState('');
+  const [autoExcerpt, setAutoExcerpt] = useState('');
+  
+  const [imageOption, setImageOption] = useState<'css' | 'upload'>('css');
+  const [uploadedImage, setUploadedImage] = useState('');
+  const [publishDate, setPublishDate] = useState('');
+  const [publishTime, setPublishTime] = useState('');
+  
+  const [existingBlogs, setExistingBlogs] = useState<any[]>([]);
+  const [isPublishing, setIsPublishing] = useState(false);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      loadBlogs();
+    }
+  }, [isAuthenticated]);
+
+  const loadBlogs = () => {
+    const blogs = getPublishedPosts();
+    setExistingBlogs(blogs);
+  };
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (password === 'yamada-admin-2024') {
+      setIsAuthenticated(true);
+    } else {
+      alert('パスワードが違います');
+    }
+  };
+
+  const generatePrompt = () => {
+    const prompt = `# 山田ツール ブログ記事作成依頼
+
+## 記事テーマ
+${topic}
+
+## 執筆ガイドライン
+
+### 言語・文化
+- **完全な日本語ネイティブスタイル**で執筆してください
+- 日本のビジネス文化に精通した書き方（敬語、ビジネスマナー）
+- 会話形式：田中さん（困っている人）と山田（解決する人）の対話を含める
+- 日本特有の状況や例を使用（会社、フリーランス、主婦など）
+
+### SEO最適化
+- **Googleの日本検索エンジン**を意識したキーワード選定
+- タイトルに検索されやすいキーワードを含める
+- 見出しにもSEOキーワードを自然に配置
+- メタディスクリプション用の要約文（50-80文字）を含める
+
+### 構成
+- **読了時間: 3-4分** （1,500-2,000文字程度）
+- 冒頭：問題提起（「こんな経験ありませんか？」）
+- 会話例：田中さんと山田の対話
+- 解決策：山田ツールの紹介
+- 手順：ステップバイステップの使い方
+- メリット：他ツールとの比較
+- まとめ：行動喚起（CTA）
+
+### トーン
+- フレンドリーで親しみやすい
+- 専門用語は避け、誰でも理解できる表現
+- 実例や具体的なシーンを多用
+- ポジティブで励ます口調
+
+### 必須要素
+1. キャッチーなタイトル（30-40文字、【】を使用）
+2. 導入部分（問題の共感）
+3. 会話形式のやり取り（最低2回）
+4. 山田ツールの具体的な使い方（3-5ステップ）
+5. 比較表やメリット一覧
+6. よくある質問（Q&A形式、3-5個）
+7. まとめと次のアクション
+
+### 出力形式
+プレーンテキスト形式で、見出しは明確に。
+
+---
+
+**この指示に従って、完璧な日本語ブログ記事を作成してください。**`;
+
+    setGeneratedPrompt(prompt);
+  };
+
+  const copyPrompt = () => {
+    navigator.clipboard.writeText(generatedPrompt);
+    alert('✅ プロンプトをコピーしました！Claudeに貼り付けてください。');
+  };
+
+  const analyzeContent = () => {
+    if (!blogContent) return;
+
+    const categories = {
+      'PDF': ['pdf', 'ピーディーエフ', '結合', '圧縮', '分割'],
+      '画像': ['画像', 'イメージ', 'リサイズ', '圧縮', 'メルカリ'],
+      '文書作成': ['請求書', '見積', '領収', 'インボイス', '文書'],
+      'セキュリティ': ['パスワード', 'セキュリティ', '安全', '危険', '海外'],
+      '生成ツール': ['生成', 'パスワード', 'ツール', '計算'],
+    };
+
+    let detectedCategory = '';
+    for (const [cat, keywords] of Object.entries(categories)) {
+      if (keywords.some(kw => blogContent.toLowerCase().includes(kw))) {
+        detectedCategory = cat;
+        break;
+      }
+    }
+    setAutoCategory(detectedCategory || 'その他');
+
+    const commonTags = ['PDF', 'パスワード', 'セキュリティ', '画像', 'リサイズ', '請求書', 
+                        'インボイス', 'ビジネス', '圧縮', 'メール', 'フリーランス', 
+                        '生成', '安全', 'メルカリ', 'スマホ'];
+    const foundTags = commonTags.filter(tag => 
+      blogContent.toLowerCase().includes(tag.toLowerCase())
+    ).slice(0, 4);
+    setAutoTags(foundTags);
+
+    const toolLinks = {
+      'パスワード': '/generator/password',
+      'pdf.*圧縮': '/pdf/compress',
+      'pdf.*結合': '/pdf/merge',
+      '画像.*リサイズ': '/image/resize',
+      '請求書': '/document/invoice',
+    };
+
+    let detectedLink = '';
+    for (const [pattern, link] of Object.entries(toolLinks)) {
+      const regex = new RegExp(pattern, 'i');
+      if (regex.test(blogContent)) {
+        detectedLink = link;
+        break;
+      }
+    }
+    setAutoToolLink(detectedLink || '/');
+
+    const sentences = blogContent.split(/[。！？]/);
+    const excerpt = sentences.slice(0, 2).join('。') + '。';
+    setAutoExcerpt(excerpt.substring(0, 150));
+  };
+
+  const publishBlog = async (status: 'now' | 'draft' | 'schedule') => {
+    setIsPublishing(true);
+    
+    const slug = topic.toLowerCase()
+      .replace(/[【】]/g, '')
+      .replace(/[^\w\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .substring(0, 50) + '-' + Date.now();
+
+    const blogData = {
+      slug,
+      title: topic,
+      excerpt: autoExcerpt,
+      content: blogContent,
+      category: autoCategory,
+      tags: autoTags,
+      image: imageOption === 'css' ? autoCategory.toLowerCase().replace(/ツール/, '') : uploadedImage,
+      imageType: imageOption,
+      publishDate: status === 'now' ? new Date().toISOString() : 
+                    status === 'schedule' ? `${publishDate}T${publishTime}:00+09:00` :
+                    '2099-01-01T00:00:00+09:00',
+      author: '山田ツール編集部',
+      readTime: Math.ceil(blogContent.length / 600) + '分',
+      toolLink: autoToolLink,
+    };
+
+    try {
+      const response = await fetch('/api/blog', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(blogData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        alert(`✅ ブログを${status === 'now' ? '公開' : status === 'draft' ? '下書き保存' : 'スケジュール'}しました！`);
+        setStep(1);
+        setTopic('');
+        setBlogContent('');
+        setAutoCategory('');
+        loadBlogs(); // Reload blogs
+      } else {
+        alert('❌ エラーが発生しました: ' + result.error);
+      }
+    } catch (error) {
+      alert('❌ 保存エラー: ' + error);
+    }
+    
+    setIsPublishing(false);
+  };
+
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-kon to-kon/90 flex items-center justify-center p-4">
+        <div className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl">
+          <h1 className="text-3xl font-bold text-gray-900 mb-6 text-center">🔐 ブログ管理</h1>
+          <form onSubmit={handleLogin}>
+            <input
+              type="password"
+              placeholder="パスワード"
+              className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-sakura"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button className="w-full bg-kon text-white py-3 rounded-lg font-bold hover:bg-kon/90">
+              ログイン
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-gray-50 p-4">
+      <div className="max-w-5xl mx-auto">
+        <h1 className="text-4xl font-bold text-gray-900 mb-8">📝 ブログ作成ダッシュボード</h1>
+
+        {/* Progress Steps */}
+        <div className="bg-white rounded-xl p-6 mb-8 shadow-md">
+          <div className="flex items-center justify-between">
+            <div className={`flex-1 text-center ${step >= 1 ? 'text-kon font-bold' : 'text-gray-400'}`}>
+              <div className={`w-10 h-10 rounded-full mx-auto mb-2 flex items-center justify-center ${step >= 1 ? 'bg-kon text-white' : 'bg-gray-200'}`}>1</div>
+              トピック入力
+            </div>
+            <div className="flex-1 border-t-2 border-gray-300 mx-4"></div>
+            <div className={`flex-1 text-center ${step >= 2 ? 'text-kon font-bold' : 'text-gray-400'}`}>
+              <div className={`w-10 h-10 rounded-full mx-auto mb-2 flex items-center justify-center ${step >= 2 ? 'bg-kon text-white' : 'bg-gray-200'}`}>2</div>
+              コンテンツ作成
+            </div>
+            <div className="flex-1 border-t-2 border-gray-300 mx-4"></div>
+            <div className={`flex-1 text-center ${step >= 3 ? 'text-kon font-bold' : 'text-gray-400'}`}>
+              <div className={`w-10 h-10 rounded-full mx-auto mb-2 flex items-center justify-center ${step >= 3 ? 'bg-kon text-white' : 'bg-gray-200'}`}>3</div>
+              公開設定
+            </div>
+          </div>
+        </div>
+
+        {/* Step 1: Topic & Prompt */}
+        {step === 1 && (
+          <div className="bg-white rounded-xl p-8 shadow-md">
+            <h2 className="text-2xl font-bold mb-6">ステップ1: ブログトピック入力</h2>
+            
+            <label className="block mb-2 font-bold text-gray-700">ブログのタイトル・トピック</label>
+            <input
+              type="text"
+              placeholder="例: PDFファイルを圧縮する方法"
+              className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg mb-6 focus:outline-none focus:border-sakura text-lg"
+              value={topic}
+              onChange={(e) => setTopic(e.target.value)}
+            />
+
+            <button
+              onClick={generatePrompt}
+              disabled={!topic}
+              className="bg-kon text-white px-8 py-3 rounded-lg font-bold hover:bg-kon/90 disabled:bg-gray-300 mb-6"
+            >
+              🤖 AIプロンプトを生成
+            </button>
+
+            {generatedPrompt && (
+              <div className="mt-6">
+                <div className="flex items-center justify-between mb-2">
+                  <label className="font-bold text-gray-700">生成されたプロンプト</label>
+                  <button
+                    onClick={copyPrompt}
+                    className="bg-sakura text-white px-4 py-2 rounded-lg font-bold hover:bg-sakura/90"
+                  >
+                    📋 コピー
+                  </button>
+                </div>
+                <textarea
+                  readOnly
+                  value={generatedPrompt}
+                  className="w-full h-96 px-4 py-3 border-2 border-gray-300 rounded-lg bg-gray-50 font-mono text-sm"
+                />
+                <p className="mt-4 text-gray-600 bg-blue-50 p-4 rounded-lg">
+                  ✅ <strong>次のステップ:</strong> 上のプロンプトをコピーして、Claudeのチャットに貼り付けてください。Claudeが完璧なブログを生成します！
+                </p>
+                <button
+                  onClick={() => setStep(2)}
+                  className="mt-6 bg-kon text-white px-8 py-3 rounded-lg font-bold hover:bg-kon/90"
+                >
+                  次へ: コンテンツ入力 →
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Step 2: Content Input */}
+        {step === 2 && (
+          <div className="bg-white rounded-xl p-8 shadow-md">
+            <h2 className="text-2xl font-bold mb-6">ステップ2: Claudeが生成したブログを貼り付け</h2>
+            
+            <label className="block mb-2 font-bold text-gray-700">ブログコンテンツ</label>
+            <textarea
+              placeholder="Claudeが生成したブログ記事をここに貼り付けてください..."
+              className="w-full h-96 px-4 py-3 border-2 border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-sakura"
+              value={blogContent}
+              onChange={(e) => setBlogContent(e.target.value)}
+            />
+
+            <button
+              onClick={analyzeContent}
+              disabled={!blogContent}
+              className="bg-kon text-white px-8 py-3 rounded-lg font-bold hover:bg-kon/90 disabled:bg-gray-300 mb-6"
+            >
+              🔍 AI分析 (カテゴリ・タグ・ツールリンク自動検出)
+            </button>
+
+            {autoCategory && (
+              <div className="mt-6 p-6 bg-green-50 rounded-lg border-2 border-green-200">
+                <h3 className="font-bold text-lg mb-4">✅ AI分析結果</h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <p className="text-sm text-gray-600 mb-1">カテゴリ</p>
+                    <p className="font-bold text-lg">{autoCategory}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-600 mb-1">推奨ツールリンク</p>
+                    <p className="font-bold">{autoToolLink}</p>
+                  </div>
+                  <div className="md:col-span-2">
+                    <p className="text-sm text-gray-600 mb-1">タグ</p>
+                    <div className="flex flex-wrap gap-2">
+                      {autoTags.map(tag => (
+                        <span key={tag} className="bg-sakura text-white px-3 py-1 rounded-full text-sm">
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="md:col-span-2">
+                    <p className="text-sm text-gray-600 mb-1">自動生成された要約</p>
+                    <p className="text-sm">{autoExcerpt}</p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            <div className="flex gap-4 mt-6">
+              <button
+                onClick={() => setStep(1)}
+                className="bg-gray-300 text-gray-700 px-8 py-3 rounded-lg font-bold hover:bg-gray-400"
+              >
+                ← 戻る
+              </button>
+              <button
+                onClick={() => setStep(3)}
+                disabled={!autoCategory}
+                className="bg-kon text-white px-8 py-3 rounded-lg font-bold hover:bg-kon/90 disabled:bg-gray-300"
+              >
+                次へ: 公開設定 →
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Step 3: Publishing */}
+        {step === 3 && (
+          <div className="bg-white rounded-xl p-8 shadow-md">
+            <h2 className="text-2xl font-bold mb-6">ステップ3: 公開設定</h2>
+
+            <div className="mb-6">
+              <label className="block mb-2 font-bold text-gray-700">画像設定</label>
+              <div className="flex gap-4 mb-4">
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    checked={imageOption === 'css'}
+                    onChange={() => setImageOption('css')}
+                    className="w-5 h-5"
+                  />
+                  CSS自動生成グラフィック（推奨）
+                </label>
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    checked={imageOption === 'upload'}
+                    onChange={() => setImageOption('upload')}
+                    className="w-5 h-5"
+                  />
+                  画像をアップロード
+                </label>
+              </div>
+
+              {imageOption === 'upload' && (
+                <input
+                  type="text"
+                  placeholder="画像URL"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-sakura"
+                  value={uploadedImage}
+                  onChange={(e) => setUploadedImage(e.target.value)}
+                />
+              )}
+            </div>
+
+            <div className="mb-6">
+              <label className="block mb-2 font-bold text-gray-700">公開日時（スケジュール投稿）</label>
+              <div className="flex gap-4">
+                <input
+                  type="date"
+                  className="flex-1 px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-sakura"
+                  value={publishDate}
+                  onChange={(e) => setPublishDate(e.target.value)}
+                />
+                <input
+                  type="time"
+                  className="flex-1 px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-sakura"
+                  value={publishTime}
+                  onChange={(e) => setPublishTime(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-4 mt-8">
+              <button
+                onClick={() => setStep(2)}
+                className="bg-gray-300 text-gray-700 px-8 py-3 rounded-lg font-bold hover:bg-gray-400"
+              >
+                ← 戻る
+              </button>
+              <button
+                onClick={() => publishBlog('now')}
+                disabled={isPublishing}
+                className="bg-kon text-white px-8 py-3 rounded-lg font-bold hover:bg-kon/90 disabled:bg-gray-400"
+              >
+                {isPublishing ? '保存中...' : '🚀 今すぐ公開'}
+              </button>
+              <button
+                onClick={() => publishBlog('draft')}
+                disabled={isPublishing}
+                className="bg-gray-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-gray-700 disabled:bg-gray-400"
+              >
+                💾 下書き保存
+              </button>
+              {publishDate && publishTime && (
+                <button
+                  onClick={() => publishBlog('schedule')}
+                  disabled={isPublishing}
+                  className="bg-sakura text-white px-8 py-3 rounded-lg font-bold hover:bg-sakura/90 disabled:bg-gray-400"
+                >
+                  📅 スケジュール投稿
+                </button>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Existing Blogs - Sorted by Date (Newest First) */}
+        <div className="bg-white rounded-xl p-8 shadow-md mt-8">
+          <h2 className="text-2xl font-bold mb-6">📚 既存のブログ記事 (新しい順)</h2>
+          <div className="space-y-4">
+            {existingBlogs.map((blog) => (
+              <div key={blog.slug} className="border-2 border-gray-200 rounded-lg p-4 hover:border-sakura transition-colors relative">
+                {/* NEW Badge in Dashboard */}
+                {(() => {
+                  const blogDate = new Date(blog.publishDate);
+                  const now = new Date();
+                  const diffDays = (now.getTime() - blogDate.getTime()) / (1000 * 60 * 60 * 24);
+                  return diffDays <= 7 ? (
+                    <div className="absolute top-4 right-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full animate-pulse">
+                      🆕 NEW
+                    </div>
+                  ) : null;
+                })()}
+                
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="inline-block bg-sakura text-white text-xs px-2 py-1 rounded">
+                        {blog.category}
+                      </span>
+                      <span className="text-xs text-gray-500">
+                        {new Date(blog.publishDate).toLocaleDateString('ja-JP')} {new Date(blog.publishDate).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}
+                      </span>
+                    </div>
+                    <h3 className="font-bold text-lg mb-1">{blog.title}</h3>
+                    <p className="text-sm text-gray-600 mb-2 line-clamp-2">{blog.excerpt}</p>
+                    <div className="flex flex-wrap gap-2 mt-2">
+                      {blog.tags.map((tag: string) => (
+                        <span key={tag} className="text-xs text-gray-500">#{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="flex gap-2 ml-4">
+                    
+                    <a
+                      href={`/blog/${blog.slug}`}
+                      target="_blank"
+                      className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 text-sm"
+                    >
+                      表示
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

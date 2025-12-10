@@ -1,0 +1,30 @@
+Find this section in src/app/page.tsx (around line 180-230):
+
+// Get recent blogs
+const staticBlogs = getPublishedPosts();
+const recentBlogs = staticBlogs.slice(0, 3);
+
+REPLACE WITH:
+
+// Get recent blogs from both sources
+const staticBlogs = getPublishedPosts();
+const dynamicBlogsData = getDynamicBlogs();
+const allBlogs = [...dynamicBlogsData, ...staticBlogs].sort((a, b) => {
+  return new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime();
+});
+const recentBlogs = allBlogs.slice(0, 3);
+
+AND add this function at the top of the file (after imports):
+
+function getDynamicBlogs() {
+  try {
+    const blogsPath = path.join(process.cwd(), 'src/data/dynamicBlogs.json');
+    if (fs.existsSync(blogsPath)) {
+      const fileContent = fs.readFileSync(blogsPath, 'utf-8');
+      return JSON.parse(fileContent);
+    }
+  } catch (error) {
+    console.error('Error loading dynamic blogs:', error);
+  }
+  return [];
+}

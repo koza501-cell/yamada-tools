@@ -1,0 +1,64 @@
+import dynamicBlogs from './dynamicBlogs.json';
+
+export interface BlogPost {
+  slug: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  category: string;
+  tags: string[];
+  image: string;
+  imageType: 'css' | 'file';
+  publishDate: string;
+  author: string;
+  readTime: string;
+  toolLink: string;
+}
+
+// Static blogs (original 5)
+const staticBlogs: BlogPost[] = [
+  {
+    slug: 'security-overseas-vs-domestic-servers',
+    title: '【危険】社外秘ファイルを「海外の無料サイト」で変換してませんか？',
+    excerpt: 'PDF結合や画像変換...検索上位の英語の無料サイト、なんとなく使っていませんか？その行為、会社の信用を失うリスクがあるんです。',
+    category: 'セキュリティ',
+    tags: ['セキュリティ', 'ビジネス', '情報漏洩', '国内サーバー'],
+    image: 'security',
+    imageType: 'css',
+    publishDate: '2025-12-01T10:00:00+09:00',
+    author: '山田ツール編集部',
+    readTime: '3分',
+    toolLink: '/pdf',
+    content: '(existing content...)'
+  },
+  // ... other 4 static blogs
+];
+
+// Combine static and dynamic blogs
+export const blogPosts: BlogPost[] = [...staticBlogs, ...dynamicBlogs];
+
+export const getPublishedPosts = (): BlogPost[] => {
+  const now = new Date();
+  return blogPosts
+    .filter(post => new Date(post.publishDate) <= now)
+    .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()); // NEWEST FIRST
+};
+
+export const getPostBySlug = (slug: string): BlogPost | undefined => {
+  return blogPosts.find(post => post.slug === slug);
+};
+
+export const getPostsByCategory = (category: string): BlogPost[] => {
+  const now = new Date();
+  return blogPosts
+    .filter(post => post.category === category && new Date(post.publishDate) <= now)
+    .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()); // NEWEST FIRST
+};
+
+// Check if blog is new (within 7 days)
+export const isNewBlog = (publishDate: string): boolean => {
+  const blogDate = new Date(publishDate);
+  const now = new Date();
+  const diffDays = (now.getTime() - blogDate.getTime()) / (1000 * 60 * 60 * 24);
+  return diffDays <= 7;
+};

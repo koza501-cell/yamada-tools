@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body { margin: 0; font-family: 'Noto Sans JP', sans-serif; }
+.container { width: 1200px; height: 630px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: space-around; padding: 40px; color: white; }
+.box { text-align: center; }
+.icon { font-size: 120px; margin-bottom: 20px; }
+.size { font-size: 48px; font-weight: bold; background: rgba(255,255,255,0.2); padding: 20px 40px; border-radius: 15px; margin-top: 20px; }
+.label { font-size: 32px; font-weight: bold; margin-bottom: 10px; }
+.arrow { font-size: 100px; }
+.badge { background: #ff6b6b; padding: 10px 30px; border-radius: 30px; font-size: 24px; font-weight: bold; display: inline-block; margin-top: 15px; }
+.badge.good { background: #51cf66; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="box">
+    <div class="label">圧縮前</div>
+    <div class="icon">📄</div>
+    <div class="size">10 MB</div>
+    <div class="badge">❌ 送信不可</div>
+  </div>
+  <div class="arrow">→</div>
+  <div class="box">
+    <div class="label">圧縮後</div>
+    <div class="icon">📄</div>
+    <div class="size">1 MB</div>
+    <div class="badge good">✅ 送信OK</div>
+  </div>
+</div>
+</body>
+</html>
