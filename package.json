@@ -1,15 +1,16 @@
 {
-  "name": "yamada-tools",
-  "version": "1.0.0",
+  "name": "yamada-tools-staging",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3003",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3003",
     "lint": "next lint"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.71.2",
+    "@aws-sdk/client-s3": "^3.948.0",
     "@tailwindcss/typography": "^0.5.19",
     "@types/qrcode": "^1.5.6",
     "fflate": "^0.8.2",
