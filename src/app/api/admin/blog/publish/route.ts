@@ -7,7 +7,7 @@ export async function POST(request: NextRequest) {
   try {
     const { topic, category, blogData, images } = await request.json();
 
-    console.log('Publish received:', { topic, category, images });
+    console.log('Publishing blog:', { topic, category, hasImages: !!images });
 
     if (!topic || !blogData) {
       return NextResponse.json({
@@ -16,24 +16,30 @@ export async function POST(request: NextRequest) {
       }, { status: 400 });
     }
 
-    // Generate slug
     const slug = topic
       .toLowerCase()
       .replace(/[^\w\s-]/g, '')
       .replace(/\s+/g, '-')
       .substring(0, 60) + '-' + Date.now().toString().slice(-6);
 
-    // Replace image markers
+    // Replace image markers with actual images
     let finalContent = blogData.content || '';
-    if (images && typeof images === 'object') {
-      Object.entries(images).forEach(([position, url]) => {
-        const marker = `[${position}]`;
-        const imageMarkdown = `\n\n![${position}](${url})\n\n`;
-        finalContent = finalContent.replace(new RegExp(`\\[${position}\\]`, 'g'), imageMarkdown);
+    
+    // REMOVE [IMAGE_HERO] since it's displayed as featured image
+    finalContent = finalContent.replace(/\[IMAGE_HERO\]/g, '');
+    
+    // Replace other image markers
+    if (images) {
+      ['IMAGE_1', 'IMAGE_2', 'IMAGE_3'].forEach(position => {
+        if (images[position]) {
+          finalContent = finalContent.replace(
+            new RegExp(`\\[${position}\\]`, 'g'),
+            `\n\n![${position}](${images[position]})\n\n`
+          );
+        }
       });
     }
 
-    // Create blog
     const blog = {
       title: blogData.title || topic,
       slug,
@@ -51,9 +57,8 @@ export async function POST(request: NextRequest) {
       toolLink: blogData.toolLink || '/pdf/compress'
     };
 
-    console.log('Created blog:', blog);
+    console.log('Blog object:', JSON.stringify(blog, null, 2));
 
-    // Save
     const blogsPath = path.join(process.cwd(), 'src/data/dynamicBlogs.json');
     let existingBlogs = [];
 
@@ -65,7 +70,8 @@ export async function POST(request: NextRequest) {
     existingBlogs.push(blog);
     fs.writeFileSync(blogsPath, JSON.stringify(existingBlogs, null, 2));
 
-    // Revalidate
+    console.log('Blog saved successfully!');
+
     revalidatePath('/blog');
     revalidatePath('/');
 
