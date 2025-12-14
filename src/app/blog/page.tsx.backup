@@ -25,18 +25,9 @@ function getDynamicBlogs() {
 export default function BlogPage() {
   const staticBlogs = getPublishedPosts();
   const dynamicBlogs = getDynamicBlogs();
-  // Filter blogs: only show if publishDate <= today
-  const today = new Date();
-  today.setHours(23, 59, 59, 999); // End of today
-  
-  const allBlogs = [...dynamicBlogs, ...staticBlogs]
-    .filter(blog => {
-      const publishDate = new Date(blog.publishDate);
-      return publishDate <= today;
-    })
-    .sort((a, b) => {
-      return new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime();
-    });
+  const allBlogs = [...dynamicBlogs, ...staticBlogs].sort((a, b) => {
+    return new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime();
+  });
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">

