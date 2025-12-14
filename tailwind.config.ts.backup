@@ -11,7 +11,7 @@ const config: Config = {
       colors: {
         kon: '#223A70',
         ai: '#1E90FF',
-        sakura: '#D4AF37',
+        sakura: '#FF69B4',
       },
     },
   },
