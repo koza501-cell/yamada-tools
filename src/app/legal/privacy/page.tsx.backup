@@ -40,7 +40,7 @@ export default function PrivacyPage() {
                 <div>
                   <p className="font-bold text-blue-900 mb-1">アップロードされたファイルについて</p>
                   <ul className="space-y-1 text-blue-800">
-                    <li>・ ファイルは処理完了後60分以内に、サーバーから完全に削除されます</li>
+                    <li>・ ファイルは処理完了後、自動的にサーバーから完全に削除されます</li>
                     <li>・ ファイルの内容を当社が閲覧、保存することは一切ありません</li>
                     <li>・ 第三者にファイルを共有することは一切ありません</li>
                   </ul>
@@ -99,7 +99,7 @@ export default function PrivacyPage() {
                 <ul className="space-y-1 text-green-800">
                   <li>・ 全ての通信はSSL/TLS暗号化により保護されています</li>
                   <li>・ サーバーは日本国内に設置され、適切な物理的セキュリティ対策が施されています</li>
-                  <li>・ アップロードされたファイルは処理後60分以内に自動削除されます</li>
+                  <li>・ アップロードされたファイルは処理後、即座に削除されます</li>
                   <li>・ 不正アクセス防止のため、定期的なセキュリティチェックを実施しています</li>
                 </ul>
               </div>

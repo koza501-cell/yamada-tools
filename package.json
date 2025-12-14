@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.71.2",
+    "@aws-sdk/client-s3": "^3.948.0",
     "@tailwindcss/typography": "^0.5.19",
     "@types/qrcode": "^1.5.6",
     "fflate": "^0.8.2",
