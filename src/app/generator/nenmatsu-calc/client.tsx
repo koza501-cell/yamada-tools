@@ -1,4 +1,5 @@
 "use client";
+import FinancialDisclaimer from "@/components/common/FinancialDisclaimer";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";

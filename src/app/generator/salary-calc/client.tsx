@@ -1,4 +1,5 @@
 "use client";
+import FinancialDisclaimer from "@/components/common/FinancialDisclaimer";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -82,7 +83,7 @@ export default function SalaryCalcClient() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-gray-50 py-8"><FinancialDisclaimer type="salary" />
       <div className="max-w-4xl mx-auto px-4">
         <nav className="mb-6 text-sm">
           <ol className="flex items-center gap-2 text-gray-500">
