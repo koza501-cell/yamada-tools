@@ -10,12 +10,16 @@ export default function Footer() {
               <h3 className="text-lg font-bold">山田ツール</h3>
             </div>
             <div className="text-sm text-gray-300 space-y-2">
-              <p className="font-medium">合同会社山田トレード</p>
+              <p className="font-medium">
+                <a href="https://www.yamadatrade.com/" target="_blank" rel="noopener noreferrer" className="text-sakura hover:underline">
+                  合同会社山田トレード
+                </a>
+              </p>
               <p>〒283-0811</p>
               <p>千葉県東金市台方937番地13</p>
               <p className="mt-4">
                 <Link href="/about/transparency" className="text-sakura hover:underline">
-                  運営方針とセキュリティについて →
+                  運営方針とセキュリティについて
                 </Link>
               </p>
             </div>
@@ -51,6 +55,11 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-bold mb-4">リンク</h3>
             <div className="space-y-2 text-sm">
+              <div>
+                <a href="https://www.yamadatrade.com/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-sakura transition-colors">
+                  会社ウェブサイト
+                </a>
+              </div>
               <div>
                 <Link href="/about/company" className="text-gray-300 hover:text-sakura transition-colors">
                   会社概要
