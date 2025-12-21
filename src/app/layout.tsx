@@ -71,24 +71,52 @@ export const metadata: Metadata = {
   },
 };
 
-const jsonLd = {
+// Organization Schema (standalone)
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `${siteUrl}/#organization`,
+  name: "合同会社山田トレード",
+  alternateName: "山田ツール",
+  url: siteUrl,
+  logo: {
+    "@type": "ImageObject",
+    url: `${siteUrl}/logo-icon.png`,
+    width: 512,
+    height: 512,
+  },
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "台方937番地13",
+    addressLocality: "東金市",
+    addressRegion: "千葉県",
+    postalCode: "283-0811",
+    addressCountry: "JP",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer support",
+    email: "support@yamada-tools.jp",
+    availableLanguage: ["Japanese"],
+  },
+  foundingDate: "2024",
+  numberOfEmployees: {
+    "@type": "QuantitativeValue",
+    value: 1,
+  },
+};
+
+// WebSite Schema
+const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": `${siteUrl}/#website`,
   name: "山田ツール",
   url: siteUrl,
   description:
     "日本国内サーバーで安全に使える無料オンラインツール集。PDF編集、画像変換、文書作成など71種類のツールを提供。",
   publisher: {
-    "@type": "Organization",
-    name: "合同会社山田トレード",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "台方937番地13",
-      addressLocality: "東金市",
-      addressRegion: "千葉県",
-      postalCode: "283-0811",
-      addressCountry: "JP",
-    },
+    "@id": `${siteUrl}/#organization`,
   },
   potentialAction: {
     "@type": "SearchAction",
@@ -98,6 +126,7 @@ const jsonLd = {
     },
     "query-input": "required name=search_term_string",
   },
+  inLanguage: "ja-JP",
 };
 
 export default function RootLayout({
@@ -110,7 +139,11 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
       <body className="antialiased min-h-screen flex flex-col">
