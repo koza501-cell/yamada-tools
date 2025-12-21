@@ -362,14 +362,14 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
           </div>
           <div className="bg-white rounded-xl p-4 border border-gray-100 text-center">
             <div className="text-2xl mb-2">🗑️</div>
-            <h3 className="font-bold text-sm mb-1">10分で自動削除</h3>
+            <h3 className="font-bold text-sm mb-1">60分で自動削除</h3>
             <p className="text-xs text-gray-500">プライバシーを保護</p>
           </div>
         </section>
 
         {/* Security Note */}
         <footer className="mt-8 text-center text-sm text-gray-500">
-          <p>🔒 ファイルはSSL暗号化通信で送信され、処理後10分で自動削除されます</p>
+          <p>🔒 ファイルはSSL暗号化通信で送信され、処理後60分で自動削除されます</p>
         </footer>
       </div>
     </div>

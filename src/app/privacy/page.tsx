@@ -42,7 +42,7 @@ export default function PrivacyPage() {
               <ul className="text-gray-600 space-y-2">
                 <li>🔒 すべての通信はSSL/TLSで暗号化されています</li>
                 <li>🇯🇵 ファイルは日本国内のサーバーで処理されます</li>
-                <li>🗑️ アップロードされたファイルは処理後<strong>10分で自動削除</strong>されます</li>
+                <li>🗑️ アップロードされたファイルは処理後<strong>60分で自動削除</strong>されます</li>
                 <li>👁️ 当社スタッフがお客様のファイル内容を閲覧することはありません</li>
               </ul>
             </div>

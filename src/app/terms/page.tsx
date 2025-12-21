@@ -66,7 +66,7 @@ export default function TermsPage() {
             <h2 className="text-xl font-bold text-kon mb-4">第5条（ファイルの取り扱い）</h2>
             <div className="bg-sakura/20 rounded-xl p-4">
               <ul className="text-gray-600 space-y-2">
-                <li>• アップロードされたファイルは処理後10分で自動的に削除されます</li>
+                <li>• アップロードされたファイルは処理後60分で自動的に削除されます</li>
                 <li>• 当社はファイルの内容を閲覧・保存・共有することはありません</li>
                 <li>• 利用者は、アップロードするファイルの権利を有している必要があります</li>
               </ul>

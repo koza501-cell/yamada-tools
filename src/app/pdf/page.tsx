@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "PDFツール | 山田ツール - 無料オンラインPDF編集・変換",
-  description: "PDF結合・圧縮・分割・変換など20以上の無料PDFツール。日本国内サーバーで安心・安全。登録不要、10分で自動削除。",
+  description: "PDF結合・圧縮・分割・変換など20以上の無料PDFツール。日本国内サーバーで安心・安全。登録不要、60分で自動削除。",
 };
 
 export default function PDFToolsPage() {
@@ -127,7 +127,7 @@ export default function PDFToolsPage() {
           <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-600">
             <span>🇯🇵 日本国内サーバー</span>
             <span>🔒 SSL暗号化通信</span>
-            <span>🗑️ 10分で自動削除</span>
+            <span>🗑️ 60分で自動削除</span>
             <span>✨ 完全無料</span>
           </div>
         </section>
