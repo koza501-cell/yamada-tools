@@ -41,8 +41,8 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 text-center">
           {/* Main Headline - Emphasizes Domestic Server */}
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            海外サーバーを使わない<br />
-            <span className="text-sakura">日本国内完結</span>のツール
+            無料オンラインツール{toolCount.total}個<br />
+            <span className="text-sakura">日本国内サーバー</span>で安全処理
           </h1>
           
           <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-3xl mx-auto">
