@@ -81,7 +81,7 @@ const organizationSchema = {
   url: siteUrl,
   logo: {
     "@type": "ImageObject",
-    url: `${siteUrl}/logo-icon.png`,
+    url: `${siteUrl}/logo-icon.webp`,
     width: 512,
     height: 512,
   },

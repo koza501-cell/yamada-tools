@@ -21,7 +21,7 @@ export default function Header() {
           {/* Logo with Image */}
           <Link href="/" className="flex items-center gap-2">
             <img 
-              src="/logo-icon.png" 
+              src="/logo-icon.webp" 
               alt="山田ツール" 
               className="w-8 h-8"
             />
