@@ -126,6 +126,7 @@ export default function Home() {
               >
                 <div className="text-2xl mb-2">{tool.icon}</div>
                 <h3 className="font-bold text-sm text-kon">{tool.nameJa}</h3>
+                <p className="text-xs text-gray-500 mt-1 line-clamp-2">{tool.description}</p>
               </Link>
             ))}
           </div>
@@ -152,6 +153,7 @@ export default function Home() {
                 >
                   <div className="text-2xl mb-2">{tool.icon}</div>
                   <h3 className="font-bold text-sm text-kon">{tool.nameJa}</h3>
+                <p className="text-xs text-gray-500 mt-1 line-clamp-2">{tool.description}</p>
                 </Link>
               ))}
             </div>
@@ -179,6 +181,7 @@ export default function Home() {
                 >
                   <div className="text-2xl mb-2">{tool.icon}</div>
                   <h3 className="font-bold text-sm text-kon">{tool.nameJa}</h3>
+                <p className="text-xs text-gray-500 mt-1 line-clamp-2">{tool.description}</p>
                 </Link>
               ))}
             </div>
@@ -206,6 +209,7 @@ export default function Home() {
                 >
                   <div className="text-2xl mb-2">{tool.icon}</div>
                   <h3 className="font-bold text-sm text-kon">{tool.nameJa}</h3>
+                <p className="text-xs text-gray-500 mt-1 line-clamp-2">{tool.description}</p>
                 </Link>
               ))}
             </div>
@@ -233,6 +237,7 @@ export default function Home() {
                 >
                   <div className="text-2xl mb-2">{tool.icon}</div>
                   <h3 className="font-bold text-sm text-kon">{tool.nameJa}</h3>
+                <p className="text-xs text-gray-500 mt-1 line-clamp-2">{tool.description}</p>
                 </Link>
               ))}
             </div>
