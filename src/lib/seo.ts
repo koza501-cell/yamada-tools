@@ -27,7 +27,7 @@ export function generateToolMetadata({
 
   const description =
     longDescription ||
-    `${tool.nameJa}を無料でオンライン変換。${tool.description}。日本国内サーバーで安心・安全。登録不要、ファイルは10分で自動削除。`;
+    `${tool.nameJa}を無料でオンライン変換。${tool.description}。日本国内サーバーで安心・安全。登録不要、ファイルは60分で自動削除。`;
 
   return {
     title: `${tool.nameJa} - 無料オンライン${tool.nameJa}ツール`,
@@ -62,29 +62,54 @@ export function generateToolMetadata({
 }
 
 export function generateToolJsonLd(tool: Tool, faq?: { question: string; answer: string }[]) {
-  const baseSchema = {
+  // SoftwareApplication schema (enhanced)
+  const softwareSchema = {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
-    name: `${tool.nameJa} | 山田ツール`,
+    "@type": "SoftwareApplication",
+    "@id": `${baseUrl}${tool.path}#software`,
+    name: tool.nameJa,
+    alternateName: tool.nameEn,
     url: `${baseUrl}${tool.path}`,
     description: `${tool.description}。日本国内サーバーで安心・安全。`,
     applicationCategory: "UtilitiesApplication",
+    applicationSubCategory: tool.category === "pdf" ? "PDF Tools" : 
+                            tool.category === "image" ? "Image Tools" :
+                            tool.category === "document" ? "Document Tools" :
+                            tool.category === "convert" ? "Conversion Tools" : "Utilities",
     operatingSystem: "Web Browser",
+    browserRequirements: "Requires JavaScript. Works on Chrome, Firefox, Safari, Edge.",
+    softwareVersion: "1.0",
+    releaseNotes: "日本国内サーバーで安全に処理。60分で自動削除。",
+    featureList: [
+      "完全無料",
+      "登録不要",
+      "日本国内サーバー",
+      "SSL暗号化",
+      "60分で自動削除",
+      tool.description
+    ],
     offers: {
       "@type": "Offer",
       price: "0",
       priceCurrency: "JPY",
+      availability: "https://schema.org/InStock"
     },
     provider: {
       "@type": "Organization",
+      "@id": `${baseUrl}/#organization`,
       name: "合同会社山田トレード",
       url: baseUrl,
     },
+    creator: {
+      "@type": "Organization",
+      name: "合同会社山田トレード"
+    },
     inLanguage: "ja",
     isAccessibleForFree: true,
+    permissions: "no registration required"
   };
 
-  const schemas = [baseSchema];
+  const schemas = [softwareSchema];
 
   // Add FAQ schema if FAQ exists
   if (faq && faq.length > 0) {
@@ -144,6 +169,12 @@ export function generateToolJsonLd(tool: Tool, faq?: { question: string; answer:
   schemas.push(howToSchema as any);
 
   // Add BreadcrumbList schema
+  const categoryName = tool.category === "pdf" ? "PDFツール" :
+                       tool.category === "image" ? "画像ツール" :
+                       tool.category === "document" ? "書類作成" :
+                       tool.category === "convert" ? "変換ツール" :
+                       tool.category === "generator" ? "計算・生成" : "ツール";
+  
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -157,8 +188,8 @@ export function generateToolJsonLd(tool: Tool, faq?: { question: string; answer:
       {
         "@type": "ListItem",
         position: 2,
-        name: "PDFツール",
-        item: `${baseUrl}/pdf`,
+        name: categoryName,
+        item: `${baseUrl}/${tool.category}`,
       },
       {
         "@type": "ListItem",
