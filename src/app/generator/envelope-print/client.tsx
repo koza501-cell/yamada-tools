@@ -449,7 +449,7 @@ export default function EnvelopePrintClient() {
 <style>@page{size:${env.width}mm ${env.height}mm;margin:0}*{margin:0;padding:0;box-sizing:border-box}
 html,body{width:${env.width}mm;height:${env.height}mm;overflow:hidden}
 img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:high-quality}</style>
-</head><body><img src="${dataUrl}"/><script>window.onload=function(){window.print();window.onafterprint=function(){window.close()}};</script></body></html>`);
+</head><body><img src="${dataUrl}" alt="封筒プレビュー"/><script>window.onload=function(){window.print();window.onafterprint=function(){window.close()}};</script></body></html>`);
       pw.document.close();
       setMascotState("success");
       setMascotMessage("300DPI印刷準備完了！");
@@ -480,7 +480,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
 </head><body><div class="ctrl"><h2>🖨️ 封筒印刷プレビュー<span class="badge">300 DPI</span></h2>
 <p>用紙サイズを「${env.name} (${env.width}×${env.height}mm)」に設定してください</p>
 <button onclick="window.print()">印刷 / PDF保存</button></div>
-<div class="preview"><div class="env"><img src="${dataUrl}"/></div></div></body></html>`);
+<div class="preview"><div class="env"><img src="${dataUrl}" alt="封筒プレビュー"/></div></div></body></html>`);
       pw.document.close();
       setMascotState("success");
       setMascotMessage("300DPI PDF完成！");
