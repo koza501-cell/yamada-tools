@@ -198,7 +198,7 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
                 <p className="text-sm text-gray-500">
                   または <span className="text-kon underline">クリックして選択</span>
                 </p>
-                <p className="text-xs text-gray-400 mt-2">
+                <p className="text-sm text-gray-400 mt-2">
                   対応形式: {tool.acceptedTypes} | 最大サイズ: 20MB | 最大ファイル数: {tool.maxFiles}
                 </p>
               </label>
@@ -217,7 +217,7 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
                         <span className="text-2xl">📄</span>
                         <div>
                           <p className="font-medium text-sm">{file.name}</p>
-                          <p className="text-xs text-gray-500">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
+                          <p className="text-sm text-gray-500">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
                         </div>
                       </div>
                       <button 
@@ -353,17 +353,17 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
           <div className="bg-white rounded-xl p-4 border border-gray-100 text-center">
             <div className="text-2xl mb-2">🆓</div>
             <h3 className="font-bold text-sm mb-1">完全無料</h3>
-            <p className="text-xs text-gray-500">登録不要、制限なし</p>
+            <p className="text-sm text-gray-500">登録不要、制限なし</p>
           </div>
           <div className="bg-white rounded-xl p-4 border border-gray-100 text-center">
             <div className="text-2xl mb-2">🇯🇵</div>
             <h3 className="font-bold text-sm mb-1">日本国内サーバー</h3>
-            <p className="text-xs text-gray-500">データを海外に送信しません</p>
+            <p className="text-sm text-gray-500">データを海外に送信しません</p>
           </div>
           <div className="bg-white rounded-xl p-4 border border-gray-100 text-center">
             <div className="text-2xl mb-2">🗑️</div>
             <h3 className="font-bold text-sm mb-1">60分で自動削除</h3>
-            <p className="text-xs text-gray-500">プライバシーを保護</p>
+            <p className="text-sm text-gray-500">プライバシーを保護</p>
           </div>
         </section>
 

@@ -32,21 +32,21 @@ export default function Footer() {
                 <span className="text-2xl">🇯🇵</span>
                 <div className="text-sm">
                   <p className="font-medium">日本国内サーバー</p>
-                  <p className="text-gray-300 text-xs">大切なファイルは日本国内で処理</p>
+                  <p className="text-gray-300 text-sm">大切なファイルは日本国内で処理</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <span className="text-2xl">🔒</span>
                 <div className="text-sm">
                   <p className="font-medium">SSL暗号化通信</p>
-                  <p className="text-gray-300 text-xs">通信内容を完全保護</p>
+                  <p className="text-gray-300 text-sm">通信内容を完全保護</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <span className="text-2xl">🗑️</span>
                 <div className="text-sm">
                   <p className="font-medium">自動削除</p>
-                  <p className="text-gray-300 text-xs">処理完了後、すぐに削除</p>
+                  <p className="text-gray-300 text-sm">処理完了後、すぐに削除</p>
                 </div>
               </div>
             </div>
