@@ -164,6 +164,9 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
             <span className="bg-green-50 text-green-700 px-3 py-1 rounded-full">✓ 完全無料</span>
             <span className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full">🇯🇵 日本国内サーバー</span>
             <span className="bg-purple-50 text-purple-700 px-3 py-1 rounded-full">🔒 安全・安心</span>
+            {tool.maxFiles > 1 && (
+              <span className="bg-orange-50 text-orange-700 px-3 py-1 rounded-full">📦 一括処理対応（最大{tool.maxFiles}ファイル）</span>
+            )}
           </div>
         </header>
 
