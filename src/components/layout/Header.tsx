@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import ThemeToggle from "@/components/common/ThemeToggle";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -69,6 +70,7 @@ export default function Header() {
                 <span className="text-sm">検索</span>
                 <kbd className="hidden lg:inline-block text-xs bg-white/20 px-1.5 py-0.5 rounded">⌘K</kbd>
               </button>
+              <ThemeToggle />
             </nav>
 
             {/* Mobile: Search + Menu */}

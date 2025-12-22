@@ -5,6 +5,7 @@ import Footer from "@/components/layout/Footer";
 import BetaBanner from "@/components/common/BetaBanner";
 import FeedbackButton from "@/components/common/FeedbackButton";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { ThemeProvider } from "@/components/common/ThemeProvider";
 import BackToTop from "@/components/BackToTop";
 
 // Base URL for the site
@@ -146,7 +147,8 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
-      <body className="antialiased min-h-screen flex flex-col">
+      <body className="antialiased min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+        <ThemeProvider>
         <BetaBanner />
         <Header />
         <Breadcrumbs />
@@ -154,6 +156,7 @@ export default function RootLayout({
         <Footer />
         <FeedbackButton />
         <BackToTop />
+        </ThemeProvider>
       </body>
     </html>
   );
