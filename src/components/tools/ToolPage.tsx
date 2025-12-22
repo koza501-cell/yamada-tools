@@ -319,6 +319,36 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
           </section>
         )}
 
+        {/* Visual How-To Demo */}
+        <section className="mt-8 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6 border border-blue-100" aria-labelledby="demo-heading">
+          <h2 id="demo-heading" className="font-bold text-kon mb-6 text-lg text-center">
+            📖 かんたん3ステップ
+          </h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-sm text-3xl">
+                📁
+              </div>
+              <h3 className="font-bold text-kon mb-1">Step 1</h3>
+              <p className="text-sm text-gray-600">ファイルを選択</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-sm text-3xl">
+                ⚡
+              </div>
+              <h3 className="font-bold text-kon mb-1">Step 2</h3>
+              <p className="text-sm text-gray-600">ボタンをクリック</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-sm text-3xl">
+                ✅
+              </div>
+              <h3 className="font-bold text-kon mb-1">Step 3</h3>
+              <p className="text-sm text-gray-600">ダウンロード完了</p>
+            </div>
+          </div>
+        </section>
+
         {/* FAQ Section */}
         {faq && faq.length > 0 && (
           <section className="mt-8" aria-labelledby="faq-heading">
