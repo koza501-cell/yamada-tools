@@ -126,7 +126,7 @@ export default function Header() {
                   className="flex-1 text-lg text-gray-900 outline-none"
                   autoFocus
                 />
-                <button onClick={() => setIsSearchOpen(false)} className="text-gray-400 hover:text-gray-600">
+                <button onClick={() => setIsSearchOpen(false)} className="text-gray-400 hover:text-gray-600" aria-label="検索を閉じる">
                   <kbd className="text-xs bg-gray-100 px-2 py-1 rounded">ESC</kbd>
                 </button>
               </div>

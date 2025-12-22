@@ -285,7 +285,7 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
               >
                 ファイルを開く
               </a>
-              <button onClick={reset} className="px-8 py-4 border-2 border-kon text-kon rounded-xl font-bold hover:bg-kon/5 transition-colors">
+              <button onClick={reset} className="px-8 py-4 border-2 border-kon text-kon rounded-xl font-bold hover:bg-kon/5 transition-colors" aria-label="別のファイルを処理">
                 別のファイルを処理
               </button>
             </div>
