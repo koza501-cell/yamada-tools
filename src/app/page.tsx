@@ -58,13 +58,16 @@ export default function Home() {
           {/* Trust Badges */}
           <div className="flex flex-wrap justify-center gap-3 mb-10">
             <span className="bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm font-medium">
+              🏢 2024年設立
+            </span>
+            <span className="bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm font-medium">
               🇯🇵 日本国内サーバー
             </span>
             <span className="bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm font-medium">
               🔒 SSL暗号化
             </span>
             <span className="bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm font-medium">
-              🗑️ 自動削除
+              🗑️ 60分で自動削除
             </span>
             <span className="bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm font-medium">
               ✨ 登録不要・完全無料
