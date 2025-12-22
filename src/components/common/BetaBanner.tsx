@@ -21,7 +21,7 @@ export default function BetaBanner() {
   if (!isVisible) return null;
 
   return (
-    <div className="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-3 shadow-lg sticky top-0 z-50">
+    <div className="bg-gradient-to-r from-blue-600 to-blue-500 text-white px-4 py-3 shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
         <div className="flex items-center gap-3 flex-1">
           <span className="text-2xl">🚀</span>
