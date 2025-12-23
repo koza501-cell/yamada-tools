@@ -6,6 +6,7 @@ import BetaBanner from "@/components/common/BetaBanner";
 import FeedbackButton from "@/components/common/FeedbackButton";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { ThemeProvider } from "@/components/common/ThemeProvider";
+import GoogleAnalytics from "@/components/common/GoogleAnalytics";
 import BackToTop from "@/components/BackToTop";
 
 // Base URL for the site
@@ -148,6 +149,7 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+        <GoogleAnalytics />
         <ThemeProvider>
         <BetaBanner />
         <Header />
