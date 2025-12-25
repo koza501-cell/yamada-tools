@@ -126,7 +126,7 @@ export default function EnvelopePrintClient() {
   const resetSettings = () => { setSettings(getDefaultSettings(envelopeSize)); setMascotMessage("リセット完了"); };
 
   const toVerticalNumber = (n: string): string => {
-    const m: Record<string,string> = {"0":"〇","1":"一","2":"二","3":"三","4":"四","5":"五","6":"六","7":"七","8":"八","9":"九"};
+    const m: Record<string,string> = {"0":"０","1":"１","2":"２","3":"３","4":"４","5":"５","6":"６","7":"７","8":"８","9":"９"};
     return n.split("").map(c => m[c] || c).join("");
   };
 
