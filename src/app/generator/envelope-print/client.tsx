@@ -53,19 +53,19 @@ const getDefaultSettings = (size: EnvelopeSize): LayoutSettings => {
       recipientNameX: 20, recipientNameY: 55, recipientNameFontSize: 12,
       senderX: e.width - 10, senderY: e.height - 25, senderFontSize: 5,
       stampX: 10, stampY: e.height - 20, stampFontSize: 7,
-      postalX: e.width - 70, postalY: 8, postalFontSize: 6 };
+      postalX: e.width - 70, postalY: 22, postalFontSize: 6 };
   } else if (e.type === "kaku") {
     return { recipientAddressX: e.width - 30, recipientAddressY: 35, recipientAddressFontSize: 11,
       recipientNameX: e.width / 2, recipientNameY: 50, recipientNameFontSize: 16,
       senderX: 30, senderY: e.height - 100, senderFontSize: 8,
       stampX: 8, stampY: 25, stampFontSize: 10,
-      postalX: e.width - 85, postalY: 10, postalFontSize: 7 };
+      postalX: e.width - 85, postalY: 24, postalFontSize: 7 };
   }
   return { recipientAddressX: e.width - 20, recipientAddressY: 28, recipientAddressFontSize: 8,
     recipientNameX: e.width / 2 + 5, recipientNameY: 35, recipientNameFontSize: 12,
     senderX: 35, senderY: e.height - 85, senderFontSize: 6,
     stampX: 6, stampY: 25, stampFontSize: 8,
-    postalX: e.width - 70, postalY: 8, postalFontSize: 6 };
+    postalX: e.width - 70, postalY: 22, postalFontSize: 6 };
 };
 
 const STORAGE_KEY = "yamada-envelope-settings";
@@ -638,6 +638,12 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                       <div><label className="block text-xs text-gray-500">X</label><input type="number" value={settings.stampX} onChange={(e) => setSettings({...settings, stampX: Number(e.target.value)})} className="w-full bg-gray-50 border border-gray-300 rounded px-2 py-1"/></div>
                       <div><label className="block text-xs text-gray-500">Y</label><input type="number" value={settings.stampY} onChange={(e) => setSettings({...settings, stampY: Number(e.target.value)})} className="w-full bg-gray-50 border border-gray-300 rounded px-2 py-1"/></div>
                       <div><label className="block text-xs text-gray-500">文字</label><input type="number" value={settings.stampFontSize} onChange={(e) => setSettings({...settings, stampFontSize: Number(e.target.value)})} className="w-full bg-gray-50 border border-gray-300 rounded px-2 py-1"/></div>
+                    </div>
+                    <h4 className="text-sm font-medium text-gray-700 mb-2">📮 郵便番号</h4>
+                    <div className="grid grid-cols-3 gap-2 mb-4">
+                      <div><label className="block text-xs text-gray-500">X</label><input type="number" value={settings.postalX} onChange={(e) => setSettings({...settings, postalX: Number(e.target.value)})} className="w-full bg-gray-50 border border-gray-300 rounded px-2 py-1"/></div>
+                      <div><label className="block text-xs text-gray-500">Y</label><input type="number" value={settings.postalY} onChange={(e) => setSettings({...settings, postalY: Number(e.target.value)})} className="w-full bg-gray-50 border border-gray-300 rounded px-2 py-1"/></div>
+                      <div><label className="block text-xs text-gray-500">文字</label><input type="number" value={settings.postalFontSize} onChange={(e) => setSettings({...settings, postalFontSize: Number(e.target.value)})} className="w-full bg-gray-50 border border-gray-300 rounded px-2 py-1"/></div>
                     </div></div>
                     <div className="flex gap-2 pt-2">
                       <button onClick={saveSettings} className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm">💾 設定を保存</button>
