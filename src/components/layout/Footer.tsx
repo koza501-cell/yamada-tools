@@ -71,6 +71,16 @@ export default function Footer() {
                 </Link>
               </div>
               <div>
+                <Link href="/about/story" className="text-gray-300 hover:text-sakura transition-colors">
+                  開発者ストーリー
+                </Link>
+              </div>
+              <div>
+                <a href="https://forms.gle/2mmoGqLif1Cqe5vL6" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-sakura transition-colors">
+                  💡 ツールをリクエスト
+                </a>
+              </div>
+              <div>
                 <Link href="/about/fair-usage" className="text-gray-300 hover:text-sakura transition-colors">
                   適正利用ガイドライン
                 </Link>
