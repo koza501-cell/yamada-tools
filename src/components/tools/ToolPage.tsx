@@ -278,7 +278,7 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
               <Mascot state="success" message="やったー！完了しました！" />
             </div>
             <h2 className="text-2xl font-bold text-kon mb-2">完了しました！</h2>
-            <p className="text-gray-600 mb-6">新しいタブでファイルが開きました。右クリックで保存できます。</p>
+            <p className="text-gray-600 mb-6">ファイルのダウンロードが開始されました！</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
                 href={pdfUrl} 
@@ -304,7 +304,7 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
             <li>上のエリアにファイルをドラッグ＆ドロップ、またはクリックして選択</li>
             <li>必要に応じてオプションを設定</li>
             <li>「{tool.nameJa}を実行」ボタンをクリック</li>
-            <li>新しいタブでファイルが開くので、右クリックで保存</li>
+            <li>処理完了後、自動でダウンロードが開始されます</li>
           </ol>
         </section>
 

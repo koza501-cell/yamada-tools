@@ -49,19 +49,19 @@ interface LayoutSettings {
 const getDefaultSettings = (size: EnvelopeSize): LayoutSettings => {
   const e = ENVELOPE_SIZES[size];
   if (e.type === "yo") {
-    return { recipientAddressX: 15, recipientAddressY: 25, recipientAddressFontSize: 9,
+    return { recipientAddressX: 15, recipientAddressY: 38, recipientAddressFontSize: 9,
       recipientNameX: 20, recipientNameY: 55, recipientNameFontSize: 12,
       senderX: e.width - 10, senderY: e.height - 25, senderFontSize: 5,
       stampX: 10, stampY: e.height - 20, stampFontSize: 7,
       postalX: e.width - 70, postalY: 22, postalFontSize: 6 };
   } else if (e.type === "kaku") {
-    return { recipientAddressX: e.width - 30, recipientAddressY: 35, recipientAddressFontSize: 11,
+    return { recipientAddressX: e.width - 30, recipientAddressY: 45, recipientAddressFontSize: 11,
       recipientNameX: e.width / 2, recipientNameY: 50, recipientNameFontSize: 16,
       senderX: 30, senderY: e.height - 100, senderFontSize: 8,
       stampX: 8, stampY: 25, stampFontSize: 10,
       postalX: e.width - 85, postalY: 24, postalFontSize: 7 };
   }
-  return { recipientAddressX: e.width - 20, recipientAddressY: 28, recipientAddressFontSize: 8,
+  return { recipientAddressX: e.width - 20, recipientAddressY: 40, recipientAddressFontSize: 8,
     recipientNameX: e.width / 2 + 5, recipientNameY: 35, recipientNameFontSize: 12,
     senderX: 35, senderY: e.height - 85, senderFontSize: 6,
     stampX: 6, stampY: 25, stampFontSize: 8,
