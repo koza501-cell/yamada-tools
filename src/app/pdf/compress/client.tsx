@@ -9,11 +9,18 @@ interface FAQ {
   answer: string;
 }
 
-interface CompressClientProps {
-  faq?: FAQ[];
+interface SeoContent {
+  intro: string;
+  useCases?: { title: string; desc: string }[];
+  tips?: string;
 }
 
-export default function CompressClient({ faq }: CompressClientProps) {
+interface CompressClientProps {
+  faq?: FAQ[];
+  seoContent?: SeoContent;
+}
+
+export default function CompressClient({ faq, seoContent }: CompressClientProps) {
   const tool = pdfTools.find(t => t.id === "compress")!;
   const [quality, setQuality] = useState("medium");
 
@@ -49,7 +56,7 @@ export default function CompressClient({ faq }: CompressClientProps) {
   return (
     <ToolPage 
       tool={tool} 
-      faq={faq} 
+      faq={faq} seoContent={seoContent} 
       extraFields={extraFields}
       extraFormData={{ quality }}
     />

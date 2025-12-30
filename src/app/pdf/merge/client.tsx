@@ -8,11 +8,18 @@ interface FAQ {
   answer: string;
 }
 
-interface MergeClientProps {
-  faq?: FAQ[];
+interface SeoContent {
+  intro: string;
+  useCases?: { title: string; desc: string }[];
+  tips?: string;
 }
 
-export default function MergeClient({ faq }: MergeClientProps) {
+interface MergeClientProps {
+  faq?: FAQ[];
+  seoContent?: SeoContent;
+}
+
+export default function MergeClient({ faq, seoContent }: MergeClientProps) {
   const tool = pdfTools.find(t => t.id === "merge")!;
-  return <ToolPage tool={tool} faq={faq} />;
+  return <ToolPage tool={tool} faq={faq} seoContent={seoContent} />;
 }

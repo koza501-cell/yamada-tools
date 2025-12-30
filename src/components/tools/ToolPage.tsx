@@ -15,7 +15,11 @@ interface ToolPageProps {
   extraFields?: React.ReactNode;
   extraFormData?: Record<string, string>;
   faq?: FAQ[];
-  seoContent?: string;
+  seoContent?: string | {
+    intro: string;
+    useCases?: { title: string; desc: string }[];
+    tips?: string;
+  };
 }
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://api.yamada-tools.jp";
@@ -315,7 +319,30 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
               {tool.nameJa}について
             </h2>
             <div className="prose prose-gray max-w-none text-gray-600 leading-relaxed">
-              {(dynamicContent || seoContent)?.split('\n').map((paragraph, index) => (
+              {typeof seoContent === 'string' ? (
+                (dynamicContent || seoContent)?.split('\n').map((paragraph, index) => (
+                  <p key={index} className="mb-3">{paragraph}</p>
+                ))
+              ) : seoContent ? (
+                <>
+                  <p className="mb-4 text-base">{seoContent.intro}</p>
+                  {seoContent.useCases && (
+                    <div className="grid sm:grid-cols-2 gap-3 my-4">
+                      {seoContent.useCases.map((uc, i) => (
+                        <div key={i} className="bg-gray-50 rounded-lg p-3">
+                          <p className="font-medium text-gray-800">{uc.title}</p>
+                          <p className="text-sm text-gray-600">{uc.desc}</p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {seoContent.tips && (
+                    <div className="bg-blue-50 rounded-lg p-4 mt-4">
+                      <p className="text-sm text-blue-800">💡 <strong>ヒント:</strong> {seoContent.tips}</p>
+                    </div>
+                  )}
+                </>
+              ) : dynamicContent?.split('\n').map((paragraph, index) => (
                 <p key={index} className="mb-3">{paragraph}</p>
               ))}
             </div>

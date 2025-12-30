@@ -1,41 +1,69 @@
 import { Metadata } from "next";
-import { pdfTools } from "@/config/tools";
+import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
 import SplitClient from "./client";
+import { toolSchemas } from "@/data/toolSchemas";
 
-const tool = pdfTools.find((t) => t.id === "split")!;
+const tool = getToolById("split")!;
 
 const faq = [
   {
-    question: "PDF分割は無料ですか？",
-    answer: "はい、完全無料でご利用いただけます。登録も不要です。",
+    question: "PDFを1ページずつ分割できますか？",
+    answer: "はい、1ページずつ個別のファイルに分割できます。10ページのPDFなら、10個の別々のファイルとしてダウンロードできます。",
   },
   {
-    question: "何ページでも分割できますか？",
-    answer: "はい。ページ数に制限はありません。各ページを個別のPDFファイルに分割します。",
+    question: "特定のページだけ抽出できますか？",
+    answer: "はい、「1,3,5-7」のように抽出したいページ番号を指定できます。必要なページだけを取り出して新しいPDFを作成できます。",
   },
   {
-    question: "分割後のファイル形式は？",
-    answer: "分割された各ページはPDFファイルとしてZIPファイルでダウンロードできます。",
+    question: "分割後のファイル名はどうなりますか？",
+    answer: "元のファイル名に連番が付きます。例えば「資料.pdf」を分割すると「資料_1.pdf」「資料_2.pdf」のようになります。",
   },
   {
-    question: "元のPDFの品質は維持されますか？",
-    answer: "はい。分割しても元の品質は完全に維持されます。",
+    question: "100ページ以上のPDFも分割できますか？",
+    answer: "はい、ページ数の制限はありません。ただし、ファイルサイズは50MBまでとなります。大きなファイルは処理に時間がかかる場合があります。",
+  },
+  {
+    question: "分割すると画質は落ちますか？",
+    answer: "いいえ、品質は一切劣化しません。元のページをそのまま切り出すだけなので、画質やテキストの鮮明さは維持されます。",
+  },
+  {
+    question: "パスワード付きPDFは分割できますか？",
+    answer: "パスワードで保護されたPDFはそのままでは分割できません。先に「PDFロック解除」ツールで解除してからお試しください。",
+  },
+  {
+    question: "スマホからでも分割できますか？",
+    answer: "はい、iPhone・Androidどちらからもブラウザで直接ご利用いただけます。アプリのインストールは不要です。",
+  },
+  {
+    question: "会社の機密資料でも使えますか？",
+    answer: "はい、安全です。ファイルは日本国内サーバーのみで処理され、60分後に自動削除されます。SSL暗号化で通信も保護されています。",
   },
 ];
+
+const seoContent = {
+  intro: "大きなPDFから必要なページだけ取り出したい、1ページずつ別ファイルにしたい——そんな時に使えるのがPDF分割ツールです。ページ番号を指定して抽出したり、全ページを個別ファイルに分けたり。用途に合わせて柔軟に分割できます。",
+  useCases: [
+    { title: "📄 必要ページ抽出", desc: "長い資料から該当ページだけ取り出す" },
+    { title: "📧 メール添付用", desc: "大きなPDFを分割してサイズを小さく" },
+    { title: "📁 整理・分類", desc: "1ファイルを章ごと・セクションごとに分割" },
+    { title: "🖨️ 部分印刷", desc: "印刷したいページだけ抽出して印刷" },
+  ],
+  tips: "「1-5,10,15-20」のように、範囲指定とページ指定を組み合わせることもできます。カンマで区切って自由に指定してください。",
+};
 
 export const metadata: Metadata = generateToolMetadata({
   tool,
   longDescription:
-    "PDFファイルを複数のファイルに分割する無料オンラインツール。1ページずつ個別のPDFに分割。大きなPDFを小さく分けて管理しやすく。日本国内サーバーで安全処理。",
+    "PDFを分割・ページ抽出。必要なページだけ取り出したり、1ページずつ別ファイルに。日本国内サーバーで安全処理、登録不要・完全無料。",
   keywords: [
     "PDF分割",
-    "PDF ページ 分ける",
-    "PDF 分離",
+    "PDF ページ抽出",
+    "PDF 切り出し",
+    "PDF 分ける",
     "PDF split",
-    "PDF ページ分割",
-    "PDF 切り離し",
     "無料 PDF分割",
+    "PDFから1ページ抽出",
   ],
 });
 
@@ -44,14 +72,11 @@ const jsonLd = generateToolJsonLd(tool, faq);
 export default function SplitPage() {
   return (
     <>
-      {jsonLd.map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-      <SplitClient faq={faq} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <SplitClient faq={faq} seoContent={seoContent} />
     </>
   );
 }

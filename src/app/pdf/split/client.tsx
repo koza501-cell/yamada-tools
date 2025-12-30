@@ -8,11 +8,18 @@ interface FAQ {
   answer: string;
 }
 
-interface SplitClientProps {
-  faq?: FAQ[];
+interface SeoContent {
+  intro: string;
+  useCases?: { title: string; desc: string }[];
+  tips?: string;
 }
 
-export default function SplitClient({ faq }: SplitClientProps) {
+interface SplitClientProps {
+  faq?: FAQ[];
+  seoContent?: SeoContent;
+}
+
+export default function SplitClient({ faq, seoContent }: SplitClientProps) {
   const tool = pdfTools.find(t => t.id === "split")!;
-  return <ToolPage tool={tool} faq={faq} />;
+  return <ToolPage tool={tool} faq={faq} seoContent={seoContent} />;
 }
