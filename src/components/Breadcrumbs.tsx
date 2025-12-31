@@ -138,23 +138,23 @@ export default function Breadcrumbs() {
   });
 
   return (
-    <nav aria-label="Breadcrumb" className="bg-gray-50 border-b">
+    <nav aria-label="Breadcrumb" className="bg-gray-50 dark:bg-gray-800 border-b dark:border-gray-700">
       <div className="max-w-7xl mx-auto px-4 py-3">
         <ol className="flex flex-wrap items-center gap-2 text-sm">
           {breadcrumbs.map((crumb, index) => (
             <li key={crumb.href || index} className="flex items-center gap-2">
               {index > 0 && (
-                <span className="text-gray-400">›</span>
+                <span className="text-gray-400 dark:text-gray-500">›</span>
               )}
               {crumb.href ? (
                 <Link
                   href={crumb.href}
-                  className="text-kon hover:text-sakura transition-colors hover:underline"
+                  className="text-kon dark:text-blue-400 hover:text-sakura transition-colors hover:underline"
                 >
                   {crumb.name}
                 </Link>
               ) : (
-                <span className="text-gray-600 font-medium">
+                <span className="text-gray-600 dark:text-gray-300 font-medium">
                   {crumb.name}
                 </span>
               )}

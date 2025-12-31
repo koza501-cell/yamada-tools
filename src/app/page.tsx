@@ -111,10 +111,10 @@ export default function Home() {
       </section>
 
       {/* Section 1: PDF Tools */}
-      <section className="py-12 bg-gray-50">
+      <section className="py-12 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-bold text-kon">📄 PDFツール</h2>
+            <h2 className="text-xl font-bold text-kon dark:text-blue-400">📄 PDFツール</h2>
             <Link href="/pdf" className="text-kon hover:underline text-sm">
               すべて見る →
             </Link>
@@ -128,7 +128,7 @@ export default function Home() {
                 className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
               >
                 <div className="text-2xl mb-2">{tool.icon}</div>
-                <h3 className="font-bold text-sm text-kon">{tool.nameJa}</h3>
+                <h3 className="font-bold text-sm text-kon dark:text-blue-400">{tool.nameJa}</h3>
                 <p className="text-xs text-gray-500 mt-1 line-clamp-2">{tool.description}</p>
               </Link>
             ))}
@@ -141,7 +141,7 @@ export default function Home() {
         <section className="py-12">
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-bold text-kon">📝 書類作成</h2>
+              <h2 className="text-xl font-bold text-kon dark:text-blue-400">📝 書類作成</h2>
               <Link href="/document" className="text-kon hover:underline text-sm">
                 すべて見る →
               </Link>
@@ -155,7 +155,7 @@ export default function Home() {
                   className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
                 >
                   <div className="text-2xl mb-2">{tool.icon}</div>
-                  <h3 className="font-bold text-sm text-kon">{tool.nameJa}</h3>
+                  <h3 className="font-bold text-sm text-kon dark:text-blue-400">{tool.nameJa}</h3>
                 <p className="text-xs text-gray-500 mt-1 line-clamp-2">{tool.description}</p>
                 </Link>
               ))}
@@ -166,10 +166,10 @@ export default function Home() {
 
       {/* Section 3: Converters - ONLY AVAILABLE */}
       {availableConvertTools.length > 0 && (
-        <section className="py-12 bg-gray-50">
+        <section className="py-12 bg-gray-50 dark:bg-gray-900">
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-bold text-kon">🔄 変換ツール</h2>
+              <h2 className="text-xl font-bold text-kon dark:text-blue-400">🔄 変換ツール</h2>
               <Link href="/convert" className="text-kon hover:underline text-sm">
                 すべて見る →
               </Link>
@@ -183,7 +183,7 @@ export default function Home() {
                   className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
                 >
                   <div className="text-2xl mb-2">{tool.icon}</div>
-                  <h3 className="font-bold text-sm text-kon">{tool.nameJa}</h3>
+                  <h3 className="font-bold text-sm text-kon dark:text-blue-400">{tool.nameJa}</h3>
                 <p className="text-xs text-gray-500 mt-1 line-clamp-2">{tool.description}</p>
                 </Link>
               ))}
@@ -197,7 +197,7 @@ export default function Home() {
         <section className="py-12">
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-bold text-kon">🖼️ 画像ツール</h2>
+              <h2 className="text-xl font-bold text-kon dark:text-blue-400">🖼️ 画像ツール</h2>
               <Link href="/image" className="text-kon hover:underline text-sm">
                 すべて見る →
               </Link>
@@ -211,7 +211,7 @@ export default function Home() {
                   className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
                 >
                   <div className="text-2xl mb-2">{tool.icon}</div>
-                  <h3 className="font-bold text-sm text-kon">{tool.nameJa}</h3>
+                  <h3 className="font-bold text-sm text-kon dark:text-blue-400">{tool.nameJa}</h3>
                 <p className="text-xs text-gray-500 mt-1 line-clamp-2">{tool.description}</p>
                 </Link>
               ))}
@@ -222,10 +222,10 @@ export default function Home() {
 
       {/* Section 5: Generators - ONLY AVAILABLE */}
       {availableGenTools.length > 0 && (
-        <section className="py-12 bg-gray-50">
+        <section className="py-12 bg-gray-50 dark:bg-gray-900">
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-bold text-kon">⚡ 計算・生成ツール</h2>
+              <h2 className="text-xl font-bold text-kon dark:text-blue-400">⚡ 計算・生成ツール</h2>
               <Link href="/generator" className="text-kon hover:underline text-sm">
                 すべて見る →
               </Link>
@@ -239,7 +239,7 @@ export default function Home() {
                   className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
                 >
                   <div className="text-2xl mb-2">{tool.icon}</div>
-                  <h3 className="font-bold text-sm text-kon">{tool.nameJa}</h3>
+                  <h3 className="font-bold text-sm text-kon dark:text-blue-400">{tool.nameJa}</h3>
                 <p className="text-xs text-gray-500 mt-1 line-clamp-2">{tool.description}</p>
                 </Link>
               ))}
@@ -301,7 +301,7 @@ export default function Home() {
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">
                   📝 最新ブログ
                 </h2>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-gray-300">
                   PDFツールの活用方法やビジネス効率化のヒントをお届けします
                 </p>
               </div>
@@ -311,7 +311,7 @@ export default function Home() {
                   <Link
                     key={post.slug}
                     href={`/blog/${post.slug}`}
-                    className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group"
+                    className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group"
                   >
                     <div className="relative h-48 bg-gradient-to-br from-blue-500 to-purple-600">
                       {post.featuredImage && (
@@ -329,7 +329,7 @@ export default function Home() {
                         <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
                           {post.category}
                         </span>
-                        <span className="text-sm text-gray-500">{post.readTime}</span>
+                        <span className="text-sm text-gray-500 dark:text-gray-400">{post.readTime}</span>
                       </div>
 
                       <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
@@ -341,7 +341,7 @@ export default function Home() {
                       </p>
 
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-gray-500">{post.publishDate}</span>
+                        <span className="text-sm text-gray-500 dark:text-gray-400">{post.publishDate}</span>
                         <span className="text-blue-600 group-hover:translate-x-2 transition-transform">
                           →
                         </span>

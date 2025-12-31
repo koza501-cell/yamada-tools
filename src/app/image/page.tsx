@@ -34,11 +34,11 @@ export default function ImageToolsPage() {
                 <Link
                   key={tool.id}
                   href={tool.path}
-                  className="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow text-center border border-gray-100"
+                  className="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow text-center border border-gray-100 dark:border-gray-700"
                 >
                   <div className="text-4xl mb-3">{tool.icon}</div>
                   <h3 className="font-bold text-kon mb-2">{tool.nameJa}</h3>
-                  <p className="text-sm text-gray-500">{tool.description}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">{tool.description}</p>
                 </Link>
               ))}
             </div>
@@ -59,7 +59,7 @@ export default function ImageToolsPage() {
                 >
                   <div className="text-4xl mb-3 grayscale">{tool.icon}</div>
                   <h3 className="font-bold text-kon mb-2">{tool.nameJa}</h3>
-                  <p className="text-sm text-gray-500">{tool.description}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">{tool.description}</p>
                   <span className="inline-block mt-3 text-xs bg-gray-200 text-gray-600 px-3 py-1 rounded-full">
                     準備中
                   </span>

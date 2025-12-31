@@ -48,7 +48,7 @@ export default function PDFToolsPage() {
               <Link
                 key={tool.id}
                 href={tool.path}
-                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1 text-center border border-gray-100"
+                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1 text-center border border-gray-100 dark:border-gray-700"
               >
                 <div className="text-4xl mb-3">{tool.icon}</div>
                 <h3 className="font-bold text-kon">{tool.nameJa}</h3>
@@ -69,7 +69,7 @@ export default function PDFToolsPage() {
               <Link
                 key={tool.id}
                 href={tool.path}
-                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1 text-center border border-gray-100"
+                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1 text-center border border-gray-100 dark:border-gray-700"
               >
                 <div className="text-4xl mb-3">{tool.icon}</div>
                 <h3 className="font-bold text-kon">{tool.nameJa}</h3>
@@ -90,7 +90,7 @@ export default function PDFToolsPage() {
               <Link
                 key={tool.id}
                 href={tool.path}
-                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1 text-center border border-gray-100"
+                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1 text-center border border-gray-100 dark:border-gray-700"
               >
                 <div className="text-4xl mb-3">{tool.icon}</div>
                 <h3 className="font-bold text-kon">{tool.nameJa}</h3>
@@ -111,7 +111,7 @@ export default function PDFToolsPage() {
               <Link
                 key={tool.id}
                 href={tool.path}
-                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1 text-center border border-gray-100"
+                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1 text-center border border-gray-100 dark:border-gray-700"
               >
                 <div className="text-4xl mb-3">{tool.icon}</div>
                 <h3 className="font-bold text-kon">{tool.nameJa}</h3>
@@ -124,7 +124,7 @@ export default function PDFToolsPage() {
         {/* Trust Section */}
         <section className="bg-sakura/20 rounded-2xl p-8 text-center">
           <h2 className="text-xl font-bold text-kon mb-4">安心・安全のPDF処理</h2>
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-600">
+          <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-600 dark:text-gray-300">
             <span>🇯🇵 日本国内サーバー</span>
             <span>🔒 SSL暗号化通信</span>
             <span>🗑️ 60分で自動削除</span>
