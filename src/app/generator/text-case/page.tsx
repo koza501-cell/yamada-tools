@@ -1,20 +1,40 @@
 import { Metadata } from "next";
-import TextCaseClient from "./client";
+import { getToolById } from "@/config/tools";
+import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
+import ToolPage from "@/components/tools/ToolPage";
 
-export const metadata: Metadata = {
-  title: "大文字・小文字変換 | 山田ツール - テキスト変換ツール",
-  description: "テキストを大文字・小文字・タイトルケースなどに変換。登録不要、完全無料。",
-  keywords: ["大文字変換", "小文字変換", "テキスト変換", "ケース変換", "無料"],
-  openGraph: {
-    title: "大文字・小文字変換 | 山田ツール",
-    description: "テキストのケースを変換。完全無料。",
-    url: "https://yamada-tools.jp/generator/text-case",
-  },
-  alternates: {
-    canonical: "https://yamada-tools.jp/generator/text-case",
-  },
+const tool = getToolById("text-case")!;
+
+const faq = [
+  { question: "無料で使えますか？", answer: "はい、完全無料で登録も不要です。" },
+  { question: "スマホからも使えますか？", answer: "はい、iPhone・Androidどちらからも利用可能です。" },
+  { question: "データは安全ですか？", answer: "日本国内サーバーで処理され、データは保存されません。" },
+];
+
+const seoContent = {
+  intro: "大文字・小文字変換、キャメルケース・スネークケースなど、テキストの形式を変換します。",
+  useCases: [
+    { title: "💻 プログラミング", desc: "変数名の形式変換" },
+    { title: "📝 文書作成", desc: "タイトルの大文字化" },
+    { title: "🔤 英語", desc: "大文字小文字の統一" },
+    { title: "📊 データ整理", desc: "表記の統一" },
+  ],
+  tips: "camelCase、snake_case、UPPER_CASE など様々な形式に対応しています。",
 };
 
-export default function TextCasePage() {
-  return <TextCaseClient />;
+export const metadata: Metadata = generateToolMetadata({
+  tool,
+  longDescription: "大文字・小文字変換、キャメルケース・スネークケースなど、テキストの形式を変換します。",
+  keywords: ['大文字 小文字 変換', 'キャメルケース', 'スネークケース', 'テキスト変換'],
+});
+
+const jsonLd = generateToolJsonLd(tool, faq);
+
+export default function Page() {
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <ToolPage tool={tool} faq={faq} seoContent={seoContent} />
+    </>
+  );
 }

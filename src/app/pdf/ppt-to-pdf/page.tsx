@@ -1,57 +1,40 @@
 import { Metadata } from "next";
-import { pdfTools } from "@/config/tools";
+import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
-import PptToPdfClient from "./client";
+import ToolPage from "@/components/tools/ToolPage";
 
-const tool = pdfTools.find((t) => t.id === "ppt-to-pdf")!;
+const tool = getToolById("ppt-to-pdf")!;
 
 const faq = [
-  {
-    question: "PowerPointからPDF変換は無料ですか？",
-    answer: "はい、完全無料でご利用いただけます。登録も不要です。",
-  },
-  {
-    question: "対応しているPowerPointの形式は？",
-    answer: ".ppt と .pptx の両方に対応しています。",
-  },
-  {
-    question: "アニメーションはどうなりますか？",
-    answer: "静止画として各スライドがPDFページになります。",
-  },
-  {
-    question: "ノートも含まれますか？",
-    answer: "標準ではスライドのみです。",
-  }
+  { question: "無料で使えますか？", answer: "はい、完全無料で登録も不要です。" },
+  { question: "スマホからも使えますか？", answer: "はい、iPhone・Androidどちらからも利用可能です。" },
+  { question: "ファイルは安全ですか？", answer: "日本国内サーバーで処理され、60分後に自動削除されます。" },
 ];
+
+const seoContent = {
+  intro: "PowerPointをPDFに変換。プレゼン資料を配布用PDFとして保存できます。",
+  useCases: [
+    { title: "📧 資料配布", desc: "参加者への資料配布" },
+    { title: "🖨️ 印刷用", desc: "配布資料の印刷" },
+    { title: "📁 アーカイブ", desc: "プレゼン資料の保存" },
+    { title: "🔒 編集防止", desc: "内容の改ざん防止" },
+  ],
+  tips: "ノート付きPDFにすると、発表者用メモも含めて保存できます。",
+};
 
 export const metadata: Metadata = generateToolMetadata({
   tool,
-  longDescription:
-    "PowerPointファイルをPDFに変換する無料オンラインツール。ppt・pptx対応。プレゼン資料を配布用PDFに。レイアウト維持。日本国内サーバーで安全処理。",
-  keywords: [
-    "PowerPoint PDF 変換",
-    "pptx PDF 変換",
-    "パワポ PDF",
-    "PowerPoint to PDF",
-    "ppt PDF",
-    "プレゼン PDF",
-    "無料 PowerPointPDF変換",
-  ],
+  longDescription: "PowerPointをPDFに変換。プレゼン資料を配布用PDFとして保存できます。",
+  keywords: ['PowerPoint PDF', 'pptx PDF', 'パワポ PDF', 'プレゼン PDF'],
 });
 
 const jsonLd = generateToolJsonLd(tool, faq);
 
-export default function PptToPdfPage() {
+export default function Page() {
   return (
     <>
-      {jsonLd.map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-      <PptToPdfClient faq={faq} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <ToolPage tool={tool} faq={faq} seoContent={seoContent} />
     </>
   );
 }

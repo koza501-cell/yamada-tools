@@ -1,57 +1,40 @@
 import { Metadata } from "next";
-import { pdfTools } from "@/config/tools";
+import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
-import ExcelToPdfClient from "./client";
+import ToolPage from "@/components/tools/ToolPage";
 
-const tool = pdfTools.find((t) => t.id === "excel-to-pdf")!;
+const tool = getToolById("excel-to-pdf")!;
 
 const faq = [
-  {
-    question: "ExcelからPDF変換は無料ですか？",
-    answer: "はい、完全無料でご利用いただけます。登録も不要です。",
-  },
-  {
-    question: "対応しているExcelの形式は？",
-    answer: ".xls と .xlsx の両方に対応しています。",
-  },
-  {
-    question: "複数シートはどうなりますか？",
-    answer: "すべてのシートが1つのPDFにまとめられます。",
-  },
-  {
-    question: "グラフや図形も変換されますか？",
-    answer: "はい。グラフ、図形、画像もすべて変換されます。",
-  },
+  { question: "無料で使えますか？", answer: "はい、完全無料で登録も不要です。" },
+  { question: "スマホからも使えますか？", answer: "はい、iPhone・Androidどちらからも利用可能です。" },
+  { question: "ファイルは安全ですか？", answer: "日本国内サーバーで処理され、60分後に自動削除されます。" },
 ];
+
+const seoContent = {
+  intro: "ExcelファイルをPDFに変換。表やグラフのレイアウトを維持したまま、PDFとして保存できます。",
+  useCases: [
+    { title: "📊 報告書", desc: "Excel報告書をPDFで共有" },
+    { title: "📧 メール送付", desc: "数式を隠してPDFで送信" },
+    { title: "🖨️ 印刷用", desc: "印刷範囲を固定" },
+    { title: "📁 保存用", desc: "改ざん防止のPDF化" },
+  ],
+  tips: "印刷範囲を設定してからPDF化すると、必要な部分だけを変換できます。",
+};
 
 export const metadata: Metadata = generateToolMetadata({
   tool,
-  longDescription:
-    "ExcelファイルをPDFに変換する無料オンラインツール。xls・xlsx対応。表、グラフ、複数シートを1つのPDFに。印刷用やメール添付に最適。日本国内サーバーで安全処理。",
-  keywords: [
-    "Excel PDF 変換",
-    "xlsx PDF 変換",
-    "エクセル PDF",
-    "Excel to PDF",
-    "xls PDF",
-    "スプレッドシート PDF",
-    "無料 ExcelPDF変換",
-  ],
+  longDescription: "ExcelファイルをPDFに変換。表やグラフのレイアウトを維持したまま、PDFとして保存できます。",
+  keywords: ['Excel PDF 変換', 'Excel PDF', 'xlsx PDF', 'エクセル PDF'],
 });
 
 const jsonLd = generateToolJsonLd(tool, faq);
 
-export default function ExcelToPdfPage() {
+export default function Page() {
   return (
     <>
-      {jsonLd.map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-      <ExcelToPdfClient faq={faq} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <ToolPage tool={tool} faq={faq} seoContent={seoContent} />
     </>
   );
 }

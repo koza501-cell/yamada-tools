@@ -1,57 +1,40 @@
 import { Metadata } from "next";
-import { pdfTools } from "@/config/tools";
+import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
-import WordToPdfClient from "./client";
+import ToolPage from "@/components/tools/ToolPage";
 
-const tool = pdfTools.find((t) => t.id === "word-to-pdf")!;
+const tool = getToolById("word-to-pdf")!;
 
 const faq = [
-  {
-    question: "WordからPDF変換は無料ですか？",
-    answer: "はい、完全無料でご利用いただけます。登録も不要です。",
-  },
-  {
-    question: "対応しているWordの形式は？",
-    answer: ".doc と .docx の両方に対応しています。",
-  },
-  {
-    question: "フォントや書式は維持されますか？",
-    answer: "はい。フォント、書式、レイアウトを可能な限り維持して変換します。",
-  },
-  {
-    question: "画像や表も変換されますか？",
-    answer: "はい。画像、表、グラフなども含めて変換されます。",
-  },
+  { question: "無料で使えますか？", answer: "はい、完全無料で登録も不要です。" },
+  { question: "スマホからも使えますか？", answer: "はい、iPhone・Androidどちらからも利用可能です。" },
+  { question: "ファイルは安全ですか？", answer: "日本国内サーバーで処理され、60分後に自動削除されます。" },
 ];
+
+const seoContent = {
+  intro: "WordファイルをPDFに変換。レイアウトを崩さずに、どの環境でも同じ見た目で表示されるPDFを作成します。",
+  useCases: [
+    { title: "📧 メール送付", desc: "Wordがない相手にも送れる" },
+    { title: "📝 提出書類", desc: "編集されたくない文書に" },
+    { title: "🖨️ 印刷用", desc: "レイアウト崩れを防止" },
+    { title: "📁 アーカイブ", desc: "長期保存用にPDF化" },
+  ],
+  tips: "フォントが埋め込まれていないと、環境によって表示が変わる場合があります。",
+};
 
 export const metadata: Metadata = generateToolMetadata({
   tool,
-  longDescription:
-    "WordファイルをPDFに変換する無料オンラインツール。doc・docx対応。フォントやレイアウトを維持して変換。ビジネス文書の共有に最適。日本国内サーバーで安全処理。",
-  keywords: [
-    "Word PDF 変換",
-    "docx PDF 変換",
-    "ワード PDF",
-    "Word to PDF",
-    "doc PDF",
-    "文書 PDF化",
-    "無料 WordPDF変換",
-  ],
+  longDescription: "WordファイルをPDFに変換。レイアウトを崩さずに、どの環境でも同じ見た目で表示されるPDFを作成します。",
+  keywords: ['Word PDF 変換', 'Word PDF', 'docx PDF', 'ワード PDF'],
 });
 
 const jsonLd = generateToolJsonLd(tool, faq);
 
-export default function WordToPdfPage() {
+export default function Page() {
   return (
     <>
-      {jsonLd.map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-      <WordToPdfClient faq={faq} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <ToolPage tool={tool} faq={faq} seoContent={seoContent} />
     </>
   );
 }

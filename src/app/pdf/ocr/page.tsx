@@ -1,57 +1,40 @@
 import { Metadata } from "next";
-import { pdfTools } from "@/config/tools";
+import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
-import OcrClient from "./client";
+import ToolPage from "@/components/tools/ToolPage";
 
-const tool = pdfTools.find((t) => t.id === "ocr")!;
+const tool = getToolById("ocr")!;
 
 const faq = [
-  {
-    question: "PDF OCRは無料ですか？",
-    answer: "はい、完全無料でご利用いただけます。登録も不要です。",
-  },
-  {
-    question: "日本語のOCRに対応していますか？",
-    answer: "はい。日本語と英語の両方に対応しています。",
-  },
-  {
-    question: "手書き文字も認識できますか？",
-    answer: "印刷された文字が対象です。手書きは認識精度が下がります。",
-  },
-  {
-    question: "OCR後のPDFはテキスト検索できますか？",
-    answer: "はい。抽出されたテキストを含むPDFが作成されます。",
-  }
+  { question: "無料で使えますか？", answer: "はい、完全無料で登録も不要です。" },
+  { question: "スマホからも使えますか？", answer: "はい、iPhone・Androidどちらからも利用可能です。" },
+  { question: "ファイルは安全ですか？", answer: "日本国内サーバーで処理され、60分後に自動削除されます。" },
 ];
+
+const seoContent = {
+  intro: "スキャンしたPDFや画像PDFから文字を認識。検索可能なPDFに変換したり、テキストを抽出できます。",
+  useCases: [
+    { title: "🔍 検索可能化", desc: "スキャンPDFを検索可能に" },
+    { title: "📝 テキスト抽出", desc: "画像から文字を取り出す" },
+    { title: "📄 文書デジタル化", desc: "紙文書のデジタル化" },
+    { title: "📊 データ入力", desc: "手入力の手間を省く" },
+  ],
+  tips: "高解像度でスキャンしたPDFほど、OCR精度が向上します。",
+};
 
 export const metadata: Metadata = generateToolMetadata({
   tool,
-  longDescription:
-    "スキャンしたPDFからテキストを抽出する無料オンラインOCRツール。日本語・英語対応。画像PDFを検索可能なPDFに変換。日本国内サーバーで安全処理。",
-  keywords: [
-    "PDF OCR",
-    "PDF テキスト抽出",
-    "PDF 文字認識",
-    "スキャン PDF テキスト",
-    "画像 PDF テキスト化",
-    "日本語 OCR",
-    "無料 PDF OCR",
-  ],
+  longDescription: "スキャンしたPDFや画像PDFから文字を認識。検索可能なPDFに変換したり、テキストを抽出できます。",
+  keywords: ['PDF OCR', '文字認識', 'スキャン PDF テキスト', '画像 文字抽出'],
 });
 
 const jsonLd = generateToolJsonLd(tool, faq);
 
-export default function OcrPage() {
+export default function Page() {
   return (
     <>
-      {jsonLd.map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-      <OcrClient faq={faq} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <ToolPage tool={tool} faq={faq} seoContent={seoContent} />
     </>
   );
 }

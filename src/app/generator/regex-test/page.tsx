@@ -1,20 +1,40 @@
 import { Metadata } from "next";
-import RegexTestClient from "./client";
+import { getToolById } from "@/config/tools";
+import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
+import ToolPage from "@/components/tools/ToolPage";
 
-export const metadata: Metadata = {
-  title: "正規表現テスター | 山田ツール - Regexチェッカー",
-  description: "正規表現をリアルタイムでテスト。マッチ結果をハイライト表示。フラグ設定対応。登録不要、完全無料。",
-  keywords: ["正規表現", "Regex", "テスター", "パターンマッチ", "無料"],
-  openGraph: {
-    title: "正規表現テスター | 山田ツール",
-    description: "正規表現をリアルタイムテスト。完全無料。",
-    url: "https://yamada-tools.jp/generator/regex-test",
-  },
-  alternates: {
-    canonical: "https://yamada-tools.jp/generator/regex-test",
-  },
+const tool = getToolById("regex-test")!;
+
+const faq = [
+  { question: "無料で使えますか？", answer: "はい、完全無料で登録も不要です。" },
+  { question: "スマホからも使えますか？", answer: "はい、iPhone・Androidどちらからも利用可能です。" },
+  { question: "データは安全ですか？", answer: "日本国内サーバーで処理され、60分後に自動削除されます。" },
+];
+
+const seoContent = {
+  intro: "正規表現のパターンをリアルタイムでテスト。マッチ結果やグループのハイライト表示に対応。",
+  useCases: [
+    { title: "💻 開発", desc: "正規表現パターンの検証" },
+    { title: "🔍 検索", desc: "テキストパターンの確認" },
+    { title: "📝 置換", desc: "置換パターンのテスト" },
+    { title: "📚 学習", desc: "正規表現の学習" },
+  ],
+  tips: "よく使うパターン（メール、電話番号など）のサンプルも用意しています。",
 };
 
-export default function RegexTestPage() {
-  return <RegexTestClient />;
+export const metadata: Metadata = generateToolMetadata({
+  tool,
+  longDescription: "正規表現のパターンをリアルタイムでテスト。マッチ結果やグループのハイライト表示に対応。",
+  keywords: ['正規表現 テスト', 'regex テスト', '正規表現 確認', '正規表現 ツール'],
+});
+
+const jsonLd = generateToolJsonLd(tool, faq);
+
+export default function Page() {
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <ToolPage tool={tool} faq={faq} seoContent={seoContent} />
+    </>
+  );
 }

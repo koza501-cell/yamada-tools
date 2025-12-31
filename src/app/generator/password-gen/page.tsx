@@ -3,18 +3,24 @@ import PasswordGenClient from "./client";
 
 export const metadata: Metadata = {
   title: "パスワード生成 | 山田ツール - 安全なパスワード作成",
-  description: "安全で強力なランダムパスワードを生成。長さ・文字種を自由にカスタマイズ。登録不要、完全無料。",
-  keywords: ["パスワード生成", "パスワード作成", "ランダム", "セキュリティ", "無料"],
-  openGraph: {
-    title: "パスワード生成 | 山田ツール",
-    description: "安全なランダムパスワードを生成。完全無料。",
-    url: "https://yamada-tools.jp/generator/password-gen",
-  },
-  alternates: {
-    canonical: "https://yamada-tools.jp/generator/password-gen",
-  },
+  description: "安全なパスワードを自動生成。大文字、小文字、数字、記号を組み合わせた強力なパスワードを作成します。",
+  keywords: ["パスワード生成", "パスワード 作成", "強力なパスワード", "パスワード ジェネレーター"],
+};
+
+const faq = [
+  { question: "生成されたパスワードは安全ですか？", answer: "暗号学的に安全な乱数を使用しています。" },
+  { question: "パスワードの長さは？", answer: "8〜128文字まで指定可能です。12文字以上を推奨します。" },
+];
+
+const seoContent = {
+  intro: "安全なパスワードを自動生成。大文字、小文字、数字、記号を組み合わせた強力なパスワードを作成します。",
+  useCases: [
+    { title: "🔐 新規登録", desc: "サービス登録時のパスワード" },
+    { title: "🔄 パスワード変更", desc: "定期的なパスワード更新" },
+  ],
+  tips: "12文字以上で、大文字・小文字・数字・記号を含めると安全性が高まります。",
 };
 
 export default function PasswordGenPage() {
-  return <PasswordGenClient />;
+  return <PasswordGenClient faq={faq} seoContent={seoContent} />;
 }

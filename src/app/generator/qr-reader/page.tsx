@@ -1,20 +1,40 @@
 import { Metadata } from "next";
-import QrReaderClient from "./client";
+import { getToolById } from "@/config/tools";
+import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
+import ToolPage from "@/components/tools/ToolPage";
 
-export const metadata: Metadata = {
-  title: "QRコード読み取り | 山田ツール - 無料QRスキャナー",
-  description: "画像からQRコードを読み取り。URL・テキストを抽出。カメラ対応。登録不要、完全無料。",
-  keywords: ["QRコード読み取り", "QRスキャン", "バーコード", "カメラ", "無料"],
-  openGraph: {
-    title: "QRコード読み取り | 山田ツール",
-    description: "QRコードを読み取り。完全無料。",
-    url: "https://yamada-tools.jp/generator/qr-reader",
-  },
-  alternates: {
-    canonical: "https://yamada-tools.jp/generator/qr-reader",
-  },
+const tool = getToolById("qr-reader")!;
+
+const faq = [
+  { question: "無料で使えますか？", answer: "はい、完全無料で登録も不要です。" },
+  { question: "スマホからも使えますか？", answer: "はい、iPhone・Androidどちらからも利用可能です。" },
+  { question: "データは安全ですか？", answer: "日本国内サーバーで処理され、データは保存されません。" },
+];
+
+const seoContent = {
+  intro: "カメラや画像からQRコードを読み取り。スマホがなくてもパソコンで読み取れます。",
+  useCases: [
+    { title: "📷 画像から読取", desc: "保存したQR画像を読取" },
+    { title: "💻 PC作業", desc: "スマホなしでQR確認" },
+    { title: "🔗 URL抽出", desc: "QRからリンクを取得" },
+    { title: "📝 テキスト抽出", desc: "QRの内容をコピー" },
+  ],
+  tips: "画像をドラッグ&ドロップするだけで読み取れます。",
 };
 
-export default function QrReaderPage() {
-  return <QrReaderClient />;
+export const metadata: Metadata = generateToolMetadata({
+  tool,
+  longDescription: "カメラや画像からQRコードを読み取り。スマホがなくてもパソコンで読み取れます。",
+  keywords: ['QRコード 読み取り', 'QR 読取 PC', 'QRコード デコード', 'QR リーダー'],
+});
+
+const jsonLd = generateToolJsonLd(tool, faq);
+
+export default function Page() {
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <ToolPage tool={tool} faq={faq} seoContent={seoContent} />
+    </>
+  );
 }

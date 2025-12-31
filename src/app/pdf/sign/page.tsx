@@ -1,56 +1,40 @@
 import { Metadata } from "next";
-import { pdfTools } from "@/config/tools";
+import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
-import SignClient from "./client";
+import ToolPage from "@/components/tools/ToolPage";
 
-const tool = pdfTools.find((t) => t.id === "sign")!;
+const tool = getToolById("sign")!;
 
 const faq = [
-  {
-    question: "PDF署名は無料ですか？",
-    answer: "はい、完全無料でご利用いただけます。登録も不要です。",
-  },
-  {
-    question: "電子署名と同じですか？",
-    answer: "テキストベースの署名です。法的効力のある電子署名とは異なります。",
-  },
-  {
-    question: "署名の位置は選べますか？",
-    answer: "最終ページの右下に配置されます。",
-  },
-  {
-    question: "署名に日付も入りますか？",
-    answer: "署名テキストに日付を含めることができます。",
-  }
+  { question: "無料で使えますか？", answer: "はい、完全無料で登録も不要です。" },
+  { question: "スマホからも使えますか？", answer: "はい、iPhone・Androidどちらからも利用可能です。" },
+  { question: "ファイルは安全ですか？", answer: "日本国内サーバーで処理され、60分後に自動削除されます。" },
 ];
+
+const seoContent = {
+  intro: "PDFに電子署名を追加。手書きサイン、テキスト、画像など様々な形式で署名できます。",
+  useCases: [
+    { title: "📝 契約書", desc: "契約書への署名" },
+    { title: "✅ 承認", desc: "社内文書の承認サイン" },
+    { title: "📄 申請書", desc: "各種申請書への署名" },
+    { title: "🖊️ 確認印", desc: "確認済みの印を追加" },
+  ],
+  tips: "署名画像を事前に用意しておくと、繰り返し使用できます。",
+};
 
 export const metadata: Metadata = generateToolMetadata({
   tool,
-  longDescription:
-    "PDFに署名を追加する無料オンラインツール。テキストベースの署名を追加。契約書や申請書への署名に。シンプルで簡単。日本国内サーバーで安全処理。",
-  keywords: [
-    "PDF 署名",
-    "PDF サイン",
-    "PDF sign",
-    "PDF 電子署名",
-    "PDF 署名追加",
-    "無料 PDF署名",
-  ],
+  longDescription: "PDFに電子署名を追加。手書きサイン、テキスト、画像など様々な形式で署名できます。",
+  keywords: ['PDF 署名', '電子署名', 'PDF サイン', 'PDF 印鑑'],
 });
 
 const jsonLd = generateToolJsonLd(tool, faq);
 
-export default function SignPage() {
+export default function Page() {
   return (
     <>
-      {jsonLd.map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-      <SignClient faq={faq} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <ToolPage tool={tool} faq={faq} seoContent={seoContent} />
     </>
   );
 }

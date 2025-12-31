@@ -1,5 +1,21 @@
 "use client";
 
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface SeoContent {
+  intro: string;
+  useCases?: { title: string; desc: string }[];
+  tips?: string;
+}
+
+interface Props {
+  faq?: FAQ[];
+  seoContent?: SeoContent;
+}
+
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import Mascot from "@/components/common/Mascot";
@@ -56,7 +72,7 @@ const units: Record<Category, { id: string; label: string; toBase: (v: number) =
   ],
 };
 
-export default function UnitConvertClient() {
+export default function UnitConvertClient({ faq, seoContent }: Props) {
   const [category, setCategory] = useState<Category>("length");
   const [fromUnit, setFromUnit] = useState("m");
   const [toUnit, setToUnit] = useState("cm");

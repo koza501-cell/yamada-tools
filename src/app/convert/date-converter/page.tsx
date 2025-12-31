@@ -1,87 +1,40 @@
 import { Metadata } from "next";
-import DateConverterClient from "./client";
+import { getToolById } from "@/config/tools";
+import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
+import ToolPage from "@/components/tools/ToolPage";
+
+const tool = getToolById("wareki-seireki")!;
 
 const faq = [
-  {
-    question: "どの年号に対応していますか？",
-    answer: "明治、大正、昭和、平成、令和の5つの年号に対応しています。",
-  },
-  {
-    question: "西暦から和暦への変換はできますか？",
-    answer: "はい。西暦から和暦、和暦から西暦の双方向変換が可能です。",
-  },
-  {
-    question: "存在しない日付を入力するとどうなりますか？",
-    answer: "エラーメッセージが表示されます。例えば、2月30日などは無効な日付として扱われます。",
-  },
-  {
-    question: "干支も表示されますか？",
-    answer: "はい。変換結果に対応する干支（十二支）も表示されます。",
-  },
+  { question: "無料で使えますか？", answer: "はい、完全無料で登録も不要です。" },
+  { question: "スマホからも使えますか？", answer: "はい、iPhone・Androidどちらからも利用可能です。" },
+  { question: "データは安全ですか？", answer: "日本国内サーバーで処理され、データは保存されません。" },
 ];
 
-export const metadata: Metadata = {
-  title: "和暦西暦変換 | 山田ツール - 無料オンライン日付変換ツール",
-  description: "令和・平成・昭和・大正・明治を西暦に変換。西暦から和暦への変換も可能。干支表示付き。登録不要、完全無料。",
-  keywords: ["和暦西暦変換", "令和変換", "平成変換", "昭和変換", "年号変換", "干支", "無料"],
-  openGraph: {
-    title: "和暦西暦変換 | 山田ツール",
-    description: "令和・平成・昭和・大正・明治を西暦に変換。完全無料。",
-    url: "https://yamada-tools.jp/convert/date-converter",
-    siteName: "山田ツール",
-    locale: "ja_JP",
-    type: "website",
-  },
-  twitter: {
-    card: "summary",
-    title: "和暦西暦変換 | 山田ツール",
-    description: "令和・平成・昭和・大正・明治を西暦に変換。完全無料。",
-  },
-  alternates: {
-    canonical: "https://yamada-tools.jp/convert/date-converter",
-  },
+const seoContent = {
+  intro: "和暦（令和・平成・昭和など）と西暦を相互変換。年号の計算や、書類作成時の日付確認に便利です。",
+  useCases: [
+    { title: "📝 履歴書", desc: "学歴・職歴の日付変換" },
+    { title: "📄 公的書類", desc: "役所への届出書類" },
+    { title: "🎂 年齢計算", desc: "生年月日の変換" },
+    { title: "📅 歴史確認", desc: "過去の出来事の日付" },
+  ],
+  tips: "令和は2019年5月1日から、平成は1989年1月8日から始まりました。",
 };
 
-const jsonLd = [
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "和暦西暦変換",
-    "description": "和暦と西暦を相互変換するオンラインツール",
-    "url": "https://yamada-tools.jp/convert/date-converter",
-    "applicationCategory": "UtilityApplication",
-    "operatingSystem": "All",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "JPY"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faq.map(item => ({
-      "@type": "Question",
-      "name": item.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.answer
-      }
-    }))
-  }
-];
+export const metadata: Metadata = generateToolMetadata({
+  tool,
+  longDescription: "和暦（令和・平成・昭和など）と西暦を相互変換。年号の計算や、書類作成時の日付確認に便利です。",
+  keywords: ['和暦 西暦 変換', '令和 西暦', '平成 西暦', '年号 変換'],
+});
 
-export default function DateConverterPage() {
+const jsonLd = generateToolJsonLd(tool, faq);
+
+export default function Page() {
   return (
     <>
-      {jsonLd.map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-      <DateConverterClient faq={faq} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <ToolPage tool={tool} faq={faq} seoContent={seoContent} />
     </>
   );
 }

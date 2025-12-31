@@ -1,10 +1,26 @@
 "use client";
 
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface SeoContent {
+  intro: string;
+  useCases?: { title: string; desc: string }[];
+  tips?: string;
+}
+
+interface Props {
+  faq?: FAQ[];
+  seoContent?: SeoContent;
+}
+
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 
-export default function PasswordGenClient() {
+export default function PasswordGenClient({ faq, seoContent }: Props) {
   const [length, setLength] = useState(16);
   const [useUpper, setUseUpper] = useState(true);
   const [useLower, setUseLower] = useState(true);

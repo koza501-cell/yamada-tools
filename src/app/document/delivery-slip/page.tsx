@@ -1,17 +1,40 @@
 import { Metadata } from "next";
-import DeliverySlipClient from "./client";
+import { getToolById } from "@/config/tools";
+import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
+import ToolPage from "@/components/tools/ToolPage";
 
-export const metadata: Metadata = {
-  title: "納品書作成 - 無料オンラインツール | Yamada Tools",
-  description: "登録不要・完全無料で納品書を作成。PDF保存・印刷対応。EC事業者・フリーランスに最適。",
-  keywords: ["納品書", "納品書作成", "無料", "テンプレート", "PDF", "オンライン"],
-  openGraph: {
-    title: "納品書作成 - 無料オンラインツール",
-    description: "登録不要・完全無料で納品書を作成。",
-    type: "website",
-  },
+const tool = getToolById("delivery-slip")!;
+
+const faq = [
+  { question: "無料で使えますか？", answer: "はい、完全無料で登録も不要です。" },
+  { question: "スマホからも使えますか？", answer: "はい、iPhone・Androidどちらからも利用可能です。" },
+  { question: "データは安全ですか？", answer: "日本国内サーバーで処理され、60分後に自動削除されます。" },
+];
+
+const seoContent = {
+  intro: "納品書を無料で作成。商品の納品時に同封する書類を、簡単な入力だけで作成できます。",
+  useCases: [
+    { title: "📦 商品納品", desc: "商品発送時の納品書" },
+    { title: "🏢 取引先向け", desc: "BtoB取引の納品書" },
+    { title: "📝 検収用", desc: "検収確認用の書類" },
+    { title: "📁 記録用", desc: "納品履歴の記録" },
+  ],
+  tips: "請求書と納品書は別々に発行することで、経理処理がスムーズになります。",
 };
 
-export default function DeliverySlipPage() {
-  return <DeliverySlipClient />;
+export const metadata: Metadata = generateToolMetadata({
+  tool,
+  longDescription: "納品書を無料で作成。商品の納品時に同封する書類を、簡単な入力だけで作成できます。",
+  keywords: ['納品書 作成', '納品書 テンプレート', '納品書 無料', '納品書 フォーマット'],
+});
+
+const jsonLd = generateToolJsonLd(tool, faq);
+
+export default function Page() {
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <ToolPage tool={tool} faq={faq} seoContent={seoContent} />
+    </>
+  );
 }

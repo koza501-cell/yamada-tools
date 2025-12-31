@@ -1,56 +1,40 @@
 import { Metadata } from "next";
-import { pdfTools } from "@/config/tools";
+import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
-import PdfToPptClient from "./client";
+import ToolPage from "@/components/tools/ToolPage";
 
-const tool = pdfTools.find((t) => t.id === "pdf-to-ppt")!;
+const tool = getToolById("pdf-to-ppt")!;
 
 const faq = [
-  {
-    question: "PDFからPowerPoint変換は無料ですか？",
-    answer: "はい、完全無料でご利用いただけます。登録も不要です。",
-  },
-  {
-    question: "編集可能なPowerPointになりますか？",
-    answer: "各ページが画像としてスライドに配置されます。",
-  },
-  {
-    question: "テキストは編集できますか？",
-    answer: "画像として配置されるため、テキスト編集には別途OCRが必要です。",
-  },
-  {
-    question: "出力形式は？",
-    answer: "Microsoft PowerPoint形式（.pptx）で出力されます。",
-  }
+  { question: "無料で使えますか？", answer: "はい、完全無料で登録も不要です。" },
+  { question: "スマホからも使えますか？", answer: "はい、iPhone・Androidどちらからも利用可能です。" },
+  { question: "ファイルは安全ですか？", answer: "日本国内サーバーで処理され、60分後に自動削除されます。" },
 ];
+
+const seoContent = {
+  intro: "PDFをPowerPointに変換。既存のPDF資料をベースにプレゼンを作成できます。",
+  useCases: [
+    { title: "📝 資料編集", desc: "PDF資料を編集したい時" },
+    { title: "🎨 デザイン変更", desc: "PDFのデザインを修正" },
+    { title: "📊 再利用", desc: "既存資料を再利用" },
+    { title: "🖼️ スライド化", desc: "報告書をスライドに" },
+  ],
+  tips: "複雑なレイアウトのPDFは、変換後に調整が必要な場合があります。",
+};
 
 export const metadata: Metadata = generateToolMetadata({
   tool,
-  longDescription:
-    "PDFをPowerPointに変換する無料オンラインツール。各ページをスライドに変換。プレゼン資料の再利用に。日本国内サーバーで安全処理。",
-  keywords: [
-    "PDF PowerPoint 変換",
-    "PDF pptx 変換",
-    "PDF パワポ",
-    "PDF to PowerPoint",
-    "PDF スライド",
-    "無料 PDFPowerPoint変換",
-  ],
+  longDescription: "PDFをPowerPointに変換。既存のPDF資料をベースにプレゼンを作成できます。",
+  keywords: ['PDF PowerPoint', 'PDF pptx', 'PDF スライド', 'PDF プレゼン'],
 });
 
 const jsonLd = generateToolJsonLd(tool, faq);
 
-export default function PdfToPptPage() {
+export default function Page() {
   return (
     <>
-      {jsonLd.map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-      <PdfToPptClient faq={faq} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <ToolPage tool={tool} faq={faq} seoContent={seoContent} />
     </>
   );
 }

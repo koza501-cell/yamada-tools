@@ -1,59 +1,40 @@
 import { Metadata } from "next";
-import { pdfTools } from "@/config/tools";
+import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
-import PdfToWordClient from "./client";
-import ToolSchema from '@/components/ToolSchema';
-import { toolSchemas } from '@/data/toolSchemas';
+import ToolPage from "@/components/tools/ToolPage";
 
-const tool = pdfTools.find((t) => t.id === "pdf-to-word")!;
+const tool = getToolById("pdf-to-word")!;
 
 const faq = [
-  {
-    question: "PDFからWord変換は無料ですか？",
-    answer: "はい、完全無料でご利用いただけます。登録も不要です。",
-  },
-  {
-    question: "レイアウトは維持されますか？",
-    answer: "可能な限りレイアウトを維持して変換しますが、複雑なレイアウトは多少崩れる場合があります。",
-  },
-  {
-    question: "日本語のPDFも対応していますか？",
-    answer: "はい。日本語を含むPDFも正しく変換できます。",
-  },
-  {
-    question: "変換後のファイル形式は？",
-    answer: "Microsoft Word形式（.docx）で出力されます。",
-  },
+  { question: "無料で使えますか？", answer: "はい、完全無料で登録も不要です。" },
+  { question: "スマホからも使えますか？", answer: "はい、iPhone・Androidどちらからも利用可能です。" },
+  { question: "ファイルは安全ですか？", answer: "日本国内サーバーで処理され、60分後に自動削除されます。" },
 ];
+
+const seoContent = {
+  intro: "PDFをWordファイルに変換。テキストや画像を抽出して、編集可能なWord文書を作成します。",
+  useCases: [
+    { title: "📝 編集作業", desc: "PDFの内容を編集したい時" },
+    { title: "📄 再利用", desc: "既存PDFの内容を流用" },
+    { title: "🔍 テキスト抽出", desc: "PDFから文章をコピー" },
+    { title: "📊 データ活用", desc: "表データをWordで編集" },
+  ],
+  tips: "スキャンPDF（画像PDF）は、先にOCR処理が必要な場合があります。",
+};
 
 export const metadata: Metadata = generateToolMetadata({
   tool,
-  longDescription:
-    "PDFをWordファイルに変換する無料オンラインツール。テキストや表を編集可能なWord文書に変換。日本語PDF完全対応。レイアウトを維持して変換。日本国内サーバーで安全処理。",
-  keywords: [
-    "PDF Word 変換",
-    "PDF to Word",
-    "PDF docx",
-    "PDF 編集可能",
-    "無料 PDF変換",
-  ],
+  longDescription: "PDFをWordファイルに変換。テキストや画像を抽出して、編集可能なWord文書を作成します。",
+  keywords: ['PDF Word 変換', 'PDF Word', 'PDF docx', 'PDF 編集'],
 });
 
 const jsonLd = generateToolJsonLd(tool, faq);
-const schema = toolSchemas['pdf-to-word'];
 
-export default function PdfToWordPage() {
+export default function Page() {
   return (
     <>
-      {jsonLd.map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-      <ToolSchema {...schema} />
-      <PdfToWordClient faq={faq} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <ToolPage tool={tool} faq={faq} seoContent={seoContent} />
     </>
   );
 }

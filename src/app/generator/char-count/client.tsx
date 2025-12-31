@@ -1,10 +1,26 @@
 "use client";
 
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface SeoContent {
+  intro: string;
+  useCases?: { title: string; desc: string }[];
+  tips?: string;
+}
+
+interface Props {
+  faq?: FAQ[];
+  seoContent?: SeoContent;
+}
+
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import Mascot from "@/components/common/Mascot";
 
-export default function CharCountClient() {
+export default function CharCountClient({ faq, seoContent }: Props) {
   const [text, setText] = useState("");
 
   const stats = useMemo(() => {
