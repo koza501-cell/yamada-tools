@@ -10,8 +10,15 @@ interface FAQ {
   answer: string;
 }
 
+interface SeoContent {
+  intro: string;
+  useCases?: { title: string; desc: string }[];
+  tips?: string;
+}
+
 interface Props {
   faq: FAQ[];
+  seoContent?: SeoContent;
 }
 
 type ContentType = "url" | "text" | "email" | "phone" | "wifi";
@@ -23,7 +30,7 @@ const sizeMap: Record<QRSize, number> = {
   large: 400,
 };
 
-export default function QRCodeClient({ faq }: Props) {
+export default function QRCodeClient({ faq, seoContent }: Props) {
   const [contentType, setContentType] = useState<ContentType>("url");
   const [inputValue, setInputValue] = useState("");
   const [emailSubject, setEmailSubject] = useState("");

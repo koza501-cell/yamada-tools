@@ -4,6 +4,22 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface SeoContent {
+  intro: string;
+  useCases?: { title: string; desc: string }[];
+  tips?: string;
+}
+
+interface ResumeClientProps {
+  faq?: FAQ[];
+  seoContent?: SeoContent;
+}
+
 interface HistoryItem {
   id: number;
   year: string;
@@ -11,7 +27,7 @@ interface HistoryItem {
   content: string;
 }
 
-export default function ResumeClient() {
+export default function ResumeClient({ faq, seoContent }: ResumeClientProps) {
   const [mounted, setMounted] = useState(false);
   const [mascotState, setMascotState] = useState<MascotState>("idle");
   const [mascotMessage, setMascotMessage] = useState("履歴書を作成しよう！");
@@ -234,6 +250,52 @@ export default function ResumeClient() {
         <div className="mt-8 text-center print:hidden">
           <Link href="/document" className="text-kon hover:text-ai">← 書類作成一覧に戻る</Link>
         </div>
+
+        {/* SEO Content */}
+        {seoContent && (
+          <section className="mt-8 bg-white rounded-xl p-6 border border-gray-100 print:hidden">
+            <h2 className="font-bold text-kon mb-4 text-lg">履歴書作成について</h2>
+            <p className="text-gray-600 mb-4">{seoContent.intro}</p>
+            {seoContent.useCases && (
+              <div className="grid sm:grid-cols-2 gap-3 my-4">
+                {seoContent.useCases.map((uc, i) => (
+                  <div key={i} className="bg-gray-50 rounded-lg p-3">
+                    <p className="font-medium text-gray-800">{uc.title}</p>
+                    <p className="text-sm text-gray-600">{uc.desc}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+            {seoContent.tips && (
+              <div className="bg-blue-50 rounded-lg p-4 mt-4">
+                <p className="text-sm text-blue-800">💡 <strong>ヒント:</strong> {seoContent.tips}</p>
+              </div>
+            )}
+          </section>
+        )}
+
+        {/* FAQ */}
+        {faq && faq.length > 0 && (
+          <section className="mt-8 print:hidden">
+            <h2 className="font-bold text-kon mb-4 text-lg">よくある質問</h2>
+            <div className="space-y-4">
+              {faq.map((item, index) => (
+                <details key={index} className="bg-white rounded-xl border border-gray-100 overflow-hidden group">
+                  <summary className="p-4 font-medium cursor-pointer hover:bg-gray-50 list-none flex items-center justify-between">
+                    <span className="flex items-center gap-2">
+                      <span className="text-kon">Q.</span>
+                      {item.question}
+                    </span>
+                    <span className="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+                  </summary>
+                  <div className="p-4 pt-0 text-gray-600 border-t border-gray-100">
+                    <span className="text-kon font-medium">A.</span> {item.answer}
+                  </div>
+                </details>
+              ))}
+            </div>
+          </section>
+        )}
       </div>
     </div>
   );

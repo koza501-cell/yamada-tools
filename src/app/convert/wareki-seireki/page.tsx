@@ -1,87 +1,69 @@
 import { Metadata } from "next";
-import WarekiSeirekiClient from "./client";
+import { getToolById } from "@/config/tools";
+import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
+import WarekiClient from "./client";
+
+const tool = getToolById("wareki-seireki")!;
 
 const faq = [
   {
-    question: "対応している元号は何ですか？",
-    answer: "明治、大正、昭和、平成、令和に対応しています。明治は1868年（明治元年）から対応しています。",
+    question: "令和、平成、昭和以外の年号にも対応していますか？",
+    answer: "はい、大正、明治にも対応しています。明治以降のすべての年号を西暦に変換できます。",
   },
   {
-    question: "令和以降の新しい元号にも対応しますか？",
-    answer: "はい、新しい元号が制定された場合はアップデートで対応予定です。",
+    question: "「令和7年」は西暦何年ですか？",
+    answer: "令和7年は2025年です。令和は2019年5月1日から始まったため、「令和の年数 + 2018」で西暦が計算できます。",
   },
   {
-    question: "西暦から和暦への変換は正確ですか？",
-    answer: "はい。各元号の開始日と終了日を正確に設定しているため、正確な変換が可能です。",
+    question: "「昭和100年」のように存在しない年も変換できますか？",
+    answer: "計算上は可能ですが、昭和は64年（1989年1月7日）までです。実際に使用する際は、年号の有効期間にご注意ください。",
   },
   {
-    question: "データは保存されますか？",
-    answer: "いいえ。すべての処理はブラウザ内で行われ、サーバーにデータは送信されません。",
+    question: "生年月日から年齢も計算できますか？",
+    answer: "年齢計算には「年齢計算ツール」をご利用ください。生年月日を入力すると、現在の年齢と数え年を計算できます。",
+  },
+  {
+    question: "履歴書に書く和暦がわからない場合は？",
+    answer: "西暦で入学・卒業年を入力すれば、対応する和暦が表示されます。履歴書作成時に便利です。",
+  },
+  {
+    question: "スマホからでも使えますか？",
+    answer: "はい、iPhone・Androidどちらからもブラウザで直接ご利用いただけます。",
+  },
+  {
+    question: "一覧表はありますか？",
+    answer: "はい、主要な年号の対照表も表示しています。履歴書作成などにお役立てください。",
+  },
+  {
+    question: "閏年の計算も正確ですか？",
+    answer: "はい、閏年も正確に計算されます。日付変換も正確に行えます。",
   },
 ];
 
-export const metadata: Metadata = {
-  title: "和暦・西暦変換 | 山田ツール - 無料オンライン年号変換",
-  description: "和暦（令和・平成・昭和・大正・明治）と西暦を相互変換。生年月日入力で年齢も自動計算。ブラウザ内処理で安全。登録不要、完全無料。",
-  keywords: ["和暦 西暦 変換", "令和 西暦", "平成 西暦", "昭和 西暦", "年号変換", "元号変換", "無料"],
-  openGraph: {
-    title: "和暦・西暦変換 | 山田ツール",
-    description: "和暦↔西暦を瞬時に変換。年齢計算も対応。完全無料。",
-    url: "https://yamada-tools.jp/convert/wareki-seireki",
-    siteName: "山田ツール",
-    locale: "ja_JP",
-    type: "website",
-  },
-  twitter: {
-    card: "summary",
-    title: "和暦・西暦変換 | 山田ツール",
-    description: "和暦↔西暦を瞬時に変換。完全無料。",
-  },
-  alternates: {
-    canonical: "https://yamada-tools.jp/convert/wareki-seireki",
-  },
+const seoContent = {
+  intro: "「平成15年って西暦何年？」「令和生まれの人は今何歳？」——書類作成や履歴書で、和暦と西暦の変換に困ったことはありませんか？このツールなら、和暦から西暦、西暦から和暦への変換がワンクリック。明治から令和まで、すべての年号に対応しています。",
+  useCases: [
+    { title: "📝 履歴書作成", desc: "入学・卒業年の和暦変換に" },
+    { title: "📋 書類作成", desc: "契約書や申請書の日付記入に" },
+    { title: "🎂 年齢確認", desc: "生まれ年から西暦を確認" },
+    { title: "📚 歴史学習", desc: "歴史上の出来事の年代確認に" },
+  ],
+  tips: "履歴書には和暦で記載するのが一般的です。迷ったら「昭和」「平成」「令和」で統一しましょう。",
 };
 
-const jsonLd = [
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "和暦・西暦変換",
-    "description": "和暦と西暦を相互変換するオンラインツール",
-    "url": "https://yamada-tools.jp/convert/wareki-seireki",
-    "applicationCategory": "UtilityApplication",
-    "operatingSystem": "All",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "JPY"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faq.map(item => ({
-      "@type": "Question",
-      "name": item.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.answer
-      }
-    }))
-  }
-];
+export const metadata: Metadata = generateToolMetadata({
+  tool,
+  longDescription: "和暦西暦を簡単変換。令和・平成・昭和・大正・明治に対応。履歴書作成や書類作成に便利な無料ツール。",
+  keywords: ["和暦 西暦 変換", "令和 西暦", "平成 西暦", "昭和 西暦", "和暦変換", "西暦変換", "年号変換"],
+});
 
-export default function WarekiSeirekiPage() {
+const jsonLd = generateToolJsonLd(tool, faq);
+
+export default function WarekiPage() {
   return (
     <>
-      {jsonLd.map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-      <WarekiSeirekiClient faq={faq} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <WarekiClient faq={faq} seoContent={seoContent} />
     </>
   );
 }

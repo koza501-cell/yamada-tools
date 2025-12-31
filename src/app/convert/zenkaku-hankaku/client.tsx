@@ -9,8 +9,15 @@ interface FAQ {
   answer: string;
 }
 
+interface SeoContent {
+  intro: string;
+  useCases?: { title: string; desc: string }[];
+  tips?: string;
+}
+
 interface Props {
   faq: FAQ[];
+  seoContent?: SeoContent;
 }
 
 type ConversionMode = "to-hankaku" | "to-zenkaku";
@@ -87,7 +94,7 @@ const dakutenCombinations: Record<string, string> = {
   "ｳﾞ": "ヴ",
 };
 
-export default function ZenkakuHankakuClient({ faq }: Props) {
+export default function ZenkakuHankakuClient({ faq, seoContent }: Props) {
   const [inputText, setInputText] = useState("");
   const [outputText, setOutputText] = useState("");
   const [mode, setMode] = useState<ConversionMode>("to-hankaku");

@@ -9,8 +9,15 @@ interface FAQ {
   answer: string;
 }
 
+interface SeoContent {
+  intro: string;
+  useCases?: { title: string; desc: string }[];
+  tips?: string;
+}
+
 interface Props {
   faq: FAQ[];
+  seoContent?: SeoContent;
 }
 
 interface CompressedImage {
@@ -23,7 +30,7 @@ interface CompressedImage {
 
 type OutputFormat = "jpeg" | "png" | "webp";
 
-export default function ImageCompressClient({ faq }: Props) {
+export default function ImageCompressClient({ faq, seoContent }: Props) {
   const [images, setImages] = useState<CompressedImage[]>([]);
   const [quality, setQuality] = useState<number>(80);
   const [outputFormat, setOutputFormat] = useState<OutputFormat>("jpeg");

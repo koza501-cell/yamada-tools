@@ -9,8 +9,15 @@ interface FAQ {
   answer: string;
 }
 
+interface SeoContent {
+  intro: string;
+  useCases?: { title: string; desc: string }[];
+  tips?: string;
+}
+
 interface Props {
   faq: FAQ[];
+  seoContent?: SeoContent;
 }
 
 const LOWERCASE = "abcdefghijklmnopqrstuvwxyz";
@@ -18,7 +25,7 @@ const UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const NUMBERS = "0123456789";
 const SYMBOLS = "!@#$%^&*()_+-=[]{}|;:,.<>?";
 
-export default function PasswordClient({ faq }: Props) {
+export default function PasswordClient({ faq, seoContent }: Props) {
   const [length, setLength] = useState(16);
   const [useLowercase, setUseLowercase] = useState(true);
   const [useUppercase, setUseUppercase] = useState(true);

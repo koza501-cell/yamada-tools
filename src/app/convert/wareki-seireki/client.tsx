@@ -9,8 +9,15 @@ interface FAQ {
   answer: string;
 }
 
+interface SeoContent {
+  intro: string;
+  useCases?: { title: string; desc: string }[];
+  tips?: string;
+}
+
 interface Props {
   faq: FAQ[];
+  seoContent?: SeoContent;
 }
 
 type ConversionMode = "seireki-to-wareki" | "wareki-to-seireki";
@@ -82,7 +89,7 @@ const eras: Record<Era, EraInfo> = {
 
 const eraOrder: Era[] = ["meiji", "taisho", "showa", "heisei", "reiwa"];
 
-export default function WarekiSeirekiClient({ faq }: Props) {
+export default function WarekiSeirekiClient({ faq, seoContent }: Props) {
   const [mode, setMode] = useState<ConversionMode>("seireki-to-wareki");
   const [seirekiYear, setSeirekiYear] = useState<string>("");
   const [seirekiMonth, setSeirekiMonth] = useState<string>("");
