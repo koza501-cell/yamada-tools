@@ -1,57 +1,40 @@
 import { Metadata } from "next";
-import { pdfTools } from "@/config/tools";
+import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
-import PdfToImageClient from "./client";
+import ToolPage from "@/components/tools/ToolPage";
 
-const tool = pdfTools.find((t) => t.id === "pdf-to-image")!;
+const tool = getToolById("pdf-to-image")!;
 
 const faq = [
-  {
-    question: "PDFから画像への変換は無料ですか？",
-    answer: "はい、完全無料でご利用いただけます。登録も不要です。",
-  },
-  {
-    question: "出力される画像形式は？",
-    answer: "PNG形式で高品質な画像として出力されます。",
-  },
-  {
-    question: "複数ページのPDFはどうなりますか？",
-    answer: "各ページが個別の画像ファイルとしてZIPでダウンロードできます。",
-  },
-  {
-    question: "画像の解像度は選べますか？",
-    answer: "標準で高解像度（300DPI相当）で出力されます。",
-  },
+  { question: "出力形式は選べますか？", answer: "はい、JPGとPNGから選択できます。" },
+  { question: "複数ページのPDFはどうなりますか？", answer: "各ページが個別の画像ファイルになります。" },
+  { question: "解像度は指定できますか？", answer: "はい、用途に応じて解像度を選択できます。" },
 ];
+
+const seoContent = {
+  intro: "PDFをJPGやPNG画像に変換。プレゼン資料への挿入、SNSでの共有、サムネイル作成など、画像として使いたい時に便利です。",
+  useCases: [
+    { title: "📊 プレゼン挿入", desc: "PDFをパワポに画像として挿入" },
+    { title: "📱 SNS共有", desc: "PDFを画像にしてSNSに投稿" },
+    { title: "🖼️ サムネイル", desc: "PDFの表紙画像を作成" },
+    { title: "📝 編集用", desc: "画像編集ソフトで加工" },
+  ],
+  tips: "高解像度（300dpi）で出力すれば印刷にも対応。Web用なら72dpiで軽量化できます。",
+};
 
 export const metadata: Metadata = generateToolMetadata({
   tool,
-  longDescription:
-    "PDFを画像に変換する無料オンラインツール。各ページをPNG画像として出力。プレゼン資料やSNS投稿用に最適。高解像度で鮮明な画像を生成。日本国内サーバーで安全処理。",
-  keywords: [
-    "PDF 画像 変換",
-    "PDF PNG 変換",
-    "PDF JPG 変換",
-    "PDF to image",
-    "PDF 画像化",
-    "PDF 写真",
-    "無料 PDF画像変換",
-  ],
+  longDescription: "PDFをJPGやPNG画像に変換。プレゼン資料への挿入、SNSでの共有、サムネイル作成など、画像として使いたい時に便利です。",
+  keywords: ['PDF 画像変換', 'PDF JPG', 'PDF PNG', 'PDF 画像化', 'PDFを画像に'],
 });
 
 const jsonLd = generateToolJsonLd(tool, faq);
 
-export default function PdfToImagePage() {
+export default function Page() {
   return (
     <>
-      {jsonLd.map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-      <PdfToImageClient faq={faq} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <ToolPage tool={tool} faq={faq} seoContent={seoContent} />
     </>
   );
 }

@@ -1,58 +1,40 @@
 import { Metadata } from "next";
-import { pdfTools } from "@/config/tools";
+import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
-import ImageToPdfClient from "./client";
+import ToolPage from "@/components/tools/ToolPage";
 
-const tool = pdfTools.find((t) => t.id === "image-to-pdf")!;
+const tool = getToolById("image-to-pdf")!;
 
 const faq = [
-  {
-    question: "画像からPDF変換は無料ですか？",
-    answer: "はい、完全無料でご利用いただけます。登録も不要です。",
-  },
-  {
-    question: "対応している画像形式は？",
-    answer: "JPG、JPEG、PNG、GIF、WebPに対応しています。",
-  },
-  {
-    question: "何枚まで一度に変換できますか？",
-    answer: "最大20枚の画像を1つのPDFにまとめることができます。",
-  },
-  {
-    question: "画像の順番は変えられますか？",
-    answer: "アップロード後にドラッグ&ドロップで順番を変更できます。",
-  },
+  { question: "何枚まで変換できますか？", answer: "最大50枚まで一度に変換できます。" },
+  { question: "画像の順番は変えられますか？", answer: "はい、ドラッグ&ドロップで自由に並び替えできます。" },
+  { question: "画像サイズは自動調整されますか？", answer: "はい、A4サイズに収まるよう自動調整されます。" },
 ];
+
+const seoContent = {
+  intro: "JPG、PNG、WebPなどの画像をPDFに変換。複数画像を1つのPDFにまとめることもできます。写真のPDF化やスキャン画像の整理に便利です。",
+  useCases: [
+    { title: "📷 写真のPDF化", desc: "撮影した写真をPDFで共有" },
+    { title: "📄 スキャン整理", desc: "バラバラの画像を1つのPDFに" },
+    { title: "📧 メール添付", desc: "複数画像をPDFにまとめて送信" },
+    { title: "📁 資料作成", desc: "画像資料をPDF形式で保存" },
+  ],
+  tips: "ドラッグ&ドロップで画像の順序を変更できます。A4サイズに自動調整されます。",
+};
 
 export const metadata: Metadata = generateToolMetadata({
   tool,
-  longDescription:
-    "複数の画像をPDFに変換する無料オンラインツール。JPG・PNG・GIF・WebP対応。最大20枚を1つのPDFに結合。写真やスキャン画像をPDF化。日本国内サーバーで安全処理。",
-  keywords: [
-    "画像 PDF 変換",
-    "JPG PDF 変換",
-    "PNG PDF 変換",
-    "写真 PDF",
-    "image to PDF",
-    "画像 PDF化",
-    "無料 画像PDF変換",
-    "スキャン PDF",
-  ],
+  longDescription: "JPG、PNG、WebPなどの画像をPDFに変換。複数画像を1つのPDFにまとめることもできます。写真のPDF化やスキャン画像の整理に便利です。",
+  keywords: ['画像 PDF変換', 'JPG PDF', 'PNG PDF', '写真 PDF', '画像をPDFに'],
 });
 
 const jsonLd = generateToolJsonLd(tool, faq);
 
-export default function ImageToPdfPage() {
+export default function Page() {
   return (
     <>
-      {jsonLd.map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-      <ImageToPdfClient faq={faq} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <ToolPage tool={tool} faq={faq} seoContent={seoContent} />
     </>
   );
 }

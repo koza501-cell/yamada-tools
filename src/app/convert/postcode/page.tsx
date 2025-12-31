@@ -1,87 +1,40 @@
 import { Metadata } from "next";
-import PostcodeClient from "./client";
+import { getToolById } from "@/config/tools";
+import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
+import ToolPage from "@/components/tools/ToolPage";
+
+const tool = getToolById("postcode")!;
 
 const faq = [
-  {
-    question: "どのような郵便番号に対応していますか？",
-    answer: "日本全国の郵便番号（7桁）に対応しています。ハイフンあり・なしどちらでも検索可能です。",
-  },
-  {
-    question: "7桁入力で自動検索されますか？",
-    answer: "はい。郵便番号を7桁入力すると自動的に検索が開始されます。",
-  },
-  {
-    question: "データは最新ですか？",
-    answer: "郵便局が公開している郵便番号データを使用しています。定期的に更新されています。",
-  },
-  {
-    question: "検索結果は保存されますか？",
-    answer: "いいえ。検索履歴はブラウザを閉じると消えます。サーバーにデータは保存されません。",
-  },
+  { question: "最新のデータですか？", answer: "日本郵便の公開データを定期的に更新しています。" },
+  { question: "番地まで検索できますか？", answer: "町名までの検索となります。番地は郵便番号に影響しません。" },
+  { question: "事業所の個別番号も検索できますか？", answer: "大口事業所の個別郵便番号にも対応しています。" },
 ];
 
-export const metadata: Metadata = {
-  title: "郵便番号検索 | 山田ツール - 無料オンライン住所検索",
-  description: "郵便番号から住所を検索、住所から郵便番号を逆引き。全国対応。登録不要、完全無料。",
-  keywords: ["郵便番号検索", "住所検索", "郵便番号変換", "〒", "無料", "オンライン"],
-  openGraph: {
-    title: "郵便番号検索 | 山田ツール",
-    description: "郵便番号↔住所を瞬時に検索。完全無料。",
-    url: "https://yamada-tools.jp/convert/postcode",
-    siteName: "山田ツール",
-    locale: "ja_JP",
-    type: "website",
-  },
-  twitter: {
-    card: "summary",
-    title: "郵便番号検索 | 山田ツール",
-    description: "郵便番号↔住所を瞬時に検索。完全無料。",
-  },
-  alternates: {
-    canonical: "https://yamada-tools.jp/convert/postcode",
-  },
+const seoContent = {
+  intro: "郵便番号から住所を検索、または住所から郵便番号を検索。日本郵便のデータを使用した正確な情報を提供します。",
+  useCases: [
+    { title: "📝 書類作成", desc: "請求書や送付状の住所入力" },
+    { title: "📦 発送業務", desc: "配送先の郵便番号確認" },
+    { title: "🏠 住所確認", desc: "引越し先の郵便番号を検索" },
+    { title: "📊 データ整備", desc: "住所データの郵便番号補完" },
+  ],
+  tips: "番地まで入力すると、より正確な郵便番号が検索できます。",
 };
 
-const jsonLd = [
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "郵便番号検索",
-    "description": "郵便番号から住所を検索、住所から郵便番号を逆引きするオンラインツール",
-    "url": "https://yamada-tools.jp/convert/postcode",
-    "applicationCategory": "UtilityApplication",
-    "operatingSystem": "All",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "JPY"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faq.map(item => ({
-      "@type": "Question",
-      "name": item.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.answer
-      }
-    }))
-  }
-];
+export const metadata: Metadata = generateToolMetadata({
+  tool,
+  longDescription: "郵便番号から住所を検索、または住所から郵便番号を検索。日本郵便のデータを使用した正確な情報を提供します。",
+  keywords: ['郵便番号検索', '郵便番号 住所', '住所 郵便番号', '〒検索', '郵便番号 調べる'],
+});
 
-export default function PostcodePage() {
+const jsonLd = generateToolJsonLd(tool, faq);
+
+export default function Page() {
   return (
     <>
-      {jsonLd.map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-      <PostcodeClient faq={faq} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <ToolPage tool={tool} faq={faq} seoContent={seoContent} />
     </>
   );
 }

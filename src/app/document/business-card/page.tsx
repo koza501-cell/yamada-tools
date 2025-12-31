@@ -1,20 +1,40 @@
 import { Metadata } from "next";
-import BusinessCardClient from "./client";
+import { getToolById } from "@/config/tools";
+import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
+import ToolPage from "@/components/tools/ToolPage";
 
-export const metadata: Metadata = {
-  title: "名刺作成 | 山田ツール - 無料名刺デザイン",
-  description: "シンプルな名刺を簡単デザイン。印刷用PDF出力。登録不要、完全無料。",
-  keywords: ["名刺作成", "名刺デザイン", "名刺テンプレート", "PDF", "無料"],
-  openGraph: {
-    title: "名刺作成 | 山田ツール",
-    description: "名刺を簡単デザイン。完全無料。",
-    url: "https://yamada-tools.jp/document/business-card",
-  },
-  alternates: {
-    canonical: "https://yamada-tools.jp/document/business-card",
-  },
+const tool = getToolById("business-card")!;
+
+const faq = [
+  { question: "QRコードは入れられますか？", answer: "はい、WebサイトやSNSへのQRコードを追加できます。" },
+  { question: "印刷はどうすればいい？", answer: "PDFをダウンロードして、名刺用紙に印刷できます。" },
+  { question: "両面印刷に対応していますか？", answer: "表面のみの作成となります。" },
+];
+
+const seoContent = {
+  intro: "シンプルで美しい名刺を無料作成。会社名、名前、連絡先を入力するだけ。QRコード付きの名刺も作れます。",
+  useCases: [
+    { title: "🆕 新規作成", desc: "起業・独立時の名刺作成" },
+    { title: "🔄 デザイン変更", desc: "名刺デザインのリニューアル" },
+    { title: "📱 QRコード付き", desc: "WebサイトへのQRコード入り" },
+    { title: "🖨️ 印刷用", desc: "印刷して即使える品質" },
+  ],
+  tips: "名刺サイズは91mm×55mmが日本の標準です。印刷時は用紙設定を確認しましょう。",
 };
 
-export default function BusinessCardPage() {
-  return <BusinessCardClient />;
+export const metadata: Metadata = generateToolMetadata({
+  tool,
+  longDescription: "シンプルで美しい名刺を無料作成。会社名、名前、連絡先を入力するだけ。QRコード付きの名刺も作れます。",
+  keywords: ['名刺 作成', '名刺 無料', '名刺 テンプレート', '名刺 デザイン', '名刺 印刷'],
+});
+
+const jsonLd = generateToolJsonLd(tool, faq);
+
+export default function Page() {
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <ToolPage tool={tool} faq={faq} seoContent={seoContent} />
+    </>
+  );
 }

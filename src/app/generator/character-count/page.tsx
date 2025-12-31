@@ -1,87 +1,40 @@
 import { Metadata } from "next";
-import CharacterCountClient from "./client";
+import { getToolById } from "@/config/tools";
+import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
+import ToolPage from "@/components/tools/ToolPage";
+
+const tool = getToolById("char-counter")!;
 
 const faq = [
-  {
-    question: "どんな文字がカウントされますか？",
-    answer: "全角・半角文字、ひらがな、カタカナ、漢字、英数字、記号、スペース、改行など、すべての文字がカウントされます。",
-  },
-  {
-    question: "スペースや改行は含まれますか？",
-    answer: "はい。「スペース含む」「改行含む」のオプションで、含めるかどうかを選択できます。",
-  },
-  {
-    question: "最大何文字までカウントできますか？",
-    answer: "制限はありません。長文でも瞬時にカウントできます。",
-  },
-  {
-    question: "データは保存されますか？",
-    answer: "いいえ。すべての処理はブラウザ内で行われ、サーバーにデータは送信されません。",
-  },
+  { question: "スペースは含まれますか？", answer: "スペースを含む/含まないを選択できます。" },
+  { question: "改行は1文字ですか？", answer: "改行は文字数にカウントされません。行数として別途表示されます。" },
+  { question: "日本語と英語で違いはありますか？", answer: "日本語は1文字、英語は単語単位でもカウントできます。" },
 ];
 
-export const metadata: Metadata = {
-  title: "文字数カウント | 山田ツール - 無料オンライン文字数チェック",
-  description: "文字数・単語数・行数を瞬時にカウント。全角・半角、スペース除外オプション付き。ブラウザ内処理で安全。登録不要、完全無料。",
-  keywords: ["文字数カウント", "文字数チェック", "単語数", "行数カウント", "文字数確認", "無料", "オンライン"],
-  openGraph: {
-    title: "文字数カウント | 山田ツール",
-    description: "文字数・単語数・行数を瞬時にカウント。完全無料。",
-    url: "https://yamada-tools.jp/generator/character-count",
-    siteName: "山田ツール",
-    locale: "ja_JP",
-    type: "website",
-  },
-  twitter: {
-    card: "summary",
-    title: "文字数カウント | 山田ツール",
-    description: "文字数・単語数・行数を瞬時にカウント。完全無料。",
-  },
-  alternates: {
-    canonical: "https://yamada-tools.jp/generator/character-count",
-  },
+const seoContent = {
+  intro: "文字数、単語数、行数をリアルタイムでカウント。レポートやブログ記事の文字数制限確認に便利です。",
+  useCases: [
+    { title: "📝 レポート", desc: "文字数制限の確認" },
+    { title: "📱 SNS投稿", desc: "Twitter文字数の確認" },
+    { title: "📰 ブログ", desc: "SEO最適な文字数を確認" },
+    { title: "📄 応募書類", desc: "志望動機の文字数確認" },
+  ],
+  tips: "スペースを含む/含まないの切り替えができます。用途に合わせて選択してください。",
 };
 
-const jsonLd = [
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "文字数カウント",
-    "description": "文字数・単語数・行数を瞬時にカウントするオンラインツール",
-    "url": "https://yamada-tools.jp/generator/character-count",
-    "applicationCategory": "UtilityApplication",
-    "operatingSystem": "All",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "JPY"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faq.map(item => ({
-      "@type": "Question",
-      "name": item.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.answer
-      }
-    }))
-  }
-];
+export const metadata: Metadata = generateToolMetadata({
+  tool,
+  longDescription: "文字数、単語数、行数をリアルタイムでカウント。レポートやブログ記事の文字数制限確認に便利です。",
+  keywords: ['文字数カウント', '文字数 数える', 'ワードカウント', '文字数チェック'],
+});
 
-export default function CharacterCountPage() {
+const jsonLd = generateToolJsonLd(tool, faq);
+
+export default function Page() {
   return (
     <>
-      {jsonLd.map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-      <CharacterCountClient faq={faq} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <ToolPage tool={tool} faq={faq} seoContent={seoContent} />
     </>
   );
 }

@@ -1,31 +1,40 @@
 import { Metadata } from "next";
-import UrlEncodeClient from "./client";
+import { getToolById } from "@/config/tools";
+import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
+import ToolPage from "@/components/tools/ToolPage";
+
+const tool = getToolById("url-encode")!;
 
 const faq = [
-  {
-    question: "URLエンコードとは何ですか？",
-    answer: "URLで使用できない文字（日本語、スペースなど）を%XXの形式に変換することです。",
-  },
-  {
-    question: "いつ使いますか？",
-    answer: "日本語を含むURLの作成、APIパラメータの送信、フォームデータの送信などで使用します。",
-  },
+  { question: "日本語URLを作りたいのですが？", answer: "日本語をエンコードしてURLに使用できる形式に変換できます。" },
+  { question: "エンコードとデコードの違いは？", answer: "エンコードは変換、デコードは元に戻すことです。" },
+  { question: "スペースはどう変換されますか？", answer: "スペースは%20または+に変換されます。" },
 ];
 
-export const metadata: Metadata = {
-  title: "URLエンコード | 山田ツール - URL変換ツール",
-  description: "URLエンコード・デコード変換。日本語URLの変換に。登録不要、完全無料。",
-  keywords: ["URLエンコード", "URLデコード", "パーセントエンコード", "日本語URL", "無料"],
-  openGraph: {
-    title: "URLエンコード | 山田ツール",
-    description: "URLエンコード・デコード変換。完全無料。",
-    url: "https://yamada-tools.jp/convert/url-encode",
-  },
-  alternates: {
-    canonical: "https://yamada-tools.jp/convert/url-encode",
-  },
+const seoContent = {
+  intro: "URLに使用できない文字をエンコード・デコード。日本語を含むURLの作成や、パラメータの受け渡しに必要な変換です。",
+  useCases: [
+    { title: "🌐 URL作成", desc: "日本語を含むURLを作成" },
+    { title: "🔗 パラメータ", desc: "URLパラメータのエンコード" },
+    { title: "💻 開発", desc: "APIリクエストの準備" },
+    { title: "🔧 デバッグ", desc: "エンコード済みURLの確認" },
+  ],
+  tips: "URLに日本語を含める場合は、必ずエンコードが必要です。",
 };
 
-export default function UrlEncodePage() {
-  return <UrlEncodeClient faq={faq} />;
+export const metadata: Metadata = generateToolMetadata({
+  tool,
+  longDescription: "URLに使用できない文字をエンコード・デコード。日本語を含むURLの作成や、パラメータの受け渡しに必要な変換です。",
+  keywords: ['URLエンコード', 'URL デコード', 'パーセントエンコード', 'URL 日本語'],
+});
+
+const jsonLd = generateToolJsonLd(tool, faq);
+
+export default function Page() {
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <ToolPage tool={tool} faq={faq} seoContent={seoContent} />
+    </>
+  );
 }

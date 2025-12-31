@@ -1,56 +1,40 @@
 import { Metadata } from "next";
-import { pdfTools } from "@/config/tools";
+import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
-import WatermarkClient from "./client";
+import ToolPage from "@/components/tools/ToolPage";
 
-const tool = pdfTools.find((t) => t.id === "watermark")!;
+const tool = getToolById("watermark")!;
 
 const faq = [
-  {
-    question: "透かし追加は無料ですか？",
-    answer: "はい、完全無料でご利用いただけます。登録も不要です。",
-  },
-  {
-    question: "透かしのテキストは自由に設定できますか？",
-    answer: "はい。任意のテキストを設定できます。",
-  },
-  {
-    question: "透かしの透明度は調整できますか？",
-    answer: "適切な透明度で自動的に設定されます。",
-  },
-  {
-    question: "画像の透かしは追加できますか？",
-    answer: "現在はテキストのみ対応しています。",
-  }
+  { question: "画像を透かしにできますか？", answer: "はい、テキストだけでなく画像も透かしとして追加できます。" },
+  { question: "透明度は調整できますか？", answer: "はい、0-100%で透明度を設定できます。" },
+  { question: "特定のページだけに追加できますか？", answer: "はい、全ページまたは指定ページのみに追加できます。" },
 ];
+
+const seoContent = {
+  intro: "PDFに透かし（ウォーターマーク）を追加。「社外秘」「SAMPLE」「DRAFT」など、文書の状態を明示できます。",
+  useCases: [
+    { title: "🔒 社外秘", desc: "機密文書に社外秘マーク" },
+    { title: "📝 DRAFT", desc: "下書き状態を明示" },
+    { title: "📋 SAMPLE", desc: "サンプル資料であることを表示" },
+    { title: "©️ 著作権", desc: "コピーライト表示" },
+  ],
+  tips: "透かしの透明度を調整して、本文が読みやすい状態を保ちましょう。",
+};
 
 export const metadata: Metadata = generateToolMetadata({
   tool,
-  longDescription:
-    "PDFに透かし（ウォーターマーク）を追加する無料オンラインツール。社外秘、コピー禁止などのテキストを全ページに。著作権保護に。日本国内サーバーで安全処理。",
-  keywords: [
-    "PDF 透かし",
-    "PDF ウォーターマーク",
-    "PDF watermark",
-    "PDF 社外秘",
-    "PDF コピー禁止",
-    "無料 PDF透かし",
-  ],
+  longDescription: "PDFに透かし（ウォーターマーク）を追加。「社外秘」「SAMPLE」「DRAFT」など、文書の状態を明示できます。",
+  keywords: ['PDF 透かし', 'PDF ウォーターマーク', 'PDF 社外秘', 'PDF スタンプ'],
 });
 
 const jsonLd = generateToolJsonLd(tool, faq);
 
-export default function WatermarkPage() {
+export default function Page() {
   return (
     <>
-      {jsonLd.map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-      <WatermarkClient faq={faq} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <ToolPage tool={tool} faq={faq} seoContent={seoContent} />
     </>
   );
 }

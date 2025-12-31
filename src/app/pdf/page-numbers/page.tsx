@@ -1,56 +1,40 @@
 import { Metadata } from "next";
-import { pdfTools } from "@/config/tools";
+import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
-import PageNumbersClient from "./client";
+import ToolPage from "@/components/tools/ToolPage";
 
-const tool = pdfTools.find((t) => t.id === "page-numbers")!;
+const tool = getToolById("page-numbers")!;
 
 const faq = [
-  {
-    question: "ページ番号追加は無料ですか？",
-    answer: "はい、完全無料でご利用いただけます。登録も不要です。",
-  },
-  {
-    question: "ページ番号の位置は選べますか？",
-    answer: "上部または下部の中央に配置できます。",
-  },
-  {
-    question: "開始番号は変更できますか？",
-    answer: "現在は1から開始します。",
-  },
-  {
-    question: "既存のページ番号と重なりませんか？",
-    answer: "既存のページ番号がある場合は重なる可能性があります。",
-  }
+  { question: "ページ番号の位置は選べますか？", answer: "はい、上下左右中央など、9箇所から選択できます。" },
+  { question: "開始番号は変更できますか？", answer: "はい、1以外の番号から始めることも可能です。" },
+  { question: "フォントやサイズは変更できますか？", answer: "はい、フォント、サイズ、色をカスタマイズできます。" },
 ];
+
+const seoContent = {
+  intro: "PDFにページ番号を追加。報告書や資料のページ管理に便利です。位置、フォント、開始番号などカスタマイズ可能。",
+  useCases: [
+    { title: "📊 報告書", desc: "ビジネス資料にページ番号" },
+    { title: "📚 マニュアル", desc: "操作説明書にページ番号" },
+    { title: "📄 契約書", desc: "複数ページの契約書に" },
+    { title: "📑 資料集", desc: "結合したPDFにページ番号" },
+  ],
+  tips: "ページ番号の開始を2からにすると、表紙を除いた番号付けができます。",
+};
 
 export const metadata: Metadata = generateToolMetadata({
   tool,
-  longDescription:
-    "PDFにページ番号を追加する無料オンラインツール。全ページに自動で番号付け。文書管理や印刷に便利。上下の位置選択可能。日本国内サーバーで安全処理。",
-  keywords: [
-    "PDF ページ番号",
-    "PDF 番号追加",
-    "PDF ページ番号付け",
-    "PDF page numbers",
-    "PDF ナンバリング",
-    "無料 PDFページ番号",
-  ],
+  longDescription: "PDFにページ番号を追加。報告書や資料のページ管理に便利です。位置、フォント、開始番号などカスタマイズ可能。",
+  keywords: ['PDF ページ番号', 'PDF ページ番号追加', 'PDF フッター', 'PDF ヘッダー'],
 });
 
 const jsonLd = generateToolJsonLd(tool, faq);
 
-export default function PageNumbersPage() {
+export default function Page() {
   return (
     <>
-      {jsonLd.map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-      <PageNumbersClient faq={faq} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <ToolPage tool={tool} faq={faq} seoContent={seoContent} />
     </>
   );
 }

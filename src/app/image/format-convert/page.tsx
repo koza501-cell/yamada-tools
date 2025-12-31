@@ -1,87 +1,40 @@
 import { Metadata } from "next";
-import ImageFormatClient from "./client";
+import { getToolById } from "@/config/tools";
+import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
+import ToolPage from "@/components/tools/ToolPage";
+
+const tool = getToolById("convert-image")!;
 
 const faq = [
-  {
-    question: "対応している形式は何ですか？",
-    answer: "PNG、JPG/JPEG、WebP、GIF、BMP形式に対応しています。",
-  },
-  {
-    question: "画質は劣化しますか？",
-    answer: "JPGやWebPに変換する場合は品質設定で調整できます。PNGは可逆圧縮なので劣化しません。",
-  },
-  {
-    question: "ファイルサイズは変わりますか？",
-    answer: "はい。一般的にWebPが最も小さく、PNGが最も大きくなります。用途に応じて選択してください。",
-  },
-  {
-    question: "複数ファイルを一度に変換できますか？",
-    answer: "はい。最大20ファイルまで同時に変換できます。",
-  },
+  { question: "透過は保持されますか？", answer: "PNGやWebPへの変換では透過が保持されます。JPGは透過非対応です。" },
+  { question: "WebPとは何ですか？", answer: "Googleが開発した軽量な画像形式で、Webサイトでの使用に最適です。" },
+  { question: "画質は選べますか？", answer: "はい、JPGやWebPへの変換時に画質を指定できます。" },
 ];
 
-export const metadata: Metadata = {
-  title: "画像形式変換 | 山田ツール - PNG/JPG/WebP変換",
-  description: "PNG、JPG、WebP、GIF、BMP形式を相互変換。品質調整可能。複数ファイル対応。登録不要、完全無料。",
-  keywords: ["画像変換", "PNG変換", "JPG変換", "WebP変換", "画像形式変換", "無料"],
-  openGraph: {
-    title: "画像形式変換 | 山田ツール",
-    description: "PNG、JPG、WebP形式を相互変換。完全無料。",
-    url: "https://yamada-tools.jp/image/format-convert",
-    siteName: "山田ツール",
-    locale: "ja_JP",
-    type: "website",
-  },
-  twitter: {
-    card: "summary",
-    title: "画像形式変換 | 山田ツール",
-    description: "PNG、JPG、WebP形式を相互変換。完全無料。",
-  },
-  alternates: {
-    canonical: "https://yamada-tools.jp/image/format-convert",
-  },
+const seoContent = {
+  intro: "JPG、PNG、WebP、GIFなど画像形式を相互変換。Web用にWebPへ、印刷用にJPGへなど、用途に合わせて変換できます。",
+  useCases: [
+    { title: "🌐 Web最適化", desc: "WebPに変換して軽量化" },
+    { title: "🖨️ 印刷用", desc: "PNGからJPGに変換" },
+    { title: "🎨 透過保持", desc: "JPGからPNGに変換" },
+    { title: "📧 互換性", desc: "相手が開ける形式に変換" },
+  ],
+  tips: "WebPはファイルサイズが小さく、Webサイトの表示速度向上に効果的です。",
 };
 
-const jsonLd = [
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "画像形式変換",
-    "description": "画像形式を変換するオンラインツール",
-    "url": "https://yamada-tools.jp/image/format-convert",
-    "applicationCategory": "MultimediaApplication",
-    "operatingSystem": "All",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "JPY"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faq.map(item => ({
-      "@type": "Question",
-      "name": item.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.answer
-      }
-    }))
-  }
-];
+export const metadata: Metadata = generateToolMetadata({
+  tool,
+  longDescription: "JPG、PNG、WebP、GIFなど画像形式を相互変換。Web用にWebPへ、印刷用にJPGへなど、用途に合わせて変換できます。",
+  keywords: ['画像 形式変換', 'JPG PNG 変換', 'WebP 変換', '画像 コンバーター'],
+});
 
-export default function ImageFormatPage() {
+const jsonLd = generateToolJsonLd(tool, faq);
+
+export default function Page() {
   return (
     <>
-      {jsonLd.map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-      <ImageFormatClient faq={faq} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <ToolPage tool={tool} faq={faq} seoContent={seoContent} />
     </>
   );
 }

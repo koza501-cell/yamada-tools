@@ -1,87 +1,40 @@
 import { Metadata } from "next";
-import TaxCalculatorClient from "./client";
+import { getToolById } from "@/config/tools";
+import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
+import ToolPage from "@/components/tools/ToolPage";
+
+const tool = getToolById("tax-calculator")!;
 
 const faq = [
-  {
-    question: "軽減税率8%が適用される品目は？",
-    answer: "飲食料品（酒類・外食を除く）と週2回以上発行される新聞（定期購読）が軽減税率8%の対象です。",
-  },
-  {
-    question: "税込価格から税抜価格を計算できますか？",
-    answer: "はい。「税込→税抜」モードを選択すると、税込価格から税抜価格と消費税額を計算できます。",
-  },
-  {
-    question: "複数の税率を同時に計算できますか？",
-    answer: "はい。8%と10%の品目を別々に入力し、合計金額を計算できます。",
-  },
-  {
-    question: "計算結果は保存されますか？",
-    answer: "いいえ。すべての計算はブラウザ内で行われ、データは保存されません。",
-  },
+  { question: "軽減税率にも対応していますか？", answer: "はい、10%と8%の両方に対応しています。" },
+  { question: "端数処理はどうなりますか？", answer: "切り捨て、切り上げ、四捨五入を選択できます。" },
+  { question: "複数の金額を一度に計算できますか？", answer: "1つずつの計算となります。合計は手動で計算してください。" },
 ];
 
-export const metadata: Metadata = {
-  title: "消費税計算 | 山田ツール - 無料オンライン税込・税抜計算",
-  description: "消費税8%・10%の税込・税抜価格を瞬時に計算。軽減税率にも対応。ブラウザ内処理で安全。登録不要、完全無料。",
-  keywords: ["消費税計算", "税込計算", "税抜計算", "軽減税率", "8%", "10%", "無料"],
-  openGraph: {
-    title: "消費税計算 | 山田ツール",
-    description: "消費税8%・10%を瞬時に計算。完全無料。",
-    url: "https://yamada-tools.jp/generator/tax-calculator",
-    siteName: "山田ツール",
-    locale: "ja_JP",
-    type: "website",
-  },
-  twitter: {
-    card: "summary",
-    title: "消費税計算 | 山田ツール",
-    description: "消費税を瞬時に計算。完全無料。",
-  },
-  alternates: {
-    canonical: "https://yamada-tools.jp/generator/tax-calculator",
-  },
+const seoContent = {
+  intro: "税込価格から税抜価格、税抜価格から税込価格を計算。10%と8%（軽減税率）に対応しています。",
+  useCases: [
+    { title: "🛒 買い物", desc: "税込/税抜価格の確認" },
+    { title: "📝 見積作成", desc: "消費税額の計算" },
+    { title: "🧾 経理処理", desc: "仕入の税額計算" },
+    { title: "🍽️ 軽減税率", desc: "8%適用商品の計算" },
+  ],
+  tips: "飲食料品（外食除く）と新聞は軽減税率8%が適用されます。",
 };
 
-const jsonLd = [
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "消費税計算",
-    "description": "消費税8%・10%の税込・税抜価格を計算するオンラインツール",
-    "url": "https://yamada-tools.jp/generator/tax-calculator",
-    "applicationCategory": "UtilityApplication",
-    "operatingSystem": "All",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "JPY"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faq.map(item => ({
-      "@type": "Question",
-      "name": item.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.answer
-      }
-    }))
-  }
-];
+export const metadata: Metadata = generateToolMetadata({
+  tool,
+  longDescription: "税込価格から税抜価格、税抜価格から税込価格を計算。10%と8%（軽減税率）に対応しています。",
+  keywords: ['消費税計算', '税込 税抜', '消費税 計算機', '10% 計算', '8% 計算'],
+});
 
-export default function TaxCalculatorPage() {
+const jsonLd = generateToolJsonLd(tool, faq);
+
+export default function Page() {
   return (
     <>
-      {jsonLd.map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-      <TaxCalculatorClient faq={faq} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <ToolPage tool={tool} faq={faq} seoContent={seoContent} />
     </>
   );
 }

@@ -1,56 +1,40 @@
 import { Metadata } from "next";
-import { pdfTools } from "@/config/tools";
+import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
-import UnlockClient from "./client";
+import ToolPage from "@/components/tools/ToolPage";
 
-const tool = pdfTools.find((t) => t.id === "unlock")!;
+const tool = getToolById("unlock")!;
 
 const faq = [
-  {
-    question: "PDFパスワード解除は無料ですか？",
-    answer: "はい、完全無料でご利用いただけます。登録も不要です。",
-  },
-  {
-    question: "パスワードを忘れたPDFも解除できますか？",
-    answer: "パスワードを入力する必要があります。パスワードがわからない場合は解除できません。",
-  },
-  {
-    question: "解除後のPDFはどうなりますか？",
-    answer: "パスワードなしで開ける新しいPDFが作成されます。",
-  },
-  {
-    question: "違法ではないですか？",
-    answer: "自分が所有するPDFのパスワード解除は問題ありません。他人のPDFを無断で解除することは避けてください。",
-  }
+  { question: "パスワードがわからなくても解除できますか？", answer: "いいえ、パスワードの入力が必要です。パスワード不明のPDFは解除できません。" },
+  { question: "解除後のPDFはどうなりますか？", answer: "パスワードなしで開ける通常のPDFになります。" },
+  { question: "違法ではないですか？", answer: "ご自身がパスワードを知っているPDFを解除することは問題ありません。" },
 ];
+
+const seoContent = {
+  intro: "パスワードがわかっているPDFのロックを解除。パスワード入力の手間を省きたい時や、他のPDFツールで編集したい時に便利です。",
+  useCases: [
+    { title: "🔓 パスワード解除", desc: "毎回の入力を省略" },
+    { title: "📝 編集準備", desc: "他ツールで編集するため解除" },
+    { title: "📄 結合準備", desc: "PDF結合前にロック解除" },
+    { title: "🖨️ 印刷制限解除", desc: "印刷禁止を解除" },
+  ],
+  tips: "パスワードがわからないPDFのロック解除はできません。パスワードを入力してロックを外す機能です。",
+};
 
 export const metadata: Metadata = generateToolMetadata({
   tool,
-  longDescription:
-    "PDFのパスワード保護を解除する無料オンラインツール。既知のパスワードを入力して保護を解除。パスワードなしPDFを作成。日本国内サーバーで安全処理。",
-  keywords: [
-    "PDF パスワード解除",
-    "PDF ロック解除",
-    "PDF 保護解除",
-    "PDF unlock",
-    "PDF パスワード削除",
-    "無料 PDFパスワード解除",
-  ],
+  longDescription: "パスワードがわかっているPDFのロックを解除。パスワード入力の手間を省きたい時や、他のPDFツールで編集したい時に便利です。",
+  keywords: ['PDF ロック解除', 'PDF パスワード解除', 'PDF 保護解除', 'PDF アンロック'],
 });
 
 const jsonLd = generateToolJsonLd(tool, faq);
 
-export default function UnlockPage() {
+export default function Page() {
   return (
     <>
-      {jsonLd.map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-      <UnlockClient faq={faq} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <ToolPage tool={tool} faq={faq} seoContent={seoContent} />
     </>
   );
 }
