@@ -1,64 +1,41 @@
 import { MetadataRoute } from "next";
-import { pdfTools } from "@/config/tools";
+import { pdfTools, documentTools, convertTools, imageTools, generatorTools } from "@/config/tools";
 
 const baseUrl = "https://yamada-tools.jp";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const currentDate = new Date().toISOString();
 
-  // Static pages
   const staticPages: MetadataRoute.Sitemap = [
-    {
-      url: baseUrl,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/pdf`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/office`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/image`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/privacy`,
-      lastModified: currentDate,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/terms`,
-      lastModified: currentDate,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/legal`,
-      lastModified: currentDate,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
+    { url: baseUrl, lastModified: currentDate, changeFrequency: "weekly", priority: 1.0 },
+    { url: baseUrl + "/pdf", lastModified: currentDate, changeFrequency: "weekly", priority: 0.9 },
+    { url: baseUrl + "/document", lastModified: currentDate, changeFrequency: "weekly", priority: 0.9 },
+    { url: baseUrl + "/convert", lastModified: currentDate, changeFrequency: "weekly", priority: 0.9 },
+    { url: baseUrl + "/image", lastModified: currentDate, changeFrequency: "weekly", priority: 0.9 },
+    { url: baseUrl + "/generator", lastModified: currentDate, changeFrequency: "weekly", priority: 0.9 },
+    { url: baseUrl + "/blog", lastModified: currentDate, changeFrequency: "weekly", priority: 0.8 },
+    { url: baseUrl + "/about/company", lastModified: currentDate, changeFrequency: "monthly", priority: 0.5 },
+    { url: baseUrl + "/about/story", lastModified: currentDate, changeFrequency: "monthly", priority: 0.5 },
+    { url: baseUrl + "/about/faq", lastModified: currentDate, changeFrequency: "monthly", priority: 0.5 },
+    { url: baseUrl + "/legal/terms", lastModified: currentDate, changeFrequency: "yearly", priority: 0.3 },
+    { url: baseUrl + "/legal/privacy", lastModified: currentDate, changeFrequency: "yearly", priority: 0.3 },
+    { url: baseUrl + "/legal/tokushoho", lastModified: currentDate, changeFrequency: "yearly", priority: 0.3 },
   ];
 
-  // PDF tool pages
-  const pdfToolPages: MetadataRoute.Sitemap = pdfTools.map((tool) => ({
-    url: `${baseUrl}${tool.path}`,
+  const allTools = [
+    ...pdfTools.filter(t => t.available),
+    ...documentTools.filter(t => t.available),
+    ...convertTools.filter(t => t.available),
+    ...imageTools.filter(t => t.available),
+    ...generatorTools.filter(t => t.available),
+  ];
+
+  const toolPages: MetadataRoute.Sitemap = allTools.map(tool => ({
+    url: baseUrl + tool.path,
     lastModified: currentDate,
-    changeFrequency: "monthly" as const,
+    changeFrequency: "monthly",
     priority: 0.8,
   }));
 
-  return [...staticPages, ...pdfToolPages];
+  return [...staticPages, ...toolPages];
 }
