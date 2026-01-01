@@ -622,7 +622,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                 {stamp.enabled && (
                   <div className="grid grid-cols-2 gap-3">
                     <select value={stamp.text} onChange={(e) => setStamp({...stamp, text: e.target.value})} className="bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-sm">
-                      <option value="請求書在中">請求書在中</option><option value="納品書在中">納品書在中</option><option value="見積書在中">見積書在中</option><option value="領収書在中">領収書在中</option><option value="履歴書在中">履歴書在中</option><option value="親展">親展</option><option value="重要">重要</option><option value="至急">至急</option><option value="バッテリー同梱なし">バッテリー同梱なし</option><option value="製品同梱">製品同梱</option><option value="取扱注意">取扱注意</option><option value="壊れ物注意">壊れ物注意</option>
+                      <option value="請求書在中">請求書在中</option><option value="納品書在中">納品書在中</option><option value="見積書在中">見積書在中</option><option value="領収書在中">領収書在中</option><option value="履歴書在中">履歴書在中</option><option value="親展">親展</option><option value="重要">重要</option><option value="至急">至急</option>
                     </select>
                     <select value={stamp.color} onChange={(e) => setStamp({...stamp, color: e.target.value as "red"|"blue"|"black"})} className="bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-sm">
                       <option value="red">赤</option><option value="blue">青</option><option value="black">黒</option>
@@ -670,7 +670,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
               )}
             </div>
 
-            <div className={`space-y-6 ${professionalMode ? "lg:sticky lg:top-20" : ""}`}>
+            <div className="space-y-6">
               <div className="flex justify-center"><Mascot state={mascotState} message={mascotMessage}/></div>
               <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
                 <h2 className="text-lg font-bold mb-4 text-gray-900"><span>👁️</span> プレビュー<span className="ml-2 text-xs text-gray-500">(画面用: 低解像度)</span></h2>
