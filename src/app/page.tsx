@@ -365,6 +365,71 @@ export default function Home() {
         );
       })()}
 
+
+      {/* Testimonials Section */}
+      <section className="py-16 bg-gray-50 dark:bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+              💬 ユーザーの声
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300">
+              実際にご利用いただいているお客様からの声をご紹介します
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+              <div className="flex items-center gap-1 mb-4">
+                <span className="text-yellow-400">★★★★★</span>
+              </div>
+              <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                「取引先への見積書が25MBもあって、メールで送れず困っていました。山田ツールで圧縮したら3MBに！しかも画質は全く落ちていない。本当に助かりました。」
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center text-xl">👨‍💼</div>
+                <div>
+                  <p className="font-bold text-gray-900 dark:text-white">田中 健太</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">営業部 / 製造業</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+              <div className="flex items-center gap-1 mb-4">
+                <span className="text-yellow-400">★★★★★</span>
+              </div>
+              <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                「経理担当として毎月大量の請求書を作成しています。以前は別のソフトを使っていましたが、山田ツールは登録不要で、すぐに使えるのが嬉しい。国内サーバーという安心感も決め手でした。」
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-pink-100 dark:bg-pink-900 rounded-full flex items-center justify-center text-xl">👩‍💻</div>
+                <div>
+                  <p className="font-bold text-gray-900 dark:text-white">佐藤 美咲</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">経理担当 / IT企業</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+              <div className="flex items-center gap-1 mb-4">
+                <span className="text-yellow-400">★★★★★</span>
+              </div>
+              <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                「フリーランスで仕事をしていますが、クライアントごとに契約書のPDFを結合する作業が多くて。山田ツールはドラッグ&ドロップだけで完了するので、作業時間が半分以下になりました。」
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center text-xl">👨‍🎨</div>
+                <div>
+                  <p className="font-bold text-gray-900 dark:text-white">山本 大輝</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">フリーランス / デザイナー</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-12 bg-sakura/20">
         <div className="max-w-3xl mx-auto px-4 text-center">
