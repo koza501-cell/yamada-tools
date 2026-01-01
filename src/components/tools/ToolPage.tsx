@@ -172,6 +172,7 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
               <span className="bg-orange-50 text-orange-700 px-3 py-1 rounded-full">📦 一括処理対応（最大{tool.maxFiles}ファイル）</span>
             )}
           </div>
+          <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-3">📅 最終更新: 2025年1月1日</p>
         </header>
 
         {/* Upload Area */}
