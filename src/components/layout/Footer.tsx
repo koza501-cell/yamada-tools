@@ -61,6 +61,16 @@ export default function Footer() {
                 </a>
               </div>
               <div>
+                <a href="https://www.facebook.com/yamada.tools/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-sakura transition-colors">
+                  📘 Facebook
+                </a>
+              </div>
+              <div>
+                <a href="https://x.com/YamadaToolsJP" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-sakura transition-colors">
+                  𝕏 Twitter
+                </a>
+              </div>
+              <div>
                 <Link href="/about/company" className="text-gray-300 hover:text-sakura transition-colors">
                   会社概要
                 </Link>
