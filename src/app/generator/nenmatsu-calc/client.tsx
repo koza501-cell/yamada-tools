@@ -202,6 +202,26 @@ export default function NenmatsuCalcClient({ faq, seoContent }: NenmatsuClientPr
         <div className="mb-6">
           <Mascot state={mascotState} message={mascotMessage} />
         </div>
+        {/* Quick Demo Button */}
+        <div className="mb-4 text-center">
+          <button
+            onClick={() => {
+              setAnnualIncome("5,000,000");
+              setWithheldTax("150,000");
+              setSocialInsurance("750,000");
+              setLifeInsurance("120,000");
+              setEarthquakeInsurance("30,000");
+              setHasSpouse(false);
+              setDependents("0");
+              setHousingLoan("");
+              setMascotState("success");
+              setMascotMessage("サンプルデータを入力したよ！計算ボタンを押してね");
+            }}
+            className="px-6 py-2 bg-sakura/20 text-kon rounded-full text-sm font-medium hover:bg-sakura/30 transition-colors"
+          >
+            📝 サンプルデータで試す
+          </button>
+        </div>
 
         <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
           <h3 className="font-bold text-kon mb-4">基本情報</h3>
