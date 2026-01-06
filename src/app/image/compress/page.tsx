@@ -52,6 +52,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】画像圧縮｜写真を一瞬で軽量化｜画質そのまま",
   tool,
   longDescription: "画像を無料で圧縮。JPG・PNG・WebP対応、最大80%サイズダウン。一括処理可能、登録不要。",
   keywords: ["画像圧縮", "画像 サイズ縮小", "写真 圧縮", "JPEG圧縮", "PNG圧縮", "画像 軽くする", "無料 画像圧縮"],

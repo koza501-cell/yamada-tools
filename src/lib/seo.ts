@@ -4,6 +4,7 @@ import { Tool } from "@/config/tools";
 const baseUrl = "https://yamada-tools.jp";
 
 interface ToolSeoData {
+  customTitle?: string;
   tool: Tool;
   longDescription?: string;
   keywords?: string[];
@@ -11,6 +12,7 @@ interface ToolSeoData {
 }
 
 export function generateToolMetadata({
+  customTitle,
   tool,
   longDescription,
   keywords = [],
@@ -30,7 +32,7 @@ export function generateToolMetadata({
     `${tool.nameJa}を無料でオンライン変換。${tool.description}。日本国内サーバーで安心・安全。登録不要、ファイルは60分で自動削除。`;
 
   return {
-    title: `${tool.nameJa} - 無料オンライン${tool.nameJa}ツール`,
+    title: customTitle || `${tool.nameJa} - 無料オンライン${tool.nameJa}ツール`,
     description,
     keywords: [...defaultKeywords, ...keywords],
     openGraph: {

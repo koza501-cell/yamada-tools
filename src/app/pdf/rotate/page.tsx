@@ -24,6 +24,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】PDF回転｜縦横を90度回転｜スキャンミス修正",
   tool,
   longDescription: "PDFのページを90度・180度・270度回転。スキャンで向きが違ってしまったPDFも、ワンクリックで正しい向きに修正できます。",
   keywords: ['PDF回転', 'PDF 向き変更', 'PDF 横向き', 'PDF 縦向き', 'ページ回転'],

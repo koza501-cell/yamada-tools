@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】ふりがな変換｜漢字にルビを自動付与｜コピペでOK",
   tool,
   longDescription: "漢字にふりがな（ルビ）を自動で振ります。人名や地名、難読漢字の読み方を確認したい時に便利です。",
   keywords: ['ふりがな変換', '漢字 読み方', 'ルビ 振る', '漢字 ふりがな', '読み仮名'],
