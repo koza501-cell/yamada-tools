@@ -114,6 +114,10 @@ const organizationSchema = {
     availableLanguage: ["Japanese"],
   },
   foundingDate: "2024",
+  sameAs: [
+    "https://www.facebook.com/yamada.tools/",
+    "https://x.com/YamadaToolsJP"
+  ],
   numberOfEmployees: {
     "@type": "QuantitativeValue",
     value: 1,
