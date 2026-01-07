@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Officeツール | 山田ツール - 準備中",
+  title: "Officeツール - 準備中",
   description: "Word、Excel、PowerPointの変換・編集ツール。近日公開予定。",
 };
 

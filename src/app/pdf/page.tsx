@@ -3,7 +3,7 @@ import { pdfTools } from "@/config/tools";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "PDFツール | 山田ツール - 無料オンラインPDF編集・変換",
+  title: "PDFツール - 無料オンラインPDF編集・変換",
   description: "PDF結合・圧縮・分割・変換など20以上の無料PDFツール。日本国内サーバーで安心・安全。登録不要、60分で自動削除。",
 };
 

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { documentTools } from "@/config/tools";
 
 export const metadata: Metadata = {
-  title: "書類作成ツール | 山田ツール - 請求書・見積書・履歴書を無料作成",
+  title: "書類作成ツール - 請求書・見積書・履歴書を無料作成",
   description: "請求書、見積書、履歴書、送付状、ビジネスメール、電子印鑑など、日本のビジネスに必要な書類を無料で作成できます。登録不要、日本国内サーバーで安心。",
   keywords: "請求書作成, 見積書作成, 履歴書作成, 電子印鑑, ビジネスメール, 送付状, 無料",
 };

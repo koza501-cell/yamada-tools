@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "プライバシーポリシー | 山田ツール",
+  title: "プライバシーポリシー",
   description: "山田ツールのプライバシーポリシーです。",
 };
 

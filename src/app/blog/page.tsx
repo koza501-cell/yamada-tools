@@ -5,7 +5,7 @@ import fs from 'fs';
 import path from 'path';
 
 export const metadata: Metadata = {
-  title: 'ブログ | 山田ツール',
+  title: 'ブログ',
   description: 'PDFツールの活用方法、ビジネス効率化のヒント、最新機能の紹介など、お役立ち情報を発信しています。',
 };
 

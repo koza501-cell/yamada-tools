@@ -3,7 +3,7 @@ import Link from "next/link";
 import { imageTools } from "@/config/tools";
 
 export const metadata: Metadata = {
-  title: "画像ツール | 山田ツール - 証明写真・画像圧縮・QRコード作成",
+  title: "画像ツール - 証明写真・画像圧縮・QRコード作成",
   description: "証明写真作成、画像圧縮、リサイズ、形式変換、背景削除、QRコード作成など、画像編集ツールを無料で提供。登録不要、日本国内サーバーで安心。",
   keywords: "証明写真作成, 画像圧縮, 画像リサイズ, 背景削除, QRコード作成, 画像変換, 無料",
 };

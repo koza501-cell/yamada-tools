@@ -3,7 +3,7 @@ import Link from "next/link";
 import { generatorTools } from "@/config/tools";
 
 export const metadata: Metadata = {
-  title: "計算・生成ツール | 山田ツール - パスワード生成・文字数カウント・消費税計算",
+  title: "計算・生成ツール - パスワード生成・文字数カウント・消費税計算",
   description: "パスワード生成、文字数カウント、消費税計算、祝日確認、インボイス番号検証など、日常業務に役立つ計算・生成ツールを無料で提供。",
   keywords: "パスワード生成, 文字数カウント, 消費税計算, 祝日確認, インボイス番号検証, 年末調整計算, 無料",
 };
