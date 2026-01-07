@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】郵便番号検索｜住所から番号を逆引き",
   tool,
   longDescription: "郵便番号から住所を検索、または住所から郵便番号を検索。日本郵便のデータを使用した正確な情報を提供します。",
   keywords: ['郵便番号検索', '郵便番号 住所', '住所 郵便番号', '〒検索', '郵便番号 調べる'],

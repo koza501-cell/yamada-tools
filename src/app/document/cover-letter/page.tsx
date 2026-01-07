@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】送付状作成｜ビジネス文書テンプレート",
   tool,
   longDescription: "ビジネス文書に添える送付状を簡単作成。定型文を選ぶだけで、失礼のない送付状が完成します。",
   keywords: ['送付状 作成', '送付状 テンプレート', '送付状 書き方', '添え状', 'カバーレター'],

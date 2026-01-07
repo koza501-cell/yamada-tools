@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】縦書き変換｜横書きを縦書きに",
   tool,
   longDescription: "横書きのテキストを縦書きに変換。小説、詩、手紙など、縦書きが必要な文書作成に便利です。",
   keywords: ['縦書き 変換', '縦書き ツール', '横書き 縦書き', '縦書き エディタ'],

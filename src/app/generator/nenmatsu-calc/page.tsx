@@ -60,6 +60,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】年末調整計算｜還付金シミュレーター",
   tool,
   longDescription: "年末調整の還付金をシミュレーション。生命保険料控除、扶養控除、住宅ローン控除に対応。簡単入力で還付金額の目安がわかる無料ツール。",
   keywords: ["年末調整 計算", "年末調整 還付金", "年末調整 シミュレーション", "還付金 いくら", "生命保険料控除", "扶養控除 計算"],

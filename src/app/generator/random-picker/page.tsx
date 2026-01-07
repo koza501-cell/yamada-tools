@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】ランダム抽選｜くじ引き・当選者選び",
   tool,
   longDescription: "リストからランダムに1つまたは複数を抽選。くじ引き、当選者選出、順番決めなどに使えます。",
   keywords: ['ランダム 抽選', 'くじ引き', '抽選 ツール', 'ランダム 選択'],

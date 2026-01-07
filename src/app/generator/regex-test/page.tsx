@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】正規表現テスト｜リアルタイム検証",
   tool,
   longDescription: "正規表現のパターンをリアルタイムでテスト。マッチ結果やグループのハイライト表示に対応。",
   keywords: ['正規表現 テスト', 'regex テスト', '正規表現 確認', '正規表現 ツール'],

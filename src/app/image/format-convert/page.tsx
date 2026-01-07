@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】画像形式変換｜JPG/PNG/WebP相互変換",
   tool,
   longDescription: "JPG、PNG、WebP、GIFなど画像形式を相互変換。Web用にWebPへ、印刷用にJPGへなど、用途に合わせて変換できます。",
   keywords: ['画像 形式変換', 'JPG PNG 変換', 'WebP 変換', '画像 コンバーター'],

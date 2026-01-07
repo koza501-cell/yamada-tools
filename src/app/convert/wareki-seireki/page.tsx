@@ -52,6 +52,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】和暦西暦変換｜令和・平成・昭和を即変換",
   tool,
   longDescription: "和暦西暦を簡単変換。令和・平成・昭和・大正・明治に対応。履歴書作成や書類作成に便利な無料ツール。",
   keywords: ["和暦 西暦 変換", "令和 西暦", "平成 西暦", "昭和 西暦", "和暦変換", "西暦変換", "年号変換"],

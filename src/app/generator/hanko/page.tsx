@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】電子印鑑作成｜ハンコ画像を即生成",
   tool,
   longDescription: "電子印鑑（デジタルはんこ）を無料作成。認印、角印、日付印など、様々なスタイルの印鑑を作成できます。",
   keywords: ['電子印鑑', 'デジタル印鑑', 'はんこ 作成', '印鑑 無料'],

@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】税金計算｜消費税・所得税計算",
   tool,
   longDescription: "税込価格から税抜価格、税抜価格から税込価格を計算。10%と8%（軽減税率）に対応しています。",
   keywords: ['消費税計算', '税込 税抜', '消費税 計算機', '10% 計算', '8% 計算'],

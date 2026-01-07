@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】画像回転｜90度回転・反転",
   tool,
   longDescription: "画像を90度単位で回転、または左右反転。スマホで撮った写真の向き修正に便利です。",
   keywords: ['画像 回転', '写真 回転', '画像 反転', '画像 向き'],

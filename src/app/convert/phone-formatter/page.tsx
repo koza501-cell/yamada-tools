@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】電話番号フォーマット｜ハイフン自動挿入",
   tool,
   longDescription: "電話番号をハイフン付きの正しい形式に自動整形。市外局番と市内局番を正確に区切ります。",
   keywords: ['電話番号 フォーマット', '電話番号 ハイフン', '電話番号 整形', '電話番号 変換'],

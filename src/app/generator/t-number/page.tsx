@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】Tナンバー検索｜インボイス登録番号確認",
   tool,
   longDescription: "適格請求書発行事業者の登録番号（T番号）を検証。国税庁のデータベースで有効性を確認できます。",
   keywords: ['インボイス番号 確認', 'T番号 検証', '適格請求書', 'インボイス制度'],

@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】QRコード読み取り｜カメラ・画像から解析",
   tool,
   longDescription: "カメラや画像からQRコードを読み取り。スマホがなくてもパソコンで読み取れます。",
   keywords: ['QRコード 読み取り', 'QR 読取 PC', 'QRコード デコード', 'QR リーダー'],

@@ -52,6 +52,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】パスワード生成｜安全な強力パスワード作成",
   tool,
   longDescription: "強力なパスワードを無料生成。文字数、記号の有無を選択可能。安全なランダムパスワードを作成。",
   keywords: ["パスワード生成", "パスワード 作成", "ランダムパスワード", "強力なパスワード", "パスワード ジェネレーター", "安全 パスワード"],

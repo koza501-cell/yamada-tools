@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】PDF電子署名｜印鑑・サインを追加",
   tool,
   longDescription: "PDFに電子署名を追加。手書きサイン、テキスト、画像など様々な形式で署名できます。",
   keywords: ['PDF 署名', '電子署名', 'PDF サイン', 'PDF 印鑑'],

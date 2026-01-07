@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】PDF→PowerPoint変換｜編集可能に",
   tool,
   longDescription: "PDFをPowerPointに変換。既存のPDF資料をベースにプレゼンを作成できます。",
   keywords: ['PDF PowerPoint', 'PDF pptx', 'PDF スライド', 'PDF プレゼン'],

@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】PDF→Excel変換｜表をxlsxに抽出",
   tool,
   longDescription: "PDFの表データをExcelに変換。手入力の手間を省いて、データ分析や編集が可能になります。",
   keywords: ['PDF Excel 変換', 'PDF Excel', 'PDF 表 抽出', 'PDF xlsx'],

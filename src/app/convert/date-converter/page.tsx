@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】日付変換｜和暦・西暦・曜日計算",
   tool,
   longDescription: "和暦（令和・平成・昭和など）と西暦を相互変換。年号の計算や、書類作成時の日付確認に便利です。",
   keywords: ['和暦 西暦 変換', '令和 西暦', '平成 西暦', '年号 変換'],

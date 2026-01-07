@@ -52,6 +52,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】履歴書作成｜PDF出力対応｜テンプレート付き",
   tool,
   longDescription: "JIS規格の履歴書を無料作成。写真貼り付け、PDF出力対応。就活・転職に。登録不要・完全無料。",
   keywords: ["履歴書 作成", "履歴書 無料", "JIS 履歴書", "履歴書 テンプレート", "履歴書 PDF", "履歴書 オンライン", "就活 履歴書"],

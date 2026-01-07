@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】ZIPパスワード設定｜ファイル暗号化",
   tool,
   longDescription: "ファイルをパスワード付きのZIPファイルに圧縮。メール添付時のセキュリティ対策に便利です。",
   keywords: ['パスワード付きZIP', 'ZIP 暗号化', 'ZIP パスワード', 'ファイル圧縮'],

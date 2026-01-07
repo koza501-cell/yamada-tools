@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】給与計算｜手取り額シミュレーション",
   tool,
   longDescription: "額面給与から手取り額を計算。社会保険料、所得税、住民税の概算を確認できます。",
   keywords: ['給与計算', '手取り 計算', '年収 手取り', '社会保険料 計算'],

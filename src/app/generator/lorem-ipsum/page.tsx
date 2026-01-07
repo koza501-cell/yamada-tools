@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】ダミーテキスト生成｜Lorem Ipsum",
   tool,
   longDescription: "デザインやレイアウト確認用のダミーテキストを生成。日本語と英語のLorem Ipsumに対応しています。",
   keywords: ['ダミーテキスト', 'Lorem Ipsum', 'サンプルテキスト', '仮テキスト'],

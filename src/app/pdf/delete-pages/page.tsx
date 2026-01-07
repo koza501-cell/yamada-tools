@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】PDFページ削除｜不要ページを除去",
   tool,
   longDescription: "PDFから不要なページを削除。表紙や空白ページ、間違って入ったページなど、いらないページだけを簡単に取り除けます。",
   keywords: ['PDFページ削除', 'PDF ページ 消す', 'PDF 不要ページ', 'PDF 編集'],

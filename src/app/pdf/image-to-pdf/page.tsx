@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】画像→PDF変換｜JPG/PNGをPDFに",
   tool,
   longDescription: "JPG、PNG、WebPなどの画像をPDFに変換。複数画像を1つのPDFにまとめることもできます。写真のPDF化やスキャン画像の整理に便利です。",
   keywords: ['画像 PDF変換', 'JPG PDF', 'PNG PDF', '写真 PDF', '画像をPDFに'],

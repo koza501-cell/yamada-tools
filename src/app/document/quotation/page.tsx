@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】見積書作成｜PDF出力｜テンプレート付",
   tool,
   longDescription: "見積書を無料で作成。商品名、数量、単価を入力するだけで、消費税も自動計算。PDF出力でそのまま印刷・メール送信できます。",
   keywords: ['見積書 作成', '見積書 無料', '見積書 テンプレート', '見積書 PDF', '見積書 フォーマット'],

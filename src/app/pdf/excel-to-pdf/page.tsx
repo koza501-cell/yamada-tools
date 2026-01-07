@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】Excel→PDF変換｜xlsxをPDFに",
   tool,
   longDescription: "ExcelファイルをPDFに変換。表やグラフのレイアウトを維持したまま、PDFとして保存できます。",
   keywords: ['Excel PDF 変換', 'Excel PDF', 'xlsx PDF', 'エクセル PDF'],

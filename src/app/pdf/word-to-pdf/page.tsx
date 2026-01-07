@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】Word→PDF変換｜docxをPDFに変換",
   tool,
   longDescription: "WordファイルをPDFに変換。レイアウトを崩さずに、どの環境でも同じ見た目で表示されるPDFを作成します。",
   keywords: ['Word PDF 変換', 'Word PDF', 'docx PDF', 'ワード PDF'],

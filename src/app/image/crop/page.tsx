@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】画像切り抜き｜トリミング・範囲指定",
   tool,
   longDescription: "画像の必要な部分だけを切り抜き。SNSのプロフィール画像や、バナー作成に便利です。",
   keywords: ['画像 切り抜き', '画像 トリミング', '写真 切り抜き', '画像 crop'],

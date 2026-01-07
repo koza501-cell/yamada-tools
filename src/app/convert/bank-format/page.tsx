@@ -52,6 +52,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】全銀フォーマット変換｜振込データ作成",
   tool,
   longDescription: "ExcelやCSVを全銀フォーマットに変換。給与振込、総合振込に対応。日本国内サーバーで安全処理、登録不要・完全無料。",
   keywords: ["全銀フォーマット", "全銀フォーマット変換", "振込データ作成", "給与振込", "総合振込", "FB変換", "ファームバンキング"],

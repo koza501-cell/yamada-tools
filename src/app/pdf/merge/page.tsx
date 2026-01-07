@@ -61,6 +61,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】PDF結合｜複数ファイルを1つに統合｜順番入れ替え可",
   tool,
   longDescription:
     "複数のPDFファイルを1つに結合。最大50ファイル対応、順番の並び替えも自由。日本国内サーバーで安全処理、登録不要・完全無料。",

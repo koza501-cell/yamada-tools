@@ -60,6 +60,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】封筒印刷｜宛名印刷テンプレート",
   tool,
   longDescription: "封筒の宛名印刷を無料で。長形3号、角形2号など全サイズ対応。郵便番号枠に合わせて美しく印刷。縦書き・横書き対応。",
   keywords: ["封筒印刷", "宛名印刷", "封筒 宛名", "長形3号 印刷", "角形2号 印刷", "封筒 テンプレート", "宛名書き"],

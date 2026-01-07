@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】FAX送付状作成｜テンプレート付き",
   tool,
   longDescription: "FAX送信時の送付状を作成。宛先、送信者、枚数、メッセージを入力するだけで完成します。",
   keywords: ['FAX送付状', 'FAX 表紙', 'FAX テンプレート', 'ファックス 送付状'],

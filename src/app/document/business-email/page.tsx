@@ -12,6 +12,7 @@ const faq = [
 ];
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】ビジネスメール作成｜例文テンプレート",
   tool,
   longDescription: "ビジネスメールのテンプレートを選んで簡単作成。お詫び、お礼、依頼など、シーン別の定型文を用意しています。",
   keywords: ['ビジネスメール 例文', 'ビジネスメール テンプレート', 'お詫びメール', 'お礼メール'],

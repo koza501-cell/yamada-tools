@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】PDFページ並べ替え｜ドラッグで順番変更",
   tool,
   longDescription: "PDFのページ順序を変更。ドラッグ&ドロップで簡単にページを並び替えられます。",
   keywords: ['PDF ページ並び替え', 'PDF 順番変更', 'PDF ページ順', 'PDF 編集'],

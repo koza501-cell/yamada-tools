@@ -52,6 +52,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】全角半角変換｜カタカナ・英数字を変換",
   tool,
   longDescription: "全角半角を一括変換。数字、英字、カタカナ、スペースの変換に対応。Excel作業やデータ入力に便利な無料ツール。",
   keywords: ["全角半角変換", "全角 半角", "半角変換", "全角変換", "カタカナ変換", "文字変換", "Excel 全角半角"],

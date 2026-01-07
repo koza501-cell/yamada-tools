@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】PDF OCR｜スキャンPDFをテキスト化",
   tool,
   longDescription: "スキャンしたPDFや画像PDFから文字を認識。検索可能なPDFに変換したり、テキストを抽出できます。",
   keywords: ['PDF OCR', '文字認識', 'スキャン PDF テキスト', '画像 文字抽出'],

@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】画像リサイズ｜サイズ変更・縮小拡大",
   tool,
   longDescription: "画像のサイズを変更。ピクセル指定やパーセント指定で、SNS投稿やWeb用に最適なサイズに調整できます。",
   keywords: ['画像リサイズ', '画像 サイズ変更', '写真 リサイズ', '画像 縮小', '画像 拡大'],

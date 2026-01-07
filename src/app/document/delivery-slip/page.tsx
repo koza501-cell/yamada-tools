@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】納品書作成｜PDF出力対応",
   tool,
   longDescription: "納品書を無料で作成。商品の納品時に同封する書類を、簡単な入力だけで作成できます。",
   keywords: ['納品書 作成', '納品書 テンプレート', '納品書 無料', '納品書 フォーマット'],

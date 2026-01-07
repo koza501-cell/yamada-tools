@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】PDFロック解除｜パスワード解除ツール",
   tool,
   longDescription: "パスワードがわかっているPDFのロックを解除。パスワード入力の手間を省きたい時や、他のPDFツールで編集したい時に便利です。",
   keywords: ['PDF ロック解除', 'PDF パスワード解除', 'PDF 保護解除', 'PDF アンロック'],

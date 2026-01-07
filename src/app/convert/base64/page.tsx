@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】Base64変換｜エンコード・デコード",
   tool,
   longDescription: "テキストや画像をBase64にエンコード・デコード。メール添付やWebでのデータ埋め込みに使われる形式です。",
   keywords: ['Base64 変換', 'Base64 エンコード', 'Base64 デコード', 'Base64 画像'],

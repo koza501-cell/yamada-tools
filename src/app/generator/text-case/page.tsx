@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】大文字小文字変換｜英字ケース変換",
   tool,
   longDescription: "大文字・小文字変換、キャメルケース・スネークケースなど、テキストの形式を変換します。",
   keywords: ['大文字 小文字 変換', 'キャメルケース', 'スネークケース', 'テキスト変換'],

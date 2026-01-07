@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】ハッシュ生成｜MD5/SHA256計算",
   tool,
   longDescription: "MD5、SHA-1、SHA-256などのハッシュ値を生成。ファイルの整合性確認やパスワードの検証に使用します。",
   keywords: ['ハッシュ生成', 'MD5', 'SHA256', 'ハッシュ値', 'チェックサム'],

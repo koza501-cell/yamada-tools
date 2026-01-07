@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】年齢計算｜生年月日から即計算",
   tool,
   longDescription: "生年月日から現在の年齢を計算。特定の日付時点での年齢や、数え年も計算できます。",
   keywords: ['年齢計算', '生年月日 年齢', '数え年 計算', '年齢 計算機'],

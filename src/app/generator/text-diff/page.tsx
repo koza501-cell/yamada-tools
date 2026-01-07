@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】テキスト比較｜2つの文章の差分表示",
   tool,
   longDescription: "2つのテキストを比較して差分を表示。変更箇所、追加箇所、削除箇所がハイライトされます。",
   keywords: ['テキスト 比較', '差分 比較', 'diff', '文章 比較'],

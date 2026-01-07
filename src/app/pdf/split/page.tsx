@@ -53,6 +53,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】PDF分割｜1ページずつ切り離し｜必要部分だけ抽出",
   tool,
   longDescription:
     "PDFを分割・ページ抽出。必要なページだけ取り出したり、1ページずつ別ファイルに。日本国内サーバーで安全処理、登録不要・完全無料。",

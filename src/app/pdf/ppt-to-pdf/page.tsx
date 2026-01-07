@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】PowerPoint→PDF変換｜pptxをPDFに",
   tool,
   longDescription: "PowerPointをPDFに変換。プレゼン資料を配布用PDFとして保存できます。",
   keywords: ['PowerPoint PDF', 'pptx PDF', 'パワポ PDF', 'プレゼン PDF'],

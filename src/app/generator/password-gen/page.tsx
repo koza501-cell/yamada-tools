@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import PasswordGenClient from "./client";
 
 export const metadata: Metadata = {
-  title: "パスワード生成 | 山田ツール - 安全なパスワード作成",
+  title: "【無料】パスワード生成｜安全な強力パスワード作成",
   description: "安全なパスワードを自動生成。大文字、小文字、数字、記号を組み合わせた強力なパスワードを作成します。",
   keywords: ["パスワード生成", "パスワード 作成", "強力なパスワード", "パスワード ジェネレーター"],
 };

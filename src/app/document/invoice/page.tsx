@@ -53,6 +53,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】請求書作成｜PDF出力｜インボイス対応",
   tool,
   longDescription: "インボイス制度対応の請求書を無料作成。消費税自動計算、源泉徴収対応、PDF出力。登録不要で今すぐ使える請求書作成ツール。",
   keywords: ["請求書 作成", "請求書 無料", "インボイス 請求書", "適格請求書 作成", "請求書 テンプレート", "フリーランス 請求書"],

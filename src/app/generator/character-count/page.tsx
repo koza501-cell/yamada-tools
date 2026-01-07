@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】文字数カウンター｜リアルタイム計測",
   tool,
   longDescription: "文字数、単語数、行数をリアルタイムでカウント。レポートやブログ記事の文字数制限確認に便利です。",
   keywords: ['文字数カウント', '文字数 数える', 'ワードカウント', '文字数チェック'],

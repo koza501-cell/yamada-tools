@@ -23,6 +23,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
+  customTitle: "【無料】PDF→Word変換｜編集可能なdocxに",
   tool,
   longDescription: "PDFをWordファイルに変換。テキストや画像を抽出して、編集可能なWord文書を作成します。",
   keywords: ['PDF Word 変換', 'PDF Word', 'PDF docx', 'PDF 編集'],
