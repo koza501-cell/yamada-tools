@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Tool, getToolsByCategory } from "@/config/tools";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import ShareButtons from "@/components/common/ShareButtons";
 
 interface FAQ {
   question: string;
@@ -296,6 +297,15 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
               <button onClick={reset} className="px-8 py-4 border-2 border-kon text-kon rounded-xl font-bold hover:bg-kon/5 transition-colors" aria-label="別のファイルを処理">
                 別のファイルを処理
               </button>
+            </div>
+            
+            {/* Share Section */}
+            <div className="mt-6 pt-6 border-t border-gray-200">
+              <p className="text-sm text-gray-500 mb-3">このツールが役に立ったら、友達にもシェアしてね！</p>
+              <ShareButtons 
+                title={`${tool.nameJa} - 山田ツール`}
+                description={tool.description}
+              />
             </div>
           </section>
         )}
