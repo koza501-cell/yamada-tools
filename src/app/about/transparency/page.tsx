@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "運営方針とセキュリティ | 山田ツール",
+  title: "運営方針とセキュリティ",
   description: "山田ツールの運営方針、セキュリティ対策、および各種ツールの免責事項について",
 };
 

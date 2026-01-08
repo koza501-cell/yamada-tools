@@ -2,7 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '会社概要 | 山田ツール',
+  title: '会社概要',
   description: '山田ツールを運営する合同会社山田トレードについて。日本国内に完結した安全なオンラインツールを提供します。',
 };
 
@@ -24,7 +24,7 @@ export default function AboutCompanyPage() {
           </h2>
           <p className="text-gray-700 text-lg leading-relaxed mb-4">
             山田ツールは、<strong className="text-kon">日本のビジネスパーソン、フリーランサー、学生の皆様</strong>が
-            日々直面する小さな課題を解決するため、71種類以上の無料オンラインツールを提供しています。
+            日々直面する小さな課題を解決するため、70種類以上の無料オンラインツールを提供しています。
           </p>
           <p className="text-gray-700 text-lg leading-relaxed">
             「ちょっとしたツールが必要な時、すぐに、無料で、安全に使える」<br />
