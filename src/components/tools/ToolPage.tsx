@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { trackToolUsage } from "@/components/common/RecentTools";
 import Link from "next/link";
 import { Tool, getToolsByCategory } from "@/config/tools";
 import Mascot, { MascotState } from "@/components/common/Mascot";
@@ -53,6 +54,10 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
     fetchContent();
   }, [tool.id]);
 
+  // Track tool usage for "Recently Used" feature
+  useEffect(() => {
+    trackToolUsage(tool.path, tool.nameJa, tool.icon);
+  }, [tool.path, tool.nameJa, tool.icon]);
   const handleFilesSelected = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = Array.from(e.target.files || []);
     setFiles((prev) => [...prev, ...selectedFiles].slice(0, tool.maxFiles));

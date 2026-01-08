@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import Link from "next/link";
 import SearchBar from "@/components/common/SearchBar";
+import RecentTools from "@/components/common/RecentTools";
 import { pdfTools, documentTools, convertTools, imageTools, generatorTools, getToolCount } from "@/config/tools";
 
 function getDynamicBlogs() {
@@ -109,6 +110,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/* Recently Used Tools */}
+      <RecentTools />
 
       {/* Section 1: PDF Tools */}
       <section className="py-12 bg-gray-50 dark:bg-gray-900">
@@ -290,7 +293,7 @@ export default function Home() {
       {/* Blog Section */}
       {(() => {
         const dynamicBlogs = getDynamicBlogs();
-        const recentBlogs = dynamicBlogs.slice(0, 3);
+        const recentBlogs = [...dynamicBlogs].sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()).slice(0, 3);
         
         if (recentBlogs.length === 0) return null;
         

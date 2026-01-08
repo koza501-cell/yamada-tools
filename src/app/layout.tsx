@@ -4,6 +4,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import BetaBanner from "@/components/common/BetaBanner";
 import FeedbackButton from "@/components/common/FeedbackButton";
+import FavoritePrompt from "@/components/common/FavoritePrompt";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { ThemeProvider } from "@/components/common/ThemeProvider";
 import GoogleAnalytics from "@/components/common/GoogleAnalytics";
@@ -173,6 +174,7 @@ export default function RootLayout({
         <main className="flex-grow">{children}</main>
         <Footer />
         <FeedbackButton />
+        <FavoritePrompt />
         <BackToTop />
         </ThemeProvider>
       </body>
