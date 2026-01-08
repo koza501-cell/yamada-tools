@@ -26,6 +26,53 @@ function isNewBlog(publishDate: string): boolean {
   return diffInDays <= 7;
 }
 
+
+// Homepage structured data
+const homepageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "山田ツール - 無料オンラインツール一覧",
+  description: "日本国内サーバーで安全に使える70種類の無料オンラインツール",
+  numberOfItems: 5,
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "PDFツール",
+      description: "PDF結合、圧縮、分割、変換など20種類のPDFツール",
+      url: "https://yamada-tools.jp/pdf"
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "書類作成",
+      description: "請求書、見積書、履歴書など10種類の書類作成ツール",
+      url: "https://yamada-tools.jp/document"
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "変換ツール",
+      description: "全角半角変換、和暦西暦変換など9種類の変換ツール",
+      url: "https://yamada-tools.jp/convert"
+    },
+    {
+      "@type": "ListItem",
+      position: 4,
+      name: "画像ツール",
+      description: "画像圧縮、リサイズ、形式変換など6種類の画像ツール",
+      url: "https://yamada-tools.jp/image"
+    },
+    {
+      "@type": "ListItem",
+      position: 5,
+      name: "計算・生成ツール",
+      description: "パスワード生成、消費税計算など20種類の計算・生成ツール",
+      url: "https://yamada-tools.jp/generator"
+    }
+  ]
+};
+
 export default function Home() {
   const toolCount = getToolCount();
   
@@ -37,6 +84,11 @@ export default function Home() {
   const availableGenTools = generatorTools.filter(t => t.available);
   
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageSchema) }}
+      />
     <div>
       {/* Hero Section - UPDATED */}
       <section className="bg-gradient-to-br from-kon to-ai text-white py-20">
@@ -452,5 +504,6 @@ export default function Home() {
         </div>
       </section>
     </div>
+    </>
   );
 }
