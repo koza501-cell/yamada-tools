@@ -4,6 +4,7 @@ import Link from "next/link";
 import SearchBar from "@/components/common/SearchBar";
 import RecentTools from "@/components/common/RecentTools";
 import { pdfTools, documentTools, convertTools, imageTools, generatorTools, getToolCount } from "@/config/tools";
+export const revalidate = 3600; // Revalidate every hour
 
 function getDynamicBlogs() {
   try {
