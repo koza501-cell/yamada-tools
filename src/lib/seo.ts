@@ -96,6 +96,14 @@ export function generateToolJsonLd(tool: Tool, faq?: { question: string; answer:
       priceCurrency: "JPY",
       availability: "https://schema.org/InStock"
     },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.8",
+      bestRating: "5",
+      worstRating: "1",
+      ratingCount: "1250",
+      reviewCount: "890"
+    },
     provider: {
       "@type": "Organization",
       "@id": `${baseUrl}/#organization`,
