@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
-import ToolPage from "@/components/tools/ToolPage";
+import Base64Client from "./client";
 
 const tool = getToolById("base64")!;
 
@@ -35,7 +35,7 @@ export default function Page() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <ToolPage tool={tool} faq={faq} seoContent={seoContent} />
+      <Base64Client faq={faq} />
     </>
   );
 }
