@@ -3,6 +3,7 @@ import path from 'path';
 import Link from "next/link";
 import SearchBar from "@/components/common/SearchBar";
 import RecentTools from "@/components/common/RecentTools";
+import NewsletterSignup from "@/components/common/NewsletterSignup";
 import { pdfTools, documentTools, convertTools, imageTools, generatorTools, getToolCount } from "@/config/tools";
 export const revalidate = 3600; // Revalidate every hour
 
@@ -421,6 +422,14 @@ export default function Home() {
         );
       })()}
 
+
+
+      {/* Newsletter Section */}
+      <section className="py-12 bg-white dark:bg-gray-800">
+        <div className="max-w-2xl mx-auto px-4">
+          <NewsletterSignup />
+        </div>
+      </section>
 
       {/* Testimonials Section */}
       <section className="py-16 bg-gray-50 dark:bg-gray-900">
