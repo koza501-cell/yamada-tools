@@ -264,6 +264,64 @@ export default function FuriganaClient() {
           </ul>
         </section>
 
+
+        {/* SEO Content: Use Cases */}
+        <section className="bg-white rounded-xl p-6 mb-6 border border-gray-200">
+          <h2 className="text-xl font-bold text-kon mb-4">🎯 こんな場面で便利</h2>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="bg-gray-50 p-4 rounded-lg">
+              <h3 className="font-bold text-kon mb-2">📚 教育現場</h3>
+              <p className="text-sm text-gray-600">小学校の教材作成、日本語学習者向けの資料にふりがなを追加。難読漢字も一瞬でルビ付けできます。</p>
+            </div>
+            <div className="bg-gray-50 p-4 rounded-lg">
+              <h3 className="font-bold text-kon mb-2">👔 ビジネス文書</h3>
+              <p className="text-sm text-gray-600">取引先の人名・社名の読み方確認。間違った読み方を防ぎ、ビジネスマナーを守れます。</p>
+            </div>
+            <div className="bg-gray-50 p-4 rounded-lg">
+              <h3 className="font-bold text-kon mb-2">🗾 地名・住所</h3>
+              <p className="text-sm text-gray-600">難読地名の読み方を確認。配送伝票や宛名書きの際に役立ちます。</p>
+            </div>
+            <div className="bg-gray-50 p-4 rounded-lg">
+              <h3 className="font-bold text-kon mb-2">🌐 外国人向け資料</h3>
+              <p className="text-sm text-gray-600">外国人従業員や観光客向けの案内文にふりがなを追加。多文化共生をサポートします。</p>
+            </div>
+          </div>
+        </section>
+
+        {/* SEO Content: FAQ */}
+        <section className="bg-white rounded-xl p-6 mb-6 border border-gray-200">
+          <h2 className="text-xl font-bold text-kon mb-4">❓ よくある質問</h2>
+          <div className="space-y-4">
+            <details className="bg-gray-50 rounded-lg p-4">
+              <summary className="font-bold cursor-pointer text-kon">人名も正確に変換できますか？</summary>
+              <p className="mt-2 text-sm text-gray-600">一般的な読み方には対応していますが、珍しい読み方（「大輔」を「だいすけ」ではなく「ひろき」と読むなど）は異なる場合があります。重要な場面では本人に確認することをお勧めします。</p>
+            </details>
+            <details className="bg-gray-50 rounded-lg p-4">
+              <summary className="font-bold cursor-pointer text-kon">ひらがな以外にも変換できますか？</summary>
+              <p className="mt-2 text-sm text-gray-600">はい、ひらがな・カタカナ・ローマ字の3種類に変換可能です。用途に合わせて選択してください。</p>
+            </details>
+            <details className="bg-gray-50 rounded-lg p-4">
+              <summary className="font-bold cursor-pointer text-kon">長文でも変換できますか？</summary>
+              <p className="mt-2 text-sm text-gray-600">はい、文章全体を一括でふりがな変換できます。レポートや記事など、長い文章でも問題ありません。</p>
+            </details>
+            <details className="bg-gray-50 rounded-lg p-4">
+              <summary className="font-bold cursor-pointer text-kon">入力したテキストは保存されますか？</summary>
+              <p className="mt-2 text-sm text-gray-600">いいえ、入力されたテキストは変換処理後すぐに削除されます。日本国内サーバーで処理され、プライバシーは完全に保護されています。</p>
+            </details>
+          </div>
+        </section>
+
+        {/* SEO Content: Tips */}
+        <section className="bg-yellow-50 border border-yellow-200 rounded-xl p-6 mb-6">
+          <h2 className="text-xl font-bold text-kon mb-3">💡 ふりがな変換のコツ</h2>
+          <ul className="text-sm text-gray-700 space-y-2">
+            <li>• <strong>人名の場合</strong>：複数の読み方がある漢字は、一般的な読み方で変換されます。「太郎」は「たろう」、「花子」は「はなこ」など。</li>
+            <li>• <strong>専門用語</strong>：医学用語や法律用語など、専門的な読み方も多くカバーしています。</li>
+            <li>• <strong>旧字体</strong>：「國」→「くに」、「會」→「かい」など旧字体にも対応しています。</li>
+            <li>• <strong>一括変換</strong>：1文字ずつではなく、文章全体をコピペして一括変換すると効率的です。</li>
+          </ul>
+        </section>
+
         <div className="mt-8 text-center">
           <Link href="/convert" className="text-kon hover:text-ai">← 変換ツール一覧に戻る</Link>
         </div>
