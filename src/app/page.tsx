@@ -182,11 +182,11 @@ export default function Home() {
               <Link
                 key={tool.id}
                 href={tool.path}
-                className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
+                className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
               >
                 <div className="text-2xl mb-2">{tool.icon}</div>
                 <h3 className="font-bold text-sm text-kon dark:text-blue-400">{tool.nameJa}</h3>
-                <p className="text-xs text-gray-500 mt-1 line-clamp-2">{tool.description}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 line-clamp-2">{tool.description}</p>
               </Link>
             ))}
           </div>
@@ -209,11 +209,11 @@ export default function Home() {
                 <Link
                   key={tool.id}
                   href={tool.path}
-                  className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
+                  className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
                 >
                   <div className="text-2xl mb-2">{tool.icon}</div>
                   <h3 className="font-bold text-sm text-kon dark:text-blue-400">{tool.nameJa}</h3>
-                <p className="text-xs text-gray-500 mt-1 line-clamp-2">{tool.description}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 line-clamp-2">{tool.description}</p>
                 </Link>
               ))}
             </div>
@@ -237,11 +237,11 @@ export default function Home() {
                 <Link
                   key={tool.id}
                   href={tool.path}
-                  className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
+                  className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
                 >
                   <div className="text-2xl mb-2">{tool.icon}</div>
                   <h3 className="font-bold text-sm text-kon dark:text-blue-400">{tool.nameJa}</h3>
-                <p className="text-xs text-gray-500 mt-1 line-clamp-2">{tool.description}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 line-clamp-2">{tool.description}</p>
                 </Link>
               ))}
             </div>
@@ -265,11 +265,11 @@ export default function Home() {
                 <Link
                   key={tool.id}
                   href={tool.path}
-                  className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
+                  className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
                 >
                   <div className="text-2xl mb-2">{tool.icon}</div>
                   <h3 className="font-bold text-sm text-kon dark:text-blue-400">{tool.nameJa}</h3>
-                <p className="text-xs text-gray-500 mt-1 line-clamp-2">{tool.description}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 line-clamp-2">{tool.description}</p>
                 </Link>
               ))}
             </div>
@@ -293,11 +293,11 @@ export default function Home() {
                 <Link
                   key={tool.id}
                   href={tool.path}
-                  className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
+                  className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
                 >
                   <div className="text-2xl mb-2">{tool.icon}</div>
                   <h3 className="font-bold text-sm text-kon dark:text-blue-400">{tool.nameJa}</h3>
-                <p className="text-xs text-gray-500 mt-1 line-clamp-2">{tool.description}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 line-clamp-2">{tool.description}</p>
                 </Link>
               ))}
             </div>
