@@ -72,9 +72,18 @@ export const metadata: Metadata = {
     description:
       "日本国内サーバーで安全に使える70の無料オンラインツール。PDF編集、画像変換、文書作成など、登録不要・完全無料。",
     siteName: "山田ツール",
+    images: [
+      {
+        url: "https://yamada-tools.jp/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "山田ツール - 日本国内サーバーの無料オンラインツール",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
+    images: ["https://yamada-tools.jp/og-image.png"],
     title: "山田ツール | 日本国内サーバーの無料オンラインツール",
     description:
       "日本国内サーバーで安全に使える70の無料オンラインツール。PDF編集、画像変換、文書作成など、登録不要・完全無料。",
