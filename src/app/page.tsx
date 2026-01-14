@@ -162,6 +162,50 @@ export default function Home() {
               ⚡ 計算・生成 ({availableGenTools.length})
             </Link>
           </div>
+
+          {/* 🔥 Popular Tools - Quick Actions */}
+          <div className="mt-8 pt-8 border-t border-white/20">
+            <p className="text-sm text-gray-300 mb-4">🔥 人気ツール - 今すぐ使う</p>
+            <div className="flex flex-wrap justify-center gap-2">
+              <Link href="/pdf/compress" className="bg-sakura/90 hover:bg-sakura text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                📄 PDF圧縮
+              </Link>
+              <Link href="/pdf/merge" className="bg-sakura/90 hover:bg-sakura text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                📑 PDF結合
+              </Link>
+              <Link href="/image/compress" className="bg-sakura/90 hover:bg-sakura text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                🖼️ 画像圧縮
+              </Link>
+              <Link href="/convert/furigana" className="bg-sakura/90 hover:bg-sakura text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                あ ふりがな
+              </Link>
+              <Link href="/document/invoice" className="bg-sakura/90 hover:bg-sakura text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                📋 請求書作成
+              </Link>
+            </div>
+          </div>
+
+          {/* 🔥 Popular Tools - Quick Actions */}
+          <div className="mt-8 pt-8 border-t border-white/20">
+            <p className="text-sm text-gray-300 mb-4">🔥 人気ツール - 今すぐ使う</p>
+            <div className="flex flex-wrap justify-center gap-2">
+              <Link href="/pdf/compress" className="bg-sakura/90 hover:bg-sakura text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                📄 PDF圧縮
+              </Link>
+              <Link href="/pdf/merge" className="bg-sakura/90 hover:bg-sakura text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                📑 PDF結合
+              </Link>
+              <Link href="/image/compress" className="bg-sakura/90 hover:bg-sakura text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                🖼️ 画像圧縮
+              </Link>
+              <Link href="/convert/furigana" className="bg-sakura/90 hover:bg-sakura text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                あ ふりがな
+              </Link>
+              <Link href="/document/invoice" className="bg-sakura/90 hover:bg-sakura text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                📋 請求書作成
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
       {/* Recently Used Tools */}

@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import BetaBanner from "@/components/common/BetaBanner";
 import FeedbackButton from "@/components/common/FeedbackButton";
 import FavoritePrompt from "@/components/common/FavoritePrompt";
 import PWAInstallPrompt from "@/components/common/PWAInstallPrompt";
@@ -178,7 +177,6 @@ export default function RootLayout({
       <body className="antialiased min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
         <GoogleAnalytics />
         <ThemeProvider>
-        <BetaBanner />
         <Header />
         <Breadcrumbs />
         <main className="flex-grow">{children}</main>
