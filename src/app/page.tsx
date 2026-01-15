@@ -211,6 +211,19 @@ export default function Home() {
       {/* Recently Used Tools */}
       <RecentTools />
 
+      {/* Media Feature Banner */}
+      <section className="py-8 bg-gradient-to-r from-blue-50 to-green-50 dark:from-gray-800 dark:to-gray-900">
+        <div className="max-w-4xl mx-auto px-4">
+          <a href="https://forest.watch.impress.co.jp/docs/digest/20250113.html" target="_blank" rel="noopener noreferrer" className="block">
+            <img
+              src="https://pub-a1dbb3c658b341fabe5015e209050298.r2.dev/mado-no-mori-banner.webp"
+              alt="窓の杜にて紹介されました - 2026年1月13日掲載"
+              className="w-full rounded-xl shadow-lg hover:shadow-xl transition-shadow"
+            />
+          </a>
+        </div>
+      </section>
+
       {/* Section 1: PDF Tools */}
       <section className="py-12 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4">
