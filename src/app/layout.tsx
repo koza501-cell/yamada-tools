@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import BottomNav from "@/components/layout/BottomNav";
 import FeedbackButton from "@/components/common/FeedbackButton";
 import FavoritePrompt from "@/components/common/FavoritePrompt";
 import PWAInstallPrompt from "@/components/common/PWAInstallPrompt";
@@ -179,8 +180,9 @@ export default function RootLayout({
         <ThemeProvider>
         <Header />
         <Breadcrumbs />
-        <main className="flex-grow">{children}</main>
+        <main className="flex-grow pb-20 md:pb-0">{children}</main>
         <Footer />
+        <BottomNav />
         <FeedbackButton />
         <FavoritePrompt />
         <PWAInstallPrompt />
