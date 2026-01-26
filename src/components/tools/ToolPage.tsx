@@ -7,6 +7,23 @@ import { Tool, getToolsByCategory } from "@/config/tools";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import ShareButtons from "@/components/common/ShareButtons";
 
+// GA4 event tracking helper
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
+const trackToolEvent = (tool: Tool, eventType: 'started' | 'completed' | 'error') => {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', `tool_${eventType}`, {
+      tool_id: tool.id,
+      tool_name: tool.nameJa,
+      tool_category: tool.category,
+    });
+  }
+};
+
 interface FAQ {
   question: string;
   answer: string;
@@ -90,9 +107,12 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
     setMascotState("working");
     setMascotMessage("頑張って処理しています...！");
 
+    // Track tool started event
+    trackToolEvent(tool, 'started');
+
     try {
       const formData = new FormData();
-      
+
       if (tool.maxFiles === 1) {
         formData.append("file", files[0]);
       } else {
@@ -122,14 +142,20 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
       setIsComplete(true);
       setMascotState("success");
       setMascotMessage("完了しました！ダウンロードしてね！");
-      
+
+      // Track tool completed event (THIS IS THE KEY METRIC)
+      trackToolEvent(tool, 'completed');
+
       // Open in new tab
       window.open(url, '_blank');
-      
+
     } catch (err) {
       setError(err instanceof Error ? err.message : "エラーが発生しました");
       setMascotState("error");
       setMascotMessage("ごめんなさい...エラーが発生しました。");
+
+      // Track tool error event
+      trackToolEvent(tool, 'error');
     } finally {
       setIsProcessing(false);
     }
@@ -168,7 +194,7 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
           <div className="text-5xl mb-4" role="img" aria-label={tool.nameJa}>{tool.icon}</div>
           <h1 className="text-3xl font-bold text-kon mb-2">{tool.nameJa}</h1>
           <p className="text-gray-600 dark:text-gray-300 text-lg">{tool.description}</p>
-          
+
           {/* Trust badges */}
           <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
             <span className="bg-green-50 text-green-700 px-3 py-1 rounded-full">✓ 完全無料</span>
@@ -234,8 +260,8 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
                           <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
                         </div>
                       </div>
-                      <button 
-                        onClick={() => removeFile(index)} 
+                      <button
+                        onClick={() => removeFile(index)}
                         className="text-red-500 hover:text-red-700 p-1"
                         aria-label={`${file.name}を削除`}
                       >
@@ -291,8 +317,8 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
             <h2 className="text-2xl font-bold text-kon mb-2">完了しました！</h2>
             <p className="text-gray-600 mb-6">ファイルのダウンロードが開始されました！</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href={pdfUrl} 
+              <a
+                href={pdfUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-8 py-4 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors"
@@ -303,11 +329,11 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
                 別のファイルを処理
               </button>
             </div>
-            
+
             {/* Share Section */}
             <div className="mt-6 pt-6 border-t border-gray-200">
               <p className="text-sm text-gray-500 mb-3">このツールが役に立ったら、友達にもシェアしてね！</p>
-              <ShareButtons 
+              <ShareButtons
                 title={`${tool.nameJa} - 山田ツール`}
                 description={tool.description}
               />
@@ -403,8 +429,8 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
             </h2>
             <div className="space-y-4">
               {faq.map((item, index) => (
-                <details 
-                  key={index} 
+                <details
+                  key={index}
                   className="bg-white rounded-xl border border-gray-100 dark:border-gray-700 overflow-hidden group"
                 >
                   <summary className="p-4 font-medium cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 list-none flex items-center justify-between">
