@@ -10,6 +10,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import { ThemeProvider } from "@/components/common/ThemeProvider";
 import GoogleAnalytics from "@/components/common/GoogleAnalytics";
 import BackToTop from "@/components/BackToTop";
+import PartnerBanner from "@/components/PartnerBanner";
 
 // Base URL for the site
 const siteUrl = "https://yamada-tools.jp";
@@ -187,6 +188,7 @@ export default function RootLayout({
         <FavoritePrompt />
         <PWAInstallPrompt />
         <BackToTop />
+        <PartnerBanner />
         </ThemeProvider>
       </body>
     </html>
