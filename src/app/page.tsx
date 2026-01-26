@@ -76,14 +76,14 @@ const homepageSchema = {
 
 export default function Home() {
   const toolCount = getToolCount();
-  
+
   // Filter only available tools
   const availablePdfTools = pdfTools.filter(t => t.available);
   const availableDocTools = documentTools.filter(t => t.available);
   const availableConvertTools = convertTools.filter(t => t.available);
   const availableImageTools = imageTools.filter(t => t.available);
   const availableGenTools = generatorTools.filter(t => t.available);
-  
+
   return (
     <>
       <script
@@ -99,12 +99,12 @@ export default function Home() {
             無料オンラインツール{toolCount.total}個<br />
             <span className="text-sakura">日本国内サーバー</span>で安全処理
           </h1>
-          
+
           <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-3xl mx-auto">
             大切なファイルは日本国内サーバーで安全に処理。<br className="hidden md:block" />
             登録不要・完全無料の{toolCount.total}のオンラインツール
           </p>
-          
+
           {/* Search Bar - NEW */}
           <div className="mb-8 flex justify-center">
             <SearchBar />
@@ -211,7 +211,7 @@ export default function Home() {
               すべて見る →
             </Link>
           </div>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3">
             {availablePdfTools.slice(0, 10).map((tool) => (
               <Link
@@ -238,7 +238,7 @@ export default function Home() {
                 すべて見る →
               </Link>
             </div>
-            
+
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-3">
               {availableDocTools.map((tool) => (
                 <Link
@@ -266,7 +266,7 @@ export default function Home() {
                 すべて見る →
               </Link>
             </div>
-            
+
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-3">
               {availableConvertTools.map((tool) => (
                 <Link
@@ -294,7 +294,7 @@ export default function Home() {
                 すべて見る →
               </Link>
             </div>
-            
+
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-3">
               {availableImageTools.map((tool) => (
                 <Link
@@ -322,7 +322,7 @@ export default function Home() {
                 すべて見る →
               </Link>
             </div>
-            
+
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-3">
               {availableGenTools.map((tool) => (
                 <Link
@@ -346,7 +346,7 @@ export default function Home() {
           <h2 className="text-xl font-bold text-kon text-center mb-10">
             選ばれる理由
           </h2>
-          
+
           <div className="grid md:grid-cols-3 gap-6">
             <div className="text-center p-6">
               <div className="text-4xl mb-4">🇯🇵</div>
@@ -356,7 +356,7 @@ export default function Home() {
                 当サービスは日本国内のサーバーで運用しています。
               </p>
             </div>
-            
+
             <div className="text-center p-6">
               <div className="text-4xl mb-4">⚡</div>
               <h3 className="font-bold text-lg mb-2">高速処理</h3>
@@ -365,7 +365,7 @@ export default function Home() {
                 お待たせしません。
               </p>
             </div>
-            
+
             <div className="text-center p-6">
               <div className="text-4xl mb-4">🔒</div>
               <h3 className="font-bold text-lg mb-2">プライバシー重視</h3>
@@ -383,9 +383,9 @@ export default function Home() {
       {(() => {
         const dynamicBlogs = getDynamicBlogs();
         const recentBlogs = [...dynamicBlogs].sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()).slice(0, 3);
-        
+
         if (recentBlogs.length === 0) return null;
-        
+
         return (
           <section className="py-16 bg-white">
             <div className="max-w-7xl mx-auto px-4">
@@ -526,6 +526,31 @@ export default function Home() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Corporate CTA Section - NEW */}
+      <section className="py-12 bg-gradient-to-r from-slate-800 to-slate-900">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="text-center md:text-left">
+              <div className="flex items-center justify-center md:justify-start gap-2 mb-2">
+                <span className="text-2xl">🏢</span>
+                <span className="text-white font-bold text-lg">法人・企業様向け</span>
+              </div>
+              <p className="text-gray-300 text-sm">
+                情報システム部門も安心のセキュリティ基準。<br className="hidden md:block" />
+                日本国内サーバー完結・60分自動削除・SSL暗号化
+              </p>
+            </div>
+            <Link
+              href="/about/business"
+              className="inline-flex items-center gap-2 bg-white text-slate-800 px-6 py-3 rounded-xl font-bold hover:bg-gray-100 transition-colors whitespace-nowrap"
+            >
+              詳しく見る
+              <span>→</span>
+            </Link>
           </div>
         </div>
       </section>

@@ -55,6 +55,12 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-bold mb-4">リンク</h3>
             <div className="space-y-2 text-sm">
+              {/* Corporate Link - Highlighted */}
+              <div>
+                <Link href="/about/business" className="inline-flex items-center gap-1 text-sakura font-medium hover:underline transition-colors">
+                  🏢 法人・企業様向け
+                </Link>
+              </div>
               <div>
                 <a href="https://www.yamadatrade.com/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-sakura transition-colors">
                   会社ウェブサイト
