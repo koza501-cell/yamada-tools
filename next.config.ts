@@ -2,10 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "standalone",
-  
+
   poweredByHeader: false,
   compress: true,
-  
+
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
@@ -40,7 +40,47 @@ const nextConfig: NextConfig = {
   },
 
   async redirects() {
-    return [];
+    return [
+      // Fix 404: Deleted blog post - redirect to image tools
+      {
+        source: "/blog/image-resize-sns-perfect-size",
+        destination: "/image/resize",
+        permanent: true,
+      },
+      // Fix 404: Garbage URLs from JS bug
+      {
+        source: "/&",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/%24", // URL encoded $
+        destination: "/",
+        permanent: true,
+      },
+      // Fix potential em-dash blog URL issue
+      {
+        source: "/blog/pdf—:slug*",
+        destination: "/blog",
+        permanent: true,
+      },
+      // Common typos and variations
+      {
+        source: "/pdf/combine",
+        destination: "/pdf/merge",
+        permanent: true,
+      },
+      {
+        source: "/image/compression",
+        destination: "/image/compress",
+        permanent: true,
+      },
+      {
+        source: "/tools/:path*",
+        destination: "/:path*",
+        permanent: true,
+      },
+    ];
   },
 };
 

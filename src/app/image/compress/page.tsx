@@ -60,11 +60,30 @@ const seoContent = {
   tips: "Webサイト用なら「標準」品質で十分きれいです。印刷用途やポートフォリオには「高品質」を選んでください。PNG透過画像も透過を保ったまま圧縮できます。",
 };
 
+// Target keywords (from Search Console):
+// - 画像圧縮 (176 imp)
+// - 画像 圧縮 (144 imp)
+// - 画像 サイズ 圧縮 (78 imp)
+// Total: 400+ impressions at position 43-85
+
 export const metadata: Metadata = generateToolMetadata({
-  customTitle: "【無料】画像圧縮｜写真を一瞬で軽量化｜画質そのまま",
+  customTitle: "画像圧縮ツール【無料】写真を80%軽量化｜画質そのまま一括処理",
   tool,
-  longDescription: "画像を無料で圧縮。JPG・PNG・WebP対応、最大80%サイズダウン。日本国内サーバーで安全処理。一括処理可能、登録不要・完全無料。",
-  keywords: ["画像圧縮", "画像 サイズ縮小", "写真 圧縮", "JPEG圧縮", "PNG圧縮", "画像 軽くする", "無料 画像圧縮", "写真 軽量化", "画像 容量 減らす"],
+  longDescription: "画像圧縮・写真圧縮ツール。JPG・PNG・WebPを最大80%サイズダウン。画質を保ったまま一括20枚まで処理可能。メール添付・Webサイト高速化・SNS投稿に最適。完全無料・登録不要・日本国内サーバーで安心処理。",
+  keywords: [
+    "画像圧縮",
+    "画像 圧縮",
+    "写真 圧縮",
+    "画像 サイズ 圧縮",
+    "JPEG圧縮",
+    "PNG圧縮",
+    "画像 軽くする",
+    "無料 画像圧縮",
+    "写真 軽量化",
+    "画像 容量 減らす",
+    "画像圧縮 オンライン",
+    "画像圧縮 無料 一括"
+  ],
 });
 
 const jsonLd = generateToolJsonLd(tool, faq);

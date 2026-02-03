@@ -11,6 +11,10 @@ const faq = [
     answer: "全国銀行協会が定めた振込データの標準形式です。企業が銀行に振込依頼をする際に使用され、給与振込や取引先への支払いなどで広く利用されています。",
   },
   {
+    question: "全銀フォーマットの作り方を教えてください",
+    answer: "本ツールでExcelやCSVファイルをアップロードし、列を指定するだけで全銀フォーマット（.txt）ファイルを自動生成できます。手作業でのデータ作成は不要です。",
+  },
+  {
     question: "どの銀行でも使えますか？",
     answer: "はい、全銀フォーマットは日本国内のほぼすべての銀行で対応しています。メガバンク、地方銀行、信用金庫、ゆうちょ銀行など幅広く利用可能です。",
   },
@@ -38,33 +42,43 @@ const faq = [
     question: "総合振込と給与振込の違いは？",
     answer: "総合振込は取引先への支払い用、給与振込は従業員への給与支払い用です。データ形式は同じですが、銀行への依頼方法が異なる場合があります。",
   },
+  {
+    question: "全銀データ作成ツールは無料ですか？",
+    answer: "はい、完全無料でご利用いただけます。会員登録も不要です。",
+  },
 ];
 
-const seoContent = {
-  intro: "経理担当者の強い味方——全銀フォーマット変換ツール。ExcelやCSVの振込リストを、銀行指定のフォーマットに一括変換。給与振込、取引先への支払い、経費精算など、毎月の振込業務を大幅に効率化します。",
-  useCases: [
-    { title: "💰 給与振込", desc: "従業員の給与データを一括変換" },
-    { title: "🏢 取引先支払い", desc: "仕入先・外注先への振込データ作成" },
-    { title: "💳 経費精算", desc: "従業員への経費払い戻しデータ" },
-    { title: "📊 一括振込", desc: "大量の振込先を効率的に処理" },
-  ],
-  tips: "銀行によってフォーマットの細かい仕様が異なる場合があります。初回は少額でテスト振込することをおすすめします。",
-};
+// Target keywords (from Search Console):
+// - 全銀フォーマット 作り方 (39 imp, 8 clicks)
+// - 全銀フォーマット変換ツール (30 imp, 7 clicks)
+// - 全銀データ作成ツール
+// - 全銀フォーマット 変換
 
 export const metadata: Metadata = generateToolMetadata({
-  customTitle: "【無料】全銀フォーマット変換｜振込データ作成",
+  customTitle: "全銀フォーマット変換・作成ツール【無料】全銀データの作り方",
   tool,
-  longDescription: "ExcelやCSVを全銀フォーマットに変換。給与振込、総合振込に対応。日本国内サーバーで安全処理、登録不要・完全無料。",
-  keywords: ["全銀フォーマット", "全銀フォーマット変換", "振込データ作成", "給与振込", "総合振込", "FB変換", "ファームバンキング"],
+  longDescription: "全銀フォーマットの作り方がわからない方へ。ExcelやCSVから全銀フォーマット（全銀データ）を無料で簡単作成。給与振込・総合振込に対応。日本国内サーバーで口座情報も安全処理。登録不要・完全無料の全銀フォーマット変換ツール。",
+  keywords: [
+    '全銀フォーマット 作り方',
+    '全銀フォーマット変換ツール',
+    '全銀データ作成ツール',
+    '全銀フォーマット 変換',
+    '全銀フォーマット Excel',
+    '全銀フォーマット CSV',
+    '給与振込 データ作成',
+    '振込データ 作成',
+    '全銀協フォーマット',
+    '銀行振込 一括',
+  ],
 });
 
 const jsonLd = generateToolJsonLd(tool, faq);
 
-export default function BankFormatPage() {
+export default function Page() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <BankFormatClient faq={faq} seoContent={seoContent} />
+      <BankFormatClient />
     </>
   );
 }
