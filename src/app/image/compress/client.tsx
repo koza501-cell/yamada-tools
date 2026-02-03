@@ -3,6 +3,7 @@
 import { useState, useRef, useCallback } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import RelatedTools, { relatedToolSets } from "@/components/common/RelatedTools";
 
 interface FAQ {
   question: string;
@@ -395,6 +396,9 @@ export default function ImageCompressClient({ faq, seoContent }: Props) {
             </>
           )}
         </section>
+
+        {/* Related Tools */}
+        <RelatedTools tools={relatedToolSets.imageCompress} title="あわせて使えるツール" />
 
         {/* Tips */}
         <section className="mt-8 bg-sakura/20 rounded-xl p-6">
