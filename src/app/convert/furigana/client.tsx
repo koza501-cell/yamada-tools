@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import RelatedTools, { relatedToolSets } from "@/components/common/RelatedTools";
 
 interface ConversionDetail {
   original: string;
@@ -197,7 +198,7 @@ export default function FuriganaClient() {
                 {copied ? "✓ コピー済み" : "コピー"}
               </button>
             </div>
-            
+
             <div className="bg-white rounded-xl p-4 mb-4">
               <p className="text-lg leading-relaxed whitespace-pre-wrap">
                 {result.converted}
@@ -264,9 +265,11 @@ export default function FuriganaClient() {
           </ul>
         </section>
 
+        {/* Related Tools */}
+        <RelatedTools tools={relatedToolSets.furigana} title="あわせて使えるツール" />
 
         {/* SEO Content: Use Cases */}
-        <section className="bg-white rounded-xl p-6 mb-6 border border-gray-200">
+        <section className="bg-white rounded-xl p-6 mb-6 border border-gray-200 mt-6">
           <h2 className="text-xl font-bold text-kon mb-4">🎯 こんな場面で便利</h2>
           <div className="grid md:grid-cols-2 gap-4">
             <div className="bg-gray-50 p-4 rounded-lg">

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import RelatedTools, { relatedToolSets } from "@/components/common/RelatedTools";
 
 interface FAQ {
   question: string;
@@ -747,8 +748,11 @@ export default function BankFormatClient({ faq, seoContent }: BankFormatClientPr
           </section>
         )}
 
+        {/* Related Tools */}
+        <RelatedTools tools={relatedToolSets.bankFormat} title="あわせて使えるツール" />
+
         {/* Usage Info */}
-        <section className="bg-sakura/20 rounded-xl p-6 mb-6">
+        <section className="bg-sakura/20 rounded-xl p-6 mb-6 mt-6">
           <h3 className="font-bold text-kon mb-3">使い方</h3>
           <ul className="text-sm text-gray-600 space-y-2">
             <li>・委託者情報（依頼元の口座情報）を入力</li>
