@@ -1,5 +1,6 @@
 "use client";
 import FinancialDisclaimer from "@/components/common/FinancialDisclaimer";
+import RelatedTools, { relatedToolSets } from "@/components/common/RelatedTools";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -75,9 +76,9 @@ export default function NenmatsuCalcClient({ faq, seoContent }: NenmatsuClientPr
   // Calculate spouse deduction (配偶者控除)
   const calcSpouseDeduction = (taxpayerIncome: number, spouseIncome: number): number => {
     if (taxpayerIncome > 10000000) return 0; // 本人の所得1000万超は対象外
-    
+
     const spouseEarnedIncome = spouseIncome - Math.min(spouseIncome * 0.3 + 80000, 550000);
-    
+
     if (spouseEarnedIncome <= 480000) {
       // 配偶者控除
       if (taxpayerIncome <= 9000000) return 380000;
@@ -135,11 +136,11 @@ export default function NenmatsuCalcClient({ faq, seoContent }: NenmatsuClientPr
 
     // Calculate tax
     let calculatedTax = calcIncomeTax(taxableIncome);
-    
+
     // 住宅ローン控除
     const housingDeduction = Math.min(housing * 0.007, 210000); // 0.7%, max 21万
     calculatedTax = Math.max(0, calculatedTax - housingDeduction);
-    
+
     // 復興特別所得税 2.1%
     calculatedTax = Math.floor(calculatedTax * 1.021);
 
@@ -225,7 +226,7 @@ export default function NenmatsuCalcClient({ faq, seoContent }: NenmatsuClientPr
 
         <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
           <h3 className="font-bold text-kon mb-4">基本情報</h3>
-          
+
           <div className="grid gap-4 mb-6">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -277,7 +278,7 @@ export default function NenmatsuCalcClient({ faq, seoContent }: NenmatsuClientPr
           </div>
 
           <h3 className="font-bold text-kon mb-4">保険料控除</h3>
-          
+
           <div className="grid gap-4 mb-6">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -313,7 +314,7 @@ export default function NenmatsuCalcClient({ faq, seoContent }: NenmatsuClientPr
           </div>
 
           <h3 className="font-bold text-kon mb-4">扶養控除</h3>
-          
+
           <div className="grid gap-4 mb-6">
             <div className="flex items-center gap-3">
               <input
@@ -363,7 +364,7 @@ export default function NenmatsuCalcClient({ faq, seoContent }: NenmatsuClientPr
           </div>
 
           <h3 className="font-bold text-kon mb-4">住宅ローン控除</h3>
-          
+
           <div className="mb-6">
             <label className="block text-sm font-medium text-gray-700 mb-1">
               住宅ローン年末残高
@@ -431,6 +432,9 @@ export default function NenmatsuCalcClient({ faq, seoContent }: NenmatsuClientPr
             ⚠️ この計算結果は概算です。実際の年末調整は会社の計算が正式となります。
           </p>
         </section>
+
+        {/* Related Tools */}
+        <RelatedTools tools={relatedToolSets.nenmatsuCalc} title="あわせて使えるツール" />
 
         <div className="mt-8 text-center">
           <Link href="/generator" className="text-kon hover:text-ai">← 計算・生成ツール一覧に戻る</Link>
