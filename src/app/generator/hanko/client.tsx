@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import ShareButtons from "@/components/common/ShareButtons";
+import RelatedTools, { relatedToolSets } from "@/components/common/RelatedTools";
 
 type HankoShape = "circle" | "square" | "oval";
 type HankoStyle = "single" | "double";
@@ -301,6 +302,9 @@ export default function HankoClient() {
             </div>
           </div>
         </section>
+
+        {/* Related Tools */}
+        <RelatedTools tools={relatedToolSets.hanko} title="あわせて使えるツール" />
 
         <section className="mt-8 bg-yellow-50 rounded-2xl border border-yellow-200 p-6">
           <h2 className="text-lg font-bold text-yellow-800 mb-2">⚠️ ご注意</h2>

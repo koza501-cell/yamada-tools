@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import RelatedTools, { relatedToolSets } from "@/components/common/RelatedTools";
 
 const ENVELOPE_SIZES = {
   naga3: { name: "長形3号", width: 120, height: 235, type: "naga", postal: "teikei" },
@@ -726,6 +727,11 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
               )}
             </div>
           )}
+
+          {/* Related Tools */}
+          <div className="mt-12">
+            <RelatedTools tools={relatedToolSets.envelope} title="あわせて使えるツール" />
+          </div>
 
           {/* FAQ */}
           {faq && faq.length > 0 && (
