@@ -10,7 +10,7 @@ interface SeoContent { intro: string; useCases?: { title: string; desc: string }
 interface Props { faq: FAQ[]; seoContent?: SeoContent; }
 
 let pdfjsLib: any = null;
-let PDFDocumentLib: any = null;
+let jsPDFLib: any = null;
 
 function loadScript(src: string): Promise<void> {
   return new Promise((resolve, reject) => {
@@ -29,9 +29,12 @@ async function ensureLibs() {
     pdfjsLib = (window as any).pdfjsLib;
     pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
   }
-  if (!PDFDocumentLib) {
-    await loadScript("/pdf-lib.min.js");
-    PDFDocumentLib = (window as any).PDFLib.PDFDocument;
+}
+
+async function ensureJsPDF() {
+  if (!jsPDFLib) {
+    await loadScript("https://unpkg.com/jspdf@2.5.2/dist/jspdf.umd.min.js");
+    jsPDFLib = (window as any).jspdf.jsPDF;
   }
 }
 
@@ -170,44 +173,69 @@ export default function CombiniPrintClient({ faq, seoContent }: Props) {
 
     try {
       await ensureLibs();
-      const originalPdf = await PDFDocumentLib.load(pdfBytes);
-      const newPdf = await PDFDocumentLib.create();
-      const totalPages = originalPdf.getPageCount();
+      await ensureJsPDF();
+      const doc = await pdfjsLib.getDocument({ data: pdfBytes.slice(0) }).promise;
+      const s = scale / 100;
+      let outputPdf: any = null;
 
-      for (let i = 0; i < totalPages; i++) {
-        const [embeddedPage] = await newPdf.embedPages(originalPdf, [i]);
-        const { width, height } = embeddedPage;
-        const newPage = newPdf.addPage([width, height]);
+      for (let i = 1; i <= doc.numPages; i++) {
+        const page = await doc.getPage(i);
+        const vp = page.getViewport({ scale: 2 }); // 2x for quality
 
-        const s = scale / 100;
-        const sw = width * s;
-        const sh = height * s;
-        const ox = (width - sw) / 2;
-        const oy = (height - sh) / 2;
+        // Render original page to canvas
+        const canvas = document.createElement("canvas");
+        canvas.width = vp.width;
+        canvas.height = vp.height;
+        const ctx = canvas.getContext("2d")!;
+        ctx.fillStyle = "#FFFFFF";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        await page.render({ canvasContext: ctx, viewport: vp }).promise;
 
-        newPage.drawPage(embeddedPage, {
-          x: ox,
-          y: oy,
-          width: sw,
-          height: sh,
-        });
+        // Create output canvas with white background + scaled content
+        const outCanvas = document.createElement("canvas");
+        outCanvas.width = vp.width;
+        outCanvas.height = vp.height;
+        const outCtx = outCanvas.getContext("2d")!;
+        outCtx.fillStyle = "#FFFFFF";
+        outCtx.fillRect(0, 0, outCanvas.width, outCanvas.height);
+
+        // Draw scaled content centered
+        const sw = vp.width * s;
+        const sh = vp.height * s;
+        const ox = (vp.width - sw) / 2;
+        const oy = (vp.height - sh) / 2;
+        outCtx.drawImage(canvas, ox, oy, sw, sh);
+
+        // Get page size in mm (PDF points to mm: 1pt = 0.352778mm)
+        const origVp = page.getViewport({ scale: 1 });
+        const widthMm = origVp.width * 0.352778;
+        const heightMm = origVp.height * 0.352778;
+        const orientation = widthMm > heightMm ? "l" : "p";
+
+        if (i === 1) {
+          outputPdf = new jsPDFLib({ orientation, unit: "mm", format: [widthMm, heightMm] });
+        } else {
+          outputPdf.addPage([widthMm, heightMm], orientation);
+        }
+
+        const imgData = outCanvas.toDataURL("image/jpeg", 0.92);
+        outputPdf.addImage(imgData, "JPEG", 0, 0, widthMm, heightMm);
       }
 
-      const outBytes = await newPdf.save();
-      const blob = new Blob([outBytes], { type: "application/pdf" });
+      doc.destroy();
       const fileName = (pdfFile?.name || "document").replace(/\.pdf$/i, "") + "_combini_yamada-tools.pdf";
-
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const a = document.createElement("a");
-        a.href = reader.result as string;
-        a.download = fileName;
-        a.style.display = "none";
-        document.body.appendChild(a);
-        a.click();
+      const blob = outputPdf.output("blob");
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = fileName;
+      a.style.display = "none";
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => {
         document.body.removeChild(a);
-      };
-      reader.readAsDataURL(blob);
+        URL.revokeObjectURL(url);
+      }, 100);
 
       setIsDone(true);
       setMascotState("success");
