@@ -1005,6 +1005,19 @@ export const allTools: Tool[] = [
   ...convertTools,
   ...imageTools,
   ...generatorTools,
+  {
+    id: "pdf-text-input",
+    nameJa: "PDFに文字入力",
+    nameEn: "PDF Text Input",
+    description: "PDFの好きな場所をクリックして文字入力。申請書・契約書の記入に最適。インストール不要",
+    icon: "✏️",
+    path: "/pdf/text-input",
+    apiEndpoint: "",
+    acceptedTypes: ".pdf",
+    maxFiles: 1,
+    category: "pdf",
+    available: true,
+  },
 ];
 
 // ============================================
