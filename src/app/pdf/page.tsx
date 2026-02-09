@@ -20,7 +20,7 @@ export default function PDFToolsPage() {
     ["protect", "unlock"].includes(t.id)
   );
   const editingTools = pdfTools.filter(t => 
-    ["page-numbers", "watermark", "reorder", "sign", "ocr"].includes(t.id)
+    ["page-numbers", "watermark", "reorder", "sign", "ocr", "pdf-text-input", "combini-print"].includes(t.id)
   );
 
   return (
