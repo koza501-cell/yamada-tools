@@ -76,7 +76,7 @@ export default function SearchBar() {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="何をしたいですか？ (⌘K)"
+          placeholder="何をしたいですか？"
           className="w-full px-4 py-3 pl-12 pr-4 rounded-xl border-2 border-gray-200 focus:border-kon focus:outline-none text-sumi"
         />
         <span className="absolute left-4 top-1/2 -translate-y-1/2 text-2xl">

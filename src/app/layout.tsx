@@ -179,9 +179,10 @@ export default function RootLayout({
       <body className="antialiased min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
         <GoogleAnalytics />
         <ThemeProvider>
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:px-4 focus:py-2 focus:bg-kon focus:text-white focus:rounded-md focus:top-2 focus:left-2">メインコンテンツへスキップ</a>
         <Header />
         <Breadcrumbs />
-        <main className="flex-grow pb-20 md:pb-0">{children}</main>
+        <main id="main-content" className="flex-grow pb-20 md:pb-0">{children}</main>
         <Footer />
         <BottomNav />
         <FeedbackButton />

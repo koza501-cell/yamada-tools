@@ -42,6 +42,10 @@ export default function HomePageSchema() {
       "email": "support@yamada-tools.jp",
       "availableLanguage": "Japanese"
     },
+    "sameAs": [
+      "https://www.facebook.com/yamada.tools/",
+      "https://x.com/YamadaToolsJP"
+    ],
     "address": {
       "@type": "PostalAddress",
       "addressCountry": "JP"
