@@ -4,7 +4,7 @@ import Link from "next/link";
 import SearchBar from "@/components/common/SearchBar";
 import RecentTools from "@/components/common/RecentTools";
 import NewsletterSignup from "@/components/common/NewsletterSignup";
-import { pdfTools, documentTools, convertTools, imageTools, generatorTools, getToolCount } from "@/config/tools";
+import { pdfTools, documentTools, convertTools, imageTools, generatorTools, getToolCount, allTools } from "@/config/tools";
 export const revalidate = 3600; // Revalidate every hour
 
 function getDynamicBlogs() {
@@ -83,6 +83,9 @@ export default function Home() {
   const availableConvertTools = convertTools.filter(t => t.available);
   const availableImageTools = imageTools.filter(t => t.available);
   const availableGenTools = generatorTools.filter(t => t.available);
+
+  // Featured tools
+  const featuredTools = allTools.filter(t => t.isFeatured && t.available);
 
   return (
     <>
@@ -186,6 +189,47 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ⭐ NEW: Featured Tools Section */}
+      {featuredTools.length > 0 && (
+        <section className="py-10 bg-gradient-to-r from-orange-50 to-amber-50 dark:from-gray-800 dark:to-gray-900">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="text-center mb-8">
+              <span className="inline-block px-4 py-1.5 bg-orange-500 text-white text-sm font-bold rounded-full mb-3">🆕 NEW</span>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">新しいツールが登場！</h2>
+              <p className="text-gray-600 dark:text-gray-300 mt-2">仕事がもっと楽になる、便利な新機能を追加しました</p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+              {featuredTools.map((tool) => (
+                <Link
+                  key={tool.id}
+                  href={tool.path}
+                  className="group bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-orange-200 dark:border-orange-800 hover:border-orange-400"
+                >
+                  <div className="p-6">
+                    <div className="flex items-start gap-4">
+                      <div className="text-4xl flex-shrink-0">{tool.icon}</div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-1">
+                          <h3 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-orange-600 transition-colors">{tool.nameJa}</h3>
+                          <span className="px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full animate-pulse">NEW</span>
+                        </div>
+                        <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{tool.description}</p>
+                        <div className="mt-3 flex items-center gap-2">
+                          <span className="text-xs bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300 px-2 py-0.5 rounded-full">✓ 無料</span>
+                          <span className="text-xs bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 px-2 py-0.5 rounded-full">🔒 ブラウザ処理</span>
+                        </div>
+                      </div>
+                      <span className="text-orange-400 group-hover:translate-x-1 transition-transform text-xl flex-shrink-0">→</span>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Recently Used Tools */}
       <RecentTools />
 
@@ -217,8 +261,11 @@ export default function Home() {
               <Link
                 key={tool.id}
                 href={tool.path}
-                className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
+                className="relative bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
               >
+                {tool.isNew && (
+                  <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full shadow-sm">NEW</span>
+                )}
                 <div className="text-2xl mb-2">{tool.icon}</div>
                 <h3 className="font-bold text-sm text-kon dark:text-blue-400">{tool.nameJa}</h3>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 line-clamp-2">{tool.description}</p>
@@ -244,8 +291,11 @@ export default function Home() {
                 <Link
                   key={tool.id}
                   href={tool.path}
-                  className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
+                  className="relative bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
                 >
+                  {tool.isNew && (
+                    <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full shadow-sm">NEW</span>
+                  )}
                   <div className="text-2xl mb-2">{tool.icon}</div>
                   <h3 className="font-bold text-sm text-kon dark:text-blue-400">{tool.nameJa}</h3>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 line-clamp-2">{tool.description}</p>
@@ -272,8 +322,11 @@ export default function Home() {
                 <Link
                   key={tool.id}
                   href={tool.path}
-                  className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
+                  className="relative bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
                 >
+                  {tool.isNew && (
+                    <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full shadow-sm">NEW</span>
+                  )}
                   <div className="text-2xl mb-2">{tool.icon}</div>
                   <h3 className="font-bold text-sm text-kon dark:text-blue-400">{tool.nameJa}</h3>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 line-clamp-2">{tool.description}</p>
@@ -300,8 +353,11 @@ export default function Home() {
                 <Link
                   key={tool.id}
                   href={tool.path}
-                  className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
+                  className="relative bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
                 >
+                  {tool.isNew && (
+                    <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full shadow-sm">NEW</span>
+                  )}
                   <div className="text-2xl mb-2">{tool.icon}</div>
                   <h3 className="font-bold text-sm text-kon dark:text-blue-400">{tool.nameJa}</h3>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 line-clamp-2">{tool.description}</p>
@@ -328,8 +384,11 @@ export default function Home() {
                 <Link
                   key={tool.id}
                   href={tool.path}
-                  className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
+                  className="relative bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
                 >
+                  {tool.isNew && (
+                    <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full shadow-sm">NEW</span>
+                  )}
                   <div className="text-2xl mb-2">{tool.icon}</div>
                   <h3 className="font-bold text-sm text-kon dark:text-blue-400">{tool.nameJa}</h3>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 line-clamp-2">{tool.description}</p>

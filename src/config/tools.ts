@@ -10,13 +10,44 @@ export interface Tool {
   maxFiles: number;
   category: "pdf" | "document" | "convert" | "image" | "generator";
   available: boolean;
+  isNew?: boolean;
+  isFeatured?: boolean;
 }
 
 // ============================================
-// Section 1: PDFツール (20 tools) ✅ DONE
+// Section 1: PDFツール (22 tools)
 // ============================================
 export const pdfTools: Tool[] = [
-  // Core Tools (必須ツール)
+  {
+    id: "pdf-text-input",
+    nameJa: "PDFに文字入力",
+    nameEn: "PDF Text Input",
+    description: "PDFに直接テキストやハンコを追加。申請書・契約書の記入に最適。登録不要・ブラウザ処理で安全",
+    icon: "✏️",
+    path: "/pdf/text-input",
+    apiEndpoint: "",
+    acceptedTypes: ".pdf",
+    maxFiles: 1,
+    category: "pdf",
+    available: true,
+    isNew: true,
+    isFeatured: true,
+  },
+  {
+    id: "combini-print",
+    nameJa: "コンビニ印刷用 余白追加",
+    nameEn: "Combini Print Fixer",
+    description: "コンビニ印刷で端が切れる問題を解決。95%縮小＋余白追加でセブン・ローソン・ファミマ対応",
+    icon: "🏪",
+    path: "/pdf/combini-print",
+    apiEndpoint: "",
+    acceptedTypes: ".pdf",
+    maxFiles: 1,
+    category: "pdf",
+    available: true,
+    isNew: true,
+    isFeatured: true,
+  },
   {
     id: "merge",
     nameJa: "PDF結合",
@@ -82,7 +113,6 @@ export const pdfTools: Tool[] = [
     category: "pdf",
     available: true,
   },
-  // Conversion Tools (変換ツール)
   {
     id: "image-to-pdf",
     nameJa: "画像→PDF",
@@ -187,7 +217,6 @@ export const pdfTools: Tool[] = [
     category: "pdf",
     available: true,
   },
-  // Security Tools (セキュリティツール)
   {
     id: "protect",
     nameJa: "PDF保護",
@@ -214,7 +243,6 @@ export const pdfTools: Tool[] = [
     category: "pdf",
     available: true,
   },
-  // Editing Tools (編集ツール)
   {
     id: "page-numbers",
     nameJa: "ページ番号追加",
@@ -267,7 +295,6 @@ export const pdfTools: Tool[] = [
     category: "pdf",
     available: true,
   },
-  // OCR Tool
   {
     id: "ocr",
     nameJa: "PDF OCR",
@@ -569,7 +596,7 @@ export const convertTools: Tool[] = [
 ];
 
 // ============================================
-// Section 4: 画像ツール (8 tools)
+// Section 4: 画像ツール
 // ============================================
 export const imageTools: Tool[] = [
   {
@@ -1059,6 +1086,14 @@ export const getToolsByCategory = (category: Tool["category"]): Tool[] => {
 
 export const getAvailableTools = (): Tool[] => {
   return allTools.filter(t => t.available);
+};
+
+export const getNewTools = (): Tool[] => {
+  return allTools.filter(t => t.isNew && t.available);
+};
+
+export const getFeaturedTools = (): Tool[] => {
+  return allTools.filter(t => t.isFeatured && t.available);
 };
 
 export const getToolCount = () => ({
