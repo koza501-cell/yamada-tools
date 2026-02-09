@@ -40,7 +40,7 @@ export default function GifMakerClient({ faq, seoContent }: Props) {
       if (!window.GIF) {
         await new Promise((resolve, reject) => {
           const s = document.createElement("script");
-          s.src = "https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.js";
+          s.src = "/gif.js";
           s.onload = resolve; s.onerror = reject;
           document.head.appendChild(s);
         });
@@ -48,7 +48,7 @@ export default function GifMakerClient({ faq, seoContent }: Props) {
       const firstImg = await loadImg(frames[0]);
       const gif = new window.GIF({
         workers: 2, quality: 10,
-        workerScript: "https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.worker.js",
+        workerScript: "/gif.worker.js",
         width: firstImg.naturalWidth, height: firstImg.naturalHeight,
       });
       for (const src of frames) {
