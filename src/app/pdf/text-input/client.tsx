@@ -440,6 +440,26 @@ export default function PdfTextClient({ faq, seoContent }: Props) {
 
   return (
     <div className="max-w-4xl mx-auto">
+      {/* Header */}
+      <nav className="mb-6 text-sm">
+        <ol className="flex items-center gap-2 text-gray-500">
+          <li><a href="/" className="hover:text-orange-600">ホーム</a></li>
+          <li>/</li>
+          <li><a href="/pdf" className="hover:text-orange-600">PDFツール</a></li>
+          <li>/</li>
+          <li className="text-orange-600 font-medium">PDFに文字入力</li>
+        </ol>
+      </nav>
+      <header className="text-center mb-8">
+        <div className="text-5xl mb-4">✏️</div>
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">PDFに文字入力</h1>
+        <p className="text-gray-600 dark:text-gray-300 text-lg">申請書・契約書・履歴書に直接テキスト＆ハンコを追加</p>
+        <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
+          <span className="bg-green-50 text-green-700 px-3 py-1 rounded-full">✓ 完全無料・登録不要</span>
+          <span className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full">🔒 ブラウザ内処理</span>
+          <span className="bg-purple-50 text-purple-700 px-3 py-1 rounded-full">📱 スマホ対応</span>
+        </div>
+      </header>
       {/* Step Indicators */}
       <div className="flex justify-center gap-2 mb-6 flex-wrap">
         {[
