@@ -103,6 +103,8 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   );
 }
 
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
   const blogsPath = path.join(process.cwd(), 'src/data/dynamicBlogs.json');
   
