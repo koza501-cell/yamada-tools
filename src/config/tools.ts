@@ -593,6 +593,19 @@ export const convertTools: Tool[] = [
     category: "convert",
     available: true,
   },
+  {
+    id: "tsubo-converter",
+    nameJa: "坪・面積変換",
+    nameEn: "Tsubo Area Converter",
+    description: "坪（tsubo）を平米・畳・sq ft・acres・ヘクタールに一括変換",
+    icon: "📐",
+    path: "/convert/tsubo-converter",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "convert",
+    available: true,
+  },
 ];
 
 // ============================================
