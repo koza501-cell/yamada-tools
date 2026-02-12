@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import Link from "next/link";
 import SearchBar from "@/components/common/SearchBar";
+import HeroAnimation from "@/components/common/HeroAnimation";
 import RecentTools from "@/components/common/RecentTools";
 import NewsletterSignup from "@/components/common/NewsletterSignup";
 import { pdfTools, documentTools, convertTools, imageTools, generatorTools, getToolCount, allTools } from "@/config/tools";
@@ -108,6 +109,8 @@ export default function Home() {
             登録不要・完全無料の{toolCount.total}のオンラインツール
           </p>
 
+          {/* Hero Animation */}
+          <HeroAnimation />
           {/* Search Bar - NEW */}
           <div className="mb-8 flex justify-center">
             <SearchBar />
