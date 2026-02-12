@@ -466,7 +466,7 @@ export default function Home() {
                   >
                     <div className="relative h-48 bg-gradient-to-br from-blue-500 to-purple-600">
                       {post.featuredImage && (
-                        <img src={post.featuredImage} alt={post.title} className="w-full h-48 object-cover" />
+                        <img src={post.featuredImage} alt={post.title} className="w-full h-48 object-cover" loading="lazy" />
                       )}
                       {isNewBlog(post.publishDate) && (
                         <span className="absolute top-4 right-4 px-3 py-1 bg-red-500 text-white text-sm font-bold rounded-full">

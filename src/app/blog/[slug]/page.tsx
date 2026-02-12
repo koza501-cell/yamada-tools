@@ -32,7 +32,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           <img 
             src={blog.featuredImage} 
             alt={blog.title}
-            className="w-full max-h-96 object-cover rounded-lg shadow-lg"
+            className="w-full max-h-96 object-cover rounded-lg shadow-lg" loading="lazy"
           />
         </div>
       )}
