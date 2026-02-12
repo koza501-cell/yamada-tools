@@ -11,7 +11,7 @@ export default function FavoritePrompt() {
     const toolUseCount = parseInt(localStorage.getItem("yamada_tool_count") || "0");
     const promptDismissed = localStorage.getItem("yamada_favorite_dismissed");
     
-    if (toolUseCount >= 1 && !promptDismissed) {
+    if (toolUseCount >= 3 && !promptDismissed) {
       // Show after 3 seconds
       const timer = setTimeout(() => setShow(true), 3000);
       return () => clearTimeout(timer);

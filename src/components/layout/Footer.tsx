@@ -116,6 +116,11 @@ export default function Footer() {
                   特定商取引法に基づく表記
                 </Link>
               </div>
+              <div>
+                <a href="/sitemap.xml" className="text-gray-300 hover:text-sakura transition-colors">
+                  サイトマップ
+                </a>
+              </div>
             </div>
           </div>
         </div>

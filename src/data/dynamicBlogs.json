@@ -22,7 +22,7 @@
     "slug": "blog-dec14-pdf-compress",
     "title": "メールが送れない！25MBのPDFを一瞬で3.2MBに圧縮した話",
     "description": "締切15分前、25MBのPDFが送れない。無料ツールは失敗、手動削除も間に合わない。最終的に見つけた30秒解決法とは？",
-    "category": "PDF tools",
+    "category": "PDF編集",
     "tags": [
       "PDF圧縮",
       "メール添付",
@@ -38,7 +38,7 @@
     "slug": "blog-dec17-pdf-email",
     "title": "PDFファイルが送れない！25MBを3MBに圧縮した実践ガイド",
     "description": "先週金曜の午後3時、クライアントへの提案書送信でエラー。10MB制限の壁をどう突破したか。",
-    "category": "PDF tools",
+    "category": "PDF編集",
     "tags": [
       "PDF",
       "メール制限",
@@ -54,7 +54,7 @@
     "slug": "blog-dec19-pdf-merge",
     "title": "PDF結合で失敗した3つの経験と、最終的に見つけた解決法",
     "description": "昨日火曜の午前10時。契約書3ファイル、見積書2ファイル、参考資料4ファイル。合計9個のPDFを1つにまとめて提出。締切は正午。失敗の連続でした。",
-    "category": "PDF tools",
+    "category": "PDF編集",
     "tags": [
       "PDF結合",
       "失敗談",
@@ -102,7 +102,7 @@
     "slug": "blog-dec26-pdf-split",
     "title": "PDF分割ツールの選び方【2025年版】3つのツールを実際に比較した結果",
     "description": "先週、50ページの契約書PDFから5-12ページだけを抽出。3つのツールを試したら、全然違いました。",
-    "category": "PDF tools",
+    "category": "PDF編集",
     "tags": [
       "PDF分割",
       "ツール比較",
@@ -118,7 +118,7 @@
     "slug": "blog-dec28-pdf-password",
     "title": "PDFにパスワードをかける最も簡単な方法【失敗談あり】",
     "description": "先週金曜の午後4時。人事部から個人情報PDFを送る依頼。必ずパスワード必須。意外と難しかった。",
-    "category": "PDF tools",
+    "category": "PDF編集",
     "tags": [
       "PDFセキュリティ",
       "パスワード保護",
@@ -134,7 +134,7 @@
     "slug": "blog-dec31-invoice",
     "title": "年末の請求書作成で焦った話【2025年インボイス対応】",
     "description": "昨日12月30日の午後2時。年内最後の請求書を作成。インボイス番号どこに書く？2025年様式が変わった。",
-    "category": "Document creation",
+    "category": "書類作成",
     "tags": [
       "請求書",
       "インボイス",
@@ -150,7 +150,7 @@
     "slug": "blog-jan02-hanko",
     "title": "デジタル判子の作り方【在宅ワーク必須】失敗から学んだ最適解",
     "description": "昨年12月の初旬、在宅ワークが始まって1週間目。上司から稟議書に判子を押して送り返す依頼。判子は会社のデスクに。",
-    "category": "Document creation",
+    "category": "書類作成",
     "tags": [
       "デジタル判子",
       "在宅ワーク",
@@ -269,7 +269,7 @@
     "slug": "kakutei-shinkoku-receipt-pdf-2026",
     "title": "【2026年版】確定申告の領収書をPDFでまとめる方法｜スマホで簡単スキャン＆整理術",
     "description": "確定申告の領収書整理に困っていませんか？スマホで領収書をPDF化し、月別・経費別に整理する方法を解説。電子帳簿保存法対応の保存方法も紹介。",
-    "category": "PDF tools",
+    "category": "PDF編集",
     "tags": [
       "確定申告",
       "領収書",

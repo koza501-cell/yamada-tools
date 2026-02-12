@@ -10,7 +10,6 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import { ThemeProvider } from "@/components/common/ThemeProvider";
 import GoogleAnalytics from "@/components/common/GoogleAnalytics";
 import BackToTop from "@/components/BackToTop";
-import PartnerBanner from "@/components/PartnerBanner";
 
 // Base URL for the site
 const siteUrl = "https://yamada-tools.jp";
@@ -29,7 +28,7 @@ export const metadata: Metadata = {
     template: "%s | 山田ツール",
   },
   description:
-    "日本国内サーバーで安全に使える70の無料オンラインツール。PDF編集、画像変換、文書作成など、登録不要・完全無料でご利用いただけます。",
+    "日本国内サーバーで安全に使える89の無料オンラインツール。PDF編集、画像変換、文書作成など、登録不要・完全無料でご利用いただけます。",
   keywords: [
     "オンラインツール",
     "無料",
@@ -71,7 +70,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     title: "山田ツール | 日本国内サーバーの無料オンラインツール",
     description:
-      "日本国内サーバーで安全に使える70の無料オンラインツール。PDF編集、画像変換、文書作成など、登録不要・完全無料。",
+      "日本国内サーバーで安全に使える89の無料オンラインツール。PDF編集、画像変換、文書作成など、登録不要・完全無料。",
     siteName: "山田ツール",
     images: [
       {
@@ -87,7 +86,7 @@ export const metadata: Metadata = {
     images: ["https://yamada-tools.jp/og-image.png"],
     title: "山田ツール | 日本国内サーバーの無料オンラインツール",
     description:
-      "日本国内サーバーで安全に使える70の無料オンラインツール。PDF編集、画像変換、文書作成など、登録不要・完全無料。",
+      "日本国内サーバーで安全に使える89の無料オンラインツール。PDF編集、画像変換、文書作成など、登録不要・完全無料。",
   },
   alternates: {
     canonical: siteUrl,
@@ -189,7 +188,6 @@ export default function RootLayout({
         <FavoritePrompt />
         <PWAInstallPrompt />
         <BackToTop />
-        <PartnerBanner />
         </ThemeProvider>
       </body>
     </html>

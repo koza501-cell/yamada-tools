@@ -14,6 +14,7 @@
 
 /* Smooth scrolling */
 html {
+  font-size: 16px;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
 }
@@ -45,7 +46,8 @@ html {
 /* Mobile responsive improvements */
 @media (max-width: 640px) {
   html {
-    font-size: 14px;
+  font-size: 16px;
+    font-size: 15px;
   }
   
   /* Prevent horizontal scroll */
@@ -105,6 +107,7 @@ body {
   }
   
   html {
+  font-size: 16px;
     scroll-behavior: auto;
   }
 }
