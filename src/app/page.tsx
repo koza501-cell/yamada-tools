@@ -256,8 +256,8 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3">
-            {availablePdfTools.slice(0, 10).map((tool) => (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+            {availablePdfTools.slice(0, 6).map((tool) => (
               <Link
                 key={tool.id}
                 href={tool.path}
@@ -286,8 +286,8 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-3">
-              {availableDocTools.map((tool) => (
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+              {availableDocTools.slice(0, 6).map((tool) => (
                 <Link
                   key={tool.id}
                   href={tool.path}
@@ -317,8 +317,8 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-3">
-              {availableConvertTools.map((tool) => (
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+              {availableConvertTools.slice(0, 6).map((tool) => (
                 <Link
                   key={tool.id}
                   href={tool.path}
@@ -348,8 +348,8 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-3">
-              {availableImageTools.map((tool) => (
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+              {availableImageTools.slice(0, 6).map((tool) => (
                 <Link
                   key={tool.id}
                   href={tool.path}
@@ -379,8 +379,8 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-3">
-              {availableGenTools.map((tool) => (
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+              {availableGenTools.slice(0, 6).map((tool) => (
                 <Link
                   key={tool.id}
                   href={tool.path}
