@@ -7,6 +7,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isMac, setIsMac] = useState(true);
 
   const navItems = [
     { href: "/pdf", icon: "📄", label: "PDF" },
@@ -16,6 +17,11 @@ export default function Header() {
     { href: "/generator", icon: "⚡", label: "計算・生成" },
     { href: "/blog", icon: "📝", label: "ブログ" },
   ];
+
+  // Detect OS for keyboard shortcut display
+  useEffect(() => {
+    setIsMac(navigator.platform.toUpperCase().indexOf("MAC") >= 0);
+  }, []);
 
   // Keyboard shortcut (Cmd+K or Ctrl+K)
   useEffect(() => {
@@ -68,7 +74,7 @@ export default function Header() {
               >
                 <span>🔍</span>
                 <span className="text-sm">検索</span>
-                <kbd className="hidden lg:inline-block text-xs bg-white/20 px-1.5 py-0.5 rounded">⌘K</kbd>
+                <kbd className="hidden lg:inline-block text-xs bg-white/20 px-1.5 py-0.5 rounded">{isMac ? "⌘K" : "Ctrl+K"}</kbd>
               </button>
               <ThemeToggle />
             </nav>
