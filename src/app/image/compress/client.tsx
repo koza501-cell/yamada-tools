@@ -399,6 +399,26 @@ export default function ImageCompressClient({ faq, seoContent }: Props) {
 
         {/* Related Tools */}
         <RelatedTools tools={relatedToolSets.imageCompress} title="あわせて使えるツール" />
+        {/* SEO Content - Intro */}
+        {seoContent && (
+          <section className="mt-8 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6 border border-blue-100">
+            <p className="text-gray-700 leading-relaxed">{seoContent.intro}</p>
+          </section>
+        )}
+        {/* Use Cases */}
+        {seoContent?.useCases && (
+          <section className="mt-8">
+            <h2 className="font-bold text-kon mb-4 text-lg">こんな場面で活躍</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {seoContent.useCases.map((uc, i) => (
+                <div key={i} className="bg-white rounded-xl p-4 border border-gray-100">
+                  <h3 className="font-bold text-kon mb-2">{uc.title}</h3>
+                  <p className="text-sm text-gray-600">{uc.desc}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Tips */}
         <section className="mt-8 bg-sakura/20 rounded-xl p-6">
