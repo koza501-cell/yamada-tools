@@ -1,4 +1,5 @@
 "use client";
+import MegaMenu from "./MegaMenu";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import ThemeToggle from "@/components/common/ThemeToggle";
@@ -8,13 +9,14 @@ export default function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isMac, setIsMac] = useState(true);
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
 
   const navItems = [
-    { href: "/pdf", icon: "📄", label: "PDF" },
-    { href: "/document", icon: "📝", label: "書類作成" },
-    { href: "/convert", icon: "🔄", label: "変換" },
-    { href: "/image", icon: "🖼️", label: "画像" },
-    { href: "/generator", icon: "⚡", label: "計算・生成" },
+    { href: "/pdf", icon: "📄", label: "PDF", category: "pdf" as const },
+    { href: "/document", icon: "📝", label: "書類作成", category: "document" as const },
+    { href: "/convert", icon: "🔄", label: "変換", category: "convert" as const },
+    { href: "/image", icon: "🖼️", label: "画像", category: "image" as const },
+    { href: "/generator", icon: "⚡", label: "計算・生成", category: "generator" as const },
     { href: "/blog", icon: "📝", label: "ブログ" },
   ];
 
@@ -56,6 +58,25 @@ export default function Header() {
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-6">
               {navItems.map((item) => (
+                item.category ? (
+                  <div
+                    key={item.href}
+                    className="relative"
+                    onMouseEnter={() => setActiveMenu(item.category || null)}
+                  >
+                    <Link
+                      href={item.href}
+                      className="flex items-center gap-1 hover:text-sakura transition-colors"
+                    >
+                      <span className="text-lg">{item.icon}</span>
+                      <span className="text-sm font-medium">{item.label}</span>
+                      <span className="text-xs">▼</span>
+                    </Link>
+                    {activeMenu === item.category && (
+                      <MegaMenu category={item.category} href={item.href} onClose={() => setActiveMenu(null)} />
+                    )}
+                  </div>
+                ) : (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -64,6 +85,7 @@ export default function Header() {
                   <span className="text-lg">{item.icon}</span>
                   <span className="text-sm font-medium">{item.label}</span>
                 </Link>
+                )
               ))}
               
               {/* Search Button */}
@@ -104,6 +126,25 @@ export default function Header() {
           {isMenuOpen && (
             <nav className="md:hidden py-4 border-t border-white/10">
               {navItems.map((item) => (
+                item.category ? (
+                  <div
+                    key={item.href}
+                    className="relative"
+                    onMouseEnter={() => setActiveMenu(item.category || null)}
+                  >
+                    <Link
+                      href={item.href}
+                      className="flex items-center gap-1 hover:text-sakura transition-colors"
+                    >
+                      <span className="text-lg">{item.icon}</span>
+                      <span className="text-sm font-medium">{item.label}</span>
+                      <span className="text-xs">▼</span>
+                    </Link>
+                    {activeMenu === item.category && (
+                      <MegaMenu category={item.category} href={item.href} onClose={() => setActiveMenu(null)} />
+                    )}
+                  </div>
+                ) :
                 <Link
                   key={item.href}
                   href={item.href}
