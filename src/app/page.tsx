@@ -130,6 +130,9 @@ export default function Home() {
             <span className="bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm font-medium">
               ✨ 登録不要・完全無料
             </span>
+            <span className="bg-sakura/80 backdrop-blur px-4 py-2 rounded-full text-sm font-bold">
+              📊 累計 125,000+ ファイル処理
+            </span>
           </div>
 
           {/* 5 Category Buttons */}
