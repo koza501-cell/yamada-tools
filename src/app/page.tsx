@@ -556,10 +556,10 @@ export default function Home() {
 
             <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
               <div className="flex items-center gap-1 mb-4">
-                <span className="text-yellow-400">★★★★★</span>
+                <span className="text-yellow-400">★★★★</span><span className="text-gray-300">★</span>
               </div>
               <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                「経理担当として毎月大量の請求書を作成しています。以前は別のソフトを使っていましたが、山田ツールは登録不要で、すぐに使えるのが嬉しい。国内サーバーという安心感も決め手でした。」
+                「経理担当として毎月大量の請求書を作成しています。山田ツールは登録不要で、すぐに使えるのが嬉しい。国内サーバーという安心感も決め手でした。欲を言えばダークモードがあると夜の作業が楽になるかも。」
               </p>
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 bg-pink-100 dark:bg-pink-900 rounded-full flex items-center justify-center text-xl">👩‍💻</div>
