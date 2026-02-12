@@ -262,7 +262,7 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
                       </div>
                       <button
                         onClick={() => removeFile(index)}
-                        className="text-red-500 hover:text-red-700 p-1"
+                        className="text-red-500 hover:text-red-700 p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
                         aria-label={`${file.name}を削除`}
                       >
                         ✕

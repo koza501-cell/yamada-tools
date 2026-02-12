@@ -83,14 +83,14 @@ export default function Header() {
             <div className="md:hidden flex items-center gap-2">
               <button
                 onClick={() => setIsSearchOpen(true)}
-                className="p-2 hover:bg-white/10 rounded-lg"
+                className="p-3 hover:bg-white/10 rounded-lg min-w-[44px] min-h-[44px] flex items-center justify-center"
                 aria-label="検索"
               >
                 <span className="text-xl">🔍</span>
               </button>
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="p-2"
+                className="p-3 min-w-[44px] min-h-[44px] flex items-center justify-center"
                 aria-label="メニュー"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
