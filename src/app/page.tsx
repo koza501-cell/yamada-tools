@@ -168,31 +168,24 @@ export default function Home() {
               ⚡ 計算・生成 ({availableGenTools.length})
             </Link>
           </div>
-
-          {/* 🔥 Popular Tools - Quick Actions */}
-          <div className="mt-8 pt-8 border-t border-white/20">
-            <p className="text-sm text-gray-300 mb-4">🔥 人気ツール - 今すぐ使う</p>
-            <div className="flex flex-wrap justify-center gap-2">
-              <Link href="/pdf/compress" className="bg-sakura/90 hover:bg-sakura text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
-                📄 PDF圧縮
-              </Link>
-              <Link href="/pdf/merge" className="bg-sakura/90 hover:bg-sakura text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
-                📑 PDF結合
-              </Link>
-              <Link href="/image/compress" className="bg-sakura/90 hover:bg-sakura text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
-                🖼️ 画像圧縮
-              </Link>
-              <Link href="/convert/furigana" className="bg-sakura/90 hover:bg-sakura text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
-                あ ふりがな
-              </Link>
-              <Link href="/document/invoice" className="bg-sakura/90 hover:bg-sakura text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
-                📋 請求書作成
-              </Link>
-            </div>
-          </div>
         </div>
       </section>
 
+      {/* 🔥 Popular Tools Section - Below Fold */}
+      <section className="py-8 bg-gradient-to-r from-rose-50 to-orange-50 dark:from-gray-800 dark:to-gray-900">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-6">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white">🔥 人気ツール - 今すぐ使う</h2>
+          </div>
+          <div className="flex flex-wrap justify-center gap-3">
+            <Link href="/pdf/compress" className="bg-white shadow-md hover:shadow-lg text-kon px-5 py-3 rounded-xl font-medium transition-all hover:scale-105">📄 PDF圧縮</Link>
+            <Link href="/pdf/merge" className="bg-white shadow-md hover:shadow-lg text-kon px-5 py-3 rounded-xl font-medium transition-all hover:scale-105">📑 PDF結合</Link>
+            <Link href="/image/compress" className="bg-white shadow-md hover:shadow-lg text-kon px-5 py-3 rounded-xl font-medium transition-all hover:scale-105">🖼️ 画像圧縮</Link>
+            <Link href="/convert/furigana" className="bg-white shadow-md hover:shadow-lg text-kon px-5 py-3 rounded-xl font-medium transition-all hover:scale-105">あ ふりがな</Link>
+            <Link href="/document/invoice" className="bg-white shadow-md hover:shadow-lg text-kon px-5 py-3 rounded-xl font-medium transition-all hover:scale-105">📋 請求書作成</Link>
+          </div>
+        </div>
+      </section>
       {/* ⭐ NEW: Featured Tools Section */}
       {featuredTools.length > 0 && (
         <section className="py-10 bg-gradient-to-r from-orange-50 to-amber-50 dark:from-gray-800 dark:to-gray-900">
