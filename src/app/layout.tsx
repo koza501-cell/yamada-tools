@@ -3,13 +3,12 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import BottomNav from "@/components/layout/BottomNav";
-import FeedbackButton from "@/components/common/FeedbackButton";
+import FloatingActions from "@/components/common/FloatingActions";
 import FavoritePrompt from "@/components/common/FavoritePrompt";
 import PWAInstallPrompt from "@/components/common/PWAInstallPrompt";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { ThemeProvider } from "@/components/common/ThemeProvider";
 import GoogleAnalytics from "@/components/common/GoogleAnalytics";
-import BackToTop from "@/components/BackToTop";
 
 // Base URL for the site
 const siteUrl = "https://yamada-tools.jp";
@@ -184,10 +183,9 @@ export default function RootLayout({
         <main id="main-content" className="flex-grow pb-20 md:pb-0">{children}</main>
         <Footer />
         <BottomNav />
-        <FeedbackButton />
+        <FloatingActions />
         <FavoritePrompt />
         <PWAInstallPrompt />
-        <BackToTop />
         </ThemeProvider>
       </body>
     </html>
