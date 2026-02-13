@@ -1,4 +1,5 @@
 "use client";
+import { useUsageLimit } from "@/hooks/useUsageLimit";
 
 import { useState, useEffect } from "react";
 import { trackToolUsage } from "@/components/common/RecentTools";
@@ -6,6 +7,7 @@ import Link from "next/link";
 import { Tool, getToolsByCategory } from "@/config/tools";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import ShareButtons from "@/components/common/ShareButtons";
+import UsageLimitBanner from "@/components/common/UsageLimitBanner";
 
 // GA4 event tracking helper
 declare global {
@@ -52,6 +54,19 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
   const [dynamicContent, setDynamicContent] = useState<string | null>(null);
   const [mascotState, setMascotState] = useState<MascotState>("idle");
   const [mascotMessage, setMascotMessage] = useState<string | undefined>(undefined);
+  const { usage, recordUsage } = useUsageLimit(tool.id);
+
+  // Update mascot based on usage
+  useEffect(() => {
+    if (usage?.is_limited) {
+      setMascotState("error");
+      setMascotMessage("今日の無料枠は終わりだよ...PROプランで無制限に使えるよ！");
+    } else if (usage?.remaining === 1) {
+      setMascotMessage("残り1回だよ！PROなら無制限に使えるよ♪");
+    } else if (usage?.remaining === 2) {
+      setMascotMessage("残り2回！登録すると便利だよ〜");
+    }
+  }, [usage]);
 
   // Fetch dynamic SEO content from admin API
   useEffect(() => {
@@ -95,6 +110,13 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
   };
 
   const handleSubmit = async () => {
+    // Check usage limit first
+    if (usage?.is_limited) {
+      setError("本日の無料枠を使い切りました。PROプランで無制限に利用できます。");
+      setMascotState("error");
+      setMascotMessage("今日の分は終わりだよ...");
+      return;
+    }
     if (files.length === 0) {
       setError("ファイルを選択してください");
       setMascotState("error");
@@ -139,6 +161,7 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
       const blob = await response.blob();
       const url = URL.createObjectURL(blob);
       setPdfUrl(url);
+      await recordUsage();
       setIsComplete(true);
       setMascotState("success");
       setMascotMessage("完了しました！ダウンロードしてね！");
@@ -213,6 +236,10 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
             {/* Ai-chan Mascot */}
             <div className="mb-6">
               <Mascot state={mascotState} message={mascotMessage} />
+            </div>
+            {/* Usage Limit Banner */}
+            <div className="mb-6">
+              <UsageLimitBanner usage={usage} />
             </div>
 
             {/* Dropzone */}
