@@ -1,40 +1,21 @@
 {
-  "name": "山田ツール - 無料オンラインPDFツール",
+  "name": "山田ツール - 無料オンラインツール",
   "short_name": "山田ツール",
-  "description": "日本国内サーバーで安心・安全。PDF結合・圧縮・分割・変換など20以上の無料ツール。",
+  "description": "日本国内サーバーで安全に使える無料オンラインツール。PDF編集、画像圧縮、書類作成など89種類",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#FFFFFF",
-  "theme_color": "#223A70",
-  "orientation": "portrait-primary",
-  "lang": "ja",
+  "background_color": "#1e3a5f",
+  "theme_color": "#1e3a5f",
   "icons": [
     {
       "src": "/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     },
     {
       "src": "/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ],
-  "categories": ["utilities", "productivity"],
-  "screenshots": [
-    {
-      "src": "/screenshot-wide.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide"
-    },
-    {
-      "src": "/screenshot-narrow.png",
-      "sizes": "720x1280",
-      "type": "image/png",
-      "form_factor": "narrow"
+      "type": "image/png"
     }
   ]
 }

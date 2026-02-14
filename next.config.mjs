@@ -18,6 +18,9 @@ const nextConfig = {
       { source: '/$', destination: '/', permanent: true },
       { source: '/blog/image-resize-sns-perfect-size', destination: '/blog', permanent: true },
       { source: '/blog/kakutei-shinkoku-receipt-pdf-2025', destination: '/blog', permanent: true },
+      { source: '/about/business', destination: '/about', permanent: true },
+      { source: '/convert/tsubo-converter', destination: '/convert', permanent: true },
+      { source: '/blog/pdf----149867', destination: '/blog', permanent: true },
     ]
   }
 }
