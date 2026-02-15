@@ -9,6 +9,7 @@ import PWAInstallPrompt from "@/components/common/PWAInstallPrompt";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { ThemeProvider } from "@/components/common/ThemeProvider";
 import GoogleAnalytics from "@/components/common/GoogleAnalytics";
+import { AuthProvider } from "@/contexts/AuthContext";
 
 // Base URL for the site
 const siteUrl = "https://yamada-tools.jp";
@@ -176,6 +177,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
         <GoogleAnalytics />
+        <AuthProvider>
         <ThemeProvider>
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:px-4 focus:py-2 focus:bg-kon focus:text-white focus:rounded-md focus:top-2 focus:left-2">メインコンテンツへスキップ</a>
         <Header />
@@ -187,6 +189,7 @@ export default function RootLayout({
         <FavoritePrompt />
         <PWAInstallPrompt />
         </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   );
