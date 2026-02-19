@@ -5,13 +5,18 @@ interface User {
   id: number;
   email: string;
   plan: string;
+  company_name?: string;
 }
 
 interface AuthContextType {
   user: User | null;
   loading: boolean;
-  login: (email: string) => Promise<{ success: boolean; message: string }>;
+  register: (email: string, password: string, companyName?: string) => Promise<{ success: boolean; message: string }>;
+  login: (email: string, password: string) => Promise<{ success: boolean; message: string }>;
+  magicLink: (email: string) => Promise<{ success: boolean; message: string }>;
   verify: (token: string) => Promise<{ success: boolean; message: string }>;
+  forgotPassword: (email: string) => Promise<{ success: boolean; message: string }>;
+  resetPassword: (token: string, password: string) => Promise<{ success: boolean; message: string }>;
   logout: () => Promise<void>;
 }
 
@@ -22,47 +27,150 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => { checkAuth(); }, []);
+  useEffect(() => {
+    checkAuth();
+  }, []);
 
   const checkAuth = async () => {
     const token = localStorage.getItem("session_token");
-    if (!token) { setLoading(false); return; }
+    if (!token) {
+      setLoading(false);
+      return;
+    }
     try {
-      const res = await fetch(API_URL + "/me", { headers: { Authorization: "Bearer " + token } });
-      if (res.ok) { setUser(await res.json()); }
-      else { localStorage.removeItem("session_token"); }
-    } catch (err) { console.error("Auth check failed:", err); }
+      const res = await fetch(API_URL + "/me", {
+        headers: { Authorization: "Bearer " + token },
+      });
+      if (res.ok) {
+        setUser(await res.json());
+      } else {
+        localStorage.removeItem("session_token");
+      }
+    } catch (err) {
+      console.error("Auth check failed:", err);
+    }
     setLoading(false);
   };
 
-  const login = async (email: string) => {
+  const register = async (email: string, password: string, companyName?: string) => {
     try {
-      const res = await fetch(API_URL + "/login", {
-        method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email })
+      const res = await fetch(API_URL + "/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password, company_name: companyName || "" }),
       });
       const data = await res.json();
-      return res.ok ? { success: true, message: data.message } : { success: false, message: data.detail || "Error" };
-    } catch { return { success: false, message: "Network error" }; }
+      return res.ok
+        ? { success: true, message: data.message }
+        : { success: false, message: data.detail || "登録に失敗しました" };
+    } catch {
+      return { success: false, message: "ネットワークエラー" };
+    }
+  };
+
+  const login = async (email: string, password: string) => {
+    try {
+      const res = await fetch(API_URL + "/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        localStorage.setItem("session_token", data.session_token);
+        setUser(data.user);
+        return { success: true, message: "ログイン成功" };
+      }
+      return { success: false, message: data.detail || "ログインに失敗しました" };
+    } catch {
+      return { success: false, message: "ネットワークエラー" };
+    }
+  };
+
+  const magicLink = async (email: string) => {
+    try {
+      const res = await fetch(API_URL + "/magic-link", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      return res.ok
+        ? { success: true, message: data.message }
+        : { success: false, message: data.detail || "エラー" };
+    } catch {
+      return { success: false, message: "ネットワークエラー" };
+    }
   };
 
   const verify = async (token: string) => {
     try {
       const res = await fetch(API_URL + "/verify", {
-        method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ token })
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token }),
       });
       const data = await res.json();
-      if (res.ok) { localStorage.setItem("session_token", data.session_token); setUser(data.user); return { success: true, message: "OK" }; }
-      return { success: false, message: data.detail || "Invalid" };
-    } catch { return { success: false, message: "Network error" }; }
+      if (res.ok) {
+        localStorage.setItem("session_token", data.session_token);
+        setUser(data.user);
+        return { success: true, message: "OK" };
+      }
+      return { success: false, message: data.detail || "認証に失敗しました" };
+    } catch {
+      return { success: false, message: "ネットワークエラー" };
+    }
+  };
+
+  const forgotPassword = async (email: string) => {
+    try {
+      const res = await fetch(API_URL + "/forgot-password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      return { success: true, message: data.message };
+    } catch {
+      return { success: false, message: "ネットワークエラー" };
+    }
+  };
+
+  const resetPassword = async (token: string, password: string) => {
+    try {
+      const res = await fetch(API_URL + "/reset-password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token, password }),
+      });
+      const data = await res.json();
+      return res.ok
+        ? { success: true, message: data.message }
+        : { success: false, message: data.detail || "エラー" };
+    } catch {
+      return { success: false, message: "ネットワークエラー" };
+    }
   };
 
   const logout = async () => {
     const token = localStorage.getItem("session_token");
-    if (token) { await fetch(API_URL + "/logout", { method: "POST", headers: { Authorization: "Bearer " + token } }); }
-    localStorage.removeItem("session_token"); setUser(null);
+    if (token) {
+      await fetch(API_URL + "/logout", {
+        method: "POST",
+        headers: { Authorization: "Bearer " + token },
+      });
+    }
+    localStorage.removeItem("session_token");
+    setUser(null);
   };
 
-  return <AuthContext.Provider value={{ user, loading, login, verify, logout }}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider
+      value={{ user, loading, register, login, magicLink, verify, forgotPassword, resetPassword, logout }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
 }
 
 export function useAuth() {

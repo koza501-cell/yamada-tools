@@ -240,6 +240,8 @@ export default function Home() {
               src="https://pub-a1dbb3c658b341fabe5015e209050298.r2.dev/mado-no-mori-banner.webp"
               alt="窓の杜にて紹介されました - 2026年1月13日掲載"
               className="w-full rounded-xl shadow-lg hover:shadow-xl transition-shadow"
+              width={896}
+              height={200}
             />
           </a>
         </div>
@@ -465,7 +467,7 @@ export default function Home() {
                   >
                     <div className="relative h-48 bg-gradient-to-br from-blue-500 to-purple-600">
                       {post.featuredImage && (
-                        <img src={post.featuredImage} alt={post.title} className="w-full h-48 object-cover" loading="lazy" />
+                        <img src={post.featuredImage} alt={post.title} className="w-full h-48 object-cover" loading="lazy" width={400} height={192} />
                       )}
                       {isNewBlog(post.publishDate) && (
                         <span className="absolute top-4 right-4 px-3 py-1 bg-red-500 text-white text-sm font-bold rounded-full">

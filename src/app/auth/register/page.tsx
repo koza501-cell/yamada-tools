@@ -4,15 +4,17 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import Link from "next/link";
 
-export default function LoginPage() {
+export default function RegisterPage() {
   const router = useRouter();
-  const { user, loading, login, magicLink } = useAuth();
+  const { user, loading, register } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [agreeTerms, setAgreeTerms] = useState(false);
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
-  const [showMagicLink, setShowMagicLink] = useState(false);
-  const [magicLinkSent, setMagicLinkSent] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     if (!loading && user) {
@@ -22,32 +24,29 @@ export default function LoginPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitting(true);
     setError("");
-    
-    const result = await login(email, password);
-    setSubmitting(false);
-    
-    if (result.success) {
-      router.push("/");
-    } else {
-      setError(result.message);
-    }
-  };
 
-  const handleMagicLink = async () => {
-    if (!email) {
-      setError("メールアドレスを入力してください");
+    if (password.length < 8) {
+      setError("パスワードは8文字以上で入力してください");
       return;
     }
+
+    if (password !== passwordConfirm) {
+      setError("パスワードが一致しません");
+      return;
+    }
+
+    if (!agreeTerms) {
+      setError("利用規約に同意してください");
+      return;
+    }
+
     setSubmitting(true);
-    setError("");
-    
-    const result = await magicLink(email);
+    const result = await register(email, password, companyName);
     setSubmitting(false);
-    
+
     if (result.success) {
-      setMagicLinkSent(true);
+      setSuccess(true);
     } else {
       setError(result.message);
     }
@@ -75,18 +74,24 @@ export default function LoginPage() {
     );
   }
 
-  if (magicLinkSent) {
+  if (success) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4">
         <div className="max-w-md w-full">
           <div className="bg-white rounded-lg shadow-lg p-8 text-center">
             <div className="text-5xl mb-4">📧</div>
-            <h1 className="text-xl font-bold text-gray-900 mb-4">メールを確認してください</h1>
+            <h1 className="text-xl font-bold text-gray-900 mb-4">登録完了</h1>
             <p className="text-gray-600 mb-6">
-              {email} にログインリンクを送信しました。<br />
-              メール内のリンクをクリックしてログインしてください。
+              {email} に確認メールを送信しました。<br />
+              メール内のリンクをクリックしてアカウントを有効化してください。
             </p>
-            <p className="text-sm text-gray-400">リンクは15分間有効です</p>
+            <p className="text-sm text-gray-400 mb-6">リンクは24時間有効です</p>
+            <Link
+              href="/auth/login"
+              className="inline-block px-6 py-3 bg-kon text-white font-medium rounded-lg hover:bg-kon/90 transition-colors"
+            >
+              ログインページへ
+            </Link>
           </div>
         </div>
       </div>
@@ -108,10 +113,10 @@ export default function LoginPage() {
           </div>
         </div>
 
-        {/* Login form */}
+        {/* Register form */}
         <div className="bg-white rounded-lg shadow-lg p-8">
-          <h1 className="text-xl font-bold text-gray-900 text-center mb-6">ログイン</h1>
-          
+          <h1 className="text-xl font-bold text-gray-900 text-center mb-6">新規アカウント登録</h1>
+
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -126,7 +131,7 @@ export default function LoginPage() {
                 placeholder="example@company.co.jp"
               />
             </div>
-            
+
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 パスワード <span className="text-red-500">*</span>
@@ -136,9 +141,59 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                minLength={8}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-kon focus:border-transparent"
                 placeholder="8文字以上"
               />
+              <p className="text-xs text-gray-500 mt-1">8文字以上で入力してください</p>
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                パスワード（確認） <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="password"
+                value={passwordConfirm}
+                onChange={(e) => setPasswordConfirm(e.target.value)}
+                required
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-kon focus:border-transparent"
+                placeholder="パスワードを再入力"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                会社名・組織名 <span className="text-gray-400 text-xs">（任意）</span>
+              </label>
+              <input
+                type="text"
+                value={companyName}
+                onChange={(e) => setCompanyName(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-kon focus:border-transparent"
+                placeholder="株式会社〇〇"
+              />
+            </div>
+
+            <div className="mb-6">
+              <label className="flex items-start gap-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={agreeTerms}
+                  onChange={(e) => setAgreeTerms(e.target.checked)}
+                  className="mt-1 w-4 h-4 text-kon border-gray-300 rounded focus:ring-kon"
+                />
+                <span className="text-sm text-gray-600">
+                  <Link href="/legal/terms" className="text-kon hover:underline" target="_blank">
+                    利用規約
+                  </Link>
+                  および
+                  <Link href="/legal/privacy" className="text-kon hover:underline" target="_blank">
+                    プライバシーポリシー
+                  </Link>
+                  に同意します
+                </span>
+              </label>
             </div>
 
             {error && (
@@ -152,55 +207,16 @@ export default function LoginPage() {
               disabled={submitting}
               className="w-full py-3 bg-kon hover:bg-kon/90 text-white font-bold rounded-lg transition-colors disabled:opacity-50"
             >
-              {submitting ? "ログイン中..." : "ログイン"}
+              {submitting ? "登録中..." : "アカウントを作成"}
             </button>
           </form>
 
-          <div className="mt-4 text-center">
-            <Link href="/auth/forgot-password" className="text-sm text-kon hover:underline">
-              パスワードをお忘れですか？
-            </Link>
-          </div>
-
-          {/* Divider */}
-          <div className="relative my-6">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-200"></div>
-            </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="px-4 bg-white text-gray-500">または</span>
-            </div>
-          </div>
-
-          {/* Magic link option */}
-          <button
-            onClick={() => setShowMagicLink(!showMagicLink)}
-            className="w-full py-3 border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium rounded-lg transition-colors"
-          >
-            📧 メールでログインリンクを受け取る
-          </button>
-
-          {showMagicLink && (
-            <div className="mt-4 p-4 bg-gray-50 rounded-lg">
-              <p className="text-sm text-gray-600 mb-3">
-                パスワードなしでログインできます。メールアドレスを入力してください。
-              </p>
-              <button
-                onClick={handleMagicLink}
-                disabled={submitting || !email}
-                className="w-full py-2 bg-sakura hover:bg-sakura/90 text-white font-medium rounded-lg transition-colors disabled:opacity-50"
-              >
-                ログインリンクを送信
-              </button>
-            </div>
-          )}
-
-          {/* Register link */}
+          {/* Login link */}
           <div className="mt-6 pt-6 border-t text-center">
             <p className="text-gray-600 text-sm">
-              アカウントをお持ちでない方は
-              <Link href="/auth/register" className="text-kon font-medium hover:underline ml-1">
-                新規登録
+              すでにアカウントをお持ちの方は
+              <Link href="/auth/login" className="text-kon font-medium hover:underline ml-1">
+                ログイン
               </Link>
             </p>
           </div>
