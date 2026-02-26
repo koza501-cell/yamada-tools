@@ -121,7 +121,7 @@ export const pdfTools: Tool[] = [
     icon: "🖼️",
     path: "/pdf/image-to-pdf",
     apiEndpoint: "/api/pdf/image-to-pdf",
-    acceptedTypes: ".jpg,.jpeg,.png,.gif,.webp",
+    acceptedTypes: ".jpg,.jpeg,.png,.gif,.webp,.bmp",
     maxFiles: 20,
     category: "pdf",
     available: true,
