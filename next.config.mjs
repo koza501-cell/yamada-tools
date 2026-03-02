@@ -20,6 +20,16 @@ const nextConfig = {
       { source: '/blog/kakutei-shinkoku-receipt-pdf-2025', destination: '/blog', permanent: true },
       { source: '/about/business', destination: '/about', permanent: true },
       { source: '/blog/pdf---149867', destination: '/blog', permanent: true },
+      { source: '/tools', destination: '/', permanent: true },
+      { source: '/sitemap', destination: '/sitemap.xml', permanent: true },
+      { source: '/contact', destination: '/about', permanent: true },
+      { source: '/help', destination: '/about/faq', permanent: true },
+      { source: '/faq', destination: '/about/faq', permanent: true },
+      { source: '/pdf/edit', destination: '/pdf', permanent: true },
+      { source: '/image/filter', destination: '/image', permanent: true },
+      { source: '/document/contract', destination: '/document', permanent: true },
+      { source: '/generator/qr', destination: '/generator/qrcode', permanent: true },
+      { source: '/convert/pdf', destination: '/pdf', permanent: true },
     ]
   }
 }
