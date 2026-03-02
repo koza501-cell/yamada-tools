@@ -234,7 +234,8 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
         {!isComplete && (
           <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 dark:border-gray-700 p-8" aria-label="ファイルアップロード">
             {/* Ai-chan Mascot */}
-            <div className="mb-6">
+            {/* Fixed height to prevent CLS */}
+            <div className="mb-6 min-h-[88px]">
               <Mascot state={mascotState} message={mascotMessage} />
             </div>
             {/* Usage Limit Banner */}
@@ -338,7 +339,7 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
         {isComplete && pdfUrl && (
           <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 dark:border-gray-700 p-8 text-center" aria-label="処理完了">
             {/* Ai-chan Mascot - Success */}
-            <div className="flex justify-center mb-4">
+            <div className="flex justify-center mb-4 min-h-[88px]">
               <Mascot state="success" message="やったー！完了しました！友達にもシェアしてね♪" />
             </div>
             <h2 className="text-2xl font-bold text-kon mb-2">完了しました！</h2>
