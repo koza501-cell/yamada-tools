@@ -283,16 +283,18 @@ export default function ImageCompressClient({ faq, seoContent }: Props) {
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
             onClick={() => fileInputRef.current?.click()}
-            className={`border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-all mb-6 ${
+            className={`border-2 border-dashed rounded-xl p-10 text-center cursor-pointer transition-all duration-200 mb-6 ${
               isDragging
-                ? "border-kon bg-kon/5"
-                : "border-gray-300 hover:border-kon hover:bg-gray-50"
+                ? "border-kon bg-kon/10 scale-[1.02]"
+                : "border-kon/30 bg-blue-50/50 hover:border-kon hover:bg-blue-50 hover:shadow-lg"
             }`}
           >
-            <div className="text-4xl mb-4">📁</div>
-            <p className="text-gray-600 mb-2">画像をドラッグ＆ドロップ</p>
-            <p className="text-gray-400 text-sm">または クリックしてファイルを選択</p>
-            <p className="text-gray-400 text-xs mt-2">JPEG, PNG, WebP対応 • 複数選択可</p>
+            <div className="w-16 h-16 mx-auto mb-4 bg-kon rounded-2xl flex items-center justify-center text-3xl shadow-lg">📁</div>
+            <p className="text-gray-800 font-medium mb-2 text-lg">画像をドラッグ＆ドロップ</p>
+            <p className="text-gray-500 text-sm mb-3">または クリックしてファイルを選択</p>
+            <span className="inline-block bg-white text-gray-600 text-xs px-3 py-1.5 rounded-full border border-gray-200">
+              JPEG, PNG, WebP対応 • 複数選択可
+            </span>
             <input
               ref={fileInputRef}
               type="file"

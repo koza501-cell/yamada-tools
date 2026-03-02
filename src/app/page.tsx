@@ -95,90 +95,54 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageSchema) }}
       />
     <div>
-      {/* Hero Section - UPDATED */}
-      <section className="bg-gradient-to-br from-kon to-ai text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          {/* Main Headline - Emphasizes Domestic Server */}
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            無料オンラインツール{toolCount.total}個<br />
-            <span className="text-sakura">日本国内サーバー</span>で安全処理
+      {/* Hero Section - REDESIGNED */}
+      <section className="bg-white text-gray-900 py-16 md:py-24">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          {/* Main Headline - H1 */}
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-kon">
+            無料オンラインツール{toolCount.total}個
           </h1>
 
-          <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-3xl mx-auto">
-            大切なファイルは日本国内サーバーで安全に処理。<br className="hidden md:block" />
-            登録不要・完全無料の{toolCount.total}のオンラインツール
+          <p className="text-lg md:text-xl mb-8 text-gray-600 max-w-2xl mx-auto">
+            日本国内サーバーで安全に処理。登録不要・完全無料。
           </p>
 
           {/* Hero Animation */}
           <HeroAnimation />
-          {/* Search Bar - NEW */}
+
+          {/* Search Bar */}
           <div className="mb-8 flex justify-center">
             <SearchBar />
           </div>
 
-          {/* Trust Badges */}
-          <div className="flex flex-wrap justify-center gap-3 mb-10">
-            <span className="bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm font-medium">
-              🏢 2024年設立
-            </span>
-            <span className="bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm font-medium">
+          {/* Primary CTA Button */}
+          <Link
+            href="#popular-tools"
+            className="inline-block bg-kon text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-ai transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-1"
+          >
+            人気ツールを見る →
+          </Link>
+
+          {/* Trust Badges - Reduced to 3 */}
+          <div className="flex flex-wrap justify-center gap-4 mt-10">
+            <span className="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium">
               🇯🇵 日本国内サーバー
             </span>
-            <span className="bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm font-medium">
-              🔒 SSL暗号化
+            <span className="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium">
+              🔒 安全なSSL暗号化
             </span>
-            <span className="bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm font-medium">
-              🗑️ 60分で自動削除
-            </span>
-            <span className="bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm font-medium">
+            <span className="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium">
               ✨ 登録不要・完全無料
             </span>
-            <span className="bg-sakura/80 backdrop-blur px-4 py-2 rounded-full text-sm font-bold">
-              📊 累計 125,000+ ファイル処理
-            </span>
-          </div>
-
-          {/* 5 Category Buttons */}
-          <div className="flex flex-wrap justify-center gap-3">
-            <Link
-              href="/pdf"
-              className="bg-white text-kon px-6 py-3 rounded-xl font-bold hover:bg-sakura hover:text-white transition-colors"
-            >
-              📄 PDFツール ({availablePdfTools.length})
-            </Link>
-            <Link
-              href="/document"
-              className="bg-white/20 text-white px-6 py-3 rounded-xl font-bold hover:bg-white/30 transition-colors"
-            >
-              📝 書類作成 ({availableDocTools.length})
-            </Link>
-            <Link
-              href="/convert"
-              className="bg-white/20 text-white px-6 py-3 rounded-xl font-bold hover:bg-white/30 transition-colors"
-            >
-              🔄 変換ツール ({availableConvertTools.length})
-            </Link>
-            <Link
-              href="/image"
-              className="bg-white/20 text-white px-6 py-3 rounded-xl font-bold hover:bg-white/30 transition-colors"
-            >
-              🖼️ 画像ツール ({availableImageTools.length})
-            </Link>
-            <Link
-              href="/generator"
-              className="bg-white/20 text-white px-6 py-3 rounded-xl font-bold hover:bg-white/30 transition-colors"
-            >
-              ⚡ 計算・生成 ({availableGenTools.length})
-            </Link>
           </div>
         </div>
       </section>
 
       {/* 🔥 Popular Tools Section - Below Fold */}
-      <section className="py-8 bg-gradient-to-r from-rose-50 to-orange-50 dark:from-gray-800 dark:to-gray-900">
+      <section id="popular-tools" className="py-16 bg-gradient-to-r from-rose-50 to-orange-50 dark:from-gray-800 dark:to-gray-900">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-6">
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white">🔥 人気ツール - 今すぐ使う</h2>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">🔥 人気ツール - 今すぐ使う</h2>
           </div>
           <div className="flex flex-wrap justify-center gap-3">
             <Link href="/pdf/compress" className="bg-white shadow-md hover:shadow-lg text-kon px-5 py-3 rounded-xl font-medium transition-all hover:scale-105">📄 PDF圧縮</Link>
@@ -191,11 +155,11 @@ export default function Home() {
       </section>
       {/* ⭐ NEW: Featured Tools Section */}
       {featuredTools.length > 0 && (
-        <section className="py-10 bg-gradient-to-r from-orange-50 to-amber-50 dark:from-gray-800 dark:to-gray-900">
+        <section className="py-20 bg-gradient-to-r from-orange-50 to-amber-50 dark:from-gray-800 dark:to-gray-900">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-8">
               <span className="inline-block px-4 py-1.5 bg-orange-500 text-white text-sm font-bold rounded-full mb-3">🆕 NEW</span>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">新しいツールが登場！</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">新しいツールが登場！</h2>
               <p className="text-gray-600 dark:text-gray-300 mt-2">仕事がもっと楽になる、便利な新機能を追加しました</p>
             </div>
             <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
@@ -233,7 +197,7 @@ export default function Home() {
       <RecentTools />
 
       {/* Media Feature Banner */}
-      <section className="py-8 bg-gradient-to-r from-blue-50 to-green-50 dark:from-gray-800 dark:to-gray-900">
+      <section className="py-16 bg-gradient-to-r from-blue-50 to-green-50 dark:from-gray-800 dark:to-gray-900">
         <div className="max-w-4xl mx-auto px-4">
           <a href="https://forest.watch.impress.co.jp/docs/digest/2077518.html" target="_blank" rel="noopener noreferrer" className="block">
             <img
@@ -248,11 +212,11 @@ export default function Home() {
       </section>
 
       {/* Section 1: PDF Tools */}
-      <section className="py-12 bg-gray-50 dark:bg-gray-900">
+      <section className="py-20 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-bold text-kon dark:text-blue-400">📄 PDFツール</h2>
-            <Link href="/pdf" className="text-kon hover:underline text-sm">
+            <h2 className="text-2xl font-bold text-kon dark:text-blue-400">📄 PDFツール</h2>
+            <Link href="/pdf" className="text-kon hover:text-ai transition-colors duration-200 text-sm">
               すべて見る →
             </Link>
           </div>
@@ -262,14 +226,14 @@ export default function Home() {
               <Link
                 key={tool.id}
                 href={tool.path}
-                className="relative bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
+                className="relative bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 text-center"
               >
                 {tool.isNew && (
                   <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full shadow-sm">NEW</span>
                 )}
                 <div className="text-2xl mb-2">{tool.icon}</div>
-                <h3 className="font-bold text-base text-kon dark:text-blue-400">{tool.nameJa}</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-2">{tool.description}</p>
+                <h3 className="font-bold text-base text-kon dark:text-blue-400 leading-tight">{tool.nameJa}</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-2 font-normal">{tool.description}</p>
               </Link>
             ))}
           </div>
@@ -278,11 +242,11 @@ export default function Home() {
 
       {/* Section 2: Document Creation - ONLY AVAILABLE */}
       {availableDocTools.length > 0 && (
-        <section className="py-12">
+        <section className="py-20">
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-bold text-kon dark:text-blue-400">📝 書類作成</h2>
-              <Link href="/document" className="text-kon hover:underline text-sm">
+              <h2 className="text-2xl font-bold text-kon dark:text-blue-400">📝 書類作成</h2>
+              <Link href="/document" className="text-kon hover:text-ai transition-colors duration-200 text-sm">
                 すべて見る →
               </Link>
             </div>
@@ -292,14 +256,14 @@ export default function Home() {
                 <Link
                   key={tool.id}
                   href={tool.path}
-                  className="relative bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
+                  className="relative bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 text-center"
                 >
                   {tool.isNew && (
                     <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full shadow-sm">NEW</span>
                   )}
                   <div className="text-2xl mb-2">{tool.icon}</div>
-                  <h3 className="font-bold text-base text-kon dark:text-blue-400">{tool.nameJa}</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-2">{tool.description}</p>
+                  <h3 className="font-bold text-base text-kon dark:text-blue-400 leading-tight">{tool.nameJa}</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-2 font-normal">{tool.description}</p>
                 </Link>
               ))}
             </div>
@@ -309,11 +273,11 @@ export default function Home() {
 
       {/* Section 3: Converters - ONLY AVAILABLE */}
       {availableConvertTools.length > 0 && (
-        <section className="py-12 bg-gray-50 dark:bg-gray-900">
+        <section className="py-20 bg-gray-50 dark:bg-gray-900">
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-bold text-kon dark:text-blue-400">🔄 変換ツール</h2>
-              <Link href="/convert" className="text-kon hover:underline text-sm">
+              <h2 className="text-2xl font-bold text-kon dark:text-blue-400">🔄 変換ツール</h2>
+              <Link href="/convert" className="text-kon hover:text-ai transition-colors duration-200 text-sm">
                 すべて見る →
               </Link>
             </div>
@@ -323,14 +287,14 @@ export default function Home() {
                 <Link
                   key={tool.id}
                   href={tool.path}
-                  className="relative bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
+                  className="relative bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 text-center"
                 >
                   {tool.isNew && (
                     <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full shadow-sm">NEW</span>
                   )}
                   <div className="text-2xl mb-2">{tool.icon}</div>
-                  <h3 className="font-bold text-base text-kon dark:text-blue-400">{tool.nameJa}</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-2">{tool.description}</p>
+                  <h3 className="font-bold text-base text-kon dark:text-blue-400 leading-tight">{tool.nameJa}</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-2 font-normal">{tool.description}</p>
                 </Link>
               ))}
             </div>
@@ -340,11 +304,11 @@ export default function Home() {
 
       {/* Section 4: Image Tools - ONLY AVAILABLE */}
       {availableImageTools.length > 0 && (
-        <section className="py-12">
+        <section className="py-20">
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-bold text-kon dark:text-blue-400">🖼️ 画像ツール</h2>
-              <Link href="/image" className="text-kon hover:underline text-sm">
+              <h2 className="text-2xl font-bold text-kon dark:text-blue-400">🖼️ 画像ツール</h2>
+              <Link href="/image" className="text-kon hover:text-ai transition-colors duration-200 text-sm">
                 すべて見る →
               </Link>
             </div>
@@ -354,7 +318,7 @@ export default function Home() {
                 <Link
                   key={tool.id}
                   href={tool.path}
-                  className="relative bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
+                  className="relative bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 text-center"
                 >
                   {tool.isNew && (
                     <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full shadow-sm">NEW</span>
@@ -371,11 +335,11 @@ export default function Home() {
 
       {/* Section 5: Generators - ONLY AVAILABLE */}
       {availableGenTools.length > 0 && (
-        <section className="py-12 bg-gray-50 dark:bg-gray-900">
+        <section className="py-20 bg-gray-50 dark:bg-gray-900">
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-bold text-kon dark:text-blue-400">⚡ 計算・生成ツール</h2>
-              <Link href="/generator" className="text-kon hover:underline text-sm">
+              <h2 className="text-2xl font-bold text-kon dark:text-blue-400">⚡ 計算・生成ツール</h2>
+              <Link href="/generator" className="text-kon hover:text-ai transition-colors duration-200 text-sm">
                 すべて見る →
               </Link>
             </div>
@@ -385,14 +349,14 @@ export default function Home() {
                 <Link
                   key={tool.id}
                   href={tool.path}
-                  className="relative bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
+                  className="relative bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 text-center"
                 >
                   {tool.isNew && (
                     <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full shadow-sm">NEW</span>
                   )}
                   <div className="text-2xl mb-2">{tool.icon}</div>
-                  <h3 className="font-bold text-base text-kon dark:text-blue-400">{tool.nameJa}</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-2">{tool.description}</p>
+                  <h3 className="font-bold text-base text-kon dark:text-blue-400 leading-tight">{tool.nameJa}</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-2 font-normal">{tool.description}</p>
                 </Link>
               ))}
             </div>
@@ -401,16 +365,16 @@ export default function Home() {
       )}
 
       {/* Features Section */}
-      <section className="py-12">
+      <section className="py-20">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-xl font-bold text-kon text-center mb-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-kon text-center mb-10">
             選ばれる理由
           </h2>
 
           <div className="grid md:grid-cols-3 gap-6">
             <div className="text-center p-6">
               <div className="text-4xl mb-4">🇯🇵</div>
-              <h3 className="font-bold text-lg mb-2">日本国内サーバー</h3>
+              <h3 className="font-bold text-xl mb-2 text-gray-900">日本国内サーバー</h3>
               <p className="text-gray-600 text-sm">
                 大切なファイルは海外に送りたくない。
                 当サービスは日本国内のサーバーで運用しています。
@@ -419,7 +383,7 @@ export default function Home() {
 
             <div className="text-center p-6">
               <div className="text-4xl mb-4">⚡</div>
-              <h3 className="font-bold text-lg mb-2">高速処理</h3>
+              <h3 className="font-bold text-xl mb-2 text-gray-900">高速処理</h3>
               <p className="text-gray-600 text-sm">
                 最新のサーバー環境で、大容量ファイルも素早く処理。
                 お待たせしません。
@@ -428,7 +392,7 @@ export default function Home() {
 
             <div className="text-center p-6">
               <div className="text-4xl mb-4">🔒</div>
-              <h3 className="font-bold text-lg mb-2">プライバシー重視</h3>
+              <h3 className="font-bold text-xl mb-2 text-gray-900">プライバシー重視</h3>
               <p className="text-gray-600 text-sm">
                 SSL暗号化通信、処理後は自動削除。
                 あなたのファイルを安全に守ります。
@@ -450,7 +414,7 @@ export default function Home() {
           <section className="py-16 bg-white">
             <div className="max-w-7xl mx-auto px-4">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
                   📝 最新ブログ
                 </h2>
                 <p className="text-gray-600 dark:text-gray-300">
@@ -520,17 +484,17 @@ export default function Home() {
 
 
       {/* Newsletter Section */}
-      <section className="py-12 bg-white dark:bg-gray-800">
+      <section className="py-20 bg-white dark:bg-gray-800">
         <div className="max-w-2xl mx-auto px-4">
           <NewsletterSignup />
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-900">
+      <section className="py-24 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
               💬 ユーザーの声
             </h2>
             <p className="text-gray-600 dark:text-gray-300">
@@ -591,7 +555,7 @@ export default function Home() {
       </section>
 
       {/* Corporate CTA Section - NEW */}
-      <section className="py-12 bg-gradient-to-r from-slate-800 to-slate-900">
+      <section className="py-20 bg-gradient-to-r from-slate-800 to-slate-900">
         <div className="max-w-4xl mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="text-center md:text-left">
@@ -616,9 +580,9 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 bg-sakura/20">
+      <section className="py-20 bg-sakura/20">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-xl font-bold text-kon mb-4">
+          <h2 className="text-2xl font-bold text-kon mb-4">
             今すぐ無料で使ってみる
           </h2>
           <p className="text-gray-600 mb-6 text-sm">

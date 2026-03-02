@@ -246,7 +246,7 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
             <div
               onDrop={handleDrop}
               onDragOver={(e) => e.preventDefault()}
-              className="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl p-8 text-center hover:border-kon transition-colors cursor-pointer"
+              className="border-2 border-dashed border-kon/30 bg-blue-50/50 rounded-xl p-10 text-center hover:border-kon hover:bg-blue-50 hover:shadow-lg transition-all duration-200 cursor-pointer"
             >
               <input
                 type="file"
@@ -257,17 +257,17 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
                 id="file-input"
                 aria-label="ファイルを選択"
               />
-              <label htmlFor="file-input" className="cursor-pointer">
-                <div className="text-5xl mb-4">📁</div>
-                <p className="font-bold text-gray-700 dark:text-gray-200 mb-2">
+              <label htmlFor="file-input" className="cursor-pointer block">
+                <div className="w-16 h-16 mx-auto mb-4 bg-kon rounded-2xl flex items-center justify-center text-3xl shadow-lg">📁</div>
+                <p className="font-bold text-gray-800 mb-2 text-lg">
                   ファイルをドラッグ＆ドロップ
                 </p>
-                <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
-                  または <span className="text-kon underline">クリックして選択</span>
+                <p className="text-sm text-gray-500 mb-3">
+                  または <span className="text-kon font-medium">クリックして選択</span>
                 </p>
-                <p className="text-sm text-gray-400 dark:text-gray-500 mt-2">
-                  対応形式: {tool.acceptedTypes} | 最大サイズ: 20MB | 最大ファイル数: {tool.maxFiles}
-                </p>
+                <span className="inline-block bg-white text-gray-600 text-xs px-3 py-1.5 rounded-full border border-gray-200">
+                  対応形式: {tool.acceptedTypes} • 最大: 20MB • {tool.maxFiles}ファイルまで
+                </span>
               </label>
             </div>
 
