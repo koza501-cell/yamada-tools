@@ -11,7 +11,7 @@ interface UsageLimitBannerProps {
 }
 
 export default function UsageLimitBanner({ usage }: UsageLimitBannerProps) {
-  if (!usage) return null;
+  if (!usage) return <div className="min-h-[52px]" />;
 
   if (usage.is_limited) {
     return (
