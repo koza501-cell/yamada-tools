@@ -8,6 +8,7 @@ import { Tool, getToolsByCategory } from "@/config/tools";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import ShareButtons from "@/components/common/ShareButtons";
 import UsageLimitBanner from "@/components/common/UsageLimitBanner";
+import RelatedTools from "@/components/common/RelatedTools";
 
 // GA4 event tracking helper
 declare global {
@@ -498,26 +499,7 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
         </section>
 
         {/* Related Tools */}
-        <section className="mt-8" aria-labelledby="related-heading">
-          <h2 id="related-heading" className="font-bold text-kon mb-4 text-lg">
-            関連ツール
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {getToolsByCategory(tool.category)
-              .filter(t => t.id !== tool.id && t.available)
-              .slice(0, 4)
-              .map(relatedTool => (
-                <Link
-                  key={relatedTool.id}
-                  href={relatedTool.path}
-                  className="bg-white rounded-xl p-4 border border-gray-100 dark:border-gray-700 hover:border-kon/30 hover:shadow-sm transition-all text-center group"
-                >
-                  <div className="text-2xl mb-2">{relatedTool.icon}</div>
-                  <p className="text-sm font-medium text-gray-700 dark:text-gray-200 group-hover:text-kon">{relatedTool.nameJa}</p>
-                </Link>
-              ))}
-          </div>
-        </section>
+        <RelatedTools currentTool={tool} maxItems={6} />
 
         {/* Security Note */}
         <footer className="mt-8 text-center text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
