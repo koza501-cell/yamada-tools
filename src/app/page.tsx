@@ -27,52 +27,37 @@ function isNewBlog(publishDate: string): boolean {
   const diffInDays = (now.getTime() - postDate.getTime()) / (1000 * 60 * 60 * 24);
   return diffInDays <= 7;
 }
-
-
-// Homepage structured data
+// Homepage structured data - Dynamic list of all tools
+const availableTools = allTools.filter(t => t.available);
 const homepageSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
   name: "山田ツール - 無料オンラインツール一覧",
-  description: "日本国内サーバーで安全に使える70種類の無料オンラインツール",
-  numberOfItems: 5,
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "PDFツール",
-      description: "PDF結合、圧縮、分割、変換など20種類のPDFツール",
-      url: "https://yamada-tools.jp/pdf"
+  description: `日本国内サーバーで安全に使える${availableTools.length}種類の無料オンラインツール`,
+  numberOfItems: availableTools.length,
+  itemListElement: availableTools.map((tool, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: tool.nameJa,
+    description: tool.description,
+    url: `https://yamada-tools.jp${tool.path}`
+  }))
+};
+
+// SearchAction schema for Google Sitelinks Searchbox
+const searchActionSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "山田ツール",
+  url: "https://yamada-tools.jp",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: "https://yamada-tools.jp/?q={search_term_string}"
     },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "書類作成",
-      description: "請求書、見積書、履歴書など10種類の書類作成ツール",
-      url: "https://yamada-tools.jp/document"
-    },
-    {
-      "@type": "ListItem",
-      position: 3,
-      name: "変換ツール",
-      description: "全角半角変換、和暦西暦変換など9種類の変換ツール",
-      url: "https://yamada-tools.jp/convert"
-    },
-    {
-      "@type": "ListItem",
-      position: 4,
-      name: "画像ツール",
-      description: "画像圧縮、リサイズ、形式変換など6種類の画像ツール",
-      url: "https://yamada-tools.jp/image"
-    },
-    {
-      "@type": "ListItem",
-      position: 5,
-      name: "計算・生成ツール",
-      description: "パスワード生成、消費税計算など20種類の計算・生成ツール",
-      url: "https://yamada-tools.jp/generator"
-    }
-  ]
+    "query-input": "required name=search_term_string"
+  }
 };
 
 export default function Home() {
@@ -93,6 +78,10 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(searchActionSchema) }}
       />
     <div>
       {/* Hero Section - REDESIGNED */}
