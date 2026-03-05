@@ -573,6 +573,30 @@ export default function WarekiSeirekiClient({ faq, seoContent }: Props) {
             <p className="text-xs text-gray-500">生年月日から年齢も自動計算</p>
           </div>
         </section>
+        {/* Direct Answer Block for AI/SEO */}
+        <section className="mt-8 bg-white rounded-2xl p-6 border border-gray-100">
+          <h2 className="font-bold text-kon mb-4">📊 和暦・西暦 変換早見表</h2>
+          <p className="text-gray-600 mb-4 text-sm">主要な年号の変換表です。</p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead className="bg-gray-100">
+                <tr>
+                  <th className="px-3 py-2 text-left">和暦</th>
+                  <th className="px-3 py-2 text-left">西暦</th>
+                  <th className="px-3 py-2 text-left">期間</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y">
+                <tr><td className="px-3 py-2 font-bold">令和1年</td><td className="px-3 py-2">2019年</td><td className="px-3 py-2 text-gray-500">2019年5月1日〜</td></tr>
+                <tr><td className="px-3 py-2 font-bold">平成1年</td><td className="px-3 py-2">1989年</td><td className="px-3 py-2 text-gray-500">1989年1月8日〜2019年4月30日</td></tr>
+                <tr><td className="px-3 py-2 font-bold">昭和1年</td><td className="px-3 py-2">1926年</td><td className="px-3 py-2 text-gray-500">1926年12月25日〜1989年1月7日</td></tr>
+                <tr><td className="px-3 py-2 font-bold">大正1年</td><td className="px-3 py-2">1912年</td><td className="px-3 py-2 text-gray-500">1912年7月30日〜1926年12月24日</td></tr>
+                <tr><td className="px-3 py-2 font-bold">明治1年</td><td className="px-3 py-2">1868年</td><td className="px-3 py-2 text-gray-500">1868年1月25日〜1912年7月29日</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-gray-500 mt-4">※ 例: 令和6年 = 2024年、平成10年 = 1998年、昭和50年 = 1975年</p>
+        </section>
 
         {/* Back Link */}
         <div className="mt-8 text-center">

@@ -466,6 +466,30 @@ export default function ZenkakuHankakuClient({ faq, seoContent }: Props) {
             <p className="text-xs text-gray-500">ブラウザ内で高速処理</p>
           </div>
         </section>
+        {/* Direct Answer Block for AI/SEO */}
+        <section className="mt-8 bg-white rounded-2xl p-6 border border-gray-100">
+          <h2 className="font-bold text-kon mb-4">📊 全角・半角 変換例</h2>
+          <p className="text-gray-600 mb-4 text-sm">よくある変換パターンの一覧です。</p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead className="bg-gray-100">
+                <tr>
+                  <th className="px-3 py-2 text-left">変換前</th>
+                  <th className="px-3 py-2 text-left">全角→半角</th>
+                  <th className="px-3 py-2 text-left">半角→全角</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y">
+                <tr><td className="px-3 py-2">０１２３４５</td><td className="px-3 py-2 font-mono">012345</td><td className="px-3 py-2">０１２３４５</td></tr>
+                <tr><td className="px-3 py-2">ＡＢＣＤＥ</td><td className="px-3 py-2 font-mono">ABCDE</td><td className="px-3 py-2">ＡＢＣＤＥ</td></tr>
+                <tr><td className="px-3 py-2">ａｂｃｄｅ</td><td className="px-3 py-2 font-mono">abcde</td><td className="px-3 py-2">ａｂｃｄｅ</td></tr>
+                <tr><td className="px-3 py-2">アイウエオ</td><td className="px-3 py-2 font-mono">ｱｲｳｴｵ</td><td className="px-3 py-2">アイウエオ</td></tr>
+                <tr><td className="px-3 py-2">！？＠＃</td><td className="px-3 py-2 font-mono">!?@#</td><td className="px-3 py-2">！？＠＃</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-gray-500 mt-4">※ カタカナは全角↔半角の相互変換に対応。ひらがなは変換対象外です。</p>
+        </section>
 
         {/* Back Link */}
         <div className="mt-8 text-center">
