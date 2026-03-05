@@ -152,6 +152,33 @@ export default function AgeCalcClient() {
             </div>
           )}
         </section>
+        {/* Direct Answer Block for AI/SEO */}
+        <section className="mt-8 bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+          <h2 className="font-bold text-kon mb-4">📊 年齢早見表（2026年）</h2>
+          <p className="text-gray-600 mb-4 text-sm">生まれ年から2026年時点での年齢がわかります。</p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead className="bg-gray-100">
+                <tr>
+                  <th className="px-3 py-2 text-left">生まれ年</th>
+                  <th className="px-3 py-2 text-left">和暦</th>
+                  <th className="px-3 py-2 text-left">2026年の年齢</th>
+                  <th className="px-3 py-2 text-left">干支</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y">
+                <tr><td className="px-3 py-2">2000年</td><td className="px-3 py-2">平成12年</td><td className="px-3 py-2 font-bold">26歳</td><td className="px-3 py-2">辰年</td></tr>
+                <tr><td className="px-3 py-2">1995年</td><td className="px-3 py-2">平成7年</td><td className="px-3 py-2 font-bold">31歳</td><td className="px-3 py-2">亥年</td></tr>
+                <tr><td className="px-3 py-2">1990年</td><td className="px-3 py-2">平成2年</td><td className="px-3 py-2 font-bold">36歳</td><td className="px-3 py-2">午年</td></tr>
+                <tr><td className="px-3 py-2">1985年</td><td className="px-3 py-2">昭和60年</td><td className="px-3 py-2 font-bold">41歳</td><td className="px-3 py-2">丑年</td></tr>
+                <tr><td className="px-3 py-2">1980年</td><td className="px-3 py-2">昭和55年</td><td className="px-3 py-2 font-bold">46歳</td><td className="px-3 py-2">申年</td></tr>
+                <tr><td className="px-3 py-2">1975年</td><td className="px-3 py-2">昭和50年</td><td className="px-3 py-2 font-bold">51歳</td><td className="px-3 py-2">卯年</td></tr>
+                <tr><td className="px-3 py-2">1970年</td><td className="px-3 py-2">昭和45年</td><td className="px-3 py-2 font-bold">56歳</td><td className="px-3 py-2">戌年</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-gray-500 mt-4">※ 誕生日前の場合は1歳引いてください。</p>
+        </section>
 
         <div className="mt-8 text-center">
           <Link href="/generator" className="text-kon hover:text-ai">← 計算・生成ツール一覧に戻る</Link>
