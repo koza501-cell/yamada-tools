@@ -485,6 +485,30 @@ export default function NenmatsuCalcClient({ faq, seoContent }: NenmatsuClientPr
             </div>
           </section>
         )}
+        {/* Direct Answer Block for AI/SEO */}
+        <section className="mt-8 bg-white rounded-2xl p-6 border border-gray-100">
+          <h2 className="font-bold text-kon mb-4 text-lg">📊 年末調整の計算例</h2>
+          <p className="text-gray-600 mb-4 text-sm">年収別の年末調整シミュレーション結果です（独身・扶養なしの場合）。</p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead className="bg-gray-100">
+                <tr>
+                  <th className="px-3 py-2 text-left">年収</th>
+                  <th className="px-3 py-2 text-left">所得税</th>
+                  <th className="px-3 py-2 text-left">還付/追徴</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y">
+                <tr><td className="px-3 py-2">300万円</td><td className="px-3 py-2">約5.6万円</td><td className="px-3 py-2 text-green-600">還付 0〜2万円</td></tr>
+                <tr><td className="px-3 py-2">400万円</td><td className="px-3 py-2">約8.6万円</td><td className="px-3 py-2 text-green-600">還付 0〜3万円</td></tr>
+                <tr><td className="px-3 py-2">500万円</td><td className="px-3 py-2">約14万円</td><td className="px-3 py-2 text-green-600">還付 0〜5万円</td></tr>
+                <tr><td className="px-3 py-2">600万円</td><td className="px-3 py-2">約20万円</td><td className="px-3 py-2 text-green-600">還付 0〜8万円</td></tr>
+                <tr><td className="px-3 py-2">800万円</td><td className="px-3 py-2">約46万円</td><td className="px-3 py-2 text-green-600">還付 0〜15万円</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-gray-500 mt-4">※ 生命保険料控除・住宅ローン控除などを適用すると還付額が増えます。上記は概算値です。</p>
+        </section>
       </div>
     </div>
   );
