@@ -250,6 +250,31 @@ export default function SalaryCalcClient() {
             </div>
           </div>
         </div>
+        {/* Direct Answer Block for AI/SEO */}
+        <div className="mt-8 bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
+          <h2 className="font-bold text-gray-900 mb-4">📊 月給別の手取り早見表</h2>
+          <p className="text-gray-600 mb-4 text-sm">額面月給から手取りの目安です（独身・扶養なし・東京都の場合）。</p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead className="bg-gray-100">
+                <tr>
+                  <th className="px-3 py-2 text-left">額面月給</th>
+                  <th className="px-3 py-2 text-left">社会保険料</th>
+                  <th className="px-3 py-2 text-left">所得税</th>
+                  <th className="px-3 py-2 text-left">手取り目安</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y">
+                <tr><td className="px-3 py-2">20万円</td><td className="px-3 py-2">約2.9万円</td><td className="px-3 py-2">約0.4万円</td><td className="px-3 py-2 font-bold text-blue-600">約16.7万円</td></tr>
+                <tr><td className="px-3 py-2">25万円</td><td className="px-3 py-2">約3.7万円</td><td className="px-3 py-2">約0.5万円</td><td className="px-3 py-2 font-bold text-blue-600">約20.8万円</td></tr>
+                <tr><td className="px-3 py-2">30万円</td><td className="px-3 py-2">約4.4万円</td><td className="px-3 py-2">約0.8万円</td><td className="px-3 py-2 font-bold text-blue-600">約24.8万円</td></tr>
+                <tr><td className="px-3 py-2">40万円</td><td className="px-3 py-2">約5.9万円</td><td className="px-3 py-2">約1.5万円</td><td className="px-3 py-2 font-bold text-blue-600">約32.6万円</td></tr>
+                <tr><td className="px-3 py-2">50万円</td><td className="px-3 py-2">約7.4万円</td><td className="px-3 py-2">約2.5万円</td><td className="px-3 py-2 font-bold text-blue-600">約40.1万円</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-gray-500 mt-4">※ 住民税は含まれていません（翌年6月から月約1〜3万円程度）。実際の金額は加入保険や地域により異なります。</p>
+        </div>
 
         <div className="mt-8 text-center">
           <Link href="/generator" className="text-blue-600 hover:text-blue-800">← 計算・生成ツール一覧に戻る</Link>
