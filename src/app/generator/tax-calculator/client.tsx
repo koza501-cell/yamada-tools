@@ -139,6 +139,32 @@ export default function TaxCalculatorClient({ faq }: { faq?: FAQ[] }) {
             </div>
           </div>
         )}
+        {/* Direct Answer Block for AI/SEO */}
+        <div className="mt-8 bg-white rounded-2xl shadow-lg p-8">
+          <h2 className="text-xl font-bold text-gray-900 mb-6">📊 よくある計算例</h2>
+          <p className="text-gray-600 mb-4">消費税計算の早見表です。コピーしてご活用ください。</p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead className="bg-gray-100">
+                <tr>
+                  <th className="px-4 py-2 text-left">税抜価格</th>
+                  <th className="px-4 py-2 text-left">税率</th>
+                  <th className="px-4 py-2 text-left">消費税</th>
+                  <th className="px-4 py-2 text-left">税込価格</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y">
+                <tr><td className="px-4 py-2">1,000円</td><td className="px-4 py-2">10%</td><td className="px-4 py-2">100円</td><td className="px-4 py-2 font-bold">1,100円</td></tr>
+                <tr><td className="px-4 py-2">1,000円</td><td className="px-4 py-2">8%</td><td className="px-4 py-2">80円</td><td className="px-4 py-2 font-bold">1,080円</td></tr>
+                <tr><td className="px-4 py-2">5,000円</td><td className="px-4 py-2">10%</td><td className="px-4 py-2">500円</td><td className="px-4 py-2 font-bold">5,500円</td></tr>
+                <tr><td className="px-4 py-2">10,000円</td><td className="px-4 py-2">10%</td><td className="px-4 py-2">1,000円</td><td className="px-4 py-2 font-bold">11,000円</td></tr>
+                <tr><td className="px-4 py-2">50,000円</td><td className="px-4 py-2">10%</td><td className="px-4 py-2">5,000円</td><td className="px-4 py-2 font-bold">55,000円</td></tr>
+                <tr><td className="px-4 py-2">100,000円</td><td className="px-4 py-2">10%</td><td className="px-4 py-2">10,000円</td><td className="px-4 py-2 font-bold">110,000円</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-gray-500 mt-4">※ 軽減税率8%は飲食料品（外食・酒類除く）と週2回以上発行の新聞に適用されます。</p>
+        </div>
       </div>
     </div>
   );
