@@ -1,18 +1,17 @@
 "use client";
-
 import { useState, useEffect } from "react";
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const saved = localStorage.getItem("theme") as "light" | "dark";
     if (saved) {
       setTheme(saved);
-      document.documentElement.classList.toggle("dark", saved === "dark");
     } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
       setTheme("dark");
-      document.documentElement.classList.add("dark");
     }
   }, []);
 
@@ -20,12 +19,10 @@ export default function ThemeToggle() {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
-    if (newTheme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+    document.documentElement.classList.toggle("dark", newTheme === "dark");
   };
+
+  if (!mounted) return <span className="p-2">🌙</span>;
 
   return (
     <button
