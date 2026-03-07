@@ -169,6 +169,7 @@ export default function PdfTextClient({ faq, seoContent }: Props) {
   const hankoPreviewRef = useRef<HTMLCanvasElement>(null);
   const [step, setStep] = useState(1);
   const [isDownloading, setIsDownloading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [dragging, setDragging] = useState<number | null>(null);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
@@ -234,6 +235,7 @@ export default function PdfTextClient({ faq, seoContent }: Props) {
 
   // ---------- PDF Load ----------
   const loadPdf = async (f: File) => {
+    setIsLoading(true); setMascotState("working");
     await ensureLibs();
     setError("");
     try {
@@ -242,10 +244,10 @@ export default function PdfTextClient({ faq, seoContent }: Props) {
       setPdfBytes(bufCopy);
       const doc = await pdfjsLib.getDocument({ data: new Uint8Array(buf.slice(0)) }).promise;
       setPdfDoc(doc); setTotalPages(doc.numPages); setCurrentPage(1); setPdfFile(f); setEntries([]);
-      setStep(2); setMascotState("success");
+      setIsLoading(false); setStep(2); setMascotState("success");
       setTimeout(() => setMascotState("idle"), 2000);
     } catch (e: any) {
-      setError("PDFの読み込みに失敗しました: " + e.message); setMascotState("error");
+      setIsLoading(false); setError("PDFの読み込みに失敗しました: " + e.message); setMascotState("error");
     }
   };
 
@@ -500,19 +502,31 @@ export default function PdfTextClient({ faq, seoContent }: Props) {
           className="border-4 border-dashed border-orange-300 rounded-2xl p-12 text-center bg-orange-50 hover:bg-orange-100 transition cursor-pointer"
           onDrop={handleDrop}
           onDragOver={e => e.preventDefault()}
-          onClick={() => document.getElementById("pdf-input")?.click()}
+          onClick={() => !isLoading && document.getElementById("pdf-input")?.click()}
         >
-          <div className="text-6xl mb-4">📄</div>
-          <p className="text-xl font-bold text-gray-700 mb-2">PDFファイルをここにドロップ</p>
-          <p className="text-gray-500 mb-4">または下のボタンで選択</p>
-          <button className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-10 rounded-xl text-lg shadow-lg transition transform hover:scale-105">
-            📁 PDFを選択する
-          </button>
-          <input id="pdf-input" type="file" accept=".pdf" className="hidden" onChange={handleFileInput} />
-          <p className="text-sm text-gray-400 mt-4">🔒 ファイルはサーバーに送信されません（ブラウザ内で安全に処理）</p>
+          {isLoading ? (
+            <>
+              <div className="text-6xl mb-4">⏳</div>
+              <p className="text-xl font-bold text-gray-700 mb-2">読み込み中...</p>
+              <div className="w-48 h-2 bg-gray-200 rounded-full mx-auto overflow-hidden">
+                <div className="h-full bg-orange-500 rounded-full animate-pulse" style={{width: "70%"}}></div>
+              </div>
+              <p className="text-sm text-gray-400 mt-4">少々お待ちください</p>
+            </>
+          ) : (
+            <>
+              <div className="text-6xl mb-4">📄</div>
+              <p className="text-xl font-bold text-gray-700 mb-2">PDFファイルをここにドロップ</p>
+              <p className="text-gray-500 mb-4">または下のボタンで選択</p>
+              <button className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-10 rounded-xl text-lg shadow-lg transition transform hover:scale-105">
+                📁 PDFを選択する
+              </button>
+              <input id="pdf-input" type="file" accept=".pdf" className="hidden" onChange={handleFileInput} />
+              <p className="text-sm text-gray-400 mt-4">🔒 ファイルはサーバーに送信されません（ブラウザ内で安全に処理）</p>
+            </>
+          )}
         </div>
       )}
-
       {/* Step 2: Edit */}
       {step >= 2 && pdfDoc && (
         <div>
