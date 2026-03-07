@@ -27,7 +27,9 @@ ${tools.map(t => `- ${t.nameJa}: https://yamada-tools.jp${t.path}`).join('\n')}
 
 ## 参照ページ
 - 全ツール一覧: https://yamada-tools.jp/tools
+- 経理・財務ツール: https://yamada-tools.jp/finance
 - 銀行コード一覧: https://yamada-tools.jp/reference/bank-codes
+- 祝日一覧: https://yamada-tools.jp/reference/holidays
 - ブログ: https://yamada-tools.jp/blog
 
 ## API
