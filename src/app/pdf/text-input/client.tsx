@@ -172,6 +172,7 @@ export default function PdfTextClient({ faq, seoContent }: Props) {
   const [error, setError] = useState("");
   const [dragging, setDragging] = useState<number | null>(null);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
+  const [snapToGrid, setSnapToGrid] = useState(false);
 
   // ---------- Hanko Preview ----------
   useEffect(() => {
@@ -211,60 +212,25 @@ export default function PdfTextClient({ faq, seoContent }: Props) {
         setActiveEntryId(null); setInputMode(false); setPlaceHankoMode(false); setPendingHanko(null);
         setEntries(prev => prev.filter(en => en.isStamp ? !!en.stampName : en.text.trim() !== ""));
       }
-      // Arrow keys = nudge selected element
+      // Arrow keys = nudge selected element (with optional snap-to-grid)
       if (activeEntryId !== null && ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
         e.preventDefault();
-        const step = e.shiftKey ? 1 : 0.2; // Shift = 5x faster
+        const gridSize = snapToGrid ? 5 : (e.shiftKey ? 1 : 0.2);
         setEntries(prev => prev.map(en => {
           if (en.id !== activeEntryId) return en;
           let { x, y } = en;
-          if (e.key === "ArrowUp") y = Math.max(0, y - step);
-          if (e.key === "ArrowDown") y = Math.min(100, y + step);
-          if (e.key === "ArrowLeft") x = Math.max(0, x - step);
-          if (e.key === "ArrowRight") x = Math.min(100, x + step);
-          return { ...en, x, y };
-        }));
-      }
-      if (e.key === "Escape") {
-        setActiveEntryId(null); setInputMode(false); setPlaceHankoMode(false); setPendingHanko(null);
-        setEntries(prev => prev.filter(en => en.isStamp ? !!en.stampName : en.text.trim() !== ""));
-      }
-      // Arrow keys = nudge selected element
-      if (activeEntryId !== null && ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
-        e.preventDefault();
-        const step = e.shiftKey ? 1 : 0.2; // Shift = 5x faster
-        setEntries(prev => prev.map(en => {
-          if (en.id !== activeEntryId) return en;
-          let { x, y } = en;
-          if (e.key === "ArrowUp") y = Math.max(0, y - step);
-          if (e.key === "ArrowDown") y = Math.min(100, y + step);
-          if (e.key === "ArrowLeft") x = Math.max(0, x - step);
-          if (e.key === "ArrowRight") x = Math.min(100, x + step);
-          return { ...en, x, y };
-        }));
-      }
-      if (e.key === "Escape") {
-        setActiveEntryId(null); setInputMode(false); setPlaceHankoMode(false); setPendingHanko(null);
-        setEntries(prev => prev.filter(en => en.isStamp ? !!en.stampName : en.text.trim() !== ""));
-      }
-      // Arrow keys = nudge selected element
-      if (activeEntryId !== null && ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
-        e.preventDefault();
-        const step = e.shiftKey ? 1 : 0.2; // Shift = 5x faster
-        setEntries(prev => prev.map(en => {
-          if (en.id !== activeEntryId) return en;
-          let { x, y } = en;
-          if (e.key === "ArrowUp") y = Math.max(0, y - step);
-          if (e.key === "ArrowDown") y = Math.min(100, y + step);
-          if (e.key === "ArrowLeft") x = Math.max(0, x - step);
-          if (e.key === "ArrowRight") x = Math.min(100, x + step);
+          if (e.key === "ArrowUp") y = Math.max(0, y - gridSize);
+          if (e.key === "ArrowDown") y = Math.min(100, y + gridSize);
+          if (e.key === "ArrowLeft") x = Math.max(0, x - gridSize);
+          if (e.key === "ArrowRight") x = Math.min(100, x + gridSize);
+          if (snapToGrid) { x = Math.round(x / 5) * 5; y = Math.round(y / 5) * 5; }
           return { ...en, x, y };
         }));
       }
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [step, currentPage, activeEntryId]);
+  }, [step, currentPage, activeEntryId, snapToGrid]);
 
   // ---------- PDF Load ----------
   const loadPdf = async (f: File) => {
@@ -405,7 +371,9 @@ export default function PdfTextClient({ faq, seoContent }: Props) {
     const rect = canvasRef.current.getBoundingClientRect();
     const xPct = ((e.clientX - rect.left) / rect.width) * 100;
     const yPct = ((e.clientY - rect.top) / rect.height) * 100;
-    setEntries(prev => prev.map(en => en.id === dragging ? { ...en, x: xPct - dragOffset.x, y: yPct - dragOffset.y } : en));
+    let newX = xPct - dragOffset.x, newY = yPct - dragOffset.y;
+    if (snapToGrid) { newX = Math.round(newX / 5) * 5; newY = Math.round(newY / 5) * 5; }
+    setEntries(prev => prev.map(en => en.id === dragging ? { ...en, x: newX, y: newY } : en));
   };
   const handleMouseUp = () => { if (dragging !== null) setDragging(null); };
 
@@ -583,6 +551,12 @@ export default function PdfTextClient({ faq, seoContent }: Props) {
 
               <div className="flex-1" />
 
+              <button onClick={() => setSnapToGrid(!snapToGrid)}
+                className={`px-3 py-2 rounded-lg text-xs font-bold transition whitespace-nowrap ${
+                  snapToGrid ? "bg-green-500 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                }`} title="グリッドにスナップ">
+                {snapToGrid ? "📐 グリッドON" : "📐 グリッド"}
+              </button>
               <button onClick={undoLast} disabled={entries.filter(e => e.page === currentPage).length === 0}
                 className="bg-gray-100 hover:bg-gray-200 disabled:opacity-30 text-gray-600 font-bold py-2 px-3 rounded-lg text-sm transition whitespace-nowrap" title="Ctrl+Z">
                 ↩ 戻す
@@ -657,7 +631,7 @@ export default function PdfTextClient({ faq, seoContent }: Props) {
                   onKeyDown={e => {
                     if (e.key === "Escape") { if (!activeEntry.text.trim()) deleteEntry(activeEntry.id); else setActiveEntryId(null); setInputMode(false); }
                   }} />
-                <p className="text-xs text-gray-400 mt-1">Escで確定 ・ ドラッグまたは矢印キーで移動 ・ <span className="font-mono bg-gray-100 px-1 rounded">X:{Math.round(activeEntry.x)}% Y:{Math.round(activeEntry.y)}%</span></p>
+                <p className="text-xs text-gray-400 mt-1">Escで確定 ・ 矢印キーで移動{snapToGrid && " (グリッド5%)"} ・ <span className="font-mono bg-gray-100 px-1 rounded">X:{Math.round(activeEntry.x)}% Y:{Math.round(activeEntry.y)}%</span></p>
               </div>
               <button onClick={() => deleteEntry(activeEntry.id)} className="text-red-500 hover:text-red-700 text-lg px-2" title="削除">🗑️</button>
             </div>
