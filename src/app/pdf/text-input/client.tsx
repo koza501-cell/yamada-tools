@@ -21,6 +21,7 @@ interface TextEntry {
   bold: boolean;
   isStamp?: boolean;
   stampName?: string;
+  stampShape?: "circle" | "square";
   stampSize?: number;
 }
 
@@ -78,7 +79,7 @@ function textToImage(text: string, fontSize: number, fontFamily: string, color: 
   return { pngBytes: bytes, width: maxWidth, height: totalHeight };
 }
 
-function hankoToImage(name: string, size: number): { pngBytes: Uint8Array; width: number; height: number } {
+function hankoToImage(name: string, size: number, shape: "circle" | "square" = "circle"): { pngBytes: Uint8Array; width: number; height: number } {
   const scale = 3;
   const canvas = document.createElement("canvas");
   canvas.width = size * scale;
@@ -87,17 +88,26 @@ function hankoToImage(name: string, size: number): { pngBytes: Uint8Array; width
   ctx.scale(scale, scale);
   const cx = size / 2;
   const cy = size / 2;
-  const r = size / 2 - 2;
-  ctx.beginPath();
-  ctx.arc(cx, cy, r, 0, Math.PI * 2);
-  ctx.strokeStyle = "#CC0000";
-  ctx.lineWidth = 2.5;
-  ctx.stroke();
-  ctx.beginPath();
-  ctx.arc(cx, cy, r - 3, 0, Math.PI * 2);
-  ctx.strokeStyle = "#CC0000";
-  ctx.lineWidth = 0.8;
-  ctx.stroke();
+  if (shape === "circle") {
+    const r = size / 2 - 2;
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.strokeStyle = "#CC0000";
+    ctx.lineWidth = 2.5;
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(cx, cy, r - 3, 0, Math.PI * 2);
+    ctx.strokeStyle = "#CC0000";
+    ctx.lineWidth = 0.8;
+    ctx.stroke();
+  } else {
+    const margin = 2;
+    ctx.strokeStyle = "#CC0000";
+    ctx.lineWidth = 2.5;
+    ctx.strokeRect(margin, margin, size - margin * 2, size - margin * 2);
+    ctx.lineWidth = 0.8;
+    ctx.strokeRect(margin + 3, margin + 3, size - margin * 2 - 6, size - margin * 2 - 6);
+  }
   const chars = name.split("");
   const maxChars = Math.max(chars.length, 1);
   const charSize = (size * 0.52) / maxChars;
@@ -116,7 +126,6 @@ function hankoToImage(name: string, size: number): { pngBytes: Uint8Array; width
   for (let i = 0; i < binaryStr.length; i++) bytes[i] = binaryStr.charCodeAt(i);
   return { pngBytes: bytes, width: size, height: size };
 }
-
 function getJapaneseDate(): string {
   const now = new Date();
   return `令和${now.getFullYear() - 2018}年${now.getMonth() + 1}月${now.getDate()}日`;
@@ -164,8 +173,9 @@ export default function PdfTextClient({ faq, seoContent }: Props) {
   const [showHankoPanel, setShowHankoPanel] = useState(false);
   const [hankoName, setHankoName] = useState("");
   const [hankoSize, setHankoSize] = useState(60);
+  const [hankoShape, setHankoShape] = useState<"circle" | "square">("circle");
   const [placeHankoMode, setPlaceHankoMode] = useState(false);
-  const [pendingHanko, setPendingHanko] = useState<{name: string; size: number} | null>(null);
+  const [pendingHanko, setPendingHanko] = useState<{name: string; size: number; shape: "circle" | "square"} | null>(null);
   const hankoPreviewRef = useRef<HTMLCanvasElement>(null);
   const [step, setStep] = useState(1);
   const [isDownloading, setIsDownloading] = useState(false);
@@ -184,15 +194,23 @@ export default function PdfTextClient({ faq, seoContent }: Props) {
     canvas.height = size;
     const ctx = canvas.getContext("2d")!;
     ctx.clearRect(0, 0, size, size);
-    const cx = size / 2, cy = size / 2, r = size / 2 - 2;
-    ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.strokeStyle = "#CC0000"; ctx.lineWidth = 2.5; ctx.stroke();
-    ctx.beginPath(); ctx.arc(cx, cy, r - 3, 0, Math.PI * 2); ctx.strokeStyle = "#CC0000"; ctx.lineWidth = 0.8; ctx.stroke();
+    const cx = size / 2, cy = size / 2;
+    if (hankoShape === "circle") {
+      const r = size / 2 - 2;
+      ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.strokeStyle = "#CC0000"; ctx.lineWidth = 2.5; ctx.stroke();
+      ctx.beginPath(); ctx.arc(cx, cy, r - 3, 0, Math.PI * 2); ctx.strokeStyle = "#CC0000"; ctx.lineWidth = 0.8; ctx.stroke();
+    } else {
+      const margin = 2;
+      ctx.strokeStyle = "#CC0000"; ctx.lineWidth = 2.5;
+      ctx.strokeRect(margin, margin, size - margin * 2, size - margin * 2);
+      ctx.lineWidth = 0.8;
+      ctx.strokeRect(margin + 3, margin + 3, size - margin * 2 - 6, size - margin * 2 - 6);
+    }
     const chars = hankoName.split("");
     const charSize = (size * 0.52) / Math.max(chars.length, 1);
     ctx.font = `bold ${charSize}px serif`; ctx.fillStyle = "#CC0000"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
     chars.forEach((char, i) => { ctx.fillText(char, cx, cy - ((chars.length - 1) * charSize) / 2 + i * charSize); });
-  }, [hankoName]);
-
+  }, [hankoName, hankoShape]);
   // ---------- Keyboard Shortcuts ----------
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -281,17 +299,26 @@ export default function PdfTextClient({ faq, seoContent }: Props) {
       const y = (entry.y / 100) * ch;
       if (entry.isStamp && entry.stampName) {
         const stampPx = (entry.stampSize || 60) * (cw / 595);
-        const ecx = x + stampPx / 2, ecy = y + stampPx / 2, r = stampPx / 2 - 1;
-        ctx.beginPath(); ctx.arc(ecx, ecy, r, 0, Math.PI * 2); ctx.strokeStyle = "#CC0000"; ctx.lineWidth = 2; ctx.stroke();
-        ctx.beginPath(); ctx.arc(ecx, ecy, r - 2.5, 0, Math.PI * 2); ctx.strokeStyle = "#CC0000"; ctx.lineWidth = 0.7; ctx.stroke();
+        const ecx = x + stampPx / 2, ecy = y + stampPx / 2;
+        const shape = entry.stampShape || "circle";
+        if (shape === "circle") {
+          const r = stampPx / 2 - 1;
+          ctx.beginPath(); ctx.arc(ecx, ecy, r, 0, Math.PI * 2); ctx.strokeStyle = "#CC0000"; ctx.lineWidth = 2; ctx.stroke();
+          ctx.beginPath(); ctx.arc(ecx, ecy, r - 2.5, 0, Math.PI * 2); ctx.strokeStyle = "#CC0000"; ctx.lineWidth = 0.7; ctx.stroke();
+        } else {
+          const margin = 1;
+          ctx.strokeStyle = "#CC0000"; ctx.lineWidth = 2;
+          ctx.strokeRect(x + margin, y + margin, stampPx - margin * 2, stampPx - margin * 2);
+          ctx.lineWidth = 0.7;
+          ctx.strokeRect(x + margin + 2.5, y + margin + 2.5, stampPx - margin * 2 - 5, stampPx - margin * 2 - 5);
+        }
         const chars = entry.stampName.split("");
         const charSize = (stampPx * 0.52) / Math.max(chars.length, 1);
         ctx.font = `bold ${charSize}px serif`; ctx.fillStyle = "#CC0000"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
         chars.forEach((char, i) => { ctx.fillText(char, ecx, ecy - ((chars.length - 1) * charSize) / 2 + i * charSize); });
         ctx.textAlign = "start";
         if (entry.id === activeEntryId) { ctx.strokeStyle = "#2563eb"; ctx.lineWidth = 1.5; ctx.setLineDash([4, 4]); ctx.strokeRect(x - 4, y - 4, stampPx + 8, stampPx + 8); ctx.setLineDash([]); }
-      } else {
-        if (!entry.text) continue;
+        } else if (entry.text) {
         const scaledSize = entry.fontSize * (cw / 595);
         const weight = entry.bold ? "bold" : "normal";
         ctx.font = `${weight} ${scaledSize}px ${entry.fontFamily}`; ctx.fillStyle = entry.color; ctx.textBaseline = "top";
@@ -324,7 +351,7 @@ export default function PdfTextClient({ faq, seoContent }: Props) {
       return;
     }
     if (placeHankoMode && pendingHanko) {
-      const stampEntry: TextEntry = { id: nextId, page: currentPage, x: xPct, y: yPct, text: pendingHanko.name, fontSize: 16, fontFamily: "serif", color: "#CC0000", bold: true, isStamp: true, stampName: pendingHanko.name, stampSize: pendingHanko.size };
+      const stampEntry: TextEntry = { id: nextId, page: currentPage, x: xPct, y: yPct, text: pendingHanko.name, fontSize: 16, fontFamily: "serif", color: "#CC0000", bold: true, isStamp: true, stampName: pendingHanko.name, stampSize: pendingHanko.size, stampShape: pendingHanko.shape };
       setEntries(prev => [...prev, stampEntry]); setActiveEntryId(nextId); setNextId(prev => prev + 1);
       setPlaceHankoMode(false); setPendingHanko(null); setShowHankoPanel(false);
       return;
@@ -424,7 +451,7 @@ export default function PdfTextClient({ faq, seoContent }: Props) {
         const { width: pw, height: ph } = page.getSize();
         let pngBytes: Uint8Array, imgW: number, imgH: number;
         if (entry.isStamp && entry.stampName) {
-          const stamp = hankoToImage(entry.stampName, entry.stampSize || 60);
+          const stamp = hankoToImage(entry.stampName, entry.stampSize || 60, entry.stampShape || "circle");
           pngBytes = stamp.pngBytes; imgW = stamp.width; imgH = stamp.height;
         } else {
           const text = textToImage(entry.text, entry.fontSize, entry.fontFamily, entry.color, entry.bold);
@@ -594,8 +621,11 @@ export default function PdfTextClient({ faq, seoContent }: Props) {
                     <select value={hankoSize} onChange={e => setHankoSize(Number(e.target.value))} className="border rounded-lg px-2 py-2 text-sm">
                       <option value={40}>小</option><option value={50}>中小</option><option value={60}>中</option><option value={80}>大</option><option value={100}>特大</option>
                     </select>
+                    <select value={hankoShape} onChange={e => setHankoShape(e.target.value as "circle" | "square")} className="border rounded-lg px-2 py-2 text-sm">
+                      <option value="circle">⚪ 丸印</option><option value="square">⬜ 角印</option>
+                    </select>
                     <button
-                      onClick={() => { if (!hankoName.trim()) return; setPendingHanko({ name: hankoName.trim(), size: hankoSize }); setPlaceHankoMode(true); setInputMode(false); setActiveEntryId(null); }}
+                      onClick={() => { if (!hankoName.trim()) return; setPendingHanko({ name: hankoName.trim(), size: hankoSize, shape: hankoShape }); setPlaceHankoMode(true); setInputMode(false); setActiveEntryId(null); }}
                       disabled={!hankoName.trim()}
                       className="bg-red-500 hover:bg-red-600 disabled:opacity-40 text-white font-bold py-2 px-5 rounded-lg text-sm transition whitespace-nowrap"
                     >📍 PDFに配置</button>
