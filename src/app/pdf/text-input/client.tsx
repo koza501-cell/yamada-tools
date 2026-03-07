@@ -657,7 +657,7 @@ export default function PdfTextClient({ faq, seoContent }: Props) {
                   onKeyDown={e => {
                     if (e.key === "Escape") { if (!activeEntry.text.trim()) deleteEntry(activeEntry.id); else setActiveEntryId(null); setInputMode(false); }
                   }} />
-                <p className="text-xs text-gray-400 mt-1">Escで確定 ・ PDF上でドラッグして移動可能</p>
+                <p className="text-xs text-gray-400 mt-1">Escで確定 ・ ドラッグまたは矢印キーで移動 ・ <span className="font-mono bg-gray-100 px-1 rounded">X:{Math.round(activeEntry.x)}% Y:{Math.round(activeEntry.y)}%</span></p>
               </div>
               <button onClick={() => deleteEntry(activeEntry.id)} className="text-red-500 hover:text-red-700 text-lg px-2" title="削除">🗑️</button>
             </div>
