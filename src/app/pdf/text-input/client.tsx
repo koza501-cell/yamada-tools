@@ -499,7 +499,7 @@ export default function PdfTextClient({ faq, seoContent }: Props) {
       {/* Step 1: Upload */}
       {step === 1 && (
         <div
-          className="border-4 border-dashed border-orange-300 rounded-2xl p-12 text-center bg-orange-50 hover:bg-orange-100 transition cursor-pointer"
+          className="border-4 border-dashed border-orange-300 rounded-2xl p-12 text-center bg-orange-50 dark:bg-gray-800 hover:bg-orange-100 dark:hover:bg-gray-700 transition cursor-pointer"
           onDrop={handleDrop}
           onDragOver={e => e.preventDefault()}
           onClick={() => !isLoading && document.getElementById("pdf-input")?.click()}
@@ -507,7 +507,7 @@ export default function PdfTextClient({ faq, seoContent }: Props) {
           {isLoading ? (
             <>
               <div className="text-6xl mb-4">⏳</div>
-              <p className="text-xl font-bold text-gray-700 mb-2">読み込み中...</p>
+              <p className="text-xl font-bold text-gray-700 dark:text-gray-200 mb-2">読み込み中...</p>
               <div className="w-48 h-2 bg-gray-200 rounded-full mx-auto overflow-hidden">
                 <div className="h-full bg-orange-500 rounded-full animate-pulse" style={{width: "70%"}}></div>
               </div>
@@ -516,8 +516,8 @@ export default function PdfTextClient({ faq, seoContent }: Props) {
           ) : (
             <>
               <div className="text-6xl mb-4">📄</div>
-              <p className="text-xl font-bold text-gray-700 mb-2">PDFファイルをここにドロップ</p>
-              <p className="text-gray-500 mb-4">または下のボタンで選択</p>
+              <p className="text-xl font-bold text-gray-700 dark:text-gray-200 mb-2">PDFファイルをここにドロップ</p>
+              <p className="text-gray-500 dark:text-gray-400 mb-4">または下のボタンで選択</p>
               <button className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-10 rounded-xl text-lg shadow-lg transition transform hover:scale-105">
                 📁 PDFを選択する
               </button>
@@ -531,7 +531,7 @@ export default function PdfTextClient({ faq, seoContent }: Props) {
       {step >= 2 && pdfDoc && (
         <div>
           {/* ===== TOOLBAR ===== */}
-          <div className="sticky top-0 z-50 bg-white border-2 border-orange-200 rounded-xl p-3 mb-4 shadow-md" style={{ position: "sticky", top: 0 }}>
+          <div className="sticky top-0 z-50 bg-white dark:bg-gray-800 border-2 border-orange-200 dark:border-gray-600 rounded-xl p-3 mb-4 shadow-md" style={{ position: "sticky", top: 0 }}>
             {/* Row 1: Main action buttons */}
             <div className="flex flex-wrap items-center gap-2">
               <button
@@ -572,11 +572,11 @@ export default function PdfTextClient({ faq, seoContent }: Props) {
                 {snapToGrid ? "📐 グリッドON" : "📐 グリッド"}
               </button>
               <button onClick={undoLast} disabled={entries.filter(e => e.page === currentPage).length === 0}
-                className="bg-gray-100 hover:bg-gray-200 disabled:opacity-30 text-gray-600 font-bold py-2 px-3 rounded-lg text-sm transition whitespace-nowrap" title="Ctrl+Z">
+                className="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 disabled:opacity-30 text-gray-600 font-bold py-2 px-3 rounded-lg text-sm transition whitespace-nowrap" title="Ctrl+Z">
                 ↩ 戻す
               </button>
               <button onClick={resetAll} disabled={entries.length === 0}
-                className="bg-gray-100 hover:bg-gray-200 disabled:opacity-30 text-red-500 font-bold py-2 px-3 rounded-lg text-sm transition whitespace-nowrap">
+                className="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 disabled:opacity-30 text-red-500 font-bold py-2 px-3 rounded-lg text-sm transition whitespace-nowrap">
                 🗑
               </button>
             </div>
@@ -636,7 +636,7 @@ export default function PdfTextClient({ faq, seoContent }: Props) {
 
           {/* Text Input Area */}
           {activeEntry && !activeEntry.isStamp && (
-            <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-3 mb-4 flex items-start gap-3">
+            <div className="bg-blue-50 dark:bg-blue-900/30 border-2 border-blue-200 dark:border-blue-700 rounded-xl p-3 mb-4 flex items-start gap-3">
               <span className="text-xl mt-1">✏️</span>
               <div className="flex-1">
                 <textarea autoFocus value={activeEntry.text} onChange={e => updateActiveEntry({ text: e.target.value })}
@@ -682,7 +682,7 @@ export default function PdfTextClient({ faq, seoContent }: Props) {
               <div className="space-y-1">
                 {entries.filter(e => e.page === currentPage && (e.isStamp ? !!e.stampName : e.text.trim())).map(entry => (
                   <div key={entry.id} className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm ${
-                    entry.id === activeEntryId ? "bg-blue-100 border border-blue-300" : "bg-white border border-gray-200"}`}>
+                    entry.id === activeEntryId ? "bg-blue-100 border border-blue-300" : "bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600"}`}>
                     <span className="w-4 h-4 rounded-full flex-shrink-0" style={{ backgroundColor: entry.isStamp ? "#CC0000" : entry.color }} />
                     <span className="flex-1 truncate cursor-pointer" onClick={() => {
                       setActiveEntryId(entry.id);
@@ -741,8 +741,8 @@ export default function PdfTextClient({ faq, seoContent }: Props) {
           <h2 className="text-xl font-bold text-gray-800 mb-4">❓ よくある質問</h2>
           <div className="space-y-3">
             {faq.map((item, i) => (
-              <details key={i} className="bg-white border border-gray-200 rounded-xl overflow-hidden">
-                <summary className="px-4 py-3 cursor-pointer font-bold text-gray-700 hover:bg-gray-50">{item.question}</summary>
+              <details key={i} className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+                <summary className="px-4 py-3 cursor-pointer font-bold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700">{item.question}</summary>
                 <div className="px-4 py-3 text-sm text-gray-600 border-t">{item.answer}</div>
               </details>
             ))}
