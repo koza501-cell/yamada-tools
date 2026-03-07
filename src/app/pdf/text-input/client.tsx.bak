@@ -211,56 +211,6 @@ export default function PdfTextClient({ faq, seoContent }: Props) {
         setActiveEntryId(null); setInputMode(false); setPlaceHankoMode(false); setPendingHanko(null);
         setEntries(prev => prev.filter(en => en.isStamp ? !!en.stampName : en.text.trim() !== ""));
       }
-      // Arrow keys = nudge selected element
-      if (activeEntryId !== null && ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
-        e.preventDefault();
-        const step = e.shiftKey ? 1 : 0.2; // Shift = 5x faster
-        setEntries(prev => prev.map(en => {
-          if (en.id !== activeEntryId) return en;
-          let { x, y } = en;
-          if (e.key === "ArrowUp") y = Math.max(0, y - step);
-          if (e.key === "ArrowDown") y = Math.min(100, y + step);
-          if (e.key === "ArrowLeft") x = Math.max(0, x - step);
-          if (e.key === "ArrowRight") x = Math.min(100, x + step);
-          return { ...en, x, y };
-        }));
-      }
-      if (e.key === "Escape") {
-        setActiveEntryId(null); setInputMode(false); setPlaceHankoMode(false); setPendingHanko(null);
-        setEntries(prev => prev.filter(en => en.isStamp ? !!en.stampName : en.text.trim() !== ""));
-      }
-      // Arrow keys = nudge selected element
-      if (activeEntryId !== null && ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
-        e.preventDefault();
-        const step = e.shiftKey ? 1 : 0.2; // Shift = 5x faster
-        setEntries(prev => prev.map(en => {
-          if (en.id !== activeEntryId) return en;
-          let { x, y } = en;
-          if (e.key === "ArrowUp") y = Math.max(0, y - step);
-          if (e.key === "ArrowDown") y = Math.min(100, y + step);
-          if (e.key === "ArrowLeft") x = Math.max(0, x - step);
-          if (e.key === "ArrowRight") x = Math.min(100, x + step);
-          return { ...en, x, y };
-        }));
-      }
-      if (e.key === "Escape") {
-        setActiveEntryId(null); setInputMode(false); setPlaceHankoMode(false); setPendingHanko(null);
-        setEntries(prev => prev.filter(en => en.isStamp ? !!en.stampName : en.text.trim() !== ""));
-      }
-      // Arrow keys = nudge selected element
-      if (activeEntryId !== null && ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
-        e.preventDefault();
-        const step = e.shiftKey ? 1 : 0.2; // Shift = 5x faster
-        setEntries(prev => prev.map(en => {
-          if (en.id !== activeEntryId) return en;
-          let { x, y } = en;
-          if (e.key === "ArrowUp") y = Math.max(0, y - step);
-          if (e.key === "ArrowDown") y = Math.min(100, y + step);
-          if (e.key === "ArrowLeft") x = Math.max(0, x - step);
-          if (e.key === "ArrowRight") x = Math.min(100, x + step);
-          return { ...en, x, y };
-        }));
-      }
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
