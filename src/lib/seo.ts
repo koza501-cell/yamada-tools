@@ -69,6 +69,16 @@ export function generateToolJsonLd(tool: Tool, faq?: { question: string; answer:
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "@id": `${baseUrl}${tool.path}#software`,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${baseUrl}${tool.path}`
+    },
+    isPartOf: {
+      "@type": "WebSite",
+      "@id": `${baseUrl}/#website`,
+      name: "山田ツール",
+      url: baseUrl
+    },
     name: tool.nameJa,
     alternateName: tool.nameEn,
     url: `${baseUrl}${tool.path}`,
