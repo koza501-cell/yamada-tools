@@ -25,10 +25,10 @@ const relatedToolsMap: Record<string, string[]> = {
   "resume": ["invoice", "quotation", "pdf-text-input", "compress"],
   
   // Convert tools
-  "furigana": ["tategaki", "zenkaku", "kana-convert", "pdf-to-word"],
-  "tategaki": ["furigana", "zenkaku", "kana-convert", "pdf-text-input"],
-  "zenkaku": ["furigana", "kana-convert", "tategaki", "csv-to-excel"],
-  "kana-convert": ["furigana", "zenkaku", "tategaki", "pdf-to-word"],
+  "furigana": ["tategaki", "zenkaku", "zenkaku-hankaku", "pdf-to-word"],
+  "tategaki": ["furigana", "zenkaku", "zenkaku-hankaku", "pdf-text-input"],
+  "zenkaku": ["furigana", "zenkaku-hankaku", "tategaki", "csv-to-excel"],
+  "zenkaku-hankaku": ["furigana", "zenkaku", "tategaki", "pdf-to-word"],
   "csv-to-excel": ["excel-to-pdf", "pdf-to-excel", "bank-format", "invoice"],
   
   // Image tools
