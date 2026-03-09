@@ -66,6 +66,24 @@ export default function ResumeMobilePage() {
             </Link>
           </div>
         </div>
+        {/* FAQ Section */}
+        <section className="bg-white rounded-2xl p-6 border mt-8">
+          <h2 className="font-bold text-kon mb-4">❓ よくある質問</h2>
+          <div className="space-y-4 text-sm">
+            <div>
+              <h3 className="font-bold">Q: スマホで作った履歴書は企業に提出できますか？</h3>
+              <p className="text-gray-600">A: はい、JIS規格に準拠したPDF形式で出力されるため、正式な書類として提出可能です。</p>
+            </div>
+            <div>
+              <h3 className="font-bold">Q: 写真は必要ですか？</h3>
+              <p className="text-gray-600">A: 写真なしでも作成可能です。写真が必要な場合は、スマホで撮影した画像をアップロードできます。</p>
+            </div>
+            <div>
+              <h3 className="font-bold">Q: 入力した内容は保存されますか？</h3>
+              <p className="text-gray-600">A: ブラウザを閉じると入力内容は消えます。PDFをダウンロードして保存してください。</p>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );

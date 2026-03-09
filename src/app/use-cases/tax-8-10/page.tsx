@@ -81,6 +81,24 @@ export default function Tax810Page() {
             </Link>
           </div>
         </div>
+        {/* FAQ Section */}
+        <section className="bg-white rounded-2xl p-6 border mt-8">
+          <h2 className="font-bold text-kon mb-4">❓ よくある質問</h2>
+          <div className="space-y-4 text-sm">
+            <div>
+              <h3 className="font-bold">Q: 軽減税率8%はいつまで続きますか？</h3>
+              <p className="text-gray-600">A: 軽減税率に終了期限はありません。飲食料品と新聞は引き続き8%が適用されます。</p>
+            </div>
+            <div>
+              <h3 className="font-bold">Q: テイクアウトと店内飲食で税率が違うのはなぜ？</h3>
+              <p className="text-gray-600">A: テイクアウトは飲食料品の譲渡で8%、店内飲食は外食サービスで10%となります。</p>
+            </div>
+            <div>
+              <h3 className="font-bold">Q: 税込価格から税抜価格を計算するには？</h3>
+              <p className="text-gray-600">A: 10%の場合は税込÷1.10、8%の場合は税込÷1.08で税抜価格が算出できます。</p>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );

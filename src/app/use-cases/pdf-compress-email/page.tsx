@@ -67,6 +67,28 @@ export default function PdfCompressEmailPage() {
             </Link>
           </div>
         </div>
+        {/* FAQ Section */}
+        <section className="bg-white rounded-2xl p-6 border mt-8">
+          <h2 className="font-bold text-kon mb-4">❓ よくある質問</h2>
+          <div className="space-y-4 text-sm">
+            <div>
+              <h3 className="font-bold">Q: PDF圧縮で画質は劣化しますか？</h3>
+              <p className="text-gray-600">A: 多少の劣化はありますが、ビジネス文書やメール添付には十分な品質を維持します。写真が多いPDFは圧縮率が高くなります。</p>
+            </div>
+            <div>
+              <h3 className="font-bold">Q: 圧縮後のPDFは編集できますか？</h3>
+              <p className="text-gray-600">A: はい、通常のPDFと同様に編集可能です。テキスト選択やコピーも問題なく行えます。</p>
+            </div>
+            <div>
+              <h3 className="font-bold">Q: 何MBまで圧縮できますか？</h3>
+              <p className="text-gray-600">A: 元のファイルサイズの20〜30%程度まで圧縮できることが多いです。画像が多いPDFほど圧縮効果が高くなります。</p>
+            </div>
+            <div>
+              <h3 className="font-bold">Q: アップロードしたファイルは安全ですか？</h3>
+              <p className="text-gray-600">A: 日本国内サーバーで処理され、60分後に自動削除されます。第三者がアクセスすることはありません。</p>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );
