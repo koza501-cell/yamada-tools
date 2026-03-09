@@ -212,6 +212,19 @@ export function generateToolJsonLd(tool: Tool, faq?: { question: string; answer:
     ],
   };
   schemas.push(breadcrumbSchema as any);
+  // Add Speakable schema for voice search
+  const speakableSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${baseUrl}${tool.path}`,
+    name: tool.nameJa,
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", ".tool-description", ".faq-answer"]
+    },
+    url: `${baseUrl}${tool.path}`
+  };
+  schemas.push(speakableSchema as any);
 
   return schemas;
 }
