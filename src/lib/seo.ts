@@ -67,7 +67,7 @@ export function generateToolJsonLd(tool: Tool, faq?: { question: string; answer:
   // SoftwareApplication schema (enhanced)
   const softwareSchema = {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
+    "@type": ["SoftwareApplication", "WebApplication"],
     "@id": `${baseUrl}${tool.path}#software`,
     mainEntityOfPage: {
       "@type": "WebPage",
