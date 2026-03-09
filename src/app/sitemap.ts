@@ -21,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: baseUrl + "/use-cases/pdf-compress-email", lastModified: currentDate, changeFrequency: "monthly", priority: 0.7 },
     { url: baseUrl + "/use-cases/tax-8-10", lastModified: currentDate, changeFrequency: "monthly", priority: 0.7 },
     { url: baseUrl + "/use-cases/resume-mobile", lastModified: currentDate, changeFrequency: "monthly", priority: 0.7 },
+    { url: baseUrl + "/docs/holiday-api", lastModified: currentDate, changeFrequency: "monthly", priority: 0.7 },
     { url: baseUrl + "/about/company", lastModified: currentDate, changeFrequency: "monthly", priority: 0.5 },
     { url: baseUrl + "/about/story", lastModified: currentDate, changeFrequency: "monthly", priority: 0.5 },
     { url: baseUrl + "/about/faq", lastModified: currentDate, changeFrequency: "monthly", priority: 0.5 },

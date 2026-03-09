@@ -1,0 +1,76 @@
+import { NextResponse } from 'next/server';
+
+const holidaysData: Record<string, { date: string; name: string; name_en: string }[]> = {
+  "2024": [
+    { date: "2024-01-01", name: "元日", name_en: "New Year's Day" },
+    { date: "2024-01-08", name: "成人の日", name_en: "Coming of Age Day" },
+    { date: "2024-02-11", name: "建国記念の日", name_en: "National Foundation Day" },
+    { date: "2024-02-12", name: "振替休日", name_en: "Substitute Holiday" },
+    { date: "2024-02-23", name: "天皇誕生日", name_en: "Emperor's Birthday" },
+    { date: "2024-03-20", name: "春分の日", name_en: "Vernal Equinox Day" },
+    { date: "2024-04-29", name: "昭和の日", name_en: "Showa Day" },
+    { date: "2024-05-03", name: "憲法記念日", name_en: "Constitution Day" },
+    { date: "2024-05-04", name: "みどりの日", name_en: "Greenery Day" },
+    { date: "2024-05-05", name: "こどもの日", name_en: "Children's Day" },
+    { date: "2024-05-06", name: "振替休日", name_en: "Substitute Holiday" },
+    { date: "2024-07-15", name: "海の日", name_en: "Marine Day" },
+    { date: "2024-08-11", name: "山の日", name_en: "Mountain Day" },
+    { date: "2024-08-12", name: "振替休日", name_en: "Substitute Holiday" },
+    { date: "2024-09-16", name: "敬老の日", name_en: "Respect for the Aged Day" },
+    { date: "2024-09-22", name: "秋分の日", name_en: "Autumnal Equinox Day" },
+    { date: "2024-09-23", name: "振替休日", name_en: "Substitute Holiday" },
+    { date: "2024-10-14", name: "スポーツの日", name_en: "Sports Day" },
+    { date: "2024-11-03", name: "文化の日", name_en: "Culture Day" },
+    { date: "2024-11-04", name: "振替休日", name_en: "Substitute Holiday" },
+    { date: "2024-11-23", name: "勤労感謝の日", name_en: "Labor Thanksgiving Day" },
+  ],
+  "2025": [
+    { date: "2025-01-01", name: "元日", name_en: "New Year's Day" },
+    { date: "2025-01-13", name: "成人の日", name_en: "Coming of Age Day" },
+    { date: "2025-02-11", name: "建国記念の日", name_en: "National Foundation Day" },
+    { date: "2025-02-23", name: "天皇誕生日", name_en: "Emperor's Birthday" },
+    { date: "2025-02-24", name: "振替休日", name_en: "Substitute Holiday" },
+    { date: "2025-03-20", name: "春分の日", name_en: "Vernal Equinox Day" },
+    { date: "2025-04-29", name: "昭和の日", name_en: "Showa Day" },
+    { date: "2025-05-03", name: "憲法記念日", name_en: "Constitution Day" },
+    { date: "2025-05-04", name: "みどりの日", name_en: "Greenery Day" },
+    { date: "2025-05-05", name: "こどもの日", name_en: "Children's Day" },
+    { date: "2025-05-06", name: "振替休日", name_en: "Substitute Holiday" },
+    { date: "2025-07-21", name: "海の日", name_en: "Marine Day" },
+    { date: "2025-08-11", name: "山の日", name_en: "Mountain Day" },
+    { date: "2025-09-15", name: "敬老の日", name_en: "Respect for the Aged Day" },
+    { date: "2025-09-23", name: "秋分の日", name_en: "Autumnal Equinox Day" },
+    { date: "2025-10-13", name: "スポーツの日", name_en: "Sports Day" },
+    { date: "2025-11-03", name: "文化の日", name_en: "Culture Day" },
+    { date: "2025-11-23", name: "勤労感謝の日", name_en: "Labor Thanksgiving Day" },
+    { date: "2025-11-24", name: "振替休日", name_en: "Substitute Holiday" },
+  ],
+  "2026": [
+    { date: "2026-01-01", name: "元日", name_en: "New Year's Day" },
+    { date: "2026-01-12", name: "成人の日", name_en: "Coming of Age Day" },
+    { date: "2026-02-11", name: "建国記念の日", name_en: "National Foundation Day" },
+    { date: "2026-02-23", name: "天皇誕生日", name_en: "Emperor's Birthday" },
+    { date: "2026-03-20", name: "春分の日", name_en: "Vernal Equinox Day" },
+    { date: "2026-04-29", name: "昭和の日", name_en: "Showa Day" },
+    { date: "2026-05-03", name: "憲法記念日", name_en: "Constitution Day" },
+    { date: "2026-05-04", name: "みどりの日", name_en: "Greenery Day" },
+    { date: "2026-05-05", name: "こどもの日", name_en: "Children's Day" },
+    { date: "2026-05-06", name: "振替休日", name_en: "Substitute Holiday" },
+    { date: "2026-07-20", name: "海の日", name_en: "Marine Day" },
+    { date: "2026-08-11", name: "山の日", name_en: "Mountain Day" },
+    { date: "2026-09-21", name: "敬老の日", name_en: "Respect for the Aged Day" },
+    { date: "2026-09-22", name: "国民の休日", name_en: "Citizens' Holiday" },
+    { date: "2026-09-23", name: "秋分の日", name_en: "Autumnal Equinox Day" },
+    { date: "2026-10-12", name: "スポーツの日", name_en: "Sports Day" },
+    { date: "2026-11-03", name: "文化の日", name_en: "Culture Day" },
+    { date: "2026-11-23", name: "勤労感謝の日", name_en: "Labor Thanksgiving Day" },
+  ],
+};
+
+export async function GET() {
+  const years = Object.keys(holidaysData);
+  return NextResponse.json(
+    { available_years: years, usage: "/api/holidays/{year}" },
+    { headers: { "Access-Control-Allow-Origin": "*" } }
+  );
+}
