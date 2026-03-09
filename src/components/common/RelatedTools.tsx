@@ -140,7 +140,7 @@ export const relatedToolSets = {
   furigana: [
     { id: "tategaki", nameJa: "縦書き変換", icon: "📜", path: "/convert/tategaki" },
     { id: "zenkaku", nameJa: "全角半角変換", icon: "🔄", path: "/convert/zenkaku" },
-    { id: "kana-convert", nameJa: "カナ変換", icon: "あ", path: "/convert/kana-convert" },
+    { id: "zenkaku-hankaku", nameJa: "全角半角変換", icon: "あ", path: "/convert/zenkaku-hankaku" },
     { id: "pdf-to-word", nameJa: "PDF→Word", icon: "📄", path: "/pdf/pdf-to-word" },
   ],
   imageCompress: [
