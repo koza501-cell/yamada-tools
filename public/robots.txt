@@ -1,7 +1,15 @@
 User-agent: *
 Allow: /
+
+# Block internal/system paths
 Disallow: /api/
 Disallow: /_next/
 Disallow: /auth/
+
+# Block junk URLs
+Disallow: /$
+Disallow: /&
+Disallow: /*?q=*
+Disallow: /*?search=*
 
 Sitemap: https://yamada-tools.jp/sitemap.xml
