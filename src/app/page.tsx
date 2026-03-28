@@ -101,6 +101,22 @@ const homepageSchema = {
 
 
 
+// Homepage SearchAction schema
+const homepageSearchActionSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "山田ツール - 無料オンラインツール",
+  url: "https://yamada-tools.jp",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: "https://yamada-tools.jp/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+};
+
 // Homepage FAQ schema
 const homepageFaqSchema = {
   "@context": "https://schema.org",
@@ -159,6 +175,10 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageSearchActionSchema) }}
       />
       <script
         type="application/ld+json"

@@ -308,19 +308,6 @@ export const pdfTools: Tool[] = [
     category: "pdf",
     available: true,
   },
-  {
-    id: "combini-print",
-    nameJa: "コンビニ印刷用 余白追加",
-    nameEn: "Combini Print Fixer",
-    description: "コンビニ印刷で端が切れる問題を解決。余白を追加してきれいに印刷",
-    icon: "🏪",
-    path: "/pdf/combini-print",
-    apiEndpoint: "",
-    acceptedTypes: ".pdf",
-    maxFiles: 1,
-    category: "pdf",
-    available: true,
-  },
 ];
 
 // ============================================

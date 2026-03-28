@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: baseUrl + "/convert", lastModified: currentDate, changeFrequency: "weekly", priority: 0.9 },
     { url: baseUrl + "/image", lastModified: currentDate, changeFrequency: "weekly", priority: 0.9 },
     { url: baseUrl + "/generator", lastModified: currentDate, changeFrequency: "weekly", priority: 0.9 },
-    { url: baseUrl + "/finance", lastModified: currentDate, changeFrequency: "weekly", priority: 0.9 },
+    { url: baseUrl + "/finance", lastModified: currentDate, changeFrequency: "weekly", priority: 0.95 },
     { url: baseUrl + "/blog", lastModified: currentDate, changeFrequency: "weekly", priority: 0.8 },
     { url: baseUrl + "/about/company", lastModified: currentDate, changeFrequency: "monthly", priority: 0.5 },
     { url: baseUrl + "/about/story", lastModified: currentDate, changeFrequency: "monthly", priority: 0.5 },
@@ -37,7 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: baseUrl + tool.path,
     lastModified: currentDate,
     changeFrequency: "monthly",
-    priority: 0.8,
+    priority: tool.category === "finance" ? 0.9 : 0.8,
   }));
 
   return [...staticPages, ...toolPages];
