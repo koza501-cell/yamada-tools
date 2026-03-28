@@ -15,11 +15,18 @@ export const metadata: Metadata = {
     siteName: "yamada-tools.jp",
     locale: "ja_JP",
     type: "website",
+    images: [{
+      url: "https://pub-a1dbb3c658b341fabe5015e209050298.r2.dev/og-finance-nisa-simulator.png",
+      width: 1200,
+      height: 630,
+      alt: "新NISAシミュレーター | yamada-tools.jp",
+    }],
   },
   twitter: {
     card: "summary_large_image",
     title: "新NISAシミュレーター【無料】積立・節税額・1800万枠を計算｜複数シナリオ比較 | yamada-tools.jp",
     description: "新NISAの積立シミュレーションを無料で。毎月の積立額・利回り・期間を入力するだけで将来資産・節税額・非課税枠の使用率を自動計算。つみたて投資枠・成長投資枠の同時シミュレーションにも対応。",
+    images: ["https://pub-a1dbb3c658b341fabe5015e209050298.r2.dev/og-finance-nisa-simulator.png"],
   },
 };
 
@@ -33,10 +40,27 @@ const breadcrumbJsonLd = {
   ]
 };
 
+const softwareApplicationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "新NISAシミュレーター Pro",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"},
+  "url": "https://yamada-tools.jp/finance/nisa-simulator",
+  "inLanguage": "ja",
+  "provider": {"@type": "Organization", "name": "合同会社山田トレード"},
+  "datePublished": "2026-01-01",
+  "dateModified": "2026-03-28",
+  "description": "新NISAの積立シミュレーションを無料で。毎月の積立額・利回り・期間を入力するだけで将来資産・節税額・非課税枠の使用率を自動計算。"
+};
+
 const howToJsonLd = {
   "@context": "https://schema.org",
   "@type": "HowTo",
   "name": "新NISAシミュレーターの使い方",
+  "datePublished": "2026-01-01",
+  "dateModified": "2026-03-28",
   "step": [
     {"@type": "HowToStep", "position": 1, "name": "年齢を入力", "text": "現在の年齢と積立終了年齢をスライダーで設定します"},
     {"@type": "HowToStep", "position": 2, "name": "積立条件を設定", "text": "毎月の積立額・投資枠の種類・想定利回りを入力します"},
@@ -47,6 +71,8 @@ const howToJsonLd = {
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
+  "datePublished": "2026-01-01",
+  "dateModified": "2026-03-28",
   "mainEntity": [
     {
       "@type": "Question",
@@ -76,7 +102,7 @@ export default function Page() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbJsonLd, howToJsonLd, faqJsonLd]) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbJsonLd, softwareApplicationJsonLd, howToJsonLd, faqJsonLd]) }}
       />
       <NisaSimulatorClient />
     </>

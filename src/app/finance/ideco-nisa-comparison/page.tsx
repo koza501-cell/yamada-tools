@@ -15,11 +15,18 @@ export const metadata: Metadata = {
     siteName: "yamada-tools.jp",
     locale: "ja_JP",
     type: "website",
+    images: [{
+      url: "https://pub-a1dbb3c658b341fabe5015e209050298.r2.dev/og-finance-ideco-nisa-comparison.png",
+      width: 1200,
+      height: 630,
+      alt: "iDeCo vs NISA 比較ツール | yamada-tools.jp",
+    }],
   },
   twitter: {
     card: "summary_large_image",
     title: "iDeCo vs NISA 比較ツール【無料】節税額・手取り・最適配分を自動計算 | yamada-tools.jp",
     description: "iDeCoとNISAをあなたの年収・職業・予算で徹底比較。節税額・最終手取り・最適配分を自動計算。併用シミュレーション・おすすめ診断・職業別iDeCo上限も無料。登録不要。",
+    images: ["https://pub-a1dbb3c658b341fabe5015e209050298.r2.dev/og-finance-ideco-nisa-comparison.png"],
   },
 };
 
@@ -33,10 +40,27 @@ const breadcrumbJsonLd = {
   ]
 };
 
+const softwareApplicationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "iDeCo vs NISA 徹底比較ツール",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"},
+  "url": "https://yamada-tools.jp/finance/ideco-nisa-comparison",
+  "inLanguage": "ja",
+  "provider": {"@type": "Organization", "name": "合同会社山田トレード"},
+  "datePublished": "2026-01-01",
+  "dateModified": "2026-03-28",
+  "description": "iDeCoとNISAをあなたの年収・職業・予算で徹底比較。節税額・最終手取り・最適配分を自動計算。併用シミュレーション・おすすめ診断・職業別iDeCo上限も無料。"
+};
+
 const howToJsonLd = {
   "@context": "https://schema.org",
   "@type": "HowTo",
   "name": "iDeCo vs NISA 比較ツールの使い方",
+  "datePublished": "2026-01-01",
+  "dateModified": "2026-03-28",
   "step": [
     {"@type": "HowToStep", "position": 1, "name": "プロフィールを入力", "text": "年収・職業・年齢を入力し、iDeCoの掛金上限額を自動計算します"},
     {"@type": "HowToStep", "position": 2, "name": "投資条件を設定", "text": "毎月の投資予算・掛金・運用利回り・投資期間を設定します"},
@@ -47,6 +71,8 @@ const howToJsonLd = {
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
+  "datePublished": "2026-01-01",
+  "dateModified": "2026-03-28",
   "mainEntity": [
     {
       "@type": "Question",
@@ -76,7 +102,7 @@ export default function Page() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbJsonLd, howToJsonLd, faqJsonLd]) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbJsonLd, softwareApplicationJsonLd, howToJsonLd, faqJsonLd]) }}
       />
       <IdecoNisaComparisonClient />
     </>

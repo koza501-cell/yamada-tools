@@ -15,11 +15,18 @@ export const metadata: Metadata = {
     siteName: "yamada-tools.jp",
     locale: "ja_JP",
     type: "website",
+    images: [{
+      url: "https://pub-a1dbb3c658b341fabe5015e209050298.r2.dev/og-finance-jutaku-loan.png",
+      width: 1200,
+      height: 630,
+      alt: "住宅ローン計算機 | yamada-tools.jp",
+    }],
   },
   twitter: {
     card: "summary_large_image",
     title: "住宅ローン計算機【無料】固定・変動・繰上返済・控除・借り換えを一括シミュレーション | yamada-tools.jp",
     description: "住宅ローンの月々返済額・総返済額・住宅ローン控除を無料計算。変動金利の将来シナリオ・5年ルール・借り換え効果・繰り上げ返済の節約額もシミュレーション。登録不要。",
+    images: ["https://pub-a1dbb3c658b341fabe5015e209050298.r2.dev/og-finance-jutaku-loan.png"],
   },
 };
 
@@ -33,10 +40,27 @@ const breadcrumbJsonLd = {
   ]
 };
 
+const softwareApplicationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "住宅ローン計算機 Pro",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"},
+  "url": "https://yamada-tools.jp/finance/jutaku-loan",
+  "inLanguage": "ja",
+  "provider": {"@type": "Organization", "name": "合同会社山田トレード"},
+  "datePublished": "2026-01-01",
+  "dateModified": "2026-03-28",
+  "description": "住宅ローンの月々返済額・総返済額・住宅ローン控除を無料計算。変動金利の将来シナリオ・5年ルール・借り換え効果・繰り上げ返済の節約額もシミュレーション。"
+};
+
 const howToJsonLd = {
   "@context": "https://schema.org",
   "@type": "HowTo",
   "name": "住宅ローン計算機の使い方",
+  "datePublished": "2026-01-01",
+  "dateModified": "2026-03-28",
   "step": [
     {"@type": "HowToStep", "position": 1, "name": "借入条件を入力", "text": "借入金額・金利タイプ（固定/変動）・借入期間を設定します"},
     {"@type": "HowToStep", "position": 2, "name": "返済方式を選択", "text": "元利均等返済または元金均等返済を選択し、ボーナス返済の有無を設定します"},
@@ -47,6 +71,8 @@ const howToJsonLd = {
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
+  "datePublished": "2026-01-01",
+  "dateModified": "2026-03-28",
   "mainEntity": [
     {
       "@type": "Question",
@@ -76,7 +102,7 @@ export default function Page() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbJsonLd, howToJsonLd, faqJsonLd]) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbJsonLd, softwareApplicationJsonLd, howToJsonLd, faqJsonLd]) }}
       />
       <JutakuLoanClient />
     </>

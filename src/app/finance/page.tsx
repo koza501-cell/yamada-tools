@@ -15,11 +15,18 @@ export const metadata: Metadata = {
     siteName: "yamada-tools.jp",
     locale: "ja_JP",
     type: "website",
+    images: [{
+      url: "https://pub-a1dbb3c658b341fabe5015e209050298.r2.dev/og-finance-hub.png",
+      width: 1200,
+      height: 630,
+      alt: "金融計算ツール | yamada-tools.jp",
+    }],
   },
   twitter: {
     card: "summary_large_image",
     title: "金融計算ツール【無料】NISA・iDeCo・住宅ローン・FX・老後資金シミュレーター | yamada-tools.jp",
     description: "新NISA積立計算、住宅ローンシミュレーション、FX損益計算、老後資金試算、iDeCo vs NISA比較を無料で。登録不要・日本国内サーバー処理・スマホ対応。",
+    images: ["https://pub-a1dbb3c658b341fabe5015e209050298.r2.dev/og-finance-hub.png"],
   },
 };
 
@@ -38,6 +45,8 @@ const collectionJsonLd = {
   "name": "金融計算ツール | yamada-tools.jp",
   "description": "新NISA・iDeCo・住宅ローン・FX・老後資金の無料シミュレーター集",
   "url": "https://yamada-tools.jp/finance",
+  "datePublished": "2026-01-01",
+  "dateModified": "2026-03-28",
   "hasPart": [
     {"@type": "SoftwareApplication", "name": "新NISAシミュレーター Pro", "url": "https://yamada-tools.jp/finance/nisa-simulator"},
     {"@type": "SoftwareApplication", "name": "住宅ローン計算機 Pro", "url": "https://yamada-tools.jp/finance/jutaku-loan"},
@@ -175,6 +184,13 @@ export default function FinancePage() {
               </p>
             </div>
           </details>
+          
+          {/* Last Updated */}
+          <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+            <p className="text-sm text-gray-500 dark:text-gray-400">
+              <time dateTime="2026-03-28">最終更新: 2026年3月</time>
+            </p>
+          </div>
         </div>
       </section>
     </div>
