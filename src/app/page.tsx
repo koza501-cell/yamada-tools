@@ -11,6 +11,7 @@ import AdSlot from "@/components/AdSlot";
 import StatsCounter from "@/components/common/StatsCounter";
 import FooterCta from "@/components/common/FooterCta";
 import { ScrollRevealGrid } from "@/components/common/ScrollRevealGrid";
+import FinanceSection from "@/components/FinanceSection";
 import { pdfTools, documentTools, convertTools, imageTools, generatorTools, getToolCount, allTools } from "@/config/tools";
 
 // High-traffic tool paths that get 🔥 badge
@@ -413,6 +414,9 @@ export default function Home() {
           </div>
         </section>
       )}
+
+      {/* 💰 Finance Tools Section */}
+      <FinanceSection />
 
       {/* Recently Used Tools */}
       <RecentTools />
