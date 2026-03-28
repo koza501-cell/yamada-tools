@@ -1,9 +1,16 @@
 import { revalidatePath } from 'next/cache';
 import { NextRequest, NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
 import fs from 'fs';
 import path from 'path';
 
 export async function POST(request: NextRequest) {
+  // Auth check
+  const cookieStore = await cookies();
+  const token = cookieStore.get('admin_token')?.value;
+  if (!token || token !== process.env.ADMIN_SECRET_TOKEN) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
   try {
     const { slug } = await request.json();
 

@@ -197,7 +197,9 @@ export default function RootLayout({
         <PWAInstallPrompt />
         </ThemeProvider>
         </AuthProvider>
-        <AdSenseLoader />
+        {process.env.NEXT_PUBLIC_APP_ENV === 'production' && (
+          <AdSenseLoader />
+        )}
       </body>
     </html>
   );
