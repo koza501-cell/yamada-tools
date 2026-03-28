@@ -240,16 +240,16 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
             <div className="mb-6 min-h-[88px]">
               <Mascot state={mascotState} message={mascotMessage} />
             </div>
-            {/* Usage Limit Banner */}
-            <div className="mb-6">
+            {/* Usage Limit Banner - Fixed min-height to prevent CLS */}
+            <div className="mb-6 min-h-[60px]">
               <UsageLimitBanner usage={usage} />
             </div>
 
-            {/* Dropzone */}
+            {/* Dropzone - Fixed min-height to prevent CLS */}
             <div
               onDrop={handleDrop}
               onDragOver={(e) => e.preventDefault()}
-              className="border-2 border-dashed border-kon/30 bg-blue-50/50 rounded-xl p-10 text-center hover:border-kon hover:bg-blue-50 hover:shadow-lg transition-all duration-200 cursor-pointer"
+              className="border-2 border-dashed border-kon/30 bg-blue-50/50 rounded-xl p-10 text-center hover:border-kon hover:bg-blue-50 hover:shadow-lg transition-all duration-200 cursor-pointer min-h-[240px] flex flex-col items-center justify-center"
             >
               <input
                 type="file"
@@ -260,7 +260,7 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
                 id="file-input"
                 aria-label="ファイルを選択"
               />
-              <label htmlFor="file-input" className="cursor-pointer block">
+              <label htmlFor="file-input" className="cursor-pointer block w-full">
                 <div className="w-16 h-16 mx-auto mb-4 bg-kon rounded-2xl flex items-center justify-center text-3xl shadow-lg">📁</div>
                 <p className="font-bold text-gray-800 mb-2 text-lg">
                   ファイルをドラッグ＆ドロップ

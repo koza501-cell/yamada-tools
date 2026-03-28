@@ -559,6 +559,9 @@ export default function IdecoNisaComparisonClient() {
             >
               結果を見る →
             </button>
+
+            {/* Ad Slot 1: After input section */}
+            <div className="adsense-slot my-6" data-ad-slot="auto"></div>
           </section>
         )}
 
@@ -673,6 +676,9 @@ export default function IdecoNisaComparisonClient() {
                   </div>
                 </div>
               </section>
+
+              {/* Ad Slot 2: Between results and chart */}
+              <div className="adsense-slot my-6" data-ad-slot="auto"></div>
 
               {/* SECTION 4: Chart */}
               <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
@@ -861,6 +867,9 @@ export default function IdecoNisaComparisonClient() {
             ))}
           </div>
         </section>
+
+        {/* Ad Slot 3: At the bottom before disclaimer */}
+        <div className="adsense-slot my-6" data-ad-slot="auto"></div>
 
         <RelatedTools currentTool="/finance/ideco-nisa-comparison" />
 

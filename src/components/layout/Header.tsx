@@ -1,18 +1,30 @@
 "use client";
 import MegaMenu from "./MegaMenu";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import ThemeToggle from "@/components/common/ThemeToggle";
 import { useAuth } from "@/contexts/AuthContext";
+import { pdfTools, documentTools, convertTools, imageTools, generatorTools } from "@/config/tools";
 
 export default function Header() {
   const { user, loading, logout } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState<any[]>([]);
   const [isMac, setIsMac] = useState(true);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [showUserMenu, setShowUserMenu] = useState(false);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  // Combine all tools for search
+  const allTools = [
+    ...pdfTools,
+    ...documentTools,
+    ...convertTools,
+    ...imageTools,
+    ...generatorTools,
+  ].filter(tool => tool.available);
 
   const navItems = [
     { href: "/pdf", icon: "📄", label: "PDF", category: "pdf" as const },
@@ -28,6 +40,23 @@ export default function Header() {
     setIsMac(navigator.platform.toUpperCase().indexOf("MAC") >= 0);
   }, []);
 
+  // Search functionality
+  useEffect(() => {
+    if (searchQuery.trim().length < 2) {
+      setSearchResults([]);
+      return;
+    }
+
+    const searchQueryLower = searchQuery.toLowerCase();
+    const filtered = allTools.filter(tool => 
+      tool.nameJa.toLowerCase().includes(searchQueryLower) ||
+      tool.nameEn.toLowerCase().includes(searchQueryLower) ||
+      tool.description.toLowerCase().includes(searchQueryLower)
+    );
+
+    setSearchResults(filtered.slice(0, 8)); // Show max 8 results
+  }, [searchQuery]);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
@@ -42,6 +71,19 @@ export default function Header() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
+
+  // Focus search input when modal opens
+  useEffect(() => {
+    if (isSearchOpen && searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [isSearchOpen]);
+
+  const handleSearchSelect = () => {
+    setSearchQuery("");
+    setSearchResults([]);
+    setIsSearchOpen(false);
+  };
 
   useEffect(() => {
     const handleClick = () => setShowUserMenu(false);
@@ -170,18 +212,59 @@ export default function Header() {
 
       {isSearchOpen && (
         <div className="fixed inset-0 z-[100] bg-black/50 flex items-start justify-center pt-20" onClick={() => setIsSearchOpen(false)}>
-          <div className="bg-white rounded-xl shadow-2xl w-full max-w-xl mx-4" onClick={(e) => e.stopPropagation()}>
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-xl mx-4 max-h-[80vh] overflow-hidden" onClick={(e) => e.stopPropagation()}>
             <div className="p-4">
               <div className="flex items-center gap-3 border-b pb-4">
                 <span className="text-2xl">🔍</span>
-                <input type="text" placeholder="ツールを検索... (例: PDF結合, 請求書)" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="flex-1 text-lg text-gray-900 outline-none" autoFocus />
+                <input 
+                  ref={searchInputRef}
+                  type="text" 
+                  placeholder="ツールを検索... (例: PDF結合, 請求書)" 
+                  value={searchQuery} 
+                  onChange={(e) => setSearchQuery(e.target.value)} 
+                  className="flex-1 text-lg text-gray-900 outline-none" 
+                />
                 <button onClick={() => setIsSearchOpen(false)} className="text-gray-400 hover:text-gray-600" aria-label="検索を閉じる">
                   <kbd className="text-xs bg-gray-100 px-2 py-1 rounded">ESC</kbd>
                 </button>
               </div>
-              <div className="py-4 text-center text-gray-500 text-sm">
-                <p>ホームページの検索バーをご利用ください</p>
-                <Link href="/" onClick={() => setIsSearchOpen(false)} className="text-blue-600 hover:underline mt-2 inline-block">ホームへ戻る →</Link>
+              
+              {/* Search Results */}
+              <div className="max-h-[60vh] overflow-y-auto">
+                {searchResults.length > 0 ? (
+                  <div className="py-2">
+                    {searchResults.map((tool) => (
+                      <Link
+                        key={tool.id}
+                        href={tool.path}
+                        onClick={handleSearchSelect}
+                        className="flex items-center gap-4 px-4 py-3 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-0"
+                      >
+                        <span className="text-3xl">{tool.icon}</span>
+                        <div className="flex-1">
+                          <p className="font-bold text-gray-900">{tool.nameJa}</p>
+                          <p className="text-sm text-gray-600">{tool.description}</p>
+                        </div>
+                        <span className="text-gray-400">→</span>
+                      </Link>
+                    ))}
+                  </div>
+                ) : searchQuery.length >= 2 ? (
+                  <div className="py-8 text-center text-gray-500">
+                    <p>該当するツールが見つかりませんでした</p>
+                    <p className="text-sm mt-1">別のキーワードで検索してください</p>
+                  </div>
+                ) : (
+                  <div className="py-8 text-center text-gray-500">
+                    <p className="text-sm">ツール名や機能を入力して検索</p>
+                    <div className="flex flex-wrap justify-center gap-2 mt-4">
+                      <span className="text-xs bg-gray-100 px-2 py-1 rounded">PDF圧縮</span>
+                      <span className="text-xs bg-gray-100 px-2 py-1 rounded">請求書作成</span>
+                      <span className="text-xs bg-gray-100 px-2 py-1 rounded">画像変換</span>
+                      <span className="text-xs bg-gray-100 px-2 py-1 rounded">封筒印刷</span>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
