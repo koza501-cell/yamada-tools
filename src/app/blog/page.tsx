@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getPublishedPosts, isNewBlog } from '@/data/blogPosts';
 import fs from 'fs';
 import path from 'path';
@@ -7,6 +8,9 @@ import path from 'path';
 export const metadata: Metadata = {
   title: 'ブログ',
   description: 'PDFツールの活用方法、ビジネス効率化のヒント、最新機能の紹介など、お役立ち情報を発信しています。',
+  alternates: {
+    canonical: 'https://yamada-tools.jp/blog',
+  },
 };
 
 function getDynamicBlogs() {
@@ -64,10 +68,12 @@ export default function BlogPage() {
               >
                 <div className="relative h-48 overflow-hidden">
                   {blog.featuredImage ? (
-                    <img 
+                    <Image 
                       src={blog.featuredImage} 
                       alt={blog.title} 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   ) : (
                     <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600" />

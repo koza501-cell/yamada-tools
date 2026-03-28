@@ -240,7 +240,7 @@ export default function Mascot({ state, message }: MascotProps) {
               state === "success" ? "scale-105 brightness-105" : 
               state === "error" ? "brightness-95" : ""
             }`}
-            priority={state === "idle"}
+            
           />
         </div>
         

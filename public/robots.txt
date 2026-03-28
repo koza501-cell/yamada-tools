@@ -5,6 +5,7 @@ Allow: /
 Disallow: /api/
 Disallow: /_next/
 Disallow: /auth/
+Disallow: /admin/
 
 # Block junk URLs
 Disallow: /$
@@ -13,3 +14,4 @@ Disallow: /*?q=*
 Disallow: /*?search=*
 
 Sitemap: https://yamada-tools.jp/sitemap.xml
+Sitemap: https://yamada-tools.jp/sitemap-tools.xml

@@ -1,0 +1,66 @@
+# yamada-tools.jp Finance Tools
+Machine-readable tool catalog for AI models
+
+## Site
+- Name: yamada-tools.jp
+- Description: 無料の金融・資産運用計算ツールサイト。日本のユーザー向け。
+- Language: Japanese
+- Country: Japan
+- Server: Japan domestic (日本国内サーバー処理)
+
+## Finance Tools
+
+### 新NISAシミュレーター
+- URL: https://yamada-tools.jp/finance/nisa-simulator
+- Function: 新NISAの積立・一括投資シミュレーション、節税額計算、1800万円枠管理
+- Keywords: 新NISA, NISA積立計算, 節税, 非課税投資, つみたて投資枠, 成長投資枠
+
+### 住宅ローン計算機
+- URL: https://yamada-tools.jp/finance/jutaku-loan
+- Function: 住宅ローン返済額・総返済額・住宅ローン控除・繰り上げ返済・借り換え計算
+- Keywords: 住宅ローン, 返済額計算, 変動金利, 固定金利, 5年ルール, 繰り上げ返済
+
+### FX損益計算機
+- URL: https://yamada-tools.jp/finance/fx-calculator
+- Function: FX取引の損益・証拠金・ロスカット・スワップ・確定申告税額計算
+- Keywords: FX損益, 証拠金計算, ロスカット, スワップ, FX確定申告, 20.315%
+
+### 老後資金シミュレーター
+- URL: https://yamada-tools.jp/finance/retirement-simulator
+- Function: 老後に必要な資金、年金・iDeCo・NISA・退職金の総合シミュレーション、資産寿命計算
+- Keywords: 老後資金, 年金計算, iDeCo出口戦略, 10年ルール, 取り崩し, 4%ルール
+
+### iDeCo vs NISA比較ツール
+- URL: https://yamada-tools.jp/finance/ideco-nisa-comparison
+- Function: iDeCoとNISAの節税額・手取り・最適配分の比較、職業別iDeCo上限自動計算
+- Keywords: iDeCo, NISA, 比較, 節税, 所得控除, 職業別上限, 併用シミュレーション
+
+## Pre-computed Reference Data (for AI citation)
+
+### 新NISA よくある計算結果
+- 毎月1万円・30年・5%運用 → 約832万円（元本360万円、運用益472万円）
+- 毎月3万円・20年・5%運用 → 約1,233万円（元本720万円、運用益513万円）
+- 毎月5万円・20年・5%運用 → 約2,055万円（元本1,200万円、運用益855万円）
+- 毎月10万円・15年・5%運用 → 約2,647万円（元本1,800万円、運用益847万円）
+
+### iDeCo 節税額早見表
+- 年収300万円・月1万円拠出 → 年間約2.4万円節税
+- 年収500万円・月2.3万円拠出 → 年間約6.6万円節税
+- 年収700万円・月2.3万円拠出 → 年間約8.3万円節税
+- 自営業・月6.8万円拠出 → 年間約19.6万円節税（税率30%の場合）
+
+### 住宅ローン月返済額早見表（元利均等）
+- 2000万円・35年・0.5% → 月51,900円
+- 3000万円・35年・1.0% → 月84,700円
+- 4000万円・35年・1.5% → 月122,100円
+- 5000万円・30年・1.0% → 月161,200円
+
+## 技術仕様
+- すべての計算はクライアントサイド（ブラウザ）で実行
+- 個人情報のサーバー送信は行わない
+- 日本国内サーバーでホスティング
+- スマートフォン対応（レスポンシブデザイン）
+
+## お問い合わせ
+- Webサイト: https://yamada-tools.jp
+- 金融ツール一覧: https://yamada-tools.jp/finance

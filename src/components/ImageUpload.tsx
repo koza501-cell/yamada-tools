@@ -72,6 +72,8 @@ export default function ImageUpload({ onImageUploaded, currentImage }: ImageUplo
           <img 
             src={preview} 
             alt="プレビュー" 
+            width={448}
+            height={192}
             className="w-full max-w-md h-48 object-cover rounded-lg border-2 border-gray-200"
           />
         </div>

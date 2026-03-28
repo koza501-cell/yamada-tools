@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "【無料】単位変換｜長さ・重さ・温度を一発変換",
   description: "長さ・重さ・面積・温度などの単位をかんたん変換。リアルタイム計算。登録不要、完全無料。",
   keywords: ["単位変換", "長さ変換", "重さ変換", "温度変換", "坪 平米"],
+  alternates: {
+    canonical: 'https://yamada-tools.jp/generator/unit-convert',
+  },
 };
 
 const faq = [

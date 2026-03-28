@@ -55,6 +55,12 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-bold mb-4">リンク</h3>
             <div className="space-y-2 text-sm">
+              {/* Finance Tools - Highlighted */}
+              <div>
+                <Link href="/finance" className="inline-flex items-center gap-1 text-sakura font-medium hover:underline transition-colors">
+                  💰 金融・資産運用ツール
+                </Link>
+              </div>
               {/* Corporate Link - Highlighted */}
               <div>
                 <Link href="/about/business" className="inline-flex items-center gap-1 text-sakura font-medium hover:underline transition-colors">
@@ -79,11 +85,6 @@ export default function Footer() {
               <div>
                 <Link href="/about/company" className="text-gray-300 hover:text-sakura transition-colors">
                   会社概要
-                </Link>
-              </div>
-              <div>
-                <Link href="/pricing" className="text-gray-300 hover:text-sakura transition-colors">
-                  💎 料金プラン
                 </Link>
               </div>
               <div>

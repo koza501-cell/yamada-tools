@@ -2,87 +2,182 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "経理・財務ツール一覧｜無料の計算・書類作成｜山田ツール",
-  description: "経理・財務に役立つ無料ツール集。消費税計算、年末調整、給与計算、請求書作成、全銀フォーマットなど。日本国内サーバーで安全に処理。",
-  keywords: ["経理ツール", "財務ツール", "消費税計算", "年末調整", "給与計算", "請求書作成", "全銀フォーマット"],
+  title: "金融計算ツール【無料】NISA・iDeCo・住宅ローン・FX・老後資金シミュレーター | yamada-tools.jp",
+  description: "新NISA積立計算、住宅ローンシミュレーション、FX損益計算、老後資金試算、iDeCo vs NISA比較を無料で。登録不要・日本国内サーバー処理・スマホ対応。",
+  keywords: ["NISA シミュレーター", "住宅ローン 計算機", "FX 損益計算", "老後資金 計算", "iDeCo NISA 比較", "金融計算ツール 無料"],
+  alternates: {
+    canonical: "https://yamada-tools.jp/finance",
+  },
+  openGraph: {
+    title: "金融計算ツール【無料】NISA・iDeCo・住宅ローン・FX・老後資金シミュレーター | yamada-tools.jp",
+    description: "新NISA積立計算、住宅ローンシミュレーション、FX損益計算、老後資金試算、iDeCo vs NISA比較を無料で。登録不要・日本国内サーバー処理・スマホ対応。",
+    url: "https://yamada-tools.jp/finance",
+    siteName: "yamada-tools.jp",
+    locale: "ja_JP",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "金融計算ツール【無料】NISA・iDeCo・住宅ローン・FX・老後資金シミュレーター | yamada-tools.jp",
+    description: "新NISA積立計算、住宅ローンシミュレーション、FX損益計算、老後資金試算、iDeCo vs NISA比較を無料で。登録不要・日本国内サーバー処理・スマホ対応。",
+  },
 };
 
-const calculators = [
-  { path: "/generator/tax-calculator", name: "消費税計算", icon: "🧮", desc: "税込・税抜価格を瞬時に計算" },
-  { path: "/generator/nenmatsu-calc", name: "年末調整計算", icon: "📊", desc: "所得税・還付額をシミュレーション" },
-  { path: "/generator/salary-calc", name: "給与手取り計算", icon: "💰", desc: "月給から手取り額を算出" },
-  { path: "/generator/age-calc", name: "年齢計算", icon: "🎂", desc: "生年月日から年齢を計算" },
-];
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://yamada-tools.jp"},
+    {"@type": "ListItem", "position": 2, "name": "金融・資産運用ツール", "item": "https://yamada-tools.jp/finance"}
+  ]
+};
 
-const documents = [
-  { path: "/document/invoice", name: "請求書作成", icon: "📄", desc: "インボイス対応の請求書" },
-  { path: "/document/quotation", name: "見積書作成", icon: "📋", desc: "見積書をPDFで作成" },
-  { path: "/document/receipt", name: "領収書作成", icon: "🧾", desc: "領収書をPDFで作成" },
-  { path: "/document/bank-format", name: "全銀フォーマット作成", icon: "🏦", desc: "振込データを全銀協形式で出力" },
-];
+const collectionJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "金融計算ツール | yamada-tools.jp",
+  "description": "新NISA・iDeCo・住宅ローン・FX・老後資金の無料シミュレーター集",
+  "url": "https://yamada-tools.jp/finance",
+  "hasPart": [
+    {"@type": "SoftwareApplication", "name": "新NISAシミュレーター Pro", "url": "https://yamada-tools.jp/finance/nisa-simulator"},
+    {"@type": "SoftwareApplication", "name": "住宅ローン計算機 Pro", "url": "https://yamada-tools.jp/finance/jutaku-loan"},
+    {"@type": "SoftwareApplication", "name": "FX損益計算機 Pro", "url": "https://yamada-tools.jp/finance/fx-calculator"},
+    {"@type": "SoftwareApplication", "name": "老後資金シミュレーター Pro", "url": "https://yamada-tools.jp/finance/retirement-simulator"},
+    {"@type": "SoftwareApplication", "name": "iDeCo vs NISA 比較ツール", "url": "https://yamada-tools.jp/finance/ideco-nisa-comparison"}
+  ]
+};
 
-const converters = [
-  { path: "/convert/bank-format", name: "全銀フォーマット変換", icon: "🔄", desc: "CSVから全銀形式に変換" },
-  { path: "/convert/wareki-seireki", name: "和暦西暦変換", icon: "📅", desc: "令和・平成・昭和を西暦に" },
+const financeTools = [
+  {
+    name: "新NISAシミュレーター Pro",
+    url: "/finance/nisa-simulator",
+    description: "積立・一括・複数シナリオ対応。1800万円非課税枠の使用状況と節税額を計算",
+    icon: "📈",
+  },
+  {
+    name: "住宅ローン計算機 Pro",
+    url: "/finance/jutaku-loan",
+    description: "固定・変動・繰上返済・控除・借り換えを1つで計算。5年ルール対応",
+    icon: "🏠",
+  },
+  {
+    name: "FX損益計算機 Pro",
+    url: "/finance/fx-calculator",
+    description: "損益・証拠金・スワップ・確定申告を完全対応。複数取引の一括計算も",
+    icon: "💹",
+  },
+  {
+    name: "老後資金シミュレーター Pro",
+    url: "/finance/retirement-simulator",
+    description: "年金・iDeCo・NISA・退職金・取り崩しを総合シミュレーション",
+    icon: "🏦",
+  },
+  {
+    name: "iDeCo vs NISA 比較ツール",
+    url: "/finance/ideco-nisa-comparison",
+    description: "節税額・手取り・最適配分を自動計算。あなたへのおすすめ診断付き",
+    icon: "⚖️",
+  },
 ];
-
-const references = [
-  { path: "/reference/bank-codes", name: "銀行コード一覧", icon: "🏛️", desc: "主要銀行の金融機関コード" },
-  { path: "/reference/holidays", name: "祝日一覧", icon: "📆", desc: "日本の祝日カレンダー" },
-];
-
-function ToolGrid({ title, tools }: { title: string; tools: { path: string; name: string; icon: string; desc: string }[] }) {
-  return (
-    <section className="mb-10">
-      <h2 className="text-xl font-bold text-kon mb-4">{title}</h2>
-      <div className="grid md:grid-cols-2 gap-4">
-        {tools.map(t => (
-          <Link key={t.path} href={t.path} className="bg-white p-4 rounded-xl border hover:shadow-lg hover:border-kon transition-all">
-            <div className="flex items-start gap-3">
-              <span className="text-3xl">{t.icon}</span>
-              <div>
-                <h3 className="font-bold text-kon">{t.name}</h3>
-                <p className="text-sm text-gray-500">{t.desc}</p>
-              </div>
-            </div>
-          </Link>
-        ))}
-      </div>
-    </section>
-  );
-}
 
 export default function FinancePage() {
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-4xl mx-auto px-4">
-        <header className="text-center mb-12">
-          <h1 className="text-3xl font-bold text-kon mb-4">経理・財務ツール</h1>
-          <p className="text-gray-600">ビジネスに役立つ計算・書類作成ツール</p>
-        </header>
-        <div className="bg-blue-50 rounded-xl p-4 mb-8">
-          <p className="text-blue-800 text-sm">
-            💡 すべて無料・登録不要。日本国内サーバーで処理されるので安心してご利用いただけます。
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbJsonLd, collectionJsonLd]) }}
+      />
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-kon to-ai text-white py-16">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+            金融・資産運用ツール
+          </h1>
+          <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-3xl mx-auto">
+            無料で使える高精度な金融計算ツール。<br className="hidden md:block" />
+            NISA・iDeCo・住宅ローン・FX・老後資金をかんたんシミュレーション。
           </p>
         </div>
-        <ToolGrid title="🧮 計算ツール" tools={calculators} />
-        <ToolGrid title="📄 書類作成" tools={documents} />
-        <ToolGrid title="🔄 変換ツール" tools={converters} />
-        <ToolGrid title="📚 参照データ" tools={references} />
-        <section className="bg-white rounded-2xl p-6 border mt-8">
-          <h2 className="font-bold text-kon mb-3">よくある質問</h2>
-          <div className="space-y-4 text-sm">
-            <div>
-              <h3 className="font-bold">Q: 消費税10%と8%の計算方法は？</h3>
-              <p className="text-gray-600">A: 税抜価格×1.10（10%）または×1.08（8%軽減税率）で税込価格を計算できます。</p>
-            </div>
-            <div>
-              <h3 className="font-bold">Q: 全銀フォーマットとは？</h3>
-              <p className="text-gray-600">A: 全国銀行協会が定めた振込データの標準形式です。法人の給与振込や取引先への支払いで使用します。</p>
-            </div>
+      </section>
+
+      {/* Tools Grid */}
+      <section className="py-12">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+            無料で使える金融・資産運用シミュレーター一覧
+          </h2>
+          <p className="text-center text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+            NISAや住宅ローンの計算をかんたんに。登録不要で、スマートフォンからもご利用いただけます。
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {financeTools.map((tool) => (
+              <Link
+                key={tool.url}
+                href={tool.url}
+                className="group bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700"
+              >
+                <div className="p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="text-4xl flex-shrink-0">{tool.icon}</div>
+                    <div className="flex-1 min-w-0">
+                      <h2 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-ai transition-colors mb-2">
+                        {tool.name}
+                      </h2>
+                      <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                        {tool.description}
+                      </p>
+                      <div className="mt-4 flex items-center gap-2">
+                        <span className="text-sm text-ai font-medium group-hover:translate-x-1 transition-transform">
+                          ツールを使う →
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
           </div>
-        </section>
-      </div>
+
+          {/* AdSense Slot */}
+          <div className="adsense-slot my-6" data-ad-slot="auto"></div>
+        </div>
+      </section>
+
+      {/* SEO Section */}
+      <section className="py-12 bg-white dark:bg-gray-800">
+        <div className="max-w-4xl mx-auto px-4">
+          <details className="group">
+            <summary className="flex items-center justify-between cursor-pointer list-none">
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+                金融ツールについて
+              </h2>
+              <span className="transition group-open:rotate-180">
+                <svg
+                  fill="none"
+                  height="24"
+                  shapeRendering="geometricPrecision"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  className="text-gray-500"
+                >
+                  <path d="M6 9l6 6 6-6"></path>
+                </svg>
+              </span>
+            </summary>
+            <div className="text-gray-600 dark:text-gray-300 mt-4 leading-relaxed">
+              <p>
+                yamada-tools.jpの金融・資産運用ツールは、NISAやiDeCo、住宅ローン、FX取引、老後資金など、日本の個人投資家・会社員・フリーランスが日常的に必要とする金融計算を無料で提供しています。すべての計算はブラウザ上で行われ、個人情報の入力は不要です。
+              </p>
+            </div>
+          </details>
+        </div>
+      </section>
     </div>
+    </>
   );
 }

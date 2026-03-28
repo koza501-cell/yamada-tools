@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
 import EnvelopePrintClient from "./client";
+import { StepGuide } from "./step-guide";
+import { JsonLdDedup } from "./json-ld-dedup";
 
 const tool = getToolById("envelope-print")!;
 
@@ -46,6 +48,10 @@ const faq = [
     question: "印刷がずれる場合は？",
     answer: "詳細設定で位置を微調整できます。プリンターによってズレ具合が異なるため、まず1枚テスト印刷することをおすすめします。",
   },
+  {
+    question: "コンビニで印刷できますか？",
+    answer: "PDF保存後、コンビニのマルチコピー機でA4用紙に印刷し、封筒に貼り付けてご利用いただけます。セブン-イレブン・ファミリーマート・ローソンすべてのマルチコピー機に対応しています。",
+  },
 ];
 
 const seoContent = {
@@ -60,19 +66,31 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
-  customTitle: "【無料】封筒印刷｜宛名印刷テンプレート",
+  customTitle: "封筒印刷・宛名印刷【無料】長形・角形・洋形 全サイズ対応",
   tool,
-  longDescription: "封筒の宛名印刷を無料で。長形3号、角形2号など全サイズ対応。郵便番号枠に合わせて美しく印刷。縦書き・横書き対応。",
+  longDescription: "封筒の宛名印刷を無料で。長形3号・角形2号・洋形など全サイズ対応。郵便番号入力で住所自動補完。縦書き・横書き対応。300DPI高画質印刷でプロ品質の仕上がり。登録不要・スマホOK。ビジネス・個人どちらにも対応。",
   keywords: ["封筒印刷", "宛名印刷", "封筒 宛名", "長形3号 印刷", "角形2号 印刷", "封筒 テンプレート", "宛名書き"],
 });
 
-const jsonLd = generateToolJsonLd(tool, faq);
+const envelopeHowToSteps = [
+  { name: "封筒サイズを選択", text: "長形3号・角形2号など用途に合った封筒サイズを選択します。" },
+  { name: "宛先を入力", text: "郵便番号を入力すると住所が自動補完されます。氏名・会社名・敬称を入力してください。" },
+  { name: "プレビューで確認", text: "リアルタイムプレビューで印刷レイアウトを確認します。位置がずれている場合は詳細設定で微調整できます。" },
+  { name: "印刷またはPDF保存", text: "「印刷」ボタンで直接プリンターへ出力、または「PDF保存」でファイルに保存してコンビニ印刷も可能です。" },
+];
+const jsonLd = generateToolJsonLd(tool, faq, envelopeHowToSteps);
 
 export default function EnvelopePrintPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <EnvelopePrintClient faq={faq} seoContent={seoContent} />
+      <script
+        id="envelope-print-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className="ad-free-zone"><EnvelopePrintClient faq={faq} seoContent={seoContent} /></div>
+      <StepGuide />
+      <JsonLdDedup scriptId="envelope-print-jsonld" />
     </>
   );
 }

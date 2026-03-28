@@ -26,9 +26,9 @@ const faq = [
 // Total: ~5,000+ impressions
 
 export const metadata: Metadata = generateToolMetadata({
-  customTitle: "ふりがな変換【瞬時変換】漢字→ひらがな・カタカナ・ローマ字｜無料",
+  customTitle: "ふりがな変換【無料】漢字にふりがな自動付与｜ひらがな・カタカナ対応",
   tool,
-  longDescription: "漢字にふりがなを1秒で自動付与！ひらがな・カタカナ・ローマ字3種類に対応。コピペだけで即変換。教育現場・外国人向け資料・名簿作成に人気。無料・登録不要・国内サーバー処理で安心。",
+  longDescription: "漢字にふりがなを一瞬で自動付与。ひらがな・カタカナ・ローマ字に対応。コピペするだけ、登録不要・完全無料。日本国内サーバーで安全処理。",
   keywords: [
     'ふりがなツール',
     'フリガナツール', 
@@ -53,6 +53,33 @@ export default function Page() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <FuriganaClient />
+
+      {/* Educational Content Section */}
+      <section className="max-w-4xl mx-auto px-4 py-12">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+          <h2 className="text-2xl font-bold text-kon mb-6">ふりがな変換の詳しい解説</h2>
+
+          <h3 className="text-lg font-bold text-gray-800 mt-6 mb-3">ふりがなが必要になる場面</h3>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            ふりがな（ルビ）は、教育現場での教材作成、子ども向けの案内文、外国人居住者向けの行政文書など、幅広い場面で求められます。企業の顧客名簿で読みがなを一括付与したいケースや、Webサイトのアクセシビリティ向上のためにルビを振るケースも増えています。手作業で一文字ずつ調べるのは膨大な時間がかかりますが、自動変換ツールなら数秒で完了します。
+          </p>
+
+          <h3 className="text-lg font-bold text-gray-800 mt-6 mb-3">ひらがな・カタカナ・ローマ字の使い分け</h3>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            ひらがな出力は小学校低学年向け教材や絵本のルビに適しています。カタカナ出力は住所録や金融機関への届出書類で使われることが多く、<a href="/convert/bank-format" className="text-kon hover:text-ai underline">全銀フォーマット変換ツール</a>の受取人名作成にも活用できます。ローマ字出力は外国人向けの案内や、パスポート・在留カードの氏名表記の確認に便利です。用途に応じて出力形式を切り替えてください。
+          </p>
+
+          <h3 className="text-lg font-bold text-gray-800 mt-6 mb-3">外国人居住者・日本語学習者への活用</h3>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            日本に住む外国人にとって、漢字の読み方は大きなハードルです。役所からの通知や学校の配布物にふりがなが振られていないと内容を理解できないことがあります。本ツールを使えば、日本語の文章にワンクリックでふりがなを付与でき、多文化共生の支援に役立ちます。日本語能力試験（JLPT）の学習にも活用されています。縦書きの教材を作りたい場合は、<a href="/document/vertical-text" className="text-kon hover:text-ai underline">縦書き変換ツール</a>と併用すると便利です。
+          </p>
+
+          <h3 className="text-lg font-bold text-gray-800 mt-6 mb-3">珍しい漢字の読みへの対処法</h3>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            自動変換は辞書データに基づいて処理するため、人名の特殊な読み（例：「一」を「にのまえ」と読む苗字）や地名の難読（例：「喜連瓜破」＝きれうりわり）は正しく変換されない場合があります。変換結果は必ず目視で確認し、必要に応じて手動修正してください。固有名詞が多い文書は、最初に少量のテキストでテスト変換すると効率的です。
+          </p>
+        </div>
+      </section>
     </>
   );
 }

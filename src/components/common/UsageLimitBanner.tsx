@@ -15,7 +15,7 @@ export default function UsageLimitBanner({ usage }: UsageLimitBannerProps) {
 
   if (usage.is_limited) {
     return (
-      <div className="bg-red-50 border border-red-200 rounded-xl p-4 mb-6">
+      <div className="bg-red-50 border border-red-200 rounded-xl p-4 mb-6 min-h-[52px]">
         <div className="flex items-center justify-between">
           <div>
             <p className="font-bold text-red-700">本日の無料枠を使い切りました</p>
@@ -31,7 +31,7 @@ export default function UsageLimitBanner({ usage }: UsageLimitBannerProps) {
 
   if (usage.remaining <= 2) {
     return (
-      <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 mb-6">
+      <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 mb-6 min-h-[52px]">
         <div className="flex items-center justify-between">
           <p className="text-amber-700 text-sm">
             <span className="font-bold">残り{usage.remaining}回</span> / 本日{usage.limit}回まで無料
@@ -45,7 +45,7 @@ export default function UsageLimitBanner({ usage }: UsageLimitBannerProps) {
   }
 
   return (
-    <div className="bg-gray-50 border border-gray-200 rounded-xl p-3 mb-6">
+    <div className="bg-gray-50 border border-gray-200 rounded-xl p-3 mb-6 min-h-[52px]">
       <p className="text-gray-600 text-sm text-center">
         本日の利用: <span className="font-bold">{usage.daily_count}</span> / {usage.limit}回（無料枠）
       </p>

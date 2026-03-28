@@ -65,6 +65,7 @@ export default function ResumePage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <ResumeClient faq={faq} seoContent={seoContent} />
+      <div className="max-w-4xl mx-auto px-4 pb-8"><p className="text-sm text-gray-600 bg-orange-50 rounded-xl px-4 py-3">💡 PDFへのテキスト入力も必要な場合は <a href="/pdf/text-input" className="text-orange-600 hover:underline font-medium">無料PDFテキスト入力ツール</a> もご利用ください。</p></div>
     </>
   );
 }

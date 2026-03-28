@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "スマホで履歴書を作成する方法【無料・PDF保存】｜山田ツール",
   description: "スマホだけで履歴書を作成してPDF保存。アプリ不要・登録不要で今すぐ使えます。コンビニ印刷にも対応。",
   keywords: ["履歴書 スマホ 作成", "履歴書 作成 無料 スマホ", "履歴書 PDF スマホ", "履歴書 コンビニ印刷"],
+  alternates: {
+    canonical: 'https://yamada-tools.jp/use-cases/resume-mobile',
+  },
 };
 
 export default function ResumeMobilePage() {
@@ -63,6 +66,10 @@ export default function ResumeMobilePage() {
             <Link href="/pdf/combini-print" className="p-4 border rounded-xl hover:shadow">
               <h3 className="font-bold">コンビニ印刷用PDF</h3>
               <p className="text-sm text-gray-500">印刷に最適なPDF変換</p>
+            </Link>
+            <Link href="/pdf/text-input" className="p-4 border rounded-xl hover:shadow">
+              <h3 className="font-bold">PDFに文字入力</h3>
+              <p className="text-sm text-gray-500">既存PDF履歴書への直接入力・電子ハンコ追加</p>
             </Link>
           </div>
         </div>

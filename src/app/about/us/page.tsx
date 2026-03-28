@@ -4,12 +4,16 @@ import LastUpdated from '@/components/LastUpdated';
 export const metadata: Metadata = {
   title: '私たちについて - 山田ツールの運営方針',
   description: '山田ツールは合同会社山田トレードが運営する無料オンラインツール集です。日本国内サーバーで安全・安心なサービスを提供します。',
-  openGraph: {
+openGraph: {
     title: '私たちについて',
     description: '山田ツールの運営方針とチーム紹介',
     url: 'https://yamada-tools.jp/about/us',
   },
+  alternates: {
+    canonical: 'https://yamada-tools.jp/about/us',
+  },
 };
+
 
 export default function AboutUsPage() {
   return (

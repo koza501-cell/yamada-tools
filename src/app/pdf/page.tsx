@@ -5,6 +5,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "PDFツール - 無料オンラインPDF編集・変換",
   description: "PDF結合・圧縮・分割・変換など20以上の無料PDFツール。日本国内サーバーで安心・安全。登録不要、60分で自動削除。",
+  alternates: {
+    canonical: 'https://yamada-tools.jp/pdf',
+  },
 };
 
 export default function PDFToolsPage() {
@@ -36,6 +39,39 @@ export default function PDFToolsPage() {
             日本国内サーバー運用、登録不要。
           </p>
         </div>
+
+        {/* 注目ツール - Featured Tool */}
+        <section className="mb-10 bg-gradient-to-r from-orange-50 to-amber-50 dark:from-gray-800 dark:to-gray-750 rounded-2xl p-6 border border-orange-100 dark:border-gray-700">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded-full">注目</span>
+            <h2 className="text-lg font-bold text-gray-800 dark:text-white">今週のおすすめツール</h2>
+          </div>
+          <div className="flex flex-col md:flex-row gap-6 items-start">
+            <div className="flex-1">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                <Link href="/pdf/text-input" className="hover:text-orange-600 transition-colors">
+                  ✏️ PDFに文字入力・電子ハンコ 無料ツール
+                </Link>
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-3">
+                <strong className="text-gray-800 dark:text-white">登録不要・インストール不要・ゼロアップロード</strong>でPDFに直接テキストや電子ハンコを書き込めます。
+                申請書・契約書・履歴書など全PDF対応。令和日付自動入力機能搭載。ファイルはブラウザ内で処理されサーバーに送信されません。
+              </p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {["PDF文字入力","電子ハンコ","令和日付対応","登録不要","無料","サーバー送信なし"].map(tag => (
+                  <span key={tag} className="bg-orange-100 dark:bg-gray-700 text-orange-700 dark:text-orange-400 text-xs px-2 py-1 rounded-full">{tag}</span>
+                ))}
+              </div>
+              <Link
+                href="/pdf/text-input"
+                className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-2 rounded-lg text-sm transition-colors"
+              >
+                PDFに文字入力・書き込みを試す（無料）→
+              </Link>
+            </div>
+          </div>
+        </section>
+
 
         {/* Core Tools */}
         <section className="mb-12">

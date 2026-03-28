@@ -4,6 +4,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "適正利用ガイドライン",
   description: "山田ツールの適正利用ガイドライン。無料で快適にご利用いただくための利用制限とルールについて説明します。",
+  alternates: {
+    canonical: 'https://yamada-tools.jp/about/fair-usage',
+  },
 };
 
 export default function FairUsagePage() {

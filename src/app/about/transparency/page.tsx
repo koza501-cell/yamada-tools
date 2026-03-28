@@ -4,6 +4,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "運営方針とセキュリティ",
   description: "山田ツールの運営方針、セキュリティ対策、および各種ツールの免責事項について",
+  alternates: {
+    canonical: 'https://yamada-tools.jp/about/transparency',
+  },
 };
 
 export default function TransparencyPage() {

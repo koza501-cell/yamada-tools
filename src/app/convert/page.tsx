@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "変換ツール - 全角半角・和暦西暦・郵便番号変換",
   description: "全角半角変換、和暦西暦変換、郵便番号検索、ふりがな変換など、日本のオフィスワークに必要な変換ツールを無料で提供。登録不要。",
   keywords: "全角半角変換, 和暦西暦変換, 郵便番号検索, ふりがな変換, 電話番号整形, 単位変換, 無料",
+  alternates: {
+    canonical: 'https://yamada-tools.jp/convert',
+  },
 };
 
 export default function ConvertToolsPage() {

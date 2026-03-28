@@ -4,6 +4,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "よくある質問（FAQ）",
   description: "山田ツールに関するよくある質問と回答をまとめました。料金、セキュリティ、使い方などについてご確認いただけます。",
+  alternates: {
+    canonical: 'https://yamada-tools.jp/about/faq',
+  },
 };
 
 const faqs = [

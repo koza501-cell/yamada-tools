@@ -3,6 +3,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "API ドキュメント",
   description: "山田ツールAPIの使い方。PDF変換、画像処理などをプログラムから利用できます。",
+  alternates: {
+    canonical: 'https://yamada-tools.jp/docs',
+  },
 };
 
 export default function DocsPage() {

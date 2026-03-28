@@ -19,17 +19,16 @@ const nextConfig = {
       { source: '/blog/image-resize-sns-perfect-size', destination: '/blog', permanent: true },
       { source: '/blog/kakutei-shinkoku-receipt-pdf-2025', destination: '/blog', permanent: true },
       { source: '/about/business', destination: '/about', permanent: true },
-      { source: '/blog/pdf---149867', destination: '/blog', permanent: true },
-      { source: '/tools', destination: '/', permanent: true },
-      { source: '/sitemap', destination: '/sitemap.xml', permanent: true },
-      { source: '/contact', destination: '/about', permanent: true },
-      { source: '/help', destination: '/about/faq', permanent: true },
-      { source: '/faq', destination: '/about/faq', permanent: true },
-      { source: '/pdf/edit', destination: '/pdf', permanent: true },
-      { source: '/image/filter', destination: '/image', permanent: true },
-      { source: '/document/contract', destination: '/document', permanent: true },
-      { source: '/generator/qr', destination: '/generator/qrcode', permanent: true },
-      { source: '/convert/pdf', destination: '/pdf', permanent: true },
+      { source: '/convert/tsubo-converter', destination: '/convert', permanent: true },
+      { source: '/blog/pdf----149867', destination: '/blog', permanent: true },
+      // Finance section redirects
+      { source: '/nisa-simulator', destination: '/finance/nisa-simulator', permanent: true },
+      { source: '/jutaku-loan', destination: '/finance/jutaku-loan', permanent: true },
+      { source: '/fx-calculator', destination: '/finance/fx-calculator', permanent: true },
+      { source: '/retirement-simulator', destination: '/finance/retirement-simulator', permanent: true },
+      { source: '/tools/ideco-nisa-comparison', destination: '/finance/ideco-nisa-comparison', permanent: true },
+      { source: '/tools/nisa-simulator', destination: '/finance/nisa-simulator', permanent: true },
+      { source: '/ideco-nisa-comparison', destination: '/finance/ideco-nisa-comparison', permanent: true },
     ]
   }
 }

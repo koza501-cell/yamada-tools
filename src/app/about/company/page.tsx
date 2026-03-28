@@ -4,6 +4,9 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: '会社概要',
   description: '山田ツールを運営する合同会社山田トレードについて。日本国内に完結した安全なオンラインツールを提供します。',
+  alternates: {
+    canonical: 'https://yamada-tools.jp/about/company',
+  },
 };
 
 export default function AboutCompanyPage() {

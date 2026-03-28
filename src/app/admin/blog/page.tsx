@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import MultiImageUpload from '@/components/MultiImageUpload';
+import Image from 'next/image';
 import Link from 'next/link';
 
 type Tab = 'create' | 'manage';
@@ -209,7 +210,7 @@ export default function BlogManagementPage() {
                       <tr key={blog.slug} className="hover:bg-gray-50">
                         <td className="px-6 py-4">
                           {blog.featuredImage ? (
-                            <img src={blog.featuredImage} alt={blog.title} className="w-16 h-16 object-cover rounded" />
+                            <Image src={blog.featuredImage} alt={blog.title} className="w-16 h-16 object-cover rounded" width={64} height={64} />
                           ) : (
                             <div className="w-16 h-16 bg-gray-200 rounded flex items-center justify-center text-gray-400 text-xs">画像なし</div>
                           )}

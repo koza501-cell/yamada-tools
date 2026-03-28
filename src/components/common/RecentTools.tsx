@@ -27,7 +27,7 @@ export default function RecentTools() {
     }
   }, []);
 
-  if (!mounted || recentTools.length === 0) return null;
+  if (!mounted || recentTools.length === 0) return <div className="min-h-0" />;
 
   return (
     <section className="py-8 bg-gradient-to-r from-sakura/20 to-ai/10">

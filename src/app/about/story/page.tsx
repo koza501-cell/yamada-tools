@@ -4,6 +4,9 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "開発者ストーリー | 山田ツールを作った理由",
   description: "なぜ山田ツールを作ったのか。日本の中小企業やフリーランスの方々を支援するために、安全で使いやすい無料ツールを提供しています。",
+  alternates: {
+    canonical: 'https://yamada-tools.jp/about/story',
+  },
 };
 
 export default function StoryPage() {

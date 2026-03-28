@@ -3,6 +3,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "利用規約",
   description: "山田ツールの利用規約です。",
+  alternates: {
+    canonical: 'https://yamada-tools.jp/terms',
+  },
 };
 
 export default function TermsPage() {

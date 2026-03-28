@@ -67,9 +67,9 @@ const seoContent = {
 // Total: 400+ impressions at position 43-85
 
 export const metadata: Metadata = generateToolMetadata({
-  customTitle: "画像圧縮ツール【無料】写真を80%軽量化｜画質そのまま一括処理",
+  customTitle: "画像圧縮【無料】写真を高画質のまま80%軽量化｜一括20枚対応",
   tool,
-  longDescription: "画像圧縮・写真圧縮ツール。JPG・PNG・WebPを最大80%サイズダウン。画質を保ったまま一括20枚まで処理可能。メール添付・Webサイト高速化・SNS投稿に最適。完全無料・登録不要・日本国内サーバーで安心処理。",
+  longDescription: "JPG・PNG画像を画質そのまま最大80%圧縮。一括20枚まで同時処理。スマホ写真のメール添付・SNS投稿に最適。",
   keywords: [
     "画像圧縮",
     "画像 圧縮",
@@ -93,6 +93,33 @@ export default function ImageCompressPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <CompressClient faq={faq} seoContent={seoContent} />
+
+      {/* Educational Content Section */}
+      <section className="max-w-4xl mx-auto px-4 py-12">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+          <h2 className="text-2xl font-bold text-kon mb-6">画像圧縮の詳しい解説</h2>
+
+          <h3 className="text-lg font-bold text-gray-800 mt-6 mb-3">なぜ画像圧縮が必要なのか</h3>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            最近のスマートフォンで撮影した写真は1枚あたり3〜8MBにもなります。メール添付の上限は多くのサービスで25MB、LINEでは送信時に自動圧縮されて画質が落ちます。Webサイトでは画像の重さがページ読み込み速度に直結し、Googleの調査ではページ表示が3秒を超えると53%のユーザーが離脱するとされています。適切に圧縮すれば、画質を保ちながらファイルサイズを大幅に削減できます。
+          </p>
+
+          <h3 className="text-lg font-bold text-gray-800 mt-6 mb-3">非可逆圧縮と可逆圧縮の違い</h3>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            非可逆圧縮（ロッシー）は人間の目では気づかない情報を削除してサイズを大幅に縮小する方式で、JPEGが代表的です。圧縮率が高い反面、繰り返し圧縮すると徐々に劣化します。可逆圧縮（ロスレス）はデータを完全に復元できる方式で、PNGが代表的です。圧縮率は低めですが、透過情報の保持や図表・スクリーンショットに向いています。用途に応じて使い分けることが重要です。
+          </p>
+
+          <h3 className="text-lg font-bold text-gray-800 mt-6 mb-3">Web向け画像フォーマットの選び方</h3>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            写真やグラデーションが多い画像にはJPEG（またはWebP）が最適です。ロゴ・アイコン・透過が必要な画像にはPNGを使います。WebPはJPEGより約25〜30%小さくなる次世代フォーマットで、主要ブラウザすべてが対応しています。ECサイトの商品画像やブログのアイキャッチは、WebP変換と圧縮を組み合わせるとページ速度が大きく改善します。画像フォーマットの変換には<a href="/image/format-convert" className="text-kon hover:text-ai underline">画像フォーマット変換ツール</a>もご活用ください。
+          </p>
+
+          <h3 className="text-lg font-bold text-gray-800 mt-6 mb-3">画質を落とさない圧縮の目安</h3>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            JPEG画像の場合、品質80%程度まで圧縮しても見た目の劣化はほぼわかりません。品質60%前後でもWeb閲覧には十分です。50%を下回ると、拡大時にブロックノイズが目立ち始めます。本ツールでは品質レベルを選べるので、まず「標準」で試し、結果を確認してから調整するのがおすすめです。<a href="/pdf/compress" className="text-kon hover:text-ai underline">PDF圧縮</a>と合わせて活用すると、文書全体の軽量化に効果的です。
+          </p>
+        </div>
+      </section>
     </>
   );
 }

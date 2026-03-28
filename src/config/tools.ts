@@ -8,7 +8,7 @@ export interface Tool {
   apiEndpoint: string;
   acceptedTypes: string;
   maxFiles: number;
-  category: "pdf" | "document" | "convert" | "image" | "generator";
+  category: "pdf" | "document" | "convert" | "image" | "generator" | "finance";
   available: boolean;
   isNew?: boolean;
   isFeatured?: boolean;
@@ -1201,6 +1201,103 @@ export const generatorTools: Tool[] = [
     category: "generator",
     available: true,
   },
+  {
+    id: "fx-calculator",
+    nameJa: "FX損益計算機 Pro",
+    nameEn: "FX Calculator Pro",
+    description: "FX取引の損益・証拠金・ロスカット・スワップ・確定申告を1つで計算。複数取引の一括計算や損失繰越控除シミュレーターも対応",
+    icon: "📈",
+    path: "/fx-calculator",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "generator",
+    available: true,
+    isNew: true,
+    isFeatured: true,
+  },
+];
+
+
+// ============================================
+// Section 6: 金融・資産運用ツール (5 tools)
+// ============================================
+export const financeTools: Tool[] = [
+  {
+    id: "nisa-simulator",
+    nameJa: "新NISAシミュレーター Pro",
+    nameEn: "NISA Simulator Pro",
+    description: "積立・一括・複数シナリオ対応。1800万円非課税枠の使用状況と節税額を計算",
+    icon: "📈",
+    path: "/finance/nisa-simulator",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+    isNew: true,
+    isFeatured: true,
+  },
+  {
+    id: "jutaku-loan",
+    nameJa: "住宅ローン計算機 Pro",
+    nameEn: "Home Loan Calculator Pro",
+    description: "固定・変動・繰上返済・控除・借り換えを1つで計算。5年ルール対応",
+    icon: "🏠",
+    path: "/finance/jutaku-loan",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+    isNew: true,
+    isFeatured: true,
+  },
+  {
+    id: "fx-calculator-finance",
+    nameJa: "FX損益計算機 Pro",
+    nameEn: "FX Calculator Pro",
+    description: "損益・証拠金・スワップ・確定申告を完全対応。複数取引の一括計算も",
+    icon: "💹",
+    path: "/finance/fx-calculator",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+    isNew: true,
+    isFeatured: true,
+  },
+  {
+    id: "retirement-simulator",
+    nameJa: "老後資金シミュレーター Pro",
+    nameEn: "Retirement Simulator Pro",
+    description: "年金・iDeCo・NISA・退職金・取り崩しを総合シミュレーション",
+    icon: "🏦",
+    path: "/finance/retirement-simulator",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+    isNew: true,
+    isFeatured: true,
+  },
+  {
+    id: "ideco-nisa-comparison",
+    nameJa: "iDeCo vs NISA 比較ツール",
+    nameEn: "iDeCo vs NISA Comparison",
+    description: "節税額・手取り・最適配分を自動計算。あなたへのおすすめ診断付き",
+    icon: "⚖️",
+    path: "/finance/ideco-nisa-comparison",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+    isNew: true,
+    isFeatured: true,
+  },
 ];
 
 // ============================================
@@ -1212,6 +1309,7 @@ export const allTools: Tool[] = [
   ...convertTools,
   ...imageTools,
   ...generatorTools,
+  ...financeTools,
   {
     id: "pdf-text-input",
     nameJa: "PDFに文字入力",
@@ -1269,8 +1367,12 @@ export const getToolCount = () => ({
   convert: convertTools.length,
   image: imageTools.length,
   generator: generatorTools.length,
+  finance: financeTools.length,
   total: allTools.length,
 });
 
 // For backward compatibility
 export const officeTools = documentTools;
+
+// SEO Tools (placeholder - no tools yet)
+export const seoTools: Tool[] = [];

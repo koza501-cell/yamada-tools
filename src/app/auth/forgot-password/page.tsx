@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ForgotPasswordPage() {
   const { forgotPassword } = useAuth();
@@ -55,7 +56,7 @@ export default function ForgotPasswordPage() {
         {/* Header */}
         <div className="text-center mb-6">
           <Link href="/" className="inline-flex items-center gap-2 mb-4">
-            <img src="/logo-icon.webp" alt="山田ツール" className="w-10 h-10" width={40} height={40} />
+            <Image src="/logo-icon.webp" alt="山田ツール" className="w-10 h-10" width={40} height={40} />
             <span className="text-2xl font-bold text-kon">山田ツール</span>
           </Link>
         </div>

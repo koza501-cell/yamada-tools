@@ -4,6 +4,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "プライバシーポリシー",
   description: "山田ツールのプライバシーポリシーです。",
+  alternates: {
+    canonical: 'https://yamada-tools.jp/legal/privacy',
+  },
 };
 
 export default function PrivacyPage() {

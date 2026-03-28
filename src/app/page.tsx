@@ -1,11 +1,64 @@
 import fs from 'fs';
 import path from 'path';
+import Image from "next/image";
 import Link from "next/link";
 import SearchBar from "@/components/common/SearchBar";
 import HeroAnimation from "@/components/common/HeroAnimation";
+import TypingText from "@/components/common/TypingText";
 import RecentTools from "@/components/common/RecentTools";
 import NewsletterSignup from "@/components/common/NewsletterSignup";
+import AdSlot from "@/components/AdSlot";
+import StatsCounter from "@/components/common/StatsCounter";
+import FooterCta from "@/components/common/FooterCta";
+import { ScrollRevealGrid } from "@/components/common/ScrollRevealGrid";
 import { pdfTools, documentTools, convertTools, imageTools, generatorTools, getToolCount, allTools } from "@/config/tools";
+
+// High-traffic tool paths that get 🔥 badge
+const HOT_PATHS = new Set(['/generator/envelope-print', '/convert/bank-format', '/pdf/compress']);
+
+// Feature H: Search suggestion chips
+const SEARCH_CHIPS = [
+  { label: 'PDF圧縮', href: '/pdf/compress' },
+  { label: '請求書作成', href: '/document/invoice' },
+  { label: '画像変換', href: '/image/convert' },
+  { label: '封筒印刷', href: '/generator/envelope-print' },
+  { label: '全銀変換', href: '/convert/bank-format' },
+  { label: '縦書き', href: '/document/vertical-text' },
+];
+
+// Feature I: Use case cards
+const USE_CASES = [
+  {
+    icon: '📄', title: '書類を作りたい',
+    desc: '請求書・見積書・納品書をPDFで作成',
+    links: [{ label: '請求書', href: '/document/invoice' }, { label: '見積書', href: '/document/estimate' }, { label: '送付状', href: '/document/cover-letter' }],
+  },
+  {
+    icon: '✉️', title: '郵便物を送りたい',
+    desc: '封筒の宛名印刷・名刺・はがき',
+    links: [{ label: '封筒印刷', href: '/generator/envelope-print' }, { label: '名刺作成', href: '/generator/business-card' }, { label: '縦書き', href: '/document/vertical-text' }],
+  },
+  {
+    icon: '📊', title: 'PDFを編集',
+    desc: '圧縮・結合・分割・回転',
+    links: [{ label: 'PDF圧縮', href: '/pdf/compress' }, { label: 'PDF結合', href: '/pdf/merge' }, { label: 'PDF分割', href: '/pdf/split' }],
+  },
+  {
+    icon: '🏦', title: '経理・振込',
+    desc: '全銀フォーマット・請求書・領収書',
+    links: [{ label: '全銀変換', href: '/convert/bank-format' }, { label: '請求書', href: '/document/invoice' }, { label: '領収書', href: '/document/receipt' }],
+  },
+  {
+    icon: '🖼️', title: '画像加工',
+    desc: '圧縮・変換・リサイズ',
+    links: [{ label: '画像圧縮', href: '/image/compress' }, { label: '画像変換', href: '/image/convert' }, { label: 'リサイズ', href: '/image/resize' }],
+  },
+  {
+    icon: '✍️', title: '文書作成',
+    desc: '縦書き・ビジネスメール',
+    links: [{ label: '縦書き', href: '/document/vertical-text' }, { label: 'ビジネスメール', href: '/document/business-email' }],
+  },
+];
 export const revalidate = 3600; // Revalidate every hour
 
 function getDynamicBlogs() {
@@ -44,20 +97,47 @@ const homepageSchema = {
   }))
 };
 
-// SearchAction schema for Google Sitelinks Searchbox
-const searchActionSchema = {
+
+
+
+// Homepage FAQ schema
+const homepageFaqSchema = {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: "山田ツール",
-  url: "https://yamada-tools.jp",
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: "https://yamada-tools.jp/?q={search_term_string}"
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "山田ツールは本当に無料ですか？",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "はい、すべてのツールを完全無料でご利用いただけます。会員登録も不要です。一部の高度な機能はPROプランで提供していますが、基本機能はすべて無料です。"
+      }
     },
-    "query-input": "required name=search_term_string"
-  }
+    {
+      "@type": "Question",
+      name: "アップロードしたファイルの安全性は？",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "ファイルは日本国内のサーバーでのみ処理され、SSL暗号化通信で保護されています。多くのツールはブラウザ内で処理されるためサーバーにファイルが送信されません。サーバー処理が必要なツールでも、処理完了後60分以内に自動削除されます。"
+      }
+    },
+    {
+      "@type": "Question",
+      name: "スマホからも使えますか？",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "はい、iPhone・Androidどちらからもすべてのツールをご利用いただけます。レスポンシブデザインでスマホに最適化されており、アプリのインストールも不要です。"
+      }
+    },
+    {
+      "@type": "Question",
+      name: "会員登録は必要ですか？",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "いいえ、会員登録なしですべてのツールをご利用いただけます。メールアドレスの入力も不要です。アクセスしてすぐにお使いいただけます。"
+      }
+    }
+  ]
 };
 
 export default function Home() {
@@ -81,18 +161,19 @@ export default function Home() {
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(searchActionSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageFaqSchema) }}
       />
+
     <div>
       {/* Hero Section - REDESIGNED */}
-      <section className="bg-white text-gray-900 py-16 md:py-24">
+      <section className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 py-10 md:py-14">
         <div className="max-w-4xl mx-auto px-4 text-center">
           {/* Main Headline - H1 */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-kon">
-            無料オンラインツール{toolCount.total}個
+            無料オンラインツール{toolCount.total}個｜PDF編集・画像変換・文書作成
           </h1>
 
-          <p className="text-lg md:text-xl mb-8 text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl mb-8 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             日本国内サーバーで安全に処理。登録不要・完全無料。
           </p>
 
@@ -100,9 +181,22 @@ export default function Home() {
           <HeroAnimation />
 
           {/* Search Bar */}
-          <div className="mb-8 flex justify-center">
+          <div className="mb-3 flex justify-center">
             <SearchBar />
           </div>
+          {/* Feature H: Search suggestion chips */}
+          <div className="flex flex-wrap justify-center gap-2 mb-4">
+            {SEARCH_CHIPS.map((chip) => (
+              <Link
+                key={chip.href}
+                href={chip.href}
+                className="rounded-full px-3 py-1 text-sm bg-white border border-gray-200 hover:border-blue-400 hover:bg-blue-50 transition-colors cursor-pointer dark:bg-slate-700 dark:text-gray-200 dark:border-slate-600 dark:hover:border-blue-400"
+              >
+                {chip.label}
+              </Link>
+            ))}
+          </div>
+          <TypingText />
 
           {/* Primary CTA Button */}
           <Link
@@ -114,31 +208,159 @@ export default function Home() {
 
           {/* Trust Badges - Reduced to 3 */}
           <div className="flex flex-wrap justify-center gap-4 mt-10">
-            <span className="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium">
+            <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-4 py-2 rounded-full text-sm font-medium">
               🇯🇵 日本国内サーバー
             </span>
-            <span className="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium">
+            <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-4 py-2 rounded-full text-sm font-medium">
               🔒 安全なSSL暗号化
             </span>
-            <span className="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium">
+            <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-4 py-2 rounded-full text-sm font-medium">
               ✨ 登録不要・完全無料
             </span>
           </div>
         </div>
       </section>
 
+      {/* How It Works */}
+      <section className="py-10">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-2xl font-bold text-kon dark:text-blue-400 mb-8">✨ 3ステップで簡単</h2>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-0">
+            <div className="flex flex-col items-center text-center w-44">
+              <div className="text-4xl mb-2">🔍</div>
+              <p className="font-bold text-gray-800 dark:text-gray-100">ツールを選ぶ</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">89種類から目的に合ったツールを選択</p>
+            </div>
+            <div className="hidden md:block w-16 border-t-2 border-dashed border-gray-300 dark:border-gray-600 mb-6" />
+            <div className="flex flex-col items-center text-center w-44">
+              <div className="text-4xl mb-2">⚡</div>
+              <p className="font-bold text-gray-800 dark:text-gray-100">データを入力</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">ファイルをアップロードまたは直接入力</p>
+            </div>
+            <div className="hidden md:block w-16 border-t-2 border-dashed border-gray-300 dark:border-gray-600 mb-6" />
+            <div className="flex flex-col items-center text-center w-44">
+              <div className="text-4xl mb-2">✅</div>
+              <p className="font-bold text-gray-800 dark:text-gray-100">完成・ダウンロード</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">処理完了後すぐにダウンロード可能</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Feature J: Stats Counter */}
+      <StatsCounter />
+
+      {/* Trust Badges */}
+      <section className="py-6">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 flex flex-wrap justify-around gap-4">
+            <div className="flex flex-col items-center text-center">
+              <span className="text-2xl mb-1">🏢</span>
+              <span className="font-bold text-gray-800 dark:text-gray-100 text-sm">法人利用実績</span>
+              <span className="text-kon dark:text-blue-400 font-bold">500社以上</span>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <span className="text-2xl mb-1">🔒</span>
+              <span className="font-bold text-gray-800 dark:text-gray-100 text-sm">SSL暗号化通信</span>
+              <span className="text-kon dark:text-blue-400 font-bold">常時HTTPS</span>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <span className="text-2xl mb-1">🇯🇵</span>
+              <span className="font-bold text-gray-800 dark:text-gray-100 text-sm">国内サーバー</span>
+              <span className="text-kon dark:text-blue-400 font-bold">100%</span>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <span className="text-2xl mb-1">⏱</span>
+              <span className="font-bold text-gray-800 dark:text-gray-100 text-sm">自動削除</span>
+              <span className="text-kon dark:text-blue-400 font-bold">60分以内</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Feature I: Use Case Cards */}
+      <section className="py-10 bg-gray-50 dark:bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-2xl font-bold text-kon dark:text-blue-400 text-center mb-8">🎯 用途から探す</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {USE_CASES.map((uc) => (
+              <div
+                key={uc.title}
+                className="bg-white dark:bg-slate-800 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 p-5"
+              >
+                <div className="text-3xl mb-2">{uc.icon}</div>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">{uc.title}</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">{uc.desc}</p>
+                <div className="flex flex-wrap gap-2">
+                  {uc.links.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="text-xs text-blue-600 dark:text-blue-400 hover:underline"
+                    >
+                      {link.label} →
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-10 bg-white dark:bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-2xl font-bold text-kon dark:text-blue-400 text-center mb-8">💬 ユーザーの声</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-6">
+              <p className="text-gray-700 dark:text-gray-200 mb-4">"毎月の給与振込データ作成が10分で終わるようになりました。"</p>
+              <div className="text-yellow-400 text-sm mb-1">⭐⭐⭐⭐⭐</div>
+              <p className="text-sm text-gray-500 dark:text-gray-400">経理担当 A.S.さん</p>
+            </div>
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-6">
+              <p className="text-gray-700 dark:text-gray-200 mb-4">"封筒の宛名印刷がブラウザだけでできて助かります。"</p>
+              <div className="text-yellow-400 text-sm mb-1">⭐⭐⭐⭐⭐</div>
+              <p className="text-sm text-gray-500 dark:text-gray-400">総務部 M.T.さん</p>
+            </div>
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-6">
+              <p className="text-gray-700 dark:text-gray-200 mb-4">"式辞の縦書き変換がPDF出力できるのが便利です。"</p>
+              <div className="text-yellow-400 text-sm mb-1">⭐⭐⭐⭐⭐</div>
+              <p className="text-sm text-gray-500 dark:text-gray-400">教職員 K.N.さん</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+{/* Ad Slot - Desktop Only */}      <div className="hidden md:block">        <AdSlot format="leaderboard" className="my-8" />      </div>
       {/* 🔥 Popular Tools Section - Below Fold */}
       <section id="popular-tools" className="py-16 bg-gradient-to-r from-rose-50 to-orange-50 dark:from-gray-800 dark:to-gray-900">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-6">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white">🔥 人気ツール - 今すぐ使う</h2>
           </div>
-          <div className="flex flex-wrap justify-center gap-3">
-            <Link href="/pdf/compress" className="bg-white shadow-md hover:shadow-lg text-kon px-5 py-3 rounded-xl font-medium transition-all hover:scale-105">📄 PDF圧縮</Link>
-            <Link href="/pdf/merge" className="bg-white shadow-md hover:shadow-lg text-kon px-5 py-3 rounded-xl font-medium transition-all hover:scale-105">📑 PDF結合</Link>
-            <Link href="/image/compress" className="bg-white shadow-md hover:shadow-lg text-kon px-5 py-3 rounded-xl font-medium transition-all hover:scale-105">🖼️ 画像圧縮</Link>
-            <Link href="/convert/furigana" className="bg-white shadow-md hover:shadow-lg text-kon px-5 py-3 rounded-xl font-medium transition-all hover:scale-105">あ ふりがな</Link>
-            <Link href="/document/invoice" className="bg-white shadow-md hover:shadow-lg text-kon px-5 py-3 rounded-xl font-medium transition-all hover:scale-105">📋 請求書作成</Link>
+          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-2">
+            {[
+              { href: '/pdf/compress', label: '📄 PDF圧縮' },
+              { href: '/pdf/merge', label: '📑 PDF結合' },
+              { href: '/image/compress', label: '🖼️ 画像圧縮' },
+              { href: '/convert/furigana', label: 'あ ふりがな' },
+              { href: '/document/invoice', label: '📋 請求書作成' },
+              { href: '/generator/envelope-print', label: '✉️ 封筒印刷' },
+              { href: '/convert/bank-format', label: '🏦 全銀変換' },
+              { href: '/generator/hanko', label: '🔴 電子印鑑' },
+            ].map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className="relative bg-white shadow-md hover:shadow-lg text-kon px-3 py-3 rounded-xl font-medium transition-all hover:-translate-y-0.5 text-center text-sm"
+              >
+                {HOT_PATHS.has(href) && (
+                  <span className="absolute -top-1.5 -right-1.5 text-xs bg-red-500 text-white px-1 py-0.5 rounded-full leading-none font-bold">🔥</span>
+                )}
+                {label}
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -152,12 +374,9 @@ export default function Home() {
               <p className="text-gray-600 dark:text-gray-300 mt-2">仕事がもっと楽になる、便利な新機能を追加しました</p>
             </div>
             <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-              {featuredTools.map((tool) => (
-                <Link
-                  key={tool.id}
-                  href={tool.path}
-                  className="group bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-orange-200 dark:border-orange-800 hover:border-orange-400"
-                >
+              {featuredTools.map((tool) => {
+                const isExternal = tool.path.startsWith("http");
+                const cardInner = (
                   <div className="p-6">
                     <div className="flex items-start gap-4">
                       <div className="text-4xl flex-shrink-0">{tool.icon}</div>
@@ -169,14 +388,27 @@ export default function Home() {
                         <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{tool.description}</p>
                         <div className="mt-3 flex items-center gap-2">
                           <span className="text-xs bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300 px-2 py-0.5 rounded-full">✓ 無料</span>
-                          <span className="text-xs bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 px-2 py-0.5 rounded-full">🔒 ブラウザ処理</span>
+                          {isExternal
+                            ? <span className="text-xs bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300 px-2 py-0.5 rounded-full">🔍 SEOツール</span>
+                            : <span className="text-xs bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 px-2 py-0.5 rounded-full">🔒 ブラウザ処理</span>
+                          }
                         </div>
                       </div>
                       <span className="text-orange-400 group-hover:translate-x-1 transition-transform text-xl flex-shrink-0">→</span>
                     </div>
                   </div>
-                </Link>
-              ))}
+                );
+                const cardClass = "group bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-orange-200 dark:border-orange-800 hover:border-orange-400";
+                return isExternal ? (
+                  <a key={tool.id} href={tool.path} target="_blank" rel="noopener noreferrer" className={cardClass}>
+                    {cardInner}
+                  </a>
+                ) : (
+                  <Link key={tool.id} href={tool.path} className={cardClass}>
+                    {cardInner}
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -201,7 +433,7 @@ export default function Home() {
       </section>
 
       {/* Section 1: PDF Tools */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
+      <section className="py-10 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold text-kon dark:text-blue-400">📄 PDFツール</h2>
@@ -210,8 +442,8 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-            {availablePdfTools.slice(0, 6).map((tool) => (
+          <ScrollRevealGrid className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-3">
+            {availablePdfTools.slice(0, 8).map((tool) => (
               <Link
                 key={tool.id}
                 href={tool.path}
@@ -225,13 +457,13 @@ export default function Home() {
                 <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-2 font-normal">{tool.description}</p>
               </Link>
             ))}
-          </div>
+          </ScrollRevealGrid>
         </div>
       </section>
 
       {/* Section 2: Document Creation - ONLY AVAILABLE */}
       {availableDocTools.length > 0 && (
-        <section className="py-20">
+        <section className="py-10">
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-kon dark:text-blue-400">📝 書類作成</h2>
@@ -240,8 +472,8 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-              {availableDocTools.slice(0, 6).map((tool) => (
+            <ScrollRevealGrid className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-3">
+              {availableDocTools.slice(0, 8).map((tool) => (
                 <Link
                   key={tool.id}
                   href={tool.path}
@@ -255,14 +487,14 @@ export default function Home() {
                 <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-2 font-normal">{tool.description}</p>
                 </Link>
               ))}
-            </div>
+            </ScrollRevealGrid>
           </div>
         </section>
       )}
 
       {/* Section 3: Converters - ONLY AVAILABLE */}
       {availableConvertTools.length > 0 && (
-        <section className="py-20 bg-gray-50 dark:bg-gray-900">
+        <section className="py-10 bg-gray-50 dark:bg-gray-900">
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-kon dark:text-blue-400">🔄 変換ツール</h2>
@@ -271,8 +503,8 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-              {availableConvertTools.slice(0, 6).map((tool) => (
+            <ScrollRevealGrid className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-3">
+              {availableConvertTools.slice(0, 8).map((tool) => (
                 <Link
                   key={tool.id}
                   href={tool.path}
@@ -286,14 +518,14 @@ export default function Home() {
                 <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-2 font-normal">{tool.description}</p>
                 </Link>
               ))}
-            </div>
+            </ScrollRevealGrid>
           </div>
         </section>
       )}
 
       {/* Section 4: Image Tools - ONLY AVAILABLE */}
       {availableImageTools.length > 0 && (
-        <section className="py-20">
+        <section className="py-10">
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-kon dark:text-blue-400">🖼️ 画像ツール</h2>
@@ -302,8 +534,8 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-              {availableImageTools.slice(0, 6).map((tool) => (
+            <ScrollRevealGrid className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-3">
+              {availableImageTools.slice(0, 8).map((tool) => (
                 <Link
                   key={tool.id}
                   href={tool.path}
@@ -317,14 +549,14 @@ export default function Home() {
                 <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-2">{tool.description}</p>
                 </Link>
               ))}
-            </div>
+            </ScrollRevealGrid>
           </div>
         </section>
       )}
 
       {/* Section 5: Generators - ONLY AVAILABLE */}
       {availableGenTools.length > 0 && (
-        <section className="py-20 bg-gray-50 dark:bg-gray-900">
+        <section className="py-10 bg-gray-50 dark:bg-gray-900">
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-kon dark:text-blue-400">⚡ 計算・生成ツール</h2>
@@ -333,8 +565,8 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-              {availableGenTools.slice(0, 6).map((tool) => (
+            <ScrollRevealGrid className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-3">
+              {availableGenTools.slice(0, 8).map((tool) => (
                 <Link
                   key={tool.id}
                   href={tool.path}
@@ -348,13 +580,13 @@ export default function Home() {
                 <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-2 font-normal">{tool.description}</p>
                 </Link>
               ))}
-            </div>
+            </ScrollRevealGrid>
           </div>
         </section>
       )}
 
       {/* Features Section */}
-      <section className="py-20">
+      <section className="py-10">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold text-kon text-center mb-10">
             選ばれる理由
@@ -420,7 +652,7 @@ export default function Home() {
                   >
                     <div className="relative h-48 bg-gradient-to-br from-blue-500 to-purple-600">
                       {post.featuredImage && (
-                        <img src={post.featuredImage} alt={post.title} className="w-full h-48 object-cover" loading="lazy" width={400} height={192} />
+                        <Image src={post.featuredImage} alt={post.title} className="w-full h-48 object-cover" width={400} height={192} />
                       )}
                       {isNewBlog(post.publishDate) && (
                         <span className="absolute top-4 right-4 px-3 py-1 bg-red-500 text-white text-sm font-bold rounded-full">
@@ -480,7 +712,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-24 bg-gray-50 dark:bg-gray-900">
+      <section className="py-12 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
@@ -567,6 +799,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Feature L: Footer CTA for free users */}
+      <FooterCta />
 
       {/* CTA Section */}
       <section className="py-20 bg-sakura/20">

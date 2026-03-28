@@ -36,7 +36,7 @@ export function generateToolMetadata({
     description,
     keywords: [...defaultKeywords, ...keywords],
     openGraph: {
-      title: `${tool.nameJa} | 山田ツール - 無料オンラインツール`,
+      title: customTitle || `${tool.nameJa} | 山田ツール - 無料オンラインツール`,
       description,
       url: `${baseUrl}${tool.path}`,
       siteName: "山田ツール",
@@ -63,7 +63,7 @@ export function generateToolMetadata({
   };
 }
 
-export function generateToolJsonLd(tool: Tool, faq?: { question: string; answer: string }[]) {
+export function generateToolJsonLd(tool: Tool, faq?: { question: string; answer: string }[], howToSteps?: { name: string; text: string }[]) {
   // SoftwareApplication schema (enhanced)
   const softwareSchema = {
     "@context": "https://schema.org",
@@ -146,32 +146,12 @@ export function generateToolJsonLd(tool: Tool, faq?: { question: string; answer:
     "@type": "HowTo",
     name: `${tool.nameJa}の使い方`,
     description: `${tool.nameJa}を無料で使う方法`,
-    step: [
-      {
-        "@type": "HowToStep",
-        position: 1,
-        name: "ファイルを選択",
-        text: "変換したいファイルをドラッグ＆ドロップまたはクリックして選択します",
-      },
-      {
-        "@type": "HowToStep",
-        position: 2,
-        name: "オプションを設定",
-        text: "必要に応じてオプションを設定します",
-      },
-      {
-        "@type": "HowToStep",
-        position: 3,
-        name: "変換を実行",
-        text: "「実行」ボタンをクリックして変換を開始します",
-      },
-      {
-        "@type": "HowToStep",
-        position: 4,
-        name: "ダウンロード",
-        text: "変換が完了したらファイルをダウンロードします",
-      },
-    ],
+    step: (howToSteps ?? [
+      { name: "ファイルを選択", text: "変換したいファイルをドラッグ＆ドロップまたはクリックして選択します" },
+      { name: "オプションを設定", text: "必要に応じてオプションを設定します" },
+      { name: "変換を実行", text: "「実行」ボタンをクリックして変換を開始します" },
+      { name: "ダウンロード", text: "変換が完了したらファイルをダウンロードします" },
+    ]).map((s, i) => ({ "@type": "HowToStep", position: i + 1, name: s.name, text: s.text })),
     tool: {
       "@type": "HowToTool",
       name: "山田ツール",

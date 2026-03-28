@@ -4,6 +4,9 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Officeツール - 準備中",
   description: "Word、Excel、PowerPointの変換・編集ツール。近日公開予定。",
+  alternates: {
+    canonical: 'https://yamada-tools.jp/office',
+  },
 };
 
 export default function OfficeToolsPage() {

@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "日本の祝日一覧（2024年〜2026年）｜山田ツール",
   description: "日本の祝日・国民の休日一覧。2024年、2025年、2026年の祝日カレンダー。振替休日も含めた完全版。",
   keywords: ["祝日", "国民の祝日", "祝日一覧", "祝日カレンダー", "振替休日"],
+  alternates: {
+    canonical: 'https://yamada-tools.jp/reference/holidays',
+  },
 };
 
 const holidays2024 = [

@@ -61,10 +61,9 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
-  customTitle: "コンビニ印刷の「端が切れる」を解決 | PDFに余白を追加して縮小するツール【セブン・ローソン対応】",
+  customTitle: "コンビニ印刷 余白追加【無料】端が切れる問題を解決｜セブン・ローソン対応",
   tool,
-  longDescription:
-    "ネットプリントでPDFの端が切れて困っていませんか？このツールはPDFを97%〜90%に縮小し、余白を追加して全体をきれいに印刷できるようにします。登録不要で今すぐ直せます。",
+  longDescription: "コンビニ印刷で端が切れる問題を解決。PDF余白を自動追加。セブン・ローソン・ファミマ全対応。登録不要・無料。",
   keywords: [
     "コンビニ印刷 端が切れる",
     "PDF 余白を追加",

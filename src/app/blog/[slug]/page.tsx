@@ -1,9 +1,49 @@
+import Image from 'next/image';
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import fs from 'fs';
 import path from 'path';
 import BlogContent from '@/components/BlogContent';
+import AdSlot from "@/components/AdSlot";
 import { marked } from 'marked';
 import '@/app/blog.css';
+
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const blogsPath = path.join(process.cwd(), 'src/data/dynamicBlogs.json');
+
+  if (!fs.existsSync(blogsPath)) {
+    return { title: 'ブログ記事が見つかりません' };
+  }
+
+  const fileContent = fs.readFileSync(blogsPath, 'utf-8');
+  const blogs = JSON.parse(fileContent);
+  const blog = blogs.find((b: any) => b.slug === slug);
+
+  if (!blog) {
+    return { title: 'ブログ記事が見つかりません' };
+  }
+
+  const siteUrl = 'https://yamada-tools.jp';
+
+  return {
+    title: blog.title,
+    description: blog.excerpt || blog.title,
+    alternates: {
+      canonical: `${siteUrl}/blog/${slug}`,
+    },
+    openGraph: {
+      title: blog.title,
+      description: blog.excerpt || blog.title,
+      url: `${siteUrl}/blog/${slug}`,
+      type: 'article',
+      publishedTime: blog.publishDate,
+      authors: [blog.author || '合同会社山田トレード'],
+      images: blog.featuredImage ? [{ url: blog.featuredImage, width: 1200, height: 630, alt: blog.title }] : [],
+    },
+  };
+}
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -24,15 +64,54 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
   const htmlContent = String(await marked(blog.content));
 
+  // Article structured data
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: blog.title,
+    description: blog.excerpt || blog.description || blog.title,
+    datePublished: blog.publishDate,
+    dateModified: blog.modifiedDate || blog.publishDate,
+    author: {
+      "@type": "Organization",
+      name: blog.author || "合同会社山田トレード",
+      url: "https://yamada-tools.jp",
+    },
+    publisher: {
+      "@type": "Organization",
+      "@id": "https://yamada-tools.jp/#organization",
+      name: "合同会社山田トレード",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://yamada-tools.jp/logo-icon.webp",
+        width: 512,
+        height: 512,
+      },
+    },
+    image: blog.featuredImage || "https://yamada-tools.jp/og-image.png",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://yamada-tools.jp/blog/${slug}`,
+    },
+    inLanguage: "ja",
+  };
+
   return (
     <article className="blog-article max-w-4xl mx-auto px-4 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
       {/* Hero Image */}
       {blog.featuredImage && (
         <div className="mb-8 -mx-4 md:mx-0">
-          <img 
+          <Image 
             src={blog.featuredImage} 
             alt={blog.title}
-            className="w-full max-h-96 object-cover rounded-lg shadow-lg" loading="lazy"
+            width={1200}
+            height={384}
+            className="w-full max-h-96 object-cover rounded-lg shadow-lg"
+            priority
           />
         </div>
       )}
@@ -80,6 +159,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         <BlogContent content={htmlContent} />
       </div>
 
+{/* Ad Slot */}      <AdSlot format="rectangle" className="my-8" />
       <footer className="blog-footer mt-16 pt-8 border-t border-gray-200">
         <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-8 text-center">
           <h3 className="text-2xl font-bold text-gray-900 mb-4">

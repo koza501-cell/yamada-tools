@@ -320,3 +320,51 @@ body {
   font-size: 1.1rem !important;
   line-height: 1.8 !important;
 }
+
+/* === CLS Prevention === */
+
+/* Ensure all images with width/height attributes maintain aspect ratio */
+img[width][height] {
+  aspect-ratio: attr(width) / attr(height);
+  height: auto;
+}
+
+/* Reserve space for sticky header - prevent CLS on scroll */
+html {
+  scroll-padding-top: 64px;
+}
+
+/* Below-fold content optimization */
+section:nth-child(n+3),
+.below-fold {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
+}
+
+/* Contain layout for dynamic sections */
+.animate-pulse {
+  contain: layout style;
+}
+
+/* Prevent CLS from floating/fixed elements */
+.fixed, [class*="fixed"] {
+  contain: layout;
+}
+
+/* Font stability - prevent FOUT with system fonts */
+body {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* === Ad-Free Zone: Protect tool functional areas from auto-placed ads ===
+   Applied to minimal-policy tool pages. Suppresses Google Auto Ads that
+   are injected inside the tool UI (upload area, form, preview, action buttons).
+   Ads remain active in educational content / FAQ sections below the tool.
+   Does NOT hide ads that have already been requested/served (ToS compliant). */
+.ad-free-zone .google-auto-placed,
+.ad-free-zone ins.adsbygoogle {
+  display: none !important;
+}

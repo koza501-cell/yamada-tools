@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
-import { pdfTools, documentTools, convertTools, imageTools, generatorTools } from "@/config/tools";
+import { pdfTools, documentTools, convertTools, imageTools, generatorTools, financeTools } from "@/config/tools";
 
-type CategoryKey = "pdf" | "document" | "convert" | "image" | "generator";
+type CategoryKey = "pdf" | "document" | "convert" | "image" | "generator" | "finance";
 
 const categoryTools: Record<CategoryKey, { tools: typeof pdfTools; viewAllLabel: string }> = {
   pdf: { tools: pdfTools, viewAllLabel: "すべてのPDFツール →" },
@@ -10,6 +10,7 @@ const categoryTools: Record<CategoryKey, { tools: typeof pdfTools; viewAllLabel:
   convert: { tools: convertTools, viewAllLabel: "すべての変換ツール →" },
   image: { tools: imageTools, viewAllLabel: "すべての画像ツール →" },
   generator: { tools: generatorTools, viewAllLabel: "すべての計算・生成ツール →" },
+  finance: { tools: financeTools, viewAllLabel: "すべての金融ツール →" },
 };
 
 interface MegaMenuProps {

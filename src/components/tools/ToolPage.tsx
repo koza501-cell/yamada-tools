@@ -1,4 +1,5 @@
 "use client";
+import AdBanner from "@/components/AdBanner";
 import { useUsageLimit } from "@/hooks/useUsageLimit";
 
 import { useState, useEffect } from "react";
@@ -370,6 +371,7 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
           </section>
         )}
 
+{/* Ad Slot */}        <AdBanner className="my-6" />
         {/* How-to Section */}
         <section className="mt-8 bg-sakura/20 dark:bg-sakura/10 rounded-xl p-6" aria-labelledby="howto-heading">
           <h2 id="howto-heading" className="font-bold text-kon mb-3 text-lg">

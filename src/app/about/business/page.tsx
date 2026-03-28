@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "法人・企業様向け | 山田ツール - 安心のセキュリティで業務効率化",
   description:
     "日本国内サーバー完結、60分自動削除、SSL暗号化。情報システム部門も安心の無料オンラインツール。PDF編集、書類作成、画像処理など71種類のツールを登録不要でご利用いただけます。",
+  alternates: {
+    canonical: 'https://yamada-tools.jp/about/business',
+  },
 };
 
 export default function BusinessPage() {

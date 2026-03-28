@@ -35,7 +35,7 @@ export default function Page() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <PostcodeClient faq={faq} />
+      <div className="ad-free-zone"><PostcodeClient faq={faq} /></div>
     </>
   );
 }

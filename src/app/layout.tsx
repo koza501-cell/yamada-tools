@@ -10,6 +10,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import { ThemeProvider } from "@/components/common/ThemeProvider";
 import GoogleAnalytics from "@/components/common/GoogleAnalytics";
 import { AuthProvider } from "@/contexts/AuthContext";
+import AdSenseLoader from "@/components/AdSenseLoader";
 
 // Base URL for the site
 const siteUrl = "https://yamada-tools.jp";
@@ -90,6 +91,10 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: siteUrl,
+    languages: {
+      "ja": siteUrl,
+      "x-default": siteUrl,
+    },
   },
   verification: {
     google: "google499885782131bde1",
@@ -127,7 +132,8 @@ const organizationSchema = {
   foundingDate: "2024",
   sameAs: [
     "https://www.facebook.com/yamada.tools/",
-    "https://x.com/YamadaToolsJP"
+    "https://x.com/YamadaToolsJP",
+    "https://www.yamadatrade.com/"
   ],
   numberOfEmployees: {
     "@type": "QuantitativeValue",
@@ -143,7 +149,7 @@ const websiteSchema = {
   name: "山田ツール",
   url: siteUrl,
   description:
-    "日本国内サーバーで安全に使える無料オンラインツール集。PDF編集、画像変換、文書作成など70種類のツールを提供。",
+    "日本国内サーバーで安全に使える無料オンラインツール集。PDF編集、画像変換、文書作成など89種類以上のツールを提供。",
   publisher: {
     "@id": `${siteUrl}/#organization`,
   },
@@ -176,7 +182,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
-      <body className="antialiased min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+      <body className="antialiased min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100" style={{ fontFamily: "Hiragino Sans, Hiragino Kaku Gothic ProN, Noto Sans JP, Meiryo, sans-serif" }}>
         <GoogleAnalytics />
         <AuthProvider>
         <ThemeProvider>
@@ -191,6 +197,7 @@ export default function RootLayout({
         <PWAInstallPrompt />
         </ThemeProvider>
         </AuthProvider>
+        <AdSenseLoader />
       </body>
     </html>
   );

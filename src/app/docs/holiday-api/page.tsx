@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "日本の祝日API｜無料・JSON形式｜山田ツール",
   description: "日本の祝日データをJSON形式で取得できる無料API。2024年〜2026年対応。振替休日も含む。開発者向けドキュメント。",
   keywords: ["祝日API", "日本 祝日 API", "祝日 JSON", "holiday API Japan", "祝日データ"],
+  alternates: {
+    canonical: 'https://yamada-tools.jp/docs/holiday-api',
+  },
 };
 
 const holidays2026 = [

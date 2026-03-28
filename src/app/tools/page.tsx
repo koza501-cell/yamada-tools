@@ -1,13 +1,17 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { allTools, pdfTools, documentTools, convertTools, imageTools, generatorTools } from "@/config/tools";
+import { allTools, pdfTools, documentTools, convertTools, imageTools, generatorTools, seoTools } from "@/config/tools";
 
 export const metadata: Metadata = {
   title: "全ツール一覧｜山田ツール",
   description: "山田ツールの全ツールを一覧で表示。PDF編集、画像圧縮、書類作成、変換ツールなど。完全無料・登録不要。",
+  alternates: {
+    canonical: 'https://yamada-tools.jp/tools',
+  },
 };
 
 const categories = [
+  { id: "seo", name: "SEO・AIツール", tools: seoTools, icon: "🔍" },
   { id: "pdf", name: "PDFツール", tools: pdfTools, icon: "📄" },
   { id: "document", name: "書類作成", tools: documentTools, icon: "📝" },
   { id: "convert", name: "変換ツール", tools: convertTools, icon: "🔄" },

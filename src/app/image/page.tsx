@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "画像ツール【無料】圧縮・リサイズ・形式変換・QRコード作成",
   description: "画像圧縮、リサイズ、形式変換、背景削除、QRコード作成など15種類の画像編集ツールを完全無料で提供。登録不要・日本国内サーバーで安心処理。",
   keywords: "画像圧縮, 画像リサイズ, 背景削除, QRコード作成, 画像変換, PNG JPEG 変換, WebP変換, 無料 画像編集",
+  alternates: {
+    canonical: 'https://yamada-tools.jp/image',
+  },
 };
 
 // Popular tools to highlight

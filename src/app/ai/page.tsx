@@ -16,6 +16,9 @@ const NICHE = {
 export const metadata: Metadata = {
   title: NICHE.name + ' | yamada-tools.jp',
   description: NICHE.description,
+  alternates: {
+    canonical: 'https://yamada-tools.jp/ai',
+  },
 };
 
 function getNichePosts() {

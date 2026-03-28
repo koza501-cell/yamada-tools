@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "【無料】文字数カウント｜リアルタイム文字数チェック",
   description: "文字数、単語数、行数をリアルタイムでカウント。レポートやブログ記事の文字数制限確認に便利です。",
   keywords: ["文字数カウント", "文字数 数える", "ワードカウント", "文字数チェック"],
+  alternates: {
+    canonical: 'https://yamada-tools.jp/generator/char-count',
+  },
 };
 
 const faq = [

@@ -75,7 +75,7 @@ export default function Breadcrumbs() {
     'base64': 'Base64変換',
     'url-encode': 'URLエンコード',
     'furigana': 'ふりがな生成',
-    'bank-format': '銀行フォーマット変換',
+    'bank-format': '全銀フォーマット変換',
     
     // Generator Tools
     'password': 'パスワード生成',
@@ -97,6 +97,9 @@ export default function Breadcrumbs() {
     'hash': 'ハッシュ生成',
     'color-convert': 'カラーコード変換',
     'random-picker': 'ランダム選択',
+    'nenkai':    '忘年会・新年会 抽選ツール',
+    'christmas': 'クリスマス プレゼント交換抽選ツール',
+    'seat':      '席替えランダム決めツール',
     'password-gen': 'パスワード生成器',
     'password-zip': 'ZIPパスワード生成',
     
@@ -127,7 +130,7 @@ export default function Breadcrumbs() {
       name = categoryNames[segment] || segment;
     }
     // Second level: Tool/Page name
-    else if (index === 1) {
+    else {
       name = toolNames[segment] || segment;
     }
 
