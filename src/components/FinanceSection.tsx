@@ -46,49 +46,55 @@ const financeTools = [
   },
 ];
 
-// JSON-LD Structured Data
-const financeSectionSchema = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "金融・資産運用ツール一覧 | 山田ツール",
-  "description": "新NISA・iDeCo・住宅ローン・FX・老後資金の無料シミュレーター。日本国内サーバー、登録不要。",
-  "url": "https://yamada-tools.jp/#finance-tools",
-  "numberOfItems": 5,
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "新NISAシミュレーター Pro",
-      "url": "https://yamada-tools.jp/finance/nisa-simulator",
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "住宅ローン計算機 Pro",
-      "url": "https://yamada-tools.jp/finance/jutaku-loan",
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "FX損益計算機 Pro",
-      "url": "https://yamada-tools.jp/finance/fx-calculator",
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "name": "老後資金シミュレーター Pro",
-      "url": "https://yamada-tools.jp/finance/retirement-simulator",
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
-      "name": "iDeCo vs NISA 比較ツール",
-      "url": "https://yamada-tools.jp/finance/ideco-nisa-comparison",
-    },
-  ],
-};
+// Generate JSON-LD Structured Data with dynamic site URL
+function generateFinanceSectionSchema(siteUrl: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "金融・資産運用ツール一覧 | 山田ツール",
+    "description": "新NISA・iDeCo・住宅ローン・FX・老後資金の無料シミュレーター。日本国内サーバー、登録不要。",
+    "url": `${siteUrl}/#finance-tools`,
+    "numberOfItems": 5,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "新NISAシミュレーター Pro",
+        "url": `${siteUrl}/finance/nisa-simulator`,
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "住宅ローン計算機 Pro",
+        "url": `${siteUrl}/finance/jutaku-loan`,
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "FX損益計算機 Pro",
+        "url": `${siteUrl}/finance/fx-calculator`,
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "老後資金シミュレーター Pro",
+        "url": `${siteUrl}/finance/retirement-simulator`,
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "name": "iDeCo vs NISA 比較ツール",
+        "url": `${siteUrl}/finance/ideco-nisa-comparison`,
+      },
+    ],
+  };
+}
 
 export default function FinanceSection() {
+  // Use environment variable for site URL, fallback to production for safety
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://yamada-tools.jp";
+  const financeSectionSchema = generateFinanceSectionSchema(siteUrl);
+
   return (
     <>
       {/* JSON-LD Structured Data */}
