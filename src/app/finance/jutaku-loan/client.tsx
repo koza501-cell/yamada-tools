@@ -1092,40 +1092,184 @@ export default function JutakuLoanClient() {
           </button>
         </div>
       </div>
-      {/* Explanation sections */}
-      <div className="max-w-4xl mx-auto mt-12 space-y-8 text-sm text-gray-700 leading-relaxed">
-        <div>
-          <h2 className="text-xl font-bold text-gray-800 mb-4">住宅ローン計算機の使い方</h2>
-          <p>本ツールは住宅ローンに関わる4つの計算を一画面で行えます。新規借入シミュレーションでは固定・変動金利の比較や将来の金利上昇シナリオを確認できます。</p>
-        </div>
-        <div>
-          <h2 className="text-xl font-bold text-gray-800 mb-4">住宅ローン 固定 変動 どちらがお得 2025</h2>
-          <p>2025年現在、変動金利は0.3%～0.5%台と低水準ですが、将来的な金利上昇リスクがあります。固定金利は1.0%～1.5%台で、金利上昇時のリスクを回避できます。金利の見通しやご自身のリスク許容度でお選びください。</p>
-        </div>
-        <div>
-          <h2 className="text-xl font-bold text-gray-800 mb-4">住宅ローン 変動金利 上昇したらいくら増える 計算</h2>
-          <p>変動金利が1%上昇すると、3000万円・35年のローンで月々の返済額は約12,000円増加します。本シミュレーターでは「緩やか上昇」「急激上昇」などのシナリオで将来の返済額を試算できます。</p>
-        </div>
-        <div>
-          <h2 className="text-xl font-bold text-gray-800 mb-4">元利均等返済と元金均等返済の違い</h2>
-          <p>元利均等返済は毎月の返済額が一定です。返済初期は利息割合が高いため元金返済は少ないですが、属人性と資金計画が立てやすいのがメリットです。元金均等返済は初期の返済負担が大きいですが、総利息を抑えられる利点があります。</p>
-        </div>
-        <div>
-          <h2 className="text-xl font-bold text-gray-800 mb-4">5年ルールと未払利息について</h2>
-          <p>変動金利で元利均等返済を選んだ場合、多くの金融機関では5年ルールが適用されます。金利が上昇しても、5年間は月々の返済額が変わりません。ただし、利息が返済額を超える場合は未払利息が発生し、将来の返済負担が増加する危険性があります。</p>
-        </div>
-        <div>
-          <h2 className="text-xl font-bold text-gray-800 mb-4">住宅ローン 繰り上げ返済 期間短縮 返済額軽減 どちらがお得</h2>
-          <p>繰り上げ返済は利息負担を大幅に削減できる強力な手段です。特に返済初期に行うほど効果は大きくなります。期間短縮型は総利息をより減らせる一方、返済額軽減型は月々の負担を減らせます。ご自身の資金計画に合わせてお選びください。</p>
-        </div>
-        <div>
-          <h2 className="text-xl font-bold text-gray-800 mb-4">住宅ローン 借り換え 何年で元が取れる</h2>
-          <p>借り換えの損益分岐点は、借り換え諸費用と金利差・返済期間によって変わります。一般的に、残り返済期間が10年以上あり、金利差が0.5%以上あれば借り換えを検討する価値があります。本シミュレーターで具体的な損益分岐点を計算できます。</p>
-        </div>
-        <div>
-          <h2 className="text-xl font-bold text-gray-800 mb-4">住宅ローン控除 2024 2025 いくら戻る</h2>
-          <p>住宅ローン控除は年末ローン残高の0.7%が所得税から控除されます。認定住宅・ZEH水準・省エネ基準・一般新築・中古で借入限度額が異なります。借入額3000万円の場合、最大で約21万円/年、累計約273万円の控除が受けられます。引けきれなかった分は住民税から上限97,500円まで控除されます。</p>
-        </div>
+      {/* Educational Content Section */}
+      <div className="max-w-4xl mx-auto mt-12 space-y-8">
+        <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+          <h2 className="text-xl font-bold text-gray-800 mb-6">住宅ローン計算の基礎知識</h2>
+          
+          <div className="prose prose-sm max-w-none text-gray-600 space-y-6">
+            <p>
+              住宅ローンは、多くの人にとって人生最大の買い物です。この計算機では、
+              月々の返済額、総返済額、利息総額、さらには借り換え効果や繰り上げ返済の節約額まで
+              シミュレーションできます。固定金利と変動金利の比較、5年ルールの影響、
+              住宅ローン控除の試算も可能です。
+            </p>
+
+            <h3 className="text-lg font-bold text-gray-800">固定金利と変動金利の比較</h3>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="bg-gray-50">
+                    <th className="px-4 py-3 text-left font-semibold text-gray-700">比較項目</th>
+                    <th className="px-4 py-3 text-center font-semibold text-blue-700">固定金利</th>
+                    <th className="px-4 py-3 text-center font-semibold text-green-700">変動金利</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100">
+                  <tr>
+                    <td className="px-4 py-3 font-medium">金利水準（2026年）</td>
+                    <td className="px-4 py-3 text-center">1.0%～1.8%</td>
+                    <td className="px-4 py-3 text-center">0.3%～0.6%</td>
+                  </tr>
+                  <tr className="bg-gray-50/50">
+                    <td className="px-4 py-3 font-medium">金利変動リスク</td>
+                    <td className="px-4 py-3 text-center">なし（期間中一定）</td>
+                    <td className="px-4 py-3 text-center">あり（6か月ごと見直し）</td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-3 font-medium">返済額の予測</td>
+                    <td className="px-4 py-3 text-center">簡単（毎月一定）</td>
+                    <td className="px-4 py-3 text-center">困難（金利変動による）</td>
+                  </tr>
+                  <tr className="bg-gray-50/50">
+                    <td className="px-4 py-3 font-medium">適している人</td>
+                    <td className="px-4 py-3 text-center">金利上昇を懸念する人</td>
+                    <td className="px-4 py-3 text-center">金利低下を期待する人</td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-3 font-medium">選べる期間</td>
+                    <td className="px-4 py-3 text-center">2年～35年（選択制）</td>
+                    <td className="px-4 py-3 text-center">35年（一括）</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 className="text-lg font-bold text-gray-800">日本の住宅ローンの典型的な条件</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-blue-50 rounded-xl p-4">
+                <h4 className="font-bold text-blue-700 mb-2">一般的な借入条件</h4>
+                <ul className="text-sm space-y-1">
+                  <li>• 借入期間：最長35年（完済時年齢80歳まで）</li>
+                  <li>• 頭金：物件価格の10%～20%が目安</li>
+                  <li>• 借入限度：年収の5～7倍程度</li>
+                  <li>• 返済比率：年収の25%～35%以内</li>
+                </ul>
+              </div>
+              <div className="bg-green-50 rounded-xl p-4">
+                <h4 className="font-bold text-green-700 mb-2">諸費用の目安</h4>
+                <ul className="text-sm space-y-1">
+                  <li>• 事務手数料：借入額の1%～2%</li>
+                  <li>• 保証料：借入額の0.2%～1%</li>
+                  <li>• 登記費用：20万～40万円</li>
+                  <li>• 印紙税：1万～10万円</li>
+                </ul>
+              </div>
+            </div>
+
+            <h3 className="text-lg font-bold text-gray-800">月々返済額の目安（金利0.5%・35年返済）</h3>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="bg-gray-50">
+                    <th className="px-4 py-3 text-left font-semibold text-gray-700">借入金額</th>
+                    <th className="px-4 py-3 text-right font-semibold text-gray-700">月々返済額</th>
+                    <th className="px-4 py-3 text-right font-semibold text-gray-700">総返済額</th>
+                    <th className="px-4 py-3 text-right font-semibold text-gray-700">利息総額</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100">
+                  <tr>
+                    <td className="px-4 py-3 font-medium">3,000万円</td>
+                    <td className="px-4 py-3 text-right">約77,900円</td>
+                    <td className="px-4 py-3 text-right">約3,272万円</td>
+                    <td className="px-4 py-3 text-right">約272万円</td>
+                  </tr>
+                  <tr className="bg-gray-50/50">
+                    <td className="px-4 py-3 font-medium">4,000万円</td>
+                    <td className="px-4 py-3 text-right">約103,900円</td>
+                    <td className="px-4 py-3 text-right">約4,363万円</td>
+                    <td className="px-4 py-3 text-right">約363万円</td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-3 font-medium">5,000万円</td>
+                    <td className="px-4 py-3 text-right">約129,800円</td>
+                    <td className="px-4 py-3 text-right">約5,454万円</td>
+                    <td className="px-4 py-3 text-right">約454万円</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-xs text-gray-500">
+              ※元利均等返済、ボーナス返済なしの場合。実際の返済額は金融機関によって異なります。
+            </p>
+
+            <h3 className="text-lg font-bold text-gray-800">元利均等返済と元金均等返済の違い</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-indigo-50 rounded-xl p-4">
+                <h4 className="font-bold text-indigo-700 mb-2">元利均等返済</h4>
+                <p className="text-sm mb-2">
+                  毎月の返済額が一定。返済初期は利息の割合が高く、元金の減りは遅い。
+                </p>
+                <ul className="text-sm space-y-1">
+                  <li>✅ 毎月の支払いが同額で計画しやすい</li>
+                  <li>✅ 初期の返済負担が軽い</li>
+                  <li>⚠️ 総利息が元金均等より多い</li>
+                </ul>
+              </div>
+              <div className="bg-purple-50 rounded-xl p-4">
+                <h4 className="font-bold text-purple-700 mb-2">元金均等返済</h4>
+                <p className="text-sm mb-2">
+                  毎月の元金返済額が一定。返済額は毎月減少していく。
+                </p>
+                <ul className="text-sm space-y-1">
+                  <li>✅ 総利息を抑えられる</li>
+                  <li>✅ 元金が確実に減っていく</li>
+                  <li>⚠️ 初期の返済負担が重い</li>
+                </ul>
+              </div>
+            </div>
+
+            <h3 className="text-lg font-bold text-gray-800">5年ルールとは？</h3>
+            <p>
+              変動金利で元利均等返済を選んだ場合、多くの金融機関で「5年ルール」が適用されます。
+              これは、金利が変動しても5年間は月々の返済額を変更せず、内部で元金と利息の配分を調整する仕組みです。
+              金利が大幅に上昇した場合、利息が返済額を上回り「未払利息」が発生するリスクがあります。
+              未払利息が発生すると、将来の返済負担が増加するため注意が必要です。
+            </p>
+
+            <h3 className="text-lg font-bold text-gray-800">よくある質問</h3>
+            <div className="space-y-4">
+              <div className="bg-gray-50 rounded-xl p-4">
+                <h4 className="font-bold text-gray-800 mb-2">Q: 住宅ローンの借り換えはいつがベストタイミングですか？</h4>
+                <p className="text-sm">
+                  A: 一般的に、残り返済期間が10年以上あり、金利差が0.5%以上ある場合が借り換えの目安です。
+                  ただし、借り換え諸費用（事務手数料、保証料、登記費用等）が数十万円かかるため、
+                  損益分岐点をしっかり計算することが重要です。本シミュレーターで具体的な損益分岐点を確認できます。
+                </p>
+              </div>
+              <div className="bg-gray-50 rounded-xl p-4">
+                <h4 className="font-bold text-gray-800 mb-2">Q: 繰り上げ返済はいつ行うのが最も効果的ですか？</h4>
+                <p className="text-sm">
+                  A: 繰り上げ返済は、返済初期に行うほど効果が大きくなります。
+                  ローンの初年度は利息の割合が高いため、元金を減らすことでその後の利息負担を大幅に削減できます。
+                  例えば3000万円・35年・金利0.5%のローンで、初年度に100万円繰り上げ返済すると、
+                  期間短縮型で約1年2か月の期間短縮、約45万円の利息節約が見込めます。
+                </p>
+              </div>
+              <div className="bg-gray-50 rounded-xl p-4">
+                <h4 className="font-bold text-gray-800 mb-2">Q: 住宅ローン控除はいくら戻ってきますか？</h4>
+                <p className="text-sm">
+                  A: 2024年以降入居の場合、年末ローン残高の0.7%が所得税から控除されます。
+                  省エネ基準適合住宅であれば13年間、一般住宅で10年間控除が受けられます。
+                  借入額3000万円の場合、年間最大約21万円、累計約273万円の控除が期待できます。
+                  所得税から引ききれない分は、住民税から上限97,500円まで控除されます。
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <RelatedTools currentTool="/finance/jutaku-loan" />
 
         <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-5 text-xs text-yellow-800">

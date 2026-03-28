@@ -1110,6 +1110,143 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
           </div>
         )}
 
+        {/* FX Educational Content Section */}
+        <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
+          <h2 className="text-xl font-bold text-gray-800 mb-6">FX証拠金・損益計算の基礎知識</h2>
+          
+          <div className="prose prose-sm max-w-none text-gray-600 space-y-6">
+            <p>
+              このFX損益計算機は、通貨ペアのエントリーレートと決済レート、取引数量から損益を計算するツールです。
+              スプレッド（売値と買値の差）を考慮した正確な損益計算に加え、証拠金計算、ロスカット予測、
+              スワップポイント計算、複数取引の一括計算、確定申告シミュレーションまで対応しています。
+            </p>
+
+            <h3 className="text-lg font-bold text-gray-800">日本でのFXレバレッジ規制</h3>
+            <p>
+              日本国内のFX業者では、個人投資家向けに最大25倍のレバレッジが適用されます。
+              これは2010年の金融先物取引法改正により導入された規制で、投資家保護の目的があります。
+              例えば100万円の証拠金で、最大2500万円分の取引が可能です。
+              レバレッジが高いほど少ない資金で大きなポジションを持てますが、リスクも比例して高まります。
+            </p>
+
+            <h3 className="text-lg font-bold text-gray-800">FXのpips（ピップス）とは</h3>
+            <p>
+              pipsはFX取引における価格変動の最小単位です。円建て通貨ペア（USD/JPY等）の場合、
+              0.01円（1銭）＝1pipです。ドル建て通貨ペア（EUR/USD等）の場合、0.0001ドル＝1pipです。
+              例えばUSD/JPYが150.00円から150.50円に上昇した場合、50pipsの上昇となります。
+            </p>
+
+            <h3 className="text-lg font-bold text-gray-800">標準的なロットサイズ</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
+              <div className="bg-blue-50 rounded-xl p-4">
+                <h4 className="font-bold text-blue-700 mb-2">スタンダードロット</h4>
+                <p className="text-sm">100,000通貨単位</p>
+                <p className="text-xs text-gray-500 mt-1">USD/JPYで約1,500万円相当</p>
+              </div>
+              <div className="bg-green-50 rounded-xl p-4">
+                <h4 className="font-bold text-green-700 mb-2">ミニロット</h4>
+                <p className="text-sm">10,000通貨単位</p>
+                <p className="text-xs text-gray-500 mt-1">USD/JPYで約150万円相当</p>
+              </div>
+              <div className="bg-purple-50 rounded-xl p-4">
+                <h4 className="font-bold text-purple-700 mb-2">マイクロロット</h4>
+                <p className="text-sm">1,000通貨単位</p>
+                <p className="text-xs text-gray-500 mt-1">USD/JPYで約15万円相当</p>
+              </div>
+            </div>
+
+            <h3 className="text-lg font-bold text-gray-800">計算例：5つのシナリオ</h3>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="bg-gray-50">
+                    <th className="px-4 py-3 text-left font-semibold text-gray-700">シナリオ</th>
+                    <th className="px-4 py-3 text-center font-semibold text-gray-700">通貨ペア</th>
+                    <th className="px-4 py-3 text-right font-semibold text-gray-700">エントリー</th>
+                    <th className="px-4 py-3 text-right font-semibold text-gray-700">決済</th>
+                    <th className="px-4 py-3 text-right font-semibold text-gray-700">数量</th>
+                    <th className="px-4 py-3 text-right font-semibold text-gray-700">損益</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100">
+                  <tr>
+                    <td className="px-4 py-3 font-medium">① ドル円買い</td>
+                    <td className="px-4 py-3 text-center">USD/JPY</td>
+                    <td className="px-4 py-3 text-right">150.00円</td>
+                    <td className="px-4 py-3 text-right">151.50円</td>
+                    <td className="px-4 py-3 text-right">10万通貨</td>
+                    <td className="px-4 py-3 text-right text-green-600 font-bold">+150,000円</td>
+                  </tr>
+                  <tr className="bg-gray-50/50">
+                    <td className="px-4 py-3 font-medium">② ドル円売り</td>
+                    <td className="px-4 py-3 text-center">USD/JPY</td>
+                    <td className="px-4 py-3 text-right">150.00円</td>
+                    <td className="px-4 py-3 text-right">149.00円</td>
+                    <td className="px-4 py-3 text-right">10万通貨</td>
+                    <td className="px-4 py-3 text-right text-green-600 font-bold">+100,000円</td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-3 font-medium">③ ユーロドル買い</td>
+                    <td className="px-4 py-3 text-center">EUR/USD</td>
+                    <td className="px-4 py-3 text-right">1.0800ドル</td>
+                    <td className="px-4 py-3 text-right">1.1000ドル</td>
+                    <td className="px-4 py-3 text-right">10万通貨</td>
+                    <td className="px-4 py-3 text-right text-green-600 font-bold">+300,000円</td>
+                  </tr>
+                  <tr className="bg-gray-50/50">
+                    <td className="px-4 py-3 font-medium">④ ポンド円買い（損失）</td>
+                    <td className="px-4 py-3 text-center">GBP/JPY</td>
+                    <td className="px-4 py-3 text-right">190.00円</td>
+                    <td className="px-4 py-3 text-right">188.50円</td>
+                    <td className="px-4 py-3 text-right">10万通貨</td>
+                    <td className="px-4 py-3 text-right text-red-600 font-bold">-150,000円</td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-3 font-medium">⑤ 豪ドル円売り</td>
+                    <td className="px-4 py-3 text-center">AUD/JPY</td>
+                    <td className="px-4 py-3 text-right">98.00円</td>
+                    <td className="px-4 py-3 text-right">96.00円</td>
+                    <td className="px-4 py-3 text-right">10万通貨</td>
+                    <td className="px-4 py-3 text-right text-green-600 font-bold">+200,000円</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-xs text-gray-500">
+              ※スプレッドは考慮していません。USD/JPY換算レートは150円で計算。
+            </p>
+
+            <h3 className="text-lg font-bold text-gray-800">よくある質問</h3>
+            <div className="space-y-4">
+              <div className="bg-gray-50 rounded-xl p-4">
+                <h4 className="font-bold text-gray-800 mb-2">Q: FXの証拠金はいくら必要ですか？</h4>
+                <p className="text-sm">
+                  A: 必要証拠金は「取引金額÷レバレッジ倍率」で計算されます。
+                  例えばUSD/JPYが150円で10万通貨（1,500万円相当）を25倍レバレッジで取引する場合、
+                  必要証拠金は60万円です。ただし、ロスカットを避けるため、余裕を持った証拠金が推奨されます。
+                </p>
+              </div>
+              <div className="bg-gray-50 rounded-xl p-4">
+                <h4 className="font-bold text-gray-800 mb-2">Q: ロスカットはどのように計算されますか？</h4>
+                <p className="text-sm">
+                  A: ロスカットレートは、口座残高が維持証拠金（通常は必要証拠金の50%）を下回ると発生します。
+                  買いポジションの場合：ロスカットレート＝エントリーレート－（口座残高－維持証拠金）÷取引数量。
+                  実効レバレッジが10倍以上になると、ロスカットリスクが急増します。
+                </p>
+              </div>
+              <div className="bg-gray-50 rounded-xl p-4">
+                <h4 className="font-bold text-gray-800 mb-2">Q: スワップポイントは毎日いくらもらえますか？</h4>
+                <p className="text-sm">
+                  A: スワップポイントは通貨ペアの金利差と保有数量によって決まります。
+                  例えばUSD/JPYでスワップポイントが50円/日の場合、10万通貨保有で毎日50円、
+                  年間で約18,000円のスワップ収入になります。水曜日は3日分（週末分）が支払われます。
+                  ただし、売りポジションの場合は支払いが発生することもあります。
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <RelatedTools currentTool="/finance/fx-calculator" />
 
         {/* Disclaimer */}

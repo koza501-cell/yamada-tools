@@ -845,26 +845,154 @@ export default function IdecoNisaComparisonClient() {
           </>
         )}
 
-        {/* SECTION 7: SEO Collapsible Content */}
-        <section className="mb-6">
-          <h2 className="text-lg font-bold text-gray-800 mb-4">よくある質問</h2>
-          <div className="space-y-3">
-            {seoContent.map((item, idx) => (
-              <div key={idx} className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-                <button
-                  onClick={() => setSeoOpen(seoOpen === idx ? null : idx)}
-                  className="w-full flex items-center justify-between px-4 py-3 text-left hover:bg-gray-50 transition-colors"
-                >
-                  <span className="font-medium text-gray-800">{item.title}</span>
-                  <span className="text-gray-400">{seoOpen === idx ? "▲" : "▼"}</span>
-                </button>
-                {seoOpen === idx && (
-                  <div className="px-4 pb-4 text-sm text-gray-600 leading-relaxed">
-                    {item.content}
-                  </div>
-                )}
+        {/* SECTION 7: iDeCo vs NISA Educational Content */}
+        <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
+          <h2 className="text-xl font-bold text-gray-800 mb-6">iDeCoとNISAの違いを徹底比較</h2>
+          
+          <div className="prose prose-sm max-w-none text-gray-600 space-y-6">
+            <p>
+              iDeCo（個人型確定拠出年金）とNISA（少額投資非課税制度）は、どちらも日本の個人投資家向けの
+              税制優遇制度ですが、仕組みとメリットが大きく異なります。この比較ツールでは、
+              あなたの年収や職業に応じてどちらがお得かを自動計算します。
+            </p>
+
+            <h3 className="text-lg font-bold text-gray-800">iDeCoとNISAの主な違い</h3>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="bg-gray-50">
+                    <th className="px-4 py-3 text-left font-semibold text-gray-700">比較項目</th>
+                    <th className="px-4 py-3 text-center font-semibold text-indigo-700">iDeCo</th>
+                    <th className="px-4 py-3 text-center font-semibold text-green-700">新NISA</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100">
+                  <tr>
+                    <td className="px-4 py-3 font-medium">税制優遇の種類</td>
+                    <td className="px-4 py-3 text-center">掛金控除（所得控除）</td>
+                    <td className="px-4 py-3 text-center">運用益非課税</td>
+                  </tr>
+                  <tr className="bg-gray-50/50">
+                    <td className="px-4 py-3 font-medium">年間投資上限</td>
+                    <td className="px-4 py-3 text-center">職業別（月2,000円～68,000円）</td>
+                    <td className="px-4 py-3 text-center">年360万円（つみたて120万＋成長240万）</td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-3 font-medium">引き出し制限</td>
+                    <td className="px-4 py-3 text-center">原則60歳まで不可</td>
+                    <td className="px-4 py-3 text-center">いつでも売却可能</td>
+                  </tr>
+                  <tr className="bg-gray-50/50">
+                    <td className="px-4 py-3 font-medium">運用益の課税</td>
+                    <td className="px-4 py-3 text-center">非課税</td>
+                    <td className="px-4 py-3 text-center">非課税（無期限）</td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-3 font-medium">受取時の課税</td>
+                    <td className="px-4 py-3 text-center">退職所得控除・公的年金控除あり</td>
+                    <td className="px-4 py-3 text-center">課税なし</td>
+                  </tr>
+                  <tr className="bg-gray-50/50">
+                    <td className="px-4 py-3 font-medium">手数料</td>
+                    <td className="px-4 py-3 text-center">月171円～</td>
+                    <td className="px-4 py-3 text-center">無料</td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-3 font-medium">投資できる商品</td>
+                    <td className="px-4 py-3 text-center">投資信託・定期預金</td>
+                    <td className="px-4 py-3 text-center">株式・投信・ETF・REIT</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 className="text-lg font-bold text-gray-800">2026年最新ルール</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-indigo-50 rounded-xl p-4">
+                <h4 className="font-bold text-indigo-700 mb-2">iDeCoの掛金上限（2024年12月改正後）</h4>
+                <ul className="text-sm space-y-1">
+                  <li>• 自営業・フリーランス：月68,000円（年816,000円）</li>
+                  <li>• 会社員（企業年金なし）：月23,000円（年276,000円）</li>
+                  <li>• 会社員（企業年金あり）：月12,000円（年144,000円）</li>
+                  <li>• 公務員：月12,000円（年144,000円）</li>
+                  <li>• 専業主婦・主夫：月0円（非課税世帯は加入不可）</li>
+                </ul>
               </div>
-            ))}
+              <div className="bg-green-50 rounded-xl p-4">
+                <h4 className="font-bold text-green-700 mb-2">新NISAの非課税枠</h4>
+                <ul className="text-sm space-y-1">
+                  <li>• つみたて投資枠：年120万円まで</li>
+                  <li>• 成長投資枠：年240万円まで</li>
+                  <li>• 年間合計：360万円まで</li>
+                  <li>• 生涯非課税限度額：1,800万円</li>
+                  <li>• 非課税期間：無期限（売却まで）</li>
+                </ul>
+              </div>
+            </div>
+
+            <h3 className="text-lg font-bold text-gray-800">どちらを選ぶべき？年収別ガイド</h3>
+            <div className="space-y-4">
+              <div className="bg-blue-50 rounded-xl p-4">
+                <h4 className="font-bold text-blue-700 mb-2">年収600万円以上の会社員 → iDeCo優先</h4>
+                <p className="text-sm">
+                  所得税率が20%以上の場合、iDeCoの掛金控除による節税効果が大きいです。
+                  月2.3万円をiDeCoに拠出すると、年間約8万円の節税が可能。
+                  残りの予算はNISAに回すのが最も効率的です。
+                </p>
+              </div>
+              <div className="bg-green-50 rounded-xl p-4">
+                <h4 className="font-bold text-green-700 mb-2">年収400万円以下の会社員 → NISA優先</h4>
+                <p className="text-sm">
+                  所得税率が10%以下の場合、iDeCoの節税効果は限定的です。
+                  いつでも引き出せるNISAの柔軟性を重視すべきです。
+                  長期的に運用益の非課税効果が大きくなります。
+                </p>
+              </div>
+              <div className="bg-purple-50 rounded-xl p-4">
+                <h4 className="font-bold text-purple-700 mb-2">自営業・フリーランス → iDeCoが最強</h4>
+                <p className="text-sm">
+                  月6.8万円まで掛金が可能で、所得税・住民税の両方から控除されます。
+                  年収500万円の場合、年間約16万円の節税が期待できます。
+                  確定申告で還付を受けられるのも大きなメリットです。
+                </p>
+              </div>
+              <div className="bg-orange-50 rounded-xl p-4">
+                <h4 className="font-bold text-orange-700 mb-2">専業主婦・主夫 → NISAのみ</h4>
+                <p className="text-sm">
+                  iDeCoは非課税世帯（配偶者の扶養内）では加入できません。
+                  新NISAのつみたて投資枠（年120万円）を活用しましょう。
+                  配偶者の同意があれば、成長投資枠も利用可能です。
+                </p>
+              </div>
+            </div>
+
+            <h3 className="text-lg font-bold text-gray-800">よくある質問</h3>
+            <div className="space-y-4">
+              <div className="bg-gray-50 rounded-xl p-4">
+                <h4 className="font-bold text-gray-800 mb-2">Q: iDeCoとNISAは同時に使えますか？</h4>
+                <p className="text-sm">
+                  A: はい、同時に利用可能です。実際、多くの金融プランナーは併用を推奨しています。
+                  例えば毎月5万円の投資予算がある場合、iDeCoに2.3万円（上限）＋NISAに2.7万円の配分が理想的です。
+                  iDeCoで節税しつつ、NISAで柔軟性を確保できます。
+                </p>
+              </div>
+              <div className="bg-gray-50 rounded-xl p-4">
+                <h4 className="font-bold text-gray-800 mb-2">Q: iDeCoは60歳まで引き出せませんが、困りませんか？</h4>
+                <p className="text-sm">
+                  A: iDeCoは原則として60歳まで引き出せませんが、これは「老後資金の強制蓄積」というメリットでもあります。
+                  途中で解約すると税金の還付を返納する必要があります。
+                  緊急時の資金が必要な場合は、NISAなど他の資産でカバーする設計が重要です。
+                </p>
+              </div>
+              <div className="bg-gray-50 rounded-xl p-4">
+                <h4 className="font-bold text-gray-800 mb-2">Q: 新NISAの1800万円の枠は何年で埋まりますか？</h4>
+                <p className="text-sm">
+                  A: 年間上限360万円まで投資すると、最短5年で埋まります。
+                  毎月10万円（年120万円）の積立の場合は15年、毎月5万円（年60万円）の場合は30年かかります。
+                  枠を使い切った後も、売却すれば再投資が可能です（繰り返し非課税）。
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
