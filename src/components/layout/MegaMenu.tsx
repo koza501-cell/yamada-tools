@@ -22,7 +22,7 @@ interface MegaMenuProps {
 export default function MegaMenu({ category, href, onClose }: MegaMenuProps) {
   const config = categoryTools[category];
   if (!config) return null;
-  const availableTools = config.tools.filter(t => t.available).slice(0, 6);
+  const availableTools = config.tools.filter(t => t.available).slice(0, 10);
   return (
     <div className="fixed top-16 left-0 w-screen bg-white shadow-xl border-t border-gray-100 py-6 z-50" onMouseLeave={onClose}>
       <div className="max-w-7xl mx-auto px-4">

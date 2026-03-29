@@ -101,6 +101,32 @@ export const pdfTools: Tool[] = [
     available: true,
   },
   {
+    id: "ocr",
+    nameJa: "PDF OCR",
+    nameEn: "OCR PDF",
+    description: "スキャンPDFの文字を認識。検索・コピー可能なPDFに変換",
+    icon: "👁️",
+    path: "/pdf/ocr",
+    apiEndpoint: "/api/pdf/ocr",
+    acceptedTypes: ".pdf",
+    maxFiles: 1,
+    category: "pdf",
+    available: true,
+  },
+  {
+    id: "sign",
+    nameJa: "PDF署名",
+    nameEn: "Sign PDF",
+    description: "PDFに電子署名・手書きサインを追加。契約書にも対応",
+    icon: "✍️",
+    path: "/pdf/sign",
+    apiEndpoint: "/api/pdf/sign",
+    acceptedTypes: ".pdf",
+    maxFiles: 1,
+    category: "pdf",
+    available: true,
+  },
+  {
     id: "delete-pages",
     nameJa: "ページ削除",
     nameEn: "Delete Pages",
@@ -277,32 +303,6 @@ export const pdfTools: Tool[] = [
     icon: "↕️",
     path: "/pdf/reorder",
     apiEndpoint: "/api/pdf/reorder",
-    acceptedTypes: ".pdf",
-    maxFiles: 1,
-    category: "pdf",
-    available: true,
-  },
-  {
-    id: "sign",
-    nameJa: "PDF署名",
-    nameEn: "Sign PDF",
-    description: "PDFに電子署名・手書きサインを追加。契約書にも対応",
-    icon: "✍️",
-    path: "/pdf/sign",
-    apiEndpoint: "/api/pdf/sign",
-    acceptedTypes: ".pdf",
-    maxFiles: 1,
-    category: "pdf",
-    available: true,
-  },
-  {
-    id: "ocr",
-    nameJa: "PDF OCR",
-    nameEn: "OCR PDF",
-    description: "スキャンPDFの文字を認識。検索・コピー可能なPDFに変換",
-    icon: "👁️",
-    path: "/pdf/ocr",
-    apiEndpoint: "/api/pdf/ocr",
     acceptedTypes: ".pdf",
     maxFiles: 1,
     category: "pdf",
@@ -1203,8 +1203,20 @@ export const generatorTools: Tool[] = [
     isNew: true,
     isFeatured: true,
   },
+  {
+    id: "business-card-gen",
+    nameJa: "名刺作成",
+    nameEn: "Business Card Creator",
+    description: "名刺をオンラインでデザイン。印刷用PDF出力・QR対応",
+    icon: "💼",
+    path: "/document/business-card",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "generator",
+    available: true,
+  },
 ];
-
 
 // ============================================
 // Section 6: 金融・資産運用ツール (5 tools)
@@ -1331,6 +1343,8 @@ export const getToolsByCategory = (category: Tool["category"]): Tool[] => {
       return imageTools;
     case "generator":
       return generatorTools;
+    case "finance":
+      return financeTools;
     default:
       return [];
   }
@@ -1358,8 +1372,8 @@ export const getToolCount = () => ({
   total: allTools.length,
 });
 
+// SEO tools placeholder
+export const seoTools: Tool[] = [];
+
 // For backward compatibility
 export const officeTools = documentTools;
-
-// SEO Tools (placeholder - no tools yet)
-export const seoTools: Tool[] = [];
