@@ -1,5 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'pub-a1dbb3c658b341fabe5015e209050298.r2.dev',
+      },
+      {
+        protocol: 'https',
+        hostname: 'yamada-tools.jp',
+      },
+    ],
+  },
   experimental: {
     serverActions: {
       bodySizeLimit: '10mb'
@@ -21,7 +33,6 @@ const nextConfig = {
       { source: '/about/business', destination: '/about', permanent: true },
       { source: '/convert/tsubo-converter', destination: '/convert', permanent: true },
       { source: '/blog/pdf----149867', destination: '/blog', permanent: true },
-      // Finance section redirects
       { source: '/nisa-simulator', destination: '/finance/nisa-simulator', permanent: true },
       { source: '/jutaku-loan', destination: '/finance/jutaku-loan', permanent: true },
       { source: '/fx-calculator', destination: '/finance/fx-calculator', permanent: true },
