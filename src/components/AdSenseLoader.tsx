@@ -11,9 +11,6 @@ const isPremiumUser = false; // Will come from auth context later
 export default function AdSenseLoader() {
   const pathname = usePathname();
 
-  // Only load AdSense in production
-  if (process.env.NEXT_PUBLIC_APP_ENV !== 'production') return null;
-
   // No ads for premium/paid users
   if (isPremiumUser) return null;
 
