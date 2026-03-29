@@ -3,7 +3,10 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export async function GET(request: NextRequest) {
-  const response = NextResponse.redirect(new URL("/admin/login", request.url));
+  const proto = request.headers.get('x-forwarded-proto') ?? 'https';
+  const host = request.headers.get('x-forwarded-host') ?? request.headers.get('host') ?? 'localhost';
+  const redirectUrl = `${proto}://${host}/admin/login`;
+  const response = NextResponse.redirect(redirectUrl);
   
   // Clear the admin_token cookie
   response.cookies.set({
