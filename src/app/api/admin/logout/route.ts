@@ -1,8 +1,9 @@
 // src/app/api/admin/logout/route.ts
 import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
-export async function GET() {
-  const response = NextResponse.redirect(new URL("/admin/login", process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"));
+export async function GET(request: NextRequest) {
+  const response = NextResponse.redirect(new URL("/admin/login", request.url));
   
   // Clear the admin_token cookie
   response.cookies.set({

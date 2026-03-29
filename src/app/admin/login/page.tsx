@@ -23,7 +23,7 @@ export default function AdminLoginPage() {
       });
 
       if (res.ok) {
-        router.push("/admin");
+        window.location.href = "/admin";
       } else {
         setError("認証に失敗しました");
       }
