@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { headers } from "next/headers";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -164,11 +165,15 @@ const websiteSchema = {
   inLanguage: "ja-JP",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headersList = await headers();
+  const host = headersList.get('host') ?? '';
+  const isProduction = !host.includes('staging');
+
   return (
     <html lang="ja" suppressHydrationWarning>
       <script dangerouslySetInnerHTML={{__html: `(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.classList.add("dark")}}catch(e){}})();`}} />
@@ -197,7 +202,9 @@ export default function RootLayout({
         <PWAInstallPrompt />
         </ThemeProvider>
         </AuthProvider>
-        <AdSenseLoader />
+        {isProduction && (
+          <AdSenseLoader />
+        )}
       </body>
     </html>
   );
