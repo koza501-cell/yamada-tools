@@ -12,19 +12,19 @@ import StatsCounter from "@/components/common/StatsCounter";
 import FooterCta from "@/components/common/FooterCta";
 import { ScrollRevealGrid } from "@/components/common/ScrollRevealGrid";
 import FinanceSection from "@/components/FinanceSection";
-import { pdfTools, documentTools, convertTools, imageTools, generatorTools, getToolCount, allTools } from "@/config/tools";
+import { pdfTools, documentTools, convertTools, imageTools, generatorTools, financeTools, getToolCount, allTools } from "@/config/tools";
 
 // High-traffic tool paths that get 🔥 badge
 const HOT_PATHS = new Set(['/generator/envelope-print', '/convert/bank-format', '/pdf/compress']);
 
 // Feature H: Search suggestion chips
 const SEARCH_CHIPS = [
-  { label: 'PDF圧縮', href: '/pdf/compress' },
-  { label: '請求書作成', href: '/document/invoice' },
-  { label: '画像変換', href: '/image/convert' },
-  { label: '封筒印刷', href: '/generator/envelope-print' },
-  { label: '全銀変換', href: '/convert/bank-format' },
-  { label: '縦書き', href: '/document/vertical-text' },
+  { label: '📄 PDF圧縮', href: '/pdf/compress' },
+  { label: '📋 請求書作成', href: '/document/invoice' },
+  { label: '🖼️ 画像変換', href: '/image/convert' },
+  { label: '✉️ 封筒印刷', href: '/generator/envelope-print' },
+  { label: '🏦 全銀変換', href: '/convert/bank-format' },
+  { label: '📝 縦書き', href: '/document/vertical-text' },
 ];
 
 // Feature I: Use case cards
@@ -37,27 +37,27 @@ const USE_CASES = [
   {
     icon: '✉️', title: '郵便物を送りたい',
     desc: '封筒の宛名印刷・名刺・はがき',
-    links: [{ label: '封筒印刷', href: '/generator/envelope-print' }, { label: '名刺作成', href: '/generator/business-card' }, { label: '縦書き', href: '/document/vertical-text' }],
+    links: [{ label: '✉️ 封筒印刷', href: '/generator/envelope-print' }, { label: '名刺作成', href: '/generator/business-card' }, { label: '📝 縦書き', href: '/document/vertical-text' }],
   },
   {
     icon: '📊', title: 'PDFを編集',
     desc: '圧縮・結合・分割・回転',
-    links: [{ label: 'PDF圧縮', href: '/pdf/compress' }, { label: 'PDF結合', href: '/pdf/merge' }, { label: 'PDF分割', href: '/pdf/split' }],
+    links: [{ label: '📄 PDF圧縮', href: '/pdf/compress' }, { label: 'PDF結合', href: '/pdf/merge' }, { label: 'PDF分割', href: '/pdf/split' }],
   },
   {
     icon: '🏦', title: '経理・振込',
     desc: '全銀フォーマット・請求書・領収書',
-    links: [{ label: '全銀変換', href: '/convert/bank-format' }, { label: '請求書', href: '/document/invoice' }, { label: '領収書', href: '/document/receipt' }],
+    links: [{ label: '🏦 全銀変換', href: '/convert/bank-format' }, { label: '請求書', href: '/document/invoice' }, { label: '領収書', href: '/document/receipt' }],
   },
   {
     icon: '🖼️', title: '画像加工',
     desc: '圧縮・変換・リサイズ',
-    links: [{ label: '画像圧縮', href: '/image/compress' }, { label: '画像変換', href: '/image/convert' }, { label: 'リサイズ', href: '/image/resize' }],
+    links: [{ label: '画像圧縮', href: '/image/compress' }, { label: '🖼️ 画像変換', href: '/image/convert' }, { label: 'リサイズ', href: '/image/resize' }],
   },
   {
     icon: '✍️', title: '文書作成',
     desc: '縦書き・ビジネスメール',
-    links: [{ label: '縦書き', href: '/document/vertical-text' }, { label: 'ビジネスメール', href: '/document/business-email' }],
+    links: [{ label: '📝 縦書き', href: '/document/vertical-text' }, { label: 'ビジネスメール', href: '/document/business-email' }],
   },
 ];
 export const revalidate = 3600; // Revalidate every hour
@@ -166,6 +166,7 @@ export default function Home() {
   const availableConvertTools = convertTools.filter(t => t.available);
   const availableImageTools = imageTools.filter(t => t.available);
   const availableGenTools = generatorTools.filter(t => t.available);
+  const availableFinanceTools = financeTools.filter(t => t.available);
 
   // Featured tools
   const featuredTools = allTools.filter(t => t.isFeatured && t.available);
@@ -241,6 +242,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/* Recently Used Tools - Priority for returning users */}
+      <RecentTools />
 
       {/* How It Works */}
       <section className="py-10">
@@ -250,7 +253,7 @@ export default function Home() {
             <div className="flex flex-col items-center text-center w-44">
               <div className="text-4xl mb-2">🔍</div>
               <p className="font-bold text-gray-800 dark:text-gray-100">ツールを選ぶ</p>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">89種類から目的に合ったツールを選択</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{toolCount.total}種類から目的に合ったツールを選択</p>
             </div>
             <div className="hidden md:block w-16 border-t-2 border-dashed border-gray-300 dark:border-gray-600 mb-6" />
             <div className="flex flex-col items-center text-center w-44">
@@ -437,10 +440,6 @@ export default function Home() {
 
       {/* 💰 Finance Tools Section */}
       <FinanceSection />
-
-      {/* Recently Used Tools */}
-      <RecentTools />
-
       {/* Media Feature Banner */}
       <section className="py-16 bg-gradient-to-r from-blue-50 to-green-50 dark:from-gray-800 dark:to-gray-900">
         <div className="max-w-4xl mx-auto px-4">
@@ -455,6 +454,35 @@ export default function Home() {
           </a>
         </div>
       </section>
+
+        {/* Finance/Calculator Tools - NEW */}
+        {availableFinanceTools.length > 0 && (
+          <section className="py-10 bg-gradient-to-r from-pink-50 to-purple-50 dark:from-gray-800 dark:to-gray-900">
+            <div className="max-w-7xl mx-auto px-4">
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3">
+                  <h2 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                    <span>🧮</span> 計算・シミュレーター
+                  </h2>
+                  <span className="px-2 py-0.5 bg-pink-500 text-white text-xs font-bold rounded-full">NEW</span>
+                </div>
+                <Link href="/finance" className="text-sm text-blue-600 dark:text-blue-400 hover:underline">すべて見る →</Link>
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+                {availableFinanceTools.slice(0, 6).map((tool) => (
+                  <Link key={tool.id} href={tool.path} className="group relative bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 p-4 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-pink-300 dark:hover:border-pink-500 hover:shadow-lg transition-all text-center hover:-translate-y-1">
+                    {tool.isNew && (
+                      <span className="absolute -top-2 -right-2 px-1.5 py-0.5 bg-pink-500 text-white text-[10px] font-bold rounded-full">NEW</span>
+                    )}
+                    <div className="text-2xl mb-2">{tool.icon}</div>
+                    <div className="font-medium text-sm text-gray-900 dark:text-white group-hover:text-pink-500">{tool.nameJa}</div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
 
       {/* Section 1: PDF Tools */}
       <section className="py-10 bg-gray-50 dark:bg-gray-900">
@@ -471,7 +499,7 @@ export default function Home() {
               <Link
                 key={tool.id}
                 href={tool.path}
-                className="relative bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 text-center"
+                className="relative bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-lg hover:border-pink-400 dark:hover:border-pink-500 hover:-translate-y-1 transition-all duration-200 text-center"
               >
                 {tool.isNew && (
                   <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full shadow-sm">NEW</span>
@@ -501,7 +529,7 @@ export default function Home() {
                 <Link
                   key={tool.id}
                   href={tool.path}
-                  className="relative bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 text-center"
+                  className="relative bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-lg hover:border-pink-400 dark:hover:border-pink-500 hover:-translate-y-1 transition-all duration-200 text-center"
                 >
                   {tool.isNew && (
                     <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full shadow-sm">NEW</span>
@@ -532,7 +560,7 @@ export default function Home() {
                 <Link
                   key={tool.id}
                   href={tool.path}
-                  className="relative bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 text-center"
+                  className="relative bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-lg hover:border-pink-400 dark:hover:border-pink-500 hover:-translate-y-1 transition-all duration-200 text-center"
                 >
                   {tool.isNew && (
                     <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full shadow-sm">NEW</span>
@@ -563,7 +591,7 @@ export default function Home() {
                 <Link
                   key={tool.id}
                   href={tool.path}
-                  className="relative bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 text-center"
+                  className="relative bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-lg hover:border-pink-400 dark:hover:border-pink-500 hover:-translate-y-1 transition-all duration-200 text-center"
                 >
                   {tool.isNew && (
                     <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full shadow-sm">NEW</span>
@@ -594,7 +622,7 @@ export default function Home() {
                 <Link
                   key={tool.id}
                   href={tool.path}
-                  className="relative bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 text-center"
+                  className="relative bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-lg hover:border-pink-400 dark:hover:border-pink-500 hover:-translate-y-1 transition-all duration-200 text-center"
                 >
                   {tool.isNew && (
                     <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full shadow-sm">NEW</span>

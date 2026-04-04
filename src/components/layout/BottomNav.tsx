@@ -25,7 +25,7 @@ export default function BottomNav() {
           <Link
             key={item.href}
             href={item.href}
-            className={`flex flex-col items-center justify-center w-full h-full transition-colors ${
+            className={`flex flex-col items-center justify-center w-full h-full min-h-[44px] min-w-[44px] transition-colors ${
               isActive(item.href)
                 ? "text-sakura"
                 : "text-gray-500 dark:text-gray-400 hover:text-kon dark:hover:text-blue-400"

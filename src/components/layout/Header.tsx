@@ -1,61 +1,138 @@
 "use client";
-import MegaMenu from "./MegaMenu";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
-import ThemeToggle from "@/components/common/ThemeToggle";
 import { useAuth } from "@/contexts/AuthContext";
-import { pdfTools, documentTools, convertTools, imageTools, generatorTools } from "@/config/tools";
+
+const toolsMenu = {
+  title: "ツール",
+  sections: [
+    {
+      name: "PDF",
+      icon: "📄",
+      href: "/pdf",
+      tools: [
+        { name: "PDF結合", href: "/pdf/merge" },
+        { name: "PDF分割", href: "/pdf/split" },
+        { name: "PDF圧縮", href: "/pdf/compress" },
+        { name: "PDFに文字入力", href: "/pdf/text-input" },
+        { name: "PDF回転", href: "/pdf/rotate" },
+      ],
+      moreLink: "/pdf",
+    },
+    {
+      name: "画像",
+      icon: "🖼️",
+      href: "/image",
+      tools: [
+        { name: "画像圧縮", href: "/image/compress" },
+        { name: "画像リサイズ", href: "/image/resize" },
+        { name: "QRコード作成", href: "/image/qr-code" },
+        { name: "画像反転", href: "/image/flip" },
+        { name: "モザイク加工", href: "/image/mosaic" },
+      ],
+      moreLink: "/image",
+    },
+    {
+      name: "書類作成",
+      icon: "📝",
+      href: "/document",
+      tools: [
+        { name: "請求書", href: "/document/invoice" },
+        { name: "見積書", href: "/document/quotation" },
+        { name: "領収書", href: "/document/receipt" },
+        { name: "履歴書", href: "/document/resume" },
+        { name: "封筒印刷", href: "/generator/envelope-print" },
+      ],
+      moreLink: "/document",
+    },
+    {
+      name: "変換",
+      icon: "🔄",
+      href: "/convert",
+      tools: [
+        { name: "全銀フォーマット", href: "/convert/bank-format" },
+        { name: "ふりがな変換", href: "/convert/furigana" },
+        { name: "和暦・西暦変換", href: "/convert/wareki-seireki" },
+        { name: "全角・半角変換", href: "/convert/zenkaku-hankaku" },
+        { name: "縦書き変換", href: "/document/vertical-text" },
+      ],
+      moreLink: "/convert",
+    },
+  ],
+};
+
+const calcMenu = {
+  title: "計算・シミュレーター",
+  sections: [
+    {
+      name: "金融・投資",
+      icon: "💰",
+      href: "/finance",
+      tools: [
+        { name: "住宅ローン計算", href: "/finance/jutaku-loan" },
+        { name: "NISA計算機", href: "/finance/nisa-simulator" },
+        { name: "老後資金計算", href: "/finance/retirement-simulator" },
+        { name: "為替計算", href: "/finance/fx-calculator" },
+      ],
+      moreLink: "/finance",
+    },
+    {
+      name: "税金・保険",
+      icon: "🧾",
+      href: "/tax",
+      tools: [
+        { name: "所得税計算", href: "/tax/income-tax-calculator" },
+        { name: "ふるさと納税", href: "/tax/furusato-nozei-calculator" },
+        { name: "相続税計算", href: "/tax/inheritance-tax-calculator" },
+        { name: "生命保険必要額", href: "/insurance/life-insurance-calculator" },
+      ],
+      moreLink: "/tax",
+    },
+    {
+      name: "キャリア・転職",
+      icon: "💼",
+      href: "/career",
+      tools: [
+        { name: "転職シミュレーター", href: "/career/job-change-simulator" },
+        { name: "残業代計算", href: "/career/overtime-calculator" },
+        { name: "失業保険計算", href: "/career/unemployment-calculator" },
+        { name: "年収交渉ツール", href: "/career/salary-negotiation" },
+      ],
+      moreLink: "/career",
+    },
+    {
+      name: "不動産・ビジネス",
+      icon: "🏢",
+      href: "/realestate",
+      tools: [
+        { name: "賃貸vs購入", href: "/realestate/rent-vs-buy" },
+        { name: "引越し費用", href: "/realestate/moving-cost-calculator" },
+        { name: "法人化シミュレーター", href: "/business/incorporation-simulator" },
+        { name: "役員報酬最適化", href: "/business/director-salary-optimizer" },
+      ],
+      moreLink: "/business",
+    },
+  ],
+};
 
 export default function Header() {
   const { user, loading, logout } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchResults, setSearchResults] = useState<any[]>([]);
-  const [isMac, setIsMac] = useState(true);
-  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Combine all tools for search
-  const allTools = [
-    ...pdfTools,
-    ...documentTools,
-    ...convertTools,
-    ...imageTools,
-    ...generatorTools,
-  ].filter(tool => tool.available);
+  const handleMouseEnter = (menu: string) => {
+    if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
+    setActiveDropdown(menu);
+  };
 
-  const navItems = [
-    { href: "/pdf", icon: "📄", label: "PDF", category: "pdf" as const },
-    { href: "/document", icon: "📝", label: "書類作成", category: "document" as const },
-    { href: "/convert", icon: "🔄", label: "変換", category: "convert" as const },
-    { href: "/image", icon: "🖼️", label: "画像", category: "image" as const },
-    { href: "/generator", icon: "⚡", label: "計算・生成", category: "generator" as const },
-    { href: "/finance", icon: "💰", label: "金融", category: "finance" as const },
-    { href: "/blog", icon: "📝", label: "ブログ" },
-  ];
-
-  useEffect(() => {
-    setIsMac(navigator.platform.toUpperCase().indexOf("MAC") >= 0);
-  }, []);
-
-  // Search functionality
-  useEffect(() => {
-    if (searchQuery.trim().length < 2) {
-      setSearchResults([]);
-      return;
-    }
-
-    const searchQueryLower = searchQuery.toLowerCase();
-    const filtered = allTools.filter(tool => 
-      tool.nameJa.toLowerCase().includes(searchQueryLower) ||
-      tool.nameEn.toLowerCase().includes(searchQueryLower) ||
-      tool.description.toLowerCase().includes(searchQueryLower)
-    );
-
-    setSearchResults(filtered.slice(0, 8)); // Show max 8 results
-  }, [searchQuery]);
+  const handleMouseLeave = () => {
+    dropdownTimeoutRef.current = setTimeout(() => setActiveDropdown(null), 150);
+  };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -66,24 +143,16 @@ export default function Header() {
       if (e.key === "Escape") {
         setIsSearchOpen(false);
         setShowUserMenu(false);
+        setActiveDropdown(null);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  // Focus search input when modal opens
   useEffect(() => {
-    if (isSearchOpen && searchInputRef.current) {
-      searchInputRef.current.focus();
-    }
+    if (isSearchOpen && searchInputRef.current) searchInputRef.current.focus();
   }, [isSearchOpen]);
-
-  const handleSearchSelect = () => {
-    setSearchQuery("");
-    setSearchResults([]);
-    setIsSearchOpen(false);
-  };
 
   useEffect(() => {
     const handleClick = () => setShowUserMenu(false);
@@ -98,113 +167,137 @@ export default function Header() {
     setShowUserMenu(false);
   };
 
+  const MegaDropdown = ({ menu }: { menu: typeof toolsMenu }) => (
+    <div 
+      className="fixed top-14 left-0 w-full bg-white shadow-xl border-t border-gray-100 z-50"
+      onMouseEnter={() => handleMouseEnter(menu.title)}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className="max-w-7xl mx-auto px-6 py-6">
+        <div className="grid grid-cols-4 gap-8">
+          {menu.sections.map((section) => (
+            <div key={section.name}>
+              <Link href={section.href} className="flex items-center gap-2 text-kon font-semibold mb-3 hover:text-sakura transition-colors">
+                <span>{section.icon}</span>
+                <span>{section.name}</span>
+              </Link>
+              <ul className="space-y-2">
+                {section.tools.map((tool) => (
+                  <li key={tool.href}>
+                    <Link href={tool.href} className="text-sm text-gray-600 hover:text-sakura transition-colors block py-1">{tool.name}</Link>
+                  </li>
+                ))}
+                <li>
+                  <Link href={section.moreLink} className="text-sm text-sakura hover:underline inline-flex items-center gap-1 pt-1">すべて見る →</Link>
+                </li>
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <>
       <header className="bg-kon text-white shadow-lg sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
-            <Link href="/" className="flex items-center gap-2">
+          <div className="flex items-center justify-between h-14">
+            <Link href="/" className="flex items-center gap-2 shrink-0">
               <img src="/logo-icon.webp" alt="山田ツール" className="w-8 h-8" />
-              <span className="font-bold text-xl">山田ツール</span>
+              <span className="font-bold text-lg hidden sm:inline">山田ツール</span>
             </Link>
 
-            <nav className="hidden md:flex items-center gap-6">
-              {navItems.map((item) => (
-                item.category ? (
-                  <div key={item.href} className="relative" onMouseEnter={() => setActiveMenu(item.category || null)}>
-                    <Link href={item.href} className="flex items-center gap-1 hover:text-sakura transition-colors">
-                      <span className="text-lg">{item.icon}</span>
-                      <span className="text-sm font-medium">{item.label}</span>
-                      <span className="text-xs">▼</span>
-                    </Link>
-                    {activeMenu === item.category && (
-                      <MegaMenu category={item.category} href={item.href} onClose={() => setActiveMenu(null)} />
-                    )}
-                  </div>
-                ) : (
-                  <Link key={item.href} href={item.href} className="flex items-center gap-1 hover:text-sakura transition-colors">
-                    <span className="text-lg">{item.icon}</span>
-                    <span className="text-sm font-medium">{item.label}</span>
-                  </Link>
-                )
-              ))}
+            <nav className="hidden lg:flex items-center gap-1">
+              <div className="relative" onMouseEnter={() => handleMouseEnter("tools")} onMouseLeave={handleMouseLeave}>
+                <button className="flex items-center gap-1 px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium">
+                  <span>ツール</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                </button>
+                {activeDropdown === "tools" && <MegaDropdown menu={toolsMenu} />}
+              </div>
 
+              <div className="relative" onMouseEnter={() => handleMouseEnter("calc")} onMouseLeave={handleMouseLeave}>
+                <button className="flex items-center gap-1 px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium">
+                  <span>計算・シミュレーター</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                </button>
+                {activeDropdown === "calc" && <MegaDropdown menu={calcMenu} />}
+              </div>
+
+              <Link href="/blog" className="px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium">ブログ</Link>
+              <Link href="/pricing" className="px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium">料金</Link>
+            </nav>
+
+            <div className="flex items-center gap-2">
               <button onClick={() => setIsSearchOpen(true)} className="flex items-center gap-2 px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-lg transition-colors" aria-label="検索">
                 <span>🔍</span>
-                <span className="text-sm">検索</span>
-                <kbd className="hidden lg:inline-block text-xs bg-white/20 px-1.5 py-0.5 rounded">{isMac ? "⌘K" : "Ctrl+K"}</kbd>
+                <span className="text-sm hidden md:inline">検索</span>
+                <kbd className="hidden xl:inline-block text-xs bg-white/20 px-1.5 py-0.5 rounded">⌘K</kbd>
               </button>
-              <ThemeToggle />
 
               {!loading && (
                 user ? (
                   <div className="relative">
                     <button onClick={(e) => { e.stopPropagation(); setShowUserMenu(!showUserMenu); }} className="flex items-center gap-2 px-3 py-1.5 bg-sakura hover:bg-sakura/80 rounded-lg transition-colors">
                       <span>👤</span>
-                      <span className="text-sm max-w-[100px] truncate">{user.email.split('@')[0]}</span>
+                      <span className="text-sm max-w-[80px] truncate hidden sm:inline">{user.email.split('@')[0]}</span>
                     </button>
                     {showUserMenu && (
-                      <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg py-2 text-gray-800">
+                      <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg py-2 text-gray-800 z-50">
                         <div className="px-4 py-2 border-b text-sm text-gray-500 truncate">{user.email}</div>
-                        <div className="px-4 py-2 text-sm">
-                          <span className="inline-block px-2 py-0.5 bg-gray-100 rounded text-xs">{user.plan === 'free' ? 'FREE' : 'PRO'}</span>
-                        </div>
+                        <div className="px-4 py-2 text-sm"><span className="inline-block px-2 py-0.5 bg-gray-100 rounded text-xs">{user.plan === 'free' ? 'FREE' : 'PRO'}</span></div>
                         <Link href="/pricing" className="block px-4 py-2 hover:bg-gray-100 text-sm" onClick={() => setShowUserMenu(false)}>⭐ PROにアップグレード</Link>
                         <button onClick={handleLogout} className="w-full text-left px-4 py-2 hover:bg-gray-100 text-sm text-red-600">ログアウト</button>
                       </div>
                     )}
                   </div>
                 ) : (
-                  <Link href="/auth/login" className="flex items-center gap-2 px-3 py-1.5 bg-sakura hover:bg-sakura/80 rounded-lg transition-colors">
-                    <span>👤</span>
-                    <span className="text-sm">ログイン</span>
+                  <Link href="/auth/login" className="flex items-center gap-2 px-3 py-1.5 bg-sakura hover:bg-sakura/80 rounded-lg transition-colors text-sm font-medium">
+                    <span className="hidden sm:inline">ログイン</span>
+                    <span className="sm:hidden">👤</span>
                   </Link>
                 )
               )}
-            </nav>
 
-            <div className="md:hidden flex items-center gap-2">
-              <button onClick={() => setIsSearchOpen(true)} className="p-3 hover:bg-white/10 rounded-lg min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="検索">
-                <span className="text-xl">🔍</span>
-              </button>
-              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-3 min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="メニュー">
+              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="lg:hidden p-2 hover:bg-white/10 rounded-lg min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="メニュー">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  {isMenuOpen ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /> : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />}
                 </svg>
               </button>
             </div>
           </div>
 
           {isMenuOpen && (
-            <nav className="md:hidden py-4 border-t border-white/10">
-              {navItems.map((item) => (
-                <Link key={item.href} href={item.href} onClick={() => setIsMenuOpen(false)} className="flex items-center gap-2 px-4 py-3 hover:bg-white/10 transition-colors">
-                  <span className="text-xl">{item.icon}</span>
-                  <span className="font-medium">{item.label}</span>
+            <nav className="lg:hidden py-4 border-t border-white/10">
+              <div className="mb-4">
+                <div className="px-4 py-2 text-xs text-white/60 uppercase tracking-wide">ツール</div>
+                {toolsMenu.sections.map((section) => (
+                  <Link key={section.href} href={section.href} onClick={() => setIsMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 transition-colors">
+                    <span className="text-xl">{section.icon}</span>
+                    <span className="font-medium">{section.name}</span>
+                  </Link>
+                ))}
+              </div>
+              <div className="mb-4">
+                <div className="px-4 py-2 text-xs text-white/60 uppercase tracking-wide">計算・シミュレーター</div>
+                {calcMenu.sections.map((section) => (
+                  <Link key={section.href} href={section.href} onClick={() => setIsMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 transition-colors">
+                    <span className="text-xl">{section.icon}</span>
+                    <span className="font-medium">{section.name}</span>
+                  </Link>
+                ))}
+              </div>
+              <div className="border-t border-white/10 pt-4">
+                <Link href="/blog" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 transition-colors">
+                  <span className="text-xl">📝</span>
+                  <span className="font-medium">ブログ</span>
                 </Link>
-              ))}
-              {!loading && (
-                <div className="border-t border-white/10 mt-2 pt-2">
-                  {user ? (
-                    <>
-                      <div className="px-4 py-2 text-sm text-white/70">{user.email}</div>
-                      <Link href="/pricing" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-2 px-4 py-3 hover:bg-white/10 transition-colors">
-                        <span className="text-xl">⭐</span>
-                        <span className="font-medium">PROにアップグレード</span>
-                      </Link>
-                      <button onClick={() => { handleLogout(); setIsMenuOpen(false); }} className="flex items-center gap-2 px-4 py-3 hover:bg-white/10 transition-colors w-full text-left text-red-300">
-                        <span className="text-xl">🚪</span>
-                        <span className="font-medium">ログアウト</span>
-                      </button>
-                    </>
-                  ) : (
-                    <Link href="/auth/login" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-2 px-4 py-3 hover:bg-white/10 transition-colors">
-                      <span className="text-xl">👤</span>
-                      <span className="font-medium">ログイン</span>
-                    </Link>
-                  )}
-                </div>
-              )}
+                <Link href="/pricing" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 transition-colors">
+                  <span className="text-xl">💳</span>
+                  <span className="font-medium">料金プラン</span>
+                </Link>
+              </div>
             </nav>
           )}
         </div>
@@ -212,61 +305,13 @@ export default function Header() {
 
       {isSearchOpen && (
         <div className="fixed inset-0 z-[100] bg-black/50 flex items-start justify-center pt-20" onClick={() => setIsSearchOpen(false)}>
-          <div className="bg-white rounded-xl shadow-2xl w-full max-w-xl mx-4 max-h-[80vh] overflow-hidden" onClick={(e) => e.stopPropagation()}>
-            <div className="p-4">
-              <div className="flex items-center gap-3 border-b pb-4">
-                <span className="text-2xl">🔍</span>
-                <input 
-                  ref={searchInputRef}
-                  type="text" 
-                  placeholder="ツールを検索... (例: PDF結合, 請求書)" 
-                  value={searchQuery} 
-                  onChange={(e) => setSearchQuery(e.target.value)} 
-                  className="flex-1 text-lg text-gray-900 outline-none" 
-                />
-                <button onClick={() => setIsSearchOpen(false)} className="text-gray-400 hover:text-gray-600" aria-label="検索を閉じる">
-                  <kbd className="text-xs bg-gray-100 px-2 py-1 rounded">ESC</kbd>
-                </button>
-              </div>
-              
-              {/* Search Results */}
-              <div className="max-h-[60vh] overflow-y-auto">
-                {searchResults.length > 0 ? (
-                  <div className="py-2">
-                    {searchResults.map((tool) => (
-                      <Link
-                        key={tool.id}
-                        href={tool.path}
-                        onClick={handleSearchSelect}
-                        className="flex items-center gap-4 px-4 py-3 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-0"
-                      >
-                        <span className="text-3xl">{tool.icon}</span>
-                        <div className="flex-1">
-                          <p className="font-bold text-gray-900">{tool.nameJa}</p>
-                          <p className="text-sm text-gray-600">{tool.description}</p>
-                        </div>
-                        <span className="text-gray-400">→</span>
-                      </Link>
-                    ))}
-                  </div>
-                ) : searchQuery.length >= 2 ? (
-                  <div className="py-8 text-center text-gray-500">
-                    <p>該当するツールが見つかりませんでした</p>
-                    <p className="text-sm mt-1">別のキーワードで検索してください</p>
-                  </div>
-                ) : (
-                  <div className="py-8 text-center text-gray-500">
-                    <p className="text-sm">ツール名や機能を入力して検索</p>
-                    <div className="flex flex-wrap justify-center gap-2 mt-4">
-                      <span className="text-xs bg-gray-100 px-2 py-1 rounded">PDF圧縮</span>
-                      <span className="text-xs bg-gray-100 px-2 py-1 rounded">請求書作成</span>
-                      <span className="text-xs bg-gray-100 px-2 py-1 rounded">画像変換</span>
-                      <span className="text-xs bg-gray-100 px-2 py-1 rounded">封筒印刷</span>
-                    </div>
-                  </div>
-                )}
-              </div>
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-xl mx-4 p-4" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center gap-3 border-b pb-4">
+              <span className="text-2xl">🔍</span>
+              <input ref={searchInputRef} type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="ツールを検索..." className="flex-1 text-lg text-gray-900 outline-none" />
+              <kbd className="text-xs bg-gray-100 px-2 py-1 rounded text-gray-500">ESC</kbd>
             </div>
+            <div className="pt-4 text-sm text-gray-500 text-center">キーワードを入力してツールを検索</div>
           </div>
         </div>
       )}

@@ -6,6 +6,12 @@ interface User {
   email: string;
   plan: string;
   company_name?: string;
+  email_verified?: boolean;
+  trial_started_at?: string;
+  trial_ends_at?: string;
+  trial_active?: boolean;
+  trial_days_remaining?: number;
+  effective_plan?: string; // 'free' | 'pro_trial' | 'pro' | 'team'
 }
 
 interface AuthContextType {
@@ -14,10 +20,13 @@ interface AuthContextType {
   register: (email: string, password: string, companyName?: string) => Promise<{ success: boolean; message: string }>;
   login: (email: string, password: string) => Promise<{ success: boolean; message: string }>;
   magicLink: (email: string) => Promise<{ success: boolean; message: string }>;
+  startTrial: (email: string, companyName?: string) => Promise<{ success: boolean; message: string; trialEndsAt?: string }>;
   verify: (token: string) => Promise<{ success: boolean; message: string }>;
   forgotPassword: (email: string) => Promise<{ success: boolean; message: string }>;
   resetPassword: (token: string, password: string) => Promise<{ success: boolean; message: string }>;
   logout: () => Promise<void>;
+  refreshUser: () => Promise<void>;
+  isPro: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -50,6 +59,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       console.error("Auth check failed:", err);
     }
     setLoading(false);
+  };
+
+  const refreshUser = async () => {
+    const token = localStorage.getItem("session_token");
+    if (!token) return;
+    try {
+      const res = await fetch(API_URL + "/me", {
+        headers: { Authorization: "Bearer " + token },
+      });
+      if (res.ok) {
+        setUser(await res.json());
+      }
+    } catch (err) {
+      console.error("Refresh user failed:", err);
+    }
   };
 
   const register = async (email: string, password: string, companyName?: string) => {
@@ -98,6 +122,23 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       return res.ok
         ? { success: true, message: data.message }
         : { success: false, message: data.detail || "エラー" };
+    } catch {
+      return { success: false, message: "ネットワークエラー" };
+    }
+  };
+
+  const startTrial = async (email: string, companyName?: string) => {
+    try {
+      const res = await fetch(API_URL + "/start-trial", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, company_name: companyName || "" }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        return { success: true, message: data.message, trialEndsAt: data.trial_ends_at };
+      }
+      return { success: false, message: data.detail || "トライアル開始に失敗しました" };
     } catch {
       return { success: false, message: "ネットワークエラー" };
     }
@@ -164,9 +205,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setUser(null);
   };
 
+  // Check if user has PRO access (paid or trial)
+  const isPro = user?.effective_plan === "pro" || user?.effective_plan === "pro_trial" || user?.effective_plan === "team";
+
   return (
     <AuthContext.Provider
-      value={{ user, loading, register, login, magicLink, verify, forgotPassword, resetPassword, logout }}
+      value={{ user, loading, register, login, magicLink, startTrial, verify, forgotPassword, resetPassword, logout, refreshUser, isPro }}
     >
       {children}
     </AuthContext.Provider>
