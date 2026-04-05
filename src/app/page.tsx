@@ -7,6 +7,7 @@ import HeroAnimation from "@/components/common/HeroAnimation";
 import TypingText from "@/components/common/TypingText";
 import RecentTools from "@/components/common/RecentTools";
 import NewsletterSignup from "@/components/common/NewsletterSignup";
+import StickyTabBar from "@/components/common/StickyTabBar";
 import AdSlot from "@/components/AdSlot";
 import StatsCounter from "@/components/common/StatsCounter";
 import FooterCta from "@/components/common/FooterCta";
@@ -187,6 +188,7 @@ export default function Home() {
       />
 
     <div>
+      <StickyTabBar />
       {/* Hero Section - REDESIGNED */}
       <section className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 py-10 md:py-14">
         <div className="max-w-4xl mx-auto px-4 text-center">
@@ -457,7 +459,7 @@ export default function Home() {
 
         {/* Finance/Calculator Tools - NEW */}
         {availableFinanceTools.length > 0 && (
-          <section className="py-10 bg-gradient-to-r from-pink-50 to-purple-50 dark:from-gray-800 dark:to-gray-900">
+          <section id="finance-tools" className="py-10 bg-gradient-to-r from-pink-50 to-purple-50 dark:from-gray-800 dark:to-gray-900">
             <div className="max-w-7xl mx-auto px-4">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
@@ -485,7 +487,7 @@ export default function Home() {
 
 
       {/* Section 1: PDF Tools */}
-      <section className="py-10 bg-gray-50 dark:bg-gray-900">
+      <section id="pdf-tools" className="py-10 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold text-kon dark:text-blue-400">📄 PDFツール</h2>
@@ -515,7 +517,7 @@ export default function Home() {
 
       {/* Section 2: Document Creation - ONLY AVAILABLE */}
       {availableDocTools.length > 0 && (
-        <section className="py-10">
+        <section id="document-tools" className="py-10">
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-kon dark:text-blue-400">📝 書類作成</h2>
@@ -546,7 +548,7 @@ export default function Home() {
 
       {/* Section 3: Converters - ONLY AVAILABLE */}
       {availableConvertTools.length > 0 && (
-        <section className="py-10 bg-gray-50 dark:bg-gray-900">
+        <section id="convert-tools" className="py-10 bg-gray-50 dark:bg-gray-900">
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-kon dark:text-blue-400">🔄 変換ツール</h2>
@@ -577,7 +579,7 @@ export default function Home() {
 
       {/* Section 4: Image Tools - ONLY AVAILABLE */}
       {availableImageTools.length > 0 && (
-        <section className="py-10">
+        <section id="image-tools" className="py-10">
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-kon dark:text-blue-400">🖼️ 画像ツール</h2>
@@ -608,7 +610,7 @@ export default function Home() {
 
       {/* Section 5: Generators - ONLY AVAILABLE */}
       {availableGenTools.length > 0 && (
-        <section className="py-10 bg-gray-50 dark:bg-gray-900">
+        <section id="calculator-tools" className="py-10 bg-gray-50 dark:bg-gray-900">
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-kon dark:text-blue-400">⚡ 計算・生成ツール</h2>
