@@ -11,6 +11,7 @@ export interface Tool {
   category: "pdf" | "document" | "convert" | "image" | "generator" | "finance";
   available: boolean;
   isNew?: boolean;
+  isPopular?: boolean;
   isFeatured?: boolean;
 }
 
@@ -31,6 +32,7 @@ export const pdfTools: Tool[] = [
     category: "pdf",
     available: true,
     isNew: true,
+    isPopular: true,
     isFeatured: true,
   },
   {
@@ -404,6 +406,7 @@ export const documentTools: Tool[] = [
     maxFiles: 0,
     category: "document",
     available: true,
+    isPopular: true,
   },
   {
     id: "receipt",
@@ -566,6 +569,7 @@ export const convertTools: Tool[] = [
     maxFiles: 0,
     category: "convert",
     available: true,
+    isPopular: true,
   },
   {
     id: "unit-converter",
@@ -810,6 +814,7 @@ export const imageTools: Tool[] = [
     category: "image",
     available: true,
     isNew: true,
+    isPopular: true,
   },
   {
     id: "monochrome",
@@ -1174,6 +1179,7 @@ export const generatorTools: Tool[] = [
     maxFiles: 0,
     category: "generator",
     available: true,
+    isPopular: true,
   },
   {
     id: "salary-calc",

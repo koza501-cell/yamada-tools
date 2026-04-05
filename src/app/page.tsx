@@ -506,6 +506,9 @@ export default function Home() {
                 {tool.isNew && (
                   <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full shadow-sm">NEW</span>
                 )}
+                {tool.isPopular && !tool.isNew && (
+                  <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-gradient-to-r from-orange-400 to-pink-500 text-white text-xs font-bold rounded-full shadow-sm">人気</span>
+                )}
                 <div className="text-2xl mb-2">{tool.icon}</div>
                 <h3 className="font-bold text-base text-kon dark:text-blue-400 leading-tight">{tool.nameJa}</h3>
                 <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-2 font-normal">{tool.description}</p>
@@ -535,6 +538,9 @@ export default function Home() {
                 >
                   {tool.isNew && (
                     <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full shadow-sm">NEW</span>
+                  )}
+                  {tool.isPopular && !tool.isNew && (
+                    <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-gradient-to-r from-orange-400 to-pink-500 text-white text-xs font-bold rounded-full shadow-sm">人気</span>
                   )}
                   <div className="text-2xl mb-2">{tool.icon}</div>
                   <h3 className="font-bold text-base text-kon dark:text-blue-400 leading-tight">{tool.nameJa}</h3>
@@ -567,6 +573,9 @@ export default function Home() {
                   {tool.isNew && (
                     <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full shadow-sm">NEW</span>
                   )}
+                  {tool.isPopular && !tool.isNew && (
+                    <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-gradient-to-r from-orange-400 to-pink-500 text-white text-xs font-bold rounded-full shadow-sm">人気</span>
+                  )}
                   <div className="text-2xl mb-2">{tool.icon}</div>
                   <h3 className="font-bold text-base text-kon dark:text-blue-400 leading-tight">{tool.nameJa}</h3>
                 <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-2 font-normal">{tool.description}</p>
@@ -598,6 +607,9 @@ export default function Home() {
                   {tool.isNew && (
                     <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full shadow-sm">NEW</span>
                   )}
+                  {tool.isPopular && !tool.isNew && (
+                    <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-gradient-to-r from-orange-400 to-pink-500 text-white text-xs font-bold rounded-full shadow-sm">人気</span>
+                  )}
                   <div className="text-2xl mb-2">{tool.icon}</div>
                   <h3 className="font-bold text-base text-kon dark:text-blue-400">{tool.nameJa}</h3>
                 <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-2">{tool.description}</p>
@@ -628,6 +640,9 @@ export default function Home() {
                 >
                   {tool.isNew && (
                     <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full shadow-sm">NEW</span>
+                  )}
+                  {tool.isPopular && !tool.isNew && (
+                    <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-gradient-to-r from-orange-400 to-pink-500 text-white text-xs font-bold rounded-full shadow-sm">人気</span>
                   )}
                   <div className="text-2xl mb-2">{tool.icon}</div>
                   <h3 className="font-bold text-base text-kon dark:text-blue-400 leading-tight">{tool.nameJa}</h3>
