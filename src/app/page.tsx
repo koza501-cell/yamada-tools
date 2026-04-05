@@ -511,10 +511,10 @@ export default function Home() {
         if (recentBlogs.length === 0) return null;
 
         return (
-          <section className="py-16 bg-white">
+          <section className="py-16 bg-white dark:bg-gray-900">
             <div className="max-w-7xl mx-auto px-4">
               <div className="text-center mb-12">
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
                   📝 最新ブログ
                 </h2>
                 <p className="text-gray-600 dark:text-gray-300">
@@ -542,17 +542,17 @@ export default function Home() {
 
                     <div className="p-6">
                       <div className="flex items-center gap-2 mb-3">
-                        <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
+                        <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">
                           {post.category}
                         </span>
                         <span className="text-sm text-gray-500 dark:text-gray-400">{post.readTime}</span>
                       </div>
 
-                      <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
                         {post.title}
                       </h3>
 
-                      <p className="text-gray-600 line-clamp-3 mb-4">
+                      <p className="text-gray-600 dark:text-gray-300 line-clamp-3 mb-4">
                         {post.description}
                       </p>
 
