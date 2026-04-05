@@ -2,13 +2,14 @@
 import { useState, useEffect, useRef } from "react";
 
 const CATEGORIES = [
-  { id: "all", label: "すべて", href: "#", icon: "🏠" },
-  { id: "finance", label: "金融", href: "#finance-tools", icon: "💰" },
-  { id: "pdf", label: "PDF", href: "#pdf-tools", icon: "📄" },
-  { id: "document", label: "書類", href: "#document-tools", icon: "📝" },
-  { id: "convert", label: "変換", href: "#convert-tools", icon: "🔄" },
-  { id: "image", label: "画像", href: "#image-tools", icon: "🖼️" },
-  { id: "calculator", label: "計算", href: "#calculator-tools", icon: "🧮" },
+  { id: "all", label: "すべて", href: "#top", icon: "🏠", ariaLabel: "すべてのツール", tabId: null },
+  { id: "popular", label: "人気", href: "#popular-tools", icon: "🔥", ariaLabel: "人気ツール", tabId: null },
+  { id: "pdf", label: "PDF", href: "#tools-tabs", icon: "📄", ariaLabel: "PDFツール", tabId: "pdf" },
+  { id: "document", label: "書類", href: "#tools-tabs", icon: "📝", ariaLabel: "書類作成ツール", tabId: "document" },
+  { id: "convert", label: "変換", href: "#tools-tabs", icon: "🔄", ariaLabel: "変換ツール", tabId: "convert" },
+  { id: "image", label: "画像", href: "#tools-tabs", icon: "🖼️", ariaLabel: "画像ツール", tabId: "image" },
+  { id: "calculator", label: "計算", href: "#tools-tabs", icon: "⚡", ariaLabel: "計算・生成ツール", tabId: "calculator" },
+  { id: "finance", label: "金融", href: "#finance-tools", icon: "💰", ariaLabel: "金融ツール", tabId: null },
 ];
 
 export default function StickyTabBar() {
@@ -17,29 +18,30 @@ export default function StickyTabBar() {
   const isClickScrolling = useRef(false);
 
   useEffect(() => {
-    const sectionIds = ["finance-tools", "pdf-tools", "document-tools", "convert-tools", "image-tools", "calculator-tools"];
-    
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      setIsVisible(scrollY > 500);
+      setIsVisible(scrollY > 400);
 
-      // Skip scroll-spy during click-initiated scrolling
       if (isClickScrolling.current) return;
 
-      // Scroll-spy: detect which section is in viewport
-      if (scrollY <= 500) {
+      if (scrollY <= 400) {
         setActiveTab("all");
         return;
       }
 
+      const sections = [
+        { id: "popular-tools", tab: "popular" },
+        { id: "finance-tools", tab: "finance" },
+        { id: "tools-tabs", tab: "pdf" },
+      ];
+
       let currentSection = "all";
-      for (const id of sectionIds) {
+      for (const { id, tab } of sections) {
         const element = document.getElementById(id);
         if (element) {
           const rect = element.getBoundingClientRect();
-          // Section is considered active if its top is within 150px of viewport top
           if (rect.top <= 150 && rect.bottom > 150) {
-            currentSection = id.replace("-tools", "");
+            currentSection = tab;
             break;
           }
         }
@@ -51,48 +53,76 @@ export default function StickyTabBar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (id: string, href: string) => {
+  const scrollToSection = (id: string, href: string, tabId: string | null) => {
     setActiveTab(id);
     isClickScrolling.current = true;
 
-    if (href === "#") {
-      // Scroll to 501 to keep tab bar visible
-      window.scrollTo({ top: 501, behavior: "smooth" });
+    if (href === "#top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
       setTimeout(() => { isClickScrolling.current = false; }, 1000);
       return;
     }
 
     const element = document.querySelector(href);
-    if (element) {
-      const offset = 120;
+    if (!element) {
+      isClickScrolling.current = false;
+      return;
+    }
+
+    const offset = 120;
+
+    const scrollToTarget = () => {
       const top = element.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: "smooth" });
+    };
+
+    scrollToTarget();
+
+    if (tabId) {
+      setTimeout(() => {
+        const tabButton = document.querySelector(`[aria-controls="tabpanel-${tabId}"]`) as HTMLButtonElement;
+        if (tabButton) tabButton.click();
+      }, 300);
     }
-    setTimeout(() => { isClickScrolling.current = false; }, 1000);
+
+    const checkAndCorrect = () => {
+      const rect = element.getBoundingClientRect();
+      if (Math.abs(rect.top - offset) > 50) {
+        scrollToTarget();
+      }
+    };
+
+    setTimeout(checkAndCorrect, 600);
+    setTimeout(checkAndCorrect, 1000);
+
+    setTimeout(() => { isClickScrolling.current = false; }, 1500);
   };
 
   if (!isVisible) return null;
 
   return (
-    <div className="fixed top-14 left-0 right-0 z-40 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center gap-1 py-2 overflow-x-auto scrollbar-hide">
+    <nav className="fixed top-14 left-0 right-0 z-40 bg-white dark:bg-gray-900 border-b border-gray-300 dark:border-gray-600 shadow-md" aria-label="カテゴリナビゲーション">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4">
+        <div className="flex items-center gap-1 py-2 overflow-x-auto scrollbar-hide" role="tablist" aria-label="ツールカテゴリ">
           {CATEGORIES.map((cat) => (
             <button
               key={cat.id}
-              onClick={() => scrollToSection(cat.id, cat.href)}
-              className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all ${
+              onClick={() => scrollToSection(cat.id, cat.href, cat.tabId)}
+              role="tab"
+              aria-selected={activeTab === cat.id}
+              aria-label={cat.ariaLabel}
+              className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-all ${
                 activeTab === cat.id
-                  ? "bg-pink-500 text-white"
+                  ? "bg-pink-500 text-white shadow-md"
                   : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
               }`}
             >
-              <span>{cat.icon}</span>
+              <span className="text-base" aria-hidden="true">{cat.icon}</span>
               <span>{cat.label}</span>
             </button>
           ))}
         </div>
       </div>
-    </div>
+    </nav>
   );
 }

@@ -8,6 +8,7 @@ import TypingText from "@/components/common/TypingText";
 import RecentTools from "@/components/common/RecentTools";
 import NewsletterSignup from "@/components/common/NewsletterSignup";
 import StickyTabBar from "@/components/common/StickyTabBar";
+import TabbedToolsSection from "@/components/common/TabbedToolsSection";
 import AdSlot from "@/components/AdSlot";
 import StatsCounter from "@/components/common/StatsCounter";
 import FooterCta from "@/components/common/FooterCta";
@@ -22,7 +23,7 @@ const HOT_PATHS = new Set(['/generator/envelope-print', '/convert/bank-format', 
 const SEARCH_CHIPS = [
   { label: '📄 PDF圧縮', href: '/pdf/compress' },
   { label: '📋 請求書作成', href: '/document/invoice' },
-  { label: '🖼️ 画像変換', href: '/image/convert' },
+  { label: '🖼️ 画像変換', href: '/image/format-convert' },
   { label: '✉️ 封筒印刷', href: '/generator/envelope-print' },
   { label: '🏦 全銀変換', href: '/convert/bank-format' },
   { label: '📝 縦書き', href: '/document/vertical-text' },
@@ -33,32 +34,32 @@ const USE_CASES = [
   {
     icon: '📄', title: '書類を作りたい',
     desc: '請求書・見積書・納品書をPDFで作成',
-    links: [{ label: '請求書', href: '/document/invoice' }, { label: '見積書', href: '/document/estimate' }, { label: '送付状', href: '/document/cover-letter' }],
+    links: [{ label: '見積書', href: '/document/quotation' }, { label: '納品書', href: '/document/delivery-slip' }, { label: '送付状', href: '/document/cover-letter' }],
   },
   {
     icon: '✉️', title: '郵便物を送りたい',
     desc: '封筒の宛名印刷・名刺・はがき',
-    links: [{ label: '✉️ 封筒印刷', href: '/generator/envelope-print' }, { label: '名刺作成', href: '/generator/business-card' }, { label: '📝 縦書き', href: '/document/vertical-text' }],
+    links: [{ label: '名刺作成', href: '/document/business-card' }, { label: 'QRコード', href: '/image/qr-code' }, { label: '電子印鑑', href: '/generator/hanko' }],
   },
   {
     icon: '📊', title: 'PDFを編集',
     desc: '圧縮・結合・分割・回転',
-    links: [{ label: '📄 PDF圧縮', href: '/pdf/compress' }, { label: 'PDF結合', href: '/pdf/merge' }, { label: 'PDF分割', href: '/pdf/split' }],
+    links: [{ label: 'PDF結合', href: '/pdf/merge' }, { label: 'PDF分割', href: '/pdf/split' }, { label: 'PDF回転', href: '/pdf/rotate' }],
   },
   {
     icon: '🏦', title: '経理・振込',
     desc: '全銀フォーマット・請求書・領収書',
-    links: [{ label: '🏦 全銀変換', href: '/convert/bank-format' }, { label: '請求書', href: '/document/invoice' }, { label: '領収書', href: '/document/receipt' }],
+    links: [{ label: '領収書', href: '/document/receipt' }, { label: '給与明細', href: '/generator/salary-calc' }, { label: '電子印鑑', href: '/generator/hanko' }],
   },
   {
     icon: '🖼️', title: '画像加工',
     desc: '圧縮・変換・リサイズ',
-    links: [{ label: '画像圧縮', href: '/image/compress' }, { label: '🖼️ 画像変換', href: '/image/convert' }, { label: 'リサイズ', href: '/image/resize' }],
+    links: [{ label: '画像圧縮', href: '/image/compress' }, { label: 'リサイズ', href: '/image/resize' }, { label: 'モザイク', href: '/image/mosaic' }],
   },
   {
-    icon: '✍️', title: '文書作成',
-    desc: '縦書き・ビジネスメール',
-    links: [{ label: '📝 縦書き', href: '/document/vertical-text' }, { label: 'ビジネスメール', href: '/document/business-email' }],
+    icon: '🔢', title: '計算・シミュレーション',
+    desc: '税金・ローン・年金計算',
+    links: [{ label: '住宅ローン', href: '/finance/jutaku-loan' }, { label: 'NISA計算', href: '/finance/nisa-simulator' }, { label: '消費税', href: '/generator/tax-calculator' }],
   },
 ];
 export const revalidate = 3600; // Revalidate every hour
@@ -334,31 +335,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-10 bg-white dark:bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-2xl font-bold text-kon dark:text-blue-400 text-center mb-8">💬 ユーザーの声</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-6">
-              <p className="text-gray-700 dark:text-gray-200 mb-4">"毎月の給与振込データ作成が10分で終わるようになりました。"</p>
-              <div className="text-yellow-400 text-sm mb-1">⭐⭐⭐⭐⭐</div>
-              <p className="text-sm text-gray-500 dark:text-gray-400">経理担当 A.S.さん</p>
-            </div>
-            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-6">
-              <p className="text-gray-700 dark:text-gray-200 mb-4">"封筒の宛名印刷がブラウザだけでできて助かります。"</p>
-              <div className="text-yellow-400 text-sm mb-1">⭐⭐⭐⭐⭐</div>
-              <p className="text-sm text-gray-500 dark:text-gray-400">総務部 M.T.さん</p>
-            </div>
-            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-6">
-              <p className="text-gray-700 dark:text-gray-200 mb-4">"式辞の縦書き変換がPDF出力できるのが便利です。"</p>
-              <div className="text-yellow-400 text-sm mb-1">⭐⭐⭐⭐⭐</div>
-              <p className="text-sm text-gray-500 dark:text-gray-400">教職員 K.N.さん</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-{/* Ad Slot - Desktop Only */}      <div className="hidden md:block">        <AdSlot format="leaderboard" className="my-8" />      </div>
       {/* 🔥 Popular Tools Section - Below Fold */}
       <section id="popular-tools" className="py-16 bg-gradient-to-r from-rose-50 to-orange-50 dark:from-gray-800 dark:to-gray-900">
         <div className="max-w-7xl mx-auto px-4">
@@ -459,7 +435,7 @@ export default function Home() {
 
         {/* Finance/Calculator Tools - NEW */}
         {availableFinanceTools.length > 0 && (
-          <section id="finance-tools" className="py-10 bg-gradient-to-r from-pink-50 to-purple-50 dark:from-gray-800 dark:to-gray-900">
+          <section id="simulator-tools" className="py-10 bg-gradient-to-r from-pink-50 to-purple-50 dark:from-gray-800 dark:to-gray-900">
             <div className="max-w-7xl mx-auto px-4">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
@@ -486,173 +462,7 @@ export default function Home() {
         )}
 
 
-      {/* Section 1: PDF Tools */}
-      <section id="pdf-tools" className="py-10 bg-gray-50 dark:bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-kon dark:text-blue-400">📄 PDFツール</h2>
-            <Link href="/pdf" className="text-kon hover:text-ai transition-colors duration-200 text-sm">
-              すべて見る →
-            </Link>
-          </div>
-
-          <ScrollRevealGrid className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-3">
-            {availablePdfTools.slice(0, 8).map((tool) => (
-              <Link
-                key={tool.id}
-                href={tool.path}
-                className="relative bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-lg hover:border-pink-400 dark:hover:border-pink-500 hover:-translate-y-1 transition-all duration-200 text-center"
-              >
-                {tool.isNew && (
-                  <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full shadow-sm">NEW</span>
-                )}
-                {tool.isPopular && !tool.isNew && (
-                  <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-gradient-to-r from-orange-400 to-pink-500 text-white text-xs font-bold rounded-full shadow-sm">人気</span>
-                )}
-                <div className="text-2xl mb-2">{tool.icon}</div>
-                <h3 className="font-bold text-base text-kon dark:text-blue-400 leading-tight">{tool.nameJa}</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-2 font-normal">{tool.description}</p>
-              </Link>
-            ))}
-          </ScrollRevealGrid>
-        </div>
-      </section>
-
-      {/* Section 2: Document Creation - ONLY AVAILABLE */}
-      {availableDocTools.length > 0 && (
-        <section id="document-tools" className="py-10">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold text-kon dark:text-blue-400">📝 書類作成</h2>
-              <Link href="/document" className="text-kon hover:text-ai transition-colors duration-200 text-sm">
-                すべて見る →
-              </Link>
-            </div>
-
-            <ScrollRevealGrid className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-3">
-              {availableDocTools.slice(0, 8).map((tool) => (
-                <Link
-                  key={tool.id}
-                  href={tool.path}
-                  className="relative bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-lg hover:border-pink-400 dark:hover:border-pink-500 hover:-translate-y-1 transition-all duration-200 text-center"
-                >
-                  {tool.isNew && (
-                    <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full shadow-sm">NEW</span>
-                  )}
-                  {tool.isPopular && !tool.isNew && (
-                    <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-gradient-to-r from-orange-400 to-pink-500 text-white text-xs font-bold rounded-full shadow-sm">人気</span>
-                  )}
-                  <div className="text-2xl mb-2">{tool.icon}</div>
-                  <h3 className="font-bold text-base text-kon dark:text-blue-400 leading-tight">{tool.nameJa}</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-2 font-normal">{tool.description}</p>
-                </Link>
-              ))}
-            </ScrollRevealGrid>
-          </div>
-        </section>
-      )}
-
-      {/* Section 3: Converters - ONLY AVAILABLE */}
-      {availableConvertTools.length > 0 && (
-        <section id="convert-tools" className="py-10 bg-gray-50 dark:bg-gray-900">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold text-kon dark:text-blue-400">🔄 変換ツール</h2>
-              <Link href="/convert" className="text-kon hover:text-ai transition-colors duration-200 text-sm">
-                すべて見る →
-              </Link>
-            </div>
-
-            <ScrollRevealGrid className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-3">
-              {availableConvertTools.slice(0, 8).map((tool) => (
-                <Link
-                  key={tool.id}
-                  href={tool.path}
-                  className="relative bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-lg hover:border-pink-400 dark:hover:border-pink-500 hover:-translate-y-1 transition-all duration-200 text-center"
-                >
-                  {tool.isNew && (
-                    <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full shadow-sm">NEW</span>
-                  )}
-                  {tool.isPopular && !tool.isNew && (
-                    <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-gradient-to-r from-orange-400 to-pink-500 text-white text-xs font-bold rounded-full shadow-sm">人気</span>
-                  )}
-                  <div className="text-2xl mb-2">{tool.icon}</div>
-                  <h3 className="font-bold text-base text-kon dark:text-blue-400 leading-tight">{tool.nameJa}</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-2 font-normal">{tool.description}</p>
-                </Link>
-              ))}
-            </ScrollRevealGrid>
-          </div>
-        </section>
-      )}
-
-      {/* Section 4: Image Tools - ONLY AVAILABLE */}
-      {availableImageTools.length > 0 && (
-        <section id="image-tools" className="py-10">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold text-kon dark:text-blue-400">🖼️ 画像ツール</h2>
-              <Link href="/image" className="text-kon hover:text-ai transition-colors duration-200 text-sm">
-                すべて見る →
-              </Link>
-            </div>
-
-            <ScrollRevealGrid className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-3">
-              {availableImageTools.slice(0, 8).map((tool) => (
-                <Link
-                  key={tool.id}
-                  href={tool.path}
-                  className="relative bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-lg hover:border-pink-400 dark:hover:border-pink-500 hover:-translate-y-1 transition-all duration-200 text-center"
-                >
-                  {tool.isNew && (
-                    <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full shadow-sm">NEW</span>
-                  )}
-                  {tool.isPopular && !tool.isNew && (
-                    <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-gradient-to-r from-orange-400 to-pink-500 text-white text-xs font-bold rounded-full shadow-sm">人気</span>
-                  )}
-                  <div className="text-2xl mb-2">{tool.icon}</div>
-                  <h3 className="font-bold text-base text-kon dark:text-blue-400">{tool.nameJa}</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-2">{tool.description}</p>
-                </Link>
-              ))}
-            </ScrollRevealGrid>
-          </div>
-        </section>
-      )}
-
-      {/* Section 5: Generators - ONLY AVAILABLE */}
-      {availableGenTools.length > 0 && (
-        <section id="calculator-tools" className="py-10 bg-gray-50 dark:bg-gray-900">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold text-kon dark:text-blue-400">⚡ 計算・生成ツール</h2>
-              <Link href="/generator" className="text-kon hover:text-ai transition-colors duration-200 text-sm">
-                すべて見る →
-              </Link>
-            </div>
-
-            <ScrollRevealGrid className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-3">
-              {availableGenTools.slice(0, 8).map((tool) => (
-                <Link
-                  key={tool.id}
-                  href={tool.path}
-                  className="relative bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-lg hover:border-pink-400 dark:hover:border-pink-500 hover:-translate-y-1 transition-all duration-200 text-center"
-                >
-                  {tool.isNew && (
-                    <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full shadow-sm">NEW</span>
-                  )}
-                  {tool.isPopular && !tool.isNew && (
-                    <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-gradient-to-r from-orange-400 to-pink-500 text-white text-xs font-bold rounded-full shadow-sm">人気</span>
-                  )}
-                  <div className="text-2xl mb-2">{tool.icon}</div>
-                  <h3 className="font-bold text-base text-kon dark:text-blue-400 leading-tight">{tool.nameJa}</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-2 font-normal">{tool.description}</p>
-                </Link>
-              ))}
-            </ScrollRevealGrid>
-          </div>
-        </section>
-      )}
+      <TabbedToolsSection pdfTools={availablePdfTools} documentTools={availableDocTools} convertTools={availableConvertTools} imageTools={availableImageTools} generatorTools={availableGenTools} />
 
       {/* Features Section */}
       <section className="py-10">
