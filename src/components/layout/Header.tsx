@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { useAuth } from "@/contexts/AuthContext";
+import { pdfTools, documentTools, convertTools, imageTools, generatorTools } from "@/config/tools";
 
 const toolsMenu = {
   title: "ツール",
@@ -120,6 +121,10 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  
+  // Search functionality for global modal
+  const allToolsForSearch = [...pdfTools, ...documentTools, ...convertTools, ...imageTools, ...generatorTools].filter(tool => tool.available);
+  const searchResults = searchQuery.trim().length >= 2 ? allToolsForSearch.filter(tool => tool.nameJa.toLowerCase().includes(searchQuery.toLowerCase()) || tool.nameEn.toLowerCase().includes(searchQuery.toLowerCase()) || tool.description.toLowerCase().includes(searchQuery.toLowerCase())).slice(0, 8) : [];
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
@@ -311,7 +316,24 @@ export default function Header() {
               <input ref={searchInputRef} type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="ツールを検索..." className="flex-1 text-lg text-gray-900 outline-none" />
               <kbd className="text-xs bg-gray-100 px-2 py-1 rounded text-gray-500">ESC</kbd>
             </div>
-            <div className="pt-4 text-sm text-gray-500 text-center">キーワードを入力してツールを検索</div>
+            {searchResults.length > 0 ? (
+              <div className="pt-4 max-h-80 overflow-y-auto">
+                {searchResults.map((tool) => (
+                  <Link key={tool.id} href={tool.path} onClick={() => { setIsSearchOpen(false); setSearchQuery(""); }} className="flex items-center gap-3 px-3 py-3 hover:bg-gray-50 rounded-lg transition-colors">
+                    <span className="text-2xl">{tool.icon}</span>
+                    <div className="flex-1">
+                      <p className="font-bold text-gray-900">{tool.nameJa}</p>
+                      <p className="text-sm text-gray-500 line-clamp-1">{tool.description}</p>
+                    </div>
+                    <span className="text-gray-400">→</span>
+                  </Link>
+                ))}
+              </div>
+            ) : searchQuery.length >= 2 ? (
+              <div className="pt-4 text-sm text-gray-500 text-center">該当するツールが見つかりませんでした</div>
+            ) : (
+              <div className="pt-4 text-sm text-gray-500 text-center">キーワードを入力してツールを検索</div>
+            )}
           </div>
         </div>
       )}
