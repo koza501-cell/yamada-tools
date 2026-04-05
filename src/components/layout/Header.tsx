@@ -209,7 +209,7 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between h-14">
             <Link href="/" className="flex items-center gap-2 shrink-0">
-              <img src="/logo-icon.webp" alt="山田ツール" className="w-8 h-8" />
+              <img src="/logo-icon.webp" alt="山田ツール" width="32" height="32" className="w-8 h-8" />
               <span className="font-bold text-lg hidden sm:inline">山田ツール</span>
             </Link>
 

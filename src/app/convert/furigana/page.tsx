@@ -26,7 +26,7 @@ const faq = [
 // Total: ~5,000+ impressions
 
 export const metadata: Metadata = generateToolMetadata({
-  customTitle: "ふりがな変換【無料】漢字にふりがな自動付与｜ひらがな・カタカナ対応",
+  customTitle: "ふりがな変換ツール【無料】漢字→ひらがな・カタカナ・ローマ字",
   tool,
   longDescription: "漢字にふりがなを一瞬で自動付与。ひらがな・カタカナ・ローマ字に対応。コピペするだけ、登録不要・完全無料。日本国内サーバーで安全処理。",
   keywords: [
