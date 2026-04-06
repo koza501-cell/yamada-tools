@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "ページが見つかりません | 山田ツール",
+  title: "ページが見つかりません ",
   description: "お探しのページは見つかりませんでした。",
 };
 

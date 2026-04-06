@@ -79,7 +79,7 @@ export default function Footer() {
               </div>
               <div>
                 <a href="https://x.com/YamadaToolsJP" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-sakura transition-colors">
-                  𝕏 Twitter
+                  X（旧Twitter）
                 </a>
               </div>
               <div>

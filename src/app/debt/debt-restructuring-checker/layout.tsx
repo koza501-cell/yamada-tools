@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】任意整理 vs 個人再生 vs 自己破産 比較ツール｜あなたに最適な債務整理を判定 | 山田ツール",
+  title: "【無料】任意整理 vs 個人再生 vs 自己破産 比較ツール｜あなたに最適な債務整理を判定 ",
   description: "借金の状況・資産・職業から任意整理・個人再生・自己破産の最適な方法を中立的に判定。財産・信用情報・職業・保証人への影響も詳細表示。登録不要・完全無料。",
   keywords: [
     "任意整理 自己破産 比較",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/debt/debt-restructuring-checker",
   },
   openGraph: {
-    title: "【無料】任意整理 vs 個人再生 vs 自己破産 比較ツール｜あなたに最適な債務整理を判定 | 山田ツール",
+    title: "【無料】任意整理 vs 個人再生 vs 自己破産 比較ツール｜あなたに最適な債務整理を判定 ",
     description: "借金の状況・資産・職業から任意整理・個人再生・自己破産の最適な方法を中立的に判定。財産・信用情報・職業・保証人への影響も詳細表示。登録不要・完全無料。",
     url: "https://yamada-tools.jp/debt/debt-restructuring-checker",
     siteName: "yamada-tools.jp",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】任意整理 vs 個人再生 vs 自己破産 比較ツール｜あなたに最適な債務整理を判定 | 山田ツール",
+    title: "【無料】任意整理 vs 個人再生 vs 自己破産 比較ツール｜あなたに最適な債務整理を判定 ",
     description: "借金の状況・資産・職業から任意整理・個人再生・自己破産の最適な方法を中立的に判定。財産・信用情報・職業・保証人への影響も詳細表示。",
   },
 };

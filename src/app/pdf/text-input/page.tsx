@@ -101,11 +101,11 @@ const seoContent = {
 };
 
 export const metadata: Metadata = {
-  title: "PDFに文字入力・書き込み 無料｜登録不要・ブラウザのみ・電子ハンコ対応｜山田ツール",
+  title: "PDFに文字入力・書き込み 無料｜登録不要・ブラウザのみ・電子ハンコ対応",
   description: "PDFに直接テキストや電子ハンコを書き込む完全無料ツール。登録不要・インストール不要・ファイルはサーバー送信なし。申請書・契約書・履歴書など全PDF対応。令和日付自動入力あり。",
   keywords: ["PDF文字入力","PDF書き込み無料","電子ハンコ","PDF記入オンライン","登録不要PDF","申請書PDF入力","履歴書PDF書き込み","ブラウザPDF編集","令和日付PDF","無料PDFエディター","PDFに文字入力","ハンコ作成","電子印鑑 無料","PDF 書き込み 登録不要","申請書 PDF 入力"],
   openGraph: {
-    title: "PDFに文字入力・電子ハンコ 無料｜山田ツール",
+    title: "PDFに文字入力・電子ハンコ 無料",
     description: "登録不要・ゼロアップロードでPDFに文字やハンコを追加。申請書・履歴書・契約書に対応。完全無料。",
     type: "website",
     url: "https://yamada-tools.jp/pdf/text-input",
@@ -115,7 +115,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "PDFに文字入力・電子ハンコ 無料｜山田ツール",
+    title: "PDFに文字入力・電子ハンコ 無料",
     description: "登録不要・ゼロアップロードでPDFに文字やハンコを追加。完全無料。",
     images: ["https://yamada-tools.jp/og-tools/pdf-text-input.png"],
   },

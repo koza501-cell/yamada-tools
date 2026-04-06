@@ -18,10 +18,10 @@ const mascotImages: Record<MascotState, string> = {
 };
 
 const defaultMessages: Record<MascotState, string> = {
-  idle: "こんにちは！ファイルをドラッグ＆ドロップしてね。",
-  working: "処理中です...少々お待ちください！",
-  success: "完了しました！お疲れ様でした。",
-  error: "申し訳ありません。エラーが発生しました。",
+  idle: "こんにちは！ファイルをドラッグ＆ドロップしてください。",
+  working: "処理中です。少々お待ちください。",
+  success: "完了しました！ダウンロードしてご利用ください。",
+  error: "申し訳ございません。エラーが発生しました。",
 };
 
 // Animation classes for each state

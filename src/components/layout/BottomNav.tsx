@@ -25,6 +25,7 @@ export default function BottomNav() {
           <Link
             key={item.href}
             href={item.href}
+            aria-label={item.label}
             className={`flex flex-col items-center justify-center w-full h-full min-h-[44px] min-w-[44px] transition-colors ${
               isActive(item.href)
                 ? "text-sakura"

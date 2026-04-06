@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】固定資産税 計算機｜住宅用地特例・新築軽減を自動適用して計算 2026年版 | 山田ツール",
+  title: "【無料】固定資産税 計算機｜住宅用地特例・新築軽減を自動適用して計算 2026年版 ",
   description: "固定資産税・都市計画税を軽減措置込みで自動計算。住宅用地特例（1/6・1/3）・新築住宅1/2軽減を自動適用。年間・月額・軽減期間シミュレーション表示。登録不要・無料。",
   keywords: [
     "固定資産税 計算",
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/realestate/property-tax-calculator",
   },
   openGraph: {
-    title: "【無料】固定資産税 計算機｜住宅用地特例・新築軽減を自動適用して計算 2026年版 | 山田ツール",
+    title: "【無料】固定資産税 計算機｜住宅用地特例・新築軽減を自動適用して計算 2026年版 ",
     description: "固定資産税・都市計画税を軽減措置込みで自動計算。住宅用地特例（1/6・1/3）・新築住宅1/2軽減を自動適用。年間・月額・軽減期間シミュレーション表示。",
     url: "https://yamada-tools.jp/realestate/property-tax-calculator",
     siteName: "yamada-tools.jp",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】固定資産税 計算機｜住宅用地特例・新築軽減を自動適用して計算 2026年版 | 山田ツール",
+    title: "【無料】固定資産税 計算機｜住宅用地特例・新築軽減を自動適用して計算 2026年版 ",
     description: "固定資産税・都市計画税を軽減措置込みで自動計算。住宅用地特例（1/6・1/3）・新築住宅1/2軽減を自動適用。年間・月額・軽減期間シミュレーション表示。",
   },
 };

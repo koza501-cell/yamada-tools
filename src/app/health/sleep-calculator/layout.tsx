@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】睡眠時間 最適化ツール｜90分サイクルで最適な就寝・起床時刻を計算 | 山田ツール",
+  title: "【無料】睡眠時間 最適化ツール｜90分サイクルで最適な就寝・起床時刻を計算 ",
   description: "90分の睡眠サイクルに基づいて最適な就寝・起床時刻を計算。睡眠負債チェック・ソーシャルジェットラグ診断・年齢別推奨睡眠時間も表示。登録不要・完全無料。",
   keywords: [
     "睡眠時間 計算",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/health/sleep-calculator",
   },
   openGraph: {
-    title: "【無料】睡眠時間 最適化ツール｜90分サイクルで最適な就寝・起床時刻を計算 | 山田ツール",
+    title: "【無料】睡眠時間 最適化ツール｜90分サイクルで最適な就寝・起床時刻を計算 ",
     description: "90分の睡眠サイクルに基づいて最適な就寝・起床時刻を計算。睡眠負債チェック・ソーシャルジェットラグ診断・年齢別推奨睡眠時間も表示。登録不要・完全無料。",
     url: "https://yamada-tools.jp/health/sleep-calculator",
     siteName: "yamada-tools.jp",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】睡眠時間 最適化ツール｜90分サイクルで最適な就寝・起床時刻を計算 | 山田ツール",
+    title: "【無料】睡眠時間 最適化ツール｜90分サイクルで最適な就寝・起床時刻を計算 ",
     description: "90分の睡眠サイクルに基づいて最適な就寝・起床時刻を計算。睡眠負債チェック・ソーシャルジェットラグ診断付き。登録不要・無料。",
   },
 };

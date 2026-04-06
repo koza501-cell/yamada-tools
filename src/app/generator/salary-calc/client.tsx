@@ -85,15 +85,7 @@ export default function SalaryCalcClient() {
   return (
     <div className="min-h-screen bg-gray-50 py-8"><FinancialDisclaimer type="salary" />
       <div className="max-w-4xl mx-auto px-4">
-        <nav className="mb-6 text-sm">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-blue-600">ホーム</Link></li>
-            <li>/</li>
-            <li><Link href="/generator" className="hover:text-blue-600">計算・生成ツール</Link></li>
-            <li>/</li>
-            <li className="text-gray-900 font-medium">給与手取り計算</li>
-          </ol>
-        </nav>
+
 
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">💰</div>

@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】妊娠週数・出産予定日 計算機｜健診スケジュール・安定期・マイルストーンも表示 | 山田ツール",
+  title: "【無料】妊娠週数・出産予定日 計算機｜健診スケジュール・安定期・マイルストーンも表示 ",
   description: "最終月経日または排卵日から出産予定日・現在の妊娠週数を自動計算。安定期入り・健診スケジュール・週数別マイルストーン一覧付き。登録不要・完全無料。",
   keywords: [
     "妊娠週数 計算",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/health/pregnancy-calculator",
   },
   openGraph: {
-    title: "【無料】妊娠週数・出産予定日 計算機｜健診スケジュール・マイルストーン付き | 山田ツール",
+    title: "【無料】妊娠週数・出産予定日 計算機｜健診スケジュール・マイルストーン付き ",
     description: "最終月経日または排卵日から出産予定日・現在の妊娠週数を自動計算。安定期入り・健診スケジュール・週数別マイルストーン一覧付き。登録不要・完全無料。",
     url: "https://yamada-tools.jp/health/pregnancy-calculator",
     siteName: "yamada-tools.jp",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】妊娠週数・出産予定日 計算機｜健診スケジュール付き | 山田ツール",
+    title: "【無料】妊娠週数・出産予定日 計算機｜健診スケジュール付き ",
     description: "最終月経日または排卵日から出産予定日・妊娠週数を自動計算。健診スケジュール・マイルストーン一覧付き。",
   },
 };

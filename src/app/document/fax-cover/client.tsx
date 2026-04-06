@@ -81,15 +81,7 @@ export default function FaxCoverClient() {
   return (
     <div className="min-h-screen bg-gray-50 py-12 print:py-0 print:bg-white">
       <div className="max-w-4xl mx-auto px-4 print:max-w-none print:px-0">
-        <nav className="mb-6 text-sm print:hidden">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-blue-600">ホーム</Link></li>
-            <li>/</li>
-            <li><Link href="/document" className="hover:text-blue-600">書類作成</Link></li>
-            <li>/</li>
-            <li className="text-gray-900 font-medium">FAX送付状</li>
-          </ol>
-        </nav>
+
 
         <header className="text-center mb-8 print:hidden">
           <div className="text-5xl mb-4">📠</div>

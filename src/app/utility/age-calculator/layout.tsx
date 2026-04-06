@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】年齢計算機｜和暦（令和・平成・昭和）西暦対応 干支・次の誕生日も表示 | 山田ツール",
+  title: "【無料】年齢計算機｜和暦（令和・平成・昭和）西暦対応 干支・次の誕生日も表示 ",
   description: "生年月日から正確な年齢を計算。和暦（令和・平成・昭和・大正・明治）完全対応。次の誕生日カウントダウン・干支・世代判定・定年/年金受給年齢も表示。登録不要・無料。",
   keywords: [
     "年齢計算機",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/utility/age-calculator",
   },
   openGraph: {
-    title: "【無料】年齢計算機｜和暦（令和・平成・昭和）西暦対応 | 山田ツール",
+    title: "【無料】年齢計算機｜和暦（令和・平成・昭和）西暦対応 ",
     description: "生年月日から正確な年齢を計算。和暦（令和・平成・昭和・大正・明治）完全対応。次の誕生日カウントダウン・干支・世代判定も表示。",
     url: "https://yamada-tools.jp/utility/age-calculator",
     siteName: "yamada-tools.jp",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】年齢計算機｜和暦（令和・平成・昭和）西暦対応 | 山田ツール",
+    title: "【無料】年齢計算機｜和暦（令和・平成・昭和）西暦対応 ",
     description: "生年月日から正確な年齢を計算。和暦完全対応・干支・次の誕生日カウントダウン付き。",
   },
 };

@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】消費税 簡易課税 判定・比較ツール｜本則vs簡易vs2割特例 2026年版 | 山田ツール",
+  title: "【無料】消費税 簡易課税 判定・比較ツール｜本則vs簡易vs2割特例 2026年版 ",
   description: "消費税の課税方式を3パターン比較。本則課税・簡易課税・2割特例のどれが有利か自動判定。業種別みなし仕入率対応、インボイス登録の影響も計算。2026年最新税制対応。登録不要・完全無料。",
   keywords: [
     "消費税 簡易課税 計算",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】消費税 簡易課税 判定・比較ツール | 山田ツール",
+    title: "【無料】消費税 簡易課税 判定・比較ツール ",
     description: "本則vs簡易vs2割特例を一括比較。2026年最新税制対応。登録不要・無料。",
   },
   alternates: {

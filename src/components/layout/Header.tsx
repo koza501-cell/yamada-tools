@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { pdfTools, documentTools, convertTools, imageTools, generatorTools, financeTools, insuranceTools, taxTools, careerTools, realestateTools, businessTools, healthTools, educationTools, debtTools, utilityTools } from "@/config/tools";
+import { searchTools } from "@/lib/searchUtils";
 
 const toolsMenu = {
   title: "ツール",
@@ -124,7 +125,7 @@ export default function Header() {
   
   // Search functionality for global modal
   const allToolsForSearch = [...pdfTools, ...documentTools, ...convertTools, ...imageTools, ...generatorTools, ...financeTools, ...insuranceTools, ...taxTools, ...careerTools, ...realestateTools, ...businessTools, ...healthTools, ...educationTools, ...debtTools, ...utilityTools].filter(tool => tool.available);
-  const searchResults = searchQuery.trim().length >= 2 ? allToolsForSearch.filter(tool => tool.nameJa.toLowerCase().includes(searchQuery.toLowerCase()) || tool.nameEn.toLowerCase().includes(searchQuery.toLowerCase()) || tool.description.toLowerCase().includes(searchQuery.toLowerCase())).slice(0, 8) : [];
+  const searchResults = searchTools(searchQuery, allToolsForSearch);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const searchInputRef = useRef<HTMLInputElement>(null);

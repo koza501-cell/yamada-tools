@@ -199,21 +199,6 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4">
-        {/* Breadcrumb for SEO */}
-        <nav className="mb-6 text-sm" aria-label="パンくずリスト">
-          <ol className="flex items-center gap-2 text-gray-500 dark:text-gray-400 dark:text-gray-500">
-            <li>
-              <Link href="/" className="hover:text-kon">ホーム</Link>
-            </li>
-            <li>/</li>
-            <li>
-              <Link href="/pdf" className="hover:text-kon">PDFツール</Link>
-            </li>
-            <li>/</li>
-            <li className="text-kon font-medium">{tool.nameJa}</li>
-          </ol>
-        </nav>
-
         {/* Header with H1 */}
         <header className="text-center mb-8">
           <div className="text-5xl mb-4" role="img" aria-label={tool.nameJa}>{tool.icon}</div>
@@ -269,7 +254,7 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
                   または <span className="text-kon font-medium">クリックして選択</span>
                 </p>
                 <span className="inline-block bg-white text-gray-600 text-xs px-3 py-1.5 rounded-full border border-gray-200">
-                  対応形式: {tool.acceptedTypes} • 最大: 20MB • {tool.maxFiles}ファイルまで
+                  対応形式: {tool.acceptedTypes} • 最大: {tool.category === 'pdf' ? '50MB' : '20MB'} • {tool.maxFiles}ファイルまで
                 </span>
               </label>
             </div>

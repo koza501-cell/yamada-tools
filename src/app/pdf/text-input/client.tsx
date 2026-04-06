@@ -814,13 +814,7 @@ export default function PdfTextClient({ faq, seoContent }: Props) {
         />
       )}
 
-      <nav className="mb-6 text-sm">
-        <ol className="flex items-center gap-2 text-gray-500">
-          <li><a href="/" className="hover:text-orange-600">ホーム</a></li>
-          <li>/</li><li><a href="/pdf" className="hover:text-orange-600">PDFツール</a></li>
-          <li>/</li><li className="text-orange-600 font-medium">PDFに文字入力</li>
-        </ol>
-      </nav>
+
 
       <header className="text-center mb-8">
         <div className="text-5xl mb-3">✏️</div>

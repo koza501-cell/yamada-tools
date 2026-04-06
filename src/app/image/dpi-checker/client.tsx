@@ -62,13 +62,7 @@ export default function DpiCheckerClient({ faq, seoContent }: Props) {
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4">
-        <nav className="mb-6 text-sm">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li><li>/</li>
-            <li><Link href="/image" className="hover:text-kon">画像ツール</Link></li><li>/</li>
-            <li className="text-kon font-medium">DPI確認</li>
-          </ol>
-        </nav>
+
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">🔍</div>
           <h1 className="text-3xl font-bold text-kon mb-2">画像DPI確認・解像度チェック</h1>

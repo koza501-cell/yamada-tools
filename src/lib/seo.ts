@@ -32,7 +32,7 @@ export function generateToolMetadata({
     `${tool.nameJa}を無料でオンライン変換。${tool.description}。日本国内サーバーで安心・安全。登録不要、ファイルは60分で自動削除。`;
 
   return {
-    title: customTitle || `${tool.nameJa} - 無料オンライン${tool.nameJa}ツール`,
+    title: customTitle || `${tool.nameJa}【無料】`,
     description,
     keywords: [...defaultKeywords, ...keywords],
     openGraph: {
@@ -53,7 +53,7 @@ export function generateToolMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${tool.nameJa} | 山田ツール`,
+      title: `${tool.nameJa} `,
       description,
       images: [`${baseUrl}/og-tools/${tool.id}.png`],
     },

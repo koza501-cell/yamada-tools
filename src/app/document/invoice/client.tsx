@@ -100,15 +100,7 @@ export default function InvoiceClient({ faq, seoContent }: InvoiceClientProps) {
   return (
     <div className="min-h-screen py-12 print:py-0 print:bg-white">
       <div className="max-w-4xl mx-auto px-4 print:max-w-none print:px-0">
-        <nav className="mb-6 text-sm print:hidden">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li>
-            <li>/</li>
-            <li><Link href="/document" className="hover:text-kon">書類作成</Link></li>
-            <li>/</li>
-            <li className="text-kon font-medium">請求書作成</li>
-          </ol>
-        </nav>
+
 
         <header className="text-center mb-8 print:hidden">
           <div className="text-5xl mb-4">📑</div>

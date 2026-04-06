@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "計算・生成ツール一覧 | 山田ツール",
+  title: "計算・生成ツール一覧 ",
   description: "ランダム抽選、計算、生成など便利なオンラインツール一覧。完全無料・登録不要。",
   alternates: { canonical: "https://yamada-tools.jp/generator" },
 };

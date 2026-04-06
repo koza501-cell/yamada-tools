@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】カードローン利息計算機｜複数ローンの利息・完済日・借り換え効果を一括計算 | 山田ツール",
+  title: "【無料】カードローン利息計算機｜複数ローンの利息・完済日・借り換え効果を一括計算 ",
   description: "複数のカードローンの利息・完済日を一括計算。日別・月別の利息内訳、借り換えによる節約額、追加借入の影響も自動表示。返済優先順位アドバイス付き。登録不要・無料。",
   keywords: [
     "カードローン 利息 計算機",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/debt/loan-interest-calculator",
   },
   openGraph: {
-    title: "【無料】カードローン利息計算機｜複数ローンの利息・完済日・借り換え効果を一括計算 | 山田ツール",
+    title: "【無料】カードローン利息計算機｜複数ローンの利息・完済日・借り換え効果を一括計算 ",
     description: "複数のカードローンの利息・完済日を一括計算。日別・月別の利息内訳、借り換えによる節約額、追加借入の影響も自動表示。返済優先順位アドバイス付き。登録不要・無料。",
     url: "https://yamada-tools.jp/debt/loan-interest-calculator",
     siteName: "yamada-tools.jp",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】カードローン利息計算機｜複数ローンの利息・完済日・借り換え効果を一括計算 | 山田ツール",
+    title: "【無料】カードローン利息計算機｜複数ローンの利息・完済日・借り換え効果を一括計算 ",
     description: "複数のカードローンの利息・完済日を一括計算。借り換え節約額・追加借入の影響・返済優先順位も自動表示。",
   },
 };

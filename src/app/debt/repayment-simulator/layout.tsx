@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】借金返済シミュレーター｜完済日・総利息・繰り上げ返済効果を自動計算 | 山田ツール",
+  title: "【無料】借金返済シミュレーター｜完済日・総利息・繰り上げ返済効果を自動計算 ",
   description: "借金の残高・金利・月返済額を入力するだけで完済予定日と総利息を自動計算。複数の借金に対応。リボ払い危険度判定・繰り上げ返済効果も表示。登録不要・完全無料。",
   keywords: [
     "借金返済 シミュレーター",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/debt/repayment-simulator",
   },
   openGraph: {
-    title: "【無料】借金返済シミュレーター｜完済日・総利息・繰り上げ返済効果を自動計算 | 山田ツール",
+    title: "【無料】借金返済シミュレーター｜完済日・総利息・繰り上げ返済効果を自動計算 ",
     description: "借金の残高・金利・月返済額を入力するだけで完済予定日と総利息を自動計算。複数の借金に対応。リボ払い危険度判定・繰り上げ返済効果も表示。登録不要・完全無料。",
     url: "https://yamada-tools.jp/debt/repayment-simulator",
     siteName: "yamada-tools.jp",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】借金返済シミュレーター｜完済日・総利息・繰り上げ返済効果を自動計算 | 山田ツール",
+    title: "【無料】借金返済シミュレーター｜完済日・総利息・繰り上げ返済効果を自動計算 ",
     description: "借金の残高・金利・月返済額を入力するだけで完済予定日と総利息を自動計算。複数の借金に対応。リボ払い危険度判定・繰り上げ返済効果も表示。",
   },
 };

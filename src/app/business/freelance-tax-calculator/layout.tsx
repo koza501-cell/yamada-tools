@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】フリーランス 税金・経費 計算機｜手取り・節税シミュレーション 2026年版 | 山田ツール",
+  title: "【無料】フリーランス 税金・経費 計算機｜手取り・節税シミュレーション 2026年版 ",
   description: "フリーランスの税金・手取りを完全計算。青色申告vs白色申告の比較、経費カテゴリ別シミュレーション、インボイス制度の影響計算、節税アドバイス付き。2026年最新税制対応。登録不要・完全無料。",
   keywords: [
     "フリーランス 税金 計算",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】フリーランス 税金・経費 計算機 | 山田ツール",
+    title: "【無料】フリーランス 税金・経費 計算機 ",
     description: "フリーランスの税金・手取りを完全計算。2026年最新税制対応。登録不要・無料。",
   },
   alternates: {

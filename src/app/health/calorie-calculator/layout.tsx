@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】基礎代謝・カロリー計算機｜TDEE・目標カロリー・PFC比率を自動計算 | 山田ツール",
+  title: "【無料】基礎代謝・カロリー計算機｜TDEE・目標カロリー・PFC比率を自動計算 ",
   description: "基礎代謝（BMR）・消費カロリー（TDEE）・目標カロリーを自動計算。ダイエット・増量・維持に対応。目標体重の達成予定日・PFCバランスも表示。登録不要・無料。",
   keywords: [
     "基礎代謝 計算",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/health/calorie-calculator",
   },
   openGraph: {
-    title: "【無料】基礎代謝・カロリー計算機｜TDEE・目標カロリー・PFC比率を自動計算 | 山田ツール",
+    title: "【無料】基礎代謝・カロリー計算機｜TDEE・目標カロリー・PFC比率を自動計算 ",
     description: "基礎代謝（BMR）・消費カロリー（TDEE）・目標カロリーを自動計算。ダイエット・増量・維持に対応。目標体重の達成予定日・PFCバランスも表示。登録不要・無料。",
     url: "https://yamada-tools.jp/health/calorie-calculator",
     siteName: "yamada-tools.jp",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】基礎代謝・カロリー計算機｜TDEE・目標カロリー・PFC比率 | 山田ツール",
+    title: "【無料】基礎代謝・カロリー計算機｜TDEE・目標カロリー・PFC比率 ",
     description: "基礎代謝・消費カロリー・目標カロリーを自動計算。ダイエット・増量・維持に対応。登録不要・無料。",
   },
 };

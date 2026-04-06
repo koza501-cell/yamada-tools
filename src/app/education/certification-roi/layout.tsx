@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】資格取得 費用対効果 計算機｜ROI・投資回収期間を自動計算 宅建・中小企業診断士・AWS | 山田ツール",
+  title: "【無料】資格取得 費用対効果 計算機｜ROI・投資回収期間を自動計算 宅建・中小企業診断士・AWS ",
   description: "資格取得のROIと投資回収期間を自動計算。受験料・教材費・勉強時間コストと年収アップ効果を比較。宅建・診断士・公認会計士・AWS等9資格のプリセット付き。登録不要・無料。",
   keywords: [
     "資格 費用対効果",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/education/certification-roi",
   },
   openGraph: {
-    title: "【無料】資格取得 費用対効果 計算機｜ROI・投資回収期間を自動計算 | 山田ツール",
+    title: "【無料】資格取得 費用対効果 計算機｜ROI・投資回収期間を自動計算 ",
     description: "資格取得のROIと投資回収期間を自動計算。受験料・教材費・勉強時間コストと年収アップ効果を比較。宅建・診断士・公認会計士・AWS等9資格のプリセット付き。登録不要・無料。",
     url: "https://yamada-tools.jp/education/certification-roi",
     siteName: "yamada-tools.jp",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】資格取得 費用対効果 計算機｜ROI・投資回収期間を自動計算 | 山田ツール",
+    title: "【無料】資格取得 費用対効果 計算機｜ROI・投資回収期間を自動計算 ",
     description: "資格取得のROIと投資回収期間を自動計算。受験料・教材費・勉強時間コストと年収アップ効果を比較。宅建・診断士・公認会計士・AWS等9資格のプリセット付き。登録不要・無料。",
   },
 };

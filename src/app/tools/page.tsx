@@ -3,7 +3,7 @@ import Link from "next/link";
 import { allTools, pdfTools, documentTools, convertTools, imageTools, generatorTools, seoTools } from "@/config/tools";
 
 export const metadata: Metadata = {
-  title: "全ツール一覧｜山田ツール",
+  title: "全ツール一覧",
   description: "山田ツールの全ツールを一覧で表示。PDF編集、画像圧縮、書類作成、変換ツールなど。完全無料・登録不要。",
   alternates: {
     canonical: 'https://yamada-tools.jp/tools',

@@ -51,24 +51,6 @@ export default function SeatClient() {
   return (
     <div style={{ background: "#f8faff", minHeight: "100vh" }}>
       <div style={{ maxWidth: 900, margin: "0 auto", padding: "0 20px 80px" }}>
-
-        {/* Breadcrumb */}
-        <nav aria-label="パンくずリスト" style={{
-          padding: "16px 0",
-          fontSize: "0.82rem",
-          color: "#999",
-          borderBottom: "1px solid rgba(29,53,87,0.06)",
-          marginBottom: 0,
-        }}>
-          <Link href="/" style={{ color: "#1d3557", textDecoration: "none" }}>ホーム</Link>
-          <span style={{ margin: "0 6px" }}>›</span>
-          <Link href="/generator" style={{ color: "#1d3557", textDecoration: "none" }}>計算・生成</Link>
-          <span style={{ margin: "0 6px" }}>›</span>
-          <Link href="/generator/random-picker" style={{ color: "#1d3557", textDecoration: "none" }}>ランダム抽選</Link>
-          <span style={{ margin: "0 6px" }}>›</span>
-          <span style={{ color: "#555" }}>席替えランダム決めツール</span>
-        </nav>
-
         {/* ── Hero Banner ── */}
         <div style={{
           background: "linear-gradient(135deg, #1d3557 0%, #2a4a7f 60%, #457b9d 100%)",

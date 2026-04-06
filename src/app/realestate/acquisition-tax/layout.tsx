@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】不動産取得税 計算機｜軽減措置を自動適用・土地・建物の税額を瞬時に計算 2026年版 | 山田ツール",
+  title: "【無料】不動産取得税 計算機｜軽減措置を自動適用・土地・建物の税額を瞬時に計算 2026年版 ",
   description: "不動産取得税を軽減措置込みで自動計算。新築・中古・土地・建物に対応。宅地特例・住宅控除・築年数別控除を自動適用し、節税効果も表示。令和9年3月31日まで延長済み特例対応。",
   keywords: [
     "不動産取得税 計算",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/realestate/acquisition-tax",
   },
   openGraph: {
-    title: "【無料】不動産取得税 計算機｜軽減措置を自動適用・土地・建物の税額を瞬時に計算 2026年版 | 山田ツール",
+    title: "【無料】不動産取得税 計算機｜軽減措置を自動適用・土地・建物の税額を瞬時に計算 2026年版 ",
     description: "不動産取得税を軽減措置込みで自動計算。新築・中古・土地・建物に対応。宅地特例・住宅控除・築年数別控除を自動適用し、節税効果も表示。",
     url: "https://yamada-tools.jp/realestate/acquisition-tax",
     siteName: "yamada-tools.jp",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】不動産取得税 計算機｜軽減措置を自動適用・土地・建物の税額を瞬時に計算 2026年版 | 山田ツール",
+    title: "【無料】不動産取得税 計算機｜軽減措置を自動適用・土地・建物の税額を瞬時に計算 2026年版 ",
     description: "不動産取得税を軽減措置込みで自動計算。新築・中古・土地・建物に対応。宅地特例・住宅控除・築年数別控除を自動適用し、節税効果も表示。",
   },
 };

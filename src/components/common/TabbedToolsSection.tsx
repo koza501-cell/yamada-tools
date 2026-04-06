@@ -26,6 +26,11 @@ interface TabbedToolsSectionProps {
   convertTools: Tool[];
   imageTools: Tool[];
   generatorTools: Tool[];
+  financeTools?: Tool[];
+  careerTools?: Tool[];
+  taxTools?: Tool[];
+  realestateTools?: Tool[];
+  businessTools?: Tool[];
 }
 
 export default function TabbedToolsSection({
@@ -34,17 +39,28 @@ export default function TabbedToolsSection({
   convertTools,
   imageTools,
   generatorTools,
+  financeTools = [],
+  careerTools = [],
+  taxTools = [],
+  realestateTools = [],
+  businessTools = [],
 }: TabbedToolsSectionProps) {
   const [activeTab, setActiveTab] = useState("pdf");
 
-  const tabs: TabData[] = [
+  const allTabs: TabData[] = [
     { id: "pdf", label: "PDF", icon: "📄", href: "/pdf", tools: pdfTools },
     { id: "document", label: "書類", icon: "📝", href: "/document", tools: documentTools },
     { id: "convert", label: "変換", icon: "🔄", href: "/convert", tools: convertTools },
     { id: "image", label: "画像", icon: "🖼️", href: "/image", tools: imageTools },
-    { id: "calculator", label: "計算・生成", icon: "⚡", href: "/generator", tools: generatorTools },
+    { id: "generator", label: "生成", icon: "⚡", href: "/generator", tools: generatorTools },
+    { id: "finance", label: "金融", icon: "💰", href: "/finance", tools: financeTools },
+    { id: "career", label: "キャリア", icon: "💼", href: "/career", tools: careerTools },
+    { id: "tax", label: "税金", icon: "💴", href: "/tax", tools: taxTools },
+    { id: "realestate", label: "不動産", icon: "🏘️", href: "/realestate", tools: realestateTools },
+    { id: "business", label: "法人", icon: "🏢", href: "/business", tools: businessTools },
   ];
 
+  const tabs = allTabs.filter((t) => t.tools.length > 0);
   const currentTab = tabs.find((t) => t.id === activeTab) || tabs[0];
 
   return (
@@ -55,9 +71,9 @@ export default function TabbedToolsSection({
           <p className="text-gray-600 dark:text-gray-400 mt-1 text-sm">タブをクリックしてカテゴリを切り替え</p>
         </div>
 
-        <div className="flex justify-center mb-6">
-          <div 
-            className="inline-flex bg-white dark:bg-gray-800 rounded-xl p-1 shadow-sm border border-gray-200 dark:border-gray-700"
+        <div className="flex justify-center mb-6 overflow-x-auto pb-1">
+          <div
+            className="inline-flex bg-white dark:bg-gray-800 rounded-xl p-1 shadow-sm border border-gray-200 dark:border-gray-700 flex-wrap gap-1"
             role="tablist"
             aria-label="ツールカテゴリ"
           >
@@ -68,7 +84,7 @@ export default function TabbedToolsSection({
                 role="tab"
                 aria-selected={activeTab === tab.id}
                 aria-controls={`tabpanel-${tab.id}`}
-                className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-all ${
                   activeTab === tab.id
                     ? "bg-pink-500 text-white shadow-md"
                     : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -87,8 +103,8 @@ export default function TabbedToolsSection({
           aria-labelledby={activeTab}
         >
           <div className="flex justify-end mb-4">
-            <Link 
-              href={currentTab.href} 
+            <Link
+              href={currentTab.href}
               className="text-kon dark:text-blue-400 hover:text-ai transition-colors text-sm font-medium"
             >
               {currentTab.icon} {currentTab.label}をすべて見る →
@@ -115,12 +131,6 @@ export default function TabbedToolsSection({
             ))}
           </div>
         </div>
-
-        <div id="pdf-tools" className="hidden" />
-        <div id="document-tools" className="hidden" />
-        <div id="convert-tools" className="hidden" />
-        <div id="image-tools" className="hidden" />
-        <div id="calculator-tools" className="hidden" />
       </div>
     </section>
   );

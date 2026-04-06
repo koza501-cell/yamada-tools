@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】教育費 積立シミュレーター｜幼稚園〜大学の総費用と必要積立額を計算 | 山田ツール",
+  title: "【無料】教育費 積立シミュレーター｜幼稚園〜大学の総費用と必要積立額を計算 ",
   description: "幼稚園から大学まで教育費総額を自動計算。公立・私立の選択別費用比較・必要月積立額・学資保険vsNISA比較も表示。2026年最新データ対応。登録不要・無料。",
   keywords: [
     "教育費 積立",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/education/education-cost-simulator",
   },
   openGraph: {
-    title: "【無料】教育費 積立シミュレーター｜幼稚園〜大学の総費用と必要積立額を計算 | 山田ツール",
+    title: "【無料】教育費 積立シミュレーター｜幼稚園〜大学の総費用と必要積立額を計算 ",
     description: "幼稚園から大学まで教育費総額を自動計算。公立・私立の選択別費用比較・必要月積立額・学資保険vsNISA比較も表示。2026年最新データ対応。登録不要・無料。",
     url: "https://yamada-tools.jp/education/education-cost-simulator",
     siteName: "yamada-tools.jp",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】教育費 積立シミュレーター｜幼稚園〜大学の総費用と必要積立額を計算 | 山田ツール",
+    title: "【無料】教育費 積立シミュレーター｜幼稚園〜大学の総費用と必要積立額を計算 ",
     description: "幼稚園から大学まで教育費総額を自動計算。公立・私立の選択別費用比較・必要月積立額・学資保険vsNISA比較も表示。2026年最新データ対応。登録不要・無料。",
   },
 };

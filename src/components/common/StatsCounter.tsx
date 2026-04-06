@@ -15,7 +15,7 @@ const STATS: StatItem[] = [
 ];
 
 function useCountUp(target: number, duration: number, active: boolean) {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(target);
   useEffect(() => {
     if (!active) return;
     let start: number | null = null;

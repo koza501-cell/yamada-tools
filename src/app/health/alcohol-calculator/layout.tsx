@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】アルコール分解時間計算機｜飲酒後いつ運転できる？翌朝の残存確認も | 山田ツール",
+  title: "【無料】アルコール分解時間計算機｜飲酒後いつ運転できる？翌朝の残存確認も ",
   description: "飲んだお酒の種類と量から血中アルコール濃度と完全分解時刻を計算。飲酒運転が可能になる時刻・翌朝の残存アルコールチェック付き。登録不要・完全無料。",
   keywords: [
     "アルコール分解時間",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/health/alcohol-calculator",
   },
   openGraph: {
-    title: "【無料】アルコール分解時間計算機｜飲酒後いつ運転できる？翌朝の残存確認も | 山田ツール",
+    title: "【無料】アルコール分解時間計算機｜飲酒後いつ運転できる？翌朝の残存確認も ",
     description: "飲んだお酒の種類と量から血中アルコール濃度と完全分解時刻を計算。飲酒運転が可能になる時刻・翌朝の残存アルコールチェック付き。登録不要・完全無料。",
     url: "https://yamada-tools.jp/health/alcohol-calculator",
     siteName: "yamada-tools.jp",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】アルコール分解時間計算機｜飲酒後いつ運転できる？翌朝残存確認付き | 山田ツール",
+    title: "【無料】アルコール分解時間計算機｜飲酒後いつ運転できる？翌朝残存確認付き ",
     description: "飲んだお酒の種類と量から血中アルコール濃度と完全分解時刻を計算。登録不要・無料。",
   },
 };

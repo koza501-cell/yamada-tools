@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】標準体重・肥満度 判定ツール｜BMI式・ブローカ式・メタボ腹囲チェック | 山田ツール",
+  title: "【無料】標準体重・肥満度 判定ツール｜BMI式・ブローカ式・メタボ腹囲チェック ",
   description: "BMI式・ブローカ式など複数の方法で標準体重と肥満度を判定。腹囲によるメタボリックシンドロームチェック・体脂肪率判定も対応。登録不要・完全無料。",
   keywords: [
     "標準体重 計算",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/health/ideal-weight-calculator",
   },
   openGraph: {
-    title: "【無料】標準体重・肥満度 判定ツール｜BMI式・ブローカ式・メタボ腹囲チェック | 山田ツール",
+    title: "【無料】標準体重・肥満度 判定ツール｜BMI式・ブローカ式・メタボ腹囲チェック ",
     description: "BMI式・ブローカ式など複数の方法で標準体重と肥満度を判定。腹囲によるメタボリックシンドロームチェック・体脂肪率判定も対応。登録不要・完全無料。",
     url: "https://yamada-tools.jp/health/ideal-weight-calculator",
     siteName: "yamada-tools.jp",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】標準体重・肥満度 判定ツール｜BMI式・ブローカ式・メタボ腹囲チェック | 山田ツール",
+    title: "【無料】標準体重・肥満度 判定ツール｜BMI式・ブローカ式・メタボ腹囲チェック ",
     description: "BMI式・ブローカ式など複数の方法で標準体重と肥満度を判定。腹囲メタボチェック・体脂肪率判定も対応。",
   },
 };

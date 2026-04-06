@@ -14,14 +14,7 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <div className="max-w-4xl mx-auto px-4 py-12">
-        {/* Breadcrumb */}
-        <nav className="mb-6 text-sm" aria-label="パンくずリスト">
-          <ol className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li>
-            <li>/</li>
-            <li className="text-kon dark:text-blue-400 font-medium">お問い合わせ</li>
-          </ol>
-        </nav>
+
 
         {/* Header */}
         <div className="bg-gradient-to-r from-kon to-kon/90 text-white rounded-2xl p-10 mb-8 text-center">

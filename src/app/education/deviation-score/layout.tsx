@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】偏差値 計算機｜点数から偏差値・上位%・クラス順位を自動計算 | 山田ツール",
+  title: "【無料】偏差値 計算機｜点数から偏差値・上位%・クラス順位を自動計算 ",
   description: "点数・平均点・標準偏差から偏差値を自動計算。上位%・クラス順位・大学合格難易度も表示。複数科目比較・偏差値から点数の逆算も対応。登録不要・完全無料。",
   keywords: [
     "偏差値 計算",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/education/deviation-score",
   },
   openGraph: {
-    title: "【無料】偏差値 計算機｜点数から偏差値・上位%・クラス順位を自動計算 | 山田ツール",
+    title: "【無料】偏差値 計算機｜点数から偏差値・上位%・クラス順位を自動計算 ",
     description: "点数・平均点・標準偏差から偏差値を自動計算。上位%・クラス順位・大学合格難易度も表示。複数科目比較・偏差値から点数の逆算も対応。登録不要・完全無料。",
     url: "https://yamada-tools.jp/education/deviation-score",
     siteName: "yamada-tools.jp",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】偏差値 計算機｜点数から偏差値・上位%・クラス順位を自動計算 | 山田ツール",
+    title: "【無料】偏差値 計算機｜点数から偏差値・上位%・クラス順位を自動計算 ",
     description: "点数・平均点・標準偏差から偏差値を自動計算。上位%・クラス順位・大学合格難易度も表示。複数科目比較・偏差値から点数の逆算も対応。登録不要・完全無料。",
   },
 };

@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】BMI計算機｜適正体重・肥満度を日本基準で判定 体重管理に | 山田ツール",
+  title: "【無料】BMI計算機｜適正体重・肥満度を日本基準で判定 体重管理に ",
   description: "身長・体重を入力するだけでBMIと適正体重を計算。日本肥満学会基準の肥満度判定・健康リスク・アドバイス付き。ビジュアルゲージで一目でわかる無料BMI計算機。",
   keywords: [
     "BMI 計算機",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/health/bmi-calculator",
   },
   openGraph: {
-    title: "【無料】BMI計算機｜適正体重・肥満度を日本基準で判定 | 山田ツール",
+    title: "【無料】BMI計算機｜適正体重・肥満度を日本基準で判定 ",
     description: "身長・体重を入力するだけでBMIと適正体重を計算。日本肥満学会基準の肥満度判定・健康リスク・アドバイス付き。ビジュアルゲージで一目でわかる無料BMI計算機。",
     url: "https://yamada-tools.jp/health/bmi-calculator",
     siteName: "yamada-tools.jp",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】BMI計算機｜適正体重・肥満度を日本基準で判定 | 山田ツール",
+    title: "【無料】BMI計算機｜適正体重・肥満度を日本基準で判定 ",
     description: "身長・体重を入力するだけでBMIと適正体重を計算。日本肥満学会基準で判定・健康アドバイス付き。",
   },
 };

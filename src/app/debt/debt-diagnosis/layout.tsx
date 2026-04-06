@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】債務整理 診断ツール｜5つの質問で最適な方法を診断 任意整理・個人再生・自己破産 | 山田ツール",
+  title: "【無料】債務整理 診断ツール｜5つの質問で最適な方法を診断 任意整理・個人再生・自己破産 ",
   description: "5つの質問に答えるだけで任意整理・個人再生・自己破産の最適な方法を診断。月々の返済削減額の目安と今すぐできる次のステップも表示。登録不要・完全無料。",
   keywords: [
     "債務整理 診断",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/debt/debt-diagnosis",
   },
   openGraph: {
-    title: "【無料】債務整理 診断ツール｜5つの質問で最適な方法を診断 | 山田ツール",
+    title: "【無料】債務整理 診断ツール｜5つの質問で最適な方法を診断 ",
     description: "5つの質問に答えるだけで任意整理・個人再生・自己破産の最適な方法を診断。月々の返済削減額の目安と次のステップも表示。登録不要・完全無料。",
     url: "https://yamada-tools.jp/debt/debt-diagnosis",
     siteName: "yamada-tools.jp",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】債務整理 診断ツール｜5つの質問で最適な方法を診断 | 山田ツール",
+    title: "【無料】債務整理 診断ツール｜5つの質問で最適な方法を診断 ",
     description: "5つの質問に答えるだけで任意整理・個人再生・自己破産の最適な方法を診断。登録不要・完全無料。",
   },
 };
