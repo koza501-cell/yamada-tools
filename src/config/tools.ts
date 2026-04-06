@@ -1195,7 +1195,6 @@ export const generatorTools: Tool[] = [
     maxFiles: 0,
     category: "generator",
     available: true,
-    isFeatured: true,
   },
   {
     id: "business-card-gen",

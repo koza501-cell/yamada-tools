@@ -13,7 +13,6 @@ import AdSlot from "@/components/AdSlot";
 import StatsCounter from "@/components/common/StatsCounter";
 import FooterCta from "@/components/common/FooterCta";
 import { ScrollRevealGrid } from "@/components/common/ScrollRevealGrid";
-import FinanceSection from "@/components/FinanceSection";
 import { pdfTools, documentTools, convertTools, imageTools, generatorTools, financeTools, careerTools, taxTools, realestateTools, businessTools, getToolCount, allTools } from "@/config/tools";
 
 // High-traffic tool paths that get 🔥 badge
@@ -40,7 +39,7 @@ const USE_CASES = [
   {
     icon: '✉️', title: '郵便物を送りたい',
     desc: '封筒の宛名印刷・名刺・はがき',
-    links: [{ label: '名刺作成', href: '/document/business-card' }, { label: 'QRコード', href: '/image/qr-code' }, { label: '電子印鑑', href: '/generator/hanko' }],
+    links: [{ label: '名刺作成', href: '/document/business-card' }, { label: 'QRコード', href: '/image/qr-code' }, { label: '封筒印刷', href: '/generator/envelope-print' }],
   },
   {
     icon: '📊', title: 'PDFを編集',
@@ -50,7 +49,7 @@ const USE_CASES = [
   {
     icon: '🏦', title: '経理・振込',
     desc: '全銀フォーマット・請求書・領収書',
-    links: [{ label: '領収書', href: '/document/receipt' }, { label: '給与明細', href: '/generator/salary-calc' }, { label: '全銀変換', href: '/convert/bank-format' }],
+    links: [{ label: '領収書', href: '/document/receipt' }, { label: '給与明細', href: '/generator/salary-calc' }, { label: '電子印鑑', href: '/generator/hanko' }],
   },
   {
     icon: '🖼️', title: '画像加工',
@@ -196,7 +195,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4 text-center">
           {/* Main Headline - H1 */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-kon">
-            無料オンラインツール{toolCount.total}個｜PDF編集・画像変換・文書作成
+            無料オンラインツール{availableTools.length}個｜PDF編集・画像変換・文書作成
           </h1>
 
           <p className="text-lg md:text-xl mb-8 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
@@ -254,32 +253,32 @@ export default function Home() {
 
       {/* 🇯🇵 Japan-Exclusive Identity Section */}
       <section className="py-10 bg-white dark:bg-gray-900">
-        <div className="max-w-5xl mx-auto px-4">
+        <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-6">
             <h2 className="text-2xl font-bold text-kon dark:text-blue-400 mb-2">🇯🇵 日本専用ツール</h2>
             <p className="text-gray-600 dark:text-gray-400 text-sm">日本の法律・制度・書式に完全対応。海外ツールでは解決できない日本独自の課題に。</p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Link href="/convert/bank-format" className="group bg-blue-50 dark:bg-gray-800 rounded-xl p-4 text-center hover:shadow-md hover:-translate-y-0.5 transition-all">
-              <div className="text-3xl mb-2">🏦</div>
-              <p className="font-bold text-gray-800 dark:text-gray-100 text-sm group-hover:text-blue-600">全銀フォーマット</p>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">日本の銀行振込専用</p>
-            </Link>
-            <Link href="/tax/furusato-nozei-calculator" className="group bg-green-50 dark:bg-gray-800 rounded-xl p-4 text-center hover:shadow-md hover:-translate-y-0.5 transition-all">
-              <div className="text-3xl mb-2">🎁</div>
-              <p className="font-bold text-gray-800 dark:text-gray-100 text-sm group-hover:text-green-600">ふるさと納税</p>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">控除上限額を即計算</p>
-            </Link>
-            <Link href="/career/income-wall-checker" className="group bg-amber-50 dark:bg-gray-800 rounded-xl p-4 text-center hover:shadow-md hover:-translate-y-0.5 transition-all">
-              <div className="text-3xl mb-2">🧱</div>
-              <p className="font-bold text-gray-800 dark:text-gray-100 text-sm group-hover:text-amber-600">年収の壁チェック</p>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">103万・130万の壁</p>
-            </Link>
-            <Link href="/generator/hanko" className="group bg-red-50 dark:bg-gray-800 rounded-xl p-4 text-center hover:shadow-md hover:-translate-y-0.5 transition-all">
-              <div className="text-3xl mb-2">🔴</div>
-              <p className="font-bold text-gray-800 dark:text-gray-100 text-sm group-hover:text-red-600">電子印鑑</p>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">日本式ハンコをPDFに</p>
-            </Link>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            {[
+              { href: "/convert/bank-format", icon: "🏦", label: "全銀フォーマット", desc: "日本の銀行振込専用" },
+              { href: "/generator/hanko", icon: "🔴", label: "電子印鑑", desc: "日本式ハンコをPDFに" },
+              { href: "/document/invoice", icon: "📋", label: "請求書作成", desc: "インボイス対応・無料" },
+              { href: "/generator/t-number", icon: "🔢", label: "インボイス番号検証", desc: "Tナンバーを即チェック" },
+              { href: "/convert/wareki-seireki", icon: "📅", label: "和暦変換", desc: "元号↔西暦を即変換" },
+              { href: "/convert/furigana", icon: "あ", label: "ふりがな変換", desc: "漢字→ひらがな・カタカナ" },
+              { href: "/generator/envelope-print", icon: "✉️", label: "封筒印刷", desc: "宛名印刷・縦書き対応" },
+              { href: "/document/vertical-text", icon: "縦", label: "縦書きテキスト", desc: "日本式縦書きPDF作成" },
+              { href: "/pdf/combini-print", icon: "🏪", label: "コンビニ印刷", desc: "端切れなし余白追加" },
+              { href: "/generator/nenmatsu-calc", icon: "📝", label: "年末調整計算", desc: "扶養控除・保険料控除" },
+              { href: "/tax/furusato-nozei-calculator", icon: "🎁", label: "ふるさと納税", desc: "控除上限額を即計算" },
+              { href: "/convert/tsubo-converter", icon: "🏠", label: "坪変換", desc: "坪↔平米・畳を一括変換" },
+            ].map(({ href, icon, label, desc }) => (
+              <Link key={href} href={href} className="group bg-gray-50 dark:bg-gray-800 rounded-xl p-3 text-center hover:shadow-md hover:-translate-y-0.5 transition-all border border-gray-100 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600">
+                <div className="text-2xl mb-1.5">{icon}</div>
+                <p className="font-bold text-gray-800 dark:text-gray-100 text-sm leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400">{label}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{desc}</p>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -376,58 +375,73 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/* ⭐ NEW: Featured Tools Section */}
-      {featuredTools.length > 0 && (
-        <section className="py-20 bg-gradient-to-r from-orange-50 to-amber-50 dark:from-gray-800 dark:to-gray-900">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-8">
-              <span className="inline-block px-4 py-1.5 bg-orange-500 text-white text-sm font-bold rounded-full mb-3">🆕 NEW</span>
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">新しいツールが登場！</h2>
-              <p className="text-gray-600 dark:text-gray-300 mt-2">仕事がもっと楽になる、便利な新機能を追加しました</p>
-            </div>
-            <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-              {featuredTools.map((tool) => {
-                const isExternal = tool.path.startsWith("http");
-                const cardInner = (
-                  <div className="p-6">
+      {/* 🆕 新ツール ＋ 💰 金融・資産運用ツール — MERGED SECTION */}
+      <section className="py-16 bg-gradient-to-r from-orange-50 to-amber-50 dark:from-gray-800 dark:to-gray-900">
+        <div className="max-w-7xl mx-auto px-4">
+          {/* NEW tools sub-section */}
+          {featuredTools.filter(t => t.category !== "finance").length > 0 && (
+            <div className="mb-12">
+              <div className="flex items-center gap-3 mb-6">
+                <span className="inline-block px-3 py-1 bg-orange-500 text-white text-sm font-bold rounded-full">🆕 新ツール</span>
+                <h2 className="text-xl font-bold text-gray-900 dark:text-white">新しいツールが登場！</h2>
+              </div>
+              <div className="grid md:grid-cols-2 gap-4 max-w-4xl">
+                {featuredTools.filter(t => t.category !== "finance").map((tool) => (
+                  <Link
+                    key={tool.id}
+                    href={tool.path}
+                    className="group bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden border border-orange-200 dark:border-orange-800 hover:border-orange-400 p-5"
+                  >
                     <div className="flex items-start gap-4">
-                      <div className="text-4xl flex-shrink-0">{tool.icon}</div>
+                      <div className="text-3xl flex-shrink-0">{tool.icon}</div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-1">
-                          <h3 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-orange-600 transition-colors">{tool.nameJa}</h3>
+                          <h3 className="text-base font-bold text-gray-900 dark:text-white group-hover:text-orange-600 transition-colors">{tool.nameJa}</h3>
                           {tool.isNew && <span className="px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full">NEW</span>}
                         </div>
                         <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{tool.description}</p>
-                        <div className="mt-3 flex items-center gap-2">
-                          <span className="text-xs bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300 px-2 py-0.5 rounded-full">✓ 無料</span>
-                          {isExternal
-                            ? <span className="text-xs bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300 px-2 py-0.5 rounded-full">🔍 SEOツール</span>
-                            : <span className="text-xs bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 px-2 py-0.5 rounded-full">🔒 ブラウザ処理</span>
-                          }
-                        </div>
                       </div>
-                      <span className="text-orange-400 group-hover:translate-x-1 transition-transform text-xl flex-shrink-0">→</span>
+                      <span className="text-orange-400 group-hover:translate-x-1 transition-transform text-lg flex-shrink-0">→</span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Finance tools sub-section */}
+          <div>
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-3">
+                <span className="inline-block px-3 py-1 bg-amber-500 text-white text-sm font-bold rounded-full">💰 金融</span>
+                <h2 className="text-xl font-bold text-gray-900 dark:text-white">金融・資産運用ツール</h2>
+              </div>
+              <Link href="/finance" className="text-sm text-blue-600 dark:text-blue-400 hover:underline">すべて見る →</Link>
+            </div>
+            <p className="text-sm text-gray-600 dark:text-gray-300 mb-6">NISA・住宅ローン・老後資金まで、無料で高精度シミュレーション。登録不要。</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {availableFinanceTools.map((tool) => (
+                <Link
+                  key={tool.id}
+                  href={tool.path}
+                  className="group bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 overflow-hidden border border-amber-100 dark:border-gray-700 p-5"
+                >
+                  <div className="flex items-start gap-4">
+                    <span className="text-4xl flex-shrink-0">{tool.icon}</span>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h3 className="text-base font-bold text-kon dark:text-white leading-tight">{tool.nameJa}</h3>
+                        <span className="px-1.5 py-0.5 bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200 text-xs font-bold rounded">Pro</span>
+                      </div>
+                      <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{tool.description}</p>
                     </div>
                   </div>
-                );
-                const cardClass = "group bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-orange-200 dark:border-orange-800 hover:border-orange-400";
-                return isExternal ? (
-                  <a key={tool.id} href={tool.path} target="_blank" rel="noopener noreferrer" className={cardClass}>
-                    {cardInner}
-                  </a>
-                ) : (
-                  <Link key={tool.id} href={tool.path} className={cardClass}>
-                    {cardInner}
-                  </Link>
-                );
-              })}
+                </Link>
+              ))}
             </div>
           </div>
-        </section>
-      )}
-
-      {/* 💰 Finance Tools Section */}
-      <FinanceSection />
+        </div>
+      </section>
 
       <TabbedToolsSection pdfTools={availablePdfTools} documentTools={availableDocTools} convertTools={availableConvertTools} imageTools={availableImageTools} generatorTools={availableGenTools} financeTools={availableFinanceTools} careerTools={careerTools.filter(t => t.available)} taxTools={taxTools.filter(t => t.available)} realestateTools={realestateTools.filter(t => t.available)} businessTools={businessTools.filter(t => t.available)} />
 

@@ -9,7 +9,7 @@ interface StatItem {
 }
 
 const STATS: StatItem[] = [
-  { value: 89, suffix: "+", label: "ツール数" },
+  { value: 135, suffix: "", label: "ツール数" },
   { value: 100, suffix: "万+", label: "月間処理件数" },
   { value: 99.9, suffix: "%", label: "サーバー稼働率" },
 ];

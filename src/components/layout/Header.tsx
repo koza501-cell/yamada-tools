@@ -113,6 +113,7 @@ const calcMenu = {
         { name: "役員報酬最適化", href: "/business/director-salary-optimizer" },
       ],
       moreLink: "/business",
+      extraMoreLink: { label: "不動産ツール →", href: "/realestate" },
     },
   ],
 };
@@ -196,6 +197,11 @@ export default function Header() {
                 <li>
                   <Link href={section.moreLink} className="text-sm text-sakura hover:underline inline-flex items-center gap-1 pt-1">すべて見る →</Link>
                 </li>
+                {(section as any).extraMoreLink && (
+                  <li>
+                    <Link href={(section as any).extraMoreLink.href} className="text-sm text-sakura hover:underline inline-flex items-center gap-1 pt-1">{(section as any).extraMoreLink.label}</Link>
+                  </li>
+                )}
               </ul>
             </div>
           ))}
