@@ -107,6 +107,7 @@ export function PricingPopup({ type, onClose, remainingUses = 0 }: PricingPopupP
         {/* CTA */}
         <Link
           href="/pricing"
+          onClick={onClose}
           className="block w-full bg-gradient-to-r from-pink-500 to-rose-500 text-white text-center py-3 rounded-xl font-bold hover:from-pink-600 hover:to-rose-600 transition-all shadow-lg hover:shadow-xl"
         >
           PROプランを見る

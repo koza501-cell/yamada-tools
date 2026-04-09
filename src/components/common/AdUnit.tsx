@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 interface AdUnitProps {
   slot: string;
@@ -15,13 +16,24 @@ declare global {
 }
 
 export function AdUnit({ slot, format = 'auto', className = '' }: AdUnitProps) {
+  const pathname = usePathname();
+
+  const isExcluded =
+    pathname === '/' ||
+    pathname === '/pricing' ||
+    pathname.startsWith('/about') ||
+    pathname.startsWith('/auth');
+
   useEffect(() => {
+    if (isExcluded) return;
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     } catch (e) {
       console.error('AdSense error:', e);
     }
-  }, []);
+  }, [isExcluded]);
+
+  if (isExcluded) return null;
 
   return (
     <div className={`ad-container my-6 ${className}`}>
