@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: "安全なパスワードを自動生成。大文字、小文字、数字、記号を組み合わせた強力なパスワードを作成します。",
   keywords: ["パスワード生成", "パスワード 作成", "強力なパスワード", "パスワード ジェネレーター"],
   alternates: {
-    canonical: 'https://yamada-tools.jp/generator/password-gen',
+    canonical: 'https://yamada-tools.jp/generator/password',
   },
 };
 

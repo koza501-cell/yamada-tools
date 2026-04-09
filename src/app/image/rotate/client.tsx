@@ -3,6 +3,7 @@
 import { useState, useCallback, useRef } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ {
   question: string;
@@ -21,7 +22,10 @@ interface ProcessedImage {
   flipV: boolean;
 }
 
-export default function ImageRotateClient({ faq }: Props) {
+export default function ImageRotateClient({
+ faq }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [files, setFiles] = useState<File[]>([]);
   const [previews, setPreviews] = useState<string[]>([]);
   const [rotation, setRotation] = useState(0);
@@ -127,7 +131,8 @@ export default function ImageRotateClient({ faq }: Props) {
         results.push(result);
       }
       setProcessedImages(results);
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('rotate');;
       setMascotMessage(`${results.length}枚の画像を回転したよ！`);
     } catch {
       setMascotState("error");

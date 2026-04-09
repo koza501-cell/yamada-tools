@@ -3,6 +3,7 @@
 import Link from "next/link";
 import RandomPickerTool from "@/components/tools/RandomPickerTool";
 import AdUnit from "@/components/AdUnit";
+import Mascot from "@/components/common/Mascot";
 
 const PAGE_URL = "https://yamada-tools.jp/generator/random-picker/nenkai";
 
@@ -115,6 +116,7 @@ export default function NenkaiClient() {
 
         {/* ── Tool UI ── */}
         <section aria-label="抽選ツール" style={{ marginBottom: 32 }}>
+          <Mascot state="welcome" />
           <RandomPickerTool
             presets={PRESETS}
             pageUrl={PAGE_URL}
@@ -355,6 +357,7 @@ function SeasonCard({ icon, season, children, last = false }: {
       <div>
         <h3 style={{ fontSize: "1rem", fontWeight: 800, color: "#223A70", marginBottom: 6 }}>{season}</h3>
         <p style={{ fontSize: "0.9rem", color: "#555", lineHeight: 1.75 }}>{children}</p>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

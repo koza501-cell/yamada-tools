@@ -9,7 +9,7 @@ interface StatItem {
 }
 
 const STATS: StatItem[] = [
-  { value: 135, suffix: "", label: "ツール数" },
+  { value: 133, suffix: "", label: "ツール数" },
   { value: 100, suffix: "万+", label: "月間処理件数" },
   { value: 99.9, suffix: "%", label: "サーバー稼働率" },
 ];
@@ -22,9 +22,12 @@ function useCountUp(target: number, duration: number, active: boolean) {
     const step = (ts: number) => {
       if (!start) start = ts;
       const progress = Math.min((ts - start) / duration, 1);
-      // ease-out cubic
       const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(parseFloat((target * eased).toFixed(target % 1 === 0 ? 0 : 1)));
+      const newCount = parseFloat((target * eased).toFixed(target % 1 === 0 ? 0 : 1));
+      // Skip first zero-frame to avoid "0+" flash — preserve initial target value
+      if (newCount > 0 || progress >= 1) {
+        setCount(newCount);
+      }
       if (progress < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);

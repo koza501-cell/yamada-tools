@@ -5,6 +5,7 @@ import Link from "next/link";
 import Cropper from "react-easy-crop";
 import type { Area, Point } from "react-easy-crop";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ {
   question: string;
@@ -58,7 +59,10 @@ const aspectOptions = [
   { label: "9:16", value: 9 / 16 },
 ];
 
-export default function ImageCropClient({ faq }: Props) {
+export default function ImageCropClient({
+ faq }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [file, setFile] = useState<File | null>(null);
   const [imageSrc, setImageSrc] = useState<string>("");
   const [crop, setCrop] = useState<Point>({ x: 0, y: 0 });
@@ -128,7 +132,8 @@ export default function ImageCropClient({ faq }: Props) {
       if (croppedBlob) {
         if (resultUrl) URL.revokeObjectURL(resultUrl);
         setResultUrl(URL.createObjectURL(croppedBlob));
-        setMascotState("success");
+        setMascotState("success")
+      triggerSuccess('crop');;
         setMascotMessage("切り抜き完了！");
       }
     } catch {

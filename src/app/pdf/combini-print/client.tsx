@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import ShareButtons from "@/components/common/ShareButtons";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ { question: string; answer: string; }
 interface SeoContent { intro: string; useCases?: { title: string; desc: string }[]; tips?: string; }
@@ -38,7 +39,10 @@ async function ensureJsPDF() {
   }
 }
 
-export default function CombiniPrintClient({ faq, seoContent }: Props) {
+export default function CombiniPrintClient({
+ faq, seoContent }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [mounted, setMounted] = useState(false);
   const [pdfFile, setPdfFile] = useState<File | null>(null);
   const [pdfBytes, setPdfBytes] = useState<ArrayBuffer | null>(null);
@@ -157,7 +161,8 @@ export default function CombiniPrintClient({ faq, seoContent }: Props) {
       setPdfBytes(buf);
       setPageCount(doc.numPages);
       setCurrentPreview(1);
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('combini-print');;
       doc.destroy();
     } catch (e: any) {
       setError("PDFの読み込みに失敗しました: " + e.message);
@@ -238,7 +243,8 @@ export default function CombiniPrintClient({ faq, seoContent }: Props) {
       }, 100);
 
       setIsDone(true);
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('combini-print');;
     } catch (e: any) {
       setError("処理に失敗しました: " + e.message);
       setMascotState("error");

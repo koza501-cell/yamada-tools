@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】基礎代謝・カロリー計算機｜TDEE・目標カロリー・PFC比率を自動計算 ",
+  title: "【無料】基礎代謝・カロリー計算機｜TDEE・目標カロリー・PFC比率を自動計算",
   description: "基礎代謝（BMR）・消費カロリー（TDEE）・目標カロリーを自動計算。ダイエット・増量・維持に対応。目標体重の達成予定日・PFCバランスも表示。登録不要・無料。",
   keywords: [
     "基礎代謝 計算",
@@ -19,16 +19,17 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/health/calorie-calculator",
   },
   openGraph: {
-    title: "【無料】基礎代謝・カロリー計算機｜TDEE・目標カロリー・PFC比率を自動計算 ",
+    title: "【無料】基礎代謝・カロリー計算機｜TDEE・目標カロリー・PFC比率を自動計算",
     description: "基礎代謝（BMR）・消費カロリー（TDEE）・目標カロリーを自動計算。ダイエット・増量・維持に対応。目標体重の達成予定日・PFCバランスも表示。登録不要・無料。",
     url: "https://yamada-tools.jp/health/calorie-calculator",
-    siteName: "yamada-tools.jp",
+    siteName: "山田ツール",
     locale: "ja_JP",
     type: "website",
+    images: [{ url: "https://api.easynihon.com/api/og?site=yamada&title=%E3%80%90%E7%84%A1%E6%96%99%E3%80%91%E5%9F%BA%E7%A4%8E%E4%BB%A3%E8%AC%9D%E3%83%BB%E3%82%AB%E3%83%AD%E3%83%AA%E3%83%BC%E8%A8%88%E7%AE%97%E6%A9%9F%EF%BD%9CTDEE%E3%83%BB%E7%9B%AE%E6%A8%99%E3%82%AB%E3%83%AD%E3%83%AA%E3%83%BC%E3%83%BBPFC%E6%AF%94%E7%8E%87%E3%82%92%E8%87%AA%E5%8B%95%E8%A8%88%E7%AE%97" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】基礎代謝・カロリー計算機｜TDEE・目標カロリー・PFC比率 ",
+    title: "【無料】基礎代謝・カロリー計算機｜TDEE・目標カロリー・PFC比率",
     description: "基礎代謝・消費カロリー・目標カロリーを自動計算。ダイエット・増量・維持に対応。登録不要・無料。",
   },
 };
@@ -43,6 +44,11 @@ const jsonLd = {
       "operatingSystem": "Web",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
       "provider": { "@type": "Organization", "name": "山田ツール", "url": "https://yamada-tools.jp" },
+      "citation": [
+            { "@type": "CreativeWork", "name": "厚生労働省「日本人の食事摂取基準（2020年版）」", "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/eiyou/syokuji_kijyun.html" },
+            { "@type": "CreativeWork", "name": "国立健康・栄養研究所", "url": "https://www.nibiohn.go.jp/" }
+          ],
+
       "description": "基礎代謝（BMR）・消費カロリー（TDEE）・目標カロリーを自動計算。目標体重達成日・PFCバランスも表示。ダイエット・増量・維持に対応。登録不要・無料。",
       "url": "https://yamada-tools.jp/health/calorie-calculator",
     },

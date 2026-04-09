@@ -2,15 +2,15 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "不動産計算ツール【無料】賃貸vs購入・固定資産税・引越し費用 | yamada-tools.jp",
+  title: "不動産計算ツール【無料】賃貸vs購入・固定資産税・引越し費用",
   description: "賃貸vs購入シミュレーター・固定資産税・引越し費用・家賃計算・不動産取得税を無料で計算。登録不要・日本国内サーバー処理。",
   keywords: ["賃貸 購入 比較", "固定資産税 計算", "引越し費用 計算", "家賃 計算", "不動産取得税"],
   alternates: { canonical: "https://yamada-tools.jp/realestate" },
   openGraph: {
-    title: "不動産計算ツール【無料】賃貸vs購入・固定資産税・引越し費用 | yamada-tools.jp",
+    title: "不動産計算ツール【無料】賃貸vs購入・固定資産税・引越し費用",
     description: "賃貸vs購入シミュレーター・固定資産税・引越し費用・家賃計算・不動産取得税を無料で計算。登録不要・日本国内サーバー処理。",
     url: "https://yamada-tools.jp/realestate",
-    siteName: "yamada-tools.jp",
+    siteName: "山田ツール",
     locale: "ja_JP",
     type: "website",
   },

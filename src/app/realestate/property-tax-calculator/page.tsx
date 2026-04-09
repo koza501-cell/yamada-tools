@@ -3,6 +3,7 @@
 import { useState } from "react";
 import AdUnit from "@/components/AdUnit";
 import Link from "next/link";
+import Mascot, { MascotState } from "@/components/common/Mascot";
 
 const MAN = 10000;
 
@@ -197,6 +198,7 @@ const yearsOptions: YearsElapsed[] = ["1", "2", "3", "4", "5", "6以降"];
 
 export default function PropertyTaxCalculatorPage() {
   const [landEnabled, setLandEnabled] = useState(true);
+  const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const [landEval, setLandEval] = useState(800);
   const [landUse, setLandUse] = useState<LandUse>("小規模住宅用地（200㎡以下）");
   const [areaSqm, setAreaSqm] = useState(120);
@@ -254,6 +256,7 @@ export default function PropertyTaxCalculatorPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+        <Mascot state={mascotState} className="mb-6" />
       <div className="max-w-3xl mx-auto px-4 py-8">
 
         <div className="mb-6">

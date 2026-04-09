@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import ShareButtons from "@/components/common/ShareButtons";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ { question: string; answer: string; }
 interface SeoContent { intro: string; useCases?: { title: string; desc: string }[]; tips?: string; }
@@ -29,7 +30,10 @@ const PRESETS: GridPreset[] = [
   { label: "3×2", cols: 3, rows: 2, icon: "+⊞", desc: "6分割横" },
 ];
 
-export default function GridSplitClient({ faq, seoContent }: Props) {
+export default function GridSplitClient({
+ faq, seoContent }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [mounted, setMounted] = useState(false);
   const [file, setFile] = useState<File | null>(null);
@@ -150,7 +154,8 @@ export default function GridSplitClient({ faq, seoContent }: Props) {
       }
     }
     setSplitPieces(pieces);
-    setMascotState("success");
+    setMascotState("success")
+      triggerSuccess('grid-split');;
     setMascotMessage(`${cols}×${rows}の${pieces.length}枚に分割完了！ダウンロードしてね！`);
 
     // Show Instagram guide for 3x3
@@ -197,7 +202,8 @@ export default function GridSplitClient({ faq, seoContent }: Props) {
     URL.revokeObjectURL(a.href);
 
     setIsComplete(true);
-    setMascotState("success");
+    setMascotState("success")
+      triggerSuccess('grid-split');;
     setMascotMessage("ZIPダウンロード完了！友達にもシェアしてね♪");
   };
 
@@ -327,7 +333,8 @@ export default function GridSplitClient({ faq, seoContent }: Props) {
         setImgW(img.width);
         setImgH(img.height);
         setImgEl(img);
-        setMascotState("success");
+        setMascotState("success")
+      triggerSuccess('grid-split');;
         setMascotMessage("画像を読み込みました！分割パターンを選んでね！");
       };
       img.src = reader.result as string;

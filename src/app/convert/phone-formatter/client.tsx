@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FormatResult {
   formatted: string;
@@ -11,6 +13,9 @@ interface FormatResult {
 }
 
 export default function PhoneFormatterClient() {
+  const { triggerSuccess } = usePricingContext();
+
+
   const [mounted, setMounted] = useState(false);
   const [mascotState, setMascotState] = useState<MascotState>("idle");
   const [mascotMessage, setMascotMessage] = useState("電話番号を入力してね！");
@@ -126,7 +131,8 @@ export default function PhoneFormatterClient() {
     setResult(formatted);
     
     if (formatted.isValid) {
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('phone-formatter');;
       setMascotMessage("整形完了！");
     } else {
       setMascotState("error");
@@ -268,6 +274,7 @@ export default function PhoneFormatterClient() {
         <div className="mt-8 text-center">
           <Link href="/convert" className="text-kon hover:text-ai">← 変換ツール一覧に戻る</Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

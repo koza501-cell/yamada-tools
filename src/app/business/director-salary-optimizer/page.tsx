@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { IntroSection } from "@/components/IntroSection";
+import { UseCasesSection } from "@/components/UseCasesSection";
+import { FAQSection } from "@/components/FAQSection";
+import Mascot, { MascotState } from "@/components/common/Mascot";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -284,6 +288,7 @@ const DEFAULT_FORM: FormState = {
 
 export default function DirectorSalaryOptimizerPage() {
   const [form, setForm] = useState<FormState>(DEFAULT_FORM);
+  const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const [result, setResult] = useState<OptimalResult | null>(null);
 
   function setField<K extends keyof FormState>(key: K, value: FormState[K]) {
@@ -302,8 +307,26 @@ export default function DirectorSalaryOptimizerPage() {
   const sectionCls =
     "bg-white rounded-xl border border-gray-200 shadow-sm p-5 mb-4";
 
+  const faqItems = [
+    { question: "役員報酬の最適額はいくらですか？", answer: "法人の利益規模によって異なりますが、一般的に法人利益（役員報酬支払前）の60〜80%を役員報酬に設定し、法人税と個人の所得税・社会保険料のバランスを最適化します。本ツールで実際の売上・経費を入力すると最適額を自動計算します。" },
+    { question: "役員報酬はゼロにしてもいいですか？", answer: "可能ですが推奨しません。役員報酬ゼロの場合、法人の利益に全額法人税がかかります。また社会保険に加入できないため、国民健康保険・国民年金の自己負担が増えます。生活費が必要な場合は適切な役員報酬を設定しましょう。" },
+    { question: "配偶者を役員にするとどれくらい節税できますか？", answer: "配偶者に役員報酬を支払うことで所得を分散し、個人の税率を下げる効果があります。夫婦各500万円に分散すると合計税負担が年間50〜100万円減少することがあります。ただし配偶者が実際に業務に従事していることが必要です。" },
+    { question: "役員報酬を上げると社会保険料はどうなりますか？", answer: "役員報酬に応じて社会保険料も増加します。厚生年金は標準報酬月額65万円が上限のため、それ以上は保険料が増えません。健康保険は上限が高くさらに高額になります。" },
+    { question: "役員報酬の変更はいつでもできますか？", answer: "原則として事業年度開始後3ヶ月以内に決定し年度中は変更できません（定期同額給与）。変更した差額分は損金として認められず法人税の対象になります。ただし業績悪化や役員の職務変更があった場合は例外的に変更が認められる場合があります。" },
+  ];
+
+  const useCases = [
+    { icon: "👔", persona: "法人設立直後の社長", title: "役員報酬をいくらに設定すべきか迷っている", benefit: "売上・経費から税負担最小の報酬額を自動算出" },
+    { icon: "👫", persona: "配偶者を役員にしている（したい）経営者", title: "配偶者への報酬配分で節税できるか確認したい", benefit: "所得分散による税負担軽減額を計算" },
+    { icon: "🔄", persona: "役員報酬の見直しを検討中の経営者", title: "現在の報酬額が最適かチェックしたい", benefit: "複数の報酬額シナリオを税負担で比較" },
+  ];
+
+
   return (
+    <>
+      <IntroSection title="役員報酬最適化シミュレーター" paragraphs={["法人の売上・経費を入力すると、法人税と個人の所得税・社会保険料の合計が最小になる役員報酬額を自動計算します。", "配偶者を役員にする場合の所得分散効果や、役員報酬ゼロにした場合との比較も一覧表示。", "登録不要・完全無料。新たに法人設立した方や役員報酬の見直しを検討している方に最適です。"]} />
     <div className="min-h-screen bg-gray-50">
+        <Mascot state={mascotState} className="mb-6" />
       {/* Header */}
       <div className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-8 px-4">
         <div className="max-w-3xl mx-auto">
@@ -876,5 +899,8 @@ export default function DirectorSalaryOptimizerPage() {
         </p>
       </div>
     </div>
+    <UseCasesSection cases={useCases} />
+    <FAQSection faq={faqItems} />
+  </>
   );
 }

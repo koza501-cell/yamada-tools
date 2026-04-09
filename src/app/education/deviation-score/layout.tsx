@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】偏差値 計算機｜点数から偏差値・上位%・クラス順位を自動計算 ",
+  title: "【無料】偏差値 計算機｜点数から偏差値・上位%・クラス順位を自動計算",
   description: "点数・平均点・標準偏差から偏差値を自動計算。上位%・クラス順位・大学合格難易度も表示。複数科目比較・偏差値から点数の逆算も対応。登録不要・完全無料。",
   keywords: [
     "偏差値 計算",
@@ -17,16 +17,17 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/education/deviation-score",
   },
   openGraph: {
-    title: "【無料】偏差値 計算機｜点数から偏差値・上位%・クラス順位を自動計算 ",
+    title: "【無料】偏差値 計算機｜点数から偏差値・上位%・クラス順位を自動計算",
     description: "点数・平均点・標準偏差から偏差値を自動計算。上位%・クラス順位・大学合格難易度も表示。複数科目比較・偏差値から点数の逆算も対応。登録不要・完全無料。",
     url: "https://yamada-tools.jp/education/deviation-score",
-    siteName: "yamada-tools.jp",
+    siteName: "山田ツール",
     locale: "ja_JP",
     type: "website",
+    images: [{ url: "https://api.easynihon.com/api/og?site=yamada&title=%E3%80%90%E7%84%A1%E6%96%99%E3%80%91%E5%81%8F%E5%B7%AE%E5%80%A4%20%E8%A8%88%E7%AE%97%E6%A9%9F%EF%BD%9C%E7%82%B9%E6%95%B0%E3%81%8B%E3%82%89%E5%81%8F%E5%B7%AE%E5%80%A4%E3%83%BB%E4%B8%8A%E4%BD%8D%25%E3%83%BB%E3%82%AF%E3%83%A9%E3%82%B9%E9%A0%86%E4%BD%8D%E3%82%92%E8%87%AA%E5%8B%95%E8%A8%88%E7%AE%97" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】偏差値 計算機｜点数から偏差値・上位%・クラス順位を自動計算 ",
+    title: "【無料】偏差値 計算機｜点数から偏差値・上位%・クラス順位を自動計算",
     description: "点数・平均点・標準偏差から偏差値を自動計算。上位%・クラス順位・大学合格難易度も表示。複数科目比較・偏差値から点数の逆算も対応。登録不要・完全無料。",
   },
 };

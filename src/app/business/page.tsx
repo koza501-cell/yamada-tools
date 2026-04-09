@@ -2,15 +2,15 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "ビジネス・法人税計算ツール【無料】法人化・役員報酬・フリーランス税金 | yamada-tools.jp",
+  title: "ビジネス・法人税計算ツール【無料】法人化・役員報酬・フリーランス税金",
   description: "法人化シミュレーター・役員報酬最適化・法人税・フリーランス税金・簡易課税を無料で計算。登録不要・日本国内サーバー処理。",
   keywords: ["法人化 シミュレーター", "役員報酬 最適化", "法人税 計算", "フリーランス 税金", "簡易課税 計算"],
   alternates: { canonical: "https://yamada-tools.jp/business" },
   openGraph: {
-    title: "ビジネス・法人税計算ツール【無料】法人化・役員報酬・フリーランス税金 | yamada-tools.jp",
+    title: "ビジネス・法人税計算ツール【無料】法人化・役員報酬・フリーランス税金",
     description: "法人化シミュレーター・役員報酬最適化・法人税・フリーランス税金・簡易課税を無料で計算。登録不要・日本国内サーバー処理。",
     url: "https://yamada-tools.jp/business",
-    siteName: "yamada-tools.jp",
+    siteName: "山田ツール",
     locale: "ja_JP",
     type: "website",
   },

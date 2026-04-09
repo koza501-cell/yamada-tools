@@ -54,7 +54,7 @@ export default function NewsletterSignup() {
         </form>
       )}
       <p className="text-xs text-white/60 mt-2">
-        ※ スパムは送りません。いつでも解除できます。
+        ※ 迷惑メールは一切送りません。いつでも解除できます。
       </p>
     </div>
   );

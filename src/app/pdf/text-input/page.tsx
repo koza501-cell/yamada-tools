@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { getToolById } from "@/config/tools";
 import { generateToolJsonLd } from "@/lib/seo";
 import PdfTextClient from "./client";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 const tool = getToolById("pdf-text-input")!;
 
@@ -207,6 +208,7 @@ export default function PdfTextPage() {
       {additionalSchemas.map((schema: any, i: number) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       ))}
+      <LanguageSwitcher jaUrl="/pdf/text-input" enUrl="/en/pdf-text-input" currentLang="ja" />
       <div className="ad-free-zone">
         <PdfTextClient faq={faq} seoContent={seoContent} />
       </div>

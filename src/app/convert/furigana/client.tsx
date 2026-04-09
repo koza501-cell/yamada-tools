@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import RelatedTools, { relatedToolSets } from "@/components/common/RelatedTools";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface ConversionDetail {
   original: string;
@@ -20,6 +22,9 @@ interface ConversionResult {
 }
 
 export default function FuriganaClient() {
+  const { triggerSuccess } = usePricingContext();
+
+
   const [mounted, setMounted] = useState(false);
   const [mascotState, setMascotState] = useState<MascotState>("idle");
   const [mascotMessage, setMascotMessage] = useState("漢字を入力してね！");
@@ -63,7 +68,8 @@ export default function FuriganaClient() {
 
       const data = await response.json();
       setResult(data);
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('furigana');;
       setMascotMessage("変換完了！");
     } catch (error) {
       console.error(error);
@@ -320,6 +326,7 @@ export default function FuriganaClient() {
         <div className="mt-8 text-center">
           <Link href="/convert" className="text-kon hover:text-ai">← 変換ツール一覧に戻る</Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import ShareButtons from "@/components/common/ShareButtons";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ { question: string; answer: string; }
 interface SeoContent { intro: string; useCases?: { title: string; desc: string }[]; tips?: string; }
@@ -27,7 +28,10 @@ const PRESETS: { label: string; icon: string; settings: Partial<LineSettings> }[
   { label: "白集中線", icon: "⚪", settings: { lineCount: 80, thickness: 3, innerRadius: 25, color: "#ffffff", opacity: 85, style: "tapered" } },
 ];
 
-export default function ConcentrationLinesClient({ faq, seoContent }: Props) {
+export default function ConcentrationLinesClient({
+ faq, seoContent }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [mounted, setMounted] = useState(false);
   const [file, setFile] = useState<File | null>(null);
@@ -254,7 +258,8 @@ export default function ConcentrationLinesClient({ faq, seoContent }: Props) {
     a.download = file.name.replace(/\.[^/.]+$/, "") + "_concentration_yamada-tools.png";
     a.click();
     setIsComplete(true);
-    setMascotState("success");
+    setMascotState("success")
+      triggerSuccess('concentration-lines');;
     setMascotMessage("ダウンロード完了！友達にもシェアしてね♪");
   };
 
@@ -274,7 +279,8 @@ export default function ConcentrationLinesClient({ faq, seoContent }: Props) {
       img.onload = () => {
         setImgW(img.width); setImgH(img.height); setImgEl(img);
         setCenterX(50); setCenterY(50);
-        setMascotState("success");
+        setMascotState("success")
+      triggerSuccess('concentration-lines');;
         setMascotMessage("画像をクリックして集中線の中心を指定してね！");
       };
       img.src = reader.result as string;

@@ -44,7 +44,7 @@ export function generateToolMetadata({
       type: "website",
       images: [
         {
-          url: `${baseUrl}/og-tools/${tool.id}.png`,
+          url: `${baseUrl}/og-image.png`,
           width: 1200,
           height: 630,
           alt: `${tool.nameJa} - 山田ツール`,
@@ -53,9 +53,9 @@ export function generateToolMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${tool.nameJa} `,
+      title: `${tool.nameJa}`,
       description,
-      images: [`${baseUrl}/og-tools/${tool.id}.png`],
+      images: [`${baseUrl}/og-image.png`],
     },
     alternates: {
       canonical: `${baseUrl}${tool.path}`,

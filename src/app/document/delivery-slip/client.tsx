@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface DeliveryItem {
   id: number;
@@ -14,6 +16,9 @@ interface DeliveryItem {
 }
 
 export default function DeliverySlipClient() {
+  const { triggerSuccess } = usePricingContext();
+
+
   const [mounted, setMounted] = useState(false);
   const [mascotState, setMascotState] = useState<MascotState>("idle");
   const [mascotMessage, setMascotMessage] = useState("納品書を作成しよう！");
@@ -65,7 +70,8 @@ export default function DeliverySlipClient() {
       setMascotMessage("必須項目を入力してね！");
       return;
     }
-    setMascotState("success");
+    setMascotState("success")
+      triggerSuccess('delivery-slip');;
     setMascotMessage("印刷画面を開くよ！");
     window.print();
   };
@@ -271,6 +277,7 @@ export default function DeliverySlipClient() {
         <div className="mt-8 text-center print:hidden">
           <Link href="/document" className="text-blue-600 hover:text-blue-800">← 書類作成一覧に戻る</Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

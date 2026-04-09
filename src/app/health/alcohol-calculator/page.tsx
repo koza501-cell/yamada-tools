@@ -3,6 +3,10 @@
 import { useState } from "react";
 import AdUnit from "@/components/AdUnit";
 import Link from "next/link";
+import { IntroSection } from "@/components/IntroSection";
+import { UseCasesSection } from "@/components/UseCasesSection";
+import { FAQSection } from "@/components/FAQSection";
+import { CitationsSection } from "@/components/CitationsSection";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -282,7 +286,29 @@ export default function AlcoholCalculatorPage() {
     setError("");
   }
 
+  const faqItems = [
+    { question: "アルコールを早く抜く方法はありますか？", answer: "残念ながらアルコールの分解を早める確実な方法はありません。時間だけが解決します。水を飲むことで脱水を防ぎ二日酔いの症状を和らげる効果はありますが血中アルコール濃度を下げる効果はありません。" },
+    { question: "体重が重い人はお酒に強いですか？", answer: "一般的に体重が重い方が同じ量のお酒での血中アルコール濃度は低くなります。ただし肝臓の分解酵素の量にも大きく影響されます。体重が重くても酵素量が少ない人は弱い場合があります。" },
+    { question: "女性は男性より酔いやすいのはなぜですか？", answer: "女性は体内の水分量が男性より少なく血中アルコール濃度が高くなること、アルコール分解酵素の活性が低い傾向があることが主な理由です。" },
+    { question: "ちゃんぽんは酔いやすいですか？", answer: "同じ量の純アルコールであれば酔い方は変わりません。ただし飲んだ量を把握しにくくなり結果的に飲みすぎてしまうことが多いです。" },
+    { question: "二日酔いを防ぐ方法はありますか？", answer: "飲む前に食事をする・水を一緒に飲む・純アルコール20g以下に抑える・週2日の休肝日を作る、などが効果的です。二日酔いは肝臓がアルコール処理で疲弊しているサインです。" },
+  ];
+
+  const useCases = [
+    { icon: "🚗", persona: "翌朝に車を運転する予定がある方", title: "何時間後なら運転できるか知りたい", benefit: "飲酒量と体重から分解完了時刻を算出" },
+    { icon: "🍺", persona: "お酒好きで体への影響が気になる方", title: "自分のアルコール処理能力を把握したい", benefit: "体重・性別に基づいた個人差を反映した計算" },
+    { icon: "🌙", persona: "深夜に飲んで朝が心配な方", title: "翌朝に残存アルコールがないか確認したい", benefit: "飲酒終了時刻から翌朝の血中濃度を推定" },
+  ];
+
+
+  const citations = [
+    { name: "厚生労働省 e-ヘルスネット「アルコール」", url: "https://www.e-healthnet.mhlw.go.jp/information/alcohol", description: "アルコール代謝・適正飲酒量の根拠" },
+    { name: "公益社団法人アルコール健康医学協会", url: "https://www.arukenkyo.or.jp/", description: "飲酒・健康に関する情報提供機関" },
+  ];
+
   return (
+    <>
+      <IntroSection title="アルコール分解時間計算機" paragraphs={["飲酒量・体重・性別を入力するとアルコールが体内から分解されるまでの時間を計算します。翌朝の血中アルコール残存量も確認可能。", "「飲んだ翌朝に運転しても大丈夫か」を数値で確認できます。肝臓の処理速度は体重1kgあたり約0.1gが目安です。", "登録不要・完全無料。二日酔い対策や翌朝の予定に合わせた飲酒量の目安把握に活用してください。"]} />
     <main className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white border-b border-gray-200">
@@ -774,5 +800,8 @@ export default function AlcoholCalculatorPage() {
         <AdUnit slot="bottom" className="my-2" />
       </div>
     </main>
+    <UseCasesSection cases={useCases} />
+    <FAQSection faq={faqItems} />
+  </>
   );
 }

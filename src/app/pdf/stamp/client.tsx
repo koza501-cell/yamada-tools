@@ -3,6 +3,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import ShareButtons from "@/components/common/ShareButtons";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 interface FAQ { question: string; answer: string; }
 interface SeoContent { intro: string; useCases?: { title: string; desc: string }[]; tips?: string; }
 interface Props { faq: FAQ[]; seoContent?: SeoContent; }
@@ -185,7 +186,10 @@ function formatDate(): string {
 
 // ===================== Component =====================
 
-export default function PdfStampClient({ faq, seoContent }: Props) {
+export default function PdfStampClient({
+ faq, seoContent }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const renderTaskRef = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -289,7 +293,8 @@ export default function PdfStampClient({ faq, seoContent }: Props) {
     setPdfDoc(doc);
     setTotalPages(doc.numPages);
     setCurrentPage(1);
-    setMascotState("success");
+    setMascotState("success")
+      triggerSuccess('stamp');;
     setMascotMessage("PDF読み込み完了！印鑑を用意して、PDFをクリックして押印してね！");
   };
 
@@ -313,7 +318,8 @@ export default function PdfStampClient({ faq, seoContent }: Props) {
     if (!hankoName.trim()) return;
     const dataUrl = generateHanko(hankoName.trim(), hankoShape, hankoColor, hankoDate);
     loadStampImage(dataUrl);
-    setMascotState("success");
+    setMascotState("success")
+      triggerSuccess('stamp');;
     setMascotMessage("印影を作成しました！PDFをクリックして押印してね！");
   };
 
@@ -415,7 +421,8 @@ export default function PdfStampClient({ faq, seoContent }: Props) {
   const resetAllStamps = () => {
     setPlacements([]);
     setIsComplete(false);
-    setMascotState("success");
+    setMascotState("success")
+      triggerSuccess('stamp');;
     setMascotMessage("押印をリセットしました。もう一度押印してね！");
   };
 
@@ -439,7 +446,8 @@ export default function PdfStampClient({ faq, seoContent }: Props) {
   const resetAllStamps = () => {
     setPlacements([]);
     setIsComplete(false);
-    setMascotState("success");
+    setMascotState("success")
+      triggerSuccess('stamp');;
     setMascotMessage("押印をリセットしました。PDFはそのまま残っています。");
   };
         stampImage = await pdfDocLib.embedJpg(stampDataUrl);
@@ -480,7 +488,8 @@ export default function PdfStampClient({ faq, seoContent }: Props) {
       setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 3000);
 
       setIsComplete(true);
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('stamp');;
       setMascotMessage("押印済みPDFをダウンロードしました！友達にもシェアしてね♪");
     } catch (err) {
       setMascotState("idle");

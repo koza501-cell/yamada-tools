@@ -3,6 +3,10 @@
 import { useState } from "react";
 import AdUnit from "@/components/AdUnit";
 import Link from "next/link";
+import { IntroSection } from "@/components/IntroSection";
+import { UseCasesSection } from "@/components/UseCasesSection";
+import { FAQSection } from "@/components/FAQSection";
+import { CitationsSection } from "@/components/CitationsSection";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -211,7 +215,28 @@ export default function SleepCalculatorPage() {
     setError("");
   }
 
+  const faqItems = [
+    { question: "何時間寝れば十分ですか？", answer: "成人（20〜60代）は6〜8時間が推奨です。睡眠サイクル（90分×5回＝7.5時間）を意識すると目覚めがスッキリします。昼間に眠気を感じず集中力が維持できる時間が個人の適正睡眠時間です。" },
+    { question: "休日に寝溜めをしても大丈夫ですか？", answer: "平日と休日で2時間以上ずれると社会的時差ぼけが起きます。月曜朝がつらい原因になります。毎日同じ時間に起きることが体内時計を整える最善の方法です。" },
+    { question: "短時間睡眠でも大丈夫な人がいるのはなぜですか？", answer: "遺伝的なショートスリーパーは人口の1〜3%程度です。多くの人は睡眠不足に慣れているだけで認知機能が低下していることを自覚できていないケースが多いです。" },
+    { question: "昼寝はどのくらいの時間が理想ですか？", answer: "15〜30分（最長45分以内）が理想です。30分以上眠ると深い睡眠に入り目覚めが悪くなります。正午〜午後3時の間に取ることをお勧めします。" },
+    { question: "寝つきが悪い場合の対策はありますか？", answer: "就寝1〜2時間前のぬるめのお風呂・スマートフォンのブルーライトを避ける・部屋を18〜22℃に保つ・午後2時以降のカフェインを控える、などが効果的です。" },
+  ];
+
+  const useCases = [
+    { icon: "⏰", persona: "スッキリ目覚めたい方", title: "起床時刻から逆算した就寝時刻を知りたい", benefit: "90分サイクルに合わせた最適な就寝タイミングを提案" },
+    { icon: "💤", persona: "睡眠時間が短い方", title: "限られた時間で最大限休む方法を知りたい", benefit: "4.5時間・6時間など短い睡眠の最適パターンを確認" },
+    { icon: "🌞", persona: "昼寝を活用したい方", title: "仮眠の最適な長さと時刻を知りたい", benefit: "パワーナップ20分vs90分の効果の違いを確認" },
+  ];
+
+
+  const citations = [
+    { name: "厚生労働省「健康づくりのための睡眠ガイド2023」", url: "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/suimin/index.html", description: "成人・高齢者・子どもの推奨睡眠時間の根拠" },
+  ];
+
   return (
+    <>
+      <IntroSection title="睡眠時間最適化ツール" paragraphs={["起床時刻から逆算した最適な就寝時刻、または就寝時刻から最適な起床時刻を計算します。90分の睡眠サイクル（レム睡眠・ノンレム睡眠）に基づいて複数の候補時刻を提示。", "目覚めやすいタイミングで起きることで、スッキリとした目覚めを実現します。仮眠（パワーナップ）の最適時間も確認できます。", "登録不要・完全無料。睡眠の質改善や早起きの習慣化に取り組む方に最適です。"]} />
     <main className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white border-b border-gray-200">
@@ -693,5 +718,8 @@ export default function SleepCalculatorPage() {
         <AdUnit slot="bottom" className="my-2" />
       </div>
     </main>
+    <UseCasesSection cases={useCases} />
+    <FAQSection faq={faqItems} />
+  </>
   );
 }

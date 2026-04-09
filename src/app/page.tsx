@@ -32,34 +32,40 @@ const SEARCH_CHIPS = [
 // Feature I: Use case cards
 const USE_CASES = [
   {
-    icon: '📄', title: '書類を作りたい',
+    icon: '📄', title: '請求書・見積書・納品書',
     desc: '請求書・見積書・納品書をPDFで作成',
-    links: [{ label: '見積書', href: '/document/quotation' }, { label: '納品書', href: '/document/delivery-slip' }, { label: '送付状', href: '/document/cover-letter' }],
+    moreHref: '/document',
+    links: [{ label: '請求書作成', href: '/document/invoice' }, { label: '見積書', href: '/document/quotation' }, { label: '納品書', href: '/document/delivery-slip' }, { label: '送付状', href: '/document/cover-letter' }, { label: '領収書', href: '/document/receipt' }],
   },
   {
-    icon: '✉️', title: '郵便物を送りたい',
+    icon: '✉️', title: '封筒印刷・宛名書き',
     desc: '封筒の宛名印刷・名刺・はがき',
-    links: [{ label: '名刺作成', href: '/document/business-card' }, { label: 'QRコード', href: '/image/qr-code' }, { label: '封筒印刷', href: '/generator/envelope-print' }],
+    moreHref: '/generator/envelope-print',
+    links: [{ label: '封筒印刷', href: '/generator/envelope-print' }, { label: '名刺作成', href: '/document/business-card' }, { label: 'QRコード', href: '/image/qr-code' }, { label: 'FAX送付状', href: '/document/fax-cover' }],
   },
   {
     icon: '📊', title: 'PDFを編集',
     desc: '圧縮・結合・分割・回転',
-    links: [{ label: 'PDF結合', href: '/pdf/merge' }, { label: 'PDF分割', href: '/pdf/split' }, { label: 'PDF回転', href: '/pdf/rotate' }],
+    moreHref: '/pdf',
+    links: [{ label: 'PDF圧縮', href: '/pdf/compress' }, { label: 'PDF結合', href: '/pdf/merge' }, { label: 'PDF分割', href: '/pdf/split' }, { label: 'PDF回転', href: '/pdf/rotate' }, { label: 'PDF文字入力', href: '/pdf/text-input' }],
   },
   {
-    icon: '🏦', title: '経理・振込',
-    desc: '全銀フォーマット・請求書・領収書',
-    links: [{ label: '領収書', href: '/document/receipt' }, { label: '給与明細', href: '/generator/salary-calc' }, { label: '電子印鑑', href: '/generator/hanko' }],
+    icon: '🏦', title: '全銀フォーマット・インボイス',
+    desc: '全銀フォーマット・請求書・インボイス対応',
+    moreHref: '/convert/bank-format',
+    links: [{ label: '全銀変換', href: '/convert/bank-format' }, { label: 'インボイス番号確認', href: '/generator/t-number' }, { label: '電子印鑑', href: '/generator/hanko' }, { label: '年末調整', href: '/generator/nenmatsu-calc' }],
   },
   {
     icon: '🖼️', title: '画像加工',
     desc: '圧縮・変換・リサイズ',
-    links: [{ label: '画像圧縮', href: '/image/compress' }, { label: 'リサイズ', href: '/image/resize' }, { label: 'モザイク', href: '/image/mosaic' }],
+    moreHref: '/image',
+    links: [{ label: '画像圧縮', href: '/image/compress' }, { label: 'リサイズ', href: '/image/resize' }, { label: 'フォーマット変換', href: '/image/format-convert' }, { label: 'モザイク', href: '/image/mosaic' }],
   },
   {
-    icon: '🔢', title: '計算・シミュレーション',
+    icon: '🔢', title: '税金計算・年末調整',
     desc: '税金・ローン・年金計算',
-    links: [{ label: '住宅ローン', href: '/finance/jutaku-loan' }, { label: 'NISA計算', href: '/finance/nisa-simulator' }, { label: '消費税', href: '/generator/tax-calculator' }],
+    moreHref: '/finance',
+    links: [{ label: '住宅ローン', href: '/finance/jutaku-loan' }, { label: 'NISA計算', href: '/finance/nisa-simulator' }, { label: '消費税計算', href: '/generator/tax-calculator' }, { label: 'ふるさと納税', href: '/tax/furusato-nozei-calculator' }],
   },
 ];
 export const revalidate = 3600; // Revalidate every hour
@@ -84,7 +90,16 @@ function isNewBlog(publishDate: string): boolean {
   return diffInDays <= 7;
 }
 // Homepage structured data - Dynamic list of all tools
-const availableTools = allTools.filter(t => t.available);
+const allAvailableTools = allTools.filter(t => t.available);
+// BUG-003: Deduplicate by path AND name to remove old-URL aliases (e.g. /fx-calculator vs /finance/fx-calculator)
+const seenPaths = new Set<string>();
+const seenNames = new Set<string>();
+const availableTools = allAvailableTools.filter(tool => {
+  if (seenPaths.has(tool.path) || seenNames.has(tool.nameJa)) return false;
+  seenPaths.add(tool.path);
+  seenNames.add(tool.nameJa);
+  return true;
+});
 const homepageSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
@@ -195,12 +210,28 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4 text-center">
           {/* Main Headline - H1 */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-kon">
-            無料オンラインツール{availableTools.length}個｜PDF編集・画像変換・文書作成
+            日本のビジネスに特化した無料オンラインツール｜インボイス・全銀・電子印鑑など{availableTools.length}種
           </h1>
 
           <p className="text-lg md:text-xl mb-8 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             日本国内サーバーで安全に処理。登録不要・完全無料。
           </p>
+
+          {/* Trust Badges - above fold */}
+          <div className="flex flex-wrap justify-center gap-2 mb-5">
+            <span className="bg-blue-50 dark:bg-gray-700 text-blue-700 dark:text-gray-200 px-3 py-1.5 rounded-full text-xs font-medium border border-blue-100 dark:border-gray-600">
+              🇯🇵 日本国内サーバー
+            </span>
+            <span className="bg-blue-50 dark:bg-gray-700 text-blue-700 dark:text-gray-200 px-3 py-1.5 rounded-full text-xs font-medium border border-blue-100 dark:border-gray-600">
+              🔒 SSL暗号化
+            </span>
+            <span className="bg-blue-50 dark:bg-gray-700 text-blue-700 dark:text-gray-200 px-3 py-1.5 rounded-full text-xs font-medium border border-blue-100 dark:border-gray-600">
+              🗑️ 60分で自動削除
+            </span>
+            <span className="bg-blue-50 dark:bg-gray-700 text-blue-700 dark:text-gray-200 px-3 py-1.5 rounded-full text-xs font-medium border border-blue-100 dark:border-gray-600">
+              ✨ 登録不要・完全無料
+            </span>
+          </div>
 
           {/* Hero Animation */}
           <HeroAnimation />
@@ -230,22 +261,6 @@ export default function Home() {
           >
             人気ツールを見る →
           </Link>
-
-          {/* Trust Badges */}
-          <div className="flex flex-wrap justify-center gap-4 mt-10">
-            <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-4 py-2 rounded-full text-sm font-medium">
-              🇯🇵 日本国内サーバー
-            </span>
-            <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-4 py-2 rounded-full text-sm font-medium">
-              🔒 安全なSSL暗号化
-            </span>
-            <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-4 py-2 rounded-full text-sm font-medium">
-              🗑️ 処理後自動削除
-            </span>
-            <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-4 py-2 rounded-full text-sm font-medium">
-              ✨ 登録不要・完全無料
-            </span>
-          </div>
         </div>
       </section>
       {/* Recently Used Tools - Priority for returning users */}
@@ -344,11 +359,34 @@ export default function Home() {
         </div>
       </section>
 
+
+      {/* 担当業務から探す */}
+      <section className="py-8 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-4">担当業務から探す</p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {[
+              { label: "経理・財務", icon: "🏦", href: "/tools?role=accounting" },
+              { label: "人事・給与", icon: "👥", href: "/tools?role=hr" },
+              { label: "総務・庶務", icon: "🏢", href: "/tools?role=general" },
+              { label: "PDF処理",   icon: "📄", href: "/tools?role=pdf" },
+              { label: "マーケ・営業", icon: "📊", href: "/tools?role=marketing" },
+            ].map(({ label, icon, href }) => (
+              <Link key={href} href={href}
+                className="flex items-center gap-2 px-5 py-2.5 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm font-medium text-gray-700 dark:text-gray-200 hover:border-kon hover:text-kon dark:hover:text-blue-400 transition-colors">
+                <span>{icon}</span>{label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 🔥 Popular Tools Section - Below Fold */}
-      <section id="popular-tools" className="py-16 bg-gradient-to-r from-rose-50 to-orange-50 dark:from-gray-800 dark:to-gray-900" style={{scrollMarginTop: "80px"}}>
+      <section id="popular-tools" className="py-16 bg-gradient-to-r from-rose-50 to-orange-50 dark:from-gray-800 dark:to-gray-900" style={{scrollMarginTop: "120px"}}>
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-6">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white">🔥 人気ツール - 今すぐ使う</h2>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">先月100万件以上の処理実績 · 法人500社以上が利用</p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-2">
             {[

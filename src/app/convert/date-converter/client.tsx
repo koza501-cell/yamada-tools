@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ {
   question: string;
@@ -101,7 +103,10 @@ const seirekiToWareki = (year: number, month: number, day: number): { era: strin
   return { era: "", eraYear: 0, valid: false, error: "明治以前の日付には対応していません" };
 };
 
-export default function DateConverterClient({ faq }: Props) {
+export default function DateConverterClient({
+ faq }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [mode, setMode] = useState<"wareki-to-seireki" | "seireki-to-wareki">("wareki-to-seireki");
   
   // Wareki inputs
@@ -134,7 +139,8 @@ export default function DateConverterClient({ faq }: Props) {
         const z = getZodiac(converted.year);
         setResult(`西暦 ${converted.year}年${warekiMonth}月${warekiDay}日`);
         setZodiac(z);
-        setMascotState("success");
+        setMascotState("success")
+      triggerSuccess('date-converter');;
         setMascotMessage(`${converted.year}年は${z.animal}年だよ！${z.emoji}`);
       } else {
         setError(converted.error || "変換エラー");
@@ -148,7 +154,8 @@ export default function DateConverterClient({ faq }: Props) {
         const yearDisplay = converted.eraYear === 1 ? "元" : converted.eraYear.toString();
         setResult(`${converted.era}${yearDisplay}年${seirekiMonth}月${seirekiDay}日`);
         setZodiac(z);
-        setMascotState("success");
+        setMascotState("success")
+      triggerSuccess('date-converter');;
         setMascotMessage(`${converted.era}${yearDisplay}年だよ！${z.emoji}`);
       } else {
         setError(converted.error || "変換エラー");
@@ -477,6 +484,7 @@ export default function DateConverterClient({ faq }: Props) {
             ← 変換ツール一覧に戻る
           </Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

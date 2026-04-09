@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】フリーランス 税金・経費 計算機｜手取り・節税シミュレーション 2026年版 ",
+  title: "【無料】フリーランス 税金・経費 計算機｜手取り・節税シミュレーション 2026年版",
   description: "フリーランスの税金・手取りを完全計算。青色申告vs白色申告の比較、経費カテゴリ別シミュレーション、インボイス制度の影響計算、節税アドバイス付き。2026年最新税制対応。登録不要・完全無料。",
   keywords: [
     "フリーランス 税金 計算",
@@ -21,10 +21,11 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ja_JP",
     siteName: "山田ツール",
+    images: [{ url: "https://api.easynihon.com/api/og?site=yamada&title=%E3%80%90%E7%84%A1%E6%96%99%E3%80%91%E3%83%95%E3%83%AA%E3%83%BC%E3%83%A9%E3%83%B3%E3%82%B9%20%E7%A8%8E%E9%87%91%E3%83%BB%E7%B5%8C%E8%B2%BB%20%E8%A8%88%E7%AE%97%E6%A9%9F%EF%BD%9C%E6%89%8B%E5%8F%96%E3%82%8A%E3%83%BB%E7%AF%80%E7%A8%8E%E3%82%B7%E3%83%9F%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%202026%E5%B9%B4%E7%89%88" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】フリーランス 税金・経費 計算機 ",
+    title: "【無料】フリーランス 税金・経費 計算機",
     description: "フリーランスの税金・手取りを完全計算。2026年最新税制対応。登録不要・無料。",
   },
   alternates: {

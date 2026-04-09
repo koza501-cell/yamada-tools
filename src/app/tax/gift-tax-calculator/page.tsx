@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { IntroSection } from "@/components/IntroSection";
+import { UseCasesSection } from "@/components/UseCasesSection";
+import { FAQSection } from "@/components/FAQSection";
+import Mascot, { MascotState } from "@/components/common/Mascot";
 
 type Relationship = "lineal" | "other";
 type GiftType = "annual" | "unified";
@@ -182,6 +186,7 @@ const schema = {
 
 export default function GiftTaxCalculatorPage() {
   const [giftAmount, setGiftAmount] = useState("");
+  const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const [relationship, setRelationship] = useState<Relationship>("lineal");
   const [age, setAge] = useState("");
   const [giftType, setGiftType] = useState<GiftType>("annual");
@@ -204,6 +209,7 @@ export default function GiftTaxCalculatorPage() {
     if (isNaN(ageVal) || ageVal <= 0) return;
     const res = calculate(amount, relationship, ageVal, giftType, housingGift, housingType);
     setResult(res);
+    setMascotState("success");
   }
 
   function handleReset() {
@@ -216,8 +222,23 @@ export default function GiftTaxCalculatorPage() {
     setResult(null);
   }
 
+  const faqItems = [
+    { question: "贈与税の基礎控除はいくらですか？", answer: "暦年課税の場合、年間110万円まで非課税です。110万円を超えた部分に対して10%〜55%の累進税率で課税されます。" },
+    { question: "親から1000万円もらったら贈与税はいくらですか？", answer: "一般贈与（祖父母・親以外）の場合：（1000万円-110万円）×40%−125万円=231万円。特例贈与（直系尊属から20歳以上への贈与）の場合：（1000万円-110万円）×30%−90万円=177万円です。" },
+    { question: "相続時精算課税と暦年課税の違いは何ですか？", answer: "相続時精算課税は2,500万円まで非課税で贈与でき、贈与者が亡くなった時に相続財産に加算して相続税を計算する制度です。2024年改正から年間110万円の基礎控除が追加されました。暦年課税は毎年110万円まで非課税の制度です。" },
+  ];
+
+  const useCases = [
+    { icon: "🎁", persona: "親から大きな贈与を受ける予定の方", title: "贈与税がいくらかかるか事前に確認したい", benefit: "一般贈与・特例贈与の税額を自動計算" },
+    { icon: "🏠", persona: "住宅購入資金を親に援助してもらう方", title: "住宅取得資金贈与の非課税枠を確認したい", benefit: "各種贈与税の非課税特例と適用条件を確認" },
+    { icon: "📅", persona: "相続対策として毎年贈与を検討している方", title: "暦年贈与と相続時精算課税どちらが有利か", benefit: "長期的な相続税対策として最適な贈与方法を試算" },
+  ];
+
   return (
-    <div className="min-h-screen bg-gray-50">
+    <>
+      <IntroSection title="贈与税計算機" paragraphs={["贈与金額・贈与者との関係（親・祖父母など直系尊属か否か）・受贈者の年齢を入力すると贈与税を自動計算します。", "暦年課税（年間110万円基礎控除）と相続時精算課税（2,500万円非課税・2024年改正で年110万円追加控除）を比較できます。", "登録不要・完全無料。生前贈与の計画立案や贈与税の概算把握に活用できます。"]} />
+      <div className="min-h-screen bg-gray-50">
+        <Mascot state={mascotState} className="mb-6" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -605,5 +626,8 @@ export default function GiftTaxCalculatorPage() {
         </div>
       </div>
     </div>
+    <UseCasesSection cases={useCases} />
+    <FAQSection faq={faqItems} />
+  </>
   );
 }

@@ -1,8 +1,18 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】失業給付金計算機｜給付日数・受給額を自動計算 2026年版 ",
+  title: "【無料】失業給付金計算機｜給付日数・受給額を自動計算 2026年版",
   description: "離職理由・年齢・雇用保険加入期間を入力するだけで失業給付金の給付日数と総受給額を自動計算。自己都合・会社都合・特定受給資格者に完全対応。登録不要・無料。",
+  alternates: {
+    canonical: "https://yamada-tools.jp/career/unemployment-calculator",
+  },
+  openGraph: {
+    url: "https://yamada-tools.jp/career/unemployment-calculator",
+    siteName: "山田ツール",
+    locale: "ja_JP",
+    type: "website",
+    images: [{ url: "https://api.easynihon.com/api/og?site=yamada&title=%E3%80%90%E7%84%A1%E6%96%99%E3%80%91%E5%A4%B1%E6%A5%AD%E7%B5%A6%E4%BB%98%E9%87%91%E8%A8%88%E7%AE%97%E6%A9%9F%EF%BD%9C%E7%B5%A6%E4%BB%98%E6%97%A5%E6%95%B0%E3%83%BB%E5%8F%97%E7%B5%A6%E9%A1%8D%E3%82%92%E8%87%AA%E5%8B%95%E8%A8%88%E7%AE%97%202026%E5%B9%B4%E7%89%88" }],
+  },
 };
 
 const schema = {
@@ -72,10 +82,7 @@ const schema = {
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       {children}
     </>
   );

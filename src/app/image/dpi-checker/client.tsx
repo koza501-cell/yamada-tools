@@ -2,6 +2,8 @@
 "use client";
 import { useState, useRef } from "react";
 import Link from "next/link";
+import Mascot from "@/components/common/Mascot";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ { question: string; answer: string; }
 interface Props { faq: FAQ[]; seoContent?: { intro: string }; }
@@ -13,8 +15,12 @@ interface ImageInfo {
   quality: string; qualityColor: string;
 }
 
-export default function DpiCheckerClient({ faq, seoContent }: Props) {
+export default function DpiCheckerClient({
+ faq, seoContent }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [image, setImage] = useState(null);
+  const [mascotState, setMascotState] = useState("idle");
   const [fileName, setFileName] = useState("");
   const [info, setInfo] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -23,6 +29,7 @@ export default function DpiCheckerClient({ faq, seoContent }: Props) {
   const loadImage = (file) => {
     if (!file.type.startsWith("image/")) return;
     setFileName(file.name);
+    setMascotState("working");
     const fileSize = file.size < 1024 * 1024
       ? (file.size / 1024).toFixed(1) + " KB"
       : (file.size / (1024 * 1024)).toFixed(1) + " MB";
@@ -40,6 +47,8 @@ export default function DpiCheckerClient({ faq, seoContent }: Props) {
         else { quality = "低解像度（Web向け）"; qualityColor = "text-red-600"; }
         setInfo({ width: img.naturalWidth, height: img.naturalHeight, dpi, fileSize, format, printWidthCm: printW, printHeightCm: printH, quality, qualityColor });
         setImage(e.target.result);
+        setMascotState("success")
+      triggerSuccess('dpi-checker');;
       };
       img.src = e.target.result;
     };
@@ -74,6 +83,7 @@ export default function DpiCheckerClient({ faq, seoContent }: Props) {
         </header>
 
         <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-6">
+          <Mascot state={mascotState} />
           {!image ? (
             <div onDrop={(e) => { e.preventDefault(); setIsDragging(false); const f = e.dataTransfer.files?.[0]; if (f) loadImage(f); }}
               onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }} onDragLeave={() => setIsDragging(false)}

@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】リボ払い恐怖計算機｜完済まで何年？総利息はいくら？衝撃の現実を計算 ",
+  title: "【無料】リボ払い恐怖計算機｜完済まで何年？総利息はいくら？衝撃の現実を計算",
   description: "リボ払いの残高・金利・月返済額を入力するだけで完済日・総利息・毎月の利息割合を計算。一括払いとの比較・繰り上げ返済効果も表示。リボ地獄からの脱出をサポート。",
   keywords: [
     "リボ払い 計算機",
@@ -18,16 +18,17 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/debt/revolving-calculator",
   },
   openGraph: {
-    title: "【無料】リボ払い恐怖計算機｜完済まで何年？総利息はいくら？衝撃の現実を計算 ",
+    title: "【無料】リボ払い恐怖計算機｜完済まで何年？総利息はいくら？衝撃の現実を計算",
     description: "リボ払いの残高・金利・月返済額を入力するだけで完済日・総利息・毎月の利息割合を計算。一括払いとの比較・繰り上げ返済効果も表示。リボ地獄からの脱出をサポート。",
     url: "https://yamada-tools.jp/debt/revolving-calculator",
-    siteName: "yamada-tools.jp",
+    siteName: "山田ツール",
     locale: "ja_JP",
     type: "website",
+    images: [{ url: "https://api.easynihon.com/api/og?site=yamada&title=%E3%80%90%E7%84%A1%E6%96%99%E3%80%91%E3%83%AA%E3%83%9C%E6%89%95%E3%81%84%E6%81%90%E6%80%96%E8%A8%88%E7%AE%97%E6%A9%9F%EF%BD%9C%E5%AE%8C%E6%B8%88%E3%81%BE%E3%81%A7%E4%BD%95%E5%B9%B4%EF%BC%9F%E7%B7%8F%E5%88%A9%E6%81%AF%E3%81%AF%E3%81%84%E3%81%8F%E3%82%89%EF%BC%9F%E8%A1%9D%E6%92%83%E3%81%AE%E7%8F%BE%E5%AE%9F%E3%82%92%E8%A8%88%E7%AE%97" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】リボ払い恐怖計算機｜完済まで何年？総利息はいくら？衝撃の現実を計算 ",
+    title: "【無料】リボ払い恐怖計算機｜完済まで何年？総利息はいくら？衝撃の現実を計算",
     description: "リボ払いの残高・金利・月返済額を入力するだけで完済日・総利息・毎月の利息割合を計算。一括払いとの比較・繰り上げ返済効果も表示。",
   },
 };

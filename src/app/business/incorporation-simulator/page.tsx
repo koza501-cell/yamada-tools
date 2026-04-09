@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { IntroSection } from "@/components/IntroSection";
+import { UseCasesSection } from "@/components/UseCasesSection";
+import { FAQSection } from "@/components/FAQSection";
+import Mascot, { MascotState } from "@/components/common/Mascot";
 
 // ============================================================
 // Types
@@ -331,6 +335,7 @@ const initialForm: FormState = {
 
 export default function IncorporationSimulatorPage() {
   const [form, setForm] = useState<FormState>(initialForm);
+  const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const [result, setResult] = useState<CalcResult | null>(null);
 
   const inputClass = "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500";
@@ -343,6 +348,7 @@ export default function IncorporationSimulatorPage() {
     const breakEvenRevenue = calcBreakEven(form);
     const incorporationCostAmount = form.incorporationCost === "self" ? 10 : 25;
     setResult({ solo, corp, savings, breakEvenRevenue, incorporationCostAmount });
+    setMascotState("success");
     setTimeout(() => {
       document.getElementById("results-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 100);
@@ -365,8 +371,26 @@ export default function IncorporationSimulatorPage() {
 
   const verdict = getVerdict();
 
+  const faqItems = [
+    { question: "法人化（法人成り）はいくらから有利ですか？", answer: "一般的に事業所得が600〜700万円を超えると法人化が有利になり始めます。ただし税理士顧問料などの法人維持コストも考慮する必要があります。" },
+    { question: "個人事業主と法人ではどちらが社会保険料が安いですか？", answer: "低い所得では国民健康保険+国民年金の方が安い場合があります。法人の場合は会社が保険料の半分を負担するため実質的な個人負担は同程度になることが多いです。" },
+    { question: "合同会社と株式会社どちらで設立すべきですか？", answer: "税金面での違いはありません。設立費用は合同会社約10万円、株式会社約25万円です。銀行融資や取引先からの信用を重視する場合は株式会社が有利な場合があります。" },
+    { question: "法人化後に個人事業主に戻ることはできますか？", answer: "法人を解散することは可能ですが、解散・清算の手続きに費用と時間がかかります。法人化は中長期的な視点で決断することが重要です。" },
+    { question: "一人社長の場合も社会保険に加入しなければなりませんか？", answer: "はい、一人会社でも役員報酬を支払う場合は社会保険への加入が義務です。ただし役員報酬をゼロにすれば加入義務はありません。" },
+  ];
+
+  const useCases = [
+    { icon: "📈", persona: "売上が増えてきた個人事業主", title: "そろそろ法人化すべきか数字で判断したい", benefit: "売上別の個人vs法人の税負担差額を一目で比較" },
+    { icon: "👨‍👩‍👦", persona: "配偶者と一緒に事業をしている方", title: "法人化して配偶者を役員にする節税効果を確認", benefit: "所得分散による節税額と社会保険の変化を計算" },
+    { icon: "🏦", persona: "融資・取引拡大を考えている事業者", title: "法人化の信用力向上と税負担のトレードオフを知りたい", benefit: "法人化メリット・デメリットを総合的に試算" },
+  ];
+
+
   return (
+    <>
+      <IntroSection title="個人事業主 vs 法人化 比較ツール" paragraphs={["年間売上・経費・家族構成を入力すると、個人事業主と法人の税負担・社会保険料・手取りを比較します。法人化することで節税できる金額と、税理士費用などのコストも含めた判断ができます。", "売上規模ごとの推奨判定（個人事業主のまま/法人化推奨）も表示。合同会社と株式会社の違いも解説します。", "登録不要・完全無料。法人化のタイミングを数字で判断したい方に最適です。"]} />
     <div className="min-h-screen bg-gray-50">
+        <Mascot state={mascotState} className="mb-6" />
       {/* Header */}
       <div className="bg-gradient-to-r from-emerald-600 to-teal-500 text-white py-10 px-4">
         <div className="max-w-4xl mx-auto">
@@ -1023,5 +1047,8 @@ export default function IncorporationSimulatorPage() {
         </div>
       </div>
     </div>
+    <UseCasesSection cases={useCases} />
+    <FAQSection faq={faqItems} />
+  </>
   );
 }

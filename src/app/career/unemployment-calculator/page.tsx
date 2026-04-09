@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { IntroSection } from "@/components/IntroSection";
+import { UseCasesSection } from "@/components/UseCasesSection";
+import { FAQSection } from "@/components/FAQSection";
+import Mascot, { MascotState } from "@/components/common/Mascot";
 
 type SeparationReason = "voluntary" | "company" | "tokutei_jukyuu" | "tokutei_riyuu" | "shougaisha";
 type InsuredPeriod = "lt1" | "1to5" | "5to10" | "10to20" | "gte20";
@@ -150,6 +154,7 @@ function fmtMan(v: number): string {
 
 export default function UnemploymentCalculatorPage() {
   const [form, setForm] = useState<FormState>(DEFAULT_FORM);
+  const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const [result, setResult] = useState<CalcResult | null>(null);
   const [error, setError] = useState("");
 
@@ -168,6 +173,7 @@ export default function UnemploymentCalculatorPage() {
     const age = parseInt(form.age);
     if (isNaN(age) || age < 15 || age > 70) {
       setError("年齢を正しく入力してください（15〜70歳）");
+    setMascotState("error");
       return;
     }
     if (form.salaryInputMode === "auto") {
@@ -221,8 +227,24 @@ export default function UnemploymentCalculatorPage() {
 
   const advisory = advisoryContent[form.separationReason];
 
+
+  const faqItems = [
+    { question: "自己都合退職と会社都合退職で給付はどう違いますか？", answer: "自己都合では2ヶ月の給付制限があり給付日数も少なくなります。会社都合（特定受給資格者）は給付制限なしで、年齢・勤続年数に応じた手厚い給付日数が適用されます。" },
+    { question: "失業給付をもらいながらアルバイトはできますか？", answer: "条件付きで可能です。ハローワークへの申告が必須で、週20時間未満かつ31日以上雇用される予定がないことが条件です。申告せずに働いた場合は不正受給となり給付金の3倍返還が求められます。" },
+    { question: "雇用保険に何年加入していれば失業給付がもらえますか？", answer: "自己都合退職は離職前2年間で12ヶ月以上、会社都合・特定受給資格者は離職前1年間で6ヶ月以上の被保険者期間が必要です。" },
+    { question: "失業給付に税金はかかりますか？", answer: "いいえ、雇用保険の基本手当（失業給付）は非課税です。所得税・住民税の課税対象外であり、確定申告も不要です。" },
+    { question: "再就職手当とは何ですか？", answer: "所定給付日数の3分の1以上を残して再就職した場合に受け取れる一時金です。残日数が3分の2以上なら残日数×日額×70%、3分の1以上なら残日数×日額×60%が支給されます。" }
+  ];
+  const useCases = [
+    { icon: "📋", persona: "退職・転職を検討中の会社員", title: "失業給付でいくら・何日もらえるか知りたい", benefit: "年齢・勤続年数・給与から給付額を事前計算" },
+    { icon: "⚡", persona: "会社都合退職になった方", title: "自己都合との給付額の違いを確認したい", benefit: "給付制限なし・手厚い給付日数を確認" },
+    { icon: "🎯", persona: "早期再就職を目指す方", title: "再就職手当の受給条件と金額を知りたい", benefit: "残日数に応じた再就職手当の試算" }
+  ];
   return (
-    <div className="min-h-screen bg-gray-50">
+    <>
+      <IntroSection title="失業給付金計算機" paragraphs={["離職理由・年齢・勤続期間・直近の給与から失業給付の日額・給付日数・総受給額を自動計算します。", "自己都合・会社都合の違いや給付制限期間、受給スケジュールも表示。再就職手当の試算もできます。", "登録不要・完全無料。退職前に受け取れる給付額を事前に把握したい方に最適です。"]} />
+      <div className="min-h-screen bg-gray-50">
+        <Mascot state={mascotState} className="mb-6" />
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Breadcrumb & Header */}
         <div className="mb-6">
@@ -645,5 +667,8 @@ export default function UnemploymentCalculatorPage() {
         </div>
       </div>
     </div>
+    <UseCasesSection cases={useCases} />
+    <FAQSection faq={faqItems} />
+  </>
   );
 }

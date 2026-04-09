@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import Mascot from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
 
 const zodiacSigns = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"];
 const birthstones = ["ガーネット", "アメシスト", "アクアマリン", "ダイヤモンド", "エメラルド", "真珠", "ルビー", "ペリドット", "サファイア", "オパール", "トパーズ", "トルコ石"];
@@ -175,6 +176,7 @@ export default function AgeCalcClient() {
         <div className="mt-8 text-center">
           <Link href="/generator" className="text-kon hover:text-ai">← 計算・生成ツール一覧に戻る</Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

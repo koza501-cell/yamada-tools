@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { IntroSection } from "@/components/IntroSection";
+import { UseCasesSection } from "@/components/UseCasesSection";
+import { FAQSection } from "@/components/FAQSection";
+import Mascot, { MascotState } from "@/components/common/Mascot";
 
 type CapitalCategory = "under100" | "under1000" | "under1oku" | "over1oku";
 type EmployeeCount = "under5" | "under50" | "under100" | "over100";
@@ -155,6 +159,7 @@ const DEFAULT_FORM: FormState = {
 
 export default function CorporateTaxCalculatorPage() {
   const [form, setForm] = useState<FormState>(DEFAULT_FORM);
+  const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const [result, setResult] = useState<TaxResult | null>(null);
 
   function setField<K extends keyof FormState>(key: K, value: FormState[K]) {
@@ -172,8 +177,26 @@ export default function CorporateTaxCalculatorPage() {
   const sectionCls = "bg-white rounded-xl border border-gray-200 shadow-sm p-5 mb-4";
   const effectiveTaxRateType = form.prefecture === "tokyo" ? "excess" : form.taxRateType;
 
+  const faqItems = [
+    { question: "法人税の申告・納付期限はいつですか？", answer: "法人税の申告・納付期限は事業年度終了後2ヶ月以内です。3月決算なら5月末が期限です。申告期限の延長申請で1ヶ月延長できます（納付は延長不可）。" },
+    { question: "赤字の場合も法人税はかかりますか？", answer: "課税所得がゼロ以下の場合、法人税・事業税・法人税割はかかりません。ただし法人住民税の均等割（最低7万円/年）は赤字でも課税されます。赤字は翌年以降10年間繰り越せます。" },
+    { question: "消費税と法人税は別々に計算しますか？", answer: "はい、消費税と法人税は別々に計算・申告します。消費税は預かり消費税から支払消費税を引いた差額を納付します。法人税は消費税を除いた所得に対して課税されます。" },
+    { question: "法人税の節税で最も効果的な方法は何ですか？", answer: "代表的な節税方法は役員報酬の適正化、小規模企業共済・経営セーフティ共済の活用、賃上げ促進税制の活用、設備投資の即時償却・税額控除などです。" },
+    { question: "法人税の実効税率は何%ですか？", answer: "中小法人の実効税率は課税所得800万円以下で約23〜25%、800万円超で約30〜35%です。個人の最高税率（55%）と比べると法人の税率が有利なケースが多いです。" },
+  ];
+
+  const useCases = [
+    { icon: "🏢", persona: "中小企業の経営者・経理担当者", title: "今期の法人税納税額を事前把握したい", benefit: "課税所得から法人税等合計と実効税率を即計算" },
+    { icon: "📊", persona: "個人事業主・法人化検討中の方", title: "法人税の実効税率を理解したい", benefit: "所得水準別の法人税率と個人との税率比較" },
+    { icon: "💡", persona: "節税対策を考えている経営者", title: "合法的な節税の余地を確認したい", benefit: "軽減税率の恩恵額と主要な節税方法を確認" },
+  ];
+
+
   return (
+    <>
+      <IntroSection title="法人税計算機" paragraphs={["課税所得を入力するだけで法人税・法人住民税・法人事業税を一括計算。中小法人の軽減税率（800万円以下）にも対応しています。", "地方税（都道府県・市区町村）の税率も反映した実効税率を自動算出。節税アドバイスと法人税申告の基礎知識も合わせて確認できます。", "登録不要・完全無料。決算期前の税額確認や法人化シミュレーションに最適です。"]} />
     <div className="min-h-screen bg-gray-50">
+        <Mascot state={mascotState} className="mb-6" />
       <div className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-8 px-4">
         <div className="max-w-3xl mx-auto">
           <div className="flex flex-wrap gap-2 mb-3">
@@ -546,5 +569,8 @@ export default function CorporateTaxCalculatorPage() {
 
       </div>
     </div>
+    <UseCasesSection cases={useCases} />
+    <FAQSection faq={faqItems} />
+  </>
   );
 }

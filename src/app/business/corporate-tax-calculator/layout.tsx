@@ -1,8 +1,16 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】法人税 計算機｜法人税・住民税・事業税を一括計算 2026年版 ",
+  title: "【無料】法人税 計算機｜法人税・住民税・事業税を一括計算 2026年版",
   description: "法人税・地方法人税・法人住民税・法人事業税を一括計算。中小法人の軽減税率・賃上げ促進税制・繰越欠損金に完全対応。実効税率も自動表示。登録不要・無料。",
+  openGraph: {
+    title: "【無料】法人税 計算機｜法人税・住民税・事業税を一括計算 2026年版",
+    url: "https://yamada-tools.jp/business/corporate-tax-calculator",
+    siteName: "山田ツール",
+    locale: "ja_JP",
+    type: "website",
+    images: [{ url: "https://api.easynihon.com/api/og?site=yamada&title=%E3%80%90%E7%84%A1%E6%96%99%E3%80%91%E6%B3%95%E4%BA%BA%E7%A8%8E%20%E8%A8%88%E7%AE%97%E6%A9%9F%EF%BD%9C%E6%B3%95%E4%BA%BA%E7%A8%8E%E3%83%BB%E4%BD%8F%E6%B0%91%E7%A8%8E%E3%83%BB%E4%BA%8B%E6%A5%AD%E7%A8%8E%E3%82%92%E4%B8%80%E6%8B%AC%E8%A8%88%E7%AE%97%202026%E5%B9%B4%E7%89%88" }],
+  },
 };
 
 const schema = {

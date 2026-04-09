@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ {
   question: string;
@@ -37,7 +38,10 @@ const formatBytes = (bytes: number): string => {
   return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + " " + sizes[i];
 };
 
-export default function ImageFormatClient({ faq }: Props) {
+export default function ImageFormatClient({
+ faq }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [files, setFiles] = useState<File[]>([]);
   const [targetFormat, setTargetFormat] = useState("image/webp");
   const [quality, setQuality] = useState(90);
@@ -153,7 +157,8 @@ export default function ImageFormatClient({ faq }: Props) {
       }
 
       setConvertedImages(results);
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('format-convert');;
       
       const totalSaved = results.reduce((acc, r) => acc + (r.originalSize - r.newSize), 0);
       if (totalSaved > 0) {

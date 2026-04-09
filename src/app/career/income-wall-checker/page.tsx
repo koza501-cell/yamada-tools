@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { IntroSection } from "@/components/IntroSection";
+import { UseCasesSection } from "@/components/UseCasesSection";
+import { FAQSection } from "@/components/FAQSection";
+import Mascot, { MascotState } from "@/components/common/Mascot";
 
 // ============================================================
 // Types
@@ -371,6 +375,7 @@ const DEFAULT_FORM: FormState = {
 
 export default function IncomeWallCheckerPage() {
   const [form, setForm] = useState<FormState>(DEFAULT_FORM);
+  const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const [result, setResult] = useState<DiagnosisResult | null>(null);
   const [error, setError] = useState("");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -385,11 +390,13 @@ export default function IncomeWallCheckerPage() {
     if (form.role === "supporter") {
       if (!form.income || parseFloat(form.income) < 0) {
         setError("配偶者の年収を入力してください");
+    setMascotState("error");
         return;
       }
     } else {
       if (!form.income || parseFloat(form.income) < 0) {
         setError("現在の年収（見込み）を入力してください");
+    setMascotState("error");
         return;
       }
     }
@@ -458,8 +465,24 @@ export default function IncomeWallCheckerPage() {
   // Progress bar tracks the income evaluated against walls
   const incomeNum = parseFloat(form.income) || 0;
 
+
+  const faqItems = [
+    { question: "103万円の壁とは何ですか？", answer: "パート・アルバイトの給与収入が103万円を超えると所得税が発生し、配偶者の税制上の扶養から外れます。ただし2026年から基礎控除引き上げにより実質的な壁が変わります。" },
+    { question: "130万円の壁とは？", answer: "給与収入が130万円を超えると、配偶者の健康保険の扶養から外れ、自身で国民健康保険か社会保険に加入する必要があります。社会保険料負担が年間20〜30万円増えるため手取りが大きく減少します。" },
+    { question: "2026年の税制改正で何が変わりますか？", answer: "2026年より基礎控除が58万円（現行48万円）に引き上げられ、給与所得控除の最低額も改定されます。これにより従来の103万円の壁が実質的に178万円まで引き上げられる見込みです。" },
+    { question: "年収の壁を超えると必ず損しますか？", answer: "必ずしもそうではありません。壁を超えた直後は手取りが減りますが、収入を十分に増やせば逆転します。本ツールで手取りが逆転しない安全な年収帯を確認し、計画的に働く時間を調整することをお勧めします。" },
+    { question: "106万円の壁とは何ですか？", answer: "従業員101人以上の企業で週20時間以上働く場合、年収106万円（月額88,000円）を超えると勤め先の社会保険に加入する義務が生じます。2024年10月から51人以上の企業に対象が拡大されています。" }
+  ];
+  const useCases = [
+    { icon: "👩‍💼", persona: "パート・アルバイトの方", title: "年収を増やしたいが壁が不安", benefit: "安全な年収帯と手取り逆転ゾーンを確認" },
+    { icon: "🏠", persona: "扶養内で働く主婦・主夫", title: "130万円の壁を超えるか検討中", benefit: "社会保険加入の影響額を事前把握" },
+    { icon: "📢", persona: "2026年税制改正が気になる方", title: "178万円の新しい壁を理解したい", benefit: "改正後の税負担変化をシミュレーション" }
+  ];
   return (
-    <div className="min-h-screen bg-gray-50">
+    <>
+      <IntroSection title="年収の壁 診断ツール" paragraphs={["年収の壁（103万・106万・130万・150万・178万円）を入力するだけで一括診断。手取りが逆転するゾーンと安全な年収帯をわかりやすく可視化します。", "2026年税制改正（基礎控除58万円引き上げ・178万円の壁新設）に完全対応。年収・雇用形態・扶養状況を入力するだけで影響額を計算できます。", "登録不要・完全無料。パート・アルバイトの方や配偶者を扶養している方の働き方計画に最適です。"]} />
+      <div className="min-h-screen bg-gray-50">
+        <Mascot state={mascotState} className="mb-6" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -1042,5 +1065,8 @@ export default function IncomeWallCheckerPage() {
 
       </div>
     </div>
+    <UseCasesSection cases={useCases} />
+    <FAQSection faq={faqItems} />
+  </>
   );
 }

@@ -6,6 +6,8 @@ import {
   ReferenceLine, ResponsiveContainer, AreaChart, Area, BarChart, Bar, Cell
 } from "recharts";
 import RelatedTools from "@/components/finance/RelatedTools";
+import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
 
 // ---- Types ----
 type Mode = 1 | 2 | 3 | 4;
@@ -438,6 +440,7 @@ function calcMode4(
 // ---- Main Component ----
 export default function RetirementSimulatorClient() {
   const [mode, setMode] = useState<Mode>(1);
+  const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const resultRef = useRef<HTMLDivElement>(null);
   
   // Mode 1 States
@@ -610,6 +613,7 @@ export default function RetirementSimulatorClient() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+        <Mascot state={mascotState} className="mb-6" />
       {/* Header */}
       <div className="bg-gradient-to-r from-emerald-700 to-teal-600 text-white py-8 px-4">
         <div className="max-w-5xl mx-auto">
@@ -1540,6 +1544,7 @@ export default function RetirementSimulatorClient() {
             <strong>免責事項：</strong>本ツールの計算結果はあくまで参考値です。実際の年金額は日本年金機構にご確認ください。税務・資産運用の判断は専門家にご相談ください。インフレ率や運用利回りは将来の予測値であり、実際の結果を保証するものではありません。
           </p>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

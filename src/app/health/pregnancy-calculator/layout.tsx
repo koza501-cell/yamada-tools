@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】妊娠週数・出産予定日 計算機｜健診スケジュール・安定期・マイルストーンも表示 ",
+  title: "【無料】妊娠週数・出産予定日 計算機｜健診スケジュール・安定期・マイルストーンも表示",
   description: "最終月経日または排卵日から出産予定日・現在の妊娠週数を自動計算。安定期入り・健診スケジュール・週数別マイルストーン一覧付き。登録不要・完全無料。",
   keywords: [
     "妊娠週数 計算",
@@ -19,16 +19,17 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/health/pregnancy-calculator",
   },
   openGraph: {
-    title: "【無料】妊娠週数・出産予定日 計算機｜健診スケジュール・マイルストーン付き ",
+    title: "【無料】妊娠週数・出産予定日 計算機｜健診スケジュール・マイルストーン付き",
     description: "最終月経日または排卵日から出産予定日・現在の妊娠週数を自動計算。安定期入り・健診スケジュール・週数別マイルストーン一覧付き。登録不要・完全無料。",
     url: "https://yamada-tools.jp/health/pregnancy-calculator",
-    siteName: "yamada-tools.jp",
+    siteName: "山田ツール",
     locale: "ja_JP",
     type: "website",
+    images: [{ url: "https://api.easynihon.com/api/og?site=yamada&title=%E3%80%90%E7%84%A1%E6%96%99%E3%80%91%E5%A6%8A%E5%A8%A0%E9%80%B1%E6%95%B0%E3%83%BB%E5%87%BA%E7%94%A3%E4%BA%88%E5%AE%9A%E6%97%A5%20%E8%A8%88%E7%AE%97%E6%A9%9F%EF%BD%9C%E5%81%A5%E8%A8%BA%E3%82%B9%E3%82%B1%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%83%BB%E3%83%9E%E3%82%A4%E3%83%AB%E3%82%B9%E3%83%88%E3%83%BC%E3%83%B3%E4%BB%98%E3%81%8D" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】妊娠週数・出産予定日 計算機｜健診スケジュール付き ",
+    title: "【無料】妊娠週数・出産予定日 計算機｜健診スケジュール付き",
     description: "最終月経日または排卵日から出産予定日・妊娠週数を自動計算。健診スケジュール・マイルストーン一覧付き。",
   },
 };
@@ -43,6 +44,11 @@ const jsonLd = {
       "operatingSystem": "Web",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
       "provider": { "@type": "Organization", "name": "山田ツール", "url": "https://yamada-tools.jp" },
+      "citation": [
+            { "@type": "CreativeWork", "name": "公益社団法人 日本産科婦人科学会", "url": "https://www.jsog.or.jp/" },
+            { "@type": "CreativeWork", "name": "厚生労働省「妊娠中の食生活について」", "url": "https://www.mhlw.go.jp/seisakunitsuite/bunya/kodomo/kodomo_kosodate/boshi-hoken/junyou-03.html" }
+          ],
+
       "description": "最終月経日または排卵日から出産予定日・現在の妊娠週数を自動計算。安定期・健診スケジュール・週数別マイルストーン一覧付き。登録不要・完全無料。",
       "url": "https://yamada-tools.jp/health/pregnancy-calculator",
     },

@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 const GREETING_TEMPLATES = [
   { id: "standard", label: "標準", text: "いつもお世話になっております。" },
@@ -21,6 +23,9 @@ const ACTION_OPTIONS = [
 ];
 
 export default function FaxCoverClient() {
+  const { triggerSuccess } = usePricingContext();
+
+
   const [mounted, setMounted] = useState(false);
   const [mascotState, setMascotState] = useState<MascotState>("idle");
   const [mascotMessage, setMascotMessage] = useState("FAX送付状を作成しよう！");
@@ -69,7 +74,8 @@ export default function FaxCoverClient() {
       setMascotMessage("宛先と差出人を入力してね！");
       return;
     }
-    setMascotState("success");
+    setMascotState("success")
+      triggerSuccess('fax-cover');;
     setMascotMessage("印刷画面を開くよ！");
     window.print();
   };
@@ -244,6 +250,7 @@ export default function FaxCoverClient() {
         <div className="mt-8 text-center print:hidden">
           <Link href="/document" className="text-blue-600 hover:text-blue-800">← 書類作成一覧に戻る</Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

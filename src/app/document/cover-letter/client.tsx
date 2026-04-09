@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
 
 interface Document {
   id: number;
@@ -168,6 +169,7 @@ export default function CoverLetterClient() {
         <div className="mt-8 text-center print:hidden">
           <Link href="/document" className="text-kon hover:text-ai">← 書類作成一覧に戻る</Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

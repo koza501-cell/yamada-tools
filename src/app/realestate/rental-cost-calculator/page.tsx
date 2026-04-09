@@ -3,6 +3,7 @@
 import { useState } from "react";
 import AdUnit from "@/components/AdUnit";
 import Link from "next/link";
+import Mascot, { MascotState } from "@/components/common/Mascot";
 
 // ---- Types ----
 interface PropertyInputs {
@@ -656,6 +657,7 @@ function ResultBreakdown({
 // ---- Main Page ----
 export default function RentalCostCalculatorPage() {
   const [mode, setMode] = useState<"1" | "2">("1");
+  const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const [propA, setPropA] = useState<PropertyInputs>({ ...defaultProperty });
   const [propB, setPropB] = useState<PropertyInputs>({ ...defaultProperty });
   const [residence, setResidence] = useState<ResidenceInputs>({
@@ -706,6 +708,7 @@ export default function RentalCostCalculatorPage() {
       const rentB = parseFloat(propB.rent);
       if (!propB.rent || isNaN(rentB) || rentB <= 0) {
         setError("物件Bの月額家賃を入力してください。");
+    setMascotState("error");
         return;
       }
     }
@@ -732,6 +735,7 @@ export default function RentalCostCalculatorPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+        <Mascot state={mascotState} className="mb-6" />
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Header */}
         <div className="mb-6">

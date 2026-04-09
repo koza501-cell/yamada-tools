@@ -2,6 +2,7 @@
 "use client";
 import { useState, useRef, useCallback, useEffect } from "react";
 import Link from "next/link";
+import Mascot from "@/components/common/Mascot";
 
 interface FAQ { question: string; answer: string; }
 interface Props { faq: FAQ[]; seoContent?: { intro: string }; }
@@ -28,6 +29,7 @@ const BG_COLORS = [
 
 export default function BannerMakerClient({ faq, seoContent }: Props) {
   const [preset, setPreset] = useState(0);
+  const [mascotState, setMascotState] = useState("idle");
   const [title, setTitle] = useState("タイトルテキスト");
   const [subtitle, setSubtitle] = useState("サブタイトル");
   const [bgIndex, setBgIndex] = useState(0);
@@ -94,6 +96,7 @@ export default function BannerMakerClient({ faq, seoContent }: Props) {
         </header>
 
         <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-6">
+          <Mascot state={mascotState} />
           <div className="space-y-4">
             <div>
               <label className="font-bold text-sm text-gray-700 mb-2 block">📐 サイズ</label>

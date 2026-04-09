@@ -3,6 +3,7 @@
 import { useState } from "react";
 import AdUnit from "@/components/AdUnit";
 import Link from "next/link";
+import Mascot, { MascotState } from "@/components/common/Mascot";
 
 // ---- Constants ----
 const MAN = 10000;
@@ -324,6 +325,7 @@ function fmtMan(man: number): string {
 // ---- Component ----
 export default function RentVsBuyPage() {
   const [monthlyRent, setMonthlyRent] = useState(10);
+  const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const [shikikin, setShikikin] = useState(1);
   const [reikin, setReikin] = useState(1);
   const [chukaiTesuryo, setChukaiTesuryo] = useState(1);
@@ -399,6 +401,7 @@ export default function RentVsBuyPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+        <Mascot state={mascotState} className="mb-6" />
       <div className="max-w-4xl mx-auto px-4 py-8">
 
         {/* Header */}

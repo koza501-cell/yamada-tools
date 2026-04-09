@@ -1,8 +1,16 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料・登録不要】個人事業主 vs 法人化 比較ツール｜税負担・節税額を自動計算 2026年版 ",
+  title: "【無料・登録不要】個人事業主 vs 法人化 比較ツール｜税負担・節税額を自動計算 2026年版",
   description: "個人事業主と法人化の税負担を完全比較。所得税・事業税・社会保険料・法人税を一括計算。法人化が有利になる売上ラインも自動算出。登録不要・完全無料。2026年最新税制対応。",
+  openGraph: {
+    title: "【無料・登録不要】個人事業主 vs 法人化 比較ツール｜税負担・節税額を自動計算 2026年版",
+    url: "https://yamada-tools.jp/business/incorporation-simulator",
+    siteName: "山田ツール",
+    locale: "ja_JP",
+    type: "website",
+    images: [{ url: "https://api.easynihon.com/api/og?site=yamada&title=%E3%80%90%E7%84%A1%E6%96%99%E3%83%BB%E7%99%BB%E9%8C%B2%E4%B8%8D%E8%A6%81%E3%80%91%E5%80%8B%E4%BA%BA%E4%BA%8B%E6%A5%AD%E4%B8%BB%20vs%20%E6%B3%95%E4%BA%BA%E5%8C%96%20%E6%AF%94%E8%BC%83%E3%83%84%E3%83%BC%E3%83%AB%EF%BD%9C%E7%A8%8E%E8%B2%A0%E6%8B%85%E3%83%BB%E7%AF%80%E7%A8%8E%E9%A1%8D%E3%82%92%E8%87%AA%E5%8B%95%E8%A8%88%E7%AE%97%202026%E5%B9%B4%E7%89%88" }],
+  },
 };
 
 const schema = {

@@ -3,6 +3,8 @@
 import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ {
   question: string;
@@ -30,7 +32,10 @@ interface CountResult {
   hankaku: number;
 }
 
-export default function CharacterCountClient({ faq }: Props) {
+export default function CharacterCountClient({
+ faq }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [inputText, setInputText] = useState("");
   const [mascotState, setMascotState] = useState<MascotState>("idle");
   const [mascotMessage, setMascotMessage] = useState<string>("テキストを入力してね！");
@@ -109,7 +114,8 @@ export default function CharacterCountClient({ faq }: Props) {
       setMascotState("idle");
       setMascotMessage("テキストを入力してね！");
     } else if (inputText.length > 0) {
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('character-count');;
       setMascotMessage(`${counts.totalChars}文字だよ！`);
     }
   }, [inputText, counts.totalChars]);
@@ -349,6 +355,7 @@ export default function CharacterCountClient({ faq }: Props) {
             ← 計算・生成ツール一覧に戻る
           </Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

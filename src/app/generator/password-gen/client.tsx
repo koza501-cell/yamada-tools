@@ -19,8 +19,13 @@ interface Props {
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
-export default function PasswordGenClient({ faq, seoContent }: Props) {
+export default function PasswordGenClient({
+ faq, seoContent }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [length, setLength] = useState(16);
   const [useUpper, setUseUpper] = useState(true);
   const [useLower, setUseLower] = useState(true);
@@ -72,7 +77,8 @@ export default function PasswordGenClient({ faq, seoContent }: Props) {
     if (useSymbols) score += 1;
     setStrength(Math.min(score, 5));
 
-    setMascotState("success");
+    setMascotState("success")
+      triggerSuccess('password-gen');;
     setMascotMessage("新しいパスワードを生成したよ！");
   };
 
@@ -177,6 +183,7 @@ export default function PasswordGenClient({ faq, seoContent }: Props) {
         <div className="mt-8 text-center">
           <Link href="/generator" className="text-kon hover:text-ai">← 計算・生成ツール一覧に戻る</Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

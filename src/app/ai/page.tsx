@@ -14,7 +14,7 @@ const NICHE = {
 };
 
 export const metadata: Metadata = {
-  title: NICHE.name + ' | yamada-tools.jp',
+  title: NICHE.name + '',
   description: NICHE.description,
   alternates: {
     canonical: 'https://yamada-tools.jp/ai',

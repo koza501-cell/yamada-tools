@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】任意整理 vs 個人再生 vs 自己破産 比較ツール｜あなたに最適な債務整理を判定 ",
+  title: "【無料】任意整理 vs 個人再生 vs 自己破産 比較ツール｜あなたに最適な債務整理を判定",
   description: "借金の状況・資産・職業から任意整理・個人再生・自己破産の最適な方法を中立的に判定。財産・信用情報・職業・保証人への影響も詳細表示。登録不要・完全無料。",
   keywords: [
     "任意整理 自己破産 比較",
@@ -19,16 +19,17 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/debt/debt-restructuring-checker",
   },
   openGraph: {
-    title: "【無料】任意整理 vs 個人再生 vs 自己破産 比較ツール｜あなたに最適な債務整理を判定 ",
+    title: "【無料】任意整理 vs 個人再生 vs 自己破産 比較ツール｜あなたに最適な債務整理を判定",
     description: "借金の状況・資産・職業から任意整理・個人再生・自己破産の最適な方法を中立的に判定。財産・信用情報・職業・保証人への影響も詳細表示。登録不要・完全無料。",
     url: "https://yamada-tools.jp/debt/debt-restructuring-checker",
-    siteName: "yamada-tools.jp",
+    siteName: "山田ツール",
     locale: "ja_JP",
     type: "website",
+    images: [{ url: "https://api.easynihon.com/api/og?site=yamada&title=%E3%80%90%E7%84%A1%E6%96%99%E3%80%91%E4%BB%BB%E6%84%8F%E6%95%B4%E7%90%86%20vs%20%E5%80%8B%E4%BA%BA%E5%86%8D%E7%94%9F%20vs%20%E8%87%AA%E5%B7%B1%E7%A0%B4%E7%94%A3%20%E6%AF%94%E8%BC%83%E3%83%84%E3%83%BC%E3%83%AB%EF%BD%9C%E3%81%82%E3%81%AA%E3%81%9F%E3%81%AB%E6%9C%80%E9%81%A9%E3%81%AA%E5%82%B5%E5%8B%99%E6%95%B4%E7%90%86%E3%82%92%E5%88%A4%E5%AE%9A" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】任意整理 vs 個人再生 vs 自己破産 比較ツール｜あなたに最適な債務整理を判定 ",
+    title: "【無料】任意整理 vs 個人再生 vs 自己破産 比較ツール｜あなたに最適な債務整理を判定",
     description: "借金の状況・資産・職業から任意整理・個人再生・自己破産の最適な方法を中立的に判定。財産・信用情報・職業・保証人への影響も詳細表示。",
   },
 };

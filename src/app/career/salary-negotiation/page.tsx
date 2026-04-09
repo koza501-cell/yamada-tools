@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { IntroSection } from "@/components/IntroSection";
+import { UseCasesSection } from "@/components/UseCasesSection";
+import { FAQSection } from "@/components/FAQSection";
+import Mascot, { MascotState } from "@/components/common/Mascot";
 
 interface FormState {
   age: string;
@@ -493,6 +497,7 @@ const selectClass = "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm 
 
 export default function SalaryNegotiationPage() {
   const [form, setForm] = useState<FormState>(DEFAULT_FORM);
+  const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const [result, setResult] = useState<CalcResult | null>(null);
   const [error, setError] = useState("");
 
@@ -503,22 +508,27 @@ export default function SalaryNegotiationPage() {
   function handleCalculate() {
     if (!form.age || parseInt(form.age) < 22 || parseInt(form.age) > 65) {
       setError("年齢を22〜65歳の範囲で入力してください");
+    setMascotState("error");
       return;
     }
     if (!form.currentSalary || parseInt(form.currentSalary) <= 0) {
       setError("現在の年収を入力してください");
+    setMascotState("error");
       return;
     }
     if (!form.industry) {
       setError("業界を選択してください");
+    setMascotState("error");
       return;
     }
     if (!form.jobType) {
       setError("職種を選択してください");
+    setMascotState("error");
       return;
     }
     if (form.experience === "") {
       setError("経験年数を入力してください");
+    setMascotState("error");
       return;
     }
     setError("");
@@ -532,8 +542,24 @@ export default function SalaryNegotiationPage() {
     setError("");
   }
 
+
+  const faqItems = [
+    { question: "給与交渉で何%アップを要求するのが現実的ですか？", answer: "昇給交渉では現在の給与から5〜15%増が現実的なレンジです。転職時は10〜30%増を要求するケースも珍しくありません。業界水準や自身の希少性、会社の業績によって大きく変わります。" },
+    { question: "給与交渉で失敗しないためのポイントは？", answer: "市場データに基づいた根拠を示すこと、感情ではなく実績・スキルを数字で示すこと、交渉のタイミングを見計らうこと、最低ラインと理想額の両方を準備することが重要です。" },
+    { question: "転職オファーを他社交渉に使っても大丈夫ですか？", answer: "競合オファーを提示することは一般的な交渉手法ですが、実際に転職する意思があることを前提にすべきです。虚偽のオファーを使うと信頼関係を損なうリスクがあります。" },
+    { question: "市場年収を調べるにはどうすればよいですか？", answer: "OpenWork（旧Vorkers）、転職サイト（リクナビ・doda）の年収目安、厚生労働省の賃金構造基本統計調査などが参考になります。本ツールでも業界・職種・経験年数から市場年収レンジを算出できます。" },
+    { question: "給与交渉は書面でするべきですか？", answer: "まず口頭で意向を伝え、合意後に書面で確認するのが一般的です。交渉内容はメールで証拠を残すことをお勧めします。内定後の給与交渉はオファーレターを書面で受け取ってから行うとトラブルが減ります。" }
+  ];
+  const useCases = [
+    { icon: "💬", persona: "昇給交渉を控えている会社員", title: "いくら要求するか根拠が欲しい", benefit: "業界・経験年数から現実的な交渉レンジを算出" },
+    { icon: "✈️", persona: "転職内定後のオファー交渉", title: "いくら上乗せ要求できるか知りたい", benefit: "市場相場と希少性スコアから最適額を計算" },
+    { icon: "📊", persona: "市場価値を客観的に知りたい方", title: "自分の年収は相場より高い?低い?", benefit: "業種・職種・経験年数別の市場年収レンジを確認" }
+  ];
   return (
-    <div className="min-h-screen bg-gray-50">
+    <>
+      <IntroSection title="給与交渉シミュレーター" paragraphs={["業界・職種・経験年数から市場年収レンジを算出し、給与交渉の最低ライン・目標額・ストレッチ目標を提示します。", "現職昇給交渉・転職時のオファー交渉・昇格時の交渉それぞれに最適な交渉アドバイスを提供します。", "登録不要・完全無料。市場データに基づいた根拠ある交渉準備に活用できます。"]} />
+      <div className="min-h-screen bg-gray-50">
+        <Mascot state={mascotState} className="mb-6" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -1044,5 +1070,8 @@ export default function SalaryNegotiationPage() {
         </div>
       </div>
     </div>
+    <UseCasesSection cases={useCases} />
+    <FAQSection faq={faqItems} />
+  </>
   );
 }

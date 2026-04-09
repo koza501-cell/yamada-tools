@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { IntroSection } from "@/components/IntroSection";
+import { UseCasesSection } from "@/components/UseCasesSection";
+import { FAQSection } from "@/components/FAQSection";
+import Mascot, { MascotState } from "@/components/common/Mascot";
 
 interface CalcResult {
   salaryCut: number;
@@ -179,6 +183,7 @@ const schema = {
 
 export default function FurusatoNozeiCalculatorPage() {
   const [salary, setSalary] = useState("");
+  const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const [hasSpouse, setHasSpouse] = useState(false);
   const [spouseIncome, setSpouseIncome] = useState("");
   const [dependents, setDependents] = useState(0);
@@ -218,8 +223,23 @@ export default function FurusatoNozeiCalculatorPage() {
       active ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
     }`;
 
+  const faqItems = [
+    { question: "ふるさと納税の控除上限額はどう決まりますか？", answer: "控除上限額は年収と家族構成（扶養人数・共働きかどうか）によって決まります。おおよその目安は年収400万円の独身で約42,000円、年収600万円の共働き夫婦で約77,000円です。" },
+    { question: "ワンストップ特例制度とは何ですか？", answer: "確定申告をしなくても寄付先の自治体に申請するだけで住民税控除が受けられる制度です。年間5自治体以内の寄付に限り利用でき、会社員など確定申告が不要な方に向いています。" },
+    { question: "ふるさと納税は実質2,000円の自己負担とはどういう意味ですか？", answer: "控除上限額以内の寄付をすると、寄付額から2,000円を引いた金額が所得税の還付・住民税の控除として戻ってきます。例えば50,000円寄付すると48,000円が控除され、実質負担は2,000円になります。" },
+  ];
+
+  const useCases = [
+    { icon: "🏡", persona: "ふるさと納税をこれからする方", title: "自分の上限額がいくらか知りたい", benefit: "年収・家族構成から控除上限額を自動計算" },
+    { icon: "👨‍👩‍👧", persona: "共働き夫婦・扶養家族がいる方", title: "共働き世帯での上限額の計算が複雑で困っている", benefit: "世帯構成を反映した正確な上限額を計算" },
+    { icon: "📝", persona: "確定申告をしない会社員", title: "ワンストップ特例が使えるか確認したい", benefit: "5自治体以内かどうかと手続き方法を案内" },
+  ];
+
   return (
-    <div className="min-h-screen bg-gray-50">
+    <>
+      <IntroSection title="ふるさと納税 控除上限額計算機" paragraphs={["年収と家族構成を入力するだけでふるさと納税の控除上限額（実質自己負担2,000円に収まる上限）を自動計算します。", "共働き・配偶者控除・扶養家族の有無など、よく混乱するケースも詳しく対応。ワンストップ特例と確定申告の選択判定も行います。", "登録不要・完全無料。今年のふるさと納税上限額を知りたい方に最適です。"]} />
+      <div className="min-h-screen bg-gray-50">
+        <Mascot state={mascotState} className="mb-6" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -640,5 +660,8 @@ export default function FurusatoNozeiCalculatorPage() {
         </div>
       </div>
     </div>
+    <UseCasesSection cases={useCases} />
+    <FAQSection faq={faqItems} />
+  </>
   );
 }

@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ {
   question: string;
@@ -94,7 +96,10 @@ const dakutenCombinations: Record<string, string> = {
   "ｳﾞ": "ヴ",
 };
 
-export default function ZenkakuHankakuClient({ faq, seoContent }: Props) {
+export default function ZenkakuHankakuClient({
+ faq, seoContent }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [inputText, setInputText] = useState("");
   const [outputText, setOutputText] = useState("");
   const [mode, setMode] = useState<ConversionMode>("to-hankaku");
@@ -190,7 +195,8 @@ export default function ZenkakuHankakuClient({ faq, seoContent }: Props) {
         : convertToZenkaku(inputText);
       
       setOutputText(result);
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('zenkaku-hankaku');;
       setMascotMessage("変換完了！コピーして使ってね。");
     }, 300);
   };
@@ -486,6 +492,7 @@ export default function ZenkakuHankakuClient({ faq, seoContent }: Props) {
             ← 変換ツール一覧に戻る
           </Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

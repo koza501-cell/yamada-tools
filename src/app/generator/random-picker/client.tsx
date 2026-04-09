@@ -3,6 +3,8 @@
 import { useState, useCallback, useEffect } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ {
   question: string;
@@ -13,7 +15,10 @@ interface Props {
   faq: FAQ[];
 }
 
-export default function RandomPickerClient({ faq }: Props) {
+export default function RandomPickerClient({
+ faq }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [items, setItems] = useState<string[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [pickCount, setPickCount] = useState(1);
@@ -126,7 +131,8 @@ export default function RandomPickerClient({ faq }: Props) {
         setResults(selected);
         setHistory(prev => [selected, ...prev.slice(0, 9)]);
         setIsSpinning(false);
-        setMascotState("success");
+        setMascotState("success")
+      triggerSuccess('random-picker');;
         if (pickCount === 1) {
           setMascotMessage(`「${selected[0]}」に決定！🎉`);
         } else {
@@ -492,6 +498,7 @@ export default function RandomPickerClient({ faq }: Props) {
             ← 計算・生成ツール一覧に戻る
           </Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

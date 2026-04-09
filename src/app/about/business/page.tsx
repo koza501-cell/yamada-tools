@@ -210,6 +210,45 @@ export default function BusinessPage() {
             </div>
           </section>
 
+
+          {/* Security Document Download */}
+          <section className="bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-8 border border-blue-200 dark:border-blue-800">
+            <h2 className="text-xl font-bold text-kon mb-4 flex items-center gap-2">
+              <span>📋</span> セキュリティ確認書・導入事例
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300 text-sm mb-6">
+              情報システム部門への導入稟議・セキュリティ審査にご活用ください。
+            </p>
+            <div className="grid md:grid-cols-3 gap-4 mb-6">
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
+                <div className="text-2xl mb-2">🏭</div>
+                <p className="font-bold text-gray-800 dark:text-gray-100 text-sm">製造業・メーカー</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">全銀フォーマット・請求書作成での活用</p>
+                <p className="text-xs text-kon dark:text-blue-400 mt-2 font-medium">→ 振込データ変換作業を担当者1名で完結。月次処理の工数を大幅削減。</p>
+              </div>
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
+                <div className="text-2xl mb-2">🏥</div>
+                <p className="font-bold text-gray-800 dark:text-gray-100 text-sm">医療・福祉</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">患者書類PDF処理・ファイル圧縮での活用</p>
+                <p className="text-xs text-kon dark:text-blue-400 mt-2 font-medium">→ ブラウザのみで即日導入。インストール不要で情報システム審査もスムーズ。</p>
+              </div>
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
+                <div className="text-2xl mb-2">🏛️</div>
+                <p className="font-bold text-gray-800 dark:text-gray-100 text-sm">自治体・行政</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">申請書PDF処理・封筒印刷での活用</p>
+                <p className="text-xs text-kon dark:text-blue-400 mt-2 font-medium">→ 住民向け封筒の宛名印刷を内製化。外注コストをゼロに。</p>
+              </div>
+            </div>
+            <a
+              href="https://forms.gle/2mmoGqLif1Cqe5vL6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-kon text-white px-6 py-3 rounded-xl font-bold hover:bg-ai transition-colors text-sm"
+            >
+              📥 セキュリティ確認書・稟議資料を請求する
+            </a>
+          </section>
+
           {/* Legal Links */}
           <section className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
             <h2 className="text-xl font-bold text-kon mb-4 flex items-center gap-2">

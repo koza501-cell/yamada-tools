@@ -58,7 +58,7 @@ export default function FeedbackButton() {
               {/* Amazing Description */}
               <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-5 border border-blue-100">
                 <p className="text-sm leading-relaxed text-gray-700 mb-3">
-                  <span className="font-bold text-kon">現在ベータ版公開中！</span>みなさまと一緒に、より良いツールを作っていきたいと考えています。
+                  みなさまと一緒に、より良いツールを作っていきたいと考えています。
                 </p>
                 <p className="text-sm leading-relaxed text-gray-700 mb-3">
                   バグを見つけた、もっとこうしてほしい、使いやすかった—<span className="font-medium">良いことも悪いことも、どんな小さなことでも構いません。</span>率直なご意見をお聞かせください。

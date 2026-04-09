@@ -52,7 +52,7 @@ export default function TabbedToolsSection({
     { id: "document", label: "書類", icon: "📝", href: "/document", tools: documentTools },
     { id: "convert", label: "変換", icon: "🔄", href: "/convert", tools: convertTools },
     { id: "image", label: "画像", icon: "🖼️", href: "/image", tools: imageTools },
-    { id: "generator", label: "生成", icon: "⚡", href: "/generator", tools: generatorTools },
+    { id: "generator", label: "ツール・計算", icon: "⚡", href: "/generator", tools: generatorTools },
     { id: "finance", label: "金融", icon: "💰", href: "/finance", tools: financeTools },
     { id: "career", label: "キャリア", icon: "💼", href: "/career", tools: careerTools },
     { id: "tax", label: "税金", icon: "💴", href: "/tax", tools: taxTools },

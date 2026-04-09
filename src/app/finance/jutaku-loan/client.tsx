@@ -6,6 +6,8 @@ import {
   ReferenceLine, ResponsiveContainer, AreaChart, Area
 } from "recharts";
 import RelatedTools from "@/components/finance/RelatedTools";
+import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
 
 // ---- Constants ----
 const MAN = 10000;
@@ -340,6 +342,7 @@ const LoanTooltip = ({ active, payload, label }: any) => {
 // ---- Main Component ----
 export default function JutakuLoanClient() {
   const [mode, setMode] = useState<1 | 2 | 3 | 4>(1);
+  const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const [loanAmt, setLoanAmt] = useState(3000);
   const [loanYears, setLoanYears] = useState(35);
   const [repayType, setRepayType] = useState<"equal" | "principal">("equal");
@@ -460,6 +463,7 @@ export default function JutakuLoanClient() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+        <Mascot state={mascotState} className="mb-6" />
       {/* Header */}
       <div className="bg-gradient-to-r from-blue-800 to-blue-600 text-white py-8 px-4">
         <div className="max-w-5xl mx-auto">
@@ -1275,6 +1279,7 @@ export default function JutakuLoanClient() {
         <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-5 text-xs text-yellow-800">
           <p><strong>免責事項：</strong>本ツールの計算結果は参考情報であり、実際の返済額と異なる場合があります。金融機関や税理士にご相談の上、最終的な判断はご自身で行ってください。</p>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

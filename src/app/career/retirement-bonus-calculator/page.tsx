@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { IntroSection } from "@/components/IntroSection";
+import { UseCasesSection } from "@/components/UseCasesSection";
+import { FAQSection } from "@/components/FAQSection";
+import Mascot, { MascotState } from "@/components/common/Mascot";
 
 type RetirementType = "general" | "officer" | "early";
 type ResignationType = "teinen" | "jiko" | "kaisha" | "shougai";
@@ -161,6 +165,7 @@ const QUICK_TABLE = [
 
 export default function RetirementBonusCalculatorPage() {
   const [form, setForm] = useState<FormState>(DEFAULT_FORM);
+  const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const [result, setResult] = useState<CalcResult | null>(null);
   const [error, setError] = useState("");
 
@@ -179,11 +184,13 @@ export default function RetirementBonusCalculatorPage() {
     const amountMan = parseFloat(form.amount);
     if (isNaN(amountMan) || amountMan <= 0) {
       setError("退職金の額を正しく入力してください");
+    setMascotState("error");
       return;
     }
     const years = parseFloat(form.yearsOfService);
     if (isNaN(years) || years < 1 || years > 50) {
       setError("勤続年数を1〜50年の範囲で入力してください");
+    setMascotState("error");
       return;
     }
     setResult(calculate(form));
@@ -210,8 +217,24 @@ export default function RetirementBonusCalculatorPage() {
     return `約${fmtMan(totalTax / 10000)}万円`;
   }
 
+
+  const faqItems = [
+    { question: "退職金に税金がかからないケースはありますか？", answer: "退職金の額が退職所得控除額以下であれば税金はかかりません。例えば勤続10年で退職金400万円以下なら退職所得控除400万円が適用されるため所得税・住民税ともにゼロです。" },
+    { question: "退職金の税金はいつ払うのですか？", answer: "会社が源泉徴収する場合は退職金受取時に自動的に差し引かれます。自分で確定申告する場合は翌年2〜3月の確定申告時に納税します。" },
+    { question: "転職を繰り返した場合、退職金の税金はどうなりますか？", answer: "同一年に複数の退職金を受け取った場合や前回の受取から5年以内に再度受け取る場合は計算が複雑になります。前回の勤続期間と重複する場合は退職所得控除の調整が必要です。" },
+    { question: "退職金を一時金と年金に分けて受け取ることはできますか？", answer: "企業によっては一時金と年金に分けて受け取れる制度があります。一時金は退職所得として有利な課税、年金は雑所得として総合課税されます。" },
+    { question: "iDeCoの受取も退職金と同じ税率ですか？", answer: "iDeCoを一時金で受け取る場合は退職所得として退職所得控除が適用されます。同年に会社の退職金も受け取る場合は控除枠を共有するため、受取時期を5年以上ずらすことで控除を別々に使える場合があります。" }
+  ];
+  const useCases = [
+    { icon: "🎌", persona: "定年退職が近い方", title: "退職金の手取り額を正確に把握したい", benefit: "退職所得控除後の実際の税額・手取りを計算" },
+    { icon: "🔄", persona: "転職を繰り返した方", title: "複数の退職金受取で税金が複雑", benefit: "前回受取との期間重複を考慮した計算" },
+    { icon: "💰", persona: "iDeCoも受け取る予定の方", title: "iDeCoと会社退職金の受取時期を最適化", benefit: "控除枠の共有を避ける5年ルールをシミュレーション" }
+  ];
   return (
-    <div className="min-h-screen bg-gray-50">
+    <>
+      <IntroSection title="退職金計算機" paragraphs={["退職金の手取り額を正確に計算。退職所得控除・所得税・住民税を自動算出し、一覧で確認できます。", "勤続年数・退職理由（自己都合・会社都合）・前回の退職金受取との関係も考慮。iDeCoの一時金受取との税金比較にも使えます。", "転職・定年退職・早期退職どのケースでも対応。登録不要・完全無料。"]} />
+      <div className="min-h-screen bg-gray-50">
+        <Mascot state={mascotState} className="mb-6" />
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Breadcrumb & Header */}
         <div className="mb-6">
@@ -687,5 +710,8 @@ export default function RetirementBonusCalculatorPage() {
         </div>
       </div>
     </div>
+    <UseCasesSection cases={useCases} />
+    <FAQSection faq={faqItems} />
+  </>
   );
 }

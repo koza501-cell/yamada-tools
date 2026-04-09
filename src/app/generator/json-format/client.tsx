@@ -3,8 +3,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 export default function JsonFormatClient() {
+  const { triggerSuccess } = usePricingContext();
+
+
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
@@ -24,7 +29,8 @@ export default function JsonFormatClient() {
       const parsed = JSON.parse(input);
       setOutput(JSON.stringify(parsed, null, indent));
       setError("");
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('json-format');;
       setMascotMessage("整形完了！");
     } catch (e) {
       setError(`無効なJSON: ${(e as Error).message}`);
@@ -44,7 +50,8 @@ export default function JsonFormatClient() {
       const parsed = JSON.parse(input);
       setOutput(JSON.stringify(parsed));
       setError("");
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('json-format');;
       setMascotMessage("圧縮完了！");
     } catch (e) {
       setError(`無効なJSON: ${(e as Error).message}`);
@@ -163,6 +170,7 @@ export default function JsonFormatClient() {
         <div className="mt-8 text-center">
           <Link href="/generator" className="text-kon hover:text-ai">← 計算・生成ツール一覧に戻る</Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

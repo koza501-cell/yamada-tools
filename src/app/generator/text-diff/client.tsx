@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ {
   question: string;
@@ -75,7 +77,10 @@ function computeDiff(text1: string, text2: string): DiffLine[] {
   return tempResult.reverse();
 }
 
-export default function TextDiffClient({ faq }: Props) {
+export default function TextDiffClient({
+ faq }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [text1, setText1] = useState("");
   const [text2, setText2] = useState("");
   const [diffResult, setDiffResult] = useState<DiffLine[]>([]);
@@ -104,7 +109,8 @@ export default function TextDiffClient({ faq }: Props) {
       const unchanged = result.filter(r => r.type === "unchanged").length;
       setStats({ added, removed, unchanged });
 
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('text-diff');;
       if (added === 0 && removed === 0) {
         setMascotMessage("完全一致！差分はないよ！");
       } else {
@@ -391,6 +397,7 @@ export default function TextDiffClient({ faq }: Props) {
             ← 計算・生成ツール一覧に戻る
           </Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

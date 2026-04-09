@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ {
   question: string;
@@ -24,7 +26,10 @@ interface AddressResult {
   kana3: string;
 }
 
-export default function PostcodeClient({ faq }: Props) {
+export default function PostcodeClient({
+ faq }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [postcode, setPostcode] = useState("");
   const [results, setResults] = useState<AddressResult[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -76,7 +81,8 @@ export default function PostcodeClient({ faq }: Props) {
 
       if (data.status === 200 && data.results) {
         setResults(data.results);
-        setMascotState("success");
+        setMascotState("success")
+      triggerSuccess('postcode');;
         setMascotMessage(`${data.results.length}件見つかったよ！`);
         
         // Add to history
@@ -340,6 +346,7 @@ export default function PostcodeClient({ faq }: Props) {
             ← 変換ツール一覧に戻る
           </Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
+import Mascot from "@/components/common/Mascot";
 import FinancialDisclaimer from "@/components/common/FinancialDisclaimer";
+import { AdUnit } from "@/components/common/AdUnit";
 
 interface FAQ {
   question: string;
@@ -32,6 +34,7 @@ export default function TaxCalculatorClient({ faq }: { faq?: FAQ[] }) {
       
       <div className="max-w-2xl mx-auto px-4 mt-6">
         <div className="bg-white rounded-2xl shadow-lg p-8">
+          <Mascot state={numAmount > 0 ? "success" : "idle"} />
           <div className="text-center mb-8">
             <span className="text-5xl mb-4 block">🧮</span>
             <h1 className="text-2xl font-bold text-gray-900">消費税計算</h1>
@@ -165,6 +168,7 @@ export default function TaxCalculatorClient({ faq }: { faq?: FAQ[] }) {
           </div>
           <p className="text-xs text-gray-500 mt-4">※ 軽減税率8%は飲食料品（外食・酒類除く）と週2回以上発行の新聞に適用されます。</p>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

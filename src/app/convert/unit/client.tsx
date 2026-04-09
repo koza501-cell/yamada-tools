@@ -3,6 +3,8 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ {
   question: string;
@@ -141,7 +143,10 @@ const categories: UnitCategory[] = [
   },
 ];
 
-export default function UnitConverterClient({ faq }: Props) {
+export default function UnitConverterClient({
+ faq }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [selectedCategory, setSelectedCategory] = useState<string>("length");
   const [fromUnit, setFromUnit] = useState<string>("m");
   const [toUnit, setToUnit] = useState<string>("cm");
@@ -226,7 +231,8 @@ export default function UnitConverterClient({ faq }: Props) {
     if (result !== null) {
       try {
         await navigator.clipboard.writeText(formatNumber(result));
-        setMascotState("success");
+        setMascotState("success")
+      triggerSuccess('unit');;
         setMascotMessage("コピーしました！");
       } catch {
         setMascotMessage("コピーに失敗しました...");
@@ -456,6 +462,7 @@ export default function UnitConverterClient({ faq }: Props) {
             ← 変換ツール一覧に戻る
           </Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

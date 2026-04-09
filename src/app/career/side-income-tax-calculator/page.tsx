@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { IntroSection } from "@/components/IntroSection";
+import { UseCasesSection } from "@/components/UseCasesSection";
+import { FAQSection } from "@/components/FAQSection";
+import Mascot, { MascotState } from "@/components/common/Mascot";
 
 type SideIncomeType =
   | "freelance"
@@ -355,6 +359,7 @@ const initialForm: FormState = {
 
 export default function SideIncomeTaxCalculatorPage() {
   const [form, setForm] = useState<FormState>(initialForm);
+  const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const [result, setResult] = useState<CalcResult | null>(null);
 
   const inputClass = "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500";
@@ -419,14 +424,31 @@ export default function SideIncomeTaxCalculatorPage() {
       additionalIncomeTax, additionalResidentTax, additionalTotalTax,
       totalSideIncome, totalSideExpenses, netTakeHome, effectiveTaxRate, filing, advices,
     });
+    setMascotState("success");
   }
 
   function handleReset() { setForm(initialForm); setResult(null); }
 
   const anyEnabled = Object.values(form.sideIncomes).some((e) => e.enabled);
 
+
+  const faqItems = [
+    { question: "副業収入が20万円以下なら税金はかかりませんか？", answer: "副業所得が20万円以下の場合確定申告は不要ですが税金がゼロになるわけではなく住民税の申告は市区町村に必要です。源泉徴収されている場合は確定申告で還付を受けられる場合があります。" },
+    { question: "副業がバレないようにするにはどうすればいいですか？", answer: "確定申告の際に住民税の徴収方法を普通徴収にすることで副業分の住民税が給与から天引きされなくなります。ただし完全に発覚を防げるわけではありません。就業規則で副業が禁止されている場合は会社への確認が必要です。" },
+    { question: "フリーランス収入は雑所得と事業所得どちらで申告しますか？", answer: "継続的・安定的に副業収入があり帳簿を作成している場合は事業所得として申告できます。事業所得は青色申告特別控除（最大65万円）が使え赤字の場合は給与所得と損益通算できる点が有利です。" },
+    { question: "メルカリやネット販売の利益にも税金はかかりますか？", answer: "営利目的の継続的な販売は雑所得として課税対象です。自分が使っていた生活用品を売った場合は非課税となります。年間の利益が20万円を超えると確定申告が必要です。" },
+    { question: "副業で赤字が出た場合、本業の税金は減りますか？", answer: "不動産所得・事業所得の赤字は給与所得と損益通算できるため本業の税金が減る可能性があります。一方雑所得の赤字は損益通算できません。" }
+  ];
+  const useCases = [
+    { icon: "💻", persona: "副業を始めた会社員", title: "確定申告が必要か知りたい", benefit: "年収・副業収入・経費から申告要否を自動判定" },
+    { icon: "🤫", persona: "副業が会社にバレるか心配", title: "住民税普通徴収で発覚リスクを下げたい", benefit: "住民税の申告方法と注意点を確認" },
+    { icon: "📝", persona: "フリーランス収入がある方", title: "青色申告vs白色申告の節税額を比較したい", benefit: "青色申告特別控除65万円の実際の節税効果を計算" }
+  ];
   return (
-    <div className="min-h-screen bg-gray-50">
+    <>
+      <IntroSection title="副業収入税金計算機" paragraphs={["副業収入に対する追加税負担（所得税・住民税）と確定申告の要否を自動判定します。本業の年収と合わせた実質手取りも計算。", "フリーランス・アフィリエイト・メルカリ・不動産収入など副業の種類別に対応。青色申告特別控除の節税効果も試算できます。", "登録不要・完全無料。副業を始める前に税金の影響を把握したい方に最適です。"]} />
+      <div className="min-h-screen bg-gray-50">
+        <Mascot state={mascotState} className="mb-6" />
       <div className="bg-gradient-to-r from-emerald-600 to-teal-500 text-white py-10 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-emerald-200 text-xs mb-2">転職・年収 &gt; 副業収入税金計算機</div>
@@ -851,5 +873,8 @@ export default function SideIncomeTaxCalculatorPage() {
         </div>
       </div>
     </div>
+    <UseCasesSection cases={useCases} />
+    <FAQSection faq={faqItems} />
+  </>
   );
 }

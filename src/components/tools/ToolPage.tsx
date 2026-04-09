@@ -1,5 +1,5 @@
 "use client";
-import AdBanner from "@/components/AdBanner";
+import { AdUnit } from "@/components/common/AdUnit";
 import { useUsageLimit } from "@/hooks/useUsageLimit";
 
 import { useState, useEffect } from "react";
@@ -10,6 +10,7 @@ import Mascot, { MascotState } from "@/components/common/Mascot";
 import ShareButtons from "@/components/common/ShareButtons";
 import UsageLimitBanner from "@/components/common/UsageLimitBanner";
 import RelatedTools from "@/components/common/RelatedTools";
+import { usePricingContext } from "@/components/common/PricingTriggerProvider";
 
 // GA4 event tracking helper
 declare global {
@@ -48,6 +49,61 @@ interface ToolPageProps {
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://api.yamada-tools.jp";
 
 export default function ToolPage({ tool, extraFields, extraFormData, faq, seoContent }: ToolPageProps) {
+  const { triggerSuccess } = usePricingContext();
+  // GEO-001: HowTo schema for SearchGPT/Perplexity extraction
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": tool.nameJa + "の使い方",
+    "description": tool.description,
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "ファイルをアップロード",
+        "text": "処理したいファイルをドラッグ＆ドロップするか、クリックして選択してください。",
+        "url": "https://yamada-tools.jp" + tool.path
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": tool.nameJa + "を実行",
+        "text": "「実行」ボタンをクリックして処理を開始します。日本国内サーバーで安全に処理されます。",
+        "url": "https://yamada-tools.jp" + tool.path
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "ダウンロード",
+        "text": "処理が完了したらダウンロードボタンをクリックしてファイルを保存してください。",
+        "url": "https://yamada-tools.jp" + tool.path
+      }
+    ],
+    "tool": [{ "@type": "HowToTool", "name": "ブラウザ（登録不要）" }],
+    "supply": [{ "@type": "HowToSupply", "name": "処理したいファイル" }]
+  };
+
+  // TRUST-001: BreadcrumbList schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "山田ツール",
+        "item": "https://yamada-tools.jp"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": tool.nameJa,
+        "item": "https://yamada-tools.jp" + tool.path
+      }
+    ]
+  };
+
+
   const [files, setFiles] = useState<File[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -62,11 +118,11 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
   useEffect(() => {
     if (usage?.is_limited) {
       setMascotState("error");
-      setMascotMessage("今日の無料枠は終わりだよ...PROプランで無制限に使えるよ！");
+      setMascotMessage("本日の無料利用枠が上限に達しました。PROプランで無制限にご利用いただけます。");
     } else if (usage?.remaining === 1) {
-      setMascotMessage("残り1回だよ！PROなら無制限に使えるよ♪");
+      setMascotMessage("本日の残り利用回数は1回です。PROプランで無制限にご利用いただけます。");
     } else if (usage?.remaining === 2) {
-      setMascotMessage("残り2回！登録すると便利だよ〜");
+      setMascotMessage("本日の残り利用回数は2回です。");
     }
   }, [usage]);
 
@@ -167,6 +223,7 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
       setIsComplete(true);
       setMascotState("success");
       setMascotMessage("完了しました！ダウンロードしてね！");
+      triggerSuccess(tool.id || 'pdf-tool');
 
       // Track tool completed event (THIS IS THE KEY METRIC)
       trackToolEvent(tool, 'completed');
@@ -197,6 +254,9 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
   };
 
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     <div className="min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4">
         {/* Header with H1 */}
@@ -327,7 +387,7 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
           <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 dark:border-gray-700 p-8 text-center" aria-label="処理完了">
             {/* Ai-chan Mascot - Success */}
             <div className="flex justify-center mb-4 min-h-[88px]">
-              <Mascot state="success" message="やったー！完了しました！友達にもシェアしてね♪" />
+              <Mascot state="success" message="処理が完了しました。ダウンロードしてご利用ください。" />
             </div>
             <h2 className="text-2xl font-bold text-kon mb-2">完了しました！</h2>
             <p className="text-gray-600 mb-6">ファイルのダウンロードが開始されました！</p>
@@ -347,7 +407,7 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
 
             {/* Share Section */}
             <div className="mt-6 pt-6 border-t border-gray-200">
-              <p className="text-sm text-gray-500 mb-3">このツールが役に立ったら、友達にもシェアしてね！</p>
+              <p className="text-sm text-gray-500 mb-3">このツールが役に立ちましたら、ぜひシェアしてください。</p>
               <ShareButtons
                 title={`${tool.nameJa} - 山田ツール`}
                 description={tool.description}
@@ -356,7 +416,8 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
           </section>
         )}
 
-{/* Ad Slot */}        <AdBanner className="my-6" />
+{/* Ad: after tool section */}
+        <AdUnit slot="5612038947" format="rectangle" />
         {/* How-to Section */}
         <section className="mt-8 bg-sakura/20 dark:bg-sakura/10 rounded-xl p-6" aria-labelledby="howto-heading">
           <h2 id="howto-heading" className="font-bold text-kon mb-3 text-lg">
@@ -485,6 +546,8 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
           </div>
         </section>
 
+        {/* Ad: before footer */}
+        <AdUnit slot="5612038947" format="horizontal" />
         {/* Related Tools */}
         <RelatedTools currentTool={tool} maxItems={6} />
 
@@ -494,5 +557,6 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
         </footer>
       </div>
     </div>
+    </>
   );
 }

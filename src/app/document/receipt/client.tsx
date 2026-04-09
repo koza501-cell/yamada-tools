@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 const STAMP_TAX_INFO = [
   { min: 0, max: 50000, tax: 0, label: "非課税" },
@@ -15,6 +17,9 @@ const STAMP_TAX_INFO = [
 ];
 
 export default function ReceiptClient() {
+  const { triggerSuccess } = usePricingContext();
+
+
   const [mounted, setMounted] = useState(false);
   const [mascotState, setMascotState] = useState<MascotState>("idle");
   const [mascotMessage, setMascotMessage] = useState("領収書を作成しよう！");
@@ -51,7 +56,8 @@ export default function ReceiptClient() {
       setMascotMessage("必須項目を入力してね！");
       return;
     }
-    setMascotState("success");
+    setMascotState("success")
+      triggerSuccess('receipt');;
     setMascotMessage("印刷画面を開くよ！");
     window.print();
   };
@@ -244,6 +250,7 @@ export default function ReceiptClient() {
         <div className="mt-8 text-center print:hidden">
           <Link href="/document" className="text-blue-600 hover:text-blue-800">← 書類作成一覧に戻る</Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

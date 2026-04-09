@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】BMI計算機｜適正体重・肥満度を日本基準で判定 体重管理に ",
+  title: "【無料】BMI計算機｜適正体重・肥満度を日本基準で判定 体重管理に",
   description: "身長・体重を入力するだけでBMIと適正体重を計算。日本肥満学会基準の肥満度判定・健康リスク・アドバイス付き。ビジュアルゲージで一目でわかる無料BMI計算機。",
   keywords: [
     "BMI 計算機",
@@ -19,16 +19,17 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/health/bmi-calculator",
   },
   openGraph: {
-    title: "【無料】BMI計算機｜適正体重・肥満度を日本基準で判定 ",
+    title: "【無料】BMI計算機｜適正体重・肥満度を日本基準で判定",
     description: "身長・体重を入力するだけでBMIと適正体重を計算。日本肥満学会基準の肥満度判定・健康リスク・アドバイス付き。ビジュアルゲージで一目でわかる無料BMI計算機。",
     url: "https://yamada-tools.jp/health/bmi-calculator",
-    siteName: "yamada-tools.jp",
+    siteName: "山田ツール",
     locale: "ja_JP",
     type: "website",
+    images: [{ url: "https://api.easynihon.com/api/og?site=yamada&title=%E3%80%90%E7%84%A1%E6%96%99%E3%80%91BMI%E8%A8%88%E7%AE%97%E6%A9%9F%EF%BD%9C%E9%81%A9%E6%AD%A3%E4%BD%93%E9%87%8D%E3%83%BB%E8%82%A5%E6%BA%80%E5%BA%A6%E3%82%92%E6%97%A5%E6%9C%AC%E5%9F%BA%E6%BA%96%E3%81%A7%E5%88%A4%E5%AE%9A" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】BMI計算機｜適正体重・肥満度を日本基準で判定 ",
+    title: "【無料】BMI計算機｜適正体重・肥満度を日本基準で判定",
     description: "身長・体重を入力するだけでBMIと適正体重を計算。日本肥満学会基準で判定・健康アドバイス付き。",
   },
 };
@@ -43,6 +44,11 @@ const jsonLd = {
       "operatingSystem": "Web",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
       "provider": { "@type": "Organization", "name": "山田ツール", "url": "https://yamada-tools.jp" },
+      "citation": [
+            { "@type": "CreativeWork", "name": "日本肥満学会 肥満症診断基準2016", "url": "https://www.jasso.or.jp/" },
+            { "@type": "CreativeWork", "name": "厚生労働省 e-ヘルスネット「肥満と健康」", "url": "https://www.e-healthnet.mhlw.go.jp/information/food/e-02-001.html" }
+          ],
+
       "description": "身長・体重を入力するだけでBMIと適正体重を計算。日本肥満学会基準の判定・健康リスク・アドバイス付き。ビジュアルゲージで一目でわかる無料BMI計算機。",
       "url": "https://yamada-tools.jp/health/bmi-calculator",
     },

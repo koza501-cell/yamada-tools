@@ -4,8 +4,13 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import Link from "next/link";
 import jsQR from "jsqr";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 export default function QrReaderClient() {
+  const { triggerSuccess } = usePricingContext();
+
+
   const [result, setResult] = useState("");
   const [preview, setPreview] = useState<string>("");
   const [mascotState, setMascotState] = useState<MascotState>("idle");
@@ -37,7 +42,8 @@ export default function QrReaderClient() {
 
         if (code) {
           setResult(code.data);
-          setMascotState("success");
+          setMascotState("success")
+      triggerSuccess('qr-reader');;
           setMascotMessage("QRコードを読み取ったよ！");
         } else {
           setResult("");
@@ -160,6 +166,7 @@ export default function QrReaderClient() {
         <div className="mt-8 text-center">
           <Link href="/generator" className="text-kon hover:text-ai">← 計算・生成ツール一覧に戻る</Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

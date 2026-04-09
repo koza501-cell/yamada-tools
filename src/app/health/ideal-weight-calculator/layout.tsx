@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】標準体重・肥満度 判定ツール｜BMI式・ブローカ式・メタボ腹囲チェック ",
+  title: "【無料】標準体重・肥満度 判定ツール｜BMI式・ブローカ式・メタボ腹囲チェック",
   description: "BMI式・ブローカ式など複数の方法で標準体重と肥満度を判定。腹囲によるメタボリックシンドロームチェック・体脂肪率判定も対応。登録不要・完全無料。",
   keywords: [
     "標準体重 計算",
@@ -21,16 +21,17 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/health/ideal-weight-calculator",
   },
   openGraph: {
-    title: "【無料】標準体重・肥満度 判定ツール｜BMI式・ブローカ式・メタボ腹囲チェック ",
+    title: "【無料】標準体重・肥満度 判定ツール｜BMI式・ブローカ式・メタボ腹囲チェック",
     description: "BMI式・ブローカ式など複数の方法で標準体重と肥満度を判定。腹囲によるメタボリックシンドロームチェック・体脂肪率判定も対応。登録不要・完全無料。",
     url: "https://yamada-tools.jp/health/ideal-weight-calculator",
-    siteName: "yamada-tools.jp",
+    siteName: "山田ツール",
     locale: "ja_JP",
     type: "website",
+    images: [{ url: "https://api.easynihon.com/api/og?site=yamada&title=%E3%80%90%E7%84%A1%E6%96%99%E3%80%91%E6%A8%99%E6%BA%96%E4%BD%93%E9%87%8D%E3%83%BB%E8%82%A5%E6%BA%80%E5%BA%A6%20%E5%88%A4%E5%AE%9A%E3%83%84%E3%83%BC%E3%83%AB%EF%BD%9CBMI%E5%BC%8F%E3%83%BB%E3%83%96%E3%83%AD%E3%83%BC%E3%82%AB%E5%BC%8F%E3%83%BB%E3%83%A1%E3%82%BF%E3%83%9C%E8%85%B9%E5%9B%B2%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】標準体重・肥満度 判定ツール｜BMI式・ブローカ式・メタボ腹囲チェック ",
+    title: "【無料】標準体重・肥満度 判定ツール｜BMI式・ブローカ式・メタボ腹囲チェック",
     description: "BMI式・ブローカ式など複数の方法で標準体重と肥満度を判定。腹囲メタボチェック・体脂肪率判定も対応。",
   },
 };
@@ -45,6 +46,11 @@ const jsonLd = {
       "operatingSystem": "Web",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
       "provider": { "@type": "Organization", "name": "山田ツール", "url": "https://yamada-tools.jp" },
+      "citation": [
+            { "@type": "CreativeWork", "name": "日本肥満学会 肥満症診断基準2016", "url": "https://www.jasso.or.jp/" },
+            { "@type": "CreativeWork", "name": "厚生労働省 e-ヘルスネット「肥満と健康」", "url": "https://www.e-healthnet.mhlw.go.jp/information/food/e-02-001.html" }
+          ],
+
       "description": "BMI式・ブローカ式など複数の計算方法で標準体重と肥満度を判定。腹囲によるメタボリックシンドロームチェック・体脂肪率判定も対応。登録不要・無料。",
       "url": "https://yamada-tools.jp/health/ideal-weight-calculator",
     },

@@ -3,6 +3,8 @@
 import { useState, useCallback } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ {
   question: string;
@@ -25,7 +27,10 @@ const UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const NUMBERS = "0123456789";
 const SYMBOLS = "!@#$%^&*()_+-=[]{}|;:,.<>?";
 
-export default function PasswordClient({ faq, seoContent }: Props) {
+export default function PasswordClient({
+ faq, seoContent }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [length, setLength] = useState(16);
   const [useLowercase, setUseLowercase] = useState(true);
   const [useUppercase, setUseUppercase] = useState(true);
@@ -68,7 +73,8 @@ export default function PasswordClient({ faq, seoContent }: Props) {
     setPassword(result);
     setPasswordHistory(prev => [result, ...prev.slice(0, 9)]);
     setCopied(false);
-    setMascotState("success");
+    setMascotState("success")
+      triggerSuccess('password');;
     setMascotMessage("安全なパスワード生成完了！");
   }, [length, useLowercase, useUppercase, useNumbers, useSymbols, excludeAmbiguous]);
 
@@ -417,6 +423,7 @@ export default function PasswordClient({ faq, seoContent }: Props) {
             ← 計算・生成ツール一覧に戻る
           </Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

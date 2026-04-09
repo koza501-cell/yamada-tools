@@ -2,12 +2,18 @@
 "use client";
 import { useState, useRef } from "react";
 import Link from "next/link";
+import Mascot from "@/components/common/Mascot";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ { question: string; answer: string; }
 interface Props { faq: FAQ[]; seoContent?: { intro: string }; }
 
-export default function GifMakerClient({ faq, seoContent }: Props) {
+export default function GifMakerClient({
+ faq, seoContent }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [frames, setFrames] = useState([]);
+  const [mascotState, setMascotState] = useState("idle");
   const [delay, setDelay] = useState(500);
   const [isProcessing, setIsProcessing] = useState(false);
   const [gifUrl, setGifUrl] = useState(null);
@@ -35,6 +41,7 @@ export default function GifMakerClient({ faq, seoContent }: Props) {
   const createGif = async () => {
     if (frames.length < 2) { setError("2枚以上の画像が必要です"); return; }
     setIsProcessing(true); setError("");
+    setMascotState("working");
     try {
       // Load gif.js from CDN
       if (!window.GIF) {
@@ -65,11 +72,14 @@ export default function GifMakerClient({ faq, seoContent }: Props) {
         gif.addFrame(canvas, { delay, copy: true });
       }
       gif.on("finished", (blob) => {
+        setMascotState("success")
+      triggerSuccess('gif-maker');;
         setGifUrl(URL.createObjectURL(blob));
         setIsProcessing(false);
       });
       gif.render();
     } catch (e) {
+      setMascotState("error");
       setError("GIF作成に失敗しました: " + e.message);
       setIsProcessing(false);
     }
@@ -104,6 +114,7 @@ export default function GifMakerClient({ faq, seoContent }: Props) {
         </header>
 
         <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-6">
+          <Mascot state={mascotState} />
           <div className="border-2 border-dashed rounded-xl p-6 text-center cursor-pointer border-gray-300 hover:border-kon mb-4"
             onClick={() => document.getElementById("gif-upload")?.click()}>
             <p className="text-gray-600 font-bold mb-2">📁 画像を追加（2〜20枚）</p>

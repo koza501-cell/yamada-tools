@@ -40,8 +40,8 @@ export default function TermsPage() {
               本サービスには以下の利用制限があります：
             </p>
             <ul className="list-disc list-inside text-gray-600 space-y-2">
-              <li>1ファイルあたりの最大サイズ：20MB</li>
-              <li>1日あたりの処理回数：15回まで</li>
+              <li>1ファイルあたりの最大サイズ：PDFツール 50MB、画像ツール 20MB</li>
+              <li>1日あたりの処理回数：5回まで（無料プラン）</li>
               <li>PDF結合時の最大ファイル数：50ファイル</li>
             </ul>
           </section>

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Mascot from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
 
 export default function ColorConvertClient() {
   const [hex, setHex] = useState("#3B82F6");
@@ -206,6 +207,7 @@ export default function ColorConvertClient() {
         <div className="mt-8 text-center">
           <Link href="/generator" className="text-kon hover:text-ai">← 計算・生成ツール一覧に戻る</Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

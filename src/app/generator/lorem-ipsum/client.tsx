@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 const loremParagraphs = [
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -24,6 +26,9 @@ type Lang = "latin" | "japanese";
 type Unit = "paragraphs" | "sentences" | "words";
 
 export default function LoremIpsumClient() {
+  const { triggerSuccess } = usePricingContext();
+
+
   const [lang, setLang] = useState<Lang>("japanese");
   const [unit, setUnit] = useState<Unit>("paragraphs");
   const [count, setCount] = useState(3);
@@ -63,7 +68,8 @@ export default function LoremIpsumClient() {
     }
 
     setResult(output);
-    setMascotState("success");
+    setMascotState("success")
+      triggerSuccess('lorem-ipsum');;
     setMascotMessage("テキストを生成したよ！");
   };
 
@@ -166,6 +172,7 @@ export default function LoremIpsumClient() {
         <div className="mt-8 text-center">
           <Link href="/generator" className="text-kon hover:text-ai">← 計算・生成ツール一覧に戻る</Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

@@ -3,6 +3,8 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ {
   question: string;
@@ -28,7 +30,10 @@ interface InvoiceItem {
   price: number;
 }
 
-export default function InvoiceClient({ faq, seoContent }: InvoiceClientProps) {
+export default function InvoiceClient({
+ faq, seoContent }: InvoiceClientProps) {
+  const { triggerSuccess } = usePricingContext();
+
   const [mounted, setMounted] = useState(false);
   const [mascotState, setMascotState] = useState<MascotState>("idle");
   const [mascotMessage, setMascotMessage] = useState("請求書を作成しよう！");
@@ -88,7 +93,8 @@ export default function InvoiceClient({ faq, seoContent }: InvoiceClientProps) {
       setMascotMessage("必須項目を入力してね！");
       return;
     }
-    setMascotState("success");
+    setMascotState("success")
+      triggerSuccess('invoice');;
     setMascotMessage("印刷画面を開くよ！");
     window.print();
   };
@@ -327,6 +333,7 @@ export default function InvoiceClient({ faq, seoContent }: InvoiceClientProps) {
             </div>
           </section>
         )}
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
 
 interface FAQ {
   question: string;
@@ -288,6 +289,7 @@ export default function ResumeClient({ faq, seoContent }: ResumeClientProps) {
             </div>
           </section>
         )}
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

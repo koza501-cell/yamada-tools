@@ -3,6 +3,8 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ {
   question: string;
@@ -89,7 +91,10 @@ const eras: Record<Era, EraInfo> = {
 
 const eraOrder: Era[] = ["meiji", "taisho", "showa", "heisei", "reiwa"];
 
-export default function WarekiSeirekiClient({ faq, seoContent }: Props) {
+export default function WarekiSeirekiClient({
+ faq, seoContent }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [mode, setMode] = useState<ConversionMode>("seireki-to-wareki");
   const [seirekiYear, setSeirekiYear] = useState<string>("");
   const [seirekiMonth, setSeirekiMonth] = useState<string>("");
@@ -189,7 +194,8 @@ export default function WarekiSeirekiClient({ faq, seoContent }: Props) {
   
   const handleConvert = () => {
     if (hasResult) {
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('wareki-seireki');;
       if (age !== null && age >= 0) {
         setMascotMessage(`変換完了！${age}歳だね！`);
       } else {
@@ -593,6 +599,7 @@ export default function WarekiSeirekiClient({ faq, seoContent }: Props) {
             ← 変換ツール一覧に戻る
           </Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

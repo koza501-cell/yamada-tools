@@ -5,6 +5,8 @@ import { LazyFAQ } from "@/components/common/LazyFAQ";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import RelatedTools, { relatedToolSets } from "@/components/common/RelatedTools";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 // Major Japanese banks dataset
 const MAJOR_BANKS = [
@@ -172,7 +174,10 @@ interface HeaderData {
   bonusPeriodTo?: string;
 }
 
-export default function BankFormatClient({ faq, seoContent }: BankFormatClientProps) {
+export default function BankFormatClient({
+ faq, seoContent }: BankFormatClientProps) {
+  const { triggerSuccess } = usePricingContext();
+
   const [mounted, setMounted] = useState(false);
   const [mascotState, setMascotState] = useState<MascotState>("idle");
   const [mascotMessage, setMascotMessage] = useState("振込データを入力してね！");
@@ -510,7 +515,8 @@ export default function BankFormatClient({ faq, seoContent }: BankFormatClientPr
       if (parsed.length > 0) {
         setTransfers(parsed);
         setParsedPreviewRows(parsed);
-        setMascotState("success");
+        setMascotState("success")
+      triggerSuccess('bank-format');;
         setMascotMessage(`${parsed.length}件のデータを読み込みました`);
       } else {
         setMascotState("error");
@@ -544,7 +550,8 @@ export default function BankFormatClient({ faq, seoContent }: BankFormatClientPr
 9900,ゆうちょ,100,東京,1,0001234,スズキイチロウ,75000`;
     setCsvInput(sample);
     parseCsvText(sample);
-    setMascotState("success");
+    setMascotState("success")
+      triggerSuccess('bank-format');;
     setMascotMessage("サンプルデータを挿入しました！");
     setTimeout(() => {
       setMascotState("idle");
@@ -751,7 +758,8 @@ export default function BankFormatClient({ faq, seoContent }: BankFormatClientPr
       const validTotal = validTransfers.reduce((s, t) => s + (parseInt(t.amount.replace(/[^0-9]/g, "")) || 0), 0);
       setResult(output);
       saveToHistory(output, validTransfers.length, validTotal);
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('bank-format');;
       setMascotMessage(`${validTransfers.length}件の振込データを変換しました！`);
     } catch {
       setMascotState("error");
@@ -899,7 +907,8 @@ export default function BankFormatClient({ faq, seoContent }: BankFormatClientPr
     setXlsSheets([]);
     setXlsToast(true);
     setTimeout(() => setXlsToast(false), 2000);
-    setMascotState('success');
+    setMascotState('success')
+      triggerSuccess('bank-format');;
     setMascotMessage(`${xlsPreviewRows.length}件のExcelデータを取り込みました`);
   };
 
@@ -1042,7 +1051,8 @@ export default function BankFormatClient({ faq, seoContent }: BankFormatClientPr
                           setHeaderData(entry.headerData);
                           setTransfers(entry.transfers);
                           setHistoryOpen(false);
-                          setMascotState("success");
+                          setMascotState("success")
+      triggerSuccess('bank-format');;
                           setMascotMessage("データを再利用しました");
                         }}
                         className="text-xs text-kon hover:underline"
@@ -2174,6 +2184,7 @@ export default function BankFormatClient({ faq, seoContent }: BankFormatClientPr
             <LazyFAQ faq={faq ?? BUILT_IN_FAQ} />
           </div>
         </section>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

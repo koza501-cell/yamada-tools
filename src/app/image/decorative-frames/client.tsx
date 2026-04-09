@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import ShareButtons from "@/components/common/ShareButtons";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ { question: string; answer: string; }
 interface SeoContent { intro: string; useCases?: { title: string; desc: string }[]; tips?: string; }
@@ -373,7 +374,10 @@ function darken(hex: string, amount: number): string {
 
 // ===================== Component =====================
 
-export default function DecorativeFramesClient({ faq, seoContent }: Props) {
+export default function DecorativeFramesClient({
+ faq, seoContent }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [mounted, setMounted] = useState(false);
   const [file, setFile] = useState<File | null>(null);
@@ -409,7 +413,8 @@ export default function DecorativeFramesClient({ faq, seoContent }: Props) {
     a.download = file.name.replace(/\.[^/.]+$/, "") + `_${frameStyle}_yamada-tools.png`;
     a.click();
     setIsComplete(true);
-    setMascotState("success");
+    setMascotState("success")
+      triggerSuccess('decorative-frames');;
     setMascotMessage("ダウンロード完了！友達にもシェアしてね♪");
   };
 
@@ -420,7 +425,8 @@ export default function DecorativeFramesClient({ faq, seoContent }: Props) {
       const img = new window.Image();
       img.onload = () => {
         setImgW(img.width); setImgH(img.height); setImgEl(img);
-        setMascotState("success");
+        setMascotState("success")
+      triggerSuccess('decorative-frames');;
         setMascotMessage("画像を読み込みました！フレームを選んでね！");
       };
       img.src = reader.result as string;

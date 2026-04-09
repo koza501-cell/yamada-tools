@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 const templates = [
   {
@@ -109,6 +111,9 @@ const templates = [
 ];
 
 export default function BusinessEmailClient() {
+  const { triggerSuccess } = usePricingContext();
+
+
   const [mounted, setMounted] = useState(false);
   const [mascotState, setMascotState] = useState<MascotState>("idle");
   const [mascotMessage, setMascotMessage] = useState("テンプレートを選んでね！");
@@ -134,7 +139,8 @@ TEL: 03-xxxx-xxxx
       setSelectedTemplate(id);
       setSubject(template.subject);
       setBody(template.body);
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('business-email');;
       setMascotMessage("テンプレートを読み込んだよ！");
     }
   };
@@ -254,6 +260,7 @@ TEL: 03-xxxx-xxxx
         <div className="mt-8 text-center">
           <Link href="/document" className="text-kon hover:text-ai">← 書類作成一覧に戻る</Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

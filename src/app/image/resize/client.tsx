@@ -3,6 +3,7 @@
 import { useState, useRef, useCallback } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ {
   question: string;
@@ -31,7 +32,10 @@ const presets: Preset[] = [
   { name: "名刺サイズ", width: 1050, height: 600, icon: "💼" },
 ];
 
-export default function ImageResizeClient({ faq }: Props) {
+export default function ImageResizeClient({
+ faq }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [originalImage, setOriginalImage] = useState<HTMLImageElement | null>(null);
   const [originalFileName, setOriginalFileName] = useState<string>("");
   const [originalWidth, setOriginalWidth] = useState<number>(0);
@@ -68,7 +72,8 @@ export default function ImageResizeClient({ faq }: Props) {
         setNewWidth(img.width.toString());
         setNewHeight(img.height.toString());
         setResizedDataUrl(null);
-        setMascotState("success");
+        setMascotState("success")
+      triggerSuccess('resize');;
         setMascotMessage(`${img.width}×${img.height}の画像だね！`);
       };
       img.src = e.target?.result as string;
@@ -159,7 +164,8 @@ export default function ImageResizeClient({ faq }: Props) {
     const fileSize = Math.round((base64Length * 3) / 4);
     setResizedSize(fileSize);
 
-    setMascotState("success");
+    setMascotState("success")
+      triggerSuccess('resize');;
     setMascotMessage(`${width}×${height}にリサイズ完了！`);
   };
 

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import SeatPickerTool from "@/components/tools/SeatPickerTool";
 import AdUnit from "@/components/AdUnit";
+import Mascot from "@/components/common/Mascot";
 
 const FAQ = [
   {
@@ -114,6 +115,7 @@ export default function SeatClient() {
 
         {/* ── Tool UI ── */}
         <section aria-label="席替えランダム決めツール" style={{ marginBottom: 32 }}>
+          <Mascot state="welcome" />
           <SeatPickerTool pageUrl="https://yamada-tools.jp/generator/random-picker/seat" />
         </section>
 
@@ -433,6 +435,7 @@ function TipCard({ icon, title, children, last = false }: {
       </h3>
       <div style={{ fontSize: "0.92rem", color: "#555", lineHeight: 1.8 }}>
         {children}
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

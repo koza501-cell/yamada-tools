@@ -65,7 +65,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "坪・面積変換 | Tsubo Converter ",
+    title: "坪・面積変換 | Tsubo Converter",
     description: "坪をsq ft・acres・㎡に一括変換。Tsubo to square feet & acres converter. 無料・登録不要。",
   },
   alternates: {

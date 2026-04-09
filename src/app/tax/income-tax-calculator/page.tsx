@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { IntroSection } from "@/components/IntroSection";
+import { UseCasesSection } from "@/components/UseCasesSection";
+import { FAQSection } from "@/components/FAQSection";
+import Mascot, { MascotState } from "@/components/common/Mascot";
 
 interface CalcResult {
   salaryCut: number;
@@ -195,6 +199,7 @@ const schema = {
 
 export default function IncomeTaxCalculatorPage() {
   const [salary, setSalary] = useState("");
+  const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const [hasSpouse, setHasSpouse] = useState(false);
   const [spouseIncome, setSpouseIncome] = useState("");
   const [dependents, setDependents] = useState(0);
@@ -238,8 +243,23 @@ export default function IncomeTaxCalculatorPage() {
       active ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
     }`;
 
+  const faqItems = [
+    { question: "年収500万円の所得税・住民税はいくらですか？", answer: "独身・各種控除なしの場合、所得税約157,500円、住民税約284,000円（合計約44万円）です。社会保険料を含めた手取りは約395万円が目安です。" },
+    { question: "配偶者控除はどれくらい節税になりますか？", answer: "配偶者の年収が103万円以下の場合、配偶者控除38万円が適用され、所得税が約5.7万〜19万円（税率15〜50%の場合）節税になります。住民税も約3.8万円の節税効果があります。" },
+    { question: "所得税と住民税の計算方法はどう違いますか？", answer: "所得税は5%〜45%の累進課税。住民税は所得割10%（一律）＋均等割5,000円（自治体により異なる）の構造です。所得税は当年分をその年に納付、住民税は前年所得を翌年6月から納付します。" },
+  ];
+
+  const useCases = [
+    { icon: "💴", persona: "自分の手取り額を知りたい会社員", title: "年収から税金・社会保険料を差し引いた手取りを確認", benefit: "年収別の実質手取り額を正確に計算" },
+    { icon: "👨‍👩‍👧", persona: "家族がいる方・各種控除を活用したい方", title: "配偶者控除・扶養控除でいくら節税できるか", benefit: "控除適用前後の税額差を一目で比較" },
+    { icon: "📋", persona: "確定申告・年末調整の準備をしている方", title: "申告前に税額の概算を把握したい", benefit: "主要控除を入力した概算税額を事前確認" },
+  ];
+
   return (
-    <div className="min-h-screen bg-gray-50">
+    <>
+      <IntroSection title="所得税・住民税計算機" paragraphs={["年収・家族構成・各種控除を入力すると所得税・住民税・社会保険料を一括計算。手取り額の目安も確認できます。", "配偶者控除・扶養控除・医療費控除・住宅ローン控除など主要な控除に対応。2026年税制改正（基礎控除58万円引き上げ）にも対応しています。", "登録不要・完全無料。給与所得者の確定申告前の税額確認や、年収交渉の参考数値の把握に最適です。"]} />
+      <div className="min-h-screen bg-gray-50">
+        <Mascot state={mascotState} className="mb-6" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -756,5 +776,8 @@ export default function IncomeTaxCalculatorPage() {
 
       </div>
     </div>
+    <UseCasesSection cases={useCases} />
+    <FAQSection faq={faqItems} />
+  </>
   );
 }

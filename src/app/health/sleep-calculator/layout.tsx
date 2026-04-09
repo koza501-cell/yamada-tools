@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】睡眠時間 最適化ツール｜90分サイクルで最適な就寝・起床時刻を計算 ",
+  title: "【無料】睡眠時間 最適化ツール｜90分サイクルで最適な就寝・起床時刻を計算",
   description: "90分の睡眠サイクルに基づいて最適な就寝・起床時刻を計算。睡眠負債チェック・ソーシャルジェットラグ診断・年齢別推奨睡眠時間も表示。登録不要・完全無料。",
   keywords: [
     "睡眠時間 計算",
@@ -19,16 +19,17 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/health/sleep-calculator",
   },
   openGraph: {
-    title: "【無料】睡眠時間 最適化ツール｜90分サイクルで最適な就寝・起床時刻を計算 ",
+    title: "【無料】睡眠時間 最適化ツール｜90分サイクルで最適な就寝・起床時刻を計算",
     description: "90分の睡眠サイクルに基づいて最適な就寝・起床時刻を計算。睡眠負債チェック・ソーシャルジェットラグ診断・年齢別推奨睡眠時間も表示。登録不要・完全無料。",
     url: "https://yamada-tools.jp/health/sleep-calculator",
-    siteName: "yamada-tools.jp",
+    siteName: "山田ツール",
     locale: "ja_JP",
     type: "website",
+    images: [{ url: "https://api.easynihon.com/api/og?site=yamada&title=%E3%80%90%E7%84%A1%E6%96%99%E3%80%91%E7%9D%A1%E7%9C%A0%E6%99%82%E9%96%93%20%E6%9C%80%E9%81%A9%E5%8C%96%E3%83%84%E3%83%BC%E3%83%AB%EF%BD%9C90%E5%88%86%E3%82%B5%E3%82%A4%E3%82%AF%E3%83%AB%E3%81%A7%E6%9C%80%E9%81%A9%E3%81%AA%E5%B0%B1%E5%AF%9D%E3%83%BB%E8%B5%B7%E5%BA%8A%E6%99%82%E5%88%BB%E3%82%92%E8%A8%88%E7%AE%97" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】睡眠時間 最適化ツール｜90分サイクルで最適な就寝・起床時刻を計算 ",
+    title: "【無料】睡眠時間 最適化ツール｜90分サイクルで最適な就寝・起床時刻を計算",
     description: "90分の睡眠サイクルに基づいて最適な就寝・起床時刻を計算。睡眠負債チェック・ソーシャルジェットラグ診断付き。登録不要・無料。",
   },
 };
@@ -43,6 +44,10 @@ const jsonLd = {
       "operatingSystem": "Web",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
       "provider": { "@type": "Organization", "name": "山田ツール", "url": "https://yamada-tools.jp" },
+      "citation": [
+            { "@type": "CreativeWork", "name": "厚生労働省「健康づくりのための睡眠ガイド2023」", "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/suimin/index.html" }
+          ],
+
       "description": "90分の睡眠サイクルに基づいて最適な就寝・起床時刻を計算。睡眠負債チェック・ソーシャルジェットラグ診断・年齢別推奨睡眠時間も表示。登録不要・無料。",
       "url": "https://yamada-tools.jp/health/sleep-calculator",
     },

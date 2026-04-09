@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import QRCode from "qrcode";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ {
   question: string;
@@ -30,7 +31,10 @@ const sizeMap: Record<QRSize, number> = {
   large: 400,
 };
 
-export default function QRCodeClient({ faq, seoContent }: Props) {
+export default function QRCodeClient({
+ faq, seoContent }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [contentType, setContentType] = useState<ContentType>("url");
   const [inputValue, setInputValue] = useState("");
   const [emailSubject, setEmailSubject] = useState("");
@@ -96,7 +100,8 @@ export default function QRCodeClient({ faq, seoContent }: Props) {
       });
       
       setQrDataUrl(dataUrl);
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('qr-code');;
       setMascotMessage("QRコード完成！ダウンロードしてね。");
     } catch (error) {
       console.error("QR generation error:", error);

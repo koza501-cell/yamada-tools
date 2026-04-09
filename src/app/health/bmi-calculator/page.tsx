@@ -3,6 +3,10 @@
 import { useState } from "react";
 import AdUnit from "@/components/AdUnit";
 import Link from "next/link";
+import { IntroSection } from "@/components/IntroSection";
+import { UseCasesSection } from "@/components/UseCasesSection";
+import { FAQSection } from "@/components/FAQSection";
+import { CitationsSection } from "@/components/CitationsSection";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -247,7 +251,29 @@ export default function BmiCalculatorPage() {
   const goalSign = result?.goalDiff !== null && result?.goalDiff !== undefined
     ? (result.goalDiff >= 0 ? "+" : "") : "";
 
+  const faqItems = [
+    { question: "BMIが25以上になると何か問題がありますか？", answer: "BMI25以上（肥満1度）になると2型糖尿病・高血圧・脂質異常症・心臓病などの生活習慣病リスクが高まります。定期的な健康診断を受け気になる場合は医師にご相談ください。" },
+    { question: "BMIが低すぎる場合のリスクは何ですか？", answer: "BMI18.5未満のやせは栄養不足・貧血・骨粗しょう症・免疫機能低下のリスクがあります。無理なダイエットは避け栄養バランスの良い食事を心がけましょう。" },
+    { question: "適正体重と美容体重はどう違いますか？", answer: "適正体重（BMI=22）は医学的に最も疾病リスクが低い体重です。美容体重（BMI=20）は見た目がスリムに見えるとされる体重ですが医学的根拠はありません。健康面では適正体重を目指すことが推奨されます。" },
+    { question: "BMIは年齢によって基準が変わりますか？", answer: "基準自体は変わりませんが高齢者（65歳以上）については少し高めのBMI（21.5〜24.9）が推奨されています。加齢により筋肉量が減少するためやせすぎると転倒・骨折リスクが高まります。" },
+    { question: "1ヶ月で何kgまで減量するのが健康的ですか？", answer: "月1〜2kg（週0.5kg以下）が健康的な減量ペースとされています。急激な減量は筋肉量低下・栄養不足・リバウンドのリスクがあります。食事制限と運動を組み合わせた無理のない計画を立てましょう。" },
+  ];
+
+  const useCases = [
+    { icon: "⚖️", persona: "体重管理・ダイエット中の方", title: "目標体重がBMI的に適正か確認したい", benefit: "日本基準で適正体重と現状のギャップを計算" },
+    { icon: "🏥", persona: "健康診断を控えている方", title: "BMIが基準値内か事前に確認したい", benefit: "肥満度と判定結果を健診前にチェック" },
+    { icon: "💪", persona: "筋トレ・体型改善に取り組む方", title: "理想体重への道のりを数値で把握したい", benefit: "目標BMIに必要な増減量を計算" },
+  ];
+
+
+  const citations = [
+    { name: "日本肥満学会 肥満症診断基準2016", url: "https://www.jasso.or.jp/", description: "BMI判定基準・肥満度分類の根拠" },
+    { name: "厚生労働省 e-ヘルスネット「肥満と健康」", url: "https://www.e-healthnet.mhlw.go.jp/information/food/e-02-001.html", description: "BMI22が適正体重とされる根拠" },
+  ];
+
   return (
+    <>
+      <IntroSection title="BMI・適正体重計算機" paragraphs={["身長・体重を入力するだけでBMI・肥満度・適正体重を日本基準（BMI22が適正）で判定します。", "低体重・普通体重・過体重・肥満（1〜4度）の区分と、適正体重までの増減量も表示。健康診断前の確認や体重管理に役立ちます。", "登録不要・完全無料。美容体重・シンデレラ体重などの参考値も一緒に確認できます。"]} />
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white border-b border-gray-200">
@@ -688,5 +714,8 @@ export default function BmiCalculatorPage() {
 
       </div>
     </div>
+    <UseCasesSection cases={useCases} />
+    <FAQSection faq={faqItems} />
+  </>
   );
 }

@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】固定資産税 計算機｜住宅用地特例・新築軽減を自動適用して計算 2026年版 ",
+  title: "【無料】固定資産税 計算機｜住宅用地特例・新築軽減を自動適用して計算 2026年版",
   description: "固定資産税・都市計画税を軽減措置込みで自動計算。住宅用地特例（1/6・1/3）・新築住宅1/2軽減を自動適用。年間・月額・軽減期間シミュレーション表示。登録不要・無料。",
   keywords: [
     "固定資産税 計算",
@@ -16,16 +16,17 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/realestate/property-tax-calculator",
   },
   openGraph: {
-    title: "【無料】固定資産税 計算機｜住宅用地特例・新築軽減を自動適用して計算 2026年版 ",
+    title: "【無料】固定資産税 計算機｜住宅用地特例・新築軽減を自動適用して計算 2026年版",
     description: "固定資産税・都市計画税を軽減措置込みで自動計算。住宅用地特例（1/6・1/3）・新築住宅1/2軽減を自動適用。年間・月額・軽減期間シミュレーション表示。",
     url: "https://yamada-tools.jp/realestate/property-tax-calculator",
-    siteName: "yamada-tools.jp",
+    siteName: "山田ツール",
     locale: "ja_JP",
     type: "website",
+    images: [{ url: "https://api.easynihon.com/api/og?site=yamada&title=%E3%80%90%E7%84%A1%E6%96%99%E3%80%91%E5%9B%BA%E5%AE%9A%E8%B3%87%E7%94%A3%E7%A8%8E%20%E8%A8%88%E7%AE%97%E6%A9%9F%EF%BD%9C%E4%BD%8F%E5%AE%85%E7%94%A8%E5%9C%B0%E7%89%B9%E4%BE%8B%E3%83%BB%E6%96%B0%E7%AF%89%E8%BB%BD%E6%B8%9B%E3%82%92%E8%87%AA%E5%8B%95%E9%81%A9%E7%94%A8%E3%81%97%E3%81%A6%E8%A8%88%E7%AE%97%202026%E5%B9%B4%E7%89%88" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】固定資産税 計算機｜住宅用地特例・新築軽減を自動適用して計算 2026年版 ",
+    title: "【無料】固定資産税 計算機｜住宅用地特例・新築軽減を自動適用して計算 2026年版",
     description: "固定資産税・都市計画税を軽減措置込みで自動計算。住宅用地特例（1/6・1/3）・新築住宅1/2軽減を自動適用。年間・月額・軽減期間シミュレーション表示。",
   },
 };

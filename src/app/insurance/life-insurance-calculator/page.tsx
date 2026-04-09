@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { IntroSection } from "@/components/IntroSection";
+import { UseCasesSection } from "@/components/UseCasesSection";
+import { FAQSection } from "@/components/FAQSection";
 
 interface FormState {
   age: string;
@@ -199,8 +202,22 @@ export default function LifeInsuranceCalculatorPage() {
   const numChildren = parseInt(form.numChildren) || 0;
   const advice = result ? getAdvice(result.required) : null;
 
+  const faqItems = [
+    { question: "生命保険の必要保障額はどう計算しますか？", answer: "必要保障額 = 遺族の生活費（末子独立まで） + 教育費 + 葬儀費用 + 住宅ローン残高 − 貯蓄 − 遺族年金受給額です。年収・家族構成・ローン残高を入力すると自動計算できます。" },
+    { question: "子どもがいる場合、生命保険はいくら必要ですか？", answer: "子ども1人（0歳）・年収500万円・住宅ローンなしの場合、必要保障額は約3,000〜5,000万円が目安です。ただし配偶者の就労状況・遺族年金額・貯蓄によって大きく変わります。" },
+    { question: "遺族年金はいくらもらえますか？", answer: "遺族基礎年金は子のある配偶者に年額約102万円＋子の加算。会社員の場合は遺族厚生年金も加わり、年収によって異なりますが月10〜20万円程度が受給できます。この金額を保険金で補う部分を試算します。" },
+  ];
+
+  const useCases = [
+    { icon: "👨‍👩‍👦", persona: "子どもがいる・生命保険を検討中の方", title: "自分に必要な死亡保障額を正確に知りたい", benefit: "遺族の生活費・教育費・年金を考慮した必要額を計算" },
+    { icon: "🏠", persona: "住宅ローンがある方", title: "ローン残高を考慮した適切な保障額を確認したい", benefit: "団体信用生命保険との兼ね合いを含めた保障額を算出" },
+    { icon: "🔄", persona: "既存の生命保険を見直したい方", title: "現在の保険金額が多すぎ・少なすぎか確認したい", benefit: "必要保障額と現在の保険金額の過不足を可視化" },
+  ];
+
   return (
-    <div className="min-h-screen bg-gray-50">
+    <>
+      <IntroSection title="生命保険 必要保障額計算機" paragraphs={["万が一の際に遺族が生活を維持するために必要な生命保険の保障額を計算します。年収・家族構成・住宅ローン・貯蓄・遺族年金見込みを入力するだけで算出。", "子どもの教育費・遺族の生活費・葬儀費用などを加味した必要保障額と、現在の保険との過不足も確認できます。", "登録不要・完全無料。生命保険の見直しや新規加入を検討している方に最適です。"]} />
+      <div className="min-h-screen bg-gray-50">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -665,5 +682,8 @@ export default function LifeInsuranceCalculatorPage() {
 
       </div>
     </div>
+    <UseCasesSection cases={useCases} />
+    <FAQSection faq={faqItems} />
+  </>
   );
 }

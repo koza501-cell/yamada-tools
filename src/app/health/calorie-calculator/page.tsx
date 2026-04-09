@@ -3,6 +3,10 @@
 import { useState } from "react";
 import AdUnit from "@/components/AdUnit";
 import Link from "next/link";
+import { IntroSection } from "@/components/IntroSection";
+import { UseCasesSection } from "@/components/UseCasesSection";
+import { FAQSection } from "@/components/FAQSection";
+import { CitationsSection } from "@/components/CitationsSection";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -205,7 +209,29 @@ export default function CalorieCalculatorPage() {
     : "text-green-600"
     : "";
 
+  const faqItems = [
+    { question: "基礎代謝を上げる方法はありますか？", answer: "最も効果的な方法は筋肉量を増やすことです。筋力トレーニングを週2〜3回行うことで基礎代謝を長期的に高めることができます。十分な睡眠・タンパク質の摂取も重要です。" },
+    { question: "カロリー計算だけで痩せられますか？", answer: "カロリー収支が基本ですがPFCバランスも重要です。同じカロリーでもタンパク質・脂質・炭水化物の比率によって筋肉量維持やホルモンバランスが変わります。" },
+    { question: "1日1,200kcal以下に減らしても大丈夫ですか？", answer: "女性で1,000kcal・男性で1,200kcal以下の極端な制限は推奨されません。栄養不足・筋肉量低下・代謝低下・リバウンドのリスクが高まります。" },
+    { question: "運動しないで食事制限だけで痩せることはできますか？", answer: "カロリー制限だけでも体重は減りますが筋肉量も減少しやすく痩せにくい体になるリスクがあります。有酸素運動と筋トレを組み合わせることが理想です。" },
+    { question: "年齢とともに太りやすくなるのはなぜですか？", answer: "加齢により基礎代謝が低下するためです。筋肉量は20代をピークに年間0.5〜1%減少します。対策として筋力トレーニングで筋肉量を維持することが最も効果的です。" },
+  ];
+
+  const useCases = [
+    { icon: "🥗", persona: "ダイエット中の方", title: "摂取カロリーの目安が知りたい", benefit: "TDEE基準の適切な食事制限カロリーを計算" },
+    { icon: "🏋️", persona: "筋トレ・バルクアップ中の方", title: "増量に必要なカロリーとPFC比を知りたい", benefit: "体重・活動量から最適な増量カロリーを算出" },
+    { icon: "📊", persona: "健康的な体重維持を目指す方", title: "自分のカロリー消費量を正確に知りたい", benefit: "活動レベル別のTDEEと維持カロリーを確認" },
+  ];
+
+
+  const citations = [
+    { name: "厚生労働省「日本人の食事摂取基準（2020年版）」", url: "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/eiyou/syokuji_kijyun.html", description: "エネルギー・栄養素の基準値の根拠" },
+    { name: "国立健康・栄養研究所", url: "https://www.nibiohn.go.jp/", description: "基礎代謝基準値・身体活動レベル区分の根拠" },
+  ];
+
   return (
+    <>
+      <IntroSection title="基礎代謝・カロリー計算機" paragraphs={["性別・年齢・身長・体重・活動量から基礎代謝（BMR）と1日の総消費カロリー（TDEE）を計算します。", "目標（減量・維持・増量）に合わせた目標摂取カロリーとPFCバランス（タンパク質・脂質・炭水化物比率）も自動算出。", "登録不要・完全無料。ダイエット・筋肥大・維持食のカロリー管理に最適です。"]} />
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white border-b border-gray-200">
@@ -718,5 +744,8 @@ export default function CalorieCalculatorPage() {
 
       </div>
     </div>
+    <UseCasesSection cases={useCases} />
+    <FAQSection faq={faqItems} />
+  </>
   );
 }

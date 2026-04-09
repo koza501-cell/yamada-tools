@@ -58,8 +58,20 @@ export default function AboutCompanyPage() {
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-4 border-b">
+              <div className="font-medium text-gray-600">代表者名</div>
+              <div className="md:col-span-2 text-gray-800">山田フェサル</div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-4 border-b">
               <div className="font-medium text-gray-600">設立</div>
-              <div className="md:col-span-2 text-gray-800">2025年</div>
+              <div className="md:col-span-2 text-gray-800">2024年</div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-4 border-b">
+              <div className="font-medium text-gray-600">出資金</div>
+              <div className="md:col-span-2 text-gray-800">500万円</div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-4 border-b">
+              <div className="font-medium text-gray-600">法人番号</div>
+              <div className="md:col-span-2 text-gray-800">0400-03-024822</div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-4 border-b">
               <div className="font-medium text-gray-600">事業内容</div>

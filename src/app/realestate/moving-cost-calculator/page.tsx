@@ -3,6 +3,7 @@
 import { useState } from "react";
 import AdUnit from "@/components/AdUnit";
 import Link from "next/link";
+import Mascot, { MascotState } from "@/components/common/Mascot";
 
 // ---- Types ----
 interface MovingInputs {
@@ -256,6 +257,7 @@ const defaultInputs: MovingInputs = {
 // ---- Main Page ----
 export default function MovingCostCalculatorPage() {
   const [inputs, setInputs] = useState<MovingInputs>({ ...defaultInputs });
+  const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const [result, setResult] = useState<MovingResult | null>(null);
   const [error, setError] = useState("");
 
@@ -268,6 +270,7 @@ export default function MovingCostCalculatorPage() {
   function handleCalculate() {
     if (!inputs.fromPref || !inputs.toPref) {
       setError("引越し元と引越し先の都道府県を選択してください。");
+    setMascotState("error");
       return;
     }
     setError("");
@@ -286,6 +289,7 @@ export default function MovingCostCalculatorPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+        <Mascot state={mascotState} className="mb-6" />
       <div className="max-w-4xl mx-auto px-4 py-8">
 
         {/* Header */}

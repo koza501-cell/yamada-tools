@@ -3,6 +3,7 @@
 import Link from "next/link";
 import RandomPickerTool from "@/components/tools/RandomPickerTool";
 import AdUnit from "@/components/AdUnit";
+import Mascot from "@/components/common/Mascot";
 
 const PAGE_URL = "https://yamada-tools.jp/generator/random-picker/christmas";
 
@@ -118,6 +119,7 @@ export default function ChristmasClient() {
 
         {/* ── Tool UI ── */}
         <section aria-label="プレゼント交換 相手決めツール" style={{ marginBottom: 32 }}>
+          <Mascot state="welcome" />
           <RandomPickerTool
             presets={PRESETS}
             pageUrl={PAGE_URL}
@@ -381,6 +383,7 @@ function HowToStep({ step, title, children, last = false }: {
         <div style={{ fontSize: "0.92rem", color: "#555", lineHeight: 1.8 }}>
           {children}
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

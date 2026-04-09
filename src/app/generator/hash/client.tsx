@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ {
   question: string;
@@ -194,7 +196,10 @@ async function computeHash(data: ArrayBuffer | string, algorithm: HashAlgorithm)
   return hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
 }
 
-export default function HashClient({ faq }: Props) {
+export default function HashClient({
+ faq }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [inputType, setInputType] = useState<"text" | "file">("text");
   const [text, setText] = useState("");
   const [file, setFile] = useState<File | null>(null);
@@ -232,7 +237,8 @@ export default function HashClient({ faq }: Props) {
       }
 
       setResults(hashResults);
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('hash');;
       setMascotMessage("ハッシュ生成完了！");
     } catch (error) {
       setMascotState("error");
@@ -490,6 +496,7 @@ export default function HashClient({ faq }: Props) {
             ← 計算・生成ツール一覧に戻る
           </Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

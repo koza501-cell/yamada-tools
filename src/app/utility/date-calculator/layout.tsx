@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】日付・日数 計算機｜営業日計算・祝日対応・和暦表示 日数差・日数加算 ",
+  title: "【無料】日付・日数 計算機｜営業日計算・祝日対応・和暦表示 日数差・日数加算",
   description: "2つの日付の差・日数の加減算・営業日計算を一括対応。日本の祝日（2024〜2027年）完全対応。和暦表示・期間内訳・ショートカットボタン付き。登録不要・完全無料。",
   keywords: [
     "日付計算",
@@ -21,16 +21,17 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/utility/date-calculator",
   },
   openGraph: {
-    title: "【無料】日付・日数 計算機｜営業日計算・祝日対応・和暦表示 ",
+    title: "【無料】日付・日数 計算機｜営業日計算・祝日対応・和暦表示",
     description: "2つの日付の差・日数の加減算・営業日計算を一括対応。日本の祝日完全対応。和暦表示・期間内訳付き。",
     url: "https://yamada-tools.jp/utility/date-calculator",
-    siteName: "yamada-tools.jp",
+    siteName: "山田ツール",
     locale: "ja_JP",
     type: "website",
+    images: [{ url: "https://api.easynihon.com/api/og?site=yamada&title=%E3%80%90%E7%84%A1%E6%96%99%E3%80%91%E6%97%A5%E4%BB%98%E3%83%BB%E6%97%A5%E6%95%B0%20%E8%A8%88%E7%AE%97%E6%A9%9F%EF%BD%9C%E5%96%B6%E6%A5%AD%E6%97%A5%E8%A8%88%E7%AE%97%E3%83%BB%E7%A5%9D%E6%97%A5%E5%AF%BE%E5%BF%9C%E3%83%BB%E5%92%8C%E6%9A%A6%E8%A1%A8%E7%A4%BA" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】日付・日数 計算機｜営業日計算・祝日対応・和暦表示 ",
+    title: "【無料】日付・日数 計算機｜営業日計算・祝日対応・和暦表示",
     description: "2つの日付の差・日数の加減算・営業日計算を一括対応。日本の祝日完全対応・和暦表示付き。",
   },
 };

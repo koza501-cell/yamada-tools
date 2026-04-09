@@ -19,6 +19,7 @@ interface Props {
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import Mascot from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
 
 type Category = "length" | "weight" | "area" | "volume" | "temperature";
 
@@ -178,6 +179,7 @@ export default function UnitConvertClient({ faq, seoContent }: Props) {
         <div className="mt-8 text-center">
           <Link href="/generator" className="text-kon hover:text-ai">← 計算・生成ツール一覧に戻る</Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { IntroSection } from "@/components/IntroSection";
+import { UseCasesSection } from "@/components/UseCasesSection";
+import { FAQSection } from "@/components/FAQSection";
+import Mascot, { MascotState } from "@/components/common/Mascot";
 
 type EmploymentType = "monthly" | "hourly" | "daily";
 
@@ -208,6 +212,7 @@ const schema = {
 
 export default function OvertimeCalculatorPage() {
   const [form, setForm] = useState<FormState>(DEFAULT_FORM);
+  const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const [result, setResult] = useState<CalcResult | null>(null);
   const [error, setError] = useState("");
 
@@ -222,37 +227,45 @@ export default function OvertimeCalculatorPage() {
     const hours = parseFloat(form.hoursPerDay);
     if (!form.workDaysPerMonth || isNaN(days) || days < 1 || days > 31) {
       setError("月の所定労働日数は1〜31の範囲で入力してください");
+    setMascotState("error");
       return;
     }
     if (!form.hoursPerDay || isNaN(hours) || hours < 1 || hours > 24) {
       setError("1日の所定労働時間は1〜24の範囲で入力してください");
+    setMascotState("error");
       return;
     }
     if (form.employmentType === "monthly" && (!form.monthlySalary || parseFloat(form.monthlySalary) <= 0)) {
       setError("月給を入力してください");
+    setMascotState("error");
       return;
     }
     if (form.employmentType === "hourly" && (!form.hourlySalary || parseFloat(form.hourlySalary) <= 0)) {
       setError("時給を入力してください");
+    setMascotState("error");
       return;
     }
     if (form.employmentType === "daily" && (!form.dailySalary || parseFloat(form.dailySalary) <= 0)) {
       setError("日給を入力してください");
+    setMascotState("error");
       return;
     }
     const overtimeNormal = parseFloat(form.overtimeNormal) || 0;
     const overtimeOver60 = parseFloat(form.overtimeOver60) || 0;
     if (overtimeOver60 > overtimeNormal) {
       setError("60時間超の時間は法定時間外労働時間以下にしてください");
+    setMascotState("error");
       return;
     }
     if (form.hasFixedOvertime) {
       if (!form.fixedOvertimePay || parseFloat(form.fixedOvertimePay) <= 0) {
         setError("固定残業代の金額を入力してください");
+    setMascotState("error");
         return;
       }
       if (!form.fixedOvertimeHours || parseFloat(form.fixedOvertimeHours) <= 0) {
         setError("固定残業時間を入力してください");
+    setMascotState("error");
         return;
       }
     }
@@ -269,8 +282,24 @@ export default function OvertimeCalculatorPage() {
   const inputClass = "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent";
   const labelClass = "block text-sm font-medium text-gray-700 mb-1";
 
+
+  const faqItems = [
+    { question: "残業代の計算方法を教えてください", answer: "残業代は「時間外労働時間数 × 時給 × 割増率」で計算します。法定時間外（月60時間以下）は1.25倍、月60時間超は1.50倍、深夜（22時〜5時）は1.25倍、法定休日は1.35倍です。これらが重複する場合は割増率が加算されます。" },
+    { question: "固定残業代が適正かどうか確認できますか？", answer: "はい、本ツールの「固定残業代チェック」機能で確認できます。実際の残業代計算額と固定残業代を比較し、不足額があれば会社は追加支払義務があります。固定残業代は法定の割増賃金を下回ることはできません。" },
+    { question: "管理職でも残業代は請求できますか？", answer: "法律上の「管理監督者」に該当する場合は残業代請求権がありませんが、名ばかり管理職（実質的な管理権限がない場合）は請求できます。また管理監督者でも深夜割増賃金（22時〜5時）の請求権は残ります。" },
+    { question: "残業代の時効はいつですか？", answer: "2020年4月以降の賃金債権の時効は3年（それ以前は2年）です。退職後も3年以内であれば未払い残業代を請求できます。証拠として勤怠記録・タイムカード・メール等を保管しておくことが重要です。" },
+    { question: "裁量労働制の場合、残業代はどうなりますか？", answer: "裁量労働制が適法に適用されている場合、みなし労働時間制となり残業代が発生しない場合があります。ただし深夜・休日労働の割増賃金は支払われます。裁量労働制は適用要件が厳しく、要件を満たさない場合は通常の残業代が発生します。" }
+  ];
+  const useCases = [
+    { icon: "⏰", persona: "残業が多い会社員", title: "未払い残業代がないか確認したい", benefit: "法定通りの割増賃金額を正確に計算" },
+    { icon: "📋", persona: "固定残業代がある方", title: "みなし残業が実際の残業より少ないか不安", benefit: "固定残業代の不足額を自動チェック" },
+    { icon: "🌙", persona: "深夜・休日勤務が多い方", title: "割増率の重複計算を正確に把握したい", benefit: "深夜×時間外などの重複割増も正確算出" }
+  ];
   return (
-    <div className="min-h-screen bg-gray-50">
+    <>
+      <IntroSection title="残業代計算機" paragraphs={["法定時間外・深夜・休日・法定休日の割増賃金を自動計算。固定残業代が適正かどうかのチェック機能も搭載しています。", "2024年4月の残業代時効3年延長・建設業などの上限規制にも対応。月給・時給・日給どの雇用形態でも計算できます。", "未払い残業代の計算や固定残業代のチェックに活用できます。登録不要・完全無料。"]} />
+      <div className="min-h-screen bg-gray-50">
+        <Mascot state={mascotState} className="mb-6" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -823,5 +852,8 @@ export default function OvertimeCalculatorPage() {
 
       </div>
     </div>
+    <UseCasesSection cases={useCases} />
+    <FAQSection faq={faqItems} />
+  </>
   );
 }

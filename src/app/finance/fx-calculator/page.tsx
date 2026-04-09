@@ -5,29 +5,29 @@ import FXCalculatorClient from "./client";
 const tool = getToolById("fx-calculator")!;
 
 export const metadata: Metadata = {
-  title: "FX損益計算機【無料】損益・証拠金・ロスカット・スワップ・確定申告を一括計算 | yamada-tools.jp",
+  title: "FX損益計算機【無料】損益・証拠金・ロスカット・確定申告計算",
   description: "FX取引の損益・必要証拠金・ロスカットレート・スワップ収益・確定申告税額を無料で計算。複数取引の一括計算や損失繰越控除シミュレーターも対応。登録不要。",
   keywords: ["FX 損益計算", "FX シミュレーター 無料", "FX ロスカット 計算機", "FX 確定申告 計算", "FX スワップ 計算", "FX 証拠金 計算"],
   alternates: {
     canonical: "https://yamada-tools.jp/finance/fx-calculator",
   },
   openGraph: {
-    title: "FX損益計算機【無料】損益・証拠金・ロスカット・スワップ・確定申告を一括計算 | yamada-tools.jp",
+    title: "FX損益計算機【無料】損益・証拠金・ロスカット・確定申告計算",
     description: "FX取引の損益・必要証拠金・ロスカットレート・スワップ収益・確定申告税額を無料で計算。複数取引の一括計算や損失繰越控除シミュレーターも対応。登録不要。",
     url: "https://yamada-tools.jp/finance/fx-calculator",
-    siteName: "yamada-tools.jp",
+    siteName: "山田ツール",
     locale: "ja_JP",
     type: "website",
     images: [{
       url: "https://pub-a1dbb3c658b341fabe5015e209050298.r2.dev/og-finance-fx-calculator.png",
       width: 1200,
       height: 630,
-      alt: "FX損益計算機 | yamada-tools.jp",
+      alt: "FX損益計算機",
     }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "FX損益計算機【無料】損益・証拠金・ロスカット・スワップ・確定申告を一括計算 | yamada-tools.jp",
+    title: "FX損益計算機【無料】損益・証拠金・ロスカット・確定申告計算",
     description: "FX取引の損益・必要証拠金・ロスカットレート・スワップ収益・確定申告税額を無料で計算。複数取引の一括計算や損失繰越控除シミュレーターも対応。登録不要。",
     images: ["https://pub-a1dbb3c658b341fabe5015e209050298.r2.dev/og-finance-fx-calculator.png"],
   },

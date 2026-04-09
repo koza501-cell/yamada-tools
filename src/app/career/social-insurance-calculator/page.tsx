@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { IntroSection } from "@/components/IntroSection";
+import { UseCasesSection } from "@/components/UseCasesSection";
+import { FAQSection } from "@/components/FAQSection";
+import Mascot, { MascotState } from "@/components/common/Mascot";
 
 // ============================================================
 // Types
@@ -230,6 +234,7 @@ function fmtMan(n: number): string {
 
 export default function SocialInsuranceCalculatorPage() {
   const [form, setForm] = useState<FormState>(DEFAULT_FORM);
+  const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const [result, setResult] = useState<CalcResult | null>(null);
   const [error, setError] = useState("");
 
@@ -251,14 +256,17 @@ export default function SocialInsuranceCalculatorPage() {
     const age = parseInt(form.age);
     if (isNaN(monthly) || monthly <= 0) {
       setError("月給（額面）を入力してください。");
+    setMascotState("error");
       return;
     }
     if (isNaN(age) || age < 15 || age > 75) {
       setError("年齢を正しく入力してください（15〜75歳）。");
+    setMascotState("error");
       return;
     }
     const res = calculate(form);
     setResult(res);
+    setMascotState("success");
   }
 
   function handleReset() {
@@ -271,8 +279,24 @@ export default function SocialInsuranceCalculatorPage() {
     ? parseFloat(form.monthlySalary) * 10000
     : 0;
 
+
+  const faqItems = [
+    { question: "社会保険料は毎月変わりますか？", answer: "原則として年1回（9月）改定されます。4〜6月の給与平均に基づいて標準報酬月額が決定し9月から翌8月まで適用されます。給与が大幅に変わった場合は随時改定の対象になることがあります。" },
+    { question: "扶養家族がいると社会保険料は変わりますか？", answer: "本人の社会保険料は扶養家族の人数に関わらず変わりません。扶養家族（年収130万円未満）は追加保険料なしで健康保険に加入できます。" },
+    { question: "転職したら社会保険料はどうなりますか？", answer: "転職先で新たに標準報酬月額が設定され社会保険料が変わります。転職して給与が上がると標準報酬月額も上がり社会保険料が増加します。" },
+    { question: "フリーランスになると社会保険はどうなりますか？", answer: "健康保険は国民健康保険または任意継続に、年金は国民年金に切り替わります。厚生年金・雇用保険には加入できなくなります。国民健康保険料は前年所得に基づくため退職翌年は高額になる場合があります。" },
+    { question: "社会保険料は給与から天引きされますか？", answer: "はい、健康保険料・厚生年金・雇用保険料は毎月の給与から自動的に天引きされます。介護保険料（40歳以上）も同様です。" }
+  ];
+  const useCases = [
+    { icon: "💳", persona: "給与から天引きされる保険料を知りたい方", title: "社会保険料の内訳を正確に把握したい", benefit: "健保・厚年・雇保・介護の本人負担額を一括計算" },
+    { icon: "🔄", persona: "転職・昇給後の保険料変化が気になる方", title: "年収アップで社会保険料がいくら増えるか", benefit: "転職前後の社会保険料差額を比較" },
+    { icon: "🏃", persona: "フリーランス転身を検討中", title: "会社員と国民健康保険・国民年金の比較", benefit: "独立後の社会保険負担増加額を事前確認" }
+  ];
   return (
-    <div className="min-h-screen bg-gray-50">
+    <>
+      <IntroSection title="社会保険料計算機" paragraphs={["健康保険料・厚生年金・雇用保険・介護保険（40歳以上）を一括計算。本人負担額と会社負担額の内訳も表示します。", "都道府県別の健康保険料率、標準報酬月額の等級、2024年10月の社会保険適用拡大にも対応しています。", "登録不要・完全無料。手取り計算・転職検討・フリーランス転身の比較に活用できます。"]} />
+      <div className="min-h-screen bg-gray-50">
+        <Mascot state={mascotState} className="mb-6" />
       {/* Hero */}
       <div className="bg-gradient-to-r from-blue-700 to-blue-500 text-white py-10 px-4">
         <div className="max-w-4xl mx-auto">
@@ -794,5 +818,8 @@ export default function SocialInsuranceCalculatorPage() {
         ※ 本ツールは一般的な計算方法に基づく概算です。正確な金額はお勤め先の給与明細または社労士にご確認ください。
       </div>
     </div>
+    <UseCasesSection cases={useCases} />
+    <FAQSection faq={faqItems} />
+  </>
   );
 }

@@ -3,6 +3,10 @@
 import { useState } from "react";
 import AdUnit from "@/components/AdUnit";
 import Link from "next/link";
+import { IntroSection } from "@/components/IntroSection";
+import { UseCasesSection } from "@/components/UseCasesSection";
+import { FAQSection } from "@/components/FAQSection";
+import { CitationsSection } from "@/components/CitationsSection";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -236,7 +240,29 @@ export default function PregnancyCalculatorPage() {
   };
   const tc = result ? trimesterColors[result.trimester] : trimesterColors[1];
 
+  const faqItems = [
+    { question: "出産予定日は必ず正確ですか？", answer: "出産予定日はあくまで目安です。実際には予定日±2週間（37〜42週）の正産期に生まれることが多く、予定日通りに生まれる確率は約5%程度です。産婦人科での超音波検査により、より正確な出産予定日が算出されます。" },
+    { question: "安定期とはいつですか？", answer: "妊娠14週以降（第2三半期）を安定期と呼びます。胎盤が完成し流産リスクが大幅に下がります。つわりが和らぐ方も多く比較的体調が安定する時期です。" },
+    { question: "妊娠初期に葉酸が必要な理由は何ですか？", answer: "葉酸は胎児の神経管の正常な発達に必要な栄養素です。神経管は妊娠4〜6週に形成されるため妊娠が分かる前から摂取することが推奨されています。厚生労働省は1日400μgの葉酸摂取を推奨しています。" },
+    { question: "妊娠週数と胎児の大きさはどのくらいですか？", answer: "妊娠10週：約3cm、妊娠20週：約25cm、妊娠30週：約40cm・約1.5kg、妊娠40週：約50cm・約3kgが目安です。個人差が大きく超音波検査での確認が最も正確です。" },
+    { question: "妊婦健診は何回受けるのが一般的ですか？", answer: "妊娠期間全体で14回程度が推奨されています。〜23週は4週に1回、24〜35週は2週に1回、36週以降は毎週1回が目安です。多くの自治体で14回分の費用補助があります。" },
+  ];
+
+  const useCases = [
+    { icon: "🤰", persona: "妊娠がわかったばかりの方", title: "出産予定日と今の妊娠週数を知りたい", benefit: "最終月経日から正確な出産予定日を自動計算" },
+    { icon: "📅", persona: "健診スケジュールを把握したい方", title: "いつ何回病院に行けばいいか確認したい", benefit: "妊娠週数別の推奨健診スケジュールを一覧表示" },
+    { icon: "👶", persona: "赤ちゃんの成長が気になる方", title: "今の週数で赤ちゃんはどのくらいの大きさ?", benefit: "週数に応じた胎児の発育目安を確認" },
+  ];
+
+
+  const citations = [
+    { name: "公益社団法人 日本産科婦人科学会", url: "https://www.jsog.or.jp/", description: "妊娠週数・出産予定日の計算方法の根拠" },
+    { name: "厚生労働省「妊娠中の食生活について」", url: "https://www.mhlw.go.jp/seisakunitsuite/bunya/kodomo/kodomo_kosodate/boshi-hoken/junyou-03.html", description: "妊婦の健康管理・健診スケジュールの根拠" },
+  ];
+
   return (
+    <>
+      <IntroSection title="妊娠週数・出産予定日計算機" paragraphs={["最終月経日または排卵日・受精日から妊娠週数・出産予定日を計算します。安定期（妊娠5ヶ月）の開始日や各マイルストーンも一覧で確認できます。", "妊婦健診のスケジュール（初診〜36週以降の週1回まで）と、各週での胎児の大きさ・発育の目安も表示します。", "登録不要・完全無料。妊娠中の方が健診計画を立てたり、妊娠週数を把握するのに役立ちます。"]} />
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="bg-white border-b border-gray-200 py-3 px-4">
@@ -589,5 +615,8 @@ export default function PregnancyCalculatorPage() {
         </p>
       </main>
     </div>
+    <UseCasesSection cases={useCases} />
+    <FAQSection faq={faqItems} />
+  </>
   );
 }

@@ -3,6 +3,10 @@
 import { useState } from "react";
 import AdUnit from "@/components/AdUnit";
 import Link from "next/link";
+import { IntroSection } from "@/components/IntroSection";
+import { UseCasesSection } from "@/components/UseCasesSection";
+import { FAQSection } from "@/components/FAQSection";
+import { CitationsSection } from "@/components/CitationsSection";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -406,7 +410,29 @@ export default function IdealWeightCalculatorPage() {
     (result?.waistRisk !== null && result?.waistRisk !== undefined ? 1 : 0) +
     (result?.bodyFatJudge !== null && result?.bodyFatJudge !== undefined ? 1 : 0);
 
+  const faqItems = [
+    { question: "標準体重と適正体重はどう違いますか？", answer: "一般的に同じ意味で使われますが計算方法によって若干異なります。医学的に最も推奨されるのはBMI式（身長m² × 22）による標準体重です。" },
+    { question: "BMIと肥満度はどう違いますか？", answer: "BMIは体重と身長から計算した絶対的な指標です。肥満度は標準体重（BMI22）からの偏差率（%）で標準体重からどれだけ乖離しているかを示します。" },
+    { question: "メタボリックシンドロームの腹囲基準はなぜ男女で違うのですか？", answer: "男性と女性では内臓脂肪のつき方が異なるためです。男性は内臓脂肪がつきやすく女性は皮下脂肪がつきやすいため同じ腹囲でも内臓脂肪量が異なり基準値が異なります。" },
+    { question: "体脂肪率が高いのにBMIが正常な場合はどう考えればいいですか？", answer: "隠れ肥満（内臓脂肪型肥満）の状態です。BMIだけでなく体脂肪率や腹囲も確認することが重要です。筋力トレーニングで筋肉量を増やすことが改善への近道です。" },
+    { question: "子供の肥満度はどう計算しますか？", answer: "子供の肥満度は主にローレル指数（体重kg÷身長cm³×10⁷）で評価します。115〜145が標準とされ学校の健康診断でも使われる指標です。" },
+  ];
+
+  const useCases = [
+    { icon: "📏", persona: "自分の標準体重を知りたい方", title: "BMI以外の計算式でも確認したい", benefit: "3つの計算方式を比較して標準体重を把握" },
+    { icon: "🔍", persona: "メタボ診断が気になる方", title: "腹囲とBMIでメタボリスクを確認したい", benefit: "腹囲基準値との差とメタボ判定を表示" },
+    { icon: "👨‍👩‍👧", persona: "子どもの体重が気になる親御さん", title: "子どもの肥満度を正確に評価したい", benefit: "年齢・身長・体重から子どもの肥満度を計算" },
+  ];
+
+
+  const citations = [
+    { name: "日本肥満学会 肥満症診断基準2016", url: "https://www.jasso.or.jp/", description: "BMI・肥満度判定基準の根拠" },
+    { name: "厚生労働省 e-ヘルスネット「肥満と健康」", url: "https://www.e-healthnet.mhlw.go.jp/information/food/e-02-001.html", description: "メタボリックシンドローム腹囲基準の根拠" },
+  ];
+
   return (
+    <>
+      <IntroSection title="標準体重・肥満度判定ツール" paragraphs={["BMI式・ブローカ式・ブローカ桂変法など複数の計算方式で標準体重を算出。肥満度の判定と腹囲によるメタボリックシンドロームのチェックも行います。", "男女別・年齢別の詳細な判定基準に対応。体脂肪率の目安も参考表示します。", "登録不要・完全無料。健康診断前の予備確認や体型改善の目標設定に活用できます。"]} />
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white border-b border-gray-200">
@@ -914,5 +940,8 @@ export default function IdealWeightCalculatorPage() {
 
       </div>
     </div>
+    <UseCasesSection cases={useCases} />
+    <FAQSection faq={faqItems} />
+  </>
   );
 }

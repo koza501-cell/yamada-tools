@@ -2,29 +2,29 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "金融計算ツール【無料】NISA・iDeCo・住宅ローン・FX・老後資金シミュレーター | yamada-tools.jp",
+  title: "金融計算ツール【無料】NISA・iDeCo・住宅ローン・FX・老後資金シミュレーター",
   description: "新NISA積立計算、住宅ローンシミュレーション、FX損益計算、老後資金試算、iDeCo vs NISA比較を無料で。登録不要・日本国内サーバー処理・スマホ対応。",
   keywords: ["NISA シミュレーター", "住宅ローン 計算機", "FX 損益計算", "老後資金 計算", "iDeCo NISA 比較", "金融計算ツール 無料"],
   alternates: {
     canonical: "https://yamada-tools.jp/finance",
   },
   openGraph: {
-    title: "金融計算ツール【無料】NISA・iDeCo・住宅ローン・FX・老後資金シミュレーター | yamada-tools.jp",
+    title: "金融計算ツール【無料】NISA・iDeCo・住宅ローン・FX・老後資金シミュレーター",
     description: "新NISA積立計算、住宅ローンシミュレーション、FX損益計算、老後資金試算、iDeCo vs NISA比較を無料で。登録不要・日本国内サーバー処理・スマホ対応。",
     url: "https://yamada-tools.jp/finance",
-    siteName: "yamada-tools.jp",
+    siteName: "山田ツール",
     locale: "ja_JP",
     type: "website",
     images: [{
       url: "https://pub-a1dbb3c658b341fabe5015e209050298.r2.dev/og-finance-hub.png",
       width: 1200,
       height: 630,
-      alt: "金融計算ツール | yamada-tools.jp",
+      alt: "金融計算ツール",
     }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "金融計算ツール【無料】NISA・iDeCo・住宅ローン・FX・老後資金シミュレーター | yamada-tools.jp",
+    title: "金融計算ツール【無料】NISA・iDeCo・住宅ローン・FX・老後資金シミュレーター",
     description: "新NISA積立計算、住宅ローンシミュレーション、FX損益計算、老後資金試算、iDeCo vs NISA比較を無料で。登録不要・日本国内サーバー処理・スマホ対応。",
     images: ["https://pub-a1dbb3c658b341fabe5015e209050298.r2.dev/og-finance-hub.png"],
   },
@@ -42,7 +42,7 @@ const breadcrumbJsonLd = {
 const collectionJsonLd = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "name": "金融計算ツール | yamada-tools.jp",
+  "name": "金融計算ツール",
   "description": "新NISA・iDeCo・住宅ローン・FX・老後資金の無料シミュレーター集",
   "url": "https://yamada-tools.jp/finance",
   "datePublished": "2026-01-01",
