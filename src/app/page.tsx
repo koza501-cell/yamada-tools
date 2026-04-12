@@ -202,7 +202,7 @@ export default function Home() {
               <Link
                 key={chip.href}
                 href={chip.href}
-                className="rounded-full px-3 py-1 text-sm bg-white border border-gray-200 hover:border-blue-400 hover:bg-blue-50 transition-colors cursor-pointer dark:bg-slate-700 dark:text-gray-200 dark:border-slate-600 dark:hover:border-blue-400"
+                className="rounded-full px-3 py-1 text-sm bg-white border border-gray-200 hover:border-blue-400 hover:bg-blue-50 transition-colors cursor-pointer dark:bg-slate-700 dark:text-gray-200 dark:border-slate-600 dark:hover:border-blue-400 min-h-[44px] flex items-center"
               >
                 {chip.label}
               </Link>
