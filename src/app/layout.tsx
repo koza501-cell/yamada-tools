@@ -165,7 +165,7 @@ const websiteSchema = {
   name: "山田ツール",
   url: siteUrl,
   description:
-    "日本国内サーバーで安全に使える無料オンラインツール集。PDF編集、画像変換、文書作成など89種類以上のツールを提供。",
+    "日本国内サーバーで安全に使える無料オンラインツール集。PDF編集、画像変換、文書作成など133種類以上のツールを提供。",
   publisher: {
     "@id": `${siteUrl}/#organization`,
   },

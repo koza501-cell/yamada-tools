@@ -3,6 +3,7 @@ import { LazyFAQ } from "@/components/common/LazyFAQ";
 import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
 import VerticalTextClient from "./client";
+import RelatedTools from "@/components/common/RelatedTools";
 
 const tool = getToolById("vertical-text")!;
 
@@ -152,6 +153,10 @@ export default function Page() {
           <LazyFAQ faq={faq} />
         </div>
       </section>
+      <div className="max-w-4xl mx-auto px-4">
+        <RelatedTools currentTool={tool} maxItems={6} />
+      </div>
+
     </>
   );
 }

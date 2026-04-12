@@ -3,6 +3,7 @@ import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
 import CompressClient from "./client";
 import { toolSchemas } from "@/data/toolSchemas";
+import RelatedTools from "@/components/common/RelatedTools";
 
 const tool = getToolById("compress")!;
 
@@ -88,6 +89,10 @@ export default function CompressPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <CompressClient faq={faq} seoContent={seoContent} />
+      <div className="max-w-4xl mx-auto px-4">
+        <RelatedTools currentTool={tool} maxItems={6} />
+      </div>
+
     </>
   );
 }

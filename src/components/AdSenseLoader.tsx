@@ -2,9 +2,11 @@
 
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
+import { useAuth } from '@/contexts/AuthContext';
 
 export default function AdSenseLoader() {
   const pathname = usePathname();
+  const { isPro } = useAuth();
 
   const isExcluded =
     pathname === '/' ||
@@ -13,7 +15,7 @@ export default function AdSenseLoader() {
     pathname.startsWith('/auth');
 
   useEffect(() => {
-    if (isExcluded) return;
+    if (isExcluded || isPro) return;
 
     if (document.querySelector('script[src*="adsbygoogle"]')) return;
 
@@ -22,7 +24,7 @@ export default function AdSenseLoader() {
     script.async = true;
     script.crossOrigin = 'anonymous';
     document.head.appendChild(script);
-  }, [isExcluded, pathname]);
+  }, [isExcluded, isPro, pathname]);
 
   return null;
 }

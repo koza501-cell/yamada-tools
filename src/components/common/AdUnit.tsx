@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
+import { useAuth } from '@/contexts/AuthContext';
 
 interface AdUnitProps {
   slot: string;
@@ -17,6 +18,7 @@ declare global {
 
 export function AdUnit({ slot, format = 'auto', className = '' }: AdUnitProps) {
   const pathname = usePathname();
+  const { isPro } = useAuth();
 
   const isExcluded =
     pathname === '/' ||
@@ -25,15 +27,15 @@ export function AdUnit({ slot, format = 'auto', className = '' }: AdUnitProps) {
     pathname.startsWith('/auth');
 
   useEffect(() => {
-    if (isExcluded) return;
+    if (isExcluded || isPro) return;
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     } catch (e) {
       console.error('AdSense error:', e);
     }
-  }, [isExcluded]);
+  }, [isExcluded, isPro]);
 
-  if (isExcluded) return null;
+  if (isExcluded || isPro) return null;
 
   return (
     <div className={`ad-container my-6 ${className}`}>

@@ -3,6 +3,7 @@ import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
 import BankFormatClient from "./client";
 import { JsonLdDedup } from "./json-ld-dedup";
+import RelatedTools from "@/components/common/RelatedTools";
 
 const tool = getToolById("bank-format")!;
 
@@ -201,6 +202,10 @@ export default function Page() {
           </div>
         </div>
       </section>
+      <div className="max-w-4xl mx-auto px-4">
+        <RelatedTools currentTool={tool} maxItems={6} />
+      </div>
+
     </>
   );
 }

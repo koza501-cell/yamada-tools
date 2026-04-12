@@ -4,6 +4,7 @@ import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
 import EnvelopePrintClient from "./client";
 import { StepGuide } from "./step-guide";
 import { JsonLdDedup } from "./json-ld-dedup";
+import RelatedTools from "@/components/common/RelatedTools";
 
 const tool = getToolById("envelope-print")!;
 
@@ -91,6 +92,10 @@ export default function EnvelopePrintPage() {
       <div className="ad-free-zone"><EnvelopePrintClient faq={faq} seoContent={seoContent} /></div>
       <StepGuide />
       <JsonLdDedup scriptId="envelope-print-jsonld" />
+      <div className="max-w-4xl mx-auto px-4">
+        <RelatedTools currentTool={tool} maxItems={6} />
+      </div>
+
     </>
   );
 }

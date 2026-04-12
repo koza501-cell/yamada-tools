@@ -1,10 +1,11 @@
+import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "利用規約",
   description: "山田ツールの利用規約です。",
   alternates: {
-    canonical: 'https://yamada-tools.jp/terms',
+    canonical: 'https://yamada-tools.jp/legal/terms',
   },
 };
 
@@ -30,12 +31,42 @@ export default function TermsPage() {
             <h2 className="text-xl font-bold text-kon mb-4">第2条（サービス内容）</h2>
             <p className="text-gray-600 leading-relaxed">
               本サービスは、PDF編集・変換、画像編集、Officeファイル変換等の
-              オンラインツールを無料で提供するものです。
+              オンラインツールを提供するものです。無料プランおよび有料のPROプランをご用意しています。
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-kon mb-4">第3条（利用制限）</h2>
+            <h2 className="text-xl font-bold text-kon mb-4">第3条（有料プランについて）</h2>
+            <div className="space-y-3 text-gray-600 text-sm">
+              <div>
+                <p className="font-bold text-kon mb-1">PROプランの内容</p>
+                <ul className="list-disc list-inside space-y-1">
+                  <li>広告の非表示</li>
+                  <li>1日あたりの処理回数制限の緩和</li>
+                  <li>アップロード可能なファイルサイズの上限拡大</li>
+                  <li>その他、当社が定めるPROプラン限定機能</li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-bold text-kon mb-1">料金</p>
+                <ul className="list-disc list-inside space-y-1">
+                  <li>月払い：月額980円（税込）</li>
+                  <li>年払い：年額9,800円（税込）</li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-bold text-kon mb-1">無料体験期間</p>
+                <p>PROプランには7日間の無料体験期間があります。無料体験期間中は課金されません。期間終了後、解約しない場合は選択プランの料金が自動課金されます。解約した場合は無料プランへ移行します。</p>
+              </div>
+              <div>
+                <p className="font-bold text-kon mb-1">自動更新・解約・返金</p>
+                <p>PROプランは契約期間終了後に自動更新されます。解約はマイページより即時手続き可能で、解約後は当該請求期間の末日までご利用いただけます。デジタルサービスの性質上、原則として返金は承ることができません。</p>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-bold text-kon mb-4">第4条（利用制限）</h2>
             <p className="text-gray-600 leading-relaxed mb-4">
               本サービスには以下の利用制限があります：
             </p>
@@ -47,7 +78,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-kon mb-4">第4条（禁止事項）</h2>
+            <h2 className="text-xl font-bold text-kon mb-4">第5条（禁止事項）</h2>
             <p className="text-gray-600 leading-relaxed mb-4">
               利用者は、以下の行為を行ってはなりません：
             </p>
@@ -59,6 +90,7 @@ export default function TermsPage() {
               <li>他の利用者に関する個人情報を収集・蓄積する行為</li>
               <li>不正アクセスをし、またはこれを試みる行為</li>
               <li>他者になりすます行為</li>
+              <li>PROプランの利用権を第三者に譲渡・転売する行為</li>
               <li>反社会的勢力に対して直接または間接に利益を供与する行為</li>
               <li>著作権、商標権その他の知的財産権を侵害する行為</li>
               <li>その他、当社が不適切と判断する行為</li>
@@ -66,7 +98,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-kon mb-4">第5条（ファイルの取り扱い）</h2>
+            <h2 className="text-xl font-bold text-kon mb-4">第6条（ファイルの取り扱い）</h2>
             <div className="bg-sakura/20 rounded-xl p-4">
               <ul className="text-gray-600 space-y-2">
                 <li>• アップロードされたファイルは処理後60分で自動的に削除されます</li>
@@ -77,7 +109,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-kon mb-4">第6条（免責事項）</h2>
+            <h2 className="text-xl font-bold text-kon mb-4">第7条（免責事項）</h2>
             <p className="text-gray-600 leading-relaxed">
               当社は、本サービスに事実上または法律上の瑕疵がないことを明示的にも黙示的にも保証しておりません。
               本サービスの利用によって生じた損害について、当社は一切の責任を負いません。
@@ -86,7 +118,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-kon mb-4">第7条（サービスの変更・停止）</h2>
+            <h2 className="text-xl font-bold text-kon mb-4">第8条（サービスの変更・停止）</h2>
             <p className="text-gray-600 leading-relaxed">
               当社は、利用者に事前の通知なく、本サービスの内容を変更し、
               または本サービスの提供を停止・中断することができるものとします。
@@ -94,7 +126,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-kon mb-4">第8条（規約の変更）</h2>
+            <h2 className="text-xl font-bold text-kon mb-4">第9条（規約の変更）</h2>
             <p className="text-gray-600 leading-relaxed">
               当社は、本規約を変更することができるものとします。
               変更後の規約は、本サービス上に掲示した時点から効力を生じるものとします。
@@ -102,7 +134,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-kon mb-4">第9条（準拠法・管轄裁判所）</h2>
+            <h2 className="text-xl font-bold text-kon mb-4">第10条（準拠法・管轄裁判所）</h2>
             <p className="text-gray-600 leading-relaxed">
               本規約の解釈にあたっては、日本法を準拠法とします。
               本サービスに関して紛争が生じた場合には、東京地方裁判所を専属的合意管轄とします。
@@ -112,7 +144,7 @@ export default function TermsPage() {
 
         <div className="mt-8 text-center text-sm text-gray-500">
           <p>制定日: 2024年11月</p>
-          <p>最終更新日: 2024年11月</p>
+          <p>最終更新日: 2026年4月</p>
         </div>
       </div>
     </div>

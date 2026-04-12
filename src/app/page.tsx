@@ -73,8 +73,20 @@ const homepageSchema = {
     "@type": "ListItem",
     position: index + 1,
     name: tool.nameJa,
-    description: tool.description,
-    url: `https://yamada-tools.jp${tool.path}`
+    url: `https://yamada-tools.jp${tool.path}`,
+    item: {
+      "@type": "WebApplication",
+      name: tool.nameJa,
+      description: tool.description,
+      url: `https://yamada-tools.jp${tool.path}`,
+      applicationCategory: "UtilityApplication",
+      operatingSystem: "Web",
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "JPY"
+      }
+    }
   }))
 };
 
@@ -91,7 +103,7 @@ const homepageSearchActionSchema = {
     "@type": "SearchAction",
     target: {
       "@type": "EntryPoint",
-      urlTemplate: "https://yamada-tools.jp/?q={search_term_string}"
+      urlTemplate: "https://yamada-tools.jp/search?q={search_term_string}"
     },
     "query-input": "required name=search_term_string"
   }
@@ -553,7 +565,7 @@ export default function Home() {
             日本最大級のソフトウェアレビューサイト「窓の杜」に掲載されました
           </p>
           <a href="https://forest.watch.impress.co.jp/docs/digest/2077518.html" target="_blank" rel="noopener noreferrer" className="inline-block">
-            <img
+            <Image
               src="https://pub-a1dbb3c658b341fabe5015e209050298.r2.dev/mado-no-mori-banner.webp"
               alt="窓の杜にて紹介されました - 2026年1月13日掲載"
               className="rounded-xl shadow-lg hover:shadow-xl transition-shadow max-w-2xl w-full"

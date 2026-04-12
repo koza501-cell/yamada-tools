@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
 import CompressClient from "./client";
+import RelatedTools from "@/components/common/RelatedTools";
 
 const tool = getToolById("compress-image")!;
 
@@ -120,6 +121,10 @@ export default function ImageCompressPage() {
           </p>
         </div>
       </section>
+      <div className="max-w-4xl mx-auto px-4">
+        <RelatedTools currentTool={tool} maxItems={6} />
+      </div>
+
     </>
   );
 }

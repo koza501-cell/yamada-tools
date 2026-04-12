@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
 import ImageResizeClient from "./client";
+import RelatedTools from "@/components/common/RelatedTools";
 const tool = getToolById("resize-image")!;
 const faq = [
   { question: "縦横比は維持されますか？", answer: "はい、デフォルトで縦横比を維持します。解除も可能です。" },
@@ -30,6 +31,10 @@ export default function Page() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <ImageResizeClient faq={faq} />
+      <div className="max-w-4xl mx-auto px-4">
+        <RelatedTools currentTool={tool} maxItems={6} />
+      </div>
+
     </>
   );
 }

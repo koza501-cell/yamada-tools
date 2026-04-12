@@ -69,6 +69,7 @@ export default function PricingClient() {
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
   const [loadingPlan, setLoadingPlan] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const { user, refreshUser } = useAuth();
   const router = useRouter();
 
@@ -128,10 +129,12 @@ export default function PricingClient() {
         window.location.href = data.checkout_url;
       } else {
         console.error('Checkout error:', data);
+        setErrorMessage('決済処理に失敗しました。しばらくしてからお試しください。');
         setLoadingPlan(null);
       }
     } catch (err) {
       console.error('Checkout error:', err);
+      setErrorMessage('通信エラーが発生しました。しばらくしてからお試しください。');
       setLoadingPlan(null);
     }
   };
@@ -152,6 +155,14 @@ export default function PricingClient() {
       {successMessage && (
         <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-green-500 text-white px-6 py-3 rounded-xl shadow-lg font-medium">
           🎉 {successMessage}
+        </div>
+      )}
+
+      {/* Error banner */}
+      {errorMessage && (
+        <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-red-500 text-white px-6 py-3 rounded-xl shadow-lg font-medium flex items-center gap-3">
+          <span>{errorMessage}</span>
+          <button onClick={() => setErrorMessage(null)} className="text-white/80 hover:text-white text-lg leading-none">×</button>
         </div>
       )}
 
@@ -284,13 +295,23 @@ export default function PricingClient() {
                 現在より下位プラン
               </button>
             ) : (
-              <button
-                onClick={() => handleUpgrade(proKey)}
-                disabled={loadingPlan === proKey}
-                className="w-full py-3 bg-sakura hover:bg-yellow-600 text-white rounded-xl font-bold transition-colors text-sm disabled:opacity-60 disabled:cursor-not-allowed"
-              >
-                {loadingPlan === proKey ? '処理中...' : 'PROプランを始める'}
-              </button>
+              <div className="flex flex-col gap-2">
+                {(!user || !user.trial_started_at) && (
+                  <Link
+                    href="/auth/trial"
+                    className="w-full py-3 bg-green-500 hover:bg-green-600 text-white rounded-xl font-bold transition-colors text-sm text-center block"
+                  >
+                    🎁 10日間無料トライアル
+                  </Link>
+                )}
+                <button
+                  onClick={() => handleUpgrade(proKey)}
+                  disabled={loadingPlan === proKey}
+                  className={(!user || !user.trial_started_at) ? "w-full py-3 bg-white border border-sakura text-sakura hover:bg-sakura/5 rounded-xl font-bold transition-colors text-sm disabled:opacity-60 disabled:cursor-not-allowed" : "w-full py-3 bg-sakura hover:bg-yellow-600 text-white rounded-xl font-bold transition-colors text-sm disabled:opacity-60 disabled:cursor-not-allowed"}
+                >
+                  {loadingPlan === proKey ? '処理中...' : 'PROプランを始める'}
+                </button>
+              </div>
             )}
           </div>
 
@@ -316,7 +337,7 @@ export default function PricingClient() {
                   <div>
                     <span className="text-4xl font-bold text-kon dark:text-blue-400">¥1,480</span>
                   </div>
-                  <p className="text-gray-400 text-xs mt-1">/ユーザー/月</p>
+                  <p className="text-gray-400 text-xs mt-1">/ユーザー/月（税込）</p>
                 </>
               ) : (
                 <>

@@ -21,17 +21,16 @@ export default function SupportChatbot() {
 
   const plan = user?.effective_plan || 'free';
 
+  // useEffect must be before early return (Rules of Hooks)
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [messages]);
+
   if (plan === 'free') {
     return null;
   }
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
 
   const sendMessage = async () => {
     if (!input.trim() || loading) return;

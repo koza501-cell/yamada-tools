@@ -9,7 +9,6 @@ import { Tool, getToolsByCategory } from "@/config/tools";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import ShareButtons from "@/components/common/ShareButtons";
 import UsageLimitBanner from "@/components/common/UsageLimitBanner";
-import RelatedTools from "@/components/common/RelatedTools";
 import { usePricingContext } from "@/components/common/PricingTriggerProvider";
 
 // GA4 event tracking helper
@@ -548,8 +547,6 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
 
         {/* Ad: before footer */}
         <AdUnit slot="5612038947" format="horizontal" />
-        {/* Related Tools */}
-        <RelatedTools currentTool={tool} maxItems={6} />
 
         {/* Security Note */}
         <footer className="mt-8 text-center text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">

@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { getToolById } from "@/config/tools";
 import FXCalculatorClient from "./client";
+import RelatedTools from "@/components/common/RelatedTools";
 
 const tool = getToolById("fx-calculator")!;
 
@@ -115,6 +116,10 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbJsonLd, softwareApplicationJsonLd, howToJsonLd, faqJsonLd]) }}
       />
       <FXCalculatorClient faq={faq} />
+      <div className="max-w-4xl mx-auto px-4">
+        <RelatedTools currentTool={tool} maxItems={6} />
+      </div>
+
     </>
   );
 }

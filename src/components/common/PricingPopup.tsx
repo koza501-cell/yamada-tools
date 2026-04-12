@@ -10,16 +10,17 @@ interface PricingPopupProps {
 }
 
 export function PricingPopup({ type, onClose, remainingUses = 0 }: PricingPopupProps) {
-  if (type === 'none') return null;
-
-  // Close on escape key
+  // useEffect must be before early return (Rules of Hooks)
   useEffect(() => {
+    if (type === 'none') return;
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
     };
     window.addEventListener('keydown', handleEsc);
     return () => window.removeEventListener('keydown', handleEsc);
-  }, [onClose]);
+  }, [onClose, type]);
+
+  if (type === 'none') return null;
 
   const isLimitReached = type === 'limit-modal';
 

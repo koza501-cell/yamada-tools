@@ -786,6 +786,50 @@ export default function SalaryIncreaseSimulatorPage() {
           </div>
         )}
 
+        {/* GEO: 昇給シミュレーション早見表 */}
+        <section className="mt-12 mb-8">
+          <h2 className="text-xl font-bold text-gray-800 mb-4">昇給シミュレーション早見表</h2>
+          <p className="text-sm text-gray-600 mb-4">
+            よくある年収アップのパターンと手取りの変化を事前計算した早見表です。
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="bg-blue-50">
+                  <th className="border border-gray-200 px-3 py-2 text-left">現在の年収</th>
+                  <th className="border border-gray-200 px-3 py-2 text-left">目標年収</th>
+                  <th className="border border-gray-200 px-3 py-2 text-left">現在の手取り</th>
+                  <th className="border border-gray-200 px-3 py-2 text-left">目標手取り</th>
+                  <th className="border border-gray-200 px-3 py-2 text-left">手取り増加額</th>
+                  <th className="border border-gray-200 px-3 py-2 text-left">月換算</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { cur: "300万円", tgt: "400万円", curTH: "約245万円", tgtTH: "約295万円", diff: "+50万円", monthly: "+4.2万円/月" },
+                  { cur: "400万円", tgt: "500万円", curTH: "約295万円", tgtTH: "約363万円", diff: "+68万円", monthly: "+5.7万円/月" },
+                  { cur: "500万円", tgt: "600万円", curTH: "約363万円", tgtTH: "約418万円", diff: "+55万円", monthly: "+4.6万円/月" },
+                  { cur: "500万円", tgt: "700万円", curTH: "約363万円", tgtTH: "約479万円", diff: "+116万円", monthly: "+9.7万円/月" },
+                  { cur: "600万円", tgt: "800万円", curTH: "約418万円", tgtTH: "約539万円", diff: "+121万円", monthly: "+10.1万円/月" },
+                  { cur: "700万円", tgt: "1,000万円", curTH: "約479万円", tgtTH: "約656万円", diff: "+177万円", monthly: "+14.8万円/月" },
+                ].map((row, i) => (
+                  <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                    <td className="border border-gray-200 px-3 py-2">{row.cur}</td>
+                    <td className="border border-gray-200 px-3 py-2 font-medium text-blue-700">{row.tgt}</td>
+                    <td className="border border-gray-200 px-3 py-2">{row.curTH}</td>
+                    <td className="border border-gray-200 px-3 py-2">{row.tgtTH}</td>
+                    <td className="border border-gray-200 px-3 py-2 font-medium text-green-600">{row.diff}</td>
+                    <td className="border border-gray-200 px-3 py-2 text-green-600">{row.monthly}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-gray-500 mt-2">
+            ※ 独身・社会保険料14%・基礎控除48万円として概算。実際の金額は個人の状況により異なります。
+          </p>
+        </section>
+
         {/* ── Related Tools ── */}
         <div className="mb-4">
           <h2 className="text-xl font-bold text-gray-900 mb-4">あわせて使えるツール</h2>

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
 import TextCaseClient from "./client";
+import RelatedTools from "@/components/common/RelatedTools";
 
 const tool = getToolById("text-case")!;
 
@@ -36,6 +37,10 @@ export default function Page() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <TextCaseClient />
+      <div className="max-w-4xl mx-auto px-4">
+        <RelatedTools currentTool={tool} maxItems={6} />
+      </div>
+
     </>
   );
 }

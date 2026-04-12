@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: "プライバシーポリシー",
   description: "山田ツールのプライバシーポリシーです。",
   alternates: {
-    canonical: 'https://yamada-tools.jp/privacy',
+    canonical: 'https://yamada-tools.jp/legal/privacy',
   },
 };
 
@@ -33,10 +33,14 @@ export default function PrivacyPage() {
               本サービスでは、以下の情報を収集する場合があります：
             </p>
             <ul className="list-disc list-inside text-gray-600 space-y-2">
+              <li>アカウント登録時のメールアドレス（登録した場合のみ）</li>
               <li>アップロードされたファイル（処理目的のみに使用）</li>
               <li>アクセスログ（IPアドレス、ブラウザ情報、アクセス日時）</li>
-              <li>Cookie情報（サービス改善のため）</li>
+              <li>Cookie情報（サービス改善・広告配信のため）</li>
             </ul>
+            <p className="text-gray-600 leading-relaxed mt-3">
+              ゲストとしてツールをご利用の場合、アカウント登録は不要です。
+            </p>
           </section>
 
           <section>
@@ -52,7 +56,14 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-kon mb-4">4. 情報の利用目的</h2>
+            <h2 className="text-xl font-bold text-kon mb-4">4. 決済情報の取り扱い</h2>
+            <p className="text-gray-600 leading-relaxed mb-2">
+              有料プランの決済はStripe, Inc.が提供する決済システムを利用しています。クレジットカード番号などの決済情報は当社サーバーには保存されません。決済情報はStripeのシステム上で安全に管理されます。
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-bold text-kon mb-4">5. 情報の利用目的</h2>
             <p className="text-gray-600 leading-relaxed">
               収集した情報は、以下の目的でのみ使用いたします：
             </p>
@@ -65,22 +76,21 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-kon mb-4">5. 第三者への提供</h2>
+            <h2 className="text-xl font-bold text-kon mb-4">6. 第三者への提供</h2>
             <p className="text-gray-600 leading-relaxed">
               当社は、法令に基づく場合を除き、お客様の個人情報を第三者に提供することはありません。
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-kon mb-4">6. アクセス解析</h2>
-            <p className="text-gray-600 leading-relaxed">
-              本サービスでは、サービス改善のためアクセス解析ツールを使用する場合があります。
-              これらのツールはCookieを使用してデータを収集しますが、個人を特定する情報は含まれません。
+            <h2 className="text-xl font-bold text-kon mb-4">7. アクセス解析・広告配信</h2>
+            <p className="text-gray-600 leading-relaxed mb-2">
+              本サービスでは、Google Analyticsによるアクセス解析およびGoogle AdSenseによる広告配信を行っています。これらはCookieを使用してデータを収集しますが、個人を特定する情報は含まれません。広告のパーソナライズを無効にしたい場合は、Googleの広告設定よりご変更ください。
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-kon mb-4">7. セキュリティ</h2>
+            <h2 className="text-xl font-bold text-kon mb-4">8. セキュリティ</h2>
             <p className="text-gray-600 leading-relaxed">
               当社は、お客様の情報を保護するため、適切なセキュリティ対策を講じております。
               ただし、インターネット上の通信において完全なセキュリティを保証することはできません。
@@ -88,17 +98,17 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-kon mb-4">8. お問い合わせ</h2>
+            <h2 className="text-xl font-bold text-kon mb-4">9. お問い合わせ</h2>
             <p className="text-gray-600 leading-relaxed">
               本プライバシーポリシーに関するお問い合わせは、以下までご連絡ください：
             </p>
             <p className="text-gray-600 mt-2">
-              メール：support@yamada-tools.jp
+              メール：privacy@yamada-tools.jp
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-kon mb-4">9. 改定</h2>
+            <h2 className="text-xl font-bold text-kon mb-4">10. 改定</h2>
             <p className="text-gray-600 leading-relaxed">
               本プライバシーポリシーは、必要に応じて改定することがあります。
               重要な変更がある場合は、本サービス上でお知らせいたします。
@@ -108,7 +118,7 @@ export default function PrivacyPage() {
 
         <div className="mt-8 text-center text-sm text-gray-500">
           <p>制定日: 2024年11月</p>
-          <p>最終更新日: 2024年11月</p>
+          <p>最終更新日: 2026年4月</p>
         </div>
       </div>
     </div>

@@ -55,26 +55,46 @@ export default function LegalPage() {
               <tr>
                 <td className="py-4 pr-4 font-bold text-kon align-top">サービス料金</td>
                 <td className="py-4">
-                  基本サービス：無料<br />
-                  ※将来的に有料プランを導入する場合は、別途明示いたします
+                  無料プラン：無料<br />
+                  PROプラン：月額980円（税込）または年額9,800円（税込）<br />
+                  <span className="text-sm text-gray-500">※ 7日間の無料体験あり</span>
                 </td>
               </tr>
               <tr>
                 <td className="py-4 pr-4 font-bold text-kon align-top">支払方法</td>
                 <td className="py-4">
-                  現在、有料サービスは提供しておりません
+                  クレジットカード（Visa、Mastercard、American Express）<br />
+                  <span className="text-sm text-gray-500">Stripe決済システムを利用</span>
+                </td>
+              </tr>
+              <tr>
+                <td className="py-4 pr-4 font-bold text-kon align-top">支払時期</td>
+                <td className="py-4">
+                  月払い：毎月自動更新（契約開始日から1ヶ月ごと）<br />
+                  年払い：年間一括前払い（契約開始日から1年ごと）<br />
+                  <span className="text-sm text-gray-500">※ 無料体験期間中は課金されません</span>
+                </td>
+              </tr>
+              <tr>
+                <td className="py-4 pr-4 font-bold text-kon align-top">無料体験期間</td>
+                <td className="py-4">
+                  7日間の無料体験あり。期間中は自動課金なし。<br />
+                  期間終了後、解約しない場合は選択プランで自動課金されます。<br />
+                  解約した場合は自動的に無料プランへ移行します。
                 </td>
               </tr>
               <tr>
                 <td className="py-4 pr-4 font-bold text-kon align-top">サービス提供時期</td>
                 <td className="py-4">
-                  ファイルアップロード後、即時処理いたします
+                  お支払い確認後、即時ご利用いただけます
                 </td>
               </tr>
               <tr>
                 <td className="py-4 pr-4 font-bold text-kon align-top">返品・キャンセル</td>
                 <td className="py-4">
-                  デジタルサービスの性質上、処理完了後の返品・キャンセルはお受けできません
+                  デジタルサービスの性質上、お支払い後の返金は原則として対応できません。<br />
+                  解約はマイページより即時手続き可能です。<br />
+                  解約後は当該請求期間の末日までサービスをご利用いただけます。
                 </td>
               </tr>
               <tr>
@@ -89,7 +109,7 @@ export default function LegalPage() {
         </div>
 
         <div className="mt-8 text-center text-sm text-gray-500">
-          <p>最終更新日: 2025年11月</p>
+          <p>最終更新日: 2026年4月</p>
         </div>
       </div>
     </div>
