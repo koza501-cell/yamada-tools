@@ -42,7 +42,7 @@ function NavDropdown({ label, menu }: { label: string; menu: MenuConfig }) {
   return (
     <>
       <div className="self-stretch flex items-center" onMouseEnter={show} onMouseLeave={hide}>
-        <button className="flex items-center gap-1 px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium">
+        <button className="flex items-center gap-1 px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px]">
           <span>{label}</span>
           <svg
             className={`w-4 h-4 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
@@ -124,20 +124,20 @@ export default function Header() {
             <nav className="hidden lg:flex items-center gap-1">
               <NavDropdown label="ツール" menu={toolsMenu} />
               <NavDropdown label="計算・シュミレーター" menu={calcMenu} />
-              <Link href="/blog" className="px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium">ブログ</Link>
-              <Link href="/ai" className="px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium">AI活用</Link>
-              <Link href="/pricing" className="px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium">料金</Link>
+              <Link href="/blog" className="px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px] flex items-center">ブログ</Link>
+              <Link href="/ai" className="px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px] flex items-center">AI活用</Link>
+              <Link href="/pricing" className="px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px] flex items-center">料金</Link>
             </nav>
 
             <div className="flex items-center gap-2">
-              <button onClick={() => setIsSearchOpen(true)} className="flex items-center gap-2 px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-lg transition-colors" aria-label="検索">
+              <button onClick={() => setIsSearchOpen(true)} className="flex items-center gap-2 px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-lg transition-colors min-w-[44px] min-h-[44px]" aria-label="検索">
                 <span>🔍</span>
                 <span className="text-sm hidden md:inline">検索</span>
                 <kbd className="hidden xl:inline-block text-xs bg-white/20 px-1.5 py-0.5 rounded">⌘K</kbd>
               </button>
               {!loading && (user ? (
                 <div className="relative">
-                  <button onClick={(e) => { e.stopPropagation(); setShowUserMenu(!showUserMenu); }} className="flex items-center gap-2 px-3 py-1.5 bg-sakura hover:bg-sakura/80 rounded-lg transition-colors">
+                  <button onClick={(e) => { e.stopPropagation(); setShowUserMenu(!showUserMenu); }} className="flex items-center gap-2 px-3 py-1.5 bg-sakura hover:bg-sakura/80 rounded-lg transition-colors min-w-[44px] min-h-[44px]">
                     <span>👤</span>
                     <span className="text-sm max-w-[80px] truncate hidden sm:inline">{user.email.split("@")[0]}</span>
                   </button>
@@ -156,7 +156,7 @@ export default function Header() {
                   )}
                 </div>
               ) : (
-                <Link href="/auth/login" className="flex items-center gap-2 px-3 py-1.5 bg-sakura hover:bg-sakura/80 rounded-lg transition-colors text-sm font-medium">
+                <Link href="/auth/login" className="flex items-center gap-2 px-3 py-1.5 bg-sakura hover:bg-sakura/80 rounded-lg transition-colors text-sm font-medium min-w-[44px] min-h-[44px]">
                   <span className="hidden sm:inline">ログイン</span>
                   <span className="sm:hidden">👤</span>
                 </Link>

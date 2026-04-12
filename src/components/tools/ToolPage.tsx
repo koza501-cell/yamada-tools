@@ -49,58 +49,6 @@ const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://api.yamada-tools.jp
 
 export default function ToolPage({ tool, extraFields, extraFormData, faq, seoContent }: ToolPageProps) {
   const { triggerSuccess } = usePricingContext();
-  // GEO-001: HowTo schema for SearchGPT/Perplexity extraction
-  const howToSchema = {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    "name": tool.nameJa + "の使い方",
-    "description": tool.description,
-    "step": [
-      {
-        "@type": "HowToStep",
-        "position": 1,
-        "name": "ファイルをアップロード",
-        "text": "処理したいファイルをドラッグ＆ドロップするか、クリックして選択してください。",
-        "url": "https://yamada-tools.jp" + tool.path
-      },
-      {
-        "@type": "HowToStep",
-        "position": 2,
-        "name": tool.nameJa + "を実行",
-        "text": "「実行」ボタンをクリックして処理を開始します。日本国内サーバーで安全に処理されます。",
-        "url": "https://yamada-tools.jp" + tool.path
-      },
-      {
-        "@type": "HowToStep",
-        "position": 3,
-        "name": "ダウンロード",
-        "text": "処理が完了したらダウンロードボタンをクリックしてファイルを保存してください。",
-        "url": "https://yamada-tools.jp" + tool.path
-      }
-    ],
-    "tool": [{ "@type": "HowToTool", "name": "ブラウザ（登録不要）" }],
-    "supply": [{ "@type": "HowToSupply", "name": "処理したいファイル" }]
-  };
-
-  // TRUST-001: BreadcrumbList schema
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "山田ツール",
-        "item": "https://yamada-tools.jp"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": tool.nameJa,
-        "item": "https://yamada-tools.jp" + tool.path
-      }
-    ]
-  };
 
 
   const [files, setFiles] = useState<File[]>([]);
@@ -253,9 +201,6 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
   };
 
   return (
-    <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     <div className="min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4">
         {/* Header with H1 */}
@@ -554,6 +499,5 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
         </footer>
       </div>
     </div>
-    </>
   );
 }

@@ -201,6 +201,7 @@ export default async function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
+        <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
       </head>
       <body className={`antialiased min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 ${notoSansJP.className}`}>
         <GoogleAnalytics />

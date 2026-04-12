@@ -93,21 +93,6 @@ const homepageSchema = {
 
 
 
-// Homepage SearchAction schema
-const homepageSearchActionSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: "山田ツール - 無料オンラインツール",
-  url: "https://yamada-tools.jp",
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: "https://yamada-tools.jp/search?q={search_term_string}"
-    },
-    "query-input": "required name=search_term_string"
-  }
-};
 
 // Homepage FAQ schema
 const homepageFaqSchema = {
@@ -168,10 +153,6 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageSearchActionSchema) }}
       />
       <script
         type="application/ld+json"
@@ -326,7 +307,7 @@ export default function Home() {
               { label: "マーケ・営業", icon: "📊", href: "/tools?role=marketing" },
             ].map(({ label, icon, href }) => (
               <Link key={href} href={href}
-                className="flex items-center gap-2 px-5 py-2.5 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm font-medium text-gray-700 dark:text-gray-200 hover:border-kon hover:text-kon dark:hover:text-blue-400 transition-colors">
+                className="flex items-center gap-2 px-5 py-2.5 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm font-medium text-gray-700 dark:text-gray-200 hover:border-kon hover:text-kon dark:hover:text-blue-400 transition-colors min-h-[44px]">
                 <span>{icon}</span>{label}
               </Link>
             ))}
@@ -355,7 +336,7 @@ export default function Home() {
               <Link
                 key={href}
                 href={href}
-                className="relative bg-white shadow-md hover:shadow-lg text-kon px-3 py-3 rounded-xl font-medium transition-all hover:-translate-y-0.5 text-center text-sm"
+                className="relative bg-white shadow-md hover:shadow-lg text-kon px-3 py-3 rounded-xl font-medium transition-all hover:-translate-y-0.5 text-center text-sm min-h-[44px] flex items-center justify-center"
               >
                 {HOT_PATHS.has(href) && (
                   <span className="absolute -top-1.5 -right-1.5 text-xs bg-red-500 text-white px-1 py-0.5 rounded-full leading-none font-bold">🔥</span>
