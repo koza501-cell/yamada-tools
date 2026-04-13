@@ -15,10 +15,10 @@ export default function Footer() {
                   合同会社山田トレード
                 </a>
               </p>
-              <a href="https://www.google.com/maps/search/〒283-0811+千葉県東金市台方937番地13" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-sakura transition-colors">
+              <div className="text-gray-300">
                 <p>〒283-0811</p>
-                <p>千葉県東金市台方937番地13 <span className="text-xs">🗺️</span></p>
-              </a>
+                <p>千葉県東金市台方937番地13</p>
+              </div>
               <p className="mt-4">
                 <Link href="/about/transparency" className="text-sakura hover:underline">
                   運営方針とセキュリティについて
