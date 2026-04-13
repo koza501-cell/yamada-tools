@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import fs from 'fs';
 import path from 'path';
 import BlogContent from '@/components/BlogContent';
-import AdSlot from "@/components/AdSlot";
+import { AdUnit } from "@/components/common/AdUnit";
 import { marked } from 'marked';
 import '@/app/blog.css';
 
@@ -159,7 +159,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         <BlogContent content={htmlContent} />
       </div>
 
-{/* Ad Slot */}      <AdSlot format="rectangle" className="my-8" />
+{/* Ad Slot */}      <AdUnit slot="5612038947" format="rectangle" className="my-8" />
       <footer className="blog-footer mt-16 pt-8 border-t border-gray-200">
         <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-8 text-center">
           <h3 className="text-2xl font-bold text-gray-900 mb-4">

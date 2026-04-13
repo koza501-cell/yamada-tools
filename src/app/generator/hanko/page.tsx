@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
 import HankoClient from "./client";
+import AdFreeZone from "@/components/AdFreeZone";
 import RelatedTools from "@/components/common/RelatedTools";
 
 const tool = getToolById("hanko")!;
@@ -36,7 +37,7 @@ export default function Page() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <div className="ad-free-zone"><HankoClient /></div>
+      <AdFreeZone><HankoClient /></AdFreeZone>
 
       {/* Educational Content Section */}
       <section className="max-w-4xl mx-auto px-4 py-12">

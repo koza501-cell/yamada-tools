@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { getToolById } from "@/config/tools";
 import { generateToolMetadata } from "@/lib/seo";
 import RandomPickerClient from "./client";
+import AdFreeZone from "@/components/AdFreeZone";
 import RelatedTools from "@/components/common/RelatedTools";
 
 const tool = getToolById("random-picker")!;
@@ -87,7 +88,7 @@ export default function Page() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <div className="ad-free-zone"><RandomPickerClient faq={faq} /></div>
+      <AdFreeZone><RandomPickerClient faq={faq} /></AdFreeZone>
       <div className="max-w-4xl mx-auto px-4">
         <RelatedTools currentTool={tool} maxItems={6} />
       </div>

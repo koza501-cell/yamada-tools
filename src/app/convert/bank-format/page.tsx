@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
 import BankFormatClient from "./client";
+import AdFreeZone from "@/components/AdFreeZone";
 import { JsonLdDedup } from "./json-ld-dedup";
 import RelatedTools from "@/components/common/RelatedTools";
 
@@ -107,7 +108,7 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="ad-free-zone"><BankFormatClient faq={faq} /></div>
+      <AdFreeZone><BankFormatClient faq={faq} /></AdFreeZone>
       <JsonLdDedup scriptId="bank-format-jsonld" />
 
       {/* Educational Content Section */}

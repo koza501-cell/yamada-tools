@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { getToolById } from "@/config/tools";
 import { generateToolJsonLd } from "@/lib/seo";
 import PdfTextClient from "./client";
+import AdFreeZone from "@/components/AdFreeZone";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 const tool = getToolById("pdf-text-input")!;
@@ -209,9 +210,9 @@ export default function PdfTextPage() {
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       ))}
       <LanguageSwitcher jaUrl="/pdf/text-input" enUrl="/en/pdf-text-input" currentLang="ja" />
-      <div className="ad-free-zone">
+      <AdFreeZone>
         <PdfTextClient faq={faq} seoContent={seoContent} />
-      </div>
+      </AdFreeZone>
       <div className="max-w-5xl mx-auto px-4 pb-16 space-y-16">
         <section>
           <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">PDFテキスト入力ツール比較：山田ツールが選ばれる理由</h2>

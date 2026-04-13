@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
 import ImageResizeClient from "./client";
+import { AdUnit } from "@/components/common/AdUnit";
 import RelatedTools from "@/components/common/RelatedTools";
 const tool = getToolById("resize-image")!;
 const faq = [
@@ -31,6 +32,7 @@ export default function Page() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <ImageResizeClient faq={faq} />
+      <AdUnit slot="5612038947" format="horizontal" />
       <div className="max-w-4xl mx-auto px-4">
         <RelatedTools currentTool={tool} maxItems={6} />
       </div>

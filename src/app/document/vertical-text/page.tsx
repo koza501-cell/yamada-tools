@@ -3,6 +3,7 @@ import { LazyFAQ } from "@/components/common/LazyFAQ";
 import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
 import VerticalTextClient from "./client";
+import AdFreeZone from "@/components/AdFreeZone";
 import RelatedTools from "@/components/common/RelatedTools";
 
 const tool = getToolById("vertical-text")!;
@@ -47,7 +48,7 @@ export default function Page() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <div className="ad-free-zone"><VerticalTextClient /></div>
+      <AdFreeZone><VerticalTextClient /></AdFreeZone>
 
       {/* Educational Content Section */}
       <section className="max-w-4xl mx-auto px-4 py-12">
