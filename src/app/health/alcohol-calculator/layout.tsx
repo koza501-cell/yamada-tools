@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】アルコール分解時間計算機｜飲酒後いつ運転できる？翌朝の残存確認も | 山田ツール",
+  title: "【無料】アルコール分解時間計算機｜飲酒後いつ運転できる？翌朝の残存確認も",
   description: "飲んだお酒の種類と量から血中アルコール濃度と完全分解時刻を計算。飲酒運転が可能になる時刻・翌朝の残存アルコールチェック付き。登録不要・完全無料。",
   keywords: [
     "アルコール分解時間",
@@ -19,16 +19,17 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/health/alcohol-calculator",
   },
   openGraph: {
-    title: "【無料】アルコール分解時間計算機｜飲酒後いつ運転できる？翌朝の残存確認も | 山田ツール",
+    title: "【無料】アルコール分解時間計算機｜飲酒後いつ運転できる？翌朝の残存確認も",
     description: "飲んだお酒の種類と量から血中アルコール濃度と完全分解時刻を計算。飲酒運転が可能になる時刻・翌朝の残存アルコールチェック付き。登録不要・完全無料。",
     url: "https://yamada-tools.jp/health/alcohol-calculator",
-    siteName: "yamada-tools.jp",
+    siteName: "山田ツール",
     locale: "ja_JP",
     type: "website",
+    images: [{ url: "https://api.easynihon.com/api/og?site=yamada&title=%E3%80%90%E7%84%A1%E6%96%99%E3%80%91%E3%82%A2%E3%83%AB%E3%82%B3%E3%83%BC%E3%83%AB%E5%88%86%E8%A7%A3%E6%99%82%E9%96%93%E8%A8%88%E7%AE%97%E6%A9%9F%EF%BD%9C%E9%A3%B2%E9%85%92%E5%BE%8C%E3%81%84%E3%81%A4%E9%81%8B%E8%BB%A2%E3%81%A7%E3%81%8D%E3%82%8B%EF%BC%9F%E7%BF%8C%E6%9C%9D%E3%81%AE%E6%AE%8B%E5%AD%98%E7%A2%BA%E8%AA%8D%E3%82%82" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】アルコール分解時間計算機｜飲酒後いつ運転できる？翌朝残存確認付き | 山田ツール",
+    title: "【無料】アルコール分解時間計算機｜飲酒後いつ運転できる？翌朝残存確認付き",
     description: "飲んだお酒の種類と量から血中アルコール濃度と完全分解時刻を計算。登録不要・無料。",
   },
 };
@@ -43,6 +44,11 @@ const jsonLd = {
       "operatingSystem": "Web",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
       "provider": { "@type": "Organization", "name": "山田ツール", "url": "https://yamada-tools.jp" },
+      "citation": [
+            { "@type": "CreativeWork", "name": "厚生労働省 e-ヘルスネット「アルコール」", "url": "https://www.e-healthnet.mhlw.go.jp/information/alcohol" },
+            { "@type": "CreativeWork", "name": "公益社団法人アルコール健康医学協会", "url": "https://www.arukenkyo.or.jp/" }
+          ],
+
       "description": "飲んだお酒の種類と量から血中アルコール濃度と完全分解時刻を計算。飲酒運転が可能になる時刻・翌朝の残存アルコールチェック付き。登録不要・完全無料。",
       "url": "https://yamada-tools.jp/health/alcohol-calculator",
     },

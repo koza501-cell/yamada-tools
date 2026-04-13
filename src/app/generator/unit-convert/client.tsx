@@ -19,6 +19,7 @@ interface Props {
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import Mascot from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
 
 type Category = "length" | "weight" | "area" | "volume" | "temperature";
 
@@ -103,15 +104,7 @@ export default function UnitConvertClient({ faq, seoContent }: Props) {
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4">
-        <nav className="mb-6 text-sm">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li>
-            <li>/</li>
-            <li><Link href="/generator" className="hover:text-kon">計算・生成ツール</Link></li>
-            <li>/</li>
-            <li className="text-kon font-medium">単位変換</li>
-          </ol>
-        </nav>
+
 
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">📏</div>
@@ -186,6 +179,7 @@ export default function UnitConvertClient({ faq, seoContent }: Props) {
         <div className="mt-8 text-center">
           <Link href="/generator" className="text-kon hover:text-ai">← 計算・生成ツール一覧に戻る</Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

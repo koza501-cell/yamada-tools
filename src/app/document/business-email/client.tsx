@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 const templates = [
   {
@@ -109,6 +111,9 @@ const templates = [
 ];
 
 export default function BusinessEmailClient() {
+  const { triggerSuccess } = usePricingContext();
+
+
   const [mounted, setMounted] = useState(false);
   const [mascotState, setMascotState] = useState<MascotState>("idle");
   const [mascotMessage, setMascotMessage] = useState("テンプレートを選んでね！");
@@ -134,7 +139,8 @@ TEL: 03-xxxx-xxxx
       setSelectedTemplate(id);
       setSubject(template.subject);
       setBody(template.body);
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('business-email');;
       setMascotMessage("テンプレートを読み込んだよ！");
     }
   };
@@ -162,15 +168,7 @@ TEL: 03-xxxx-xxxx
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4">
-        <nav className="mb-6 text-sm">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li>
-            <li>/</li>
-            <li><Link href="/document" className="hover:text-kon">書類作成</Link></li>
-            <li>/</li>
-            <li className="text-kon font-medium">ビジネスメール作成</li>
-          </ol>
-        </nav>
+
 
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">📧</div>
@@ -262,6 +260,7 @@ TEL: 03-xxxx-xxxx
         <div className="mt-8 text-center">
           <Link href="/document" className="text-kon hover:text-ai">← 書類作成一覧に戻る</Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

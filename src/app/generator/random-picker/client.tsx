@@ -3,6 +3,8 @@
 import { useState, useCallback, useEffect } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ {
   question: string;
@@ -13,7 +15,10 @@ interface Props {
   faq: FAQ[];
 }
 
-export default function RandomPickerClient({ faq }: Props) {
+export default function RandomPickerClient({
+ faq }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [items, setItems] = useState<string[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [pickCount, setPickCount] = useState(1);
@@ -126,7 +131,8 @@ export default function RandomPickerClient({ faq }: Props) {
         setResults(selected);
         setHistory(prev => [selected, ...prev.slice(0, 9)]);
         setIsSpinning(false);
-        setMascotState("success");
+        setMascotState("success")
+      triggerSuccess('random-picker');;
         if (pickCount === 1) {
           setMascotMessage(`「${selected[0]}」に決定！🎉`);
         } else {
@@ -178,18 +184,6 @@ export default function RandomPickerClient({ faq }: Props) {
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4">
-
-        {/* Breadcrumb */}
-        <nav className="mb-6 text-sm" aria-label="パンくずリスト">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li>
-            <li>/</li>
-            <li><Link href="/generator" className="hover:text-kon">計算・生成ツール</Link></li>
-            <li>/</li>
-            <li className="text-kon font-medium">ランダム抽選</li>
-          </ol>
-        </nav>
-
         {/* Shared result banner */}
         {sharedResult && (
           <div className="mb-6 bg-gradient-to-r from-yellow-50 to-amber-50 border border-amber-200 rounded-2xl p-6 text-center">
@@ -504,6 +498,7 @@ export default function RandomPickerClient({ faq }: Props) {
             ← 計算・生成ツール一覧に戻る
           </Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

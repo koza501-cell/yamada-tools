@@ -2,6 +2,7 @@
 "use client";
 import { useState, useRef, useCallback, useEffect } from "react";
 import Link from "next/link";
+import Mascot from "@/components/common/Mascot";
 
 interface FAQ { question: string; answer: string; }
 interface Props { faq: FAQ[]; seoContent?: { intro: string }; }
@@ -28,6 +29,7 @@ const BG_COLORS = [
 
 export default function BannerMakerClient({ faq, seoContent }: Props) {
   const [preset, setPreset] = useState(0);
+  const [mascotState, setMascotState] = useState("idle");
   const [title, setTitle] = useState("タイトルテキスト");
   const [subtitle, setSubtitle] = useState("サブタイトル");
   const [bgIndex, setBgIndex] = useState(0);
@@ -82,13 +84,7 @@ export default function BannerMakerClient({ faq, seoContent }: Props) {
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4">
-        <nav className="mb-6 text-sm">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li><li>/</li>
-            <li><Link href="/image" className="hover:text-kon">画像ツール</Link></li><li>/</li>
-            <li className="text-kon font-medium">バナー作成</li>
-          </ol>
-        </nav>
+
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">🎨</div>
           <h1 className="text-3xl font-bold text-kon mb-2">バナー作成</h1>
@@ -100,6 +96,7 @@ export default function BannerMakerClient({ faq, seoContent }: Props) {
         </header>
 
         <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-6">
+          <Mascot state={mascotState} />
           <div className="space-y-4">
             <div>
               <label className="font-bold text-sm text-gray-700 mb-2 block">📐 サイズ</label>

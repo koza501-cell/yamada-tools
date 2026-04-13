@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "ランダム抽選ツール【無料】くじ引き・順番決め・名前ガチャ | 山田ツール",
+  title: "ランダム抽選ツール【無料】くじ引き・順番決め・名前ガチャ",
   description: "名前や選択肢をランダムに選ぶ無料の抽選ツール。登録不要・スマホOK。忘年会・新年会・プレゼント交換など各種シーン対応版もあり。",
   alternates: { canonical: "https://yamada-tools.jp/generator/random-picker" },
 };

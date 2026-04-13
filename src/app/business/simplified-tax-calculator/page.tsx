@@ -2,6 +2,10 @@
 
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
+import { IntroSection } from "@/components/IntroSection";
+import { UseCasesSection } from "@/components/UseCasesSection";
+import { FAQSection } from "@/components/FAQSection";
+import Mascot, { MascotState } from "@/components/common/Mascot";
 
 // Inline SVG Icons
 const Icons = {
@@ -83,6 +87,7 @@ export default function SimplifiedTaxCalculatorPage() {
     industryType: "5",
     invoiceStatus: "special20eligible",
   });
+  const [mascotState, setMascotState] = useState<MascotState>("welcome");
 
   const [results, setResults] = useState<CalculationResults | null>(null);
 
@@ -145,6 +150,7 @@ export default function SimplifiedTaxCalculatorPage() {
         deemedPurchaseRate: deemedRate,
         actualPurchaseRate,
       });
+    setMascotState("success");
     } catch (error) {
       console.error("Calculation error:", error);
     }
@@ -162,8 +168,26 @@ export default function SimplifiedTaxCalculatorPage() {
     return new Intl.NumberFormat("ja-JP").format(Math.round(value / 10000));
   };
 
+  const faqItems = [
+    { question: "簡易課税と本則課税、どちらが有利ですか？", answer: "実際の仕入率がみなし仕入率より低い場合は簡易課税が有利、高い場合は本則課税が有利です。例えばサービス業（みなし仕入率50%）で実際の仕入率が30%なら簡易課税が有利。設備投資が多い年は本則課税で還付を受けられる場合もあります。" },
+    { question: "2割特例とは何ですか？いつまで使えますか？", answer: "2割特例は、インボイス制度開始に伴い免税事業者から課税事業者になった方向けの経過措置です。売上消費税の2割のみを納付すればよく、2026年9月30日を含む課税期間まで適用できます。届出不要で確定申告時に選択可能です。" },
+    { question: "簡易課税を選択する条件は何ですか？", answer: "簡易課税を選択するには、基準期間（2年前）の課税売上高が5,000万円以下であること、適用を受けようとする課税期間の開始日の前日までに届出書を提出することが必要です。一度選択すると2年間は変更できません。" },
+    { question: "みなし仕入率は業種によってどう違いますか？", answer: "第1種（卸売業）90%、第2種（小売業）80%、第3種（製造業等）70%、第4種（飲食業等）60%、第5種（サービス業等）50%、第6種（不動産業）40%です。複数の事業を営む場合は、売上割合に応じた加重平均か、主たる事業の区分を適用します。" },
+    { question: "インボイス登録すべきか判断する基準は？", answer: "取引先が法人や課税事業者中心なら登録を検討すべきです。登録しないと取引先が仕入税額控除できず、取引継続に影響する可能性があります。個人消費者向けビジネスなら登録しなくても影響は少ないでしょう。2割特例を活用すれば、登録後も消費税負担を抑えられます。" },
+  ];
+
+  const useCases = [
+    { icon: "🧾", persona: "インボイス登録した個人事業主", title: "簡易課税と本則課税どちらが有利か判断したい", benefit: "売上・業種から3方式の納税額を一括比較" },
+    { icon: "⏰", persona: "2割特例の期限が迫っている方", title: "2割特例終了後にどの方式に切り替えるべきか", benefit: "2026年10月以降の最適な課税方式を確認" },
+    { icon: "🏪", persona: "飲食・小売などの事業者", title: "みなし仕入率が自社に有利か確認したい", benefit: "業種別みなし仕入率と実際の仕入率を比較" },
+  ];
+
+
   return (
+    <>
+      <IntroSection title="消費税 簡易課税・判定ツール" paragraphs={["消費税の課税方式（本則課税・簡易課税・2割特例）を比較し、どれが最も有利かを自動判定します。業種・売上・仕入率を入力するだけで納税額の差額を計算。", "2023年インボイス制度開始後の2割特例（2026年9月まで）にも対応。適用条件と期限も確認できます。", "登録不要・完全無料。消費税の確定申告を控えた個人事業主・法人に最適なツールです。"]} />
     <div className="min-h-screen bg-gray-50">
+        <Mascot state={mascotState} className="mb-6" />
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Breadcrumb */}
         <nav className="text-sm mb-6">
@@ -656,5 +680,8 @@ export default function SimplifiedTaxCalculatorPage() {
         </div>
       </div>
     </div>
+    <UseCasesSection cases={useCases} />
+    <FAQSection faq={faqItems} />
+  </>
   );
 }

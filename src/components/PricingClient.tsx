@@ -1,9 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/contexts/AuthContext';
 
 type BillingPeriod = 'monthly' | 'annual';
+
+const API_URL = 'https://api.yamada-tools.jp/api/payment';
 
 const faqs = [
   {
@@ -26,20 +30,25 @@ const faqs = [
     q: 'チームプランの最低利用人数はありますか？',
     a: 'チームプランは5ユーザーからご利用いただけます。ユーザー数の追加・削減はいつでも可能です。',
   },
+  {
+    q: 'サポートはどのように受けられますか？',
+    a: 'プランによって異なります。FREE: メールサポート（support@yamada-tools.jp）、PRO: FAQチャットボット＋メールサポート、TEAM: AIチャットボット（24時間対応）＋優先メールサポート、ENTERPRISE: 専任カスタマーサクセス担当。',
+  },
 ];
 
 const comparisonRows = [
-  { feature: 'ツール利用',        free: '86+種類',   pro: '86+種類',   team: '86+種類',   enterprise: '86+種類' },
-  { feature: '1日の利用回数',     free: '5回',       pro: '無制限',    team: '無制限',    enterprise: '無制限' },
-  { feature: '最大ファイルサイズ', free: '10MB',      pro: '200MB',     team: '200MB',     enterprise: 'カスタム' },
-  { feature: '広告',              free: 'あり',      pro: 'なし',      team: 'なし',      enterprise: 'なし' },
-  { feature: '処理速度',          free: '標準',      pro: '2倍速',     team: '2倍速',     enterprise: '最優先' },
-  { feature: 'サポート',          free: 'メール',    pro: '優先メール', team: '専任担当',  enterprise: '専用CS' },
-  { feature: '請求書払い',        free: '—',         pro: '—',         team: '✓',         enterprise: '✓' },
-  { feature: '領収書発行',        free: '—',         pro: '✓',         team: '✓',         enterprise: '✓' },
-  { feature: 'チーム管理',        free: '—',         pro: '—',         team: '✓',         enterprise: '✓' },
-  { feature: 'SSO/SAML',          free: '—',         pro: '—',         team: '—',         enterprise: '✓' },
-  { feature: 'API連携',           free: '—',         pro: '—',         team: '—',         enterprise: '✓' },
+  { feature: 'ツール利用',        free: '140+種類',   pro: '140+種類',   team: '140+種類',   enterprise: '140+種類' },
+  { feature: '1日の利用回数',     free: '5回',        pro: '無制限',     team: '無制限',     enterprise: '無制限' },
+  { feature: '最大ファイルサイズ', free: '10MB',       pro: '200MB',      team: '200MB',      enterprise: 'カスタム' },
+  { feature: '広告',              free: 'あり',       pro: 'なし',       team: 'なし',       enterprise: 'なし' },
+  { feature: '処理速度',          free: '標準',       pro: '標準',       team: '標準',       enterprise: '最優先' },
+  { feature: 'サポート',          free: 'メール',     pro: 'FAQチャット', team: 'AIチャット（24時間）', enterprise: '専用CS' },
+  { feature: '請求書払い',        free: '—',          pro: '—',          team: '✓',          enterprise: '✓' },
+  { feature: '領収書発行',        free: '—',          pro: '✓',          team: '✓',          enterprise: '✓' },
+  { feature: '利用状況レポート',   free: '—',          pro: '✓',          team: '✓',          enterprise: '✓' },
+  { feature: 'チーム管理',        free: '—',          pro: '—',          team: '✓',          enterprise: '✓' },
+  { feature: 'SSO/SAML',          free: '—',          pro: '—',          team: '—',          enterprise: '✓' },
+  { feature: 'API連携',           free: '—',          pro: '—',          team: '—',          enterprise: '✓' },
 ];
 
 
@@ -57,19 +66,105 @@ const envelopeRows = [
 
 export default function PricingClient() {
   const [billing, setBilling] = useState<BillingPeriod>('monthly');
-  const [modalOpen, setModalOpen] = useState(false);
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
-  const [notifyEmail, setNotifyEmail] = useState('');
+  const [loadingPlan, setLoadingPlan] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const { user, refreshUser } = useAuth();
+  const router = useRouter();
 
-  const handleNotify = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Notify email:', notifyEmail);
-    setNotifyEmail('');
-    setModalOpen(false);
+  // Handle Stripe redirect back after payment
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const payment = params.get('payment');
+    const sessionId = params.get('session_id');
+
+    if (payment === 'success' && sessionId) {
+      const token = localStorage.getItem('session_token');
+      if (token) {
+        fetch(`${API_URL}/verify/${sessionId}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+          .then(r => r.json())
+          .then(data => {
+            if (data.success) {
+              const planNames: Record<string, string> = { pro: 'PRO', team: 'TEAM' };
+              const name = planNames[data.plan] || data.plan?.toUpperCase() || 'PRO';
+              setSuccessMessage(`${name}プランへのアップグレードが完了しました！`);
+              refreshUser();
+            }
+          })
+          .catch(() => {});
+        // Clean URL
+        window.history.replaceState({}, '', '/pricing');
+      }
+    } else if (payment === 'cancelled') {
+      window.history.replaceState({}, '', '/pricing');
+    }
+  }, []);
+
+  const handleUpgrade = async (planKey: string) => {
+    if (!user) {
+      router.push('/auth/login?redirect=/pricing');
+      return;
+    }
+    const token = localStorage.getItem('session_token');
+    if (!token) {
+      router.push('/auth/login?redirect=/pricing');
+      return;
+    }
+
+    setLoadingPlan(planKey);
+    try {
+      const res = await fetch(`${API_URL}/checkout`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ plan: planKey }),
+      });
+      const data = await res.json();
+      if (data.checkout_url) {
+        window.location.href = data.checkout_url;
+      } else {
+        console.error('Checkout error:', data);
+        setErrorMessage('決済処理に失敗しました。しばらくしてからお試しください。');
+        setLoadingPlan(null);
+      }
+    } catch (err) {
+      console.error('Checkout error:', err);
+      setErrorMessage('通信エラーが発生しました。しばらくしてからお試しください。');
+      setLoadingPlan(null);
+    }
   };
+
+  const proKey  = billing === 'monthly' ? 'pro_monthly'  : 'pro_annual';
+  const teamKey = billing === 'monthly' ? 'team_monthly' : 'team_annual';
+
+  // user.plan is 'free' | 'pro' | 'team' from DB
+  const userPlan = user?.plan || 'free';
+  const isFreePlan = userPlan === 'free';
+  const isProPlan  = userPlan === 'pro';
+  const isTeamPlan = userPlan === 'team';
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+
+      {/* Success banner */}
+      {successMessage && (
+        <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-green-500 text-white px-6 py-3 rounded-xl shadow-lg font-medium">
+          🎉 {successMessage}
+        </div>
+      )}
+
+      {/* Error banner */}
+      {errorMessage && (
+        <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-red-500 text-white px-6 py-3 rounded-xl shadow-lg font-medium flex items-center gap-3">
+          <span>{errorMessage}</span>
+          <button onClick={() => setErrorMessage(null)} className="text-white/80 hover:text-white text-lg leading-none">×</button>
+        </div>
+      )}
 
       {/* Page Header */}
       <div className="py-16 text-center px-4">
@@ -110,9 +205,13 @@ export default function PricingClient() {
           {/* FREE */}
           <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 flex flex-col shadow-sm hover:shadow-md transition-shadow">
             <div>
-              <span className="inline-block text-xs font-bold text-gray-500 bg-gray-100 dark:bg-gray-700 dark:text-gray-400 px-3 py-1 rounded-full">
-                現在のプラン
-              </span>
+              {isFreePlan ? (
+                <span className="inline-block text-xs font-bold text-green-600 bg-green-100 dark:bg-green-900/40 dark:text-green-400 px-3 py-1 rounded-full">
+                  契約中
+                </span>
+              ) : (
+                <span className="inline-block h-7" />
+              )}
             </div>
             <h2 className="text-xl font-bold text-gray-800 dark:text-white mt-4 mb-1">
               FREE <span className="text-sm font-normal text-gray-400">フリー</span>
@@ -122,7 +221,7 @@ export default function PricingClient() {
             </div>
             <p className="text-gray-400 text-sm mt-1 mb-6">永久無料</p>
             <ul className="space-y-2.5 mb-8 flex-1">
-              {['全86+ツール利用可能', '1日5回まで利用', '最大ファイルサイズ: 10MB', '広告表示あり', 'メールサポート', '住所帳3件・CSV5件まで'].map(f => (
+              {['全140+ツール利用可能', '1日5回まで利用', '最大ファイルサイズ: 10MB', '広告表示あり', 'メールサポート', '住所帳3件・CSV5件まで'].map(f => (
                 <li key={f} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
                   <span className="text-green-500 mt-0.5 shrink-0">✓</span>{f}
                 </li>
@@ -132,16 +231,22 @@ export default function PricingClient() {
               disabled
               className="w-full py-3 bg-gray-100 dark:bg-gray-700 text-gray-400 rounded-xl font-medium cursor-not-allowed text-sm"
             >
-              現在ご利用中
+              {isFreePlan ? '現在ご利用中' : 'ダウングレード不可'}
             </button>
           </div>
 
           {/* PRO */}
           <div className="bg-white dark:bg-gray-800 rounded-2xl border-2 border-sakura p-6 flex flex-col shadow-lg relative hover:shadow-xl transition-shadow lg:scale-[1.03]">
             <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-              <span className="bg-sakura text-white text-xs font-bold px-4 py-1.5 rounded-full shadow whitespace-nowrap">
-                おすすめ
-              </span>
+              {isProPlan ? (
+                <span className="bg-green-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow whitespace-nowrap">
+                  契約中
+                </span>
+              ) : (
+                <span className="bg-sakura text-white text-xs font-bold px-4 py-1.5 rounded-full shadow whitespace-nowrap">
+                  おすすめ
+                </span>
+              )}
             </div>
             <h2 className="text-xl font-bold text-gray-800 dark:text-white mt-4 mb-1">
               PRO <span className="text-sm font-normal text-gray-400">プロ</span>
@@ -169,26 +274,49 @@ export default function PricingClient() {
               )}
             </div>
             <ul className="space-y-2.5 mt-5 mb-8 flex-1">
-              {['全86+ツール利用可能', '無制限利用', '最大ファイルサイズ: 200MB', '広告なし', '優先メールサポート', '処理速度2倍', '領収書自動発行', '会社ロゴ・バーコード・QR対応'].map(f => (
+              {['全140+ツール利用可能', '無制限利用', '最大ファイルサイズ: 200MB', '広告なし', 'FAQチャットボット', '領収書自動発行', '利用状況レポート', '会社ロゴ・バーコード・QR対応'].map(f => (
                 <li key={f} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
                   <span className="text-green-500 mt-0.5 shrink-0">✓</span>{f}
                 </li>
               ))}
             </ul>
-            <button
-              onClick={() => setModalOpen(true)}
-              className="w-full py-3 bg-sakura hover:bg-yellow-600 text-white rounded-xl font-bold transition-colors text-sm"
-            >
-              PROプランを始める
-            </button>
+            {isProPlan ? (
+              <button
+                disabled
+                className="w-full py-3 bg-gray-100 dark:bg-gray-700 text-gray-400 rounded-xl font-medium cursor-not-allowed text-sm"
+              >
+                現在のプラン
+              </button>
+            ) : isTeamPlan ? (
+              <button
+                disabled
+                className="w-full py-3 bg-gray-100 dark:bg-gray-700 text-gray-400 rounded-xl font-medium cursor-not-allowed text-sm"
+              >
+                現在より下位プラン
+              </button>
+            ) : (
+              <button
+                onClick={() => handleUpgrade(proKey)}
+                disabled={loadingPlan === proKey}
+                className="w-full py-3 bg-sakura hover:bg-yellow-600 text-white rounded-xl font-bold transition-colors text-sm disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {loadingPlan === proKey ? '処理中...' : 'PROプランを始める'}
+              </button>
+            )}
           </div>
 
           {/* TEAM */}
           <div className="bg-white dark:bg-gray-800 rounded-2xl border-2 border-kon dark:border-blue-500 p-6 flex flex-col shadow-sm hover:shadow-md transition-shadow">
             <div>
-              <span className="inline-block text-xs font-bold text-kon dark:text-blue-400 bg-kon/10 dark:bg-blue-900/40 px-3 py-1 rounded-full">
-                法人向け
-              </span>
+              {isTeamPlan ? (
+                <span className="inline-block text-xs font-bold text-green-600 bg-green-100 dark:bg-green-900/40 dark:text-green-400 px-3 py-1 rounded-full">
+                  契約中
+                </span>
+              ) : (
+                <span className="inline-block text-xs font-bold text-kon dark:text-blue-400 bg-kon/10 dark:bg-blue-900/40 px-3 py-1 rounded-full">
+                  法人向け
+                </span>
+              )}
             </div>
             <h2 className="text-xl font-bold text-gray-800 dark:text-white mt-4 mb-1">
               TEAM <span className="text-sm font-normal text-gray-400">チーム</span>
@@ -199,7 +327,7 @@ export default function PricingClient() {
                   <div>
                     <span className="text-4xl font-bold text-kon dark:text-blue-400">¥1,480</span>
                   </div>
-                  <p className="text-gray-400 text-xs mt-1">/ユーザー/月</p>
+                  <p className="text-gray-400 text-xs mt-1">/ユーザー/月（税込）</p>
                 </>
               ) : (
                 <>
@@ -215,18 +343,28 @@ export default function PricingClient() {
               )}
             </div>
             <ul className="space-y-2.5 mt-5 mb-8 flex-1">
-              {['PROの全機能', '5ユーザーから利用可能', 'チーム管理ダッシュボード', '請求書払い対応（NP掛け払い）', '利用状況レポート', '専任サポート担当', '領収書・請求書自動発行', '共有アドレス帳・500件一括印刷'].map(f => (
+              {['PROの全機能', '5ユーザーから利用可能', 'チーム管理ダッシュボード', '請求書払い対応（NP掛け払い）', '利用状況レポート', 'AIチャットボット（24時間対応）', '領収書・請求書自動発行', '共有アドレス帳・500件一括印刷'].map(f => (
                 <li key={f} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
                   <span className="text-green-500 mt-0.5 shrink-0">✓</span>{f}
                 </li>
               ))}
             </ul>
-            <button
-              onClick={() => setModalOpen(true)}
-              className="w-full py-3 bg-kon hover:bg-kon/90 text-white rounded-xl font-bold transition-colors text-sm"
-            >
-              チームプランを始める
-            </button>
+            {isTeamPlan ? (
+              <button
+                disabled
+                className="w-full py-3 bg-gray-100 dark:bg-gray-700 text-gray-400 rounded-xl font-medium cursor-not-allowed text-sm"
+              >
+                現在のプラン
+              </button>
+            ) : (
+              <button
+                onClick={() => handleUpgrade(teamKey)}
+                disabled={loadingPlan === teamKey}
+                className="w-full py-3 bg-kon hover:bg-kon/90 text-white rounded-xl font-bold transition-colors text-sm disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {loadingPlan === teamKey ? '処理中...' : 'チームプランを始める'}
+              </button>
+            )}
           </div>
 
           {/* ENTERPRISE */}
@@ -360,46 +498,6 @@ export default function PricingClient() {
           <p className="text-blue-300 text-sm mt-4">有料プランへのアップグレードはいつでも可能です</p>
         </div>
       </div>
-
-      {/* Pre-launch Modal */}
-      {modalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <div
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-            onClick={() => setModalOpen(false)}
-          />
-          <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 max-w-md w-full shadow-2xl">
-            <button
-              onClick={() => setModalOpen(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-2xl font-light w-8 h-8 flex items-center justify-center leading-none"
-            >
-              ×
-            </button>
-            <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3">
-              有料プランは近日公開予定です
-            </h3>
-            <p className="text-gray-600 dark:text-gray-400 text-sm mb-6 leading-relaxed">
-              現在、お支払いシステムの準備を進めております。公開時にお知らせをご希望の場合は、メールアドレスをご登録ください。
-            </p>
-            <form onSubmit={handleNotify} className="flex gap-2">
-              <input
-                type="email"
-                value={notifyEmail}
-                onChange={e => setNotifyEmail(e.target.value)}
-                placeholder="your@email.com"
-                required
-                className="flex-1 border border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
-              />
-              <button
-                type="submit"
-                className="bg-kon hover:bg-kon/90 text-white px-4 py-2.5 rounded-xl font-bold text-sm transition-colors whitespace-nowrap"
-              >
-                通知を受け取る
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
 
     </div>
   );

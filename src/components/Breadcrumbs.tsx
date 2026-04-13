@@ -21,6 +21,16 @@ export default function Breadcrumbs() {
     'generator': '生成・計算',
     'legal': '法的情報',
     'about': '会社情報',
+    'pricing': '料金プラン',
+    'finance': '金融・計算ツール',
+    'blog': 'ブログ',
+    'office': 'オフィスツール',
+    'health': '健康・ライフ',
+    'career': 'キャリア・収入',
+    'realestate': '不動産',
+    'insurance': '保険',
+    'education': '教育',
+    'tools': 'ツール一覧',
   };
 
   // Tool name mapping (you can expand this)
@@ -111,6 +121,16 @@ export default function Breadcrumbs() {
     'fair-usage': '適正利用ガイドライン',
     'transparency': '運営方針',
     'company': '会社概要',
+    'business': '法人向け',
+    'story': '開発者ストーリー',
+
+    // Additional PDF slugs
+    'text-input': 'PDFに文字入力',
+    'combini-print': 'コンビニ印刷用余白追加',
+
+    // Additional image slugs
+    'compress-img': '画像圧縮',
+    'mosaic': '画像モザイク',
   };
 
   // Build breadcrumb path

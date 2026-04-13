@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { IntroSection } from "@/components/IntroSection";
+import { UseCasesSection } from "@/components/UseCasesSection";
+import { FAQSection } from "@/components/FAQSection";
+import Mascot, { MascotState } from "@/components/common/Mascot";
 
 // ============================================================
 // Types
@@ -359,6 +363,7 @@ const DEFAULT_FORM: FormState = {
 
 export default function JobChangeSimulatorPage() {
   const [form, setForm] = useState<FormState>(DEFAULT_FORM);
+  const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const [result, setResult] = useState<CalcResult | null>(null);
   const [error, setError] = useState("");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -372,26 +377,32 @@ export default function JobChangeSimulatorPage() {
   function handleCalculate() {
     if (!form.currentAnnual || parseFloat(form.currentAnnual) <= 0) {
       setError("現在の年収を入力してください");
+    setMascotState("error");
       return;
     }
     if (!form.currentMonthly || parseFloat(form.currentMonthly) <= 0) {
       setError("現在の月給を入力してください");
+    setMascotState("error");
       return;
     }
     if (!form.newAnnual || parseFloat(form.newAnnual) <= 0) {
       setError("転職後の年収を入力してください");
+    setMascotState("error");
       return;
     }
     if (!form.newMonthly || parseFloat(form.newMonthly) <= 0) {
       setError("転職後の月給を入力してください");
+    setMascotState("error");
       return;
     }
     if (!form.age || parseInt(form.age) < 18 || parseInt(form.age) > 75) {
       setError("年齢を正しく入力してください（18〜75歳）");
+    setMascotState("error");
       return;
     }
     if (form.hasProbation && (!form.probationMonthly || parseFloat(form.probationMonthly) <= 0)) {
       setError("試用期間中の給与を入力してください");
+    setMascotState("error");
       return;
     }
     setResult(calculate(form));
@@ -431,8 +442,24 @@ export default function JobChangeSimulatorPage() {
     },
   ];
 
+
+  const faqItems = [
+    { question: "年収が上がっても手取りが増えないことはありますか？", answer: "はい、いわゆる「年収の壁」を超えると社会保険料や税金が急増し、手取りが逆転することがあります。特に103万・106万・130万円の壁は注意が必要です。本ツールで転職後の正確な手取りを確認することをお勧めします。" },
+    { question: "転職で年収が下がる場合のデメリットは？", answer: "年収が下がると社会保険料（翌年9月から改定）・住民税（翌年6月から改定）・雇用保険給付額・将来の厚生年金額が減少します。また退職金の基礎となる給与が下がります。本ツールでは短期的な手取り差だけでなく、回収期間まで計算できます。" },
+    { question: "試用期間中の給与減額は考慮されますか？", answer: "はい、試用期間の月数と給与額を入力すると、試用期間中の収入損失と損益分岐点（何ヶ月後に転職が割に合うか）を計算します。" },
+    { question: "転職後の住民税はいつから変わりますか？", answer: "住民税は前年の所得に基づいて計算されるため、転職後すぐには変わりません。転職した年の翌年6月から新しい給与に基づいた住民税が適用されます。転職直後は前職の高い年収に基づく住民税が続くため注意が必要です。" },
+    { question: "年収以外に何を比較すべきですか？", answer: "賞与の有無・退職金制度・社宅や通勤手当などの福利厚生・残業時間・有給消化率なども重要な比較ポイントです。見えない収入（フリンジベネフィット）を含めた実質的な待遇を比較することをお勧めします。" }
+  ];
+  const useCases = [
+    { icon: "💼", persona: "転職活動中の方", title: "内定年収の手取りを正確に知りたい", benefit: "税・社会保険料込みの手取り差を一発計算" },
+    { icon: "📉", persona: "年収が下がる転職を検討中", title: "ダウン転職が長期的に割に合うか不安", benefit: "損益分岐点と回収月数を自動算出" },
+    { icon: "🏢", persona: "年収が上がる転職を検討中", title: "手取りが本当に増えるか確認したい", benefit: "年収の壁・住民税タイムラグを含めて比較" }
+  ];
   return (
-    <div className="min-h-screen bg-gray-50">
+    <>
+      <IntroSection title="転職年収シミュレーター" paragraphs={["転職前後の手取り額・社会保険料・税金の変化を正確に比較計算します。年収が上がっても手取りが減る「年収の壁」の影響や試用期間の収入損失も自動計算。", "損益分岐点（転職が何ヶ月後に割に合うか）まで算出し、転職の時期判断をサポートします。", "登録不要・完全無料。転職を検討中の方が「本当の手取り差」を把握するのに最適なツールです。"]} />
+      <div className="min-h-screen bg-gray-50">
+        <Mascot state={mascotState} className="mb-6" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -947,5 +974,8 @@ export default function JobChangeSimulatorPage() {
 
       </div>
     </div>
+    <UseCasesSection cases={useCases} />
+    <FAQSection faq={faqItems} />
+  </>
   );
 }

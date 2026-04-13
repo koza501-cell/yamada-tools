@@ -40,6 +40,9 @@ const nextConfig = {
       { source: '/tools/ideco-nisa-comparison', destination: '/finance/ideco-nisa-comparison', permanent: true },
       { source: '/tools/nisa-simulator', destination: '/finance/nisa-simulator', permanent: true },
       { source: '/ideco-nisa-comparison', destination: '/finance/ideco-nisa-comparison', permanent: true },
+      { source: '/convert/wareki-seireki', destination: '/convert/date-converter', permanent: true },
+      { source: '/generator/char-count', destination: '/generator/character-count', permanent: true },
+      { source: '/generator/password-gen', destination: '/generator/password', permanent: true },
     ]
   }
 }

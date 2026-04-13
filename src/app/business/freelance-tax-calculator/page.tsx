@@ -2,6 +2,10 @@
 
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
+import { IntroSection } from "@/components/IntroSection";
+import { UseCasesSection } from "@/components/UseCasesSection";
+import { FAQSection } from "@/components/FAQSection";
+import Mascot, { MascotState } from "@/components/common/Mascot";
 
 // Inline SVG Icons
 const Icons = {
@@ -153,6 +157,7 @@ export default function FreelanceTaxCalculatorPage() {
     nationalHealthInsurance: 0,
     autoCalcNHI: true,
   });
+  const [mascotState, setMascotState] = useState<MascotState>("welcome");
 
   const [showExpenses, setShowExpenses] = useState(true);
   const [showDeductions, setShowDeductions] = useState(true);
@@ -278,6 +283,7 @@ export default function FreelanceTaxCalculatorPage() {
         blueVsWhiteDifference,
         refundAmount,
       });
+    setMascotState("success");
     } catch (error) {
       console.error("Calculation error:", error);
     }
@@ -342,8 +348,26 @@ export default function FreelanceTaxCalculatorPage() {
     return new Intl.NumberFormat("ja-JP").format(Math.round(value / 10000));
   };
 
+  const faqItems = [
+    { question: "フリーランスの税金はいくらかかりますか？", answer: "年間売上や経費率により異なりますが、一般的に売上の25%〜40%が税金・社会保険料になります。例えば年収500万円・経費率25%・青色申告65万円控除の場合、税金・社会保険料は約115万円、手取りは約260万円です。青色申告を活用すると年間数万円〜数十万円の節税が可能です。" },
+    { question: "青色申告と白色申告、どちらがお得ですか？", answer: "青色申告がお得です。最大65万円の特別控除があり、年間10万円〜30万円以上の節税になります。赤字の3年間繰越、専従者給与の全額経費算入も可能です。開業届と青色申告承認申請書を提出すれば、翌年から利用できます。" },
+    { question: "フリーランスの経費はどこまで認められますか？", answer: "事業に直接関係する支出が経費になります。通信費、交通費、書籍代、PC・機材、外注費、広告費などが対象です。自宅兼事務所の場合、家賃や光熱費は仕事使用割合（20〜50%程度）で按分して経費計上できます。プライベート利用と明確に区別できる支出を経費として計上しましょう。" },
+    { question: "インボイス登録すべきですか？免税事業者への影響は？", answer: "取引先が法人中心なら登録を検討しましょう。登録すると消費税の申告・納付が必要ですが、2026年まで使える「2割特例」を適用すれば、売上消費税の20%のみの納付で済みます。個人向けサービスが中心なら、登録しなくても影響は少ない場合があります。" },
+    { question: "小規模企業共済とiDeCoはどちらがおすすめですか？", answer: "両方加入するのが理想的です。小規模企業共済は月7万円まで（年84万円）、廃業時に退職金として受け取れます。iDeCoは月6.8万円まで（年81.6万円）、65歳以降の年金になります。どちらも掛金全額が所得控除となり、合計で年間30万円以上の節税効果が期待できます。" },
+  ];
+
+  const useCases = [
+    { icon: "💻", persona: "フリーランス・個人事業主の方", title: "年間の税金・社会保険料の合計を把握したい", benefit: "売上・経費から手取り額と全税負担を一括計算" },
+    { icon: "📝", persona: "青色申告の効果を知りたい方", title: "青色申告特別控除で実際にいくら節税できるか", benefit: "白色申告との比較で青色の節税額を可視化" },
+    { icon: "🆕", persona: "会社員からフリーランスへ転身検討中", title: "独立後の手取りを会社員時代と比較したい", benefit: "社会保険料の増加分を含めた実質手取りを計算" },
+  ];
+
+
   return (
+    <>
+      <IntroSection title="フリーランス税金・経費計算機" paragraphs={["フリーランス・個人事業主の売上・経費を入力すると、所得税・住民税・国民健康保険料・国民年金の合計税社会保険料と手取り額を計算します。", "青色申告特別控除（65万円・10万円）の節税効果、小規模企業共済やiDeCoの活用メリットも試算できます。", "登録不要・完全無料。確定申告前の税額確認や、独立前の手取りシミュレーションに最適です。"]} />
     <div className="min-h-screen bg-gray-50">
+        <Mascot state={mascotState} className="mb-6" />
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Breadcrumb */}
         <nav className="text-sm mb-6">
@@ -983,5 +1007,8 @@ export default function FreelanceTaxCalculatorPage() {
         </div>
       </div>
     </div>
+    <UseCasesSection cases={useCases} />
+    <FAQSection faq={faqItems} />
+  </>
   );
 }

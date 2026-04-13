@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { IntroSection } from "@/components/IntroSection";
+import { UseCasesSection } from "@/components/UseCasesSection";
+import { FAQSection } from "@/components/FAQSection";
 
 interface FormState {
   nyuinDays: string;
@@ -166,8 +169,22 @@ export default function MedicalInsuranceSimPage() {
     setError("");
   }
 
+  const faqItems = [
+    { question: "入院1日の費用はいくらかかりますか？", answer: "医療費の自己負担（3割）＋食事代＋差額ベッド代で、一般的に1日あたり1〜3万円が目安です。高額療養費制度を適用すると、月の自己負担上限は年収によって57,600円〜167,400円程度になります。" },
+    { question: "高額療養費制度とはどういう制度ですか？", answer: "1ヶ月の医療費の自己負担が一定額（所得に応じた上限額）を超えた場合、超過分が払い戻される制度です。年収約370〜770万円の方の上限は月約87,000円です。食事代・差額ベッド代・先進医療は対象外です。" },
+    { question: "医療保険の日額はいくら必要ですか？", answer: "高額療養費制度で医療費の自己負担は抑えられますが、差額ベッド代・食事代・日用品・収入減少を考えると日額5,000〜10,000円が一般的な目安です。貯蓄が少ない方や入院リスクが高い方は高めの設定が安心です。" },
+  ];
+
+  const useCases = [
+    { icon: "🏥", persona: "医療保険への加入を検討している方", title: "日額いくらの保険に入ればいいか判断したい", benefit: "収入・貯蓄から最適な日額と入院給付金額を算出" },
+    { icon: "💰", persona: "高額療養費制度を知りたい方", title: "実際の入院でいくら自己負担になるか知りたい", benefit: "高額療養費適用後の実質負担額を計算" },
+    { icon: "🔄", persona: "既存の医療保険を見直したい方", title: "今の保険が過剰・不足でないか確認したい", benefit: "現在の保険と必要額のギャップを可視化" },
+  ];
+
   return (
-    <div className="min-h-screen bg-gray-50">
+    <>
+      <IntroSection title="医療保険 入院給付金シミュレーター" paragraphs={["入院日数・手術の有無・治療内容を入力すると、医療費の自己負担額と医療保険の給付金受取額をシミュレーションします。高額療養費制度を適用した自己負担上限額も計算。", "入院1日あたりの費用内訳（医療費3割・食事代・差額ベッド代）を考慮し、医療保険の日額（5,000円・10,000円等）別の過不足も確認できます。", "登録不要・完全無料。医療保険の加入・見直しを検討している方に最適です。"]} />
+      <div className="min-h-screen bg-gray-50">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -554,5 +571,8 @@ export default function MedicalInsuranceSimPage() {
 
       </div>
     </div>
+    <UseCasesSection cases={useCases} />
+    <FAQSection faq={faqItems} />
+  </>
   );
 }

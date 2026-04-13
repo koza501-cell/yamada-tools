@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { IntroSection } from "@/components/IntroSection";
+import { UseCasesSection } from "@/components/UseCasesSection";
+import { FAQSection } from "@/components/FAQSection";
+import Mascot, { MascotState } from "@/components/common/Mascot";
 
 interface HeirResult {
   label: string;
@@ -163,6 +167,7 @@ const schema = {
 
 export default function InheritanceTaxPage() {
   const [estate, setEstate] = useState("");
+  const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const [debts, setDebts] = useState("");
   const [totalHeirs, setTotalHeirs] = useState("1");
   const [hasSpouse, setHasSpouse] = useState(false);
@@ -185,6 +190,7 @@ export default function InheritanceTaxPage() {
     if (isNaN(estateVal) || estateVal <= 0) return;
     const res = calculate(estateVal, debtsVal, totalHeirsVal, hasSpouse, childCountVal);
     setResult(res);
+    setMascotState("success");
   }
 
   function handleReset() {
@@ -199,8 +205,23 @@ export default function InheritanceTaxPage() {
   const childOptions = Array.from({ length: 10 }, (_, i) => i);
   const heirOptions = Array.from({ length: 10 }, (_, i) => i + 1);
 
+  const faqItems = [
+    { question: "相続税の基礎控除はいくらですか？", answer: "基礎控除額 = 3,000万円 ＋（600万円 × 法定相続人の数）です。例えば法定相続人が配偶者＋子2人の場合、3,000万円＋1,800万円＝4,800万円まで非課税です。" },
+    { question: "配偶者の相続税は優遇されますか？", answer: "はい、配偶者控除により法定相続分または1億6,000万円のいずれか多い金額まで非課税です。多くの場合、配偶者は相続税がゼロになります。ただし二次相続（配偶者が亡くなった時）の税負担増に注意が必要です。" },
+    { question: "相続税の申告期限はいつですか？", answer: "被相続人（亡くなった方）が死亡したことを知った日の翌日から10ヶ月以内です。期限を過ぎると無申告加算税（最大20%）や延滞税が発生するため注意が必要です。" },
+  ];
+
+  const useCases = [
+    { icon: "🏛️", persona: "相続が発生した・近い将来予想される方", title: "相続税がかかるかどうか事前確認したい", benefit: "基礎控除額と遺産総額を比較して申告要否を判定" },
+    { icon: "👫", persona: "配偶者・子どもへの相続を計画中の方", title: "配偶者控除でいくら非課税になるか確認したい", benefit: "配偶者控除1.6億円の適用シミュレーション" },
+    { icon: "📅", persona: "相続税申告の期限が心配な方", title: "申告期限と必要な手続きを確認したい", benefit: "10ヶ月以内の期限と無申告加算税のリスクを確認" },
+  ];
+
   return (
-    <div className="min-h-screen bg-gray-50">
+    <>
+      <IntroSection title="相続税 簡易計算機" paragraphs={["遺産総額・法定相続人の数を入力すると相続税の基礎控除額と概算税額を計算します。配偶者控除（1億6,000万円）や各相続人の取得分に応じた税額配分も確認できます。", "二次相続（配偶者が亡くなった際の再課税）のリスクも考慮した試算が可能です。", "登録不要・完全無料。相続対策の検討や、申告が必要かどうかの概算確認に最適です。"]} />
+      <div className="min-h-screen bg-gray-50">
+        <Mascot state={mascotState} className="mb-6" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -530,5 +551,8 @@ export default function InheritanceTaxPage() {
 
       </div>
     </div>
+    <UseCasesSection cases={useCases} />
+    <FAQSection faq={faqItems} />
+  </>
   );
 }

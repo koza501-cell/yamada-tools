@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Mascot, { MascotState } from '@/components/common/Mascot';
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 // Feature F: saved document type
 interface SavedDoc {
@@ -240,6 +242,9 @@ const initialDoc: DocState = {
 };
 
 export default function VerticalTextClient() {
+  const { triggerSuccess } = usePricingContext();
+
+
   const [mounted, setMounted] = useState(false);
   const [previewReady, setPreviewReady] = useState(false);
   const [doc, setDoc] = useState<DocState>(initialDoc);
@@ -414,7 +419,8 @@ export default function VerticalTextClient() {
     setActiveTemplate(tpl.label);
     setHistory(h => [...h.slice(0, historyIndex + 1), next]);
     setHistoryIndex(i => i + 1);
-    setMascotState('success');
+    setMascotState('success')
+      triggerSuccess('vertical-text');;
     setMascotMessage(`「${tpl.label}」のテンプレートを読み込みました！`);
     setTimeout(() => { setMascotState('idle'); setMascotMessage('縦書き文書を作成しましょう。テンプレートも使えます！'); }, 3000);
   };
@@ -1399,6 +1405,7 @@ export default function VerticalTextClient() {
             )}
           </div>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
 
       {/* Styles: print + preview animation */}

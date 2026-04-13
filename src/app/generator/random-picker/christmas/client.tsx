@@ -3,6 +3,7 @@
 import Link from "next/link";
 import RandomPickerTool from "@/components/tools/RandomPickerTool";
 import AdUnit from "@/components/AdUnit";
+import Mascot from "@/components/common/Mascot";
 
 const PAGE_URL = "https://yamada-tools.jp/generator/random-picker/christmas";
 
@@ -50,24 +51,6 @@ export default function ChristmasClient() {
   return (
     <div style={{ background: "#f8faff", minHeight: "100vh" }}>
       <div style={{ maxWidth: 900, margin: "0 auto", padding: "0 20px 80px" }}>
-
-        {/* Breadcrumb */}
-        <nav aria-label="パンくずリスト" style={{
-          padding: "16px 0",
-          fontSize: "0.82rem",
-          color: "#999",
-          borderBottom: "1px solid rgba(34,58,112,0.06)",
-          marginBottom: 0,
-        }}>
-          <Link href="/" style={{ color: "#223A70", textDecoration: "none" }}>ホーム</Link>
-          <span style={{ margin: "0 6px" }}>›</span>
-          <Link href="/generator" style={{ color: "#223A70", textDecoration: "none" }}>計算・生成</Link>
-          <span style={{ margin: "0 6px" }}>›</span>
-          <Link href="/generator/random-picker" style={{ color: "#223A70", textDecoration: "none" }}>ランダム抽選</Link>
-          <span style={{ margin: "0 6px" }}>›</span>
-          <span style={{ color: "#555" }}>クリスマス プレゼント交換</span>
-        </nav>
-
         {/* ── Hero Banner ── */}
         <div style={{
           background: "linear-gradient(135deg, #166534 0%, #15803d 50%, #16a34a 100%)",
@@ -136,6 +119,7 @@ export default function ChristmasClient() {
 
         {/* ── Tool UI ── */}
         <section aria-label="プレゼント交換 相手決めツール" style={{ marginBottom: 32 }}>
+          <Mascot state="welcome" />
           <RandomPickerTool
             presets={PRESETS}
             pageUrl={PAGE_URL}
@@ -399,6 +383,7 @@ function HowToStep({ step, title, children, last = false }: {
         <div style={{ fontSize: "0.92rem", color: "#555", lineHeight: 1.8 }}>
           {children}
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { searchTools } from "@/lib/searchUtils";
 import { pdfTools, documentTools, convertTools, imageTools, generatorTools } from "@/config/tools";
 
 export default function SearchBar() {
@@ -27,14 +28,8 @@ export default function SearchBar() {
       return;
     }
 
-    const searchQuery = query.toLowerCase();
-    const filtered = allTools.filter(tool => 
-      tool.nameJa.toLowerCase().includes(searchQuery) ||
-      tool.nameEn.toLowerCase().includes(searchQuery) ||
-      tool.description.toLowerCase().includes(searchQuery)
-    );
-
-    setResults(filtered.slice(0, 8)); // Show max 8 results
+    const filtered = searchTools(query, allTools);
+    setResults(filtered);
     setIsOpen(filtered.length > 0);
   }, [query]);
 
@@ -68,6 +63,13 @@ export default function SearchBar() {
     setIsOpen(false);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && results.length > 0) {
+      window.location.href = results[0].path;
+      handleSelect();
+    }
+  };
+
   return (
     <div ref={searchRef} className="relative w-full max-w-2xl">
       <div className="relative">
@@ -76,6 +78,7 @@ export default function SearchBar() {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={handleKeyDown}
           placeholder="何をしたいですか？"
           className="w-full px-4 py-3 pl-12 pr-4 rounded-xl border-2 border-gray-200 focus:border-kon focus:outline-none text-sumi"
         />

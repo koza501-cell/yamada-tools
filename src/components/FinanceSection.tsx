@@ -118,9 +118,7 @@ export default function FinanceSection() {
               >
                 <span aria-hidden="true">💰</span> 金融・資産運用ツール
               </h2>
-              <span className="px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full animate-pulse">
-                NEW
-              </span>
+
             </div>
             <Link
               href="/finance"
@@ -164,9 +162,7 @@ export default function FinanceSection() {
                         <span className="px-1.5 py-0.5 bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200 text-xs font-bold rounded">
                           Pro
                         </span>
-                        <span className="px-1.5 py-0.5 bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-200 text-xs font-bold rounded">
-                          NEW
-                        </span>
+
                       </div>
 
                       {/* Description */}

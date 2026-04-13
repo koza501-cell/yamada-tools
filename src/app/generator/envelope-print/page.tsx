@@ -2,8 +2,10 @@ import { Metadata } from "next";
 import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
 import EnvelopePrintClient from "./client";
+import AdFreeZone from "@/components/AdFreeZone";
 import { StepGuide } from "./step-guide";
 import { JsonLdDedup } from "./json-ld-dedup";
+import RelatedTools from "@/components/common/RelatedTools";
 
 const tool = getToolById("envelope-print")!;
 
@@ -88,9 +90,13 @@ export default function EnvelopePrintPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="ad-free-zone"><EnvelopePrintClient faq={faq} seoContent={seoContent} /></div>
+      <AdFreeZone><EnvelopePrintClient faq={faq} seoContent={seoContent} /></AdFreeZone>
       <StepGuide />
       <JsonLdDedup scriptId="envelope-print-jsonld" />
+      <div className="max-w-4xl mx-auto px-4">
+        <RelatedTools currentTool={tool} maxItems={6} />
+      </div>
+
     </>
   );
 }

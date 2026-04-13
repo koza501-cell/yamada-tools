@@ -3,6 +3,8 @@
 import { useState, useCallback } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ {
   question: string;
@@ -25,7 +27,10 @@ const UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const NUMBERS = "0123456789";
 const SYMBOLS = "!@#$%^&*()_+-=[]{}|;:,.<>?";
 
-export default function PasswordClient({ faq, seoContent }: Props) {
+export default function PasswordClient({
+ faq, seoContent }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [length, setLength] = useState(16);
   const [useLowercase, setUseLowercase] = useState(true);
   const [useUppercase, setUseUppercase] = useState(true);
@@ -68,7 +73,8 @@ export default function PasswordClient({ faq, seoContent }: Props) {
     setPassword(result);
     setPasswordHistory(prev => [result, ...prev.slice(0, 9)]);
     setCopied(false);
-    setMascotState("success");
+    setMascotState("success")
+      triggerSuccess('password');;
     setMascotMessage("安全なパスワード生成完了！");
   }, [length, useLowercase, useUppercase, useNumbers, useSymbols, excludeAmbiguous]);
 
@@ -104,17 +110,6 @@ export default function PasswordClient({ faq, seoContent }: Props) {
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4">
-        {/* Breadcrumb */}
-        <nav className="mb-6 text-sm" aria-label="パンくずリスト">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li>
-            <li>/</li>
-            <li><Link href="/generator" className="hover:text-kon">計算・生成ツール</Link></li>
-            <li>/</li>
-            <li className="text-kon font-medium">パスワード生成</li>
-          </ol>
-        </nav>
-
         {/* Header */}
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">🔐</div>
@@ -428,6 +423,7 @@ export default function PasswordClient({ faq, seoContent }: Props) {
             ← 計算・生成ツール一覧に戻る
           </Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

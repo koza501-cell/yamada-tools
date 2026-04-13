@@ -331,7 +331,7 @@ img[width][height] {
 
 /* Reserve space for sticky header - prevent CLS on scroll */
 html {
-  scroll-padding-top: 64px;
+  scroll-padding-top: 100px;
 }
 
 /* Below-fold content optimization */
@@ -368,3 +368,53 @@ body {
 .ad-free-zone ins.adsbygoogle {
   display: none !important;
 }
+
+/* === Mascot (アイちゃん) Animations === */
+@keyframes mascot-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-5px); }
+}
+@keyframes mascot-shake {
+  0%, 100% { transform: translateX(0); }
+  25%      { transform: translateX(-3px); }
+  75%      { transform: translateX(3px); }
+}
+@keyframes mascot-appear {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes mascot-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+@keyframes mascot-spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes mascot-sparkle {
+  0%   { opacity: 0; transform: scale(0) translateY(0); }
+  50%  { opacity: 1; transform: scale(1) translateY(-10px); }
+  100% { opacity: 0; transform: scale(0.5) translateY(-20px); }
+}
+@keyframes mascot-typing-dot {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40%           { transform: scale(1);   opacity: 1; }
+}
+@keyframes mascot-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+@keyframes mascot-pulse-glow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50%      { opacity: 0.8; transform: scale(1.1); }
+}
+
+.animate-mascot-bounce    { animation: mascot-bounce 0.5s ease; }
+.animate-mascot-shake     { animation: mascot-shake 0.4s ease; }
+.animate-mascot-appear    { animation: mascot-appear 0.3s ease-out; }
+.animate-float            { animation: mascot-float 3s ease-in-out infinite; }
+.animate-spin-slow        { animation: mascot-spin-slow 2s linear infinite; }
+.animate-sparkle          { animation: mascot-sparkle 1s ease-in-out infinite; }
+.animate-typing-dot       { animation: mascot-typing-dot 1.2s ease-in-out infinite; }
+.animate-blink            { animation: mascot-blink 0.8s step-end infinite; }
+.animate-pulse-glow       { animation: mascot-pulse-glow 2s ease-in-out infinite; }

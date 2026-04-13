@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import ShareButtons from "@/components/common/ShareButtons";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ { question: string; answer: string; }
 interface SeoContent { intro: string; useCases?: { title: string; desc: string }[]; tips?: string; }
@@ -38,7 +39,10 @@ async function ensureJsPDF() {
   }
 }
 
-export default function CombiniPrintClient({ faq, seoContent }: Props) {
+export default function CombiniPrintClient({
+ faq, seoContent }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [mounted, setMounted] = useState(false);
   const [pdfFile, setPdfFile] = useState<File | null>(null);
   const [pdfBytes, setPdfBytes] = useState<ArrayBuffer | null>(null);
@@ -157,7 +161,8 @@ export default function CombiniPrintClient({ faq, seoContent }: Props) {
       setPdfBytes(buf);
       setPageCount(doc.numPages);
       setCurrentPreview(1);
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('combini-print');;
       doc.destroy();
     } catch (e: any) {
       setError("PDFの読み込みに失敗しました: " + e.message);
@@ -238,7 +243,8 @@ export default function CombiniPrintClient({ faq, seoContent }: Props) {
       }, 100);
 
       setIsDone(true);
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('combini-print');;
     } catch (e: any) {
       setError("処理に失敗しました: " + e.message);
       setMascotState("error");
@@ -280,17 +286,6 @@ export default function CombiniPrintClient({ faq, seoContent }: Props) {
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4">
-        {/* Breadcrumb */}
-        <nav className="mb-6 text-sm">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li>
-            <li>/</li>
-            <li><Link href="/pdf" className="hover:text-kon">PDFツール</Link></li>
-            <li>/</li>
-            <li className="text-kon font-medium">コンビニ印刷用 余白追加</li>
-          </ol>
-        </nav>
-
         {/* Header */}
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">🏪</div>

@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 type CaseType = "upper" | "lower" | "title" | "sentence" | "toggle" | "capitalize";
 
@@ -16,6 +18,9 @@ const caseOptions: { id: CaseType; label: string; desc: string }[] = [
 ];
 
 export default function TextCaseClient() {
+  const { triggerSuccess } = usePricingContext();
+
+
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [mascotState, setMascotState] = useState<MascotState>("idle");
@@ -51,7 +56,8 @@ export default function TextCaseClient() {
     }
 
     setOutput(result);
-    setMascotState("success");
+    setMascotState("success")
+      triggerSuccess('text-case');;
     setMascotMessage("変換完了！");
   };
 
@@ -63,15 +69,7 @@ export default function TextCaseClient() {
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4">
-        <nav className="mb-6 text-sm">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li>
-            <li>/</li>
-            <li><Link href="/generator" className="hover:text-kon">計算・生成ツール</Link></li>
-            <li>/</li>
-            <li className="text-kon font-medium">大文字・小文字変換</li>
-          </ol>
-        </nav>
+
 
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">Aa</div>
@@ -125,6 +123,7 @@ export default function TextCaseClient() {
         <div className="mt-8 text-center">
           <Link href="/generator" className="text-kon hover:text-ai">← 計算・生成ツール一覧に戻る</Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

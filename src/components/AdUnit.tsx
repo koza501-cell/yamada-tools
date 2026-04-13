@@ -2,11 +2,11 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
-import { useAuth } from '@/hooks/useAuth';
+import { useAuth } from '@/contexts/AuthContext';
 
 declare global {
   interface Window {
-    adsbygoogle: unknown[];
+    adsbygoogle: any[];
   }
 }
 
@@ -25,15 +25,16 @@ export default function AdUnit({
   className,
   showUpgradeHint = false,
 }: AdUnitProps) {
-  const { isPaidUser } = useAuth();
+  const { isPro, loading } = useAuth();
 
   useEffect(() => {
+    if (loading || isPro) return;
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     } catch (e) {}
-  }, []);
+  }, [loading, isPro]);
 
-  if (isPaidUser) return null;
+  if (loading || isPro) return null;
 
   return (
     <div className={`text-center my-4 ${className ?? ''}`}>

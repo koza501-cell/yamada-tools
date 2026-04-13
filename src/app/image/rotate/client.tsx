@@ -3,6 +3,7 @@
 import { useState, useCallback, useRef } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ {
   question: string;
@@ -21,7 +22,10 @@ interface ProcessedImage {
   flipV: boolean;
 }
 
-export default function ImageRotateClient({ faq }: Props) {
+export default function ImageRotateClient({
+ faq }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [files, setFiles] = useState<File[]>([]);
   const [previews, setPreviews] = useState<string[]>([]);
   const [rotation, setRotation] = useState(0);
@@ -127,7 +131,8 @@ export default function ImageRotateClient({ faq }: Props) {
         results.push(result);
       }
       setProcessedImages(results);
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('rotate');;
       setMascotMessage(`${results.length}枚の画像を回転したよ！`);
     } catch {
       setMascotState("error");
@@ -156,15 +161,7 @@ export default function ImageRotateClient({ faq }: Props) {
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4">
-        <nav className="mb-6 text-sm">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li>
-            <li>/</li>
-            <li><Link href="/image" className="hover:text-kon">画像ツール</Link></li>
-            <li>/</li>
-            <li className="text-kon font-medium">画像回転</li>
-          </ol>
-        </nav>
+
 
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">🔄</div>

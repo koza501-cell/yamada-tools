@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】不動産取得税 計算機｜軽減措置を自動適用・土地・建物の税額を瞬時に計算 2026年版 | 山田ツール",
+  title: "【無料】不動産取得税 計算機｜軽減措置を自動適用・土地・建物の税額を瞬時に計算 2026年版",
   description: "不動産取得税を軽減措置込みで自動計算。新築・中古・土地・建物に対応。宅地特例・住宅控除・築年数別控除を自動適用し、節税効果も表示。令和9年3月31日まで延長済み特例対応。",
   keywords: [
     "不動産取得税 計算",
@@ -15,16 +15,17 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/realestate/acquisition-tax",
   },
   openGraph: {
-    title: "【無料】不動産取得税 計算機｜軽減措置を自動適用・土地・建物の税額を瞬時に計算 2026年版 | 山田ツール",
+    title: "【無料】不動産取得税 計算機｜軽減措置を自動適用・土地・建物の税額を瞬時に計算 2026年版",
     description: "不動産取得税を軽減措置込みで自動計算。新築・中古・土地・建物に対応。宅地特例・住宅控除・築年数別控除を自動適用し、節税効果も表示。",
     url: "https://yamada-tools.jp/realestate/acquisition-tax",
-    siteName: "yamada-tools.jp",
+    siteName: "山田ツール",
     locale: "ja_JP",
     type: "website",
+    images: [{ url: "https://api.easynihon.com/api/og?site=yamada&title=%E3%80%90%E7%84%A1%E6%96%99%E3%80%91%E4%B8%8D%E5%8B%95%E7%94%A3%E5%8F%96%E5%BE%97%E7%A8%8E%20%E8%A8%88%E7%AE%97%E6%A9%9F%EF%BD%9C%E8%BB%BD%E6%B8%9B%E6%8E%AA%E7%BD%AE%E3%82%92%E8%87%AA%E5%8B%95%E9%81%A9%E7%94%A8%E3%83%BB%E5%9C%9F%E5%9C%B0%E3%83%BB%E5%BB%BA%E7%89%A9%E3%81%AE%E7%A8%8E%E9%A1%8D%E3%82%92%E7%9E%AC%E6%99%82%E3%81%AB%E8%A8%88%E7%AE%97%202026%E5%B9%B4%E7%89%88" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】不動産取得税 計算機｜軽減措置を自動適用・土地・建物の税額を瞬時に計算 2026年版 | 山田ツール",
+    title: "【無料】不動産取得税 計算機｜軽減措置を自動適用・土地・建物の税額を瞬時に計算 2026年版",
     description: "不動産取得税を軽減措置込みで自動計算。新築・中古・土地・建物に対応。宅地特例・住宅控除・築年数別控除を自動適用し、節税効果も表示。",
   },
 };

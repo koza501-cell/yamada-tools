@@ -1,5 +1,5 @@
 "use client";
-import AdBanner from "@/components/AdBanner";
+import { AdUnit } from "@/components/common/AdUnit";
 import { useUsageLimit } from "@/hooks/useUsageLimit";
 
 import { useState, useEffect } from "react";
@@ -9,7 +9,7 @@ import { Tool, getToolsByCategory } from "@/config/tools";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import ShareButtons from "@/components/common/ShareButtons";
 import UsageLimitBanner from "@/components/common/UsageLimitBanner";
-import RelatedTools from "@/components/common/RelatedTools";
+import { usePricingContext } from "@/components/common/PricingTriggerProvider";
 
 // GA4 event tracking helper
 declare global {
@@ -48,6 +48,8 @@ interface ToolPageProps {
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://api.yamada-tools.jp";
 
 export default function ToolPage({ tool, extraFields, extraFormData, faq, seoContent }: ToolPageProps) {
+  const { triggerSuccess } = usePricingContext();
+
   const [files, setFiles] = useState<File[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -62,11 +64,11 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
   useEffect(() => {
     if (usage?.is_limited) {
       setMascotState("error");
-      setMascotMessage("今日の無料枠は終わりだよ...PROプランで無制限に使えるよ！");
+      setMascotMessage("本日の無料利用枠が上限に達しました。PROプランで無制限にご利用いただけます。");
     } else if (usage?.remaining === 1) {
-      setMascotMessage("残り1回だよ！PROなら無制限に使えるよ♪");
+      setMascotMessage("本日の残り利用回数は1回です。PROプランで無制限にご利用いただけます。");
     } else if (usage?.remaining === 2) {
-      setMascotMessage("残り2回！登録すると便利だよ〜");
+      setMascotMessage("本日の残り利用回数は2回です。");
     }
   }, [usage]);
 
@@ -167,6 +169,7 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
       setIsComplete(true);
       setMascotState("success");
       setMascotMessage("完了しました！ダウンロードしてね！");
+      triggerSuccess(tool.id || 'pdf-tool');
 
       // Track tool completed event (THIS IS THE KEY METRIC)
       trackToolEvent(tool, 'completed');
@@ -199,21 +202,6 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4">
-        {/* Breadcrumb for SEO */}
-        <nav className="mb-6 text-sm" aria-label="パンくずリスト">
-          <ol className="flex items-center gap-2 text-gray-500 dark:text-gray-400 dark:text-gray-500">
-            <li>
-              <Link href="/" className="hover:text-kon">ホーム</Link>
-            </li>
-            <li>/</li>
-            <li>
-              <Link href="/pdf" className="hover:text-kon">PDFツール</Link>
-            </li>
-            <li>/</li>
-            <li className="text-kon font-medium">{tool.nameJa}</li>
-          </ol>
-        </nav>
-
         {/* Header with H1 */}
         <header className="text-center mb-8">
           <div className="text-5xl mb-4" role="img" aria-label={tool.nameJa}>{tool.icon}</div>
@@ -269,7 +257,7 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
                   または <span className="text-kon font-medium">クリックして選択</span>
                 </p>
                 <span className="inline-block bg-white text-gray-600 text-xs px-3 py-1.5 rounded-full border border-gray-200">
-                  対応形式: {tool.acceptedTypes} • 最大: 20MB • {tool.maxFiles}ファイルまで
+                  対応形式: {tool.acceptedTypes} • 最大: {tool.category === 'pdf' ? '50MB' : '20MB'} • {tool.maxFiles}ファイルまで
                 </span>
               </label>
             </div>
@@ -342,7 +330,7 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
           <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 dark:border-gray-700 p-8 text-center" aria-label="処理完了">
             {/* Ai-chan Mascot - Success */}
             <div className="flex justify-center mb-4 min-h-[88px]">
-              <Mascot state="success" message="やったー！完了しました！友達にもシェアしてね♪" />
+              <Mascot state="success" message="処理が完了しました。ダウンロードしてご利用ください。" />
             </div>
             <h2 className="text-2xl font-bold text-kon mb-2">完了しました！</h2>
             <p className="text-gray-600 mb-6">ファイルのダウンロードが開始されました！</p>
@@ -362,7 +350,7 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
 
             {/* Share Section */}
             <div className="mt-6 pt-6 border-t border-gray-200">
-              <p className="text-sm text-gray-500 mb-3">このツールが役に立ったら、友達にもシェアしてね！</p>
+              <p className="text-sm text-gray-500 mb-3">このツールが役に立ちましたら、ぜひシェアしてください。</p>
               <ShareButtons
                 title={`${tool.nameJa} - 山田ツール`}
                 description={tool.description}
@@ -371,7 +359,8 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
           </section>
         )}
 
-{/* Ad Slot */}        <AdBanner className="my-6" />
+{/* Ad: after tool section */}
+        <AdUnit slot="5612038947" format="rectangle" />
         {/* How-to Section */}
         <section className="mt-8 bg-sakura/20 dark:bg-sakura/10 rounded-xl p-6" aria-labelledby="howto-heading">
           <h2 id="howto-heading" className="font-bold text-kon mb-3 text-lg">
@@ -500,8 +489,8 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
           </div>
         </section>
 
-        {/* Related Tools */}
-        <RelatedTools currentTool={tool} maxItems={6} />
+        {/* Ad: before footer */}
+        <AdUnit slot="5612038947" format="horizontal" />
 
         {/* Security Note */}
         <footer className="mt-8 text-center text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">

@@ -2,6 +2,8 @@
 "use client";
 import { useState, useRef, useCallback, useEffect } from "react";
 import Link from "next/link";
+import Mascot from "@/components/common/Mascot";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ { question: string; answer: string; }
 interface Props { faq: FAQ[]; seoContent?: { intro: string }; }
@@ -14,8 +16,12 @@ const FONTS = [
 ];
 const COLORS = ["#FFFFFF","#000000","#FF0000","#FF6600","#FFCC00","#00CC00","#0066FF","#9933FF","#FF3399","#333333","#666666","#CCCCCC"];
 
-export default function TextOverlayClient({ faq, seoContent }: Props) {
+export default function TextOverlayClient({
+ faq, seoContent }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [image, setImage] = useState(null);
+  const [mascotState, setMascotState] = useState("idle");
   const [fileName, setFileName] = useState("");
   const [text, setText] = useState("テキストを入力");
   const [fontSize, setFontSize] = useState(48);
@@ -32,6 +38,7 @@ export default function TextOverlayClient({ faq, seoContent }: Props) {
   const loadImage = (file) => {
     if (!file.type.startsWith("image/")) return;
     setFileName(file.name);
+    setMascotState("working");
     const reader = new FileReader();
     reader.onload = (e) => {
       const img = new Image();
@@ -76,6 +83,8 @@ export default function TextOverlayClient({ faq, seoContent }: Props) {
 
   const download = () => {
     if (!canvasRef.current) return;
+    setMascotState("success")
+      triggerSuccess('text-overlay');;
     const a = document.createElement("a");
     a.download = fileName.replace(/\.[^.]+$/, "") + "_text_yamada-tools.png";
     a.href = canvasRef.current.toDataURL("image/png");
@@ -87,13 +96,7 @@ export default function TextOverlayClient({ faq, seoContent }: Props) {
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4">
-        <nav className="mb-6 text-sm">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li><li>/</li>
-            <li><Link href="/image" className="hover:text-kon">画像ツール</Link></li><li>/</li>
-            <li className="text-kon font-medium">文字入れ</li>
-          </ol>
-        </nav>
+
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">✍️</div>
           <h1 className="text-3xl font-bold text-kon mb-2">画像に文字入れ</h1>
@@ -105,6 +108,7 @@ export default function TextOverlayClient({ faq, seoContent }: Props) {
         </header>
 
         <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-6">
+          <Mascot state={mascotState} />
           {!image ? (
             <div onDrop={(e) => { e.preventDefault(); setIsDragging(false); const f = e.dataTransfer.files?.[0]; if (f) loadImage(f); }}
               onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }} onDragLeave={() => setIsDragging(false)}

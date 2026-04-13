@@ -19,8 +19,13 @@ interface Props {
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
-export default function PasswordGenClient({ faq, seoContent }: Props) {
+export default function PasswordGenClient({
+ faq, seoContent }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [length, setLength] = useState(16);
   const [useUpper, setUseUpper] = useState(true);
   const [useLower, setUseLower] = useState(true);
@@ -72,7 +77,8 @@ export default function PasswordGenClient({ faq, seoContent }: Props) {
     if (useSymbols) score += 1;
     setStrength(Math.min(score, 5));
 
-    setMascotState("success");
+    setMascotState("success")
+      triggerSuccess('password-gen');;
     setMascotMessage("新しいパスワードを生成したよ！");
   };
 
@@ -91,15 +97,7 @@ export default function PasswordGenClient({ faq, seoContent }: Props) {
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4">
-        <nav className="mb-6 text-sm">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li>
-            <li>/</li>
-            <li><Link href="/generator" className="hover:text-kon">計算・生成ツール</Link></li>
-            <li>/</li>
-            <li className="text-kon font-medium">パスワード生成</li>
-          </ol>
-        </nav>
+
 
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">🔐</div>
@@ -185,6 +183,7 @@ export default function PasswordGenClient({ faq, seoContent }: Props) {
         <div className="mt-8 text-center">
           <Link href="/generator" className="text-kon hover:text-ai">← 計算・生成ツール一覧に戻る</Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

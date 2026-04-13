@@ -1,8 +1,18 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】副業収入税金計算機｜確定申告要否判定・追加税負担を自動計算 2026年版 | 山田ツール",
+  title: "【無料】副業収入税金計算機｜確定申告要否判定・追加税負担を自動計算 2026年版",
   description: "副業収入（フリーランス・アルバイト・ネット販売・不動産等）の税金を一括計算。本業との合算税額・実質手取り・確定申告要否を自動判定。節税アドバイス付き。登録不要・無料。",
+  alternates: {
+    canonical: "https://yamada-tools.jp/career/side-income-tax-calculator",
+  },
+  openGraph: {
+    url: "https://yamada-tools.jp/career/side-income-tax-calculator",
+    siteName: "山田ツール",
+    locale: "ja_JP",
+    type: "website",
+    images: [{ url: "https://api.easynihon.com/api/og?site=yamada&title=%E3%80%90%E7%84%A1%E6%96%99%E3%80%91%E5%89%AF%E6%A5%AD%E5%8F%8E%E5%85%A5%E7%A8%8E%E9%87%91%E8%A8%88%E7%AE%97%E6%A9%9F%EF%BD%9C%E7%A2%BA%E5%AE%9A%E7%94%B3%E5%91%8A%E8%A6%81%E5%90%A6%E5%88%A4%E5%AE%9A%E3%83%BB%E8%BF%BD%E5%8A%A0%E7%A8%8E%E8%B2%A0%E6%8B%85%E3%82%92%E8%87%AA%E5%8B%95%E8%A8%88%E7%AE%97%202026%E5%B9%B4%E7%89%88" }],
+  },
 };
 
 const schema = {
@@ -72,10 +82,7 @@ const schema = {
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       {children}
     </>
   );

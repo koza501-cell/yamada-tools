@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ {
   question: string;
@@ -75,7 +77,10 @@ function computeDiff(text1: string, text2: string): DiffLine[] {
   return tempResult.reverse();
 }
 
-export default function TextDiffClient({ faq }: Props) {
+export default function TextDiffClient({
+ faq }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [text1, setText1] = useState("");
   const [text2, setText2] = useState("");
   const [diffResult, setDiffResult] = useState<DiffLine[]>([]);
@@ -104,7 +109,8 @@ export default function TextDiffClient({ faq }: Props) {
       const unchanged = result.filter(r => r.type === "unchanged").length;
       setStats({ added, removed, unchanged });
 
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('text-diff');;
       if (added === 0 && removed === 0) {
         setMascotMessage("完全一致！差分はないよ！");
       } else {
@@ -161,17 +167,6 @@ export default function TextDiffClient({ faq }: Props) {
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-6xl mx-auto px-4">
-        {/* Breadcrumb */}
-        <nav className="mb-6 text-sm" aria-label="パンくずリスト">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li>
-            <li>/</li>
-            <li><Link href="/generator" className="hover:text-kon">計算・生成ツール</Link></li>
-            <li>/</li>
-            <li className="text-kon font-medium">テキスト差分比較</li>
-          </ol>
-        </nav>
-
         {/* Header */}
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">📝</div>
@@ -402,6 +397,7 @@ export default function TextDiffClient({ faq }: Props) {
             ← 計算・生成ツール一覧に戻る
           </Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

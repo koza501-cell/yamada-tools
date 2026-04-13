@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
 
 interface QuotationItem {
   id: number;
@@ -72,15 +73,7 @@ export default function QuotationClient() {
   return (
     <div className="min-h-screen py-12 print:py-0">
       <div className="max-w-4xl mx-auto px-4 print:max-w-none">
-        <nav className="mb-6 text-sm print:hidden">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li>
-            <li>/</li>
-            <li><Link href="/document" className="hover:text-kon">書類作成</Link></li>
-            <li>/</li>
-            <li className="text-kon font-medium">見積書作成</li>
-          </ol>
-        </nav>
+
 
         <header className="text-center mb-8 print:hidden">
           <div className="text-5xl mb-4">📋</div>
@@ -206,6 +199,7 @@ export default function QuotationClient() {
         <div className="mt-8 text-center print:hidden">
           <Link href="/document" className="text-kon hover:text-ai">← 書類作成一覧に戻る</Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

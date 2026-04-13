@@ -1,8 +1,18 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】社会保険料計算機｜健康保険・厚生年金・雇用保険を一括計算 2026年版 | 山田ツール",
+  title: "【無料】社会保険料計算機｜健康保険・厚生年金・雇用保険を一括計算 2026年版",
   description: "月給と都道府県を入力するだけで社会保険料（健康保険・厚生年金・雇用保険・介護保険）を一括計算。本人負担・会社負担の内訳、将来の年金受給額も表示。47都道府県対応。",
+  alternates: {
+    canonical: "https://yamada-tools.jp/career/social-insurance-calculator",
+  },
+  openGraph: {
+    url: "https://yamada-tools.jp/career/social-insurance-calculator",
+    siteName: "山田ツール",
+    locale: "ja_JP",
+    type: "website",
+    images: [{ url: "https://api.easynihon.com/api/og?site=yamada&title=%E3%80%90%E7%84%A1%E6%96%99%E3%80%91%E7%A4%BE%E4%BC%9A%E4%BF%9D%E9%99%BA%E6%96%99%E8%A8%88%E7%AE%97%E6%A9%9F%EF%BD%9C%E5%81%A5%E5%BA%B7%E4%BF%9D%E9%99%BA%E3%83%BB%E5%8E%9A%E7%94%9F%E5%B9%B4%E9%87%91%E3%83%BB%E9%9B%87%E7%94%A8%E4%BF%9D%E9%99%BA%E3%82%92%E4%B8%80%E6%8B%AC%E8%A8%88%E7%AE%97%202026%E5%B9%B4%E7%89%88" }],
+  },
 };
 
 const schema = {
@@ -36,11 +46,6 @@ const schema = {
         },
         {
           "@type": "Question",
-          "name": "社会保険料は給与から天引きされますか？",
-          "acceptedAnswer": { "@type": "Answer", "text": "はい、健康保険料・厚生年金・雇用保険料は毎月の給与から自動的に天引きされます。介護保険料（40歳以上）も同様です。" },
-        },
-        {
-          "@type": "Question",
           "name": "扶養家族がいると社会保険料は変わりますか？",
           "acceptedAnswer": { "@type": "Answer", "text": "本人の社会保険料は扶養家族の人数に関わらず変わりません。扶養家族（年収130万円未満）は追加保険料なしで健康保険に加入できます。" },
         },
@@ -53,6 +58,11 @@ const schema = {
           "@type": "Question",
           "name": "フリーランスになると社会保険はどうなりますか？",
           "acceptedAnswer": { "@type": "Answer", "text": "健康保険は国民健康保険または任意継続に、年金は国民年金に切り替わります。厚生年金・雇用保険には加入できなくなります。国民健康保険料は前年所得に基づくため退職翌年は高額になる場合があります。" },
+        },
+        {
+          "@type": "Question",
+          "name": "社会保険料は給与から天引きされますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "はい、健康保険料・厚生年金・雇用保険料は毎月の給与から自動的に天引きされます。介護保険料（40歳以上）も同様です。" },
         },
       ],
     },
@@ -72,10 +82,7 @@ const schema = {
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       {children}
     </>
   );

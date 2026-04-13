@@ -1,0 +1,210 @@
+import { Metadata } from "next";
+import { Tool } from "@/config/tools";
+
+const baseUrl = "https://yamada-tools.jp";
+
+interface ToolSeoData {
+  customTitle?: string;
+  tool: Tool;
+  longDescription?: string;
+  keywords?: string[];
+  faq?: { question: string; answer: string }[];
+}
+
+export function generateToolMetadata({
+  customTitle,
+  tool,
+  longDescription,
+  keywords = [],
+}: ToolSeoData): Metadata {
+  const defaultKeywords = [
+    tool.nameJa,
+    tool.nameEn,
+    "無料",
+    "オンライン",
+    "日本",
+    "安全",
+    "登録不要",
+  ];
+
+  const description =
+    longDescription ||
+    `${tool.nameJa}を無料でオンライン変換。${tool.description}。日本国内サーバーで安心・安全。登録不要、ファイルは60分で自動削除。`;
+
+  return {
+    title: customTitle || `${tool.nameJa}【無料】`,
+    description,
+    keywords: [...defaultKeywords, ...keywords],
+    openGraph: {
+      title: customTitle || `${tool.nameJa} | 山田ツール - 無料オンラインツール`,
+      description,
+      url: `${baseUrl}${tool.path}`,
+      siteName: "山田ツール",
+      locale: "ja_JP",
+      type: "website",
+      images: [
+        {
+          url: `${baseUrl}/og-tools/${tool.id}.png`,
+          width: 1200,
+          height: 630,
+          alt: `${tool.nameJa} - 山田ツール`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${tool.nameJa} `,
+      description,
+      images: [`${baseUrl}/og-tools/${tool.id}.png`],
+    },
+    alternates: {
+      canonical: `${baseUrl}${tool.path}`,
+    },
+  };
+}
+
+export function generateToolJsonLd(tool: Tool, faq?: { question: string; answer: string }[], howToSteps?: { name: string; text: string }[]) {
+  // SoftwareApplication schema (enhanced)
+  const softwareSchema = {
+    "@context": "https://schema.org",
+    "@type": ["SoftwareApplication", "WebApplication"],
+    "@id": `${baseUrl}${tool.path}#software`,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${baseUrl}${tool.path}`
+    },
+    isPartOf: {
+      "@type": "WebSite",
+      "@id": `${baseUrl}/#website`,
+      name: "山田ツール",
+      url: baseUrl
+    },
+    name: tool.nameJa,
+    alternateName: tool.nameEn,
+    url: `${baseUrl}${tool.path}`,
+    description: `${tool.description}。日本国内サーバーで安心・安全。`,
+    applicationCategory: "UtilitiesApplication",
+    applicationSubCategory: tool.category === "pdf" ? "PDF Tools" : 
+                            tool.category === "image" ? "Image Tools" :
+                            tool.category === "document" ? "Document Tools" :
+                            tool.category === "convert" ? "Conversion Tools" : "Utilities",
+    operatingSystem: "Web Browser",
+    browserRequirements: "Requires JavaScript. Works on Chrome, Firefox, Safari, Edge.",
+    softwareVersion: "1.0",
+    releaseNotes: "日本国内サーバーで安全に処理。60分で自動削除。",
+    featureList: [
+      "完全無料",
+      "登録不要",
+      "日本国内サーバー",
+      "SSL暗号化",
+      "60分で自動削除",
+      tool.description
+    ],
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "JPY",
+      availability: "https://schema.org/InStock"
+    },
+    provider: {
+      "@type": "Organization",
+      "@id": `${baseUrl}/#organization`,
+      name: "合同会社山田トレード",
+      url: baseUrl,
+    },
+    creator: {
+      "@type": "Organization",
+      name: "合同会社山田トレード"
+    },
+    inLanguage: "ja",
+    isAccessibleForFree: true,
+    permissions: "no registration required"
+  };
+
+  const schemas = [softwareSchema];
+
+  // Add FAQ schema if FAQ exists
+  if (faq && faq.length > 0) {
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faq.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.answer,
+        },
+      })),
+    };
+    schemas.push(faqSchema as any);
+  }
+
+  // Add HowTo schema
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: `${tool.nameJa}の使い方`,
+    description: `${tool.nameJa}を無料で使う方法`,
+    step: (howToSteps ?? [
+      { name: "ファイルを選択", text: "変換したいファイルをドラッグ＆ドロップまたはクリックして選択します" },
+      { name: "オプションを設定", text: "必要に応じてオプションを設定します" },
+      { name: "変換を実行", text: "「実行」ボタンをクリックして変換を開始します" },
+      { name: "ダウンロード", text: "変換が完了したらファイルをダウンロードします" },
+    ]).map((s, i) => ({ "@type": "HowToStep", position: i + 1, name: s.name, text: s.text })),
+    tool: {
+      "@type": "HowToTool",
+      name: "山田ツール",
+    },
+    totalTime: "PT1M",
+  };
+  schemas.push(howToSchema as any);
+
+  // Add BreadcrumbList schema
+  const categoryName = tool.category === "pdf" ? "PDFツール" :
+                       tool.category === "image" ? "画像ツール" :
+                       tool.category === "document" ? "書類作成" :
+                       tool.category === "convert" ? "変換ツール" :
+                       tool.category === "generator" ? "計算・生成" : "ツール";
+  
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "ホーム",
+        item: baseUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: categoryName,
+        item: `${baseUrl}/${tool.category}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: tool.nameJa,
+        item: `${baseUrl}${tool.path}`,
+      },
+    ],
+  };
+  schemas.push(breadcrumbSchema as any);
+  // Add Speakable schema for voice search
+  const speakableSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${baseUrl}${tool.path}`,
+    name: tool.nameJa,
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", ".tool-description", ".faq-answer"]
+    },
+    url: `${baseUrl}${tool.path}`
+  };
+  schemas.push(speakableSchema as any);
+
+  return schemas;
+}

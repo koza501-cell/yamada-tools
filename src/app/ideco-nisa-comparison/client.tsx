@@ -4,6 +4,8 @@ import { useState, useCallback, useRef, useMemo } from "react";
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar
 } from "recharts";
+import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
 
 // ============================================
 // Constants
@@ -217,6 +219,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 export default function IdecoNisaComparisonClient() {
   // Input states
   const [annualIncome, setAnnualIncome] = useState(5000000);
+  const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const [occupation, setOccupation] = useState("会社員（企業年金なし）");
   const [monthlyBudget, setMonthlyBudget] = useState(50000);
   const [idecoAmount, setIdecoAmount] = useState(23000);
@@ -339,6 +342,7 @@ export default function IdecoNisaComparisonClient() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+        <Mascot state={mascotState} className="mb-6" />
       {/* Header */}
       <div className="bg-gradient-to-r from-indigo-700 to-purple-600 text-white py-10 px-4">
         <div className="max-w-4xl mx-auto">
@@ -865,6 +869,7 @@ export default function IdecoNisaComparisonClient() {
             投資にはリスクがあり、元本割れの可能性もあります。運用成果を保証するものではありません。
           </p>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

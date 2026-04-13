@@ -2,12 +2,18 @@
 "use client";
 import { useState, useRef, useCallback, useEffect } from "react";
 import Link from "next/link";
+import Mascot from "@/components/common/Mascot";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ { question: string; answer: string; }
 interface Props { faq: FAQ[]; seoContent?: { intro: string }; }
 
-export default function ImageOverlayClient({ faq, seoContent }: Props) {
+export default function ImageOverlayClient({
+ faq, seoContent }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [baseImage, setBaseImage] = useState(null);
+  const [mascotState, setMascotState] = useState("idle");
   const [overlayImage, setOverlayImage] = useState(null);
   const [fileName, setFileName] = useState("");
   const [opacity, setOpacity] = useState(100);
@@ -24,7 +30,7 @@ export default function ImageOverlayClient({ faq, seoContent }: Props) {
     const reader = new FileReader();
     reader.onload = (e) => {
       const img = new Image();
-      img.onload = () => { baseRef.current = img; setBaseImage(e.target.result); };
+      img.onload = () => { baseRef.current = img; setBaseImage(e.target.result); setMascotState("working"); };
       img.src = e.target.result;
     };
     reader.readAsDataURL(file);
@@ -64,6 +70,8 @@ export default function ImageOverlayClient({ faq, seoContent }: Props) {
 
   const download = () => {
     if (!canvasRef.current) return;
+    setMascotState("success")
+      triggerSuccess('image-overlay');;
     const a = document.createElement("a");
     a.download = fileName.replace(/\.[^.]+$/, "") + "_overlay_yamada-tools.png";
     a.href = canvasRef.current.toDataURL("image/png");
@@ -75,13 +83,7 @@ export default function ImageOverlayClient({ faq, seoContent }: Props) {
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4">
-        <nav className="mb-6 text-sm">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li><li>/</li>
-            <li><Link href="/image" className="hover:text-kon">画像ツール</Link></li><li>/</li>
-            <li className="text-kon font-medium">画像重ね合わせ</li>
-          </ol>
-        </nav>
+
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">🔲</div>
           <h1 className="text-3xl font-bold text-kon mb-2">画像重ね合わせ</h1>
@@ -93,6 +95,7 @@ export default function ImageOverlayClient({ faq, seoContent }: Props) {
         </header>
 
         <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-6">
+          <Mascot state={mascotState} />
           {!baseImage ? (
             <div className="border-2 border-dashed rounded-xl p-8 text-center cursor-pointer border-gray-300 hover:border-kon"
               onClick={() => document.getElementById("base-upload")?.click()}>

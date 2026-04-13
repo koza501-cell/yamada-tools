@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】賃貸 敷金礼金 トータルコスト計算機｜初期費用から退去費用まで全部計算 | 山田ツール",
+  title: "【無料】賃貸 敷金礼金 トータルコスト計算機｜初期費用から退去費用まで全部計算",
   description: "賃貸の敷金・礼金・仲介手数料・鍵交換・火災保険・更新料・退去クリーニングまでトータルコストを計算。2物件の比較機能付き。隠れコストを可視化する無料ツール。",
   keywords: [
     "賃貸 初期費用 計算",
@@ -17,16 +17,17 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/realestate/rental-cost-calculator",
   },
   openGraph: {
-    title: "【無料】賃貸 敷金礼金 トータルコスト計算機｜初期費用から退去費用まで全部計算 | 山田ツール",
+    title: "【無料】賃貸 敷金礼金 トータルコスト計算機｜初期費用から退去費用まで全部計算",
     description: "賃貸の敷金・礼金・仲介手数料・鍵交換・火災保険・更新料・退去クリーニングまでトータルコストを計算。2物件の比較機能付き。",
     url: "https://yamada-tools.jp/realestate/rental-cost-calculator",
-    siteName: "yamada-tools.jp",
+    siteName: "山田ツール",
     locale: "ja_JP",
     type: "website",
+    images: [{ url: "https://api.easynihon.com/api/og?site=yamada&title=%E3%80%90%E7%84%A1%E6%96%99%E3%80%91%E8%B3%83%E8%B2%B8%20%E6%95%B7%E9%87%91%E7%A4%BC%E9%87%91%20%E3%83%88%E3%83%BC%E3%82%BF%E3%83%AB%E3%82%B3%E3%82%B9%E3%83%88%E8%A8%88%E7%AE%97%E6%A9%9F%EF%BD%9C%E5%88%9D%E6%9C%9F%E8%B2%BB%E7%94%A8%E3%81%8B%E3%82%89%E9%80%80%E5%8E%BB%E8%B2%BB%E7%94%A8%E3%81%BE%E3%81%A7%E5%85%A8%E9%83%A8%E8%A8%88%E7%AE%97" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】賃貸 敷金礼金 トータルコスト計算機｜初期費用から退去費用まで全部計算 | 山田ツール",
+    title: "【無料】賃貸 敷金礼金 トータルコスト計算機｜初期費用から退去費用まで全部計算",
     description: "賃貸の敷金・礼金・仲介手数料・鍵交換・火災保険・更新料・退去クリーニングまでトータルコストを計算。2物件の比較機能付き。",
   },
 };

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import AdUnit from "@/components/AdUnit";
 import Link from "next/link";
+import Mascot, { MascotState } from "@/components/common/Mascot";
 
 const MAN = 10000;
 
@@ -256,6 +257,7 @@ interface CheckItem {
 export default function AcquisitionTaxPage() {
   // Land
   const [landEnabled, setLandEnabled] = useState(true);
+  const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const [landEval, setLandEval] = useState(1500);
   const [isResidentialLand, setIsResidentialLand] = useState(true);
   const [isForNewHousing, setIsForNewHousing] = useState(false);
@@ -485,6 +487,7 @@ export default function AcquisitionTaxPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+        <Mascot state={mascotState} className="mb-6" />
       <div className="max-w-3xl mx-auto px-4 py-8">
 
         {/* Header */}

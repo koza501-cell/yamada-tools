@@ -3,6 +3,8 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ {
   question: string;
@@ -28,7 +30,10 @@ interface InvoiceItem {
   price: number;
 }
 
-export default function InvoiceClient({ faq, seoContent }: InvoiceClientProps) {
+export default function InvoiceClient({
+ faq, seoContent }: InvoiceClientProps) {
+  const { triggerSuccess } = usePricingContext();
+
   const [mounted, setMounted] = useState(false);
   const [mascotState, setMascotState] = useState<MascotState>("idle");
   const [mascotMessage, setMascotMessage] = useState("請求書を作成しよう！");
@@ -88,7 +93,8 @@ export default function InvoiceClient({ faq, seoContent }: InvoiceClientProps) {
       setMascotMessage("必須項目を入力してね！");
       return;
     }
-    setMascotState("success");
+    setMascotState("success")
+      triggerSuccess('invoice');;
     setMascotMessage("印刷画面を開くよ！");
     window.print();
   };
@@ -100,15 +106,7 @@ export default function InvoiceClient({ faq, seoContent }: InvoiceClientProps) {
   return (
     <div className="min-h-screen py-12 print:py-0 print:bg-white">
       <div className="max-w-4xl mx-auto px-4 print:max-w-none print:px-0">
-        <nav className="mb-6 text-sm print:hidden">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li>
-            <li>/</li>
-            <li><Link href="/document" className="hover:text-kon">書類作成</Link></li>
-            <li>/</li>
-            <li className="text-kon font-medium">請求書作成</li>
-          </ol>
-        </nav>
+
 
         <header className="text-center mb-8 print:hidden">
           <div className="text-5xl mb-4">📑</div>
@@ -335,6 +333,7 @@ export default function InvoiceClient({ faq, seoContent }: InvoiceClientProps) {
             </div>
           </section>
         )}
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

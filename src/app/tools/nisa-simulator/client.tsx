@@ -4,6 +4,8 @@ import { useState, useCallback, useRef } from "react";
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceLine, ResponsiveContainer,
 } from "recharts";
+import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
 
 const NISA_LIMIT = 18_000_000;
 const TAX_RATE = 0.20315;
@@ -69,6 +71,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 
 export default function NisaSimulatorClient() {
   const [currentAge, setCurrentAge] = useState(30);
+  const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const [targetAge, setTargetAge] = useState(65);
   const [initialHolding, setInitialHolding] = useState(0);
   const [investType, setInvestType] = useState<"monthly" | "lump" | "both">("monthly");
@@ -125,6 +128,7 @@ export default function NisaSimulatorClient() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+        <Mascot state={mascotState} className="mb-6" />
       <div className="bg-gradient-to-r from-blue-700 to-blue-500 text-white py-10 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-3 mb-2">
@@ -454,6 +458,7 @@ export default function NisaSimulatorClient() {
           <p className="font-semibold mb-1">免責事項</p>
           <p>このシミュレーターは参考値です。実際の運用成果を保証するものではありません。投資判断はご自身の責任で行ってください。計算結果は概算であり、手数料・税制変更等は考慮していません。</p>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { getToolCount } from '@/config/tools';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default function AboutCompanyPage() {
+  const toolCount = getToolCount();
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-4xl mx-auto px-4 py-12">
@@ -27,7 +29,7 @@ export default function AboutCompanyPage() {
           </h2>
           <p className="text-gray-700 text-lg leading-relaxed mb-4">
             山田ツールは、<strong className="text-kon">日本のビジネスパーソン、フリーランサー、学生の皆様</strong>が
-            日々直面する小さな課題を解決するため、70種類以上の無料オンラインツールを提供しています。
+            日々直面する小さな課題を解決するため、{toolCount.total}種類以上の無料オンラインツールを提供しています。
           </p>
           <p className="text-gray-700 text-lg leading-relaxed">
             「ちょっとしたツールが必要な時、すぐに、無料で、安全に使える」<br />
@@ -56,8 +58,20 @@ export default function AboutCompanyPage() {
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-4 border-b">
+              <div className="font-medium text-gray-600">代表者名</div>
+              <div className="md:col-span-2 text-gray-800">山田フェサル</div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-4 border-b">
               <div className="font-medium text-gray-600">設立</div>
-              <div className="md:col-span-2 text-gray-800">2025年</div>
+              <div className="md:col-span-2 text-gray-800">2024年</div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-4 border-b">
+              <div className="font-medium text-gray-600">出資金</div>
+              <div className="md:col-span-2 text-gray-800">500万円</div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-4 border-b">
+              <div className="font-medium text-gray-600">法人番号</div>
+              <div className="md:col-span-2 text-gray-800">0400-03-024822</div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-4 border-b">
               <div className="font-medium text-gray-600">事業内容</div>

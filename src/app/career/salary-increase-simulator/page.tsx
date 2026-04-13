@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { IntroSection } from "@/components/IntroSection";
+import { UseCasesSection } from "@/components/UseCasesSection";
+import { FAQSection } from "@/components/FAQSection";
+import Mascot, { MascotState } from "@/components/common/Mascot";
 
 // ─── Calculation helpers ───────────────────────────────────────────────────
 
@@ -136,6 +140,7 @@ function ToggleSwitch({
 
 export default function SalaryIncreaseSimulatorPage() {
   const [base, setBase] = useState<BaseForm>({ currentAnnual: "", targetAnnual: "", age: "" });
+  const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const [toggles, setToggles] = useState({ transfer: false, raise: false, side: false, skill: false });
   const [transfer, setTransfer] = useState<TransferForm>({ expectedAnnual: "", isForeign: false });
   const [raise, setRaise] = useState<RaiseForm>({ raiseRate: "3" });
@@ -158,22 +163,27 @@ export default function SalaryIncreaseSimulatorPage() {
 
     if (!base.currentAnnual || current <= 0 || current > 10000) {
       setError("現在の年収を正しく入力してください（万円）");
+    setMascotState("error");
       return;
     }
     if (!base.targetAnnual || target <= 0 || target > 10000) {
       setError("目標年収を正しく入力してください（万円）");
+    setMascotState("error");
       return;
     }
     if (target <= current) {
       setError("目標年収は現在の年収より高く設定してください");
+    setMascotState("error");
       return;
     }
     if (!base.age || isNaN(age) || age < 18 || age > 65) {
       setError("現在の年齢を18〜65歳の範囲で入力してください");
+    setMascotState("error");
       return;
     }
     if (!toggles.transfer && !toggles.raise && !toggles.side && !toggles.skill) {
       setError("少なくとも1つの戦略を有効にしてください");
+    setMascotState("error");
       return;
     }
 
@@ -186,6 +196,7 @@ export default function SalaryIncreaseSimulatorPage() {
       const exp = parseFloat(transfer.expectedAnnual);
       if (!transfer.expectedAnnual || exp <= 0) {
         setError("転職後の想定年収を入力してください");
+    setMascotState("error");
         return;
       }
       const annualYen = exp * 10000;
@@ -198,6 +209,7 @@ export default function SalaryIncreaseSimulatorPage() {
       const rate = parseFloat(raise.raiseRate);
       if (isNaN(rate) || rate <= 0 || rate > 30) {
         setError("昇給率を0〜30%の範囲で入力してください");
+    setMascotState("error");
         return;
       }
       raiseResult = { years: yearsToGoal(currentYen, targetYen, rate) };
@@ -209,6 +221,7 @@ export default function SalaryIncreaseSimulatorPage() {
       const mo = parseFloat(side.monthlyIncome);
       if (!side.monthlyIncome || mo <= 0) {
         setError("副業月収を入力してください");
+    setMascotState("error");
         return;
       }
       sideResult = { annualNet: sideIncomeNetAnnual(mo * 10000) };
@@ -221,10 +234,12 @@ export default function SalaryIncreaseSimulatorPage() {
       const inc = parseFloat(skill.expectedIncrease);
       if (!skill.cost || cost < 0) {
         setError("取得費用を入力してください");
+    setMascotState("error");
         return;
       }
       if (!skill.expectedIncrease || inc <= 0) {
         setError("期待年収増加額を入力してください");
+    setMascotState("error");
         return;
       }
       skillResult = {
@@ -296,6 +311,7 @@ export default function SalaryIncreaseSimulatorPage() {
       skill: skillResult,
       ranking: ranked,
     });
+    setMascotState("success");
     setError("");
   }
 
@@ -313,8 +329,24 @@ export default function SalaryIncreaseSimulatorPage() {
   const rankEmoji = ["🥇", "🥈", "🥉", "🏅"];
   const allOn = toggles.transfer && toggles.raise && toggles.side && toggles.skill;
 
+
+  const faqItems = [
+    { question: "年収を100万円上げるのに何年かかりますか？", answer: "昇給のみでは一般的に5〜10年かかりますが、転職を活用すれば1〜3年で達成できる場合があります。転職による年収アップの平均は初回で約10〜20%とされています。本ツールで具体的なシナリオを計算してみてください。" },
+    { question: "スキルアップ投資のROIはどう計算しますか？", answer: "スキルアップ投資のROIは「(年収アップ額 × 年数 - 投資額) ÷ 投資額 × 100%」で計算できます。例えば50万円の資格取得費用で年収が20万円上がった場合、5年で投資回収（ROI 100%）できます。" },
+    { question: "副業と本業の年収アップ、どちらが効率的ですか？", answer: "短期的には副業が効率的ですが、副業収入は雑所得として高率課税されるため実質手取りは低くなります。長期的には本業の昇給・転職による年収アップのほうが社会保険・退職金・将来の年金受給額にも好影響を与えます。" },
+    { question: "年収600万円を目指すために最も効果的な方法は？", answer: "日本の中央値年収（約450万円）から600万円を目指す場合、転職が最も効果的なケースが多いです。業界・職種によって年収レンジが大きく異なるため、まず市場相場を確認し、需要の高いスキルを身につけながら転職を検討することをお勧めします。" },
+    { question: "昇給交渉のタイミングはいつが最適ですか？", answer: "成果が出た直後、評価サイクルの前（多くは9〜10月または3〜4月）、転職オファーを持っているときが交渉しやすいタイミングです。市場価値データを示した根拠ある交渉が成功率を高めます。" }
+  ];
+  const useCases = [
+    { icon: "🎯", persona: "年収アップを目指す会社員", title: "転職・昇給・副業どれが最も効果的?", benefit: "戦略ごとの達成年数とROIを比較" },
+    { icon: "📚", persona: "資格・スキルアップ投資を検討中", title: "勉強や資格取得が割に合うか知りたい", benefit: "投資額と年収アップの回収期間を自動計算" },
+    { icon: "🚀", persona: "30代・年収500万円の壁を超えたい", title: "600万円達成の現実的なシナリオを知りたい", benefit: "年齢別・職種別の達成パスをシミュレーション" }
+  ];
   return (
-    <div className="min-h-screen bg-gray-50">
+    <>
+      <IntroSection title="年収アップシミュレーター" paragraphs={["転職・昇給・副業・スキルアップの組み合わせで年収600万円・800万円達成まで何年かかるか試算します。", "各戦略のROI（投資回収率）と損益分岐点を可視化。スキルアップへの投資が何年後に回収できるかも計算できます。", "登録不要・完全無料。年収目標への最短ルートを数字で確認したい方に最適です。"]} />
+      <div className="min-h-screen bg-gray-50">
+        <Mascot state={mascotState} className="mb-6" />
       <div className="max-w-2xl mx-auto px-4 py-8">
         <div className="mb-6">
           <h1 className="text-2xl font-bold text-gray-900 mb-2">年収アップシミュレーター</h1>
@@ -754,6 +786,50 @@ export default function SalaryIncreaseSimulatorPage() {
           </div>
         )}
 
+        {/* GEO: 昇給シミュレーション早見表 */}
+        <section className="mt-12 mb-8">
+          <h2 className="text-xl font-bold text-gray-800 mb-4">昇給シミュレーション早見表</h2>
+          <p className="text-sm text-gray-600 mb-4">
+            よくある年収アップのパターンと手取りの変化を事前計算した早見表です。
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="bg-blue-50">
+                  <th className="border border-gray-200 px-3 py-2 text-left">現在の年収</th>
+                  <th className="border border-gray-200 px-3 py-2 text-left">目標年収</th>
+                  <th className="border border-gray-200 px-3 py-2 text-left">現在の手取り</th>
+                  <th className="border border-gray-200 px-3 py-2 text-left">目標手取り</th>
+                  <th className="border border-gray-200 px-3 py-2 text-left">手取り増加額</th>
+                  <th className="border border-gray-200 px-3 py-2 text-left">月換算</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { cur: "300万円", tgt: "400万円", curTH: "約245万円", tgtTH: "約295万円", diff: "+50万円", monthly: "+4.2万円/月" },
+                  { cur: "400万円", tgt: "500万円", curTH: "約295万円", tgtTH: "約363万円", diff: "+68万円", monthly: "+5.7万円/月" },
+                  { cur: "500万円", tgt: "600万円", curTH: "約363万円", tgtTH: "約418万円", diff: "+55万円", monthly: "+4.6万円/月" },
+                  { cur: "500万円", tgt: "700万円", curTH: "約363万円", tgtTH: "約479万円", diff: "+116万円", monthly: "+9.7万円/月" },
+                  { cur: "600万円", tgt: "800万円", curTH: "約418万円", tgtTH: "約539万円", diff: "+121万円", monthly: "+10.1万円/月" },
+                  { cur: "700万円", tgt: "1,000万円", curTH: "約479万円", tgtTH: "約656万円", diff: "+177万円", monthly: "+14.8万円/月" },
+                ].map((row, i) => (
+                  <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                    <td className="border border-gray-200 px-3 py-2">{row.cur}</td>
+                    <td className="border border-gray-200 px-3 py-2 font-medium text-blue-700">{row.tgt}</td>
+                    <td className="border border-gray-200 px-3 py-2">{row.curTH}</td>
+                    <td className="border border-gray-200 px-3 py-2">{row.tgtTH}</td>
+                    <td className="border border-gray-200 px-3 py-2 font-medium text-green-600">{row.diff}</td>
+                    <td className="border border-gray-200 px-3 py-2 text-green-600">{row.monthly}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-gray-500 mt-2">
+            ※ 独身・社会保険料14%・基礎控除48万円として概算。実際の金額は個人の状況により異なります。
+          </p>
+        </section>
+
         {/* ── Related Tools ── */}
         <div className="mb-4">
           <h2 className="text-xl font-bold text-gray-900 mb-4">あわせて使えるツール</h2>
@@ -784,5 +860,8 @@ export default function SalaryIncreaseSimulatorPage() {
         </div>
       </div>
     </div>
+    <UseCasesSection cases={useCases} />
+    <FAQSection faq={faqItems} />
+  </>
   );
 }

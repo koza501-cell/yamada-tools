@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import QRCode from "qrcode";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ {
   question: string;
@@ -30,7 +31,10 @@ const sizeMap: Record<QRSize, number> = {
   large: 400,
 };
 
-export default function QRCodeClient({ faq, seoContent }: Props) {
+export default function QRCodeClient({
+ faq, seoContent }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [contentType, setContentType] = useState<ContentType>("url");
   const [inputValue, setInputValue] = useState("");
   const [emailSubject, setEmailSubject] = useState("");
@@ -96,7 +100,8 @@ export default function QRCodeClient({ faq, seoContent }: Props) {
       });
       
       setQrDataUrl(dataUrl);
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('qr-code');;
       setMascotMessage("QRコード完成！ダウンロードしてね。");
     } catch (error) {
       console.error("QR generation error:", error);
@@ -181,17 +186,6 @@ export default function QRCodeClient({ faq, seoContent }: Props) {
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4">
-        {/* Breadcrumb */}
-        <nav className="mb-6 text-sm" aria-label="パンくずリスト">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li>
-            <li>/</li>
-            <li><Link href="/image" className="hover:text-kon">画像ツール</Link></li>
-            <li>/</li>
-            <li className="text-kon font-medium">QRコード作成</li>
-          </ol>
-        </nav>
-
         {/* Header */}
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">📱</div>

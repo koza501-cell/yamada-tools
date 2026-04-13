@@ -4,6 +4,8 @@ import FinancialDisclaimer from "@/components/common/FinancialDisclaimer";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface ValidationResult {
   isValid: boolean;
@@ -12,6 +14,9 @@ interface ValidationResult {
 }
 
 export default function TNumberClient() {
+  const { triggerSuccess } = usePricingContext();
+
+
   const [mounted, setMounted] = useState(false);
   const [mascotState, setMascotState] = useState<MascotState>("idle");
   const [mascotMessage, setMascotMessage] = useState("T番号を入力してね！");
@@ -123,7 +128,8 @@ export default function TNumberClient() {
     setResult(validation);
     
     if (validation.isValid) {
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('t-number');;
       setMascotMessage("形式OKだよ！");
     } else {
       setMascotState("error");
@@ -155,15 +161,7 @@ export default function TNumberClient() {
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-2xl mx-auto px-4">
-        <nav className="mb-6 text-sm">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li>
-            <li>/</li>
-            <li><Link href="/generator" className="hover:text-kon">計算・生成</Link></li>
-            <li>/</li>
-            <li className="text-kon font-medium">インボイス番号検証</li>
-          </ol>
-        </nav>
+
 
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">🔍</div>
@@ -259,6 +257,7 @@ export default function TNumberClient() {
         <div className="mt-8 text-center">
           <Link href="/generator" className="text-kon hover:text-ai">← 計算・生成ツール一覧に戻る</Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

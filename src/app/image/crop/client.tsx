@@ -5,6 +5,7 @@ import Link from "next/link";
 import Cropper from "react-easy-crop";
 import type { Area, Point } from "react-easy-crop";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ {
   question: string;
@@ -58,7 +59,10 @@ const aspectOptions = [
   { label: "9:16", value: 9 / 16 },
 ];
 
-export default function ImageCropClient({ faq }: Props) {
+export default function ImageCropClient({
+ faq }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [file, setFile] = useState<File | null>(null);
   const [imageSrc, setImageSrc] = useState<string>("");
   const [crop, setCrop] = useState<Point>({ x: 0, y: 0 });
@@ -128,7 +132,8 @@ export default function ImageCropClient({ faq }: Props) {
       if (croppedBlob) {
         if (resultUrl) URL.revokeObjectURL(resultUrl);
         setResultUrl(URL.createObjectURL(croppedBlob));
-        setMascotState("success");
+        setMascotState("success")
+      triggerSuccess('crop');;
         setMascotMessage("切り抜き完了！");
       }
     } catch {
@@ -170,15 +175,7 @@ export default function ImageCropClient({ faq }: Props) {
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4">
-        <nav className="mb-6 text-sm">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li>
-            <li>/</li>
-            <li><Link href="/image" className="hover:text-kon">画像ツール</Link></li>
-            <li>/</li>
-            <li className="text-kon font-medium">画像切り抜き</li>
-          </ol>
-        </nav>
+
 
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">✂️</div>

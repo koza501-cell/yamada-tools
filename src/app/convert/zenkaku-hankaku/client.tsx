@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ {
   question: string;
@@ -94,7 +96,10 @@ const dakutenCombinations: Record<string, string> = {
   "ｳﾞ": "ヴ",
 };
 
-export default function ZenkakuHankakuClient({ faq, seoContent }: Props) {
+export default function ZenkakuHankakuClient({
+ faq, seoContent }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [inputText, setInputText] = useState("");
   const [outputText, setOutputText] = useState("");
   const [mode, setMode] = useState<ConversionMode>("to-hankaku");
@@ -190,7 +195,8 @@ export default function ZenkakuHankakuClient({ faq, seoContent }: Props) {
         : convertToZenkaku(inputText);
       
       setOutputText(result);
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('zenkaku-hankaku');;
       setMascotMessage("変換完了！コピーして使ってね。");
     }, 300);
   };
@@ -233,17 +239,6 @@ export default function ZenkakuHankakuClient({ faq, seoContent }: Props) {
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4">
-        {/* Breadcrumb */}
-        <nav className="mb-6 text-sm" aria-label="パンくずリスト">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li>
-            <li>/</li>
-            <li><Link href="/convert" className="hover:text-kon">変換ツール</Link></li>
-            <li>/</li>
-            <li className="text-kon font-medium">全角・半角変換</li>
-          </ol>
-        </nav>
-
         {/* Header */}
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">🔄</div>
@@ -497,6 +492,7 @@ export default function ZenkakuHankakuClient({ faq, seoContent }: Props) {
             ← 変換ツール一覧に戻る
           </Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

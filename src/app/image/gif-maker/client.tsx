@@ -2,12 +2,18 @@
 "use client";
 import { useState, useRef } from "react";
 import Link from "next/link";
+import Mascot from "@/components/common/Mascot";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ { question: string; answer: string; }
 interface Props { faq: FAQ[]; seoContent?: { intro: string }; }
 
-export default function GifMakerClient({ faq, seoContent }: Props) {
+export default function GifMakerClient({
+ faq, seoContent }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [frames, setFrames] = useState([]);
+  const [mascotState, setMascotState] = useState("idle");
   const [delay, setDelay] = useState(500);
   const [isProcessing, setIsProcessing] = useState(false);
   const [gifUrl, setGifUrl] = useState(null);
@@ -35,6 +41,7 @@ export default function GifMakerClient({ faq, seoContent }: Props) {
   const createGif = async () => {
     if (frames.length < 2) { setError("2枚以上の画像が必要です"); return; }
     setIsProcessing(true); setError("");
+    setMascotState("working");
     try {
       // Load gif.js from CDN
       if (!window.GIF) {
@@ -65,11 +72,14 @@ export default function GifMakerClient({ faq, seoContent }: Props) {
         gif.addFrame(canvas, { delay, copy: true });
       }
       gif.on("finished", (blob) => {
+        setMascotState("success")
+      triggerSuccess('gif-maker');;
         setGifUrl(URL.createObjectURL(blob));
         setIsProcessing(false);
       });
       gif.render();
     } catch (e) {
+      setMascotState("error");
       setError("GIF作成に失敗しました: " + e.message);
       setIsProcessing(false);
     }
@@ -92,13 +102,7 @@ export default function GifMakerClient({ faq, seoContent }: Props) {
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4">
-        <nav className="mb-6 text-sm">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li><li>/</li>
-            <li><Link href="/image" className="hover:text-kon">画像ツール</Link></li><li>/</li>
-            <li className="text-kon font-medium">GIFアニメ作成</li>
-          </ol>
-        </nav>
+
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">🎞️</div>
           <h1 className="text-3xl font-bold text-kon mb-2">GIFアニメ作成</h1>
@@ -110,6 +114,7 @@ export default function GifMakerClient({ faq, seoContent }: Props) {
         </header>
 
         <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-6">
+          <Mascot state={mascotState} />
           <div className="border-2 border-dashed rounded-xl p-6 text-center cursor-pointer border-gray-300 hover:border-kon mb-4"
             onClick={() => document.getElementById("gif-upload")?.click()}>
             <p className="text-gray-600 font-bold mb-2">📁 画像を追加（2〜20枚）</p>

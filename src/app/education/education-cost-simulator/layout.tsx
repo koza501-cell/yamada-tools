@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】教育費 積立シミュレーター｜幼稚園〜大学の総費用と必要積立額を計算 | 山田ツール",
+  title: "【無料】教育費 積立シミュレーター｜幼稚園〜大学の総費用と必要積立額を計算",
   description: "幼稚園から大学まで教育費総額を自動計算。公立・私立の選択別費用比較・必要月積立額・学資保険vsNISA比較も表示。2026年最新データ対応。登録不要・無料。",
   keywords: [
     "教育費 積立",
@@ -17,16 +17,17 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/education/education-cost-simulator",
   },
   openGraph: {
-    title: "【無料】教育費 積立シミュレーター｜幼稚園〜大学の総費用と必要積立額を計算 | 山田ツール",
+    title: "【無料】教育費 積立シミュレーター｜幼稚園〜大学の総費用と必要積立額を計算",
     description: "幼稚園から大学まで教育費総額を自動計算。公立・私立の選択別費用比較・必要月積立額・学資保険vsNISA比較も表示。2026年最新データ対応。登録不要・無料。",
     url: "https://yamada-tools.jp/education/education-cost-simulator",
-    siteName: "yamada-tools.jp",
+    siteName: "山田ツール",
     locale: "ja_JP",
     type: "website",
+    images: [{ url: "https://api.easynihon.com/api/og?site=yamada&title=%E3%80%90%E7%84%A1%E6%96%99%E3%80%91%E6%95%99%E8%82%B2%E8%B2%BB%20%E7%A9%8D%E7%AB%8B%E3%82%B7%E3%83%9F%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC%EF%BD%9C%E5%B9%BC%E7%A8%9A%E5%9C%92%E3%80%9C%E5%A4%A7%E5%AD%A6%E3%81%AE%E7%B7%8F%E8%B2%BB%E7%94%A8%E3%81%A8%E5%BF%85%E8%A6%81%E7%A9%8D%E7%AB%8B%E9%A1%8D%E3%82%92%E8%A8%88%E7%AE%97" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】教育費 積立シミュレーター｜幼稚園〜大学の総費用と必要積立額を計算 | 山田ツール",
+    title: "【無料】教育費 積立シミュレーター｜幼稚園〜大学の総費用と必要積立額を計算",
     description: "幼稚園から大学まで教育費総額を自動計算。公立・私立の選択別費用比較・必要月積立額・学資保険vsNISA比較も表示。2026年最新データ対応。登録不要・無料。",
   },
 };

@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import ShareButtons from "@/components/common/ShareButtons";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 /* ── Types ───────────────────────────────────────────────────────────────── */
 interface FAQ { question: string; answer: string; }
@@ -204,7 +205,10 @@ function MinimapSidebar({ pdfDoc, totalPages, currentPage, onSelect }: { pdfDoc:
 }
 
 /* ── Main Component ──────────────────────────────────────────────────────── */
-export default function PdfTextClient({ faq, seoContent }: Props) {
+export default function PdfTextClient({
+ faq, seoContent }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [mascotState, setMascotState] = useState<MascotState>("idle");
 
   // PDF
@@ -523,7 +527,8 @@ export default function PdfTextClient({ faq, seoContent }: Props) {
       for (let i = 1; i <= doc.numPages; i++) widths.push((await doc.getPage(i)).getViewport({ scale: 1 }).width);
       setPdfPageWidths(widths); setPdfDoc(doc); setTotalPages(doc.numPages);
       setCurrentPage(1); setElements([]); setSelectedId(null); setUndoStack([]); setRedoStack([]);
-      setStep(2); setIsLoading(false); setMascotState("success");
+      setStep(2); setIsLoading(false); setMascotState("success")
+      triggerSuccess('text-input');;
       if (doc.numPages >= 5) setShowMinimap(true);
       setTimeout(() => setMascotState("idle"), 2000);
     } catch (e: any) {
@@ -768,7 +773,8 @@ export default function PdfTextClient({ faq, seoContent }: Props) {
       a.href = url; a.download = (pdfFile?.name ?? "document").replace(/\.pdf$/i, "") + "_text_yamada-tools.pdf";
       document.body.appendChild(a); a.click(); document.body.removeChild(a);
       setTimeout(() => URL.revokeObjectURL(url), 1000);
-      setMascotState("success"); setStep(3);
+      setMascotState("success")
+      triggerSuccess('text-input');; setStep(3);
     } catch (e: any) { setError("ダウンロードに失敗しました: " + (e?.message ?? e)); setMascotState("error"); }
     finally { setIsDownloading(false); }
   }, [pdfBytes, pdfDoc, pdfFile, validEls]);
@@ -814,13 +820,7 @@ export default function PdfTextClient({ faq, seoContent }: Props) {
         />
       )}
 
-      <nav className="mb-6 text-sm">
-        <ol className="flex items-center gap-2 text-gray-500">
-          <li><a href="/" className="hover:text-orange-600">ホーム</a></li>
-          <li>/</li><li><a href="/pdf" className="hover:text-orange-600">PDFツール</a></li>
-          <li>/</li><li className="text-orange-600 font-medium">PDFに文字入力</li>
-        </ol>
-      </nav>
+
 
       <header className="text-center mb-8">
         <div className="text-5xl mb-3">✏️</div>

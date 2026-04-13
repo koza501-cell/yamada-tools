@@ -5,6 +5,8 @@ import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import ShareButtons from "@/components/common/ShareButtons";
 import RelatedTools, { relatedToolSets } from "@/components/common/RelatedTools";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 type HankoShape = "circle" | "square" | "oval";
 type HankoStyle = "single" | "double";
@@ -20,6 +22,9 @@ const FONT_OPTIONS = [
 ];
 
 export default function HankoClient() {
+  const { triggerSuccess } = usePricingContext();
+
+
   const [name, setName] = useState("山田");
   const [shape, setShape] = useState<HankoShape>("circle");
   const [style, setStyle] = useState<HankoStyle>("single");
@@ -132,8 +137,9 @@ export default function HankoClient() {
     }
 
     setResultUrl(canvas.toDataURL("image/png"));
-    setMascotState("success");
-    setMascotMessage("印鑑ができたよ！ダウンロードしてね♪");
+    setMascotState("success")
+      triggerSuccess('hanko');;
+    setMascotMessage("電子印鑑が作成されました。下のボタンよりダウンロードください。");
   };
 
   const download = () => {
@@ -143,8 +149,9 @@ export default function HankoClient() {
     a.download = "hanko_" + name + "_yamada-tools.png";
     a.click();
     setDownloaded(true);
-    setMascotState("success");
-    setMascotMessage("ダウンロード完了！友達にもシェアしてね♪");
+    setMascotState("success")
+      triggerSuccess('hanko');;
+    setMascotMessage("ダウンロードが完了しました。ご利用ありがとうございます。");
   };
 
   if (!mounted) {
@@ -154,19 +161,11 @@ export default function HankoClient() {
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4">
-        <nav className="mb-6 text-sm">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li>
-            <li>/</li>
-            <li><Link href="/generator" className="hover:text-kon">計算・生成ツール</Link></li>
-            <li>/</li>
-            <li className="text-kon font-medium">電子印鑑作成</li>
-          </ol>
-        </nav>
+
 
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">🔴</div>
-          <h1 className="text-3xl font-bold text-kon mb-2">電子印鑑作成</h1>
+          <h1 className="text-3xl font-bold text-kon mb-2">電子印鑑作成【無料】｜認印・角印・日付印を10秒で作成</h1>
           <p className="text-gray-600 text-lg">デジタルハンコを簡単作成・無料ダウンロード</p>
         </header>
 
@@ -317,6 +316,7 @@ export default function HankoClient() {
         <div className="mt-8 text-center">
           <Link href="/generator" className="text-kon hover:text-ai">← 計算・生成ツール一覧に戻る</Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

@@ -5,29 +5,25 @@ import type { NextRequest } from "next/server";
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Only protect /admin/* routes
-  if (!pathname.startsWith("/admin")) {
-    return NextResponse.next();
+  // Admin protection (existing logic)
+  if (
+    pathname.startsWith("/admin") &&
+    pathname !== "/admin/login" &&
+    !pathname.startsWith("/admin/login/")
+  ) {
+    const adminToken = request.cookies.get("admin_token")?.value;
+    const expectedToken = process.env.ADMIN_SECRET_TOKEN;
+    if (!adminToken || adminToken !== expectedToken) {
+      return NextResponse.redirect(new URL("/admin/login", request.url));
+    }
   }
 
-  // Allow access to login page
-  if (pathname === "/admin/login" || pathname.startsWith("/admin/login/")) {
-    return NextResponse.next();
-  }
-
-  // Check for admin_token cookie
-  const adminToken = request.cookies.get("admin_token")?.value;
-  const expectedToken = process.env.ADMIN_SECRET_TOKEN;
-
-  if (!adminToken || adminToken !== expectedToken) {
-    // Redirect to login page
-    const loginUrl = new URL("/admin/login", request.url);
-    return NextResponse.redirect(loginUrl);
-  }
-
-  return NextResponse.next();
+  // Inject pathname header so layout.tsx can conditionally render page-specific schemas
+  const response = NextResponse.next();
+  response.headers.set("x-pathname", pathname);
+  return response;
 }
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: ["/((?!_next/static|_next/image|favicon\.ico|.*\.png$|.*\.webp$|.*\.ico$).*)"],
 };

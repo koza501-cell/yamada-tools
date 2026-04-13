@@ -44,6 +44,9 @@ export default function UsageLimitBanner({ usage }: UsageLimitBannerProps) {
     );
   }
 
+  // UX-001: Only show usage count when close to limit - do not show on initial page load
+  if (usage.remaining > 3) return <div className="min-h-[52px]" />;
+
   return (
     <div className="bg-gray-50 border border-gray-200 rounded-xl p-3 mb-6 min-h-[52px]">
       <p className="text-gray-600 text-sm text-center">

@@ -1,8 +1,18 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】退職金計算機｜退職所得控除・税金・手取りを自動計算 2026年版 | 山田ツール",
+  title: "【無料】退職金計算機｜退職所得控除・税金・手取りを自動計算 2026年版",
   description: "退職金の手取り額を正確計算。勤続年数から退職所得控除を自動算出し、所得税・住民税を差し引いた実際の手取り額を表示。一般・役員・早期退職に対応。登録不要・無料。",
+  alternates: {
+    canonical: "https://yamada-tools.jp/career/retirement-bonus-calculator",
+  },
+  openGraph: {
+    url: "https://yamada-tools.jp/career/retirement-bonus-calculator",
+    siteName: "山田ツール",
+    locale: "ja_JP",
+    type: "website",
+    images: [{ url: "https://api.easynihon.com/api/og?site=yamada&title=%E3%80%90%E7%84%A1%E6%96%99%E3%80%91%E9%80%80%E8%81%B7%E9%87%91%E8%A8%88%E7%AE%97%E6%A9%9F%EF%BD%9C%E9%80%80%E8%81%B7%E6%89%80%E5%BE%97%E6%8E%A7%E9%99%A4%E3%83%BB%E7%A8%8E%E9%87%91%E3%83%BB%E6%89%8B%E5%8F%96%E3%82%8A%E3%82%92%E8%87%AA%E5%8B%95%E8%A8%88%E7%AE%97%202026%E5%B9%B4%E7%89%88" }],
+  },
 };
 
 const schema = {
@@ -72,10 +82,7 @@ const schema = {
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       {children}
     </>
   );

@@ -5,6 +5,8 @@ import RelatedTools, { relatedToolSets } from "@/components/common/RelatedTools"
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ {
   question: string;
@@ -32,7 +34,10 @@ interface CalcResult {
   isRefund: boolean;
 }
 
-export default function NenmatsuCalcClient({ faq, seoContent }: NenmatsuClientProps) {
+export default function NenmatsuCalcClient({
+ faq, seoContent }: NenmatsuClientProps) {
+  const { triggerSuccess } = usePricingContext();
+
   const [mounted, setMounted] = useState(false);
   const [mascotState, setMascotState] = useState<MascotState>("idle");
   const [mascotMessage, setMascotMessage] = useState("年末調整を計算するよ！");
@@ -157,13 +162,15 @@ export default function NenmatsuCalcClient({ faq, seoContent }: NenmatsuClientPr
     });
 
     if (difference > 0) {
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('nenmatsu-calc');;
       setMascotMessage(`${difference.toLocaleString()}円還付だね！`);
     } else if (difference < 0) {
       setMascotState("error");
       setMascotMessage(`${Math.abs(difference).toLocaleString()}円追加徴収...`);
     } else {
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('nenmatsu-calc');;
       setMascotMessage("ぴったりだね！");
     }
   };
@@ -184,15 +191,7 @@ export default function NenmatsuCalcClient({ faq, seoContent }: NenmatsuClientPr
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-2xl mx-auto px-4">
-        <nav className="mb-6 text-sm">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li>
-            <li>/</li>
-            <li><Link href="/generator" className="hover:text-kon">計算・生成</Link></li>
-            <li>/</li>
-            <li className="text-kon font-medium">年末調整計算</li>
-          </ol>
-        </nav>
+
 
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">💴</div>
@@ -215,7 +214,8 @@ export default function NenmatsuCalcClient({ faq, seoContent }: NenmatsuClientPr
               setHasSpouse(false);
               setDependents("0");
               setHousingLoan("");
-              setMascotState("success");
+              setMascotState("success")
+      triggerSuccess('nenmatsu-calc');;
               setMascotMessage("サンプルデータを入力したよ！計算ボタンを押してね");
             }}
             className="px-6 py-2 bg-sakura/20 text-kon rounded-full text-sm font-medium hover:bg-sakura/30 transition-colors"
@@ -509,6 +509,7 @@ export default function NenmatsuCalcClient({ faq, seoContent }: NenmatsuClientPr
           </div>
           <p className="text-xs text-gray-500 mt-4">※ 生命保険料控除・住宅ローン控除などを適用すると還付額が増えます。上記は概算値です。</p>
         </section>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

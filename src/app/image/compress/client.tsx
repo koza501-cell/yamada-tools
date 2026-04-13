@@ -4,6 +4,7 @@ import { useState, useRef, useCallback } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import RelatedTools, { relatedToolSets } from "@/components/common/RelatedTools";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ {
   question: string;
@@ -31,7 +32,10 @@ interface CompressedImage {
 
 type OutputFormat = "jpeg" | "png" | "webp";
 
-export default function ImageCompressClient({ faq, seoContent }: Props) {
+export default function ImageCompressClient({
+ faq, seoContent }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [images, setImages] = useState<CompressedImage[]>([]);
   const [quality, setQuality] = useState<number>(80);
   const [outputFormat, setOutputFormat] = useState<OutputFormat>("jpeg");
@@ -119,7 +123,8 @@ export default function ImageCompressClient({ faq, seoContent }: Props) {
     setIsProcessing(false);
     
     const totalReduction = results.reduce((sum, r) => sum + r.reduction, 0) / results.length;
-    setMascotState("success");
+    setMascotState("success")
+      triggerSuccess('compress');;
     setMascotMessage(`${results.length}枚完了！平均${Math.round(totalReduction)}%削減！`);
   }, [compressImage]);
 
@@ -159,7 +164,8 @@ export default function ImageCompressClient({ faq, seoContent }: Props) {
     setIsProcessing(false);
     
     const totalReduction = results.reduce((sum, r) => sum + r.reduction, 0) / results.length;
-    setMascotState("success");
+    setMascotState("success")
+      triggerSuccess('compress');;
     setMascotMessage(`再圧縮完了！平均${Math.round(totalReduction)}%削減！`);
   };
 
@@ -201,17 +207,6 @@ export default function ImageCompressClient({ faq, seoContent }: Props) {
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4">
-        {/* Breadcrumb */}
-        <nav className="mb-6 text-sm" aria-label="パンくずリスト">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li>
-            <li>/</li>
-            <li><Link href="/image" className="hover:text-kon">画像ツール</Link></li>
-            <li>/</li>
-            <li className="text-kon font-medium">画像圧縮</li>
-          </ol>
-        </nav>
-
         {/* Header */}
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">📦</div>

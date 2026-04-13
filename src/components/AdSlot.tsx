@@ -12,18 +12,14 @@ const AD_SIZES = {
 };
 
 export default function AdSlot({ format, className = '' }: AdSlotProps) {
-  const { width, height } = AD_SIZES[format];
+  const { width } = AD_SIZES[format];
 
   return (
     <div
       className={`mx-auto overflow-hidden ${className}`}
       style={{
-        minHeight: height,
         maxWidth: width,
         width: '100%',
-        contentVisibility: 'auto',
-        containIntrinsicSize: `${width}px ${height}px`,
-        contain: 'layout size',
       }}
       data-ad-slot={format}
       aria-hidden="true"

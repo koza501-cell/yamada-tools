@@ -3,6 +3,7 @@
 import Link from "next/link";
 import RandomPickerTool from "@/components/tools/RandomPickerTool";
 import AdUnit from "@/components/AdUnit";
+import Mascot from "@/components/common/Mascot";
 
 const PAGE_URL = "https://yamada-tools.jp/generator/random-picker/nenkai";
 
@@ -51,24 +52,6 @@ export default function NenkaiClient() {
     <div style={{ background: "#f8faff", minHeight: "100vh" }}>
       {/* ── Page wrapper ── */}
       <div style={{ maxWidth: 900, margin: "0 auto", padding: "0 20px 80px" }}>
-
-        {/* Breadcrumb */}
-        <nav aria-label="パンくずリスト" style={{
-          padding: "16px 0",
-          fontSize: "0.82rem",
-          color: "#999",
-          borderBottom: "1px solid rgba(34,58,112,0.06)",
-          marginBottom: 0,
-        }}>
-          <Link href="/" style={{ color: "#223A70", textDecoration: "none" }}>ホーム</Link>
-          <span style={{ margin: "0 6px" }}>›</span>
-          <Link href="/generator" style={{ color: "#223A70", textDecoration: "none" }}>計算・生成</Link>
-          <span style={{ margin: "0 6px" }}>›</span>
-          <Link href="/generator/random-picker" style={{ color: "#223A70", textDecoration: "none" }}>ランダム抽選</Link>
-          <span style={{ margin: "0 6px" }}>›</span>
-          <span style={{ color: "#555" }}>忘年会・新年会 抽選ツール</span>
-        </nav>
-
         {/* ── Hero Banner ── */}
         <div style={{
           background: "linear-gradient(135deg, #1e3a8a 0%, #223A70 60%, #1a56db 100%)",
@@ -133,6 +116,7 @@ export default function NenkaiClient() {
 
         {/* ── Tool UI ── */}
         <section aria-label="抽選ツール" style={{ marginBottom: 32 }}>
+          <Mascot state="welcome" />
           <RandomPickerTool
             presets={PRESETS}
             pageUrl={PAGE_URL}
@@ -373,6 +357,7 @@ function SeasonCard({ icon, season, children, last = false }: {
       <div>
         <h3 style={{ fontSize: "1rem", fontWeight: 800, color: "#223A70", marginBottom: 6 }}>{season}</h3>
         <p style={{ fontSize: "0.9rem", color: "#555", lineHeight: 1.75 }}>{children}</p>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

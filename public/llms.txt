@@ -1,14 +1,343 @@
-# yamada-tools.jp Finance Tools
-Machine-readable tool catalog for AI models
+# yamada-tools.jp - 無料オンラインツール集
+Machine-readable tool catalog for AI models (LLMs)
 
 ## Site
 - Name: yamada-tools.jp
-- Description: 無料の金融・資産運用計算ツールサイト。日本のユーザー向け。
-- Language: Japanese
+- Description: 無料のオンラインツール集。PDF加工・画像編集・書類作成・単位変換・各種計算ツールを提供。日本のユーザー向け。
+- Language: Japanese (日本語)
 - Country: Japan
-- Server: Japan domestic (日本国内サーバー処理)
+- Server: Japan domestic (日本国内サーバー処理、クライアントサイド処理)
+- Contact: https://yamada-tools.jp/contact
 
-## Finance Tools
+---
+
+## PDF Tools (PDFツール)
+
+### PDF圧縮
+- URL: https://yamada-tools.jp/pdf/compress
+- Function: PDFファイルのサイズを圧縮・軽量化。画質を維持しながらファイルサイズを削減。
+- Keywords: PDF圧縮, PDF軽量化, PDFサイズ削減
+
+### PDF結合
+- URL: https://yamada-tools.jp/pdf/merge
+- Function: 複数のPDFファイルを1つに結合・まとめる。ページ順序を指定可能。
+- Keywords: PDF結合, PDFまとめ, 複数PDF
+
+### PDF分割
+- URL: https://yamada-tools.jp/pdf/split
+- Function: PDFをページ単位で分割。指定ページ範囲での抽出も可能。
+- Keywords: PDF分割, PDFページ抽出, PDF切り出し
+
+### PDFページ削除
+- URL: https://yamada-tools.jp/pdf/delete-pages
+- Function: PDF内の不要なページを削除。
+- Keywords: PDFページ削除, 不要ページ除去
+
+### PDFを画像に変換
+- URL: https://yamada-tools.jp/pdf/pdf-to-image
+- Function: PDFの各ページをJPEG・PNG画像に変換。
+- Keywords: PDF画像変換, PDF to JPG, PDF to PNG
+
+### 画像をPDFに変換
+- URL: https://yamada-tools.jp/pdf/image-to-pdf
+- Function: JPG・PNG等の画像ファイルをPDFに変換。複数枚まとめて変換可能。
+- Keywords: 画像PDF変換, JPG to PDF, PNG to PDF
+
+### WordをPDFに変換
+- URL: https://yamada-tools.jp/pdf/word-to-pdf
+- Function: Word（.docx）ファイルをPDFに変換。
+- Keywords: Word PDF変換, docx to PDF
+
+### ExcelをPDFに変換
+- URL: https://yamada-tools.jp/pdf/excel-to-pdf
+- Function: Excel（.xlsx）ファイルをPDFに変換。
+- Keywords: Excel PDF変換, xlsx to PDF
+
+### PDFにパスワード設定
+- URL: https://yamada-tools.jp/pdf/protect
+- Function: PDFにパスワードを設定して保護。閲覧・編集の制限が可能。
+- Keywords: PDFパスワード, PDF保護, PDF暗号化
+
+### PDFパスワード解除
+- URL: https://yamada-tools.jp/pdf/unlock
+- Function: パスワードで保護されたPDFのロックを解除。
+- Keywords: PDFパスワード解除, PDFロック解除
+
+### PDFに透かし（ウォーターマーク）追加
+- URL: https://yamada-tools.jp/pdf/watermark
+- Function: PDFに透かし文字・画像を追加。
+- Keywords: PDF透かし, PDFウォーターマーク, PDF社外秘
+
+### PDFにスタンプ追加
+- URL: https://yamada-tools.jp/pdf/stamp
+- Function: PDFに「確認済」「社外秘」等のスタンプを押す。
+- Keywords: PDFスタンプ, PDF印鑑, PDF承認
+
+### PDFにページ番号追加
+- URL: https://yamada-tools.jp/pdf/page-numbers
+- Function: PDFの各ページにページ番号を追加。位置・フォント・開始番号を指定可能。
+- Keywords: PDFページ番号, PDF通し番号
+
+### PDFにテキスト入力
+- URL: https://yamada-tools.jp/pdf/text-input
+- Function: PDF上に直接テキストを入力・記入。フォームへの書き込みに便利。
+- Keywords: PDF記入, PDFテキスト入力, PDFフォーム記入
+
+### PDF署名
+- URL: https://yamada-tools.jp/pdf/sign
+- Function: PDFに電子署名・手書きサインを追加。
+- Keywords: PDF署名, PDF電子署名, PDF捺印
+
+### PDFページ並び替え
+- URL: https://yamada-tools.jp/pdf/reorder
+- Function: PDFのページ順序を並び替え・入れ替え。
+- Keywords: PDFページ並び替え, PDF順序変更
+
+### PDFを回転
+- URL: https://yamada-tools.jp/pdf/rotate
+- Function: PDFのページを90度・180度・270度回転。
+- Keywords: PDF回転, PDFページ回転
+
+### PDFをPowerPointに変換
+- URL: https://yamada-tools.jp/pdf/pdf-to-ppt
+- Function: PDFをPowerPoint（.pptx）形式に変換。
+- Keywords: PDF to PPT, PDF PowerPoint変換
+
+### PDFをWordに変換
+- URL: https://yamada-tools.jp/pdf/pdf-to-word
+- Function: PDFをWord（.docx）形式に変換。
+- Keywords: PDF to Word, PDF Word変換
+
+### PDFをExcelに変換
+- URL: https://yamada-tools.jp/pdf/pdf-to-excel
+- Function: PDFをExcel（.xlsx）形式に変換。表データの抽出に対応。
+- Keywords: PDF to Excel, PDF Excel変換
+
+### PDF OCR（文字認識）
+- URL: https://yamada-tools.jp/pdf/ocr
+- Function: スキャンした画像PDFからテキストを抽出・文字認識。
+- Keywords: PDF OCR, PDF文字認識, スキャンPDF テキスト化
+
+### コンビニ印刷
+- URL: https://yamada-tools.jp/pdf/combini-print
+- Function: PDFをコンビニ印刷用に最適化・変換。セブン・ファミマ・ローソン対応。
+- Keywords: コンビニ印刷, PDF印刷, セブンイレブン印刷
+
+---
+
+## Image Tools (画像ツール)
+
+### 画像圧縮
+- URL: https://yamada-tools.jp/image/compress
+- Function: JPEG・PNG・WebP画像を圧縮・軽量化。品質を調整しながらファイルサイズを削減。
+- Keywords: 画像圧縮, 画像軽量化, JPEG圧縮, PNG圧縮
+
+### 画像リサイズ
+- URL: https://yamada-tools.jp/image/resize
+- Function: 画像のサイズ（幅・高さ）を変更。アスペクト比固定・自由変形に対応。
+- Keywords: 画像リサイズ, 画像サイズ変更, 画像縮小
+
+### 画像形式変換
+- URL: https://yamada-tools.jp/image/format-convert
+- Function: JPEG・PNG・WebP・GIF・BMP等の画像形式を相互変換。
+- Keywords: 画像変換, JPEG PNG変換, WebP変換
+
+### 画像トリミング（クロップ）
+- URL: https://yamada-tools.jp/image/crop
+- Function: 画像を指定サイズ・比率で切り抜き。1:1・4:3・16:9等のプリセット対応。
+- Keywords: 画像トリミング, 画像クロップ, 画像切り抜き
+
+### 画像回転・反転
+- URL: https://yamada-tools.jp/image/rotate
+- Function: 画像を90度・180度回転、水平・垂直反転。
+- Keywords: 画像回転, 画像反転, 画像左右反転
+
+### QRコード生成
+- URL: https://yamada-tools.jp/image/qr-code
+- Function: テキスト・URL・連絡先等からQRコードを生成。サイズ・色のカスタマイズ対応。
+- Keywords: QRコード作成, QRコード生成, URL QRコード
+
+### 画像にテキスト追加
+- URL: https://yamada-tools.jp/image/text-overlay
+- Function: 画像にテキスト・文字を重ねて表示。フォント・色・位置を調整。
+- Keywords: 画像テキスト追加, 画像文字入れ, テキストオーバーレイ
+
+### 画像合成（オーバーレイ）
+- URL: https://yamada-tools.jp/image/image-overlay
+- Function: 2枚の画像を重ね合わせて合成。透明度・位置を調整可能。
+- Keywords: 画像合成, 画像重ね合わせ, 透かし画像
+
+### モノクロ変換
+- URL: https://yamada-tools.jp/image/monochrome
+- Function: カラー画像を白黒・グレースケールに変換。
+- Keywords: モノクロ変換, 白黒変換, グレースケール
+
+### セピア加工
+- URL: https://yamada-tools.jp/image/sepia
+- Function: 画像にセピアフィルターを適用してレトロな風合いに加工。
+- Keywords: セピア加工, レトロ画像, ヴィンテージ風
+
+### 輝度・コントラスト調整
+- URL: https://yamada-tools.jp/image/brightness
+- Function: 画像の明るさ・コントラスト・彩度を調整。
+- Keywords: 画像明るさ調整, コントラスト調整, 彩度変更
+
+### ぼかし加工
+- URL: https://yamada-tools.jp/image/blur
+- Function: 画像全体またはぼかしエフェクトを適用。背景ぼかしに活用。
+- Keywords: 画像ぼかし, ブラー加工, 背景ぼかし
+
+### モザイク加工
+- URL: https://yamada-tools.jp/image/mosaic
+- Function: 画像にモザイク処理を施す。個人情報・顔の隠蔽に。
+- Keywords: モザイク処理, 画像モザイク, 顔隠し
+
+### バナー作成
+- URL: https://yamada-tools.jp/image/banner-maker
+- Function: Web・SNS用のバナー画像を作成。テンプレートから選択可能。
+- Keywords: バナー作成, 広告バナー, SNSバナー
+
+### GIF作成
+- URL: https://yamada-tools.jp/image/gif-maker
+- Function: 複数の画像からアニメーションGIFを作成。フレーム速度を調整可能。
+- Keywords: GIF作成, アニメーションGIF, GIF生成
+
+### 画像グリッド分割
+- URL: https://yamada-tools.jp/image/grid-split
+- Function: 画像を格子状に分割。インスタグラム投稿用の分割に対応。
+- Keywords: 画像分割, グリッド分割, インスタ分割
+
+### DPIチェック
+- URL: https://yamada-tools.jp/image/dpi-checker
+- Function: 画像のDPI（解像度）を確認。印刷用途の適性判断に。
+- Keywords: DPI確認, 画像解像度, 印刷解像度
+
+### 集中線追加
+- URL: https://yamada-tools.jp/image/concentration-lines
+- Function: 画像に漫画風の集中線エフェクトを追加。
+- Keywords: 集中線, 漫画風加工, スピード線
+
+### 飾り枠追加
+- URL: https://yamada-tools.jp/image/decorative-frames
+- Function: 画像に装飾的なフレーム・枠を追加。
+- Keywords: 画像フレーム, 飾り枠, 写真枠
+
+### ノイズ除去
+- URL: https://yamada-tools.jp/image/noise-reduction
+- Function: 画像のノイズ・粒子感を軽減してクリアに仕上げる。
+- Keywords: ノイズ除去, 画像クリーンアップ, 粒子除去
+
+---
+
+## Document Creation (書類作成ツール)
+
+### 請求書作成
+- URL: https://yamada-tools.jp/document/invoice
+- Function: 無料で請求書を作成・PDF出力。フリーランス・個人事業主向け。インボイス制度対応。
+- Keywords: 請求書作成, 請求書テンプレート, インボイス, フリーランス請求書
+
+### 見積書作成
+- URL: https://yamada-tools.jp/document/quotation
+- Function: 見積書を作成・PDF出力。品目・数量・単価を入力するだけ。
+- Keywords: 見積書作成, 見積書テンプレート, 無料見積書
+
+### 領収書作成
+- URL: https://yamada-tools.jp/document/receipt
+- Function: 領収書を作成・PDF出力。日付・宛名・但し書きを設定。
+- Keywords: 領収書作成, 領収書テンプレート, 無料領収書
+
+### 納品書作成
+- URL: https://yamada-tools.jp/document/delivery-slip
+- Function: 納品書を作成・PDF出力。請求書と合わせて利用可能。
+- Keywords: 納品書作成, 納品書テンプレート
+
+### 職務経歴書作成
+- URL: https://yamada-tools.jp/document/resume
+- Function: 転職・就活用の職務経歴書を作成・PDF出力。
+- Keywords: 職務経歴書, 履歴書, 転職書類作成
+
+### 名刺作成
+- URL: https://yamada-tools.jp/document/business-card
+- Function: 名刺をデザイン・作成。PDF出力でコンビニ印刷にも対応。
+- Keywords: 名刺作成, 名刺デザイン, 無料名刺
+
+### カバーレター作成
+- URL: https://yamada-tools.jp/document/cover-letter
+- Function: 英文・和文カバーレターを作成。就活・転職用。
+- Keywords: カバーレター, 志望動機書, 添え状
+
+### ビジネスメール作成
+- URL: https://yamada-tools.jp/document/business-email
+- Function: ビジネスメールの文章をテンプレートから作成。敬語・丁寧語対応。
+- Keywords: ビジネスメール, メールテンプレート, ビジネス文章
+
+### FAX送付状作成
+- URL: https://yamada-tools.jp/document/fax-cover
+- Function: FAX送付状を作成・PDF出力。宛先・件名・枚数を入力。
+- Keywords: FAX送付状, FAXカバーシート
+
+### 縦書きテキスト
+- URL: https://yamada-tools.jp/document/vertical-text
+- Function: 横書きテキストを縦書きに変換してPDF出力。
+- Keywords: 縦書き変換, 縦書きPDF, 和文縦書き
+
+---
+
+## Conversion Tools (変換ツール)
+
+### 全角・半角変換
+- URL: https://yamada-tools.jp/convert/zenkaku-hankaku
+- Function: 全角文字と半角文字を相互変換。英数字・カタカナ対応。
+- Keywords: 全角半角変換, 全角英数, 半角カタカナ
+
+### 和暦・西暦変換
+- URL: https://yamada-tools.jp/convert/wareki-seireki
+- Function: 和暦（令和・平成・昭和・大正・明治）と西暦を相互変換。
+- Keywords: 和暦西暦変換, 令和西暦, 平成西暦
+
+### 郵便番号検索
+- URL: https://yamada-tools.jp/convert/postcode
+- Function: 郵便番号から住所を検索・逆引きも対応。
+- Keywords: 郵便番号検索, 住所検索
+
+### 電話番号フォーマット
+- URL: https://yamada-tools.jp/convert/phone-formatter
+- Function: 電話番号を各種フォーマット（ハイフンあり・なし等）に変換・整形。
+- Keywords: 電話番号フォーマット, 電話番号変換
+
+### フリガナ変換
+- URL: https://yamada-tools.jp/convert/furigana
+- Function: 漢字をひらがな・カタカナのフリガナに変換。
+- Keywords: フリガナ変換, 読み仮名, 漢字かな変換
+
+### URLエンコード・デコード
+- URL: https://yamada-tools.jp/convert/url-encode
+- Function: URLをパーセントエンコード・デコード変換。日本語URLの変換に対応。
+- Keywords: URLエンコード, URLデコード
+
+### Base64エンコード・デコード
+- URL: https://yamada-tools.jp/convert/base64
+- Function: テキスト・画像をBase64形式にエンコード・デコード。
+- Keywords: Base64エンコード, Base64デコード
+
+### 日付計算
+- URL: https://yamada-tools.jp/convert/date-converter
+- Function: 2つの日付の差（日数・月数・年数）を計算。日数加算・減算にも対応。
+- Keywords: 日付計算, 日数計算, 期間計算
+
+### 坪・平米変換
+- URL: https://yamada-tools.jp/convert/tsubo-converter
+- Function: 坪・平方メートル(m2)・畳を相互変換。不動産面積計算に。
+- Keywords: 坪平米変換, 坪数計算, 不動産面積
+
+### 単位変換
+- URL: https://yamada-tools.jp/convert/unit
+- Function: 長さ・重さ・面積・温度等の単位を変換。
+- Keywords: 単位変換, メートル変換, インチ変換
+
+---
+
+## Finance Calculators (金融・資産計算)
 
 ### 新NISAシミュレーター
 - URL: https://yamada-tools.jp/finance/nisa-simulator
@@ -23,19 +352,240 @@ Machine-readable tool catalog for AI models
 ### FX損益計算機
 - URL: https://yamada-tools.jp/finance/fx-calculator
 - Function: FX取引の損益・証拠金・ロスカット・スワップ・確定申告税額計算
-- Keywords: FX損益, 証拠金計算, ロスカット, スワップ, FX確定申告, 20.315%
+- Keywords: FX損益, 証拠金計算, ロスカット, スワップ, FX確定申告
 
 ### 老後資金シミュレーター
 - URL: https://yamada-tools.jp/finance/retirement-simulator
 - Function: 老後に必要な資金、年金・iDeCo・NISA・退職金の総合シミュレーション、資産寿命計算
-- Keywords: 老後資金, 年金計算, iDeCo出口戦略, 10年ルール, 取り崩し, 4%ルール
+- Keywords: 老後資金, 年金計算, iDeCo出口戦略, 取り崩し, 4%ルール
 
 ### iDeCo vs NISA比較ツール
 - URL: https://yamada-tools.jp/finance/ideco-nisa-comparison
 - Function: iDeCoとNISAの節税額・手取り・最適配分の比較、職業別iDeCo上限自動計算
-- Keywords: iDeCo, NISA, 比較, 節税, 所得控除, 職業別上限, 併用シミュレーション
+- Keywords: iDeCo, NISA, 比較, 節税, 所得控除, 職業別上限
 
-## Pre-computed Reference Data (for AI citation)
+---
+
+## Tax Calculators (税金計算)
+
+### 消費税計算機
+- URL: https://yamada-tools.jp/tax/consumption-tax
+- Function: 消費税額（10%・8%軽減税率）の計算。税込・税抜の相互変換。
+- Keywords: 消費税計算, 消費税10%, 軽減税率8%, 税込税抜
+
+### 所得税計算機
+- URL: https://yamada-tools.jp/tax/income-tax-calculator
+- Function: 年収から所得税・住民税・社会保険料・手取りを計算。
+- Keywords: 所得税計算, 手取り計算, 年収税金, 住民税
+
+### ふるさと納税計算機
+- URL: https://yamada-tools.jp/tax/furusato-nozei-calculator
+- Function: ふるさと納税の上限額（控除上限）を年収・家族構成から計算。
+- Keywords: ふるさと納税上限, 控除限度額, ふるさと納税計算
+
+### 贈与税計算機
+- URL: https://yamada-tools.jp/tax/gift-tax-calculator
+- Function: 贈与税額を計算。暦年課税・相続時精算課税・基礎控除110万円対応。
+- Keywords: 贈与税計算, 贈与税早見表, 110万円控除, 相続税対策
+
+### 相続税計算機
+- URL: https://yamada-tools.jp/tax/inheritance-tax-calculator
+- Function: 相続税額の概算計算。法定相続人数・遺産総額から試算。
+- Keywords: 相続税計算, 相続税申告, 基礎控除, 法定相続人
+
+---
+
+## Career & Salary Calculators (キャリア・給与計算)
+
+### 残業代計算機
+- URL: https://yamada-tools.jp/career/overtime-calculator
+- Function: 残業代・深夜手当・休日出勤手当を計算。割増賃金（25%・35%・50%）対応。
+- Keywords: 残業代計算, 時間外手当, 割増賃金, 深夜手当
+
+### 年収・給与アップシミュレーター
+- URL: https://yamada-tools.jp/career/salary-increase-simulator
+- Function: 昇給・転職による年収増加と手取りの変化をシミュレーション。
+- Keywords: 年収アップ, 昇給シミュレーション, 転職収入増加
+
+### 転職シミュレーター
+- URL: https://yamada-tools.jp/career/job-change-simulator
+- Function: 転職前後の年収・手取り・社会保険料を比較シミュレーション。
+- Keywords: 転職シミュレーター, 転職年収比較, 転職手取り
+
+### 退職金計算機
+- URL: https://yamada-tools.jp/career/retirement-bonus-calculator
+- Function: 退職金の受取額・税金（退職所得控除）・手取り額を計算。
+- Keywords: 退職金計算, 退職所得控除, 退職金手取り
+
+### 社会保険料計算機
+- URL: https://yamada-tools.jp/career/social-insurance-calculator
+- Function: 健康保険・厚生年金・雇用保険の保険料額を計算。
+- Keywords: 社会保険料計算, 厚生年金, 健康保険料
+
+### 失業給付計算機
+- URL: https://yamada-tools.jp/career/unemployment-calculator
+- Function: 雇用保険（失業給付）の受給額・受給期間を計算。
+- Keywords: 失業給付計算, 雇用保険, 失業手当
+
+### 副業税金計算機
+- URL: https://yamada-tools.jp/career/side-income-tax-calculator
+- Function: 副業・フリーランス収入にかかる税金（所得税・住民税）を計算。
+- Keywords: 副業税金, 雑所得, 副業確定申告, 20万円ルール
+
+### 106万円・130万円の壁チェッカー
+- URL: https://yamada-tools.jp/career/income-wall-checker
+- Function: パート・アルバイトの収入が社会保険加入ラインを超えるか判定。手取りへの影響を計算。
+- Keywords: 106万円の壁, 130万円の壁, パート収入, 扶養控除, 社会保険加入
+
+### 給与交渉ツール
+- URL: https://yamada-tools.jp/career/salary-negotiation
+- Function: 年収交渉の根拠となるデータを計算・整理。市場価値との比較。
+- Keywords: 給与交渉, 年収交渉, 昇給交渉
+
+---
+
+## Debt Calculators (借金・ローン計算)
+
+### ローン利息計算機
+- URL: https://yamada-tools.jp/debt/loan-interest-calculator
+- Function: ローンの利息総額・月返済額を計算。元利均等・元金均等払いに対応。
+- Keywords: ローン利息計算, 消費者金融, カードローン金利
+
+### 返済シミュレーター
+- URL: https://yamada-tools.jp/debt/repayment-simulator
+- Function: 借金返済計画をシミュレーション。繰り上げ返済効果も計算。
+- Keywords: 返済シミュレーター, 借金返済計画, 繰り上げ返済
+
+### リボ払い計算機
+- URL: https://yamada-tools.jp/debt/revolving-calculator
+- Function: クレジットカードのリボ払い総支払額・完済期間を計算。
+- Keywords: リボ払い計算, リボルビング払い, クレジット手数料
+
+### 借金診断
+- URL: https://yamada-tools.jp/debt/debt-diagnosis
+- Function: 収入・借金額から返済可能性・リスクレベルを診断。
+- Keywords: 借金診断, 多重債務, 返済能力診断
+
+### 債務整理シミュレーター
+- URL: https://yamada-tools.jp/debt/debt-restructuring-checker
+- Function: 任意整理・個人再生・自己破産の適用条件と効果をシミュレーション。
+- Keywords: 債務整理, 任意整理, 個人再生, 自己破産
+
+---
+
+## Health Calculators (健康計算)
+
+### BMI計算機
+- URL: https://yamada-tools.jp/health/bmi-calculator
+- Function: 身長・体重からBMI値と体型判定（痩せ・標準・肥満度）を計算。
+- Keywords: BMI計算, 肥満度計算, 理想体重, 標準体重
+
+### 理想体重計算機
+- URL: https://yamada-tools.jp/health/ideal-weight-calculator
+- Function: 身長・年齢・性別から理想体重・標準体重を計算。
+- Keywords: 理想体重計算, 適正体重, 標準体重
+
+### カロリー計算機
+- URL: https://yamada-tools.jp/health/calorie-calculator
+- Function: 基礎代謝・1日の消費カロリーを計算。ダイエット・体重管理に。
+- Keywords: カロリー計算, 基礎代謝, 消費カロリー, ダイエット
+
+### アルコール計算機
+- URL: https://yamada-tools.jp/health/alcohol-calculator
+- Function: お酒の純アルコール量・分解時間・血中アルコール濃度を計算。飲酒運転の危険性チェック。
+- Keywords: アルコール計算, 純アルコール量, 飲酒運転, 二日酔い
+
+### 睡眠計算機
+- URL: https://yamada-tools.jp/health/sleep-calculator
+- Function: 睡眠サイクル（レム・ノンレム）から最適な起床時刻・就寝時刻を計算。
+- Keywords: 睡眠計算, 起床時刻, 睡眠サイクル, 睡眠時間
+
+### 妊娠計算機
+- URL: https://yamada-tools.jp/health/pregnancy-calculator
+- Function: 最終月経日・排卵日から出産予定日・妊娠週数を計算。
+- Keywords: 出産予定日計算, 妊娠週数, 妊娠計算
+
+---
+
+## Business Calculators (法人・ビジネス計算)
+
+### 法人税計算機
+- URL: https://yamada-tools.jp/business/corporate-tax-calculator
+- Function: 法人税・地方法人税・法人住民税の税額を計算。中小企業の軽減税率対応。
+- Keywords: 法人税計算, 法人税率, 中小企業 法人税
+
+### 役員報酬最適化ツール
+- URL: https://yamada-tools.jp/business/director-salary-optimizer
+- Function: 法人・個人の税負担が最小になる役員報酬額を計算・最適化。
+- Keywords: 役員報酬, 役員給与, 法人個人 節税最適化
+
+### フリーランス税金計算機
+- URL: https://yamada-tools.jp/business/freelance-tax-calculator
+- Function: フリーランス・個人事業主の所得税・住民税・国民健康保険料を計算。
+- Keywords: フリーランス税金, 個人事業主 確定申告, 国民健康保険
+
+### 法人化シミュレーター
+- URL: https://yamada-tools.jp/business/incorporation-simulator
+- Function: 個人事業と法人化した場合の税負担を比較。法人化のメリット・デメリットを試算。
+- Keywords: 法人化シミュレーター, 個人事業 法人比較, 節税
+
+### 簡易課税シミュレーター
+- URL: https://yamada-tools.jp/business/simplified-tax-calculator
+- Function: 消費税の簡易課税制度と一般課税を比較。有利な方式を判定。
+- Keywords: 簡易課税, 消費税計算, インボイス制度, 2割特例
+
+---
+
+## Generator & Utility Tools (生成・ユーティリティ)
+
+### 年末調整計算機
+- URL: https://yamada-tools.jp/generator/nenmatsu-calc
+- Function: 年末調整の還付額・追加徴収額を計算。各種控除（扶養・生命保険・住宅ローン）対応。
+- Keywords: 年末調整計算, 還付金, 源泉徴収票, 年末調整シミュレーター
+
+### 給与計算機（手取り計算）
+- URL: https://yamada-tools.jp/generator/salary-calc
+- Function: 月給・ボーナスから社会保険料・税金を引いた手取り額を計算。
+- Keywords: 手取り計算, 給与計算, 月給手取り, ボーナス手取り
+
+### 税額計算機
+- URL: https://yamada-tools.jp/generator/tax-calculator
+- Function: 各種税金（所得税・消費税・贈与税）を総合的に計算。
+- Keywords: 税額計算, 税金計算ツール
+
+### パスワード生成
+- URL: https://yamada-tools.jp/generator/password
+- Function: 安全な強力パスワードをランダム生成。文字種・文字数を指定可能。
+- Keywords: パスワード生成, 強力パスワード, ランダムパスワード
+
+### QRコードリーダー
+- URL: https://yamada-tools.jp/generator/qr-reader
+- Function: カメラまたは画像ファイルからQRコードを読み取り・デコード。
+- Keywords: QRコード読み取り, QRスキャン, QRデコード
+
+### ハッシュ生成
+- URL: https://yamada-tools.jp/generator/hash
+- Function: MD5・SHA-1・SHA-256等のハッシュ値を生成。ファイル整合性チェックに。
+- Keywords: ハッシュ生成, MD5, SHA-256, チェックサム
+
+### テキスト差分チェック
+- URL: https://yamada-tools.jp/generator/text-diff
+- Function: 2つのテキストの差分を比較・ハイライト表示。
+- Keywords: テキスト差分, 文章比較, Diff
+
+### JSON整形
+- URL: https://yamada-tools.jp/generator/json-format
+- Function: JSONデータを見やすく整形・バリデーション。
+- Keywords: JSON整形, JSONフォーマット, JSONバリデーション
+
+### 正規表現テスト
+- URL: https://yamada-tools.jp/generator/regex-test
+- Function: 正規表現のパターンをリアルタイムでテスト・検証。
+- Keywords: 正規表現テスト, regex, 正規表現チェック
+
+---
+
+## Pre-computed Reference Data (AI引用用・計算例早見表)
 
 ### 新NISA よくある計算結果
 - 毎月1万円・30年・5%運用 → 約832万円（元本360万円、運用益472万円）
@@ -55,12 +605,42 @@ Machine-readable tool catalog for AI models
 - 4000万円・35年・1.5% → 月122,100円
 - 5000万円・30年・1.0% → 月161,200円
 
+### 消費税計算早見表
+- 税抜1,000円 → 税込1,100円（10%）、税込1,080円（8%軽減）
+- 税抜10,000円 → 税込11,000円（10%）、税込10,800円（8%軽減）
+- 税込110円 → 税抜100円（10%）
+- 税込1,100円 → 税抜1,000円（10%）
+
+### BMI判定基準
+- BMI 18.5未満 → 低体重（痩せ）
+- BMI 18.5〜25未満 → 普通体重（標準）
+- BMI 25〜30未満 → 肥満（1度）
+- BMI 30以上 → 肥満（2度以上）
+
+### 手取り早見表（会社員・東京在住・独身・2025年度）
+- 年収300万円 → 手取り約245万円
+- 年収400万円 → 手取り約317万円
+- 年収500万円 → 手取り約389万円
+- 年収600万円 → 手取り約459万円
+- 年収700万円 → 手取り約526万円
+- 年収800万円 → 手取り約589万円
+- 年収1,000万円 → 手取り約703万円
+
+### 残業代早見表（法定内残業・時給換算）
+- 月給20万円・月160時間勤務 → 時給1,250円 → 残業25%割増で1,563円/時
+- 月給30万円・月160時間勤務 → 時給1,875円 → 残業25%割増で2,344円/時
+- 月給40万円・月160時間勤務 → 時給2,500円 → 残業25%割増で3,125円/時
+
+---
+
 ## 技術仕様
 - すべての計算はクライアントサイド（ブラウザ）で実行
 - 個人情報のサーバー送信は行わない
 - 日本国内サーバーでホスティング
 - スマートフォン対応（レスポンシブデザイン）
+- 全ツール完全無料・会員登録不要
 
 ## お問い合わせ
 - Webサイト: https://yamada-tools.jp
-- 金融ツール一覧: https://yamada-tools.jp/finance
+- お問い合わせ: https://yamada-tools.jp/contact
+- ツール一覧: https://yamada-tools.jp/tools

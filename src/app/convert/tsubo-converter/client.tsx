@@ -2,6 +2,8 @@
 
 import { useState, useMemo, useCallback } from "react";
 import Link from "next/link";
+import Mascot from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
 
 interface FAQ {
   question: string;
@@ -175,6 +177,7 @@ export default function TsuboConverterClient({ faq }: Props) {
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-green-600 to-teal-600 text-white">
         <div className="max-w-4xl mx-auto px-4 py-8 sm:py-12">
+        <Mascot state={numericValue && numericValue > 0 ? "success" : "idle"} />
           <div className="text-center">
             <h1 className="text-2xl sm:text-3xl font-bold mb-3">
               📐 坪・面積変換ツール
@@ -435,6 +438,7 @@ export default function TsuboConverterClient({ faq }: Props) {
           <p className="mt-1">Tsubo to Square Feet / Acres / Square Meters Converter — Free, No Registration Required</p>
         </div>
 
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

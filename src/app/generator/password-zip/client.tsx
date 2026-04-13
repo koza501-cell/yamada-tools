@@ -3,6 +3,8 @@
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface UploadedFile {
   id: string;
@@ -12,6 +14,9 @@ interface UploadedFile {
 }
 
 export default function PasswordZipClient() {
+  const { triggerSuccess } = usePricingContext();
+
+
   const [mounted, setMounted] = useState(false);
   const [mascotState, setMascotState] = useState<MascotState>("idle");
   const [mascotMessage, setMascotMessage] = useState("ファイルをドロップしてね！");
@@ -133,7 +138,8 @@ export default function PasswordZipClient() {
       a.click();
       URL.revokeObjectURL(url);
 
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('password-zip');;
       setMascotMessage("ZIP作成完了！");
 
       // Show password reminder
@@ -159,15 +165,7 @@ export default function PasswordZipClient() {
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-2xl mx-auto px-4">
-        <nav className="mb-6 text-sm">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li>
-            <li>/</li>
-            <li><Link href="/generator" className="hover:text-kon">計算・生成</Link></li>
-            <li>/</li>
-            <li className="text-kon font-medium">パスワード付きZIP</li>
-          </ol>
-        </nav>
+
 
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">🗜️</div>
@@ -323,6 +321,7 @@ export default function PasswordZipClient() {
         <div className="mt-8 text-center">
           <Link href="/generator" className="text-kon hover:text-ai">← 計算・生成ツール一覧に戻る</Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

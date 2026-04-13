@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "消費税8%と10%の計算方法【軽減税率対応】｜山田ツール",
+  title: "消費税8%と10%の計算方法【軽減税率対応】",
   description: "消費税8%（軽減税率）と10%の計算を瞬時に。税込・税抜価格の変換、内税・外税計算も簡単。",
   keywords: ["消費税計算 8% 10%", "軽減税率 計算", "消費税 8パーセント", "税込 税抜 計算"],
   alternates: {

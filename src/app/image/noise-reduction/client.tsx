@@ -5,6 +5,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import ShareButtons from "@/components/common/ShareButtons";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ { question: string; answer: string; }
 interface SeoContent { intro: string; useCases?: { title: string; desc: string }[]; tips?: string; }
@@ -158,7 +159,10 @@ function unsharpMask(original: ImageData, blurRadius: number, amount: number): I
 
 type FilterMode = "smart" | "strong" | "median";
 
-export default function NoiseReductionClient({ faq, seoContent }: Props) {
+export default function NoiseReductionClient({
+ faq, seoContent }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const originalDataRef = useRef<ImageData | null>(null);
   const processedDataRef = useRef<ImageData | null>(null);
@@ -331,7 +335,8 @@ export default function NoiseReductionClient({ faq, seoContent }: Props) {
     setProgressMsg("");
     setProcessing(false);
     setCompareMode(true);
-    setMascotState("success");
+    setMascotState("success")
+      triggerSuccess('noise-reduction');;
     setMascotMessage("ノイズ除去完了！⇔スライダーで比較してね！");
   }, [strength, filterMode, passes, sharpen]);
 
@@ -347,7 +352,8 @@ export default function NoiseReductionClient({ faq, seoContent }: Props) {
         oc.getContext("2d")!.drawImage(img, 0, 0);
         originalDataRef.current = oc.getContext("2d")!.getImageData(0, 0, img.width, img.height);
         setImgW(img.width); setImgH(img.height); setImgEl(img);
-        setMascotState("success");
+        setMascotState("success")
+      triggerSuccess('noise-reduction');;
         setMascotMessage("画像を読み込みました！設定して「実行」を押してね！");
       };
       img.src = reader.result as string;
@@ -370,7 +376,8 @@ export default function NoiseReductionClient({ faq, seoContent }: Props) {
     a.href = ec.toDataURL("image/png");
     a.download = file.name.replace(/\.[^/.]+$/, "") + "_denoised_yamada-tools.png";
     a.click();
-    setIsComplete(true); setMascotState("success");
+    setIsComplete(true); setMascotState("success")
+      triggerSuccess('noise-reduction');;
     setMascotMessage("ダウンロード完了！友達にもシェアしてね♪");
   };
 
@@ -388,15 +395,7 @@ export default function NoiseReductionClient({ faq, seoContent }: Props) {
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4">
-        <nav className="mb-6 text-sm">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li>
-            <li>/</li>
-            <li><Link href="/image" className="hover:text-kon">画像ツール</Link></li>
-            <li>/</li>
-            <li className="text-kon font-medium">ノイズ除去</li>
-          </ol>
-        </nav>
+
 
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">🔇</div>

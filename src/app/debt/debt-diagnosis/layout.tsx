@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】債務整理 診断ツール｜5つの質問で最適な方法を診断 任意整理・個人再生・自己破産 | 山田ツール",
+  title: "【無料】債務整理 診断ツール｜5つの質問で最適な方法を診断 任意整理・個人再生・自己破産",
   description: "5つの質問に答えるだけで任意整理・個人再生・自己破産の最適な方法を診断。月々の返済削減額の目安と今すぐできる次のステップも表示。登録不要・完全無料。",
   keywords: [
     "債務整理 診断",
@@ -19,16 +19,17 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/debt/debt-diagnosis",
   },
   openGraph: {
-    title: "【無料】債務整理 診断ツール｜5つの質問で最適な方法を診断 | 山田ツール",
+    title: "【無料】債務整理 診断ツール｜5つの質問で最適な方法を診断",
     description: "5つの質問に答えるだけで任意整理・個人再生・自己破産の最適な方法を診断。月々の返済削減額の目安と次のステップも表示。登録不要・完全無料。",
     url: "https://yamada-tools.jp/debt/debt-diagnosis",
-    siteName: "yamada-tools.jp",
+    siteName: "山田ツール",
     locale: "ja_JP",
     type: "website",
+    images: [{ url: "https://api.easynihon.com/api/og?site=yamada&title=%E3%80%90%E7%84%A1%E6%96%99%E3%80%91%E5%82%B5%E5%8B%99%E6%95%B4%E7%90%86%20%E8%A8%BA%E6%96%AD%E3%83%84%E3%83%BC%E3%83%AB%EF%BD%9C5%E3%81%A4%E3%81%AE%E8%B3%AA%E5%95%8F%E3%81%A7%E6%9C%80%E9%81%A9%E3%81%AA%E6%96%B9%E6%B3%95%E3%82%92%E8%A8%BA%E6%96%AD" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】債務整理 診断ツール｜5つの質問で最適な方法を診断 | 山田ツール",
+    title: "【無料】債務整理 診断ツール｜5つの質問で最適な方法を診断",
     description: "5つの質問に答えるだけで任意整理・個人再生・自己破産の最適な方法を診断。登録不要・完全無料。",
   },
 };

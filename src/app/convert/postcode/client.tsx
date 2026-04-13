@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ {
   question: string;
@@ -24,7 +26,10 @@ interface AddressResult {
   kana3: string;
 }
 
-export default function PostcodeClient({ faq }: Props) {
+export default function PostcodeClient({
+ faq }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [postcode, setPostcode] = useState("");
   const [results, setResults] = useState<AddressResult[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -76,7 +81,8 @@ export default function PostcodeClient({ faq }: Props) {
 
       if (data.status === 200 && data.results) {
         setResults(data.results);
-        setMascotState("success");
+        setMascotState("success")
+      triggerSuccess('postcode');;
         setMascotMessage(`${data.results.length}件見つかったよ！`);
         
         // Add to history
@@ -142,17 +148,6 @@ export default function PostcodeClient({ faq }: Props) {
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4">
-        {/* Breadcrumb */}
-        <nav className="mb-6 text-sm" aria-label="パンくずリスト">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li>
-            <li>/</li>
-            <li><Link href="/convert" className="hover:text-kon">変換ツール</Link></li>
-            <li>/</li>
-            <li className="text-kon font-medium">郵便番号検索</li>
-          </ol>
-        </nav>
-
         {/* Header */}
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">〒</div>
@@ -351,6 +346,7 @@ export default function PostcodeClient({ faq }: Props) {
             ← 変換ツール一覧に戻る
           </Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

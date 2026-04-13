@@ -5,6 +5,8 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import RelatedTools, { relatedToolSets } from "@/components/common/RelatedTools";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 const ENVELOPE_SIZES = {
   naga3:  { name: "長形3号",    width: 120, height: 235, type: "naga", postal: "teikei" },
@@ -289,10 +291,13 @@ const QR_KEY = "yamada_envelope_qr";
 const PLAN_KEY = "yamada_user_plan";
 const UPGRADE_DISMISS_KEY = "yamada_upgrade_dismissed";
 
-export default function EnvelopePrintClient({ faq, seoContent }: EnvelopePrintClientProps) {
+export default function EnvelopePrintClient({
+ faq, seoContent }: EnvelopePrintClientProps) {
+  const { triggerSuccess } = usePricingContext();
+
   const [mounted, setMounted] = useState(false);
   const [mascotState, setMascotState] = useState<MascotState>("idle");
-  const [mascotMessage, setMascotMessage] = useState("封筒の宛名を作成しよう！");
+  const [mascotMessage, setMascotMessage] = useState("封筒の宛名情報をご入力ください。");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [envelopeSize, setEnvelopeSize] = useState<EnvelopeSize>("naga3");
   const [writingDirection, setWritingDirection] = useState<WritingDirection>("vertical");
@@ -337,7 +342,8 @@ export default function EnvelopePrintClient({ faq, seoContent }: EnvelopePrintCl
   // Plan
   const [userPlan, setUserPlan] = useState<string>("free");
   // Logo (PRO)
-  const [logoData, setLogoData] = useState<string | null>(null);
+  const [logos, setLogos] = useState<string[]>([]);
+  const [activeLogoIdx, setActiveLogoIdx] = useState(0);
   const [logoPosition, setLogoPosition] = useState<"top-left"|"top-right"|"above-sender"|"left-sender">("top-right");
   const [logoSizeMm, setLogoSizeMm] = useState(20);
   const [logoOpacity, setLogoOpacity] = useState(100);
@@ -389,7 +395,7 @@ export default function EnvelopePrintClient({ faq, seoContent }: EnvelopePrintCl
       }
     } catch {}
     setUserPlan(getUserPlan());
-    try { const logo = localStorage.getItem(LOGO_KEY); if (logo) setLogoData(logo); } catch {}
+    try { const logoRaw = localStorage.getItem(LOGO_KEY); if (logoRaw) { try { const parsed = JSON.parse(logoRaw); setLogos(Array.isArray(parsed) ? parsed : [parsed]); } catch { setLogos([logoRaw]); } } } catch {}
     try { const qr = localStorage.getItem(QR_KEY); if (qr) setQrContent(qr); } catch {}
   }, []);
 
@@ -402,7 +408,7 @@ export default function EnvelopePrintClient({ faq, seoContent }: EnvelopePrintCl
     }
   }, [envelopeSize, mounted]);
 
-  useEffect(() => { if (mounted) renderPreview(); }, [mounted, envelopeSize, writingDirection, showPostalBox, showSender, recipient, sender, stamp, currentBulkIndex, bulkAddresses, settings, activeTab, logoPosition, logoSizeMm, logoOpacity, showBarcode, qrPosition, qrSizeMm, userPlan, logoReady, qrReady]);
+  useEffect(() => { if (mounted) renderPreview(); }, [mounted, envelopeSize, writingDirection, showPostalBox, showSender, recipient, sender, stamp, currentBulkIndex, bulkAddresses, settings, activeTab, logoPosition, logoSizeMm, logoOpacity, showBarcode, qrPosition, qrSizeMm, userPlan, logoReady, qrReady, activeLogoIdx]);
 
   // Ctrl+Shift+P dev plan toggle
   useEffect(() => {
@@ -424,11 +430,12 @@ export default function EnvelopePrintClient({ faq, seoContent }: EnvelopePrintCl
 
   // Logo image loading
   useEffect(() => {
-    if (!logoData) { logoImgRef.current = null; setLogoReady(r => r + 1); return; }
+    const activeLogo = logos[activeLogoIdx] ?? null;
+    if (!activeLogo) { logoImgRef.current = null; setLogoReady(r => r + 1); return; }
     const img = new Image();
     img.onload = () => { logoImgRef.current = img; setLogoReady(r => r + 1); };
-    img.src = logoData;
-  }, [logoData]);
+    img.src = activeLogo;
+  }, [logos, activeLogoIdx]);
 
   // QR code generation
   useEffect(() => {
@@ -485,7 +492,8 @@ export default function EnvelopePrintClient({ faq, seoContent }: EnvelopePrintCl
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ sender }));
       localStorage.setItem(`${STORAGE_KEY}-${envelopeSize}`, JSON.stringify(settings));
-      setMascotState("success"); setMascotMessage("設定を保存しました！");
+      setMascotState("success")
+      triggerSuccess('envelope-print');; setMascotMessage("設定を保存しました！");
     } catch { setMascotState("error"); setMascotMessage("保存に失敗"); }
   };
 
@@ -641,7 +649,8 @@ export default function EnvelopePrintClient({ faq, seoContent }: EnvelopePrintCl
     const limit = getPlanLimits(userPlan).csvRows;
     const addrs = allAddrs.slice(0, limit);
     setBulkAddresses(addrs); setCurrentBulkIndex(0); setRecipient(addrs[0]);
-    setMascotState("success"); setMascotMessage(`${addrs.length}件読込完了！`);
+    setMascotState("success")
+      triggerSuccess('envelope-print');; setMascotMessage(`${addrs.length}件読込完了！`);
     setCsvLimitBanner(totalRows > limit ? totalRows : null);
   };
 
@@ -1004,7 +1013,8 @@ html,body{width:${env.width}mm;height:${env.height}mm;overflow:hidden}
 img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:high-quality}</style>
 </head><body><img src="${dataUrl}" alt="封筒プレビュー"/><script>window.onload=function(){window.print();window.onafterprint=function(){window.close()}};</script></body></html>`);
       pw.document.close();
-      setMascotState("success"); setMascotMessage("300DPI印刷準備完了！");
+      setMascotState("success")
+      triggerSuccess('envelope-print');; setMascotMessage("300DPI印刷準備完了！");
     } else { setMascotState("error"); setMascotMessage("ポップアップブロック"); }
   };
 
@@ -1032,7 +1042,8 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
 <button onclick="window.print()">印刷 / PDF保存</button></div>
 <div class="preview"><div class="env"><img src="${dataUrl}" alt="封筒プレビュー"/></div></div></body></html>`);
       pw.document.close();
-      setMascotState("success"); setMascotMessage("300DPI PDF完成！");
+      setMascotState("success")
+      triggerSuccess('envelope-print');; setMascotMessage("300DPI PDF完成！");
     } else { setMascotState("error"); setMascotMessage("ポップアップブロック"); }
   };
 
@@ -1049,7 +1060,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-2 text-xl font-bold text-gray-800 hover:text-blue-600 transition-colors">
-              <span className="text-2xl">🔧</span><span>Yamada Tools</span>
+              <span className="text-2xl">🔧</span><span>山田ツール</span>
             </Link>
             <Link href="/generator" className="text-sm text-gray-600 hover:text-gray-900">生成ツール一覧</Link>
           </div>
@@ -1433,7 +1444,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                 </div>
               )}
 
-              {/* ── PRO: Company Logo ── */}
+                            {/* ── PRO: Company Logo ── */}
               <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
                 <button onClick={() => setLogoSectionOpen(o => !o)}
                   className="w-full flex items-center justify-between px-6 py-4 hover:bg-gray-50 transition-colors">
@@ -1441,6 +1452,9 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                     <span>🏢</span> 会社ロゴ
                     {getPlanLimits(userPlan).logos === 0 && (
                       <span className="ml-1 text-xs font-bold bg-amber-400 text-white px-2 py-0.5 rounded-full">PRO</span>
+                    )}
+                    {getPlanLimits(userPlan).logos > 0 && logos.length > 0 && (
+                      <span className="text-sm font-normal text-gray-500 ml-1">({logos.length}/{getPlanLimits(userPlan).logos}件)</span>
                     )}
                   </span>
                   <span className={`text-gray-400 transition-transform duration-200 ${logoSectionOpen ? "rotate-180" : ""}`}>▼</span>
@@ -1461,59 +1475,69 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                       </div>
                     ) : (
                       <div className="mt-4 space-y-4">
-                        {/* Upload area */}
-                        <div className={`border-2 border-dashed rounded-lg p-4 text-center transition-colors ${logoData ? 'border-green-300 bg-green-50' : 'border-gray-300 hover:border-blue-400'}`}>
-                          {logoData ? (
-                            <div className="flex items-center gap-3 justify-center">
-                              <img src={logoData} alt="ロゴ" className="max-h-16 max-w-24 object-contain rounded"/>
-                              <button onClick={() => { setLogoData(null); try { localStorage.removeItem(LOGO_KEY); } catch {} }}
-                                className="text-xs text-red-500 hover:underline">削除</button>
-                            </div>
-                          ) : (
-                            <>
-                              <p className="text-sm text-gray-500 dark:text-gray-400">📁 画像をドラッグ＆ドロップ</p>
-                              <p className="text-xs text-gray-400 mt-1">PNG / JPG / SVG 対応（500KB以下推奨）</p>
-                            </>
-                          )}
-                          <input type="file" accept="image/png,image/jpeg,image/svg+xml" className="hidden" id="logo-file-input"
-                            onChange={(e) => {
-                              const file = e.target.files?.[0]; if (!file) return;
-                              if (file.size > 600 * 1024) { showToast("⚠️ ファイルサイズは500KB以下にしてください"); return; }
-                              const reader = new FileReader();
-                              reader.onload = (ev) => {
-                                const data = ev.target?.result as string;
-                                setLogoData(data);
-                                try { localStorage.setItem(LOGO_KEY, data); } catch {}
-                              };
-                              reader.readAsDataURL(file);
-                              e.target.value = "";
-                            }}/>
-                          <label htmlFor="logo-file-input" className="mt-2 inline-block px-3 py-1.5 bg-white border border-gray-300 rounded text-xs text-gray-700 cursor-pointer hover:bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-600">
-                            {logoData ? "画像を変更" : "ファイルを選択"}
-                          </label>
-                        </div>
-                        {/* Position */}
-                        <div>
-                          <label className="block text-xs text-gray-500 mb-2">配置位置</label>
-                          <div className="grid grid-cols-2 gap-2">
-                            {([["top-left","左上（横書き）"],["top-right","右上"],["above-sender","差出人の上"],["left-sender","差出人の左（縦書き）"]] as const).map(([v, label]) => (
-                              <label key={v} className={`flex items-center gap-2 text-xs cursor-pointer p-2 rounded-lg border transition-colors ${logoPosition === v ? 'border-blue-400 bg-blue-50' : 'border-gray-200 hover:bg-gray-50'}`}>
-                                <input type="radio" name="logoPos" value={v} checked={logoPosition === v} onChange={() => setLogoPosition(v)} className="sr-only"/>
-                                {label}
-                              </label>
+                        {logos.length > 0 && (
+                          <div className="flex flex-wrap gap-2">
+                            {logos.map((logo, i) => (
+                              <div key={i} onClick={() => setActiveLogoIdx(i)}
+                                className={`relative cursor-pointer rounded-lg border-2 p-1 transition-colors ${activeLogoIdx === i ? 'border-blue-400 bg-blue-50' : 'border-gray-200 hover:border-gray-300'}`}>
+                                <img src={logo} alt={`ロゴ${i+1}`} className="w-14 h-14 object-contain rounded"/>
+                                <button
+                                  onClick={(e) => { e.stopPropagation(); const nl = logos.filter((_,idx) => idx !== i); setLogos(nl); if (activeLogoIdx >= nl.length) setActiveLogoIdx(Math.max(0, nl.length-1)); try { localStorage.setItem(LOGO_KEY, JSON.stringify(nl)); } catch {} }}
+                                  className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white rounded-full text-xs flex items-center justify-center hover:bg-red-600">×</button>
+                                {activeLogoIdx === i && <span className="absolute bottom-0 left-0 right-0 text-center text-xs bg-blue-400 text-white rounded-b leading-4">使用中</span>}
+                              </div>
                             ))}
                           </div>
-                        </div>
-                        {/* Size */}
-                        <div>
-                          <label className="block text-xs text-gray-500 mb-1">サイズ: {logoSizeMm}mm</label>
-                          <input type="range" min={10} max={40} value={logoSizeMm} onChange={e => setLogoSizeMm(Number(e.target.value))} className="w-full accent-blue-600"/>
-                        </div>
-                        {/* Opacity */}
-                        <div>
-                          <label className="block text-xs text-gray-500 mb-1">不透明度: {logoOpacity}%</label>
-                          <input type="range" min={20} max={100} value={logoOpacity} onChange={e => setLogoOpacity(Number(e.target.value))} className="w-full accent-blue-600"/>
-                        </div>
+                        )}
+                        {logos.length < getPlanLimits(userPlan).logos ? (
+                          <div className="border-2 border-dashed rounded-lg p-4 text-center transition-colors border-gray-300 hover:border-blue-400">
+                            <p className="text-sm text-gray-500">📁 画像をドラッグ＆ドロップ</p>
+                            <p className="text-xs text-gray-400 mt-1">PNG / JPG / SVG 対応（500KB以下推奨）</p>
+                            <input type="file" accept="image/png,image/jpeg,image/svg+xml" className="hidden" id="logo-file-input"
+                              onChange={(e) => {
+                                const file = e.target.files?.[0]; if (!file) return;
+                                if (file.size > 600 * 1024) { showToast("⚠️ ファイルサイズは500KB以下にしてください"); return; }
+                                const reader = new FileReader();
+                                reader.onload = (ev) => {
+                                  const data = ev.target?.result as string;
+                                  const nl = [...logos, data];
+                                  setLogos(nl);
+                                  setActiveLogoIdx(nl.length - 1);
+                                  try { localStorage.setItem(LOGO_KEY, JSON.stringify(nl)); } catch {}
+                                };
+                                reader.readAsDataURL(file);
+                                e.target.value = "";
+                              }}/>
+                            <label htmlFor="logo-file-input" className="mt-2 inline-block px-3 py-1.5 bg-white border border-gray-300 rounded text-xs text-gray-700 cursor-pointer hover:bg-gray-50">
+                              ファイルを選択
+                            </label>
+                          </div>
+                        ) : (
+                          <p className="text-xs text-gray-500 text-center">ロゴ上限({getPlanLimits(userPlan).logos}件)に達しています</p>
+                        )}
+                        {logos.length > 0 && (
+                          <>
+                            <div>
+                              <label className="block text-xs text-gray-500 mb-2">配置位置</label>
+                              <div className="grid grid-cols-2 gap-2">
+                                {([["top-left","左上（横書き）"],["top-right","右上"],["above-sender","差出人の上"],["left-sender","差出人の左（縦書き）"]] as const).map(([v, label]) => (
+                                  <label key={v} className={`flex items-center gap-2 text-xs cursor-pointer p-2 rounded-lg border transition-colors ${logoPosition === v ? 'border-blue-400 bg-blue-50' : 'border-gray-200 hover:bg-gray-50'}`}>
+                                    <input type="radio" name="logoPos" value={v} checked={logoPosition === v} onChange={() => setLogoPosition(v)} className="sr-only"/>
+                                    {label}
+                                  </label>
+                                ))}
+                              </div>
+                            </div>
+                            <div>
+                              <label className="block text-xs text-gray-500 mb-1">サイズ: {logoSizeMm}mm</label>
+                              <input type="range" min={10} max={40} value={logoSizeMm} onChange={e => setLogoSizeMm(Number(e.target.value))} className="w-full accent-blue-600"/>
+                            </div>
+                            <div>
+                              <label className="block text-xs text-gray-500 mb-1">不透明度: {logoOpacity}%</label>
+                              <input type="range" min={20} max={100} value={logoOpacity} onChange={e => setLogoOpacity(Number(e.target.value))} className="w-full accent-blue-600"/>
+                            </div>
+                          </>
+                        )}
                       </div>
                     )}
                   </div>

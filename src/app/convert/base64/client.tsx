@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ {
   question: string;
@@ -13,7 +15,10 @@ interface Props {
   faq: FAQ[];
 }
 
-export default function Base64Client({ faq }: Props) {
+export default function Base64Client({
+ faq }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [mode, setMode] = useState<"encode" | "decode">("encode");
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
@@ -31,7 +36,8 @@ export default function Base64Client({ faq }: Props) {
       const encoded = btoa(unescape(encodeURIComponent(input)));
       setOutput(encoded);
       setError("");
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('base64');;
       setMascotMessage("エンコード完了！");
     } catch {
       setError("エンコードに失敗しました");
@@ -50,7 +56,8 @@ export default function Base64Client({ faq }: Props) {
       const decoded = decodeURIComponent(escape(atob(input.trim())));
       setOutput(decoded);
       setError("");
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('base64');;
       setMascotMessage("デコード完了！");
     } catch {
       setError("無効なBase64文字列です");
@@ -86,15 +93,7 @@ export default function Base64Client({ faq }: Props) {
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4">
-        <nav className="mb-6 text-sm">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li>
-            <li>/</li>
-            <li><Link href="/convert" className="hover:text-kon">変換ツール</Link></li>
-            <li>/</li>
-            <li className="text-kon font-medium">Base64変換</li>
-          </ol>
-        </nav>
+
 
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">🔐</div>
@@ -208,6 +207,7 @@ export default function Base64Client({ faq }: Props) {
         <div className="mt-8 text-center">
           <Link href="/convert" className="text-kon hover:text-ai">← 変換ツール一覧に戻る</Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

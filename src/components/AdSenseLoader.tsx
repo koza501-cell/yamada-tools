@@ -1,35 +1,30 @@
 'use client';
 
-import Script from 'next/script';
+import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { getAdPolicy } from '@/lib/ad-config';
-
-// TODO: When premium/corporate plan is implemented,
-// check user subscription status here
-const isPremiumUser = false; // Will come from auth context later
+import { useAuth } from '@/contexts/AuthContext';
 
 export default function AdSenseLoader() {
   const pathname = usePathname();
+  const { isPro } = useAuth();
 
-  // No ads for premium/paid users
-  if (isPremiumUser) return null;
+  const isExcluded =
+    pathname === '/' ||
+    pathname === '/pricing' ||
+    pathname.startsWith('/about') ||
+    pathname.startsWith('/auth');
 
-  // No ads on the pricing page (avoid conflict with upgrade messaging)
-  if (pathname === '/pricing') return null;
+  useEffect(() => {
+    if (isExcluded || isPro) return;
 
-  const policy = getAdPolicy(pathname);
+    if (document.querySelector('script[src*="adsbygoogle"]')) return;
 
-  // 'no-ads' routes: do not load the AdSense script at all
-  if (policy === 'no-ads') return null;
+    const script = document.createElement('script');
+    script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2272972805493752';
+    script.async = true;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+  }, [isExcluded, isPro, pathname]);
 
-  // 'minimal' and 'default' routes: load AdSense script normally.
-  // Ad density on 'minimal' pages is controlled via .ad-free-zone CSS rules in globals.css.
-  return (
-    <Script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2272972805493752"
-      crossOrigin="anonymous"
-      strategy="afterInteractive"
-    />
-  );
+  return null;
 }

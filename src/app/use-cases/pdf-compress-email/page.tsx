@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "メール添付用にPDFを圧縮する方法【無料・簡単】｜山田ツール",
+  title: "メール添付用にPDFを圧縮する方法【無料・簡単】",
   description: "メール添付できないサイズのPDFを圧縮。10MB→2MB以下に縮小。登録不要・無料で今すぐ使えます。",
   keywords: ["PDF圧縮 メール", "PDF 添付 サイズ", "PDF 軽くする", "メール 添付 容量オーバー"],
   alternates: {

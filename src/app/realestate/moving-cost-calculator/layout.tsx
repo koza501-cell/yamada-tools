@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】引越し費用 見積もり計算機｜距離・荷物・時期から引越し料金を自動計算 | 山田ツール",
+  title: "【無料】引越し費用 見積もり計算機｜距離・荷物・時期から引越し料金を自動計算",
   description: "引越し費用を距離・荷物量・時期・オプションから自動計算。繁忙期・閑散期の料金差、節約ポイントも表示。単身〜ファミリーまで対応。複数社比較で最安値を見つけましょう。",
   keywords: [
     "引越し費用 計算",
@@ -17,16 +17,17 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/realestate/moving-cost-calculator",
   },
   openGraph: {
-    title: "【無料】引越し費用 見積もり計算機｜距離・荷物・時期から引越し料金を自動計算 | 山田ツール",
+    title: "【無料】引越し費用 見積もり計算機｜距離・荷物・時期から引越し料金を自動計算",
     description: "引越し費用を距離・荷物量・時期・オプションから自動計算。繁忙期・閑散期の料金差、節約ポイントも表示。単身〜ファミリーまで対応。",
     url: "https://yamada-tools.jp/realestate/moving-cost-calculator",
-    siteName: "yamada-tools.jp",
+    siteName: "山田ツール",
     locale: "ja_JP",
     type: "website",
+    images: [{ url: "https://api.easynihon.com/api/og?site=yamada&title=%E3%80%90%E7%84%A1%E6%96%99%E3%80%91%E5%BC%95%E8%B6%8A%E3%81%97%E8%B2%BB%E7%94%A8%20%E8%A6%8B%E7%A9%8D%E3%82%82%E3%82%8A%E8%A8%88%E7%AE%97%E6%A9%9F%EF%BD%9C%E8%B7%9D%E9%9B%A2%E3%83%BB%E8%8D%B7%E7%89%A9%E3%83%BB%E6%99%82%E6%9C%9F%E3%81%8B%E3%82%89%E5%BC%95%E8%B6%8A%E3%81%97%E6%96%99%E9%87%91%E3%82%92%E8%87%AA%E5%8B%95%E8%A8%88%E7%AE%97" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】引越し費用 見積もり計算機｜距離・荷物・時期から引越し料金を自動計算 | 山田ツール",
+    title: "【無料】引越し費用 見積もり計算機｜距離・荷物・時期から引越し料金を自動計算",
     description: "引越し費用を距離・荷物量・時期・オプションから自動計算。繁忙期・閑散期の料金差、節約ポイントも表示。単身〜ファミリーまで対応。",
   },
 };

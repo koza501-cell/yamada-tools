@@ -1,3 +1,4 @@
+import { Noto_Sans_JP } from "next/font/google";
 import type { Metadata, Viewport } from "next";
 import { headers } from "next/headers";
 import "./globals.css";
@@ -11,7 +12,17 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import { ThemeProvider } from "@/components/common/ThemeProvider";
 import GoogleAnalytics from "@/components/common/GoogleAnalytics";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { PricingTriggerProvider } from "@/components/common/PricingTriggerProvider";
 import AdSenseLoader from "@/components/AdSenseLoader";
+import SupportChatbot from "@/components/SupportChatbot";
+import { homepageItemListSchema, homepageFaqSchema } from "./homepage-schemas";
+
+const notoSansJP = Noto_Sans_JP({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  display: "swap",
+  preload: false,
+});
 
 // Base URL for the site
 const siteUrl = "https://yamada-tools.jp";
@@ -26,12 +37,17 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "山田ツール | 日本国内サーバーの無料オンラインツール【安全・安心】",
+    default: "山田ツール｜インボイス・全銀・電子印鑑など133種の無料業務ツール",
     template: "%s | 山田ツール",
   },
   description:
-    "日本国内サーバーで安全に使える89の無料オンラインツール。PDF編集、画像変換、文書作成など、登録不要・完全無料でご利用いただけます。",
+    "日本国内サーバーで安全に使える無料オンラインツール。インボイス制度・全銀フォーマット・電子印鑑など日本のビジネスに特化。PDF編集・書類作成・画像変換など、登録不要・完全無料。",
   keywords: [
+    "インボイス制度",
+    "全銀フォーマット",
+    "電子印鑑",
+    "確定申告",
+    "宛名印刷",
     "オンラインツール",
     "無料",
     "PDF編集",
@@ -72,7 +88,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     title: "山田ツール | 日本国内サーバーの無料オンラインツール",
     description:
-      "日本国内サーバーで安全に使える89の無料オンラインツール。PDF編集、画像変換、文書作成など、登録不要・完全無料。",
+      "日本国内サーバーで安全に使える無料オンラインツール。インボイス制度・全銀・電子印鑑など日本特化。登録不要・完全無料。",
     siteName: "山田ツール",
     images: [
       {
@@ -88,7 +104,7 @@ export const metadata: Metadata = {
     images: ["https://yamada-tools.jp/og-image.png"],
     title: "山田ツール | 日本国内サーバーの無料オンラインツール",
     description:
-      "日本国内サーバーで安全に使える89の無料オンラインツール。PDF編集、画像変換、文書作成など、登録不要・完全無料。",
+      "日本国内サーバーで安全に使える無料オンラインツール。インボイス制度・全銀・電子印鑑など日本特化。登録不要・完全無料。",
   },
   alternates: {
     canonical: siteUrl,
@@ -150,7 +166,7 @@ const websiteSchema = {
   name: "山田ツール",
   url: siteUrl,
   description:
-    "日本国内サーバーで安全に使える無料オンラインツール集。PDF編集、画像変換、文書作成など89種類以上のツールを提供。",
+    "日本国内サーバーで安全に使える無料オンラインツール集。PDF編集、画像変換、文書作成など133種類以上のツールを提供。",
   publisher: {
     "@id": `${siteUrl}/#organization`,
   },
@@ -173,6 +189,8 @@ export default async function RootLayout({
   const headersList = await headers();
   const host = headersList.get('host') ?? '';
   const isProduction = !host.includes('staging');
+  const pathname = headersList.get('x-pathname') ?? '/';
+  const isHomepage = pathname === '/';
 
   return (
     <html lang="ja" suppressHydrationWarning>
@@ -186,10 +204,24 @@ export default async function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
+        <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+        {isHomepage && (
+          <>
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageItemListSchema) }}
+            />
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageFaqSchema) }}
+            />
+          </>
+        )}
       </head>
-      <body className="antialiased min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100" style={{ fontFamily: "Hiragino Sans, Hiragino Kaku Gothic ProN, Noto Sans JP, Meiryo, sans-serif" }}>
+      <body className={`antialiased min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 ${notoSansJP.className}`}>
         <GoogleAnalytics />
         <AuthProvider>
+        <PricingTriggerProvider>
         <ThemeProvider>
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:px-4 focus:py-2 focus:bg-kon focus:text-white focus:rounded-md focus:top-2 focus:left-2">メインコンテンツへスキップ</a>
         <Header />
@@ -200,11 +232,11 @@ export default async function RootLayout({
         <FloatingActions />
         <FavoritePrompt />
         <PWAInstallPrompt />
+        <AdSenseLoader />
+        <SupportChatbot />
         </ThemeProvider>
+        </PricingTriggerProvider>
         </AuthProvider>
-        {isProduction && (
-          <AdSenseLoader />
-        )}
       </body>
     </html>
   );

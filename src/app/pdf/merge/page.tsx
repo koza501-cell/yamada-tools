@@ -3,6 +3,7 @@ import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
 import MergeClient from "./client";
 import { toolSchemas } from "@/data/toolSchemas";
+import RelatedTools from "@/components/common/RelatedTools";
 
 const tool = getToolById("merge")!;
 
@@ -87,6 +88,10 @@ export default function MergePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <MergeClient faq={faq} seoContent={seoContent} />
+      <div className="max-w-4xl mx-auto px-4">
+        <RelatedTools currentTool={tool} maxItems={6} />
+      </div>
+
     </>
   );
 }

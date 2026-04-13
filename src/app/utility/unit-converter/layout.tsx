@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】単位変換 計算機｜坪・畳・尺・合・升など日本の単位に完全対応 | 山田ツール",
+  title: "【無料】単位変換 計算機｜坪・畳・尺・合・升など日本の単位に完全対応",
   description: "坪・畳・尺・合・升など日本独自の単位に完全対応。面積・長さ・重さ・体積・温度・データ容量をリアルタイム変換。地域別畳サイズ対応。登録不要・完全無料。",
   keywords: [
     "単位変換", "坪 平米 変換", "坪 畳 変換", "尺 センチ 変換",
@@ -13,16 +13,17 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/utility/unit-converter",
   },
   openGraph: {
-    title: "【無料】単位変換 計算機｜坪・畳・尺・合・升など日本の単位に完全対応 | 山田ツール",
+    title: "【無料】単位変換 計算機｜坪・畳・尺・合・升など日本の単位に完全対応",
     description: "坪・畳・尺・合・升など日本独自の単位に完全対応。面積・長さ・重さ・体積・温度・データ容量をリアルタイム変換。",
     url: "https://yamada-tools.jp/utility/unit-converter",
-    siteName: "yamada-tools.jp",
+    siteName: "山田ツール",
     locale: "ja_JP",
     type: "website",
+    images: [{ url: "https://api.easynihon.com/api/og?site=yamada&title=%E3%80%90%E7%84%A1%E6%96%99%E3%80%91%E5%8D%98%E4%BD%8D%E5%A4%89%E6%8F%9B%20%E8%A8%88%E7%AE%97%E6%A9%9F%EF%BD%9C%E5%9D%AA%E3%83%BB%E7%95%B3%E3%83%BB%E5%B0%BA%E3%83%BB%E5%90%88%E3%83%BB%E5%8D%87%E3%81%AA%E3%81%A9%E6%97%A5%E6%9C%AC%E3%81%AE%E5%8D%98%E4%BD%8D%E3%81%AB%E5%AE%8C%E5%85%A8%E5%AF%BE%E5%BF%9C" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】単位変換 計算機｜坪・畳・尺・合・升など日本の単位に完全対応 | 山田ツール",
+    title: "【無料】単位変換 計算機｜坪・畳・尺・合・升など日本の単位に完全対応",
     description: "坪・畳・尺・合・升など日本独自の単位に完全対応。リアルタイム変換・地域別畳サイズ対応。",
   },
 };

@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】消費税 簡易課税 判定・比較ツール｜本則vs簡易vs2割特例 2026年版 | 山田ツール",
+  title: "【無料】消費税 簡易課税 判定・比較ツール｜本則vs簡易vs2割特例 2026年版",
   description: "消費税の課税方式を3パターン比較。本則課税・簡易課税・2割特例のどれが有利か自動判定。業種別みなし仕入率対応、インボイス登録の影響も計算。2026年最新税制対応。登録不要・完全無料。",
   keywords: [
     "消費税 簡易課税 計算",
@@ -21,10 +21,11 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ja_JP",
     siteName: "山田ツール",
+    images: [{ url: "https://api.easynihon.com/api/og?site=yamada&title=%E3%80%90%E7%84%A1%E6%96%99%E3%80%91%E6%B6%88%E8%B2%BB%E7%A8%8E%20%E7%B0%A1%E6%98%93%E8%AA%B2%E7%A8%8E%20%E5%88%A4%E5%AE%9A%E3%83%BB%E6%AF%94%E8%BC%83%E3%83%84%E3%83%BC%E3%83%AB%EF%BD%9C%E6%9C%AC%E5%89%87vs%E7%B0%A1%E6%98%93vs2%E5%89%B2%E7%89%B9%E4%BE%8B%202026%E5%B9%B4%E7%89%88" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】消費税 簡易課税 判定・比較ツール | 山田ツール",
+    title: "【無料】消費税 簡易課税 判定・比較ツール",
     description: "本則vs簡易vs2割特例を一括比較。2026年最新税制対応。登録不要・無料。",
   },
   alternates: {

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
 import NoiseReductionClient from "./client";
+import RelatedTools from "@/components/common/RelatedTools";
 
 const tool = getToolById("noise-reduction")!;
 
@@ -39,6 +40,10 @@ export default function Page() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <NoiseReductionClient faq={faq} seoContent={seoContent} />
+      <div className="max-w-4xl mx-auto px-4">
+        <RelatedTools currentTool={tool} maxItems={6} />
+      </div>
+
     </>
   );
 }

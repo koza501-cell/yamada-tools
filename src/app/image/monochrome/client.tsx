@@ -2,13 +2,19 @@
 "use client";
 import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
+import Mascot from "@/components/common/Mascot";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ { question: string; answer: string; }
 interface SeoContent { intro: string; }
 interface Props { faq: FAQ[]; seoContent?: SeoContent; }
 
-export default function MonochromeClient({ faq, seoContent }: Props) {
+export default function MonochromeClient({
+ faq, seoContent }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [image, setImage] = useState<string | null>(null);
+  const [mascotState, setMascotState] = useState("idle");
   const [fileName, setFileName] = useState("");
   const [intensity, setIntensity] = useState(100);
   const [isDragging, setIsDragging] = useState(false);
@@ -18,6 +24,7 @@ export default function MonochromeClient({ faq, seoContent }: Props) {
   const loadImage = (file: File) => {
     if (!file.type.startsWith("image/")) return;
     setFileName(file.name);
+    setMascotState("working");
     const reader = new FileReader();
     reader.onload = (e) => {
       const img = new Image();
@@ -57,6 +64,8 @@ export default function MonochromeClient({ faq, seoContent }: Props) {
 
   const download = () => {
     if (!canvasRef.current) return;
+    setMascotState("success")
+      triggerSuccess('monochrome');;
     const a = document.createElement("a");
     a.download = fileName.replace(/\.[^.]+$/, "") + "_monochrome_yamada-tools.png";
     a.href = canvasRef.current.toDataURL("image/png");
@@ -79,15 +88,7 @@ export default function MonochromeClient({ faq, seoContent }: Props) {
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4">
-        <nav className="mb-6 text-sm">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li>
-            <li>/</li>
-            <li><Link href="/image" className="hover:text-kon">画像ツール</Link></li>
-            <li>/</li>
-            <li className="text-kon font-medium">モノクロ変換</li>
-          </ol>
-        </nav>
+
 
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">⬛</div>
@@ -101,6 +102,7 @@ export default function MonochromeClient({ faq, seoContent }: Props) {
         </header>
 
         <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-6 md:p-8">
+          <Mascot state={mascotState} />
           {!image ? (
             <div
               onDrop={handleDrop}

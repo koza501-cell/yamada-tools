@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 export const metadata: Metadata = {
   title: "Add Text to PDF Free Online | No Registration, No Upload | Yamada Tools",
@@ -81,6 +82,7 @@ export default function EnglishPdfTextPage() {
         ],
       }) }} />
 
+      <LanguageSwitcher jaUrl="/pdf/text-input" enUrl="/en/pdf-text-input" currentLang="en" />
       <div className="max-w-4xl mx-auto px-4 py-12">
         {/* Breadcrumb */}
         <nav className="mb-8 text-sm text-gray-500">

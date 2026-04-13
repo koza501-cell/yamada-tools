@@ -1,23 +1,24 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】家賃 vs 購入 比較計算機｜賃貸・持ち家の生涯コストと損益分岐点を計算 2026年版 | 山田ツール",
+  title: "【無料】家賃 vs 購入 比較計算機｜賃貸・持ち家の生涯コストと損益分岐点を計算 2026年版",
   description: "賃貸と購入の生涯コストを中立的に比較。住宅ローン控除・固定資産税・管理費・頭金運用益まで考慮した本格シミュレーター。損益分岐点も自動計算。登録不要・完全無料。",
   keywords: ["家賃 購入 比較", "賃貸 持ち家 どちらがお得", "賃貸 購入 シミュレーター", "損益分岐点 計算", "住宅ローン控除 2026", "生涯コスト 比較"],
   alternates: {
     canonical: "https://yamada-tools.jp/realestate/rent-vs-buy",
   },
   openGraph: {
-    title: "【無料】家賃 vs 購入 比較計算機｜賃貸・持ち家の生涯コストと損益分岐点を計算 2026年版 | 山田ツール",
+    title: "【無料】家賃 vs 購入 比較計算機｜賃貸・持ち家の生涯コストと損益分岐点を計算 2026年版",
     description: "賃貸と購入の生涯コストを中立的に比較。住宅ローン控除・固定資産税・管理費・頭金運用益まで考慮した本格シミュレーター。損益分岐点も自動計算。登録不要・完全無料。",
     url: "https://yamada-tools.jp/realestate/rent-vs-buy",
-    siteName: "yamada-tools.jp",
+    siteName: "山田ツール",
     locale: "ja_JP",
     type: "website",
+    images: [{ url: "https://api.easynihon.com/api/og?site=yamada&title=%E3%80%90%E7%84%A1%E6%96%99%E3%80%91%E5%AE%B6%E8%B3%83%20vs%20%E8%B3%BC%E5%85%A5%20%E6%AF%94%E8%BC%83%E8%A8%88%E7%AE%97%E6%A9%9F%EF%BD%9C%E8%B3%83%E8%B2%B8%E3%83%BB%E6%8C%81%E3%81%A1%E5%AE%B6%E3%81%AE%E7%94%9F%E6%B6%AF%E3%82%B3%E3%82%B9%E3%83%88%E3%81%A8%E6%90%8D%E7%9B%8A%E5%88%86%E5%B2%90%E7%82%B9%E3%82%92%E8%A8%88%E7%AE%97%202026%E5%B9%B4%E7%89%88" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】家賃 vs 購入 比較計算機｜賃貸・持ち家の生涯コストと損益分岐点を計算 2026年版 | 山田ツール",
+    title: "【無料】家賃 vs 購入 比較計算機｜賃貸・持ち家の生涯コストと損益分岐点を計算 2026年版",
     description: "賃貸と購入の生涯コストを中立的に比較。住宅ローン控除・固定資産税・管理費・頭金運用益まで考慮した本格シミュレーター。損益分岐点も自動計算。登録不要・完全無料。",
   },
 };

@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { IntroSection } from "@/components/IntroSection";
+import { UseCasesSection } from "@/components/UseCasesSection";
+import { FAQSection } from "@/components/FAQSection";
+import Mascot, { MascotState } from "@/components/common/Mascot";
 
 type Mode = "exclude" | "include" | "taxonly";
 type TaxRate = 0.1 | 0.08;
@@ -130,6 +134,7 @@ const schema = {
 
 export default function ConsumptionTaxPage() {
   const [mode, setMode] = useState<Mode>("exclude");
+  const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const [amount, setAmount] = useState("");
   const [taxRate, setTaxRate] = useState<TaxRate>(0.1);
   const [rounding, setRounding] = useState<Rounding>("floor");
@@ -196,8 +201,23 @@ export default function ConsumptionTaxPage() {
       }
     : null;
 
+  const faqItems = [
+    { question: "消費税の軽減税率8%はどの商品に適用されますか？", answer: "軽減税率8%は飲食料品（酒類・外食を除く）と週2回以上発行される新聞（定期購読）に適用されます。それ以外の商品・サービスは標準税率10%が適用されます。" },
+    { question: "インボイス制度で消費税計算はどう変わりますか？", answer: "2023年10月からインボイス制度が開始し、適格請求書（インボイス）に消費税額を明記する必要があります。端数処理は1枚の請求書につき1回のみ（切り捨て・切り上げ・四捨五入のいずれか）です。" },
+    { question: "税込み価格から税抜き価格を計算する方法は？", answer: "税率10%の場合：税抜き価格 = 税込み価格 ÷ 1.1。税率8%の場合：税抜き価格 = 税込み価格 ÷ 1.08。例えば税込み1,100円なら税抜き1,000円です。" },
+  ];
+
+  const useCases = [
+    { icon: "🧾", persona: "請求書・見積書を作成している事業者", title: "インボイス対応の消費税額を正確に計算したい", benefit: "適格請求書に記載する消費税額を端数処理込みで算出" },
+    { icon: "🛒", persona: "買い物・家計管理をする方", title: "税込価格から税抜価格を素早く確認したい", benefit: "8%・10%の税抜価格を瞬時に逆算" },
+    { icon: "📊", persona: "経理・会計担当者", title: "軽減税率対象商品の仕訳を正確に処理したい", benefit: "8%・10%混在請求書の税額を自動仕分け計算" },
+  ];
+
   return (
-    <div className="min-h-screen bg-gray-50">
+    <>
+      <IntroSection title="消費税計算機Pro" paragraphs={["税率10%・軽減税率8%の消費税を瞬時に計算。税込から税抜、税抜から税込への変換も対応しています。", "インボイス制度（適格請求書）の端数処理（切り捨て・切り上げ・四捨五入）の違いも確認できます。複数品目の消費税合計も一括計算可能。", "登録不要・完全無料。見積書・請求書作成や、買い物時の税込・税抜確認に活用できます。"]} />
+      <div className="min-h-screen bg-gray-50">
+        <Mascot state={mascotState} className="mb-6" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -642,5 +662,8 @@ export default function ConsumptionTaxPage() {
 
       </div>
     </div>
+    <UseCasesSection cases={useCases} />
+    <FAQSection faq={faqItems} />
+  </>
   );
 }

@@ -3,6 +3,7 @@
 import { useState, useRef, useCallback } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ {
   question: string;
@@ -31,7 +32,10 @@ const presets: Preset[] = [
   { name: "名刺サイズ", width: 1050, height: 600, icon: "💼" },
 ];
 
-export default function ImageResizeClient({ faq }: Props) {
+export default function ImageResizeClient({
+ faq }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   const [originalImage, setOriginalImage] = useState<HTMLImageElement | null>(null);
   const [originalFileName, setOriginalFileName] = useState<string>("");
   const [originalWidth, setOriginalWidth] = useState<number>(0);
@@ -160,6 +164,7 @@ export default function ImageResizeClient({ faq }: Props) {
     setResizedSize(fileSize);
 
     setMascotState("success");
+    triggerSuccess('resize');
     setMascotMessage(`${width}×${height}にリサイズ完了！`);
   };
 
@@ -201,17 +206,6 @@ export default function ImageResizeClient({ faq }: Props) {
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4">
-        {/* Breadcrumb */}
-        <nav className="mb-6 text-sm" aria-label="パンくずリスト">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li>
-            <li>/</li>
-            <li><Link href="/image" className="hover:text-kon">画像ツール</Link></li>
-            <li>/</li>
-            <li className="text-kon font-medium">画像リサイズ</li>
-          </ol>
-        </nav>
-
         {/* Header */}
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">🖼️</div>

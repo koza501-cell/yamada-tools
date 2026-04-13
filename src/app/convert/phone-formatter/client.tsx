@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FormatResult {
   formatted: string;
@@ -11,6 +13,9 @@ interface FormatResult {
 }
 
 export default function PhoneFormatterClient() {
+  const { triggerSuccess } = usePricingContext();
+
+
   const [mounted, setMounted] = useState(false);
   const [mascotState, setMascotState] = useState<MascotState>("idle");
   const [mascotMessage, setMascotMessage] = useState("電話番号を入力してね！");
@@ -126,7 +131,8 @@ export default function PhoneFormatterClient() {
     setResult(formatted);
     
     if (formatted.isValid) {
-      setMascotState("success");
+      setMascotState("success")
+      triggerSuccess('phone-formatter');;
       setMascotMessage("整形完了！");
     } else {
       setMascotState("error");
@@ -169,15 +175,7 @@ export default function PhoneFormatterClient() {
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-2xl mx-auto px-4">
-        <nav className="mb-6 text-sm">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li>
-            <li>/</li>
-            <li><Link href="/convert" className="hover:text-kon">変換ツール</Link></li>
-            <li>/</li>
-            <li className="text-kon font-medium">電話番号整形</li>
-          </ol>
-        </nav>
+
 
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">📞</div>
@@ -276,6 +274,7 @@ export default function PhoneFormatterClient() {
         <div className="mt-8 text-center">
           <Link href="/convert" className="text-kon hover:text-ai">← 変換ツール一覧に戻る</Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

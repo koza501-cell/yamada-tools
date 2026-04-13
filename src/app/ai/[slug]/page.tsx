@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const posts = getAllPosts();
   const post = posts.find((p: any) => p.slug === slug);
   return {
-    title: post.title + ' | ' + NICHE.name + ' | yamada-tools.jp',
+    title: post.title + ' | ' + NICHE.name + '',
     description: post.metaDescription || post.description,
   };
 }

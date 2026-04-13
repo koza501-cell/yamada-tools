@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】塾・予備校費用 比較計算機｜最大3校の総費用を一括比較 | 山田ツール",
+  title: "【無料】塾・予備校費用 比較計算機｜最大3校の総費用を一括比較",
   description: "月謝・入会金・季節講習・交通費まで含めた通塾期間の総費用を自動計算。最大3校を同時比較・1時間単価・コスト削減アドバイス付き。2026年最新データ対応。登録不要・無料。",
   keywords: [
     "塾 費用",
@@ -20,16 +20,17 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/education/cram-school-calculator",
   },
   openGraph: {
-    title: "【無料】塾・予備校費用 比較計算機｜最大3校の総費用を一括比較 | 山田ツール",
+    title: "【無料】塾・予備校費用 比較計算機｜最大3校の総費用を一括比較",
     description: "月謝・入会金・季節講習・交通費まで含めた通塾期間の総費用を自動計算。最大3校を同時比較・1時間単価・コスト削減アドバイス付き。2026年最新データ対応。",
     url: "https://yamada-tools.jp/education/cram-school-calculator",
-    siteName: "yamada-tools.jp",
+    siteName: "山田ツール",
     locale: "ja_JP",
     type: "website",
+    images: [{ url: "https://api.easynihon.com/api/og?site=yamada&title=%E3%80%90%E7%84%A1%E6%96%99%E3%80%91%E5%A1%BE%E3%83%BB%E4%BA%88%E5%82%99%E6%A0%A1%E8%B2%BB%E7%94%A8%20%E6%AF%94%E8%BC%83%E8%A8%88%E7%AE%97%E6%A9%9F%EF%BD%9C%E6%9C%80%E5%A4%A73%E6%A0%A1%E3%81%AE%E7%B7%8F%E8%B2%BB%E7%94%A8%E3%82%92%E4%B8%80%E6%8B%AC%E6%AF%94%E8%BC%83" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "【無料】塾・予備校費用 比較計算機｜最大3校の総費用を一括比較 | 山田ツール",
+    title: "【無料】塾・予備校費用 比較計算機｜最大3校の総費用を一括比較",
     description: "月謝・入会金・季節講習・交通費まで含めた通塾期間の総費用を自動計算。最大3校を同時比較・1時間単価・コスト削減アドバイス付き。",
   },
 };

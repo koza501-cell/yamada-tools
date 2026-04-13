@@ -4,6 +4,7 @@ import FinancialDisclaimer from "@/components/common/FinancialDisclaimer";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
 
 // Simplified 2024 rates (approximations)
 const HEALTH_INSURANCE_RATE = 0.05; // 健康保険 約10% (会社と折半)
@@ -85,15 +86,7 @@ export default function SalaryCalcClient() {
   return (
     <div className="min-h-screen bg-gray-50 py-8"><FinancialDisclaimer type="salary" />
       <div className="max-w-4xl mx-auto px-4">
-        <nav className="mb-6 text-sm">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-blue-600">ホーム</Link></li>
-            <li>/</li>
-            <li><Link href="/generator" className="hover:text-blue-600">計算・生成ツール</Link></li>
-            <li>/</li>
-            <li className="text-gray-900 font-medium">給与手取り計算</li>
-          </ol>
-        </nav>
+
 
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">💰</div>
@@ -279,6 +272,7 @@ export default function SalaryCalcClient() {
         <div className="mt-8 text-center">
           <Link href="/generator" className="text-blue-600 hover:text-blue-800">← 計算・生成ツール一覧に戻る</Link>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

@@ -3,6 +3,8 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line } from "recharts";
 import FinancialDisclaimer from "@/components/common/FinancialDisclaimer";
+import Mascot, { MascotState } from "@/components/common/Mascot";
+import { AdUnit } from "@/components/common/AdUnit";
 
 interface FAQ {
   question: string;
@@ -35,6 +37,7 @@ const TAX_RATE = 0.20315;
 
 export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
   const [mode, setMode] = useState<Mode>("profit");
+  const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const [stickyTabs, setStickyTabs] = useState(false);
   const resultRef = useRef<HTMLDivElement>(null);
 
@@ -293,6 +296,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
 
   return (
     <div className="min-h-screen bg-gray-50">
+        <Mascot state={mascotState} className="mb-6" />
       <FinancialDisclaimer type="tax" />
       
       {/* Header */}
@@ -1113,6 +1117,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
             FX取引にはリスクが伴います。レバレッジをかけすぎると大きな損失を被る可能性があります。
           </p>
         </div>
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

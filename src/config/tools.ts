@@ -771,7 +771,6 @@ export const imageTools: Tool[] = [
     maxFiles: 1,
     category: "image",
     available: true,
-    isNew: true,
   },
   {
     id: "blur",
@@ -785,7 +784,6 @@ export const imageTools: Tool[] = [
     maxFiles: 1,
     category: "image",
     available: true,
-    isNew: true,
   },
   {
     id: "text-overlay",
@@ -799,7 +797,6 @@ export const imageTools: Tool[] = [
     maxFiles: 1,
     category: "image",
     available: true,
-    isNew: true,
   },
   {
     id: "flip",
@@ -813,7 +810,6 @@ export const imageTools: Tool[] = [
     maxFiles: 1,
     category: "image",
     available: true,
-    isNew: true,
     isPopular: true,
   },
   {
@@ -828,7 +824,6 @@ export const imageTools: Tool[] = [
     maxFiles: 1,
     category: "image",
     available: true,
-    isNew: true,
   },
   {
     id: "sepia",
@@ -842,7 +837,6 @@ export const imageTools: Tool[] = [
     maxFiles: 1,
     category: "image",
     available: true,
-    isNew: true,
   },
   {
     id: "brightness",
@@ -856,7 +850,6 @@ export const imageTools: Tool[] = [
     maxFiles: 1,
     category: "image",
     available: true,
-    isNew: true,
   },
   {
     id: "gif-maker",
@@ -870,7 +863,6 @@ export const imageTools: Tool[] = [
     maxFiles: 20,
     category: "image",
     available: true,
-    isNew: true,
   },
   {
     id: "banner-maker",
@@ -884,7 +876,6 @@ export const imageTools: Tool[] = [
     maxFiles: 0,
     category: "image",
     available: true,
-    isNew: true,
   },
   {
     id: "dpi-checker",
@@ -898,7 +889,6 @@ export const imageTools: Tool[] = [
     maxFiles: 1,
     category: "image",
     available: true,
-    isNew: true,
   },
   {
     id: "image-overlay",
@@ -912,7 +902,6 @@ export const imageTools: Tool[] = [
     maxFiles: 2,
     category: "image",
     available: true,
-    isNew: true,
   },
   {
     id: "pdf-stamp",
@@ -1206,8 +1195,6 @@ export const generatorTools: Tool[] = [
     maxFiles: 0,
     category: "generator",
     available: true,
-    isNew: true,
-    isFeatured: true,
   },
   {
     id: "business-card-gen",
@@ -1240,7 +1227,6 @@ export const financeTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
     isFeatured: true,
   },
   {
@@ -1255,7 +1241,6 @@ export const financeTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
     isFeatured: true,
   },
   {
@@ -1270,7 +1255,6 @@ export const financeTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
     isFeatured: true,
   },
   {
@@ -1285,7 +1269,6 @@ export const financeTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
     isFeatured: true,
   },
   {
@@ -1300,7 +1283,6 @@ export const financeTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
     isFeatured: true,
   },
 ];
@@ -1322,7 +1304,6 @@ export const careerTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
   {
     id: "overtime-calculator",
@@ -1336,7 +1317,6 @@ export const careerTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
   {
     id: "unemployment-calculator",
@@ -1350,7 +1330,6 @@ export const careerTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
   {
     id: "salary-negotiation",
@@ -1364,7 +1343,6 @@ export const careerTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
   {
     id: "salary-increase-simulator",
@@ -1378,7 +1356,6 @@ export const careerTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
   {
     id: "income-wall-checker",
@@ -1392,7 +1369,6 @@ export const careerTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
   {
     id: "side-income-tax-calculator",
@@ -1406,7 +1382,6 @@ export const careerTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
   {
     id: "retirement-bonus-calculator",
@@ -1420,7 +1395,6 @@ export const careerTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
   {
     id: "social-insurance-calculator",
@@ -1434,7 +1408,6 @@ export const careerTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
 ];
 
@@ -1455,7 +1428,6 @@ export const realestateTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
   {
     id: "moving-cost-calculator",
@@ -1469,7 +1441,6 @@ export const realestateTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
   {
     id: "property-tax-calculator",
@@ -1483,7 +1454,6 @@ export const realestateTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
   {
     id: "rental-cost-calculator",
@@ -1497,7 +1467,6 @@ export const realestateTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
   {
     id: "acquisition-tax",
@@ -1511,7 +1480,6 @@ export const realestateTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
 ];
 
@@ -1531,7 +1499,6 @@ export const businessTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
   {
     id: "director-salary-optimizer",
@@ -1545,7 +1512,6 @@ export const businessTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
   {
     id: "corporate-tax-calculator",
@@ -1559,7 +1525,6 @@ export const businessTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
   {
     id: "freelance-tax-calculator",
@@ -1573,7 +1538,6 @@ export const businessTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
   {
     id: "simplified-tax-calculator",
@@ -1587,7 +1551,6 @@ export const businessTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
 ];
 
@@ -1607,7 +1570,6 @@ export const healthTools: Tool[] = [
     maxFiles: 0,
     category: "generator",
     available: true,
-    isNew: true,
   },
   {
     id: "calorie-calculator",
@@ -1621,7 +1583,6 @@ export const healthTools: Tool[] = [
     maxFiles: 0,
     category: "generator",
     available: true,
-    isNew: true,
   },
   {
     id: "ideal-weight-calculator",
@@ -1635,7 +1596,6 @@ export const healthTools: Tool[] = [
     maxFiles: 0,
     category: "generator",
     available: true,
-    isNew: true,
   },
   {
     id: "sleep-calculator",
@@ -1649,7 +1609,6 @@ export const healthTools: Tool[] = [
     maxFiles: 0,
     category: "generator",
     available: true,
-    isNew: true,
   },
   {
     id: "pregnancy-calculator",
@@ -1663,7 +1622,6 @@ export const healthTools: Tool[] = [
     maxFiles: 0,
     category: "generator",
     available: true,
-    isNew: true,
   },
   {
     id: "alcohol-calculator",
@@ -1677,7 +1635,6 @@ export const healthTools: Tool[] = [
     maxFiles: 0,
     category: "generator",
     available: true,
-    isNew: true,
   },
 ];
 
@@ -1697,7 +1654,6 @@ export const educationTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
   {
     id: "cram-school-calculator",
@@ -1711,7 +1667,6 @@ export const educationTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
   {
     id: "deviation-score",
@@ -1725,7 +1680,6 @@ export const educationTools: Tool[] = [
     maxFiles: 0,
     category: "generator",
     available: true,
-    isNew: true,
   },
   {
     id: "certification-roi",
@@ -1739,7 +1693,6 @@ export const educationTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
 ];
 
@@ -1759,7 +1712,6 @@ export const debtTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
   {
     id: "revolving-calculator",
@@ -1773,7 +1725,6 @@ export const debtTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
   {
     id: "loan-interest-calculator",
@@ -1787,7 +1738,6 @@ export const debtTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
   {
     id: "debt-diagnosis",
@@ -1801,7 +1751,6 @@ export const debtTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
   {
     id: "debt-restructuring-checker",
@@ -1815,7 +1764,6 @@ export const debtTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
 ];
 
@@ -1835,7 +1783,6 @@ export const utilityTools: Tool[] = [
     maxFiles: 0,
     category: "generator",
     available: true,
-    isNew: true,
   },
   {
     id: "date-calculator",
@@ -1849,7 +1796,6 @@ export const utilityTools: Tool[] = [
     maxFiles: 0,
     category: "generator",
     available: true,
-    isNew: true,
   },
   {
     id: "unit-converter-utility",
@@ -1863,7 +1809,6 @@ export const utilityTools: Tool[] = [
     maxFiles: 0,
     category: "convert",
     available: true,
-    isNew: true,
   },
 ];
 
@@ -1885,7 +1830,6 @@ export const insuranceTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
   {
     id: "medical-insurance-sim",
@@ -1899,7 +1843,6 @@ export const insuranceTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
 ];
 
@@ -1919,7 +1862,6 @@ export const taxTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
   {
     id: "consumption-tax",
@@ -1933,7 +1875,6 @@ export const taxTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
   {
     id: "furusato-nozei-calculator",
@@ -1947,7 +1888,6 @@ export const taxTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
   {
     id: "inheritance-tax-calculator",
@@ -1961,7 +1901,6 @@ export const taxTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
   {
     id: "gift-tax-calculator",
@@ -1975,7 +1914,6 @@ export const taxTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
-    isNew: true,
   },
 ];
 // ============================================

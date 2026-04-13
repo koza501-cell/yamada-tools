@@ -1,8 +1,16 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "【無料】役員報酬 最適化シミュレーター｜法人税と所得税の総負担を最小化する報酬額を自動計算 | 山田ツール",
+  title: "【無料】役員報酬 最適化シミュレーター｜法人税と所得税の総負担を最小化する報酬額を自動計算",
   description: "法人税・個人所得税・社会保険料の総負担を最小化する最適役員報酬を自動計算。複数シナリオ比較・配偶者役員対応。2026年最新税制対応。登録不要・完全無料。",
+  openGraph: {
+    title: "【無料】役員報酬 最適化シミュレーター｜法人税と所得税の総負担を最小化する報酬額を自動計算",
+    url: "https://yamada-tools.jp/business/director-salary-optimizer",
+    siteName: "山田ツール",
+    locale: "ja_JP",
+    type: "website",
+    images: [{ url: "https://api.easynihon.com/api/og?site=yamada&title=%E3%80%90%E7%84%A1%E6%96%99%E3%80%91%E5%BD%B9%E5%93%A1%E5%A0%B1%E9%85%AC%20%E6%9C%80%E9%81%A9%E5%8C%96%E3%82%B7%E3%83%9F%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC%EF%BD%9C%E6%B3%95%E4%BA%BA%E7%A8%8E%E3%81%A8%E6%89%80%E5%BE%97%E7%A8%8E%E3%81%AE%E7%B7%8F%E8%B2%A0%E6%8B%85%E3%82%92%E6%9C%80%E5%B0%8F%E5%8C%96%E3%81%99%E3%82%8B%E5%A0%B1%E9%85%AC%E9%A1%8D%E3%82%92%E8%87%AA%E5%8B%95%E8%A8%88%E7%AE%97" }],
+  },
 };
 
 const schema = {

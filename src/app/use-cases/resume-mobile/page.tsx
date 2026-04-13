@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "スマホで履歴書を作成する方法【無料・PDF保存】｜山田ツール",
+  title: "スマホで履歴書を作成する方法【無料・PDF保存】",
   description: "スマホだけで履歴書を作成してPDF保存。アプリ不要・登録不要で今すぐ使えます。コンビニ印刷にも対応。",
   keywords: ["履歴書 スマホ 作成", "履歴書 作成 無料 スマホ", "履歴書 PDF スマホ", "履歴書 コンビニ印刷"],
   alternates: {

@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
 import HankoClient from "./client";
+import AdFreeZone from "@/components/AdFreeZone";
+import RelatedTools from "@/components/common/RelatedTools";
 
 const tool = getToolById("hanko")!;
 
@@ -35,7 +37,7 @@ export default function Page() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <div className="ad-free-zone"><HankoClient /></div>
+      <AdFreeZone><HankoClient /></AdFreeZone>
 
       {/* Educational Content Section */}
       <section className="max-w-4xl mx-auto px-4 py-12">
@@ -68,6 +70,10 @@ export default function Page() {
           <p className="text-gray-700 leading-relaxed mb-4">作成した電子印鑑をPDFに直接配置したい場合は<a href="/pdf/text-input" className="text-orange-600 hover:underline font-medium">電子ハンコをPDFに追加</a>をご利用ください。名前入力だけで認印を自動生成し、PDF上の任意の位置に配置できます。テキスト入力・電子ハンコ・令和日付の挿入がひとつのツールで完結します。登録不要・完全無料です。</p>
         </div>
       </section>
+      <div className="max-w-4xl mx-auto px-4">
+        <RelatedTools currentTool={tool} maxItems={6} />
+      </div>
+
     </>
   );
 }

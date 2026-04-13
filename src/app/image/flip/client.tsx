@@ -3,6 +3,8 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import Link from "next/link";
 import { LazyFAQ } from "@/components/common/LazyFAQ";
+import Mascot from "@/components/common/Mascot";
+import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 
 interface FAQ { question: string; answer: string; }
 interface Props { faq: FAQ[]; seoContent?: { intro: string }; }
@@ -33,9 +35,13 @@ const formatBytes = (bytes) => {
   return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
 };
 
-export default function FlipClient({ faq, seoContent }: Props) {
+export default function FlipClient({
+ faq, seoContent }: Props) {
+  const { triggerSuccess } = usePricingContext();
+
   // ── Single-image state ────────────────────────────────────────────────
   const [image, setImage] = useState(null);
+  const [mascotState, setMascotState] = useState("idle");
   const [fileName, setFileName] = useState("");
   const [fileSize, setFileSize] = useState(0);
   const [dimensions, setDimensions] = useState({ w: 0, h: 0 });
@@ -172,6 +178,7 @@ export default function FlipClient({ faq, seoContent }: Props) {
     if (!file.type.startsWith("image/")) return;
     setFileName(file.name);
     setFileSize(file.size);
+    setMascotState("working");
     const reader = new FileReader();
     reader.onload = (e) => {
       const img = new Image();
@@ -310,6 +317,8 @@ export default function FlipClient({ faq, seoContent }: Props) {
 
   // ── Output actions ────────────────────────────────────────────────────
   const download = () => {
+    setMascotState("success")
+      triggerSuccess('flip');;
     if (!canvasRef.current) return;
     const finalCanvas = applyResizeToCanvas(canvasRef.current);
     const mime = MIME[outputFormat];
@@ -475,13 +484,7 @@ export default function FlipClient({ faq, seoContent }: Props) {
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4">
-        <nav className="mb-6 text-sm">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-kon">ホーム</Link></li><li>/</li>
-            <li><Link href="/image" className="hover:text-kon">画像ツール</Link></li><li>/</li>
-            <li className="text-kon font-medium">画像反転</li>
-          </ol>
-        </nav>
+
 
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">🔄</div>
@@ -494,6 +497,7 @@ export default function FlipClient({ faq, seoContent }: Props) {
         </header>
 
         <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-6">
+          <Mascot state={mascotState} />
 
           {/* ── Batch mode toggle (always visible) ── */}
           <div className="flex justify-end mb-4">

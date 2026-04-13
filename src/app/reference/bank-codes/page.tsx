@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "銀行コード一覧（金融機関コード）｜山田ツール",
+  title: "銀行コード一覧（金融機関コード）",
   description: "日本の主要銀行・金融機関コード一覧。都市銀行、地方銀行、ネット銀行のコードを検索できます。全銀フォーマット作成時に便利。",
   keywords: ["銀行コード", "金融機関コード", "全銀コード", "銀行番号"],
   alternates: {
