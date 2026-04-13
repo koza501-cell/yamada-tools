@@ -1,10 +1,26 @@
 import { Metadata } from "next";
 import Link from "next/link";
 
+const title = "【2026年最新】新NISAシミュレーション完全ガイド｜初心者でも5分でわかる積立計算";
+const description = "新NISAの積立シミュレーションを無料で計算。毎月1万円で20年後にいくら？つみたて投資枠と成長投資枠の違い、2026年税制改正のポイントを初心者向けにわかりやすく解説。";
+const ogImage = `/api/og?title=${encodeURIComponent("【2026年最新】新NISAシミュレーション完全ガイド")}&type=blog&category=${encodeURIComponent("資産運用")}`;
+
 export const metadata: Metadata = {
-  title: "【2026年最新】新NISAシミュレーション完全ガイド｜初心者でも5分でわかる積立計算",
-  description: "新NISAの積立シミュレーションを無料で計算。毎月1万円で20年後にいくら？つみたて投資枠と成長投資枠の違い、2026年税制改正のポイントを初心者向けにわかりやすく解説。",
+  title,
+  description,
   keywords: ["新NISA", "シミュレーション", "2026", "積立", "つみたて投資枠", "成長投資枠"],
+  openGraph: {
+    title,
+    description,
+    type: "article",
+    images: [{ url: ogImage, width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: [ogImage],
+  },
 };
 
 export default function NisaSimulation2026Blog() {
