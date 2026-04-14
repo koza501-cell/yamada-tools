@@ -1,7 +1,7 @@
 "use client";
+import { AdUnit } from "@/components/common/AdUnit";
 
 import { useState, useCallback } from "react";
-import AdUnit from "@/components/AdUnit";
 import Link from "next/link";
 
 type Category = "面積" | "長さ" | "重さ" | "体積" | "温度" | "データ容量";

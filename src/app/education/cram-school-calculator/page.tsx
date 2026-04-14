@@ -1,4 +1,5 @@
 "use client";
+import { AdUnit } from "@/components/common/AdUnit";
 
 import { useState } from "react";
 
@@ -495,6 +496,10 @@ export default function CramSchoolCalculator() {
             </a>
           ))}
         </div>
+      {/* 広告 */}
+      <div className="max-w-4xl mx-auto px-4 mt-6">
+        <AdUnit slot="5612038947" format="horizontal" />
+      </div>
       </div>
     </div>
   );

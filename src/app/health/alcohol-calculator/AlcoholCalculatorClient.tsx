@@ -1,7 +1,7 @@
 "use client";
+import { AdUnit } from "@/components/common/AdUnit";
 
 import { useState } from "react";
-import AdUnit from "@/components/AdUnit";
 import Link from "next/link";
 import { IntroSection } from "@/components/IntroSection";
 import { UseCasesSection } from "@/components/UseCasesSection";
