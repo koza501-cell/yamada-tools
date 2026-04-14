@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import BlogAdUnit from "@/components/common/BlogAdUnit";
 import Link from "next/link";
 
 const title = "【2026年最新】生命保険の必要額シミュレーション｜家族構成別の目安と計算方法";
@@ -313,6 +314,8 @@ export default function SeimeiHokenSimulation2026Blog() {
           </Link>
         </div>
       </section>
+
+      <BlogAdUnit />
 
       <p className="text-sm text-gray-500 mt-8">この記事は2026年4月時点の制度に基づいています。</p>
     </article>

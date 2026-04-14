@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import BlogAdUnit from "@/components/common/BlogAdUnit";
 import Link from "next/link";
 
 const title = "【2026年最新】老後資金はいくら必要？2000万円問題の真実とシミュレーション";
@@ -276,6 +277,8 @@ export default function RougoShikinSimulation2026Blog() {
           </Link>
         </div>
       </section>
+
+      <BlogAdUnit />
 
       <p className="text-sm text-gray-500 mt-8">この記事は2026年4月時点の情報に基づいています。</p>
     </article>

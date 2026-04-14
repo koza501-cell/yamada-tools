@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import BlogAdUnit from "@/components/common/BlogAdUnit";
 import Link from "next/link";
 
 const title = "【2026年最新】資格取得は投資になる？費用対効果（ROI）をシミュレーション";
@@ -314,6 +315,8 @@ export default function ShikakuToshiSimulation2026Blog() {
           </Link>
         </div>
       </section>
+
+      <BlogAdUnit />
 
       <p className="text-sm text-gray-500 mt-8">この記事は2026年4月時点の情報に基づいています。年収効果は業界・企業・個人により異なります。</p>
     </article>

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import BlogAdUnit from "@/components/common/BlogAdUnit";
 import Link from "next/link";
 
 const title = "【2026年最新】贈与税はいくら？親からの援助・生前贈与の税金シミュレーション";
@@ -303,6 +304,8 @@ export default function ZouyoZeiSimulation2026Blog() {
           </Link>
         </div>
       </section>
+
+      <BlogAdUnit />
 
       <p className="text-sm text-gray-500 mt-8">この記事は2026年4月時点の税制に基づいています。最新の情報は国税庁のウェブサイトでご確認ください。</p>
     </article>

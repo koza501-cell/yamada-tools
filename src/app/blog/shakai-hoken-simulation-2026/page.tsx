@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import BlogAdUnit from "@/components/common/BlogAdUnit";
 import Link from "next/link";
 
 const title = "【2026年最新】社会保険料の計算方法｜年収別早見表と手取り額シミュレーション";
@@ -313,6 +314,8 @@ export default function ShakaiHokenSimulation2026Blog() {
           </Link>
         </div>
       </section>
+
+      <BlogAdUnit />
 
       <p className="text-sm text-gray-500 mt-8">この記事は2026年4月時点の保険料率に基づいています。</p>
     </article>

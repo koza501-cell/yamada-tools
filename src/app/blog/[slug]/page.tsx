@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import fs from 'fs';
 import path from 'path';
 import BlogContent from '@/components/BlogContent';
-import { AdUnit } from "@/components/common/AdUnit";
+import BlogAdUnit from "@/components/common/BlogAdUnit";
 import { marked } from 'marked';
 import '@/app/blog.css';
 
@@ -62,7 +62,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     notFound();
   }
 
-  const htmlContent = String(await marked(blog.content));
+  const htmlContent = blog.content ? String(await marked(blog.content)) : '<p>この記事のコンテンツは準備中です。</p>';
 
   // Article structured data
   const articleSchema = {
@@ -159,7 +159,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         <BlogContent content={htmlContent} />
       </div>
 
-{/* Ad Slot */}      <AdUnit slot="5612038947" format="rectangle" className="my-8" />
+<BlogAdUnit />
       <footer className="blog-footer mt-16 pt-8 border-t border-gray-200">
         <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-8 text-center">
           <h3 className="text-2xl font-bold text-gray-900 mb-4">

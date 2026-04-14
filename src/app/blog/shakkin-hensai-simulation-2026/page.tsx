@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import BlogAdUnit from "@/components/common/BlogAdUnit";
 import Link from "next/link";
 
 const title = "【2026年最新】借金返済シミュレーション｜完済までの期間と総支払額を計算";
@@ -323,6 +324,8 @@ export default function ShakkinHensaiSimulation2026Blog() {
           </Link>
         </div>
       </section>
+
+      <BlogAdUnit />
 
       <p className="text-sm text-gray-500 mt-8">この記事は一般的な情報提供を目的としており、法的・財務的アドバイスではありません。個別の状況については専門家にご相談ください。</p>
     </article>

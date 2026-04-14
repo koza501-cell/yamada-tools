@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import BlogAdUnit from "@/components/common/BlogAdUnit";
 import Link from "next/link";
 
 const title = "【2026年最新】教育費シミュレーション｜幼稚園から大学までいくらかかる？";
@@ -331,6 +332,8 @@ export default function KyouikuhiSimulation2026Blog() {
           </Link>
         </div>
       </section>
+
+      <BlogAdUnit />
 
       <p className="text-sm text-gray-500 mt-8">この記事は2026年4月時点の制度に基づいています。</p>
     </article>

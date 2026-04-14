@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import BlogAdUnit from "@/components/common/BlogAdUnit";
 import Link from "next/link";
 
 const title = "【2026年最新】残業代の計算方法｜時給換算・割増率・未払い請求まで完全解説";
@@ -308,6 +309,8 @@ export default function ZangyoudaiKeisanSimulation2026Blog() {
           </Link>
         </div>
       </section>
+
+      <BlogAdUnit />
 
       <p className="text-sm text-gray-500 mt-8">この記事は2026年4月時点の労働基準法に基づいています。</p>
     </article>

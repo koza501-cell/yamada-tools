@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import BlogAdUnit from "@/components/common/BlogAdUnit";
 import Link from "next/link";
 
 const title = "【2026年最新】年収の壁とは？103万・106万・130万・150万の壁を完全解説";
@@ -292,6 +293,8 @@ export default function NenshuKabeSimulation2026Blog() {
           </Link>
         </div>
       </section>
+
+      <BlogAdUnit />
 
       <p className="text-sm text-gray-500 mt-8">この記事は2026年4月時点の情報に基づいています。制度は変更される可能性があるため、最新情報をご確認ください。</p>
     </article>

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import BlogAdUnit from "@/components/common/BlogAdUnit";
 import Link from "next/link";
 
 const title = "【2026年最新】相続税シミュレーション完全ガイド｜基礎控除・税率・計算方法を徹底解説";
@@ -267,6 +268,8 @@ export default function SouzokuzeiSimulation2026Blog() {
           </Link>
         </div>
       </section>
+
+      <BlogAdUnit />
 
       <p className="text-sm text-gray-500 mt-8">この記事は2026年4月時点の情報に基づいています。最新情報は国税庁の公式サイトでご確認ください。</p>
     </article>

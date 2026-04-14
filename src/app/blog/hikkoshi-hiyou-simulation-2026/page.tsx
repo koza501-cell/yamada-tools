@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import BlogAdUnit from "@/components/common/BlogAdUnit";
 import Link from "next/link";
 
 const title = "【2026年最新】引越し費用の相場と計算方法｜単身・家族別シミュレーション";
@@ -316,6 +317,8 @@ export default function HikkoshiHiyouSimulation2026Blog() {
           </Link>
         </div>
       </section>
+
+      <BlogAdUnit />
 
       <p className="text-sm text-gray-500 mt-8">この記事は2026年4月時点の相場に基づいています。</p>
     </article>

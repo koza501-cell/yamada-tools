@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import BlogAdUnit from "@/components/common/BlogAdUnit";
 import Link from "next/link";
 
 const title = "【2026年最新】失業保険はいくらもらえる？受給額・期間シミュレーション完全ガイド";
@@ -288,6 +289,8 @@ export default function ShitsugyouHokenSimulation2026Blog() {
           </Link>
         </div>
       </section>
+
+      <BlogAdUnit />
 
       <p className="text-sm text-gray-500 mt-8">この記事は2026年4月時点の情報に基づいています。最新情報はハローワークでご確認ください。</p>
     </article>

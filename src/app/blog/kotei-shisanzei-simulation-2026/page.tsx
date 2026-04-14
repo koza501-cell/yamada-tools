@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import BlogAdUnit from "@/components/common/BlogAdUnit";
 import Link from "next/link";
 
 const title = "【2026年最新】固定資産税の計算方法｜新築・中古・土地別シミュレーション";
@@ -292,6 +293,8 @@ export default function KoteiShisanzeiSimulation2026Blog() {
           </Link>
         </div>
       </section>
+
+      <BlogAdUnit />
 
       <p className="text-sm text-gray-500 mt-8">この記事は2026年4月時点の税制に基づいています。税率や軽減措置は変更される場合があります。</p>
     </article>
