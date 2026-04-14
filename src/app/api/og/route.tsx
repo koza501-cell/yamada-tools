@@ -1,17 +1,31 @@
 import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
+import * as fs from "fs";
+import * as path from "path";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
+
+// Cache font data at module level
+let fontData: Buffer | null = null;
+
+function getFontData(): Buffer {
+  if (!fontData) {
+    const fontPath = path.join(process.cwd(), "public/fonts/NotoSansJP-Bold.otf");
+    fontData = fs.readFileSync(fontPath);
+  }
+  return fontData;
+}
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
-  
+
   const title = searchParams.get("title") || "山田ツール";
-  const type = searchParams.get("type") || "tool"; // "tool" or "blog"
+  const type = searchParams.get("type") || "tool";
   const category = searchParams.get("category") || "";
-  
+
   const isBlog = type === "blog";
-  
+  const font = getFontData();
+
   return new ImageResponse(
     (
       <div
@@ -22,13 +36,12 @@ export async function GET(request: NextRequest) {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: isBlog 
+          background: isBlog
             ? "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
             : "linear-gradient(135deg, #f472b6 0%, #ec4899 50%, #db2777 100%)",
-          fontFamily: "sans-serif",
+          fontFamily: "Noto Sans JP",
         }}
       >
-        {/* Background Pattern */}
         <div
           style={{
             position: "absolute",
@@ -40,8 +53,7 @@ export async function GET(request: NextRequest) {
             display: "flex",
           }}
         />
-        
-        {/* Main Card */}
+
         <div
           style={{
             display: "flex",
@@ -56,7 +68,6 @@ export async function GET(request: NextRequest) {
             maxWidth: "1100px",
           }}
         >
-          {/* Type Badge */}
           <div
             style={{
               display: "flex",
@@ -72,10 +83,10 @@ export async function GET(request: NextRequest) {
                 padding: "6px 16px",
                 borderRadius: "20px",
                 fontSize: "20px",
-                fontWeight: "bold",
+                fontWeight: 700,
               }}
             >
-              {isBlog ? "📝 ブログ" : "🛠️ 無料ツール"}
+              {isBlog ? "ブログ" : "無料ツール"}
             </span>
             {category && (
               <span
@@ -91,12 +102,11 @@ export async function GET(request: NextRequest) {
               </span>
             )}
           </div>
-          
-          {/* Title */}
+
           <h1
             style={{
               fontSize: title.length > 30 ? "42px" : "52px",
-              fontWeight: "bold",
+              fontWeight: 700,
               color: "#1f2937",
               textAlign: "center",
               lineHeight: 1.3,
@@ -106,8 +116,7 @@ export async function GET(request: NextRequest) {
           >
             {title}
           </h1>
-          
-          {/* Features */}
+
           <div
             style={{
               display: "flex",
@@ -115,22 +124,12 @@ export async function GET(request: NextRequest) {
               marginTop: "8px",
             }}
           >
-            <div style={{ display: "flex", alignItems: "center", gap: "6px", color: "#6b7280", fontSize: "18px" }}>
-              <span>🇯🇵</span>
-              <span>日本国内サーバー</span>
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: "6px", color: "#6b7280", fontSize: "18px" }}>
-              <span>🔒</span>
-              <span>安全・無料</span>
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: "6px", color: "#6b7280", fontSize: "18px" }}>
-              <span>⚡</span>
-              <span>登録不要</span>
-            </div>
+            <span style={{ color: "#6b7280", fontSize: "18px" }}>日本国内サーバー</span>
+            <span style={{ color: "#6b7280", fontSize: "18px" }}>安全・無料</span>
+            <span style={{ color: "#6b7280", fontSize: "18px" }}>登録不要</span>
           </div>
         </div>
-        
-        {/* Logo */}
+
         <div
           style={{
             position: "absolute",
@@ -140,8 +139,8 @@ export async function GET(request: NextRequest) {
             gap: "12px",
           }}
         >
-          <span style={{ fontSize: "28px", color: "white", fontWeight: "bold" }}>
-            🌸 山田ツール
+          <span style={{ fontSize: "28px", color: "white", fontWeight: 700 }}>
+            山田ツール
           </span>
           <span style={{ fontSize: "18px", color: "rgba(255,255,255,0.8)" }}>
             yamada-tools.jp
@@ -152,6 +151,14 @@ export async function GET(request: NextRequest) {
     {
       width: 1200,
       height: 630,
+      fonts: [
+        {
+          name: "Noto Sans JP",
+          data: font,
+          style: "normal",
+          weight: 700,
+        },
+      ],
     }
   );
 }
