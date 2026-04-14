@@ -59,7 +59,7 @@ export default function ShikakuToshiSimulation2026Blog() {
             <p className="text-sm text-gray-700 mb-2"><strong>例：宅建取得の場合</strong></p>
             <p className="text-sm text-gray-600">取得コスト：10万円（教材＋受験料）</p>
             <p className="text-sm text-gray-600">年収アップ：月2万円 × 12ヶ月 = 年24万円</p>
-            <p className="text-sm text-gray-600">20年間働く場合：(24万 × 20年 − 10万) ÷ 10万 × 100 = <strong class="text-purple-600">4,700%</strong></p>
+            <p className="text-sm text-gray-600">20年間働く場合：(24万 × 20年 − 10万) ÷ 10万 × 100 = <strong className="text-purple-600">4,700%</strong></p>
           </div>
         </div>
 
