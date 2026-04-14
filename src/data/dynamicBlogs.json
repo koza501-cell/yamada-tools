@@ -1,5 +1,23 @@
 [
   {
+    "slug": "kotei-shisanzei-simulation-2026",
+    "title": "【2026年最新】固定資産税の計算方法｜新築・中古・土地別シミュレーション",
+    "description": "固定資産税の計算方法を解説。新築軽減措置、住宅用地特例、マンション・戸建て別の計算例。",
+    "category": "不動産・税金",
+    "tags": [
+      "固定資産税",
+      "計算",
+      "新築",
+      "軽減",
+      "土地"
+    ],
+    "featuredImage": "https://yamada-tools.jp/api/og?title=%E5%9B%BA%E5%AE%9A%E8%B3%87%E7%94%A3%E7%A8%8E&type=blog&category=%E4%B8%8D%E5%8B%95%E7%94%A3",
+    "publishDate": "2026-04-14",
+    "author": "山田ツール編集部",
+    "readTime": "8分",
+    "excerpt": "固定資産税の計算方法と軽減措置を徹底解説。新築・中古・土地別のシミュレーション例。"
+  },
+  {
     "slug": "zangyoudai-keisan-simulation-2026",
     "title": "【2026年最新】残業代の計算方法｜時給換算・割増率・未払い請求まで完全解説",
     "description": "残業代の正しい計算方法を解説。時給換算、25%・35%・50%の割増率、未払い請求の方法まで。",
