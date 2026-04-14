@@ -1,5 +1,23 @@
 [
   {
+    "slug": "shotokuzei-keisan-simulation-2026",
+    "title": "【2026年最新】所得税の計算方法｜年収別早見表と手取り額シミュレーション",
+    "description": "所得税の計算方法と年収別早見表。控除の種類と節税効果、確定申告で還付を受ける方法。",
+    "category": "税金・給与",
+    "tags": [
+      "所得税",
+      "計算",
+      "年収",
+      "手取り",
+      "控除"
+    ],
+    "featuredImage": "https://yamada-tools.jp/api/og?title=%E6%89%80%E5%BE%97%E7%A8%8E&type=blog&category=%E7%A8%8E%E9%87%91",
+    "publishDate": "2026-04-14",
+    "author": "山田ツール編集部",
+    "readTime": "10分",
+    "excerpt": "所得税の計算方法と年収別早見表。税率、控除の種類、確定申告で還付を受ける方法を解説。"
+  },
+  {
     "slug": "kotei-shisanzei-simulation-2026",
     "title": "【2026年最新】固定資産税の計算方法｜新築・中古・土地別シミュレーション",
     "description": "固定資産税の計算方法を解説。新築軽減措置、住宅用地特例、マンション・戸建て別の計算例。",
