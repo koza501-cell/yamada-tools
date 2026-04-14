@@ -15,6 +15,33 @@ export const metadata: Metadata = {
 export default function KyouikuhiSimulation2026Blog() {
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "【2026年最新】教育費シミュレーション｜幼稚園から大学までいくらかかる？",
+            "description": "子どもの教育費を徹底解説。幼稚園・小学校・中学校・高校・大学の公立/私立別費用、学費の準備方法、教育費を抑えるコツ。シミュレーターで今すぐ計算。",
+            "datePublished": "2026-04-14",
+            "dateModified": "2026-04-14",
+            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
+            "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/kyouikuhi-simulation-2026"}
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{"@type":"Question","name":"教育費の準備はいつから始めるべき？","acceptedAnswer":{"@type":"Answer","text":"子どもが生まれたらすぐに始めるのが理想です。18年間で準備できれば月々の負担は軽くなります。大学入学までに500万円を目指すなら月2.3万円の積立が目安。"}},{"@type":"Question","name":"奨学金は借りるべき？","acceptedAnswer":{"@type":"Answer","text":"給付型（返済不要）は積極的に活用すべきです。貸与型は第一種（無利子）を優先し、第二種（有利子）は慎重に。卒業後の返済負担も考慮しましょう。"}},{"@type":"Question","name":"学資保険と新NISA、どちらがいい？","acceptedAnswer":{"@type":"Answer","text":"学資保険は死亡保障付きで確実、新NISAはリターンが期待できるが元本割れリスクあり。両方を組み合わせるか、リスク許容度で選びましょう。"}},{"@type":"Question","name":"私立中学に行かせる年収の目安は？","acceptedAnswer":{"@type":"Answer","text":"一般的に世帯年収800万円以上が目安とされています。ただし兄弟の有無や住宅ローンの有無によっても変わります。教育費が収入の10〜15%以内に収まるかがポイント。"}}]
+          })
+        }}
+      />
       <nav className="text-sm text-gray-500 mb-6">
         <Link href="/" className="hover:text-pink-500">ホーム</Link>
         <span className="mx-2">/</span>

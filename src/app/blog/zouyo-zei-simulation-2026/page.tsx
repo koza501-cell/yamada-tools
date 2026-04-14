@@ -15,6 +15,33 @@ export const metadata: Metadata = {
 export default function ZouyoZeiSimulation2026Blog() {
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "【2026年最新】贈与税はいくら？親からの援助・生前贈与の税金シミュレーション",
+            "description": "贈与税の計算方法と税率を徹底解説。110万円の基礎控除、住宅取得資金の非課税特例、相続時精算課税制度の活用法。親からの援助で損しない方法を紹介。",
+            "datePublished": "2026-04-14",
+            "dateModified": "2026-04-14",
+            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
+            "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/zouyo-zei-simulation-2026"}
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{"@type":"Question","name":"親から毎年110万円もらっても税金はかからない？","acceptedAnswer":{"@type":"Answer","text":"はい、基礎控除の範囲内なら贈与税はかかりません。ただし、毎年同じ金額を定期的に贈与すると「定期贈与」とみなされるリスクがあるため、金額や時期を変えることをおすすめします。"}},{"@type":"Question","name":"贈与税の申告はいつまで？","acceptedAnswer":{"@type":"Answer","text":"贈与を受けた年の翌年2月1日〜3月15日までに申告・納付が必要です。110万円以下の場合は申告不要ですが、特例を使う場合は申告が必要です。"}},{"@type":"Question","name":"現金を手渡しでもらったらバレない？","acceptedAnswer":{"@type":"Answer","text":"税務署は預金の動きを調査できます。相続発生時に過去の贈与が発覚することも多く、無申告加算税や延滞税がかかるリスクがあります。"}},{"@type":"Question","name":"夫婦間の贈与も贈与税がかかる？","acceptedAnswer":{"@type":"Answer","text":"原則として贈与税がかかります。ただし、婚姻期間20年以上の夫婦間で居住用不動産を贈与する場合、最大2,000万円まで非課税になる特例があります。"}}]
+          })
+        }}
+      />
       <nav className="text-sm text-gray-500 mb-6">
         <Link href="/" className="hover:text-pink-500">ホーム</Link>
         <span className="mx-2">/</span>

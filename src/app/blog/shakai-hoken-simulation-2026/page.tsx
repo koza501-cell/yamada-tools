@@ -15,6 +15,33 @@ export const metadata: Metadata = {
 export default function ShakaiHokenSimulation2026Blog() {
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "【2026年最新】社会保険料の計算方法｜年収別早見表と手取り額シミュレーション",
+            "description": "社会保険料の計算方法を徹底解説。健康保険・厚生年金・雇用保険の料率、年収別の保険料早見表、標準報酬月額の決まり方。手取り額シミュレーターで計算。",
+            "datePublished": "2026-04-14",
+            "dateModified": "2026-04-14",
+            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
+            "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/shakai-hoken-simulation-2026"}
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{"@type":"Question","name":"パート・アルバイトも社会保険に入る？","acceptedAnswer":{"@type":"Answer","text":"週20時間以上勤務、月収8.8万円以上、従業員51人以上の会社で働く場合は加入義務があります（2024年10月〜）。それ以外でも週30時間以上なら加入対象です。"}},{"@type":"Question","name":"40歳になったら保険料が上がる？","acceptedAnswer":{"@type":"Answer","text":"はい、上がります。40歳から64歳までは介護保険料（約1.6%、本人負担約0.8%）が追加されるため、年間数万円の負担増となります。"}},{"@type":"Question","name":"転職したら社会保険料は変わる？","acceptedAnswer":{"@type":"Answer","text":"給与が変われば変わります。転職時は実際の給与で標準報酬月額が決定され、その後は定時決定（4〜6月）または随時改定で見直されます。"}},{"@type":"Question","name":"社会保険料は所得控除できる？","acceptedAnswer":{"@type":"Answer","text":"はい、全額が社会保険料控除として所得から差し引けます。年末調整や確定申告で自動的に適用されるため、別途の手続きは不要です。"}}]
+          })
+        }}
+      />
       <nav className="text-sm text-gray-500 mb-6">
         <Link href="/" className="hover:text-pink-500">ホーム</Link>
         <span className="mx-2">/</span>

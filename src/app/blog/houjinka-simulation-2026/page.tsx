@@ -15,6 +15,33 @@ export const metadata: Metadata = {
 export default function HoujinkaSimulation2026Blog() {
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "【2026年最新】法人化シミュレーション｜個人事業主が会社設立すべき年収は？",
+            "description": "法人化のメリット・デメリットを徹底解説。個人事業主が法人成りすべき年収の目安、節税効果、社会保険料の変化をシミュレーション。設立費用と手続きも紹介。",
+            "datePublished": "2026-04-14",
+            "dateModified": "2026-04-14",
+            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
+            "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/houjinka-simulation-2026"}
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{"@type":"Question","name":"法人化のベストタイミングは？","acceptedAnswer":{"@type":"Answer","text":"年の途中より1月か決算翌月がおすすめです。年の途中だと個人と法人の両方で確定申告が必要になり手間が増えます。"}},{"@type":"Question","name":"株式会社と合同会社、どちらを選ぶべき？","acceptedAnswer":{"@type":"Answer","text":"外部からの出資を受ける予定があるなら株式会社、1人または家族経営で費用を抑えたいなら合同会社がおすすめです。税務上の違いはありません。"}},{"@type":"Question","name":"資本金はいくらにすべき？","acceptedAnswer":{"@type":"Answer","text":"消費税免税のため1,000万円未満が基本。実務上は100万円〜300万円が多いです。ただし許認可事業では最低資本金が定められている場合があります。"}},{"@type":"Question","name":"法人化したら税理士は必須？","acceptedAnswer":{"@type":"Answer","text":"法律上は必須ではありませんが、実務上はほぼ必須です。法人税申告は複雑で、税理士なしでは節税機会を逃す可能性が高いです。"}}]
+          })
+        }}
+      />
       <nav className="text-sm text-gray-500 mb-6">
         <Link href="/" className="hover:text-pink-500">ホーム</Link>
         <span className="mx-2">/</span>

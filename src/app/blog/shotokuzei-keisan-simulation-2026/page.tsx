@@ -15,6 +15,33 @@ export const metadata: Metadata = {
 export default function ShotokuzeiKeisanSimulation2026Blog() {
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "【2026年最新】所得税の計算方法｜年収別早見表と手取り額シミュレーション",
+            "description": "所得税の計算方法を徹底解説。年収300万〜1500万円の税額早見表、控除の種類と活用法、確定申告で還付を受ける方法。手取り額シミュレーターで試算。",
+            "datePublished": "2026-04-14",
+            "dateModified": "2026-04-14",
+            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
+            "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/shotokuzei-keisan-simulation-2026"}
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{"@type":"Question","name":"所得税と住民税の違いは？","acceptedAnswer":{"@type":"Answer","text":"所得税は国税、住民税は地方税です。所得税は累進課税（5〜45%）、住民税は一律約10%。所得税は当年の収入に対して課税、住民税は前年の収入に対して翌年課税されます。"}},{"@type":"Question","name":"年収いくらから所得税がかかる？","acceptedAnswer":{"@type":"Answer","text":"給与収入のみの場合、年収103万円以下なら所得税ゼロです。これは給与所得控除55万円＋基礎控除48万円＝103万円のため。"}},{"@type":"Question","name":"ボーナスの所得税はなぜ高い？","acceptedAnswer":{"@type":"Answer","text":"源泉徴収の計算方法が異なるためです。ボーナスは前月給与を基準に高めに源泉徴収されますが、年末調整で精算されるため、最終的な税額は同じです。"}},{"@type":"Question","name":"副業収入の所得税はどうなる？","acceptedAnswer":{"@type":"Answer","text":"副業収入は本業と合算して累進課税されます。副業所得20万円超なら確定申告が必要。本業で適用されている税率に上乗せされるため、税率が上がることも。"}}]
+          })
+        }}
+      />
       <nav className="text-sm text-gray-500 mb-6">
         <Link href="/" className="hover:text-pink-500">ホーム</Link>
         <span className="mx-2">/</span>

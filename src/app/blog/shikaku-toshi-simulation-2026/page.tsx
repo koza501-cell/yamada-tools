@@ -15,6 +15,33 @@ export const metadata: Metadata = {
 export default function ShikakuToshiSimulation2026Blog() {
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "【2026年最新】資格取得は投資になる？費用対効果（ROI）をシミュレーション",
+            "description": "資格取得の費用対効果を徹底解説。取得費用・勉強時間と年収アップ効果、元が取れる資格・取れない資格、ROI計算方法。シミュレーターで投資回収期間を計算。",
+            "datePublished": "2026-04-14",
+            "dateModified": "2026-04-14",
+            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
+            "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/shikaku-toshi-simulation-2026"}
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{"@type":"Question","name":"資格より実務経験の方が大事？","acceptedAnswer":{"@type":"Answer","text":"両方大事です。実務経験がベースにあった上で、資格が「証明」の役割を果たします。実務経験ゼロで資格だけ持っていても評価されにくいですが、経験＋資格の組み合わせは強力です。"}},{"@type":"Question","name":"独学とスクール、どちらがいい？","acceptedAnswer":{"@type":"Answer","text":"費用対効果で判断しましょう。難関資格や効率重視ならスクール、費用を抑えたいなら独学。ただし独学で挫折して何度も受験するより、スクールで一発合格の方が結果的に安いこともあります。"}},{"@type":"Question","name":"会社が費用を出してくれる場合は？","acceptedAnswer":{"@type":"Answer","text":"費用負担なしならROIは最大化します。ただし「〇年以内に退職したら返還」などの条件がある場合も。制度をフル活用しましょう。"}},{"@type":"Question","name":"不合格だったらどうする？","acceptedAnswer":{"@type":"Answer","text":"2〜3回までは再挑戦の価値あり。それ以上は撤退も選択肢。投資した分を「サンクコスト」として切り捨て、別の道を検討する勇気も必要です。"}}]
+          })
+        }}
+      />
       <nav className="text-sm text-gray-500 mb-6">
         <Link href="/" className="hover:text-pink-500">ホーム</Link>
         <span className="mx-2">/</span>

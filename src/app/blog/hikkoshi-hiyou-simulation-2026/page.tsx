@@ -15,6 +15,33 @@ export const metadata: Metadata = {
 export default function HikkoshiHiyouSimulation2026Blog() {
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "【2026年最新】引越し費用の相場と計算方法｜単身・家族別シミュレーション",
+            "description": "引越し費用の相場を徹底解説。単身・2人・家族の距離別料金表、初期費用の内訳、安く抑えるコツ。引越し費用シミュレーターで今すぐ計算。",
+            "datePublished": "2026-04-14",
+            "dateModified": "2026-04-14",
+            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
+            "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/hikkoshi-hiyou-simulation-2026"}
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{"@type":"Question","name":"一番安い時期はいつ？","acceptedAnswer":{"@type":"Answer","text":"11月〜1月が最安です。需要が少なく、業者も予約が取りやすいため値引き交渉もしやすくなります。逆に3〜4月は繁忙期で1.5〜2倍になることも。"}},{"@type":"Question","name":"見積もりは何社取るべき？","acceptedAnswer":{"@type":"Answer","text":"最低3社、できれば5社程度から見積もりを取りましょう。相場を把握でき、価格交渉の材料にもなります。一括見積もりサイトが便利です。"}},{"@type":"Question","name":"自力引越しはどれくらい安い？","acceptedAnswer":{"@type":"Answer","text":"レンタカー代と高速代程度で済むので1〜3万円に抑えられます。ただし大型家具や家電の運搬は難しく、時間と体力も必要。単身で荷物少なめなら検討の価値あり。"}},{"@type":"Question","name":"不用品の処分費用は？","acceptedAnswer":{"@type":"Answer","text":"自治体の粗大ゴミは数百〜数千円/個。業者に依頼すると軽トラ1台分で1〜3万円。リサイクルショップやフリマアプリで売れば逆にお金になることも。"}}]
+          })
+        }}
+      />
       <nav className="text-sm text-gray-500 mb-6">
         <Link href="/" className="hover:text-pink-500">ホーム</Link>
         <span className="mx-2">/</span>

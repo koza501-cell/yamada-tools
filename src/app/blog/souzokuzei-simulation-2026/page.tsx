@@ -15,6 +15,33 @@ export const metadata: Metadata = {
 export default function SouzokuzeiSimulation2026Blog() {
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "【2026年最新】相続税シミュレーション完全ガイド｜基礎控除・税率・計算方法を徹底解説",
+            "description": "相続税の計算方法を初心者向けに解説。基礎控除3,000万円+600万円×法定相続人の数で非課税枠を計算。遺産1億円の場合の税額シミュレーションや節税対策も紹介。",
+            "datePublished": "2026-04-14",
+            "dateModified": "2026-04-14",
+            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
+            "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/souzokuzei-simulation-2026"}
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{"@type":"Question","name":"相続税の申告期限は？","acceptedAnswer":{"@type":"Answer","text":"被相続人が亡くなった日から10ヶ月以内に申告・納税が必要です。遅れるとペナルティがかかります。"}},{"@type":"Question","name":"相続税は現金一括で払うの？","acceptedAnswer":{"@type":"Answer","text":"原則は現金一括ですが、延納（分割払い）や物納（不動産などで支払い）も条件を満たせば可能です。"}},{"@type":"Question","name":"借金も相続するの？","acceptedAnswer":{"@type":"Answer","text":"はい、借金（マイナスの財産）も相続対象です。ただし、借金が多い場合は「相続放棄」や「限定承認」という選択肢もあります。"}},{"@type":"Question","name":"生前贈与したら相続税に加算される？","acceptedAnswer":{"@type":"Answer","text":"相続開始前7年以内の贈与は相続財産に加算されます（2024年以降の贈与から段階的に7年に延長）。"}}]
+          })
+        }}
+      />
       <nav className="text-sm text-gray-500 mb-6">
         <Link href="/" className="hover:text-pink-500">ホーム</Link>
         <span className="mx-2">/</span>

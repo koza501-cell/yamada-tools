@@ -15,6 +15,33 @@ export const metadata: Metadata = {
 export default function SeimeiHokenSimulation2026Blog() {
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "【2026年最新】生命保険の必要額シミュレーション｜家族構成別の目安と計算方法",
+            "description": "生命保険の必要保障額を徹底解説。家族構成・年収・住宅ローン別の目安、遺族年金との関係、保険料の相場。必要額シミュレーターで今すぐ計算。",
+            "datePublished": "2026-04-14",
+            "dateModified": "2026-04-14",
+            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
+            "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/seimei-hoken-simulation-2026"}
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{"@type":"Question","name":"共働きでも生命保険は必要？","acceptedAnswer":{"@type":"Answer","text":"はい、必要です。共働きでも、どちらかが亡くなると世帯収入は減少します。特に住宅ローンを組んでいる場合や子どもがいる場合は、それぞれが適切な保障を持つことが大切です。"}},{"@type":"Question","name":"子どもがいない夫婦の必要額は？","acceptedAnswer":{"@type":"Answer","text":"共働きなら500〜1,000万円程度が目安。片働きの場合は、配偶者が就労するまでの生活費として1,500〜2,500万円程度を検討しましょう。"}},{"@type":"Question","name":"保険の見直しタイミングは？","acceptedAnswer":{"@type":"Answer","text":"ライフイベント時に見直しましょう。結婚、出産、住宅購入、子どもの独立、転職など。特に子どもの成長に合わせて必要保障額は減少するので、保険料の節約ができます。"}},{"@type":"Question","name":"会社の団体保険だけで足りる？","acceptedAnswer":{"@type":"Answer","text":"会社の団体保険は退職すると失効します。また、保障額が不十分な場合も。転職リスクを考えると、個人で加入する保険との併用がおすすめです。"}}]
+          })
+        }}
+      />
       <nav className="text-sm text-gray-500 mb-6">
         <Link href="/" className="hover:text-pink-500">ホーム</Link>
         <span className="mx-2">/</span>

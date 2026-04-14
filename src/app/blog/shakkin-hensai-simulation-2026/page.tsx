@@ -15,6 +15,33 @@ export const metadata: Metadata = {
 export default function ShakkinHensaiSimulation2026Blog() {
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "【2026年最新】借金返済シミュレーション｜完済までの期間と総支払額を計算",
+            "description": "借金返済の計画を徹底解説。毎月の返済額から完済期間を計算、繰り上げ返済の効果、おまとめローンのメリット・デメリット。シミュレーターで返済計画を立てる。",
+            "datePublished": "2026-04-14",
+            "dateModified": "2026-04-14",
+            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
+            "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/shakkin-hensai-simulation-2026"}
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{"@type":"Question","name":"リボ払いの残高が減らないのはなぜ？","acceptedAnswer":{"@type":"Answer","text":"リボ払いは毎月の返済額が一定ですが、その多くが利息に充てられるためです。残高が多いと利息も大きくなり、元本がほとんど減りません。可能な限り繰り上げ返済するか、一括返済を検討しましょう。"}},{"@type":"Question","name":"借金があっても住宅ローンは組める？","acceptedAnswer":{"@type":"Answer","text":"完済していれば問題ないことが多いです。ただし、延滞履歴が信用情報に残っている場合（5年間）は審査に影響します。住宅ローンを考えているなら、まず借金を完済し、数年待つことをおすすめします。"}},{"@type":"Question","name":"過払い金は請求できる？","acceptedAnswer":{"@type":"Answer","text":"2010年以前に金利20%超で借りていた場合、過払い金が発生している可能性があります。完済から10年で時効となるため、心当たりがある方は早めに弁護士・司法書士に相談しましょう。"}},{"@type":"Question","name":"家族に内緒で借金返済できる？","acceptedAnswer":{"@type":"Answer","text":"通常の返済であれば、郵便物をWEB明細に変更するなどで対応可能です。ただし、延滞すると督促状が届くため、計画的な返済が必須です。任意整理も本人のみで進められます。"}}]
+          })
+        }}
+      />
       <nav className="text-sm text-gray-500 mb-6">
         <Link href="/" className="hover:text-pink-500">ホーム</Link>
         <span className="mx-2">/</span>

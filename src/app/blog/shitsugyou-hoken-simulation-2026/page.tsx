@@ -15,6 +15,33 @@ export const metadata: Metadata = {
 export default function ShitsugyouHokenSimulation2026Blog() {
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "【2026年最新】失業保険はいくらもらえる？受給額・期間シミュレーション完全ガイド",
+            "description": "失業保険（雇用保険）の受給額を徹底解説。月給30万円なら日額約6,000円、総額約100万円が目安。自己都合・会社都合の違い、受給期間、手続き方法まで網羅。",
+            "datePublished": "2026-04-14",
+            "dateModified": "2026-04-14",
+            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
+            "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/shitsugyou-hoken-simulation-2026"}
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{"@type":"Question","name":"失業保険と年金は同時にもらえる？","acceptedAnswer":{"@type":"Answer","text":"65歳未満は基本的にどちらか一方です。失業保険を受給中は年金が停止されます。65歳以上は「高年齢求職者給付金」として一時金が支給されます。"}},{"@type":"Question","name":"アルバイトしながらもらえる？","acceptedAnswer":{"@type":"Answer","text":"週20時間未満なら可能ですが、働いた日は減額されます。週20時間以上働くと「就職」とみなされ、給付が停止します。"}},{"@type":"Question","name":"再就職したらどうなる？","acceptedAnswer":{"@type":"Answer","text":"「再就職手当」がもらえる可能性があります。残りの給付日数の60〜70%が一時金として支給されます。早く再就職するほどお得です。"}},{"@type":"Question","name":"転職先が決まってから退職したら？","acceptedAnswer":{"@type":"Answer","text":"失業保険はもらえません。失業状態ではないためです。ただし、入社日までに期間が空く場合は受給できることも。"}}]
+          })
+        }}
+      />
       <nav className="text-sm text-gray-500 mb-6">
         <Link href="/" className="hover:text-pink-500">ホーム</Link>
         <span className="mx-2">/</span>

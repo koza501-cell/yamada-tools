@@ -15,6 +15,33 @@ export const metadata: Metadata = {
 export default function TenshokuNenshuSimulation2026Blog() {
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "【2026年最新】転職で年収はいくら上がる？年収アップシミュレーション完全ガイド",
+            "description": "転職による年収アップの相場を徹底解説。20代は平均+50万円、30代は+80万円が目安。業界別・職種別の年収アップ率と、年収交渉のコツを紹介。",
+            "datePublished": "2026-04-14",
+            "dateModified": "2026-04-14",
+            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
+            "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/tenshoku-nenshu-simulation-2026"}
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{"@type":"Question","name":"転職回数が多いと年収に影響する？","acceptedAnswer":{"@type":"Answer","text":"3回までは大きな影響なし。ただし短期離職の繰り返しはマイナス評価に。各社で何を成し遂げたかをアピールできれば問題ありません。"}},{"@type":"Question","name":"年収交渉でどのくらい上がる？","acceptedAnswer":{"@type":"Answer","text":"提示額から+30〜50万円が一般的な交渉成功ライン。根拠（他社オファー、市場相場）があれば+100万円も可能です。"}},{"@type":"Question","name":"転職エージェントは使うべき？","acceptedAnswer":{"@type":"Answer","text":"年収アップを狙うなら必須。非公開求人へのアクセス、年収交渉の代行など、エージェントを使うメリットは大きいです。"}},{"@type":"Question","name":"同業他社への転職は有利？","acceptedAnswer":{"@type":"Answer","text":"年収アップには最も有利。即戦力として評価され、競合の内情を知っていることも価値になります。ただし競業避止義務には注意。"}}]
+          })
+        }}
+      />
       <nav className="text-sm text-gray-500 mb-6">
         <Link href="/" className="hover:text-pink-500">ホーム</Link>
         <span className="mx-2">/</span>

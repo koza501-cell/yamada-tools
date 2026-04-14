@@ -15,6 +15,33 @@ export const metadata: Metadata = {
 export default function ZangyoudaiKeisanSimulation2026Blog() {
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "【2026年最新】残業代の計算方法｜時給換算・割増率・未払い請求まで完全解説",
+            "description": "残業代の正しい計算方法を徹底解説。基本給からの時給換算、25%・35%・50%の割増率、深夜・休日の計算例。未払い残業代の請求方法も紹介。",
+            "datePublished": "2026-04-14",
+            "dateModified": "2026-04-14",
+            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
+            "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/zangyoudai-keisan-simulation-2026"}
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{"@type":"Question","name":"固定残業代（みなし残業）の場合は？","acceptedAnswer":{"@type":"Answer","text":"固定残業代を超えた分は別途支払いが必要です。例えば「月30時間分の固定残業代」が含まれている場合、31時間目以降は追加で残業代が発生します。"}},{"@type":"Question","name":"管理職でも残業代はもらえる？","acceptedAnswer":{"@type":"Answer","text":"「名ばかり管理職」なら残業代の対象です。労働基準法の「管理監督者」に該当するには、経営に関する決定権、出退勤の自由、相応の待遇が必要。実態がなければ請求可能です。"}},{"@type":"Question","name":"休日出勤と残業の違いは？","acceptedAnswer":{"@type":"Answer","text":"法定休日（週1日）の出勤は35%割増。それ以外の休日（所定休日）は通常の時間外労働として25%割増になります。会社の就業規則で法定休日がいつか確認しましょう。"}},{"@type":"Question","name":"サービス残業は違法？","acceptedAnswer":{"@type":"Answer","text":"違法です。労働した時間に対して賃金を支払わないのは労働基準法違反。会社には是正勧告や罰則が科される可能性があります。"}}]
+          })
+        }}
+      />
       <nav className="text-sm text-gray-500 mb-6">
         <Link href="/" className="hover:text-pink-500">ホーム</Link>
         <span className="mx-2">/</span>

@@ -26,6 +26,33 @@ export const metadata: Metadata = {
 export default function NisaSimulation2026Blog() {
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "【2026年最新】新NISAシミュレーション完全ガイド｜初心者でも5分でわかる積立計算",
+            "description": "新NISAの積立シミュレーションを無料で計算。毎月1万円で20年後にいくら？つみたて投資枠と成長投資枠の違い、2026年税制改正のポイントを初心者向けにわかりやすく解説。",
+            "datePublished": "2026-04-14",
+            "dateModified": "2026-04-14",
+            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
+            "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/nisa-simulation-2026"}
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{"@type":"Question","name":"新NISAはいつ始めるべき？","acceptedAnswer":{"@type":"Answer","text":"今すぐ始めるのがベストです。複利効果を最大限に活かすには、1日でも早くスタートすることが有利です。"}},{"@type":"Question","name":"毎月いくら積み立てればいい？","acceptedAnswer":{"@type":"Answer","text":"無理のない範囲で、最低でも月1万円を目標に。手取りの10〜15%が理想的です。"}},{"@type":"Question","name":"オルカンとS&P500、どっちがいい？","acceptedAnswer":{"@type":"Answer","text":"どちらも優良な選択肢です。迷ったら、より分散が効いているオルカンがおすすめ。"}},{"@type":"Question","name":"NISA口座はどこで開設すればいい？","acceptedAnswer":{"@type":"Answer","text":"ネット証券がおすすめ。SBI証券、楽天証券、マネックス証券などが人気です。"}},{"@type":"Question","name":"途中で解約できる？","acceptedAnswer":{"@type":"Answer","text":"はい、いつでも売却・引き出し可能です。ただし非課税枠の復活は翌年以降です。"}}]
+          })
+        }}
+      />
       <nav className="text-sm text-gray-500 mb-6">
         <Link href="/" className="hover:text-pink-500">ホーム</Link>
         <span className="mx-2">/</span>

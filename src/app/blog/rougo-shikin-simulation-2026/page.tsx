@@ -15,6 +15,33 @@ export const metadata: Metadata = {
 export default function RougoShikinSimulation2026Blog() {
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "【2026年最新】老後資金はいくら必要？2000万円問題の真実とシミュレーション",
+            "description": "老後資金の必要額を徹底シミュレーション。夫婦で月25万円なら65歳から30年で約9,000万円必要。年金・退職金を差し引いた不足額と、今から始める対策を解説。",
+            "datePublished": "2026-04-14",
+            "dateModified": "2026-04-14",
+            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
+            "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/rougo-shikin-simulation-2026"}
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{"@type":"Question","name":"年金だけで生活できる？","acceptedAnswer":{"@type":"Answer","text":"持ち家があり、生活費を月15万円程度に抑えられれば可能なケースもあります。ただし、医療費や介護費用の備えは別途必要です。"}},{"@type":"Question","name":"老後資金はいつから使い始める？","acceptedAnswer":{"@type":"Answer","text":"年金受給開始の65歳からが一般的。ただし、退職から年金受給までの60〜65歳の生活費も考慮が必要です。"}},{"@type":"Question","name":"インフレで老後資金が目減りする？","acceptedAnswer":{"@type":"Answer","text":"現金だけで持っているとリスクがあります。株式や投資信託など、インフレに強い資産も組み入れることが重要です。"}},{"@type":"Question","name":"持ち家と賃貸、老後はどっちが有利？","acceptedAnswer":{"@type":"Answer","text":"持ち家は住居費が抑えられるメリットがありますが、修繕費・固定資産税が必要。賃貸は柔軟性がある一方、一生家賃がかかります。"}}]
+          })
+        }}
+      />
       <nav className="text-sm text-gray-500 mb-6">
         <Link href="/" className="hover:text-pink-500">ホーム</Link>
         <span className="mx-2">/</span>

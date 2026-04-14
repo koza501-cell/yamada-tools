@@ -15,6 +15,33 @@ export const metadata: Metadata = {
 export default function IryoHokenSimulation2026Blog() {
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "【2026年最新】医療保険は必要？不要？シミュレーションで判断する方法",
+            "description": "医療保険の必要性を徹底解説。高額療養費制度との関係、年齢・家族構成別の判断基準、保険料の相場、選び方のポイント。シミュレーターで必要額を計算。",
+            "datePublished": "2026-04-14",
+            "dateModified": "2026-04-14",
+            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
+            "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/iryo-hoken-simulation-2026"}
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{"@type":"Question","name":"貯蓄がいくらあれば医療保険は不要？","acceptedAnswer":{"@type":"Answer","text":"一般的に200万円以上の貯蓄があれば、医療費リスクには貯蓄で対応可能です。ただし、自営業で傷病手当金がない場合や、子育て中で貯蓄を取り崩したくない場合は保険が有効です。"}},{"@type":"Question","name":"がん保険と医療保険、どちらを優先？","acceptedAnswer":{"@type":"Answer","text":"両方に入る予算がない場合はがん保険を優先する考え方もあります。がんは治療が長期化・高額化しやすく、医療保険の入院日額ではカバーしきれないことがあるためです。"}},{"@type":"Question","name":"既に加入している保険を解約すべき？","acceptedAnswer":{"@type":"Answer","text":"既存の保険は解約前に慎重に検討してください。若いときに入った保険は保険料が安いことが多く、解約すると同じ条件では再加入できません。見直しは「追加」か「減額」が基本です。"}},{"@type":"Question","name":"県民共済や都民共済で十分？","acceptedAnswer":{"@type":"Answer","text":"若い世代にはコスパが良い選択です。ただし、60〜65歳以降は保障が大幅に減るため、長期の保障が必要な場合は終身型の医療保険も検討しましょう。"}}]
+          })
+        }}
+      />
       <nav className="text-sm text-gray-500 mb-6">
         <Link href="/" className="hover:text-pink-500">ホーム</Link>
         <span className="mx-2">/</span>

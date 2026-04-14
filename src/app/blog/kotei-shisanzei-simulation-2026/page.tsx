@@ -15,6 +15,33 @@ export const metadata: Metadata = {
 export default function KoteiShisanzeiSimulation2026Blog() {
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "【2026年最新】固定資産税の計算方法｜新築・中古・土地別シミュレーション",
+            "description": "固定資産税の計算方法を徹底解説。新築住宅の軽減措置、土地の特例、評価額の調べ方。マンション・戸建て別の計算例と節税方法を紹介。",
+            "datePublished": "2026-04-14",
+            "dateModified": "2026-04-14",
+            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
+            "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/kotei-shisanzei-simulation-2026"}
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{"@type":"Question","name":"固定資産税はいつ払う？","acceptedAnswer":{"@type":"Answer","text":"年4回（4月・7月・12月・翌2月頃）の分割払い、または一括払いを選択できます。納期限は市区町村によって異なります。"}},{"@type":"Question","name":"空き家にすると固定資産税が上がる？","acceptedAnswer":{"@type":"Answer","text":"「特定空き家」に指定されると住宅用地の特例が外れ、最大6倍になる可能性があります。適切な管理が必要です。"}},{"@type":"Question","name":"評価額が高すぎる場合は？","acceptedAnswer":{"@type":"Answer","text":"審査申出ができます。評価替えの年（3年ごと）に、固定資産評価審査委員会に不服を申し立てることが可能です。"}},{"@type":"Question","name":"マンションの固定資産税は戸建てより安い？","acceptedAnswer":{"@type":"Answer","text":"一概には言えません。マンションは土地持分が小さいため土地分は安くなりますが、建物評価額は戸建てより高くなることが多いです。"}}]
+          })
+        }}
+      />
       <nav className="text-sm text-gray-500 mb-6">
         <Link href="/" className="hover:text-pink-500">ホーム</Link>
         <span className="mx-2">/</span>

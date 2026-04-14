@@ -15,6 +15,33 @@ export const metadata: Metadata = {
 export default function TaishokukinSimulation2026Blog() {
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "【2026年最新】退職金の計算方法と相場｜勤続年数別シミュレーション完全ガイド",
+            "description": "退職金の計算方法を徹底解説。勤続20年で約800万円、30年で約1,500万円が目安。退職所得控除の計算、税金の仕組み、もらえない場合の対処法まで網羅。",
+            "datePublished": "2026-04-14",
+            "dateModified": "2026-04-14",
+            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
+            "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/taishokukin-simulation-2026"}
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{"@type":"Question","name":"退職金はいつもらえる？","acceptedAnswer":{"@type":"Answer","text":"退職後1〜2ヶ月以内が一般的。就業規則に「退職後◯日以内に支払う」と定められていることが多いです。"}},{"@type":"Question","name":"退職金がもらえない場合は？","acceptedAnswer":{"@type":"Answer","text":"就業規則を確認しましょう。退職金制度がない会社では請求できません。制度があるのに支払われない場合は労基署に相談を。"}},{"@type":"Question","name":"懲戒解雇だと退職金は？","acceptedAnswer":{"@type":"Answer","text":"減額または不支給になることが多いです。ただし、就業規則の規定によります。全額不支給は違法になる場合も。"}},{"@type":"Question","name":"転職先に退職金を持ち越せる？","acceptedAnswer":{"@type":"Answer","text":"企業型DCの場合は可能。転職先にDC制度があれば移換できます。確定給付型は通常持ち越せません。"}}]
+          })
+        }}
+      />
       <nav className="text-sm text-gray-500 mb-6">
         <Link href="/" className="hover:text-pink-500">ホーム</Link>
         <span className="mx-2">/</span>

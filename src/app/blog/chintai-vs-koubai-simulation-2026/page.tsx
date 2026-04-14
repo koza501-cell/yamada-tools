@@ -15,6 +15,33 @@ export const metadata: Metadata = {
 export default function ChintaiVsKoubaiSimulation2026Blog() {
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "【2026年最新】賃貸と購入どっちが得？50年シミュレーションで徹底比較",
+            "description": "賃貸と購入の総コストを50年間でシミュレーション。家賃10万円 vs 住宅ローン3,500万円の比較結果。ライフスタイル別のおすすめと判断基準を解説。",
+            "datePublished": "2026-04-14",
+            "dateModified": "2026-04-14",
+            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
+            "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/chintai-vs-koubai-simulation-2026"}
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{"@type":"Question","name":"何年住めば購入が有利になる？","acceptedAnswer":{"@type":"Answer","text":"一般的には15〜20年以上住む場合に購入が有利になることが多いです。ただし、物件の資産価値、金利、家賃水準によって大きく変わります。"}},{"@type":"Question","name":"頭金なしでも購入すべき？","acceptedAnswer":{"@type":"Answer","text":"おすすめしません。頭金なしだと借入額が増え、総支払額が大きくなります。最低でも物件価格の10〜20%は頭金を用意したいところ。"}},{"@type":"Question","name":"購入後に転勤になったらどうする？","acceptedAnswer":{"@type":"Answer","text":"売却か賃貸に出すことになります。住宅ローン返済中の賃貸は銀行の承認が必要。売却の場合、ローン残高より低い価格だと自己資金で補填が必要です。"}},{"@type":"Question","name":"マンションと戸建て、どっちが良い？","acceptedAnswer":{"@type":"Answer","text":"マンションは管理費・修繕積立金がかかるが管理が楽。戸建ては自由度が高いが修繕は自己負担。ライフスタイルと立地で選ぶのがベストです。"}}]
+          })
+        }}
+      />
       <nav className="text-sm text-gray-500 mb-6">
         <Link href="/" className="hover:text-pink-500">ホーム</Link>
         <span className="mx-2">/</span>

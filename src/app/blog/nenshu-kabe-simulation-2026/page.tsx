@@ -15,6 +15,33 @@ export const metadata: Metadata = {
 export default function NenshuKabeSimulation2026Blog() {
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "【2026年最新】年収の壁とは？103万・106万・130万・150万の壁を完全解説",
+            "description": "パート・アルバイトの年収の壁を徹底解説。103万円の壁で所得税、106万円・130万円の壁で社会保険、150万円の壁で配偶者特別控除に影響。損しない働き方を紹介。",
+            "datePublished": "2026-04-14",
+            "dateModified": "2026-04-14",
+            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
+            "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/nenshu-kabe-simulation-2026"}
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{"@type":"Question","name":"年収の壁は月収で考える？年収で考える？","acceptedAnswer":{"@type":"Answer","text":"基本は年収ベースです。ただし130万円の壁は「今後1年間の見込み収入」で判断されるため、月収が約10.8万円を継続的に超えると扶養から外れる可能性があります。"}},{"@type":"Question","name":"交通費は年収に含まれる？","acceptedAnswer":{"@type":"Answer","text":"所得税は非課税、社会保険は含まれることが多いです。130万円の壁を意識する場合は、交通費込みで計算しましょう。"}},{"@type":"Question","name":"社会保険に入るメリットは？","acceptedAnswer":{"@type":"Answer","text":"将来の年金が増える、傷病手当金・出産手当金がもらえるなどのメリットがあります。長期的に見れば損ではない場合も多いです。"}},{"@type":"Question","name":"ダブルワークの場合は？","acceptedAnswer":{"@type":"Answer","text":"全ての収入を合算して判断します。複数の勤務先の給与を合計して年収の壁を確認してください。"}}]
+          })
+        }}
+      />
       <nav className="text-sm text-gray-500 mb-6">
         <Link href="/" className="hover:text-pink-500">ホーム</Link>
         <span className="mx-2">/</span>

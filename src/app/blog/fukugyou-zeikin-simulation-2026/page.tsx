@@ -15,6 +15,33 @@ export const metadata: Metadata = {
 export default function FukugyouZeikinSimulation2026Blog() {
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "【2026年最新】副業の税金はいくら？確定申告が必要な条件と節税方法を解説",
+            "description": "副業収入20万円以下でも住民税は申告必要？副業バレを防ぐ方法、経費で落とせるもの、確定申告のやり方まで完全解説。副業税金シミュレーターで試算。",
+            "datePublished": "2026-04-14",
+            "dateModified": "2026-04-14",
+            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
+            "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/fukugyou-zeikin-simulation-2026"}
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{"@type":"Question","name":"副業収入が20万円以下なら何もしなくていい？","acceptedAnswer":{"@type":"Answer","text":"所得税の確定申告は不要ですが、住民税の申告は必要です。市区町村の窓口で住民税の申告をするか、あえて確定申告をして住民税も一緒に処理するのが確実です。"}},{"@type":"Question","name":"メルカリやヤフオクの売上も申告が必要？","acceptedAnswer":{"@type":"Answer","text":"不用品の売却は基本的に非課税です。ただし、転売目的で仕入れて販売している場合や、高額な利益が出ている場合は申告が必要になることがあります。"}},{"@type":"Question","name":"副業が赤字の場合はどうなる？","acceptedAnswer":{"@type":"Answer","text":"事業所得として申告すれば、本業の給与所得と損益通算でき、税金が還付される可能性があります。ただし、雑所得では損益通算できません。"}},{"@type":"Question","name":"副業で青色申告はできる？","acceptedAnswer":{"@type":"Answer","text":"事業所得として認められれば可能です。開業届と青色申告承認申請書を提出し、複式簿記で記帳すれば65万円の控除が受けられます。"}}]
+          })
+        }}
+      />
       <nav className="text-sm text-gray-500 mb-6">
         <Link href="/" className="hover:text-pink-500">ホーム</Link>
         <span className="mx-2">/</span>
