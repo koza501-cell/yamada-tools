@@ -509,7 +509,7 @@ export default function NenmatsuCalcClient({
           </div>
           <p className="text-xs text-gray-500 mt-4">※ 生命保険料控除・住宅ローン控除などを適用すると還付額が増えます。上記は概算値です。</p>
         </section>
-        <AdUnit slot="5612038947" format="horizontal" />
+        <AdUnit position="mid" format="horizontal" />
       </div>
     </div>
   );

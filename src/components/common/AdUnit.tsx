@@ -3,23 +3,33 @@ import { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
 
+declare global {
+  interface Window { adsbygoogle: any[]; }
+}
+
+const SLOT_MAP = {
+  top: '7453582900',
+  mid: '6084660910',
+  bottom: '3514337896',
+} as const;
+
+type AdPosition = keyof typeof SLOT_MAP;
+
+// pathname → Set<slotId>
+const renderedSlots = new Map<string, Set<string>>();
+
 interface AdUnitProps {
-  slot: string;
-  format?: 'auto' | 'rectangle' | 'horizontal' | 'vertical';
+  position?: AdPosition;
+  slot?: string;
+  format?: string;
   className?: string;
 }
 
-declare global {
-  interface Window {
-    adsbygoogle: any[];
-  }
-}
-
-export function AdUnit({ slot, format = 'auto', className = '' }: AdUnitProps) {
+export function AdUnit({ position = 'mid', slot, format = 'auto', className = '' }: AdUnitProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   const { isPro } = useAuth();
-  const adRef = useRef<HTMLModElement>(null);
-  const pushedRef = useRef(false);
+  const slotId = slot || SLOT_MAP[position];
 
   const isExcluded =
     pathname === '/' ||
@@ -28,49 +38,51 @@ export function AdUnit({ slot, format = 'auto', className = '' }: AdUnitProps) {
     pathname.startsWith('/auth');
 
   useEffect(() => {
-    if (isExcluded || isPro || pushedRef.current) return;
+    if (isExcluded || isPro) return;
+    const container = containerRef.current;
+    if (!container) return;
 
-    const element = adRef.current;
-    if (!element) return;
+    container.innerHTML = '';
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !pushedRef.current) {
-            const rect = entry.boundingClientRect;
-            if (rect.width > 0) {
-              pushedRef.current = true;
-              try {
-                (window.adsbygoogle = window.adsbygoogle || []).push({});
-              } catch (e) {
-                console.error('AdSense error:', e);
-              }
-              observer.disconnect();
-            }
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
+    if (!renderedSlots.has(pathname)) renderedSlots.set(pathname, new Set());
+    const pageSlots = renderedSlots.get(pathname)!;
 
-    observer.observe(element);
+    if (pageSlots.has(slotId)) {
+      container.style.display = 'none';
+      return;
+    }
+    pageSlots.add(slotId);
 
-    return () => observer.disconnect();
-  }, [isExcluded, isPro]);
+    const ins = document.createElement('ins');
+    ins.className = 'adsbygoogle';
+    ins.style.display = 'block';
+    ins.dataset.adClient = 'ca-pub-2272972805493752';
+    ins.dataset.adSlot = slotId;
+    ins.dataset.adFormat = format;
+    ins.dataset.fullWidthResponsive = 'true';
+    container.appendChild(ins);
+
+    try {
+      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
+    } catch (_) {}
+
+    return () => {
+      pageSlots.delete(slotId);
+      if (pageSlots.size === 0) renderedSlots.delete(pathname);
+      container.innerHTML = '';
+      container.style.display = '';
+    };
+  }, [pathname, slotId, format, isExcluded, isPro]);
 
   if (isExcluded || isPro) return null;
 
   return (
-    <div className={`ad-container my-6 ${className}`}>
-      <ins
-        ref={adRef}
-        className="adsbygoogle"
-        style={{ display: 'block' }}
-        data-ad-client="ca-pub-2272972805493752"
-        data-ad-slot={slot}
-        data-ad-format={format}
-        data-full-width-responsive="true"
-      />
-    </div>
+    <div
+      ref={containerRef}
+      className={`ad-container my-4 ${className}`.trim()}
+      style={{ minHeight: 0, overflow: 'hidden' }}
+    />
   );
 }
+
+export default AdUnit;

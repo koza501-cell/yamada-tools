@@ -256,7 +256,7 @@ export default function SleepCalculatorPage() {
       </div>
 
       <div className="max-w-3xl mx-auto px-4 py-6 space-y-6">
-        <AdUnit slot="top" className="my-2" />
+        <AdUnit position="top" className="my-2" />
 
         {/* Calculator Form */}
         <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 space-y-6">
@@ -584,7 +584,6 @@ export default function SleepCalculatorPage() {
           </section>
         )}
 
-        <AdUnit slot="mid" className="my-2" />
 
         {/* SEO Section 1: Reference Table */}
         <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
@@ -715,7 +714,7 @@ export default function SleepCalculatorPage() {
           </div>
         </section>
 
-        <AdUnit slot="bottom" className="my-2" />
+        <AdUnit position="bottom" className="my-2" />
       </div>
     </main>
     <UseCasesSection cases={useCases} />

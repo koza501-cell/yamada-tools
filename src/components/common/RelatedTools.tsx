@@ -86,7 +86,7 @@ export default function RelatedTools({ currentTool, maxItems = 6, tools, title }
       
       {/* 広告 */}
       <div className="mt-6">
-        <AdUnit slot="5612038947" format="horizontal" />
+        <AdUnit position="mid" format="horizontal" />
       </div>
     </section>
     );
@@ -134,7 +134,7 @@ export default function RelatedTools({ currentTool, maxItems = 6, tools, title }
     
       {/* 広告 */}
       <div className="mt-6">
-        <AdUnit slot="5612038947" format="horizontal" />
+        <AdUnit position="mid" format="horizontal" />
       </div>
     </section>
   );

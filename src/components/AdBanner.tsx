@@ -2,16 +2,18 @@
 
 import AdUnit from '@/components/AdUnit';
 
+type AdPosition = 'top' | 'mid' | 'bottom';
+
 interface AdBannerProps {
-  slot?: string;
+  position?: AdPosition;
   className?: string;
 }
 
-export default function AdBanner({ slot = '5612038947', className }: AdBannerProps) {
+export default function AdBanner({ position = 'mid', className }: AdBannerProps) {
   return (
     <AdUnit
-      slot={slot}
-      format="horizontal"
+      position={position}
+      format="auto"
       responsive={true}
       showUpgradeHint={true}
       className={className}

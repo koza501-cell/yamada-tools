@@ -61,7 +61,7 @@ export default function UnitConverterPage() {
         </div>
       </div>
       <div className="max-w-4xl mx-auto px-4 py-8 space-y-6">
-        <AdUnit slot="unit-converter-top" />
+        <AdUnit position="top" />
         <div className="bg-white rounded-2xl border border-gray-100 p-5">
           <h2 className="text-lg font-semibold mb-4">面積換算 早見表</h2>
           <table className="w-full text-sm">
@@ -76,7 +76,6 @@ export default function UnitConverterPage() {
             </tbody>
           </table>
         </div>
-        <AdUnit slot="unit-converter-mid" />
         <div className="bg-white rounded-2xl border border-gray-100 p-5">
           <h2 className="text-lg font-semibold mb-4">よくある質問</h2>
           <details>
@@ -91,7 +90,7 @@ export default function UnitConverterPage() {
             <Link href="/utility/date-calculator">日付・日数計算</Link>
           </div>
         </div>
-        <AdUnit slot="unit-converter-bottom" />
+        <AdUnit position="bottom" />
       </div>
     </div>
   );

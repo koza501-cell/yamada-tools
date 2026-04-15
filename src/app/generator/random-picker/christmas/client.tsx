@@ -383,7 +383,7 @@ function HowToStep({ step, title, children, last = false }: {
         <div style={{ fontSize: "0.92rem", color: "#555", lineHeight: 1.8 }}>
           {children}
         </div>
-        <AdUnit slot="5612038947" format="horizontal" />
+        <AdUnit position="mid" format="horizontal" />
       </div>
     </div>
   );

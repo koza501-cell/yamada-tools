@@ -1279,7 +1279,7 @@ export default function JutakuLoanClient() {
         <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-5 text-xs text-yellow-800">
           <p><strong>免責事項：</strong>本ツールの計算結果は参考情報であり、実際の返済額と異なる場合があります。金融機関や税理士にご相談の上、最終的な判断はご自身で行ってください。</p>
         </div>
-        <AdUnit slot="5612038947" format="horizontal" />
+        <AdUnit position="mid" format="horizontal" />
       </div>
     </div>
   );

@@ -1406,7 +1406,7 @@ export default function VerticalTextClient() {
             )}
           </div>
         </div>
-        <AdUnit slot="5612038947" format="horizontal" />
+        <AdUnit position="mid" format="horizontal" />
       </div>
 
       {/* Styles: print + preview animation */}

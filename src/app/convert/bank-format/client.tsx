@@ -2184,7 +2184,7 @@ export default function BankFormatClient({
             <LazyFAQ faq={faq ?? BUILT_IN_FAQ} />
           </div>
         </section>
-        <AdUnit slot="5612038947" format="horizontal" />
+        <AdUnit position="mid" format="horizontal" />
       </div>
     </div>
   );

@@ -250,7 +250,7 @@ export default function ReceiptClient() {
         <div className="mt-8 text-center print:hidden">
           <Link href="/document" className="text-blue-600 hover:text-blue-800">← 書類作成一覧に戻る</Link>
         </div>
-        <AdUnit slot="5612038947" format="horizontal" />
+        <AdUnit position="mid" format="horizontal" />
       </div>
     </div>
   );

@@ -732,7 +732,7 @@ export default function RevolvingCalculator() {
 
       {/* Ad */}
       <div className="my-8">
-        <AdUnit slot="revolving-calculator" />
+        <AdUnit position="mid" />
       </div>
 
       {/* SEO Content */}

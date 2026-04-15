@@ -333,7 +333,7 @@ export default function InvoiceClient({
             </div>
           </section>
         )}
-        <AdUnit slot="5612038947" format="horizontal" />
+        <AdUnit position="mid" format="horizontal" />
       </div>
     </div>
   );

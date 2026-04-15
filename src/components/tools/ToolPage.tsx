@@ -1,5 +1,6 @@
 "use client";
 import { AdUnit } from "@/components/common/AdUnit";
+import ProUpsellBanner from "@/components/common/ProUpsellBanner";
 import { useUsageLimit } from "@/hooks/useUsageLimit";
 
 import { useState, useEffect } from "react";
@@ -360,7 +361,8 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
         )}
 
 {/* Ad: after tool section */}
-        <AdUnit slot="5612038947" format="rectangle" />
+        <AdUnit position="mid" format="rectangle" />
+        <ProUpsellBanner remaining={usage?.remaining} limit={usage?.limit} />
         {/* How-to Section */}
         <section className="mt-8 bg-sakura/20 dark:bg-sakura/10 rounded-xl p-6" aria-labelledby="howto-heading">
           <h2 id="howto-heading" className="font-bold text-kon mb-3 text-lg">
@@ -490,7 +492,7 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
         </section>
 
         {/* Ad: before footer */}
-        <AdUnit slot="5612038947" format="horizontal" />
+        <AdUnit position="mid" format="horizontal" />
 
         {/* Security Note */}
         <footer className="mt-8 text-center text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">

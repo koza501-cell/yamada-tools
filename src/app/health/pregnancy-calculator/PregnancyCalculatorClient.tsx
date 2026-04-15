@@ -284,7 +284,7 @@ export default function PregnancyCalculatorPage() {
       </header>
 
       <main className="max-w-3xl mx-auto px-4 py-6 space-y-4">
-        <AdUnit slot="pregnancy-calculator-top" className="mb-4" />
+        <AdUnit position="top" className="mb-4" />
 
         {/* ─── Form ─────────────────────────────────────────────────────────── */}
         <section className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
@@ -503,7 +503,7 @@ export default function PregnancyCalculatorPage() {
           </>
         )}
 
-        <AdUnit slot="pregnancy-calculator-mid" className="my-4" />
+        <AdUnit position="bottom" className="my-4" />
 
         {/* ─── SEO Content ──────────────────────────────────────────────────── */}
 

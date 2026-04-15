@@ -2,10 +2,16 @@
 
 import { AdUnit } from './AdUnit';
 
-export default function BlogAdUnit() {
+type AdPosition = 'top' | 'mid' | 'bottom';
+
+interface BlogAdUnitProps {
+  position?: AdPosition;
+}
+
+export default function BlogAdUnit({ position = 'mid' }: BlogAdUnitProps) {
   return (
     <div className="my-8">
-      <AdUnit slot="5612038947" format="horizontal" />
+      <AdUnit position={position} />
     </div>
   );
 }

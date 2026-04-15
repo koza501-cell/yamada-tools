@@ -168,7 +168,7 @@ export default function TaxCalculatorClient({ faq }: { faq?: FAQ[] }) {
           </div>
           <p className="text-xs text-gray-500 mt-4">※ 軽減税率8%は飲食料品（外食・酒類除く）と週2回以上発行の新聞に適用されます。</p>
         </div>
-        <AdUnit slot="5612038947" format="horizontal" />
+        <AdUnit position="mid" format="horizontal" />
       </div>
     </div>
   );

@@ -799,7 +799,7 @@ export default function MovingCostCalculatorPage() {
               </div>
             </div>
 
-            <AdUnit slot="6291847305" format="horizontal" className="mb-6" />
+            <AdUnit position="top" format="horizontal" className="mb-6" />
           </>
         )}
 

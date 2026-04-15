@@ -454,7 +454,7 @@ export default function IdealWeightCalculatorPage() {
       <div className="max-w-3xl mx-auto px-4 py-6">
 
         {/* Ad — top */}
-        <AdUnit slot="ideal-weight-calculator-top" className="mb-6" />
+        <AdUnit position="top" className="mb-6" />
 
         {/* ── Input Form ── */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6 mb-4">
@@ -800,7 +800,7 @@ export default function IdealWeightCalculatorPage() {
             </div>
 
             {/* Ad — mid */}
-            <AdUnit slot="ideal-weight-calculator-mid" className="mb-4" />
+            <AdUnit position="bottom" className="mb-4" />
 
             {/* Reset */}
             <button

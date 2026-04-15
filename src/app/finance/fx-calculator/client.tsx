@@ -1261,7 +1261,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
             FX取引にはリスクが伴います。レバレッジをかけすぎると大きな損失を被る可能性があります。
           </p>
         </div>
-        <AdUnit slot="5612038947" format="horizontal" />
+        <AdUnit position="mid" format="horizontal" />
       </div>
     </div>
   );

@@ -510,7 +510,7 @@ export default function AcquisitionTaxPage() {
           </p>
         </div>
 
-        <AdUnit slot="5612038947" format="horizontal" className="mb-6" />
+        <AdUnit position="top" format="auto" className="mb-6" />
 
         {/* Section 1: 土地 */}
         <div className="bg-white rounded-2xl shadow-sm border border-amber-100 p-6 mb-4">
@@ -927,7 +927,7 @@ export default function AcquisitionTaxPage() {
               <p>• 税率・控除額は令和9年（2027年）3月31日まで適用される特例です。</p>
             </div>
 
-            <AdUnit slot="2847591036" format="rectangle" className="my-4" />
+            <AdUnit position="bottom" format="rectangle" className="my-4" />
           </div>
         )}
 

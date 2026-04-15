@@ -685,7 +685,7 @@ export default function SimplifiedTaxCalculatorPage() {
     <FAQSection faq={faqItems} />
       {/* 広告 */}
       <div className="max-w-4xl mx-auto px-4 mt-6">
-        <AdUnit slot="5612038947" format="horizontal" />
+        <AdUnit position="mid" format="horizontal" />
       </div>
 
   </>

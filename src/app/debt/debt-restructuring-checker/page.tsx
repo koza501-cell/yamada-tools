@@ -325,7 +325,7 @@ export default function DebtRestructuringChecker() {
           </div>
         </div>
 
-        <AdUnit slot="debt-restructuring-top" className="mb-6" />
+        <AdUnit position="top" className="mb-6" />
 
         {/* Empathy banner */}
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 text-sm text-amber-800">
@@ -818,7 +818,7 @@ export default function DebtRestructuringChecker() {
               </ol>
             </div>
 
-            <AdUnit slot="debt-restructuring-result" className="my-4" />
+            <AdUnit position="bottom" className="my-4" />
           </div>
         )}
 

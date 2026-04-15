@@ -357,7 +357,7 @@ function SeasonCard({ icon, season, children, last = false }: {
       <div>
         <h3 style={{ fontSize: "1rem", fontWeight: 800, color: "#223A70", marginBottom: 6 }}>{season}</h3>
         <p style={{ fontSize: "0.9rem", color: "#555", lineHeight: 1.75 }}>{children}</p>
-        <AdUnit slot="5612038947" format="horizontal" />
+        <AdUnit position="mid" format="horizontal" />
       </div>
     </div>
   );

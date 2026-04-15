@@ -425,7 +425,7 @@ export default function DateCalculatorPage() {
       </header>
 
       <main className="max-w-3xl mx-auto px-4 py-6">
-        <AdUnit slot="date-calculator-top" className="mb-6" />
+        <AdUnit position="top" className="mb-6" />
 
         {/* Mode tabs */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-3 mb-4">
@@ -733,7 +733,7 @@ export default function DateCalculatorPage() {
           </div>
         )}
 
-        <AdUnit slot="date-calculator-mid" className="mb-6" />
+        <AdUnit position="bottom" className="mb-6" />
 
         {/* SEO: 早見表 */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-4">

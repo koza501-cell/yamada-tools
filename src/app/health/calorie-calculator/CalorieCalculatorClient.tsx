@@ -253,7 +253,7 @@ export default function CalorieCalculatorPage() {
       <div className="max-w-3xl mx-auto px-4 py-6">
 
         {/* Ad — top */}
-        <AdUnit slot="calorie-calculator-top" className="mb-6" />
+        <AdUnit position="top" className="mb-6" />
 
         {/* ── Input Form ── */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-4">
@@ -614,7 +614,7 @@ export default function CalorieCalculatorPage() {
             </div>
 
             {/* Ad — mid */}
-            <AdUnit slot="calorie-calculator-mid" className="mb-4" />
+            <AdUnit position="bottom" className="mb-4" />
 
             {/* Reset */}
             <button

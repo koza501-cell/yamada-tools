@@ -55,7 +55,6 @@ export default function Page() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <FuriganaClient />
-      <AdUnit slot="5612038947" format="horizontal" />
 
       {/* Educational Content Section */}
       <section className="max-w-4xl mx-auto px-4 py-12">

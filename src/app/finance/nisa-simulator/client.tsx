@@ -476,7 +476,7 @@ export default function NisaSimulatorClient() {
           <p className="font-semibold mb-1">免責事項</p>
           <p>このシミュレーターは参考値です。実際の運用成果を保証するものではありません。投資判断はご自身の責任で行ってください。計算結果は概算であり、手数料・税制変更等は考慮していません。</p>
         </div>
-        <AdUnit slot="5612038947" format="horizontal" />
+        <AdUnit position="mid" format="horizontal" />
       </div>
     </div>
   );

@@ -22,6 +22,7 @@ export const metadata: Metadata = {
     description,
     images: [ogImage],
   },
+  alternates: { canonical: 'https://yamada-tools.jp/blog/nisa-simulation-2026' },
 };
 
 export default function NisaSimulation2026Blog() {
@@ -40,6 +41,7 @@ export default function NisaSimulation2026Blog() {
             "dateModified": "2026-04-14",
             "author": {"@type": "Organization", "name": "山田ツール編集部"},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
+            "image": ogImage,
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/nisa-simulation-2026"}
           })
         }}

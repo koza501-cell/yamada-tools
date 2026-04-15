@@ -95,7 +95,7 @@ export default function ImageCompressPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <CompressClient faq={faq} seoContent={seoContent} />
-      <AdUnit slot="5612038947" format="horizontal" />
+      <AdUnit position="mid" format="horizontal" />
 
       {/* Educational Content Section */}
       <section className="max-w-4xl mx-auto px-4 py-12">

@@ -274,7 +274,7 @@ export default function PropertyTaxCalculatorPage() {
           </p>
         </div>
 
-        <AdUnit slot="5612038947" format="horizontal" className="mb-6" />
+        <AdUnit position="mid" format="horizontal" className="mb-6" />
 
         {/* Section 1: 土地 */}
         <div className="bg-white rounded-2xl shadow-sm border border-amber-100 p-6 mb-4">

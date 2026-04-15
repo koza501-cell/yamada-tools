@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   keywords: ["資格", "取得", "費用対効果", "ROI", "年収アップ", "投資回収"],
   openGraph: { title, description, type: "article", images: [{ url: ogImage, width: 1200, height: 630 }] },
   twitter: { card: "summary_large_image", title, description, images: [ogImage] },
+  alternates: { canonical: 'https://yamada-tools.jp/blog/shikaku-toshi-simulation-2026' },
 };
 
 export default function ShikakuToshiSimulation2026Blog() {
@@ -29,6 +30,7 @@ export default function ShikakuToshiSimulation2026Blog() {
             "dateModified": "2026-04-14",
             "author": {"@type": "Organization", "name": "山田ツール編集部"},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
+            "image": ogImage,
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/shikaku-toshi-simulation-2026"}
           })
         }}

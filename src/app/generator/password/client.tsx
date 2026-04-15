@@ -423,7 +423,7 @@ export default function PasswordClient({
             ← 計算・生成ツール一覧に戻る
           </Link>
         </div>
-        <AdUnit slot="5612038947" format="horizontal" />
+        <AdUnit position="mid" format="horizontal" />
       </div>
     </div>
   );
