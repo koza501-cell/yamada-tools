@@ -4,6 +4,7 @@ import IdecoNisaComparisonClient from "./dynamic-client";
 import { IntroSection } from "@/components/IntroSection";
 import { UseCasesSection } from "@/components/UseCasesSection";
 import { FAQSection } from "@/components/FAQSection";
+import { AdUnit } from "@/components/common/AdUnit";
 
 export const metadata: Metadata = {
   title: "iDeCo vs NISA 比較ツール【無料】節税額・手取り・最適配分を自動計算",
@@ -155,6 +156,9 @@ export default function Page() {
             <p className="text-xs text-gray-500 mt-1">詳しい解説・計算例・注意点はこちら →</p>
           </div>
         </Link>
+      </div>
+      <div className="max-w-4xl mx-auto px-4 mt-8">
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </>
   );
