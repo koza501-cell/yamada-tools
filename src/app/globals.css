@@ -418,3 +418,8 @@ body {
 .animate-typing-dot       { animation: mascot-typing-dot 1.2s ease-in-out infinite; }
 .animate-blink            { animation: mascot-blink 0.8s step-end infinite; }
 .animate-pulse-glow       { animation: mascot-pulse-glow 2s ease-in-out infinite; }
+
+/* Collapse unfilled AdSense slots */
+.adsbygoogle[data-ad-status="unfilled"] {
+  display: none !important;
+}

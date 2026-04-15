@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import CopyCodeButton from '@/components/CopyCodeButton';
+import BlogAdUnit from '@/components/common/BlogAdUnit';
 import fs from 'fs';
 import path from 'path';
 import { marked } from 'marked';
@@ -25,9 +26,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const posts = getAllPosts();
   const post = posts.find((p: any) => p.slug === slug);
+  const siteUrl = 'https://yamada-tools.jp';
+  const description = post.metaDescription || post.seoDescription || post.description || post.excerpt || '';
+  const keywords = post.keywords || (Array.isArray(post.tags) ? post.tags.join(',') : '');
   return {
-    title: post.title + ' | ' + NICHE.name + '',
-    description: post.metaDescription || post.description,
+    title: post.title + ' | ' + NICHE.name,
+    description,
+    keywords,
+    alternates: { canonical: `${siteUrl}/ai/${slug}` },
+    openGraph: {
+      title: post.title,
+      description,
+      url: `${siteUrl}/ai/${slug}`,
+      type: 'article',
+      publishedTime: post.publishDate || post.publishedAt,
+    },
   };
 }
 
@@ -42,7 +55,7 @@ export default async function NicheArticlePage({ params }: { params: Promise<{ s
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": post.title,
-    "description": post.metaDescription || post.description,
+    "description": post.metaDescription || post.seoDescription || post.description || post.excerpt || '',
     "author": { "@type": "Organization", "name": "Yamada Tools" },
     "publisher": { "@type": "Organization", "name": "Yamada Tools", "url": "https://yamada-tools.jp" },
     "datePublished": post.publishDate || post.publishedAt,
@@ -77,7 +90,7 @@ export default async function NicheArticlePage({ params }: { params: Promise<{ s
           </div>
           {post.toolName && (
             <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-8">
-              <h3 className="font-bold text-blue-900 mb-3">📋 このレシピで使うもの</h3>
+              <h2 className="font-bold text-blue-900 mb-3">📋 このレシピで使うもの</h2>
               <div className="grid md:grid-cols-3 gap-4 text-sm">
                 <div><span className="text-gray-500">ツール:</span><span className="ml-2 font-medium">{post.toolName}</span></div>
                 <div><span className="text-gray-500">料金:</span><span className="ml-2 font-medium">{post.toolPrice || '無料プランあり'}</span></div>
@@ -90,10 +103,12 @@ export default async function NicheArticlePage({ params }: { params: Promise<{ s
               )}
             </div>
           )}
+          <BlogAdUnit />
         </header>
         <div className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4 prose-h2:pb-2 prose-h2:border-b prose-h2:border-gray-200 prose-h3:text-xl prose-h3:mt-8 prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900 prose-code:bg-gray-100 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm prose-pre:bg-amber-50 prose-pre:text-gray-800 prose-pre:rounded-xl prose-pre:border-2 prose-pre:border-amber-200 prose-pre:shadow-sm prose-blockquote:border-l-blue-500 prose-blockquote:bg-blue-50 prose-blockquote:rounded-r-lg prose-blockquote:py-1 prose-table:border-collapse prose-th:bg-gray-100 prose-th:p-3 prose-th:text-left prose-td:p-3 prose-td:border prose-td:border-gray-200"
           dangerouslySetInnerHTML={{ __html: htmlContent }} />
         <CopyCodeButton />
+        <BlogAdUnit />
         {relatedPosts.length > 0 && (
           <div className="mt-16 pt-8 border-t border-gray-200">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">📚 関連レシピ</h2>
