@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
+import { trackBeginCheckout, trackPurchase, trackTrialStart } from '@/lib/analytics';
 
 type BillingPeriod = 'monthly' | 'annual';
 
@@ -91,6 +92,9 @@ export default function PricingClient() {
               const planNames: Record<string, string> = { pro: 'PRO', team: 'TEAM' };
               const name = planNames[data.plan] || data.plan?.toUpperCase() || 'PRO';
               setSuccessMessage(`${name}プランへのアップグレードが完了しました！`);
+              const pendingPlan = localStorage.getItem('pending_plan') || 'pro_monthly';
+              trackPurchase(pendingPlan, sessionId);
+              localStorage.removeItem('pending_plan');
               refreshUser();
             }
           })
@@ -126,6 +130,8 @@ export default function PricingClient() {
       });
       const data = await res.json();
       if (data.checkout_url) {
+        localStorage.setItem('pending_plan', planKey);
+        trackBeginCheckout(planKey as any);
         window.location.href = data.checkout_url;
       } else {
         console.error('Checkout error:', data);
