@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
 import CompressClient from "./client";
-import { AdUnit } from "@/components/common/AdUnit";
 import RelatedTools from "@/components/common/RelatedTools";
 
 const tool = getToolById("compress-image")!;
@@ -95,7 +94,6 @@ export default function ImageCompressPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <CompressClient faq={faq} seoContent={seoContent} />
-      <AdUnit position="mid" format="horizontal" />
 
       {/* Educational Content Section */}
       <section className="max-w-4xl mx-auto px-4 py-12">

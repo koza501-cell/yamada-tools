@@ -5,6 +5,8 @@ import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import RelatedTools, { relatedToolSets } from "@/components/common/RelatedTools";
 import { usePricingContext } from '@/components/common/PricingTriggerProvider';
+import AdSlot from '@/components/common/AdSlot';
+import AdFreePlanNotice from '@/components/common/AdFreePlanNotice';
 
 interface FAQ {
   question: string;
@@ -20,6 +22,8 @@ interface SeoContent {
 interface Props {
   faq: FAQ[];
   seoContent?: SeoContent;
+  /** Called once after first successful compression. Drives post-download slot and upsell notice. */
+  onSuccess?: () => void;
 }
 
 interface CompressedImage {
@@ -33,7 +37,7 @@ interface CompressedImage {
 type OutputFormat = "jpeg" | "png" | "webp";
 
 export default function ImageCompressClient({
- faq, seoContent }: Props) {
+ faq, seoContent, onSuccess }: Props) {
   const { triggerSuccess } = usePricingContext();
 
   const [images, setImages] = useState<CompressedImage[]>([]);
@@ -123,8 +127,9 @@ export default function ImageCompressClient({
     setIsProcessing(false);
     
     const totalReduction = results.reduce((sum, r) => sum + r.reduction, 0) / results.length;
-    setMascotState("success")
-      triggerSuccess('compress');;
+    setMascotState("success");
+    triggerSuccess('compress');
+    onSuccess?.();
     setMascotMessage(`${results.length}枚完了！平均${Math.round(totalReduction)}%削減！`);
   }, [compressImage]);
 
@@ -164,8 +169,9 @@ export default function ImageCompressClient({
     setIsProcessing(false);
     
     const totalReduction = results.reduce((sum, r) => sum + r.reduction, 0) / results.length;
-    setMascotState("success")
-      triggerSuccess('compress');;
+    setMascotState("success");
+    triggerSuccess('compress');
+    onSuccess?.();
     setMascotMessage(`再圧縮完了！平均${Math.round(totalReduction)}%削減！`);
   };
 
@@ -221,7 +227,7 @@ export default function ImageCompressClient({
         </header>
 
         {/* Main Tool */}
-        <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
+        <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8 ad-exclusion-zone" data-no-ad="true">
           {/* Mascot */}
           <div className="mb-6">
             <Mascot state={mascotState} message={mascotMessage} />
@@ -394,6 +400,9 @@ export default function ImageCompressClient({
           )}
         </section>
 
+        {/* AD SLOT 1: mid-content — between tool zone and related tools */}
+        <AdSlot position="mid-content" />
+
         {/* Related Tools */}
         <RelatedTools tools={relatedToolSets.imageCompress} title="あわせて使えるツール" />
         {/* SEO Content - Intro */}
@@ -416,6 +425,9 @@ export default function ImageCompressClient({
             </div>
           </section>
         )}
+
+        {/* AD SLOT 2: in-feed — between use cases and content sections */}
+        <AdSlot position="in-feed" />
 
         {/* Tips */}
         <section className="mt-8 bg-sakura/20 rounded-xl p-6">
@@ -463,6 +475,10 @@ export default function ImageCompressClient({
             </div>
           </section>
         )}
+
+        {/* AD SLOT 3: post-download — only after successful compression */}
+        <AdSlot position="post-download" show={images.length > 0} />
+        <AdFreePlanNotice show={images.length > 0} />
 
         {/* Features */}
         <section className="mt-8 grid md:grid-cols-3 gap-4">
