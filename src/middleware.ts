@@ -5,6 +5,13 @@ import type { NextRequest } from "next/server";
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // Bug 7: HTTPS redirect
+  if (request.headers.get('x-forwarded-proto') === 'http') {
+    const httpsUrl = request.nextUrl.clone();
+    httpsUrl.protocol = 'https:';
+    return NextResponse.redirect(httpsUrl, 301);
+  }
+
   // Admin protection (existing logic)
   if (
     pathname.startsWith("/admin") &&

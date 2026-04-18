@@ -47,7 +47,7 @@ export function usePricingTrigger(): PricingTriggerState {
         setShowPopup('soft-modal');
         setHasShownReturnPopup(true);
         sessionStorage.setItem('yamada_return_popup_shown', 'true');
-      }, 3000); // Show after 3 seconds
+      }, 30000); // Show after 30 seconds
     }
   }, [hasShownReturnPopup]);
 

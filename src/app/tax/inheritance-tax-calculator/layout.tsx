@@ -28,26 +28,6 @@ const schema = {
         { "@type": "ListItem", "position": 3, "name": "相続税計算機", "item": "https://yamada-tools.jp/tax/inheritance-tax-calculator" },
       ],
     },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "相続税の基礎控除はいくらですか？",
-          "acceptedAnswer": { "@type": "Answer", "text": "基礎控除額 = 3,000万円 ＋（600万円 × 法定相続人の数）です。例えば法定相続人が配偶者＋子2人の場合、3,000万円＋1,800万円＝4,800万円まで非課税です。" },
-        },
-        {
-          "@type": "Question",
-          "name": "配偶者の相続税は優遇されますか？",
-          "acceptedAnswer": { "@type": "Answer", "text": "はい、配偶者控除により法定相続分または1億6,000万円のいずれか多い金額まで非課税です。多くの場合、配偶者は相続税がゼロになります。ただし二次相続（配偶者が亡くなった時）の税負担増に注意が必要です。" },
-        },
-        {
-          "@type": "Question",
-          "name": "相続税の申告期限はいつですか？",
-          "acceptedAnswer": { "@type": "Answer", "text": "被相続人（亡くなった方）が死亡したことを知った日の翌日から10ヶ月以内です。期限を過ぎると無申告加算税（最大20%）や延滞税が発生するため注意が必要です。" },
-        },
-      ],
-    },
   ],
 };
 

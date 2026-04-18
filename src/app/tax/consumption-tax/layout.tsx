@@ -28,26 +28,6 @@ const schema = {
         { "@type": "ListItem", "position": 3, "name": "消費税計算機", "item": "https://yamada-tools.jp/tax/consumption-tax" },
       ],
     },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "消費税の軽減税率8%はどの商品に適用されますか？",
-          "acceptedAnswer": { "@type": "Answer", "text": "軽減税率8%は飲食料品（酒類・外食を除く）と週2回以上発行される新聞（定期購読）に適用されます。それ以外の商品・サービスは標準税率10%が適用されます。" },
-        },
-        {
-          "@type": "Question",
-          "name": "インボイス制度で消費税計算はどう変わりますか？",
-          "acceptedAnswer": { "@type": "Answer", "text": "2023年10月からインボイス制度が開始し、適格請求書（インボイス）に消費税額を明記する必要があります。端数処理は1枚の請求書につき1回のみ（切り捨て・切り上げ・四捨五入のいずれか）です。" },
-        },
-        {
-          "@type": "Question",
-          "name": "税込み価格から税抜き価格を計算する方法は？",
-          "acceptedAnswer": { "@type": "Answer", "text": "税率10%の場合：税抜き価格 = 税込み価格 ÷ 1.1。税率8%の場合：税抜き価格 = 税込み価格 ÷ 1.08。例えば税込み1,100円なら税抜き1,000円です。" },
-        },
-      ],
-    },
   ],
 };
 
