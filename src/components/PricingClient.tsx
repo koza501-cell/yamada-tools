@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
+import { trackBeginCheckout, trackPurchase, trackTrialStart } from '@/lib/analytics';
 
 type BillingPeriod = 'monthly' | 'annual';
 
@@ -91,6 +92,9 @@ export default function PricingClient() {
               const planNames: Record<string, string> = { pro: 'PRO', team: 'TEAM' };
               const name = planNames[data.plan] || data.plan?.toUpperCase() || 'PRO';
               setSuccessMessage(`${name}プランへのアップグレードが完了しました！`);
+              const pendingPlan = localStorage.getItem('pending_plan') || 'pro_monthly';
+              trackPurchase(pendingPlan, sessionId);
+              localStorage.removeItem('pending_plan');
               refreshUser();
             }
           })
@@ -126,6 +130,8 @@ export default function PricingClient() {
       });
       const data = await res.json();
       if (data.checkout_url) {
+        localStorage.setItem('pending_plan', planKey);
+        trackBeginCheckout(planKey as any);
         window.location.href = data.checkout_url;
       } else {
         console.error('Checkout error:', data);
@@ -295,23 +301,13 @@ export default function PricingClient() {
                 現在より下位プラン
               </button>
             ) : (
-              <div className="flex flex-col gap-2">
-                {(!user || !user.trial_started_at) && (
-                  <Link
-                    href="/auth/trial"
-                    className="w-full py-3 bg-green-500 hover:bg-green-600 text-white rounded-xl font-bold transition-colors text-sm text-center block"
-                  >
-                    🎁 10日間無料トライアル
-                  </Link>
-                )}
-                <button
-                  onClick={() => handleUpgrade(proKey)}
-                  disabled={loadingPlan === proKey}
-                  className={(!user || !user.trial_started_at) ? "w-full py-3 bg-white border border-sakura text-sakura hover:bg-sakura/5 rounded-xl font-bold transition-colors text-sm disabled:opacity-60 disabled:cursor-not-allowed" : "w-full py-3 bg-sakura hover:bg-yellow-600 text-white rounded-xl font-bold transition-colors text-sm disabled:opacity-60 disabled:cursor-not-allowed"}
-                >
-                  {loadingPlan === proKey ? '処理中...' : 'PROプランを始める'}
-                </button>
-              </div>
+              <button
+                onClick={() => handleUpgrade(proKey)}
+                disabled={loadingPlan === proKey}
+                className="w-full py-3 bg-sakura hover:bg-yellow-600 text-white rounded-xl font-bold transition-colors text-sm disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {loadingPlan === proKey ? '処理中...' : 'PROプランを始める'}
+              </button>
             )}
           </div>
 

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import Link from "next/link";
 import { CheckCircle, Loader2, Mail, Building2, ArrowRight, Gift } from "lucide-react";
+import { trackTrialStart, trackBeginCheckout } from "@/lib/analytics";
 
 export default function TrialPage() {
   const { startTrial } = useAuth();
@@ -26,6 +27,8 @@ export default function TrialPage() {
     if (result.success) {
       setSuccess(true);
       setTrialEndsAt(result.trialEndsAt || "");
+      trackTrialStart();
+      trackBeginCheckout("trial");
     } else {
       setError(result.message);
     }
