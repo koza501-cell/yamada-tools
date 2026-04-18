@@ -97,6 +97,8 @@ export default function TaishokukinSimulation2026Blog() {
           </div>
         </div>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">【勤続年数別】退職金の相場</h2>
@@ -166,6 +168,8 @@ export default function TaishokukinSimulation2026Blog() {
           </div>
         </div>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">退職金の税金と退職所得控除</h2>

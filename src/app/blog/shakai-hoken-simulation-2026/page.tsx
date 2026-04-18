@@ -103,6 +103,8 @@ export default function ShakaiHokenSimulation2026Blog() {
           </p>
         </div>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">社会保険料の計算方法</h2>
@@ -179,6 +181,8 @@ export default function ShakaiHokenSimulation2026Blog() {
           </Link>
         </div>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">社会保険料の上限（標準報酬月額の上限）</h2>

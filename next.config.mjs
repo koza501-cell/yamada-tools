@@ -17,6 +17,22 @@ const nextConfig = {
       bodySizeLimit: '10mb'
     }
   },
+  async headers() {
+    return [
+      {
+        source: '/(pdf|image|convert|generator|document)/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=3600, s-maxage=86400' },
+        ],
+      },
+      {
+        source: '/(account|auth|admin)/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'private, no-cache, no-store' },
+        ],
+      },
+    ]
+  },
   async redirects() {
     return [
       { source: '/legal', destination: '/legal/terms', permanent: true },

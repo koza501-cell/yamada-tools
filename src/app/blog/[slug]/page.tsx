@@ -155,11 +155,39 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         )}
       </header>
       
-      <div className="blog-content prose prose-lg max-w-none">
-        <BlogContent content={htmlContent} />
-      </div>
-
-<BlogAdUnit />
+      {(() => {
+        const parts = htmlContent.split(/(?<=<\/p>)/);
+        if (parts.length <= 4) {
+          return (
+            <>
+              <div className="blog-content prose prose-lg max-w-none">
+                <BlogContent content={htmlContent} />
+              </div>
+              <BlogAdUnit />
+            </>
+          );
+        }
+        const intro = parts.slice(0, 2).join('');
+        const midPoint = Math.floor(parts.length * 0.55);
+        const middle = parts.slice(2, midPoint).join('');
+        const rest = parts.slice(midPoint).join('');
+        return (
+          <>
+            <div className="blog-content prose prose-lg max-w-none">
+              <BlogContent content={intro} />
+            </div>
+            <BlogAdUnit />
+            <div className="blog-content prose prose-lg max-w-none">
+              <BlogContent content={middle} />
+            </div>
+            <BlogAdUnit />
+            <div className="blog-content prose prose-lg max-w-none">
+              <BlogContent content={rest} />
+            </div>
+            <BlogAdUnit />
+          </>
+        );
+      })()}
       <footer className="blog-footer mt-16 pt-8 border-t border-gray-200">
         <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-8 text-center">
           <h3 className="text-2xl font-bold text-gray-900 mb-4">

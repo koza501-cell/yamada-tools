@@ -98,6 +98,8 @@ export default function ZangyoudaiKeisanSimulation2026Blog() {
           </div>
         </div>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">1時間あたりの賃金（時給換算）の計算</h2>
@@ -169,6 +171,8 @@ export default function ZangyoudaiKeisanSimulation2026Blog() {
           </Link>
         </div>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">【具体例】残業代の計算シミュレーション</h2>

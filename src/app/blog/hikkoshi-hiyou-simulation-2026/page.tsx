@@ -98,6 +98,8 @@ export default function HikkoshiHiyouSimulation2026Blog() {
           </div>
         </div>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">【単身】引越し費用の相場</h2>
@@ -150,6 +152,8 @@ export default function HikkoshiHiyouSimulation2026Blog() {
           </tbody>
         </table>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">【家族（3〜4人）】引越し費用の相場</h2>

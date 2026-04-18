@@ -5,6 +5,7 @@ import BankFormatClient from "./client";
 import AdFreeZone from "@/components/AdFreeZone";
 import { JsonLdDedup } from "./json-ld-dedup";
 import RelatedTools from "@/components/common/RelatedTools";
+import { AdUnit } from "@/components/common/AdUnit";
 
 const tool = getToolById("bank-format")!;
 
@@ -110,6 +111,7 @@ export default function Page() {
       />
       <AdFreeZone><BankFormatClient faq={faq} /></AdFreeZone>
       <JsonLdDedup scriptId="bank-format-jsonld" />
+      <AdUnit slot="6291847305" format="horizontal" />
 
       {/* Educational Content Section */}
       <section className="max-w-4xl mx-auto px-4 py-12">

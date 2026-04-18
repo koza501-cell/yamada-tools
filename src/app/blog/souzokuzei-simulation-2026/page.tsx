@@ -102,6 +102,8 @@ export default function SouzokuzeiSimulation2026Blog() {
           </p>
         </div>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">相続税の税率と速算表</h2>
@@ -167,6 +169,8 @@ export default function SouzokuzeiSimulation2026Blog() {
           </Link>
         </div>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">相続税を減らす5つの方法</h2>

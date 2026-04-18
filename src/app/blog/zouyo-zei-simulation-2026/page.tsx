@@ -95,6 +95,8 @@ export default function ZouyoZeiSimulation2026Blog() {
           </p>
         </div>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">【金額別】贈与税シミュレーション</h2>
@@ -169,6 +171,8 @@ export default function ZouyoZeiSimulation2026Blog() {
           </p>
         </div>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">相続時精算課税制度とは？</h2>

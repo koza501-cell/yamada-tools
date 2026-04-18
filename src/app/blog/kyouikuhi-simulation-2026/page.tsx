@@ -102,6 +102,8 @@ export default function KyouikuhiSimulation2026Blog() {
           </p>
         </div>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">【学校別】教育費の内訳</h2>
@@ -222,6 +224,8 @@ export default function KyouikuhiSimulation2026Blog() {
           </p>
         </div>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">教育費の準備方法</h2>

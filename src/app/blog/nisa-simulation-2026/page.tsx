@@ -112,6 +112,8 @@ export default function NisaSimulation2026Blog() {
           旧制度では一般NISAとつみたてNISAのどちらか一方しか選べませんでしたが、新NISAでは<strong>両方の枠を併用できる</strong>ようになりました。
         </p>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">つみたて投資枠と成長投資枠の違い</h2>
@@ -222,6 +224,8 @@ export default function NisaSimulation2026Blog() {
           </Link>
         </div>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">2026年の税制改正で何が変わった？</h2>

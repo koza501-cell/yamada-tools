@@ -105,6 +105,8 @@ export default function IryoHokenSimulation2026Blog() {
           </p>
         </div>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">高額療養費制度とは？</h2>
@@ -168,6 +170,8 @@ export default function IryoHokenSimulation2026Blog() {
           </p>
         </div>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">会社員 vs 自営業：保障の違い</h2>

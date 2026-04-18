@@ -106,6 +106,8 @@ export default function SeimeiHokenSimulation2026Blog() {
           </div>
         </div>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">【家族構成別】必要保障額の目安</h2>
@@ -198,6 +200,8 @@ export default function SeimeiHokenSimulation2026Blog() {
           </p>
         </div>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">住宅ローンと団体信用生命保険（団信）</h2>

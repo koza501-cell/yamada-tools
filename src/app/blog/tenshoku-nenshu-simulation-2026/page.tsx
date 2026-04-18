@@ -96,6 +96,8 @@ export default function TenshokuNenshuSimulation2026Blog() {
           </div>
         </div>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">【年代別】転職による年収アップの相場</h2>
@@ -156,6 +158,8 @@ export default function TenshokuNenshuSimulation2026Blog() {
           </Link>
         </div>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">年収アップ転職を成功させる5つのコツ</h2>

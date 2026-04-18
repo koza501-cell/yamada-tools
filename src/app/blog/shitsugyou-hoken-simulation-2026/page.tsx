@@ -96,6 +96,8 @@ export default function ShitsugyouHokenSimulation2026Blog() {
           </ul>
         </div>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">【月給別】失業保険の受給額シミュレーション</h2>
@@ -187,6 +189,8 @@ export default function ShitsugyouHokenSimulation2026Blog() {
           </p>
         </div>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">失業保険の手続き方法</h2>

@@ -5,6 +5,7 @@ import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
 import VerticalTextClient from "./client";
 import AdFreeZone from "@/components/AdFreeZone";
 import RelatedTools from "@/components/common/RelatedTools";
+import { AdUnit } from "@/components/common/AdUnit";
 
 const tool = getToolById("vertical-text")!;
 
@@ -49,6 +50,7 @@ export default function Page() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <AdFreeZone><VerticalTextClient /></AdFreeZone>
+      <AdUnit slot="2847591036" format="horizontal" />
 
       {/* Educational Content Section */}
       <section className="max-w-4xl mx-auto px-4 py-12">

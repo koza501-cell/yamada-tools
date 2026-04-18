@@ -94,6 +94,8 @@ export default function ShotokuzeiKeisanSimulation2026Blog() {
           </div>
         </div>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">所得税の税率表（2026年）</h2>
@@ -160,6 +162,8 @@ export default function ShotokuzeiKeisanSimulation2026Blog() {
           </Link>
         </div>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">所得控除の種類と節税効果</h2>

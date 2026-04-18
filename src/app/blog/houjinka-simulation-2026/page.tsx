@@ -104,6 +104,8 @@ export default function HoujinkaSimulation2026Blog() {
           </div>
         </div>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">【年収別】個人事業主vs法人の税金比較</h2>
@@ -175,6 +177,8 @@ export default function HoujinkaSimulation2026Blog() {
           </div>
         </div>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">法人化のデメリット</h2>

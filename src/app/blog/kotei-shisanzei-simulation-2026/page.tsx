@@ -95,6 +95,8 @@ export default function KoteiShisanzeiSimulation2026Blog() {
           </div>
         </div>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">【新築住宅】固定資産税の軽減措置</h2>
@@ -156,6 +158,8 @@ export default function KoteiShisanzeiSimulation2026Blog() {
           </Link>
         </div>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">【計算例】新築戸建ての固定資産税</h2>

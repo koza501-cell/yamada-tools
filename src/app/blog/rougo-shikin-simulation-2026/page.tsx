@@ -108,6 +108,8 @@ export default function RougoShikinSimulation2026Blog() {
           </p>
         </div>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">【生活費別】老後資金シミュレーション</h2>
@@ -187,6 +189,8 @@ export default function RougoShikinSimulation2026Blog() {
           </div>
         </div>
       </section>
+      <BlogAdUnit />
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">【年代別】今から始める老後資金準備</h2>
