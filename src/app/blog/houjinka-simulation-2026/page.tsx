@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import BlogAdUnit from "@/components/common/BlogAdUnit";
+import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 
 const title = "【2026年最新】法人化シミュレーション｜個人事業主が会社設立すべき年収は？";
@@ -11,7 +12,6 @@ export const metadata: Metadata = {
   keywords: ["法人化", "法人成り", "個人事業主", "会社設立", "節税", "シミュレーション"],
   openGraph: { title, description, type: "article", images: [{ url: ogImage, width: 1200, height: 630 }] },
   twitter: { card: "summary_large_image", title, description, images: [ogImage] },
-  alternates: { canonical: 'https://yamada-tools.jp/blog/houjinka-simulation-2026' },
 };
 
 export default function HoujinkaSimulation2026Blog() {
@@ -30,7 +30,6 @@ export default function HoujinkaSimulation2026Blog() {
             "dateModified": "2026-04-14",
             "author": {"@type": "Organization", "name": "山田ツール編集部"},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
-            "image": ogImage,
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/houjinka-simulation-2026"}
           })
         }}
@@ -72,6 +71,8 @@ export default function HoujinkaSimulation2026Blog() {
       </div>
 
       <section className="mb-10">
+      <StaticAdSlot />
+
         <h2 className="text-2xl font-bold text-gray-800 mb-4">法人化すべき年収の目安</h2>
         <p className="text-gray-700 mb-4">
           一般的に<strong className="text-indigo-600">所得800万円〜1,000万円</strong>を超えると法人化のメリットが出てきます。

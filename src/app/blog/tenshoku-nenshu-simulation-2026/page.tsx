@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import BlogAdUnit from "@/components/common/BlogAdUnit";
+import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 
 const title = "【2026年最新】転職で年収はいくら上がる？年収アップシミュレーション完全ガイド";
@@ -11,7 +12,6 @@ export const metadata: Metadata = {
   keywords: ["転職", "年収アップ", "シミュレーション", "年収交渉", "転職相場"],
   openGraph: { title, description, type: "article", images: [{ url: ogImage, width: 1200, height: 630 }] },
   twitter: { card: "summary_large_image", title, description, images: [ogImage] },
-  alternates: { canonical: 'https://yamada-tools.jp/blog/tenshoku-nenshu-simulation-2026' },
 };
 
 export default function TenshokuNenshuSimulation2026Blog() {
@@ -30,7 +30,6 @@ export default function TenshokuNenshuSimulation2026Blog() {
             "dateModified": "2026-04-14",
             "author": {"@type": "Organization", "name": "山田ツール編集部"},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
-            "image": ogImage,
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/tenshoku-nenshu-simulation-2026"}
           })
         }}
@@ -72,6 +71,8 @@ export default function TenshokuNenshuSimulation2026Blog() {
       </div>
 
       <section className="mb-10">
+      <StaticAdSlot />
+
         <h2 className="text-2xl font-bold text-gray-800 mb-4">転職で年収は本当に上がる？データで見る実態</h2>
         <p className="text-gray-700 mb-4">
           厚生労働省の調査によると、転職者の約<strong className="text-emerald-600">35〜40%が年収アップ</strong>を実現しています。

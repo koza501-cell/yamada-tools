@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import BlogAdUnit from "@/components/common/BlogAdUnit";
+import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 
 const title = "【2026年最新】賃貸と購入どっちが得？50年シミュレーションで徹底比較";
@@ -11,7 +12,6 @@ export const metadata: Metadata = {
   keywords: ["賃貸", "購入", "比較", "シミュレーション", "住宅ローン", "どっちが得"],
   openGraph: { title, description, type: "article", images: [{ url: ogImage, width: 1200, height: 630 }] },
   twitter: { card: "summary_large_image", title, description, images: [ogImage] },
-  alternates: { canonical: 'https://yamada-tools.jp/blog/chintai-vs-koubai-simulation-2026' },
 };
 
 export default function ChintaiVsKoubaiSimulation2026Blog() {
@@ -30,7 +30,6 @@ export default function ChintaiVsKoubaiSimulation2026Blog() {
             "dateModified": "2026-04-14",
             "author": {"@type": "Organization", "name": "山田ツール編集部"},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
-            "image": ogImage,
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/chintai-vs-koubai-simulation-2026"}
           })
         }}
@@ -72,6 +71,8 @@ export default function ChintaiVsKoubaiSimulation2026Blog() {
       </div>
 
       <section className="mb-10">
+      <StaticAdSlot />
+
         <h2 className="text-2xl font-bold text-gray-800 mb-4">結論：単純な損得では決められない</h2>
         <p className="text-gray-700 mb-4">
           「賃貸と購入、どっちが得？」という質問に<strong className="text-orange-600">正解はありません</strong>。

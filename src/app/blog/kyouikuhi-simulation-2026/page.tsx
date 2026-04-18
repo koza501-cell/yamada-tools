@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import BlogAdUnit from "@/components/common/BlogAdUnit";
+import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 
 const title = "【2026年最新】教育費シミュレーション｜幼稚園から大学までいくらかかる？";
@@ -11,7 +12,6 @@ export const metadata: Metadata = {
   keywords: ["教育費", "学費", "シミュレーション", "大学", "私立", "公立"],
   openGraph: { title, description, type: "article", images: [{ url: ogImage, width: 1200, height: 630 }] },
   twitter: { card: "summary_large_image", title, description, images: [ogImage] },
-  alternates: { canonical: 'https://yamada-tools.jp/blog/kyouikuhi-simulation-2026' },
 };
 
 export default function KyouikuhiSimulation2026Blog() {
@@ -30,7 +30,6 @@ export default function KyouikuhiSimulation2026Blog() {
             "dateModified": "2026-04-14",
             "author": {"@type": "Organization", "name": "山田ツール編集部"},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
-            "image": ogImage,
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/kyouikuhi-simulation-2026"}
           })
         }}
@@ -72,6 +71,8 @@ export default function KyouikuhiSimulation2026Blog() {
       </div>
 
       <section className="mb-10">
+      <StaticAdSlot />
+
         <h2 className="text-2xl font-bold text-gray-800 mb-4">教育費の総額：オール公立vs私立</h2>
         <p className="text-gray-700 mb-4">
           子ども1人にかかる教育費は、進路によって<strong>800万円〜2,500万円</strong>と大きく変わります。

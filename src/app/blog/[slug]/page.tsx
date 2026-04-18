@@ -5,6 +5,7 @@ import fs from 'fs';
 import path from 'path';
 import BlogContent from '@/components/BlogContent';
 import BlogAdUnit from "@/components/common/BlogAdUnit";
+import StaticAdSlot from "@/components/common/StaticAdSlot";
 import { marked } from 'marked';
 import '@/app/blog.css';
 
@@ -116,6 +117,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         </div>
       )}
 
+      <StaticAdSlot className="mb-8" />
       <header className="blog-header mb-12 text-center">
         <h1 className="blog-title text-4xl md:text-5xl font-bold mb-6 leading-tight">
           {blog.title}

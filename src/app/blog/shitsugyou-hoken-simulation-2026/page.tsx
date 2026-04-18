@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import BlogAdUnit from "@/components/common/BlogAdUnit";
+import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 
 const title = "【2026年最新】失業保険はいくらもらえる？受給額・期間シミュレーション完全ガイド";
@@ -11,7 +12,6 @@ export const metadata: Metadata = {
   keywords: ["失業保険", "雇用保険", "シミュレーション", "受給額", "いくら", "計算"],
   openGraph: { title, description, type: "article", images: [{ url: ogImage, width: 1200, height: 630 }] },
   twitter: { card: "summary_large_image", title, description, images: [ogImage] },
-  alternates: { canonical: 'https://yamada-tools.jp/blog/shitsugyou-hoken-simulation-2026' },
 };
 
 export default function ShitsugyouHokenSimulation2026Blog() {
@@ -30,7 +30,6 @@ export default function ShitsugyouHokenSimulation2026Blog() {
             "dateModified": "2026-04-14",
             "author": {"@type": "Organization", "name": "山田ツール編集部"},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
-            "image": ogImage,
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/shitsugyou-hoken-simulation-2026"}
           })
         }}
@@ -72,6 +71,8 @@ export default function ShitsugyouHokenSimulation2026Blog() {
       </div>
 
       <section className="mb-10">
+      <StaticAdSlot />
+
         <h2 className="text-2xl font-bold text-gray-800 mb-4">失業保険（雇用保険）とは？</h2>
         <p className="text-gray-700 mb-4">
           失業保険は、仕事を失った人が次の仕事を見つけるまでの生活を支援する制度です。

@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import BlogAdUnit from "@/components/common/BlogAdUnit";
+import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 
 const title = "【2026年最新】借金返済シミュレーション｜完済までの期間と総支払額を計算";
@@ -11,7 +12,6 @@ export const metadata: Metadata = {
   keywords: ["借金返済", "シミュレーション", "完済", "繰り上げ返済", "おまとめローン", "利息"],
   openGraph: { title, description, type: "article", images: [{ url: ogImage, width: 1200, height: 630 }] },
   twitter: { card: "summary_large_image", title, description, images: [ogImage] },
-  alternates: { canonical: 'https://yamada-tools.jp/blog/shakkin-hensai-simulation-2026' },
 };
 
 export default function ShakkinHensaiSimulation2026Blog() {
@@ -30,7 +30,6 @@ export default function ShakkinHensaiSimulation2026Blog() {
             "dateModified": "2026-04-14",
             "author": {"@type": "Organization", "name": "山田ツール編集部"},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
-            "image": ogImage,
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/shakkin-hensai-simulation-2026"}
           })
         }}
@@ -72,6 +71,8 @@ export default function ShakkinHensaiSimulation2026Blog() {
       </div>
 
       <section className="mb-10">
+      <StaticAdSlot />
+
         <h2 className="text-2xl font-bold text-gray-800 mb-4">借金返済の基本：利息の仕組み</h2>
         <p className="text-gray-700 mb-4">
           借金返済で最も重要なのは<strong>利息（金利）</strong>の理解です。

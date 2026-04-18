@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import BlogAdUnit from "@/components/common/BlogAdUnit";
+import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 
 const title = "【2026年最新】新NISAシミュレーション完全ガイド｜初心者でも5分でわかる積立計算";
@@ -22,7 +23,6 @@ export const metadata: Metadata = {
     description,
     images: [ogImage],
   },
-  alternates: { canonical: 'https://yamada-tools.jp/blog/nisa-simulation-2026' },
 };
 
 export default function NisaSimulation2026Blog() {
@@ -41,7 +41,6 @@ export default function NisaSimulation2026Blog() {
             "dateModified": "2026-04-14",
             "author": {"@type": "Organization", "name": "山田ツール編集部"},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
-            "image": ogImage,
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/nisa-simulation-2026"}
           })
         }}
@@ -82,6 +81,8 @@ export default function NisaSimulation2026Blog() {
       </div>
 
       <section className="mb-10">
+      <StaticAdSlot />
+
         <h2 className="text-2xl font-bold text-gray-800 mb-4">新NISAとは？2024年からの大改正をおさらい</h2>
         <p className="text-gray-700 mb-4">
           2024年1月から始まった新NISA（少額投資非課税制度）は、投資で得た利益に税金がかからない国の制度です。

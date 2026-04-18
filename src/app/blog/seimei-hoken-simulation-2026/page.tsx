@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import BlogAdUnit from "@/components/common/BlogAdUnit";
+import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 
 const title = "【2026年最新】生命保険の必要額シミュレーション｜家族構成別の目安と計算方法";
@@ -11,7 +12,6 @@ export const metadata: Metadata = {
   keywords: ["生命保険", "必要額", "シミュレーション", "遺族年金", "死亡保障", "保険金"],
   openGraph: { title, description, type: "article", images: [{ url: ogImage, width: 1200, height: 630 }] },
   twitter: { card: "summary_large_image", title, description, images: [ogImage] },
-  alternates: { canonical: 'https://yamada-tools.jp/blog/seimei-hoken-simulation-2026' },
 };
 
 export default function SeimeiHokenSimulation2026Blog() {
@@ -30,7 +30,6 @@ export default function SeimeiHokenSimulation2026Blog() {
             "dateModified": "2026-04-14",
             "author": {"@type": "Organization", "name": "山田ツール編集部"},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
-            "image": ogImage,
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/seimei-hoken-simulation-2026"}
           })
         }}
@@ -72,6 +71,8 @@ export default function SeimeiHokenSimulation2026Blog() {
       </div>
 
       <section className="mb-10">
+      <StaticAdSlot />
+
         <h2 className="text-2xl font-bold text-gray-800 mb-4">生命保険の必要額＝遺族の支出−遺族の収入</h2>
         <p className="text-gray-700 mb-4">
           生命保険の必要保障額は、万が一のときに<strong>遺族が必要とするお金</strong>から<strong>遺族が受け取れるお金</strong>を引いた差額です。

@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import BlogAdUnit from "@/components/common/BlogAdUnit";
+import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 
 const title = "【2026年最新】副業の税金はいくら？確定申告が必要な条件と節税方法を解説";
@@ -11,7 +12,6 @@ export const metadata: Metadata = {
   keywords: ["副業", "税金", "確定申告", "20万円", "住民税", "節税"],
   openGraph: { title, description, type: "article", images: [{ url: ogImage, width: 1200, height: 630 }] },
   twitter: { card: "summary_large_image", title, description, images: [ogImage] },
-  alternates: { canonical: 'https://yamada-tools.jp/blog/fukugyou-zeikin-simulation-2026' },
 };
 
 export default function FukugyouZeikinSimulation2026Blog() {
@@ -30,7 +30,6 @@ export default function FukugyouZeikinSimulation2026Blog() {
             "dateModified": "2026-04-14",
             "author": {"@type": "Organization", "name": "山田ツール編集部"},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
-            "image": ogImage,
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/fukugyou-zeikin-simulation-2026"}
           })
         }}
@@ -72,6 +71,8 @@ export default function FukugyouZeikinSimulation2026Blog() {
       </div>
 
       <section className="mb-10">
+      <StaticAdSlot />
+
         <h2 className="text-2xl font-bold text-gray-800 mb-4">副業収入にかかる税金は2種類</h2>
         <p className="text-gray-700 mb-4">
           副業で稼いだお金には、<strong className="text-indigo-600">所得税</strong>と<strong className="text-indigo-600">住民税</strong>の2つの税金がかかります。
