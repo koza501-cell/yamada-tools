@@ -1,4 +1,5 @@
 import fs from 'fs';
+import type { Metadata } from 'next';
 import path from 'path';
 import Image from "next/image";
 import Link from "next/link";
@@ -31,6 +32,13 @@ const SEARCH_CHIPS = [
   { label: '🔴 電子印鑑', href: '/generator/hanko' },
 ];
 
+
+export const metadata: Metadata = {
+  title: '山田ツール | 日本国内サーバーの無料オンラインツール',
+  alternates: {
+    canonical: 'https://yamada-tools.jp/',
+  },
+};
 
 export const revalidate = 3600; // Revalidate every hour
 
