@@ -4,7 +4,8 @@ import { notFound } from 'next/navigation';
 import fs from 'fs';
 import path from 'path';
 import BlogContent from '@/components/BlogContent';
-import { AdUnit } from "@/components/common/AdUnit";
+import BlogAdUnit from "@/components/common/BlogAdUnit";
+import StaticAdSlot from "@/components/common/StaticAdSlot";
 import { marked } from 'marked';
 import '@/app/blog.css';
 
@@ -62,7 +63,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     notFound();
   }
 
-  const htmlContent = String(await marked(blog.content));
+  const htmlContent = blog.content ? String(await marked(blog.content)) : '<p>この記事のコンテンツは準備中です。</p>';
 
   // Article structured data
   const articleSchema = {
@@ -116,6 +117,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         </div>
       )}
 
+      <StaticAdSlot className="mb-8" />
       <header className="blog-header mb-12 text-center">
         <h1 className="blog-title text-4xl md:text-5xl font-bold mb-6 leading-tight">
           {blog.title}
@@ -155,11 +157,39 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         )}
       </header>
       
-      <div className="blog-content prose prose-lg max-w-none">
-        <BlogContent content={htmlContent} />
-      </div>
-
-{/* Ad Slot */}      <AdUnit slot="5612038947" format="rectangle" className="my-8" />
+      {(() => {
+        const parts = htmlContent.split(/(?<=<\/p>)/);
+        if (parts.length <= 4) {
+          return (
+            <>
+              <div className="blog-content prose prose-lg max-w-none">
+                <BlogContent content={htmlContent} />
+              </div>
+              <BlogAdUnit />
+            </>
+          );
+        }
+        const intro = parts.slice(0, 2).join('');
+        const midPoint = Math.floor(parts.length * 0.55);
+        const middle = parts.slice(2, midPoint).join('');
+        const rest = parts.slice(midPoint).join('');
+        return (
+          <>
+            <div className="blog-content prose prose-lg max-w-none">
+              <BlogContent content={intro} />
+            </div>
+            <BlogAdUnit />
+            <div className="blog-content prose prose-lg max-w-none">
+              <BlogContent content={middle} />
+            </div>
+            <BlogAdUnit />
+            <div className="blog-content prose prose-lg max-w-none">
+              <BlogContent content={rest} />
+            </div>
+            <BlogAdUnit />
+          </>
+        );
+      })()}
       <footer className="blog-footer mt-16 pt-8 border-t border-gray-200">
         <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-8 text-center">
           <h3 className="text-2xl font-bold text-gray-900 mb-4">

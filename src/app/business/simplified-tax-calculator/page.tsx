@@ -1,4 +1,5 @@
 "use client";
+import { AdUnit } from "@/components/common/AdUnit";
 
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
@@ -682,6 +683,11 @@ export default function SimplifiedTaxCalculatorPage() {
     </div>
     <UseCasesSection cases={useCases} />
     <FAQSection faq={faqItems} />
+      {/* 広告 */}
+      <div className="max-w-4xl mx-auto px-4 mt-6">
+        <AdUnit slot="5612038947" format="horizontal" />
+      </div>
+
   </>
   );
 }

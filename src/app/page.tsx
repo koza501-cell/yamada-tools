@@ -52,90 +52,18 @@ function isNewBlog(publishDate: string): boolean {
   const diffInDays = (now.getTime() - postDate.getTime()) / (1000 * 60 * 60 * 24);
   return diffInDays <= 7;
 }
-// Homepage structured data - Dynamic list of all tools
-const allAvailableTools = allTools.filter(t => t.available);
-// BUG-003: Deduplicate by path AND name to remove old-URL aliases (e.g. /fx-calculator vs /finance/fx-calculator)
-const seenPaths = new Set<string>();
-const seenNames = new Set<string>();
-const availableTools = allAvailableTools.filter(tool => {
-  if (seenPaths.has(tool.path) || seenNames.has(tool.nameJa)) return false;
-  seenPaths.add(tool.path);
-  seenNames.add(tool.nameJa);
-  return true;
-});
-const homepageSchema = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  name: "山田ツール - 無料オンラインツール一覧",
-  description: `日本国内サーバーで安全に使える${availableTools.length}種類の無料オンラインツール`,
-  numberOfItems: availableTools.length,
-  itemListElement: availableTools.map((tool, index) => ({
-    "@type": "ListItem",
-    position: index + 1,
-    name: tool.nameJa,
-    url: `https://yamada-tools.jp${tool.path}`,
-    item: {
-      "@type": "WebApplication",
-      name: tool.nameJa,
-      description: tool.description,
-      url: `https://yamada-tools.jp${tool.path}`,
-      applicationCategory: "UtilityApplication",
-      operatingSystem: "Web",
-      offers: {
-        "@type": "Offer",
-        price: "0",
-        priceCurrency: "JPY"
-      }
-    }
-  }))
-};
-
-
-
-
-
-// Homepage FAQ schema
-const homepageFaqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "山田ツールは本当に無料ですか？",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "はい、すべてのツールを完全無料でご利用いただけます。会員登録も不要です。一部の高度な機能はPROプランで提供していますが、基本機能はすべて無料です。"
-      }
-    },
-    {
-      "@type": "Question",
-      name: "アップロードしたファイルの安全性は？",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "ファイルは日本国内のサーバーでのみ処理され、SSL暗号化通信で保護されています。多くのツールはブラウザ内で処理されるためサーバーにファイルが送信されません。サーバー処理が必要なツールでも、処理完了後60分以内に自動削除されます。"
-      }
-    },
-    {
-      "@type": "Question",
-      name: "スマホからも使えますか？",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "はい、iPhone・Androidどちらからもすべてのツールをご利用いただけます。レスポンシブデザインでスマホに最適化されており、アプリのインストールも不要です。"
-      }
-    },
-    {
-      "@type": "Question",
-      name: "会員登録は必要ですか？",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "いいえ、会員登録なしですべてのツールをご利用いただけます。メールアドレスの入力も不要です。アクセスしてすぐにお使いいただけます。"
-      }
-    }
-  ]
-};
-
 export default function Home() {
   const toolCount = getToolCount();
+
+  // Deduplicated available tools (for hero count)
+  const _seenPaths = new Set<string>();
+  const _seenNames = new Set<string>();
+  const availableTools = allTools.filter(t => t.available).filter(tool => {
+    if (_seenPaths.has(tool.path) || _seenNames.has(tool.nameJa)) return false;
+    _seenPaths.add(tool.path);
+    _seenNames.add(tool.nameJa);
+    return true;
+  });
 
   // Filter only available tools
   const availablePdfTools = pdfTools.filter(t => t.available);
@@ -149,16 +77,6 @@ export default function Home() {
   const featuredTools = allTools.filter(t => t.isFeatured && t.available);
 
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageFaqSchema) }}
-      />
-
     <div>
       <StickyTabBar />
       {/* Hero Section - REDESIGNED */}
@@ -620,6 +538,5 @@ export default function Home() {
         </div>
       </section>
     </div>
-    </>
   );
 }

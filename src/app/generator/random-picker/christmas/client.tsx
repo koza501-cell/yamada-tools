@@ -1,8 +1,8 @@
 "use client";
+import { AdUnit } from "@/components/common/AdUnit";
 
 import Link from "next/link";
 import RandomPickerTool from "@/components/tools/RandomPickerTool";
-import AdUnit from "@/components/AdUnit";
 import Mascot from "@/components/common/Mascot";
 
 const PAGE_URL = "https://yamada-tools.jp/generator/random-picker/christmas";

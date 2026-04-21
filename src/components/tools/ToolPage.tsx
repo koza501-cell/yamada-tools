@@ -50,7 +50,6 @@ const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://api.yamada-tools.jp
 export default function ToolPage({ tool, extraFields, extraFormData, faq, seoContent }: ToolPageProps) {
   const { triggerSuccess } = usePricingContext();
 
-
   const [files, setFiles] = useState<File[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState<string | null>(null);

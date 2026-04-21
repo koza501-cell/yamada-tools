@@ -6,6 +6,7 @@ import AdFreeZone from "@/components/AdFreeZone";
 import { StepGuide } from "./step-guide";
 import { JsonLdDedup } from "./json-ld-dedup";
 import RelatedTools from "@/components/common/RelatedTools";
+import { AdUnit } from "@/components/common/AdUnit";
 
 const tool = getToolById("envelope-print")!;
 
@@ -71,7 +72,10 @@ export const metadata: Metadata = generateToolMetadata({
   customTitle: "封筒印刷・宛名印刷【無料】長形・角形・洋形 全サイズ対応",
   tool,
   longDescription: "封筒の宛名印刷を無料で。長形3号・角形2号・洋形など全サイズ対応。郵便番号入力で住所自動補完。縦書き・横書き対応。300DPI高画質印刷でプロ品質の仕上がり。登録不要・スマホOK。ビジネス・個人どちらにも対応。",
-  keywords: ["封筒印刷", "宛名印刷", "封筒 宛名", "長形3号 印刷", "角形2号 印刷", "封筒 テンプレート", "宛名書き"],
+  keywords: ["封筒印刷", "宛名印刷", "封筒 宛名", "長形3号 印刷", "角形2号 印刷", "封筒 テンプレート", "宛名書き",
+    "封筒宛名",
+    "郵便封筒"
+  ],
 });
 
 const envelopeHowToSteps = [
@@ -91,6 +95,7 @@ export default function EnvelopePrintPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <AdFreeZone><EnvelopePrintClient faq={faq} seoContent={seoContent} /></AdFreeZone>
+      <AdUnit slot="7823491056" format="horizontal" />
       <StepGuide />
       <JsonLdDedup scriptId="envelope-print-jsonld" />
       <div className="max-w-4xl mx-auto px-4">

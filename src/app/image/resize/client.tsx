@@ -72,8 +72,7 @@ export default function ImageResizeClient({
         setNewWidth(img.width.toString());
         setNewHeight(img.height.toString());
         setResizedDataUrl(null);
-        setMascotState("success")
-      triggerSuccess('resize');;
+        setMascotState("success");
         setMascotMessage(`${img.width}×${img.height}の画像だね！`);
       };
       img.src = e.target?.result as string;
@@ -164,8 +163,8 @@ export default function ImageResizeClient({
     const fileSize = Math.round((base64Length * 3) / 4);
     setResizedSize(fileSize);
 
-    setMascotState("success")
-      triggerSuccess('resize');;
+    setMascotState("success");
+    triggerSuccess('resize');
     setMascotMessage(`${width}×${height}にリサイズ完了！`);
   };
 

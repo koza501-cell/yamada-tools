@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { getToolById } from "@/config/tools";
-import FXCalculatorClient from "./client";
+import FXCalculatorClient from "./dynamic-client";
 import RelatedTools from "@/components/common/RelatedTools";
 
 const tool = getToolById("fx-calculator")!;

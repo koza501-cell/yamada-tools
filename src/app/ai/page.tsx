@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
+import RecipeGrid from './RecipeGrid';
 
 const NICHE = {
   slug: 'ai',
@@ -14,7 +14,7 @@ const NICHE = {
 };
 
 export const metadata: Metadata = {
-  title: NICHE.name + '',
+  title: NICHE.name,
   description: NICHE.description,
   alternates: {
     canonical: 'https://yamada-tools.jp/ai',
@@ -51,8 +51,8 @@ export default function NicheListPage() {
           <p className="text-white/70 mt-4 max-w-3xl mx-auto">{NICHE.description}</p>
           <div className="mt-8 flex justify-center gap-4 flex-wrap">
             <span className="px-4 py-2 bg-white/20 rounded-full text-sm">📋 コピペOK</span>
-            <span className="px-4 py-2 bg-white/20 rounded-full text-sm">🔍 価格確認済</span>
-            <span className="px-4 py-2 bg-white/20 rounded-full text-sm">💬 正直レビュー</span>
+            <span className="px-4 py-2 bg-white/20 rounded-full text-sm">⏱ 時短効果あり</span>
+            <span className="px-4 py-2 bg-white/20 rounded-full text-sm">🎯 実践済みプロンプト</span>
           </div>
         </div>
       </div>
@@ -62,45 +62,7 @@ export default function NicheListPage() {
             <p className="text-gray-500 text-lg">記事を準備中です...もうすぐ公開します！</p>
           </div>
         ) : (
-          <>
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-2xl font-bold text-gray-900">
-                最新レシピ <span className="text-gray-400 text-lg font-normal">({posts.length}件)</span>
-              </h2>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {posts.map((post: any) => (
-                <Link key={post.slug} href={'/' + NICHE.slug + '/' + post.slug}
-                  className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group">
-                  <div className={"h-3 bg-gradient-to-r " + NICHE.gradient} />
-                  <div className="p-6">
-                    <div className="flex items-center gap-2 mb-3 flex-wrap">
-                      <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">
-                        {post.type || 'レシピ'}
-                      </span>
-                      {post.difficulty && (
-                        <span className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">{post.difficulty}</span>
-                      )}
-                      <span className="text-xs text-gray-400">{post.readTime || '5分'}</span>
-                    </div>
-                    <h2 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
-                      {post.title}
-                    </h2>
-                    <p className="text-gray-600 text-sm line-clamp-3 mb-4">{post.description}</p>
-                    {post.timeSaved && (
-                      <div className="bg-green-50 rounded-lg p-3 mb-4">
-                        <span className="text-green-700 text-sm font-medium">⏱ 時短効果: {post.timeSaved}</span>
-                      </div>
-                    )}
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-400">{post.publishDate}</span>
-                      <span className="text-blue-600 group-hover:translate-x-2 transition-transform font-medium">レシピを見る →</span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </>
+          <RecipeGrid posts={posts} />
         )}
       </div>
     </div>

@@ -1,5 +1,445 @@
 [
   {
+    "slug": "shikaku-toshi-simulation-2026",
+    "title": "【2026年最新】資格取得は投資になる？費用対効果（ROI）をシミュレーション",
+    "description": "資格取得の費用対効果を徹底解説。取得費用・勉強時間と年収アップ効果、元が取れる資格ランキング。",
+    "category": "キャリア・資格",
+    "tags": [
+      "資格",
+      "ROI",
+      "費用対効果",
+      "年収アップ",
+      "キャリア"
+    ],
+    "featuredImage": "https://yamada-tools.jp/api/og?title=%E8%B3%87%E6%A0%BCROI&type=blog&category=%E3%82%AD%E3%83%A3%E3%83%AA%E3%82%A2",
+    "publishDate": "2026-04-14",
+    "author": "山田ツール編集部",
+    "readTime": "10分",
+    "excerpt": "資格取得の費用対効果を徹底解説。取得費用・勉強時間と年収アップ効果、元が取れる資格ランキング。"
+  },
+  {
+    "slug": "shakkin-hensai-simulation-2026",
+    "title": "【2026年最新】借金返済シミュレーション｜完済までの期間と総支払額を計算",
+    "description": "借金返済の計画を徹底解説。毎月の返済額から完済期間を計算、繰り上げ返済の効果、おまとめローンのメリット。",
+    "category": "借金・ローン",
+    "tags": [
+      "借金返済",
+      "シミュレーション",
+      "繰り上げ返済",
+      "おまとめローン"
+    ],
+    "featuredImage": "https://yamada-tools.jp/api/og?title=%E5%80%9F%E9%87%91%E8%BF%94%E6%B8%88&type=blog&category=%E3%83%AD%E3%83%BC%E3%83%B3",
+    "publishDate": "2026-04-14",
+    "author": "山田ツール編集部",
+    "readTime": "10分",
+    "excerpt": "借金返済の計画を徹底解説。毎月の返済額から完済期間を計算、繰り上げ返済の効果、おまとめローンのメリット。"
+  },
+  {
+    "slug": "iryo-hoken-simulation-2026",
+    "title": "【2026年最新】医療保険は必要？不要？シミュレーションで判断する方法",
+    "description": "医療保険の必要性を徹底解説。高額療養費制度との関係、年齢・家族構成別の判断基準、保険料の相場。",
+    "category": "保険・医療",
+    "tags": [
+      "医療保険",
+      "必要性",
+      "高額療養費",
+      "シミュレーション"
+    ],
+    "featuredImage": "https://yamada-tools.jp/api/og?title=%E5%8C%BB%E7%99%82%E4%BF%9D%E9%99%BA&type=blog&category=%E4%BF%9D%E9%99%BA",
+    "publishDate": "2026-04-14",
+    "author": "山田ツール編集部",
+    "readTime": "12分",
+    "excerpt": "医療保険の必要性を徹底解説。高額療養費制度との関係、年齢・家族構成別の判断基準、保険料の相場。"
+  },
+  {
+    "slug": "shakai-hoken-simulation-2026",
+    "title": "【2026年最新】社会保険料の計算方法｜年収別早見表と手取り額シミュレーション",
+    "description": "社会保険料の計算方法を徹底解説。健康保険・厚生年金・雇用保険の料率、年収別の保険料早見表。",
+    "category": "給与・社会保険",
+    "tags": [
+      "社会保険料",
+      "計算",
+      "健康保険",
+      "厚生年金",
+      "手取り"
+    ],
+    "featuredImage": "https://yamada-tools.jp/api/og?title=%E7%A4%BE%E4%BC%9A%E4%BF%9D%E9%99%BA%E6%96%99&type=blog&category=%E7%B5%A6%E4%B8%8E",
+    "publishDate": "2026-04-14",
+    "author": "山田ツール編集部",
+    "readTime": "10分",
+    "excerpt": "社会保険料の計算方法を徹底解説。健康保険・厚生年金・雇用保険の料率、年収別の保険料早見表。"
+  },
+  {
+    "slug": "kyouikuhi-simulation-2026",
+    "title": "【2026年最新】教育費シミュレーション｜幼稚園から大学までいくらかかる？",
+    "description": "子どもの教育費を徹底解説。幼稚園・小学校・中学校・高校・大学の公立/私立別費用、準備方法。",
+    "category": "教育・子育て",
+    "tags": [
+      "教育費",
+      "学費",
+      "大学",
+      "私立",
+      "公立",
+      "シミュレーション"
+    ],
+    "featuredImage": "https://yamada-tools.jp/api/og?title=%E6%95%99%E8%82%B2%E8%B2%BB&type=blog&category=%E6%95%99%E8%82%B2",
+    "publishDate": "2026-04-14",
+    "author": "山田ツール編集部",
+    "readTime": "10分",
+    "excerpt": "子どもの教育費を徹底解説。幼稚園・小学校・中学校・高校・大学の公立/私立別費用、準備方法。"
+  },
+  {
+    "slug": "hikkoshi-hiyou-simulation-2026",
+    "title": "【2026年最新】引越し費用の相場と計算方法｜単身・家族別シミュレーション",
+    "description": "引越し費用の相場を徹底解説。単身・2人・家族の距離別料金表、初期費用の内訳、安く抑えるコツ。",
+    "category": "不動産・引越し",
+    "tags": [
+      "引越し費用",
+      "相場",
+      "単身",
+      "家族",
+      "初期費用"
+    ],
+    "featuredImage": "https://yamada-tools.jp/api/og?title=%E5%BC%95%E8%B6%8A%E3%81%97%E8%B2%BB%E7%94%A8&type=blog&category=%E4%B8%8D%E5%8B%95%E7%94%A3",
+    "publishDate": "2026-04-14",
+    "author": "山田ツール編集部",
+    "readTime": "8分",
+    "excerpt": "引越し費用の相場を徹底解説。単身・2人・家族の距離別料金表、初期費用の内訳、安く抑えるコツ。"
+  },
+  {
+    "slug": "seimei-hoken-simulation-2026",
+    "title": "【2026年最新】生命保険の必要額シミュレーション｜家族構成別の目安と計算方法",
+    "description": "生命保険の必要保障額を徹底解説。家族構成・年収別の目安、遺族年金との関係、保険料の相場。",
+    "category": "保険・ライフプラン",
+    "tags": [
+      "生命保険",
+      "必要額",
+      "遺族年金",
+      "死亡保障",
+      "シミュレーション"
+    ],
+    "featuredImage": "https://yamada-tools.jp/api/og?title=%E7%94%9F%E5%91%BD%E4%BF%9D%E9%99%BA&type=blog&category=%E4%BF%9D%E9%99%BA",
+    "publishDate": "2026-04-14",
+    "author": "山田ツール編集部",
+    "readTime": "10分",
+    "excerpt": "生命保険の必要保障額を徹底解説。家族構成・年収別の目安、遺族年金との関係、保険料の相場。"
+  },
+  {
+    "slug": "houjinka-simulation-2026",
+    "title": "【2026年最新】法人化シミュレーション｜個人事業主が会社設立すべき年収は？",
+    "description": "法人化のメリット・デメリット、節税効果、設立費用を徹底解説。個人事業主が法人成りすべき年収の目安。",
+    "category": "ビジネス・起業",
+    "tags": [
+      "法人化",
+      "法人成り",
+      "会社設立",
+      "節税",
+      "個人事業主"
+    ],
+    "featuredImage": "https://yamada-tools.jp/api/og?title=%E6%B3%95%E4%BA%BA%E5%8C%96&type=blog&category=%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9",
+    "publishDate": "2026-04-14",
+    "author": "山田ツール編集部",
+    "readTime": "12分",
+    "excerpt": "法人化のメリット・デメリット、節税効果、設立費用を徹底解説。個人事業主が法人成りすべき年収の目安。"
+  },
+  {
+    "slug": "shotokuzei-keisan-simulation-2026",
+    "title": "【2026年最新】所得税の計算方法｜年収別早見表と手取り額シミュレーション",
+    "description": "所得税の計算方法と年収別早見表。控除の種類と節税効果、確定申告で還付を受ける方法。",
+    "category": "税金・給与",
+    "tags": [
+      "所得税",
+      "計算",
+      "年収",
+      "手取り",
+      "控除"
+    ],
+    "featuredImage": "https://yamada-tools.jp/api/og?title=%E6%89%80%E5%BE%97%E7%A8%8E&type=blog&category=%E7%A8%8E%E9%87%91",
+    "publishDate": "2026-04-14",
+    "author": "山田ツール編集部",
+    "readTime": "10分",
+    "excerpt": "所得税の計算方法と年収別早見表。税率、控除の種類、確定申告で還付を受ける方法を解説。"
+  },
+  {
+    "slug": "kotei-shisanzei-simulation-2026",
+    "title": "【2026年最新】固定資産税の計算方法｜新築・中古・土地別シミュレーション",
+    "description": "固定資産税の計算方法を解説。新築軽減措置、住宅用地特例、マンション・戸建て別の計算例。",
+    "category": "不動産・税金",
+    "tags": [
+      "固定資産税",
+      "計算",
+      "新築",
+      "軽減",
+      "土地"
+    ],
+    "featuredImage": "https://yamada-tools.jp/api/og?title=%E5%9B%BA%E5%AE%9A%E8%B3%87%E7%94%A3%E7%A8%8E&type=blog&category=%E4%B8%8D%E5%8B%95%E7%94%A3",
+    "publishDate": "2026-04-14",
+    "author": "山田ツール編集部",
+    "readTime": "8分",
+    "excerpt": "固定資産税の計算方法と軽減措置を徹底解説。新築・中古・土地別のシミュレーション例。"
+  },
+  {
+    "slug": "zangyoudai-keisan-simulation-2026",
+    "title": "【2026年最新】残業代の計算方法｜時給換算・割増率・未払い請求まで完全解説",
+    "description": "残業代の正しい計算方法を解説。時給換算、25%・35%・50%の割増率、未払い請求の方法まで。",
+    "category": "給与・労働",
+    "tags": [
+      "残業代",
+      "計算",
+      "割増",
+      "未払い",
+      "請求"
+    ],
+    "featuredImage": "https://yamada-tools.jp/api/og?title=%E6%AE%8B%E6%A5%AD%E4%BB%A3&type=blog&category=%E7%B5%A6%E4%B8%8E",
+    "publishDate": "2026-04-14",
+    "author": "山田ツール編集部",
+    "readTime": "8分",
+    "excerpt": "残業代の計算方法を徹底解説。時給換算、割増率一覧、未払い請求の方法まで。"
+  },
+  {
+    "slug": "fukugyou-zeikin-simulation-2026",
+    "title": "【2026年最新】副業の税金はいくら？確定申告が必要な条件と節税方法を解説",
+    "description": "副業収入の税金計算と確定申告の条件を解説。会社にバレない方法と経費で落とせるもの。",
+    "category": "副業・税金",
+    "tags": [
+      "副業",
+      "税金",
+      "確定申告",
+      "節税",
+      "20万円"
+    ],
+    "featuredImage": "https://yamada-tools.jp/api/og?title=%E5%89%AF%E6%A5%AD%E7%A8%8E%E9%87%91&type=blog&category=%E5%89%AF%E6%A5%AD",
+    "publishDate": "2026-04-14",
+    "author": "山田ツール編集部",
+    "readTime": "10分",
+    "excerpt": "副業収入の税金計算、20万円ルールの落とし穴、会社にバレない方法を完全解説。"
+  },
+  {
+    "slug": "chintai-vs-koubai-simulation-2026",
+    "title": "【2026年最新】賃貸と購入どっちが得？50年シミュレーションで徹底比較",
+    "description": "賃貸と購入の総コストを50年間で比較。ライフスタイル別のおすすめと判断基準を解説。",
+    "category": "不動産・住まい",
+    "tags": [
+      "賃貸",
+      "購入",
+      "比較",
+      "住宅ローン",
+      "シミュレーション"
+    ],
+    "featuredImage": "https://yamada-tools.jp/api/og?title=%E8%B3%83%E8%B2%B8vs%E8%B3%BC%E5%85%A5&type=blog&category=%E4%B8%8D%E5%8B%95%E7%94%A3",
+    "publishDate": "2026-04-14",
+    "author": "山田ツール編集部",
+    "readTime": "10分",
+    "excerpt": "賃貸と購入、50年間の総コスト比較。家賃10万円vs住宅ローン3,500万円のシミュレーション結果。"
+  },
+  {
+    "slug": "zouyo-zei-simulation-2026",
+    "title": "【2026年最新】贈与税はいくら？親からの援助・生前贈与の税金シミュレーション",
+    "description": "贈与税の計算方法と節税特例を徹底解説。110万円基礎控除、住宅取得資金非課税特例の活用法。",
+    "category": "税金・贈与",
+    "tags": [
+      "贈与税",
+      "生前贈与",
+      "非課税",
+      "住宅取得資金"
+    ],
+    "featuredImage": "https://yamada-tools.jp/api/og?title=%E8%B4%88%E4%B8%8E%E7%A8%8E&type=blog&category=%E7%A8%8E%E9%87%91",
+    "publishDate": "2026-04-14",
+    "author": "山田ツール編集部",
+    "readTime": "8分",
+    "excerpt": "贈与税の計算方法と110万円基礎控除、住宅取得資金非課税特例を解説。親からの援助で損しない方法。"
+  },
+  {
+    "slug": "rougo-shikin-simulation-2026",
+    "title": "【2026年最新】老後資金はいくら必要？2000万円問題の真実とシミュレーション",
+    "description": "老後資金の必要額を生活費別にシミュレーション。年金との差額と今から始める対策を解説。",
+    "category": "資産運用・老後",
+    "tags": [
+      "老後資金",
+      "2000万円問題",
+      "シミュレーション",
+      "年金"
+    ],
+    "featuredImage": "https://yamada-tools.jp/api/og?title=%E8%80%81%E5%BE%8C%E8%B3%87%E9%87%91&type=blog&category=%E8%80%81%E5%BE%8C",
+    "publishDate": "2026-04-14",
+    "author": "山田ツール編集部",
+    "readTime": "10分",
+    "excerpt": "老後2000万円問題の真実。生活費別の必要額シミュレーションとNISA・iDeCoの活用法を解説。"
+  },
+  {
+    "slug": "rougo-shikin-simulation-2026",
+    "title": "【2026年最新】老後資金はいくら必要？2000万円問題の真実とシミュレーション",
+    "description": "老後資金の必要額を生活費別にシミュレーション。年金との差額と今から始める対策を解説。",
+    "category": "資産運用・老後",
+    "tags": [
+      "老後資金",
+      "2000万円問題",
+      "シミュレーション",
+      "年金"
+    ],
+    "featuredImage": "https://yamada-tools.jp/api/og?title=%E8%80%81%E5%BE%8C%E8%B3%87%E9%87%91&type=blog&category=%E8%80%81%E5%BE%8C",
+    "publishDate": "2026-04-14",
+    "author": "山田ツール編集部",
+    "readTime": "10分",
+    "excerpt": "老後2000万円問題の真実。生活費別の必要額シミュレーションとNISA・iDeCoの活用法を解説。"
+  },
+  {
+    "slug": "nenshu-kabe-simulation-2026",
+    "title": "【2026年最新】年収の壁とは？103万・106万・130万・150万の壁を完全解説",
+    "description": "年収の壁を徹底解説。103万・130万・150万円で税金と社会保険がどう変わるかシミュレーション。",
+    "category": "税金・社会保険",
+    "tags": [
+      "年収の壁",
+      "103万",
+      "130万",
+      "扶養",
+      "社会保険"
+    ],
+    "featuredImage": "https://yamada-tools.jp/api/og?title=%E5%B9%B4%E5%8F%8E%E3%81%AE%E5%A3%81&type=blog&category=%E7%A8%8E%E9%87%91",
+    "publishDate": "2026-04-14",
+    "author": "山田ツール編集部",
+    "readTime": "10分",
+    "excerpt": "パート・アルバイトの年収の壁を完全解説。130万円の壁を超えると手取りが約19万円減る仕組みと対策。"
+  },
+  {
+    "slug": "shitsugyou-hoken-simulation-2026",
+    "title": "【2026年最新】失業保険はいくらもらえる？受給額・期間シミュレーション完全ガイド",
+    "description": "失業保険の受給額を月給別にシミュレーション。月給30万円なら日額約6,000円が目安。",
+    "category": "転職・キャリア",
+    "tags": [
+      "失業保険",
+      "雇用保険",
+      "シミュレーション",
+      "受給額"
+    ],
+    "featuredImage": "https://yamada-tools.jp/api/og?title=%E5%A4%B1%E6%A5%AD%E4%BF%9D%E9%99%BA&type=blog&category=%E8%BB%A2%E8%81%B7",
+    "publishDate": "2026-04-14",
+    "author": "山田ツール編集部",
+    "readTime": "8分",
+    "excerpt": "失業保険の受給額と期間を月給別にシミュレーション。自己都合・会社都合の違いも解説。"
+  },
+  {
+    "slug": "taishokukin-simulation-2026",
+    "title": "【2026年最新】退職金の計算方法と相場｜勤続年数別シミュレーション完全ガイド",
+    "description": "退職金の計算方法を徹底解説。勤続20年で約800万円、30年で約1,500万円が目安。",
+    "category": "転職・キャリア",
+    "tags": [
+      "退職金",
+      "計算",
+      "シミュレーション",
+      "相場"
+    ],
+    "featuredImage": "https://yamada-tools.jp/api/og?title=%E9%80%80%E8%81%B7%E9%87%91&type=blog&category=%E8%BB%A2%E8%81%B7",
+    "publishDate": "2026-04-14",
+    "author": "山田ツール編集部",
+    "readTime": "10分",
+    "excerpt": "退職金の相場は勤続20年で約800万円、30年で約1,500万円。計算方法と税金の仕組みを解説。"
+  },
+  {
+    "slug": "tenshoku-nenshu-simulation-2026",
+    "title": "【2026年最新】転職で年収はいくら上がる？年収アップシミュレーション完全ガイド",
+    "description": "転職による年収アップの相場を徹底解説。20代は+50万円、30代は+80万円が目安。",
+    "category": "転職・キャリア",
+    "tags": [
+      "転職",
+      "年収アップ",
+      "シミュレーション",
+      "年収交渉"
+    ],
+    "featuredImage": "https://yamada-tools.jp/api/og?title=%E8%BB%A2%E8%81%B7%E5%B9%B4%E5%8F%8E&type=blog&category=%E8%BB%A2%E8%81%B7",
+    "publishDate": "2026-04-14",
+    "author": "山田ツール編集部",
+    "readTime": "8分",
+    "excerpt": "転職で年収アップを実現するコツを解説。年代別・業界別の相場と年収交渉術。"
+  },
+  {
+    "slug": "souzokuzei-simulation-2026",
+    "title": "【2026年最新】相続税シミュレーション完全ガイド｜基礎控除・税率・計算方法を徹底解説",
+    "description": "相続税の計算方法を初心者向けに解説。基礎控除・税率・遺産額別シミュレーション。",
+    "category": "相続・贈与",
+    "tags": [
+      "相続税",
+      "基礎控除",
+      "シミュレーション",
+      "節税"
+    ],
+    "featuredImage": "https://yamada-tools.jp/api/og?title=%E7%9B%B8%E7%B6%9A%E7%A8%8E&type=blog&category=%E7%9B%B8%E7%B6%9A",
+    "publishDate": "2026-04-14",
+    "author": "山田ツール編集部",
+    "readTime": "10分",
+    "excerpt": "相続税の基礎控除は3,000万円+600万円×法定相続人の数。遺産1億円の場合の税額シミュレーションと節税対策を解説。"
+  },
+  {
+    "slug": "furusato-nozei-simulation-2026",
+    "title": "【2026年最新】ふるさと納税シミュレーション完全ガイド｜年収別の控除上限額を徹底計算",
+    "description": "ふるさと納税の控除上限額を年収別にシミュレーション。年収500万円なら約6.1万円、年収700万円なら約10.8万円が目安。",
+    "category": "節税・ふるさと納税",
+    "tags": [
+      "ふるさと納税",
+      "控除上限",
+      "シミュレーション",
+      "節税"
+    ],
+    "featuredImage": "https://yamada-tools.jp/api/og?title=%E3%81%B5%E3%82%8B%E3%81%95%E3%81%A8%E7%B4%8D%E7%A8%8E&type=blog&category=%E7%AF%80%E7%A8%8E",
+    "publishDate": "2026-04-14",
+    "author": "山田ツール編集部",
+    "readTime": "8分",
+    "excerpt": "年収500万円なら約6.1万円の返礼品が実質2,000円でもらえる。ふるさと納税の控除上限額を年収別にシミュレーション。"
+  },
+  {
+    "slug": "jutaku-loan-simulation-2026",
+    "title": "【2026年最新】住宅ローンシミュレーション完全ガイド｜変動vs固定・借入額別の返済額を徹底比較",
+    "description": "住宅ローンの返済額を借入額・金利・期間別にシミュレーション。3000万円借入で月々いくら？変動金利と固定金利の選び方を解説。",
+    "category": "住宅・不動産",
+    "tags": [
+      "住宅ローン",
+      "シミュレーション",
+      "変動金利",
+      "固定金利",
+      "マイホーム"
+    ],
+    "featuredImage": "https://yamada-tools.jp/api/og?title=%E3%80%902026%E5%B9%B4%E6%9C%80%E6%96%B0%E3%80%91%E4%BD%8F%E5%AE%85%E3%83%AD%E3%83%BC%E3%83%B3&type=blog&category=%E4%BD%8F%E5%AE%85%E3%83%BB%E4%B8%8D%E5%8B%95%E7%94%A3",
+    "publishDate": "2026-04-14",
+    "author": "山田ツール編集部",
+    "readTime": "10分",
+    "excerpt": "3000万円借入で月々いくら？変動金利0.5%なら約7.8万円。借入額・金利別シミュレーションと無理のない返済計画の立て方を解説。"
+  },
+  {
+    "slug": "ideco-setuzei-simulation-2026",
+    "title": "【2026年最新】iDeCo節税シミュレーション完全ガイド｜年収別の節税額を徹底計算",
+    "description": "iDeCoの節税効果を年収別にシミュレーション。年収400万円なら年間5.5万円、年収600万円なら年間8.3万円の節税に。",
+    "category": "節税・年金",
+    "tags": [
+      "iDeCo",
+      "節税",
+      "確定拠出年金",
+      "所得控除",
+      "年金"
+    ],
+    "featuredImage": "https://yamada-tools.jp/api/og?title=%E3%80%902026%E5%B9%B4%E6%9C%80%E6%96%B0%E3%80%91iDeCo%E7%AF%80%E7%A8%8E&type=blog&category=%E7%AF%80%E7%A8%8E%E3%83%BB%E5%B9%B4%E9%87%91",
+    "publishDate": "2026-04-14",
+    "author": "山田ツール編集部",
+    "readTime": "10分",
+    "excerpt": "iDeCoで年収600万円なら年間8.3万円、30年で249万円の節税。年収別シミュレーションとNISAとの使い分けを解説。"
+  },
+  {
+    "slug": "nisa-simulation-2026",
+    "title": "【2026年最新】新NISAシミュレーション完全ガイド｜初心者でも5分でわかる積立計算",
+    "description": "新NISAの積立シミュレーションを無料で計算。毎月1万円で20年後にいくら？つみたて投資枠と成長投資枠の違い、2026年税制改正のポイントを解説。",
+    "category": "資産運用",
+    "tags": [
+      "新NISA",
+      "シミュレーション",
+      "積立投資",
+      "資産形成"
+    ],
+    "featuredImage": "https://yamada-tools.jp/api/og?title=%E3%80%902026%E5%B9%B4%E6%9C%80%E6%96%B0%E3%80%91%E6%96%B0NISA&type=blog&category=%E8%B3%87%E7%94%A3%E9%81%8B%E7%94%A8",
+    "publishDate": "2026-04-13",
+    "author": "山田ツール編集部",
+    "readTime": "8分",
+    "excerpt": "新NISAで毎月いくら積み立てれば20年後にいくらになる？無料シミュレーターで今すぐ試算。"
+  },
+  {
     "slug": "shinendo-start-business-tools",
     "title": "【2026年・新年度】総務・経理担当者がすぐ使える無料ツール5選｜封筒印刷・請求書・インボイス対応",
     "description": "4月から新年度がスタート。取引先への挨拶状、請求書のインボイス対応、新入社員の書類整理など、総務・経理担当者の新年度業務をまとめて解決する無料ツールを紹介します。",

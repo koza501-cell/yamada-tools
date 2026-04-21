@@ -15,6 +15,7 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import { PricingTriggerProvider } from "@/components/common/PricingTriggerProvider";
 import AdSenseLoader from "@/components/AdSenseLoader";
 import SupportChatbot from "@/components/SupportChatbot";
+import { homepageItemListSchema, homepageFaqSchema } from "./homepage-schemas";
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
@@ -188,6 +189,8 @@ export default async function RootLayout({
   const headersList = await headers();
   const host = headersList.get('host') ?? '';
   const isProduction = !host.includes('staging');
+  const pathname = headersList.get('x-pathname') ?? '/';
+  const isHomepage = pathname === '/';
 
   return (
     <html lang="ja" suppressHydrationWarning>
@@ -202,6 +205,18 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
         <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+        {isHomepage && (
+          <>
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageItemListSchema) }}
+            />
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageFaqSchema) }}
+            />
+          </>
+        )}
       </head>
       <body className={`antialiased min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 ${notoSansJP.className}`}>
         <GoogleAnalytics />

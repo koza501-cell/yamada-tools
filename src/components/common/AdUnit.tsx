@@ -1,6 +1,5 @@
 'use client';
-
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
 
@@ -19,6 +18,8 @@ declare global {
 export function AdUnit({ slot, format = 'auto', className = '' }: AdUnitProps) {
   const pathname = usePathname();
   const { isPro } = useAuth();
+  const adRef = useRef<HTMLModElement>(null);
+  const pushedRef = useRef(false);
 
   const isExcluded =
     pathname === '/' ||
@@ -27,12 +28,34 @@ export function AdUnit({ slot, format = 'auto', className = '' }: AdUnitProps) {
     pathname.startsWith('/auth');
 
   useEffect(() => {
-    if (isExcluded || isPro) return;
-    try {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (e) {
-      console.error('AdSense error:', e);
-    }
+    if (isExcluded || isPro || pushedRef.current) return;
+
+    const element = adRef.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !pushedRef.current) {
+            const rect = entry.boundingClientRect;
+            if (rect.width > 0) {
+              pushedRef.current = true;
+              try {
+                (window.adsbygoogle = window.adsbygoogle || []).push({});
+              } catch (e) {
+                console.error('AdSense error:', e);
+              }
+              observer.disconnect();
+            }
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(element);
+
+    return () => observer.disconnect();
   }, [isExcluded, isPro]);
 
   if (isExcluded || isPro) return null;
@@ -40,6 +63,7 @@ export function AdUnit({ slot, format = 'auto', className = '' }: AdUnitProps) {
   return (
     <div className={`ad-container my-6 ${className}`}>
       <ins
+        ref={adRef}
         className="adsbygoogle"
         style={{ display: 'block' }}
         data-ad-client="ca-pub-2272972805493752"

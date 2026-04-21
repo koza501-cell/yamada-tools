@@ -17,6 +17,22 @@ const nextConfig = {
       bodySizeLimit: '10mb'
     }
   },
+  async headers() {
+    return [
+      {
+        source: '/(pdf|image|convert|generator|document)/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=3600, s-maxage=86400' },
+        ],
+      },
+      {
+        source: '/(account|auth|admin)/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'private, no-cache, no-store' },
+        ],
+      },
+    ]
+  },
   async redirects() {
     return [
       { source: '/legal', destination: '/legal/terms', permanent: true },
@@ -30,7 +46,6 @@ const nextConfig = {
       { source: '/$', destination: '/', permanent: true },
       { source: '/blog/image-resize-sns-perfect-size', destination: '/blog', permanent: true },
       { source: '/blog/kakutei-shinkoku-receipt-pdf-2025', destination: '/blog', permanent: true },
-      { source: '/convert/tsubo-converter', destination: '/convert', permanent: true },
       { source: '/blog/pdf----149867', destination: '/blog', permanent: true },
       { source: '/nisa-simulator', destination: '/finance/nisa-simulator', permanent: true },
       { source: '/jutaku-loan', destination: '/finance/jutaku-loan', permanent: true },
@@ -39,6 +54,12 @@ const nextConfig = {
       { source: '/tools/ideco-nisa-comparison', destination: '/finance/ideco-nisa-comparison', permanent: true },
       { source: '/tools/nisa-simulator', destination: '/finance/nisa-simulator', permanent: true },
       { source: '/ideco-nisa-comparison', destination: '/finance/ideco-nisa-comparison', permanent: true },
+      { source: '/health', destination: '/', permanent: true },
+      { source: '/insurance', destination: '/', permanent: true },
+      { source: '/debt', destination: '/', permanent: true },
+      { source: '/education', destination: '/', permanent: true },
+      { source: '/utility', destination: '/', permanent: true },
+      { source: '/reference', destination: '/', permanent: true },
     ]
   }
 }

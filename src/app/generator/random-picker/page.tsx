@@ -4,6 +4,7 @@ import { generateToolMetadata } from "@/lib/seo";
 import RandomPickerClient from "./client";
 import AdFreeZone from "@/components/AdFreeZone";
 import RelatedTools from "@/components/common/RelatedTools";
+import { AdUnit } from "@/components/common/AdUnit";
 
 const tool = getToolById("random-picker")!;
 
@@ -89,6 +90,7 @@ export default function Page() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <AdFreeZone><RandomPickerClient faq={faq} /></AdFreeZone>
+      <AdUnit slot="3948572016" format="horizontal" />
       <div className="max-w-4xl mx-auto px-4">
         <RelatedTools currentTool={tool} maxItems={6} />
       </div>

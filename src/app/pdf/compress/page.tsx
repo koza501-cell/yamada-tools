@@ -76,6 +76,9 @@ export const metadata: Metadata = generateToolMetadata({
     "無料 PDF圧縮",
     "オンライン PDF圧縮",
     "PDF 圧縮 安全",
+    "ファイルサイズ削減",
+    "PDF軽量化",
+    "PDF最適化"
   ],
 });
 

@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import NisaSimulatorClient from "./client";
+import NisaSimulatorClient from "./dynamic-client";
 
 export const metadata: Metadata = {
   title: "新NISAシミュレーター Pro - 積立・一括・複数シナリオ対応",

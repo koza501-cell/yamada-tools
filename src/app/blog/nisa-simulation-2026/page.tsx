@@ -1,9 +1,11 @@
 import { Metadata } from "next";
+import BlogAdUnit from "@/components/common/BlogAdUnit";
+import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 
 const title = "【2026年最新】新NISAシミュレーション完全ガイド｜初心者でも5分でわかる積立計算";
 const description = "新NISAの積立シミュレーションを無料で計算。毎月1万円で20年後にいくら？つみたて投資枠と成長投資枠の違い、2026年税制改正のポイントを初心者向けにわかりやすく解説。";
-const ogImage = `/api/og?title=${encodeURIComponent("【2026年最新】新NISAシミュレーション完全ガイド")}&type=blog&category=${encodeURIComponent("資産運用")}`;
+const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("【2026年最新】新NISAシミュレーション完全ガイド")}&type=blog&category=${encodeURIComponent("資産運用")}`;
 
 export const metadata: Metadata = {
   title,
@@ -26,6 +28,33 @@ export const metadata: Metadata = {
 export default function NisaSimulation2026Blog() {
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "【2026年最新】新NISAシミュレーション完全ガイド｜初心者でも5分でわかる積立計算",
+            "description": "新NISAの積立シミュレーションを無料で計算。毎月1万円で20年後にいくら？つみたて投資枠と成長投資枠の違い、2026年税制改正のポイントを初心者向けにわかりやすく解説。",
+            "datePublished": "2026-04-14",
+            "dateModified": "2026-04-14",
+            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
+            "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/nisa-simulation-2026"}
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{"@type":"Question","name":"新NISAはいつ始めるべき？","acceptedAnswer":{"@type":"Answer","text":"今すぐ始めるのがベストです。複利効果を最大限に活かすには、1日でも早くスタートすることが有利です。"}},{"@type":"Question","name":"毎月いくら積み立てればいい？","acceptedAnswer":{"@type":"Answer","text":"無理のない範囲で、最低でも月1万円を目標に。手取りの10〜15%が理想的です。"}},{"@type":"Question","name":"オルカンとS&P500、どっちがいい？","acceptedAnswer":{"@type":"Answer","text":"どちらも優良な選択肢です。迷ったら、より分散が効いているオルカンがおすすめ。"}},{"@type":"Question","name":"NISA口座はどこで開設すればいい？","acceptedAnswer":{"@type":"Answer","text":"ネット証券がおすすめ。SBI証券、楽天証券、マネックス証券などが人気です。"}},{"@type":"Question","name":"途中で解約できる？","acceptedAnswer":{"@type":"Answer","text":"はい、いつでも売却・引き出し可能です。ただし非課税枠の復活は翌年以降です。"}}]
+          })
+        }}
+      />
       <nav className="text-sm text-gray-500 mb-6">
         <Link href="/" className="hover:text-pink-500">ホーム</Link>
         <span className="mx-2">/</span>
@@ -51,8 +80,9 @@ export default function NisaSimulation2026Blog() {
         </ul>
       </div>
 
-      {/* Section 1 */}
       <section className="mb-10">
+      <StaticAdSlot />
+
         <h2 className="text-2xl font-bold text-gray-800 mb-4">新NISAとは？2024年からの大改正をおさらい</h2>
         <p className="text-gray-700 mb-4">
           2024年1月から始まった新NISA（少額投資非課税制度）は、投資で得た利益に税金がかからない国の制度です。
@@ -83,8 +113,9 @@ export default function NisaSimulation2026Blog() {
           旧制度では一般NISAとつみたてNISAのどちらか一方しか選べませんでしたが、新NISAでは<strong>両方の枠を併用できる</strong>ようになりました。
         </p>
       </section>
+      <BlogAdUnit />
 
-      {/* Section 2 */}
+
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">つみたて投資枠と成長投資枠の違い</h2>
         <p className="text-gray-700 mb-4">
@@ -119,17 +150,12 @@ export default function NisaSimulation2026Blog() {
             <li><strong>3. タイミングを考えなくていい</strong> - 毎月自動で積み立てるので、相場を気にする必要がない</li>
           </ul>
         </div>
-        <p className="text-gray-700">
-          一方、<strong>投資経験がある方</strong>や<strong>まとまった資金がある方</strong>は、成長投資枠も併用することで年間360万円までフル活用できます。
-        </p>
       </section>
 
-      {/* Section 3 - Simulation */}
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">【シミュレーション】毎月いくら積み立てると、いくらになる？</h2>
         <p className="text-gray-700 mb-4">
           新NISAで資産形成をする場合、将来いくらになるのかシミュレーションしてみましょう。
-          以下は複利計算による試算結果です。
         </p>
         
         <h3 className="text-xl font-semibold text-gray-700 mb-3">ケース1：毎月1万円を20年間積立</h3>
@@ -193,14 +219,15 @@ export default function NisaSimulation2026Blog() {
 
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
           <p className="text-lg font-bold text-blue-800 mb-2">🔧 今すぐ試算！NISAシミュレーター</p>
-          <p className="text-gray-700 mb-4">あなたの条件で将来の資産をシミュレーションしてみませんか？毎月の積立額、想定利回り、積立期間を入力するだけで、将来の資産額と運用益がすぐにわかります。</p>
+          <p className="text-gray-700 mb-4">あなたの条件で将来の資産をシミュレーションしてみませんか？</p>
           <Link href="/finance/nisa-simulator" className="inline-block bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-6 rounded-lg transition">
             → 無料NISAシミュレーターを使う
           </Link>
         </div>
       </section>
+      <BlogAdUnit />
 
-      {/* Section 4 - 2026 Changes */}
+
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">2026年の税制改正で何が変わった？</h2>
         <p className="text-gray-700 mb-4">
@@ -225,7 +252,7 @@ export default function NisaSimulation2026Blog() {
             </h3>
             <p className="text-gray-700">
               債券を投資対象とした投資信託や、地域別の株価指数に連動するファンドが追加される予定です。
-              これまでは株式比率50%以上が条件でしたが、債券比率が高い投信も選べるようになり、<strong>よりリスクを抑えた運用</strong>が可能になります。
+              <strong>よりリスクを抑えた運用</strong>が可能になります。
             </p>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
@@ -235,13 +262,11 @@ export default function NisaSimulation2026Blog() {
             </h3>
             <p className="text-gray-700">
               商品を売却した場合、これまでは「翌年以降」に非課税枠が復活していましたが、一部について年内に復活するルールが検討されています。
-              より柔軟な資産運用が可能になります。
             </p>
           </div>
         </div>
       </section>
 
-      {/* Section 5 - 5 Tips */}
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">新NISAで失敗しないための5つのポイント</h2>
         
@@ -250,122 +275,81 @@ export default function NisaSimulation2026Blog() {
             <span className="bg-pink-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0 text-lg">1</span>
             <div>
               <h3 className="font-bold text-gray-800 text-lg mb-1">長期目線で考える</h3>
-              <p className="text-gray-700">
-                新NISAは「老後資金」や「教育資金」など、10年以上先の目標に向けた制度です。短期売買には向いていません。
-                <strong>理想的な投資期間は20年以上。</strong>過去のデータでは、15年以上の長期投資では元本割れのリスクが大幅に低下しています。
-              </p>
+              <p className="text-gray-700">理想的な投資期間は20年以上。短期売買には向いていません。</p>
             </div>
           </div>
           <div className="flex items-start gap-4">
             <span className="bg-pink-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0 text-lg">2</span>
             <div>
               <h3 className="font-bold text-gray-800 text-lg mb-1">生活費を削ってまで投資しない</h3>
-              <p className="text-gray-700">
-                投資は「余裕資金」で行うのが鉄則です。
-                まずは生活費の3〜6ヶ月分の貯金を確保してから、投資を始めましょう。
-              </p>
+              <p className="text-gray-700">まずは生活費の3〜6ヶ月分の貯金を確保してから始めましょう。</p>
             </div>
           </div>
           <div className="flex items-start gap-4">
             <span className="bg-pink-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0 text-lg">3</span>
             <div>
               <h3 className="font-bold text-gray-800 text-lg mb-1">一度に大金を投入しない</h3>
-              <p className="text-gray-700">
-                まとまった資金がある場合でも、数ヶ月〜1年かけて分散投資することをおすすめします。
-                「ドルコスト平均法」と呼ばれるこの方法は、高値掴みのリスクを軽減できます。
-              </p>
+              <p className="text-gray-700">「ドルコスト平均法」で高値掴みのリスクを軽減しましょう。</p>
             </div>
           </div>
           <div className="flex items-start gap-4">
             <span className="bg-pink-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0 text-lg">4</span>
             <div>
               <h3 className="font-bold text-gray-800 text-lg mb-1">相場の上下に一喜一憂しない</h3>
-              <p className="text-gray-700">
-                株式市場は短期的には大きく上下します。2024年8月には日経平均が一時17%も下落しましたが、3ヶ月後には回復しています。
-                長期投資では、こうした短期的な変動は「ノイズ」です。淡々と積み立てを続けることが成功の秘訣です。
-              </p>
+              <p className="text-gray-700">長期投資では短期的な変動は「ノイズ」。淡々と積み立てを続けましょう。</p>
             </div>
           </div>
           <div className="flex items-start gap-4">
             <span className="bg-pink-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0 text-lg">5</span>
             <div>
               <h3 className="font-bold text-gray-800 text-lg mb-1">年に1回は見直しを</h3>
-              <p className="text-gray-700">
-                投資を始めたら放置でOK…ではありません。年に1回程度は、資産配分が崩れていないか、目標に向けて順調に進んでいるか、生活状況に変化はないかをチェックしましょう。
-              </p>
+              <p className="text-gray-700">資産配分や生活状況の変化をチェックしましょう。</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Section 6 - FAQ */}
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">よくある質問（FAQ）</h2>
         
         <div className="space-y-4">
-          <details className="bg-gray-50 rounded-lg p-4 group">
-            <summary className="font-bold text-gray-800 cursor-pointer flex justify-between items-center">
-              Q. 新NISAはいつ始めるべき？
-              <span className="text-pink-500">+</span>
-            </summary>
+          <details className="bg-gray-50 rounded-lg p-4">
+            <summary className="font-bold text-gray-800 cursor-pointer">Q. 新NISAはいつ始めるべき？</summary>
             <p className="mt-3 text-gray-700 border-t pt-3">
-              <strong>今すぐ始めるのがベストです。</strong>投資で最も重要なのは「時間」。複利効果を最大限に活かすには、1日でも早くスタートすることが有利です。
-              「もう少し勉強してから…」と迷っている間にも、機会損失が発生しています。
+              <strong>今すぐ始めるのがベストです。</strong>複利効果を最大限に活かすには、1日でも早くスタートすることが有利です。
             </p>
           </details>
           <details className="bg-gray-50 rounded-lg p-4">
-            <summary className="font-bold text-gray-800 cursor-pointer flex justify-between items-center">
-              Q. 毎月いくら積み立てればいい？
-              <span className="text-pink-500">+</span>
-            </summary>
+            <summary className="font-bold text-gray-800 cursor-pointer">Q. 毎月いくら積み立てればいい？</summary>
             <p className="mt-3 text-gray-700 border-t pt-3">
               <strong>無理のない範囲で、最低でも月1万円を目標に。</strong>手取りの10〜15%が理想的です。
-              最初は月5,000円〜1万円から始めて、慣れてきたら徐々に増額していくのがおすすめです。
             </p>
           </details>
           <details className="bg-gray-50 rounded-lg p-4">
-            <summary className="font-bold text-gray-800 cursor-pointer flex justify-between items-center">
-              Q. オルカンとS&P500、どっちがいい？
-              <span className="text-pink-500">+</span>
-            </summary>
+            <summary className="font-bold text-gray-800 cursor-pointer">Q. オルカンとS&P500、どっちがいい？</summary>
             <p className="mt-3 text-gray-700 border-t pt-3">
-              <strong>どちらも優良な選択肢です。</strong>
-              オルカン（オールカントリー）は全世界の株式に分散投資で地域分散が効いています。
-              S&P500は米国の大型株500社に投資し、過去実績では高リターン。
-              迷ったら、より分散が効いているオルカンがおすすめ。ただし、両方に半分ずつ投資するのもアリです。
+              <strong>どちらも優良な選択肢です。</strong>迷ったら、より分散が効いているオルカンがおすすめ。
             </p>
           </details>
           <details className="bg-gray-50 rounded-lg p-4">
-            <summary className="font-bold text-gray-800 cursor-pointer flex justify-between items-center">
-              Q. NISA口座はどこで開設すればいい？
-              <span className="text-pink-500">+</span>
-            </summary>
+            <summary className="font-bold text-gray-800 cursor-pointer">Q. NISA口座はどこで開設すればいい？</summary>
             <p className="mt-3 text-gray-700 border-t pt-3">
-              <strong>ネット証券がおすすめです。</strong>手数料が安く、商品ラインナップも豊富です。
-              主なネット証券：SBI証券、楽天証券、マネックス証券、auカブコム証券など。
+              <strong>ネット証券がおすすめ。</strong>SBI証券、楽天証券、マネックス証券などが人気です。
             </p>
           </details>
           <details className="bg-gray-50 rounded-lg p-4">
-            <summary className="font-bold text-gray-800 cursor-pointer flex justify-between items-center">
-              Q. 途中で解約できる？
-              <span className="text-pink-500">+</span>
-            </summary>
+            <summary className="font-bold text-gray-800 cursor-pointer">Q. 途中で解約できる？</summary>
             <p className="mt-3 text-gray-700 border-t pt-3">
-              <strong>はい、いつでも売却・引き出し可能です。</strong>
-              ただし、売却した分の非課税枠が復活するのは翌年以降なので、できるだけ長期保有がおすすめです。
+              <strong>はい、いつでも売却・引き出し可能です。</strong>ただし非課税枠の復活は翌年以降です。
             </p>
           </details>
         </div>
       </section>
 
-      {/* Summary & CTA */}
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">まとめ：新NISAは「やらない理由がない」制度</h2>
         <p className="text-gray-700 mb-4">
-          新NISAは、非課税期間が無期限、年間360万円・生涯1,800万円まで投資可能、つみたて投資枠と成長投資枠の併用OKという、これまでにない優遇制度です。
-        </p>
-        <p className="text-gray-700 mb-6">
-          日本の公的年金だけでは老後資金が不足する「2,000万円問題」が話題になりましたが、新NISAを活用すれば、20年間の積立で十分にカバーできる可能性があります。
+          新NISAは、非課税期間が無期限、年間360万円・生涯1,800万円まで投資可能という、これまでにない優遇制度です。
         </p>
         
         <div className="bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-lg p-6 text-center">
@@ -376,7 +360,6 @@ export default function NisaSimulation2026Blog() {
         </div>
       </section>
 
-      {/* Related Tools */}
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">関連ツール</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -399,11 +382,10 @@ export default function NisaSimulation2026Blog() {
         </div>
       </section>
 
+      <BlogAdUnit />
+
       <p className="text-sm text-gray-500 mt-8">
-        この記事は2026年4月時点の情報に基づいています。税制や制度は変更される可能性がありますので、最新情報は金融庁や各証券会社の公式サイトでご確認ください。
-      </p>
-      <p className="text-sm text-gray-400 mt-2">
-        参考：金融庁NISA特設サイト、日本証券業協会、各金融機関の公式情報
+        この記事は2026年4月時点の情報に基づいています。最新情報は金融庁公式サイトでご確認ください。
       </p>
     </article>
   );

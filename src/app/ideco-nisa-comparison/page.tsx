@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import IdecoNisaComparisonClient from "./client";
+import IdecoNisaComparisonClient from "./dynamic-client";
 
 export const metadata: Metadata = {
   title: "iDeCo vs NISA 徹底比較ツール - 節税額・手取り・最適配分を自動計算",

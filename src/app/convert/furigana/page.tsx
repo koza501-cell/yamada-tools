@@ -44,7 +44,9 @@ export const metadata: Metadata = generateToolMetadata({
     'ふりがな 自動',
     'ルビ 自動付与',
     'カタカナ変換',
-    '漢字 ひらがな 変換'
+    '漢字 ひらがな 変換',
+    '漢字読み方',
+    'ひらがな変換'
   ],
 });
 

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AdUnit } from "@/components/common/AdUnit";
 import { Tool, allTools } from "@/config/tools";
 
 // Cross-category related tools mapping
@@ -82,7 +83,12 @@ export default function RelatedTools({ currentTool, maxItems = 6, tools, title }
             </Link>
           ))}
         </div>
-      </section>
+      
+      {/* 広告 */}
+      <div className="mt-6">
+        <AdUnit slot="5612038947" format="horizontal" />
+      </div>
+    </section>
     );
   }
 
@@ -124,6 +130,11 @@ export default function RelatedTools({ currentTool, maxItems = 6, tools, title }
             <p className="text-xs text-gray-400 mt-1 line-clamp-1">{tool.description.slice(0, 25)}...</p>
           </Link>
         ))}
+      </div>
+    
+      {/* 広告 */}
+      <div className="mt-6">
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </section>
   );

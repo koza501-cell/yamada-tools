@@ -8,6 +8,8 @@ export default function AdSenseLoader() {
   const pathname = usePathname();
   const { isPro } = useAuth();
 
+  const isProduction = typeof window !== 'undefined' && window.location.hostname === 'yamada-tools.jp';
+
   const isExcluded =
     pathname === '/' ||
     pathname === '/pricing' ||
@@ -15,7 +17,7 @@ export default function AdSenseLoader() {
     pathname.startsWith('/auth');
 
   useEffect(() => {
-    if (isExcluded || isPro) return;
+    if (!isProduction || isExcluded || isPro) return;
 
     if (document.querySelector('script[src*="adsbygoogle"]')) return;
 

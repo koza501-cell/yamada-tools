@@ -1,4 +1,6 @@
 import { MetadataRoute } from "next";
+import fs from "fs";
+import path from "path";
 import { pdfTools, documentTools, convertTools, imageTools, generatorTools, financeTools, careerTools, realestateTools, businessTools, healthTools, educationTools, debtTools, utilityTools, insuranceTools, taxTools } from "@/config/tools";
 
 const baseUrl = "https://yamada-tools.jp";
@@ -24,10 +26,17 @@ export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
       { url: baseUrl + "/finance", lastModified: currentDate, changeFrequency: "weekly", priority: 0.95 },
       { url: baseUrl + "/blog", lastModified: currentDate, changeFrequency: "weekly", priority: 0.8 },
       { url: baseUrl + "/ai", lastModified: currentDate, changeFrequency: "weekly", priority: 0.85 },
-      { url: baseUrl + "/ai/notionai-meeting-minutes", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },
-      { url: baseUrl + "/ai/claude-business-email-recipe", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },
-      { url: baseUrl + "/ai/chatgpt-gijiroku-auto-guide", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },
-      { url: baseUrl + "/ai/mercari-ai-description-recipe", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },
+      ...(() => {
+        const aiPostsPath = path.join(process.cwd(), "src/data/aiPosts.json");
+        if (!fs.existsSync(aiPostsPath)) return [];
+        const aiPosts: any[] = JSON.parse(fs.readFileSync(aiPostsPath, "utf-8"));
+        return aiPosts.map(p => ({
+          url: baseUrl + "/ai/" + p.slug,
+          lastModified: currentDate,
+          changeFrequency: "monthly" as const,
+          priority: 0.8,
+        }));
+      })(),
       { url: baseUrl + "/career", lastModified: currentDate, changeFrequency: "weekly", priority: 0.8 },
       { url: baseUrl + "/health", lastModified: currentDate, changeFrequency: "weekly", priority: 0.8 },
       { url: baseUrl + "/insurance", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },

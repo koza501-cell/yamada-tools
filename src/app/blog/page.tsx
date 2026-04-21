@@ -68,11 +68,11 @@ export default function BlogPage() {
               >
                 <div className="relative h-48 overflow-hidden">
                   {blog.featuredImage ? (
-                    <Image 
+                    <img 
                       src={blog.featuredImage} 
                       alt={blog.title} 
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
+                      
+                      
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   ) : (
