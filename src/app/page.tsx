@@ -6,6 +6,7 @@ import SearchBar from "@/components/common/SearchBar";
 import HeroAnimation from "@/components/common/HeroAnimation";
 import TypingText from "@/components/common/TypingText";
 import RecentTools from "@/components/common/RecentTools";
+import RoleQuickAccess from "@/components/common/RoleQuickAccess";
 import NewsletterSignup from "@/components/common/NewsletterSignup";
 import StickyTabBar from "@/components/common/StickyTabBar";
 import TabbedToolsSection from "@/components/common/TabbedToolsSection";
@@ -139,6 +140,9 @@ export default function Home() {
       </section>
       {/* Recently Used Tools - Priority for returning users */}
       <RecentTools />
+
+      {/* Role-Based Quick Access */}
+      <RoleQuickAccess />
 
       {/* 🇯🇵 Japan-Exclusive Identity Section */}
       <section className="py-10 bg-white dark:bg-gray-900">
