@@ -80,6 +80,12 @@ export default function FlipClient({
   const [resizeLocked, setResizeLocked] = useState(true);
   const [resizePreset, setResizePreset] = useState("オリジナル");
 
+  // ── Crop state ────────────────────────────────────────────────────────
+  const [cropMode, setCropMode] = useState(false);
+  const [cropRect, setCropRect] = useState({ x: 0, y: 0, w: 1, h: 1 });
+  const cropContainerRef = useRef(null);
+  const cropDragState = useRef(null);
+
   // ── JSZip CDN loader ──────────────────────────────────────────────────
   const jszipLoaded = useRef(false);
   const [jszipLoading, setJszipLoading] = useState(false);
@@ -89,6 +95,16 @@ export default function FlipClient({
     const script = document.createElement("script");
     script.src = "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js";
     script.onload = () => { jszipLoaded.current = true; setJszipLoading(false); resolve(); };
+    document.head.appendChild(script);
+  });
+
+  // ── HEIC CDN loader ──────────────────────────────────────────────────
+  const heic2anyLoaded = useRef(false);
+  const loadHeic2any = (): Promise<void> => new Promise((resolve) => {
+    if (heic2anyLoaded.current || (window as any).heic2any) { heic2anyLoaded.current = true; resolve(); return; }
+    const script = document.createElement("script");
+    script.src = "https://cdnjs.cloudflare.com/ajax/libs/heic2any/0.0.4/heic2any.min.js";
+    script.onload = () => { heic2anyLoaded.current = true; resolve(); };
     document.head.appendChild(script);
   });
 
@@ -104,6 +120,52 @@ export default function FlipClient({
     const onMouseUp = () => { isDraggingSlider.current = false; };
     const onTouchMove = (e) => { if (e.touches[0]) move(e.touches[0].clientX); };
     const onTouchEnd = () => { isDraggingSlider.current = false; };
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mouseup", onMouseUp);
+    window.addEventListener("touchmove", onTouchMove, { passive: true });
+    window.addEventListener("touchend", onTouchEnd);
+    return () => {
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseup", onMouseUp);
+      window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("touchend", onTouchEnd);
+    };
+  }, []);
+
+  // ── Crop drag global listeners ────────────────────────────────────────
+  useEffect(() => {
+    const updateCrop = (clientX: number, clientY: number) => {
+      const state = cropDragState.current;
+      if (!state) return;
+      const { handle, startX, startY, startRect, containerRect } = state;
+      const dx = (clientX - startX) / containerRect.width;
+      const dy = (clientY - startY) / containerRect.height;
+      const MIN = 0.05;
+      let { x, y, w, h } = startRect;
+      if (handle === "nw") {
+        const nx = Math.min(startRect.x + dx, startRect.x + startRect.w - MIN);
+        const ny = Math.min(startRect.y + dy, startRect.y + startRect.h - MIN);
+        w = startRect.w - (nx - startRect.x); h = startRect.h - (ny - startRect.y); x = nx; y = ny;
+      } else if (handle === "ne") {
+        w = Math.max(MIN, startRect.w + dx);
+        const ny = Math.min(startRect.y + dy, startRect.y + startRect.h - MIN);
+        h = startRect.h - (ny - startRect.y); y = ny;
+      } else if (handle === "sw") {
+        const nx = Math.min(startRect.x + dx, startRect.x + startRect.w - MIN);
+        w = startRect.w - (nx - startRect.x); x = nx; h = Math.max(MIN, startRect.h + dy);
+      } else if (handle === "se") {
+        w = Math.max(MIN, startRect.w + dx); h = Math.max(MIN, startRect.h + dy);
+      }
+      x = Math.max(0, Math.min(1 - MIN, x));
+      y = Math.max(0, Math.min(1 - MIN, y));
+      w = Math.max(MIN, Math.min(1 - x, w));
+      h = Math.max(MIN, Math.min(1 - y, h));
+      setCropRect({ x, y, w, h });
+    };
+    const onMouseMove = (e) => updateCrop(e.clientX, e.clientY);
+    const onMouseUp = () => { cropDragState.current = null; };
+    const onTouchMove = (e) => { if (e.touches[0]) updateCrop(e.touches[0].clientX, e.touches[0].clientY); };
+    const onTouchEnd = () => { cropDragState.current = null; };
     window.addEventListener("mousemove", onMouseMove);
     window.addEventListener("mouseup", onMouseUp);
     window.addEventListener("touchmove", onTouchMove, { passive: true });
@@ -148,6 +210,37 @@ export default function FlipClient({
     setUndoStack({ history: [INIT_TRANSFORM], index: 0 });
   };
 
+  // ── Crop functions ────────────────────────────────────────────────────
+  const enterCropMode = () => {
+    setCropMode(true);
+    setCompareMode(false);
+    setCropRect({ x: 0, y: 0, w: 1, h: 1 });
+  };
+  const cancelCropMode = () => setCropMode(false);
+  const applyCrop = () => {
+    if (!canvasRef.current) return;
+    const src = canvasRef.current;
+    const sx = Math.round(src.width * cropRect.x);
+    const sy = Math.round(src.height * cropRect.y);
+    const sw = Math.round(src.width * cropRect.w);
+    const sh = Math.round(src.height * cropRect.h);
+    if (sw <= 0 || sh <= 0) return;
+    const dst = document.createElement("canvas");
+    dst.width = sw; dst.height = sh;
+    dst.getContext("2d").drawImage(src, sx, sy, sw, sh, 0, 0, sw, sh);
+    const img = new Image();
+    img.onload = () => {
+      originalRef.current = img;
+      setDimensions({ w: sw, h: sh });
+      setResizeW(sw); setResizeH(sh);
+      setFlipH(false); setFlipV(false); setRotation(0); setAngleInput(0);
+      setUndoStack({ history: [INIT_TRANSFORM], index: 0 });
+      setCropMode(false);
+      setCropRect({ x: 0, y: 0, w: 1, h: 1 });
+    };
+    img.src = dst.toDataURL();
+  };
+
   // ── Transform action handlers ─────────────────────────────────────────
   const handleFlipH = () => {
     const ns = { flipH: !flipH, flipV, rotation };
@@ -174,7 +267,18 @@ export default function FlipClient({
   };
 
   // ── Image loading ─────────────────────────────────────────────────────
-  const loadImage = (file) => {
+  const loadImage = async (file) => {
+    const isHeic = /\.(heic|heif)$/i.test(file.name) || file.type === "image/heic" || file.type === "image/heif";
+    if (isHeic) {
+      await loadHeic2any();
+      if (!(window as any).heic2any) return;
+      try {
+        const blob = await (window as any).heic2any({ blob: file, toType: "image/jpeg", quality: 0.9 });
+        const converted = Array.isArray(blob) ? blob[0] : blob;
+        loadImage(new File([converted], file.name.replace(/\.(heic|heif)$/i, ".jpg"), { type: "image/jpeg" }));
+      } catch { /* fall through */ }
+      return;
+    }
     if (!file.type.startsWith("image/")) return;
     setFileName(file.name);
     setFileSize(file.size);
@@ -661,7 +765,7 @@ export default function FlipClient({
               <p className="text-gray-600 dark:text-gray-300 mb-2 text-lg font-bold">画像をドラッグ＆ドロップ</p>
               <button className="px-8 py-3 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors text-lg">📁 画像を選択</button>
               <input id="img-upload" type="file" accept="image/*" className="hidden" onChange={(e) => { const f = e.target.files?.[0]; if (f) loadImage(f); }} />
-              <p className="text-sm text-gray-400 mt-4">JPG, PNG, WebP, BMP, GIF対応</p>
+              <p className="text-sm text-gray-400 mt-4">JPG, PNG, WebP, BMP, GIF, HEIC対応</p>
               <p className="text-xs text-gray-400 mt-1">📋 Ctrl+Vで貼り付け可</p>
             </div>
           )}
@@ -721,6 +825,21 @@ export default function FlipClient({
                 </div>
               </div>
 
+              {/* Crop mode controls */}
+              {!cropMode && (
+                <div className="flex justify-center mb-4">
+                  <button onClick={enterCropMode} className={`${btnBase} bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600`}>
+                    ✂️ トリミング
+                  </button>
+                </div>
+              )}
+              {cropMode && (
+                <div className="flex justify-center gap-3 mb-4">
+                  <button onClick={applyCrop} className="px-6 py-2 rounded-xl font-bold text-sm bg-kon text-white hover:bg-ai transition-colors">✂️ 適用</button>
+                  <button onClick={cancelCropMode} className={btnNormal}>キャンセル</button>
+                </div>
+              )}
+
               {/* Status */}
               <div className={`text-center text-xs px-3 py-2 rounded-lg mb-4 font-medium ${statusParts.length > 0 ? "bg-kon/10 text-kon dark:text-blue-300" : "bg-gray-50 dark:bg-gray-700/30 text-gray-400 dark:text-gray-500"}`}>
                 <span aria-live="polite" aria-atomic="true">{statusText}</span>
@@ -770,7 +889,54 @@ export default function FlipClient({
 
               {/* Preview area */}
               <div className="bg-gray-100 dark:bg-gray-700 rounded-xl p-3 mb-2">
-                {/* Canvas always rendered in single mode — hidden when compare is ON */}
+                {cropMode ? (
+                  <div
+                    ref={cropContainerRef}
+                    className="relative mx-auto overflow-hidden rounded-lg shadow-md"
+                    style={{ display: "table" }}
+                  >
+                    <canvas
+                      ref={canvasRef}
+                      className="block rounded-lg max-w-full"
+                      style={{ maxHeight: "500px", display: "block" }}
+                    />
+                    {/* Dark mask outside crop area */}
+                    <div style={{
+                      position: "absolute",
+                      left: `${cropRect.x * 100}%`,
+                      top: `${cropRect.y * 100}%`,
+                      width: `${cropRect.w * 100}%`,
+                      height: `${cropRect.h * 100}%`,
+                      border: "2px solid white",
+                      boxShadow: "0 0 0 9999px rgba(0,0,0,0.5)",
+                      pointerEvents: "none",
+                      boxSizing: "border-box",
+                    }} />
+                    {/* Corner handles */}
+                    {(["nw","ne","sw","se"]).map((handle) => {
+                      const lx = (handle.includes("e") ? (cropRect.x + cropRect.w) : cropRect.x) * 100;
+                      const ly = (handle.includes("s") ? (cropRect.y + cropRect.h) : cropRect.y) * 100;
+                      const cursor = handle === "nw" || handle === "se" ? "nwse-resize" : "nesw-resize";
+                      return (
+                        <div
+                          key={handle}
+                          style={{ position: "absolute", left: `${lx}%`, top: `${ly}%`, width: "16px", height: "16px", background: "white", border: "2px solid #555", borderRadius: "2px", transform: "translate(-50%,-50%)", cursor, zIndex: 10 }}
+                          onMouseDown={(e) => {
+                            e.preventDefault();
+                            const cr = cropContainerRef.current?.getBoundingClientRect();
+                            if (cr) cropDragState.current = { handle, startX: e.clientX, startY: e.clientY, startRect: { ...cropRect }, containerRect: cr };
+                          }}
+                          onTouchStart={(e) => {
+                            const cr = cropContainerRef.current?.getBoundingClientRect();
+                            if (cr && e.touches[0]) cropDragState.current = { handle, startX: e.touches[0].clientX, startY: e.touches[0].clientY, startRect: { ...cropRect }, containerRect: cr };
+                          }}
+                        />
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <>
+                {/* Canvas — hidden when compare is ON */}
                 <canvas
                   ref={canvasRef}
                   className={compareMode ? "hidden" : "block mx-auto rounded-lg shadow-md max-w-full"}
@@ -832,6 +998,8 @@ export default function FlipClient({
                     <span className="absolute top-2 left-2 bg-black/55 text-white text-xs px-2 py-0.5 rounded pointer-events-none select-none">変換前</span>
                     <span className="absolute top-2 right-2 bg-black/55 text-white text-xs px-2 py-0.5 rounded pointer-events-none select-none">変換後</span>
                   </div>
+                )}
+                  </>
                 )}
               </div>
 
