@@ -1189,7 +1189,7 @@ export default function RentalCostCalculatorPage() {
               </div>
             )}
 
-            <AdUnit position="top" format="horizontal" className="mb-6" />
+            <AdUnit slot="6291847305" format="horizontal" className="mb-6" />
           </>
         )}
 

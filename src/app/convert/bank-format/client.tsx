@@ -248,6 +248,26 @@ export default function BankFormatClient({
   const [xlsError, setXlsError] = useState('');
   const [xlsToast, setXlsToast] = useState(false);
 
+  // Bidirectional conversion
+  const [conversionDirection, setConversionDirection] = useState<"to-zengin" | "from-zengin">("to-zengin");
+  const [zenginRawText, setZenginRawText] = useState("");
+  const [zenginFileName, setZenginFileName] = useState("");
+  const [zenginIsDragging, setZenginIsDragging] = useState(false);
+  const [zenginErrors, setZenginErrors] = useState<{line: number; field: string; message: string}[]>([]);
+  const [zenginErrorsOpen, setZenginErrorsOpen] = useState(false);
+  const [zenginParseResult, setZenginParseResult] = useState<{
+    header: Record<string, string> | null;
+    records: Record<string, string>[];
+    trailer: Record<string, string> | null;
+  } | null>(null);
+  const [zenginOutputFormat, setZenginOutputFormat] = useState<"csv" | "json">("csv");
+
+  // Template save/restore
+  const [templates, setTemplates] = useState<{id: string; name: string; headerData: HeaderData; transfers: TransferData[]}[]>([]);
+  const [showTemplateSave, setShowTemplateSave] = useState(false);
+  const [templateName, setTemplateName] = useState("");
+  const [templatesOpen, setTemplatesOpen] = useState(false);
+
   // Transfer type tooltip (Command 4)
   const [transferTypeTooltipOpen, setTransferTypeTooltipOpen] = useState(false);
 
@@ -282,6 +302,10 @@ export default function BankFormatClient({
     try {
       const stored = localStorage.getItem(HISTORY_KEY);
       if (stored) setHistory(JSON.parse(stored));
+    } catch { /* ignore */ }
+    try {
+      const tmpl = localStorage.getItem("yamada_bank_format_templates");
+      if (tmpl) setTemplates(JSON.parse(tmpl));
     } catch { /* ignore */ }
   }, []);
 
@@ -715,6 +739,173 @@ export default function BankFormatClient({
     });
   };
 
+  // ---- Zengin reverse parse ----
+  const parseZenginFile = (text: string) => {
+    const lines = text.split(/\r?\n/).filter(l => l.trim().length > 0);
+    const errors: {line: number; field: string; message: string}[] = [];
+    let headerRec: Record<string, string> | null = null;
+    const dataRecs: Record<string, string>[] = [];
+    let trailerRec: Record<string, string> | null = null;
+
+    lines.forEach((line, idx) => {
+      const lineNum = idx + 1;
+      if (line.length !== 120) {
+        errors.push({ line: lineNum, field: "レコード長", message: `${line.length}バイト（120バイト必須）` });
+        return;
+      }
+      const type = line[0];
+      if (type === "1") {
+        const typeCode = line.slice(1, 3);
+        if (!["11", "12", "21"].includes(typeCode)) {
+          errors.push({ line: lineNum, field: "種別コード", message: `"${typeCode}" は無効（11/12/21）` });
+        }
+        const dateStr = line.slice(54, 58);
+        if (!/^\d{4}$/.test(dateStr)) {
+          errors.push({ line: lineNum, field: "振込指定日", message: `"${dateStr}" はMMDD形式でない` });
+        }
+        const bankCode = line.slice(58, 62);
+        if (!/^\d{4}$/.test(bankCode)) {
+          errors.push({ line: lineNum, field: "取引銀行コード", message: `"${bankCode}" は4桁数字でない` });
+        }
+        headerRec = {
+          transferType: typeCode,
+          clientCode: line.slice(4, 14).trim(),
+          clientName: line.slice(14, 54).trim(),
+          transferDate: dateStr,
+          bankCode: bankCode,
+          bankName: line.slice(62, 77).trim(),
+          branchCode: line.slice(77, 80).trim(),
+          branchName: line.slice(80, 95).trim(),
+          accountType: line[95],
+          accountNumber: line.slice(96, 103).trim(),
+          category: line.slice(103, 105).trim(),
+        };
+      } else if (type === "2") {
+        const bankCode = line.slice(1, 5);
+        const branchCode = line.slice(20, 23);
+        const accountType = line[42];
+        const accountNumber = line.slice(43, 50).trim();
+        const amount = line.slice(80, 90).trim();
+        if (!/^\d{4}$/.test(bankCode)) {
+          errors.push({ line: lineNum, field: "銀行コード", message: `"${bankCode}" は4桁数字でない` });
+        }
+        if (!/^\d{3}$/.test(branchCode)) {
+          errors.push({ line: lineNum, field: "支店コード", message: `"${branchCode}" は3桁数字でない` });
+        }
+        if (!["1", "2", "4"].includes(accountType)) {
+          errors.push({ line: lineNum, field: "預金種目", message: `"${accountType}" は1/2/4でない` });
+        }
+        if (!/^\d{1,7}$/.test(accountNumber)) {
+          errors.push({ line: lineNum, field: "口座番号", message: `"${accountNumber}" は7桁以内数字でない` });
+        }
+        if (!/^\d+$/.test(amount) || parseInt(amount) <= 0) {
+          errors.push({ line: lineNum, field: "金額", message: `"${amount}" は正の整数でない` });
+        }
+        dataRecs.push({
+          bankCode, bankName: line.slice(5, 20).trim(),
+          branchCode, branchName: line.slice(23, 38).trim(),
+          accountType, accountNumber, recipientName: line.slice(50, 80).trim(),
+          amount, ediInfo: line.slice(91, 111).trim(),
+        });
+      } else if (type === "8") {
+        const totalCount = parseInt(line.slice(1, 7).trim()) || 0;
+        const totalAmount = parseInt(line.slice(7, 19).trim()) || 0;
+        trailerRec = { totalCount: String(totalCount), totalAmount: String(totalAmount) };
+        if (totalCount !== dataRecs.length) {
+          errors.push({ line: lineNum, field: "合計件数", message: `トレーラー${totalCount}≠データ${dataRecs.length}件` });
+        }
+        const calcTotal = dataRecs.reduce((s, r) => s + (parseInt(r.amount) || 0), 0);
+        if (totalAmount !== calcTotal) {
+          errors.push({ line: lineNum, field: "合計金額", message: `トレーラー¥${totalAmount}≠計算値¥${calcTotal}` });
+        }
+      } else if (type === "9") {
+        // End record: ok
+      } else {
+        errors.push({ line: lineNum, field: "レコード種別", message: `"${type}" は不明（1/2/8/9のみ）` });
+      }
+    });
+
+    if (!headerRec) errors.push({ line: 0, field: "ヘッダー", message: "ヘッダーレコード(1)が見つかりません" });
+    setZenginErrors(errors);
+    setZenginParseResult({ header: headerRec, records: dataRecs, trailer: trailerRec });
+    if (errors.length === 0) {
+      setMascotState("success"); triggerSuccess("bank-format");
+      setMascotMessage(`${dataRecs.length}件を解析しました`);
+    } else {
+      setMascotState("error");
+      setMascotMessage(`${errors.length}件のエラーが見つかりました`);
+    }
+  };
+
+  const handleZenginFileUpload = (file: File) => {
+    setZenginFileName(file.name);
+    setZenginParseResult(null);
+    setZenginErrors([]);
+    const readerUtf = new FileReader();
+    readerUtf.onload = (e) => {
+      const text = e.target?.result as string;
+      if (text.includes("\uFFFD")) {
+        const readerSjis = new FileReader();
+        readerSjis.onload = (e2) => {
+          const t2 = e2.target?.result as string;
+          setZenginRawText(t2);
+          parseZenginFile(t2);
+        };
+        readerSjis.readAsText(file, "shift_jis");
+      } else {
+        setZenginRawText(text);
+        parseZenginFile(text);
+      }
+    };
+    readerUtf.readAsText(file, "utf-8");
+  };
+
+  const downloadZenginAsCsv = () => {
+    if (!zenginParseResult) return;
+    const header = ["銀行コード","銀行名","支店コード","支店名","預金種目","口座番号","受取人名","金額"].join(",");
+    const rows = zenginParseResult.records.map(r => [
+      r.bankCode, r.bankName, r.branchCode, r.branchName,
+      r.accountType === "1" ? "普通" : r.accountType === "2" ? "当座" : "貯蓄",
+      r.accountNumber, r.recipientName, r.amount,
+    ].map(v => `"${v}"`).join(","));
+    const csv = [header, ...rows].join("\r\n");
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = `zengin_parsed_${new Date().toISOString().slice(0,10)}.csv`;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+  };
+
+  const downloadZenginAsJson = () => {
+    if (!zenginParseResult) return;
+    const out = { header: zenginParseResult.header, records: zenginParseResult.records, trailer: zenginParseResult.trailer };
+    const blob = new Blob([JSON.stringify(out, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = `zengin_parsed_${new Date().toISOString().slice(0,10)}.json`;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+  };
+
+  const saveTemplate = () => {
+    if (!templateName.trim()) return;
+    const tmpl = { id: Date.now().toString(), name: templateName.trim(), headerData: { ...headerData }, transfers: transfers.map(t => ({ ...t })) };
+    setTemplates(prev => {
+      const next = [tmpl, ...prev].slice(0, 10);
+      try { localStorage.setItem("yamada_bank_format_templates", JSON.stringify(next)); } catch { /* ignore */ }
+      return next;
+    });
+    setTemplateName(""); setShowTemplateSave(false);
+    setMascotState("success"); setMascotMessage(`テンプレート「${tmpl.name}」を保存しました`);
+  };
+
+  const deleteTemplate = (id: string) => {
+    setTemplates(prev => {
+      const next = prev.filter(t => t.id !== id);
+      try { localStorage.setItem("yamada_bank_format_templates", JSON.stringify(next)); } catch { /* ignore */ }
+      return next;
+    });
+  };
+
   const handleConvert = () => {
     // Validation
     if (!headerData.clientCode || !headerData.clientName) {
@@ -1083,6 +1274,170 @@ export default function BankFormatClient({
           <Mascot state={mascotState} message={mascotMessage} />
         </div>
 
+        {/* Conversion Direction Toggle */}
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 mb-4">
+          <p className="text-xs text-gray-500 mb-2 font-medium">変換方向</p>
+          <div className="flex gap-2">
+            <button type="button" onClick={() => setConversionDirection("to-zengin")}
+              className={`flex-1 py-2.5 px-4 rounded-xl font-medium text-sm transition-all ${conversionDirection === "to-zengin" ? "bg-kon text-white shadow-sm" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}>
+              <span className="block text-base mb-0.5">📤</span>
+              Excel/CSV → 全銀
+            </button>
+            <button type="button" onClick={() => setConversionDirection("from-zengin")}
+              className={`flex-1 py-2.5 px-4 rounded-xl font-medium text-sm transition-all ${conversionDirection === "from-zengin" ? "bg-indigo-600 text-white shadow-sm" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}>
+              <span className="block text-base mb-0.5">📥</span>
+              全銀 → Excel/CSV/JSON
+            </button>
+          </div>
+        </div>
+
+        {/* Reverse mode: Zengin → CSV/JSON */}
+        {conversionDirection === "from-zengin" && (
+          <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
+            <h2 className="text-lg font-bold text-indigo-700 mb-4">全銀フォーマット → 変換</h2>
+            <div
+              onDrop={e => { e.preventDefault(); setZenginIsDragging(false); const f = e.dataTransfer.files[0]; if (f) handleZenginFileUpload(f); }}
+              onDragOver={e => { e.preventDefault(); setZenginIsDragging(true); }}
+              onDragLeave={() => setZenginIsDragging(false)}
+              className={`border-2 border-dashed rounded-xl p-8 text-center transition-colors mb-4 ${zenginIsDragging ? "border-indigo-500 bg-indigo-50" : "border-gray-300 hover:border-indigo-400"}`}>
+              <p className="text-3xl mb-2">📂</p>
+              <p className="text-sm text-gray-600 mb-3">.txt または .dat ファイルをドロップ</p>
+              <label className="inline-block px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm cursor-pointer hover:bg-indigo-700">
+                ファイルを選択
+                <input type="file" accept=".txt,.dat" className="hidden" onChange={e => { const f = e.target.files?.[0]; if (f) handleZenginFileUpload(f); e.target.value = ""; }} />
+              </label>
+              {zenginFileName && <p className="text-xs text-gray-500 mt-2">📄 {zenginFileName}</p>}
+            </div>
+
+            {zenginErrors.length > 0 && (
+              <div className="mb-4">
+                <button type="button" onClick={() => setZenginErrorsOpen(o => !o)}
+                  className="w-full flex items-center justify-between px-4 py-3 bg-red-50 border border-red-200 rounded-xl text-sm text-red-700">
+                  <span>⚠️ {zenginErrors.length}件のエラーが見つかりました</span>
+                  <span className={`transition-transform ${zenginErrorsOpen ? "rotate-180" : ""}`}>▼</span>
+                </button>
+                {zenginErrorsOpen && (
+                  <div className="mt-2 space-y-1.5 max-h-64 overflow-y-auto">
+                    {zenginErrors.map((err, i) => (
+                      <div key={i} className="flex items-start gap-2 px-3 py-2 bg-red-50 border border-red-100 rounded-lg text-xs">
+                        <span className="bg-red-500 text-white rounded px-1.5 py-0.5 font-mono flex-shrink-0">
+                          {err.line === 0 ? "全体" : `L${err.line}`}
+                        </span>
+                        <span className="text-red-700 font-medium flex-shrink-0">{err.field}</span>
+                        <span className="text-red-600">{err.message}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {zenginParseResult && zenginParseResult.records.length > 0 && (
+              <div>
+                <div className="flex flex-wrap gap-2 mb-4 text-xs">
+                  {zenginParseResult.header && (
+                    <span className="bg-blue-100 text-blue-700 px-2 py-1 rounded-full">委託者: {zenginParseResult.header.clientName || "—"}</span>
+                  )}
+                  <span className="bg-green-100 text-green-700 px-2 py-1 rounded-full">データ {zenginParseResult.records.length}件</span>
+                  {zenginParseResult.trailer && (
+                    <span className="bg-amber-100 text-amber-700 px-2 py-1 rounded-full">
+                      合計 ¥{parseInt(zenginParseResult.trailer.totalAmount || "0").toLocaleString("ja-JP")}
+                    </span>
+                  )}
+                </div>
+                <div className="overflow-x-auto rounded-xl border border-gray-200 mb-4">
+                  <table className="w-full text-xs">
+                    <thead className="bg-gray-50 text-gray-600">
+                      <tr>
+                        {["銀行コード","銀行名","支店コード","支店名","種目","口座番号","受取人名","金額"].map(h => (
+                          <th key={h} className="px-2 py-2 text-left font-medium whitespace-nowrap">{h}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-100">
+                      {zenginParseResult.records.slice(0, 10).map((r, i) => (
+                        <tr key={i} className="hover:bg-gray-50">
+                          <td className="px-2 py-1.5 font-mono">{r.bankCode}</td>
+                          <td className="px-2 py-1.5">{r.bankName}</td>
+                          <td className="px-2 py-1.5 font-mono">{r.branchCode}</td>
+                          <td className="px-2 py-1.5">{r.branchName}</td>
+                          <td className="px-2 py-1.5">{r.accountType === "1" ? "普通" : r.accountType === "2" ? "当座" : "貯蓄"}</td>
+                          <td className="px-2 py-1.5 font-mono">{r.accountNumber}</td>
+                          <td className="px-2 py-1.5">{r.recipientName}</td>
+                          <td className="px-2 py-1.5 text-right font-mono">¥{parseInt(r.amount || "0").toLocaleString("ja-JP")}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                  {zenginParseResult.records.length > 10 && (
+                    <p className="text-xs text-gray-400 text-center py-2">… 他{zenginParseResult.records.length - 10}件</p>
+                  )}
+                </div>
+                <div className="flex items-center gap-3 flex-wrap">
+                  <span className="text-sm text-gray-600">出力形式:</span>
+                  <label className="flex items-center gap-1 cursor-pointer text-sm">
+                    <input type="radio" name="zenginFmt" value="csv" checked={zenginOutputFormat === "csv"} onChange={() => setZenginOutputFormat("csv")} className="accent-indigo-600" />CSV
+                  </label>
+                  <label className="flex items-center gap-1 cursor-pointer text-sm">
+                    <input type="radio" name="zenginFmt" value="json" checked={zenginOutputFormat === "json"} onChange={() => setZenginOutputFormat("json")} className="accent-indigo-600" />JSON
+                  </label>
+                  <button type="button" onClick={zenginOutputFormat === "csv" ? downloadZenginAsCsv : downloadZenginAsJson}
+                    className="px-5 py-2.5 bg-indigo-600 text-white rounded-xl font-medium text-sm hover:bg-indigo-700">
+                    📥 ダウンロード
+                  </button>
+                </div>
+              </div>
+            )}
+          </section>
+        )}
+
+        {/* Template management (to-zengin only) */}
+        {conversionDirection === "to-zengin" && (
+          <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 mb-4">
+            <div className="flex items-center justify-between">
+              <button type="button" onClick={() => setTemplatesOpen(o => !o)}
+                className="flex items-center gap-2 text-sm font-medium text-gray-700">
+                📁 テンプレート
+                {templates.length > 0 && <span className="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">{templates.length}件</span>}
+                <span className={`text-gray-400 text-xs transition-transform ${templatesOpen ? "rotate-180" : ""}`}>▼</span>
+              </button>
+              <button type="button" onClick={() => setShowTemplateSave(o => !o)}
+                className="text-xs px-3 py-1.5 bg-kon text-white rounded-lg hover:bg-kon/90">
+                💾 テンプレート保存
+              </button>
+            </div>
+            {showTemplateSave && (
+              <div className="mt-3 flex gap-2">
+                <input type="text" value={templateName} onChange={e => setTemplateName(e.target.value)}
+                  placeholder="テンプレート名" className="flex-1 px-3 py-1.5 border border-gray-200 rounded-lg text-sm" />
+                <button type="button" onClick={saveTemplate} className="px-3 py-1.5 bg-kon text-white rounded-lg text-sm hover:bg-kon/90">保存</button>
+                <button type="button" onClick={() => setShowTemplateSave(false)} className="px-3 py-1.5 border border-gray-200 rounded-lg text-sm text-gray-600">取消</button>
+              </div>
+            )}
+            {templatesOpen && templates.length > 0 && (
+              <div className="mt-3 flex gap-3 overflow-x-auto pb-2">
+                {templates.map(tmpl => (
+                  <div key={tmpl.id} className="flex-shrink-0 bg-gray-50 rounded-xl p-3 border border-gray-100 min-w-[180px]">
+                    <p className="text-sm font-medium text-gray-800 truncate mb-2">{tmpl.name}</p>
+                    <p className="text-xs text-gray-500 mb-2">{tmpl.transfers.length}件</p>
+                    <div className="flex gap-2">
+                      <button type="button" onClick={() => { setHeaderData(tmpl.headerData); setTransfers(tmpl.transfers); setTemplatesOpen(false); setMascotState("success"); setMascotMessage("テンプレートを復元しました"); }}
+                        className="text-xs text-kon hover:underline">復元</button>
+                      <button type="button" onClick={() => deleteTemplate(tmpl.id)}
+                        className="text-xs text-red-400 hover:text-red-600 hover:underline">削除</button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+            {templatesOpen && templates.length === 0 && (
+              <p className="mt-3 text-xs text-gray-400">保存されたテンプレートはありません</p>
+            )}
+          </section>
+        )}
+
+        {/* Input Mode Toggle (to-zengin only) */}
+        {conversionDirection === "to-zengin" && (<>
         {/* Input Mode Toggle */}
         <div className="flex gap-2 mb-6">
           <button
@@ -2144,6 +2499,8 @@ export default function BankFormatClient({
         )}
 
         {/* Related Tools */}
+        </>)}
+
         <RelatedTools tools={relatedToolSets.bankFormat} title="あわせて使えるツール" />
 
 
@@ -2184,7 +2541,7 @@ export default function BankFormatClient({
             <LazyFAQ faq={faq ?? BUILT_IN_FAQ} />
           </div>
         </section>
-        <AdUnit position="mid" format="horizontal" />
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

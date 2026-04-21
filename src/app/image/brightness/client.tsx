@@ -132,7 +132,7 @@ export default function BrightnessClient({
                   <span className="text-2xl">🖼️</span>
                   <p className="font-bold text-sm truncate max-w-[200px] sm:max-w-none">{fileName}</p>
                 </div>
-                <button onClick={reset} className="text-sm text-red-500 hover:text-red-700 font-bold">✕ 閉じる</button>
+                <button onClick={reset} className="text-sm text-red-500 hover:text-red-700 font-bold py-2 px-3 rounded hover:bg-red-50">✕ 閉じる</button>
               </div>
 
               <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 mb-4">

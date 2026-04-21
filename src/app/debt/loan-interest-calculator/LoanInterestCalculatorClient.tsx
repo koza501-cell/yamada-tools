@@ -675,7 +675,7 @@ export default function LoanInterestCalculator() {
 
       </div>
 
-      <AdUnit position="mid" />
+      <AdUnit slot="loan-interest-calculator" />
     </div>
   );
 }

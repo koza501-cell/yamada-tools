@@ -275,7 +275,7 @@ export default function AgeCalculatorPage() {
       <div className="max-w-3xl mx-auto px-4 py-6">
 
         {/* Ad — top */}
-        <AdUnit position="top" className="mb-6" />
+        <AdUnit slot="age-calculator-top" className="mb-6" />
 
         {/* Input Form */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-4">
@@ -523,7 +523,7 @@ export default function AgeCalculatorPage() {
             </div>
 
             {/* Ad — mid */}
-            <AdUnit position="bottom" className="mb-4" />
+            <AdUnit slot="age-calculator-mid" className="mb-4" />
 
             {/* Reset */}
             <button

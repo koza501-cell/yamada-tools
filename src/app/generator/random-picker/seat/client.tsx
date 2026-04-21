@@ -435,7 +435,7 @@ function TipCard({ icon, title, children, last = false }: {
       </h3>
       <div style={{ fontSize: "0.92rem", color: "#555", lineHeight: 1.8 }}>
         {children}
-        <AdUnit position="mid" format="horizontal" />
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

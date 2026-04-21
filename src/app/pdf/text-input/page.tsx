@@ -160,13 +160,6 @@ export default function PdfTextPage() {
       "テキスト・ハンコの自由移動",
       "Ctrl+Z 元に戻す対応",
     ],
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      reviewCount: "127",
-      bestRating: "5",
-      worstRating: "1",
-    },
     provider: {
       "@type": "Organization",
       name: "合同会社山田トレード",

@@ -181,7 +181,7 @@ export default function RegexTestClient() {
         <div className="mt-8 text-center">
           <Link href="/generator" className="text-kon hover:text-ai">← 計算・生成ツール一覧に戻る</Link>
         </div>
-        <AdUnit position="mid" format="horizontal" />
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

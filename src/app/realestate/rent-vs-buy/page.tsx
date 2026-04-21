@@ -424,7 +424,7 @@ export default function RentVsBuyPage() {
           </p>
         </div>
 
-        <AdUnit position="top" format="horizontal" className="mb-6" />
+        <AdUnit slot="7823491056" format="horizontal" className="mb-6" />
 
         {/* Section 1: 賃貸の条件 */}
         <div className="bg-white rounded-2xl shadow-sm border border-blue-100 p-6 mb-4">
@@ -999,7 +999,7 @@ export default function RentVsBuyPage() {
               </p>
             </div>
 
-            <AdUnit position="bottom" format="rectangle" className="my-4" />
+            <AdUnit slot="3948572016" format="rectangle" className="my-4" />
           </div>
         )}
 

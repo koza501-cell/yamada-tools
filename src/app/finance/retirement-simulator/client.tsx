@@ -1544,7 +1544,7 @@ export default function RetirementSimulatorClient() {
             <strong>免責事項：</strong>本ツールの計算結果はあくまで参考値です。実際の年金額は日本年金機構にご確認ください。税務・資産運用の判断は専門家にご相談ください。インフレ率や運用利回りは将来の予測値であり、実際の結果を保証するものではありません。
           </p>
         </div>
-        <AdUnit position="mid" format="horizontal" />
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

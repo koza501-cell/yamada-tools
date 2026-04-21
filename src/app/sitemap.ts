@@ -25,35 +25,6 @@ export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
       { url: baseUrl + "/generator", lastModified: currentDate, changeFrequency: "weekly", priority: 0.9 },
       { url: baseUrl + "/finance", lastModified: currentDate, changeFrequency: "weekly", priority: 0.95 },
       { url: baseUrl + "/blog", lastModified: currentDate, changeFrequency: "weekly", priority: 0.8 },
-      ...(() => {
-        // Dynamic blog posts from JSON
-        const blogsPath = path.join(process.cwd(), "src/data/dynamicBlogs.json");
-        const dynamicBlogUrls = fs.existsSync(blogsPath)
-          ? (JSON.parse(fs.readFileSync(blogsPath, "utf-8")) as any[]).map(b => ({
-              url: baseUrl + "/blog/" + b.slug,
-              lastModified: b.modifiedDate || b.publishDate || currentDate,
-              changeFrequency: "monthly" as const,
-              priority: 0.7,
-            }))
-          : [];
-        // Static blog posts (read directory names from src/app/blog)
-        const blogAppDir = path.join(process.cwd(), "src/app/blog");
-        const staticBlogUrls = fs.existsSync(blogAppDir)
-          ? fs.readdirSync(blogAppDir)
-              .filter(d =>
-                !d.startsWith("[") &&
-                !d.endsWith(".tsx") && !d.endsWith(".ts") && !d.endsWith(".css") &&
-                fs.statSync(path.join(blogAppDir, d)).isDirectory()
-              )
-              .map(slug => ({
-                url: baseUrl + "/blog/" + slug,
-                lastModified: currentDate,
-                changeFrequency: "monthly" as const,
-                priority: 0.7,
-              }))
-          : [];
-        return [...dynamicBlogUrls, ...staticBlogUrls];
-      })(),
       { url: baseUrl + "/ai", lastModified: currentDate, changeFrequency: "weekly", priority: 0.85 },
       ...(() => {
         const aiPostsPath = path.join(process.cwd(), "src/data/aiPosts.json");

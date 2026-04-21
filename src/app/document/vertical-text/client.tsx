@@ -60,8 +60,9 @@ const PAPER_SIZES: Record<DocState['paperSize'], { width: number; height: number
 };
 
 const FONT_FAMILIES = [
-  { value: 'serif', label: '明朝体' },
-  { value: 'sans-serif', label: 'ゴシック体' },
+  { value: '"Noto Serif JP", serif', label: '明朝体' },
+  { value: '"Noto Sans JP", sans-serif', label: 'ゴシック体' },
+  { value: 'cursive', label: '教科書体' },
 ];
 
 const TEMPLATES = [
@@ -94,6 +95,12 @@ const TEMPLATES = [
     title: '俳句集',
     author: '',
     text: '古池や蛙飛び込む水の音\n\n閑さや岩にしみ入る蝉の声\n\n夏草や兵どもが夢の跡',
+  },
+  {
+    label: '賞状',
+    title: '感謝状',
+    author: '令和七年三月吉日',
+    text: '感謝状\n\n　あなたはこれまで長年にわたり 本会の発展にご尽力いただきました\n\nその功績は誠に顕著であります\n\nここにその業績を称え 感謝の意を表するとともに 記念品を贈呈いたします',
   },
 ];
 
@@ -294,6 +301,12 @@ export default function VerticalTextClient() {
 
   useEffect(() => {
     setMounted(true);
+    if (typeof document !== 'undefined') {
+      const gfLink = document.createElement('link');
+      gfLink.rel = 'stylesheet';
+      gfLink.href = 'https://fonts.googleapis.com/css2?family=Noto+Serif+JP&family=Noto+Sans+JP&display=swap';
+      document.head.appendChild(gfLink);
+    }
     // Defer preview on mobile until container is visible
     if (typeof window !== "undefined" && window.innerWidth >= 768) {
       setPreviewReady(true);
@@ -673,6 +686,59 @@ export default function VerticalTextClient() {
     window.print();
   };
 
+  const exportSvg = () => {
+    const paper = PAPER_SIZES[doc.paperSize];
+    const mmToPx = 3.78;
+    const W = Math.round(paper.height * mmToPx);
+    const H = Math.round(paper.width * mmToPx);
+    const padding = Math.round(15 * mmToPx);
+    const fontPx = Math.round(doc.fontSize * 0.35 * mmToPx);
+    const lineHeightPx = Math.round(fontPx * doc.lineHeight);
+    const displayText = getDisplayText(true);
+    const esc = (s: string) => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    let els = '';
+    let x = W - padding;
+    let y = padding;
+    if (doc.title) {
+      const titlePx = Math.round(fontPx * 1.3);
+      for (const ch of doc.title) {
+        els += `<text x="${x - titlePx * 0.5}" y="${y}" font-family="${esc(doc.fontFamily)}" font-size="${titlePx}" font-weight="bold" fill="#000" dominant-baseline="hanging">${esc(ch)}</text>`;
+        y += titlePx * 1.2;
+      }
+      x -= lineHeightPx * 1.8;
+      y = padding;
+    }
+    for (const ch of displayText) {
+      if (ch === '\n') { x -= lineHeightPx; y = padding; continue; }
+      if (y + fontPx > H - padding) { x -= lineHeightPx; y = padding; }
+      els += `<text x="${x - fontPx * 0.5}" y="${y}" font-family="${esc(doc.fontFamily)}" font-size="${fontPx}" fill="#000" dominant-baseline="hanging">${esc(ch)}</text>`;
+      y += fontPx * 1.1;
+    }
+    const svgStr = `<?xml version="1.0" encoding="UTF-8"?>\n<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">\n<rect width="${W}" height="${H}" fill="white"/>\n${els}\n</svg>`;
+    const blob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.download = `縦書き_${doc.title || 'document'}.svg`;
+    a.href = url;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const exportText = () => {
+    const parts: string[] = [];
+    if (doc.title) parts.push(doc.title);
+    if (doc.author) parts.push(doc.author);
+    if (parts.length) parts.push('');
+    parts.push(getDisplayText(true));
+    const blob = new Blob([parts.join('\n')], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.download = `${doc.title || 'document'}.txt`;
+    a.href = url;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
   const paper = PAPER_SIZES[doc.paperSize];
   const previewRatio = paper.height / paper.width; // tate preview: width=height of paper in portrait
 
@@ -1008,7 +1074,7 @@ export default function VerticalTextClient() {
             <div>
               <label className="block text-xs text-gray-500 dark:text-gray-400 mb-1">文字サイズ: {doc.fontSize}pt</label>
               <input
-                type="range" min={8} max={32} step={1}
+                type="range" min={12} max={48} step={1}
                 value={doc.fontSize}
                 onChange={e => updateDoc({ fontSize: Number(e.target.value) })}
                 className="w-full accent-kon"
@@ -1249,6 +1315,22 @@ export default function VerticalTextClient() {
               📄 PDF出力
             </button>
 
+            {/* SVG出力 */}
+            <button
+              onClick={exportSvg}
+              className="px-4 py-2 text-sm bg-gray-100 dark:bg-gray-700 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+            >
+              🗂 SVG出力
+            </button>
+
+            {/* テキスト出力 */}
+            <button
+              onClick={exportText}
+              className="px-4 py-2 text-sm bg-gray-100 dark:bg-gray-700 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+            >
+              📝 テキスト
+            </button>
+
             {/* URLをコピー */}
             <button
               onClick={generateShareUrl}
@@ -1406,7 +1488,7 @@ export default function VerticalTextClient() {
             )}
           </div>
         </div>
-        <AdUnit position="mid" format="horizontal" />
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
 
       {/* Styles: print + preview animation */}

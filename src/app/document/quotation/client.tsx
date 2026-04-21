@@ -130,12 +130,12 @@ export default function QuotationClient() {
                   <td className="px-2 py-2"><input type="text" value={item.unit} onChange={(e) => updateItem(item.id, "unit", e.target.value)} className="w-full px-2 py-1 border rounded text-center" /></td>
                   <td className="px-2 py-2"><input type="number" value={item.price} onChange={(e) => updateItem(item.id, "price", Number(e.target.value))} className="w-full px-2 py-1 border rounded text-right" /></td>
                   <td className="px-2 py-2 text-right">{(item.quantity * item.price).toLocaleString()}円</td>
-                  <td className="px-2 py-2"><button onClick={() => removeItem(item.id)} className="text-red-500">×</button></td>
+                  <td className="px-2 py-2"><button onClick={() => removeItem(item.id)} className="text-red-500 p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded hover:bg-red-50">×</button></td>
                 </tr>
               ))}
             </tbody>
           </table>
-          <button onClick={addItem} className="text-sm text-kon">+ 行を追加</button>
+          <button onClick={addItem} className="text-sm text-kon py-2 px-3 rounded hover:bg-gray-50">+ 行を追加</button>
 
           <div className="mt-4">
             <label className="block text-sm font-medium mb-1">備考</label>
@@ -199,7 +199,7 @@ export default function QuotationClient() {
         <div className="mt-8 text-center print:hidden">
           <Link href="/document" className="text-kon hover:text-ai">← 書類作成一覧に戻る</Link>
         </div>
-        <AdUnit position="mid" format="horizontal" />
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

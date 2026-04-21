@@ -15,6 +15,7 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import { PricingTriggerProvider } from "@/components/common/PricingTriggerProvider";
 import AdSenseLoader from "@/components/AdSenseLoader";
 import SupportChatbot from "@/components/SupportChatbot";
+import GlobalSearchModal from "@/components/common/GlobalSearchModal";
 import { homepageItemListSchema, homepageFaqSchema } from "./homepage-schemas";
 
 const notoSansJP = Noto_Sans_JP({
@@ -116,6 +117,7 @@ export const metadata: Metadata = {
   verification: {
     google: "google499885782131bde1",
   },
+  manifest: "/manifest.json",
 };
 
 // Organization Schema (standalone)
@@ -150,7 +152,7 @@ const organizationSchema = {
   sameAs: [
     "https://www.facebook.com/yamada.tools/",
     "https://x.com/YamadaToolsJP",
-    "https://www.yamadatrade.jp/"
+    "https://www.yamadatrade.com/"
   ],
   numberOfEmployees: {
     "@type": "QuantitativeValue",
@@ -195,6 +197,7 @@ export default async function RootLayout({
   return (
     <html lang="ja" suppressHydrationWarning>
       <script dangerouslySetInnerHTML={{__html: `(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.classList.add("dark")}}catch(e){}})();`}} />
+      <script dangerouslySetInnerHTML={{__html: `if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js')});}`}} />
       <head>
         <script
           type="application/ld+json"
@@ -234,6 +237,7 @@ export default async function RootLayout({
         <PWAInstallPrompt />
         <AdSenseLoader />
         <SupportChatbot />
+        <GlobalSearchModal />
         </ThemeProvider>
         </PricingTriggerProvider>
         </AuthProvider>

@@ -37,6 +37,45 @@ export default function Page() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <TaxCalculatorClient faq={faq} />
+      {/* Direct Answer: よくある計算結果 */}
+      <section className="max-w-4xl mx-auto px-4 mt-8 mb-2">
+        <h2 className="text-xl font-bold text-gray-800 mb-4">よくある消費税計算結果（10%）</h2>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm border-collapse bg-white rounded-xl overflow-hidden shadow-sm">
+            <thead>
+              <tr className="bg-indigo-600 text-white">
+                <th className="py-3 px-4 text-left">税抜価格</th>
+                <th className="py-3 px-4 text-left">消費税（10%）</th>
+                <th className="py-3 px-4 text-left">税込価格</th>
+                <th className="py-3 px-4 text-left">消費税（8%・軽減）</th>
+                <th className="py-3 px-4 text-left">税込（8%）</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                [100, 10, 110, 8, 108],
+                [500, 50, 550, 40, 540],
+                [1000, 100, 1100, 80, 1080],
+                [3000, 300, 3300, 240, 3240],
+                [5000, 500, 5500, 400, 5400],
+                [10000, 1000, 11000, 800, 10800],
+                [30000, 3000, 33000, 2400, 32400],
+                [50000, 5000, 55000, 4000, 54000],
+                [100000, 10000, 110000, 8000, 108000],
+              ].map(([ex, t10, inc10, t8, inc8]) => (
+                <tr key={ex} className="border-t border-gray-100 hover:bg-gray-50">
+                  <td className="py-2 px-4">{ex.toLocaleString()}円</td>
+                  <td className="py-2 px-4 text-red-600">+{t10.toLocaleString()}円</td>
+                  <td className="py-2 px-4 font-bold">{inc10.toLocaleString()}円</td>
+                  <td className="py-2 px-4 text-orange-600">+{t8.toLocaleString()}円</td>
+                  <td className="py-2 px-4 font-bold">{inc8.toLocaleString()}円</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
       <div className="max-w-4xl mx-auto px-4">
         <RelatedTools currentTool={tool} maxItems={6} />
       </div>

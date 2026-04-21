@@ -4,7 +4,6 @@ import JutakuLoanClient from "./dynamic-client";
 import { IntroSection } from "@/components/IntroSection";
 import { UseCasesSection } from "@/components/UseCasesSection";
 import { FAQSection } from "@/components/FAQSection";
-import { AdUnit } from "@/components/common/AdUnit";
 
 export const metadata: Metadata = {
   title: "住宅ローン計算機【無料】月返済額・繰上返済・控除・借り換えを計算",
@@ -137,6 +136,44 @@ export default function Page() {
         ]}
       />
       <JutakuLoanClient />
+      {/* Direct Answer: 住宅ローン返済額早見表 */}
+      <section className="max-w-4xl mx-auto px-4 mt-8 mb-2">
+        <h2 className="text-xl font-bold text-gray-800 mb-4">住宅ローン 月々返済額の目安（35年返済・元利均等）</h2>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm border-collapse bg-white rounded-xl overflow-hidden shadow-sm">
+            <thead>
+              <tr className="bg-sky-600 text-white">
+                <th className="py-3 px-4 text-left">借入金額</th>
+                <th className="py-3 px-4 text-left">金利0.5%</th>
+                <th className="py-3 px-4 text-left">金利1.0%</th>
+                <th className="py-3 px-4 text-left">金利1.5%</th>
+                <th className="py-3 px-4 text-left">金利2.0%</th>
+                <th className="py-3 px-4 text-left">金利3.0%</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["1,000万円", "約26,000円", "約28,000円", "約30,600円", "約33,200円", "約38,600円"],
+                ["2,000万円", "約52,000円", "約56,500円", "約61,200円", "約66,400円", "約77,200円"],
+                ["3,000万円", "約77,900円", "約84,700円", "約91,800円", "約99,600円", "約115,800円"],
+                ["4,000万円", "約103,900円", "約112,900円", "約122,400円", "約132,800円", "約154,400円"],
+                ["5,000万円", "約129,900円", "約141,200円", "約153,000円", "約166,000円", "約193,000円"],
+              ].map(([amount, r05, r10, r15, r20, r30]) => (
+                <tr key={amount} className="border-t border-gray-100 hover:bg-gray-50">
+                  <td className="py-2 px-4 font-bold">{amount}</td>
+                  <td className="py-2 px-4 text-green-700">{r05}</td>
+                  <td className="py-2 px-4 text-green-600">{r10}</td>
+                  <td className="py-2 px-4">{r15}</td>
+                  <td className="py-2 px-4 text-orange-600">{r20}</td>
+                  <td className="py-2 px-4 text-red-600">{r30}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-xs text-gray-400 mt-2">※元利均等返済・35年での概算。ボーナス払いなし。実際の金額は金融機関により異なります。</p>
+      </section>
+
       <UseCasesSection cases={useCases} />
       <FAQSection faq={faqItems} />
     

@@ -108,7 +108,7 @@ export default function ImageOverlayClient({
             <div>
               <div className="flex items-center justify-between bg-gray-50 rounded-xl p-3 mb-4">
                 <p className="font-bold text-sm truncate">{fileName}</p>
-                <button onClick={reset} className="text-sm text-red-500 font-bold">✕ リセット</button>
+                <button onClick={reset} className="text-sm text-red-500 font-bold py-2 px-3 rounded hover:bg-red-50">✕ リセット</button>
               </div>
 
               {!overlayImage && (

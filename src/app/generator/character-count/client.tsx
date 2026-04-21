@@ -355,7 +355,7 @@ export default function CharacterCountClient({
             ← 計算・生成ツール一覧に戻る
           </Link>
         </div>
-        <AdUnit position="mid" format="horizontal" />
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

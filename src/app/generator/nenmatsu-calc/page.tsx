@@ -74,6 +74,42 @@ export default function NenmatsuPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <NenmatsuClient faq={faq} seoContent={seoContent} />
+      {/* Direct Answer: 還付金の目安 */}
+      <section className="max-w-4xl mx-auto px-4 mt-8 mb-2">
+        <h2 className="text-xl font-bold text-gray-800 mb-4">年末調整 還付金の目安（控除別）</h2>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm border-collapse bg-white rounded-xl overflow-hidden shadow-sm">
+            <thead>
+              <tr className="bg-blue-600 text-white">
+                <th className="py-3 px-4 text-left">控除の種類</th>
+                <th className="py-3 px-4 text-left">控除額（上限）</th>
+                <th className="py-3 px-4 text-left">年収400万の節税額目安</th>
+                <th className="py-3 px-4 text-left">年収600万の節税額目安</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["生命保険料控除（一般）", "最大4万円", "約4,000円", "約8,000円"],
+                ["生命保険料控除（医療）", "最大4万円", "約4,000円", "約8,000円"],
+                ["生命保険料控除（年金）", "最大4万円", "約4,000円", "約8,000円"],
+                ["地震保険料控除", "最大5万円", "約5,000円", "約10,000円"],
+                ["配偶者控除（103万以下）", "最大38万円", "約38,000円", "約76,000円"],
+                ["扶養控除（一般）", "38万円/人", "約38,000円/人", "約76,000円/人"],
+                ["住宅ローン控除", "最大35万円/年", "最大35万円直接控除", "最大35万円直接控除"],
+              ].map(([name, limit, tax400, tax600]) => (
+                <tr key={name} className="border-t border-gray-100 hover:bg-gray-50">
+                  <td className="py-2 px-4 font-medium">{name}</td>
+                  <td className="py-2 px-4">{limit}</td>
+                  <td className="py-2 px-4 text-blue-600">{tax400}</td>
+                  <td className="py-2 px-4 text-blue-700">{tax600}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-xs text-gray-400 mt-2">※所得税率10%・20%で概算。実際の還付額は詳細な所得計算が必要です。</p>
+      </section>
+
       <div className="max-w-4xl mx-auto px-4">
         <RelatedTools currentTool={tool} maxItems={6} />
       </div>

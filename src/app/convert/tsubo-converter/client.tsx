@@ -438,7 +438,7 @@ export default function TsuboConverterClient({ faq }: Props) {
           <p className="mt-1">Tsubo to Square Feet / Acres / Square Meters Converter — Free, No Registration Required</p>
         </div>
 
-        <AdUnit position="mid" format="horizontal" />
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

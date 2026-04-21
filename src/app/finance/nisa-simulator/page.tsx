@@ -4,7 +4,6 @@ import NisaSimulatorClient from "./dynamic-client";
 import { IntroSection } from "@/components/IntroSection";
 import { UseCasesSection } from "@/components/UseCasesSection";
 import { FAQSection } from "@/components/FAQSection";
-import { AdUnit } from "@/components/common/AdUnit";
 
 export const metadata: Metadata = {
   title: "新NISAシミュレーター【無料】積立・節税額・1800万枠を計算｜複数シナリオ比較",

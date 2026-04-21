@@ -1013,7 +1013,7 @@ export default function IdecoNisaComparisonClient() {
             投資にはリスクがあり、元本割れの可能性もあります。運用成果を保証するものではありません。
           </p>
         </div>
-        <AdUnit position="mid" format="horizontal" />
+        <AdUnit slot="5612038947" format="horizontal" />
       </div>
     </div>
   );

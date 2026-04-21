@@ -13,6 +13,42 @@ export default function RetirementBonusCalculatorPage() {
   return (
     <>
       <RetirementBonusCalculatorClient />
+      {/* Direct Answer: 退職金早見表 */}
+      <div className="max-w-4xl mx-auto px-4 mt-8 mb-2">
+        <h2 className="text-xl font-bold text-gray-800 mb-4">勤続年数別・退職金相場（大企業・大卒）</h2>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm border-collapse bg-white rounded-xl overflow-hidden shadow-sm">
+            <thead>
+              <tr className="bg-purple-600 text-white">
+                <th className="py-3 px-4 text-left">勤続年数</th>
+                <th className="py-3 px-4 text-left">定年退職（相場）</th>
+                <th className="py-3 px-4 text-left">自己都合退職（相場）</th>
+                <th className="py-3 px-4 text-left">退職所得控除額</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["10年", "—", "約100〜200万円", "200万円"],
+                ["15年", "—", "約200〜350万円", "350万円"],
+                ["20年", "約500〜800万円", "約300〜500万円", "800万円"],
+                ["25年", "約800〜1,200万円", "約500〜800万円", "1,150万円"],
+                ["30年", "約1,500〜2,000万円", "約800〜1,200万円", "1,500万円"],
+                ["35年", "約2,000〜2,500万円", "約1,000〜1,500万円", "1,850万円"],
+                ["40年（定年）", "約2,000〜3,000万円", "—", "2,200万円"],
+              ].map(([years, teinen, jiko, deduction]) => (
+                <tr key={years} className="border-t border-gray-100 hover:bg-gray-50">
+                  <td className="py-2 px-4 font-bold">{years}</td>
+                  <td className="py-2 px-4">{teinen}</td>
+                  <td className="py-2 px-4">{jiko}</td>
+                  <td className="py-2 px-4 text-purple-600">{deduction}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-xs text-gray-400 mt-2">※厚生労働省「就労条件総合調査」をもとにした目安。会社の規定・業種により大きく異なります。</p>
+      </div>
+
       <div className="max-w-4xl mx-auto px-4">
         <RelatedTools currentTool={tool} maxItems={6} />
       </div>

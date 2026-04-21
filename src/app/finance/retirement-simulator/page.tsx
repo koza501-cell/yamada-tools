@@ -4,7 +4,6 @@ import RetirementSimulatorClient from "./dynamic-client";
 import { IntroSection } from "@/components/IntroSection";
 import { UseCasesSection } from "@/components/UseCasesSection";
 import { FAQSection } from "@/components/FAQSection";
-import { AdUnit } from "@/components/common/AdUnit";
 
 export const metadata: Metadata = {
   title: "老後資金シミュレーター【無料】年金・iDeCo・NISA・退職金・取り崩しを総合計算",

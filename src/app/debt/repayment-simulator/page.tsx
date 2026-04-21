@@ -767,7 +767,7 @@ export default function DebtRepaymentSimulator() {
 
       {/* Ad */}
       <div className="my-8">
-        <AdUnit position="mid" />
+        <AdUnit slot="debt-repayment-simulator" />
       </div>
 
       {/* SEO Content */}

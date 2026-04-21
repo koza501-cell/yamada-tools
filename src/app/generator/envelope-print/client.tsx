@@ -7,6 +7,7 @@ import Mascot, { MascotState } from "@/components/common/Mascot";
 import RelatedTools, { relatedToolSets } from "@/components/common/RelatedTools";
 import { AdUnit } from "@/components/common/AdUnit";
 import { usePricingContext } from '@/components/common/PricingTriggerProvider';
+import * as XLSX from 'xlsx';
 
 const ENVELOPE_SIZES = {
   naga3:  { name: "長形3号",    width: 120, height: 235, type: "naga", postal: "teikei" },
@@ -317,6 +318,7 @@ export default function EnvelopePrintClient({
   const [activeTab, setActiveTab] = useState<"simple" | "advanced">("simple");
   const [postalLoading, setPostalLoading] = useState(false);
   const [postalError, setPostalError] = useState("");
+  const [postalConfirm, setPostalConfirm] = useState("");
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [stampPosition, setStampPosition] = useState<number>(4);
   const [overflowWarning, setOverflowWarning] = useState(false);
@@ -458,6 +460,32 @@ export default function EnvelopePrintClient({
     }
     setSizeOverflowMap(map);
   }, [mounted, recipient, envelopeSize, bulkMode, bulkAddresses, currentBulkIndex]);
+  // Auto-trigger postal lookup when 7 digits entered
+  useEffect(() => {
+    const code = recipient.postalCode.replace(/[^0-9]/g, "");
+    if (code.length !== 7) return;
+    let cancelled = false;
+    const timer = setTimeout(async () => {
+      if (cancelled) return;
+      setPostalLoading(true);
+      setPostalError("");
+      setPostalConfirm("");
+      try {
+        const res = await fetch(`https://zipcloud.ibsnet.co.jp/api/search?zipcode=${code}`);
+        const json = await res.json();
+        if (!cancelled && json.results?.[0]) {
+          const r = json.results[0];
+          setRecipient(prev => ({ ...prev, prefecture: r.address1 || "", city: r.address2 || "", address1: r.address3 || "" }));
+          setPostalConfirm(`〒${code.slice(0,3)}-${code.slice(3)} → ${r.address1}${r.address2}${r.address3}`);
+          setTimeout(() => setPostalConfirm(""), 4000);
+        } else if (!cancelled) {
+          setPostalError("住所が見つかりません");
+        }
+      } catch { if (!cancelled) setPostalError("検索に失敗しました"); }
+      finally { if (!cancelled) setPostalLoading(false); }
+    }, 400);
+    return () => { cancelled = true; clearTimeout(timer); };
+  }, [recipient.postalCode]);
 
   // ── Postal lookup ──────────────────────────────────────────────────────────
   const handlePostalLookup = async () => {
@@ -653,6 +681,65 @@ export default function EnvelopePrintClient({
       triggerSuccess('envelope-print');; setMascotMessage(`${addrs.length}件読込完了！`);
     setCsvLimitBanner(totalRows > limit ? totalRows : null);
   };
+  const handleExcelImport = (file: File) => {
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      try {
+        const data = ev.target?.result;
+        const wb = XLSX.read(data, { type: "array" });
+        const ws = wb.Sheets[wb.SheetNames[0]];
+        const rows: string[][] = XLSX.utils.sheet_to_json(ws, { header: 1, defval: "" }) as string[][];
+        if (rows.length < 2) { setMascotState("error"); setMascotMessage("データが見つかりません"); return; }
+
+        const headerRow = rows[0].map((h: unknown) => String(h).trim().toLowerCase());
+        const colMap: Record<string, number> = {};
+        const JP_KEYS: Record<string, string> = {
+          "郵便番号": "postalCode", "postal_code": "postalCode",
+          "都道府県": "prefecture", "prefecture": "prefecture",
+          "市区町村": "city", "city": "city",
+          "住所": "address1", "住所1": "address1", "address": "address1", "address1": "address1",
+          "住所2": "address2", "address2": "address2",
+          "建物": "building", "building": "building",
+          "会社名": "companyName", "company": "companyName",
+          "部署": "department", "department": "department",
+          "氏名": "name", "name": "name",
+          "敷称": "honorific", "honorific": "honorific",
+        };
+        headerRow.forEach((h, i) => {
+          if (JP_KEYS[h] && !(JP_KEYS[h] in colMap)) colMap[JP_KEYS[h]] = i;
+        });
+        const hasHeaders = Object.keys(colMap).length > 0;
+        if (!hasHeaders) {
+          colMap.postalCode=0; colMap.prefecture=1; colMap.city=2; colMap.address1=3;
+          colMap.address2=4; colMap.building=5; colMap.companyName=6;
+          colMap.department=7; colMap.name=8; colMap.honorific=9;
+        }
+        const dataRows = hasHeaders ? rows.slice(1) : rows;
+        const allAddrs: AddressData[] = dataRows.map(row => ({
+          postalCode: String(row[colMap.postalCode] ?? ""),
+          prefecture: String(row[colMap.prefecture] ?? ""),
+          city: String(row[colMap.city] ?? ""),
+          address1: String(row[colMap.address1] ?? ""),
+          address2: String(row[colMap.address2 ?? -1] ?? ""),
+          building: String(row[colMap.building ?? -1] ?? ""),
+          companyName: String(row[colMap.companyName ?? -1] ?? ""),
+          department: String(row[colMap.department ?? -1] ?? ""),
+          name: String(row[colMap.name ?? -1] ?? ""),
+          honorific: String(row[colMap.honorific ?? -1] ?? "") || "様",
+        })).filter(a => a.name || a.companyName);
+
+        if (allAddrs.length === 0) { setMascotState("error"); setMascotMessage("有効なデータが見つかりません"); return; }
+        const limit = getPlanLimits(userPlan).csvRows;
+        const addrs = allAddrs.slice(0, limit);
+        setBulkAddresses(addrs); setCurrentBulkIndex(0); setRecipient(addrs[0]);
+        setMascotState("success"); triggerSuccess("envelope-print");
+        setMascotMessage(`${addrs.length}件読込完了！`);
+        setCsvLimitBanner(allAddrs.length > limit ? allAddrs.length : null);
+      } catch { setMascotState("error"); setMascotMessage("Excelファイルの読み込みに失敗しました"); }
+    };
+    reader.readAsArrayBuffer(file);
+  };
+
 
   // ── SCREEN PREVIEW ─────────────────────────────────────────────────────────
   const renderPreview = () => {
@@ -1163,6 +1250,41 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
             <div className="space-y-6">
               <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
                 <h2 className="text-lg font-bold mb-4 flex items-center gap-2 text-gray-900"><span>📐</span> 封筒設定</h2>
+                <div className="mb-4">
+                  <p className="text-xs text-gray-500 mb-2">封筒テンプレート（クリックで選択）</p>
+                  <div className="flex gap-2 overflow-x-auto pb-1">
+                    {([
+                      { key: "naga3",  label: "長圆3号",  w: 120, h: 235, desc: "ビジネス" },
+                      { key: "naga4",  label: "長圆4号",  w: 90,  h: 205, desc: "小型" },
+                      { key: "kaku2",  label: "角圆2号",  w: 240, h: 332, desc: "A4書類" },
+                      { key: "kaku3",  label: "角圆3号",  w: 216, h: 277, desc: "B5書類" },
+                      { key: "yo2",    label: "洋圆2号",  w: 162, h: 114, desc: "招待状" },
+                      { key: "yo4",    label: "洋圆4号",  w: 235, h: 105, desc: "横長" },
+                    ] as const).map(({ key, label, w, h, desc }) => {
+                      const maxW = 32, maxH = 44;
+                      const scale = Math.min(maxW / w, maxH / h);
+                      const dw = Math.round(w * scale), dh = Math.round(h * scale);
+                      const selected = envelopeSize === key;
+                      return (
+                        <button key={key} type="button"
+                          onClick={() => setEnvelopeSize(key as EnvelopeSize)}
+                          className={`flex-shrink-0 flex flex-col items-center gap-1 p-2 rounded-lg border-2 transition-all ${selected ? "border-blue-500 bg-blue-50" : "border-gray-200 hover:border-blue-300 bg-white"}`}>
+                          <svg width={maxW} height={maxH} viewBox={`0 0 ${maxW} ${maxH}`}>
+                            <rect
+                              x={(maxW - dw) / 2} y={(maxH - dh) / 2}
+                              width={dw} height={dh}
+                              fill={selected ? "#eff6ff" : "#f9fafb"}
+                              stroke={selected ? "#3b82f6" : "#9ca3af"}
+                              strokeWidth="1.5" rx="1"
+                            />
+                          </svg>
+                          <span className={`text-xs font-medium whitespace-nowrap ${selected ? "text-blue-700" : "text-gray-700"}`}>{label}</span>
+                          <span className="text-xs text-gray-400 whitespace-nowrap">{desc}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm text-gray-600 mb-1">封筒サイズ <span title="長形3号は最も一般的。洋形は招待状向け。角形2号はA4書類向け" className="text-gray-400 hover:text-gray-600 cursor-help text-xs">❓</span></label>
@@ -1297,6 +1419,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                       </div>
                       {fieldErrors.postalCode && <p className="text-xs text-red-500 mt-1">{fieldErrors.postalCode}</p>}
                       {postalError && <p className="text-xs text-red-500 mt-1">{postalError}</p>}
+                      {postalConfirm && <p className="text-xs text-green-600 mt-1 bg-green-50 px-2 py-1 rounded">✅ {postalConfirm}</p>}
                     </div>
                     <div className="grid grid-cols-2 gap-3">
                       <input type="text" value={recipient.prefecture} onChange={(e) => setRecipient({...recipient, prefecture: e.target.value})} placeholder="都道府県" className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
@@ -1365,17 +1488,21 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                       e.preventDefault(); setCsvDragOver(false);
                       const file = e.dataTransfer.files[0];
                       if (!file) return;
-                      const reader = new FileReader();
-                      reader.onload = (ev) => {
-                        const text = ev.target?.result as string;
-                        setCsvData(text);
-                        handleCSVImport(text);
-                      };
-                      reader.readAsText(file, "UTF-8");
+                      if (file.name.endsWith(".xlsx") || file.name.endsWith(".xls")) {
+                        handleExcelImport(file);
+                      } else {
+                        const reader = new FileReader();
+                        reader.onload = (ev) => {
+                          const text = ev.target?.result as string;
+                          setCsvData(text);
+                          handleCSVImport(text);
+                        };
+                        reader.readAsText(file, "UTF-8");
+                      }
                     }}
                     className={`mb-3 border-2 border-dashed rounded-lg p-5 text-center cursor-pointer transition-colors ${csvDragOver ? "border-blue-400 bg-blue-50" : "border-gray-300 hover:border-gray-400 bg-gray-50"}`}>
                     <p className="text-sm text-gray-600 dark:text-gray-300">📁 ファイルを選択またはドラッグ＆ドロップ</p>
-                    <p className="text-xs text-gray-400 mt-1">.csv / .txt 対応</p>
+                    <p className="text-xs text-gray-400 mt-1">.csv / .xlsx / .txt 対応</p>
                     <input type="file" accept=".csv,.txt" className="hidden" id="csv-file-input"
                       onChange={(e) => {
                         const file = e.target.files?.[0]; if (!file) return;
@@ -1389,6 +1516,8 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                         e.target.value = "";
                       }}/>
                     <label htmlFor="csv-file-input" className="mt-2 inline-block px-3 py-1.5 bg-white border border-gray-300 rounded text-xs text-gray-700 cursor-pointer hover:bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-600">ファイルを選択</label>
+                      <input type="file" accept=".xlsx,.xls" className="hidden" id="excel-file-input" onChange={(e) => { const f=e.target.files?.[0]; if(!f) return; handleExcelImport(f); e.target.value=""; }}/>
+                      <label htmlFor="excel-file-input" className="inline-block px-3 py-1.5 bg-green-600 text-white rounded text-xs cursor-pointer hover:bg-green-700">📊 Excelをアップロード</label>
                   </div>
 
                   <p className="text-xs text-gray-400 text-center mb-2">または、下のテキストエリアに直接貼り付け</p>

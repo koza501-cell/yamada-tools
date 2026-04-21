@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { AdUnit } from "@/components/common/AdUnit";
 
 // ---- Calculation helpers ----
 function normalCDF(z: number): number {
@@ -662,9 +661,6 @@ export default function DeviationScorePage() {
             ))}
           </div>
         </div>
-      <div className="max-w-4xl mx-auto px-4 mt-8">
-        <AdUnit position="mid" format="horizontal" />
-      </div>
       </div>
     </div>
   );

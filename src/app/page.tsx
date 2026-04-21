@@ -1,4 +1,5 @@
 import fs from 'fs';
+import type { Metadata } from 'next';
 import path from 'path';
 import Image from "next/image";
 import Link from "next/link";
@@ -6,6 +7,7 @@ import SearchBar from "@/components/common/SearchBar";
 import HeroAnimation from "@/components/common/HeroAnimation";
 import TypingText from "@/components/common/TypingText";
 import RecentTools from "@/components/common/RecentTools";
+import RoleQuickAccess from "@/components/common/RoleQuickAccess";
 import NewsletterSignup from "@/components/common/NewsletterSignup";
 import StickyTabBar from "@/components/common/StickyTabBar";
 import TabbedToolsSection from "@/components/common/TabbedToolsSection";
@@ -30,6 +32,13 @@ const SEARCH_CHIPS = [
   { label: '🔴 電子印鑑', href: '/generator/hanko' },
 ];
 
+
+export const metadata: Metadata = {
+  title: '山田ツール | 日本国内サーバーの無料オンラインツール',
+  alternates: {
+    canonical: 'https://yamada-tools.jp/',
+  },
+};
 
 export const revalidate = 3600; // Revalidate every hour
 
@@ -139,6 +148,9 @@ export default function Home() {
       </section>
       {/* Recently Used Tools - Priority for returning users */}
       <RecentTools />
+
+      {/* Role-Based Quick Access */}
+      <RoleQuickAccess />
 
       {/* 🇯🇵 Japan-Exclusive Identity Section */}
       <section className="py-10 bg-white dark:bg-gray-900">

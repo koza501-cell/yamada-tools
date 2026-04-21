@@ -75,6 +75,9 @@ export const metadata: Metadata = generateToolMetadata({
     "PDF merge",
     "無料 PDF結合",
     "オンライン PDF結合",
+    "PDF統合",
+    "ファイル結合",
+    "PDF編集ツール"
   ],
 });
 
