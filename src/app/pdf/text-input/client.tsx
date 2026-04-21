@@ -262,6 +262,10 @@ export default function PdfTextClient({
   const [hankoSize, setHankoSize]   = useState(60);
   const [hankoShape, setHankoShape] = useState<StampShape>("circle");
 
+  // Draft & canvas size
+  const [draftBanner, setDraftBanner] = useState<{elements: PdfElement[], filename: string} | null>(null);
+  const [canvasSize, setCanvasSize] = useState({ w: 0, h: 0 });
+
   // Other
   const [isGridSnap, setIsGridSnap] = useState(false);
   const [zoomLevel, setZoomLevel]   = useState(1.0);
@@ -484,6 +488,7 @@ export default function PdfTextClient({
     canvas.height = Math.floor(dH * dpr);
     canvas.style.width  = dW + "px";
     canvas.style.height = dH + "px";
+    setCanvasSize({ w: dW, h: dH });
 
     const ctx = canvas.getContext("2d")!;
     ctx.scale(dpr, dpr);
@@ -527,7 +532,12 @@ export default function PdfTextClient({
       for (let i = 1; i <= doc.numPages; i++) widths.push((await doc.getPage(i)).getViewport({ scale: 1 }).width);
       setPdfPageWidths(widths); setPdfDoc(doc); setTotalPages(doc.numPages);
       setCurrentPage(1); setElements([]); setSelectedId(null); setUndoStack([]); setRedoStack([]);
-      setStep(2); setIsLoading(false); setMascotState("success")
+      setStep(2); setIsLoading(false); setMascotState("success");
+      try {
+        const _dKey = 'yamada-pdf-text-draft-' + file.name;
+        const _saved = localStorage.getItem(_dKey);
+        if (_saved) { const _p = JSON.parse(_saved); if (_p.elements?.length > 0) setDraftBanner({ elements: _p.elements, filename: _p.filename }); }
+      } catch {}
       triggerSuccess('text-input');;
       if (doc.numPages >= 5) setShowMinimap(true);
       setTimeout(() => setMascotState("idle"), 2000);
@@ -661,14 +671,19 @@ export default function PdfTextClient({
       if (inInput) return;
       if (selectedId && ["ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].includes(e.key)) {
         e.preventDefault();
-        const d = e.ctrlKey ? 0.1 : e.shiftKey ? 5 : 0.5;
+        const _c = canvasRef.current;
+      const _dW = _c ? (parseFloat(_c.style.width) || 100) : 100;
+      const _dH = _c ? (parseFloat(_c.style.height) || 100) : 100;
+      const _px = e.shiftKey ? 10 : 1;
+      const dX = (_px / _dW) * 100;
+      const dY = (_px / _dH) * 100;
         setElements(prev => prev.map(el => {
           if (el.id !== selectedId) return el;
           let { x, y } = el;
-          if (e.key === "ArrowUp")    y = Math.max(0, y - d);
-          if (e.key === "ArrowDown")  y = Math.min(95, y + d);
-          if (e.key === "ArrowLeft")  x = Math.max(0, x - d);
-          if (e.key === "ArrowRight") x = Math.min(95, x + d);
+          if (e.key === "ArrowUp")    y = Math.max(0, y - dY);
+          if (e.key === "ArrowDown")  y = Math.min(95, y + dY);
+          if (e.key === "ArrowLeft")  x = Math.max(0, x - dX);
+          if (e.key === "ArrowRight") x = Math.min(95, x + dX);
           if (isGridSnap) { x = Math.round(x/5)*5; y = Math.round(y/5)*5; }
           return { ...el, x, y };
         })); return;
@@ -698,6 +713,13 @@ export default function PdfTextClient({
   }, []);
 
   /* ── Image / Signature Insertion ───────────────────────────────────────── */
+  /* Auto-Save Draft */
+  useEffect(() => {
+    if (!pdfFile || elements.length === 0) return;
+    const key = 'yamada-pdf-text-draft-' + pdfFile.name;
+    try { localStorage.setItem(key, JSON.stringify({ elements, filename: pdfFile.name })); } catch {}
+  }, [elements, pdfFile]);
+
   const handleImageInsert = useCallback((file: File) => {
     const reader = new FileReader();
     reader.onload = ev => {
@@ -792,6 +814,16 @@ export default function PdfTextClient({
 {toastMsg && (
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-gray-800 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg pointer-events-none">
           {toastMsg}
+        </div>
+      )}
+      {draftBanner && (
+        <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-white border-2 border-orange-300 rounded-2xl shadow-xl p-4 w-80">
+          <p className="font-bold text-gray-800 mb-1">💾 前回の作業を復元しますか？</p>
+          <p className="text-xs text-gray-500 mb-3">{draftBanner.filename} — {draftBanner.elements.length}件の要素</p>
+          <div className="flex gap-2">
+            <button onClick={() => { pushUndo(); setElements(draftBanner.elements); setDraftBanner(null); }} className="flex-1 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 rounded-xl text-sm">復元</button>
+            <button onClick={() => { try { localStorage.removeItem('yamada-pdf-text-draft-' + draftBanner.filename); } catch {} setDraftBanner(null); }} className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-2 rounded-xl text-sm">破棄</button>
+          </div>
         </div>
       )}
       {showHelp && (
@@ -913,6 +945,13 @@ export default function PdfTextClient({
                     <select value={hankoShape} onChange={e => setHankoShape(e.target.value as StampShape)} className="border rounded-lg px-2 py-2 text-sm">
                       <option value="circle">⚪ 丸印</option><option value="square">⬜ 角印</option>
                     </select>
+                    <button onClick={() => {
+                      pushUndo();
+                      const _now = new Date();
+                      const _ds = String(_now.getMonth()+1) + '.' + String(_now.getDate());
+                      const _el: PdfElement = { id: crypto.randomUUID(), page: currentPage, x: 50, y: 40, text: _ds, fontSize: 16, fontFamily: 'serif', color: '#CC0000', bold: true, textAlign: 'left', isStamp: true, stampName: _ds, stampSize: 90, stampShape: 'circle' };
+                      setElements(prev => [...prev, _el]); setSelectedId(_el.id);
+                    }} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg text-sm whitespace-nowrap">📅 日付印</button>
                     <button onClick={() => { if (!hankoName.trim()) return; setIsHankoMode(true); setIsTextMode(false); }} disabled={!hankoName.trim()}
                       className="bg-red-500 hover:bg-red-600 disabled:opacity-40 text-white font-bold py-2 px-4 rounded-lg text-sm whitespace-nowrap">📍 PDFに配置</button>
                   </div>
@@ -1001,6 +1040,11 @@ export default function PdfTextClient({
                     style={{ cursor: isTextMode||isHankoMode||isHighlightMode ? "crosshair" : isDragging ? "grabbing" : "default" }}
                     onPointerDown={handlePtrDown} onPointerMove={handlePtrMove} onPointerUp={handlePtrUp}
                     onPointerLeave={e => { if (isDragging || hlDraw) handlePtrUp(e); }} />
+                  {selectedEl && canvasSize.w > 0 && (
+                    <div className="absolute bottom-1 right-1 bg-black/70 text-white text-xs px-2 py-1 rounded-lg font-mono pointer-events-none z-10">
+                      X:&#8197;{Math.round(selectedEl.x / 100 * canvasSize.w)}px&#8195;Y:&#8197;{Math.round(selectedEl.y / 100 * canvasSize.h)}px
+                    </div>
+                  )}
                   {(isTextMode||isHankoMode) && (
                     <div className="absolute top-2 left-2 bg-orange-500 text-white text-xs px-3 py-1.5 rounded-full font-bold shadow-lg animate-pulse pointer-events-none">
                       {isTextMode?"📍 クリックしてテキストを配置":"📍 クリックしてハンコを配置"}
