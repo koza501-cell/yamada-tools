@@ -115,10 +115,10 @@ export default function CoverLetterClient() {
                 <input type="text" placeholder="書類名" value={doc.name} onChange={(e) => updateDocument(doc.id, "name", e.target.value)} className="flex-1 px-3 py-2 border border-gray-200 rounded-lg" />
                 <input type="number" value={doc.quantity} onChange={(e) => updateDocument(doc.id, "quantity", Number(e.target.value))} className="w-20 px-3 py-2 border border-gray-200 rounded-lg text-center" />
                 <span className="py-2">部</span>
-                <button onClick={() => removeDocument(doc.id)} className="text-red-500">×</button>
+                <button onClick={() => removeDocument(doc.id)} className="text-red-500 p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded hover:bg-red-50">×</button>
               </div>
             ))}
-            <button onClick={addDocument} className="text-sm text-kon">+ 追加</button>
+            <button onClick={addDocument} className="text-sm text-kon py-2 px-3 rounded hover:bg-gray-50">+ 追加</button>
           </div>
         </div>
 

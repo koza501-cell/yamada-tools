@@ -124,7 +124,7 @@ export default function TextOverlayClient({
             <div>
               <div className="flex items-center justify-between bg-gray-50 rounded-xl p-3 mb-4">
                 <p className="font-bold text-sm truncate">{fileName}</p>
-                <button onClick={reset} className="text-sm text-red-500 font-bold">✕ 閉じる</button>
+                <button onClick={reset} className="text-sm text-red-500 font-bold py-2 px-3 rounded hover:bg-red-50">✕ 閉じる</button>
               </div>
 
               <div className="bg-blue-50 rounded-xl p-4 mb-4 space-y-3">

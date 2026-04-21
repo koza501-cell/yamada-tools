@@ -399,7 +399,7 @@ export default function Mascot({
 
   return (
     <div
-      className={`flex items-end gap-3 transition-all duration-300 opacity-100 translate-y-0 ${isAppearing ? "animate-mascot-appear" : ""} ${className ?? ""}`}
+      className={`flex items-end gap-3 transition-all duration-300 opacity-100 translate-y-0 min-h-[120px] ${isAppearing ? "animate-mascot-appear" : ""} ${className ?? ""}`}
     >
       <div
         className={`relative w-20 h-20 flex-shrink-0 transition-transform duration-150 ${

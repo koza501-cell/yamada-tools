@@ -192,7 +192,7 @@ export default function InvoiceClient({
               </tbody>
             </table>
           </div>
-          <button onClick={addItem} className="text-sm text-kon hover:text-ai">+ 行を追加</button>
+          <button onClick={addItem} className="text-sm text-kon hover:text-ai py-2 px-3 rounded hover:bg-gray-50">+ 行を追加</button>
 
           <div className="flex items-center gap-4 mt-4">
             <label className="text-sm">消費税率:</label>

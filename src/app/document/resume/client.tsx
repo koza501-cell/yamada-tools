@@ -133,7 +133,7 @@ export default function ResumeClient({ faq, seoContent }: ResumeClientProps) {
                 <input type="text" placeholder="学校名・卒業/入学" value={e.content} onChange={(ev) => updateEducation(e.id, "content", ev.target.value)} className="flex-1 px-2 py-1 border rounded" />
               </div>
             ))}
-            <button onClick={addEducation} className="text-sm text-kon">+ 追加</button>
+            <button onClick={addEducation} className="text-sm text-kon py-2 px-3 rounded hover:bg-gray-50">+ 追加</button>
           </div>
 
           <div>
