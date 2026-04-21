@@ -1,4 +1,5 @@
 // Shared search utility for all search components
+import { searchSynonyms as _extraSynonyms } from '@/data/searchSynonyms';
 
 export const SEARCH_SYNONYMS: Record<string, string[]> = {
   'pdf編集': ['pdf', '圧縮', '結合', '分割', '文字入力', '回転', '透かし'],
@@ -19,7 +20,8 @@ export const SEARCH_SYNONYMS: Record<string, string[]> = {
 export function expandQuery(query: string): string[] {
   const lower = query.toLowerCase();
   let terms = [lower];
-  for (const [key, vals] of Object.entries(SEARCH_SYNONYMS)) {
+  const merged = { ...SEARCH_SYNONYMS, ..._extraSynonyms };
+  for (const [key, vals] of Object.entries(merged)) {
     if (lower.includes(key)) {
       terms = [...terms, ...vals];
     }
