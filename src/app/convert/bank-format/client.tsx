@@ -216,6 +216,7 @@ export default function BankFormatClient({
   const [isDragging, setIsDragging] = useState(false);
   const [csvFileName, setCsvFileName] = useState("");
   const [validationErrors, setValidationErrors] = useState<Record<number, string[]>>({});
+  const [hasAttemptedConvert, setHasAttemptedConvert] = useState(false);
   const [showDataPreview, setShowDataPreview] = useState(false);
 
   // Feature C: sticky total
@@ -907,6 +908,8 @@ export default function BankFormatClient({
   };
 
   const handleConvert = () => {
+    setHasAttemptedConvert(true);
+    setHeaderTouched({ clientCode: true, clientName: true, transferDate: true, bankCode: true, branchCode: true, accountNumber: true });
     // Validation
     if (!headerData.clientCode || !headerData.clientName) {
       setMascotState("error");
@@ -2331,7 +2334,7 @@ export default function BankFormatClient({
         {/* Validation summary */}
         {(() => {
           const errCount = countAllErrors();
-          if (errCount === 0) return null;
+          if (!hasAttemptedConvert || errCount === 0) return null;
           return (
             <div role="alert" aria-live="assertive" className="flex items-center gap-3 px-4 py-3 bg-red-50 border border-red-200 rounded-xl mb-4 text-sm text-red-700">
               <span className="text-lg">⚠️</span>
@@ -2344,7 +2347,7 @@ export default function BankFormatClient({
         {(() => {
           const errCount = countAllErrors();
           const hasRequiredHeader = !!(headerData.clientCode && headerData.clientName);
-          const disabled = errCount > 0;
+          const disabled = hasAttemptedConvert && errCount > 0;
           return (
             <button
               onClick={handleConvert}
