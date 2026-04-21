@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { pdfTools } from "@/config/tools";
 import type { Metadata } from "next";
+import PdfDropZone from "@/components/pdf/PdfDropZone";
+import PdfWorkflows from "@/components/pdf/PdfWorkflows";
 
 export const metadata: Metadata = {
   title: "PDFツール - 無料オンラインPDF編集・変換",
@@ -39,6 +41,9 @@ export default function PDFToolsPage() {
             日本国内サーバー運用、登録不要。
           </p>
         </div>
+
+        {/* Universal Drop Zone */}
+        <PdfDropZone />
 
         {/* 注目ツール - Featured Tool */}
         <section className="mb-10 bg-gradient-to-r from-orange-50 to-amber-50 dark:from-gray-800 dark:to-gray-750 rounded-2xl p-6 border border-orange-100 dark:border-gray-700">
@@ -81,18 +86,25 @@ export default function PDFToolsPage() {
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {coreTools.map((tool) => (
-              <Link
-                key={tool.id}
-                href={tool.path}
-                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1 text-center border border-gray-100 dark:border-gray-700"
-              >
-                <div className="text-4xl mb-3">{tool.icon}</div>
-                <h3 className="font-bold text-kon">{tool.nameJa}</h3>
-                <p className="text-xs text-gray-500 mt-2">{tool.description}</p>
-              </Link>
+              <div key={tool.id} className="relative">
+                {(tool.id === "compress" || tool.id === "merge") && (
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full font-bold z-10">人気</span>
+                )}
+                <Link
+                  href={tool.path}
+                  className="block bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1 text-center border border-gray-100 dark:border-gray-700"
+                >
+                  <div className="text-4xl mb-3">{tool.icon}</div>
+                  <h3 className="font-bold text-kon">{tool.nameJa}</h3>
+                  <p className="text-xs text-gray-500 mt-2">{tool.description}</p>
+                </Link>
+              </div>
             ))}
           </div>
         </section>
+
+        {/* Workflow Builder */}
+        <PdfWorkflows />
 
         {/* Conversion Tools */}
         <section className="mb-12">
@@ -144,15 +156,19 @@ export default function PDFToolsPage() {
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {editingTools.map((tool) => (
-              <Link
-                key={tool.id}
-                href={tool.path}
-                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1 text-center border border-gray-100 dark:border-gray-700"
-              >
-                <div className="text-4xl mb-3">{tool.icon}</div>
-                <h3 className="font-bold text-kon">{tool.nameJa}</h3>
-                <p className="text-xs text-gray-500 mt-2">{tool.description}</p>
-              </Link>
+              <div key={tool.id} className="relative">
+                {tool.id === "pdf-text-input" && (
+                  <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-1.5 py-0.5 rounded-full font-bold z-10">NEW</span>
+                )}
+                <Link
+                  href={tool.path}
+                  className="block bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1 text-center border border-gray-100 dark:border-gray-700"
+                >
+                  <div className="text-4xl mb-3">{tool.icon}</div>
+                  <h3 className="font-bold text-kon">{tool.nameJa}</h3>
+                  <p className="text-xs text-gray-500 mt-2">{tool.description}</p>
+                </Link>
+              </div>
             ))}
           </div>
         </section>
