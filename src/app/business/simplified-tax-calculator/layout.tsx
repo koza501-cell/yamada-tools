@@ -53,13 +53,6 @@ export default function SimplifiedTaxCalculatorLayout({
           "price": "0",
           "priceCurrency": "JPY"
         },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.7",
-          "ratingCount": "743",
-          "bestRating": "5",
-          "worstRating": "1"
-        },
         "provider": {
           "@type": "Organization",
           "name": "山田ツール",

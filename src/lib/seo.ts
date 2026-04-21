@@ -63,18 +63,6 @@ export function generateToolMetadata({
   };
 }
 
-function getToolRating(toolId: string): { ratingValue: string; ratingCount: string } {
-  let hash = 0;
-  for (let i = 0; i < toolId.length; i++) {
-    hash = ((hash << 5) - hash) + toolId.charCodeAt(i);
-    hash |= 0;
-  }
-  const abs = Math.abs(hash);
-  const ratingValue = (4.5 + (abs % 5) / 10).toFixed(1); // range: 4.5-4.9
-  const ratingCount = 50 + (abs % 1951);                  // range: 50-2000
-  return { ratingValue, ratingCount: String(ratingCount) };
-}
-
 export function generateToolJsonLd(tool: Tool, faq?: { question: string; answer: string }[], howToSteps?: { name: string; text: string }[]) {
   // SoftwareApplication schema (enhanced)
   const softwareSchema = {
@@ -131,12 +119,6 @@ export function generateToolJsonLd(tool: Tool, faq?: { question: string; answer:
     inLanguage: "ja",
     isAccessibleForFree: true,
     permissions: "no registration required",
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ...getToolRating(tool.id),
-      bestRating: "5",
-      worstRating: "1",
-    },
   };
 
   const schemas = [softwareSchema];

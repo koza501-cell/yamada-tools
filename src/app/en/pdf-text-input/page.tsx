@@ -58,7 +58,6 @@ export default function EnglishPdfTextPage() {
     isAccessibleForFree: true,
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
     featureList: ["Zero file upload - browser only", "Electronic stamp (hanko) generation", "Reiwa/Western date auto-insert", "Free, no registration", "Multi-page PDF support", "Undo/redo support"],
-    aggregateRating: { "@type": "AggregateRating", ratingValue: "4.8", reviewCount: "127", bestRating: "5", worstRating: "1" },
     provider: { "@type": "Organization", name: "Yamada Trade LLC", url: "https://yamada-tools.jp" },
   };
 

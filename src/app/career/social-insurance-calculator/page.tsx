@@ -13,6 +13,45 @@ export default function SocialInsuranceCalculatorPage() {
   return (
     <>
       <SocialInsuranceCalculatorClient />
+      {/* Direct Answer: 社会保険料早見表 */}
+      <div className="max-w-4xl mx-auto px-4 mt-8 mb-2">
+        <h2 className="text-xl font-bold text-gray-800 mb-4">月収別・社会保険料の目安（2026年・東京）</h2>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm border-collapse bg-white rounded-xl overflow-hidden shadow-sm">
+            <thead>
+              <tr className="bg-teal-600 text-white">
+                <th className="py-3 px-4 text-left">月収（額面）</th>
+                <th className="py-3 px-4 text-left">健康保険料（本人）</th>
+                <th className="py-3 px-4 text-left">厚生年金（本人）</th>
+                <th className="py-3 px-4 text-left">雇用保険</th>
+                <th className="py-3 px-4 text-left">合計控除額</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["15万円", "約7,600円", "約13,700円", "約900円", "約22,200円"],
+                ["20万円", "約10,200円", "約18,300円", "約1,200円", "約29,700円"],
+                ["25万円", "約12,700円", "約22,900円", "約1,500円", "約37,100円"],
+                ["30万円", "約15,200円", "約27,450円", "約1,800円", "約44,450円"],
+                ["35万円", "約17,800円", "約32,000円", "約2,100円", "約51,900円"],
+                ["40万円", "約20,300円", "約36,600円", "約2,400円", "約59,300円"],
+                ["50万円", "約25,400円", "約45,750円", "約3,000円", "約74,150円"],
+                ["60万円", "約30,500円", "約54,900円", "約3,600円", "約89,000円"],
+              ].map(([salary, health, pension, employ, total]) => (
+                <tr key={salary} className="border-t border-gray-100 hover:bg-gray-50">
+                  <td className="py-2 px-4 font-bold">{salary}</td>
+                  <td className="py-2 px-4">{health}</td>
+                  <td className="py-2 px-4">{pension}</td>
+                  <td className="py-2 px-4">{employ}</td>
+                  <td className="py-2 px-4 font-bold text-teal-700">{total}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-xs text-gray-400 mt-2">※協会けんぽ東京都2026年度保険料率（介護保険なし）で計算した目安。</p>
+      </div>
+
       <div className="max-w-4xl mx-auto px-4">
         <RelatedTools currentTool={tool} maxItems={6} />
       </div>
