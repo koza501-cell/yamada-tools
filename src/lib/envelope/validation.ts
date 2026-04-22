@@ -64,7 +64,7 @@ export function validateRequired(
   required: boolean = true
 ): string | null {
   if (required && !value.trim()) {
-    return '敬称が正しくありません';
+    return `${fieldName}を入力してください`;
   }
   return null;
 }
