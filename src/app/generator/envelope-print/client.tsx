@@ -8,6 +8,8 @@ import RelatedTools, { relatedToolSets } from "@/components/common/RelatedTools"
 import { AdUnit } from "@/components/common/AdUnit";
 import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 import * as XLSX from 'xlsx';
+import BulkModePanel from "@/components/envelope/BulkModePanel";
+import { isFeatureEnabled } from "@/config/featureFlags";
 
 const ENVELOPE_SIZES = {
   naga3:  { name: "長形3号",    width: 120, height: 235, type: "naga", postal: "teikei" },
@@ -1465,89 +1467,96 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
 
               {bulkMode && (
                 <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
-                  <h2 className="text-lg font-bold mb-4 text-gray-900 dark:text-white"><span>📋</span> CSV一括</h2>
-
-                  {csvLimitBanner !== null && (
-                    <div className="mb-4 bg-amber-50 border border-amber-300 rounded-lg p-4 text-amber-800 text-sm">
-                      {(() => { const lim = getPlanLimits(userPlan).csvRows; return (
-                        <>
-                          <p className="font-medium">⚠️ 現在のプランでは{lim}件まで一括処理できます（{csvLimitBanner}件中{lim}件を読み込みました）</p>
-                          {userPlan === 'free' && <p className="mt-1 text-xs">PROプランで50件まで、TEAMプランで500件まで一括処理可能！</p>}
-                          {userPlan === 'pro' && <p className="mt-1 text-xs">TEAMプランで500件まで一括処理可能！</p>}
-                          {userPlan !== 'enterprise' && <Link href="/pricing" className="mt-1 inline-block text-xs font-medium text-amber-700 hover:underline">プランを見る →</Link>}
-                        </>
-                      ); })()}
-                    </div>
-                  )}
-
-                  {/* Drag & drop file upload */}
-                  <div
-                    onDragOver={(e) => { e.preventDefault(); setCsvDragOver(true); }}
-                    onDragLeave={() => setCsvDragOver(false)}
-                    onDrop={(e) => {
-                      e.preventDefault(); setCsvDragOver(false);
-                      const file = e.dataTransfer.files[0];
-                      if (!file) return;
-                      if (file.name.endsWith(".xlsx") || file.name.endsWith(".xls")) {
-                        handleExcelImport(file);
-                      } else {
-                        const reader = new FileReader();
-                        reader.onload = (ev) => {
-                          const text = ev.target?.result as string;
-                          setCsvData(text);
-                          handleCSVImport(text);
-                        };
-                        reader.readAsText(file, "UTF-8");
-                      }
-                    }}
-                    className={`mb-3 border-2 border-dashed rounded-lg p-5 text-center cursor-pointer transition-colors ${csvDragOver ? "border-blue-400 bg-blue-50" : "border-gray-300 hover:border-gray-400 bg-gray-50"}`}>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">📁 ファイルを選択またはドラッグ＆ドロップ</p>
-                    <p className="text-xs text-gray-400 mt-1">.csv / .xlsx / .txt 対応</p>
-                    <input type="file" accept=".csv,.txt" className="hidden" id="csv-file-input"
-                      onChange={(e) => {
-                        const file = e.target.files?.[0]; if (!file) return;
-                        const reader = new FileReader();
-                        reader.onload = (ev) => {
-                          const text = ev.target?.result as string;
-                          setCsvData(text);
-                          handleCSVImport(text);
-                        };
-                        reader.readAsText(file, "UTF-8");
-                        e.target.value = "";
-                      }}/>
-                    <label htmlFor="csv-file-input" className="mt-2 inline-block px-3 py-1.5 bg-white border border-gray-300 rounded text-xs text-gray-700 cursor-pointer hover:bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-600">ファイルを選択</label>
-                      <input type="file" accept=".xlsx,.xls" className="hidden" id="excel-file-input" onChange={(e) => { const f=e.target.files?.[0]; if(!f) return; handleExcelImport(f); e.target.value=""; }}/>
-                      <label htmlFor="excel-file-input" className="inline-block px-3 py-1.5 bg-green-600 text-white rounded text-xs cursor-pointer hover:bg-green-700">📊 Excelをアップロード</label>
-                  </div>
-
-                  <p className="text-xs text-gray-400 text-center mb-2">または、下のテキストエリアに直接貼り付け</p>
-                  <p className="text-xs text-gray-500 mb-1">形式: 郵便番号,都道府県,市区町村,住所1,住所2,建物,会社名,部署,氏名,敬称</p>
-                  <textarea value={csvData} onChange={(e) => setCsvData(e.target.value)}
-                    placeholder="ヘッダー行&#10;データ行..." className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-sm h-28 font-mono dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
-
-                  {/* Row counter */}
-                  {csvData.trim() && (() => {
-                    const n = countCsvRows(csvData);
-                    const lim = getPlanLimits(userPlan).csvRows;
-                    const planLabel = userPlan === 'free' ? '無料プラン' : userPlan.toUpperCase();
-                    return (
-                      <p className={`text-xs mt-1 ${n > lim ? "text-amber-600 font-medium" : "text-gray-500"}`}>
-                        入力件数: {n}件{n > lim ? ` ⚠️ ${planLabel}では${lim}件まで処理されます` : ` / 最大${lim}件（${planLabel}）`}
-                      </p>
-                    );
-                  })()}
-
-                  <div className="flex items-center gap-3 mt-2 flex-wrap">
-                    <button onClick={() => handleCSVImport()} className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm">読み込む</button>
-                    <button onClick={downloadSampleCSV} className="text-xs text-blue-600 hover:underline">📥 サンプルCSVをダウンロード</button>
-                  </div>
-
-                  {bulkAddresses.length > 0 && (
-                    <div className="mt-4 flex items-center gap-2">
-                      <button onClick={() => {const i=Math.max(0,currentBulkIndex-1);setCurrentBulkIndex(i);setRecipient(bulkAddresses[i]);}} disabled={currentBulkIndex===0} className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50">←</button>
-                      <span className="text-sm text-gray-700">{currentBulkIndex+1}/{bulkAddresses.length}</span>
-                      <button onClick={() => {const i=Math.min(bulkAddresses.length-1,currentBulkIndex+1);setCurrentBulkIndex(i);setRecipient(bulkAddresses[i]);}} disabled={currentBulkIndex===bulkAddresses.length-1} className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50">→</button>
-                    </div>
+                  <h2 className="text-lg font-bold mb-4 text-gray-900 dark:text-white"><span>📋</span> CSV一括印刷</h2>
+                  {isFeatureEnabled("BULK_MAIL_MERGE") ? (
+                    <BulkModePanel
+                      envelopeSize={{ widthMm: ENVELOPE_SIZES[envelopeSize].width, heightMm: ENVELOPE_SIZES[envelopeSize].height, type: ENVELOPE_SIZES[envelopeSize].type as "naga" | "kaku" | "yo" }}
+                      sender={sender}
+                      userPlan={userPlan}
+                      onAddressSelect={(addr) => {
+                        setRecipient({
+                          postalCode: addr.postalCode, prefecture: addr.prefecture, city: addr.city,
+                          address1: addr.address1, address2: addr.address2, building: addr.building,
+                          companyName: addr.companyName, department: addr.department, name: addr.name, honorific: addr.honorific,
+                        });
+                      }}
+                    />
+                  ) : (
+                    <>
+                      {csvLimitBanner !== null && (
+                        <div className="mb-4 bg-amber-50 border border-amber-300 rounded-lg p-4 text-amber-800 text-sm">
+                          {(() => { const lim = getPlanLimits(userPlan).csvRows; return (
+                            <>
+                              <p className="font-medium">⚠️ 現在のプランでは{lim}件まで一括処理できます（{csvLimitBanner}件中{lim}件を読み込みました）</p>
+                              {userPlan === 'free' && <p className="mt-1 text-xs">PROプランで５０件まで、TEAMプランで５００件まで一括処理可能！</p>}
+                              {userPlan === 'pro' && <p className="mt-1 text-xs">TEAMプランで５００件まで一括処理可能！</p>}
+                              {userPlan !== 'enterprise' && <Link href="/pricing" className="mt-1 inline-block text-xs font-medium text-amber-700 hover:underline">プランを見る →</Link>}
+                            </>
+                          ); })()}
+                        </div>
+                      )}
+                      <div
+                        onDragOver={(e) => { e.preventDefault(); setCsvDragOver(true); }}
+                        onDragLeave={() => setCsvDragOver(false)}
+                        onDrop={(e) => {
+                          e.preventDefault(); setCsvDragOver(false);
+                          const file = e.dataTransfer.files[0];
+                          if (!file) return;
+                          if (file.name.endsWith(".xlsx") || file.name.endsWith(".xls")) {
+                            handleExcelImport(file);
+                          } else {
+                            const reader = new FileReader();
+                            reader.onload = (ev) => {
+                              const text = ev.target?.result as string;
+                              setCsvData(text);
+                              handleCSVImport(text);
+                            };
+                            reader.readAsText(file, "UTF-8");
+                          }
+                        }}
+                        className={`mb-3 border-2 border-dashed rounded-lg p-5 text-center cursor-pointer transition-colors ${csvDragOver ? "border-blue-400 bg-blue-50" : "border-gray-300 hover:border-gray-400 bg-gray-50"}`}>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">📁 ファイルを選択またはドラッグ＆ドロップ</p>
+                        <p className="text-xs text-gray-400 mt-1">.csv / .xlsx / .txt 対応</p>
+                        <input type="file" accept=".csv,.txt" className="hidden" id="csv-file-input"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0]; if (!file) return;
+                            const reader = new FileReader();
+                            reader.onload = (ev) => {
+                              const text = ev.target?.result as string;
+                              setCsvData(text);
+                              handleCSVImport(text);
+                            };
+                            reader.readAsText(file, "UTF-8");
+                            e.target.value = "";
+                          }}/>
+                        <label htmlFor="csv-file-input" className="mt-2 inline-block px-3 py-1.5 bg-white border border-gray-300 rounded text-xs text-gray-700 cursor-pointer hover:bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-600">ファイルを選択</label>
+                          <input type="file" accept=".xlsx,.xls" className="hidden" id="excel-file-input" onChange={(e) => { const f=e.target.files?.[0]; if(!f) return; handleExcelImport(f); e.target.value=""; }}/>
+                          <label htmlFor="excel-file-input" className="inline-block px-3 py-1.5 bg-green-600 text-white rounded text-xs cursor-pointer hover:bg-green-700">📊 Excelをアップロード</label>
+                      </div>
+                      <textarea value={csvData} onChange={(e) => setCsvData(e.target.value)}
+                        placeholder="ヘッダー行&#10;データ行..." className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-sm h-28 font-mono dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
+                      {csvData.trim() && (() => {
+                        const n = countCsvRows(csvData);
+                        const lim = getPlanLimits(userPlan).csvRows;
+                        const planLabel = userPlan === 'free' ? '無料プラン' : userPlan.toUpperCase();
+                        return (
+                          <p className={`text-xs mt-1 ${n > lim ? "text-amber-600 font-medium" : "text-gray-500"}`}>
+                            入力件数: {n}件{n > lim ? ` ⚠️ ${planLabel}では${lim}件まで処理されます` : ` / 最大${lim}件（${planLabel}）`}
+                          </p>
+                        );
+                      })()}
+                      <div className="flex items-center gap-3 mt-2 flex-wrap">
+                        <button onClick={() => handleCSVImport()} className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm">読み込む</button>
+                        <button onClick={downloadSampleCSV} className="text-xs text-blue-600 hover:underline">📥 サンプルCSVをダウンロード</button>
+                      </div>
+                      {bulkAddresses.length > 0 && (
+                        <div className="mt-4 flex items-center gap-2">
+                          <button onClick={() => {const i=Math.max(0,currentBulkIndex-1);setCurrentBulkIndex(i);setRecipient(bulkAddresses[i]);}} disabled={currentBulkIndex===0} className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50">←</button>
+                          <span className="text-sm text-gray-700">{currentBulkIndex+1}/{bulkAddresses.length}</span>
+                          <button onClick={() => {const i=Math.min(bulkAddresses.length-1,currentBulkIndex+1);setCurrentBulkIndex(i);setRecipient(bulkAddresses[i]);}} disabled={currentBulkIndex===bulkAddresses.length-1} className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50">→</button>
+                        </div>
+                      )}
+                    </>
                   )}
                 </div>
               )}

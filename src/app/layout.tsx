@@ -11,6 +11,7 @@ import PWAInstallPrompt from "@/components/common/PWAInstallPrompt";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { ThemeProvider } from "@/components/common/ThemeProvider";
 import GoogleAnalytics from "@/components/common/GoogleAnalytics";
+import StagingBanner from "@/components/common/StagingBanner";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { PricingTriggerProvider } from "@/components/common/PricingTriggerProvider";
 import AdSenseLoader from "@/components/AdSenseLoader";
@@ -223,6 +224,7 @@ export default async function RootLayout({
       </head>
       <body className={`antialiased min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 ${notoSansJP.className}`}>
         <GoogleAnalytics />
+        <StagingBanner />
         <AuthProvider>
         <PricingTriggerProvider>
         <ThemeProvider>
