@@ -15,6 +15,7 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import { PricingTriggerProvider } from "@/components/common/PricingTriggerProvider";
 import AdSenseLoader from "@/components/AdSenseLoader";
 import SupportChatbot from "@/components/SupportChatbot";
+import DevToolsInit from "@/components/common/DevToolsInit";
 import { homepageItemListSchema, homepageFaqSchema } from "./homepage-schemas";
 
 const notoSansJP = Noto_Sans_JP({
@@ -234,6 +235,7 @@ export default async function RootLayout({
         <PWAInstallPrompt />
         <AdSenseLoader />
         <SupportChatbot />
+        <DevToolsInit />
         </ThemeProvider>
         </PricingTriggerProvider>
         </AuthProvider>
