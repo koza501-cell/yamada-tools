@@ -10,6 +10,7 @@ import { usePricingContext } from '@/components/common/PricingTriggerProvider';
 import * as XLSX from 'xlsx';
 import BulkModePanel from "@/components/envelope/BulkModePanel";
 import { isFeatureEnabled } from "@/config/featureFlags";
+import { useAuth } from "@/contexts/AuthContext";
 
 const ENVELOPE_SIZES = {
   naga3:  { name: "長形3号",    width: 120, height: 235, type: "naga", postal: "teikei" },
@@ -297,6 +298,7 @@ const UPGRADE_DISMISS_KEY = "yamada_upgrade_dismissed";
 export default function EnvelopePrintClient({
  faq, seoContent }: EnvelopePrintClientProps) {
   const { triggerSuccess } = usePricingContext();
+  const { user } = useAuth();
 
   const [mounted, setMounted] = useState(false);
   const [mascotState, setMascotState] = useState<MascotState>("idle");
@@ -398,10 +400,43 @@ export default function EnvelopePrintClient({
         setTimeout(() => setSenderRestored(false), 5000);
       }
     } catch {}
-    setUserPlan(getUserPlan());
     try { const logoRaw = localStorage.getItem(LOGO_KEY); if (logoRaw) { try { const parsed = JSON.parse(logoRaw); setLogos(Array.isArray(parsed) ? parsed : [parsed]); } catch { setLogos([logoRaw]); } } } catch {}
     try { const qr = localStorage.getItem(QR_KEY); if (qr) setQrContent(qr); } catch {}
   }, []);
+
+  useEffect(() => {
+    setUserPlan(user?.effective_plan || 'free');
+  }, [user]);
+
+  const API_BASE = 'https://api.yamada-tools.jp';
+
+  const validateCsvWithServer = async (rowCount: number): Promise<boolean> => {
+    const token = typeof window !== 'undefined' ? localStorage.getItem('session_token') : null;
+    try {
+      const res = await fetch(`${API_BASE}/api/envelope/csv-validate`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
+        body: JSON.stringify({ row_count: rowCount }),
+      });
+      if (res.status === 403) {
+        const data = await res.json();
+        setMascotState('error');
+        setMascotMessage(data.detail || 'プランのCSV上限に達しました');
+        return false;
+      }
+      if (res.ok) {
+        const data = await res.json();
+        if (data.plan) setUserPlan(data.plan);
+        return true;
+      }
+    } catch {
+      // Network error: fail-open with client-side limit
+    }
+    return rowCount <= getPlanLimits(userPlan).csvRows;
+  };
 
   useEffect(() => {
     if (mounted) {
@@ -654,21 +689,23 @@ export default function EnvelopePrintClient({
     }).filter(a => a.name || a.companyName);
   };
 
-  const handleCSVImport = (rawCsv?: string) => {
+  const handleCSVImport = async (rawCsv?: string) => {
     const source = rawCsv ?? csvData;
     const allAddrs = parseCSV(source);
     if (allAddrs.length === 0) { setMascotState("error"); setMascotMessage("CSV確認してね"); return; }
     const totalRows = allAddrs.length;
+    const ok = await validateCsvWithServer(totalRows);
+    if (!ok) return;
     const limit = getPlanLimits(userPlan).csvRows;
     const addrs = allAddrs.slice(0, limit);
     setBulkAddresses(addrs); setCurrentBulkIndex(0); setRecipient(addrs[0]);
-    setMascotState("success")
-      triggerSuccess('envelope-print');; setMascotMessage(`${addrs.length}件読込完了！`);
+    setMascotState("success"); triggerSuccess('envelope-print');
+    setMascotMessage(`${addrs.length}件読込完了！`);
     setCsvLimitBanner(totalRows > limit ? totalRows : null);
   };
   const handleExcelImport = (file: File) => {
     const reader = new FileReader();
-    reader.onload = (ev) => {
+    reader.onload = async (ev) => {
       try {
         const data = ev.target?.result;
         const wb = XLSX.read(data, { type: "array" });
@@ -714,6 +751,8 @@ export default function EnvelopePrintClient({
         })).filter(a => a.name || a.companyName);
 
         if (allAddrs.length === 0) { setMascotState("error"); setMascotMessage("有効なデータが見つかりません"); return; }
+        const ok = await validateCsvWithServer(allAddrs.length);
+        if (!ok) return;
         const limit = getPlanLimits(userPlan).csvRows;
         const addrs = allAddrs.slice(0, limit);
         setBulkAddresses(addrs); setCurrentBulkIndex(0); setRecipient(addrs[0]);
