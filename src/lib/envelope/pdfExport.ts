@@ -1,4 +1,4 @@
-import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
+import { PDFDocument, rgb } from "pdf-lib";
 import { AddressRow } from "./validation";
 
 export interface EnvelopeSpec {
@@ -24,7 +24,8 @@ export async function generateBulkPdf(options: PdfExportOptions): Promise<Uint8A
   const { envelopes, rows, sender, duplexBackFlap, selectedIndices } = options;
 
   const pdfDoc = await PDFDocument.create();
-  const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+  const fontBytes = await fetch("/fonts/NotoSansJP-Bold.ttf").then(r => r.arrayBuffer());
+  const font = await pdfDoc.embedFont(fontBytes);
 
   const rowsToExport = selectedIndices.length > 0
     ? rows.filter((_, i) => selectedIndices.includes(i))
