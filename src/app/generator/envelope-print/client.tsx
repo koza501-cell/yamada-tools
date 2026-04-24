@@ -414,23 +414,6 @@ export default function EnvelopePrintClient({
 
   useEffect(() => { if (mounted) renderPreview(); }, [mounted, envelopeSize, writingDirection, showPostalBox, showSender, recipient, sender, stamp, currentBulkIndex, bulkAddresses, settings, activeTab, logoPosition, logoSizeMm, logoOpacity, showBarcode, qrPosition, qrSizeMm, userPlan, logoReady, qrReady, activeLogoIdx]);
 
-  // Ctrl+Shift+P dev plan toggle
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if (e.ctrlKey && e.shiftKey && e.key === 'P') {
-        e.preventDefault();
-        const plans = ['free','pro','team','enterprise'];
-        const cur = localStorage.getItem(PLAN_KEY) || 'free';
-        const next = plans[(plans.indexOf(cur) + 1) % plans.length];
-        localStorage.setItem(PLAN_KEY, next);
-        setUserPlan(next);
-        setToast(`🔧 プラン切替: ${next.toUpperCase()}`);
-        setTimeout(() => setToast(""), 3000);
-      }
-    };
-    window.addEventListener('keydown', handler);
-    return () => window.removeEventListener('keydown', handler);
-  }, []);
 
   // Logo image loading
   useEffect(() => {
