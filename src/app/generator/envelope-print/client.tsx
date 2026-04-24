@@ -41,6 +41,7 @@ interface AddressData {
   name: string; honorific: string;
 }
 interface SenderData { postalCode: string; address: string; companyName: string; name: string; }
+interface ServerTemplate { id: number; name: string; sender_data: SenderData; format_prefs: { envelopeSize?: string; writingDirection?: string; }; created_at: string; updated_at: string; }
 interface StampData { enabled: boolean; text: string; color: "red" | "blue" | "black"; }
 
 interface SavedAddress {
@@ -238,12 +239,13 @@ function getUserPlan(): string {
   return localStorage.getItem('yamada_user_plan') || 'free';
 }
 
-function getPlanLimits(plan: string): {addresses:number;csvRows:number;history:number;logos:number;barcode:boolean;qr:boolean} {
-  const L: Record<string,{addresses:number;csvRows:number;history:number;logos:number;barcode:boolean;qr:boolean}> = {
-    free:       { addresses:3,     csvRows:5,     history:3,    logos:0,     barcode:false, qr:false },
-    pro:        { addresses:100,   csvRows:50,    history:30,   logos:1,     barcode:true,  qr:true  },
-    team:       { addresses:2000,  csvRows:500,   history:9999, logos:5,     barcode:true,  qr:true  },
-    enterprise: { addresses:99999, csvRows:99999, history:9999, logos:99999, barcode:true,  qr:true  },
+function getPlanLimits(plan: string): {addresses:number;csvRows:number;history:number;logos:number;barcode:boolean;qr:boolean;templates:number} {
+  const L: Record<string,{addresses:number;csvRows:number;history:number;logos:number;barcode:boolean;qr:boolean;templates:number}> = {
+    free:       { addresses:3,     csvRows:5,     history:3,    logos:0,     barcode:false, qr:false, templates:0   },
+    pro:        { addresses:100,   csvRows:50,    history:30,   logos:1,     barcode:true,  qr:true,  templates:20  },
+    pro_trial:  { addresses:100,   csvRows:50,    history:30,   logos:1,     barcode:true,  qr:true,  templates:5   },
+    team:       { addresses:2000,  csvRows:500,   history:9999, logos:5,     barcode:true,  qr:true,  templates:100 },
+    enterprise: { addresses:99999, csvRows:99999, history:9999, logos:99999, barcode:true,  qr:true,  templates:999 },
   };
   return L[plan] ?? L.free;
 }
@@ -347,6 +349,11 @@ export default function EnvelopePrintClient({
   const [autoSaveAddr, setAutoSaveAddr] = useState<AddressData | null>(null);
   // Plan
   const [userPlan, setUserPlan] = useState<string>("free");
+  const [serverTemplates, setServerTemplates] = useState<ServerTemplate[]>([]);
+  const [templateSaveOpen, setTemplateSaveOpen] = useState(false);
+  const [templateSaveName, setTemplateSaveName] = useState("");
+  const [templateSaving, setTemplateSaving] = useState(false);
+  const [templateListOpen, setTemplateListOpen] = useState(false);
   // Logo (PRO)
   const [logos, setLogos] = useState<string[]>([]);
   const [activeLogoIdx, setActiveLogoIdx] = useState(0);
@@ -404,11 +411,12 @@ export default function EnvelopePrintClient({
     try { const qr = localStorage.getItem(QR_KEY); if (qr) setQrContent(qr); } catch {}
   }, []);
 
+  const API_BASE = 'https://api.yamada-tools.jp';
+
   useEffect(() => {
     setUserPlan(user?.effective_plan || 'free');
+    if (!user) setServerTemplates([]);
   }, [user]);
-
-  const API_BASE = 'https://api.yamada-tools.jp';
 
   const validateCsvWithServer = async (rowCount: number): Promise<boolean> => {
     const token = typeof window !== 'undefined' ? localStorage.getItem('session_token') : null;
@@ -437,6 +445,80 @@ export default function EnvelopePrintClient({
     }
     return rowCount <= getPlanLimits(userPlan).csvRows;
   };
+
+  const fetchServerTemplates = async () => {
+    const token = typeof window !== 'undefined' ? localStorage.getItem('session_token') : null;
+    if (!token) return;
+    try {
+      const res = await fetch(`${API_BASE}/api/envelope/templates`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data?.templates) setServerTemplates(data.templates);
+      }
+    } catch {}
+  };
+
+  const saveTemplateToServer = async () => {
+    const token = typeof window !== 'undefined' ? localStorage.getItem('session_token') : null;
+    if (!token) return;
+    setTemplateSaving(true);
+    try {
+      const res = await fetch(`${API_BASE}/api/envelope/templates`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({
+          name: templateSaveName.trim() || '差出人テンプレート',
+          sender_data: sender,
+          format_prefs: { envelopeSize, writingDirection },
+        }),
+      });
+      if (res.status === 403) {
+        const data = await res.json();
+        setMascotState('error');
+        setMascotMessage(data.detail || 'テンプレートの保存上限に達しました');
+      } else if (res.ok) {
+        const newT = await res.json();
+        setServerTemplates(prev => [newT, ...prev]);
+        setTemplateSaveOpen(false);
+        setTemplateSaveName('');
+        showToast('✅ テンプレートを保存しました');
+      }
+    } catch {
+      setMascotState('error');
+      setMascotMessage('テンプレートの保存に失敗しました');
+    } finally {
+      setTemplateSaving(false);
+    }
+  };
+
+  const deleteServerTemplate = async (id: number) => {
+    const token = typeof window !== 'undefined' ? localStorage.getItem('session_token') : null;
+    if (!token) return;
+    try {
+      const res = await fetch(`${API_BASE}/api/envelope/templates/${id}`, {
+        method: 'DELETE',
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (res.ok) {
+        setServerTemplates(prev => prev.filter(t => t.id !== id));
+        showToast('🗑️ テンプレートを削除しました');
+      }
+    } catch {}
+  };
+
+  const applyServerTemplate = (t: ServerTemplate) => {
+    setSender(t.sender_data);
+    if (t.format_prefs.envelopeSize) setEnvelopeSize(t.format_prefs.envelopeSize as EnvelopeSize);
+    if (t.format_prefs.writingDirection) setWritingDirection(t.format_prefs.writingDirection as WritingDirection);
+    setTemplateListOpen(false);
+    showToast(`📋 「${t.name}」を読み込みました`);
+  };
+
+  useEffect(() => {
+    if (user) fetchServerTemplates();
+  }, [user]);
 
   useEffect(() => {
     if (mounted) {
@@ -1600,6 +1682,78 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                       className="w-full py-2 min-h-[44px] bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-sm font-medium transition-colors border border-gray-200">
                       💾 差出人を保存（次回から自動入力）
                     </button>
+                    {/* テンプレート */}
+                    <div className="border-t border-gray-100 pt-3">
+                      {getPlanLimits(userPlan).templates > 0 ? (
+                        <div className="space-y-2">
+                          {!templateSaveOpen ? (
+                            <button
+                              onClick={() => { setTemplateSaveName(sender.companyName || sender.name || 'テンプレート'); setTemplateSaveOpen(true); }}
+                              className="w-full py-2 min-h-[44px] bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-sm font-medium transition-colors border border-blue-200">
+                              ☁️ テンプレートとして保存
+                            </button>
+                          ) : (
+                            <div className="flex gap-2">
+                              <input
+                                type="text"
+                                value={templateSaveName}
+                                onChange={e => setTemplateSaveName(e.target.value)}
+                                onKeyDown={e => { if (e.key === 'Enter') saveTemplateToServer(); if (e.key === 'Escape') setTemplateSaveOpen(false); }}
+                                placeholder="テンプレート名"
+                                className="flex-1 bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"
+                                autoFocus
+                              />
+                              <button
+                                onClick={saveTemplateToServer}
+                                disabled={templateSaving}
+                                className="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors disabled:opacity-50">
+                                {templateSaving ? '...' : '保存'}
+                              </button>
+                              <button
+                                onClick={() => setTemplateSaveOpen(false)}
+                                className="px-3 py-2 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-lg text-sm transition-colors">
+                                ✕
+                              </button>
+                            </div>
+                          )}
+                          {serverTemplates.length > 0 && (
+                            <div>
+                              <button
+                                onClick={() => setTemplateListOpen(o => !o)}
+                                className="w-full flex items-center justify-between py-1.5 text-sm text-gray-600 hover:text-gray-800">
+                                <span>📋 保存済みテンプレート ({serverTemplates.length}/{getPlanLimits(userPlan).templates}件)</span>
+                                <span className={`transition-transform duration-200 ${templateListOpen ? 'rotate-180' : ''}`}>▼</span>
+                              </button>
+                              {templateListOpen && (
+                                <div className="mt-1 border border-gray-200 rounded-lg overflow-hidden">
+                                  {serverTemplates.map(t => (
+                                    <div key={t.id} className="flex items-center justify-between px-3 py-2 hover:bg-gray-50 border-b border-gray-100 last:border-0">
+                                      <button
+                                        onClick={() => applyServerTemplate(t)}
+                                        className="flex-1 text-left text-sm text-gray-700 hover:text-blue-600 truncate">
+                                        {t.name}
+                                      </button>
+                                      <button
+                                        onClick={() => deleteServerTemplate(t.id)}
+                                        className="ml-2 text-xs text-red-400 hover:text-red-600 shrink-0">
+                                        削除
+                                      </button>
+                                    </div>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+                          )}
+                          {serverTemplates.length === 0 && !templateSaveOpen && (
+                            <p className="text-xs text-gray-400 text-center">テンプレートはまだありません</p>
+                          )}
+                        </div>
+                      ) : (
+                        <p className="text-xs text-gray-400 text-center">
+                          テンプレート保存は<Link href="/pricing" className="text-amber-600 hover:underline ml-0.5">PROプラン</Link>で利用できます
+                        </p>
+                      )}
+                    </div>
                   </div>
                 </div>
               )}
