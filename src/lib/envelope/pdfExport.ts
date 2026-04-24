@@ -1,4 +1,5 @@
 import { PDFDocument, rgb } from "pdf-lib";
+import fontkit from "@pdf-lib/fontkit";
 import { AddressRow } from "./validation";
 
 export interface EnvelopeSpec {
@@ -24,6 +25,7 @@ export async function generateBulkPdf(options: PdfExportOptions): Promise<Uint8A
   const { envelopes, rows, sender, duplexBackFlap, selectedIndices } = options;
 
   const pdfDoc = await PDFDocument.create();
+  pdfDoc.registerFontkit(fontkit);
   const fontBytes = await fetch("/fonts/NotoSansJP-Bold.ttf").then(r => r.arrayBuffer());
   const font = await pdfDoc.embedFont(fontBytes);
 
