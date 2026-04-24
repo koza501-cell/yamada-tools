@@ -11,6 +11,7 @@ import * as XLSX from 'xlsx';
 import BulkModePanel from "@/components/envelope/BulkModePanel";
 import { isFeatureEnabled } from "@/config/featureFlags";
 import { useAuth } from "@/contexts/AuthContext";
+import { detectHonorific } from "@/lib/envelope/detectHonorific";
 
 const ENVELOPE_SIZES = {
   naga3:  { name: "長形3号",    width: 120, height: 235, type: "naga", postal: "teikei" },
@@ -340,6 +341,8 @@ export default function EnvelopePrintClient({
   const [abMigratePrompt, setAbMigratePrompt] = useState(false);
   const [abTagInputId, setAbTagInputId] = useState<number | null>(null);
   const [abTagInputValue, setAbTagInputValue] = useState("");
+  const [honorificManual, setHonorificManual] = useState(false);
+  const [honorificHint, setHonorificHint] = useState("");
   const [senderRestored, setSenderRestored] = useState(false);
   // Print history
   const [printHistory, setPrintHistory] = useState<PrintHistoryEntry[]>([]);
@@ -636,6 +639,7 @@ export default function EnvelopePrintClient({
   };
 
   const loadFromServerAddress = (a: ServerAddress) => {
+    setHonorificManual(false); setHonorificHint("");
     setRecipient({
       postalCode: a.postal_code,
       prefecture: a.prefecture,
@@ -869,6 +873,7 @@ export default function EnvelopePrintClient({
   };
 
   const loadFromAddressBook = (saved: SavedAddress) => {
+    setHonorificManual(false); setHonorificHint("");
     setRecipient({
       postalCode: saved.postalCode,
       prefecture: saved.prefecture,
@@ -960,14 +965,16 @@ export default function EnvelopePrintClient({
       const c = line.split(",").map(x => x.trim().replace(/^"|"$/g, ""));
       return { postalCode: c[0]||"", prefecture: c[1]||"", city: c[2]||"", address1: c[3]||"",
         address2: c[4]||"", building: c[5]||"", companyName: c[6]||"", department: c[7]||"",
-        name: c[8]||"", honorific: c[9]||"様" };
+        name: c[8]||"", honorific: c[9]?.trim() ?? "" };
     }).filter(a => a.name || a.companyName);
   };
 
   const handleCSVImport = async (rawCsv?: string) => {
     const source = rawCsv ?? csvData;
-    const allAddrs = parseCSV(source);
-    if (allAddrs.length === 0) { setMascotState("error"); setMascotMessage("CSV確認してね"); return; }
+    const rawAddrs = parseCSV(source);
+    if (rawAddrs.length === 0) { setMascotState("error"); setMascotMessage("CSV確認してね"); return; }
+    let csvAutoFixed = 0;
+    const allAddrs = rawAddrs.map(a => { const autoH=detectHonorific(a.name,a.companyName); const finalH=a.honorific||autoH; if(!a.honorific&&autoH!=="様")csvAutoFixed++; return {...a,honorific:finalH}; });
     const totalRows = allAddrs.length;
     const ok = await validateCsvWithServer(totalRows);
     if (!ok) return;
@@ -975,7 +982,7 @@ export default function EnvelopePrintClient({
     const addrs = allAddrs.slice(0, limit);
     setBulkAddresses(addrs); setCurrentBulkIndex(0); setRecipient(addrs[0]);
     setMascotState("success"); triggerSuccess('envelope-print');
-    setMascotMessage(`${addrs.length}件読込完了！`);
+    setMascotMessage(`${addrs.length}件読込完了！${csvAutoFixed>0?`（敬称を${csvAutoFixed}件自動修正）`:""}`);
     setCsvLimitBanner(totalRows > limit ? totalRows : null);
   };
   const handleExcelImport = (file: File) => {
@@ -1012,7 +1019,7 @@ export default function EnvelopePrintClient({
           colMap.department=7; colMap.name=8; colMap.honorific=9;
         }
         const dataRows = hasHeaders ? rows.slice(1) : rows;
-        const allAddrs: AddressData[] = dataRows.map(row => ({
+        const rawAddrs: AddressData[] = dataRows.map(row => ({
           postalCode: String(row[colMap.postalCode] ?? ""),
           prefecture: String(row[colMap.prefecture] ?? ""),
           city: String(row[colMap.city] ?? ""),
@@ -1022,8 +1029,10 @@ export default function EnvelopePrintClient({
           companyName: String(row[colMap.companyName ?? -1] ?? ""),
           department: String(row[colMap.department ?? -1] ?? ""),
           name: String(row[colMap.name ?? -1] ?? ""),
-          honorific: String(row[colMap.honorific ?? -1] ?? "") || "様",
+          honorific: String(row[colMap.honorific ?? -1] ?? "").trim(),
         })).filter(a => a.name || a.companyName);
+        let xlsAutoFixed = 0;
+        const allAddrs = rawAddrs.map(a => { const autoH=detectHonorific(a.name,a.companyName); const finalH=a.honorific||autoH; if(!a.honorific&&autoH!=="様")xlsAutoFixed++; return {...a,honorific:finalH}; });
 
         if (allAddrs.length === 0) { setMascotState("error"); setMascotMessage("有効なデータが見つかりません"); return; }
         const ok = await validateCsvWithServer(allAddrs.length);
@@ -1032,7 +1041,7 @@ export default function EnvelopePrintClient({
         const addrs = allAddrs.slice(0, limit);
         setBulkAddresses(addrs); setCurrentBulkIndex(0); setRecipient(addrs[0]);
         setMascotState("success"); triggerSuccess("envelope-print");
-        setMascotMessage(`${addrs.length}件読込完了！`);
+        setMascotMessage(`${addrs.length}件読込完了！${xlsAutoFixed>0?`（敬称を${xlsAutoFixed}件自動修正）`:""}`);
         setCsvLimitBanner(allAddrs.length > limit ? allAddrs.length : null);
       } catch { setMascotState("error"); setMascotMessage("Excelファイルの読み込みに失敗しました"); }
     };
@@ -1482,6 +1491,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                       <p className="text-xs text-gray-400 mt-0.5">{dateStr}</p>
                       <button
                         onClick={() => {
+                          setHonorificManual(false); setHonorificHint("");
                           setRecipient({
                             postalCode: entry.recipient.postalCode, prefecture: entry.recipient.prefecture,
                             city: entry.recipient.city, address1: entry.recipient.address, address2: "",
@@ -1839,17 +1849,18 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                     </div>
                     <input type="text" value={recipient.address1} onChange={(e) => setRecipient({...recipient, address1: e.target.value})} placeholder="番地 (例: 1丁目2-3)" className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
                     <input type="text" value={recipient.building} onChange={(e) => setRecipient({...recipient, building: e.target.value})} placeholder="建物名・部屋番号" className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
-                    <input type="text" value={recipient.companyName} onChange={(e) => setRecipient({...recipient, companyName: e.target.value})} placeholder="会社名" className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
+                    <input type="text" value={recipient.companyName} onChange={(e) => { const v=e.target.value; if(!honorificManual){const h=detectHonorific(recipient.name,v);setRecipient({...recipient,companyName:v,honorific:h});setHonorificHint(h==="御中"?"会社宛なので「御中」が推奨":"");}else{setRecipient({...recipient,companyName:v});}}} placeholder="会社名" className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
                     <input type="text" value={recipient.department} onChange={(e) => setRecipient({...recipient, department: e.target.value})} placeholder="部署名" className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
                     <div>
                       <label className="block text-xs text-gray-500 mb-1">氏名 <span className="text-red-500">*</span></label>
                       <div className="grid grid-cols-3 gap-3">
-                        <input type="text" value={recipient.name} onChange={(e) => { setRecipient({...recipient, name: e.target.value}); setFieldErrors({...fieldErrors, name: ""}); }} placeholder="氏名" className={`col-span-2 bg-gray-50 border rounded-lg px-3 py-2 ${fieldErrors.name ? "border-red-400" : "border-gray-300"}`}/>
-                        <select value={recipient.honorific} onChange={(e) => setRecipient({...recipient, honorific: e.target.value})} className="bg-gray-50 border border-gray-300 rounded-lg px-3 py-2">
+                        <input type="text" value={recipient.name} onChange={(e) => { const v=e.target.value; if(!honorificManual){const h=detectHonorific(v,recipient.companyName);setRecipient({...recipient,name:v,honorific:h});setHonorificHint(h==="御中"?"会社宛なので「御中」が推奨":"");}else{setRecipient({...recipient,name:v});}setFieldErrors({...fieldErrors,name:""}); }} placeholder="氏名" className={`col-span-2 bg-gray-50 border rounded-lg px-3 py-2 ${fieldErrors.name ? "border-red-400" : "border-gray-300"}`}/>
+                        <select value={recipient.honorific} onChange={(e) => { setHonorificManual(true); setHonorificHint(""); setRecipient({...recipient, honorific: e.target.value}); }} className="bg-gray-50 border border-gray-300 rounded-lg px-3 py-2">
                           <option value="様">様</option><option value="御中">御中</option><option value="殿">殿</option><option value="先生">先生</option><option value="">なし</option>
                         </select>
                       </div>
                       {fieldErrors.name && <p className="text-xs text-red-500 mt-1">{fieldErrors.name}</p>}
+                      {honorificHint && <p className="text-xs text-blue-500 mt-1">💡 {honorificHint}</p>}
                     </div>
                     <div className="pt-2 border-t border-gray-100">
                       {savedAddresses.length >= getPlanLimits(userPlan).addresses ? (
@@ -1888,6 +1899,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                       sender={sender}
                       userPlan={userPlan}
                       onAddressSelect={(addr) => {
+                        setHonorificManual(false); setHonorificHint("");
                         setRecipient({
                           postalCode: addr.postalCode, prefecture: addr.prefecture, city: addr.city,
                           address1: addr.address1, address2: addr.address2, building: addr.building,
