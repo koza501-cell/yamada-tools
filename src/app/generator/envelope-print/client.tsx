@@ -42,6 +42,7 @@ interface AddressData {
 }
 interface SenderData { postalCode: string; address: string; companyName: string; name: string; }
 interface ServerTemplate { id: number; name: string; sender_data: SenderData; format_prefs: { envelopeSize?: string; writingDirection?: string; }; created_at: string; updated_at: string; }
+interface ServerAddress { id: number; recipient_name: string; postal_code: string; prefecture: string; city: string; address_detail: string; company_name: string; department: string; honorific: string; tags: string[]; created_at: string; updated_at: string; }
 interface StampData { enabled: boolean; text: string; color: "red" | "blue" | "black"; }
 
 interface SavedAddress {
@@ -239,13 +240,13 @@ function getUserPlan(): string {
   return localStorage.getItem('yamada_user_plan') || 'free';
 }
 
-function getPlanLimits(plan: string): {addresses:number;csvRows:number;history:number;logos:number;barcode:boolean;qr:boolean;templates:number} {
-  const L: Record<string,{addresses:number;csvRows:number;history:number;logos:number;barcode:boolean;qr:boolean;templates:number}> = {
-    free:       { addresses:3,     csvRows:5,     history:3,    logos:0,     barcode:false, qr:false, templates:0   },
-    pro:        { addresses:100,   csvRows:50,    history:30,   logos:1,     barcode:true,  qr:true,  templates:20  },
-    pro_trial:  { addresses:100,   csvRows:50,    history:30,   logos:1,     barcode:true,  qr:true,  templates:5   },
-    team:       { addresses:2000,  csvRows:500,   history:9999, logos:5,     barcode:true,  qr:true,  templates:100 },
-    enterprise: { addresses:99999, csvRows:99999, history:9999, logos:99999, barcode:true,  qr:true,  templates:999 },
+function getPlanLimits(plan: string): {addresses:number;csvRows:number;history:number;logos:number;barcode:boolean;qr:boolean;templates:number;addressBook:number} {
+  const L: Record<string,{addresses:number;csvRows:number;history:number;logos:number;barcode:boolean;qr:boolean;templates:number;addressBook:number}> = {
+    free:       { addresses:3,     csvRows:5,     history:3,    logos:0,     barcode:false, qr:false, templates:0,   addressBook:0     },
+    pro:        { addresses:100,   csvRows:50,    history:30,   logos:1,     barcode:true,  qr:true,  templates:20,  addressBook:500   },
+    pro_trial:  { addresses:100,   csvRows:50,    history:30,   logos:1,     barcode:true,  qr:true,  templates:5,   addressBook:50    },
+    team:       { addresses:2000,  csvRows:500,   history:9999, logos:5,     barcode:true,  qr:true,  templates:100, addressBook:5000  },
+    enterprise: { addresses:99999, csvRows:99999, history:9999, logos:99999, barcode:true,  qr:true,  templates:999, addressBook:50000 },
   };
   return L[plan] ?? L.free;
 }
@@ -334,6 +335,11 @@ export default function EnvelopePrintClient({
   // Address book
   const [savedAddresses, setSavedAddresses] = useState<SavedAddress[]>([]);
   const [addressBookOpen, setAddressBookOpen] = useState(false);
+  const [serverAddresses, setServerAddresses] = useState<ServerAddress[]>([]);
+  const [abSearchQuery, setAbSearchQuery] = useState("");
+  const [abMigratePrompt, setAbMigratePrompt] = useState(false);
+  const [abTagInputId, setAbTagInputId] = useState<number | null>(null);
+  const [abTagInputValue, setAbTagInputValue] = useState("");
   const [senderRestored, setSenderRestored] = useState(false);
   // Print history
   const [printHistory, setPrintHistory] = useState<PrintHistoryEntry[]>([]);
@@ -415,7 +421,7 @@ export default function EnvelopePrintClient({
 
   useEffect(() => {
     setUserPlan(user?.effective_plan || 'free');
-    if (!user) setServerTemplates([]);
+    if (!user) { setServerTemplates([]); setServerAddresses([]); setAbMigratePrompt(false); }
   }, [user]);
 
   const validateCsvWithServer = async (rowCount: number): Promise<boolean> => {
@@ -518,6 +524,187 @@ export default function EnvelopePrintClient({
 
   useEffect(() => {
     if (user) fetchServerTemplates();
+  }, [user]);
+
+  const fetchServerAddresses = async () => {
+    const token = typeof window !== 'undefined' ? localStorage.getItem('session_token') : null;
+    if (!token) return;
+    try {
+      const res = await fetch(`${API_BASE}/api/envelope/address-book`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data?.entries) {
+          setServerAddresses(data.entries);
+          const local = (() => { try { return JSON.parse(localStorage.getItem(ADDR_BOOK_KEY) || "[]"); } catch { return []; } })();
+          if (local.length > 0 && data.entries.length === 0) setAbMigratePrompt(true);
+        }
+      }
+    } catch {}
+  };
+
+  const saveToServerAddress = async (addr: AddressData): Promise<boolean> => {
+    const token = typeof window !== 'undefined' ? localStorage.getItem('session_token') : null;
+    if (!token) return false;
+    try {
+      const res = await fetch(`${API_BASE}/api/envelope/address-book`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({
+          recipient_name: addr.name,
+          postal_code: addr.postalCode,
+          prefecture: addr.prefecture,
+          city: addr.city,
+          address_detail: `${addr.address1}${addr.address2}`,
+          company_name: addr.companyName,
+          department: addr.department,
+          honorific: addr.honorific,
+          tags: [],
+        }),
+      });
+      if (res.status === 403) {
+        const data = await res.json();
+        setMascotState('error');
+        setMascotMessage(data.detail || 'アドレス帳の保存上限に達しました');
+        return false;
+      }
+      if (res.ok) {
+        const newA = await res.json();
+        setServerAddresses(prev => [newA, ...prev]);
+        showToast('✅ 住所をアドレス帳に保存しました');
+        return true;
+      }
+    } catch {
+      setMascotState('error');
+      setMascotMessage('住所の保存に失敗しました');
+    }
+    return false;
+  };
+
+  const deleteFromServerAddressBook = async (id: number) => {
+    const token = typeof window !== 'undefined' ? localStorage.getItem('session_token') : null;
+    if (!token) return;
+    try {
+      const res = await fetch(`${API_BASE}/api/envelope/address-book/${id}`, {
+        method: 'DELETE',
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (res.ok) {
+        setServerAddresses(prev => prev.filter(a => a.id !== id));
+        showToast('🗑️ 住所を削除しました');
+      }
+    } catch {}
+  };
+
+  const addTagToServerAddress = async (id: number, tag: string) => {
+    const entry = serverAddresses.find(a => a.id === id);
+    if (!entry || !tag.trim() || entry.tags.includes(tag.trim())) return;
+    const token = typeof window !== 'undefined' ? localStorage.getItem('session_token') : null;
+    if (!token) return;
+    const newTags = [...entry.tags, tag.trim()];
+    try {
+      const res = await fetch(`${API_BASE}/api/envelope/address-book/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ tags: newTags }),
+      });
+      if (res.ok) {
+        const updated = await res.json();
+        setServerAddresses(prev => prev.map(a => a.id === id ? updated : a));
+      }
+    } catch {}
+  };
+
+  const removeTagFromServerAddress = async (id: number, tag: string) => {
+    const entry = serverAddresses.find(a => a.id === id);
+    if (!entry) return;
+    const token = typeof window !== 'undefined' ? localStorage.getItem('session_token') : null;
+    if (!token) return;
+    const newTags = entry.tags.filter(t => t !== tag);
+    try {
+      const res = await fetch(`${API_BASE}/api/envelope/address-book/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ tags: newTags }),
+      });
+      if (res.ok) {
+        const updated = await res.json();
+        setServerAddresses(prev => prev.map(a => a.id === id ? updated : a));
+      }
+    } catch {}
+  };
+
+  const loadFromServerAddress = (a: ServerAddress) => {
+    setRecipient({
+      postalCode: a.postal_code,
+      prefecture: a.prefecture,
+      city: a.city,
+      address1: a.address_detail,
+      address2: "",
+      building: "",
+      companyName: a.company_name,
+      department: a.department,
+      name: a.recipient_name,
+      honorific: a.honorific,
+    });
+    showToast(`📬 「${a.company_name || a.recipient_name}」を読み込みました`);
+  };
+
+  const bulkMigrateToServer = async () => {
+    const local = (() => { try { return JSON.parse(localStorage.getItem(ADDR_BOOK_KEY) || "[]"); } catch { return []; } })();
+    if (local.length === 0) { setAbMigratePrompt(false); return; }
+    const token = typeof window !== 'undefined' ? localStorage.getItem('session_token') : null;
+    if (!token) return;
+    const payload = local.map((a: SavedAddress) => ({
+      recipient_name: a.name,
+      postal_code: a.postalCode,
+      prefecture: a.prefecture,
+      city: a.city,
+      address_detail: a.address,
+      company_name: a.company,
+      department: a.department,
+      honorific: a.honorific,
+      tags: [],
+    }));
+    try {
+      const res = await fetch(`${API_BASE}/api/envelope/address-book/bulk-import`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify(payload),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        showToast(`✅ ${data.inserted}件の住所を移行しました`);
+        localStorage.removeItem(ADDR_BOOK_KEY);
+        setSavedAddresses([]);
+        setAbMigratePrompt(false);
+        await fetchServerAddresses();
+      }
+    } catch {
+      setMascotState('error');
+      setMascotMessage('移行に失敗しました。もう一度お試しください');
+    }
+  };
+
+  const exportServerAddressBook = () => {
+    const token = typeof window !== 'undefined' ? localStorage.getItem('session_token') : null;
+    if (!token) return;
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", `${API_BASE}/api/envelope/address-book/export`);
+    xhr.setRequestHeader("Authorization", `Bearer ${token}`);
+    xhr.responseType = "blob";
+    xhr.onload = () => {
+      const url = URL.createObjectURL(xhr.response);
+      const link = document.createElement("a");
+      link.href = url; link.download = "address_book.csv"; link.click();
+      URL.revokeObjectURL(url);
+    };
+    xhr.send();
+  };
+
+  useEffect(() => {
+    if (user) fetchServerAddresses();
   }, [user]);
 
   useEffect(() => {
@@ -722,12 +909,18 @@ export default function EnvelopePrintClient({
     setPrintHistory(updated);
   };
 
-  const isAlreadyInBook = (addr: AddressData): boolean =>
-    savedAddresses.some(a => a.postalCode === addr.postalCode && a.name === addr.name && a.company === addr.companyName);
+  const isAlreadyInBook = (addr: AddressData): boolean => {
+    if (getPlanLimits(userPlan).addressBook > 0) {
+      return serverAddresses.some(a => a.postal_code === addr.postalCode && a.recipient_name === addr.name && a.company_name === addr.companyName);
+    }
+    return savedAddresses.some(a => a.postalCode === addr.postalCode && a.name === addr.name && a.company === addr.companyName);
+  };
 
   const triggerAutoSavePrompt = (addr: AddressData) => {
-    const addrLimit = getPlanLimits(userPlan).addresses;
-    if (!isAlreadyInBook(addr) && savedAddresses.length < addrLimit && (addr.name || addr.companyName)) {
+    const isPaid = getPlanLimits(userPlan).addressBook > 0;
+    const count = isPaid ? serverAddresses.length : savedAddresses.length;
+    const addrLimit = isPaid ? getPlanLimits(userPlan).addressBook : getPlanLimits(userPlan).addresses;
+    if (!isAlreadyInBook(addr) && count < addrLimit && (addr.name || addr.companyName)) {
       setAutoSaveAddr(addr);
       setAutoSaveToast(true);
       setTimeout(() => setAutoSaveToast(false), 8000);
@@ -1456,55 +1649,168 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                     <span className="flex items-center gap-2 font-bold text-[#1e3a5f]">
                       <span>📒</span>
                       アドレス帳
-                      <span className="text-sm font-normal text-gray-500 ml-1">
-                        {(() => { const lim = getPlanLimits(userPlan).addresses; return savedAddresses.length > 0 ? `(${savedAddresses.length}/${lim}件)` : `(${lim}件まで)`; })()}
-                      </span>
+                      {getPlanLimits(userPlan).addressBook > 0 ? (
+                        <span className="text-sm font-normal text-gray-500 ml-1">({serverAddresses.length}/{getPlanLimits(userPlan).addressBook}件)</span>
+                      ) : (
+                        <span className="text-sm font-normal text-gray-500 ml-1">({savedAddresses.length}/{getPlanLimits(userPlan).addresses}件)</span>
+                      )}
                     </span>
-                    <span className={`text-gray-400 transition-transform duration-200 ${addressBookOpen ? "rotate-180" : ""}`}>▼</span>
+                    <div className="flex items-center gap-2">
+                      {getPlanLimits(userPlan).addressBook > 0 && (
+                        <button
+                          onClick={e => { e.stopPropagation(); exportServerAddressBook(); }}
+                          className="text-xs text-gray-500 hover:text-gray-700 px-2 py-1 rounded hover:bg-gray-100"
+                          title="CSVエクスポート">
+                          ⬇️ CSV
+                        </button>
+                      )}
+                      <span className={`text-gray-400 transition-transform duration-200 ${addressBookOpen ? "rotate-180" : ""}`}>▼</span>
+                    </div>
                   </button>
                   {addressBookOpen && (
                     <div className="px-6 pb-5 border-t border-gray-100">
-                      {savedAddresses.length === 0 ? (
-                        <div className="text-center py-6 text-gray-400 text-sm">
-                          <p>保存された住所がありません</p>
-                          <p className="mt-1 text-xs">宛先を入力後、💾 ボタンで保存できます</p>
-                        </div>
-                      ) : (
-                        <div className="space-y-2 mt-3">
-                          {savedAddresses.map(saved => {
-                            const d = new Date(saved.lastUsedAt);
-                            const dateStr = `${d.getMonth()+1}/${d.getDate()}`;
-                            return (
-                              <div key={saved.id} className="bg-gray-50 hover:bg-gray-100 rounded-lg p-3 transition-colors">
-                                <div className="flex items-start justify-between gap-2">
-                                  <div className="min-w-0">
-                                    <p className="font-medium text-sm text-gray-800 truncate">
-                                      <span className="mr-1">{saved.company ? "🏢" : "👤"}</span>{saved.label}
-                                    </p>
-                                    <p className="text-xs text-gray-500 mt-0.5 truncate">
-                                      〒{saved.postalCode} {saved.prefecture}{saved.city}{saved.address}
-                                    </p>
-                                  </div>
-                                  <span className="text-xs text-gray-400 dark:text-gray-500 flex-shrink-0 mt-0.5">最終使用: {dateStr}</span>
-                                </div>
-                                <div className="flex gap-3 mt-2">
-                                  <button onClick={() => loadFromAddressBook(saved)}
-                                    className="text-xs text-blue-600 hover:underline font-medium">読み込む</button>
-                                  <button onClick={() => deleteFromAddressBook(saved.id)}
-                                    className="text-xs text-red-500 hover:underline">削除</button>
-                                </div>
-                              </div>
-                            );
-                          })}
+                      {abMigratePrompt && (
+                        <div className="mt-3 mb-3 bg-blue-50 border border-blue-200 rounded-lg p-3 text-sm text-blue-800">
+                          <p className="font-medium">📦 ブラウザに保存された住所があります。クラウドに移行しますか？</p>
+                          <div className="flex gap-2 mt-2">
+                            <button onClick={bulkMigrateToServer} className="px-3 py-1.5 bg-blue-600 text-white rounded text-xs hover:bg-blue-700">移行する</button>
+                            <button onClick={() => setAbMigratePrompt(false)} className="px-3 py-1.5 bg-gray-100 text-gray-600 rounded text-xs hover:bg-gray-200">このままにする</button>
+                          </div>
                         </div>
                       )}
-                      {savedAddresses.length >= getPlanLimits(userPlan).addresses && userPlan === 'free' && (
-                        <div className="mt-3 bg-amber-50 border border-amber-200 rounded-lg p-3 text-sm text-amber-800">
-                          <p>無料プランでは3件まで保存できます。</p>
-                          <p className="mt-1">PROプランにアップグレードすると<strong>100件</strong>まで保存可能です。
-                            <Link href="/pricing" className="ml-1 text-amber-700 font-medium hover:underline">PROプランを見る →</Link>
-                          </p>
-                        </div>
+                      {getPlanLimits(userPlan).addressBook > 0 ? (
+                        <>
+                          <div className="mt-3 mb-2">
+                            <input
+                              type="text"
+                              value={abSearchQuery}
+                              onChange={e => setAbSearchQuery(e.target.value)}
+                              placeholder="🔍 名前・会社名・住所で検索"
+                              className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm"
+                            />
+                          </div>
+                          {(() => {
+                            const filtered = abSearchQuery
+                              ? serverAddresses.filter(a =>
+                                  a.recipient_name.includes(abSearchQuery) ||
+                                  a.company_name.includes(abSearchQuery) ||
+                                  a.city.includes(abSearchQuery) ||
+                                  a.address_detail.includes(abSearchQuery) ||
+                                  a.tags.some(t => t.includes(abSearchQuery))
+                                )
+                              : serverAddresses;
+                            if (filtered.length === 0) return (
+                              <div className="text-center py-6 text-gray-400 text-sm">
+                                <p>{abSearchQuery ? "検索結果がありません" : "保存された住所がありません"}</p>
+                                {!abSearchQuery && <p className="mt-1 text-xs">宛先を入力後、💾 ボタンで保存できます</p>}
+                              </div>
+                            );
+                            return (
+                              <div className="space-y-2">
+                                {filtered.map(a => (
+                                  <div key={a.id} className="bg-gray-50 hover:bg-gray-100 rounded-lg p-3 transition-colors">
+                                    <div className="flex items-start gap-2">
+                                      <div className="min-w-0 flex-1">
+                                        <p className="font-medium text-sm text-gray-800 truncate">
+                                          <span className="mr-1">{a.company_name ? "🏢" : "👤"}</span>
+                                          {a.company_name || a.recipient_name}
+                                          {a.recipient_name && a.company_name && <span className="text-gray-500 ml-1 text-xs">{a.recipient_name}</span>}
+                                        </p>
+                                        <p className="text-xs text-gray-500 mt-0.5 truncate">
+                                          〒{a.postal_code} {a.prefecture}{a.city}{a.address_detail}
+                                        </p>
+                                        {a.tags.length > 0 && (
+                                          <div className="flex flex-wrap gap-1 mt-1">
+                                            {a.tags.map(tag => (
+                                              <span key={tag} className="inline-flex items-center gap-0.5 px-1.5 py-0.5 bg-blue-100 text-blue-700 rounded text-xs">
+                                                {tag}
+                                                <button onClick={() => removeTagFromServerAddress(a.id, tag)} className="hover:text-red-500 ml-0.5">×</button>
+                                              </span>
+                                            ))}
+                                          </div>
+                                        )}
+                                        {abTagInputId === a.id ? (
+                                          <div className="flex gap-1 mt-1">
+                                            <input
+                                              type="text"
+                                              value={abTagInputValue}
+                                              onChange={e => setAbTagInputValue(e.target.value)}
+                                              onKeyDown={e => {
+                                                if (e.key === "Enter") { addTagToServerAddress(a.id, abTagInputValue); setAbTagInputId(null); setAbTagInputValue(""); }
+                                                if (e.key === "Escape") { setAbTagInputId(null); setAbTagInputValue(""); }
+                                              }}
+                                              placeholder="タグ名 + Enter"
+                                              className="text-xs border border-gray-300 rounded px-2 py-0.5 w-24"
+                                              autoFocus
+                                            />
+                                            <button onClick={() => { setAbTagInputId(null); setAbTagInputValue(""); }} className="text-xs text-gray-400 hover:text-gray-600">✕</button>
+                                          </div>
+                                        ) : (
+                                          <button onClick={() => { setAbTagInputId(a.id); setAbTagInputValue(""); }} className="text-xs text-gray-400 hover:text-blue-600 mt-0.5">+ タグ</button>
+                                        )}
+                                      </div>
+                                    </div>
+                                    <div className="flex gap-3 mt-2">
+                                      <button onClick={() => loadFromServerAddress(a)} className="text-xs text-blue-600 hover:underline font-medium">読み込む</button>
+                                      <button onClick={() => deleteFromServerAddressBook(a.id)} className="text-xs text-red-500 hover:underline">削除</button>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            );
+                          })()}
+                          {serverAddresses.length >= getPlanLimits(userPlan).addressBook && serverAddresses.length > 0 && (
+                            <p className="mt-3 text-xs text-amber-700 text-center">保存上限に達しました。古い住所を削除してください。</p>
+                          )}
+                        </>
+                      ) : (
+                        <>
+                          {savedAddresses.length === 0 ? (
+                            <div className="text-center py-6 text-gray-400 text-sm">
+                              <p>保存された住所がありません</p>
+                              <p className="mt-1 text-xs">宛先を入力後、💾 ボタンで保存できます</p>
+                            </div>
+                          ) : (
+                            <div className="space-y-2 mt-3">
+                              {savedAddresses.map(saved => {
+                                const d = new Date(saved.lastUsedAt);
+                                const dateStr = `${d.getMonth()+1}/${d.getDate()}`;
+                                return (
+                                  <div key={saved.id} className="bg-gray-50 hover:bg-gray-100 rounded-lg p-3 transition-colors">
+                                    <div className="flex items-start justify-between gap-2">
+                                      <div className="min-w-0">
+                                        <p className="font-medium text-sm text-gray-800 truncate">
+                                          <span className="mr-1">{saved.company ? "🏢" : "👤"}</span>{saved.label}
+                                        </p>
+                                        <p className="text-xs text-gray-500 mt-0.5 truncate">
+                                          〒{saved.postalCode} {saved.prefecture}{saved.city}{saved.address}
+                                        </p>
+                                      </div>
+                                      <span className="text-xs text-gray-400 flex-shrink-0 mt-0.5">最終使用: {dateStr}</span>
+                                    </div>
+                                    <div className="flex gap-3 mt-2">
+                                      <button onClick={() => loadFromAddressBook(saved)} className="text-xs text-blue-600 hover:underline font-medium">読み込む</button>
+                                      <button onClick={() => deleteFromAddressBook(saved.id)} className="text-xs text-red-500 hover:underline">削除</button>
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          )}
+                          {savedAddresses.length >= getPlanLimits(userPlan).addresses && (
+                            <div className="mt-3 bg-amber-50 border border-amber-200 rounded-lg p-3 text-sm text-amber-800">
+                              <p>無料プランでは3件まで保存できます。</p>
+                              <p className="mt-1">PROプランで<strong>500件</strong>までクラウド保存可能！
+                                <Link href="/pricing" className="ml-1 text-amber-700 font-medium hover:underline">PROプランを見る →</Link>
+                              </p>
+                            </div>
+                          )}
+                          {!user && (
+                            <div className="mt-3 bg-blue-50 border border-blue-100 rounded-lg p-3 text-xs text-blue-700 text-center">
+                              <Link href="/pricing" className="font-medium hover:underline">ログインするとクラウドで住所を管理できます →</Link>
+                            </div>
+                          )}
+                        </>
                       )}
                     </div>
                   )}
@@ -1553,12 +1859,16 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                         </div>
                       ) : (
                         <button
-                          onClick={() => {
+                          onClick={async () => {
                             if (!recipient.postalCode && !recipient.prefecture && !recipient.city) {
                               showToast("⚠️ 郵便番号または住所を入力してください");
                               return;
                             }
-                            saveToAddressBook(recipient);
+                            if (getPlanLimits(userPlan).addressBook > 0) {
+                              await saveToServerAddress(recipient);
+                            } else {
+                              saveToAddressBook(recipient);
+                            }
                           }}
                           className="w-full py-2 min-h-[44px] bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors">
                           💾 住所を保存（アドレス帳に追加）
@@ -2108,7 +2418,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-white border border-gray-200 shadow-xl rounded-xl px-5 py-4 flex items-center gap-4 text-sm max-w-sm w-full">
           <span className="flex-1 text-gray-700">この住所をアドレス帳に保存しますか？</span>
           <button
-            onClick={() => { saveToAddressBook(autoSaveAddr); setAutoSaveToast(false); }}
+            onClick={async () => { if (getPlanLimits(userPlan).addressBook > 0) { await saveToServerAddress(autoSaveAddr); } else { saveToAddressBook(autoSaveAddr); } setAutoSaveToast(false); }}
             className="px-3 py-1.5 bg-blue-600 text-white rounded-lg text-xs font-medium hover:bg-blue-700">保存する</button>
           <button onClick={() => setAutoSaveToast(false)}
             className="px-3 py-1.5 bg-gray-100 text-gray-600 rounded-lg text-xs hover:bg-gray-200">しない</button>
