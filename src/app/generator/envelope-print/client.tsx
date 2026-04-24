@@ -688,7 +688,7 @@ export default function EnvelopePrintClient({
           "会社名": "companyName", "company": "companyName",
           "部署": "department", "department": "department",
           "氏名": "name", "name": "name",
-          "敷称": "honorific", "honorific": "honorific",
+          "敬称": "honorific", "honorific": "honorific",
         };
         headerRow.forEach((h, i) => {
           if (JP_KEYS[h] && !(JP_KEYS[h] in colMap)) colMap[JP_KEYS[h]] = i;
