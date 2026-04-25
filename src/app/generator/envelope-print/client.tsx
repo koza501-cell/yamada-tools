@@ -430,8 +430,7 @@ export default function EnvelopePrintClient({
     const params = new URLSearchParams(window.location.search);
     const payment = params.get('payment');
     if (payment === 'success') {
-      setToast('ご購入ありがとうございます！');
-      setTimeout(() => setToast(''), 4000);
+      showToast('ご購入ありがとうございます！領収書をメールでお送りしました');
       refreshUser();
       const url = new URL(window.location.href);
       url.searchParams.delete('payment');
