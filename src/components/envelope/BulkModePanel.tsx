@@ -13,9 +13,10 @@ interface BulkModePanelProps {
   sender: { postalCode: string; address: string; companyName: string; name: string };
   onAddressSelect: (address: AddressRow) => void;
   userPlan: string;
+  onValidate?: (rowCount: number) => Promise<boolean>;
 }
 
-export default function BulkModePanel({ envelopeSize, sender, onAddressSelect, userPlan }: BulkModePanelProps) {
+export default function BulkModePanel({ envelopeSize, sender, onAddressSelect, userPlan, onValidate }: BulkModePanelProps) {
   const [rows, setRows] = useState<AddressRow[]>([]);
   const [headers, setHeaders] = useState<string[]>([]);
   const [columnMap, setColumnMap] = useState<ColumnMap | null>(null);
@@ -25,45 +26,28 @@ export default function BulkModePanel({ envelopeSize, sender, onAddressSelect, u
   const [status, setStatus] = useState<"idle" | "loaded" | "exporting">("idle");
   const [message, setMessage] = useState("");
 
-  const getPlanLimit = useCallback((): number => {
-    switch (userPlan) {
-      case "enterprise": return 9999;
-      case "team": return 500;
-      case "pro": return 50;
-      default: return 5;
-    }
-  }, [userPlan]);
-
-  const handleDataLoaded = useCallback((data: {
+  const handleDataLoaded = useCallback(async (data: {
     rows: AddressRow[];
     headers: string[];
     columnMap: ColumnMap | null;
     validationResults: ValidationResult[];
     fileName: string;
   }) => {
-    const limit = getPlanLimit();
-    const slicedRows = data.rows.slice(0, limit);
-    const slicedValidation = data.validationResults.slice(0, limit);
+    if (onValidate && !(await onValidate(data.rows.length))) return;
 
-    setRows(slicedRows);
+    setRows(data.rows);
     setHeaders(data.headers);
     setColumnMap(data.columnMap);
-    setValidationResults(slicedValidation);
-    setSelectedIndices(slicedRows.map((_, i) => i));
+    setValidationResults(data.validationResults);
+    setSelectedIndices(data.rows.map((_, i) => i));
     setFileName(data.fileName);
     setStatus("loaded");
 
-    if (data.rows.length > limit) {
-      setMessage(`制限: ${limit}件まで処理します（${data.rows.length}件中${limit}件を読み込み）`);
-    } else {
-      const errorCount = slicedValidation.filter((r) => !r.valid).length;
-      setMessage(`${slicedRows.length}件読み込み完了${errorCount > 0 ? `（${errorCount}件エラーあり）` : ""}`);
-    }
+    const errorCount = data.validationResults.filter((r) => !r.valid).length;
+    setMessage(`${data.rows.length}件読み込み完了${errorCount > 0 ? `（${errorCount}件エラーあり）` : ""}`);
 
-    // Select first valid address
-    const firstValid = slicedRows[0];
-    if (firstValid) onAddressSelect(firstValid);
-  }, [getPlanLimit, onAddressSelect]);
+    if (data.rows[0]) onAddressSelect(data.rows[0]);
+  }, [onValidate, onAddressSelect]);
 
   const handleMapChange = useCallback((map: ColumnMap) => {
     setColumnMap(map);
@@ -139,16 +123,7 @@ export default function BulkModePanel({ envelopeSize, sender, onAddressSelect, u
         />
       )}
 
-      {/* Row limit info */}
-      {status === "loaded" && rows.length > 0 && (
-        <div className="bg-blue-50 border border-blue-200 rounded-lg px-4 py-2 text-xs text-blue-700 flex items-center gap-2">
-          <span className="font-medium">プラン制限:</span>
-          {userPlan === "free" && "無料: 5件 / PRO: 50件 / TEAM: 500件"}
-          {userPlan === "pro" && "50件 / TEAM: 500件"}
-          {userPlan === "team" && "500件"}
-          {userPlan === "enterprise" && "無制限"}
-        </div>
-      )}
+
 
       {/* Preview carousel */}
       {status === "loaded" && rows.length > 0 && (

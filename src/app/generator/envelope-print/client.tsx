@@ -1943,6 +1943,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                       envelopeSize={{ widthMm: ENVELOPE_SIZES[envelopeSize].width, heightMm: ENVELOPE_SIZES[envelopeSize].height, type: ENVELOPE_SIZES[envelopeSize].type as "naga" | "kaku" | "yo" }}
                       sender={sender}
                       userPlan={userPlan}
+                      onValidate={validateCsvWithServer}
                       onAddressSelect={(addr) => {
                         setHonorificManual(false); setHonorificHint("");
                         setRecipient({
