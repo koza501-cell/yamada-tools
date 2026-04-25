@@ -142,7 +142,7 @@ export default function Header() {
                     <span className="text-sm max-w-[80px] truncate hidden sm:inline">{user.email.split("@")[0]}</span>
                   </button>
                   {showUserMenu && (
-                    <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg py-2 text-gray-800 z-50">
+                    <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg py-2 text-gray-800 z-[200]">
                       <div className="px-4 py-2 border-b text-sm text-gray-500 truncate">{user.email}</div>
                       <div className="px-4 py-2 text-sm"><span className="inline-block px-2 py-0.5 bg-gray-100 rounded text-xs">{user.effective_plan === "team" ? "TEAM" : user.effective_plan === "pro" ? "PRO" : user.effective_plan === "pro_trial" ? "PRO (試用)" : "FREE"}</span></div>
                       <Link href="/account" className="block px-4 py-2 hover:bg-gray-100 text-sm" onClick={() => setShowUserMenu(false)}>⚙️ アカウント管理</Link>
