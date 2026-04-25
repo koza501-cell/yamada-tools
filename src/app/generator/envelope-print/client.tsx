@@ -422,7 +422,7 @@ export default function EnvelopePrintClient({
     try { const qr = localStorage.getItem(QR_KEY); if (qr) setQrContent(qr); } catch {}
   }, []);
 
-  const API_BASE = 'https://api.yamada-tools.jp';
+  const API_BASE = 'https://api-staging.yamada-tools.jp';
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -985,8 +985,33 @@ export default function EnvelopePrintClient({
   const parseCSV = (csv: string): AddressData[] => {
     const lines = csv.trim().split("\n");
     if (lines.length < 2) return [];
+    const CSV_KEYS: Record<string, string> = {
+      "郵便番号": "postalCode", "postal_code": "postalCode",
+      "都道府県": "prefecture", "prefecture": "prefecture",
+      "市区町村": "city", "city": "city",
+      "住所": "address1", "住所1": "address1", "address": "address1", "address1": "address1",
+      "住所2": "address2", "address2": "address2",
+      "建物": "building", "building": "building",
+      "会社名": "companyName", "company": "companyName",
+      "部署": "department", "department": "department",
+      "氏名": "name", "名前": "name", "宛名": "name", "name": "name",
+      "敬称": "honorific", "honorific": "honorific",
+    };
+    const headerCols = lines[0].split(",").map(x => x.trim().replace(/^"|"$/g, ""));
+    const colMap: Record<string, number> = {};
+    headerCols.forEach((h, i) => { const k = CSV_KEYS[h]; if (k && !(k in colMap)) colMap[k] = i; });
+    const hasHeaders = Object.keys(colMap).length > 0;
     return lines.slice(1).map(line => {
       const c = line.split(",").map(x => x.trim().replace(/^"|"$/g, ""));
+      if (hasHeaders) {
+        const get = (key: string) => colMap[key] !== undefined ? c[colMap[key]] || "" : "";
+        return {
+          postalCode: get("postalCode"), prefecture: get("prefecture"), city: get("city"),
+          address1: get("address1"), address2: get("address2"), building: get("building"),
+          companyName: get("companyName"), department: get("department"),
+          name: get("name"), honorific: get("honorific").trim(),
+        };
+      }
       return { postalCode: c[0]||"", prefecture: c[1]||"", city: c[2]||"", address1: c[3]||"",
         address2: c[4]||"", building: c[5]||"", companyName: c[6]||"", department: c[7]||"",
         name: c[8]||"", honorific: c[9]?.trim() ?? "" };
@@ -1030,7 +1055,7 @@ export default function EnvelopePrintClient({
           "建物": "building", "building": "building",
           "会社名": "companyName", "company": "companyName",
           "部署": "department", "department": "department",
-          "氏名": "name", "name": "name",
+          "氏名": "name", "名前": "name", "宛名": "name", "name": "name",
           "敬称": "honorific", "honorific": "honorific",
         };
         headerRow.forEach((h, i) => {
