@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { PlanStatusCard } from "./_components/PlanStatusCard";
 
-const API_PAYMENT = "https://api.yamada-tools.jp/api/payment";
+const API_PAYMENT = (process.env.NEXT_PUBLIC_API_URL || "https://api.yamada-tools.jp") + "/api/payment";
 
 export default function AccountPage() {
   const { user } = useAuth();

@@ -33,7 +33,7 @@ interface AuthContextType {
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
-const API_URL = "https://api.yamada-tools.jp/api/auth";
+const API_URL = (process.env.NEXT_PUBLIC_API_URL || "https://api.yamada-tools.jp") + "/api/auth";
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
