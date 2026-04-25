@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
+import { PlanStatusCard } from "../_components/PlanStatusCard";
 
 const API_PAYMENT = "https://api.yamada-tools.jp/api/payment";
 
@@ -105,6 +106,8 @@ export default function BillingPage() {
 
   return (
     <div className="space-y-6">
+      <PlanStatusCard />
+
       {/* Day pass receipts */}
       <div className="bg-white rounded-xl shadow-sm p-6">
         <h2 className="text-base font-semibold text-gray-900 mb-5">1日パス 購入履歴</h2>

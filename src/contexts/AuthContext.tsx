@@ -13,6 +13,7 @@ interface User {
   trial_active?: boolean;
   trial_days_remaining?: number;
   effective_plan?: string;
+  day_pass_expires_at?: string;
 }
 
 interface AuthContextType {

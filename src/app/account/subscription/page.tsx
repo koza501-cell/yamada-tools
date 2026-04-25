@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/contexts/AuthContext";
+import { PlanStatusCard } from "../_components/PlanStatusCard";
 
 const API_PAYMENT = "https://api.yamada-tools.jp/api/payment";
 
@@ -25,6 +26,7 @@ export default function SubscriptionPage() {
 
   const plan = user.effective_plan || "free";
   const isFree = plan === "free";
+  const isDayPass = plan === "pro_trial";
 
   const formatDate = (ts: number) => {
     if (!ts) return "—";
@@ -44,14 +46,10 @@ export default function SubscriptionPage() {
     setPortalLoading(false);
   };
 
-  const planName = (p: string) => {
-    if (p === "pro" || p === "pro_trial") return "PROプラン";
-    if (p === "team") return "TEAMプラン";
-    return "フリープラン";
-  };
-
   return (
     <div className="space-y-6">
+      <PlanStatusCard />
+
       <div className="bg-white rounded-xl shadow-sm p-6">
         <h2 className="text-base font-semibold text-gray-900 mb-5">サブスクリプション</h2>
         {loading ? (
@@ -59,12 +57,10 @@ export default function SubscriptionPage() {
             <div className="h-4 bg-gray-100 rounded w-1/2" />
             <div className="h-4 bg-gray-100 rounded w-1/3" />
           </div>
+        ) : isDayPass ? (
+          <p className="text-sm text-gray-500">デイパスをご利用中です。月額サブスクリプションの詳細はありません。</p>
         ) : (
           <div className="space-y-3 text-sm">
-            <div className="flex justify-between py-2 border-b border-gray-100">
-              <span className="text-gray-500">現在のプラン</span>
-              <span className="font-semibold text-gray-900">{planName(plan)}</span>
-            </div>
             {subscription?.status && (
               <div className="flex justify-between py-2 border-b border-gray-100">
                 <span className="text-gray-500">ステータス</span>
@@ -83,9 +79,12 @@ export default function SubscriptionPage() {
                 <span className="font-medium">•••• {subscription.payment_method_last4}</span>
               </div>
             )}
+            {!subscription?.status && (
+              <p className="text-sm text-gray-500 py-2">月額サブスクリプションはありません</p>
+            )}
           </div>
         )}
-        {!isFree && (
+        {!isFree && !isDayPass && (
           <button onClick={openPortal} disabled={portalLoading} className="mt-6 w-full px-4 py-2.5 bg-[#223A70] text-white text-sm font-medium rounded-lg hover:bg-[#1a2d57] disabled:opacity-50 transition-colors">
             {portalLoading ? "読み込み中..." : "支払い方法・解約の管理"}
           </button>
