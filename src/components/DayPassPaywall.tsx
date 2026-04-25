@@ -55,7 +55,7 @@ export default function DayPassPaywall({ open, onClose, apiBase }: DayPassPaywal
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+      className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
       onClick={onClose}
     >
       <div
@@ -64,7 +64,7 @@ export default function DayPassPaywall({ open, onClose, apiBase }: DayPassPaywal
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl leading-none"
+          className="absolute top-3 right-3 w-11 h-11 flex items-center justify-center text-gray-400 hover:text-gray-600 text-xl leading-none rounded-full hover:bg-gray-100"
           aria-label="閉じる"
         >
           ✕
@@ -73,7 +73,7 @@ export default function DayPassPaywall({ open, onClose, apiBase }: DayPassPaywal
         <h2 className="text-xl font-bold text-center text-gray-900 dark:text-white mb-1">今すぐ続ける</h2>
         <p className="text-sm text-center text-gray-500 dark:text-gray-400 mb-5">広告なし・全機能利用可能</p>
 
-        <div className="grid grid-cols-3 gap-3 mb-5">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5">
           {PASSES.map((p) => (
             <div
               key={p.type}
@@ -118,7 +118,7 @@ export default function DayPassPaywall({ open, onClose, apiBase }: DayPassPaywal
 
         <ul className="space-y-1.5 mb-5">
           {FEATURES.map((f) => (
-            <li key={f} className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+            <li key={f} className="flex items-center gap-2 text-base text-gray-600 dark:text-gray-300">
               <span className="text-green-500 shrink-0">✓</span>
               {f}
             </li>
