@@ -2,6 +2,7 @@
 import { LazyFAQ } from "@/components/common/LazyFAQ";
 
 import { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import RelatedTools, { relatedToolSets } from "@/components/common/RelatedTools";
@@ -846,9 +847,10 @@ export default function EnvelopePrintClient({
   const resetSettings = () => { setSettings(getDefaultSettings(envelopeSize)); setMascotMessage("リセット完了"); };
 
   const showToast = (msg: string) => {
+    console.log("[TOAST]", msg);
     setToast(msg);
     if (toastTimer) clearTimeout(toastTimer);
-    const t = setTimeout(() => setToast(""), 3000);
+    const t = setTimeout(() => setToast(""), 4000);
     setToastTimer(t);
   };
 
@@ -2468,11 +2470,12 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
       </main>
       <footer className="bg-white border-t border-gray-200 mt-12 py-6"><div className="container mx-auto px-4 text-center text-gray-500 text-sm">© 2026 合同会社山田トレード</div></footer>
 
-      {/* Toast notification */}
-      {toast && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] bg-gray-800 text-white text-sm px-5 py-3 rounded-xl shadow-xl whitespace-nowrap pointer-events-none animate-fade-in">
+      {/* Toast notification - portal to bypass stacking context */}
+      {mounted && toast && createPortal(
+        <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[9999] bg-gray-800 text-white text-sm px-5 py-3 rounded-xl shadow-2xl pointer-events-none animate-fade-in" style={{zIndex: 9999}}>
           {toast}
-        </div>
+        </div>,
+        document.body
       )}
 
       {/* Day-pass paywall modal */}
