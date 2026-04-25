@@ -12,6 +12,7 @@ import BulkModePanel from "@/components/envelope/BulkModePanel";
 import { isFeatureEnabled } from "@/config/featureFlags";
 import { useAuth } from "@/contexts/AuthContext";
 import { detectHonorific } from "@/lib/envelope/detectHonorific";
+import DayPassPaywall from "@/components/DayPassPaywall";
 
 const ENVELOPE_SIZES = {
   naga3:  { name: "長形3号",    width: 120, height: 235, type: "naga", postal: "teikei" },
@@ -302,7 +303,7 @@ const UPGRADE_DISMISS_KEY = "yamada_upgrade_dismissed";
 export default function EnvelopePrintClient({
  faq, seoContent }: EnvelopePrintClientProps) {
   const { triggerSuccess } = usePricingContext();
-  const { user } = useAuth();
+  const { user, refreshUser } = useAuth();
 
   const [mounted, setMounted] = useState(false);
   const [mascotState, setMascotState] = useState<MascotState>("idle");
@@ -383,6 +384,7 @@ export default function EnvelopePrintClient({
   const [qrReady, setQrReady] = useState(0);
   // Upgrade banner
   const [showUpgradeBanner, setShowUpgradeBanner] = useState(false);
+  const [dayPassOpen, setDayPassOpen] = useState(false);
 
   const TEMPLATES = [
     { label: "ビジネス", recipient: { companyName: "株式会社○○", department: "総務部", name: "山田太郎", honorific: "様" } as Partial<AddressData>, stamp: null },
@@ -423,6 +425,27 @@ export default function EnvelopePrintClient({
   const API_BASE = 'https://api.yamada-tools.jp';
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    const payment = params.get('payment');
+    if (payment === 'success') {
+      setToast('ご購入ありがとうございます！');
+      setTimeout(() => setToast(''), 4000);
+      refreshUser();
+      const url = new URL(window.location.href);
+      url.searchParams.delete('payment');
+      url.searchParams.delete('session_id');
+      window.history.replaceState(null, '', url.toString());
+    } else if (payment === 'cancelled') {
+      setToast('キャンセルされました');
+      setTimeout(() => setToast(''), 3000);
+      const url = new URL(window.location.href);
+      url.searchParams.delete('payment');
+      window.history.replaceState(null, '', url.toString());
+    }
+  }, []);
+
+  useEffect(() => {
     setUserPlan(user?.effective_plan || 'free');
     if (!user) { setServerTemplates([]); setServerAddresses([]); setAbMigratePrompt(false); }
   }, [user]);
@@ -442,6 +465,7 @@ export default function EnvelopePrintClient({
         const data = await res.json();
         setMascotState('error');
         setMascotMessage(data.detail || 'プランのCSV上限に達しました');
+        setDayPassOpen(true);
         return false;
       }
       if (res.ok) {
@@ -1878,7 +1902,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                             if (getPlanLimits(userPlan).addressBook > 0) {
                               await saveToServerAddress(recipient);
                             } else {
-                              saveToAddressBook(recipient);
+                              setDayPassOpen(true);
                             }
                           }}
                           className="w-full py-2 min-h-[44px] bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors">
@@ -2071,9 +2095,11 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                           )}
                         </div>
                       ) : (
-                        <p className="text-xs text-gray-400 text-center">
-                          テンプレート保存は<Link href="/pricing" className="text-amber-600 hover:underline ml-0.5">PROプラン</Link>で利用できます
-                        </p>
+                        <button
+                          onClick={() => setDayPassOpen(true)}
+                          className="w-full py-2 min-h-[44px] bg-amber-50 hover:bg-amber-100 text-amber-700 rounded-lg text-sm font-medium transition-colors border border-amber-200">
+                          ☁️ テンプレートとして保存
+                        </button>
                       )}
                     </div>
                   </div>
@@ -2424,6 +2450,9 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
           {toast}
         </div>
       )}
+
+      {/* Day-pass paywall modal */}
+      <DayPassPaywall open={dayPassOpen} onClose={() => setDayPassOpen(false)} apiBase={API_BASE} />
 
       {/* Auto-save toast after print */}
       {autoSaveToast && autoSaveAddr && (
