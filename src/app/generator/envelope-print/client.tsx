@@ -465,6 +465,7 @@ export default function EnvelopePrintClient({
         const data = await res.json();
         setMascotState('error');
         setMascotMessage(data.detail || 'プランのCSV上限に達しました');
+        showToast('無料プランでは5件までです。続けるには1日パスをご購入ください 🌟');
         setDayPassOpen(true);
         return false;
       }
@@ -1923,6 +1924,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                             if (getPlanLimits(userPlan).addressBook > 0) {
                               await saveToServerAddress(recipient);
                             } else {
+                              showToast('宛名帳保存はPRO機能です。1日パスでも利用できます 🌟');
                               setDayPassOpen(true);
                             }
                           }}
@@ -2118,7 +2120,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                         </div>
                       ) : (
                         <button
-                          onClick={() => setDayPassOpen(true)}
+                          onClick={() => { showToast('テンプレート保存はPRO機能です。1日パスでも利用できます 🌟'); setDayPassOpen(true); }}
                           className="w-full py-2 min-h-[44px] bg-amber-50 hover:bg-amber-100 text-amber-700 rounded-lg text-sm font-medium transition-colors border border-amber-200">
                           ☁️ テンプレートとして保存
                         </button>
