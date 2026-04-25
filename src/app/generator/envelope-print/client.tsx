@@ -1027,12 +1027,10 @@ export default function EnvelopePrintClient({
     const totalRows = allAddrs.length;
     const ok = await validateCsvWithServer(totalRows);
     if (!ok) return;
-    const limit = getPlanLimits(userPlan).csvRows;
-    const addrs = allAddrs.slice(0, limit);
-    setBulkAddresses(addrs); setCurrentBulkIndex(0); setRecipient(addrs[0]);
+    setBulkAddresses(allAddrs); setCurrentBulkIndex(0); setRecipient(allAddrs[0]);
     setMascotState("success"); triggerSuccess('envelope-print');
-    setMascotMessage(`${addrs.length}件読込完了！${csvAutoFixed>0?`（敬称を${csvAutoFixed}件自動修正）`:""}`);
-    setCsvLimitBanner(totalRows > limit ? totalRows : null);
+    setMascotMessage(`${allAddrs.length}件読込完了！${csvAutoFixed>0?`（敬称を${csvAutoFixed}件自動修正）`:""}`);
+    setCsvLimitBanner(null);
   };
   const handleExcelImport = (file: File) => {
     const reader = new FileReader();
@@ -1086,12 +1084,10 @@ export default function EnvelopePrintClient({
         if (allAddrs.length === 0) { setMascotState("error"); setMascotMessage("有効なデータが見つかりません"); return; }
         const ok = await validateCsvWithServer(allAddrs.length);
         if (!ok) return;
-        const limit = getPlanLimits(userPlan).csvRows;
-        const addrs = allAddrs.slice(0, limit);
-        setBulkAddresses(addrs); setCurrentBulkIndex(0); setRecipient(addrs[0]);
+        setBulkAddresses(allAddrs); setCurrentBulkIndex(0); setRecipient(allAddrs[0]);
         setMascotState("success"); triggerSuccess("envelope-print");
-        setMascotMessage(`${addrs.length}件読込完了！${xlsAutoFixed>0?`（敬称を${xlsAutoFixed}件自動修正）`:""}`);
-        setCsvLimitBanner(allAddrs.length > limit ? allAddrs.length : null);
+        setMascotMessage(`${allAddrs.length}件読込完了！${xlsAutoFixed>0?`（敬称を${xlsAutoFixed}件自動修正）`:""}`);
+        setCsvLimitBanner(null);
       } catch { setMascotState("error"); setMascotMessage("Excelファイルの読み込みに失敗しました"); }
     };
     reader.readAsArrayBuffer(file);
