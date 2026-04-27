@@ -54,19 +54,6 @@ export default function SubscriptionPage() {
     }
   }, []);
 
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get("payment") === "success") {
-      setPaymentSuccess(true);
-      refreshUser();
-      // Parse expiry from user if available
-      const url = new URL(window.location.href);
-      url.searchParams.delete("payment");
-      url.searchParams.delete("session_id");
-      window.history.replaceState(null, "", url.toString());
-    }
-  }, []);
-
   if (!user) return null;
 
   const plan = user.effective_plan || "free";

@@ -477,6 +477,17 @@ export default function EnvelopePrintClient({
     return rowCount <= getPlanLimits(userPlan).csvRows;
   };
 
+  const handleBulkValidate = async (rowCount: number, rows?: import("@/lib/envelope/validation").AddressRow[]): Promise<boolean> => {
+    const limit = getPlanLimits(userPlan).csvRows;
+    if (rowCount > limit) {
+      setMascotState("limit_warning");
+      setMascotMessage(`無料プランでは${limit}件まで処理できます。今のCSVには${rowCount}件あります。`);
+      setCsvSoftWarn({ total: rowCount, allAddrs: rows || [] });
+      return false;
+    }
+    return validateCsvWithServer(rowCount);
+  };
+
   const fetchServerTemplates = async () => {
     const token = typeof window !== 'undefined' ? localStorage.getItem('session_token') : null;
     if (!token) return;
@@ -1987,7 +1998,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                       envelopeSize={{ widthMm: ENVELOPE_SIZES[envelopeSize].width, heightMm: ENVELOPE_SIZES[envelopeSize].height, type: ENVELOPE_SIZES[envelopeSize].type as "naga" | "kaku" | "yo" }}
                       sender={sender}
                       userPlan={userPlan}
-                      onValidate={validateCsvWithServer}
+                      onValidate={handleBulkValidate}
                       onAddressSelect={(addr) => {
                         setHonorificManual(false); setHonorificHint("");
                         setRecipient({

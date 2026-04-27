@@ -13,7 +13,7 @@ interface BulkModePanelProps {
   sender: { postalCode: string; address: string; companyName: string; name: string };
   onAddressSelect: (address: AddressRow) => void;
   userPlan: string;
-  onValidate?: (rowCount: number) => Promise<boolean>;
+  onValidate?: (rowCount: number, rows?: AddressRow[]) => Promise<boolean>;
 }
 
 export default function BulkModePanel({ envelopeSize, sender, onAddressSelect, userPlan, onValidate }: BulkModePanelProps) {
@@ -33,7 +33,7 @@ export default function BulkModePanel({ envelopeSize, sender, onAddressSelect, u
     validationResults: ValidationResult[];
     fileName: string;
   }) => {
-    if (onValidate && !(await onValidate(data.rows.length))) return;
+    if (onValidate && !(await onValidate(data.rows.length, data.rows))) return;
 
     setRows(data.rows);
     setHeaders(data.headers);
