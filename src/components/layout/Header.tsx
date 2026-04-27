@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { pdfTools, documentTools, convertTools, imageTools, generatorTools, financeTools, insuranceTools, taxTools, careerTools, realestateTools, businessTools, healthTools, educationTools, debtTools, utilityTools } from "@/config/tools";
 import { searchTools } from "@/lib/searchUtils";
@@ -17,10 +18,10 @@ const toolsMenu = {
 const calcMenu = {
   title: "計算・シュミレーター",
   sections: [
-    { name: "金融・投賄", icon: "💰", href: "/finance", tools: [{ name: "住宅ローン計算", href: "/finance/jutaku-loan" },{ name: "NISA計算機", href: "/finance/nisa-simulator" },{ name: "老後資金計算", href: "/finance/retirement-simulator" },{ name: "為替計算", href: "/finance/fx-calculator" }], moreLink: "/finance" },
+    { name: "金融・投資", icon: "💰", href: "/finance", tools: [{ name: "住宅ローン計算", href: "/finance/jutaku-loan" },{ name: "NISA計算機", href: "/finance/nisa-simulator" },{ name: "老後資金計算", href: "/finance/retirement-simulator" },{ name: "為替計算", href: "/finance/fx-calculator" }], moreLink: "/finance" },
     { name: "税金・保険", icon: "🧾", href: "/tax", tools: [{ name: "所得税計算", href: "/tax/income-tax-calculator" },{ name: "ふるさと納税", href: "/tax/furusato-nozei-calculator" },{ name: "相続税計算", href: "/tax/inheritance-tax-calculator" },{ name: "生命保険必要額", href: "/insurance/life-insurance-calculator" }], moreLink: "/tax" },
     { name: "キャリア・転職", icon: "💼", href: "/career", tools: [{ name: "転職シュミレーター", href: "/career/job-change-simulator" },{ name: "残業代計算", href: "/career/overtime-calculator" },{ name: "失業保険計算", href: "/career/unemployment-calculator" },{ name: "年収交渉ツール", href: "/career/salary-negotiation" }], moreLink: "/career" },
-    { name: "不動産・ビジネス", icon: "🏢", href: "/realestate", tools: [{ name: "賛貸vs購入", href: "/realestate/rent-vs-buy" },{ name: "引越し費用", href: "/realestate/moving-cost-calculator" },{ name: "法人化シュミレーター", href: "/business/incorporation-simulator" },{ name: "役員報酬最適化", href: "/business/director-salary-optimizer" }], moreLink: "/business" },
+    { name: "不動産・ビジネス", icon: "🏢", href: "/realestate", tools: [{ name: "賃貸vs購入", href: "/realestate/rent-vs-buy" },{ name: "引越し費用", href: "/realestate/moving-cost-calculator" },{ name: "法人化シュミレーター", href: "/business/incorporation-simulator" },{ name: "役員報酬最適化", href: "/business/director-salary-optimizer" }], moreLink: "/business" },
     { name: "健康・生活", icon: "🏥", href: "/health", tools: [{ name: "BMI計算", href: "/health/bmi-calculator" },{ name: "カロリー計算", href: "/health/calorie-calculator" },{ name: "借金返済シュミレーター", href: "/debt/repayment-simulator" },{ name: "教育費シュミレーター", href: "/education/education-cost-simulator" }], moreLink: "/health" },
   ],
 };
@@ -54,7 +55,7 @@ function NavDropdown({ label, menu }: { label: string; menu: MenuConfig }) {
       </div>
       {open && (
         <div
-          className="fixed top-14 left-0 w-full bg-white shadow-xl border-t border-gray-100 z-[60]"
+          className="fixed top-14 left-0 w-full bg-white shadow-xl border-t border-gray-100 z-[1000]"
           onMouseEnter={show}
           onMouseLeave={hide}
         >
@@ -91,15 +92,20 @@ export default function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [showUserMenu, setShowUserMenu] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const userBtnRef = useRef<HTMLButtonElement>(null);
+  const [dropdownPos, setDropdownPos] = useState({ top: 0, right: 0 });
 
   const allToolsForSearch = [...pdfTools, ...documentTools, ...convertTools, ...imageTools, ...generatorTools, ...financeTools, ...insuranceTools, ...taxTools, ...careerTools, ...realestateTools, ...businessTools, ...healthTools, ...educationTools, ...debtTools, ...utilityTools].filter(t => t.available);
   const searchResults = searchTools(searchQuery, allToolsForSearch);
 
+  useEffect(() => { setMounted(true); }, []);
+
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") { e.preventDefault(); setIsSearchOpen(true); }
-      if (e.key === "Escape") { setIsSearchOpen(false); setShowUserMenu(false); }
+      if (e.key === "Escape") { setIsSearchOpen(false); setShowUserMenu(false); setIsMenuOpen(false); }
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
@@ -108,9 +114,23 @@ export default function Header() {
   useEffect(() => { if (isSearchOpen && searchInputRef.current) searchInputRef.current.focus(); }, [isSearchOpen]);
 
   useEffect(() => {
-    const close = () => setShowUserMenu(false);
+    const close = (e: MouseEvent) => {
+      if (userBtnRef.current && !userBtnRef.current.contains(e.target as Node)) {
+        setShowUserMenu(false);
+      }
+    };
     if (showUserMenu) { document.addEventListener("click", close); return () => document.removeEventListener("click", close); }
   }, [showUserMenu]);
+
+  const openUserMenu = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!showUserMenu && userBtnRef.current) {
+      const rect = userBtnRef.current.getBoundingClientRect();
+      setDropdownPos({ top: rect.bottom + 8, right: window.innerWidth - rect.right });
+    }
+    setShowUserMenu(!showUserMenu);
+  };
+
   return (
     <>
       <header className="bg-kon text-white shadow-lg sticky top-0 z-50">
@@ -137,23 +157,10 @@ export default function Header() {
               </button>
               {!loading && (user ? (
                 <div className="relative">
-                  <button onClick={(e) => { e.stopPropagation(); setShowUserMenu(!showUserMenu); }} className="flex items-center gap-2 px-3 py-1.5 bg-sakura hover:bg-sakura/80 rounded-lg transition-colors min-w-[44px] min-h-[44px]">
+                  <button ref={userBtnRef} onClick={openUserMenu} className="flex items-center gap-2 px-3 py-1.5 bg-sakura hover:bg-sakura/80 rounded-lg transition-colors min-w-[44px] min-h-[44px]">
                     <span>👤</span>
                     <span className="text-sm max-w-[80px] truncate hidden sm:inline">{user.email.split("@")[0]}</span>
                   </button>
-                  {showUserMenu && (
-                    <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg py-2 text-gray-800 z-[200]">
-                      <div className="px-4 py-2 border-b text-sm text-gray-500 truncate">{user.email}</div>
-                      <div className="px-4 py-2 text-sm"><span className="inline-block px-2 py-0.5 bg-gray-100 rounded text-xs">{user.effective_plan === "team" ? "TEAM" : user.effective_plan === "pro" ? "PRO" : user.effective_plan === "pro_trial" ? "PRO (試用)" : "FREE"}</span></div>
-                      <Link href="/account" className="block px-4 py-2 hover:bg-gray-100 text-sm" onClick={() => setShowUserMenu(false)}>⚙️ アカウント管理</Link>
-{user.effective_plan === "team" ? null : user.effective_plan === "pro" ? (
-                      <Link href="/pricing" className="block px-4 py-2 hover:bg-gray-100 text-sm" onClick={() => setShowUserMenu(false)}>⭐ TEAMにアップグレード</Link>
-                    ) : (
-                      <Link href="/pricing" className="block px-4 py-2 hover:bg-gray-100 text-sm" onClick={() => setShowUserMenu(false)}>⭐ PROにアップグレード</Link>
-                    )}
-                      <button onClick={async () => { await logout(); setShowUserMenu(false); }} className="w-full text-left px-4 py-2 hover:bg-gray-100 text-sm text-red-600">ログアウト</button>
-                    </div>
-                  )}
                 </div>
               ) : (
                 <Link href="/auth/login" className="flex items-center gap-2 px-3 py-1.5 bg-sakura hover:bg-sakura/80 rounded-lg transition-colors text-sm font-medium min-w-[44px] min-h-[44px]">
@@ -162,15 +169,51 @@ export default function Header() {
                 </Link>
               ))}
 
-              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="lg:hidden p-2 hover:bg-white/10 rounded-lg min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="メニュー">
+              <button onClick={() => setIsMenuOpen(true)} className="lg:hidden p-2 hover:bg-white/10 rounded-lg min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="メニュー">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  {isMenuOpen ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /> : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />}
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               </button>
             </div>
           </div>
-          {isMenuOpen && (
-            <nav className="lg:hidden py-4 border-t border-white/10">
+        </div>
+      </header>
+
+      {mounted && showUserMenu && user && createPortal(
+        <div
+          className="fixed bg-white rounded-lg shadow-lg py-2 text-gray-800 z-[1000] w-48"
+          style={{ top: dropdownPos.top, right: dropdownPos.right }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="px-4 py-2 border-b text-sm text-gray-500 truncate">{user.email}</div>
+          <div className="px-4 py-2 text-sm"><span className="inline-block px-2 py-0.5 bg-gray-100 rounded text-xs">{user.effective_plan === "team" ? "TEAM" : user.effective_plan === "pro" ? "PRO" : user.effective_plan === "pro_trial" ? "PRO (試用)" : "FREE"}</span></div>
+          <Link href="/account" className="block px-4 py-2 hover:bg-gray-100 text-sm" onClick={() => setShowUserMenu(false)}>⚙️ アカウント管理</Link>
+          {user.effective_plan === "team" ? null : user.effective_plan === "pro" ? (
+            <Link href="/pricing" className="block px-4 py-2 hover:bg-gray-100 text-sm" onClick={() => setShowUserMenu(false)}>⭐ TEAMにアップグレード</Link>
+          ) : (
+            <Link href="/pricing" className="block px-4 py-2 hover:bg-gray-100 text-sm" onClick={() => setShowUserMenu(false)}>⭐ PROにアップグレード</Link>
+          )}
+          <button onClick={async () => { await logout(); setShowUserMenu(false); }} className="w-full text-left px-4 py-2 hover:bg-gray-100 text-sm text-red-600">ログアウト</button>
+        </div>,
+        document.body
+      )}
+
+      {mounted && isMenuOpen && createPortal(
+        <div className="fixed inset-0 z-[900] flex" onClick={() => setIsMenuOpen(false)}>
+          <div className="absolute inset-0 bg-black/40" />
+          <div
+            className="relative ml-auto w-72 max-w-[85vw] h-full bg-kon text-white overflow-y-auto flex flex-col shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-4 py-4 border-b border-white/10">
+              <span className="font-bold text-lg">メニュー</span>
+              <button onClick={() => setIsMenuOpen(false)} className="w-10 h-10 flex items-center justify-center hover:bg-white/10 rounded-lg" aria-label="閉じる">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <nav className="flex-1 py-4">
               <div className="mb-4">
                 <div className="px-4 py-2 text-xs text-white/60 uppercase tracking-wide">ツール</div>
                 {toolsMenu.sections.map((s) => (
@@ -192,13 +235,20 @@ export default function Header() {
                 <Link href="/ai" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 transition-colors"><span className="text-xl">🤖</span><span className="font-medium">AI活用</span></Link>
                 <Link href="/pricing" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 transition-colors"><span className="text-xl">💳</span><span className="font-medium">料金プラン</span></Link>
               </div>
+              {user && (
+                <div className="border-t border-white/10 pt-4 mt-2">
+                  <Link href="/account" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 transition-colors"><span className="text-xl">⚙️</span><span className="font-medium">アカウント管理</span></Link>
+                  <Link href="/pricing" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 transition-colors"><span className="text-xl">⭐</span><span className="font-medium">料金・アップグレード</span></Link>
+                </div>
+              )}
             </nav>
-          )}
-        </div>
-      </header>
+          </div>
+        </div>,
+        document.body
+      )}
 
       {isSearchOpen && (
-        <div className="fixed inset-0 z-[100] bg-black/50 flex items-start justify-center pt-20" onClick={() => setIsSearchOpen(false)}>
+        <div className="fixed inset-0 z-[1000] bg-black/50 flex items-start justify-center pt-20" onClick={() => setIsSearchOpen(false)}>
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-xl mx-4 p-4" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center gap-3 border-b pb-4">
               <span className="text-2xl">🔍</span>
