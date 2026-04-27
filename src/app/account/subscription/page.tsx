@@ -1,16 +1,19 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { PlanStatusCard } from "../_components/PlanStatusCard";
 
 const API_PAYMENT = (process.env.NEXT_PUBLIC_API_URL || "https://api.yamada-tools.jp") + "/api/payment";
 
 export default function SubscriptionPage() {
-  const { user } = useAuth();
+  const { user, refreshUser } = useAuth();
   const [subscription, setSubscription] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [portalLoading, setPortalLoading] = useState(false);
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
+  const [dayPassExpiry, setDayPassExpiry] = useState<string | null>(null);
 
   useEffect(() => {
     const token = localStorage.getItem("session_token");
@@ -20,6 +23,19 @@ export default function SubscriptionPage() {
       .then((d) => setSubscription(d.subscription))
       .catch(() => {})
       .finally(() => setLoading(false));
+  }, []);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("payment") === "success") {
+      setPaymentSuccess(true);
+      refreshUser();
+      // Parse expiry from user if available
+      const url = new URL(window.location.href);
+      url.searchParams.delete("payment");
+      url.searchParams.delete("session_id");
+      window.history.replaceState(null, "", url.toString());
+    }
   }, []);
 
   if (!user) return null;
