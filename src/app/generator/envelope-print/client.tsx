@@ -2429,7 +2429,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
 
             {/* ── RIGHT PANEL (preview) ── */}
             <div className="space-y-6 mt-6 lg:mt-0 lg:sticky lg:top-20 lg:self-start">
-              <div className="flex justify-center"><Mascot state={mascotState} message={mascotMessage}/></div>
+              <div className="flex justify-center"><Mascot state={mascotState} message={mascotMessage} priority /></div>
 
               {/* Overflow warning banner */}
               {overflowWarning && (

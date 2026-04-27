@@ -13,6 +13,7 @@ export default function SubscriptionPage() {
   const [loading, setLoading] = useState(true);
   const [portalLoading, setPortalLoading] = useState(false);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
+  const [paymentPlan, setPaymentPlan] = useState<string | null>(null);
   const [dayPassExpiry, setDayPassExpiry] = useState<string | null>(null);
 
   useEffect(() => {
@@ -23,6 +24,34 @@ export default function SubscriptionPage() {
       .then((d) => setSubscription(d.subscription))
       .catch(() => {})
       .finally(() => setLoading(false));
+  }, []);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("payment") === "success") {
+      const plan = params.get("plan") || null;
+      setPaymentSuccess(true);
+      setPaymentPlan(plan);
+      localStorage.setItem("yamada_payment_success", JSON.stringify({ plan, ts: Date.now() }));
+      refreshUser();
+      const url = new URL(window.location.href);
+      url.searchParams.delete("payment");
+      url.searchParams.delete("session_id");
+      url.searchParams.delete("plan");
+      window.history.replaceState(null, "", url.toString());
+    } else {
+      try {
+        const saved = localStorage.getItem("yamada_payment_success");
+        if (saved) {
+          const { plan, ts } = JSON.parse(saved);
+          if (Date.now() - ts < 10 * 60 * 1000) {
+            setPaymentSuccess(true);
+            setPaymentPlan(plan);
+          }
+          localStorage.removeItem("yamada_payment_success");
+        }
+      } catch {}
+    }
   }, []);
 
   useEffect(() => {
@@ -64,7 +93,24 @@ export default function SubscriptionPage() {
 
   return (
     <div className="space-y-6">
-      <PlanStatusCard />
+      {paymentSuccess && (
+        <div className="bg-green-50 border border-green-200 rounded-xl p-4 flex items-start gap-3">
+          <span className="text-green-500 text-xl mt-0.5">&#x2705;</span>
+          <div className="flex-1">
+            <p className="text-sm font-semibold text-green-800">ご購入ありがとうございます！</p>
+            <p className="text-xs text-green-700 mt-0.5">
+              {paymentPlan === "1day"
+                ? "デイパスが有効になりました（24時間）"
+                : "PROプランが有効になりました。次回請求日まで全機能をご利用いただけます。"}
+            </p>
+            <a href="/generator/envelope-print" className="mt-2 inline-block text-xs font-medium text-green-700 underline underline-offset-2 hover:text-green-900">
+              封筒印刷に戻る &rarr;
+            </a>
+          </div>
+          <button onClick={() => setPaymentSuccess(false)} className="text-green-400 hover:text-green-600 text-lg leading-none">&times;</button>
+        </div>
+      )}
+    <PlanStatusCard />
 
       <div className="bg-white rounded-xl shadow-sm p-6">
         <h2 className="text-base font-semibold text-gray-900 mb-5">サブスクリプション</h2>

@@ -28,6 +28,7 @@ interface MascotProps {
   customMessage?: string;  // takes priority over auto message
   showUpgradeLink?: boolean;
   className?: string;
+  priority?: boolean;
 }
 
 const mascotImages: Record<string, string> = {
@@ -299,6 +300,7 @@ export default function Mascot({
   customMessage,
   showUpgradeLink,
   className,
+  priority = false,
 }: MascotProps) {
   const [effectiveState, setEffectiveState] = useState<InternalState>(state);
   const [resolvedMessage, setResolvedMessage] = useState<string>("");
@@ -409,6 +411,7 @@ export default function Mascot({
             src={imgSrc}
             alt="アイちゃん"
             fill
+            priority={priority}
             className={`object-contain transition-all duration-300 drop-shadow-lg ${
               isSuccess || isCelebrating ? "scale-105 brightness-105" :
               isError   ? "brightness-95" : ""
