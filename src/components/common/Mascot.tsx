@@ -371,20 +371,8 @@ export default function Mascot({
 
   useEffect(() => {
     if (!resolvedMessage) return;
-    setIsTyping(true);
-    setDisplayedMessage("");
-    let idx = 0;
-    const type = () => {
-      if (idx < resolvedMessage.length) {
-        setDisplayedMessage(resolvedMessage.slice(0, idx + 1));
-        idx++;
-        setTimeout(type, 25);
-      } else {
-        setIsTyping(false);
-      }
-    };
-    const t = setTimeout(type, 100);
-    return () => clearTimeout(t);
+    setDisplayedMessage(resolvedMessage);
+    setIsTyping(false);
   }, [resolvedMessage]);
 
   const pose             = statePose[effectiveState];
@@ -462,7 +450,6 @@ export default function Mascot({
 
         <p className="text-sm text-sumi leading-relaxed min-h-[1.5em]">
           {displayedMessage}
-          {isTyping && <span className="animate-blink text-kon">|</span>}
           {isProcessing && !isTyping && <TypingIndicator />}
         </p>
 
