@@ -1994,11 +1994,26 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                 <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
                   <h2 className="text-lg font-bold mb-4 text-gray-900 dark:text-white"><span>📋</span> CSV一括印刷</h2>
                   {isFeatureEnabled("BULK_MAIL_MERGE") ? (
-                    <BulkModePanel
-                      envelopeSize={{ widthMm: ENVELOPE_SIZES[envelopeSize].width, heightMm: ENVELOPE_SIZES[envelopeSize].height, type: ENVELOPE_SIZES[envelopeSize].type as "naga" | "kaku" | "yo" }}
-                      sender={sender}
-                      userPlan={userPlan}
-                      onValidate={handleBulkValidate}
+                    <>
+                      {csvSoftWarn !== null && (
+                        <div className="mb-4 bg-amber-50 border border-amber-300 rounded-xl p-4 text-amber-800 text-sm">
+                          <p className="font-semibold mb-1">⚠️ CSV件数が上限を超えています</p>
+                          <p className="mb-3">無料プランでは{getPlanLimits(userPlan).csvRows}件まで処理できます。今のCSVには<strong>{csvSoftWarn.total}件</strong>あります。</p>
+                          <div className="flex flex-col sm:flex-row gap-2">
+                            <button onClick={handleCsvContinueFree} className="flex-1 px-4 py-2 bg-white border border-amber-400 text-amber-800 rounded-lg text-sm font-medium hover:bg-amber-50 transition-colors">
+                              {getPlanLimits(userPlan).csvRows}件で続ける
+                            </button>
+                            <button onClick={handleCsvUpgrade} className="flex-1 px-4 py-2 bg-amber-600 text-white rounded-lg text-sm font-medium hover:bg-amber-700 transition-colors">
+                              全件印刷するにはアップグレード
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                      <BulkModePanel
+                        envelopeSize={{ widthMm: ENVELOPE_SIZES[envelopeSize].width, heightMm: ENVELOPE_SIZES[envelopeSize].height, type: ENVELOPE_SIZES[envelopeSize].type as "naga" | "kaku" | "yo" }}
+                        sender={sender}
+                        userPlan={userPlan}
+                        onValidate={handleBulkValidate}
                       onAddressSelect={(addr) => {
                         setHonorificManual(false); setHonorificHint("");
                         setRecipient({
@@ -2008,6 +2023,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                         });
                       }}
                     />
+                    </>
                   ) : (
                     <>
                       {csvSoftWarn !== null && (
