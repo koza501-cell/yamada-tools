@@ -386,6 +386,8 @@ export default function EnvelopePrintClient({
   // Upgrade banner
   const [showUpgradeBanner, setShowUpgradeBanner] = useState(false);
   const [dayPassOpen, setDayPassOpen] = useState(false);
+  const [csvSoftWarn, setCsvSoftWarn] = useState<{ total: number; allAddrs: AddressData[] } | null>(null);
+  const [pendingCsvAddrs, setPendingCsvAddrs] = useState<AddressData[] | null>(null);
 
   const TEMPLATES = [
     { label: "ビジネス", recipient: { companyName: "株式会社○○", department: "総務部", name: "山田太郎", honorific: "様" } as Partial<AddressData>, stamp: null },
@@ -462,11 +464,6 @@ export default function EnvelopePrintClient({
         body: JSON.stringify({ row_count: rowCount }),
       });
       if (res.status === 403) {
-        const data = await res.json();
-        setMascotState('error');
-        setMascotMessage(data.detail || 'プランのCSV上限に達しました');
-        showToast('無料プランでは5件までです。続けるには1日パスをご購入ください 🌟');
-        setDayPassOpen(true);
         return false;
       }
       if (res.ok) {
@@ -1027,12 +1024,49 @@ export default function EnvelopePrintClient({
     let csvAutoFixed = 0;
     const allAddrs = rawAddrs.map(a => { const autoH=detectHonorific(a.name,a.companyName); const finalH=a.honorific||autoH; if(!a.honorific&&autoH!=="様")csvAutoFixed++; return {...a,honorific:finalH}; });
     const totalRows = allAddrs.length;
+    const limit = getPlanLimits(userPlan).csvRows;
+    if (totalRows > limit) {
+      setMascotState("limit_warning");
+      setMascotMessage(`無料プランでは${limit}件まで処理できます。今のCSVには${totalRows}件あります。`);
+      setCsvSoftWarn({ total: totalRows, allAddrs });
+      return;
+    }
     const ok = await validateCsvWithServer(totalRows);
     if (!ok) return;
     setBulkAddresses(allAddrs); setCurrentBulkIndex(0); setRecipient(allAddrs[0]);
     setMascotState("success"); triggerSuccess('envelope-print');
     setMascotMessage(`${allAddrs.length}件読込完了！${csvAutoFixed>0?`（敬称を${csvAutoFixed}件自動修正）`:""}`);
     setCsvLimitBanner(null);
+  };
+
+  const handleCsvContinueFree = () => {
+    if (!csvSoftWarn) return;
+    const limit = getPlanLimits(userPlan).csvRows;
+    const limited = csvSoftWarn.allAddrs.slice(0, limit);
+    setBulkAddresses(limited); setCurrentBulkIndex(0); setRecipient(limited[0]);
+    setMascotState("success");
+    setMascotMessage(`${limit}件読込完了（全${csvSoftWarn.total}件中）`);
+    setCsvLimitBanner(csvSoftWarn.total);
+    setCsvSoftWarn(null);
+  };
+
+  const handleCsvUpgrade = () => {
+    if (csvSoftWarn) setPendingCsvAddrs(csvSoftWarn.allAddrs);
+    setCsvSoftWarn(null);
+    setDayPassOpen(true);
+  };
+
+  const handlePaywallClose = () => {
+    setDayPassOpen(false);
+    if (pendingCsvAddrs && bulkAddresses.length === 0) {
+      const limit = getPlanLimits(userPlan).csvRows;
+      const limited = pendingCsvAddrs.slice(0, limit);
+      setBulkAddresses(limited); setCurrentBulkIndex(0); setRecipient(limited[0]);
+      setCsvLimitBanner(pendingCsvAddrs.length);
+      setMascotState("idle");
+      setMascotMessage(`無料プランでは${limit}件まで表示しています（残り${pendingCsvAddrs.length - limit}件）`);
+      setPendingCsvAddrs(null);
+    }
   };
   const handleExcelImport = (file: File) => {
     const reader = new FileReader();
@@ -1084,6 +1118,13 @@ export default function EnvelopePrintClient({
         const allAddrs = rawAddrs.map(a => { const autoH=detectHonorific(a.name,a.companyName); const finalH=a.honorific||autoH; if(!a.honorific&&autoH!=="様")xlsAutoFixed++; return {...a,honorific:finalH}; });
 
         if (allAddrs.length === 0) { setMascotState("error"); setMascotMessage("有効なデータが見つかりません"); return; }
+        const xlsLimit = getPlanLimits(userPlan).csvRows;
+        if (allAddrs.length > xlsLimit) {
+          setMascotState("limit_warning");
+          setMascotMessage(`無料プランでは${xlsLimit}件まで処理できます。今のファイルには${allAddrs.length}件あります。`);
+          setCsvSoftWarn({ total: allAddrs.length, allAddrs });
+          return;
+        }
         const ok = await validateCsvWithServer(allAddrs.length);
         if (!ok) return;
         setBulkAddresses(allAddrs); setCurrentBulkIndex(0); setRecipient(allAddrs[0]);
@@ -1523,7 +1564,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                 <span>🕒</span> 最近の印刷
                 <span className="text-xs text-gray-400">({getPlanLimits(userPlan).history >= 9999 ? '全履歴' : `最大${getPlanLimits(userPlan).history}件`})</span>
               </p>
-              <div className="flex gap-3 overflow-x-auto pb-2">
+              <div className="flex flex-wrap gap-2 pb-2">
                 {printHistory.map(entry => {
                   const borderColor = entry.envelopeSize.startsWith("naga") ? "border-l-blue-400"
                     : entry.envelopeSize.startsWith("kaku") ? "border-l-green-400" : "border-l-purple-400";
@@ -1532,7 +1573,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                   const dateStr = `${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,"0")}:${String(d.getMinutes()).padStart(2,"0")}`;
                   return (
                     <div key={entry.id}
-                      className={`min-w-[148px] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 border-l-4 ${borderColor} rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow flex-shrink-0`}>
+                      className={`min-w-[120px] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 border-l-4 ${borderColor} rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow`}>
                       <p className="text-xs font-medium text-gray-800 truncate">{label}</p>
                       <p className="text-xs text-gray-500 mt-0.5">{entry.envelopeLabel}</p>
                       <p className="text-xs text-gray-400 mt-0.5">{dateStr}</p>
@@ -1641,7 +1682,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                     })}
                   </div>
                 </div>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-2 sm:gap-4">
                   <div>
                     <label className="block text-sm text-gray-600 mb-1">封筒サイズ <span title="長形3号は最も一般的。洋形は招待状向け。角形2号はA4書類向け" className="text-gray-400 hover:text-gray-600 cursor-help text-xs">❓</span></label>
                     <select value={envelopeSize} onChange={(e) => setEnvelopeSize(e.target.value as EnvelopeSize)} className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-800 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200">
@@ -1958,6 +1999,20 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                     />
                   ) : (
                     <>
+                      {csvSoftWarn !== null && (
+                        <div className="mb-4 bg-amber-50 border border-amber-300 rounded-xl p-4 text-amber-800 text-sm">
+                          <p className="font-semibold mb-1">⚠️ CSV件数が上限を超えています</p>
+                          <p className="mb-3">無料プランでは5件まで処理できます。今のCSVには<strong>{csvSoftWarn.total}件</strong>あります。</p>
+                          <div className="flex flex-col sm:flex-row gap-2">
+                            <button onClick={handleCsvContinueFree} className="flex-1 px-4 py-2 bg-white border border-amber-400 text-amber-800 rounded-lg text-sm font-medium hover:bg-amber-50 transition-colors">
+                              5件で続ける
+                            </button>
+                            <button onClick={handleCsvUpgrade} className="flex-1 px-4 py-2 bg-amber-600 text-white rounded-lg text-sm font-medium hover:bg-amber-700 transition-colors">
+                              全件印刷するにはアップグレード
+                            </button>
+                          </div>
+                        </div>
+                      )}
                       {csvLimitBanner !== null && (
                         <div className="mb-4 bg-amber-50 border border-amber-300 rounded-lg p-4 text-amber-800 text-sm">
                           {(() => { const lim = getPlanLimits(userPlan).csvRows; return (
@@ -2009,7 +2064,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                           <label htmlFor="excel-file-input" className="inline-block px-3 py-1.5 bg-green-600 text-white rounded text-xs cursor-pointer hover:bg-green-700">📊 Excelをアップロード</label>
                       </div>
                       <textarea value={csvData} onChange={(e) => setCsvData(e.target.value)}
-                        placeholder="ヘッダー行&#10;データ行..." className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-sm h-28 font-mono dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
+                        placeholder="ヘッダー行&#10;データ行..." className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-sm h-28 font-mono dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 overflow-x-auto break-all"/>
                       {csvData.trim() && (() => {
                         const n = countCsvRows(csvData);
                         const lim = getPlanLimits(userPlan).csvRows;
@@ -2392,20 +2447,25 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
 
               <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
                 <h2 className="text-lg font-bold mb-4 text-gray-900 dark:text-white"><span>👁️</span> プレビュー<span className="ml-2 text-xs text-gray-500">(画面用: 低解像度)</span></h2>
-                <div className="flex justify-center bg-gray-100 dark:bg-gray-700 rounded-lg p-4 w-full overflow-hidden">
+                <div className="flex justify-center bg-gray-100 dark:bg-gray-700 rounded-lg p-4 w-full overflow-hidden relative">
                   <canvas ref={canvasRef} className={`border shadow-lg max-w-full ${overflowWarning ? "border-amber-400" : "border-gray-300"}`} style={{background:"white", height:"auto"}} />
+                  {csvLimitBanner !== null && bulkAddresses.length > 0 && (
+                    <div className="absolute top-2 left-2 right-2 bg-amber-500/90 text-white text-xs text-center py-1 px-2 rounded">
+                      無料プランでは{getPlanLimits(userPlan).csvRows}件まで表示（残り{csvLimitBanner - getPlanLimits(userPlan).csvRows}件）
+                    </div>
+                  )}
                 </div>
                 <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-2">{envelope.name} ({envelope.width}×{envelope.height}mm)</p>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <button onClick={() => { if (validateForm()) generatePDF(); }} className="flex items-center justify-center gap-2 px-6 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold shadow-md">
-                  <span>📄</span>
-                  <div className="text-left"><div>PDF / 印刷</div><div className="text-xs opacity-80">300 DPI</div></div>
+                <button onClick={() => { if (validateForm()) generatePDF(); }} className="flex items-center justify-center gap-1 px-3 sm:px-6 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold shadow-md min-w-0">
+                  <span className="shrink-0">📄</span>
+                  <div className="text-left min-w-0"><div className="whitespace-nowrap">PDF / 印刷</div><div className="text-xs opacity-80 whitespace-nowrap">300 DPI</div></div>
                 </button>
-                <button onClick={() => { if (validateForm()) handlePrint(); }} className="flex items-center justify-center gap-2 px-6 py-4 bg-green-600 hover:bg-green-700 text-white rounded-xl font-bold shadow-md">
-                  <span>🖨️</span>
-                  <div className="text-left"><div>直接印刷</div><div className="text-xs opacity-80">高画質</div></div>
+                <button onClick={() => { if (validateForm()) handlePrint(); }} className="flex items-center justify-center gap-1 px-3 sm:px-6 py-4 bg-green-600 hover:bg-green-700 text-white rounded-xl font-bold shadow-md min-w-0">
+                  <span className="shrink-0">🖨️</span>
+                  <div className="text-left min-w-0"><div className="whitespace-nowrap">直接印刷</div><div className="text-xs opacity-80 whitespace-nowrap">高画質</div></div>
                 </button>
               </div>
               {showUpgradeBanner && userPlan === 'free' && (
@@ -2478,7 +2538,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
       )}
 
       {/* Day-pass paywall modal */}
-      <DayPassPaywall open={dayPassOpen} onClose={() => setDayPassOpen(false)} apiBase={API_BASE} />
+      <DayPassPaywall open={dayPassOpen} onClose={handlePaywallClose} apiBase={API_BASE} rowCount={pendingCsvAddrs?.length ?? csvSoftWarn?.total} onContinueFree={pendingCsvAddrs ? handleCsvContinueFree : undefined} />
 
       {/* Auto-save toast after print */}
       {autoSaveToast && autoSaveAddr && (
