@@ -6,6 +6,8 @@ interface DayPassPaywallProps {
   open: boolean;
   onClose: () => void;
   apiBase: string;
+  rowCount?: number;
+  onContinueFree?: () => void;
 }
 
 const PASSES = [
@@ -21,7 +23,7 @@ const FEATURES = [
   "広告非表示",
 ];
 
-export default function DayPassPaywall({ open, onClose, apiBase }: DayPassPaywallProps) {
+export default function DayPassPaywall({ open, onClose, apiBase, rowCount, onContinueFree }: DayPassPaywallProps) {
   const [loading, setLoading] = useState<string | null>(null);
 
   if (!open) return null;
