@@ -2,6 +2,9 @@
 import { LazyFAQ } from "@/components/common/LazyFAQ";
 
 import { useState, useEffect, useRef } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
@@ -292,6 +295,40 @@ async function generateQRImageAsync(content: string, sizePx: number): Promise<HT
 
 // ── Component ────────────────────────────────────────────────────────────────
 
+
+const recipientSchema = z.object({
+  postalCode: z.string().refine(
+    (v) => !v || v.replace(/[^0-9]/g, "").length === 7,
+    { message: "7桌で入力してください" }
+  ),
+  prefecture: z.string(),
+  city: z.string(),
+  address1: z.string(),
+  address2: z.string(),
+  building: z.string(),
+  companyName: z.string(),
+  department: z.string(),
+  name: z.string(),
+  honorific: z.string(),
+}).refine(
+  (d) => !!(d.name || d.companyName),
+  { message: "氏名または会社名を入力してください", path: ["name"] }
+);
+
+const senderSchema = z.object({
+  postalCode: z.string(),
+  address: z.string(),
+  companyName: z.string(),
+  name: z.string(),
+});
+
+const envelopeSchema = z.object({
+  recipient: recipientSchema,
+  sender: senderSchema,
+});
+
+type EnvelopeFormValues = z.infer<typeof envelopeSchema>;
+
 const STORAGE_KEY = "yamada-envelope-settings";
 const ADDR_BOOK_KEY = "yamada_envelope_addresses";
 const SENDER_KEY = "yamada_envelope_sender";
@@ -310,16 +347,30 @@ export default function EnvelopePrintClient({
   const [mascotState, setMascotState] = useState<MascotState>("idle");
   const [mascotMessage, setMascotMessage] = useState("封筒の宛名情報をご入力ください。");
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const errorBannerRef = useRef<HTMLDivElement>(null);
+  const canvasTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const { register, trigger, reset, setValue, getValues, watch, formState: { errors } } = useForm<EnvelopeFormValues>({
+    resolver: zodResolver(envelopeSchema),
+    defaultValues: {
+      recipient: {
+        postalCode: "", prefecture: "", city: "", address1: "", address2: "",
+        building: "", companyName: "", department: "", name: "", honorific: "様",
+      },
+      sender: { postalCode: "", address: "", companyName: "", name: "" },
+    },
+  });
+
+  const recipientWatch = watch("recipient");
+  const senderWatch = watch("sender");
+  const postalCodeWatch = watch("recipient.postalCode");
   const [envelopeSize, setEnvelopeSize] = useState<EnvelopeSize>("naga3");
   const [writingDirection, setWritingDirection] = useState<WritingDirection>("vertical");
   const [showPostalBox, setShowPostalBox] = useState(true);
   const [showSender, setShowSender] = useState(true);
   const [settings, setSettings] = useState<LayoutSettings>(getDefaultSettings("naga3"));
-  const [recipient, setRecipient] = useState<AddressData>({
-    postalCode: "", prefecture: "", city: "", address1: "", address2: "",
-    building: "", companyName: "", department: "", name: "", honorific: "様",
-  });
-  const [sender, setSender] = useState<SenderData>({ postalCode: "", address: "", companyName: "", name: "" });
+
+
   const [stamp, setStamp] = useState<StampData>({ enabled: false, text: "請求書在中", color: "red" });
   const [bulkMode, setBulkMode] = useState(false);
   const [csvData, setCsvData] = useState("");
@@ -329,7 +380,7 @@ export default function EnvelopePrintClient({
   const [postalLoading, setPostalLoading] = useState(false);
   const [postalError, setPostalError] = useState("");
   const [postalConfirm, setPostalConfirm] = useState("");
-  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+
   const [stampPosition, setStampPosition] = useState<number>(4);
   const [overflowWarning, setOverflowWarning] = useState(false);
   const [overflowSuggestions, setOverflowSuggestions] = useState<EnvelopeSize[]>([]);
@@ -402,7 +453,11 @@ export default function EnvelopePrintClient({
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
         const p = JSON.parse(saved);
-        if (p.sender) setSender(p.sender);
+        if (p.sender) {
+          (Object.keys(p.sender) as Array<keyof SenderData>).forEach((k) =>
+            setValue(`sender.${k}` as `sender.${keyof SenderData}`, p.sender[k] as string, { shouldDirty: false })
+          );
+        }
       }
     } catch {}
     try {
@@ -416,7 +471,10 @@ export default function EnvelopePrintClient({
     try {
       const snd = localStorage.getItem(SENDER_KEY);
       if (snd) {
-        setSender(JSON.parse(snd));
+        const sndData: SenderData = JSON.parse(snd);
+        (Object.keys(sndData) as Array<keyof SenderData>).forEach((k) =>
+          setValue(`sender.${k}` as `sender.${keyof SenderData}`, sndData[k] as string, { shouldDirty: false })
+        );
         setSenderRestored(true);
         setTimeout(() => setSenderRestored(false), 5000);
       }
@@ -512,7 +570,7 @@ export default function EnvelopePrintClient({
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
         body: JSON.stringify({
           name: templateSaveName.trim() || '差出人テンプレート',
-          sender_data: sender,
+          sender_data: getValues("sender"),
           format_prefs: { envelopeSize, writingDirection },
         }),
       });
@@ -551,7 +609,9 @@ export default function EnvelopePrintClient({
   };
 
   const applyServerTemplate = (t: ServerTemplate) => {
-    setSender(t.sender_data);
+    (Object.keys(t.sender_data) as Array<keyof SenderData>).forEach((k) =>
+      setValue(`sender.${k}` as `sender.${keyof SenderData}`, t.sender_data[k] as string, { shouldDirty: false, shouldValidate: false })
+    );
     if (t.format_prefs.envelopeSize) setEnvelopeSize(t.format_prefs.envelopeSize as EnvelopeSize);
     if (t.format_prefs.writingDirection) setWritingDirection(t.format_prefs.writingDirection as WritingDirection);
     setTemplateListOpen(false);
@@ -673,17 +733,20 @@ export default function EnvelopePrintClient({
 
   const loadFromServerAddress = (a: ServerAddress) => {
     setHonorificManual(false); setHonorificHint("");
-    setRecipient({
-      postalCode: a.postal_code,
-      prefecture: a.prefecture,
-      city: a.city,
-      address1: a.address_detail,
-      address2: "",
-      building: "",
-      companyName: a.company_name,
-      department: a.department,
-      name: a.recipient_name,
-      honorific: a.honorific,
+    reset({
+      recipient: {
+        postalCode: a.postal_code,
+        prefecture: a.prefecture,
+        city: a.city,
+        address1: a.address_detail,
+        address2: "",
+        building: "",
+        companyName: a.company_name,
+        department: a.department,
+        name: a.recipient_name,
+        honorific: a.honorific,
+      },
+      sender: getValues("sender"),
     });
     showToast(`📬 「${a.company_name || a.recipient_name}」を読み込みました`);
   };
@@ -753,7 +816,11 @@ export default function EnvelopePrintClient({
     }
   }, [envelopeSize, mounted]);
 
-  useEffect(() => { if (mounted) renderPreview(); }, [mounted, envelopeSize, writingDirection, showPostalBox, showSender, recipient, sender, stamp, currentBulkIndex, bulkAddresses, settings, activeTab, logoPosition, logoSizeMm, logoOpacity, showBarcode, qrPosition, qrSizeMm, userPlan, logoReady, qrReady, activeLogoIdx]);
+  useEffect(() => {
+    if (!mounted) return;
+    if (canvasTimerRef.current) clearTimeout(canvasTimerRef.current);
+    canvasTimerRef.current = setTimeout(() => { renderPreview(); }, 150);
+  }, [mounted, envelopeSize, writingDirection, showPostalBox, showSender, recipientWatch, senderWatch, stamp, currentBulkIndex, bulkAddresses, settings, activeTab, logoPosition, logoSizeMm, logoOpacity, showBarcode, qrPosition, qrSizeMm, userPlan, logoReady, qrReady, activeLogoIdx]);
 
 
   // Logo image loading
@@ -774,7 +841,7 @@ export default function EnvelopePrintClient({
   // Overflow detection — runs whenever recipient or size changes
   useEffect(() => {
     if (!mounted) return;
-    const curr = bulkMode && bulkAddresses.length > 0 ? bulkAddresses[currentBulkIndex] : recipient;
+    const curr = bulkMode && bulkAddresses.length > 0 ? bulkAddresses[currentBulkIndex] : getValues("recipient");
     const result = detectOverflow(curr, envelopeSize);
     setOverflowWarning(result.hasOverflow);
     setOverflowSuggestions(result.suggestedSizes.slice(0, 3));
@@ -785,10 +852,10 @@ export default function EnvelopePrintClient({
       map[k] = detectOverflow(curr, k).hasOverflow;
     }
     setSizeOverflowMap(map);
-  }, [mounted, recipient, envelopeSize, bulkMode, bulkAddresses, currentBulkIndex]);
+  }, [mounted, recipientWatch, envelopeSize, bulkMode, bulkAddresses, currentBulkIndex]);
   // Auto-trigger postal lookup when 7 digits entered
   useEffect(() => {
-    const code = recipient.postalCode.replace(/[^0-9]/g, "");
+    const code = (postalCodeWatch || "").replace(/[^0-9]/g, "");
     if (code.length !== 7) return;
     let cancelled = false;
     const timer = setTimeout(async () => {
@@ -801,7 +868,9 @@ export default function EnvelopePrintClient({
         const json = await res.json();
         if (!cancelled && json.results?.[0]) {
           const r = json.results[0];
-          setRecipient(prev => ({ ...prev, prefecture: r.address1 || "", city: r.address2 || "", address1: r.address3 || "" }));
+          setValue("recipient.prefecture", r.address1 || "", { shouldValidate: false });
+          setValue("recipient.city", r.address2 || "", { shouldValidate: false });
+          setValue("recipient.address1", r.address3 || "", { shouldValidate: false });
           setPostalConfirm(`〒${code.slice(0,3)}-${code.slice(3)} → ${r.address1}${r.address2}${r.address3}`);
           setTimeout(() => setPostalConfirm(""), 4000);
         } else if (!cancelled) {
@@ -811,11 +880,11 @@ export default function EnvelopePrintClient({
       finally { if (!cancelled) setPostalLoading(false); }
     }, 400);
     return () => { cancelled = true; clearTimeout(timer); };
-  }, [recipient.postalCode]);
+  }, [postalCodeWatch]);
 
   // ── Postal lookup ──────────────────────────────────────────────────────────
   const handlePostalLookup = async () => {
-    const code = recipient.postalCode.replace(/[^0-9]/g, "");
+    const code = getValues("recipient.postalCode").replace(/[^0-9]/g, "");
     if (code.length !== 7) { setPostalError("7桁で入力してください"); return; }
     setPostalLoading(true); setPostalError("");
     try {
@@ -823,28 +892,40 @@ export default function EnvelopePrintClient({
       const json = await res.json();
       if (json.results?.[0]) {
         const r = json.results[0];
-        setRecipient(prev => ({ ...prev, prefecture: r.address1 || "", city: r.address2 || "", address1: r.address3 || "" }));
+        setValue("recipient.prefecture", r.address1 || "", { shouldValidate: false });
+        setValue("recipient.city", r.address2 || "", { shouldValidate: false });
+        setValue("recipient.address1", r.address3 || "", { shouldValidate: false });
       } else { setPostalError("住所が見つかりません"); }
     } catch { setPostalError("検索に失敗しました"); }
     finally { setPostalLoading(false); }
   };
 
-  const validateForm = (): boolean => {
-    const errs: Record<string, string> = {};
-    if (!recipient.name && !recipient.companyName) errs.name = "氏名または会社名を入力してください";
-    if (recipient.postalCode && recipient.postalCode.replace(/[^0-9]/g, "").length !== 7) errs.postalCode = "7桁で入力してください";
-    setFieldErrors(errs);
-    return Object.keys(errs).length === 0;
+  const validateAndPrint = async (action: "pdf" | "print") => {
+    const valid = await trigger("recipient");
+    if (!valid) {
+      setMascotState("error");
+      setMascotMessage("必須項目を確認してね！");
+      setTimeout(() => {
+        errorBannerRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+        const first = document.querySelector("[aria-invalid='true']") as HTMLElement | null;
+        first?.focus();
+      }, 50);
+      return;
+    }
+    if (action === "pdf") generatePDF();
+    else handlePrint();
   };
 
   const applyTemplate = (tpl: typeof TEMPLATES[number]) => {
-    if (tpl.recipient) setRecipient(prev => ({ ...prev, ...tpl.recipient }));
+    if (tpl.recipient) {
+      reset({ recipient: { ...getValues("recipient"), ...tpl.recipient }, sender: getValues("sender") });
+    }
     if (tpl.stamp) setStamp(tpl.stamp);
   };
 
   const saveSettings = () => {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({ sender }));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ sender: getValues("sender") }));
       localStorage.setItem(`${STORAGE_KEY}-${envelopeSize}`, JSON.stringify(settings));
       setMascotState("success")
       triggerSuccess('envelope-print');; setMascotMessage("設定を保存しました！");
@@ -908,17 +989,20 @@ export default function EnvelopePrintClient({
 
   const loadFromAddressBook = (saved: SavedAddress) => {
     setHonorificManual(false); setHonorificHint("");
-    setRecipient({
-      postalCode: saved.postalCode,
-      prefecture: saved.prefecture,
-      city: saved.city,
-      address1: saved.address,
-      address2: "",
-      building: saved.building,
-      companyName: saved.company,
-      department: saved.department,
-      name: saved.name,
-      honorific: saved.honorific,
+    reset({
+      recipient: {
+        postalCode: saved.postalCode,
+        prefecture: saved.prefecture,
+        city: saved.city,
+        address1: saved.address,
+        address2: "",
+        building: saved.building,
+        companyName: saved.company,
+        department: saved.department,
+        name: saved.name,
+        honorific: saved.honorific,
+      },
+      sender: getValues("sender"),
     });
     const updated = savedAddresses.map(a => a.id === saved.id ? { ...a, lastUsedAt: Date.now() } : a);
     persistAddressBook(updated);
@@ -926,7 +1010,7 @@ export default function EnvelopePrintClient({
   };
 
   const saveSenderData = () => {
-    try { localStorage.setItem(SENDER_KEY, JSON.stringify(sender)); showToast("✅ 差出人を保存しました"); } catch {}
+    try { localStorage.setItem(SENDER_KEY, JSON.stringify(getValues("sender"))); showToast("✅ 差出人を保存しました"); } catch {}
   };
 
   const saveToHistory = (addr: AddressData) => {
@@ -1044,7 +1128,7 @@ export default function EnvelopePrintClient({
     }
     const ok = await validateCsvWithServer(totalRows);
     if (!ok) return;
-    setBulkAddresses(allAddrs); setCurrentBulkIndex(0); setRecipient(allAddrs[0]);
+    setBulkAddresses(allAddrs); setCurrentBulkIndex(0); reset({ recipient: allAddrs[0], sender: getValues("sender") });
     setMascotState("success"); triggerSuccess('envelope-print');
     setMascotMessage(`${allAddrs.length}件読込完了！${csvAutoFixed>0?`（敬称を${csvAutoFixed}件自動修正）`:""}`);
     setCsvLimitBanner(null);
@@ -1054,7 +1138,7 @@ export default function EnvelopePrintClient({
     if (!csvSoftWarn) return;
     const limit = getPlanLimits(userPlan).csvRows;
     const limited = csvSoftWarn.allAddrs.slice(0, limit);
-    setBulkAddresses(limited); setCurrentBulkIndex(0); setRecipient(limited[0]);
+    setBulkAddresses(limited); setCurrentBulkIndex(0); reset({ recipient: limited[0], sender: getValues("sender") });
     setMascotState("success");
     setMascotMessage(`${limit}件読込完了（全${csvSoftWarn.total}件中）`);
     setCsvLimitBanner(csvSoftWarn.total);
@@ -1072,7 +1156,7 @@ export default function EnvelopePrintClient({
     if (pendingCsvAddrs && bulkAddresses.length === 0) {
       const limit = getPlanLimits(userPlan).csvRows;
       const limited = pendingCsvAddrs.slice(0, limit);
-      setBulkAddresses(limited); setCurrentBulkIndex(0); setRecipient(limited[0]);
+      setBulkAddresses(limited); setCurrentBulkIndex(0); reset({ recipient: limited[0], sender: getValues("sender") });
       setCsvLimitBanner(pendingCsvAddrs.length);
       setMascotState("idle");
       setMascotMessage(`無料プランでは${limit}件まで表示しています（残り${pendingCsvAddrs.length - limit}件）`);
@@ -1138,7 +1222,7 @@ export default function EnvelopePrintClient({
         }
         const ok = await validateCsvWithServer(allAddrs.length);
         if (!ok) return;
-        setBulkAddresses(allAddrs); setCurrentBulkIndex(0); setRecipient(allAddrs[0]);
+        setBulkAddresses(allAddrs); setCurrentBulkIndex(0); reset({ recipient: allAddrs[0], sender: getValues("sender") });
         setMascotState("success"); triggerSuccess("envelope-print");
         setMascotMessage(`${allAddrs.length}件読込完了！${xlsAutoFixed>0?`（敬称を${xlsAutoFixed}件自動修正）`:""}`);
         setCsvLimitBanner(null);
@@ -1164,12 +1248,12 @@ export default function EnvelopePrintClient({
     ctx.fillRect(0, 0, env.width, env.height);
     ctx.strokeStyle = "#ddd"; ctx.lineWidth = 0.5;
     ctx.strokeRect(0.5, 0.5, env.width - 1, env.height - 1);
-    const curr = bulkMode && bulkAddresses.length > 0 ? bulkAddresses[currentBulkIndex] : recipient;
+    const curr = bulkMode && bulkAddresses.length > 0 ? bulkAddresses[currentBulkIndex] : getValues("recipient");
     if (showPostalBox && curr.postalCode) drawPostalCode(ctx, curr.postalCode, env);
     if (stamp.enabled && stamp.text) drawStamp(ctx, stamp, env);
     if (writingDirection === "vertical") drawVerticalAddress(ctx, curr, env, false);
     else drawHorizontalAddress(ctx, curr, env);
-    if (showSender) drawSender(ctx, sender, env, false);
+    if (showSender) drawSender(ctx, getValues("sender"), env, false);
     const pl = getPlanLimits(userPlan);
     if (pl.logos > 0 && logoImgRef.current) drawLogo(ctx, env);
     if (pl.barcode && showBarcode) drawCustomerBarcode(ctx, curr, env);
@@ -1190,12 +1274,12 @@ export default function EnvelopePrintClient({
     ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, env.width, env.height);
     ctx.strokeStyle = "#ddd"; ctx.lineWidth = 0.5;
     ctx.strokeRect(0.5, 0.5, env.width - 1, env.height - 1);
-    const curr = bulkMode && bulkAddresses.length > 0 ? bulkAddresses[currentBulkIndex] : recipient;
+    const curr = bulkMode && bulkAddresses.length > 0 ? bulkAddresses[currentBulkIndex] : getValues("recipient");
     if (showPostalBox && curr.postalCode) drawPostalCode(ctx, curr.postalCode, env);
     if (stamp.enabled && stamp.text) drawStamp(ctx, stamp, env);
     if (writingDirection === "vertical") drawVerticalAddress(ctx, curr, env, true);
     else drawHorizontalAddress(ctx, curr, env);
-    if (showSender) drawSender(ctx, sender, env, true);
+    if (showSender) drawSender(ctx, getValues("sender"), env, true);
     const pl2 = getPlanLimits(userPlan);
     if (pl2.logos > 0 && logoImgRef.current) drawLogo(ctx, env);
     if (pl2.barcode && showBarcode) drawCustomerBarcode(ctx, curr, env);
@@ -1492,7 +1576,7 @@ export default function EnvelopePrintClient({
   };
 
   const handlePrint = () => {
-    const curr = bulkMode && bulkAddresses.length > 0 ? bulkAddresses[currentBulkIndex] : recipient;
+    const curr = bulkMode && bulkAddresses.length > 0 ? bulkAddresses[currentBulkIndex] : getValues("recipient");
     saveToHistory(curr);
     triggerAutoSavePrompt(curr);
     checkShowUpgradeBanner();
@@ -1513,7 +1597,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
   };
 
   const generatePDF = () => {
-    const curr = bulkMode && bulkAddresses.length > 0 ? bulkAddresses[currentBulkIndex] : recipient;
+    const curr = bulkMode && bulkAddresses.length > 0 ? bulkAddresses[currentBulkIndex] : getValues("recipient");
     saveToHistory(curr);
     triggerAutoSavePrompt(curr);
     checkShowUpgradeBanner();
@@ -1544,7 +1628,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
   if (!mounted) return <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div></div>;
 
   const envelope = ENVELOPE_SIZES[envelopeSize];
-  const curr = bulkMode && bulkAddresses.length > 0 ? bulkAddresses[currentBulkIndex] : recipient;
+  const curr = bulkMode && bulkAddresses.length > 0 ? bulkAddresses[currentBulkIndex] : getValues("recipient");
   const autoFonts = calcAutoFonts(curr, envelope);
   const recommendedSize = overflowSuggestions[0];
 
@@ -1591,11 +1675,14 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                       <button
                         onClick={() => {
                           setHonorificManual(false); setHonorificHint("");
-                          setRecipient({
-                            postalCode: entry.recipient.postalCode, prefecture: entry.recipient.prefecture,
-                            city: entry.recipient.city, address1: entry.recipient.address, address2: "",
-                            building: entry.recipient.building, companyName: entry.recipient.company,
-                            department: "", name: entry.recipient.name, honorific: entry.recipient.honorific,
+                          reset({
+                            recipient: {
+                              postalCode: entry.recipient.postalCode, prefecture: entry.recipient.prefecture,
+                              city: entry.recipient.city, address1: entry.recipient.address, address2: "",
+                              building: entry.recipient.building, companyName: entry.recipient.company,
+                              department: "", name: entry.recipient.name, honorific: entry.recipient.honorific,
+                            },
+                            sender: getValues("sender"),
                           });
                           setEnvelopeSize(entry.envelopeSize as EnvelopeSize);
                           showToast("🕒 履歴から読み込みました");
@@ -1933,32 +2020,32 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                     <div>
                       <label className="block text-xs text-gray-500 mb-1">郵便番号 <span className="text-red-500">*</span></label>
                       <div className="flex gap-2">
-                        <input type="text" value={recipient.postalCode} onChange={(e) => { setRecipient({...recipient, postalCode: e.target.value}); setPostalError(""); setFieldErrors({...fieldErrors, postalCode: ""}); }} placeholder="1000001" maxLength={8} className={`flex-1 bg-gray-50 border rounded-lg px-3 py-2 ${fieldErrors.postalCode ? "border-red-400" : "border-gray-300"}`}/>
+                        <input type="text" {...register("recipient.postalCode")} placeholder="1000001" maxLength={8} className={`flex-1 bg-gray-50 border rounded-lg px-3 py-2 ${errors.recipient?.postalCode ? "border-red-400" : "border-gray-300"}`} aria-invalid={!!errors.recipient?.postalCode} onChange={(e) => { setValue("recipient.postalCode", e.target.value, { shouldValidate: true }); setPostalError(""); }}/>
                         <button onClick={handlePostalLookup} disabled={postalLoading} className="px-3 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 disabled:opacity-50 whitespace-nowrap">
                           {postalLoading ? "..." : "住所検索"}
                         </button>
                       </div>
-                      {fieldErrors.postalCode && <p className="text-xs text-red-500 mt-1">{fieldErrors.postalCode}</p>}
+                      {errors.recipient?.postalCode && <p className="text-xs text-red-500 mt-1" role="alert">{errors.recipient.postalCode.message}</p>}
                       {postalError && <p className="text-xs text-red-500 mt-1">{postalError}</p>}
                       {postalConfirm && <p className="text-xs text-green-600 mt-1 bg-green-50 px-2 py-1 rounded">✅ {postalConfirm}</p>}
                     </div>
                     <div className="grid grid-cols-2 gap-3">
-                      <input type="text" value={recipient.prefecture} onChange={(e) => setRecipient({...recipient, prefecture: e.target.value})} placeholder="都道府県" className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
-                      <input type="text" value={recipient.city} onChange={(e) => setRecipient({...recipient, city: e.target.value})} placeholder="市区町村" className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
+                      <input type="text" {...register("recipient.prefecture")} placeholder="都道府県" className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
+                      <input type="text" {...register("recipient.city")} placeholder="市区町村" className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
                     </div>
-                    <input type="text" value={recipient.address1} onChange={(e) => setRecipient({...recipient, address1: e.target.value})} placeholder="番地 (例: 1丁目2-3)" className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
-                    <input type="text" value={recipient.building} onChange={(e) => setRecipient({...recipient, building: e.target.value})} placeholder="建物名・部屋番号" className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
-                    <input type="text" value={recipient.companyName} onChange={(e) => { const v=e.target.value; if(!honorificManual){const h=detectHonorific(recipient.name,v);setRecipient({...recipient,companyName:v,honorific:h});setHonorificHint(h==="御中"?"会社宛なので「御中」が推奨":"");}else{setRecipient({...recipient,companyName:v});}}} placeholder="会社名" className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
-                    <input type="text" value={recipient.department} onChange={(e) => setRecipient({...recipient, department: e.target.value})} placeholder="部署名" className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
+                    <input type="text" {...register("recipient.address1")} placeholder="番地 (例: 1丁目2-3)" className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
+                    <input type="text" {...register("recipient.building")} placeholder="建物名・部屋番号" className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
+                    <input type="text" {...register("recipient.companyName")} placeholder="会社名" onChange={(e) => { const v=e.target.value; setValue("recipient.companyName", v, {shouldDirty:true}); if(!honorificManual){const h=detectHonorific(getValues("recipient.name"),v);setValue("recipient.honorific",h,{shouldDirty:true});setHonorificHint(h==="御中"?"会社宛なので「御中」が推奨":"");} }} className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
+                    <input type="text" {...register("recipient.department")} placeholder="部署名" className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
                     <div>
                       <label className="block text-xs text-gray-500 mb-1">氏名 <span className="text-red-500">*</span></label>
                       <div className="grid grid-cols-3 gap-3">
-                        <input type="text" value={recipient.name} onChange={(e) => { const v=e.target.value; if(!honorificManual){const h=detectHonorific(v,recipient.companyName);setRecipient({...recipient,name:v,honorific:h});setHonorificHint(h==="御中"?"会社宛なので「御中」が推奨":"");}else{setRecipient({...recipient,name:v});}setFieldErrors({...fieldErrors,name:""}); }} placeholder="氏名" className={`col-span-2 bg-gray-50 border rounded-lg px-3 py-2 ${fieldErrors.name ? "border-red-400" : "border-gray-300"}`}/>
-                        <select value={recipient.honorific} onChange={(e) => { setHonorificManual(true); setHonorificHint(""); setRecipient({...recipient, honorific: e.target.value}); }} className="bg-gray-50 border border-gray-300 rounded-lg px-3 py-2">
+                        <input type="text" {...register("recipient.name")} placeholder="氏名" className={`col-span-2 bg-gray-50 border rounded-lg px-3 py-2 ${errors.recipient?.name ? "border-red-400" : "border-gray-300"}`} aria-invalid={!!errors.recipient?.name} onChange={(e) => { const v=e.target.value; setValue("recipient.name", v, {shouldDirty:true, shouldValidate:true}); if(!honorificManual){const h=detectHonorific(v,getValues("recipient.companyName"));setValue("recipient.honorific",h,{shouldDirty:true});setHonorificHint(h==="御中"?"会社宛なので「御中」が推奨":"");} }}/>
+                        <select {...register("recipient.honorific")} onChange={(e) => { setHonorificManual(true); setHonorificHint(""); setValue("recipient.honorific", e.target.value, {shouldDirty:true}); }} className="bg-gray-50 border border-gray-300 rounded-lg px-3 py-2">
                           <option value="様">様</option><option value="御中">御中</option><option value="殿">殿</option><option value="先生">先生</option><option value="">なし</option>
                         </select>
                       </div>
-                      {fieldErrors.name && <p className="text-xs text-red-500 mt-1">{fieldErrors.name}</p>}
+                      {errors.recipient?.name && <p className="text-xs text-red-500 mt-1" role="alert">{errors.recipient.name.message}</p>}
                       {honorificHint && <p className="text-xs text-blue-500 mt-1">💡 {honorificHint}</p>}
                     </div>
                     <div className="pt-2 border-t border-gray-100">
@@ -1975,7 +2062,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                               return;
                             }
                             if (getPlanLimits(userPlan).addressBook > 0) {
-                              await saveToServerAddress(recipient);
+                              await saveToServerAddress(getValues("recipient"));
                             } else {
                               showToast('宛名帳保存はPRO機能です。1日パスでも利用できます 🌟');
                               setDayPassOpen(true);
@@ -2011,15 +2098,18 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                       )}
                       <BulkModePanel
                         envelopeSize={{ widthMm: ENVELOPE_SIZES[envelopeSize].width, heightMm: ENVELOPE_SIZES[envelopeSize].height, type: ENVELOPE_SIZES[envelopeSize].type as "naga" | "kaku" | "yo" }}
-                        sender={sender}
+                        sender={getValues("sender")}
                         userPlan={userPlan}
                         onValidate={handleBulkValidate}
                       onAddressSelect={(addr) => {
                         setHonorificManual(false); setHonorificHint("");
-                        setRecipient({
-                          postalCode: addr.postalCode, prefecture: addr.prefecture, city: addr.city,
-                          address1: addr.address1, address2: addr.address2, building: addr.building,
-                          companyName: addr.companyName, department: addr.department, name: addr.name, honorific: addr.honorific,
+                        reset({
+                          recipient: {
+                            postalCode: addr.postalCode, prefecture: addr.prefecture, city: addr.city,
+                            address1: addr.address1, address2: addr.address2, building: addr.building,
+                            companyName: addr.companyName, department: addr.department, name: addr.name, honorific: addr.honorific,
+                          },
+                          sender: getValues("sender"),
                         });
                       }}
                     />
@@ -2108,9 +2198,9 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                       </div>
                       {bulkAddresses.length > 0 && (
                         <div className="mt-4 flex items-center gap-2">
-                          <button onClick={() => {const i=Math.max(0,currentBulkIndex-1);setCurrentBulkIndex(i);setRecipient(bulkAddresses[i]);}} disabled={currentBulkIndex===0} className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50">←</button>
+                          <button onClick={() => {const i=Math.max(0,currentBulkIndex-1);setCurrentBulkIndex(i);reset({recipient:bulkAddresses[i],sender:getValues("sender")});}} disabled={currentBulkIndex===0} className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50">←</button>
                           <span className="text-sm text-gray-700">{currentBulkIndex+1}/{bulkAddresses.length}</span>
-                          <button onClick={() => {const i=Math.min(bulkAddresses.length-1,currentBulkIndex+1);setCurrentBulkIndex(i);setRecipient(bulkAddresses[i]);}} disabled={currentBulkIndex===bulkAddresses.length-1} className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50">→</button>
+                          <button onClick={() => {const i=Math.min(bulkAddresses.length-1,currentBulkIndex+1);setCurrentBulkIndex(i);reset({recipient:bulkAddresses[i],sender:getValues("sender")});}} disabled={currentBulkIndex===bulkAddresses.length-1} className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50">→</button>
                         </div>
                       )}
                     </>
@@ -2127,10 +2217,10 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                     </div>
                   )}
                   <div className="space-y-3">
-                    <input type="text" value={sender.postalCode} onChange={(e) => setSender({...sender, postalCode: e.target.value})} placeholder="郵便番号" className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
-                    <input type="text" value={sender.address} onChange={(e) => setSender({...sender, address: e.target.value})} placeholder="住所" className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
-                    <input type="text" value={sender.companyName} onChange={(e) => setSender({...sender, companyName: e.target.value})} placeholder="会社名" className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
-                    <input type="text" value={sender.name} onChange={(e) => setSender({...sender, name: e.target.value})} placeholder="氏名" className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
+                    <input type="text" {...register("sender.postalCode")} placeholder="郵便番号" className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
+                    <input type="text" {...register("sender.address")} placeholder="住所" className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
+                    <input type="text" {...register("sender.companyName")} placeholder="会社名" className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
+                    <input type="text" {...register("sender.name")} placeholder="氏名" className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
                     <button onClick={saveSenderData}
                       className="w-full py-2 min-h-[44px] bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-sm font-medium transition-colors border border-gray-200">
                       💾 差出人を保存（次回から自動入力）
@@ -2485,12 +2575,23 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                 <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-2">{envelope.name} ({envelope.width}×{envelope.height}mm)</p>
               </div>
 
+
+              {(errors.recipient?.name || errors.recipient?.postalCode) && (
+                <div ref={errorBannerRef} role="alert" aria-live="assertive" className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-300 dark:border-red-700 rounded-xl">
+                  <p className="font-bold text-red-700 dark:text-red-400 mb-2">入力内容を確認してください</p>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    {errors.recipient?.name && <li><a href="#recipient-name" className="text-red-600 underline hover:text-red-800">{errors.recipient.name.message}</a></li>}
+                    {errors.recipient?.postalCode && <li><a href="#recipient-postalCode" className="text-red-600 underline hover:text-red-800">{errors.recipient.postalCode.message}</a></li>}
+                  </ul>
+                </div>
+              )}
+
               <div className="grid grid-cols-2 gap-4">
-                <button onClick={() => { if (validateForm()) generatePDF(); }} className="flex items-center justify-center gap-1 px-3 sm:px-6 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold shadow-md min-w-0">
+                <button onClick={() => validateAndPrint("pdf")} className="flex items-center justify-center gap-1 px-3 sm:px-6 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold shadow-md min-w-0">
                   <span className="shrink-0">📄</span>
                   <div className="text-left min-w-0"><div className="whitespace-nowrap">PDF / 印刷</div><div className="text-xs opacity-80 whitespace-nowrap">300 DPI</div></div>
                 </button>
-                <button onClick={() => { if (validateForm()) handlePrint(); }} className="flex items-center justify-center gap-1 px-3 sm:px-6 py-4 bg-green-600 hover:bg-green-700 text-white rounded-xl font-bold shadow-md min-w-0">
+                <button onClick={() => validateAndPrint("print")} className="flex items-center justify-center gap-1 px-3 sm:px-6 py-4 bg-green-600 hover:bg-green-700 text-white rounded-xl font-bold shadow-md min-w-0">
                   <span className="shrink-0">🖨️</span>
                   <div className="text-left min-w-0"><div className="whitespace-nowrap">直接印刷</div><div className="text-xs opacity-80 whitespace-nowrap">高画質</div></div>
                 </button>
