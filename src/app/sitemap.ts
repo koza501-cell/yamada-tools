@@ -7,7 +7,7 @@ const baseUrl = "https://yamada-tools.jp";
 
 // Sitemap IDs: 0 = static pages, 1 = tool pages
 export function generateSitemaps() {
-  return [{ id: 0 }, { id: 1 }];
+  return [{ id: 0 }, { id: 1 }, { id: 2 }];
 }
 
 export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
@@ -56,6 +56,49 @@ export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
       { url: baseUrl + "/legal/tokushoho", lastModified: currentDate, changeFrequency: "yearly", priority: 0.3 },
       { url: baseUrl + "/search", lastModified: currentDate, changeFrequency: "weekly", priority: 0.7 },
     ];
+  }
+
+
+  // numId === 2: e-Stat prefecture pages + souzoku-touki
+  if (numId === 2) {
+    const prefSlugs = [
+      "hokkaido","aomori","iwate","miyagi","akita","yamagata","fukushima",
+      "ibaraki","tochigi","gunma","saitama","chiba","tokyo","kanagawa",
+      "niigata","toyama","ishikawa","fukui","yamanashi","nagano","gifu",
+      "shizuoka","aichi","mie","shiga","kyoto","osaka","hyogo","nara",
+      "wakayama","tottori","shimane","okayama","hiroshima","yamaguchi",
+      "tokushima","kagawa","ehime","kochi","fukuoka","saga","nagasaki",
+      "kumamoto","oita","miyazaki","kagoshima","okinawa",
+    ];
+    const estatPages: MetadataRoute.Sitemap = [];
+    // Main + ranking/sub pages for each tool
+    const estatMains = [
+      { url: baseUrl + "/finance/heikin-nenshu/ranking", priority: 0.85 },
+      { url: baseUrl + "/finance/heikin-nenshu/industry", priority: 0.80 },
+      { url: baseUrl + "/finance/jinko-suikei/ranking", priority: 0.85 },
+      { url: baseUrl + "/finance/jinko-suikei/age-pyramid", priority: 0.80 },
+      { url: baseUrl + "/health/heikin-jumyo/ranking", priority: 0.85 },
+      { url: baseUrl + "/health/heikin-jumyo/yomei", priority: 0.80 },
+      { url: baseUrl + "/career/shitsugyo-ritsu/ranking", priority: 0.85 },
+      { url: baseUrl + "/souzoku-touki", priority: 0.90 },
+      { url: baseUrl + "/souzoku-touki/wizard", priority: 0.85 },
+      { url: baseUrl + "/souzoku-touki/checklist", priority: 0.80 },
+      { url: baseUrl + "/souzoku-touki/pricing", priority: 0.80 },
+      { url: baseUrl + "/souzoku-touki/faq", priority: 0.75 },
+      { url: baseUrl + "/souzoku-touki/tax", priority: 0.75 },
+      { url: baseUrl + "/souzoku-touki/houmukyoku", priority: 0.75 },
+    ];
+    for (const p of estatMains) {
+      estatPages.push({ url: p.url, lastModified: currentDate, changeFrequency: "monthly", priority: p.priority });
+    }
+    // 47 prefecture pages × 4 tools = 188
+    for (const slug of prefSlugs) {
+      estatPages.push({ url: baseUrl + "/finance/heikin-nenshu/" + slug, lastModified: currentDate, changeFrequency: "monthly", priority: 0.80 });
+      estatPages.push({ url: baseUrl + "/finance/jinko-suikei/" + slug, lastModified: currentDate, changeFrequency: "monthly", priority: 0.80 });
+      estatPages.push({ url: baseUrl + "/health/heikin-jumyo/" + slug, lastModified: currentDate, changeFrequency: "monthly", priority: 0.80 });
+      estatPages.push({ url: baseUrl + "/career/shitsugyo-ritsu/" + slug, lastModified: currentDate, changeFrequency: "monthly", priority: 0.80 });
+    }
+    return estatPages;
   }
 
   // numId === 1: Tool pages sitemap

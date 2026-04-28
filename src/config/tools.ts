@@ -1285,6 +1285,34 @@ export const financeTools: Tool[] = [
     available: true,
     isFeatured: true,
   },
+  {
+    id: "heikin-nenshu",
+    nameJa: "都道府県別平均年収",
+    nameEn: "Average Income by Prefecture",
+    description: "47都道府県の平均年収・業種別年収を国勢調査ベースで比較。全国ランキング付き。",
+    icon: "💰",
+    path: "/finance/heikin-nenshu",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+    isFeatured: true,
+  },
+  {
+    id: "jinko-suikei",
+    nameJa: "都道府県別人口推移・将来予測",
+    nameEn: "Population Trends by Prefecture",
+    description: "47都道府県の人口推移・将来推計・年齢ピラミッドを国勢調査データで可視化。",
+    icon: "📈",
+    path: "/finance/jinko-suikei",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+    isFeatured: false,
+  },
 ];
 
 // ============================================
@@ -1552,6 +1580,20 @@ export const businessTools: Tool[] = [
     category: "finance",
     available: true,
   },
+  {
+    id: "shitsugyo-ritsu",
+    nameJa: "都道府県別失業率",
+    nameEn: "Unemployment Rate by Prefecture",
+    description: "47都道府県の完全失業率・有効求人倍率を比較。総務省国勢調査データ準拠。",
+    icon: "📊",
+    path: "/career/shitsugyo-ritsu",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "career",
+    available: true,
+    isFeatured: false,
+  },
 ];
 
 // ============================================
@@ -1635,6 +1677,20 @@ export const healthTools: Tool[] = [
     maxFiles: 0,
     category: "generator",
     available: true,
+  },
+  {
+    id: "heikin-jumyo",
+    nameJa: "都道府県別平均寿命",
+    nameEn: "Life Expectancy by Prefecture",
+    description: "47都道府県の男女別平均寿命・余命計算。厚生労働省完全生命表データ準拠。",
+    icon: "❤️",
+    path: "/health/heikin-jumyo",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "health",
+    available: true,
+    isFeatured: false,
   },
 ];
 
