@@ -8,7 +8,7 @@ export interface Tool {
   apiEndpoint: string;
   acceptedTypes: string;
   maxFiles: number;
-  category: "pdf" | "document" | "convert" | "image" | "generator" | "finance";
+  category: "pdf" | "document" | "convert" | "image" | "generator" | "finance" | "career" | "health" | "insurance" | "tax" | "realestate" | "business" | "education" | "debt" | "utility";
   available: boolean;
   isNew?: boolean;
   isPopular?: boolean;
