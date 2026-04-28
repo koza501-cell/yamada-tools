@@ -212,7 +212,7 @@ export default function BusinessPage() {
 
 
           {/* Security Document Download */}
-          <section className="bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-8 border border-blue-200 dark:border-blue-800">
+          <section id="download" className="bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-8 border border-blue-200 dark:border-blue-800">
             <h2 className="text-xl font-bold text-kon mb-4 flex items-center gap-2">
               <span>📋</span> セキュリティ確認書・導入事例
             </h2>

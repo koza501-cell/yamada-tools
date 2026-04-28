@@ -1,0 +1,35 @@
+# Phase 2 - Typo Hunt Results
+# Command: grep -rn 'シュミレ' src/ tests/ --include=*.tsx|*.ts|*.md|*.json|*.yml
+# Run: 2026-04-28
+
+## SOURCE FILE MATCHES (require fix)
+
+src/components/layout/Header.tsx:19:  title: calcMenu.title
+src/components/layout/Header.tsx:23:  tool name: 転職シュミレーター (URL slug /career/job-change-simulator is correct)
+src/components/layout/Header.tsx:24:  tool name: 法人化シュミレーター (URL slug /business/incorporation-simulator is correct)
+src/components/layout/Header.tsx:25:  tool name: 借金返済シュミレーター
+src/components/layout/Header.tsx:25:  tool name: 教育費シュミレーター
+src/components/layout/Header.tsx:146: desktop NavDropdown label
+src/components/layout/Header.tsx:226: mobile drawer section label
+
+Total source matches: 7
+
+## EXCLUDED (auto-generated, not source)
+
+test-results/**/*.md - Playwright DOM snapshots (8 files, 16 lines) - auto-corrected when source is fixed
+docs/audits/playwright-report/data/*.md - Playwright report artifacts (2 lines) - same
+
+## URL SLUGS
+
+All URL slugs are romanized correctly.
+No 301 redirects needed.
+
+## OTHER FILES
+
+src/config/tools.ts - CLEAN (0 matches)
+tests/ - CLEAN (0 Playwright selector matches)
+*.json / *.yml / *.md content files - CLEAN
+
+## POST-FIX VERIFICATION
+
+grep -rn 'シュミレ' src/ tests/ => 0 matches
