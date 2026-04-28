@@ -108,7 +108,7 @@ export default function QuotationClient() {
   if (errors.items?.root || errors.items?.message) {
     errorFields.push({ id: "item-0-name", label: "明細" });
   }
-  (errors.items ?? []).forEach((e, i) => {
+  ((errors.items ?? []) as any[]).forEach((e, i) => {
     if (e?.name) errorFields.push({ id: `item-${i}-name`, label: `明細 ${i + 1} 品名` });
   });
 
