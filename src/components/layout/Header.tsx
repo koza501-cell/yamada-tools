@@ -3,29 +3,29 @@ import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { useAuth } from "@/contexts/AuthContext";
-import { pdfTools, documentTools, convertTools, imageTools, generatorTools, financeTools, insuranceTools, taxTools, careerTools, realestateTools, businessTools, healthTools, educationTools, debtTools, utilityTools } from "@/config/tools";
+import { pdfTools, documentTools, convertTools, imageTools, generatorTools, financeTools, insuranceTools, taxTools, careerTools, realestateTools, businessTools, healthTools, educationTools, debtTools, utilityTools, getToolCountByCategory, ToolCategory } from "@/config/tools";
 import { searchTools } from "@/lib/searchUtils";
 const toolsMenu = {
   title: "ツール",
   sections: [
-    { name: "PDF", icon: "📄", href: "/pdf", tools: [{ name: "PDF結合", href: "/pdf/merge" },{ name: "PDF分割", href: "/pdf/split" },{ name: "PDF圧縮", href: "/pdf/compress" },{ name: "PDFに文字入力", href: "/pdf/text-input" },{ name: "PDF回転", href: "/pdf/rotate" }], moreLink: "/pdf" },
-    { name: "画像", icon: "🖼️", href: "/image", tools: [{ name: "画像圧縮", href: "/image/compress" },{ name: "画像リサイズ", href: "/image/resize" },{ name: "QRコード作成", href: "/image/qr-code" },{ name: "画像反転", href: "/image/flip" },{ name: "モザイク加工", href: "/image/mosaic" }], moreLink: "/image" },
-    { name: "書類作成", icon: "📝", href: "/document", tools: [{ name: "請求書", href: "/document/invoice" },{ name: "見積書", href: "/document/quotation" },{ name: "領収書", href: "/document/receipt" },{ name: "履歴書", href: "/document/resume" },{ name: "封筒印刺", href: "/generator/envelope-print" }], moreLink: "/document" },
-    { name: "変換", icon: "🔄", href: "/convert", tools: [{ name: "全銀フォーマット", href: "/convert/bank-format" },{ name: "ふりがな変換", href: "/convert/furigana" },{ name: "和暦・西暦変換", href: "/convert/date-converter" },{ name: "全角・半角変換", href: "/convert/zenkaku-hankaku" },{ name: "縦書き変換", href: "/document/vertical-text" }], moreLink: "/convert" },
-    { name: "計算・生成", icon: "⚡", href: "/generator", tools: [{ name: "パスワード生成", href: "/generator/password" },{ name: "文字数カウント", href: "/generator/character-count" },{ name: "消費税計算", href: "/generator/tax-calculator" },{ name: "電子ハンコ作成", href: "/generator/hanko" },{ name: "QRコード読取", href: "/generator/qr-reader" }], moreLink: "/generator" },
+    { name: "PDF", icon: "📄", href: "/pdf", categories: ["pdf"], tools: [{ name: "PDF結合", href: "/pdf/merge" },{ name: "PDF分割", href: "/pdf/split" },{ name: "PDF圧縮", href: "/pdf/compress" },{ name: "PDFに文字入力", href: "/pdf/text-input" },{ name: "PDF回転", href: "/pdf/rotate" }], moreLink: "/pdf" },
+    { name: "画像", icon: "🖼️", href: "/image", categories: ["image"], tools: [{ name: "画像圧縮", href: "/image/compress" },{ name: "画像リサイズ", href: "/image/resize" },{ name: "QRコード作成", href: "/image/qr-code" },{ name: "画像反転", href: "/image/flip" },{ name: "モザイク加工", href: "/image/mosaic" }], moreLink: "/image" },
+    { name: "書類作成", icon: "📝", href: "/document", categories: ["document"], tools: [{ name: "請求書", href: "/document/invoice" },{ name: "見積書", href: "/document/quotation" },{ name: "領収書", href: "/document/receipt" },{ name: "履歴書", href: "/document/resume" },{ name: "封筒印刺", href: "/generator/envelope-print" }], moreLink: "/document" },
+    { name: "変換", icon: "🔄", href: "/convert", categories: ["convert"], tools: [{ name: "全銀フォーマット", href: "/convert/bank-format" },{ name: "ふりがな変換", href: "/convert/furigana" },{ name: "和暦・西暦変換", href: "/convert/date-converter" },{ name: "全角・半角変換", href: "/convert/zenkaku-hankaku" },{ name: "縦書き変換", href: "/document/vertical-text" }], moreLink: "/convert" },
+    { name: "計算・生成", icon: "⚡", href: "/generator", categories: ["generator"], tools: [{ name: "パスワード生成", href: "/generator/password" },{ name: "文字数カウント", href: "/generator/character-count" },{ name: "消費税計算", href: "/generator/tax-calculator" },{ name: "電子ハンコ作成", href: "/generator/hanko" },{ name: "QRコード読取", href: "/generator/qr-reader" }], moreLink: "/generator" },
   ],
 };
 const calcMenu = {
   title: "計算・シミュレーター",
   sections: [
-    { name: "金融・投資", icon: "💰", href: "/finance", tools: [{ name: "住宅ローン計算", href: "/finance/jutaku-loan" },{ name: "NISA計算機", href: "/finance/nisa-simulator" },{ name: "老後資金計算", href: "/finance/retirement-simulator" },{ name: "為替計算", href: "/finance/fx-calculator" }], moreLink: "/finance" },
-    { name: "税金・保険", icon: "🧾", href: "/tax", tools: [{ name: "所得税計算", href: "/tax/income-tax-calculator" },{ name: "ふるさと納税", href: "/tax/furusato-nozei-calculator" },{ name: "相続税計算", href: "/tax/inheritance-tax-calculator" },{ name: "生命保険必要額", href: "/insurance/life-insurance-calculator" }], moreLink: "/tax" },
-    { name: "キャリア・転職", icon: "💼", href: "/career", tools: [{ name: "転職シミュレーター", href: "/career/job-change-simulator" },{ name: "残業代計算", href: "/career/overtime-calculator" },{ name: "失業保険計算", href: "/career/unemployment-calculator" },{ name: "年収交渉ツール", href: "/career/salary-negotiation" }], moreLink: "/career" },
-    { name: "不動産・ビジネス", icon: "🏢", href: "/realestate", tools: [{ name: "賃貸vs購入", href: "/realestate/rent-vs-buy" },{ name: "引越し費用", href: "/realestate/moving-cost-calculator" },{ name: "法人化シミュレーター", href: "/business/incorporation-simulator" },{ name: "役員報酬最適化", href: "/business/director-salary-optimizer" }], moreLink: "/business" },
-    { name: "健康・生活", icon: "🏥", href: "/health", tools: [{ name: "BMI計算", href: "/health/bmi-calculator" },{ name: "カロリー計算", href: "/health/calorie-calculator" },{ name: "借金返済シミュレーター", href: "/debt/repayment-simulator" },{ name: "教育費シミュレーター", href: "/education/education-cost-simulator" }], moreLink: "/health" },
+    { name: "金融・投資", icon: "💰", href: "/finance", categories: ["finance"], tools: [{ name: "住宅ローン計算", href: "/finance/jutaku-loan" },{ name: "NISA計算機", href: "/finance/nisa-simulator" },{ name: "老後資金計算", href: "/finance/retirement-simulator" },{ name: "為替計算", href: "/finance/fx-calculator" }], moreLink: "/finance" },
+    { name: "税金・保険", icon: "🧾", href: "/tax", categories: ["tax", "insurance"], tools: [{ name: "所得税計算", href: "/tax/income-tax-calculator" },{ name: "ふるさと納税", href: "/tax/furusato-nozei-calculator" },{ name: "相続税計算", href: "/tax/inheritance-tax-calculator" },{ name: "生命保険必要額", href: "/insurance/life-insurance-calculator" }], moreLink: "/tax" },
+    { name: "キャリア・転職", icon: "💼", href: "/career", categories: ["career"], tools: [{ name: "転職シミュレーター", href: "/career/job-change-simulator" },{ name: "残業代計算", href: "/career/overtime-calculator" },{ name: "失業保険計算", href: "/career/unemployment-calculator" },{ name: "年収交渉ツール", href: "/career/salary-negotiation" }], moreLink: "/career" },
+    { name: "不動産・ビジネス", icon: "🏢", href: "/realestate", categories: ["realestate", "business"], tools: [{ name: "賃貸vs購入", href: "/realestate/rent-vs-buy" },{ name: "引越し費用", href: "/realestate/moving-cost-calculator" },{ name: "法人化シミュレーター", href: "/business/incorporation-simulator" },{ name: "役員報酬最適化", href: "/business/director-salary-optimizer" }], moreLink: "/business" },
+    { name: "健康・生活", icon: "🏥", href: "/health", categories: ["health", "education", "debt"], tools: [{ name: "BMI計算", href: "/health/bmi-calculator" },{ name: "カロリー計算", href: "/health/calorie-calculator" },{ name: "借金返済シミュレーター", href: "/debt/repayment-simulator" },{ name: "教育費シミュレーター", href: "/education/education-cost-simulator" }], moreLink: "/health" },
   ],
 };
-type MenuSection = { name: string; icon: string; href: string; tools: { name: string; href: string }[]; moreLink: string };
+type MenuSection = { name: string; icon: string; href: string; categories: string[]; tools: { name: string; href: string }[]; moreLink: string };
 type MenuConfig = { title: string; sections: MenuSection[] };
 
 function NavDropdown({ label, menu }: { label: string; menu: MenuConfig }) {
@@ -61,11 +61,14 @@ function NavDropdown({ label, menu }: { label: string; menu: MenuConfig }) {
         >
           <div className="max-w-7xl mx-auto px-6 py-6">
             <div className="grid grid-cols-3 lg:grid-cols-5 gap-4">
-              {menu.sections.map((section) => (
+              {menu.sections.filter(section => getToolCountByCategory(section.categories) > 0).map((section) => {
+                const count = getToolCountByCategory(section.categories);
+                return (
                 <div key={section.name}>
                   <Link href={section.href} className="flex items-center gap-2 text-kon font-semibold mb-3 hover:text-sakura transition-colors">
                     <span>{section.icon}</span>
                     <span>{section.name}</span>
+                    <span className="tabular-nums text-xs text-gray-400 font-normal ml-1">({count})</span>
                   </Link>
                   <ul className="space-y-2">
                     {section.tools.map((tool) => (
@@ -78,7 +81,8 @@ function NavDropdown({ label, menu }: { label: string; menu: MenuConfig }) {
                     </li>
                   </ul>
                 </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
@@ -229,17 +233,21 @@ export default function Header() {
               </div>
               <div className="mb-4">
                 <div className="px-4 py-2 text-xs text-white/60 uppercase tracking-wide">ツール</div>
-                {toolsMenu.sections.map((s) => (
+                {toolsMenu.sections.filter(s => getToolCountByCategory(s.categories) > 0).map((s) => (
                   <Link key={s.href} href={s.href} onClick={() => setIsMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 transition-colors">
-                    <span className="text-xl">{s.icon}</span><span className="font-medium">{s.name}</span>
+                    <span className="text-xl">{s.icon}</span>
+                    <span className="font-medium">{s.name}</span>
+                    <span className="tabular-nums text-xs text-white/50 ml-auto">({getToolCountByCategory(s.categories)})</span>
                   </Link>
                 ))}
               </div>
               <div className="mb-4">
                 <div className="px-4 py-2 text-xs text-white/60 uppercase tracking-wide">計算・シミュレーター</div>
-                {calcMenu.sections.map((s) => (
+                {calcMenu.sections.filter(s => getToolCountByCategory(s.categories) > 0).map((s) => (
                   <Link key={s.href} href={s.href} onClick={() => setIsMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 transition-colors">
-                    <span className="text-xl">{s.icon}</span><span className="font-medium">{s.name}</span>
+                    <span className="text-xl">{s.icon}</span>
+                    <span className="font-medium">{s.name}</span>
+                    <span className="tabular-nums text-xs text-white/50 ml-auto">({getToolCountByCategory(s.categories)})</span>
                   </Link>
                 ))}
               </div>

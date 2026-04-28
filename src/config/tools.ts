@@ -2053,3 +2053,14 @@ export const seoTools: Tool[] = [];
 
 // For backward compatibility
 export const officeTools = documentTools;
+
+export type ToolCategory = Tool["category"];
+
+/**
+ * Returns the count of available tools for the given category or categories.
+ * Used by Header dropdowns to derive live counts from the tool registry.
+ */
+export function getToolCountByCategory(categories: string | string[]): number {
+  const cats = Array.isArray(categories) ? categories : [categories];
+  return allTools.filter(t => t.available && cats.includes(t.category)).length;
+}

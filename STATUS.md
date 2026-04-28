@@ -20,6 +20,17 @@
 
 ## Phase 2 — Done
 
+- [x] Phase 2C: `getToolCountByCategory()` helper added to `src/config/tools.ts`
+- [x] Phase 2C: `categories` field added to every `MenuSection` object (toolsMenu + calcMenu)
+- [x] Phase 2C: Desktop dropdown section headings show `Name (N)` counts derived from registry; zero-count sections hidden
+- [x] Phase 2C: Mobile drawer section rows show right-aligned count badge; `tabular-nums` applied
+- [x] Phase 2D: `TrustBar` component created (`src/components/layout/TrustBar.tsx`)
+- [x] Phase 2D: Sticky on `/` (`top-14 z-40`), static on other marketing pages; absent on all workspace paths
+- [x] Phase 2D: Route allowlist enforced by `usePathname()` inside component (not in layout)
+- [x] Phase 2D: `data-citation-needed` on 500社 claim + TODO comment for Phase 5
+- [x] Phase 2D: Mobile horizontal scroll strip (no separators); desktop ・-separated centered bar
+- [x] Phase 2D: Playwright route-guard tests (`tests/visual/trustbar.visual.spec.ts`)
+
 - [x] Typo audit: 7 x シュミレーター → シミュレーター in Header.tsx (all display strings; URL slugs correct, no 301 needed)
 - [x] `docs/audits/phase-2/typo-hunt.txt` committed (0 remaining matches in src/ tests/)
 - [x] Desktop nav: お問い合わせ (text link) + 資料ダウンロード (outline btn, 資料DL@lg / full label@xl+) added at lg+
