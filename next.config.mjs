@@ -65,6 +65,7 @@ const nextConfig = {
       { source: '/debt', destination: '/', permanent: true },
       { source: '/education', destination: '/', permanent: true },
       { source: '/utility', destination: '/', permanent: true },
+      { source: '/souzoku-touki/guide/gikaku-and-bassoku', destination: '/souzoku-touki/guide/gimuka-and-bassoku', permanent: true },
       { source: '/reference', destination: '/', permanent: true },
     ]
   }

@@ -74,7 +74,7 @@ export default function HoumukyokuPage() {
                     : "bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-950/30 hover:text-ai"
                 }`}
               >
-                {pref.replace("県", "").replace("都", "").replace("府", "").replace("道", "")}
+                {pref}
               </button>
             ))}
           </div>

@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { GUIDE_ARTICLES } from "../data";
+import { GUIDE_ARTICLES, DISCLAIMER } from "../data";
 
 export const metadata: Metadata = {
   title: "相続登記ガイド記事【無料】基礎から申請手順まで",
@@ -70,6 +70,8 @@ export default function GuidePage() {
             <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">30問以上のQ&A</div>
           </Link>
         </div>
+
+        <p className="text-xs text-gray-400 dark:text-gray-500 text-center mt-6">⚠️ {DISCLAIMER}</p>
       </div>
     </div>
   );

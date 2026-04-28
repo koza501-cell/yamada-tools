@@ -295,7 +295,7 @@ export const FAQ_DATA = [
 
 export const GUIDE_ARTICLES = [
   { id: "what-is-souzoku-touki", title: "相続登記とは？わかりやすく解説", description: "相続登記の基本知識、なぜ必要なのか、登記しないとどうなるかを初心者向けに解説します。", readTime: "5分", icon: "📖" },
-  { id: "gikaku-and-bassoku", title: "義務化と罰則：2024年から何が変わった？", description: "2024年4月から始まった相続登記義務化の内容、過料10万円の条件、経過措置について詳しく解説。", readTime: "4分", icon: "⚠️" },
+  { id: "gimuka-and-bassoku", title: "義務化と罰則：2024年から何が変わった？", description: "2024年4月から始まった相続登記義務化の内容、過料10万円の条件、経過措置について詳しく解説。", readTime: "4分", icon: "⚠️" },
   { id: "hitsuyou-shorui", title: "必要書類完全リスト【ケース別】", description: "遺産分割協議・法定相続・遺言書の各ケース別に必要書類を徹底解説。取得場所・費用・注意点も掲載。", readTime: "8分", icon: "📋" },
   { id: "moushikomi-flow", title: "申請の流れ8ステップ", description: "法務局への申請書作成から登記完了まで、8つのステップで手順をわかりやすく解説します。", readTime: "7分", icon: "🗂️" },
   { id: "diy-or-professional", title: "自分でできる人・できない人の見分け方", description: "DIY申請に向いているケースと、司法書士への依頼を検討すべきケースを具体例で解説します。", readTime: "5分", icon: "🤔" },

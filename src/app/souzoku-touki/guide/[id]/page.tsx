@@ -38,7 +38,7 @@ const ARTICLE_CONTENT: Record<string, { body: React.ReactNode }> = {
       </div>
     ),
   },
-  "gikaku-and-bassoku": {
+  "gimuka-and-bassoku": {
     body: (
       <div className="prose dark:prose-invert max-w-none prose-sm md:prose-base">
         <h2>2024年4月1日から義務化</h2>
