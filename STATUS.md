@@ -11,10 +11,54 @@
 | Phase 1 — Typography & Global Tokens | DONE | `feat/jp-saas-phase-1-typography` |
 | Phase 2 — Header / Navigation Fixes | DONE | `feat/jp-saas-phase-2-header` |
 | Phase 3 — Hero Density Rebalance | DONE | `feat/jp-saas-phase-3-hero` |
-| Phase 4 — Form System | pending | - |
+| Phase 4 — Form System | DONE | `feat/jp-saas-phase-4-forms` |
 | Phase 5 — Trust & Compliance Surfaces | pending | - |
 | Phase 6 — Microcopy & Polish | pending | - |
 | Phase 7 — QA, A11y, Perf | pending | - |
+
+---
+
+## Phase 4 — Done
+
+### Branch: `feat/jp-saas-phase-4-forms` — HEAD: `1a16d70`
+
+**Rollback target (pre-Phase-4):** `cb4bbe1` — restore with:
+```bash
+git checkout cb4bbe1 -- src/app/document/invoice/client.tsx   src/app/document/quotation/client.tsx   src/app/document/delivery-slip/client.tsx   src/app/document/receipt/client.tsx   src/app/document/cover-letter/client.tsx   src/app/document/fax-cover/client.tsx   src/app/document/business-card/client.tsx   src/app/generator/nenmatsu-calc/client.tsx   src/app/tax/furusato-nozei-calculator/FurusatoNozeiCalculatorClient.tsx   src/app/generator/envelope-print/client.tsx
+```
+
+### Commits (11 + 1 fix + docs)
+| SHA | Route | Notes |
+|-----|-------|-------|
+| `1327524` | form primitives | Field, FormLabel, JPDateInput components + vitest setup |
+| `799c20a` | /document/invoice | |
+| `e9c74ac` | /document/quotation | |
+| `e7cbab8` | /document/delivery-slip | |
+| `e08256b` | /document/receipt | |
+| `7e2bd90` | /document/cover-letter | |
+| `b6227ca` | /document/fax-cover | |
+| `47e4bae` | /document/business-card | |
+| `219e8ad` | /generator/nenmatsu-calc | |
+| `a09b6ab` | /tax/furusato-nozei-calculator | |
+| `f332809` | /generator/envelope-print | Canvas tool — trigger()+validateAndPrint, 150ms debounce |
+| `f76c61a` | fix: TS2722 | quotation + delivery-slip errors.items forEach cast |
+| `1a16d70` | docs | form-inventory.csv — all 10 routes marked migrated |
+
+### Production Safety Verification (2026-04-29)
+- **Code audit**: All 10 forms use `errors.fieldName?.message` correctly — no error objects rendered as React children
+- **Backend API**: Zero added/removed `fetch()` calls in envelope-print — backend API routes unchanged (confirmed via `git diff cb4bbe1..f332809 -- src/app/generator/envelope-print/client.tsx | grep fetch`)
+- **Postal lookup offline**: Both auto-trigger and manual lookup have `try/catch` — sets `postalError("検索に失敗しました")`, form remains fully interactive
+- **Pre-existing errors in PM2 log**: "Objects are not valid as a React child" (digest `142802434`) and ByteString errors exist in log file born 2025-12-06 — predating Phase 4; confirmed pre-existing
+- **No error monitoring**: No Sentry configured. Monitor `pm2 logs yamada-frontend` manually for 48h post-deploy
+- **Browser/mobile testing**: Requires manual verification in a real browser — NOT automated here
+
+### Design Decisions Locked
+- Canvas tools (`envelope-print`): `trigger()` + `validateAndPrint()` handler, NOT `handleSubmit()`
+- Calculator forms (`nenmatsu-calc`, `furusato`): `handleSubmit(onSubmit, onError)` with `onSubmit` calling calculation logic
+- Postal code watch: `watch("recipient.postalCode")` as `postalCodeWatch` drives zipcloud auto-lookup useEffect
+- Canvas debounce: 150ms via `canvasTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)`
+- Address book/history loads: `reset({recipient: addr, sender: getValues("sender")})`
+- Template merges: per-field `setValue(..., { shouldDirty: false, shouldValidate: false })`
 
 ---
 
