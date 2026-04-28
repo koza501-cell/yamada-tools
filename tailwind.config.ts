@@ -17,6 +17,11 @@ const config: Config = {
         ai: '#1E90FF',
         sakura: '#D4AF37',
       },
+      fontSize: {
+        'jp-h1': ['clamp(1.75rem, 4vw, 2.5rem)', { lineHeight: '1.4' }],
+        'jp-h2': ['clamp(1.375rem, 2.6vw, 1.75rem)', { lineHeight: '1.5' }],
+        'jp-h3': ['1.125rem', { lineHeight: '1.6' }],
+      },
     },
   },
   plugins: [

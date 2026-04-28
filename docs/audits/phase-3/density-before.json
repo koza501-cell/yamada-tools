@@ -1,0 +1,18 @@
+{
+  "phase": "3-before",
+  "date": "2026-04-28",
+  "note": "Pre-Phase-3 hero density measurements from Phase 0 baseline screenshots",
+  "viewports": {
+    "1920x1080": { "h1_lines": 3, "hero_height_px": 600, "above_fold_popular_tools": 0 },
+    "1440x900":  { "h1_lines": 3, "hero_height_px": 575, "above_fold_popular_tools": 0 },
+    "768x1024":  { "h1_lines": 2, "hero_height_px": 480, "above_fold_popular_tools": 0 },
+    "375x812":   { "h1_lines": 2, "hero_height_px": 420, "above_fold_popular_tools": 0 }
+  },
+  "issues": [
+    "H1 wraps to 3 lines at >= 1440px due to lg:text-6xl (60px) and long text",
+    "No popular tools visible above search bar -- user must scroll to discover tools",
+    "Trust badge row redundant with Phase 2D TrustBar",
+    "HeroAnimation (upload/process/download icons) redundant with TrustBar messaging",
+    "No category sidebar -- user must scroll entire page to find tool category"
+  ]
+}

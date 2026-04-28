@@ -10,11 +10,34 @@
 | Phase 0 — Discovery & Safety Net | DONE | `feat/jp-saas-phase-0-discovery` |
 | Phase 1 — Typography & Global Tokens | DONE | `feat/jp-saas-phase-1-typography` |
 | Phase 2 — Header / Navigation Fixes | DONE | `feat/jp-saas-phase-2-header` |
-| Phase 3 — Hero Density Rebalance | pending | - |
+| Phase 3 — Hero Density Rebalance | DONE | `feat/jp-saas-phase-3-hero` |
 | Phase 4 — Form System | pending | - |
 | Phase 5 — Trust & Compliance Surfaces | pending | - |
 | Phase 6 — Microcopy & Polish | pending | - |
 | Phase 7 — QA, A11y, Perf | pending | - |
+
+---
+
+## Phase 3 — Done
+
+- [x] Phase 3.1: `text-jp-h1` (clamp 1.75rem..2.5rem / lh 1.4) added to `tailwind.config.ts`
+- [x] Phase 3.1: H1 uses `text-jp-h1 font-bold line-clamp-2`; renders ≤2 lines at all viewports 360–1920
+- [x] Phase 3.1: `HeroAnimation` removed (redundant with TrustBar Phase 2D)
+- [x] Phase 3.1: Trust badge row removed from hero (redundant with TrustBar Phase 2D)
+- [x] Phase 3.2: `POPULAR_GRID` (8 cards) renders above `SearchBar`; old `SEARCH_CHIPS` chip row removed
+- [x] Phase 3.2: Grid: 4 cols at lg+, 2 cols at sm/md; horizontal snap carousel at <sm with snap-x snap-mandatory
+- [x] Phase 3.2: Card style reuses 日本専用ツール grid pattern for visual consistency
+- [x] Phase 3.3: `HomepageAboveFold` client component (`src/components/home/HomepageAboveFold.tsx`)
+- [x] Phase 3.3: Returning users (`yamada_recent_tools` non-empty) see 最近使ったツール above hero
+- [x] Phase 3.3: Size-matched skeleton (460px + 80px) rendered during hydration to keep CLS ≤0.05
+- [x] Phase 3.4: `CategoryRail` + `CategoryChips` in `src/components/home/CategoryNav.tsx`
+- [x] Phase 3.4: Desktop sidebar (w-56, sticky top-80px, lg:block) shows 9 categories with live counts from `getToolCountByCategory`
+- [x] Phase 3.4: `IntersectionObserver` highlights active category based on scroll position
+- [x] Phase 3.4: Mobile chip strip (block lg:hidden, non-sticky) rendered just below above-fold content
+- [x] Phase 3.4: Rail renders only on `/` (CategoryNav is imported only in `src/app/page.tsx`)
+- [x] Playwright tests: `tests/visual/phase3.visual.spec.ts` (6 test cases)
+- [x] Density baseline: `docs/audits/phase-3/density-before.json`
+- [x] `npx tsc --noEmit` clean, `npm run build` clean
 
 ---
 
