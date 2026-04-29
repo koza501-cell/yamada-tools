@@ -11,7 +11,7 @@ export default function Footer() {
             </div>
             <div className="text-sm text-gray-300 space-y-2">
               <p className="font-medium">
-                <a href="https://www.yamadatrade.com/" target="_blank" rel="noopener noreferrer" className="text-sakura hover:underline">
+                <a href="https://yamadatrade.jp/" target="_blank" rel="noopener noreferrer" className="text-sakura hover:underline">
                   合同会社山田トレード
                 </a>
               </p>
@@ -70,7 +70,7 @@ export default function Footer() {
                 </Link>
               </div>
               <div>
-                <a href="https://www.yamadatrade.com/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-sakura transition-colors">
+                <a href="https://yamadatrade.jp/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-sakura transition-colors">
                   会社ウェブサイト
                 </a>
               </div>

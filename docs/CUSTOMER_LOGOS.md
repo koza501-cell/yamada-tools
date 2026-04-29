@@ -27,7 +27,7 @@ The component renders a placeholder card until real logos are added.
 
 2. Add an entry to `src/config/customer-logos.ts`:
    ```ts
-   { name: "合同会社山田トレード", logoSrc: "/logos/yamada-trade.svg", href: "https://www.yamadatrade.com/" }
+   { name: "合同会社山田トレード", logoSrc: "/logos/yamada-trade.svg", href: "https://yamadatrade.jp/" }
    ```
 
 3. Commit with the approval reference number in the commit message:

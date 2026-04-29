@@ -236,6 +236,29 @@ export default function BusinessPage() {
             </a>
           </section>
 
+          {/* Sales / Support Contact */}
+          <section className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+            <h2 className="text-xl font-bold text-kon mb-4 flex items-center gap-2">
+              <span>📩</span> お問い合わせ窓口
+            </h2>
+            <div className="grid md:grid-cols-2 gap-4 text-sm">
+              <div className="bg-blue-50 rounded-xl p-4 border border-blue-100">
+                <p className="font-bold text-blue-900 mb-1">💼 導入のご相談・お見積もり</p>
+                <a href="mailto:info@yamadatrade.jp" className="text-kon hover:underline font-medium">
+                  info@yamadatrade.jp
+                </a>
+                <p className="text-xs text-gray-500 mt-1">法人導入・価格交渉・ご提案依頼</p>
+              </div>
+              <div className="bg-gray-50 rounded-xl p-4 border border-gray-100">
+                <p className="font-bold text-gray-800 mb-1">🛠 技術サポート・バグ報告</p>
+                <a href="mailto:support@yamadatrade.jp" className="text-kon hover:underline font-medium">
+                  support@yamadatrade.jp
+                </a>
+                <p className="text-xs text-gray-500 mt-1">ツールの不具合・セキュリティご報告</p>
+              </div>
+            </div>
+          </section>
+
           {/* Legal Links */}
           <section className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
             <h2 className="text-xl font-bold text-kon mb-4 flex items-center gap-2">

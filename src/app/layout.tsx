@@ -154,7 +154,7 @@ const organizationSchema = {
   sameAs: [
     "https://www.facebook.com/yamada.tools/",
     "https://x.com/YamadaToolsJP",
-    "https://www.yamadatrade.com/"
+    "https://yamadatrade.jp/"
   ],
   numberOfEmployees: {
     "@type": "QuantitativeValue",

@@ -1,0 +1,7 @@
+./docs/CUSTOMER_LOGOS.md:30:   { name: "合同会社山田トレード", logoSrc: "/logos/yamada-trade.svg", href: "https://www.yamadatrade.com/" }
+./docs/EMAIL_SETUP.md:13:SMTP_HOST=mail.yamadatrade.com
+./docs/EMAIL_SETUP.md:18:CONTACT_FROM_EMAIL=noreply@yamadatrade.com
+./docs/EMAIL_SETUP.md:24:- Log in to your domain mail provider (e.g. the control panel for yamadatrade.com)
+./src/app/layout.tsx:157:    "https://www.yamadatrade.com/"
+./src/components/layout/Footer.tsx:14:                <a href="https://www.yamadatrade.com/" target="_blank" rel="noopener noreferrer" className="text-sakura hover:underline">
+./src/components/layout/Footer.tsx:73:                <a href="https://www.yamadatrade.com/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-sakura transition-colors">

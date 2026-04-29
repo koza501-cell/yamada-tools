@@ -10,18 +10,18 @@ If SMTP is not configured, submissions are saved to a persistent file and the us
 Add these to `.env.local` on the production server:
 
 ```
-SMTP_HOST=mail.yamadatrade.com
+SMTP_HOST=mail.yamadatrade.jp
 SMTP_PORT=587
 SMTP_SECURE=false
 SMTP_USER=support@yamadatrade.jp
 SMTP_PASS=<your-smtp-password>
-CONTACT_FROM_EMAIL=noreply@yamadatrade.com
+CONTACT_FROM_EMAIL=noreply@yamadatrade.jp
 CONTACT_TO_EMAIL=support@yamadatrade.jp
 ```
 
 ### Where to get credentials
 
-- Log in to your domain mail provider (e.g. the control panel for yamadatrade.com)
+- Log in to your domain mail provider (e.g. the control panel for yamadatrade.jp)
 - Look for **Mail / SMTP settings** — it will show the host, port, and authentication details
 - Common values: port 587 (STARTTLS) or 465 (SSL); `SMTP_SECURE=true` for port 465
 

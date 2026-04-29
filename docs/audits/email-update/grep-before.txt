@@ -4,3 +4,11 @@
 ./STATUS.md:154:- [ ] No `/api/contact` route exists — must create in Phase 5 to send email to support@yamadatrade.com
 ./docs/EMAIL_SETUP.md:16:SMTP_USER=support@yamadatrade.com
 ./docs/EMAIL_SETUP.md:19:CONTACT_TO_EMAIL=support@yamadatrade.com
+
+---
+NOTE: .com → .jp migration was a two-step process:
+  Step 1 (commit ff90a63, 2026-04-29): Email TLD only — support@yamadatrade.com → support@yamadatrade.jp
+  Step 2 (this commit): Full domain migration — https://www.yamadatrade.com → https://yamadatrade.jp,
+    noreply@yamadatrade.com → noreply@yamadatrade.jp, mail.yamadatrade.com → mail.yamadatrade.jp;
+    also added info@yamadatrade.jp (sales/general) to /about/business and /about/company.
+See: docs/audits/yamadatrade-domain-update/grep-before.txt for full domain audit.

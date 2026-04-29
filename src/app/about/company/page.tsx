@@ -82,10 +82,19 @@ export default function AboutCompanyPage() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-4">
               <div className="font-medium text-gray-600">お問い合わせ</div>
-              <div className="md:col-span-2 text-gray-800">
-                <a href="mailto:support@yamada-tools.jp" className="text-sakura hover:underline">
-                  support@yamada-tools.jp
-                </a>
+              <div className="md:col-span-2 text-gray-800 space-y-1">
+                <div>
+                  <span className="text-xs text-gray-500">お問い合わせ全般・営業 </span>
+                  <a href="mailto:info@yamadatrade.jp" className="text-sakura hover:underline">
+                    info@yamadatrade.jp
+                  </a>
+                </div>
+                <div>
+                  <span className="text-xs text-gray-500">カスタマーサポート </span>
+                  <a href="mailto:support@yamadatrade.jp" className="text-sakura hover:underline">
+                    support@yamadatrade.jp
+                  </a>
+                </div>
               </div>
             </div>
           </div>
