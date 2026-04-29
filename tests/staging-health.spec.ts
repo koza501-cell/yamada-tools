@@ -27,12 +27,16 @@ test("staging: unauthenticated request returns 401", async ({ page }) => {
 });
 
 // --- Core pages ---
+// heading: first visible text inside h1. Confirmed against actual SSR HTML 2026-04-29.
+// - homepage h1: "日本のビジネスに特化した..." (SEO title with tool count)
+// - business h1: "情報システム部門も安心の..." (not "運営会社" — that is an h2 in the body)
+// - transparency/contact h1 confirmed correct.
 
 const ROUTES: { path: string; label: string; heading: string }[] = [
-  { path: "/",                      label: "homepage",      heading: "山田ツール" },
+  { path: "/",                      label: "homepage",      heading: "日本のビジネスに特化" },
   { path: "/about/contact",         label: "contact",       heading: "お問い合わせ" },
   { path: "/about/transparency",    label: "transparency",  heading: "運営方針とセキュリティ" },
-  { path: "/about/business",        label: "business",      heading: "運営会社" },
+  { path: "/about/business",        label: "business",      heading: "情報システム部門" },
 ];
 
 for (const route of ROUTES) {
@@ -78,7 +82,8 @@ test("staging: contact form inputs are visible", async ({ page }) => {
 
 test("staging: transparency page has TrustBadges and CompanyLogosWall", async ({ page }) => {
   await authorizedGoto(page, "/about/transparency");
-  await expect(page.locator("text=SSL")).toBeVisible({ timeout: 10000 });
+  // Use element-specific selector — "text=SSL" also matches RSC JSON script tags (not visible)
+  await expect(page.locator("span:has-text('SSL/TLS暗号化')").first()).toBeVisible({ timeout: 10000 });
   // CompanyLogosWall placeholder (empty state)
   await expect(page.locator("text=掲載企業募集中").first()).toBeVisible({ timeout: 10000 });
 });
