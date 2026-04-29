@@ -79,8 +79,7 @@ async function trySendEmail(data: {
         "",
         "お問い合わせ内容:",
         data.message,
-      ].join("
-"),
+      ].join("\n"),
     });
 
     return { sent: true };
@@ -100,8 +99,7 @@ function saveToFile(data: {
     ...data,
     ts: new Date().toISOString(),
   });
-  appendFileSync(FALLBACK_PATH, record + "
-", { encoding: "utf-8", mode: 0o600 });
+  appendFileSync(FALLBACK_PATH, record + "\n", { encoding: "utf-8", mode: 0o600 });
 }
 
 export async function POST(request: Request) {
@@ -138,6 +136,10 @@ export async function POST(request: Request) {
     console.log(`[CONTACT] ref=${ref} from=${email} subject=${subject} sent=true`);
   } else {
     console.warn(`[CONTACT] ref=${ref} from=${email} subject=${subject} stored=${FALLBACK_PATH} smtp_skip=${emailError}`);
+  }
+
+  if (sent) {
+    console.log(`[CONTACT] ref=${ref} from=${email} subject=${subject} sent=true`);
   }
 
   return NextResponse.json({ ok: true, ref });
