@@ -117,3 +117,63 @@ npx playwright test --config=playwright.staging.config.ts
 ```
 
 **First confirmed passing run:** 2026-04-29 04:47 UTC — 8/8 tests passed in 10.4s
+
+## Automated Health Check (Cron)
+
+The staging environment is monitored by a Playwright smoke test running every 6 hours.
+
+**Cron entry** (added 2026-04-29):
+
+
+**Script:** 
+
+**Test spec:**  (8 tests)
+
+**Logs:**
+- Pass/fail summary: 
+- Failure details: 
+
+**What it checks:**
+1. Auth gate returns 401 without credentials
+2. Homepage, contact, transparency, business pages return 200 + h1 visible
+3. Homepage TrustBar wording: 
+4. Contact form inputs: , , , , submit button
+5. Transparency page: TrustBadges (SSL/TLS暗号化) + CompanyLogosWall (掲載企業募集中)
+
+**Email alerts:** Sent to  via SMTP when credentials are in .
+Until SMTP is configured, failures are logged to  only.
+
+**Run manually:**
+
+
+**First confirmed passing run:** 2026-04-29 04:47 UTC — 8/8 tests passed in 10.4s
+
+## Automated Health Check (Cron)
+
+The staging environment is monitored by a Playwright smoke test running every 6 hours.
+
+**Cron entry** (added 2026-04-29):
+
+
+**Script:** 
+
+**Test spec:**  (8 tests)
+
+**Logs:**
+- Pass/fail summary: 
+- Failure details: 
+
+**What it checks:**
+1. Auth gate returns 401 without credentials
+2. Homepage, contact, transparency, business pages return 200 + h1 visible
+3. Homepage TrustBar wording: 多くの法人様にご利用いただいています
+4. Contact form inputs: #name, #email, #subject, #message, submit button
+5. Transparency page: TrustBadges (SSL/TLS暗号化) + CompanyLogosWall (掲載企業募集中)
+
+**Email alerts:** Sent to CONTACT_TO_EMAIL via SMTP when credentials are in .env.local.
+Until SMTP is configured, failures are logged to staging-health-failures.log only.
+
+**Run manually:**
+
+
+**First confirmed passing run:** 2026-04-29 04:47 UTC — 8/8 tests passed in 10.4s
