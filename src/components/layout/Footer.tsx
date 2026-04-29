@@ -125,6 +125,11 @@ export default function Footer() {
                 </Link>
               </div>
               <div>
+                <Link href="/about/contact" className="text-gray-300 hover:text-sakura transition-colors">
+                  お問い合わせ
+                </Link>
+              </div>
+              <div>
                 <a href="/sitemap.xml" className="text-gray-300 hover:text-sakura transition-colors">
                   サイトマップ
                 </a>
