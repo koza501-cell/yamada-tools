@@ -14,7 +14,7 @@ export function middleware(request: NextRequest) {
       return new NextResponse('Unauthorized', {
         status: 401,
         headers: {
-          'WWW-Authenticate': 'Basic realm="Staging — authorized access only"',
+          'WWW-Authenticate': 'Basic realm="Staging - authorized access only"',
         },
       });
     }
