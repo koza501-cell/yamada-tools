@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { useForm, useFieldArray, FormProvider } from "react-hook-form";
+import { useForm, useFieldArray, FormProvider, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import Link from "next/link";
@@ -110,7 +110,7 @@ export default function InvoiceClient({ faq, seoContent }: InvoiceClientProps) {
   } = methods;
 
   const { fields, append, remove } = useFieldArray({ control, name: "items" });
-  const watchedItems = watch("items");
+  const watchedItems = useWatch({ control, name: "items" });
   const watchedTaxRate = watch("taxRate");
   const watchedSellerName = watch("sellerName");
   const watchedSellerAddress = watch("sellerAddress");

@@ -2057,7 +2057,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                       ) : (
                         <button
                           onClick={async () => {
-                            if (!recipient.postalCode && !recipient.prefecture && !recipient.city) {
+                            const _r = getValues("recipient"); if (!_r.postalCode && !_r.prefecture && !_r.city) {
                               showToast("⚠️ 郵便番号または住所を入力してください");
                               return;
                             }
@@ -2231,7 +2231,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                         <div className="space-y-2">
                           {!templateSaveOpen ? (
                             <button
-                              onClick={() => { setTemplateSaveName(sender.companyName || sender.name || 'テンプレート'); setTemplateSaveOpen(true); }}
+                              onClick={() => { setTemplateSaveName(getValues('sender').companyName || getValues('sender').name || 'テンプレート'); setTemplateSaveOpen(true); }}
                               className="w-full py-2 min-h-[44px] bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-sm font-medium transition-colors border border-blue-200">
                               ☁️ テンプレートとして保存
                             </button>

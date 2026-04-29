@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { useForm, FormProvider } from "react-hook-form";
+import { useForm, FormProvider, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import Link from "next/link";
@@ -86,11 +86,12 @@ export default function ReceiptClient() {
     handleSubmit,
     watch,
     setValue,
+    control,
     formState: { errors },
   } = methods;
 
   const watchedIssueDate  = watch("issueDate");
-  const watchedAmount     = watch("amount");
+  const watchedAmount     = useWatch({ control, name: "amount" });
   const watchedTaxRate    = watch("taxRate");
   const watchedTaxIncluded = watch("taxIncluded");
   const stampTax          = getStampTax(Number(watchedAmount) || 0);

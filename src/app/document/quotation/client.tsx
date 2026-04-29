@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { useForm, useFieldArray, FormProvider } from "react-hook-form";
+import { useForm, useFieldArray, FormProvider, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import Link from "next/link";
@@ -87,7 +87,7 @@ export default function QuotationClient() {
 
   const { fields, append, remove } = useFieldArray({ control, name: "items" });
 
-  const watchedItems      = watch("items");
+  const watchedItems = useWatch({ control, name: "items" });
   const watchedIssueDate  = watch("issueDate");
   const watchedValidUntil = watch("validUntil");
   const watchedTaxRate    = watch("taxRate");

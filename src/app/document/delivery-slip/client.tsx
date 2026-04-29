@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { useForm, useFieldArray, FormProvider } from "react-hook-form";
+import { useForm, useFieldArray, FormProvider, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import Link from "next/link";
@@ -85,7 +85,7 @@ export default function DeliverySlipClient() {
 
   const { fields, append, remove } = useFieldArray({ control, name: "items" });
 
-  const watchedItems        = watch("items");
+  const watchedItems = useWatch({ control, name: "items" });
   const watchedDeliveryDate = watch("deliveryDate");
   const watchedTaxRate      = watch("taxRate");
 
