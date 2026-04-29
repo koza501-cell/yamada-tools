@@ -34,8 +34,7 @@ export default function TrustBar() {
         <span className="hidden md:inline px-2 text-gray-400 select-none">・</span>
         <span>🗑 60分自動削除</span>
         <span className="hidden md:inline px-2 text-gray-400 select-none">・</span>
-        {/* TODO Phase 5: replace with a cited number or softer phrasing once source is verified */}
-        <span data-citation-needed>法人500社以上が利用</span>
+        <span>多くの法人様にご利用いただいています</span>
       </div>
     </div>
   );
