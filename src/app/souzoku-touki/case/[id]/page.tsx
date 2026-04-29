@@ -7,8 +7,8 @@ import { useAuth } from "@/contexts/AuthContext";
 
 const API_SOUZOKU = (process.env.NEXT_PUBLIC_API_URL || "https://api.yamada-tools.jp") + "/api/souzoku";
 
-type Prop = { type: "land" | "building"; location: string; chiban: string; chime: string; structure: string; area: string; assessed_value: string };
-type Heir = { name: string; name_kana: string; relation: string; address: string; share: string; is_applicant: boolean };
+type Prop = { type: "land" | "building"; location: string; fudosan_number: string; chiban: string; chime: string; structure: string; area: string; assessed_value: string };
+type Heir = { name: string; name_kana: string; relation: string; address: string; phone: string; share: string; is_applicant: boolean };
 type FormData = {
   houmukyoku: string;
   application_date: string;
@@ -27,8 +27,8 @@ const EMPTY_FORM: FormData = {
   application_date: "",
   deceased: { name: "", name_kana: "", birth_date: "", death_date: "", address: "", family_register_address: "" },
   applicant: { name: "", address: "", phone: "", share: "" },
-  heirs: [{ name: "", name_kana: "", relation: "配偶者", address: "", share: "1/1", is_applicant: true }],
-  properties: [{ type: "land", location: "", chiban: "", chime: "宅地", structure: "", area: "", assessed_value: "" }],
+  heirs: [{ name: "", name_kana: "", relation: "配偶者", address: "", phone: "", share: "1/1", is_applicant: true }],
+  properties: [{ type: "land", location: "", fudosan_number: "", chiban: "", chime: "宅地", structure: "", area: "", assessed_value: "" }],
   agreement_date: "",
   attachments: ["登記原因証明情報（戸籍謄本等）", "住所証明情報（住民票）"],
   assessed_total: 0,
@@ -152,11 +152,11 @@ export default function CaseIdPage({ params }: { params: Promise<{ id: string }>
     setForm((f) => ({ ...f, applicant: { ...f.applicant, [key]: val } }));
   const setProp = (i: number, key: keyof Prop, val: string) =>
     setForm((f) => { const ps = [...f.properties]; ps[i] = { ...ps[i], [key]: val as never }; return { ...f, properties: ps }; });
-  const addProp = () => setForm((f) => ({ ...f, properties: [...f.properties, { type: "land", location: "", chiban: "", chime: "宅地", structure: "", area: "", assessed_value: "" }] }));
+  const addProp = () => setForm((f) => ({ ...f, properties: [...f.properties, { type: "land", location: "", fudosan_number: "", chiban: "", chime: "宅地", structure: "", area: "", assessed_value: "" }] }));
   const removeProp = (i: number) => setForm((f) => ({ ...f, properties: f.properties.filter((_, idx) => idx !== i) }));
   const setHeir = (i: number, key: keyof Heir, val: string | boolean) =>
     setForm((f) => { const hs = [...f.heirs]; hs[i] = { ...hs[i], [key]: val as never }; return { ...f, heirs: hs }; });
-  const addHeir = () => setForm((f) => ({ ...f, heirs: [...f.heirs, { name: "", name_kana: "", relation: "長男", address: "", share: "", is_applicant: false }] }));
+  const addHeir = () => setForm((f) => ({ ...f, heirs: [...f.heirs, { name: "", name_kana: "", relation: "長男", address: "", phone: "", share: "", is_applicant: false }] }));
   const removeHeir = (i: number) => setForm((f) => ({ ...f, heirs: f.heirs.filter((_, idx) => idx !== i) }));
 
   const isPaid = caseStatus.status === "paid";
@@ -279,7 +279,7 @@ export default function CaseIdPage({ params }: { params: Promise<{ id: string }>
                     {(["land", "building"] as const).map((t) => (
                       <button
                         key={t}
-                        onClick={() => setProp(i, "type", t)}
+                        onClick={() => { setForm((f) => { const ps = [...f.properties]; ps[i] = { ...ps[i], type: t, chime: t === "land" ? "宅地" : "居宅" }; return { ...f, properties: ps }; }); }}
                         className={`py-2 rounded-lg text-xs font-medium transition-all ${prop.type === t ? "bg-ai text-white" : "bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300"}`}
                       >
                         {t === "land" ? "土地" : "建物"}
@@ -287,6 +287,7 @@ export default function CaseIdPage({ params }: { params: Promise<{ id: string }>
                     ))}
                   </div>
                   {fi("所在", prop.location, (v) => setProp(i, "location", v), { placeholder: prop.type === "land" ? "東京都渋谷区恵比寿一丁目" : "東京都渋谷区恵比寿一丁目1番地" })}
+                  {fi("不動産番号（任意）", prop.fudosan_number, (v) => setProp(i, "fudosan_number", v), { placeholder: "0000-0000-0000" })}
                   {fi(prop.type === "land" ? "地番" : "家屋番号", prop.chiban, (v) => setProp(i, "chiban", v), { placeholder: prop.type === "land" ? "123番4" : "123番4の5" })}
                   {sel(prop.type === "land" ? "地目" : "種類", prop.chime, (v) => setProp(i, "chime", v), prop.type === "land" ? CHIME_LAND : CHIME_BUILDING)}
                   {prop.type === "building" && fi("構造", prop.structure, (v) => setProp(i, "structure", v), { placeholder: "木造かわらぶき2階建" })}
@@ -327,6 +328,7 @@ export default function CaseIdPage({ params }: { params: Promise<{ id: string }>
                   {fi("氏名（フリガナ）", heir.name_kana, (v) => setHeir(i, "name_kana", v), { placeholder: "ヤマダハナコ" })}
                   {sel("続柄", heir.relation, (v) => setHeir(i, "relation", v), RELATIONS)}
                   {fi("住所", heir.address, (v) => setHeir(i, "address", v), { placeholder: "東京都新宿区..." })}
+                  {fi("連絡先電話番号（任意）", heir.phone || "", (v) => setHeir(i, "phone", v), { placeholder: "090-0000-0000", type: "tel" })}
                   {fi("持分", heir.share, (v) => setHeir(i, "share", v), { placeholder: "例：1/2" })}
                   <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300 cursor-pointer">
                     <input type="checkbox" checked={heir.is_applicant} onChange={(e) => setHeir(i, "is_applicant", e.target.checked)} className="rounded" />
