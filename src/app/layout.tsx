@@ -12,6 +12,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import { ThemeProvider } from "@/components/common/ThemeProvider";
 import GoogleAnalytics from "@/components/common/GoogleAnalytics";
 import StagingBanner from "@/components/common/StagingBanner";
+import TrustBar from "@/components/layout/TrustBar";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { PricingTriggerProvider } from "@/components/common/PricingTriggerProvider";
 import AdSenseLoader from "@/components/AdSenseLoader";
@@ -230,6 +231,7 @@ export default async function RootLayout({
         <ThemeProvider>
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:px-4 focus:py-2 focus:bg-kon focus:text-white focus:rounded-md focus:top-2 focus:left-2">メインコンテンツへスキップ</a>
         <Header />
+        <TrustBar />
         <Breadcrumbs />
         <main id="main-content" className="flex-grow pb-20 md:pb-0">{children}</main>
         <Footer />

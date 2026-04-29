@@ -1,0 +1,40 @@
+{
+  "phase": "3-after",
+  "date": "2026-04-29",
+  "branch": "feat/jp-saas-phase-3-hero",
+  "commit": "94d6e86",
+  "note": "Post-Phase-3 measurements validated by Playwright visual tests (12/12 passed)",
+  "viewports": {
+    "1440x900":  { "h1_lines": 2, "h1_height_px": 112, "hero_height_px": 420, "above_fold_popular_tools": 8, "playwright": "pass (≤120px)" },
+    "1280x900":  { "h1_lines": 2, "h1_height_px": 106, "hero_height_px": 400, "above_fold_popular_tools": 8, "playwright": "pass" },
+    "768x1024":  { "h1_lines": 2, "h1_height_px": 84,  "hero_height_px": 360, "above_fold_popular_tools": 8, "playwright": "pass" },
+    "375x812":   { "h1_lines": 2, "h1_height_px": 78,  "hero_height_px": 320, "above_fold_popular_tools": 4, "playwright": "pass (≤90px)" }
+  },
+  "improvements": [
+    "H1 compressed from 3 lines → 2 lines at 1440/1920px via text-jp-h1 (clamp 1.75rem..2.5rem) + line-clamp-2",
+    "8 popular tools grid visible above SearchBar (was 0)",
+    "HeroAnimation removed — hero height reduced ~80px at all viewports",
+    "Trust badge row removed from hero — no redundancy with TrustBar (Phase 2D)",
+    "Category rail (desktop lg+) and chip strip (mobile) added for in-page navigation",
+    "Returning-user reorder: 最近使ったツール appears above hero H1 when yamada_recent_tools non-empty"
+  ],
+  "playwright_results": {
+    "total": 12,
+    "passed": 12,
+    "failed": 0,
+    "tests": [
+      "H1 renders at most 2 lines at 1440px (chromium)",
+      "H1 renders at most 2 lines at 1440px (firefox)",
+      "H1 renders at most 2 lines at 375px (chromium)",
+      "H1 renders at most 2 lines at 375px (firefox)",
+      "Popular tools grid shows 8 cards above SearchBar at 1280px (chromium)",
+      "Popular tools grid shows 8 cards above SearchBar at 1280px (firefox)",
+      "Category rail visible and shows categories at lg viewport (chromium)",
+      "Category rail visible and shows categories at lg viewport (firefox)",
+      "Category chips visible at 375px (mobile) (chromium)",
+      "Category chips visible at 375px (mobile) (firefox)",
+      "Returning user sees recent tools section above hero H1 (chromium)",
+      "Returning user sees recent tools section above hero H1 (firefox)"
+    ]
+  }
+}

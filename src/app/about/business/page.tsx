@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import TrustBadges from "@/components/TrustBadges";
+import CompanyLogosWall from "@/components/CompanyLogosWall";
 
 export const metadata: Metadata = {
   title: "法人・企業様向け | 山田ツール - 安心のセキュリティで業務効率化",
@@ -27,30 +29,9 @@ export default function BusinessPage() {
 
         <article className="space-y-8">
 
-          {/* Trust Badges */}
+          {/* Trust Badges — config-driven, see src/config/certifications.ts */}
           <section className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-              <div>
-                <div className="text-3xl mb-2">🇯🇵</div>
-                <p className="font-bold text-gray-800 text-sm">日本国内サーバー</p>
-                <p className="text-xs text-gray-500">海外送信なし</p>
-              </div>
-              <div>
-                <div className="text-3xl mb-2">🔒</div>
-                <p className="font-bold text-gray-800 text-sm">SSL暗号化</p>
-                <p className="text-xs text-gray-500">通信を完全保護</p>
-              </div>
-              <div>
-                <div className="text-3xl mb-2">🗑️</div>
-                <p className="font-bold text-gray-800 text-sm">60分自動削除</p>
-                <p className="text-xs text-gray-500">データ残存なし</p>
-              </div>
-              <div>
-                <div className="text-3xl mb-2">✨</div>
-                <p className="font-bold text-gray-800 text-sm">登録不要</p>
-                <p className="text-xs text-gray-500">個人情報収集なし</p>
-              </div>
-            </div>
+            <TrustBadges />
           </section>
 
           {/* Security Details */}
@@ -177,6 +158,12 @@ export default function BusinessPage() {
             </div>
           </section>
 
+          {/* Company Logos */}
+          <section className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+            <h2 className="text-xl font-bold text-kon mb-6">ご利用企業</h2>
+            <CompanyLogosWall />
+          </section>
+
           {/* Company Info */}
           <section className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
             <h2 className="text-xl font-bold text-kon mb-6 flex items-center gap-2">
@@ -212,7 +199,7 @@ export default function BusinessPage() {
 
 
           {/* Security Document Download */}
-          <section className="bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-8 border border-blue-200 dark:border-blue-800">
+          <section id="download" className="bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-8 border border-blue-200 dark:border-blue-800">
             <h2 className="text-xl font-bold text-kon mb-4 flex items-center gap-2">
               <span>📋</span> セキュリティ確認書・導入事例
             </h2>

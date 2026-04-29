@@ -1,284 +1,528 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useRef, useState } from "react";
+import { useForm, useFieldArray, FormProvider, useWatch } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import Link from "next/link";
-import Mascot, { MascotState } from "@/components/common/Mascot";
+import Mascot, { type MascotState } from "@/components/common/Mascot";
 import { AdUnit } from "@/components/common/AdUnit";
-import { usePricingContext } from '@/components/common/PricingTriggerProvider';
+import { usePricingContext } from "@/components/common/PricingTriggerProvider";
+import { Field } from "@/components/forms/Field";
+import { FormLabel } from "@/components/forms/FormLabel";
+import { CurrencyInput } from "@/components/forms/CurrencyInput";
+import { JPDateInput } from "@/components/forms/JPDateInput";
 
-interface DeliveryItem {
-  id: number;
-  name: string;
-  quantity: number;
-  unit: string;
-  price: number;
-  note: string;
-}
+// ── Zod schema ────────────────────────────────────────────────────────────────
+
+const itemSchema = z.object({
+  name:     z.string().min(1, "品名を入力してください"),
+  quantity: z.number().min(0, "0以上で入力してください"),
+  unit:     z.string(),
+  price:    z.number().min(0, "0以上で入力してください"),
+});
+
+const deliverySlipSchema = z.object({
+  slipNumber:    z.string().min(1, "納品書番号を入力してください"),
+  deliveryDate:  z.string().min(1, "納品日を選択してください"),
+  orderNumber:   z.string(),
+
+  sellerName:    z.string().min(1, "会社名・氏名を入力してください"),
+  sellerAddress: z.string(),
+  sellerTel:     z.string(),
+
+  buyerName:    z.string().min(1, "納品先を入力してください"),
+  buyerAddress: z.string(),
+
+  items:   z.array(itemSchema).min(1, "明細を1件以上入力してください"),
+  taxRate: z.number(),
+  notes:   z.string(),
+});
+
+type DeliverySlipForm = z.infer<typeof deliverySlipSchema>;
+
+// ── Helper ────────────────────────────────────────────────────────────────────
+
+const FORMAT = new Intl.NumberFormat("ja-JP");
+const fmt = (n: number) => FORMAT.format(n);
+
+// ── Component ─────────────────────────────────────────────────────────────────
 
 export default function DeliverySlipClient() {
   const { triggerSuccess } = usePricingContext();
 
+  const [mascotState, setMascotState]       = useState<MascotState>("idle");
+  const [mascotMessage, setMascotMessage]   = useState("納品書を作成しよう！");
+  const [mascotDismissed, setMascotDismissed] = useState(false);
+  const [showPrice, setShowPrice]           = useState(true);
+  const errorBannerRef = useRef<HTMLDivElement>(null);
 
-  const [mounted, setMounted] = useState(false);
-  const [mascotState, setMascotState] = useState<MascotState>("idle");
-  const [mascotMessage, setMascotMessage] = useState("納品書を作成しよう！");
+  const methods = useForm<DeliverySlipForm>({
+    resolver: zodResolver(deliverySlipSchema),
+    defaultValues: {
+      slipNumber:    "DLV-001",
+      deliveryDate:  new Date().toISOString().split("T")[0],
+      orderNumber:   "",
+      sellerName:    "",
+      sellerAddress: "",
+      sellerTel:     "",
+      buyerName:     "",
+      buyerAddress:  "",
+      items:         [{ name: "", quantity: 1, unit: "個", price: 0 }],
+      taxRate:       10,
+      notes:         "",
+    },
+  });
 
-  const [slipNumber, setSlipNumber] = useState("DLV-001");
-  const [deliveryDate, setDeliveryDate] = useState(new Date().toISOString().split("T")[0]);
-  const [orderNumber, setOrderNumber] = useState("");
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    control,
+    formState: { errors },
+  } = methods;
 
-  const [sellerName, setSellerName] = useState("");
-  const [sellerAddress, setSellerAddress] = useState("");
-  const [sellerTel, setSellerTel] = useState("");
+  const { fields, append, remove } = useFieldArray({ control, name: "items" });
 
-  const [buyerName, setBuyerName] = useState("");
-  const [buyerAddress, setBuyerAddress] = useState("");
+  const watchedItems = useWatch({ control, name: "items" });
+  const watchedDeliveryDate = watch("deliveryDate");
+  const watchedTaxRate      = watch("taxRate");
 
-  const [items, setItems] = useState<DeliveryItem[]>([
-    { id: 1, name: "", quantity: 1, unit: "個", price: 0, note: "" },
-  ]);
-
-  const [taxRate, setTaxRate] = useState(10);
-  const [notes, setNotes] = useState("");
-  const [showPrice, setShowPrice] = useState(true);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const addItem = () => {
-    setItems([...items, { id: Date.now(), name: "", quantity: 1, unit: "個", price: 0, note: "" }]);
-  };
-
-  const removeItem = (id: number) => {
-    if (items.length > 1) {
-      setItems(items.filter(item => item.id !== id));
-    }
-  };
-
-  const updateItem = (id: number, field: keyof DeliveryItem, value: string | number) => {
-    setItems(items.map(item => item.id === id ? { ...item, [field]: value } : item));
-  };
-
-  const subtotal = items.reduce((sum, item) => sum + (item.quantity * item.price), 0);
-  const tax = Math.floor(subtotal * taxRate / 100);
+  const subtotal = (watchedItems ?? []).reduce(
+    (sum, item) => sum + (Number(item.quantity) || 0) * (Number(item.price) || 0),
+    0,
+  );
+  const tax   = Math.floor(subtotal * (watchedTaxRate / 100));
   const total = subtotal + tax;
 
-  const handlePrint = () => {
-    if (!sellerName || !buyerName || items.every(i => !i.name)) {
-      setMascotState("error");
-      setMascotMessage("必須項目を入力してね！");
-      return;
-    }
-    setMascotState("success")
-      triggerSuccess('delivery-slip');;
+  // ── Error banner ─────────────────────────────────────────────────────────────
+  const errorFields: { id: string; label: string }[] = [];
+  if (errors.slipNumber)   errorFields.push({ id: "slipNumber",   label: "納品書番号" });
+  if (errors.deliveryDate) errorFields.push({ id: "deliveryDate", label: "納品日" });
+  if (errors.sellerName)   errorFields.push({ id: "sellerName",   label: "納品元 会社名・氏名" });
+  if (errors.buyerName)    errorFields.push({ id: "buyerName",    label: "納品先 会社名・氏名" });
+  if ((errors.items as { message?: string } | undefined)?.message) {
+    errorFields.push({ id: "item-0-name", label: "明細" });
+  }
+  ((errors.items ?? []) as any[]).forEach((e, i) => {
+    if (e?.name) errorFields.push({ id: `item-${i}-name`, label: `明細 ${i + 1} 品名` });
+  });
+
+  const hasErrors = errorFields.length > 0;
+
+  const onSubmit = () => {
+    setMascotState("success");
     setMascotMessage("印刷画面を開くよ！");
+    triggerSuccess("delivery-slip");
     window.print();
   };
 
-  if (!mounted) {
-    return <div className="min-h-screen bg-gray-50 flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div></div>;
-  }
+  const onError = () => {
+    setMascotState("error");
+    setMascotMessage("必須項目を確認してね！");
+    setTimeout(() => {
+      errorBannerRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      const first = document.querySelector("[aria-invalid='true']") as HTMLElement | null;
+      first?.focus();
+    }, 50);
+  };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 print:py-0 print:bg-white">
-      <div className="max-w-4xl mx-auto px-4 print:max-w-none print:px-0">
+    <FormProvider {...methods}>
+      <div className="min-h-screen bg-gray-50 py-12 print:py-0 print:bg-white">
+        <div className="max-w-4xl mx-auto px-4 print:max-w-none print:px-0">
 
+          <header className="text-center mb-8 print:hidden">
+            <div className="text-5xl mb-4">📦</div>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">納品書作成</h1>
+            <p className="text-gray-600">登録不要・無料で納品書を作成</p>
+          </header>
 
-        <header className="text-center mb-8 print:hidden">
-          <div className="text-5xl mb-4">📦</div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">納品書作成</h1>
-          <p className="text-gray-600">登録不要・無料で納品書を作成</p>
-        </header>
-
-        <div className="print:hidden mb-6 flex justify-center">
-          <Mascot state={mascotState} message={mascotMessage} />
-        </div>
-
-        {/* Input Form */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 mb-6 print:hidden">
-          <h2 className="font-bold text-gray-900 mb-4">基本情報</h2>
-          <div className="grid md:grid-cols-3 gap-4 mb-6">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">納品書番号</label>
-              <input type="text" value={slipNumber} onChange={(e) => setSlipNumber(e.target.value)} className="w-full px-3 py-2 border border-gray-300 rounded-lg" />
+          {/* Mascot */}
+          {!mascotDismissed && (
+            <div className="print:hidden mb-6 flex justify-center relative">
+              <button
+                type="button"
+                aria-label="マスコットを閉じる"
+                onClick={() => setMascotDismissed(true)}
+                className="absolute top-0 right-0 text-gray-400 hover:text-gray-600 text-xl leading-none p-1"
+              >
+                ×
+              </button>
+              <Mascot state={mascotState} message={mascotMessage} />
             </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">納品日</label>
-              <input type="date" value={deliveryDate} onChange={(e) => setDeliveryDate(e.target.value)} className="w-full px-3 py-2 border border-gray-300 rounded-lg" />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">注文番号（任意）</label>
-              <input type="text" value={orderNumber} onChange={(e) => setOrderNumber(e.target.value)} className="w-full px-3 py-2 border border-gray-300 rounded-lg" placeholder="ORD-001" />
-            </div>
-          </div>
+          )}
 
-          <div className="grid md:grid-cols-2 gap-6 mb-6">
-            <div>
-              <h3 className="font-bold text-gray-900 mb-3">納品元（自社）</h3>
-              <div className="space-y-3">
-                <input type="text" placeholder="会社名・氏名 *" value={sellerName} onChange={(e) => setSellerName(e.target.value)} className="w-full px-3 py-2 border border-gray-300 rounded-lg" />
-                <input type="text" placeholder="住所" value={sellerAddress} onChange={(e) => setSellerAddress(e.target.value)} className="w-full px-3 py-2 border border-gray-300 rounded-lg" />
-                <input type="text" placeholder="電話番号" value={sellerTel} onChange={(e) => setSellerTel(e.target.value)} className="w-full px-3 py-2 border border-gray-300 rounded-lg" />
+          {/* Error banner */}
+          {hasErrors && (
+            <div
+              ref={errorBannerRef}
+              role="alert"
+              aria-live="assertive"
+              className="print:hidden mb-4 p-4 bg-red-50 border border-red-300 rounded-lg"
+            >
+              <p className="font-bold text-red-700 mb-2">入力内容を確認してください</p>
+              <ul className="list-disc list-inside space-y-1">
+                {errorFields.map(({ id, label }) => (
+                  <li key={id}>
+                    <a href={`#${id}`} className="text-red-600 underline hover:text-red-800">
+                      {label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* Input Form */}
+          <form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 mb-6 print:hidden">
+              <h2 className="font-bold text-gray-900 mb-4">基本情報</h2>
+
+              {/* Header row */}
+              <div className="grid md:grid-cols-3 gap-4 mb-6">
+                <Field
+                  id="slipNumber"
+                  label="納品書番号"
+                  required
+                  error={errors.slipNumber?.message}
+                >
+                  <input
+                    {...register("slipNumber")}
+                    type="text"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                  />
+                </Field>
+
+                <Field
+                  id="deliveryDate"
+                  label="納品日"
+                  required
+                  error={errors.deliveryDate?.message}
+                >
+                  <JPDateInput
+                    value={watchedDeliveryDate}
+                    onChange={(v) => setValue("deliveryDate", v, { shouldValidate: true })}
+                  />
+                </Field>
+
+                <Field id="orderNumber" label="注文番号" optional>
+                  <input
+                    {...register("orderNumber")}
+                    type="text"
+                    placeholder="ORD-001"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                  />
+                </Field>
+              </div>
+
+              {/* Seller / Buyer */}
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <h3 className="font-bold text-gray-900 mb-3">納品元（自社）</h3>
+                  <div className="space-y-3">
+                    <Field
+                      id="sellerName"
+                      label="会社名・氏名"
+                      required
+                      error={errors.sellerName?.message}
+                    >
+                      <input
+                        {...register("sellerName")}
+                        type="text"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                      />
+                    </Field>
+                    <Field id="sellerAddress" label="住所" optional>
+                      <input
+                        {...register("sellerAddress")}
+                        type="text"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                      />
+                    </Field>
+                    <Field id="sellerTel" label="電話番号" optional>
+                      <input
+                        {...register("sellerTel")}
+                        type="tel"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                      />
+                    </Field>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="font-bold text-gray-900 mb-3">納品先</h3>
+                  <div className="space-y-3">
+                    <Field
+                      id="buyerName"
+                      label="会社名・氏名"
+                      required
+                      error={errors.buyerName?.message}
+                    >
+                      <input
+                        {...register("buyerName")}
+                        type="text"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                      />
+                    </Field>
+                    <Field id="buyerAddress" label="住所" optional>
+                      <input
+                        {...register("buyerAddress")}
+                        type="text"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                      />
+                    </Field>
+                  </div>
+                </div>
+              </div>
+
+              {/* Items table */}
+              <h3 className="font-bold text-gray-900 mb-3">納品明細</h3>
+              {(errors.items as { message?: string } | undefined)?.message && (
+                <p role="alert" className="mb-2 text-xs text-red-600">
+                  {(errors.items as { message?: string }).message}
+                </p>
+              )}
+              <div className="overflow-x-auto mb-4">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="bg-gray-50">
+                      <th className="px-2 py-2 text-left">
+                        <FormLabel htmlFor="item-0-name" required>品名</FormLabel>
+                      </th>
+                      <th className="px-2 py-2 w-20 text-left">数量</th>
+                      <th className="px-2 py-2 w-16 text-left">単位</th>
+                      {showPrice && <th className="px-2 py-2 w-24 text-left">単価</th>}
+                      {showPrice && <th className="px-2 py-2 w-28 text-right">金額</th>}
+                      <th className="px-2 py-2 w-10"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {fields.map((field, index) => {
+                      const itemErrors = errors.items?.[index];
+                      const lineTotal =
+                        (Number(watchedItems?.[index]?.quantity) || 0) *
+                        (Number(watchedItems?.[index]?.price) || 0);
+                      return (
+                        <tr key={field.id} className="border-b">
+                          <td className="px-2 py-2">
+                            <input
+                              {...register(`items.${index}.name`)}
+                              id={`item-${index}-name`}
+                              type="text"
+                              placeholder="品名"
+                              aria-invalid={!!itemErrors?.name}
+                              aria-describedby={itemErrors?.name ? `item-${index}-name-error` : undefined}
+                              className="w-full px-2 py-1 border border-gray-200 rounded"
+                            />
+                            {itemErrors?.name && (
+                              <p id={`item-${index}-name-error`} role="alert" className="text-xs text-red-600 mt-0.5">
+                                {itemErrors.name.message}
+                              </p>
+                            )}
+                          </td>
+                          <td className="px-2 py-2">
+                            <input
+                              {...register(`items.${index}.quantity`, { valueAsNumber: true })}
+                              type="number"
+                              min={0}
+                              className="w-full px-2 py-1 border border-gray-200 rounded text-center"
+                            />
+                          </td>
+                          <td className="px-2 py-2">
+                            <input
+                              {...register(`items.${index}.unit`)}
+                              type="text"
+                              className="w-full px-2 py-1 border border-gray-200 rounded text-center"
+                            />
+                          </td>
+                          {showPrice && (
+                            <td className="px-2 py-2">
+                              <CurrencyInput
+                                value={watchedItems?.[index]?.price ?? ""}
+                                onChange={(v) =>
+                                  setValue(`items.${index}.price`, v === "" ? 0 : v, {
+                                    shouldValidate: true,
+                                  })
+                                }
+                                className="w-full px-2 py-1 border border-gray-200 rounded text-right"
+                              />
+                            </td>
+                          )}
+                          {showPrice && (
+                            <td className="px-2 py-2 text-right font-medium">{fmt(lineTotal)}円</td>
+                          )}
+                          <td className="px-2 py-2">
+                            <button
+                              type="button"
+                              onClick={() => fields.length > 1 && remove(index)}
+                              disabled={fields.length <= 1}
+                              className="text-red-500 hover:text-red-700 disabled:opacity-30 p-1"
+                              aria-label={`明細 ${index + 1} を削除`}
+                            >
+                              ×
+                            </button>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+              <button
+                type="button"
+                onClick={() => append({ name: "", quantity: 1, unit: "個", price: 0 })}
+                className="text-sm text-blue-600 hover:text-blue-800"
+              >
+                + 行を追加
+              </button>
+
+              <div className="flex flex-wrap items-center gap-4 mt-4">
+                <label className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    checked={showPrice}
+                    onChange={(e) => setShowPrice(e.target.checked)}
+                    className="w-4 h-4"
+                  />
+                  <span className="text-sm">金額を表示</span>
+                </label>
+                {showPrice && (
+                  <>
+                    <span className="text-sm">消費税率:</span>
+                    <select
+                      {...register("taxRate", { valueAsNumber: true })}
+                      className="px-3 py-1 border border-gray-300 rounded-lg"
+                    >
+                      <option value={10}>10%</option>
+                      <option value={8}>8%（軽減税率）</option>
+                    </select>
+                  </>
+                )}
+              </div>
+
+              <div className="mt-4">
+                <Field id="notes" label="備考" optional>
+                  <textarea
+                    {...register("notes")}
+                    rows={2}
+                    placeholder="ご確認の上、受領印をお願いいたします"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                  />
+                </Field>
               </div>
             </div>
-            <div>
-              <h3 className="font-bold text-gray-900 mb-3">納品先</h3>
-              <div className="space-y-3">
-                <input type="text" placeholder="会社名・氏名 *" value={buyerName} onChange={(e) => setBuyerName(e.target.value)} className="w-full px-3 py-2 border border-gray-300 rounded-lg" />
-                <input type="text" placeholder="住所" value={buyerAddress} onChange={(e) => setBuyerAddress(e.target.value)} className="w-full px-3 py-2 border border-gray-300 rounded-lg" />
+
+            {/* Submit */}
+            <div className="mt-6 print:hidden">
+              <button
+                type="submit"
+                className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-lg"
+              >
+                印刷 / PDF保存
+              </button>
+              <p className="text-center text-sm text-gray-500 mt-2">
+                ※ 印刷画面でPDFとして保存できます
+              </p>
+            </div>
+          </form>
+
+          {/* Print Preview ── identical to original, driven by watch() ────────── */}
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 mt-6 print:shadow-none print:border-0 print:rounded-none print:mt-0">
+            <div className="text-center mb-6">
+              <h2 className="text-2xl font-bold">納 品 書</h2>
+            </div>
+
+            <div className="flex justify-between mb-6">
+              <div>
+                <p className="font-bold text-lg">{watch("buyerName") || "納品先名"} 御中</p>
+                {watch("buyerAddress") && (
+                  <p className="text-sm text-gray-600">{watch("buyerAddress")}</p>
+                )}
+              </div>
+              <div className="text-right text-sm">
+                <p>納品書番号: {watch("slipNumber")}</p>
+                <p>納品日: {watchedDeliveryDate}</p>
+                {watch("orderNumber") && <p>注文番号: {watch("orderNumber")}</p>}
               </div>
             </div>
-          </div>
 
-          <h3 className="font-bold text-gray-900 mb-3">納品明細</h3>
-          <div className="overflow-x-auto mb-4">
-            <table className="w-full text-sm">
+            <p className="mb-4 text-sm">下記の通り納品いたします。</p>
+
+            <table className="w-full text-sm mb-6">
               <thead>
-                <tr className="bg-gray-50">
-                  <th className="px-2 py-2 text-left">品名</th>
-                  <th className="px-2 py-2 w-20">数量</th>
-                  <th className="px-2 py-2 w-16">単位</th>
-                  {showPrice && <th className="px-2 py-2 w-24">単価</th>}
-                  {showPrice && <th className="px-2 py-2 w-28">金額</th>}
-                  <th className="px-2 py-2 w-10"></th>
+                <tr className="border-b-2 border-gray-800">
+                  <th className="py-2 text-left">品名</th>
+                  <th className="py-2 text-center w-20">数量</th>
+                  <th className="py-2 text-center w-16">単位</th>
+                  {showPrice && <th className="py-2 text-right w-24">単価</th>}
+                  {showPrice && <th className="py-2 text-right w-28">金額</th>}
                 </tr>
               </thead>
               <tbody>
-                {items.map((item) => (
-                  <tr key={item.id} className="border-b">
-                    <td className="px-2 py-2">
-                      <input type="text" value={item.name} onChange={(e) => updateItem(item.id, "name", e.target.value)} className="w-full px-2 py-1 border border-gray-200 rounded" placeholder="品名" />
-                    </td>
-                    <td className="px-2 py-2">
-                      <input type="number" value={item.quantity} onChange={(e) => updateItem(item.id, "quantity", Number(e.target.value))} className="w-full px-2 py-1 border border-gray-200 rounded text-center" />
-                    </td>
-                    <td className="px-2 py-2">
-                      <input type="text" value={item.unit} onChange={(e) => updateItem(item.id, "unit", e.target.value)} className="w-full px-2 py-1 border border-gray-200 rounded text-center" />
-                    </td>
-                    {showPrice && (
-                      <td className="px-2 py-2">
-                        <input type="number" value={item.price} onChange={(e) => updateItem(item.id, "price", Number(e.target.value))} className="w-full px-2 py-1 border border-gray-200 rounded text-right" />
-                      </td>
-                    )}
-                    {showPrice && <td className="px-2 py-2 text-right font-medium">{(item.quantity * item.price).toLocaleString()}円</td>}
-                    <td className="px-2 py-2">
-                      <button onClick={() => removeItem(item.id)} className="text-red-500 hover:text-red-700">×</button>
-                    </td>
-                  </tr>
-                ))}
+                {(watchedItems ?? [])
+                  .filter((i) => i.name)
+                  .map((item, idx) => (
+                    <tr key={idx} className="border-b">
+                      <td className="py-2">{item.name}</td>
+                      <td className="py-2 text-center">{item.quantity}</td>
+                      <td className="py-2 text-center">{item.unit}</td>
+                      {showPrice && <td className="py-2 text-right">{fmt(Number(item.price))}</td>}
+                      {showPrice && (
+                        <td className="py-2 text-right">
+                          {fmt((Number(item.quantity) || 0) * (Number(item.price) || 0))}
+                        </td>
+                      )}
+                    </tr>
+                  ))}
               </tbody>
             </table>
-          </div>
-          <button onClick={addItem} className="text-sm text-blue-600 hover:text-blue-800">+ 行を追加</button>
 
-          <div className="flex flex-wrap items-center gap-4 mt-4">
-            <label className="flex items-center gap-2">
-              <input type="checkbox" checked={showPrice} onChange={(e) => setShowPrice(e.target.checked)} className="w-4 h-4" />
-              <span className="text-sm">金額を表示</span>
-            </label>
             {showPrice && (
-              <>
-                <span className="text-sm">消費税率:</span>
-                <select value={taxRate} onChange={(e) => setTaxRate(Number(e.target.value))} className="px-3 py-1 border border-gray-300 rounded-lg">
-                  <option value={10}>10%</option>
-                  <option value={8}>8%（軽減税率）</option>
-                </select>
-              </>
+              <div className="flex justify-end">
+                <div className="w-64">
+                  <div className="flex justify-between py-1 border-b">
+                    <span>小計</span><span>{fmt(subtotal)}円</span>
+                  </div>
+                  <div className="flex justify-between py-1 border-b">
+                    <span>消費税（{watchedTaxRate}%）</span><span>{fmt(tax)}円</span>
+                  </div>
+                  <div className="flex justify-between py-2 font-bold text-lg">
+                    <span>合計</span><span>{fmt(total)}円</span>
+                  </div>
+                </div>
+              </div>
             )}
-          </div>
 
-          <div className="mt-4">
-            <label className="block text-sm font-medium text-gray-700 mb-1">備考</label>
-            <textarea value={notes} onChange={(e) => setNotes(e.target.value)} rows={2} className="w-full px-3 py-2 border border-gray-300 rounded-lg" placeholder="ご確認の上、受領印をお願いいたします" />
-          </div>
-        </div>
+            {watch("notes") && (
+              <div className="mt-6 p-3 bg-gray-50 rounded-lg">
+                <p className="text-sm font-medium mb-1">備考</p>
+                <p className="text-sm whitespace-pre-wrap">{watch("notes")}</p>
+              </div>
+            )}
 
-        {/* Preview / Print Area */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 print:shadow-none print:border-0 print:rounded-none">
-          <div className="text-center mb-6">
-            <h2 className="text-2xl font-bold">納 品 書</h2>
-          </div>
-
-          <div className="flex justify-between mb-6">
-            <div>
-              <p className="font-bold text-lg">{buyerName || "納品先名"} 御中</p>
-              {buyerAddress && <p className="text-sm text-gray-600">{buyerAddress}</p>}
-            </div>
-            <div className="text-right text-sm">
-              <p>納品書番号: {slipNumber}</p>
-              <p>納品日: {deliveryDate}</p>
-              {orderNumber && <p>注文番号: {orderNumber}</p>}
-            </div>
-          </div>
-
-          <p className="mb-4 text-sm">下記の通り納品いたします。</p>
-
-          <table className="w-full text-sm mb-6">
-            <thead>
-              <tr className="border-b-2 border-gray-800">
-                <th className="py-2 text-left">品名</th>
-                <th className="py-2 text-center w-20">数量</th>
-                <th className="py-2 text-center w-16">単位</th>
-                {showPrice && <th className="py-2 text-right w-24">単価</th>}
-                {showPrice && <th className="py-2 text-right w-28">金額</th>}
-              </tr>
-            </thead>
-            <tbody>
-              {items.filter(i => i.name).map((item) => (
-                <tr key={item.id} className="border-b">
-                  <td className="py-2">{item.name}</td>
-                  <td className="py-2 text-center">{item.quantity}</td>
-                  <td className="py-2 text-center">{item.unit}</td>
-                  {showPrice && <td className="py-2 text-right">{item.price.toLocaleString()}</td>}
-                  {showPrice && <td className="py-2 text-right">{(item.quantity * item.price).toLocaleString()}</td>}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
-          {showPrice && (
-            <div className="flex justify-end">
-              <div className="w-64">
-                <div className="flex justify-between py-1 border-b"><span>小計</span><span>{subtotal.toLocaleString()}円</span></div>
-                <div className="flex justify-between py-1 border-b"><span>消費税（{taxRate}%）</span><span>{tax.toLocaleString()}円</span></div>
-                <div className="flex justify-between py-2 font-bold text-lg"><span>合計</span><span>{total.toLocaleString()}円</span></div>
+            <div className="mt-8 flex justify-between items-end">
+              <div className="text-sm">
+                <p className="font-bold">{watch("sellerName") || "納品元名"}</p>
+                {watch("sellerAddress") && <p>{watch("sellerAddress")}</p>}
+                {watch("sellerTel") && <p>TEL: {watch("sellerTel")}</p>}
+              </div>
+              <div className="text-center">
+                <p className="text-xs text-gray-500 mb-1">受領印</p>
+                <div className="w-20 h-20 border border-gray-400"></div>
               </div>
             </div>
-          )}
-
-          {notes && (
-            <div className="mt-6 p-3 bg-gray-50 rounded-lg">
-              <p className="text-sm font-medium mb-1">備考</p>
-              <p className="text-sm whitespace-pre-wrap">{notes}</p>
-            </div>
-          )}
-
-          <div className="mt-8 flex justify-between items-end">
-            <div className="text-sm">
-              <p className="font-bold">{sellerName || "納品元名"}</p>
-              {sellerAddress && <p>{sellerAddress}</p>}
-              {sellerTel && <p>TEL: {sellerTel}</p>}
-            </div>
-            <div className="text-center">
-              <p className="text-xs text-gray-500 mb-1">受領印</p>
-              <div className="w-20 h-20 border border-gray-400"></div>
-            </div>
           </div>
-        </div>
 
-        <div className="mt-6 print:hidden">
-          <button onClick={handlePrint} className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-lg">
-            印刷 / PDF保存
-          </button>
-          <p className="text-center text-sm text-gray-500 mt-2">※ 印刷画面でPDFとして保存できます</p>
+          <div className="mt-8 text-center print:hidden">
+            <Link href="/document" className="text-blue-600 hover:text-blue-800">
+              ← 書類作成一覧に戻る
+            </Link>
+          </div>
+          <AdUnit slot="5612038947" format="horizontal" />
         </div>
-
-        <div className="mt-8 text-center print:hidden">
-          <Link href="/document" className="text-blue-600 hover:text-blue-800">← 書類作成一覧に戻る</Link>
-        </div>
-        <AdUnit slot="5612038947" format="horizontal" />
       </div>
-    </div>
+    </FormProvider>
   );
 }

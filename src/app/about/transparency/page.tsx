@@ -1,5 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import TrustBadges from "@/components/TrustBadges";
+import CompanyLogosWall from "@/components/CompanyLogosWall";
 
 export const metadata: Metadata = {
   title: "運営方針とセキュリティ",
@@ -17,36 +19,40 @@ export default function TransparencyPage() {
           <h1 className="text-3xl font-bold text-kon mb-8">運営方針とセキュリティ</h1>
 
           <div className="space-y-8 text-gray-700">
-            {/* Security Section */}
+
+            {/* Trust Badges */}
+            <section>
+              <h2 className="text-xl font-bold text-kon mb-4">認証・セキュリティ基準</h2>
+              <TrustBadges />
+            </section>
+
+            {/* Security Overview */}
             <section className="bg-green-50 p-6 rounded-xl border border-green-200">
               <h2 className="text-xl font-bold text-green-900 mb-4 flex items-center gap-2">
                 <span>🔒</span>
                 <span>セキュリティとプライバシー保護</span>
               </h2>
-              <div className="space-y-3 text-sm">
-                <div>
-                  <p className="font-bold text-green-900 mb-1">🇯🇵 日本国内サーバー完結</p>
-                  <p className="text-green-800">
-                    すべてのファイル処理は日本国内のサーバーで行われます。お客様の大切なファイルが海外に送信されることは一切ありません。
-                  </p>
-                </div>
-                <div>
-                  <p className="font-bold text-green-900 mb-1">🗑️ 自動削除システム</p>
-                  <p className="text-green-800">
-                    アップロードされたファイルは処理完了後、即座にサーバーから完全に削除されます。保存期間はゼロです。
-                  </p>
-                </div>
-                <div>
-                  <p className="font-bold text-green-900 mb-1">🔐 SSL/TLS暗号化通信</p>
-                  <p className="text-green-800">
-                    すべての通信は最新の暗号化技術により保護されています。第三者による盗聴や改ざんのリスクを最小限に抑えています。
-                  </p>
-                </div>
-                <div>
-                  <p className="font-bold text-green-900 mb-1">👀 ファイル内容の不閲覧</p>
-                  <p className="text-green-800">
-                    当社はお客様のファイル内容を閲覧、保存、または第三者と共有することは一切ありません。
-                  </p>
+              <div className="space-y-4 text-sm leading-relaxed">
+                <p className="text-green-800">
+                  山田ツールのすべてのサービスは、国内に設置された日本国内のサーバーで動作しております。
+                  お客様からお預かりするファイルや入力情報が海外のサーバーに送信されることは一切ございません。
+                </p>
+                <p className="text-green-800">
+                  通信はすべて TLS 1.3 により暗号化されており、第三者による盗聴や改ざんを防いでいます。
+                  アップロードされたファイルはサーバー上で処理された後、60分以内に自動的かつ完全に削除されます。
+                  ログは運用上の最低限に限定しており、お客様のファイル内容を閲覧・保存・第三者と共有することはございません。
+                </p>
+                <p className="text-green-800">
+                  セキュリティに関するご質問や脆弱性のご報告は、下記お問い合わせ窓口までお知らせください。
+                  責任ある開示（Responsible Disclosure）を歓迎しております。
+                </p>
+                <div className="pt-2">
+                  <Link
+                    href="/about/contact"
+                    className="inline-flex items-center gap-1 text-green-900 font-medium underline hover:text-kon"
+                  >
+                    セキュリティに関するお問い合わせはこちら →
+                  </Link>
                 </div>
               </div>
             </section>
@@ -57,18 +63,15 @@ export default function TransparencyPage() {
                 <span>⚠️</span>
                 <span>重要な免責事項</span>
               </h2>
-              
+
               <div className="space-y-6">
-                {/* Invoice System */}
                 <div className="bg-white p-4 rounded-lg border border-amber-200">
                   <h3 className="font-bold text-amber-900 mb-2 flex items-center gap-2">
                     <span>📝</span>
                     <span>適格請求書発行事業者登録番号検証ツールについて</span>
                   </h3>
                   <div className="space-y-2 text-sm text-amber-800">
-                    <p>
-                      <strong className="text-red-600">このツールは情報提供のみを目的としています。</strong>
-                    </p>
+                    <p><strong className="text-red-600">このツールは情報提供のみを目的としています。</strong></p>
                     <ul className="space-y-1 list-disc list-inside ml-2">
                       <li>適格請求書発行事業者の登録番号の検証結果について、当社は一切の責任を負いません</li>
                       <li>正式な確認は必ず<strong>国税庁の公式サイト</strong>で行ってください</li>
@@ -81,16 +84,13 @@ export default function TransparencyPage() {
                   </div>
                 </div>
 
-                {/* Financial Tools */}
                 <div className="bg-white p-4 rounded-lg border border-amber-200">
                   <h3 className="font-bold text-amber-900 mb-2 flex items-center gap-2">
                     <span>💰</span>
                     <span>税金計算・給与計算ツールについて</span>
                   </h3>
                   <div className="space-y-2 text-sm text-amber-800">
-                    <p>
-                      <strong>これらのツールは参考情報としてご利用ください。</strong>
-                    </p>
+                    <p><strong>これらのツールは参考情報としてご利用ください。</strong></p>
                     <ul className="space-y-1 list-disc list-inside ml-2">
                       <li>計算結果の正確性を保証するものではありません</li>
                       <li>税制は頻繁に変更されるため、最新の法令を確認してください</li>
@@ -101,16 +101,13 @@ export default function TransparencyPage() {
                   </div>
                 </div>
 
-                {/* Document Templates */}
                 <div className="bg-white p-4 rounded-lg border border-amber-200">
                   <h3 className="font-bold text-amber-900 mb-2 flex items-center gap-2">
                     <span>📄</span>
                     <span>書類作成ツール（請求書・履歴書等）について</span>
                   </h3>
                   <div className="space-y-2 text-sm text-amber-800">
-                    <p>
-                      <strong>生成されるテンプレートは一般的な形式に基づいています。</strong>
-                    </p>
+                    <p><strong>生成されるテンプレートは一般的な形式に基づいています。</strong></p>
                     <ul className="space-y-1 list-disc list-inside ml-2">
                       <li>業種、用途、取引先の要求に応じて、<strong>必ず内容を確認・修正してからご利用ください</strong></li>
                       <li>履歴書はJIS規格を参考にしていますが、企業や職種により求められる形式が異なります</li>
@@ -121,16 +118,13 @@ export default function TransparencyPage() {
                   </div>
                 </div>
 
-                {/* Date & Format Converters */}
                 <div className="bg-white p-4 rounded-lg border border-amber-200">
                   <h3 className="font-bold text-amber-900 mb-2 flex items-center gap-2">
                     <span>📅</span>
                     <span>和暦・西暦変換、住所・電話番号変換について</span>
                   </h3>
                   <div className="space-y-2 text-sm text-amber-800">
-                    <p>
-                      <strong>変換結果は一般的なルールに基づいていますが、例外があります。</strong>
-                    </p>
+                    <p><strong>変換結果は一般的なルールに基づいていますが、例外があります。</strong></p>
                     <ul className="space-y-1 list-disc list-inside ml-2">
                       <li>公的書類への記載には、必ず公式な情報源で確認してください</li>
                       <li>郵便番号・住所変換は郵便局の最新データを反映していない場合があります</li>
@@ -139,6 +133,12 @@ export default function TransparencyPage() {
                   </div>
                 </div>
               </div>
+            </section>
+
+            {/* Company Logos */}
+            <section>
+              <h2 className="text-xl font-bold text-kon mb-4">ご利用企業</h2>
+              <CompanyLogosWall />
             </section>
 
             {/* Service Quality */}
@@ -162,12 +162,13 @@ export default function TransparencyPage() {
 
             {/* Support */}
             <section>
-              <h2 className="text-xl font-bold text-kon mb-4">サポート</h2>
+              <h2 className="text-xl font-bold text-kon mb-4">サポート・お問い合わせ窓口</h2>
               <div className="bg-gray-100 p-4 rounded-lg text-sm">
-                <p className="mb-2">ご不明な点やお問い合わせは、以下の方法でご連絡ください。</p>
-                <ul className="space-y-1">
+                <p className="mb-3">ご不明な点やお問い合わせは、以下の方法でご連絡ください。</p>
+                <ul className="space-y-2">
                   <li>• フィードバックボタン（画面右下）</li>
-                  <li>• メール：<a href="mailto:support@yamada-tools.jp" className="text-kon hover:underline">support@yamada-tools.jp</a></li>
+                  <li>• <Link href="/about/contact" className="text-kon hover:underline font-medium">お問い合わせフォーム</Link></li>
+                  <li>• メール：<a href="mailto:support@yamadatrade.com" className="text-kon hover:underline">support@yamadatrade.com</a></li>
                 </ul>
               </div>
             </section>
@@ -189,30 +190,24 @@ export default function TransparencyPage() {
             </section>
 
             <div className="pt-8 text-sm text-gray-500 text-right">
-              <p>最終更新日：2024年12月4日</p>
+              <p>最終更新日：2026年4月29日</p>
               <p className="mt-2">合同会社山田トレード</p>
             </div>
           </div>
 
           <div className="mt-8 text-center space-y-4">
             <div className="flex justify-center gap-4 flex-wrap">
-              <Link
-                href="/legal/terms"
-                className="text-kon hover:underline text-sm"
-              >
+              <Link href="/legal/terms" className="text-kon hover:underline text-sm">
                 利用規約
               </Link>
-              <Link
-                href="/legal/privacy"
-                className="text-kon hover:underline text-sm"
-              >
+              <Link href="/legal/privacy" className="text-kon hover:underline text-sm">
                 プライバシーポリシー
               </Link>
+              <Link href="/about/contact" className="text-kon hover:underline text-sm">
+                お問い合わせ
+              </Link>
             </div>
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 text-kon hover:underline"
-            >
+            <Link href="/" className="inline-flex items-center gap-2 text-kon hover:underline">
               ← ホームに戻る
             </Link>
           </div>
