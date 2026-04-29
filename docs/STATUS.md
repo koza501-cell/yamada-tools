@@ -1,7 +1,7 @@
 # Project Status
 
 ## Phase 5 — Trust & Compliance Surfaces
-**Branch:** `feat/jp-saas-phase-5-trust`
+**Branch:** `main` (merged 2026-04-29)
 **Staging:** https://staging.yamada-tools.jp (auth: yamada / staging2026)
 
 ### Completed
@@ -38,3 +38,25 @@ GET /about/transparency → 200, TrustBadges + CompanyLogosWall ✓
 GET /about/business    → 200 ✓
 GET / (no auth)     → 401 ✓
 ```
+
+### Production Verification (2026-04-29) MERGED
+
+```
+GET /               => 200, TrustBar: ok
+GET /about/contact  => 200, form fields: id=name/email/subject/message ok
+POST /api/contact   => {"ok":true,"ref":"YT-BC4DE105"}
+transparency        => SSL/TLS + CompanyLogosWall ok
+submissions file    => written 600 perms ok
+PM2 [CONTACT] log   => ref=YT-BC4DE105 smtp_skip=SMTP not configured ok
+middleware no-op    => STAGING_AUTH_USER unset => 200 ok
+middleware auth     => STAGING_AUTH_USER=yamada => 401 ok
+```
+
+### Open Follow-ups
+
+| Item | Notes |
+|------|-------|
+| SMTP credentials | Set SMTP_HOST/PORT/SECURE/USER/PASS/CONTACT_FROM_EMAIL/CONTACT_TO_EMAIL in .env.local |
+| Customer logos | src/config/customer-logos.ts + public/logos/; see docs/CUSTOMER_LOGOS.md |
+| Pmark/ISO27001 | Enable flags in src/config/certifications.ts once certified |
+| Phase 6 | Microcopy polish; start 2026-04-30 after 24h observation |
