@@ -23,10 +23,10 @@
 
 | Item | Status | Notes |
 |------|--------|-------|
-| SMTP credentials | Waiting | Fill in `.env.local` on server; see `docs/EMAIL_SETUP.md`. Until then, submissions go to `/tmp/contact-submissions.jsonl` |
+| SMTP credentials | Skipped for now | Submissions go to `/home/yamada/yamada-tools-data/contact-submissions.jsonl` (persistent). Grep PM2 logs for `[CONTACT]`. Enable later via `.env.local`; see `docs/EMAIL_SETUP.md`. |
 | Customer logos | Waiting | Add approved company logos to `src/config/customer-logos.ts` + upload to `public/logos/`; see `docs/CUSTOMER_LOGOS.md` |
 | Certifications | Waiting | Enable `pmark` and `iso27001` in `src/config/certifications.ts` once certified |
-| Playwright CI cron | Pending | Wire `npx playwright test --config=playwright.staging.config.ts` into CI or server cron |
+| Playwright CI cron | Done | Cron: `0 0,6,12,18 * * * /home/yamada/bin/staging-health-check.sh`; last run 2026-04-29 04:47 PASS 8/8 |
 
 ### Staging Verification (2026-04-29)
 

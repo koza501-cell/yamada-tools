@@ -1,3 +1,8 @@
+// TODO(SMTP): Email delivery is currently disabled. Submissions save to file only.
+// To enable: set SMTP_HOST, SMTP_PORT, SMTP_SECURE, SMTP_USER, SMTP_PASS,
+// CONTACT_FROM_EMAIL, CONTACT_TO_EMAIL in .env.local on the production server.
+// See docs/EMAIL_SETUP.md.
+
 import { NextResponse } from "next/server";
 import { appendFileSync } from "fs";
 import { randomBytes } from "crypto";
@@ -17,6 +22,10 @@ const VALID_SUBJECTS = [
   "ビジネス・提携について",
   "その他",
 ];
+
+// Persistent fallback storage — survives reboots; NOT served as static assets.
+// Permissions: dir 700, file created as 600 by the PM2 process user (yamada).
+const FALLBACK_PATH = "/home/yamada/yamada-tools-data/contact-submissions.jsonl";
 
 function sanitize(s: string, max: number): string {
   return String(s ?? "").slice(0, max).trim();
@@ -70,7 +79,8 @@ async function trySendEmail(data: {
         "",
         "お問い合わせ内容:",
         data.message,
-      ].join("\n"),
+      ].join("
+"),
     });
 
     return { sent: true };
@@ -90,7 +100,8 @@ function saveToFile(data: {
     ...data,
     ts: new Date().toISOString(),
   });
-  appendFileSync("/tmp/contact-submissions.jsonl", record + "\n", "utf-8");
+  appendFileSync(FALLBACK_PATH, record + "
+", { encoding: "utf-8", mode: 0o600 });
 }
 
 export async function POST(request: Request) {
@@ -120,11 +131,13 @@ export async function POST(request: Request) {
   try {
     saveToFile(data);
   } catch (e) {
-    console.warn("contact: failed to save to file:", e);
+    console.warn("[CONTACT] failed to save to file:", e);
   }
 
-  if (!sent) {
-    console.warn("contact: email not sent:", emailError, "| ref:", ref, "| saved to /tmp/contact-submissions.jsonl");
+  if (sent) {
+    console.log(`[CONTACT] ref=${ref} from=${email} subject=${subject} sent=true`);
+  } else {
+    console.warn(`[CONTACT] ref=${ref} from=${email} subject=${subject} stored=${FALLBACK_PATH} smtp_skip=${emailError}`);
   }
 
   return NextResponse.json({ ok: true, ref });
