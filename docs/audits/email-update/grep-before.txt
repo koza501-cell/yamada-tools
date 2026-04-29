@@ -1,0 +1,6 @@
+./src/app/about/transparency/page.tsx:171:                  <li>• メール：<a href="mailto:support@yamadatrade.com" className="text-kon hover:underline">support@yamadatrade.com</a></li>
+./src/app/about/contact/page.tsx:149:        <a href="mailto:support@yamadatrade.com" className="text-kon underline hover:text-ai">
+./src/app/about/contact/page.tsx:150:          support@yamadatrade.com
+./STATUS.md:154:- [ ] No `/api/contact` route exists — must create in Phase 5 to send email to support@yamadatrade.com
+./docs/EMAIL_SETUP.md:16:SMTP_USER=support@yamadatrade.com
+./docs/EMAIL_SETUP.md:19:CONTACT_TO_EMAIL=support@yamadatrade.com

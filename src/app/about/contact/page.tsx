@@ -146,8 +146,8 @@ export default function ContactPage() {
 
       <div className="mt-10 text-sm text-gray-500 border-t pt-6">
         <p className="mb-2">お急ぎの場合はメールでもご連絡いただけます：</p>
-        <a href="mailto:support@yamadatrade.com" className="text-kon underline hover:text-ai">
-          support@yamadatrade.com
+        <a href="mailto:support@yamadatrade.jp" className="text-kon underline hover:text-ai">
+          support@yamadatrade.jp
         </a>
       </div>
 

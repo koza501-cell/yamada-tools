@@ -151,7 +151,7 @@ git checkout cb4bbe1 -- src/app/document/invoice/client.tsx   src/app/document/q
 ## TODOs Surfaced
 
 - [ ] Homepage has dynamic content (StatsCounter) + pdf-compress has animated elements causing Playwright flakiness — visual spec now freezes JS timers + injects animation-pause CSS; residual flakiness may need `--update-snapshots` after each phase
-- [ ] No `/api/contact` route exists — must create in Phase 5 to send email to support@yamadatrade.com
+- [ ] No `/api/contact` route exists — must create in Phase 5 to send email to support@yamadatrade.jp
 - [ ] reCAPTCHA keys not set — gate behind `RECAPTCHA_SITE_KEY` env var
 - [ ] CI workflow assumes `NEXT_PUBLIC_API_URL` secret set in GitHub repo settings
 - [ ] Category counts in header dropdowns not yet dynamic — Phase 3 to derive from tools.ts

@@ -13,10 +13,10 @@ Add these to `.env.local` on the production server:
 SMTP_HOST=mail.yamadatrade.com
 SMTP_PORT=587
 SMTP_SECURE=false
-SMTP_USER=support@yamadatrade.com
+SMTP_USER=support@yamadatrade.jp
 SMTP_PASS=<your-smtp-password>
 CONTACT_FROM_EMAIL=noreply@yamadatrade.com
-CONTACT_TO_EMAIL=support@yamadatrade.com
+CONTACT_TO_EMAIL=support@yamadatrade.jp
 ```
 
 ### Where to get credentials

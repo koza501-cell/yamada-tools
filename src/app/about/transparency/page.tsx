@@ -168,7 +168,7 @@ export default function TransparencyPage() {
                 <ul className="space-y-2">
                   <li>• フィードバックボタン（画面右下）</li>
                   <li>• <Link href="/about/contact" className="text-kon hover:underline font-medium">お問い合わせフォーム</Link></li>
-                  <li>• メール：<a href="mailto:support@yamadatrade.com" className="text-kon hover:underline">support@yamadatrade.com</a></li>
+                  <li>• メール：<a href="mailto:support@yamadatrade.jp" className="text-kon hover:underline">support@yamadatrade.jp</a></li>
                 </ul>
               </div>
             </section>
