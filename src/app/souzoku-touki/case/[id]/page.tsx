@@ -51,7 +51,7 @@ function calcTax(total: number): number {
 
 export default function CaseIdPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
-  const { user } = useAuth();
+  const { user, loading: authLoading } = useAuth();
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -86,9 +86,10 @@ export default function CaseIdPage({ params }: { params: Promise<{ id: string }>
   }, [id, router]);
 
   useEffect(() => {
+    if (authLoading) return;
     if (!user) { router.push(`/auth/login?redirect=/souzoku-touki/case/${id}`); return; }
     loadCase();
-  }, [user, id, loadCase, router]);
+  }, [user, authLoading, id, loadCase, router]);
 
   useEffect(() => {
     const payment = searchParams.get("payment");
