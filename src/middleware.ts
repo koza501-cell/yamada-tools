@@ -5,9 +5,14 @@ const STAGING_CREDENTIALS = 'eWFtYWRhOnN0YWdpbmcyMDI2'; // yamada:staging2026
 
 export function middleware(request: NextRequest) {
   const host = request.headers.get('host') || '';
-  const isStaging = host.includes('staging');
 
-  // Staging basic auth
+  // Belt-and-suspenders: auth only when host is EXACTLY staging AND env var is set.
+  // Even if STAGING_AUTH_USER leaks into production .env.local, the hostname check
+  // prevents the auth challenge from ever firing on yamada-tools.jp.
+  const isStaging =
+    host === 'staging.yamada-tools.jp' &&
+    !!process.env.STAGING_AUTH_USER;
+
   if (isStaging) {
     const auth = request.headers.get('authorization');
     if (!auth || !auth.startsWith('Basic ') || auth.slice(6) !== STAGING_CREDENTIALS) {
@@ -22,8 +27,8 @@ export function middleware(request: NextRequest) {
 
   const response = NextResponse.next();
 
-  // Staging: noindex + nofollow
-  if (isStaging || host.includes('localhost')) {
+  // Noindex for staging and local dev (broader check intentional — covers localhost:3003 etc.)
+  if (host.includes('staging') || host.includes('localhost')) {
     response.headers.set('X-Robots-Tag', 'noindex, nofollow');
   }
 
