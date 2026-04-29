@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, use } from "react";
+import { useState, useEffect, useCallback, use, useRef } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
@@ -65,6 +65,10 @@ export default function CaseIdPage({ params }: { params: Promise<{ id: string }>
   const [saveMsg, setSaveMsg] = useState("");
   const [paymentMsg, setPaymentMsg] = useState("");
 
+  const [lastSavedAt, setLastSavedAt] = useState<Date | null>(null);
+  const [composing, setComposing] = useState(false);
+  const saveRef = useRef<(silent?: boolean) => Promise<void>>(async () => {});
+
   const token = () => (typeof window !== "undefined" ? localStorage.getItem("session_token") || "" : "");
 
   const loadCase = useCallback(async () => {
@@ -101,11 +105,16 @@ export default function CaseIdPage({ params }: { params: Promise<{ id: string }>
     }
   }, [searchParams, loadCase]);
 
-  // Autosave every 30s
+  // Keep saveRef current so the stable interval always calls the latest save closure
+  useEffect(() => { saveRef.current = save; });
+
+  // Autosave every 30s — stable interval, does not reset on every keystroke
   useEffect(() => {
-    const interval = setInterval(() => { if (caseStatus.status !== "loading") save(true); }, 30000);
+    const interval = setInterval(() => {
+      if (caseStatus.status !== "loading") saveRef.current(true);
+    }, 30000);
     return () => clearInterval(interval);
-  });
+  }, [caseStatus.status]);
 
   // Recalculate tax when properties change
   useEffect(() => {
@@ -122,6 +131,7 @@ export default function CaseIdPage({ params }: { params: Promise<{ id: string }>
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token()}` },
         body: JSON.stringify({ form_data: form }),
       });
+      setLastSavedAt(new Date());
       if (!silent) { setSaveMsg("保存しました"); setTimeout(() => setSaveMsg(""), 3000); }
     } catch {
       if (!silent) setSaveMsg("保存に失敗しました");
@@ -170,7 +180,9 @@ export default function CaseIdPage({ params }: { params: Promise<{ id: string }>
       <input
         type={opts?.type || "text"}
         value={value}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => { if (!composing) onChange(e.target.value); }}
+        onCompositionStart={() => setComposing(true)}
+        onCompositionEnd={(e) => { setComposing(false); onChange((e.target as HTMLInputElement).value); }}
         placeholder={opts?.placeholder}
         className="w-full rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-ai text-sm"
       />
@@ -388,7 +400,11 @@ export default function CaseIdPage({ params }: { params: Promise<{ id: string }>
 
         {/* Save bar */}
         <div className="flex items-center justify-between mb-6">
-          <span className="text-xs text-gray-400">{saveMsg || "30秒ごとに自動保存されます"}</span>
+          <span className="text-xs text-gray-400">
+            {saveMsg || (lastSavedAt
+              ? `保存済み ${lastSavedAt.toLocaleTimeString("ja-JP", { hour: "2-digit", minute: "2-digit", second: "2-digit" })}`
+              : "30秒ごとに自動保存されます")}
+          </span>
           <button
             onClick={() => save(false)}
             disabled={saving}
