@@ -39,3 +39,8 @@ feature-a-e2e-test.spec.ts
 check-page.mjs
 check-prod.mjs
 test-results.json
+
+# Backup files (created during deployments)
+*.backup-*
+*.backup
+*.bak
