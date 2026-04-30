@@ -11,20 +11,20 @@ export default function NewsletterSignup() {
     if (!email) return;
 
     setStatus("loading");
-
+    
     // For now, open Google Form in new tab with email prefilled
     const formUrl = `https://forms.gle/2mmoGqLif1Cqe5vL6`;
     window.open(formUrl, "_blank");
-
+    
     setStatus("success");
     setEmail("");
-
+    
     // Reset after 3 seconds
     setTimeout(() => setStatus("idle"), 3000);
   };
 
   return (
-    <div className="bg-gradient-to-r from-kon to-ai dark:from-blue-900 dark:to-blue-950 rounded-xl p-6 text-white">
+    <div className="bg-gradient-to-r from-kon to-ai rounded-xl p-6 text-white">
       <div className="flex items-center gap-2 mb-3">
         <span className="text-2xl">📬</span>
         <h3 className="font-bold text-lg">新機能をお知らせ</h3>
@@ -41,13 +41,13 @@ export default function NewsletterSignup() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="メールアドレス"
-            className="flex-1 px-4 py-2 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 text-sm border border-transparent dark:border-gray-600"
+            className="flex-1 px-4 py-2 rounded-lg text-gray-900 text-sm"
             required
           />
           <button
             type="submit"
             disabled={status === "loading"}
-            className="px-4 py-2 bg-sakura hover:bg-sakura/80 dark:bg-pink-600 dark:hover:bg-pink-500 dark:text-white rounded-lg font-bold text-sm transition-colors disabled:opacity-50"
+            className="px-4 py-2 bg-sakura hover:bg-sakura/80 rounded-lg font-bold text-sm transition-colors disabled:opacity-50"
           >
             {status === "loading" ? "..." : "登録"}
           </button>

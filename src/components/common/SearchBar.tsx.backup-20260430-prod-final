@@ -68,7 +68,7 @@ export default function SearchBar() {
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="何をしたいですか？"
-          className="w-full px-4 py-3 pl-12 pr-4 rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 text-sumi dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-kon dark:focus:border-blue-400 focus:outline-none"
+          className="w-full px-4 py-3 pl-12 pr-4 rounded-xl border-2 border-gray-200 focus:border-kon focus:outline-none text-sumi"
         />
         <span className="absolute left-4 top-1/2 -translate-y-1/2 text-2xl">
           🔍
@@ -77,20 +77,20 @@ export default function SearchBar() {
 
       {/* Results Dropdown */}
       {isOpen && results.length > 0 && (
-        <div className="absolute top-full mt-2 w-full bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden z-50 max-h-96 overflow-y-auto">
+        <div className="absolute top-full mt-2 w-full bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden z-50 max-h-96 overflow-y-auto">
           {results.map((tool) => (
             <Link
               key={tool.id}
               href={tool.path}
               onClick={handleSelect}
-              className="flex items-center gap-4 px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors border-b border-gray-100 dark:border-gray-700 last:border-0"
+              className="flex items-center gap-4 px-4 py-3 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-0"
             >
               <span className="text-3xl">{tool.icon}</span>
               <div className="flex-1">
-                <p className="font-bold text-kon dark:text-blue-300">{tool.nameJa}</p>
-                <p className="text-sm text-gray-600 dark:text-gray-300">{tool.description}</p>
+                <p className="font-bold text-kon">{tool.nameJa}</p>
+                <p className="text-sm text-gray-600">{tool.description}</p>
               </div>
-              <span className="text-gray-400 dark:text-gray-500">→</span>
+              <span className="text-gray-400">→</span>
             </Link>
           ))}
         </div>
@@ -98,8 +98,8 @@ export default function SearchBar() {
 
       {/* No Results */}
       {isOpen && results.length === 0 && query.length >= 2 && (
-        <div className="absolute top-full mt-2 w-full bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 p-4 z-50">
-          <p className="text-center text-gray-500 dark:text-gray-400">
+        <div className="absolute top-full mt-2 w-full bg-white rounded-xl shadow-2xl border border-gray-200 p-4 z-50">
+          <p className="text-center text-gray-500">
             該当するツールが見つかりませんでした
           </p>
         </div>
