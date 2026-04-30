@@ -164,7 +164,7 @@ export default function Home() {
       {/* ============================================================ */}
       {/* SECTION 5: Popular Tools                                     */}
       {/* ============================================================ */}
-      <section id="popular-tools" className="py-16 bg-gray-50 dark:bg-gray-900" style={{scrollMarginTop: "120px"}}>
+      <section id="popular-tools" className="py-16 bg-gradient-to-r from-rose-50 to-orange-50 dark:from-gray-800 dark:to-gray-900" style={{scrollMarginTop: "120px"}}>
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-6">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white">🔥 人気ツール - 今すぐ使う</h2>

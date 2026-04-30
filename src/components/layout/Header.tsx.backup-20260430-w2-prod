@@ -17,13 +17,13 @@ const toolsMenu = {
   ],
 };
 const calcMenu = {
-  title: "計算・シミュレーター",
+  title: "計算・シュミレーター",
   sections: [
     { name: "金融・投資", icon: "💰", href: "/finance", tools: [{ name: "住宅ローン計算", href: "/finance/jutaku-loan" },{ name: "NISA計算機", href: "/finance/nisa-simulator" },{ name: "老後資金計算", href: "/finance/retirement-simulator" },{ name: "為替計算", href: "/finance/fx-calculator" }], moreLink: "/finance" },
     { name: "税金・保険", icon: "🧾", href: "/tax", tools: [{ name: "所得税計算", href: "/tax/income-tax-calculator" },{ name: "ふるさと納税", href: "/tax/furusato-nozei-calculator" },{ name: "相続税計算", href: "/tax/inheritance-tax-calculator" },{ name: "生命保険必要額", href: "/insurance/life-insurance-calculator" }], moreLink: "/tax" },
-    { name: "キャリア・転職", icon: "💼", href: "/career", tools: [{ name: "転職シミュレーター", href: "/career/job-change-simulator" },{ name: "残業代計算", href: "/career/overtime-calculator" },{ name: "失業保険計算", href: "/career/unemployment-calculator" },{ name: "年収交渉ツール", href: "/career/salary-negotiation" }], moreLink: "/career" },
-    { name: "不動産・ビジネス", icon: "🏢", href: "/realestate", tools: [{ name: "賃貸vs購入", href: "/realestate/rent-vs-buy" },{ name: "引越し費用", href: "/realestate/moving-cost-calculator" },{ name: "法人化シミュレーター", href: "/business/incorporation-simulator" },{ name: "役員報酬最適化", href: "/business/director-salary-optimizer" }], moreLink: "/business" },
-    { name: "健康・生活", icon: "🏥", href: "/health", tools: [{ name: "BMI計算", href: "/health/bmi-calculator" },{ name: "カロリー計算", href: "/health/calorie-calculator" },{ name: "借金返済シミュレーター", href: "/debt/repayment-simulator" },{ name: "教育費シミュレーター", href: "/education/education-cost-simulator" }], moreLink: "/health" },
+    { name: "キャリア・転職", icon: "💼", href: "/career", tools: [{ name: "転職シュミレーター", href: "/career/job-change-simulator" },{ name: "残業代計算", href: "/career/overtime-calculator" },{ name: "失業保険計算", href: "/career/unemployment-calculator" },{ name: "年収交渉ツール", href: "/career/salary-negotiation" }], moreLink: "/career" },
+    { name: "不動産・ビジネス", icon: "🏢", href: "/realestate", tools: [{ name: "賃貸vs購入", href: "/realestate/rent-vs-buy" },{ name: "引越し費用", href: "/realestate/moving-cost-calculator" },{ name: "法人化シュミレーター", href: "/business/incorporation-simulator" },{ name: "役員報酬最適化", href: "/business/director-salary-optimizer" }], moreLink: "/business" },
+    { name: "健康・生活", icon: "🏥", href: "/health", tools: [{ name: "BMI計算", href: "/health/bmi-calculator" },{ name: "カロリー計算", href: "/health/calorie-calculator" },{ name: "借金返済シュミレーター", href: "/debt/repayment-simulator" },{ name: "教育費シュミレーター", href: "/education/education-cost-simulator" }], moreLink: "/health" },
   ],
 };
 type MenuSection = { name: string; icon: string; href: string; tools: { name: string; href: string }[]; moreLink: string };
@@ -144,7 +144,7 @@ export default function Header() {
 
             <nav className="hidden lg:flex items-center gap-1">
               <NavDropdown label="ツール" menu={toolsMenu} />
-              <NavDropdown label="計算・シミュレーター" menu={calcMenu} />
+              <NavDropdown label="計算・シュミレーター" menu={calcMenu} />
               <Link href="/blog" className="px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px] flex items-center">ブログ</Link>
               <Link href="/ai" className="px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px] flex items-center">AI活用</Link>
               <Link href="/pricing" className="px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px] flex items-center">料金</Link>
@@ -225,7 +225,7 @@ export default function Header() {
                 ))}
               </div>
               <div className="mb-4">
-                <div className="px-4 py-2 text-xs text-white/60 uppercase tracking-wide">計算・シミュレーター</div>
+                <div className="px-4 py-2 text-xs text-white/60 uppercase tracking-wide">計算・シュミレーター</div>
                 {calcMenu.sections.map((s) => (
                   <Link key={s.href} href={s.href} onClick={() => setIsMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 transition-colors">
                     <span className="text-xl">{s.icon}</span><span className="font-medium">{s.name}</span>
