@@ -24,6 +24,10 @@ export default function LegalPage() {
                 <td className="py-4">合同会社山田トレード<br />(Yamada Trade LLC)</td>
               </tr>
               <tr>
+                <td className="py-4 pr-4 font-bold text-kon align-top">運営責任者</td>
+                <td className="py-4">山田フェサル</td>
+              </tr>
+              <tr>
                 <td className="py-4 pr-4 font-bold text-kon align-top">法人番号</td>
                 <td className="py-4">0400-03-024822</td>
               </tr>
@@ -37,13 +41,13 @@ export default function LegalPage() {
               <tr>
                 <td className="py-4 pr-4 font-bold text-kon align-top">電話番号</td>
                 <td className="py-4">
-                  お問い合わせはメールにてお願いいたします
+                  0475-67-0495（平日10:00〜17:00）
                 </td>
               </tr>
               <tr>
                 <td className="py-4 pr-4 font-bold text-kon align-top">メールアドレス</td>
                 <td className="py-4">
-                  お問い合わせページよりご連絡ください
+                  info@yamadatrade.jp
                 </td>
               </tr>
               <tr>
@@ -56,8 +60,10 @@ export default function LegalPage() {
                 <td className="py-4 pr-4 font-bold text-kon align-top">サービス料金</td>
                 <td className="py-4">
                   無料プラン：無料<br />
+                  デイパス（都度払い）：1日パス120円、3日パス290円、7日パス490円（税込）<br />
                   PROプラン：月額980円（税込）または年額9,800円（税込）<br />
-                  <span className="text-sm text-gray-500">※ 7日間の無料体験あり</span>
+                  TEAMプラン：月額1,480円/ユーザー（税込）または年額14,760円/ユーザー（税込）<br />
+                  <span className="text-sm text-gray-500">※ PROプランは7日間の無料体験あり</span>
                 </td>
               </tr>
               <tr>

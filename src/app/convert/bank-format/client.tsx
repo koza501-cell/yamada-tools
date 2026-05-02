@@ -1192,7 +1192,7 @@ export default function BankFormatClient({
   };
 
   return (
-    <div className="min-h-screen pb-24">
+    <div className="min-h-screen pb-24 bank-format-page">
       {/* Feature C: Sticky running total bar */}
       {stickyVisible && (
         <div className="fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 shadow-lg">
@@ -1218,7 +1218,7 @@ export default function BankFormatClient({
 
         {/* Feature F: Conversion History */}
         {history.length > 0 && (
-          <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 mb-6">
+          <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-4 mb-6">
             <button
               onClick={() => setHistoryOpen(!historyOpen)}
               className="w-full flex items-center justify-between text-left"
@@ -1278,7 +1278,7 @@ export default function BankFormatClient({
         </div>
 
         {/* Conversion Direction Toggle */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 mb-4">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-4 mb-4">
           <p className="text-xs text-gray-500 mb-2 font-medium">変換方向</p>
           <div className="flex gap-2">
             <button type="button" onClick={() => setConversionDirection("to-zengin")}
@@ -1296,7 +1296,7 @@ export default function BankFormatClient({
 
         {/* Reverse mode: Zengin → CSV/JSON */}
         {conversionDirection === "from-zengin" && (
-          <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
+          <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-6 mb-6">
             <h2 className="text-lg font-bold text-indigo-700 mb-4">全銀フォーマット → 変換</h2>
             <div
               onDrop={e => { e.preventDefault(); setZenginIsDragging(false); const f = e.dataTransfer.files[0]; if (f) handleZenginFileUpload(f); }}
@@ -1396,7 +1396,7 @@ export default function BankFormatClient({
 
         {/* Template management (to-zengin only) */}
         {conversionDirection === "to-zengin" && (
-          <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 mb-4">
+          <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-4 mb-4">
             <div className="flex items-center justify-between">
               <button type="button" onClick={() => setTemplatesOpen(o => !o)}
                 className="flex items-center gap-2 text-sm font-medium text-gray-700">
@@ -1507,7 +1507,7 @@ export default function BankFormatClient({
         })()}
 
         {/* Header Information */}
-        <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
+        <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-6 mb-6">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-bold text-kon">委託者情報（依頼元）</h2>
             <button
@@ -1841,7 +1841,7 @@ export default function BankFormatClient({
 
         {/* CSV Input Mode — Feature D */}
         {inputMode === "csv" && (
-          <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
+          <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-6 mb-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg font-bold text-kon">CSV入力</h2>
               <button
@@ -2077,7 +2077,7 @@ export default function BankFormatClient({
         )}
 
         {/* Transfer Data */}
-        <section ref={formSectionRef} id="form-section" className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-4">
+        <section ref={formSectionRef} id="form-section" className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-6 mb-4">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-bold text-kon">
               振込先データ（{transfers.length}件）

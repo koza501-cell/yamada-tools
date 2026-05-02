@@ -1148,3 +1148,89 @@ body {
 }
 
 /* End of tool page dark mode safety net */
+
+
+/* ==========================================================================
+   BANK-FORMAT SCOPED DARK MODE v3 — Inner element backgrounds
+   ==========================================================================
+   Targets light backgrounds inside the bank-format form area.
+   Uses .bank-format-page custom class as scope so other pages unaffected.
+   The custom class survives Tailwind purge because it's not a Tailwind class.
+   ========================================================================== */
+
+.dark .bank-format-page .bg-gray-50 {
+  background-color: #374151 !important;
+  color: #F3F4F6;
+}
+
+.dark .bank-format-page .bg-gray-100 {
+  background-color: #4B5563 !important;
+  color: #F3F4F6;
+}
+
+.dark .bank-format-page .bg-gray-200 {
+  background-color: #6B7280 !important;
+  color: #F9FAFB;
+}
+
+.dark .bank-format-page .bg-blue-50 {
+  background-color: rgba(30, 58, 138, 0.4) !important;
+  color: #DBEAFE;
+}
+
+.dark .bank-format-page .bg-blue-100 {
+  background-color: rgba(30, 58, 138, 0.6) !important;
+  color: #DBEAFE;
+}
+
+.dark .bank-format-page .bg-green-50 {
+  background-color: rgba(6, 78, 59, 0.4) !important;
+  color: #D1FAE5;
+}
+
+.dark .bank-format-page .bg-green-100 {
+  background-color: rgba(6, 78, 59, 0.6) !important;
+  color: #D1FAE5;
+}
+
+.dark .bank-format-page .bg-red-50 {
+  background-color: rgba(127, 29, 29, 0.4) !important;
+  color: #FECACA;
+}
+
+.dark .bank-format-page .bg-red-100 {
+  background-color: rgba(127, 29, 29, 0.6) !important;
+  color: #FECACA;
+}
+
+.dark .bank-format-page .bg-amber-50,
+.dark .bank-format-page .bg-yellow-50 {
+  background-color: rgba(146, 64, 14, 0.4) !important;
+  color: #FEF3C7;
+}
+
+.dark .bank-format-page .bg-amber-100,
+.dark .bank-format-page .bg-yellow-100 {
+  background-color: rgba(146, 64, 14, 0.6) !important;
+  color: #FEF3C7;
+}
+
+/* Text colors that may need adjustment inside the dark wrappers */
+.dark .bank-format-page .text-gray-700,
+.dark .bank-format-page .text-gray-600,
+.dark .bank-format-page .text-gray-500 {
+  color: #D1D5DB;
+}
+
+.dark .bank-format-page .text-gray-800,
+.dark .bank-format-page .text-gray-900 {
+  color: #F3F4F6;
+}
+
+/* Borders inside the form */
+.dark .bank-format-page .border-gray-200,
+.dark .bank-format-page .border-gray-300 {
+  border-color: #4B5563;
+}
+
+/* End of bank-format scoped dark mode */

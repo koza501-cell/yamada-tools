@@ -5,6 +5,11 @@ import { useAuth } from "@/contexts/AuthContext";
 import Link from "next/link";
 import Image from "next/image";
 
+function safeRedirect(url: string | null): string {
+  if (!url || !url.startsWith("/") || url.startsWith("//")) return "/account";
+  return url;
+}
+
 export default function LoginPage() {
   const router = useRouter();
   const { user, loading, login, magicLink } = useAuth();
@@ -14,23 +19,30 @@ export default function LoginPage() {
   const [submitting, setSubmitting] = useState(false);
   const [showMagicLink, setShowMagicLink] = useState(false);
   const [magicLinkSent, setMagicLinkSent] = useState(false);
+  const [redirectTo, setRedirectTo] = useState<string | null>(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const redirect = params.get("redirect");
+    setRedirectTo(redirect && redirect.startsWith("/") && !redirect.startsWith("//") ? redirect : null);
+  }, []);
 
   useEffect(() => {
     if (!loading && user) {
-      router.push("/");
+      router.push(safeRedirect(redirectTo));
     }
-  }, [user, loading, router]);
+  }, [user, loading, router, redirectTo]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
     setError("");
-    
+
     const result = await login(email, password);
     setSubmitting(false);
-    
+
     if (result.success) {
-      router.push("/");
+      router.push(safeRedirect(redirectTo));
     } else {
       setError(result.message);
     }
@@ -43,10 +55,10 @@ export default function LoginPage() {
     }
     setSubmitting(true);
     setError("");
-    
+
     const result = await magicLink(email);
     setSubmitting(false);
-    
+
     if (result.success) {
       setMagicLinkSent(true);
     } else {
@@ -94,10 +106,13 @@ export default function LoginPage() {
     );
   }
 
+  const registerHref = redirectTo
+    ? `/auth/register?redirect=${encodeURIComponent(redirectTo)}`
+    : "/auth/register";
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4">
       <div className="max-w-md w-full">
-        {/* Trust indicators */}
         <div className="text-center mb-6">
           <Link href="/" className="inline-flex items-center gap-2 mb-4">
             <Image src="/logo-icon.webp" alt="山田ツール" className="w-10 h-10" width={40} height={40} />
@@ -109,10 +124,9 @@ export default function LoginPage() {
           </div>
         </div>
 
-        {/* Login form */}
         <div className="bg-white rounded-lg shadow-lg p-8">
           <h1 className="text-xl font-bold text-gray-900 text-center mb-6">ログイン</h1>
-          
+
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -127,7 +141,7 @@ export default function LoginPage() {
                 placeholder="example@company.co.jp"
               />
             </div>
-            
+
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 パスワード <span className="text-red-500">*</span>
@@ -163,7 +177,6 @@ export default function LoginPage() {
             </Link>
           </div>
 
-          {/* Divider */}
           <div className="relative my-6">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-gray-200"></div>
@@ -173,7 +186,6 @@ export default function LoginPage() {
             </div>
           </div>
 
-          {/* Magic link option */}
           <button
             onClick={() => setShowMagicLink(!showMagicLink)}
             className="w-full py-3 border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium rounded-lg transition-colors"
@@ -196,18 +208,16 @@ export default function LoginPage() {
             </div>
           )}
 
-          {/* Register link */}
           <div className="mt-6 pt-6 border-t text-center">
             <p className="text-gray-600 text-sm">
               アカウントをお持ちでない方は
-              <Link href="/auth/register" className="text-kon font-medium hover:underline ml-1">
+              <Link href={registerHref} className="text-kon font-medium hover:underline ml-1">
                 新規登録
               </Link>
             </p>
           </div>
         </div>
 
-        {/* Footer links */}
         <div className="mt-6 text-center text-xs text-gray-500">
           <div className="flex items-center justify-center gap-4">
             <Link href="/legal/terms" className="hover:underline">利用規約</Link>

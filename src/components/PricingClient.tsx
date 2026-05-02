@@ -404,6 +404,19 @@ export default function PricingClient() {
 
         </div>
 
+
+        {/* Day Pass */}
+        <div className="mt-16 max-w-2xl mx-auto">
+          <h2 className="text-xl font-bold text-center text-gray-800 dark:text-white mb-2">デイパス <span className="text-sm font-normal text-gray-400">— 月額不要、1日から使える</span></h2>
+          <p className="text-center text-sm text-gray-500 mb-6">広告なし・全機能・当日限り有効</p>
+          <div className="grid grid-cols-3 gap-4">
+            <div className="flex flex-col items-center rounded-xl border-2 border-gray-200 bg-gray-50 dark:bg-gray-800 p-4"><div className="text-sm font-semibold text-gray-700 dark:text-gray-200 mt-1">1日パス</div><div className="text-2xl font-bold text-gray-900 dark:text-white mt-1">¥120</div><div className="text-xs text-gray-400 mb-2">税込</div></div>
+            <div className="relative flex flex-col items-center rounded-xl border-2 border-blue-500 bg-blue-50 dark:bg-blue-950 p-4"><span className="absolute -top-2.5 left-1/2 -translate-x-1/2 text-xs font-bold px-2 py-0.5 rounded-full whitespace-nowrap bg-blue-500 text-white">おすすめ</span><div className="text-sm font-semibold text-gray-700 dark:text-gray-200 mt-1">3日パス</div><div className="text-2xl font-bold text-gray-900 dark:text-white mt-1">¥290</div><div className="text-xs text-gray-400 mb-2">税込</div></div>
+            <div className="relative flex flex-col items-center rounded-xl border-2 border-green-500 bg-green-50 dark:bg-green-950 p-4"><span className="absolute -top-2.5 left-1/2 -translate-x-1/2 text-xs font-bold px-2 py-0.5 rounded-full whitespace-nowrap bg-green-500 text-white">最もお得</span><div className="text-sm font-semibold text-gray-700 dark:text-gray-200 mt-1">7日パス</div><div className="text-2xl font-bold text-gray-900 dark:text-white mt-1">¥490</div><div className="text-xs text-gray-400 mb-2">税込</div></div>
+          </div>
+          <p className="text-center text-xs text-gray-400 mt-3">デイパスはツール利用時に購入できます（Stripe決済）</p>
+        </div>
+
         {/* Comparison Table */}
         <div className="mt-20">
           <h2 className="text-2xl font-bold text-center text-kon dark:text-white mb-8">プラン比較</h2>

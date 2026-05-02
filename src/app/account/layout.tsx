@@ -28,10 +28,8 @@ export default function AccountLayout({ children }: { children: React.ReactNode 
   const navItems = [
     { href: "/account", label: "ダッシュボード", icon: "🏠" },
     { href: "/account/profile", label: "プロフィール", icon: "👤" },
+    { href: "/account/billing", label: "請求履歴", icon: "🧾" },
     { href: "/account/subscription", label: "サブスクリプション", icon: "💳" },
-    ...(user.effective_plan === "pro" || user.effective_plan === "pro_trial" || user.effective_plan === "team"
-      ? [{ href: "/account/billing", label: "請求履歴", icon: "🧾" }]
-      : []),
     ...(user.effective_plan === "team"
       ? [{ href: "/account/team", label: "チーム管理", icon: "👥" }]
       : []),
