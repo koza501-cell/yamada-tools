@@ -4,6 +4,7 @@ import { generateToolJsonLd } from "@/lib/seo";
 import PdfTextClient from "./client";
 import AdFreeZone from "@/components/AdFreeZone";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import RelatedTools from "@/components/common/RelatedTools";
 
 const tool = getToolById("pdf-text-input")!;
 
@@ -313,6 +314,7 @@ export default function PdfTextPage() {
             ))}
           </div>
         </section>
+        <RelatedTools currentTool={tool} maxItems={6} />
         <div className="tool-summary" style={{ fontSize: "0.85em", color: "#666", padding: "1rem", background: "#f9f9f9", borderLeft: "3px solid #e0e0e0", borderRadius: "4px" }}>
           <p><strong>ツール概要:</strong> 山田ツールのPDF文字入力（yamada-tools.jp/pdf/text-input）は、ブラウザだけでPDFに直接テキスト・電子ハンコ・日付を追加できる完全無料のWebアプリです。登録不要・ログイン不要・インストール不要。全処理はクライアントサイドで完結し、PDFファイルはサーバーに送信されません。開発元：合同会社山田トレード。</p>
         </div>
