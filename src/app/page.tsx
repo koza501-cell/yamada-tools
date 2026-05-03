@@ -13,7 +13,7 @@ import TabbedToolsSection from "@/components/common/TabbedToolsSection";
 import StatsCounter from "@/components/common/StatsCounter";
 import FooterCta from "@/components/common/FooterCta";
 import NicheBentoSection from "@/components/home/NicheBentoSection";
-import { pdfTools, documentTools, convertTools, imageTools, generatorTools, financeTools, careerTools, taxTools, realestateTools, businessTools, getToolCount, allTools } from "@/config/tools";
+import { pdfTools, documentTools, convertTools, imageTools, generatorTools, financeTools, careerTools, taxTools, realestateTools, businessTools, getToolCount, allTools, getNewTools} from "@/config/tools";
 
 // High-traffic tool paths that get 🔥 badge
 const HOT_PATHS = new Set(['/generator/envelope-print', '/convert/bank-format', '/pdf/compress']);
@@ -201,14 +201,14 @@ export default function Home() {
       {/* ============================================================ */}
       <section className="py-16 bg-gradient-to-r from-orange-50 to-amber-50 dark:from-gray-800 dark:to-gray-900">
         <div className="max-w-7xl mx-auto px-4">
-          {featuredTools.filter(t => t.category !== "finance").length > 0 && (
+          {getNewTools().filter(t => t.category !== "finance").slice(0, 8).length > 0 && (
             <div className="mb-12">
               <div className="flex items-center gap-3 mb-6">
                 <span className="inline-block px-3 py-1 bg-orange-500 text-white text-sm font-bold rounded-full">🆕 新ツール</span>
                 <h2 className="text-xl font-bold text-gray-900 dark:text-white">新しいツールが登場！</h2>
               </div>
               <div className="grid md:grid-cols-2 gap-4 max-w-4xl">
-                {featuredTools.filter(t => t.category !== "finance").map((tool) => (
+                {getNewTools().filter(t => t.category !== "finance").slice(0, 8).map((tool) => (
                   <Link
                     key={tool.id}
                     href={tool.path}
