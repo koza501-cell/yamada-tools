@@ -10,7 +10,7 @@
 
 Paste the FIRST MESSAGE to next Claude:
 
-> "Continuing yamada-tools work. Read the handoff doc at `~/projects/3websitepassive_income/yamada-tools/docs/HANDOFF.md` (or paste below). I'm Faisal, you're Sonnet. Operating rules unchanged: staging-first, manual approval for production, short replies, complete code, ask_user_input_v0 for choices, never assume my preferences."
+> "Continuing yamada-tools work. Read the handoff doc at `~/projects/3websitepassive_income/yamada-tools/frontend/docs/HANDOFF.md` (or paste below). I'm Faisal, you're Sonnet. Operating rules unchanged: staging-first, manual approval for production, short replies, complete code, ask_user_input_v0 for choices, never assume my preferences."
 
 Then paste this entire document.
 
