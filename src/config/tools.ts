@@ -8,7 +8,7 @@ export interface Tool {
   apiEndpoint: string;
   acceptedTypes: string;
   maxFiles: number;
-  category: "pdf" | "document" | "convert" | "image" | "generator" | "finance" | "career" | "health" | "insurance" | "tax" | "realestate" | "business" | "education" | "debt" | "utility";
+  category: "pdf" | "document" | "convert" | "image" | "generator" | "finance" | "stat";
   available: boolean;
   isNew?: boolean;
   isPopular?: boolean;
@@ -305,6 +305,20 @@ export const pdfTools: Tool[] = [
     icon: "↕️",
     path: "/pdf/reorder",
     apiEndpoint: "/api/pdf/reorder",
+    acceptedTypes: ".pdf",
+    maxFiles: 1,
+    category: "pdf",
+    available: true,
+  },
+
+  {
+    id: "pdf-stamp",
+    nameJa: "PDF押印",
+    nameEn: "PDF Stamp",
+    description: "PDFに電子印鑑（ハンコ）を押印。印影自動生成機能付き。ブラウザ処理で安全",
+    icon: "🔏",
+    path: "/pdf/stamp",
+    apiEndpoint: "",
     acceptedTypes: ".pdf",
     maxFiles: 1,
     category: "pdf",
@@ -903,19 +917,6 @@ export const imageTools: Tool[] = [
     category: "image",
     available: true,
   },
-  {
-    id: "pdf-stamp",
-    nameJa: "PDF押印",
-    nameEn: "PDF Stamp",
-    description: "PDFに電子印鑑（ハンコ）を押印。印影自動生成機能付き。ブラウザ処理で安全",
-    icon: "🔏",
-    path: "/pdf/stamp",
-    apiEndpoint: "",
-    acceptedTypes: ".pdf",
-    maxFiles: 1,
-    category: "pdf",
-    available: true,
-  },
 ];
 
 // ============================================
@@ -1183,32 +1184,6 @@ export const generatorTools: Tool[] = [
     category: "generator",
     available: true,
   },
-  {
-    id: "fx-calculator",
-    nameJa: "FX損益計算機 Pro",
-    nameEn: "FX Calculator Pro",
-    description: "FX取引の損益・証拠金・ロスカット・スワップ・確定申告を1つで計算。複数取引の一括計算や損失繰越控除シミュレーターも対応",
-    icon: "📈",
-    path: "/fx-calculator",
-    apiEndpoint: "",
-    acceptedTypes: "",
-    maxFiles: 0,
-    category: "generator",
-    available: true,
-  },
-  {
-    id: "business-card-gen",
-    nameJa: "名刺作成",
-    nameEn: "Business Card Creator",
-    description: "名刺をオンラインでデザイン。印刷用PDF出力・QR対応",
-    icon: "💼",
-    path: "/document/business-card",
-    apiEndpoint: "",
-    acceptedTypes: "",
-    maxFiles: 0,
-    category: "generator",
-    available: true,
-  },
 ];
 
 // ============================================
@@ -1284,34 +1259,6 @@ export const financeTools: Tool[] = [
     category: "finance",
     available: true,
     isFeatured: true,
-  },
-  {
-    id: "heikin-nenshu",
-    nameJa: "都道府県別平均年収",
-    nameEn: "Average Income by Prefecture",
-    description: "47都道府県の平均年収・業種別年収を国勢調査ベースで比較。全国ランキング付き。",
-    icon: "💰",
-    path: "/finance/heikin-nenshu",
-    apiEndpoint: "",
-    acceptedTypes: "",
-    maxFiles: 0,
-    category: "finance",
-    available: true,
-    isFeatured: true,
-  },
-  {
-    id: "jinko-suikei",
-    nameJa: "都道府県別人口推移・将来予測",
-    nameEn: "Population Trends by Prefecture",
-    description: "47都道府県の人口推移・将来推計・年齢ピラミッドを国勢調査データで可視化。",
-    icon: "📈",
-    path: "/finance/jinko-suikei",
-    apiEndpoint: "",
-    acceptedTypes: "",
-    maxFiles: 0,
-    category: "finance",
-    available: true,
-    isFeatured: false,
   },
 ];
 
@@ -1580,20 +1527,6 @@ export const businessTools: Tool[] = [
     category: "finance",
     available: true,
   },
-  {
-    id: "shitsugyo-ritsu",
-    nameJa: "都道府県別失業率",
-    nameEn: "Unemployment Rate by Prefecture",
-    description: "47都道府県の完全失業率・有効求人倍率を比較。総務省国勢調査データ準拠。",
-    icon: "📊",
-    path: "/career/shitsugyo-ritsu",
-    apiEndpoint: "",
-    acceptedTypes: "",
-    maxFiles: 0,
-    category: "career",
-    available: true,
-    isFeatured: false,
-  },
 ];
 
 // ============================================
@@ -1677,20 +1610,6 @@ export const healthTools: Tool[] = [
     maxFiles: 0,
     category: "generator",
     available: true,
-  },
-  {
-    id: "heikin-jumyo",
-    nameJa: "都道府県別平均寿命",
-    nameEn: "Life Expectancy by Prefecture",
-    description: "47都道府県の男女別平均寿命・余命計算。厚生労働省完全生命表データ準拠。",
-    icon: "❤️",
-    path: "/health/heikin-jumyo",
-    apiEndpoint: "",
-    acceptedTypes: "",
-    maxFiles: 0,
-    category: "health",
-    available: true,
-    isFeatured: false,
   },
 ];
 
@@ -1973,6 +1892,69 @@ export const taxTools: Tool[] = [
   },
 ];
 // ============================================
+
+// ============================================
+// Section 16: 統計・データ (4 tools)
+// ============================================
+export const statTools: Tool[] = [
+  {
+    id: "heikin-nenshu",
+    nameJa: "都道府県別 平均年収検索",
+    nameEn: "Average Salary by Prefecture",
+    description: "47都道府県の平均年収・所得データを公的統計（e-Stat）から検索。地図表示で一目でわかる",
+    icon: "💴",
+    path: "/finance/heikin-nenshu",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "stat",
+    available: true,
+    isNew: true,
+  },
+  {
+    id: "jinko-suikei",
+    nameJa: "都道府県別 人口推移・将来予測",
+    nameEn: "Population Statistics by Prefecture",
+    description: "都道府県の過去人口推移と将来推計人口を公的統計（e-Stat）から検索",
+    icon: "📊",
+    path: "/finance/jinko-suikei",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "stat",
+    available: true,
+    isNew: true,
+  },
+  {
+    id: "heikin-jumyo",
+    nameJa: "都道府県別 平均寿命",
+    nameEn: "Average Life Expectancy by Prefecture",
+    description: "47都道府県の平均寿命データを公的統計から検索。男女別・ランキング表示",
+    icon: "🌸",
+    path: "/health/heikin-jumyo",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "stat",
+    available: true,
+    isNew: true,
+  },
+  {
+    id: "shitsugyo-ritsu",
+    nameJa: "都道府県別 失業率",
+    nameEn: "Unemployment Rate by Prefecture",
+    description: "47都道府県の失業率データを公的統計から検索。ランキング・地域比較表示",
+    icon: "📉",
+    path: "/career/shitsugyo-ritsu",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "stat",
+    available: true,
+    isNew: true,
+  },
+];
+
 export const allTools: Tool[] = [
   ...pdfTools,
   ...documentTools,
@@ -1989,7 +1971,9 @@ export const allTools: Tool[] = [
   ...educationTools,
   ...debtTools,
   ...utilityTools,
+  ...statTools,
 ];
+
 
 // ============================================
 // Helper functions
@@ -2053,14 +2037,3 @@ export const seoTools: Tool[] = [];
 
 // For backward compatibility
 export const officeTools = documentTools;
-
-export type ToolCategory = Tool["category"];
-
-/**
- * Returns the count of available tools for the given category or categories.
- * Used by Header dropdowns to derive live counts from the tool registry.
- */
-export function getToolCountByCategory(categories: string | string[]): number {
-  const cats = Array.isArray(categories) ? categories : [categories];
-  return allTools.filter(t => t.available && cats.includes(t.category)).length;
-}
