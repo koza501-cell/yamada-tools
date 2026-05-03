@@ -77,6 +77,27 @@ export default function Footer() {
                   🏢 法人・企業様向け
                 </Link>
               </div>
+              {/* New Stats & Business Tools - Highlighted */}
+              <div>
+                <Link href="/business/houjin-search" className="inline-flex items-center gap-1 text-sakura font-medium hover:underline transition-colors">
+                  🆕 法人検索（gBizINFO）
+                </Link>
+              </div>
+              <div>
+                <Link href="/business/hojokin-active" className="inline-flex items-center gap-1 text-sakura font-medium hover:underline transition-colors">
+                  🆕 補助金検索（Jグランツ）
+                </Link>
+              </div>
+              <div>
+                <Link href="/finance/heikin-nenshu" className="inline-flex items-center gap-1 text-sakura font-medium hover:underline transition-colors">
+                  📊 統計・データツール
+                </Link>
+              </div>
+              <div>
+                <Link href="/en/business/company-search" className="inline-flex items-center gap-1 text-sakura font-medium hover:underline transition-colors">
+                  🌐 English: Japan Company Search
+                </Link>
+              </div>
               <div>
                 <a href="https://www.yamadatrade.com/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-sakura transition-colors">
                   会社ウェブサイト
