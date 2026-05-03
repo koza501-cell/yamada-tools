@@ -2037,3 +2037,10 @@ export const seoTools: Tool[] = [];
 
 // For backward compatibility
 export const officeTools = documentTools;
+
+// Helper: count tools per category id(s) — accepts single id or array
+export const getToolCountByCategory = (categoryIds: string | string[]): number => {
+  const ids = Array.isArray(categoryIds) ? categoryIds : [categoryIds];
+  return allTools.filter(t => ids.includes(t.category) && t.available).length;
+};
+
