@@ -1,5 +1,7 @@
 "use client";
 
+import Encoding from 'encoding-japanese';
+
 import { useState, useEffect, useRef } from "react";
 import { LazyFAQ } from "@/components/common/LazyFAQ";
 import Link from "next/link";
@@ -598,30 +600,59 @@ export default function BankFormatClient({
   };
 
   // Convert to Zengin character set (half-width katakana uppercase)
+  // Spec: 全銀協規定 - JIS X 0201 half-width characters only
+  // Process: hiragana → full katakana → half katakana → uppercase → small→large
   const toZenginKana = (str: string): string => {
-    // Full-width to half-width katakana
-    let result = str
-      .replace(/[ァ-ン]/g, (s) => String.fromCharCode(s.charCodeAt(0) - 0x60))
-      .replace(/[ぁ-ん]/g, (s) => String.fromCharCode(s.charCodeAt(0) - 0x60 + 0x60))
-      // Convert hiragana to katakana first
-      .replace(/[ぁ-ん]/g, (s) => String.fromCharCode(s.charCodeAt(0) + 0x60));
+    // Step 1: Hiragana → Full-width katakana (ぁ→ァ etc.)
+    let result = str.replace(/[\u3041-\u3096]/g, (s) =>
+      String.fromCharCode(s.charCodeAt(0) + 0x60)
+    );
 
-    // Lowercase to uppercase
+    // Step 2: Full-width katakana → Half-width katakana (full lookup table)
+    const fullToHalf: Record<string, string> = {
+      'ア':'ｱ','イ':'ｲ','ウ':'ｳ','エ':'ｴ','オ':'ｵ',
+      'カ':'ｶ','キ':'ｷ','ク':'ｸ','ケ':'ｹ','コ':'ｺ',
+      'サ':'ｻ','シ':'ｼ','ス':'ｽ','セ':'ｾ','ソ':'ｿ',
+      'タ':'ﾀ','チ':'ﾁ','ツ':'ﾂ','テ':'ﾃ','ト':'ﾄ',
+      'ナ':'ﾅ','ニ':'ﾆ','ヌ':'ﾇ','ネ':'ﾈ','ノ':'ﾉ',
+      'ハ':'ﾊ','ヒ':'ﾋ','フ':'ﾌ','ヘ':'ﾍ','ホ':'ﾎ',
+      'マ':'ﾏ','ミ':'ﾐ','ム':'ﾑ','メ':'ﾒ','モ':'ﾓ',
+      'ヤ':'ﾔ','ユ':'ﾕ','ヨ':'ﾖ',
+      'ラ':'ﾗ','リ':'ﾘ','ル':'ﾙ','レ':'ﾚ','ロ':'ﾛ',
+      'ワ':'ﾜ','ヲ':'ｦ','ン':'ﾝ',
+      'ガ':'ｶﾞ','ギ':'ｷﾞ','グ':'ｸﾞ','ゲ':'ｹﾞ','ゴ':'ｺﾞ',
+      'ザ':'ｻﾞ','ジ':'ｼﾞ','ズ':'ｽﾞ','ゼ':'ｾﾞ','ゾ':'ｿﾞ',
+      'ダ':'ﾀﾞ','ヂ':'ﾁﾞ','ヅ':'ﾂﾞ','デ':'ﾃﾞ','ド':'ﾄﾞ',
+      'バ':'ﾊﾞ','ビ':'ﾋﾞ','ブ':'ﾌﾞ','ベ':'ﾍﾞ','ボ':'ﾎﾞ',
+      'パ':'ﾊﾟ','ピ':'ﾋﾟ','プ':'ﾌﾟ','ペ':'ﾍﾟ','ポ':'ﾎﾟ',
+      'ァ':'ｧ','ィ':'ｨ','ゥ':'ｩ','ェ':'ｪ','ォ':'ｫ',
+      'ャ':'ｬ','ュ':'ｭ','ョ':'ｮ','ッ':'ｯ',
+      'ー':'ｰ','　':' ','、':'､','。':'｡','「':'｢','」':'｣','・':'･',
+      // Full-width alphanumeric → half-width
+      'Ａ':'A','Ｂ':'B','Ｃ':'C','Ｄ':'D','Ｅ':'E','Ｆ':'F','Ｇ':'G',
+      'Ｈ':'H','Ｉ':'I','Ｊ':'J','Ｋ':'K','Ｌ':'L','Ｍ':'M','Ｎ':'N',
+      'Ｏ':'O','Ｐ':'P','Ｑ':'Q','Ｒ':'R','Ｓ':'S','Ｔ':'T','Ｕ':'U',
+      'Ｖ':'V','Ｗ':'W','Ｘ':'X','Ｙ':'Y','Ｚ':'Z',
+      '０':'0','１':'1','２':'2','３':'3','４':'4',
+      '５':'5','６':'6','７':'7','８':'8','９':'9',
+      '（':'(','）':')','－':'-','．':'.','／':'/',
+    };
+    result = result.split('').map(ch => fullToHalf[ch] !== undefined ? fullToHalf[ch] : ch).join('');
+
+    // Step 3: Lowercase a-z → uppercase A-Z
     result = result.toUpperCase();
 
-    // Small kana to large kana
-    const smallToLarge: { [key: string]: string } = {
-      ァ: "ア", ィ: "イ", ゥ: "ウ", ェ: "エ", ォ: "オ",
-      ッ: "ツ", ャ: "ヤ", ュ: "ユ", ョ: "ヨ",
-      ｧ: "ｱ", ｨ: "ｲ", ｩ: "ｳ", ｪ: "ｴ", ｫ: "ｵ",
-      ｯ: "ﾂ", ｬ: "ﾔ", ｭ: "ﾕ", ｮ: "ﾖ",
+    // Step 4: Small half-width kana → large half-width kana
+    // (Zengin spec requires large kana only)
+    const smallToLarge: Record<string, string> = {
+      'ｧ':'ｱ','ｨ':'ｲ','ｩ':'ｳ','ｪ':'ｴ','ｫ':'ｵ',
+      'ｯ':'ﾂ','ｬ':'ﾔ','ｭ':'ﾕ','ｮ':'ﾖ',
     };
-    for (const [small, large] of Object.entries(smallToLarge)) {
-      result = result.replace(new RegExp(small, "g"), large);
-    }
+    result = result.split('').map(ch => smallToLarge[ch] !== undefined ? smallToLarge[ch] : ch).join('');
 
-    // Only allow valid Zengin characters
-    result = result.replace(/[^A-Z0-9ｱ-ﾝﾞﾟ\s.\\\(\)\-\/｢｣ ]/g, "");
+    // Step 5: Strip any remaining invalid characters
+    // Allowed: A-Z, 0-9, half-width katakana ｦ-ﾝ, dakuten ﾞ ﾟ, space, parens, hyphen, period, slash
+    result = result.replace(/[^A-Z0-9ｦ-ﾝﾞﾟ \(\)\-\.\/]/g, '');
 
     return result;
   };
@@ -643,8 +674,9 @@ export default function BankFormatClient({
   const generateHeader = (): string => {
     let record = "";
     record += "1"; // Data type: 1 = Header
-    const typeCode = headerData.transferType === '21' ? '21' : '11';
-    record += typeCode; // Transfer type: 21=総合, 11=給与/賞与
+    // Type code per Zengin spec: 21=総合振込, 11=給与, 12=賞与
+    const typeCode = headerData.transferType;  // Already typed as '21'|'11'|'12'
+    record += typeCode; // Transfer type
     record += "0"; // Code type: 0=JIS
     record += padLeft(headerData.clientCode, 10, "0"); // Client code
     record += padRight(toZenginKana(headerData.clientName), 40); // Client name
@@ -689,8 +721,9 @@ export default function BankFormatClient({
     } else {
       record += ' '.repeat(20); // EDI info
     }
-    record += " "; // Transfer designation
-    record += " ".repeat(7); // Dummy
+    record += " "; // 振込指定区分 (Transfer designation)
+    record += " "; // 識別表示 (Identification display) - was missing, caused 119-byte records
+    record += " ".repeat(7); // ダミー (Dummy)
 
     return record;
   };
@@ -947,7 +980,7 @@ export default function BankFormatClient({
       });
 
       output += generateTrailer() + "\r\n";
-      output += generateEnd();
+      output += generateEnd() + "\r\n";
 
       const validTotal = validTransfers.reduce((s, t) => s + (parseInt(t.amount.replace(/[^0-9]/g, "")) || 0), 0);
       setResult(output);
@@ -965,7 +998,23 @@ export default function BankFormatClient({
     const content = text ?? result;
     if (!content) return;
     const charset = enc ?? outputEncoding;
-    const blob = new Blob([content], { type: `text/plain;charset=${charset}` });
+
+    // Build the actual byte content based on encoding
+    let blob: Blob;
+    if (charset === 'shift-jis') {
+      // Convert UTF-16 string → Shift-JIS bytes using encoding-japanese
+      // This is critical: just setting MIME charset doesn't convert the data
+      const sjisBytes = Encoding.convert(content, {
+        to: 'SJIS',
+        from: 'UNICODE',
+        type: 'array',
+      });
+      blob = new Blob([new Uint8Array(sjisBytes)], { type: 'text/plain' });
+    } else {
+      // UTF-8: standard string Blob
+      blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    }
+
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
