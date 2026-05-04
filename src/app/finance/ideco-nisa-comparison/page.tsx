@@ -139,6 +139,46 @@ export default function Page() {
       <UseCasesSection cases={useCases} />
       <FAQSection faq={faqItems} />
     
+      <section className="max-w-4xl mx-auto px-4 py-8 mb-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-white mb-4">
+          📊 よくある計算結果（早見表）
+        </h2>
+        <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+          iDeCoと新NISAの主な違い（2025年時点）
+        </p>
+        <div className="overflow-x-auto bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+          <table className="w-full text-sm">
+            <thead className="bg-gray-50 dark:bg-gray-700">
+              <tr>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">項目</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">iDeCo</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">新NISA</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["年間投資枠", "14.4万～81.6万円（職業による）", "360万円（つみたて120+成長240）"],
+                ["非課税保有限度額", "なし（年間枠のみ）", "1,800万円（成長は1,200万円まで）"],
+                ["税制優遇", "掛金全額所得控除＋運用益非課税＋受取時優遇", "運用益非課税"],
+                ["引き出し", "原則60歳まで不可", "いつでも可"],
+                ["手数料", "口座管理料あり（月数百円）", "無料の金融機関多数"],
+                ["対象年齢", "20～65歳未満（国民年金加入者）", "18歳以上（誰でも）"],
+                ["所得控除", "あり（節税効果大）", "なし"],
+              ].map((row, i) => (
+                <tr key={i} className="border-t border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50">
+                  <td className="py-2 px-4 font-medium">{row[0]}</td>
+                  <td className="py-2 px-4 text-blue-600 dark:text-blue-400">{row[1]}</td>
+                  <td className="py-2 px-4 text-blue-600 dark:text-blue-400">{row[2]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-xs text-gray-400 mt-3">
+          ※概算です。実際の金額は個別の控除・条件により異なります。<br/>
+          出典: 国民年金基金連合会・金融庁（令和7年/2025年）
+        </p>
+      </section>
       <div className="max-w-4xl mx-auto px-4 mt-8 mb-4">
         <h2 className="text-xl font-bold text-gray-900 mb-4">📝 関連ブログ記事</h2>
         <Link

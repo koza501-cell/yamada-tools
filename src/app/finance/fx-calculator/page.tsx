@@ -116,6 +116,48 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbJsonLd, softwareApplicationJsonLd, howToJsonLd, faqJsonLd]) }}
       />
       <FXCalculatorClient faq={faq} />
+      <section className="max-w-4xl mx-auto px-4 py-8 mb-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-white mb-4">
+          📊 よくある計算結果（早見表）
+        </h2>
+        <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+          FX取引の損益・必要証拠金の早見表（USD/JPY 150円想定）
+        </p>
+        <div className="overflow-x-auto bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 mb-4">
+          <table className="w-full text-sm">
+            <thead className="bg-gray-50 dark:bg-gray-700">
+              <tr>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">ロット数（1lot=1万通貨）</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">レバレッジ25倍 必要証拠金</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">1pips変動の損益</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["0.1lot（1千通貨）", "約6,000円", "約100円"],
+                ["1lot（1万通貨）", "約60,000円", "約1,000円"],
+                ["10lot（10万通貨）", "約600,000円", "約10,000円"],
+                ["100lot（100万通貨）", "約6,000,000円", "約100,000円"],
+              ].map((row, i) => (
+                <tr key={i} className="border-t border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50">
+                  <td className="py-2 px-4 font-medium">{row[0]}</td>
+                  <td className="py-2 px-4 text-blue-600 dark:text-blue-400">{row[1]}</td>
+                  <td className="py-2 px-4">{row[2]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 text-sm">
+          <p className="font-semibold text-gray-700 dark:text-gray-200 mb-1">FXの税金（申告分離課税）</p>
+          <p className="text-gray-600 dark:text-gray-300">所得税15.315% + 住民税5% = 合計20.315%</p>
+          <p className="text-gray-600 dark:text-gray-300">損失は3年間繰越可能（翌年以降の利益から差し引き）</p>
+        </div>
+        <p className="text-xs text-gray-400 mt-3">
+          ※概算です。実際の金額は個別の控除・条件により異なります。<br/>
+          出典: 金融庁「店頭FX規制」・国税庁「申告分離課税」（令和7年/2025年）
+        </p>
+      </section>
       <div className="max-w-4xl mx-auto px-4">
         <RelatedTools currentTool={tool} maxItems={6} />
       </div>
