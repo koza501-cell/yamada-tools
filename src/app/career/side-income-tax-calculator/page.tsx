@@ -81,7 +81,7 @@ export default function SideIncomeTaxCalculatorPage() {
         <RelatedTools currentTool={tool} maxItems={6} />
       </div>
     
-        {{/* 関連ブログ記事 */}}
+        {/* 関連ブログ記事 */}
         <div className="mt-8 mb-4">
           <h2 className="text-xl font-bold text-gray-900 mb-4">📝 関連ブログ記事</h2>
           <Link
