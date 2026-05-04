@@ -60,7 +60,6 @@ const nextConfig = {
       { source: '/tools/ideco-nisa-comparison', destination: '/finance/ideco-nisa-comparison', permanent: true },
       { source: '/tools/nisa-simulator', destination: '/finance/nisa-simulator', permanent: true },
       { source: '/ideco-nisa-comparison', destination: '/finance/ideco-nisa-comparison', permanent: true },
-      { source: '/health', destination: '/', permanent: true },
       { source: '/insurance', destination: '/', permanent: true },
       { source: '/debt', destination: '/', permanent: true },
       { source: '/education', destination: '/', permanent: true },
