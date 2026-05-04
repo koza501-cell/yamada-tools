@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import RelatedTools from "@/components/common/RelatedTools";
+import { getToolById } from "@/config/tools";
 import HojokinHistoryClient from "./client";
 
 export const metadata: Metadata = {
@@ -15,6 +17,13 @@ export const metadata: Metadata = {
   },
 };
 
+const tool = getToolById("hojokin-history");
+
 export default function Page() {
-  return <HojokinHistoryClient />;
+  return (
+    <>
+      <HojokinHistoryClient />
+      {tool && <RelatedTools currentTool={tool} maxItems={6} />}
+    </>
+  );
 }

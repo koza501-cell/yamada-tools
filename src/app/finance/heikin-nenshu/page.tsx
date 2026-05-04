@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import RelatedTools from "@/components/common/RelatedTools";
+import { getToolById } from "@/config/tools";
 import Link from "next/link";
 import {
   BarChart,
@@ -73,6 +75,8 @@ type RankingItem = {
   pref_code: string; pref_name: string; slug: string;
   annual_man: number; rank: number;
 };
+
+const tool = getToolById("heikin-nenshu");
 
 export default function HeikinNenshuPage() {
   const [prefCode, setPrefCode] = useState("13000");
@@ -394,6 +398,8 @@ export default function HeikinNenshuPage() {
           実際の年収は個人差があります。企業規模10人以上の一般労働者が対象です。
         </p>
       </div>
+    
+      {tool && <RelatedTools currentTool={tool} maxItems={6} />}
     </div>
   );
 }

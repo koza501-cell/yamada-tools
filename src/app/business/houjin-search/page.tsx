@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import RelatedTools from "@/components/common/RelatedTools";
+import { getToolById } from "@/config/tools";
 import HoujinSearchClient from "./client";
 
 export const metadata: Metadata = {
@@ -20,6 +22,13 @@ export const metadata: Metadata = {
   },
 };
 
+const tool = getToolById("houjin-search");
+
 export default function Page() {
-  return <HoujinSearchClient />;
+  return (
+    <>
+      <HoujinSearchClient />
+      {tool && <RelatedTools currentTool={tool} maxItems={6} />}
+    </>
+  );
 }

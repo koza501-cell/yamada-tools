@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import RelatedTools from "@/components/common/RelatedTools";
+import { getToolById } from "@/config/tools";
 import Link from "next/link";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
 
@@ -28,6 +30,8 @@ type PrefData = {
   male_rank: number; female_rank: number;
   national_trend: { year: number; national_male: number; national_female: number }[];
 };
+
+const tool = getToolById("heikin-jumyo");
 
 export default function HeikinJumyoPage() {
   const [slug, setSlug] = useState("tokyo");
@@ -192,6 +196,8 @@ export default function HeikinJumyoPage() {
           ⚠️ 本データは厚生労働省の令和2年（2020年）都道府県別生命表に基づく統計値です。実際の寿命は個人差があります。
         </p>
       </div>
+    
+      {tool && <RelatedTools currentTool={tool} maxItems={6} />}
     </div>
   );
 }

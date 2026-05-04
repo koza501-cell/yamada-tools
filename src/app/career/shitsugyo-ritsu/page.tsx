@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import RelatedTools from "@/components/common/RelatedTools";
+import { getToolById } from "@/config/tools";
 import Link from "next/link";
 import {
   ComposedChart, Line, Scatter, XAxis, YAxis, CartesianGrid, Tooltip,
@@ -40,6 +42,8 @@ function rateColor(rate: number | null): string {
   if (rate <= 4.5) return "text-orange-500 dark:text-orange-400";
   return "text-red-600 dark:text-red-400";
 }
+
+const tool = getToolById("shitsugyo-ritsu");
 
 export default function ShitsugyoRitsuPage() {
   const [slug, setSlug] = useState("tokyo");
@@ -215,6 +219,8 @@ export default function ShitsugyoRitsuPage() {
           ⚠️ 完全失業率は総務省 令和2年（2020年）国勢調査に基づく統計値です。有効求人倍率は厚生労働省 職業安定業務統計（{new Date().getFullYear() - 2}年）。本データは政府統計の数値です。個人の状況は地域内でも異なります。
         </p>
       </div>
+    
+      {tool && <RelatedTools currentTool={tool} maxItems={6} />}
     </div>
   );
 }

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import RelatedTools from "@/components/common/RelatedTools";
+import { getToolById } from "@/config/tools";
 import Link from "next/link";
 import { ComposedChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
 
@@ -31,6 +33,8 @@ type PrefData = {
 function fmtPop(n: number): string {
   return Math.round(n / 10000).toLocaleString() + "万人";
 }
+
+const tool = getToolById("jinko-suikei");
 
 export default function JinkoPage() {
   const [slug, setSlug] = useState("tokyo");
@@ -173,6 +177,8 @@ export default function JinkoPage() {
           ⚠️ 本データは政府統計（社会・人口統計体系 e-Stat）をもとに表示しています。将来推計はトレンド計算によるもので、公式推計（社人研）と異なる場合があります。
         </p>
       </div>
+    
+      {tool && <RelatedTools currentTool={tool} maxItems={6} />}
     </div>
   );
 }

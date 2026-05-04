@@ -156,6 +156,21 @@ const relatedToolsMap: Record<string, string[]> = {
   "alcohol-calculator": ["bmi-calculator", "calorie-calculator", "sleep-calculator"],
   "sleep-calculator": ["alcohol-calculator", "bmi-calculator", "calorie-calculator"],
   "pregnancy-calculator": ["age-calculator", "bmi-calculator", "ideal-weight-calculator"],
+
+  // ===== NEW Stats / Business tools (added 2026-05-04) =====
+  // Stats tools (e-Stat data)
+  "heikin-nenshu": ["jinko-suikei", "shitsugyo-ritsu", "heikin-jumyo", "salary-calc", "income-tax-calculator", "salary-negotiation"],
+  "jinko-suikei": ["heikin-nenshu", "heikin-jumyo", "shitsugyo-ritsu", "rent-vs-buy", "education-cost-simulator"],
+  "heikin-jumyo": ["heikin-nenshu", "jinko-suikei", "shitsugyo-ritsu", "retirement-simulator", "life-insurance-calculator"],
+  "shitsugyo-ritsu": ["heikin-nenshu", "jinko-suikei", "unemployment-calculator", "job-change-simulator", "salary-negotiation"],
+
+  // Government API business tools (gBizINFO + Jグランツ)
+  "houjin-search": ["hojokin-active", "hojokin-history", "incorporation-simulator", "corporate-tax-calculator", "invoice", "invoice-validator"],
+  "hojokin-active": ["houjin-search", "hojokin-history", "incorporation-simulator", "freelance-tax-calculator"],
+  "hojokin-history": ["houjin-search", "hojokin-active", "incorporation-simulator", "corporate-tax-calculator"],
+
+  // Utility duplicate
+  "unit-converter-utility": ["unit-converter", "tsubo-converter", "wareki-seireki"],
 };
 
 // Simple tool type for legacy usage
