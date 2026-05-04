@@ -28,9 +28,9 @@ const faq = [
 // Total: ~5,000+ impressions
 
 export const metadata: Metadata = generateToolMetadata({
-  customTitle: "ふりがな変換ツール【無料】漢字→ひらがな・カタカナ・ローマ字",
+  customTitle: "ふりがなツール【無料】漢字に瞬時にルビ・ひらがな・カタカナ・ローマ字を自動付与",
   tool,
-  longDescription: "漢字にふりがなを一瞬で自動付与。ひらがな・カタカナ・ローマ字に対応。コピペするだけ、登録不要・完全無料。日本国内サーバーで安全処理。",
+  longDescription: "漢字を貼り付けるだけで瞬時にふりがな・ルビを自動付与。ひらがな・カタカナ・ローマ字3形式に対応、長文も一括変換OK。インストール不要・完全無料・日本国内サーバーで安全。",
   keywords: [
     'ふりがなツール',
     'フリガナツール', 
