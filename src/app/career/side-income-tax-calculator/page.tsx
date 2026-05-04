@@ -13,6 +13,70 @@ export default function SideIncomeTaxCalculatorPage() {
   return (
     <>
       <SideIncomeTaxCalculatorClient />
+      <section className="max-w-4xl mx-auto px-4 py-8 mb-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-white mb-4">
+          📊 よくある計算結果（早見表）
+        </h2>
+        <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+          副業収入にかかる税金と確定申告の必要性
+        </p>
+        <div className="overflow-x-auto bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 mb-4">
+          <table className="w-full text-sm">
+            <thead className="bg-gray-50 dark:bg-gray-700">
+              <tr>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">状況</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">確定申告</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["副業所得20万円以下（給与+副業=合計1ヵ所給与のみ）", "原則不要"],
+                ["副業所得20万円超", "必要"],
+                ["給与収入2ヵ所以上で年末調整されない方の収入20万円超", "必要"],
+                ["医療費控除・住宅ローン控除等を受ける場合", "必要（20万円以下でも）"],
+                ["住民税のみ申告必要", "副業20万円以下でも必要（別途市区町村に申告）"],
+              ].map((row, i) => (
+                <tr key={i} className="border-t border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50">
+                  <td className="py-2 px-4 font-medium">{row[0]}</td>
+                  <td className="py-2 px-4 text-blue-600 dark:text-blue-400">{row[1]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <h3 className="text-base font-semibold text-gray-800 dark:text-white mb-2">副業所得別の所得税計算例（本業年収500万円・副業所得追加）</h3>
+        <div className="overflow-x-auto bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+          <table className="w-full text-sm">
+            <thead className="bg-gray-50 dark:bg-gray-700">
+              <tr>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">副業所得</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">追加所得税（20%税率帯）</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">追加住民税（10%）</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">合計税負担</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["20万円", "申告不要（所得税）", "2万円", "約2万円"],
+                ["50万円", "10万円", "5万円", "15万円"],
+                ["100万円", "20万円", "10万円", "30万円"],
+                ["200万円", "40万円", "20万円", "60万円"],
+              ].map((row, i) => (
+                <tr key={i} className="border-t border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50">
+                  <td className="py-2 px-4 font-medium">{row[0]}</td>
+                  <td className="py-2 px-4 text-blue-600 dark:text-blue-400">{row[1]}</td>
+                  <td className="py-2 px-4">{row[2]}</td>
+                  <td className="py-2 px-4">{row[3]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-xs text-gray-400 mt-3">
+          ※概算です。実際の金額は個別の控除・条件により異なります。<br/>
+          出典: 国税庁「給与所得者で確定申告が必要な人」（令和7年/2025年）
+        </p>
+      </section>
       <div className="max-w-4xl mx-auto px-4">
         <RelatedTools currentTool={tool} maxItems={6} />
       </div>

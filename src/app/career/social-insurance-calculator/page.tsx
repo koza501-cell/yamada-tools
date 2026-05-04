@@ -52,6 +52,47 @@ export default function SocialInsuranceCalculatorPage() {
         <p className="text-xs text-gray-400 mt-2">※協会けんぽ東京都2026年度保険料率（介護保険なし）で計算した目安。</p>
       </div>
 
+      <section className="max-w-4xl mx-auto px-4 py-8 mb-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-white mb-4">
+          📊 よくある計算結果（早見表）
+        </h2>
+        <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+          社会保険料率（協会けんぽ・東京都・令和7年度/2025年）
+        </p>
+        <div className="overflow-x-auto bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+          <table className="w-full text-sm">
+            <thead className="bg-gray-50 dark:bg-gray-700">
+              <tr>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">保険料</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">料率（本人負担）</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">料率（会社負担）</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">合計</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["健康保険（40歳未満）", "4.99%", "4.99%", "9.98%"],
+                ["健康保険（40歳以上・介護込）", "5.79%", "5.79%", "11.58%"],
+                ["厚生年金", "9.15%", "9.15%", "18.30%"],
+                ["雇用保険（一般）", "0.6%", "0.95%", "1.55%"],
+                ["合計（40歳未満）", "約14.74%", "約15.09%", "約29.83%"],
+                ["合計（40歳以上）", "約15.54%", "約15.89%", "約31.43%"],
+              ].map((row, i) => (
+                <tr key={i} className="border-t border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50">
+                  <td className="py-2 px-4 font-medium">{row[0]}</td>
+                  <td className="py-2 px-4 text-blue-600 dark:text-blue-400">{row[1]}</td>
+                  <td className="py-2 px-4">{row[2]}</td>
+                  <td className="py-2 px-4">{row[3]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-xs text-gray-400 mt-3">
+          ※概算です。実際の金額は個別の控除・条件により異なります。<br/>
+          出典: 全国健康保険協会（協会けんぽ）・厚生労働省（令和7年/2025年・東京都基準）
+        </p>
+      </section>
       <div className="max-w-4xl mx-auto px-4">
         <RelatedTools currentTool={tool} maxItems={6} />
       </div>

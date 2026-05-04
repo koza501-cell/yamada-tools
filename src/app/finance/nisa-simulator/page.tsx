@@ -139,6 +139,76 @@ export default function Page() {
       <UseCasesSection cases={useCases} />
       <FAQSection faq={faqItems} />
     
+      <section className="max-w-4xl mx-auto px-4 py-8 mb-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-white mb-4">
+          📊 よくある計算結果（早見表）
+        </h2>
+        <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+          新NISA（2024年制度）の年間投資枠と非課税保有限度額
+        </p>
+        <div className="overflow-x-auto bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 mb-4">
+          <table className="w-full text-sm">
+            <thead className="bg-gray-50 dark:bg-gray-700">
+              <tr>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">項目</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">つみたて投資枠</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">成長投資枠</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">合計</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["年間投資枠", "120万円", "240万円", "360万円"],
+                ["非課税保有限度額", "1,800万円（成長と合算）", "1,200万円", "1,800万円（総枠）"],
+                ["対象商品", "金融庁認定の投資信託", "上場株式・投資信託・ETF・REIT", "—"],
+                ["購入方法", "積立のみ", "一括/積立/スポット", "—"],
+                ["非課税保有期間", "無期限", "無期限", "無期限"],
+              ].map((row, i) => (
+                <tr key={i} className="border-t border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50">
+                  <td className="py-2 px-4 font-medium">{row[0]}</td>
+                  <td className="py-2 px-4 text-blue-600 dark:text-blue-400">{row[1]}</td>
+                  <td className="py-2 px-4 text-blue-600 dark:text-blue-400">{row[2]}</td>
+                  <td className="py-2 px-4">{row[3]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <h3 className="text-base font-semibold text-gray-800 dark:text-white mb-2">月額積立シミュレーション例（年利5%想定）</h3>
+        <div className="overflow-x-auto bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+          <table className="w-full text-sm">
+            <thead className="bg-gray-50 dark:bg-gray-700">
+              <tr>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">月額</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">期間</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">元本</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">運用益込み総額</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">うち運用益</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["毎月3万円", "20年", "720万円", "約1,233万円", "約513万円"],
+                ["毎月5万円", "20年", "1,200万円", "約2,055万円", "約855万円"],
+                ["毎月10万円", "15年", "1,800万円", "約2,673万円", "約873万円"],
+                ["毎月10万円", "20年", "1,800万円（MAX）", "約4,110万円", "約2,310万円"],
+              ].map((row, i) => (
+                <tr key={i} className="border-t border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50">
+                  <td className="py-2 px-4 font-medium">{row[0]}</td>
+                  <td className="py-2 px-4">{row[1]}</td>
+                  <td className="py-2 px-4">{row[2]}</td>
+                  <td className="py-2 px-4 text-blue-600 dark:text-blue-400">{row[3]}</td>
+                  <td className="py-2 px-4">{row[4]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-xs text-gray-400 mt-3">
+          ※概算です。実際の金額は個別の控除・条件により異なります。<br/>
+          出典: 金融庁「新しいNISA」（令和7年/2025年）。シミュレーションは年利5%想定の概算。
+        </p>
+      </section>
       <div className="max-w-4xl mx-auto px-4 mt-8 mb-4">
         <h2 className="text-xl font-bold text-gray-900 mb-4">📝 関連ブログ記事</h2>
         <Link

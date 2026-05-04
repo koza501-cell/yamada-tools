@@ -139,6 +139,67 @@ export default function Page() {
       <UseCasesSection cases={useCases} />
       <FAQSection faq={faqItems} />
     
+      <section className="max-w-4xl mx-auto px-4 py-8 mb-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-white mb-4">
+          📊 よくある計算結果（早見表）
+        </h2>
+        <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+          夫婦2人の老後生活費の目安（厚生労働省・総務省データ）
+        </p>
+        <div className="overflow-x-auto bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 mb-4">
+          <table className="w-full text-sm">
+            <thead className="bg-gray-50 dark:bg-gray-700">
+              <tr>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">生活水準</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">月額</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">年額</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">30年間の総額</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["最低限の生活", "約23万円", "約276万円", "約8,280万円"],
+                ["平均的な生活", "約27万円", "約324万円", "約9,720万円"],
+                ["ゆとりある生活", "約38万円", "約456万円", "約1億3,680万円"],
+              ].map((row, i) => (
+                <tr key={i} className="border-t border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50">
+                  <td className="py-2 px-4 font-medium">{row[0]}</td>
+                  <td className="py-2 px-4 text-blue-600 dark:text-blue-400">{row[1]}</td>
+                  <td className="py-2 px-4">{row[2]}</td>
+                  <td className="py-2 px-4">{row[3]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <h3 className="text-base font-semibold text-gray-800 dark:text-white mb-2">年金受給額の目安（夫婦2人・厚生年金）</h3>
+        <div className="overflow-x-auto bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+          <table className="w-full text-sm">
+            <thead className="bg-gray-50 dark:bg-gray-700">
+              <tr>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">条件</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">平均月額（夫婦2人）</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["平均的な月額（夫婦2人）", "約23万円"],
+                ["国民年金のみ（夫婦2人）", "約13万円"],
+                ["厚生年金あり（共働き想定）", "約28万円"],
+              ].map((row, i) => (
+                <tr key={i} className="border-t border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50">
+                  <td className="py-2 px-4 font-medium">{row[0]}</td>
+                  <td className="py-2 px-4 text-blue-600 dark:text-blue-400">{row[1]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-xs text-gray-400 mt-3">
+          ※概算です。実際の金額は個別の控除・条件により異なります。<br/>
+          出典: 総務省「家計調査（令和6年）」・厚生労働省「年金制度基礎資料」
+        </p>
+      </section>
       <div className="max-w-4xl mx-auto px-4 mt-8 mb-4">
         <h2 className="text-xl font-bold text-gray-900 mb-4">📝 関連ブログ記事</h2>
         <Link

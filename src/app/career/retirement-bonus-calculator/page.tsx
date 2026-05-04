@@ -49,6 +49,67 @@ export default function RetirementBonusCalculatorPage() {
         <p className="text-xs text-gray-400 mt-2">※厚生労働省「就労条件総合調査」をもとにした目安。会社の規定・業種により大きく異なります。</p>
       </div>
 
+      <section className="max-w-4xl mx-auto px-4 py-8 mb-8">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-white mb-4">
+          📊 よくある計算結果（早見表）
+        </h2>
+        <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+          退職金の税制優遇（退職所得控除額）
+        </p>
+        <div className="overflow-x-auto bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 mb-4">
+          <table className="w-full text-sm">
+            <thead className="bg-gray-50 dark:bg-gray-700">
+              <tr>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">勤続年数</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">退職所得控除額の計算式</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["20年以下", "40万円 × 勤続年数（最低80万円）"],
+                ["20年超", "800万円 + 70万円 × （勤続年数 - 20年）"],
+              ].map((row, i) => (
+                <tr key={i} className="border-t border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50">
+                  <td className="py-2 px-4 font-medium">{row[0]}</td>
+                  <td className="py-2 px-4 text-blue-600 dark:text-blue-400">{row[1]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <h3 className="text-base font-semibold text-gray-800 dark:text-white mb-2">勤続年数別退職所得控除額の例（退職金1,000万円の場合）</h3>
+        <div className="overflow-x-auto bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+          <table className="w-full text-sm">
+            <thead className="bg-gray-50 dark:bg-gray-700">
+              <tr>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">勤続年数</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">控除額</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-200">退職金1,000万円の課税対象</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["10年", "400万円", "(1000−400)÷2 = 300万円"],
+                ["20年", "800万円", "(1000−800)÷2 = 100万円"],
+                ["25年", "1,150万円", "0円（非課税）"],
+                ["30年", "1,500万円", "0円（非課税）"],
+                ["35年", "1,850万円", "0円（非課税）"],
+                ["40年", "2,200万円", "0円（非課税）"],
+              ].map((row, i) => (
+                <tr key={i} className="border-t border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50">
+                  <td className="py-2 px-4 font-medium">{row[0]}</td>
+                  <td className="py-2 px-4 text-blue-600 dark:text-blue-400">{row[1]}</td>
+                  <td className="py-2 px-4">{row[2]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-xs text-gray-400 mt-3">
+          ※概算です。実際の金額は個別の控除・条件により異なります。<br/>
+          出典: 国税庁 No.1420 退職所得控除（令和7年/2025年）
+        </p>
+      </section>
       <div className="max-w-4xl mx-auto px-4">
         <RelatedTools currentTool={tool} maxItems={6} />
       </div>
