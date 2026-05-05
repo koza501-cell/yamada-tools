@@ -114,6 +114,23 @@ export const niches: Niche[] = [
 
   // Future niches (coming soon)
   {
+    id: "realestate",
+    iconName: "building",
+    name: "不動産情報",
+    shortName: "不動産",
+    description: "用途地域・ハザード・地価・取引価格・学区・人口推計",
+    toolCount: 11,
+    theme: "olive",
+    isNew: true,
+    featuredLinks: [
+      { name: "用途地域チェック", url: "/realestate/yoto-chiiki-checker" },
+      { name: "ハザードマップ", url: "/realestate/hazard-checker" },
+      { name: "地価チェック", url: "/realestate/land-price" },
+      { name: "学区チェック", url: "/realestate/school-district" },
+    ],
+    url: "/realestate",
+  },
+  {
     id: "health",
     iconName: "heart",
     name: "健康・データ",

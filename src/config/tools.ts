@@ -8,7 +8,7 @@ export interface Tool {
   apiEndpoint: string;
   acceptedTypes: string;
   maxFiles: number;
-  category: "pdf" | "document" | "convert" | "image" | "generator" | "finance" | "stat";
+  category: "pdf" | "document" | "convert" | "image" | "generator" | "finance" | "stat" | "realestate";
   available: boolean;
   isNew?: boolean;
   isPopular?: boolean;
@@ -1385,10 +1385,6 @@ export const careerTools: Tool[] = [
     available: true,
   },
 ];
-
-
-// ============================================
-// Real Estate Tools (不動産)
 // ============================================
 export const realestateTools: Tool[] = [
   {
@@ -1457,6 +1453,20 @@ export const realestateTools: Tool[] = [
     available: true,
   },
   {
+    id: "yoto-chiiki-checker",
+    nameJa: "用途地域チェッカー",
+    nameEn: "Zoning Checker",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    description: "住所を入力するだけで用途地域・建ぺい率・容積率を確認。13種類を平易な日本語で解説",
+    icon: "🏗",
+    path: "/realestate/yoto-chiiki-checker",
+    category: "realestate",
+    available: true,
+    isNew: true,
+  },
+  {
     id: "hazard-checker",
     nameJa: "ハザードマップチェッカー",
     nameEn: "Hazard Map Checker",
@@ -1489,10 +1499,10 @@ export const realestateTools: Tool[] = [
     description: "住所で実際の不動産売買取引価格を確認。㎡・坪単価・取引総額を表示",
     icon: "🏠",
     path: "/realestate/transaction-price",
+    category: "realestate",
     apiEndpoint: "",
     acceptedTypes: "",
     maxFiles: 0,
-    category: "finance",
     available: true,
     isNew: true,
   },
