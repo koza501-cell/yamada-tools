@@ -1482,6 +1482,20 @@ export const realestateTools: Tool[] = [
     category: "finance",
     available: true,
   },
+  {
+    id: "transaction-price",
+    nameJa: "不動産取引価格チェッカー",
+    nameEn: "Transaction Price Checker",
+    description: "住所で実際の不動産売買取引価格を確認。㎡・坪単価・取引総額を表示",
+    icon: "🏠",
+    path: "/realestate/transaction-price",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+    isNew: true,
+  },
 ];
 
 // ============================================
