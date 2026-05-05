@@ -1510,6 +1510,20 @@ export const realestateTools: Tool[] = [
     available: true,
     isNew: true,
   },
+  {
+    id: "population",
+    nameJa: "人口推計チェッカー",
+    nameEn: "Population Projection Checker",
+    description: "住所で2020〜2070年の人口推移・将来推計を確認。移住・不動産・事業立地の参考に",
+    icon: "👥",
+    path: "/realestate/population",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+    isNew: true,
+  },
 ];
 
 // ============================================
