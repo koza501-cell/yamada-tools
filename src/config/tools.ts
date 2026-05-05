@@ -1469,6 +1469,19 @@ export const realestateTools: Tool[] = [
     category: "finance",
     available: true,
   },
+  {
+    id: "land-price",
+    nameJa: "地価チェッカー",
+    nameEn: "Land Price Checker",
+    description: "住所で地価公示・地価調査を確認。前年比・エリア平均も表示",
+    icon: "💰",
+    path: "/realestate/land-price",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+  },
 ];
 
 // ============================================
