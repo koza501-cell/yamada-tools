@@ -1496,6 +1496,20 @@ export const realestateTools: Tool[] = [
     available: true,
     isNew: true,
   },
+  {
+    id: "school-district",
+    nameJa: "学区チェッカー",
+    nameEn: "School District Checker",
+    description: "住所で小学校・中学校の学区を即座に確認。子育て世帯の住まい選びに",
+    icon: "🏫",
+    path: "/realestate/school-district",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+    isNew: true,
+  },
 ];
 
 // ============================================
