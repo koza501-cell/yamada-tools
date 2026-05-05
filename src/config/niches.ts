@@ -85,10 +85,16 @@ export const niches: Niche[] = [
     iconName: "chart",
     name: "金融・データ",
     shortName: "金融",
-    description: "NISA・住宅ローン・【新】年収統計",
-    toolCount: 9,
+    description: "NISA・住宅ローン・残業代・減価償却・給与手取り",
+    toolCount: 12,
     theme: "green",
     isNew: true,
+    featuredLinks: [
+      { name: "残業代計算機", url: "/finance/overtime-calculator" },
+      { name: "給与手取り計算機", url: "/finance/net-salary-calculator" },
+      { name: "減価償却計算機", url: "/finance/depreciation-calculator" },
+      { name: "住宅ローン計算機", url: "/finance/loan-calculator" },
+    ],
     url: "/finance",
   },
   {
