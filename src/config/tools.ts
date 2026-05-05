@@ -1456,6 +1456,19 @@ export const realestateTools: Tool[] = [
     category: "finance",
     available: true,
   },
+  {
+    id: "hazard-checker",
+    nameJa: "ハザードマップチェッカー",
+    nameEn: "Hazard Map Checker",
+    description: "住所で洪水・土砂・液状化・津波・高潮の5リスクを一括確認",
+    icon: "🌊",
+    path: "/realestate/hazard-checker",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+  },
 ];
 
 // ============================================
