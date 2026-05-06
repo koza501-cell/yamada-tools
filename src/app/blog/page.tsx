@@ -1,118 +1,38 @@
-import { Metadata } from 'next';
-import Link from 'next/link';
-import Image from 'next/image';
-import { getPublishedPosts, isNewBlog } from '@/data/blogPosts';
-import fs from 'fs';
-import path from 'path';
+import { Metadata } from "next";
+import fs from "fs";
+import path from "path";
+import { getPublishedPosts } from "@/data/blogPosts";
+import BlogIndexClient from "./client";
 
 export const metadata: Metadata = {
-  title: 'ブログ',
-  description: 'PDFツールの活用方法、ビジネス効率化のヒント、最新機能の紹介など、お役立ち情報を発信しています。',
-  alternates: {
-    canonical: 'https://yamada-tools.jp/blog',
+  title: "ブログ | 山田ツール",
+  description: "ビジネス効率化・PDF活用・不動産情報・税金・金融の実践ノウハウを発信。全銀フォーマット、確定申告、不動産情報ライブラリの使い方など。",
+  alternates: { canonical: "https://yamada-tools.jp/blog" },
+  openGraph: {
+    title: "ブログ | 山田ツール",
+    description: "ビジネス効率化・PDF活用・不動産情報の実践ノウハウを発信。",
+    url: "https://yamada-tools.jp/blog",
+    type: "website",
   },
 };
 
 function getDynamicBlogs() {
   try {
-    const blogsPath = path.join(process.cwd(), 'src/data/dynamicBlogs.json');
-    if (fs.existsSync(blogsPath)) {
-      const fileContent = fs.readFileSync(blogsPath, 'utf-8');
-      return JSON.parse(fileContent);
-    }
-  } catch (error) {
-    console.error('Error loading dynamic blogs:', error);
-  }
+    const p = path.join(process.cwd(), "src/data/dynamicBlogs.json");
+    if (fs.existsSync(p)) return JSON.parse(fs.readFileSync(p, "utf-8"));
+  } catch {}
   return [];
 }
 
 export default function BlogPage() {
   const staticBlogs = getPublishedPosts();
   const dynamicBlogs = getDynamicBlogs();
-  // Filter blogs: only show if publishDate <= today
   const today = new Date();
-  today.setHours(23, 59, 59, 999); // End of today
+  today.setHours(23, 59, 59, 999);
 
   const allBlogs = [...dynamicBlogs, ...staticBlogs]
-    .filter(blog => {
-      const publishDate = new Date(blog.publishDate);
-      return publishDate <= today;
-    })
-    .sort((a, b) => {
-      return new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime();
-    });
+    .filter((b) => new Date(b.publishDate) <= today)
+    .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
 
-  return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-            📝 ブログ
-          </h1>
-          <p className="text-gray-600 dark:text-gray-300 text-lg">
-            PDFツールの活用方法、ビジネス効率化のヒント、最新機能の紹介など
-          </p>
-        </div>
-
-        {allBlogs.length === 0 ? (
-          <div className="text-center py-20">
-            <p className="text-gray-500 dark:text-gray-400 text-lg">まだブログがありません</p>
-          </div>
-        ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {allBlogs.map((blog) => (
-              <Link
-                key={blog.slug}
-                href={`/blog/${blog.slug}`}
-                className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group"
-              >
-                <div className="relative h-48 overflow-hidden">
-                  {blog.featuredImage ? (
-                    <img
-                      src={blog.featuredImage}
-                      alt={blog.title}
-
-
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 dark:from-blue-700 dark:to-purple-800" />
-                  )}
-                  {isNewBlog(blog.publishDate) && (
-                    <span className="absolute top-4 right-4 px-3 py-1 bg-red-500 text-white text-sm font-bold rounded-full shadow-lg">
-                      NEW
-                    </span>
-                  )}
-                </div>
-
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">
-                      {blog.category}
-                    </span>
-                    <span className="text-sm text-gray-500 dark:text-gray-400">{blog.readTime}</span>
-                  </div>
-
-                  <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
-                    {blog.title}
-                  </h2>
-
-                  <p className="text-gray-600 dark:text-gray-300 text-sm line-clamp-3 mb-4">
-                    {blog.description || blog.excerpt}
-                  </p>
-
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-500 dark:text-gray-400">{blog.publishDate}</span>
-                    <span className="text-blue-600 dark:text-blue-400 group-hover:translate-x-2 transition-transform font-medium">
-                      続きを読む →
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        )}
-      </div>
-    </div>
-  );
+  return <BlogIndexClient blogs={allBlogs} />;
 }
