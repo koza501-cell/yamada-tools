@@ -248,17 +248,15 @@ export default function Home() {
                 <Link
                   key={tool.id}
                   href={tool.path}
-                  className="group bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 overflow-hidden border border-amber-100 dark:border-gray-700 p-5"
+                  className="group bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 overflow-hidden border border-amber-100 dark:border-gray-700 p-5"
                 >
                   <div className="flex items-start gap-4">
-                    <span className="text-4xl flex-shrink-0">{tool.icon}</span>
+                    <span className="text-3xl flex-shrink-0">{tool.icon}</span>
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-1">
-                        <h3 className="text-base font-bold text-kon dark:text-white leading-tight">{tool.nameJa}</h3>
-                        <span className="px-1.5 py-0.5 bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200 text-xs font-bold rounded">Pro</span>
-                      </div>
+                      <h3 className="text-base font-bold text-kon dark:text-white leading-tight mb-1">{tool.nameJa}</h3>
                       <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{tool.description}</p>
                     </div>
+                    <span className="text-amber-400 group-hover:translate-x-1 transition-transform text-lg flex-shrink-0">→</span>
                   </div>
                 </Link>
               ))}
