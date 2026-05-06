@@ -1692,12 +1692,54 @@ export const businessTools: Tool[] = [
     category: "finance",
     available: true,
   },
+  {
+    id: "furima-profit-calculator",
+    nameJa: "フリマ仕入れ利益計算機",
+    nameEn: "Flea Market Profit Calculator",
+    description: "メルカリ・eBay・ヤフオクの仕入れ利益を自動計算。損益分岐点・目標利益率逆算付き",
+    icon: "🛒",
+    path: "/business/furima-profit-calculator",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+    isNew: true,
+  },
+  {
+    id: "hofuku-calculator",
+    nameJa: "建設業 法定福利費計算機",
+    nameEn: "Construction Statutory Welfare Cost Calculator",
+    description: "労務費から法定福利費を自動計算。見積書テキストをワンクリックコピー。2024年度保険料率対応",
+    icon: "🏗️",
+    path: "/business/hofuku-calculator",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+    isNew: true,
+  },
 ];
 
 // ============================================
 // Health Tools (健康)
 // ============================================
 export const healthTools: Tool[] = [
+  {
+    id: "nogyo-income-calculator",
+    nameJa: "農業所得計算機",
+    nameEn: "Agricultural Income Calculator",
+    description: "農業の売上・経費から農業所得と確定申告の目安を計算。青色申告65万控除・農業共済対応",
+    icon: "🌾",
+    path: "/health/nogyo-income-calculator",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "generator",
+    available: true,
+    isNew: true,
+  },
   {
     id: "bmi-calculator",
     nameJa: "BMI計算機",
