@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
+import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】資格取得は投資になる？費用対効果（ROI）をシミュレーション";
 const description = "資格取得の費用対効果を徹底解説。取得費用・勉強時間と年収アップ効果、元が取れる資格・取れない資格、ROI計算方法。シミュレーターで投資回収期間を計算。";
@@ -326,6 +327,8 @@ export default function ShikakuToshiSimulation2026Blog() {
       <BlogAdUnit />
 
       <p className="text-sm text-gray-500 mt-8">この記事は2026年4月時点の情報に基づいています。年収効果は業界・企業・個人により異なります。</p>
-    </article>
+    
+      <ShareButtons url="https://yamada-tools.jp/blog/shikaku-toshi-simulation-2026" title="shikaku-toshi-simulation-2026" />
+</article>
   );
 }

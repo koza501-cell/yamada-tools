@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
+import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】年収の壁とは？103万・106万・130万・150万の壁を完全解説";
 const description = "パート・アルバイトの年収の壁を徹底解説。103万円の壁で所得税、106万円・130万円の壁で社会保険、150万円の壁で配偶者特別控除に影響。損しない働き方を紹介。";
@@ -304,6 +305,8 @@ export default function NenshuKabeSimulation2026Blog() {
       <BlogAdUnit />
 
       <p className="text-sm text-gray-500 mt-8">この記事は2026年4月時点の情報に基づいています。制度は変更される可能性があるため、最新情報をご確認ください。</p>
-    </article>
+    
+      <ShareButtons url="https://yamada-tools.jp/blog/nenshu-kabe-simulation-2026" title="nenshu-kabe-simulation-2026" />
+</article>
   );
 }

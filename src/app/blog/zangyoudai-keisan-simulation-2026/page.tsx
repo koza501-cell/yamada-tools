@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
+import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】残業代の計算方法｜時給換算・割増率・未払い請求まで完全解説";
 const description = "残業代の正しい計算方法を徹底解説。基本給からの時給換算、25%・35%・50%の割増率、深夜・休日の計算例。未払い残業代の請求方法も紹介。";
@@ -320,6 +321,8 @@ export default function ZangyoudaiKeisanSimulation2026Blog() {
       <BlogAdUnit />
 
       <p className="text-sm text-gray-500 mt-8">この記事は2026年4月時点の労働基準法に基づいています。</p>
-    </article>
+    
+      <ShareButtons url="https://yamada-tools.jp/blog/zangyoudai-keisan-simulation-2026" title="zangyoudai-keisan-simulation-2026" />
+</article>
   );
 }

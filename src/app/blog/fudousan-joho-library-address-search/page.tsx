@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
+import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "住所を入れるだけで不動産情報が全部わかる！国土交通省データを簡単に使う方法";
 const description =
@@ -526,6 +527,8 @@ export default function FudousanJohoLibraryBlog() {
       <BlogAdUnit />
 
       {/* API Credit (mandatory) */}
+      <ShareButtons url="https://yamada-tools.jp/blog/fudousan-joho-library-address-search" title="住所を入れるだけで不動産情報が全部わかる！" />
+
       <p className="text-xs text-gray-400 mt-8 leading-relaxed border-t pt-4">
         このサービスは、国土交通省不動産情報ライブラリのAPI機能を使用していますが、提供情報の最新性、正確性、完全性等が保証されたものではありません。
         掲載情報はすべて参考値であり、実際の不動産取引・法的判断の際は専門家にご相談ください。

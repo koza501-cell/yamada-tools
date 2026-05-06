@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
+import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】退職金の計算方法と相場｜勤続年数別シミュレーション完全ガイド";
 const description = "退職金の計算方法を徹底解説。勤続20年で約800万円、30年で約1,500万円が目安。退職所得控除の計算、税金の仕組み、もらえない場合の対処法まで網羅。";
@@ -309,6 +310,8 @@ export default function TaishokukinSimulation2026Blog() {
       <BlogAdUnit />
 
       <p className="text-sm text-gray-500 mt-8">この記事は2026年4月時点の情報に基づいています。</p>
-    </article>
+    
+      <ShareButtons url="https://yamada-tools.jp/blog/taishokukin-simulation-2026" title="taishokukin-simulation-2026" />
+</article>
   );
 }

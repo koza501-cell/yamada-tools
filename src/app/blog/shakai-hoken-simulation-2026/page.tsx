@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
+import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】社会保険料の計算方法｜年収別早見表と手取り額シミュレーション";
 const description = "社会保険料の計算方法を徹底解説。健康保険・厚生年金・雇用保険の料率、年収別の保険料早見表、標準報酬月額の決まり方。手取り額シミュレーターで計算。";
@@ -325,6 +326,8 @@ export default function ShakaiHokenSimulation2026Blog() {
       <BlogAdUnit />
 
       <p className="text-sm text-gray-500 mt-8">この記事は2026年4月時点の保険料率に基づいています。</p>
-    </article>
+    
+      <ShareButtons url="https://yamada-tools.jp/blog/shakai-hoken-simulation-2026" title="shakai-hoken-simulation-2026" />
+</article>
   );
 }

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
+import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】転職で年収はいくら上がる？年収アップシミュレーション完全ガイド";
 const description = "転職による年収アップの相場を徹底解説。20代は平均+50万円、30代は+80万円が目安。業界別・職種別の年収アップ率と、年収交渉のコツを紹介。";
@@ -285,6 +286,8 @@ export default function TenshokuNenshuSimulation2026Blog() {
       <BlogAdUnit />
 
       <p className="text-sm text-gray-500 mt-8">この記事は2026年4月時点の情報に基づいています。</p>
-    </article>
+    
+      <ShareButtons url="https://yamada-tools.jp/blog/tenshoku-nenshu-simulation-2026" title="tenshoku-nenshu-simulation-2026" />
+</article>
   );
 }

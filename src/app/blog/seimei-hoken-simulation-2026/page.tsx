@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
+import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】生命保険の必要額シミュレーション｜家族構成別の目安と計算方法";
 const description = "生命保険の必要保障額を徹底解説。家族構成・年収・住宅ローン別の目安、遺族年金との関係、保険料の相場。必要額シミュレーターで今すぐ計算。";
@@ -325,6 +326,8 @@ export default function SeimeiHokenSimulation2026Blog() {
       <BlogAdUnit />
 
       <p className="text-sm text-gray-500 mt-8">この記事は2026年4月時点の制度に基づいています。</p>
-    </article>
+    
+      <ShareButtons url="https://yamada-tools.jp/blog/seimei-hoken-simulation-2026" title="seimei-hoken-simulation-2026" />
+</article>
   );
 }

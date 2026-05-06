@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
+import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】所得税の計算方法｜年収別早見表と手取り額シミュレーション";
 const description = "所得税の計算方法を徹底解説。年収300万〜1500万円の税額早見表、控除の種類と活用法、確定申告で還付を受ける方法。手取り額シミュレーターで試算。";
@@ -288,6 +289,8 @@ export default function ShotokuzeiKeisanSimulation2026Blog() {
       <BlogAdUnit />
 
       <p className="text-sm text-gray-500 mt-8">この記事は2026年4月時点の税制に基づいています。</p>
-    </article>
+    
+      <ShareButtons url="https://yamada-tools.jp/blog/shotokuzei-keisan-simulation-2026" title="shotokuzei-keisan-simulation-2026" />
+</article>
   );
 }

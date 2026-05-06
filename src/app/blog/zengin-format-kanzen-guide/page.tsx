@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
+import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "全銀フォーマット完全ガイド【2026年最新】経理担当者のための変換・作り方・エラー対処法";
 const description =
@@ -800,6 +801,8 @@ export default function ZenginFormatKanzenGuideBlog() {
           </Link>
         </div>
       </section>
+
+      <ShareButtons url="https://yamada-tools.jp/blog/zengin-format-kanzen-guide" title="全銀フォーマット完全ガイド【2026年最新】" />
 
       <p className="text-xs text-gray-400 mt-8 leading-relaxed border-t pt-4">
         この記事は2026年5月時点の情報に基づいています。全銀フォーマットの仕様や各銀行のサービス内容は変更される場合があります。実際の振込作業の前に、取引銀行のマニュアルや担当者にご確認ください。

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
+import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】副業の税金はいくら？確定申告が必要な条件と節税方法を解説";
 const description = "副業収入20万円以下でも住民税は申告必要？副業バレを防ぐ方法、経費で落とせるもの、確定申告のやり方まで完全解説。副業税金シミュレーターで試算。";
@@ -319,6 +320,8 @@ export default function FukugyouZeikinSimulation2026Blog() {
       <BlogAdUnit />
 
       <p className="text-sm text-gray-500 mt-8">この記事は2026年4月時点の税制に基づいています。最新の情報は国税庁のウェブサイトでご確認ください。</p>
-    </article>
+    
+      <ShareButtons url="https://yamada-tools.jp/blog/fukugyou-zeikin-simulation-2026" title="fukugyou-zeikin-simulation-2026" />
+</article>
   );
 }

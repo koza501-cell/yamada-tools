@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
+import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】医療保険は必要？不要？シミュレーションで判断する方法";
 const description = "医療保険の必要性を徹底解説。高額療養費制度との関係、年齢・家族構成別の判断基準、保険料の相場、選び方のポイント。シミュレーターで必要額を計算。";
@@ -343,6 +344,8 @@ export default function IryoHokenSimulation2026Blog() {
       <BlogAdUnit />
 
       <p className="text-sm text-gray-500 mt-8">この記事は2026年4月時点の制度に基づいています。</p>
-    </article>
+    
+      <ShareButtons url="https://yamada-tools.jp/blog/iryo-hoken-simulation-2026" title="iryo-hoken-simulation-2026" />
+</article>
   );
 }

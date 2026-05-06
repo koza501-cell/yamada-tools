@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
+import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】固定資産税の計算方法｜新築・中古・土地別シミュレーション";
 const description = "固定資産税の計算方法を徹底解説。新築住宅の軽減措置、土地の特例、評価額の調べ方。マンション・戸建て別の計算例と節税方法を紹介。";
@@ -304,6 +305,8 @@ export default function KoteiShisanzeiSimulation2026Blog() {
       <BlogAdUnit />
 
       <p className="text-sm text-gray-500 mt-8">この記事は2026年4月時点の税制に基づいています。税率や軽減措置は変更される場合があります。</p>
-    </article>
+    
+      <ShareButtons url="https://yamada-tools.jp/blog/kotei-shisanzei-simulation-2026" title="kotei-shisanzei-simulation-2026" />
+</article>
   );
 }

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
+import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】教育費シミュレーション｜幼稚園から大学までいくらかかる？";
 const description = "子どもの教育費を徹底解説。幼稚園・小学校・中学校・高校・大学の公立/私立別費用、学費の準備方法、教育費を抑えるコツ。シミュレーターで今すぐ計算。";
@@ -343,6 +344,8 @@ export default function KyouikuhiSimulation2026Blog() {
       <BlogAdUnit />
 
       <p className="text-sm text-gray-500 mt-8">この記事は2026年4月時点の制度に基づいています。</p>
-    </article>
+    
+      <ShareButtons url="https://yamada-tools.jp/blog/kyouikuhi-simulation-2026" title="kyouikuhi-simulation-2026" />
+</article>
   );
 }

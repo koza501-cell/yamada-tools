@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
+import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】贈与税はいくら？親からの援助・生前贈与の税金シミュレーション";
 const description = "贈与税の計算方法と税率を徹底解説。110万円の基礎控除、住宅取得資金の非課税特例、相続時精算課税制度の活用法。親からの援助で損しない方法を紹介。";
@@ -315,6 +316,8 @@ export default function ZouyoZeiSimulation2026Blog() {
       <BlogAdUnit />
 
       <p className="text-sm text-gray-500 mt-8">この記事は2026年4月時点の税制に基づいています。最新の情報は国税庁のウェブサイトでご確認ください。</p>
-    </article>
+    
+      <ShareButtons url="https://yamada-tools.jp/blog/zouyo-zei-simulation-2026" title="zouyo-zei-simulation-2026" />
+</article>
   );
 }
