@@ -1,4 +1,6 @@
 "use client";
+import RelatedTools from "@/components/common/RelatedTools";
+import { getToolById } from "@/config/tools";
 
 import { useState } from "react";
 
@@ -47,6 +49,7 @@ interface LandPriceResult {
 }
 
 export default function LandPriceClient() {
+  const tool = getToolById("land-price");
   const [address, setAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<LandPriceResult | null>(null);
@@ -76,6 +79,8 @@ export default function LandPriceClient() {
     : "text-gray-600";
 
   const changeIcon = result?.price.change_direction === "up" ? "▲" : result?.price.change_direction === "down" ? "▼" : "━";
+
+
 
   return (
     <>
@@ -283,7 +288,9 @@ export default function LandPriceClient() {
             ))}
           </div>
         </div>
-      </div>
+
+        {tool && <RelatedTools currentTool={tool} maxItems={4} />}
+            </div>
     </>
   );
 }

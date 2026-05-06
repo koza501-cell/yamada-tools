@@ -1,4 +1,6 @@
 "use client";
+import RelatedTools from "@/components/common/RelatedTools";
+import { getToolById } from "@/config/tools";
 
 import { useState } from "react";
 
@@ -30,6 +32,8 @@ interface ZoneResult {
 
 function Tooltip({ text }: { text: string }) {
   const [show, setShow] = useState(false);
+
+
   return (
     <span className="relative inline-block ml-1 print:hidden">
       <button
@@ -165,6 +169,7 @@ function ErrorBox({ msg }: { msg: string }) {
 }
 
 export default function YotoChiikiClient() {
+  const tool = getToolById("yoto-chiiki-checker");
   const [address, setAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<ZoneResult | null>(null);
@@ -453,7 +458,9 @@ export default function YotoChiikiClient() {
             ))}
           </div>
         </div>
-      </div>
+
+        {tool && <RelatedTools currentTool={tool} maxItems={4} />}
+            </div>
     </>
   );
 }

@@ -1,4 +1,6 @@
 "use client";
+import RelatedTools from "@/components/common/RelatedTools";
+import { getToolById } from "@/config/tools";
 import { useState, useMemo } from "react";
 
 const DECLINING_RATES: Record<number, number> = {
@@ -100,6 +102,7 @@ function calcDecliningBalance(cost: number, life: number, startMonth: number): Y
 function fmt(n: number) { return Math.floor(n).toLocaleString("ja-JP") + "円"; }
 
 export default function DepreciationClient() {
+  const tool = getToolById("depreciation-calculator");
   const [cost, setCost] = useState("1000000");
   const [lifePreset, setLifePreset] = useState("4");
   const [customLife, setCustomLife] = useState("4");
@@ -116,6 +119,8 @@ export default function DepreciationClient() {
 
   const maxDep = Math.max(...slRows.map(r => r.depreciation), ...dbRows.map(r => r.depreciation));
   const isSmallAsset = costNum > 0 && costNum < 300000;
+
+
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
@@ -297,6 +302,8 @@ export default function DepreciationClient() {
           ))}
         </div>
       </div>
-    </div>
+
+        {tool && <RelatedTools currentTool={tool} maxItems={4} />}
+          </div>
   );
 }

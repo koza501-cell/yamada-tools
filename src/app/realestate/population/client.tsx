@@ -1,4 +1,6 @@
 "use client";
+import RelatedTools from "@/components/common/RelatedTools";
+import { getToolById } from "@/config/tools";
 
 import { useState } from "react";
 
@@ -47,6 +49,7 @@ const TREND_STYLE = {
 };
 
 export default function PopulationClient() {
+  const tool = getToolById("population");
   const [address, setAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<PopResult | null>(null);
@@ -72,6 +75,8 @@ export default function PopulationClient() {
   const trendStyle = result ? (TREND_STYLE[result.trend_direction as keyof typeof TREND_STYLE] ?? TREND_STYLE.unknown) : null;
 
   const maxPop = result ? Math.max(...result.population_trend.map(t => t.population)) : 1;
+
+
 
   return (
     <>
@@ -278,7 +283,9 @@ export default function PopulationClient() {
             ))}
           </div>
         </div>
-      </div>
+
+        {tool && <RelatedTools currentTool={tool} maxItems={4} />}
+            </div>
     </>
   );
 }

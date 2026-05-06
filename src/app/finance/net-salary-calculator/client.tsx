@@ -1,4 +1,6 @@
 "use client";
+import RelatedTools from "@/components/common/RelatedTools";
+import { getToolById } from "@/config/tools";
 import { useState, useMemo } from "react";
 
 function fmt(n: number) { return Math.floor(n).toLocaleString("ja-JP") + "円"; }
@@ -63,6 +65,7 @@ function getResidentTax(annualSalary: number, dependents: number): number {
 interface CalcRow { label: string; amount: number; tip?: string; }
 
 export default function NetSalaryClient() {
+  const tool = getToolById("net-salary-calculator");
   const [gross, setGross] = useState("300000");
   const [age, setAge] = useState("35");
   const [dependents, setDependents] = useState("0");
@@ -103,6 +106,8 @@ export default function NetSalaryClient() {
 
     return { health, care, pension, empIns, socialTotal, incomeTax, residentTax, totalDeductions, netSalary, netRate, rows, sr };
   }, [gross, age, dependents, commute, includeResident]);
+
+
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
@@ -228,6 +233,8 @@ export default function NetSalaryClient() {
           ))}
         </div>
       </div>
-    </div>
+
+        {tool && <RelatedTools currentTool={tool} maxItems={4} />}
+          </div>
   );
 }

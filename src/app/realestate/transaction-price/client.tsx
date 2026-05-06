@@ -1,4 +1,6 @@
 "use client";
+import RelatedTools from "@/components/common/RelatedTools";
+import { getToolById } from "@/config/tools";
 
 import { useState } from "react";
 
@@ -46,6 +48,7 @@ interface TransactionResult {
 }
 
 export default function TransactionPriceClient() {
+  const tool = getToolById("transaction-price");
   const [address, setAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<TransactionResult | null>(null);
@@ -67,6 +70,8 @@ export default function TransactionPriceClient() {
       setLoading(false);
     }
   }
+
+
 
   return (
     <>
@@ -290,7 +295,9 @@ export default function TransactionPriceClient() {
             ))}
           </div>
         </div>
-      </div>
+
+        {tool && <RelatedTools currentTool={tool} maxItems={4} />}
+            </div>
     </>
   );
 }

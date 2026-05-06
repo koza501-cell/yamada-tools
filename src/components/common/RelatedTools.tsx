@@ -171,6 +171,18 @@ const relatedToolsMap: Record<string, string[]> = {
 
   // Utility duplicate
   "unit-converter-utility": ["unit-converter", "tsubo-converter", "wareki-seireki"],
+  // ===== 不動産情報ツール =====
+  "yoto-chiiki-checker": ["hazard-checker", "land-price", "transaction-price", "school-district"],
+  "hazard-checker": ["yoto-chiiki-checker", "land-price", "transaction-price", "population"],
+  "land-price": ["transaction-price", "yoto-chiiki-checker", "hazard-checker", "population"],
+  "transaction-price": ["land-price", "yoto-chiiki-checker", "hazard-checker", "school-district"],
+  "school-district": ["yoto-chiiki-checker", "hazard-checker", "transaction-price", "population"],
+  "population": ["hazard-checker", "land-price", "school-district", "transaction-price"],
+  // ===== 新finance tools =====
+  "overtime-pay-calculator": ["net-salary-calculator", "depreciation-calculator", "social-insurance-calculator", "nenmatsu-calc"],
+  "depreciation-calculator": ["overtime-pay-calculator", "net-salary-calculator", "income-tax-calculator", "houjinka-simulator"],
+  "net-salary-calculator": ["overtime-pay-calculator", "depreciation-calculator", "social-insurance-calculator", "income-tax-calculator"],
+
 };
 
 // Simple tool type for legacy usage

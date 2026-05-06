@@ -1,4 +1,6 @@
 "use client";
+import RelatedTools from "@/components/common/RelatedTools";
+import { getToolById } from "@/config/tools";
 
 import { useState } from "react";
 
@@ -27,6 +29,8 @@ function SchoolCard({ icon, label, school, color }: {
   school: SchoolInfo;
   color: string;
 }) {
+
+
   return (
     <div className={`bg-white border rounded-xl p-5 shadow-sm border-${color}-200`}>
       <div className={`flex items-center gap-2 mb-3`}>
@@ -56,6 +60,7 @@ function SchoolCard({ icon, label, school, color }: {
 }
 
 export default function SchoolDistrictClient() {
+  const tool = getToolById("school-district");
   const [address, setAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<SchoolDistrictResult | null>(null);
@@ -231,7 +236,9 @@ export default function SchoolDistrictClient() {
             ))}
           </div>
         </div>
-      </div>
+
+        {tool && <RelatedTools currentTool={tool} maxItems={4} />}
+            </div>
     </>
   );
 }

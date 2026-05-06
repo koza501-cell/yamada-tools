@@ -1,4 +1,6 @@
 "use client";
+import RelatedTools from "@/components/common/RelatedTools";
+import { getToolById } from "@/config/tools";
 
 import { useState } from "react";
 
@@ -66,6 +68,8 @@ function HazardCard({ icon, title, result, children }: {
 }) {
   const risk = result.risk as keyof typeof RISK_STYLE;
   const s = RISK_STYLE[risk];
+
+
   return (
     <div className={`rounded-xl border p-4 ${s.bg} ${s.border}`}>
       <div className="flex items-center justify-between mb-2">
@@ -81,6 +85,7 @@ function HazardCard({ icon, title, result, children }: {
 }
 
 export default function HazardClient() {
+  const tool = getToolById("hazard-checker");
   const [address, setAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<HazardResult | null>(null);
@@ -323,7 +328,9 @@ export default function HazardClient() {
             ))}
           </div>
         </div>
-      </div>
+
+        {tool && <RelatedTools currentTool={tool} maxItems={4} />}
+            </div>
     </>
   );
 }

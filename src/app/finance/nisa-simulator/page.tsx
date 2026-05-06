@@ -1,4 +1,5 @@
 import Link from "next/link";
+import RelatedTools from "@/components/common/RelatedTools";
 import { Metadata } from "next";
 import NisaSimulatorClient from "./dynamic-client";
 import { IntroSection } from "@/components/IntroSection";
@@ -121,6 +122,13 @@ const useCases = [
 ];
 
 export default function Page() {
+  const relatedTools = [
+    { href: "/finance/ideco-nisa-comparison", icon: "📊", label: "iDeCo vs NISA比較", description: "どちらが得か徹底比較" },
+    { href: "/finance/retirement-simulator", icon: "👴", label: "老後資金シミュレーター", description: "老後に必要な資金を計算" },
+    { href: "/finance/net-salary-calculator", icon: "💴", label: "給与手取り計算機", description: "月給から手取り額を計算" },
+    { href: "/finance/depreciation-calculator", icon: "📉", label: "減価償却計算機", description: "定額法・定率法を比較計算" },
+  ];
+  
   return (
     <>
       <script

@@ -1,8 +1,12 @@
 "use client";
+import RelatedTools from "@/components/common/RelatedTools";
+import { getToolById } from "@/config/tools";
 import { useState, useCallback } from "react";
 
 function Tip({ text }: { text: string }) {
   const [show, setShow] = useState(false);
+
+
   return (
     <span className="relative inline-block ml-1">
       <button type="button"
@@ -30,6 +34,7 @@ function Row({ label, value, tip, highlight }: { label: string; value: string; t
 function fmt(n: number) { return Math.floor(n).toLocaleString("ja-JP") + "円"; }
 
 export default function OvertimeClient() {
+  const tool = getToolById("overtime-pay-calculator");
   const [baseSalary, setBaseSalary] = useState("250000");
   const [hoursPerDay, setHoursPerDay] = useState("8");
   const [daysPerMonth, setDaysPerMonth] = useState("20");
@@ -284,6 +289,8 @@ export default function OvertimeClient() {
           ))}
         </div>
       </div>
-    </div>
+
+        {tool && <RelatedTools currentTool={tool} maxItems={4} />}
+          </div>
   );
 }
