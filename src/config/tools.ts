@@ -73,6 +73,7 @@ export const pdfTools: Tool[] = [
     maxFiles: 1,
     category: "pdf",
     available: true,
+    isPopular: true,
   },
   {
     id: "split",
@@ -516,6 +517,7 @@ export const convertTools: Tool[] = [
     maxFiles: 0,
     category: "convert",
     available: true,
+    isPopular: true,
   },
   {
     id: "base64",
@@ -640,6 +642,7 @@ export const imageTools: Tool[] = [
     maxFiles: 20,
     category: "image",
     available: true,
+    isPopular: true,
   },
   {
     id: "resize-image",
@@ -985,6 +988,7 @@ export const generatorTools: Tool[] = [
     maxFiles: 0,
     category: "generator",
     available: true,
+    isPopular: true,
   },
   {
     id: "text-diff",
@@ -1037,6 +1041,7 @@ export const generatorTools: Tool[] = [
     maxFiles: 0,
     category: "generator",
     available: true,
+    isPopular: true,
   },
   {
     id: "age-calc",

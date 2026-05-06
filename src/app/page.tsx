@@ -14,6 +14,7 @@ import StatsCounter from "@/components/common/StatsCounter";
 import FooterCta from "@/components/common/FooterCta";
 import NicheBentoSection from "@/components/home/NicheBentoSection";
 import { pdfTools, documentTools, convertTools, imageTools, generatorTools, financeTools, careerTools, taxTools, realestateTools, businessTools, getToolCount, allTools, getNewTools} from "@/config/tools";
+const popularTools = allTools.filter(t => t.isPopular && t.available);
 
 // High-traffic tool paths that get 🔥 badge
 const HOT_PATHS = new Set(['/generator/envelope-print', '/convert/bank-format', '/pdf/compress']);
@@ -171,25 +172,16 @@ export default function Home() {
             <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">先月100万件以上の処理実績 · 法人500社以上が利用</p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-2">
-            {[
-              { href: '/pdf/compress', label: '📄 PDF圧縮' },
-              { href: '/pdf/merge', label: '📑 PDF結合' },
-              { href: '/image/compress', label: '🖼️ 画像圧縮' },
-              { href: '/convert/furigana', label: 'あ ふりがな' },
-              { href: '/document/invoice', label: '📋 請求書作成' },
-              { href: '/generator/envelope-print', label: '✉️ 封筒印刷' },
-              { href: '/convert/bank-format', label: '🏦 全銀変換' },
-              { href: '/generator/hanko', label: '🔴 電子印鑑' },
-            ].map(({ href, label }) => (
+            {popularTools.map((tool) => (
               <Link
-                key={href}
-                href={href}
+                key={tool.id}
+                href={tool.path}
                 className="relative bg-white dark:bg-gray-800 shadow-md hover:shadow-lg text-kon dark:text-blue-300 px-3 py-3 rounded-xl font-medium transition-all hover:-translate-y-0.5 text-center text-sm min-h-[44px] flex items-center justify-center"
               >
-                {HOT_PATHS.has(href) && (
+                {HOT_PATHS.has(tool.path) && (
                   <span className="absolute -top-1.5 -right-1.5 text-xs bg-red-500 text-white px-1 py-0.5 rounded-full leading-none font-bold">🔥</span>
                 )}
-                {label}
+                <span>{tool.icon} {tool.nameJa}</span>
               </Link>
             ))}
           </div>
