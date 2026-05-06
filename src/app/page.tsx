@@ -17,7 +17,18 @@ import { pdfTools, documentTools, convertTools, imageTools, generatorTools, fina
 const popularTools = allTools.filter(t => t.isPopular && t.available);
 
 // High-traffic tool paths that get 🔥 badge
-const HOT_PATHS = new Set(['/generator/envelope-print', '/convert/bank-format', '/pdf/compress']);
+const HOT_PATHS = new Set([
+  '/generator/envelope-print',  // #1 GA
+  '/convert/bank-format',       // #2 GA
+  '/generator/random-picker',   // #4 GA
+  '/image/flip',                // #5 GA
+  '/document/vertical-text',    // #6 GA
+  '/pdf/text-input',            // #7 GA
+  '/convert/furigana',          // #8 GA
+  '/generator/hanko',           // #11 GA
+  '/image/compress',            // #12 GA
+  '/pdf/compress',              // #13 GA
+]);
 
 // Feature H: Search suggestion chips
 const SEARCH_CHIPS = [
