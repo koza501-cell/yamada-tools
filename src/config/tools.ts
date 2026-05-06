@@ -31,7 +31,6 @@ export const pdfTools: Tool[] = [
     maxFiles: 1,
     category: "pdf",
     available: true,
-    isNew: true,
     isPopular: true,
     isFeatured: true,
   },
@@ -47,7 +46,6 @@ export const pdfTools: Tool[] = [
     maxFiles: 1,
     category: "pdf",
     available: true,
-    isNew: true,
     isFeatured: true,
   },
   {
