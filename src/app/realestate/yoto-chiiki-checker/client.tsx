@@ -1,11 +1,12 @@
 "use client";
+import AddressInput from "@/components/common/AddressInput";
 import RelatedTools from "@/components/common/RelatedTools";
 import { getToolById } from "@/config/tools";
 
 import { useState } from "react";
 
 const API_BASE =
-  process.env.NEXT_PUBLIC_API_URL || "https://yamada-tools.jp/api-backend";
+  process.env.NEXT_PUBLIC_API_URL || "/api-backend";
 
 interface ZoneResult {
   address: string;
@@ -265,22 +266,15 @@ export default function YotoChiikiClient() {
         {!compareMode && (
           <div className="bg-white border border-gray-200 rounded-xl p-5 mb-6 shadow-sm print:hidden">
             <label className="block text-sm font-medium text-gray-700 mb-2">調べたい住所を入力</label>
-            <input
-              type="text"
-              className="w-full border border-gray-300 rounded-lg px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="例: 東京都渋谷区神宮前1-1-1"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-            />
-            <button
-              type="button"
-              onClick={handleSearch}
-              disabled={loading || !address.trim()}
-              className="w-full mt-3 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 text-white font-semibold py-3 rounded-lg transition-colors"
-            >
-              {loading ? "調べています..." : "🔍 用途地域を調べる"}
-            </button>
+          <AddressInput
+            value={address}
+            onChange={setAddress}
+            onSearch={handleSearch}
+            loading={loading}
+            placeholder="例: 東京都千代田区丸の内1-1-1"
+            buttonIcon="🏗"
+            buttonLabel="用途地域を調べる"
+          />
             <div className="flex flex-wrap gap-3 mt-3 text-xs text-gray-500">
               <span>✅ 国土交通省データ</span>
               <span>✅ 完全無料・登録不要</span>

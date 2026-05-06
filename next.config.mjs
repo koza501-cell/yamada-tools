@@ -39,6 +39,14 @@ const nextConfig = {
       },
     ]
   },
+  async rewrites() {
+    return [
+      {
+        source: '/api-backend/:path*',
+        destination: 'http://localhost:8001/:path*',
+      },
+    ]
+  },
   async redirects() {
     return [
       { source: '/legal', destination: '/legal/terms', permanent: true },
