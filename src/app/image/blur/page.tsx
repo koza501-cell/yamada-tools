@@ -34,7 +34,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
-  customTitle: "【無料】ぼかし加工｜画像をぼかす・背景ぼかし｜ブラウザ処理で安全",
+  customTitle: "画像ぼかし【無料・安全】顔・個人情報をぼかし加工｜JPG・PNG対応｜登録不要",
   tool,
   longDescription: "画像にぼかし（ガウスブラー）処理を適用。背景ぼかしやプライバシー保護に。強度調整可能・ブラウザ処理で安全。",
   keywords: ["画像 ぼかし 無料", "写真 ぼかし", "背景 ぼかし", "ガウスブラー", "画像 ぼかし加工", "ブラー 処理"],

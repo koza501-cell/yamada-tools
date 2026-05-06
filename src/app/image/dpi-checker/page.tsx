@@ -24,7 +24,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
-  customTitle: "DPIチェック【無料】画像のdpi確認・PNG解像度・印刷サイズ計算",
+  customTitle: "DPI確認【無料】画像の解像度・印刷サイズを計算｜PNG・JPG対応｜登録不要",
   tool,
   longDescription:
     "画像のdpiを瞬時にチェック・確認できる無料ツール。PNG・JPG・WebPに対応、印刷推奨サイズも自動計算。アップロード不要・ブラウザ処理で機密画像も安全。登録不要・完全無料。",

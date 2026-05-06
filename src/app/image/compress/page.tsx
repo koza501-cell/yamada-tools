@@ -69,7 +69,7 @@ const seoContent = {
 // Total: 400+ impressions at position 43-85
 
 export const metadata: Metadata = generateToolMetadata({
-  customTitle: "画像圧縮【無料・登録不要】写真を一瞬で軽量化｜JPG・PNG・WebP・20枚まとめて処理",
+  customTitle: "画像圧縮【無料・安全】写真を軽くする｜JPG・PNG対応｜日本国内サーバー処理・登録不要",
   tool,
   longDescription: "画像をドラッグするだけで瞬時に圧縮。JPG・PNG・WebP対応、最大20枚一括処理。画質はそのまま、ファイルサイズ最大80%削減。メール添付・LINE送信・Webサイト高速化に。インストール不要・完全無料・国内サーバー処理。",
   keywords: [

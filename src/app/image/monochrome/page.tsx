@@ -54,7 +54,7 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
-  customTitle: "白黒変換【無料】写真・画像をモノクロ・グレースケールに｜PNG対応",
+  customTitle: "モノクロ変換【無料】画像を白黒・グレースケールに変換｜PNG・JPG対応｜登録不要",
   tool,
   longDescription:
     "画像の白黒変換を瞬時に。写真・PNG・JPGをモノクロ・グレースケールに無料で変換。強度調整で色味の残し具合も設定可能。アップロード不要・ブラウザ処理で機密画像も安全。登録不要・完全無料。",
