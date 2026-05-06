@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 import fs from "fs";
 import path from "path";
-import { pdfTools, documentTools, convertTools, imageTools, generatorTools, financeTools, careerTools, realestateTools, businessTools, healthTools, educationTools, debtTools, utilityTools, insuranceTools, taxTools } from "@/config/tools";
+import { pdfTools, documentTools, convertTools, imageTools, generatorTools, financeTools, careerTools, realestateTools, businessTools, healthTools, educationTools, debtTools, utilityTools, insuranceTools, taxTools, statTools } from "@/config/tools";
 
 const baseUrl = "https://yamada-tools.jp";
 
@@ -51,7 +51,8 @@ export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
       { url: baseUrl + "/career", lastModified: currentDate, changeFrequency: "weekly", priority: 0.8 },
       { url: baseUrl + "/health", lastModified: currentDate, changeFrequency: "weekly", priority: 0.8 },
       { url: baseUrl + "/insurance", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },
-      { url: baseUrl + "/realestate", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },
+      { url: baseUrl + "/realestate", lastModified: currentDate, changeFrequency: "weekly", priority: 0.9 },
+      { url: baseUrl + "/souzoku-touki", lastModified: currentDate, changeFrequency: "monthly", priority: 0.85 },
       { url: baseUrl + "/business", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },
       { url: baseUrl + "/tax", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },
       { url: baseUrl + "/debt", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },
@@ -79,6 +80,7 @@ export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
     ...financeTools.filter(t => t.available),
     ...careerTools.filter(t => t.available),
     ...realestateTools.filter(t => t.available),
+    ...statTools.filter(t => t.available),
     ...businessTools.filter(t => t.available),
     ...healthTools.filter(t => t.available),
     ...educationTools.filter(t => t.available),
