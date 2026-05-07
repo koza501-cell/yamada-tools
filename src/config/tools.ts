@@ -1846,6 +1846,76 @@ export const businessTools: Tool[] = [
     available: true,
     isNew: true,
   },
+  {
+    id: "minpaku-calculator",
+    nameJa: "民泊・Airbnb 収益計算機",
+    nameEn: "Airbnb Revenue Simulator",
+    description: "民泊の年間収益・投資回収を計算。住宅宿泊事業法の180日制限も考慮した中立的なシミュレーター。稼働率・清掃費・管理費含む詳細試算",
+    icon: "🏠",
+    path: "/business/minpaku-calculator",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+    isNew: true,
+  },
+  {
+    id: "unchin-calculator",
+    nameJa: "軽貨物・運送業 運賃計算機",
+    nameEn: "Freight Rate Calculator",
+    description: "距離・荷物・待機時間から配送料金の目安を計算。軽貨物ドライバーの適正単価確認に。深夜・祝日割増・附帯作業対応",
+    icon: "🚚",
+    path: "/business/unchin-calculator",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+    isNew: true,
+  },
+  {
+    id: "eikaiwa-kakaku-calculator",
+    nameJa: "英会話・語学教室 レッスン単価計算機",
+    nameEn: "English Lesson Rate Calculator",
+    description: "フリーランス講師・個人教室向け。目標年収から適正なレッスン料金を逆算。経費・税・社保を含む損益計算。損益分岐点も自動算出",
+    icon: "🗣️",
+    path: "/business/eikaiwa-kakaku-calculator",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+    isNew: true,
+  },
+  {
+    id: "kensetsu-mitsumori-calculator",
+    nameJa: "建設・内装工事 材料費見積もり計算機",
+    nameEn: "Construction Material Cost Estimator",
+    description: "工事種別・面積から必要材料量と費用目安を自動計算。フローリング・クロス・塗装・防水対応。工賃込み概算も表示。複数工事一括対応",
+    icon: "🔨",
+    path: "/business/kensetsu-mitsumori-calculator",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+    isNew: true,
+  },
+  {
+    id: "freelance-tanka-calculator",
+    nameJa: "フリーランス 適正単価・年収診断ツール",
+    nameEn: "Freelance Rate Diagnostic Tool",
+    description: "スキル・経験・職種から適正な時間単価・月額単価を診断。2025年ITエンジニア・デザイナー等の市場相場と比較。目標年収からの逆算も対応",
+    icon: "💼",
+    path: "/business/freelance-tanka-calculator",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+    isNew: true,
+  },
 ];
 
 // ============================================
@@ -2029,6 +2099,20 @@ export const educationTools: Tool[] = [
     maxFiles: 0,
     category: "finance",
     available: true,
+  },
+  {
+    id: "juku-ryokin-calculator",
+    nameJa: "学習塾・習い事 月謝計算機",
+    nameEn: "Juku Monthly Fee Calculator",
+    description: "塾・習い事の月謝から年間総費用を計算。複数の習い事を比較・合計できる家計管理ツール。文科省統計との比較・教育費比率も表示",
+    icon: "📚",
+    path: "/education/juku-ryokin-calculator",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+    isNew: true,
   },
 ];
 
@@ -2251,6 +2335,34 @@ export const taxTools: Tool[] = [
     category: "finance",
     available: true,
   },
+  {
+    id: "doubutsu-iryo-calculator",
+    nameJa: "ペット医療費計算機",
+    nameEn: "Pet Medical Cost Calculator",
+    description: "犬・猫の治療・手術費用の全国相場を確認。ペット保険の自己負担額も計算。初診から手術まで詳細な費用目安を算出。保険加入の要否判定付き",
+    icon: "🐾",
+    path: "/health/doubutsu-iryo-calculator",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+    isNew: true,
+  },
+  {
+    id: "seikotsuin-ryoyohi-calculator",
+    nameJa: "整骨院・接骨院 療養費目安計算機",
+    nameEn: "Osteopathy Fee Calculator",
+    description: "柔道整復師の療養費の仕組みを解説。施術部位・回数から保険適用の目安を計算。捻挫・打撲・挫傷・骨折の自己負担額を算出",
+    icon: "🦴",
+    path: "/health/seikotsuin-ryoyohi-calculator",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+    isNew: true,
+  },
 ];
 // ============================================
 
@@ -2316,6 +2428,75 @@ export const statTools: Tool[] = [
   },
 ];
 
+
+// ============================================
+// Food Tools (飲食・食品)
+// ============================================
+export const foodTools: Tool[] = [
+  {
+    id: "genka-calculator",
+    nameJa: "飲食店 メニュー原価率計算機",
+    nameEn: "Restaurant Food Cost Calculator",
+    description: "食材費からメニューの原価率・適正売価・FLコストを自動計算。月間利益シミュレーション付き",
+    icon: "🍽️",
+    path: "/food/genka-calculator",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+    isNew: true,
+  },
+  {
+    id: "nutrition-label-calculator",
+    nameJa: "食品 栄養成分表示 計算機",
+    nameEn: "Nutrition Label Calculator",
+    description: "原材料の配合割合から栄養成分表示値を計算。食品表示法の義務表示5項目対応。100g・1食表示切替",
+    icon: "🥗",
+    path: "/food/nutrition-label-calculator",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "generator",
+    available: true,
+    isNew: true,
+  },
+];
+
+// ============================================
+// Life Tools (生活・ライフイベント)
+// ============================================
+export const lifeTools: Tool[] = [
+  {
+    id: "sougi-calculator",
+    nameJa: "葬儀費用 見積もり計算機",
+    nameEn: "Funeral Cost Estimator",
+    description: "葬儀の形式・規模・オプションから費用の目安を計算。一般葬・家族葬・直葬対応。葬祭費補助金控除も自動計算",
+    icon: "🕊️",
+    path: "/life/sougi-calculator",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "generator",
+    available: true,
+    isNew: true,
+  },
+  {
+    id: "hoikuryo-calculator",
+    nameJa: "保育料・幼稚園費用 無償化判定計算機",
+    nameEn: "Childcare Fee Calculator",
+    description: "世帯年収・子供の年齢・地域から保育料と幼児教育無償化の適用を判定。2025年版・認可外・幼稚園対応",
+    icon: "👶",
+    path: "/health/hoikuryo-calculator",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+    isNew: true,
+  },
+];
+
 export const allTools: Tool[] = [
   ...pdfTools,
   ...documentTools,
@@ -2333,6 +2514,8 @@ export const allTools: Tool[] = [
   ...debtTools,
   ...utilityTools,
   ...statTools,
+  ...foodTools,
+  ...lifeTools,
 ];
 
 
@@ -2390,6 +2573,8 @@ export const getToolCount = () => ({
   education: educationTools.length,
   debt: debtTools.length,
   utility: utilityTools.length,
+  food: foodTools.length,
+  life: lifeTools.length,
   total: allTools.length,
 });
 
