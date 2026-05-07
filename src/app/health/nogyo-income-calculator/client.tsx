@@ -195,6 +195,10 @@ export default function NogyoClient() {
         <button onClick={() => window.print()} className="mt-3 text-xs text-blue-600 hover:underline print:hidden">
           🖨️ 印刷 / PDFとして保存
         </button>
+        <div className="hidden print:block mt-6 pt-4 border-t border-gray-200 text-center">
+          <p className="text-gray-400 text-xs">山田ツール | yamada-tools.jp で無料作成</p>
+          <p className="text-gray-300 text-xs mt-1">透かしなし・高品質 PDFはPROプランで → yamada-tools.jp/pricing</p>
+        </div>
       </div>
 
       <p className="text-xs text-gray-400 mb-8">※ 計算結果は簡易的な目安です。実際の税額は他の収入・控除・経費詳細により異なります。税務署または税理士にご確認ください。</p>

@@ -448,6 +448,20 @@ export const documentTools: Tool[] = [
     available: true,
   },
   {
+    id: "kyuyo-meisai",
+    nameJa: "給与明細作成ツール",
+    nameEn: "Payslip Generator",
+    description: "基本給を入力するだけで社会保険料・所得税を自動計算。都道府県別保険料率2025年度対応。A4給与明細をPDF出力",
+    icon: "📄",
+    path: "/document/kyuyo-meisai",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "document",
+    available: true,
+    isNew: true,
+  },
+  {
     id: "fax-cover",
     nameJa: "FAX送付状作成",
     nameEn: "FAX Cover Sheet Generator",
@@ -1579,12 +1593,40 @@ export const realestateTools: Tool[] = [
     available: true,
     isNew: true,
   },
+  {
+    id: "parking-revenue-calculator",
+    nameJa: "駐車場収益計算機",
+    nameEn: "Parking Revenue Calculator",
+    description: "月極・コインパーキングの収益・投資回収期間を比較シミュレーション。空き率スライダー対応",
+    icon: "🚗",
+    path: "/realestate/parking-revenue-calculator",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+    isNew: true,
+  },
 ];
 
 // ============================================
 // Business Tools (ビジネス・法人)
 // ============================================
 export const businessTools: Tool[] = [
+  {
+    id: "tokutei-gino-calculator",
+    nameJa: "特定技能 費用計算機",
+    nameEn: "Specified Skilled Worker Cost Calculator",
+    description: "特定技能外国人の採用総費用を職種・国籍・採用方法別に計算。登録支援機関費用含む",
+    icon: "🌏",
+    path: "/business/tokutei-gino-calculator",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+    isNew: true,
+  },
   {
     id: "houjin-search",
     nameJa: "法人検索 (gBizINFO)",
@@ -1726,6 +1768,20 @@ export const businessTools: Tool[] = [
 // Health Tools (健康)
 // ============================================
 export const healthTools: Tool[] = [
+  {
+    id: "kaigo-hoshu-calculator",
+    nameJa: "介護報酬計算機",
+    nameEn: "Care Benefit Calculator",
+    description: "介護サービスの利用者負担・事業者受取額を自動計算。地域区分・処遇改善加算・2024年改定対応",
+    icon: "🏥",
+    path: "/health/kaigo-hoshu-calculator",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "generator",
+    available: true,
+    isNew: true,
+  },
   {
     id: "nogyo-income-calculator",
     nameJa: "農業所得計算機",

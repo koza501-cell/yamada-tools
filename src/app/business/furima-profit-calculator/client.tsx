@@ -211,6 +211,11 @@ export default function FurimaClient() {
         </div>
       </div>
 
+
+      <div className="hidden print:block mt-8 pt-4 border-t border-gray-200 text-center">
+        <p className="text-gray-400 text-xs">山田ツール | yamada-tools.jp で無料作成</p>
+        <p className="text-gray-300 text-xs mt-1">透かしなし・高品質PDFはPROプランで → yamada-tools.jp/pricing</p>
+      </div>
       {tool && <RelatedTools currentTool={tool} maxItems={4} />}
     </div>
   );
