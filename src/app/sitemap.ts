@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 import fs from "fs";
 import path from "path";
-import { pdfTools, documentTools, convertTools, imageTools, generatorTools, financeTools, careerTools, realestateTools, businessTools, healthTools, educationTools, debtTools, utilityTools, insuranceTools, taxTools, statTools } from "@/config/tools";
+import { pdfTools, documentTools, convertTools, imageTools, generatorTools, financeTools, careerTools, realestateTools, businessTools, healthTools, educationTools, debtTools, utilityTools, insuranceTools, taxTools, statTools, foodTools, lifeTools } from "@/config/tools";
 
 const baseUrl = "https://yamada-tools.jp";
 
@@ -57,6 +57,8 @@ export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
       { url: baseUrl + "/tax", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },
       { url: baseUrl + "/debt", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },
       { url: baseUrl + "/education", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },
+      { url: baseUrl + "/food", lastModified: currentDate, changeFrequency: "weekly", priority: 0.8 },
+      { url: baseUrl + "/life", lastModified: currentDate, changeFrequency: "weekly", priority: 0.8 },
       { url: baseUrl + "/utility", lastModified: currentDate, changeFrequency: "monthly", priority: 0.75 },
       { url: baseUrl + "/reference", lastModified: currentDate, changeFrequency: "monthly", priority: 0.75 },
       { url: baseUrl + "/about/company", lastModified: currentDate, changeFrequency: "monthly", priority: 0.5 },
@@ -81,6 +83,8 @@ export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
     ...careerTools.filter(t => t.available),
     ...realestateTools.filter(t => t.available),
     ...statTools.filter(t => t.available),
+    ...foodTools.filter(t => t.available),
+    ...lifeTools.filter(t => t.available),
     ...businessTools.filter(t => t.available),
     ...healthTools.filter(t => t.available),
     ...educationTools.filter(t => t.available),
@@ -95,6 +99,7 @@ export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
     lastModified: currentDate,
     changeFrequency: "monthly" as const,
     priority: tool.category === "finance" ? 0.9 :
-              ["career", "realestate", "business", "health", "education"].includes(tool.category) ? 0.85 : 0.8,
+              ["career", "realestate", "business", "health", "education"].includes(tool.category) ? 0.85 :
+              ["food", "life"].includes(tool.category) ? 0.8 : 0.8,
   }));
 }

@@ -118,6 +118,38 @@ export const niches: Niche[] = [
     url: "/generator",
   },
 
+  {
+    id: "food",
+    iconName: "receipt",
+    name: "飲食・食品",
+    shortName: "飲食",
+    description: "原価率・栄養成分・フードロス",
+    toolCount: 3,
+    theme: "amber",
+    isNew: true,
+    featuredLinks: [
+      { name: "飲食店 原価率計算機", url: "/food/genka-calculator" },
+      { name: "栄養成分表示 計算機", url: "/food/nutrition-label-calculator" },
+      { name: "フードロス コスト計算機", url: "/food/foodloss-calculator" },
+    ],
+    url: "/food",
+  },
+  {
+    id: "life",
+    iconName: "home",
+    name: "生活・家計",
+    shortName: "生活",
+    description: "家計簿・引越し・葬儀費用",
+    toolCount: 4,
+    theme: "green",
+    isNew: true,
+    featuredLinks: [
+      { name: "家計簿 貯蓄シミュレーター", url: "/life/kakeibo-simulator" },
+      { name: "引越し費用 計算機", url: "/life/hikkoshi-hiyou-calculator" },
+      { name: "葬儀費用 見積もり", url: "/life/sougi-calculator" },
+    ],
+    url: "/life",
+  },
   // Future niches (coming soon)
   {
     id: "realestate",

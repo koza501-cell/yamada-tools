@@ -21,6 +21,8 @@ import {
   debtTools,
   utilityTools,
   statTools,
+  foodTools,
+  lifeTools,
 } from "@/config/tools";
 
 const categories = [
@@ -40,6 +42,8 @@ const categories = [
   { id: "debt", name: "ローン・借金", tools: debtTools, icon: "💳" },
   { id: "utility", name: "ユーティリティ", tools: utilityTools, icon: "🔧" },
   { id: "stat", name: "統計・データ", tools: statTools, icon: "📊" },
+  { id: "food", name: "飲食・食品", tools: foodTools, icon: "🍽️" },
+  { id: "life", name: "生活・家計", tools: lifeTools, icon: "🏠" },
 ];
 
 const ROLE_TABS = [
