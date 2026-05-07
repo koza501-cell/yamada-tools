@@ -1,5 +1,67 @@
 [
   {
+    "slug": "ideco-nisa-sozokuzei-setsuzei",
+    "title": "iDeCo・NISA・相続税・法人化の節税を完全解説【無料シミュレーターで計算】",
+    "description": "iDeCoで年間最大27万円節税、NISAで非課税運用、相続税の基礎控除計算、法人化の損益分岐点まで。日本一わかりやすく解説。",
+    "category": "資産運用・節税",
+    "tags": [
+      "iDeCo",
+      "NISA",
+      "相続税",
+      "法人化",
+      "節税",
+      "資産運用",
+      "フリーランス"
+    ],
+    "featuredImage": "https://yamada-tools.jp/api/og?title=iDeCo%E3%83%BNISA%E3%83%BB%E7%9B%B8%E7%B6%9A%E7%A8%8E%E3%83%BB%E6%B3%95%E4%BA%BA%E5%8C%96%E3%81%AE%E7%AF%80%E7%A8%8E&type=blog&category=%E8%B3%87%E7%94%A3%E9%81%8B%E7%94%A8%E3%83%BB%E7%AF%80%E7%A8%8E",
+    "publishDate": "2025-05-07",
+    "author": "山田ツール編集部",
+    "readTime": "10分",
+    "excerpt": "iDeCoで年間最大27万円節税、NISAで非課税運用、相続税の基礎控除計算、法人化の損益分岐点まで。日本一わかりやすく解説。",
+    "toolLink": "/finance/ideco-nisa-calculator"
+  },
+  {
+    "slug": "nennshu-kabe-haigusha-fuyou",
+    "title": "年収の壁・配偶者控除・扶養控除を完全解説【2025年・2026年改正対応】",
+    "description": "103万円→123万円→136万円の壁の変化を図解。配偶者控除・扶養控除の節税額を無料計算。パートの損しない働き方を徹底解説。",
+    "category": "税金・節税",
+    "tags": [
+      "年収の壁",
+      "配偶者控除",
+      "扶養控除",
+      "パート",
+      "103万円",
+      "123万円",
+      "2025年改正"
+    ],
+    "featuredImage": "https://yamada-tools.jp/api/og?title=%E5%B9%B4%E5%8F%8E%E3%81%AE%E5%A3%81%E3%83%BB%E9%85%8D%E5%81%B6%E8%80%85%E6%8E%A7%E9%99%A4%E3%83%BB%E6%89%B6%E9%A4%8A%E6%8E%A7%E9%99%A4&type=blog&category=%E7%A8%8E%E9%87%91%E3%83%BB%E7%AF%80%E7%A8%8E",
+    "publishDate": "2025-05-07",
+    "author": "山田ツール編集部",
+    "readTime": "9分",
+    "excerpt": "103万円→123万円→136万円の壁の変化を図解。配偶者控除・扶養控除の節税額を無料計算。パートの損しない働き方を徹底解説。",
+    "toolLink": "/finance/haigusha-kojo-calculator"
+  },
+  {
+    "slug": "fukugyou-kakutei-shinkoku",
+    "title": "副業の確定申告はいくらから必要？20万円ルール・住民税・経費を完全解説【2025年版】",
+    "description": "会社員・サラリーマンの副業確定申告を完全解説。20万円ルール、住民税の落とし穴、会社バレ防止、経費の認め方まで。無料の判定ツールで今すぐチェック。",
+    "category": "税金・確定申告",
+    "tags": [
+      "副業",
+      "確定申告",
+      "税金",
+      "20万円ルール",
+      "サラリーマン",
+      "住民税"
+    ],
+    "featuredImage": "https://yamada-tools.jp/api/og?title=%E5%89%AF%E6%A5%AD%E3%81%AE%E7%A2%BA%E5%AE%9A%E7%94%B3%E5%91%8A%E3%81%AF%E3%81%84%E3%81%8F%E3%82%89%E3%81%8B%E3%82%89%EF%BC%9F&type=blog&category=%E7%A8%8E%E9%87%91%E3%83%BB%E7%A2%BA%E5%AE%9A%E7%94%B3%E5%91%8A",
+    "publishDate": "2025-05-07",
+    "author": "山田ツール編集部",
+    "readTime": "8分",
+    "excerpt": "会社員・サラリーマンの副業確定申告を完全解説。20万円ルール、住民税の落とし穴、会社バレ防止、経費の認め方まで。無料の判定ツールで今すぐチェック。",
+    "toolLink": "/finance/fukugyou-shinkoku-checker"
+  },
+  {
     "slug": "zengin-format-kanzen-guide",
     "title": "全銀フォーマット完全ガイド【2026年最新】経理担当者のための変換・作り方・エラー対処法",
     "description": "全銀フォーマット（FBデータ）とは何か、CSVからの変換方法、Excelでの作り方、エラー対処法まで経理担当者向けに完全解説。無料ツールで登録不要・ブラウザだけで変換できる方法も紹介。",
