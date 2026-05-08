@@ -8,7 +8,7 @@ export interface Tool {
   apiEndpoint: string;
   acceptedTypes: string;
   maxFiles: number;
-  category: "pdf" | "document" | "convert" | "image" | "generator" | "finance" | "stat" | "realestate";
+  category: "pdf" | "document" | "convert" | "image" | "generator" | "finance" | "stat" | "realestate" | "clinic";
   available: boolean;
   isNew?: boolean;
   isPopular?: boolean;
@@ -2749,6 +2749,53 @@ export const lifeTools: Tool[] = [
   },
 ];
 
+// ============================================
+// Section: クリニック経営ツール
+// ============================================
+export const clinicTools: Tool[] = [
+  {
+    id: 'clinic-break-even-calculator',
+    nameJa: 'クリニック損益分岐点・必要患者数シミュレーター',
+    nameEn: 'Clinic Break-Even Calculator',
+    description: '診療科別の平均診療単価から損益分岐点と1日に必要な患者数を計算。融資申請書類にも使えるPDF出力対応。',
+    icon: '🏥',
+    path: '/clinic/break-even-calculator',
+    apiEndpoint: '',
+    acceptedTypes: '',
+    maxFiles: 0,
+    category: 'clinic',
+    available: true,
+    isNew: true,
+  },
+  {
+    id: 'clinic-labor-cost-ratio',
+    nameJa: 'クリニック人件費率診断ツール',
+    nameEn: 'Clinic Labor Cost Ratio Diagnosis',
+    description: '厚労省「医療経済実態調査」のデータと比較し、人件費率・労働分配率・1人あたり給与費を診断。改善提案付き。',
+    icon: '📊',
+    path: '/clinic/labor-cost-ratio-diagnosis',
+    apiEndpoint: '',
+    acceptedTypes: '',
+    maxFiles: 0,
+    category: 'clinic',
+    available: true,
+    isNew: true,
+  },
+  {
+    id: 'medical-staff-payroll',
+    nameJa: '医療スタッフ給与計算機',
+    nameEn: 'Medical Staff Payroll Calculator',
+    description: '看護師・歯科衛生士・医療事務の月給を計算。夜勤手当・深夜割増（25%）・残業・オンコール手当に対応。日本看護協会の業界平均との比較表示。',
+    icon: '💰',
+    path: '/clinic/medical-staff-payroll-calculator',
+    apiEndpoint: '',
+    acceptedTypes: '',
+    maxFiles: 0,
+    category: 'clinic',
+    available: true,
+    isNew: true,
+  },
+];
 export const allTools: Tool[] = [
   ...pdfTools,
   ...documentTools,
@@ -2768,6 +2815,7 @@ export const allTools: Tool[] = [
   ...statTools,
   ...foodTools,
   ...lifeTools,
+  ...clinicTools,
 ];
 
 
@@ -2827,6 +2875,7 @@ export const getToolCount = () => ({
   utility: utilityTools.length,
   food: foodTools.length,
   life: lifeTools.length,
+  clinic: clinicTools.length,
   total: allTools.length,
 });
 

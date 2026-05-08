@@ -34,6 +34,7 @@ interface TabbedToolsSectionProps {
   healthTools?: Tool[];
   foodTools?: Tool[];
   lifeTools?: Tool[];
+  clinicTools?: Tool[];
 }
 
 export default function TabbedToolsSection({
@@ -50,6 +51,7 @@ export default function TabbedToolsSection({
   healthTools = [],
   foodTools = [],
   lifeTools = [],
+  clinicTools = [],
 }: TabbedToolsSectionProps) {
   const [activeTab, setActiveTab] = useState("pdf");
 
@@ -67,6 +69,7 @@ export default function TabbedToolsSection({
     { id: "health", label: "健康", icon: "💪", href: "/health", tools: healthTools },
     { id: "food", label: "飲食", icon: "🍽️", href: "/food", tools: foodTools },
     { id: "life", label: "生活", icon: "🏠", href: "/life", tools: lifeTools },
+    { id: "clinic", label: "クリニック", icon: "🏥", href: "/clinic", tools: clinicTools },
   ];
 
   const tabs = allTabs.filter((t) => t.tools.length > 0);

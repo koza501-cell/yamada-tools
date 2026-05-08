@@ -180,6 +180,18 @@ export const niches: Niche[] = [
     url: "/health",
   },
   {
+    id: "clinic",
+    iconName: "heart",
+    name: "クリニック経営",
+    shortName: "クリニック",
+    description: "損益分岐点・人件費率・給与計算など、院長と医療事務向けの経営支援ツール",
+    toolCount: 3,
+    theme: "blue",
+    isNew: true,
+    featuredLinks: [],
+    url: "/clinic",
+  },
+  {
     id: "education",
     iconName: "book",
     name: "学習・教育",

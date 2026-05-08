@@ -23,6 +23,7 @@ import {
   statTools,
   foodTools,
   lifeTools,
+  clinicTools,
 } from "@/config/tools";
 
 const categories = [
@@ -44,6 +45,7 @@ const categories = [
   { id: "stat", name: "統計・データ", tools: statTools, icon: "📊" },
   { id: "food", name: "飲食・食品", tools: foodTools, icon: "🍽️" },
   { id: "life", name: "生活・家計", tools: lifeTools, icon: "🏠" },
+  { id: "clinic", name: "クリニック経営", tools: clinicTools, icon: "🏥" },
 ];
 
 const ROLE_TABS = [

@@ -13,7 +13,7 @@ import TabbedToolsSection from "@/components/common/TabbedToolsSection";
 import StatsCounter from "@/components/common/StatsCounter";
 import FooterCta from "@/components/common/FooterCta";
 import NicheBentoSection from "@/components/home/NicheBentoSection";
-import { pdfTools, documentTools, convertTools, imageTools, generatorTools, financeTools, careerTools, taxTools, realestateTools, businessTools, healthTools, foodTools, lifeTools, getToolCount, allTools, getNewTools} from "@/config/tools";
+import { pdfTools, documentTools, convertTools, imageTools, generatorTools, financeTools, careerTools, taxTools, realestateTools, businessTools, healthTools, foodTools, lifeTools, clinicTools, getToolCount, allTools, getNewTools} from "@/config/tools";
 const popularTools = allTools.filter(t => t.isPopular && t.available);
 
 // High-traffic tool paths that get 🔥 badge
@@ -282,6 +282,7 @@ export default function Home() {
         healthTools={availableHealthTools}
         foodTools={availableFoodTools}
         lifeTools={availableLifeTools}
+        clinicTools={clinicTools.filter(t => t.available)}
       />
 
       {/* ============================================================ */}
