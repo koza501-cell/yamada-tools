@@ -87,6 +87,7 @@ const faqItems = [
 ];
 
 const RELATED_TOOLS = [
+  { href: "/blog/clinic-keiei-suji-kanri-guide", label: "📖 クリニック経営の数字管理ガイド", note: undefined as string | undefined },
   { href: "/clinic/labor-cost-ratio-diagnosis", label: "👥 人件費率診断", note: "Coming soon" as string | undefined },
   { href: "/clinic/medical-staff-payroll-calculator", label: "💊 医療スタッフ給与計算", note: "Coming soon" as string | undefined },
   { href: "/business/incorporation-simulator", label: "🏢 法人化節税シミュレーター", note: undefined as string | undefined },

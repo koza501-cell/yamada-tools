@@ -81,6 +81,7 @@ const faqItems = [
 ];
 
 const RELATED_TOOLS = [
+  { nameJa: "📖 クリニック経営の数字管理ガイド", path: "/blog/clinic-keiei-suji-kanri-guide" },
   { nameJa: "クリニック損益分岐点シミュレーター", path: "/clinic/break-even-calculator" },
   { nameJa: "クリニック人件費率診断ツール", path: "/clinic/labor-cost-ratio-diagnosis" },
   { nameJa: "残業代手当計算機", path: "/generator/zangyou-tegata" },
