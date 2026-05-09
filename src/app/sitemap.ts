@@ -68,6 +68,9 @@ export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
       { url: baseUrl + "/legal/privacy", lastModified: currentDate, changeFrequency: "yearly", priority: 0.3 },
       { url: baseUrl + "/legal/tokushoho", lastModified: currentDate, changeFrequency: "yearly", priority: 0.3 },
       { url: baseUrl + "/search", lastModified: currentDate, changeFrequency: "weekly", priority: 0.7 },
+      // English pages (for international users / hreflang)
+      { url: baseUrl + "/en/pdf-text-input", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },
+      { url: baseUrl + "/en/business/company-search", lastModified: currentDate, changeFrequency: "monthly", priority: 0.85 },
     ];
   }
 
