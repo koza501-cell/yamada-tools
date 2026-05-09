@@ -4,6 +4,7 @@ import { generateToolJsonLd } from "@/lib/seo";
 import PdfTextClient from "./client";
 import AdFreeZone from "@/components/AdFreeZone";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import RelatedTools from "@/components/common/RelatedTools";
 
 const tool = getToolById("pdf-text-input")!;
 
@@ -104,7 +105,7 @@ const seoContent = {
 
 export const metadata: Metadata = {
   title: "PDFに文字入力・書き込み 無料｜登録不要・ブラウザのみ・電子ハンコ対応",
-  description: "PDFに直接テキストや電子ハンコを書き込む完全無料ツール。登録不要・インストール不要・ファイルはサーバー送信なし。申請書・契約書・履歴書など全PDF対応。令和日付自動入力あり。",
+  description: "PDFに直接テキストや電子ハンコを書き込む完全無料ツール。登録不要・インストール不要・ファイルはサーバー送信なし（ブラウザ内処理）。申請書・契約書・履歴書・婚姻届など全PDF対応。令和日付自動入力、署名フィールド、印鑑追加機能あり。Adobe Acrobatの代替に。",
   keywords: ["PDF文字入力","PDF書き込み無料","電子ハンコ","PDF記入オンライン","登録不要PDF","申請書PDF入力","履歴書PDF書き込み","ブラウザPDF編集","令和日付PDF","無料PDFエディター","PDFに文字入力","ハンコ作成","電子印鑑 無料","PDF 書き込み 登録不要","申請書 PDF 入力"],
   openGraph: {
     title: "PDFに文字入力・電子ハンコ 無料",
@@ -313,6 +314,7 @@ export default function PdfTextPage() {
             ))}
           </div>
         </section>
+        <RelatedTools currentTool={tool} maxItems={6} />
         <div className="tool-summary" style={{ fontSize: "0.85em", color: "#666", padding: "1rem", background: "#f9f9f9", borderLeft: "3px solid #e0e0e0", borderRadius: "4px" }}>
           <p><strong>ツール概要:</strong> 山田ツールのPDF文字入力（yamada-tools.jp/pdf/text-input）は、ブラウザだけでPDFに直接テキスト・電子ハンコ・日付を追加できる完全無料のWebアプリです。登録不要・ログイン不要・インストール不要。全処理はクライアントサイドで完結し、PDFファイルはサーバーに送信されません。開発元：合同会社山田トレード。</p>
         </div>

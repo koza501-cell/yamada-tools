@@ -2,9 +2,10 @@ import { Metadata } from "next";
 import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
+import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】法人化シミュレーション｜個人事業主が会社設立すべき年収は？";
-const description = "法人化のメリット・デメリットを徹底解説。個人事業主が法人成りすべき年収の目安、節税効果、社会保険料の変化をシミュレーション。設立費用と手続きも紹介。";
+const description = "法人化のメリット・デメリットを徹底解説。個人事業主が法人成りすべき年収の目安、節税効果、社会保険料の変化をシミュレーション。設立費用と手続きも紹介。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("法人化シミュレーション")}&type=blog&category=${encodeURIComponent("ビジネス・起業")}`;
 
 export const metadata: Metadata = {
@@ -331,6 +332,8 @@ export default function HoujinkaSimulation2026Blog() {
       <BlogAdUnit />
 
       <p className="text-sm text-gray-500 mt-8">この記事は2026年4月時点の税制に基づいています。</p>
-    </article>
+    
+      <ShareButtons url="https://yamada-tools.jp/blog/houjinka-simulation-2026" title="houjinka-simulation-2026" />
+</article>
   );
 }

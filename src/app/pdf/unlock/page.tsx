@@ -26,7 +26,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】PDFロック解除｜パスワード解除ツール",
   tool,
-  longDescription: "パスワードがわかっているPDFのロックを解除。パスワード入力の手間を省きたい時や、他のPDFツールで編集したい時に便利です。",
+  longDescription: "パスワードがわかっているPDFのロックを解除。パスワード入力の手間を省きたい時や、他のPDFツールで編集したい時に便利です。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。",
   keywords: ['PDF ロック解除', 'PDF パスワード解除', 'PDF 保護解除', 'PDF アンロック'],
 });
 

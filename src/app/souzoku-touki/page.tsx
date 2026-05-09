@@ -1,18 +1,34 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { themeColors } from "@/config/niches";
+import { NicheIcon } from "@/components/home/NicheIcons";
+
+// ============================================================
+// /souzoku-touki — 相続・登記 hub (NAVY theme)
+// ============================================================
+// Custom layout (different from HubLayout) because this niche has
+// unique elements: warning urgency box, step-by-step wizard,
+// DIY vs professional comparison.
+// All sub-routes (/souzoku-touki/wizard, /tax, etc.) UNCHANGED.
+// ============================================================
 
 export const metadata: Metadata = {
-  title: "相続登記DIYガイド【無料】自分でできる相続登記ツール集",
-  description: "相続登記を自分でできる無料ツール集。ケース診断・書類チェックリスト・登録免許税計算・法務局検索・ガイド記事を提供。2024年義務化対応。法務局公式書式準拠。",
-  keywords: ["相続登記 自分で", "相続登記 申請書", "登録免許税 計算", "相続登記 書類", "相続登記 義務化"],
-  alternates: { canonical: "https://yamada-tools.jp/souzoku-touki" },
+  title: "相続登記DIYガイド【無料】自分でできる相続登記ツール集 | 山田ツール",
+  description:
+    "2024年義務化された相続登記をDIYで進めるための無料ツール。ケース診断・必要書類チェックリスト・登録免許税計算機・管轄法務局検索まで。最大15万円節約。",
+  keywords:
+    "相続登記, 相続登記 自分で, 相続登記 義務化, 登録免許税 計算, 法務局 検索, 相続登記 必要書類, 無料",
   openGraph: {
-    title: "相続登記DIYガイド【無料】自分でできる相続登記ツール集",
-    description: "相続登記を自分でできる無料ツール集。ケース診断・書類チェックリスト・登録免許税計算・法務局検索。2024年義務化対応。",
+    title: "相続登記、自分でできる。最大15万円節約 | 山田ツール",
+    description:
+      "ケース診断・書類チェック・税額計算・法務局検索まで、相続登記DIYに必要なツールをすべて無料で提供。",
     url: "https://yamada-tools.jp/souzoku-touki",
     siteName: "山田ツール",
     locale: "ja_JP",
     type: "website",
+  },
+  alternates: {
+    canonical: "https://yamada-tools.jp/souzoku-touki",
   },
 };
 
@@ -21,186 +37,399 @@ const breadcrumbJsonLd = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "ホーム", item: "https://yamada-tools.jp" },
-    { "@type": "ListItem", position: 2, name: "相続登記DIYガイド", item: "https://yamada-tools.jp/souzoku-touki" },
-  ],
-};
-
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    { "@type": "Question", name: "相続登記の義務化はいつから？", acceptedAnswer: { "@type": "Answer", text: "2024年（令和6年）4月1日から義務化されました。相続を知った日から3年以内に申請が必要です。" } },
-    { "@type": "Question", name: "登録免許税はいくらかかりますか？", acceptedAnswer: { "@type": "Answer", text: "固定資産税評価額の0.4%です。100円未満切り捨て、最低1,000円です。" } },
-    { "@type": "Question", name: "相続登記は自分でできますか？", acceptedAnswer: { "@type": "Answer", text: "配偶者・子への単純な相続であれば自分で申請できます。本ツールで必要書類とステップを無料で確認できます。" } },
+    { "@type": "ListItem", position: 2, name: "相続・登記", item: "https://yamada-tools.jp/souzoku-touki" },
   ],
 };
 
 const tools = [
-  { name: "ケース診断ウィザード", url: "/souzoku-touki/wizard", description: "10問の質問に答えるだけで自分のケースを判定。DIY可否・必要書類・複雑度がわかる", icon: "🧭", badge: "まずはここから" },
-  { name: "書類チェックリスト", url: "/souzoku-touki/checklist", description: "ケース別に必要書類を一覧表示。取得場所・費用・注意点付き。印刷対応", icon: "📋", badge: null },
-  { name: "登録免許税計算機", url: "/souzoku-touki/tax", description: "固定資産評価額を入力するだけで税額を自動計算。計算式の内訳も表示", icon: "🧮", badge: null },
-  { name: "管轄法務局検索", url: "/souzoku-touki/houmukyoku", description: "都道府県・市区町村から管轄法務局の名称・住所・電話番号を検索", icon: "🏛️", badge: null },
-  { name: "ガイド記事", url: "/souzoku-touki/guide", description: "相続登記の基礎知識から申請の流れ・よくある失敗まで6テーマを詳説", icon: "📖", badge: null },
-  { name: "よくある質問", url: "/souzoku-touki/faq", description: "30問以上のQ&Aで疑問を解消。義務化・罰則・書類・費用・期限を網羅", icon: "❓", badge: null },
+  {
+    step: "STEP 01",
+    iconName: "scroll",
+    name: "ケース診断ウィザード",
+    description: "10問の質問でDIY可否・必要書類・複雑度を自動判定",
+    url: "/souzoku-touki/wizard",
+    primary: true,
+  },
+  {
+    step: "STEP 02",
+    iconName: "document",
+    name: "書類チェックリスト",
+    description: "ケース別に必要書類を一覧表示。取得場所・費用・注意点付き",
+    url: "/souzoku-touki/checklist",
+  },
+  {
+    step: "STEP 03",
+    iconName: "chart",
+    name: "登録免許税計算機",
+    description: "固定資産評価額を入力するだけで税額を自動計算",
+    url: "/souzoku-touki/tax",
+  },
+  {
+    step: "STEP 04",
+    iconName: "home",
+    name: "管轄法務局検索",
+    description: "都道府県・市区町村から管轄法務局を検索",
+    url: "/souzoku-touki/houmukyoku",
+  },
 ];
 
-const painPoints = [
-  { icon: "⚠️", title: "2024年4月から義務化", desc: "相続登記が法律で義務化。怠ると10万円以下の過料" },
-  { icon: "⏰", title: "3年以内の期限", desc: "相続を知った日から3年以内。過去の相続は2027年3月31日まで" },
-  { icon: "💰", title: "司法書士費用5〜15万円", desc: "専門家に頼むと高額。単純なケースなら自分で十分できる" },
+const additionalTools = [
+  {
+    iconName: "book",
+    name: "ガイド記事",
+    description: "相続登記の基礎知識から申請の流れ・よくある失敗まで",
+    url: "/souzoku-touki/guide",
+  },
+  {
+    iconName: "users",
+    name: "よくある質問",
+    description: "30問以上のQ&Aで疑問を解消",
+    url: "/souzoku-touki/faq",
+  },
 ];
 
-export default function SouzokuToukiPage() {
+export default function SouzokuToukiHubPage() {
+  const colors = themeColors.navy;
+
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbJsonLd, faqJsonLd]) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <main className="min-h-screen bg-stone-50 dark:bg-gray-900">
+        {/* ============ Hero ============ */}
+        <section
+          className="relative border-b-4"
+          style={{ background: colors.bg, borderColor: colors.accent }}
+        >
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-start">
+              {/* Left: Headline + CTAs */}
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center"
+                    style={{ background: "rgba(255,255,255,0.7)", color: colors.iconColor }}
+                  >
+                    <NicheIcon name="scroll" size={26} />
+                  </div>
+                  <span
+                    className="inline-block text-[11px] font-medium px-3 py-1.5 rounded"
+                    style={{ background: colors.accent, color: "#FEF3C7" }}
+                  >
+                    法務局公式書式準拠 · 2024年義務化対応
+                  </span>
+                </div>
 
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-kon to-ai text-white py-16 md:py-20">
-        <div className="max-w-5xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-1.5 text-sm font-medium mb-6">
-            <span>📜</span> 法務局公式書式準拠 · 2024年義務化対応
-          </div>
-          <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight">
-            相続登記、自分でできる。<br className="hidden md:block" />
-            <span className="text-yellow-300">最大15万円節約</span>
-          </h1>
-          <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
-            ケース診断・書類チェックリスト・登録免許税計算・法務局検索まで<br className="hidden md:block" />
-            相続登記DIYに必要なツールをすべて無料で提供
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/souzoku-touki/wizard"
-              className="bg-white text-kon font-bold py-4 px-8 rounded-xl hover:bg-gray-100 transition-colors text-lg shadow-lg"
-            >
-              🧭 ケース診断スタート
-            </Link>
-            <Link
-              href="/souzoku-touki/tax"
-              className="bg-white/20 border border-white/50 text-white font-bold py-4 px-8 rounded-xl hover:bg-white/30 transition-colors text-lg"
-            >
-              🧮 税額を計算する
-            </Link>
-          </div>
-        </div>
-      </section>
+                <p
+                  className="text-[11px] tracking-widest uppercase font-medium mb-2"
+                  style={{ color: colors.textMuted }}
+                >
+                  INHERITANCE & REGISTRATION
+                </p>
+                <h1
+                  className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-3"
+                  style={{ color: colors.text }}
+                >
+                  相続登記、自分でできる。
+                </h1>
+                <p
+                  className="text-base sm:text-lg mb-4"
+                  style={{ color: colors.textMuted }}
+                >
+                  最大15万円節約
+                </p>
+                <p className="text-sm text-stone-700 dark:text-gray-300 leading-relaxed mb-6">
+                  義務化された相続登記をDIYで進めるための診断・書類チェック・税額計算ツール。
+                  <br className="hidden sm:block" />
+                  ケース別に必要書類を確認し、登録免許税を計算、管轄法務局までワンストップで。
+                </p>
 
-      {/* Pain points */}
-      <section className="py-10 bg-red-50 dark:bg-red-950/30">
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {painPoints.map((p) => (
-              <div key={p.title} className="flex items-start gap-3 bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm border border-red-100 dark:border-red-900">
-                <span className="text-2xl flex-shrink-0">{p.icon}</span>
-                <div>
-                  <div className="font-bold text-gray-900 dark:text-white text-sm">{p.title}</div>
-                  <div className="text-gray-600 dark:text-gray-300 text-sm mt-0.5">{p.desc}</div>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link
+                    href="/souzoku-touki/wizard"
+                    className="inline-flex items-center justify-center px-5 py-3 rounded-lg text-sm font-medium text-white transition-opacity hover:opacity-90"
+                    style={{ background: colors.accent }}
+                  >
+                    ケース診断スタート →
+                  </Link>
+                  <Link
+                    href="/souzoku-touki/guide"
+                    className="inline-flex items-center justify-center px-5 py-3 rounded-lg text-sm font-medium bg-white dark:bg-gray-800 border transition-colors hover:bg-stone-50 dark:hover:bg-gray-700"
+                    style={{ borderColor: colors.accent, color: colors.accent }}
+                  >
+                    ガイドを読む
+                  </Link>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Tools */}
-      <section className="py-14">
-        <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2 text-center">無料ツール一覧</h2>
-          <p className="text-center text-gray-500 dark:text-gray-400 mb-10">登録不要・完全無料。すべてのツールを今すぐ使えます</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {tools.map((tool) => (
-              <Link
-                key={tool.url}
-                href={tool.url}
-                className="group bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 overflow-hidden"
-              >
-                <div className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="text-4xl flex-shrink-0">{tool.icon}</div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-1">
-                        <h3 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-ai transition-colors">{tool.name}</h3>
-                        {tool.badge && (
-                          <span className="bg-yellow-100 text-yellow-800 text-xs font-medium px-2 py-0.5 rounded-full">{tool.badge}</span>
-                        )}
-                      </div>
-                      <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">{tool.description}</p>
-                      <div className="mt-3">
-                        <span className="text-sm text-ai font-medium group-hover:translate-x-1 transition-transform inline-block">使ってみる →</span>
-                      </div>
+              {/* Right: Warning urgency box */}
+              <div className="bg-white dark:bg-gray-800 border border-stone-200 dark:border-gray-700 rounded-2xl p-5">
+                <div className="text-[11px] font-medium text-red-600 dark:text-red-400 mb-3">
+                  ⚠️ 重要なお知らせ
+                </div>
+
+                <div className="space-y-3">
+                  <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-3">
+                    <div className="text-sm font-medium text-red-900 dark:text-red-200">
+                      2024年4月から義務化
+                    </div>
+                    <div className="text-xs text-stone-600 dark:text-gray-400 mt-1">
+                      相続登記が法律で義務化されました
+                    </div>
+                  </div>
+
+                  <div className="bg-amber-50 dark:bg-amber-900/20 rounded-lg p-3">
+                    <div className="text-sm font-medium text-amber-800 dark:text-amber-200">
+                      10万円以下の過料
+                    </div>
+                    <div className="text-xs text-stone-600 dark:text-gray-400 mt-1">
+                      相続を知った日から3年以内。過去の相続は2027年3月31日まで
+                    </div>
+                  </div>
+
+                  <div className="bg-stone-50 dark:bg-gray-700 rounded-lg p-3">
+                    <div className="text-sm font-medium text-stone-800 dark:text-gray-200">
+                      司法書士費用 5〜15万円
+                    </div>
+                    <div className="text-xs text-stone-600 dark:text-gray-400 mt-1">
+                      単純なケースなら自分で申請可能
                     </div>
                   </div>
                 </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Free vs Professional */}
-      <section className="py-14 bg-gray-50 dark:bg-gray-800/50">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl font-bold text-center text-gray-900 dark:text-white mb-8">自分でできる？専門家に頼む？</h2>
-          <div className="overflow-x-auto">
-            <table className="w-full bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden text-sm">
-              <thead>
-                <tr className="bg-gray-50 dark:bg-gray-700">
-                  <th className="text-left py-3 px-4 font-semibold text-gray-600 dark:text-gray-300">項目</th>
-                  <th className="py-3 px-4 font-semibold text-ai text-center">自分で（本ツール）</th>
-                  <th className="py-3 px-4 font-semibold text-gray-600 dark:text-gray-300 text-center">司法書士依頼</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
-                {[
-                  ["費用", "登録免許税のみ（評価額×0.4%）", "登録免許税＋報酬5〜15万円"],
-                  ["時間", "数日〜1週間（書類収集含む）", "2〜4週間（依頼後）"],
-                  ["難易度", "単純ケースなら初心者でも可能", "複雑なケースに対応"],
-                  ["適したケース", "遺産分割協議・法定相続の単純相続", "数次相続・遺贈・相続放棄が絡む場合"],
-                  ["安心感", "自分でチェックしながら進められる", "プロに任せられる"],
-                ].map(([item, diy, pro]) => (
-                  <tr key={item} className="hover:bg-gray-50 dark:hover:bg-gray-700/50">
-                    <td className="py-3 px-4 font-medium text-gray-700 dark:text-gray-300">{item}</td>
-                    <td className="py-3 px-4 text-center text-green-700 dark:text-green-400">{diy}</td>
-                    <td className="py-3 px-4 text-center text-gray-500 dark:text-gray-400">{pro}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-4">
-            まず<Link href="/souzoku-touki/wizard" className="text-ai underline">ケース診断</Link>でDIY可否を確認しましょう
-          </p>
-        </div>
-      </section>
-
-      {/* Trust signals */}
-      <section className="py-10 bg-white dark:bg-gray-900">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-            {[
-              { icon: "🏛️", label: "法務局公式書式準拠" },
-              { icon: "🔒", label: "日本国内サーバー処理" },
-              { icon: "💯", label: "登録不要・完全無料" },
-              { icon: "📱", label: "スマホ対応" },
-            ].map((t) => (
-              <div key={t.label} className="bg-gray-50 dark:bg-gray-800 rounded-xl p-4">
-                <div className="text-3xl mb-2">{t.icon}</div>
-                <div className="text-xs font-medium text-gray-600 dark:text-gray-300">{t.label}</div>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Disclaimer */}
-      <section className="py-6 bg-yellow-50 dark:bg-yellow-950/30 border-t border-yellow-200 dark:border-yellow-900">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <p className="text-xs text-yellow-800 dark:text-yellow-300">
-            ⚠️ 本ツールは書類作成補助です。法律相談・代理申請は行いません。複雑な案件は司法書士にご相談ください。
-          </p>
-        </div>
-      </section>
+        {/* ============ Step-by-step journey ============ */}
+        <section className="bg-white dark:bg-gray-800 border-b border-stone-100 dark:border-gray-700">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-12">
+            <p
+              className="text-[11px] tracking-widest uppercase font-medium mb-1"
+              style={{ color: colors.textMuted }}
+            >
+              STEP-BY-STEP
+            </p>
+            <h2
+              className="text-xl sm:text-2xl font-bold mb-2"
+              style={{ color: colors.text }}
+            >
+              相続登記DIYの流れ
+            </h2>
+            <p className="text-sm text-stone-600 dark:text-gray-400 mb-6">
+              4ステップで、相続登記を自分で進められます。
+            </p>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {tools.map((tool) => (
+                <Link
+                  key={tool.url}
+                  href={tool.url}
+                  className="group block p-4 rounded-xl transition-transform hover:scale-[1.02]"
+                  style={
+                    tool.primary
+                      ? { background: "#FEF7ED", border: "1px solid #FDE68A" }
+                      : {
+                          background: "white",
+                          border: `1px solid ${colors.border}`,
+                        }
+                  }
+                >
+                  <div
+                    className={`text-[10px] font-medium mb-2 ${
+                      tool.primary ? "text-amber-800" : ""
+                    }`}
+                    style={!tool.primary ? { color: colors.textMuted } : undefined}
+                  >
+                    {tool.step}
+                  </div>
+                  <div
+                    className="w-10 h-10 rounded-lg flex items-center justify-center mb-2"
+                    style={{
+                      background: tool.primary ? "#FEF3C7" : colors.iconBg,
+                      color: tool.primary ? "#92400E" : colors.iconColor,
+                    }}
+                  >
+                    <NicheIcon name={tool.iconName} size={20} />
+                  </div>
+                  <div
+                    className="text-sm font-bold mb-1"
+                    style={{ color: colors.text }}
+                  >
+                    {tool.name}
+                  </div>
+                  <div className="text-[11px] text-stone-600 dark:text-gray-400 leading-relaxed">
+                    {tool.description}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ============ Self vs Professional comparison ============ */}
+        <section className="bg-stone-50 dark:bg-gray-900">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-12">
+            <p
+              className="text-[11px] tracking-widest uppercase font-medium mb-1"
+              style={{ color: colors.textMuted }}
+            >
+              COMPARE
+            </p>
+            <h2
+              className="text-xl sm:text-2xl font-bold mb-6"
+              style={{ color: colors.text }}
+            >
+              自分でできる？専門家に頼む？
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* DIY */}
+              <div
+                className="bg-white dark:bg-gray-800 rounded-2xl p-6 border-2"
+                style={{ borderColor: colors.accent }}
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <div
+                    className="text-sm font-bold"
+                    style={{ color: colors.text }}
+                  >
+                    自分で申請
+                  </div>
+                  <span
+                    className="text-[10px] font-medium px-2 py-1 rounded"
+                    style={{ background: "#FEF3C7", color: "#92400E" }}
+                  >
+                    おすすめ
+                  </span>
+                </div>
+                <div className="space-y-2 text-sm text-stone-700 dark:text-gray-300">
+                  <div className="flex justify-between">
+                    <span>費用</span>
+                    <span className="font-medium">登録免許税のみ</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>時間</span>
+                    <span className="font-medium">数日〜1週間</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>難易度</span>
+                    <span className="font-medium">単純ケースなら可能</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Professional */}
+              <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-stone-200 dark:border-gray-700">
+                <div className="text-sm font-bold text-stone-700 dark:text-gray-300 mb-3">
+                  司法書士に依頼
+                </div>
+                <div className="space-y-2 text-sm text-stone-700 dark:text-gray-300">
+                  <div className="flex justify-between">
+                    <span>費用</span>
+                    <span className="font-medium">+ 5〜15万円</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>時間</span>
+                    <span className="font-medium">2〜4週間</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>難易度</span>
+                    <span className="font-medium">複雑ケース対応</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p className="text-xs text-stone-600 dark:text-gray-400 mt-4 text-center">
+              まず{" "}
+              <Link
+                href="/souzoku-touki/wizard"
+                className="font-medium hover:underline"
+                style={{ color: colors.accent }}
+              >
+                ケース診断
+              </Link>{" "}
+              でDIY可否を確認しましょう
+            </p>
+          </div>
+        </section>
+
+        {/* ============ Additional resources ============ */}
+        <section className="bg-white dark:bg-gray-800 border-t border-stone-100 dark:border-gray-700">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-12">
+            <p
+              className="text-[11px] tracking-widest uppercase font-medium mb-1"
+              style={{ color: colors.textMuted }}
+            >
+              RESOURCES
+            </p>
+            <h2
+              className="text-xl sm:text-2xl font-bold mb-6"
+              style={{ color: colors.text }}
+            >
+              学習リソース
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {additionalTools.map((tool) => (
+                <Link
+                  key={tool.url}
+                  href={tool.url}
+                  className="block p-5 rounded-xl bg-white dark:bg-gray-800 transition-colors hover:shadow-md"
+                  style={{ border: `1px solid ${colors.border}` }}
+                >
+                  <div className="flex items-start gap-4">
+                    <div
+                      className="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center"
+                      style={{ background: colors.iconBg, color: colors.iconColor }}
+                    >
+                      <NicheIcon name={tool.iconName} size={20} />
+                    </div>
+                    <div>
+                      <div
+                        className="text-sm font-bold mb-1"
+                        style={{ color: colors.text }}
+                      >
+                        {tool.name}
+                      </div>
+                      <div className="text-xs text-stone-600 dark:text-gray-400 leading-relaxed">
+                        {tool.description}
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ============ Trust strip ============ */}
+        <section
+          className="border-t"
+          style={{ background: colors.bg, borderColor: colors.border }}
+        >
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6">
+            <div
+              className="flex flex-wrap justify-center items-center gap-4 sm:gap-8 text-xs"
+              style={{ color: colors.textMuted }}
+            >
+              <span>🏛️ 法務局公式書式準拠</span>
+              <span>🇯🇵 日本国内サーバー処理</span>
+              <span>💯 登録不要・完全無料</span>
+              <span>📱 スマホ対応</span>
+            </div>
+            <p
+              className="text-[11px] text-center mt-4 leading-relaxed"
+              style={{ color: colors.textMuted, opacity: 0.8 }}
+            >
+              ⚠️ 本ツールは書類作成補助です。法律相談・代理申請は行いません。複雑な案件は司法書士にご相談ください。
+            </p>
+          </div>
+        </section>
+      </main>
     </>
   );
 }

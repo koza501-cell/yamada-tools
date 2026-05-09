@@ -424,3 +424,813 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 .animate-fade-in { animation: fade-in 0.2s ease-out; }
+
+
+/* ================================================================
+   NICHE THEME CSS VARIABLES
+   Light mode in :root, dark mode in .dark (toggled by ThemeProvider)
+   Components use style={{background: colors.bg}} — no code changes needed.
+   ================================================================ */
+
+:root {
+  /* blue */
+  --niche-blue-bg: #EFF6FF;
+  --niche-blue-bg-dark: #1E3A8A;
+  --niche-blue-text: #1E3A8A;
+  --niche-blue-text-dark: #FFFFFF;
+  --niche-blue-text-muted: #3B82F6;
+  --niche-blue-border: #DBEAFE;
+  --niche-blue-icon-bg: #DBEAFE;
+  --niche-blue-icon-color: #1E40AF;
+  --niche-blue-accent: #1E40AF;
+  /* coral */
+  --niche-coral-bg: #FFF7ED;
+  --niche-coral-bg-dark: #7C2D12;
+  --niche-coral-text: #7C2D12;
+  --niche-coral-text-dark: #FFFFFF;
+  --niche-coral-text-muted: #EA580C;
+  --niche-coral-border: #FFEDD5;
+  --niche-coral-icon-bg: #FFEDD5;
+  --niche-coral-icon-color: #C2410C;
+  --niche-coral-accent: #C2410C;
+  /* green */
+  --niche-green-bg: #F0FDF4;
+  --niche-green-bg-dark: #064E3B;
+  --niche-green-text: #064E3B;
+  --niche-green-text-dark: #FFFFFF;
+  --niche-green-text-muted: #10B981;
+  --niche-green-border: #DCFCE7;
+  --niche-green-icon-bg: #DCFCE7;
+  --niche-green-icon-color: #047857;
+  --niche-green-accent: #047857;
+  /* amber */
+  --niche-amber-bg: #FEFCE8;
+  --niche-amber-bg-dark: #713F12;
+  --niche-amber-text: #713F12;
+  --niche-amber-text-dark: #FFFFFF;
+  --niche-amber-text-muted: #CA8A04;
+  --niche-amber-border: #FEF08A;
+  --niche-amber-icon-bg: #FEF08A;
+  --niche-amber-icon-color: #A16207;
+  --niche-amber-accent: #A16207;
+  /* navy */
+  --niche-navy-bg: #EEF2FF;
+  --niche-navy-bg-dark: #1E1B4B;
+  --niche-navy-text: #1E1B4B;
+  --niche-navy-text-dark: #FFFFFF;
+  --niche-navy-text-muted: #6366F1;
+  --niche-navy-border: #E0E7FF;
+  --niche-navy-icon-bg: #E0E7FF;
+  --niche-navy-icon-color: #3730A3;
+  --niche-navy-accent: #3730A3;
+  /* pink */
+  --niche-pink-bg: #FDF2F8;
+  --niche-pink-bg-dark: #831843;
+  --niche-pink-text: #831843;
+  --niche-pink-text-dark: #FFFFFF;
+  --niche-pink-text-muted: #DB2777;
+  --niche-pink-border: #FCE7F3;
+  --niche-pink-icon-bg: #FCE7F3;
+  --niche-pink-icon-color: #BE185D;
+  --niche-pink-accent: #BE185D;
+  /* red */
+  --niche-red-bg: #FEF2F2;
+  --niche-red-bg-dark: #7F1D1D;
+  --niche-red-text: #7F1D1D;
+  --niche-red-text-dark: #FFFFFF;
+  --niche-red-text-muted: #DC2626;
+  --niche-red-border: #FEE2E2;
+  --niche-red-icon-bg: #FEE2E2;
+  --niche-red-icon-color: #B91C1C;
+  --niche-red-accent: #B91C1C;
+  /* olive */
+  --niche-olive-bg: #F7FEE7;
+  --niche-olive-bg-dark: #365314;
+  --niche-olive-text: #365314;
+  --niche-olive-text-dark: #FFFFFF;
+  --niche-olive-text-muted: #65A30D;
+  --niche-olive-border: #ECFCCB;
+  --niche-olive-icon-bg: #ECFCCB;
+  --niche-olive-icon-color: #4D7C0F;
+  --niche-olive-accent: #4D7C0F;
+  /* purple */
+  --niche-purple-bg: #FAF5FF;
+  --niche-purple-bg-dark: #581C87;
+  --niche-purple-text: #581C87;
+  --niche-purple-text-dark: #FFFFFF;
+  --niche-purple-text-muted: #9333EA;
+  --niche-purple-border: #F3E8FF;
+  --niche-purple-icon-bg: #F3E8FF;
+  --niche-purple-icon-color: #7E22CE;
+  --niche-purple-accent: #7E22CE;
+}
+
+.dark {
+  /* blue dark */
+  --niche-blue-bg: #1E3A8A;
+  --niche-blue-bg-dark: #0F2057;
+  --niche-blue-text: #FFFFFF;
+  --niche-blue-text-dark: #FFFFFF;
+  --niche-blue-text-muted: #93C5FD;
+  --niche-blue-border: #3B5BA5;
+  --niche-blue-icon-bg: #2D4FA0;
+  --niche-blue-icon-color: #93C5FD;
+  --niche-blue-accent: #93C5FD;
+  /* coral dark */
+  --niche-coral-bg: #7C2D12;
+  --niche-coral-bg-dark: #431407;
+  --niche-coral-text: #FFFFFF;
+  --niche-coral-text-dark: #FFFFFF;
+  --niche-coral-text-muted: #FDBA74;
+  --niche-coral-border: #92400E;
+  --niche-coral-icon-bg: #92400E;
+  --niche-coral-icon-color: #FDBA74;
+  --niche-coral-accent: #FDBA74;
+  /* green dark */
+  --niche-green-bg: #064E3B;
+  --niche-green-bg-dark: #022C22;
+  --niche-green-text: #FFFFFF;
+  --niche-green-text-dark: #FFFFFF;
+  --niche-green-text-muted: #6EE7B7;
+  --niche-green-border: #065F46;
+  --niche-green-icon-bg: #065F46;
+  --niche-green-icon-color: #6EE7B7;
+  --niche-green-accent: #6EE7B7;
+  /* amber dark */
+  --niche-amber-bg: #713F12;
+  --niche-amber-bg-dark: #3F2006;
+  --niche-amber-text: #FFFFFF;
+  --niche-amber-text-dark: #FFFFFF;
+  --niche-amber-text-muted: #FCD34D;
+  --niche-amber-border: #92400E;
+  --niche-amber-icon-bg: #92400E;
+  --niche-amber-icon-color: #FCD34D;
+  --niche-amber-accent: #FCD34D;
+  /* navy dark */
+  --niche-navy-bg: #1E1B4B;
+  --niche-navy-bg-dark: #0F0D2E;
+  --niche-navy-text: #FFFFFF;
+  --niche-navy-text-dark: #FFFFFF;
+  --niche-navy-text-muted: #A5B4FC;
+  --niche-navy-border: #312E81;
+  --niche-navy-icon-bg: #312E81;
+  --niche-navy-icon-color: #A5B4FC;
+  --niche-navy-accent: #A5B4FC;
+  /* pink dark */
+  --niche-pink-bg: #831843;
+  --niche-pink-bg-dark: #500E2A;
+  --niche-pink-text: #FFFFFF;
+  --niche-pink-text-dark: #FFFFFF;
+  --niche-pink-text-muted: #F9A8D4;
+  --niche-pink-border: #9D174D;
+  --niche-pink-icon-bg: #9D174D;
+  --niche-pink-icon-color: #F9A8D4;
+  --niche-pink-accent: #F9A8D4;
+  /* red dark */
+  --niche-red-bg: #7F1D1D;
+  --niche-red-bg-dark: #450A0A;
+  --niche-red-text: #FFFFFF;
+  --niche-red-text-dark: #FFFFFF;
+  --niche-red-text-muted: #FCA5A5;
+  --niche-red-border: #991B1B;
+  --niche-red-icon-bg: #991B1B;
+  --niche-red-icon-color: #FCA5A5;
+  --niche-red-accent: #FCA5A5;
+  /* olive dark */
+  --niche-olive-bg: #365314;
+  --niche-olive-bg-dark: #1A2A07;
+  --niche-olive-text: #FFFFFF;
+  --niche-olive-text-dark: #FFFFFF;
+  --niche-olive-text-muted: #BEF264;
+  --niche-olive-border: #3F6212;
+  --niche-olive-icon-bg: #3F6212;
+  --niche-olive-icon-color: #BEF264;
+  --niche-olive-accent: #BEF264;
+  /* purple dark */
+  --niche-purple-bg: #581C87;
+  --niche-purple-bg-dark: #2E0B47;
+  --niche-purple-text: #FFFFFF;
+  --niche-purple-text-dark: #FFFFFF;
+  --niche-purple-text-muted: #D8B4FE;
+  --niche-purple-border: #6B21A8;
+  --niche-purple-icon-bg: #6B21A8;
+  --niche-purple-icon-color: #D8B4FE;
+  --niche-purple-accent: #D8B4FE;
+}
+
+
+/* ==========================================================================
+   DARK MODE SAFETY NET — Blog + AI pages (uses <article> containers)
+   ==========================================================================
+   Individual blog posts and AI recipes were built before dark mode existed
+   and use inline hardcoded light colors. Until they're refactored properly
+   (planned for Month 1 Week 4), this safety net provides reasonable dark
+   mode appearance via targeted CSS overrides.
+
+   Targets:
+   - <article> elements inside blog posts (/blog/*) and AI recipes (/ai/*)
+   - .blog-article class explicitly used in blog [slug] template
+   - Excludes any <article> on the homepage or tool pages (those are handled
+     properly via Tailwind dark: classes already)
+
+   Strategy: Override common Tailwind light backgrounds and texts on these
+   pages only. Uses moderate selectivity to stay scoped.
+   ========================================================================== */
+
+/* Container backgrounds — soft dark surface */
+.dark article.max-w-4xl,
+.dark .blog-article,
+.dark article.max-w-4xl > div {
+  color: var(--page-text);
+}
+
+/* White backgrounds inside blog/AI articles → dark card */
+.dark article.max-w-4xl .bg-white,
+.dark .blog-article .bg-white {
+  background-color: #1F2937 !important;
+  color: var(--page-text);
+}
+
+/* Light gray section backgrounds → darker gray */
+.dark article.max-w-4xl .bg-gray-50,
+.dark article.max-w-4xl .bg-gray-100,
+.dark .blog-article .bg-gray-50,
+.dark .blog-article .bg-gray-100 {
+  background-color: #374151 !important;
+  color: var(--page-text);
+}
+
+/* Light blue callout boxes (info/tip) → dark blue */
+.dark article.max-w-4xl .bg-blue-50,
+.dark article.max-w-4xl .bg-blue-100,
+.dark .blog-article .bg-blue-50,
+.dark .blog-article .bg-blue-100 {
+  background-color: rgba(30, 58, 138, 0.4) !important;
+  color: #DBEAFE !important;
+}
+
+/* Yellow callout (warning/tip) → dark amber */
+.dark article.max-w-4xl .bg-yellow-50,
+.dark article.max-w-4xl .bg-yellow-100,
+.dark article.max-w-4xl .bg-amber-50,
+.dark article.max-w-4xl .bg-amber-100,
+.dark .blog-article .bg-yellow-50,
+.dark .blog-article .bg-yellow-100,
+.dark .blog-article .bg-amber-50,
+.dark .blog-article .bg-amber-100 {
+  background-color: rgba(146, 64, 14, 0.4) !important;
+  color: #FEF3C7 !important;
+}
+
+/* Green callout (success) → dark green */
+.dark article.max-w-4xl .bg-green-50,
+.dark article.max-w-4xl .bg-green-100,
+.dark .blog-article .bg-green-50,
+.dark .blog-article .bg-green-100 {
+  background-color: rgba(6, 78, 59, 0.4) !important;
+  color: #D1FAE5 !important;
+}
+
+/* Red callout (error/important) → dark red */
+.dark article.max-w-4xl .bg-red-50,
+.dark article.max-w-4xl .bg-red-100,
+.dark .blog-article .bg-red-50,
+.dark .blog-article .bg-red-100 {
+  background-color: rgba(127, 29, 29, 0.4) !important;
+  color: #FECACA !important;
+}
+
+/* Purple callout → dark purple */
+.dark article.max-w-4xl .bg-purple-50,
+.dark article.max-w-4xl .bg-purple-100,
+.dark article.max-w-4xl .bg-indigo-50,
+.dark article.max-w-4xl .bg-indigo-100,
+.dark .blog-article .bg-purple-50,
+.dark .blog-article .bg-purple-100 {
+  background-color: rgba(76, 29, 149, 0.4) !important;
+  color: #E9D5FF !important;
+}
+
+/* Dark text on dark background fix — common Tailwind text classes */
+.dark article.max-w-4xl .text-gray-900,
+.dark article.max-w-4xl .text-gray-800,
+.dark article.max-w-4xl .text-gray-700,
+.dark .blog-article .text-gray-900,
+.dark .blog-article .text-gray-800,
+.dark .blog-article .text-gray-700 {
+  color: #F3F4F6 !important;
+}
+
+.dark article.max-w-4xl .text-gray-600,
+.dark article.max-w-4xl .text-gray-500,
+.dark .blog-article .text-gray-600,
+.dark .blog-article .text-gray-500 {
+  color: #D1D5DB !important;
+}
+
+.dark article.max-w-4xl .text-gray-400,
+.dark .blog-article .text-gray-400 {
+  color: #9CA3AF !important;
+}
+
+/* Borders within blog/AI content */
+.dark article.max-w-4xl .border-gray-100,
+.dark article.max-w-4xl .border-gray-200,
+.dark article.max-w-4xl .border-gray-300,
+.dark .blog-article .border-gray-100,
+.dark .blog-article .border-gray-200,
+.dark .blog-article .border-gray-300 {
+  border-color: #4B5563 !important;
+}
+
+/* Tables inside blog/AI content */
+.dark article.max-w-4xl table,
+.dark .blog-article table {
+  background-color: #1F2937;
+  color: #F3F4F6;
+}
+
+.dark article.max-w-4xl thead,
+.dark .blog-article thead {
+  background-color: #374151 !important;
+}
+
+.dark article.max-w-4xl th,
+.dark article.max-w-4xl td,
+.dark .blog-article th,
+.dark .blog-article td {
+  border-color: #4B5563 !important;
+}
+
+/* Gradient hero/header backgrounds in blog cards (purple-to-pink seen in screenshots) */
+.dark article.max-w-4xl [class*="from-purple-"],
+.dark article.max-w-4xl [class*="from-pink-"],
+.dark article.max-w-4xl [class*="from-indigo-"],
+.dark .blog-article [class*="from-purple-"],
+.dark .blog-article [class*="from-pink-"] {
+  --tw-gradient-from: #312E81 !important;
+  --tw-gradient-to: #4C1D95 !important;
+}
+
+/* AI page recipe cards (also use article-like containers) */
+.dark .recipe-card,
+.dark [class*="recipe-grid"] .bg-white,
+.dark [class*="RecipeGrid"] .bg-white {
+  background-color: #1F2937 !important;
+  color: var(--page-text);
+}
+
+/* Blog index page cards (separate from article body) */
+.dark a[href^="/blog/"] .bg-white,
+.dark a[href^="/ai/"] .bg-white {
+  background-color: #1F2937 !important;
+}
+
+.dark a[href^="/blog/"] [class*="from-"],
+.dark a[href^="/ai/"] [class*="from-"] {
+  --tw-gradient-from: #312E81 !important;
+  --tw-gradient-to: #4C1D95 !important;
+}
+
+/* End of dark mode safety net for blog/AI */
+
+
+/* ==========================================================================
+   PROSE DARK MODE OVERRIDES
+   ==========================================================================
+   Tailwind's `dark:prose-*` modifier syntax is unreliable across versions
+   of @tailwindcss/typography. This direct CSS targeting bypasses the plugin
+   and forces dark styles on prose elements when in dark mode.
+
+   Targets: .prose elements inside <article> (used by blog posts and AI
+   recipes). Does NOT affect tool pages or homepage (no .prose there).
+   ========================================================================== */
+
+/* Code blocks (the cream/amber backgrounds in AI recipes) */
+.dark .prose pre {
+  background-color: #1F2937 !important;
+  color: #E5E7EB !important;
+  border-color: #4B5563 !important;
+}
+
+.dark .prose pre code {
+  background-color: transparent !important;
+  color: #E5E7EB !important;
+}
+
+/* Inline code (single words highlighted in text) */
+.dark .prose code {
+  background-color: #374151 !important;
+  color: #F3F4F6 !important;
+}
+
+/* Tables */
+.dark .prose table {
+  background-color: #1F2937 !important;
+}
+
+.dark .prose th {
+  background-color: #374151 !important;
+  color: #F3F4F6 !important;
+  border-color: #4B5563 !important;
+}
+
+.dark .prose td {
+  color: #D1D5DB !important;
+  border-color: #4B5563 !important;
+}
+
+/* Blockquotes */
+.dark .prose blockquote {
+  background-color: rgba(30, 58, 138, 0.3) !important;
+  border-left-color: #60A5FA !important;
+  color: #DBEAFE !important;
+}
+
+/* Headings (h1-h6 inside .prose) */
+.dark .prose h1,
+.dark .prose h2,
+.dark .prose h3,
+.dark .prose h4,
+.dark .prose h5,
+.dark .prose h6 {
+  color: #F3F4F6 !important;
+  border-color: #4B5563 !important;
+}
+
+/* Paragraphs */
+.dark .prose p {
+  color: #D1D5DB !important;
+}
+
+/* Links */
+.dark .prose a {
+  color: #60A5FA !important;
+}
+
+.dark .prose a:hover {
+  color: #93C5FD !important;
+}
+
+/* Strong text */
+.dark .prose strong {
+  color: #F3F4F6 !important;
+}
+
+/* List items */
+.dark .prose li {
+  color: #D1D5DB !important;
+}
+
+/* Horizontal rule */
+.dark .prose hr {
+  border-color: #4B5563 !important;
+}
+
+/* Copy button inside code blocks (used in AI recipes) */
+.dark .prose pre + button,
+.dark pre + button[class*="copy"],
+.dark button[class*="copy" i] {
+  background-color: #1E40AF !important;
+  color: #DBEAFE !important;
+  border-color: #3B82F6 !important;
+}
+
+/* End of prose dark mode overrides */
+
+
+/* ==========================================================================
+   TOOL PAGE DARK MODE SAFETY NET — Standalone client.tsx components
+   ==========================================================================
+   77 of 100 individual tool pages were built with hardcoded light-mode colors
+   and don't use the shared ToolPage component. They use one of two wrapper
+   patterns:
+
+   1. <div className="min-h-screen py-12">             (59 tools)
+   2. <div className="min-h-screen bg-gray-50 ...">    (~16 tools)
+
+   This safety net targets the CHILDREN of these wrappers (not the wrapper
+   itself), forcing dark mode appearance until each tool gets proper hand-tuned
+   dark variants in Month 1 Week 4 (Bug Sweep) per roadmap.
+
+   Excluded (already have proper dark mode):
+   - Homepage (no min-h-screen)
+   - All 6 niche hubs (use <main>, not <div>, or no min-h-screen)
+   - Blog/AI index pages (use <div min-h-screen bg-gray-50 dark:bg-gray-900>)
+     → safe because we only target white/light children, not the wrapper
+
+   Strategy: targets common Tailwind light backgrounds inside tool pages and
+   converts them to dark equivalents using !important overrides.
+   ========================================================================== */
+
+/* ===== Pattern 1: min-h-screen py-12 wrapper (59 tools) ===== */
+
+/* White section backgrounds → dark gray */
+.dark div.min-h-screen.py-12 .bg-white {
+  background-color: #1F2937 !important;
+  color: #F3F4F6;
+}
+
+/* Light gray subsection backgrounds → darker gray */
+.dark div.min-h-screen.py-12 .bg-gray-50,
+.dark div.min-h-screen.py-12 .bg-gray-100 {
+  background-color: #374151 !important;
+  color: #F3F4F6;
+}
+
+/* Light blue callout boxes → dark blue */
+.dark div.min-h-screen.py-12 .bg-blue-50,
+.dark div.min-h-screen.py-12 .bg-blue-100 {
+  background-color: rgba(30, 58, 138, 0.4) !important;
+  color: #DBEAFE !important;
+}
+
+/* Light green callouts (success/free badges) → dark green */
+.dark div.min-h-screen.py-12 .bg-green-50,
+.dark div.min-h-screen.py-12 .bg-green-100 {
+  background-color: rgba(6, 78, 59, 0.4) !important;
+  color: #D1FAE5 !important;
+}
+
+/* Light yellow/amber callouts → dark amber */
+.dark div.min-h-screen.py-12 .bg-yellow-50,
+.dark div.min-h-screen.py-12 .bg-yellow-100,
+.dark div.min-h-screen.py-12 .bg-amber-50,
+.dark div.min-h-screen.py-12 .bg-amber-100 {
+  background-color: rgba(146, 64, 14, 0.4) !important;
+  color: #FEF3C7 !important;
+}
+
+/* Light red callouts (error/warning) → dark red */
+.dark div.min-h-screen.py-12 .bg-red-50,
+.dark div.min-h-screen.py-12 .bg-red-100 {
+  background-color: rgba(127, 29, 29, 0.4) !important;
+  color: #FECACA !important;
+}
+
+/* Light purple callouts → dark purple */
+.dark div.min-h-screen.py-12 .bg-purple-50,
+.dark div.min-h-screen.py-12 .bg-purple-100,
+.dark div.min-h-screen.py-12 .bg-indigo-50,
+.dark div.min-h-screen.py-12 .bg-indigo-100 {
+  background-color: rgba(76, 29, 149, 0.4) !important;
+  color: #E9D5FF !important;
+}
+
+/* Sakura tinted callouts (used in 使い方 sections) → dark muted */
+.dark div.min-h-screen.py-12 [class*="bg-sakura"] {
+  background-color: rgba(146, 64, 14, 0.3) !important;
+  color: #FDE68A !important;
+}
+
+/* Dark text on dark backgrounds — common Tailwind text classes */
+.dark div.min-h-screen.py-12 .text-gray-900,
+.dark div.min-h-screen.py-12 .text-gray-800,
+.dark div.min-h-screen.py-12 .text-gray-700 {
+  color: #F3F4F6 !important;
+}
+
+.dark div.min-h-screen.py-12 .text-gray-600,
+.dark div.min-h-screen.py-12 .text-gray-500 {
+  color: #D1D5DB !important;
+}
+
+.dark div.min-h-screen.py-12 .text-gray-400,
+.dark div.min-h-screen.py-12 .text-gray-300 {
+  color: #9CA3AF !important;
+}
+
+/* Borders */
+.dark div.min-h-screen.py-12 .border-gray-100,
+.dark div.min-h-screen.py-12 .border-gray-200,
+.dark div.min-h-screen.py-12 .border-gray-300 {
+  border-color: #4B5563 !important;
+}
+
+/* Form inputs */
+.dark div.min-h-screen.py-12 input[type="text"],
+.dark div.min-h-screen.py-12 input[type="number"],
+.dark div.min-h-screen.py-12 input[type="email"],
+.dark div.min-h-screen.py-12 input[type="password"],
+.dark div.min-h-screen.py-12 input[type="search"],
+.dark div.min-h-screen.py-12 textarea,
+.dark div.min-h-screen.py-12 select {
+  background-color: #374151 !important;
+  color: #F3F4F6 !important;
+  border-color: #4B5563 !important;
+}
+
+.dark div.min-h-screen.py-12 input::placeholder,
+.dark div.min-h-screen.py-12 textarea::placeholder {
+  color: #9CA3AF !important;
+}
+
+/* Tables */
+.dark div.min-h-screen.py-12 table {
+  background-color: #1F2937 !important;
+  color: #F3F4F6 !important;
+}
+
+.dark div.min-h-screen.py-12 thead {
+  background-color: #374151 !important;
+}
+
+.dark div.min-h-screen.py-12 th,
+.dark div.min-h-screen.py-12 td {
+  border-color: #4B5563 !important;
+}
+
+/* Details/summary FAQs */
+.dark div.min-h-screen.py-12 details {
+  background-color: #1F2937 !important;
+  border-color: #4B5563 !important;
+}
+
+.dark div.min-h-screen.py-12 details summary {
+  color: #F3F4F6 !important;
+}
+
+/* Hover states for interactive elements */
+.dark div.min-h-screen.py-12 .hover\:bg-gray-50:hover,
+.dark div.min-h-screen.py-12 .hover\:bg-gray-100:hover {
+  background-color: #4B5563 !important;
+}
+
+
+/* ===== Pattern 2: min-h-screen bg-gray-50 wrapper (16 tools) ===== */
+/* These tools have bg-gray-50 directly on the wrapper.                */
+/* We need to darken the wrapper itself + its children.                */
+/* Note: blog/ai indexes also match this pattern but already have      */
+/* dark:bg-gray-900 — :not() excludes anything that already has        */
+/* the dark variant applied.                                            */
+
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) {
+  background-color: #111827 !important;
+}
+
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) .bg-white {
+  background-color: #1F2937 !important;
+  color: #F3F4F6;
+}
+
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) .bg-gray-100,
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) .bg-gray-50 {
+  background-color: #374151 !important;
+  color: #F3F4F6;
+}
+
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) .bg-blue-50,
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) .bg-blue-100 {
+  background-color: rgba(30, 58, 138, 0.4) !important;
+  color: #DBEAFE !important;
+}
+
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) .bg-green-50,
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) .bg-green-100 {
+  background-color: rgba(6, 78, 59, 0.4) !important;
+  color: #D1FAE5 !important;
+}
+
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) .bg-yellow-50,
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) .bg-yellow-100,
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) .bg-amber-50,
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) .bg-amber-100 {
+  background-color: rgba(146, 64, 14, 0.4) !important;
+  color: #FEF3C7 !important;
+}
+
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) [class*="bg-sakura"] {
+  background-color: rgba(146, 64, 14, 0.3) !important;
+  color: #FDE68A !important;
+}
+
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) .text-gray-900,
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) .text-gray-800,
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) .text-gray-700 {
+  color: #F3F4F6 !important;
+}
+
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) .text-gray-600,
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) .text-gray-500 {
+  color: #D1D5DB !important;
+}
+
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) .text-gray-400 {
+  color: #9CA3AF !important;
+}
+
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) .border-gray-100,
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) .border-gray-200,
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) .border-gray-300 {
+  border-color: #4B5563 !important;
+}
+
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) input[type="text"],
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) input[type="number"],
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) input[type="email"],
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) input[type="password"],
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) input[type="search"],
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) textarea,
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) select {
+  background-color: #374151 !important;
+  color: #F3F4F6 !important;
+  border-color: #4B5563 !important;
+}
+
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) input::placeholder,
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) textarea::placeholder {
+  color: #9CA3AF !important;
+}
+
+.dark div.min-h-screen.bg-gray-50:not([class*="dark:bg-"]) details {
+  background-color: #1F2937 !important;
+  border-color: #4B5563 !important;
+}
+
+/* End of tool page dark mode safety net */
+
+
+/* ==========================================================================
+   BANK-FORMAT SCOPED DARK MODE v3 — Inner element backgrounds
+   ==========================================================================
+   Targets light backgrounds inside the bank-format form area.
+   Uses .bank-format-page custom class as scope so other pages unaffected.
+   The custom class survives Tailwind purge because it's not a Tailwind class.
+   ========================================================================== */
+
+.dark .bank-format-page .bg-gray-50 {
+  background-color: #374151 !important;
+  color: #F3F4F6;
+}
+
+.dark .bank-format-page .bg-gray-100 {
+  background-color: #4B5563 !important;
+  color: #F3F4F6;
+}
+
+.dark .bank-format-page .bg-gray-200 {
+  background-color: #6B7280 !important;
+  color: #F9FAFB;
+}
+
+.dark .bank-format-page .bg-blue-50 {
+  background-color: rgba(30, 58, 138, 0.4) !important;
+  color: #DBEAFE;
+}
+
+.dark .bank-format-page .bg-blue-100 {
+  background-color: rgba(30, 58, 138, 0.6) !important;
+  color: #DBEAFE;
+}
+
+.dark .bank-format-page .bg-green-50 {
+  background-color: rgba(6, 78, 59, 0.4) !important;
+  color: #D1FAE5;
+}
+
+.dark .bank-format-page .bg-green-100 {
+  background-color: rgba(6, 78, 59, 0.6) !important;
+  color: #D1FAE5;
+}
+
+.dark .bank-format-page .bg-red-50 {
+  background-color: rgba(127, 29, 29, 0.4) !important;
+  color: #FECACA;
+}
+
+.dark .bank-format-page .bg-red-100 {
+  background-color: rgba(127, 29, 29, 0.6) !important;
+  color: #FECACA;
+}
+
+.dark .bank-format-page .bg-amber-50,
+.dark .bank-format-page .bg-yellow-50 {
+  background-color: rgba(146, 64, 14, 0.4) !important;
+  color: #FEF3C7;
+}
+
+.dark .bank-format-page .bg-amber-100,
+.dark .bank-format-page .bg-yellow-100 {
+  background-color: rgba(146, 64, 14, 0.6) !important;
+  color: #FEF3C7;
+}
+
+/* Text colors that may need adjustment inside the dark wrappers */
+.dark .bank-format-page .text-gray-700,
+.dark .bank-format-page .text-gray-600,
+.dark .bank-format-page .text-gray-500 {
+  color: #D1D5DB;
+}
+
+.dark .bank-format-page .text-gray-800,
+.dark .bank-format-page .text-gray-900 {
+  color: #F3F4F6;
+}
+
+/* Borders inside the form */
+.dark .bank-format-page .border-gray-200,
+.dark .bank-format-page .border-gray-300 {
+  border-color: #4B5563;
+}
+
+/* End of bank-format scoped dark mode */

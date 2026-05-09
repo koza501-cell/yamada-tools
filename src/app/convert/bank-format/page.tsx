@@ -115,26 +115,26 @@ export default function Page() {
 
       {/* Educational Content Section */}
       <section className="max-w-4xl mx-auto px-4 py-12">
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-          <h2 className="text-2xl font-bold text-kon mb-6">全銀フォーマットについて</h2>
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-8">
+          <h2 className="text-2xl font-bold text-kon dark:text-blue-300 mb-6">全銀フォーマットについて</h2>
 
-          <h3 className="text-lg font-bold text-gray-800 mt-6 mb-3">全銀フォーマットとは？</h3>
-          <p className="text-gray-700 leading-relaxed mb-4">
+          <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mt-6 mb-3">全銀フォーマットとは？</h3>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
             全銀フォーマット（全国銀行協会制定フォーマット）は、企業が銀行へ振込データを電子的に送信する際の標準形式です。1983年に全国銀行協会が策定し、現在も日本国内のほぼすべての金融機関で採用されています。給与振込や仕入先への支払いなど、企業の日常的な資金移動に欠かせないデータ形式です。
           </p>
 
-          <h3 className="text-lg font-bold text-gray-800 mt-6 mb-3">手作業で作成する際のよくある問題</h3>
-          <p className="text-gray-700 leading-relaxed mb-4">
+          <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mt-6 mb-3">手作業で作成する際のよくある問題</h3>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
             全銀フォーマットは固定長120バイトのテキストファイルで、ヘッダー・データ・トレーラー・エンドの4種類のレコードで構成されています。Excelで手作業作成すると、文字コードの不一致（UTF-8とShift-JIS）、フィールド長の超過、半角カナへの変換漏れなどが原因でエラーになりがちです。本ツールを使えば、これらの形式上のミスを自動的に防げます。
           </p>
 
-          <h3 className="text-lg font-bold text-gray-800 mt-6 mb-3">総合振込と給与振込の違い</h3>
-          <p className="text-gray-700 leading-relaxed mb-4">
+          <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mt-6 mb-3">総合振込と給与振込の違い</h3>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
             総合振込は取引先や仕入先への支払いに使う形式で、種別コードは「21」です。一方、給与振込は従業員への給与支払い用で種別コードは「11」となります。データのレイアウトは基本的に同じですが、銀行のインターネットバンキングでアップロードする際のメニューが異なります。どちらの形式も本ツールで作成可能です。
           </p>
 
-          <h3 className="text-lg font-bold text-gray-800 mt-6 mb-3">エラーを防ぐためのポイント</h3>
-          <ul className="text-gray-700 space-y-2 mb-4">
+          <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mt-6 mb-3">エラーを防ぐためのポイント</h3>
+          <ul className="text-gray-700 dark:text-gray-300 space-y-2 mb-4">
             <li className="flex items-start gap-2"><span className="text-kon font-bold">・</span>受取人名は必ず半角カナで入力（全角は銀行側でエラーになる場合あり）</li>
             <li className="flex items-start gap-2"><span className="text-kon font-bold">・</span>口座番号は右詰め、不足分はゼロ埋め（例：123→0000123）。受取人名のカタカナ変換には<a href="/convert/furigana" className="text-kon hover:text-ai underline">ふりがな変換ツール</a>が便利です</li>
             <li className="flex items-start gap-2"><span className="text-kon font-bold">・</span>金額フィールドは整数のみ（小数点・カンマは使用不可）</li>
@@ -195,6 +195,22 @@ export default function Page() {
           </div>
         </div>
       </section>
+      {/* Cornerstone Blog Callout */}
+      <section className="max-w-4xl mx-auto px-4 pb-6">
+        <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-xl p-5">
+          <div className="flex items-start gap-3">
+            <span className="text-2xl flex-shrink-0">📖</span>
+            <div className="flex-1">
+              <h3 className="font-bold text-kon dark:text-blue-300 mb-1">全銀フォーマットの作り方を体験談で詳しく</h3>
+              <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">経理1年目で初めて全銀データ作成を任された担当者の実体験。専門用語ゼロで、つまずきやすいポイントを30分で解決した方法を解説しています。</p>
+              <a href="/blog/zengin-format-how-to-create" className="inline-flex items-center gap-1 text-sm font-medium text-kon dark:text-blue-300 hover:text-ai">
+                記事を読む →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="max-w-4xl mx-auto px-4 pb-12">
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-8">
           <h2 className="text-2xl font-bold text-kon dark:text-blue-300 mb-4">対応銀行の例</h2>

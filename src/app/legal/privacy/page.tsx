@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "プライバシーポリシー",
-  description: "山田ツールのプライバシーポリシーです。",
+  description: "山田ツール（合同会社山田トレード運営）のプライバシーポリシー。個人情報の取得・利用目的・第三者提供・安全管理措置・開示請求方法を明記。ファイルは60分自動削除、日本国内サーバー処理で安心してご利用いただけます。",
   alternates: {
     canonical: 'https://yamada-tools.jp/legal/privacy',
   },

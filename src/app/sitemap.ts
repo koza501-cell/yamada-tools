@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 import fs from "fs";
 import path from "path";
-import { pdfTools, documentTools, convertTools, imageTools, generatorTools, financeTools, careerTools, realestateTools, businessTools, healthTools, educationTools, debtTools, utilityTools, insuranceTools, taxTools } from "@/config/tools";
+import { pdfTools, documentTools, convertTools, imageTools, generatorTools, financeTools, careerTools, realestateTools, businessTools, healthTools, educationTools, debtTools, utilityTools, insuranceTools, taxTools, statTools, clinicTools } from "@/config/tools";
 
 const baseUrl = "https://yamada-tools.jp";
 
@@ -37,15 +37,28 @@ export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
           priority: 0.8,
         }));
       })(),
+      ...(() => {
+        const blogsPath = path.join(process.cwd(), "src/data/dynamicBlogs.json");
+        if (!fs.existsSync(blogsPath)) return [];
+        const blogs: any[] = JSON.parse(fs.readFileSync(blogsPath, "utf-8"));
+        return blogs.map(b => ({
+          url: baseUrl + "/blog/" + b.slug,
+          lastModified: b.publishDate || currentDate,
+          changeFrequency: "monthly" as const,
+          priority: 0.7,
+        }));
+      })(),
       { url: baseUrl + "/career", lastModified: currentDate, changeFrequency: "weekly", priority: 0.8 },
       { url: baseUrl + "/health", lastModified: currentDate, changeFrequency: "weekly", priority: 0.8 },
       { url: baseUrl + "/insurance", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },
-      { url: baseUrl + "/realestate", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },
+      { url: baseUrl + "/realestate", lastModified: currentDate, changeFrequency: "weekly", priority: 0.9 },
+      { url: baseUrl + "/souzoku-touki", lastModified: currentDate, changeFrequency: "monthly", priority: 0.85 },
       { url: baseUrl + "/business", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },
       { url: baseUrl + "/tax", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },
       { url: baseUrl + "/debt", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },
       { url: baseUrl + "/education", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },
       { url: baseUrl + "/utility", lastModified: currentDate, changeFrequency: "monthly", priority: 0.75 },
+      { url: baseUrl + "/clinic", lastModified: currentDate, changeFrequency: "weekly", priority: 0.85 },
       { url: baseUrl + "/reference", lastModified: currentDate, changeFrequency: "monthly", priority: 0.75 },
       { url: baseUrl + "/about/company", lastModified: currentDate, changeFrequency: "monthly", priority: 0.5 },
       { url: baseUrl + "/about/story", lastModified: currentDate, changeFrequency: "monthly", priority: 0.5 },
@@ -55,6 +68,9 @@ export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
       { url: baseUrl + "/legal/privacy", lastModified: currentDate, changeFrequency: "yearly", priority: 0.3 },
       { url: baseUrl + "/legal/tokushoho", lastModified: currentDate, changeFrequency: "yearly", priority: 0.3 },
       { url: baseUrl + "/search", lastModified: currentDate, changeFrequency: "weekly", priority: 0.7 },
+      // English pages (for international users / hreflang)
+      { url: baseUrl + "/en/pdf-text-input", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },
+      { url: baseUrl + "/en/business/company-search", lastModified: currentDate, changeFrequency: "monthly", priority: 0.85 },
     ];
   }
 
@@ -68,6 +84,7 @@ export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
     ...financeTools.filter(t => t.available),
     ...careerTools.filter(t => t.available),
     ...realestateTools.filter(t => t.available),
+    ...statTools.filter(t => t.available),
     ...businessTools.filter(t => t.available),
     ...healthTools.filter(t => t.available),
     ...educationTools.filter(t => t.available),
@@ -75,6 +92,7 @@ export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
     ...utilityTools.filter(t => t.available),
     ...insuranceTools.filter(t => t.available),
     ...taxTools.filter(t => t.available),
+    ...clinicTools.filter(t => t.available),
   ];
 
   return allTools.map(tool => ({

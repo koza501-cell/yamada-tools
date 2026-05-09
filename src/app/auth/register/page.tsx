@@ -16,6 +16,13 @@ export default function RegisterPage() {
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [redirectTo, setRedirectTo] = useState<string | null>(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const redirect = params.get("redirect");
+    setRedirectTo(redirect && redirect.startsWith("/") && !redirect.startsWith("//") ? redirect : null);
+  }, []);
 
   useEffect(() => {
     if (!loading && user) {
@@ -75,6 +82,10 @@ export default function RegisterPage() {
     );
   }
 
+  const loginHref = redirectTo
+    ? `/auth/login?redirect=${encodeURIComponent(redirectTo)}`
+    : "/auth/login";
+
   if (success) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4">
@@ -88,7 +99,7 @@ export default function RegisterPage() {
             </p>
             <p className="text-sm text-gray-400 mb-6">リンクは24時間有効です</p>
             <Link
-              href="/auth/login"
+              href={loginHref}
               className="inline-block px-6 py-3 bg-kon text-white font-medium rounded-lg hover:bg-kon/90 transition-colors"
             >
               ログインページへ
@@ -102,7 +113,6 @@ export default function RegisterPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4">
       <div className="max-w-md w-full">
-        {/* Trust indicators */}
         <div className="text-center mb-6">
           <Link href="/" className="inline-flex items-center gap-2 mb-4">
             <Image src="/logo-icon.webp" alt="山田ツール" className="w-10 h-10" width={40} height={40} />
@@ -114,7 +124,6 @@ export default function RegisterPage() {
           </div>
         </div>
 
-        {/* Register form */}
         <div className="bg-white rounded-lg shadow-lg p-8">
           <h1 className="text-xl font-bold text-gray-900 text-center mb-6">新規アカウント登録</h1>
 
@@ -212,18 +221,16 @@ export default function RegisterPage() {
             </button>
           </form>
 
-          {/* Login link */}
           <div className="mt-6 pt-6 border-t text-center">
             <p className="text-gray-600 text-sm">
               すでにアカウントをお持ちの方は
-              <Link href="/auth/login" className="text-kon font-medium hover:underline ml-1">
+              <Link href={loginHref} className="text-kon font-medium hover:underline ml-1">
                 ログイン
               </Link>
             </p>
           </div>
         </div>
 
-        {/* Footer links */}
         <div className="mt-6 text-center text-xs text-gray-500">
           <div className="flex items-center justify-center gap-4">
             <Link href="/legal/terms" className="hover:underline">利用規約</Link>

@@ -2,9 +2,10 @@ import { Metadata } from "next";
 import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
+import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】引越し費用の相場と計算方法｜単身・家族別シミュレーション";
-const description = "引越し費用の相場を徹底解説。単身・2人・家族の距離別料金表、初期費用の内訳、安く抑えるコツ。引越し費用シミュレーターで今すぐ計算。";
+const description = "引越し費用の相場を徹底解説。単身・2人・家族の距離別料金表、初期費用の内訳、安く抑えるコツ。引越し費用シミュレーターで今すぐ計算。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("引越し費用の相場")}&type=blog&category=${encodeURIComponent("不動産・引越し")}`;
 
 export const metadata: Metadata = {
@@ -328,6 +329,8 @@ export default function HikkoshiHiyouSimulation2026Blog() {
       <BlogAdUnit />
 
       <p className="text-sm text-gray-500 mt-8">この記事は2026年4月時点の相場に基づいています。</p>
-    </article>
+    
+      <ShareButtons url="https://yamada-tools.jp/blog/hikkoshi-hiyou-simulation-2026" title="hikkoshi-hiyou-simulation-2026" />
+</article>
   );
 }

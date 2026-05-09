@@ -29,7 +29,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】画像コマ割り・分割｜グリッド分割でInstagram投稿にも",
   tool,
-  longDescription: "画像をグリッドで分割するツール。Instagram投稿や印刷用に。ブラウザ処理で安全。",
+  longDescription: "画像をグリッドで分割するツール。Instagram投稿や印刷用に。ブラウザ処理で安全。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。freee・マネーフォワード等の会計ソフトとも連携可能。",
   keywords: ["画像 分割 無料", "グリッド分割", "Instagram グリッド投稿", "画像 コマ割り", "写真 分割"],
 });
 

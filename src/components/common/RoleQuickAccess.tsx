@@ -24,12 +24,12 @@ const ROLE_TOOLS: Record<RoleId, { href: string; icon: string; label: string }[]
     { href: "/business/corporate-tax-calculator", icon: "🏛️", label: "法人税計算" },
   ],
   hr: [
-    { href: "/generator/envelope-print",              icon: "✉️", label: "封筒印刷" },
-    { href: "/generator/hanko",                        icon: "🔴", label: "電子印鑑" },
-    { href: "/document/resume",                        icon: "📄", label: "履歴書作成" },
-    { href: "/career/retirement-bonus-calculator",    icon: "💰", label: "退職金計算" },
-    { href: "/career/social-insurance-calculator",    icon: "🏥", label: "社会保険計算" },
-    { href: "/generator/nenmatsu-calc",               icon: "📆", label: "年末調整計算" },
+    { href: "/generator/envelope-print",           icon: "✉️", label: "封筒印刷" },
+    { href: "/generator/hanko",                     icon: "🔴", label: "電子印鑑" },
+    { href: "/finance/overtime-calculator",         icon: "⏰", label: "残業代計算" },
+    { href: "/finance/net-salary-calculator",       icon: "💴", label: "給与手取り計算" },
+    { href: "/career/retirement-bonus-calculator",  icon: "💰", label: "退職金計算" },
+    { href: "/generator/nenmatsu-calc",             icon: "📆", label: "年末調整計算" },
   ],
   sales: [
     { href: "/document/invoice",       icon: "📋", label: "請求書作成" },
@@ -48,12 +48,12 @@ const ROLE_TOOLS: Record<RoleId, { href: string; icon: string; label: string }[]
     { href: "/generator/hanko",                    icon: "🔴", label: "電子印鑑" },
   ],
   general: [
-    { href: "/pdf/compress",       icon: "📦", label: "PDF圧縮" },
-    { href: "/image/compress",     icon: "🖼️", label: "画像圧縮" },
-    { href: "/generator/password", icon: "🔑", label: "パスワード生成" },
-    { href: "/image/qr-code",      icon: "🔲", label: "QRコード作成" },
-    { href: "/convert/furigana",   icon: "あ", label: "ふりがな変換" },
-    { href: "/pdf/merge",          icon: "🗂️", label: "PDF結合" },
+    { href: "/pdf/compress",                    icon: "📦", label: "PDF圧縮" },
+    { href: "/image/compress",                  icon: "🖼️", label: "画像圧縮" },
+    { href: "/realestate/hazard-checker",       icon: "🌊", label: "ハザードマップ" },
+    { href: "/realestate/school-district",      icon: "🏫", label: "学区チェック" },
+    { href: "/convert/furigana",                icon: "あ", label: "ふりがな変換" },
+    { href: "/pdf/merge",                       icon: "🗂️", label: "PDF結合" },
   ],
 };
 

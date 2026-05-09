@@ -26,7 +26,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】領収書作成｜PDF出力｜印刷対応",
   tool,
-  longDescription: "領収書を無料で作成。インボイス制度対応の適格領収書も発行可能。印紙税の目安も表示されます。",
+  longDescription: "領収書を無料で作成。インボイス制度対応の適格領収書も発行可能。印紙税の目安も表示されます。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。freee・マネーフォワード等の会計ソフトとも連携可能。",
   keywords: ['領収書 作成', '領収書 無料', '領収書 テンプレート', '適格領収書', 'インボイス 領収書'],
 });
 

@@ -10,6 +10,7 @@ const NICHE = {
   description: 'ChatGPT、Claude、Geminiなど、AIツールの具体的な活用法をレシピ形式でお届け。コピペできるプロンプト付きで、今すぐ使えます。',
   emoji: '🤖',
   gradient: 'from-blue-600 to-purple-600',
+  gradientDark: 'dark:from-blue-800 dark:to-purple-800',
   dataFile: 'aiPosts.json',
 };
 
@@ -42,8 +43,8 @@ function getNichePosts() {
 export default function NicheListPage() {
   const posts = getNichePosts();
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className={"bg-gradient-to-r " + NICHE.gradient + " text-white py-16"}>
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <div className={"bg-gradient-to-r " + NICHE.gradient + " " + NICHE.gradientDark + " text-white py-16"}>
         <div className="max-w-7xl mx-auto px-4 text-center">
           <span className="text-5xl mb-4 block">{NICHE.emoji}</span>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">{NICHE.name}</h1>
@@ -59,7 +60,7 @@ export default function NicheListPage() {
       <div className="max-w-7xl mx-auto px-4 py-12">
         {posts.length === 0 ? (
           <div className="text-center py-20">
-            <p className="text-gray-500 text-lg">記事を準備中です...もうすぐ公開します！</p>
+            <p className="text-gray-500 dark:text-gray-400 text-lg">記事を準備中です...もうすぐ公開します！</p>
           </div>
         ) : (
           <RecipeGrid posts={posts} />

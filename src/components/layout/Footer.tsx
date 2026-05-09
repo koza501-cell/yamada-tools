@@ -1,8 +1,16 @@
 import Link from 'next/link';
+import NewsletterSignup from '@/components/common/NewsletterSignup';
 
 export default function Footer() {
   return (
     <footer className="bg-kon text-white mt-auto">
+      {/* Newsletter section at top of footer */}
+      <div className="bg-gradient-to-b from-slate-900 to-kon py-12 border-b border-white/10">
+        <div className="max-w-2xl mx-auto px-4">
+          <NewsletterSignup />
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           <div>
@@ -67,6 +75,27 @@ export default function Footer() {
               <div>
                 <Link href="/about/business" className="inline-flex items-center gap-1 text-sakura font-medium hover:underline transition-colors">
                   🏢 法人・企業様向け
+                </Link>
+              </div>
+              {/* New Stats & Business Tools - Highlighted */}
+              <div>
+                <Link href="/business/houjin-search" className="inline-flex items-center gap-1 text-sakura font-medium hover:underline transition-colors">
+                  🆕 法人検索（gBizINFO）
+                </Link>
+              </div>
+              <div>
+                <Link href="/business/hojokin-active" className="inline-flex items-center gap-1 text-sakura font-medium hover:underline transition-colors">
+                  🆕 補助金検索（Jグランツ）
+                </Link>
+              </div>
+              <div>
+                <Link href="/finance/heikin-nenshu" className="inline-flex items-center gap-1 text-sakura font-medium hover:underline transition-colors">
+                  📊 統計・データツール
+                </Link>
+              </div>
+              <div>
+                <Link href="/en/business/company-search" className="inline-flex items-center gap-1 text-sakura font-medium hover:underline transition-colors">
+                  🌐 English: Japan Company Search
                 </Link>
               </div>
               <div>

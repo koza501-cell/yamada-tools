@@ -2,9 +2,10 @@ import { Metadata } from "next";
 import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
+import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】賃貸と購入どっちが得？50年シミュレーションで徹底比較";
-const description = "賃貸と購入の総コストを50年間でシミュレーション。家賃10万円 vs 住宅ローン3,500万円の比較結果。ライフスタイル別のおすすめと判断基準を解説。";
+const description = "賃貸と購入の総コストを50年間でシミュレーション。家賃10万円 vs 住宅ローン3,500万円の比較結果。ライフスタイル別のおすすめと判断基準を解説。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("賃貸vs購入どっちが得？")}&type=blog&category=${encodeURIComponent("不動産・住まい")}`;
 
 export const metadata: Metadata = {
@@ -321,6 +322,8 @@ export default function ChintaiVsKoubaiSimulation2026Blog() {
       <BlogAdUnit />
 
       <p className="text-sm text-gray-500 mt-8">この記事は2026年4月時点の情報に基づいています。住宅価格・金利は変動します。</p>
-    </article>
+    
+      <ShareButtons url="https://yamada-tools.jp/blog/chintai-vs-koubai-simulation-2026" title="chintai-vs-koubai-simulation-2026" />
+</article>
   );
 }

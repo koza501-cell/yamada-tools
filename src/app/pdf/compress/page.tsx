@@ -62,10 +62,10 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
-  customTitle: "【無料】PDF圧縮｜25MB→3MBに一瞬で縮小｜メール添付OK",
+  customTitle: "PDF圧縮【無料】ファイルサイズを小さく｜メール添付・アップロードに｜安全・登録不要",
   tool,
   longDescription:
-    "PDFファイルを無料で圧縮。メールで送れない大きなPDFも最大70%サイズダウン。日本国内サーバーで安全処理、登録不要。",
+    "PDFファイルを無料で圧縮。メールで送れない大きなPDFも最大70%サイズダウン。日本国内サーバーで安全処理、登録不要。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。",
   keywords: [
     "PDF圧縮",
     "PDF サイズ縮小",

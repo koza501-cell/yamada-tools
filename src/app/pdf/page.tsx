@@ -1,189 +1,173 @@
-import Link from "next/link";
+import { Metadata } from "next";
+import HubLayout, { HubSection } from "@/components/hub/HubLayout";
 import { pdfTools } from "@/config/tools";
-import type { Metadata } from "next";
 import PdfDropZone from "@/components/pdf/PdfDropZone";
 import PdfWorkflows from "@/components/pdf/PdfWorkflows";
 
+// ============================================================
+// /pdf — PDF・ファイル hub (CORAL theme)
+// ============================================================
+// Preserves the existing PdfDropZone and PdfWorkflows components
+// (they're powerful features users rely on).
+// ============================================================
+
 export const metadata: Metadata = {
-  title: "PDFツール - 無料オンラインPDF編集・変換",
-  description: "PDF結合・圧縮・分割・変換など20以上の無料PDFツール。日本国内サーバーで安心・安全。登録不要、60分で自動削除。",
+  title: "PDFツール【無料】結合・圧縮・分割・変換・文字入力 | 山田ツール",
+  description:
+    "PDF結合・圧縮・分割・回転・OCR・Word/Excel変換・パスワード保護・電子署名・透かし追加など35種以上の無料PDFツール。日本国内サーバーで安心・安全。登録不要・60分自動削除でセキュア。インストール不要、ブラウザだけで完結。",
+  keywords:
+    "PDF結合, PDF圧縮, PDF分割, PDF変換, PDF文字入力, PDF Word変換, PDF Excel変換, PDF OCR, 無料",
   alternates: {
-    canonical: 'https://yamada-tools.jp/pdf',
+    canonical: "https://yamada-tools.jp/pdf",
+  },
+  openGraph: {
+    title: "PDFツール【無料】 | 山田ツール",
+    description:
+      "PDF結合・圧縮・分割・変換など35種以上の無料PDFツール。日本国内サーバーで安心。",
+    url: "https://yamada-tools.jp/pdf",
+    siteName: "山田ツール",
+    locale: "ja_JP",
+    type: "website",
   },
 };
 
-export default function PDFToolsPage() {
-  // Group tools by type
-  const coreTools = pdfTools.filter(t => 
-    ["merge", "compress", "split", "rotate", "delete-pages"].includes(t.id)
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "ホーム", item: "https://yamada-tools.jp" },
+    { "@type": "ListItem", position: 2, name: "PDFツール", item: "https://yamada-tools.jp/pdf" },
+  ],
+};
+
+const collectionJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "PDFツール",
+  description: "PDF結合・圧縮・分割・変換などの無料PDFツール集",
+  url: "https://yamada-tools.jp/pdf",
+};
+
+export default function PdfHubPage() {
+  const tools = pdfTools.filter((t) => t.available);
+
+  // Section 1: Core PDF operations
+  const coreSection: HubSection = {
+    title: "基本ツール",
+    subtitle: "PDFの結合・圧縮・分割・回転など毎日使う基本機能",
+    badge: "基本",
+    cols: 5,
+    tools: tools
+      .filter((t) =>
+        ["merge", "compress", "split", "rotate", "delete-pages"].includes(t.id)
+      )
+      .map((t) => ({
+        id: t.id,
+        name: t.nameJa,
+        description: t.description,
+        url: t.path,
+        icon: t.icon,
+        popular: t.id === "compress" || t.id === "merge",
+      })),
+  };
+
+  // Section 2: Editing & marking
+  const editingSection: HubSection = {
+    title: "編集・書き込み",
+    subtitle: "文字入力・電子印鑑・ページ番号・透かしなどの編集機能",
+    badge: "編集",
+    cols: 4,
+    tools: tools
+      .filter((t) =>
+        ["pdf-text-input", "pdf-stamp", "sign", "page-numbers", "watermark", "reorder", "ocr", "combini-print"].includes(t.id)
+      )
+      .map((t) => ({
+        id: t.id,
+        name: t.nameJa,
+        description: t.description,
+        url: t.path,
+        icon: t.icon,
+        popular: t.id === "pdf-text-input",
+        isNew: t.isNew,
+      })),
+  };
+
+  // Section 3: Conversion
+  const conversionSection: HubSection = {
+    title: "変換ツール",
+    subtitle: "Word・Excel・PowerPoint・画像との相互変換",
+    badge: "変換",
+    cols: 4,
+    tools: tools
+      .filter((t) =>
+        ["image-to-pdf", "pdf-to-image", "pdf-to-word", "word-to-pdf", "excel-to-pdf", "pdf-to-excel", "ppt-to-pdf", "pdf-to-ppt"].includes(t.id)
+      )
+      .map((t) => ({
+        id: t.id,
+        name: t.nameJa,
+        description: t.description,
+        url: t.path,
+        icon: t.icon,
+      })),
+  };
+
+  // Section 4: Security
+  const securitySection: HubSection = {
+    title: "セキュリティ",
+    subtitle: "パスワード保護・解除で機密書類を安全に管理",
+    badge: "保護",
+    cols: 3,
+    tools: tools
+      .filter((t) => ["protect", "unlock"].includes(t.id))
+      .map((t) => ({
+        id: t.id,
+        name: t.nameJa,
+        description: t.description,
+        url: t.path,
+        icon: t.icon,
+      })),
+  };
+
+  const sections = [coreSection, editingSection, conversionSection, securitySection].filter(
+    (s) => s.tools.length > 0
   );
-  const conversionTools = pdfTools.filter(t => 
-    ["image-to-pdf", "pdf-to-image", "pdf-to-word", "word-to-pdf", 
-     "excel-to-pdf", "pdf-to-excel", "ppt-to-pdf", "pdf-to-ppt"].includes(t.id)
-  );
-  const securityTools = pdfTools.filter(t => 
-    ["protect", "unlock"].includes(t.id)
-  );
-  const editingTools = pdfTools.filter(t => 
-    ["page-numbers", "watermark", "reorder", "sign", "ocr", "pdf-text-input", "combini-print"].includes(t.id)
+
+  // PdfDropZone and PdfWorkflows are placed BEFORE sections in the hub
+  const beforeSections = (
+    <section className="bg-white dark:bg-gray-800 border-b border-stone-100 dark:border-gray-700">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
+        <PdfDropZone />
+        <div className="mt-6">
+          <PdfWorkflows />
+        </div>
+      </div>
+    </section>
   );
 
   return (
-    <div className="min-h-screen py-12">
-      <div className="max-w-7xl mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-kon mb-4">
-            📄 PDFツール
-          </h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            PDF結合・圧縮・分割・変換など、すべて無料でご利用いただけます。
-            日本国内サーバー運用、登録不要。
-          </p>
-        </div>
-
-        {/* Universal Drop Zone */}
-        <PdfDropZone />
-
-        {/* 注目ツール - Featured Tool */}
-        <section className="mb-10 bg-gradient-to-r from-orange-50 to-amber-50 dark:from-gray-800 dark:to-gray-750 rounded-2xl p-6 border border-orange-100 dark:border-gray-700">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded-full">注目</span>
-            <h2 className="text-lg font-bold text-gray-800 dark:text-white">今週のおすすめツール</h2>
-          </div>
-          <div className="flex flex-col md:flex-row gap-6 items-start">
-            <div className="flex-1">
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                <Link href="/pdf/text-input" className="hover:text-orange-600 transition-colors">
-                  ✏️ PDFに文字入力・電子ハンコ 無料ツール
-                </Link>
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-3">
-                <strong className="text-gray-800 dark:text-white">登録不要・インストール不要・ゼロアップロード</strong>でPDFに直接テキストや電子ハンコを書き込めます。
-                申請書・契約書・履歴書など全PDF対応。令和日付自動入力機能搭載。ファイルはブラウザ内で処理されサーバーに送信されません。
-              </p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {["PDF文字入力","電子ハンコ","令和日付対応","登録不要","無料","サーバー送信なし"].map(tag => (
-                  <span key={tag} className="bg-orange-100 dark:bg-gray-700 text-orange-700 dark:text-orange-400 text-xs px-2 py-1 rounded-full">{tag}</span>
-                ))}
-              </div>
-              <Link
-                href="/pdf/text-input"
-                className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-2 rounded-lg text-sm transition-colors"
-              >
-                PDFに文字入力・書き込みを試す（無料）→
-              </Link>
-            </div>
-          </div>
-        </section>
-
-
-        {/* Core Tools */}
-        <section className="mb-12">
-          <h2 className="text-xl font-bold text-kon mb-6 flex items-center gap-2">
-            <span className="bg-kon text-white px-3 py-1 rounded-full text-sm">基本</span>
-            基本ツール
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {coreTools.map((tool) => (
-              <div key={tool.id} className="relative">
-                {(tool.id === "compress" || tool.id === "merge") && (
-                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full font-bold z-10">人気</span>
-                )}
-                <Link
-                  href={tool.path}
-                  className="block bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1 text-center border border-gray-100 dark:border-gray-700"
-                >
-                  <div className="text-4xl mb-3">{tool.icon}</div>
-                  <h3 className="font-bold text-kon">{tool.nameJa}</h3>
-                  <p className="text-xs text-gray-500 mt-2">{tool.description}</p>
-                </Link>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Workflow Builder */}
-        <PdfWorkflows />
-
-        {/* Conversion Tools */}
-        <section className="mb-12">
-          <h2 className="text-xl font-bold text-kon mb-6 flex items-center gap-2">
-            <span className="bg-ai text-white px-3 py-1 rounded-full text-sm">変換</span>
-            変換ツール
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {conversionTools.map((tool) => (
-              <Link
-                key={tool.id}
-                href={tool.path}
-                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1 text-center border border-gray-100 dark:border-gray-700"
-              >
-                <div className="text-4xl mb-3">{tool.icon}</div>
-                <h3 className="font-bold text-kon">{tool.nameJa}</h3>
-                <p className="text-xs text-gray-500 mt-2">{tool.description}</p>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        {/* Security Tools */}
-        <section className="mb-12">
-          <h2 className="text-xl font-bold text-kon mb-6 flex items-center gap-2">
-            <span className="bg-green-600 text-white px-3 py-1 rounded-full text-sm">保護</span>
-            セキュリティツール
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {securityTools.map((tool) => (
-              <Link
-                key={tool.id}
-                href={tool.path}
-                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1 text-center border border-gray-100 dark:border-gray-700"
-              >
-                <div className="text-4xl mb-3">{tool.icon}</div>
-                <h3 className="font-bold text-kon">{tool.nameJa}</h3>
-                <p className="text-xs text-gray-500 mt-2">{tool.description}</p>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        {/* Editing Tools */}
-        <section className="mb-12">
-          <h2 className="text-xl font-bold text-kon mb-6 flex items-center gap-2">
-            <span className="bg-purple-600 text-white px-3 py-1 rounded-full text-sm">編集</span>
-            編集ツール
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {editingTools.map((tool) => (
-              <div key={tool.id} className="relative">
-                {tool.id === "pdf-text-input" && (
-                  <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-1.5 py-0.5 rounded-full font-bold z-10">NEW</span>
-                )}
-                <Link
-                  href={tool.path}
-                  className="block bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1 text-center border border-gray-100 dark:border-gray-700"
-                >
-                  <div className="text-4xl mb-3">{tool.icon}</div>
-                  <h3 className="font-bold text-kon">{tool.nameJa}</h3>
-                  <p className="text-xs text-gray-500 mt-2">{tool.description}</p>
-                </Link>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Trust Section */}
-        <section className="bg-sakura/20 rounded-2xl p-8 text-center">
-          <h2 className="text-xl font-bold text-kon mb-4">安心・安全のPDF処理</h2>
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-600 dark:text-gray-300">
-            <span>🇯🇵 日本国内サーバー</span>
-            <span>🔒 SSL暗号化通信</span>
-            <span>🗑️ 60分で自動削除</span>
-            <span>✨ 完全無料</span>
-          </div>
-        </section>
-      </div>
-    </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([breadcrumbJsonLd, collectionJsonLd]),
+        }}
+      />
+      <HubLayout
+        niche={{
+          iconName: "document",
+          name: "PDF・ファイル",
+          eyebrow: "PDF & FILES",
+          headline: "PDFを、思いのままに。",
+          tagline: "結合・圧縮・変換・編集まで35種以上のツール",
+          description:
+            "PDF結合・圧縮・分割・回転・文字入力・OCR・Word/Excel変換・パスワード保護まで、PDF業務に必要なツールをすべて無料で。日本国内サーバーで処理、60分後に自動削除で安心。",
+          theme: "coral",
+          primaryCta: { label: "PDFを圧縮する", url: "/pdf/compress" },
+          secondaryCta: { label: "PDFを結合する", url: "/pdf/merge" },
+        }}
+        sections={sections}
+        beforeSections={beforeSections}
+      />
+    </>
   );
 }

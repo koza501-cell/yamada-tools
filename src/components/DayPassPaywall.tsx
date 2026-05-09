@@ -31,7 +31,7 @@ export default function DayPassPaywall({ open, onClose, apiBase, rowCount, onCon
   const handlePurchase = async (passType: string) => {
     const token = typeof window !== "undefined" ? localStorage.getItem("session_token") : null;
     if (!token) {
-      window.location.href = "/login?redirect=/generator/envelope-print";
+      window.location.href = "/auth/login?redirect=/generator/envelope-print";
       return;
     }
     setLoading(passType);

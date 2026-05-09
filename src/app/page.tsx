@@ -8,18 +8,27 @@ import HeroAnimation from "@/components/common/HeroAnimation";
 import TypingText from "@/components/common/TypingText";
 import RecentTools from "@/components/common/RecentTools";
 import RoleQuickAccess from "@/components/common/RoleQuickAccess";
-import NewsletterSignup from "@/components/common/NewsletterSignup";
 import StickyTabBar from "@/components/common/StickyTabBar";
 import TabbedToolsSection from "@/components/common/TabbedToolsSection";
-import AdSlot from "@/components/AdSlot";
 import StatsCounter from "@/components/common/StatsCounter";
 import FooterCta from "@/components/common/FooterCta";
-import { ScrollRevealGrid } from "@/components/common/ScrollRevealGrid";
-import UseCaseCards from "@/components/common/UseCaseCards";
-import { pdfTools, documentTools, convertTools, imageTools, generatorTools, financeTools, careerTools, taxTools, realestateTools, businessTools, getToolCount, allTools } from "@/config/tools";
+import NicheBentoSection from "@/components/home/NicheBentoSection";
+import { pdfTools, documentTools, convertTools, imageTools, generatorTools, financeTools, careerTools, taxTools, realestateTools, businessTools, healthTools, foodTools, lifeTools, clinicTools, getToolCount, allTools, getNewTools} from "@/config/tools";
+const popularTools = allTools.filter(t => t.isPopular && t.available);
 
 // High-traffic tool paths that get 🔥 badge
-const HOT_PATHS = new Set(['/generator/envelope-print', '/convert/bank-format', '/pdf/compress']);
+const HOT_PATHS = new Set([
+  '/generator/envelope-print',  // #1 GA
+  '/convert/bank-format',       // #2 GA
+  '/generator/random-picker',   // #4 GA
+  '/image/flip',                // #5 GA
+  '/document/vertical-text',    // #6 GA
+  '/pdf/text-input',            // #7 GA
+  '/convert/furigana',          // #8 GA
+  '/generator/hanko',           // #11 GA
+  '/image/compress',            // #12 GA
+  '/pdf/compress',              // #13 GA
+]);
 
 // Feature H: Search suggestion chips
 const SEARCH_CHIPS = [
@@ -81,6 +90,9 @@ export default function Home() {
   const availableImageTools = imageTools.filter(t => t.available);
   const availableGenTools = generatorTools.filter(t => t.available);
   const availableFinanceTools = financeTools.filter(t => t.available);
+  const availableHealthTools = healthTools.filter(t => t.available);
+  const availableFoodTools = foodTools.filter(t => t.available);
+  const availableLifeTools = lifeTools.filter(t => t.available);
 
   // Featured tools
   const featuredTools = allTools.filter(t => t.isFeatured && t.available);
@@ -88,12 +100,14 @@ export default function Home() {
   return (
     <div>
       <StickyTabBar />
-      {/* Hero Section - REDESIGNED */}
+
+      {/* ============================================================ */}
+      {/* SECTION 1: Hero                                              */}
+      {/* ============================================================ */}
       <section className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 py-10 md:py-14">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          {/* Main Headline - H1 */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-kon">
-            日本のビジネスに特化した無料オンラインツール｜インボイス・全銀・電子印鑑など{availableTools.length}種
+            ビジネス・税金・金融・暮らしまで。日本人のための無料ツール{availableTools.length}種
           </h1>
 
           <p className="text-lg md:text-xl mb-8 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
@@ -114,16 +128,17 @@ export default function Home() {
             <span className="bg-blue-50 dark:bg-gray-700 text-blue-700 dark:text-gray-200 px-3 py-1.5 rounded-full text-xs font-medium border border-blue-100 dark:border-gray-600">
               ✨ 登録不要・完全無料
             </span>
+            <span className="bg-blue-50 dark:bg-gray-700 text-blue-700 dark:text-gray-200 px-3 py-1.5 rounded-full text-xs font-medium border border-blue-100 dark:border-gray-600">
+              📱 スマホ対応
+            </span>
           </div>
 
-          {/* Hero Animation */}
           <HeroAnimation />
 
-          {/* Search Bar */}
           <div className="mb-3 flex justify-center">
             <SearchBar />
           </div>
-          {/* Feature H: Search suggestion chips */}
+
           <div className="flex flex-wrap justify-center gap-2 mb-4">
             {SEARCH_CHIPS.map((chip) => (
               <Link
@@ -137,7 +152,6 @@ export default function Home() {
           </div>
           <TypingText />
 
-          {/* Primary CTA Button */}
           <Link
             href="#popular-tools"
             className="inline-block bg-kon text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-ai transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-1"
@@ -146,149 +160,58 @@ export default function Home() {
           </Link>
         </div>
       </section>
-      {/* Recently Used Tools - Priority for returning users */}
+
+      {/* ============================================================ */}
+      {/* SECTION 2: Niche Bento Grid                                  */}
+      {/* ============================================================ */}
+      <NicheBentoSection />
+
+      {/* ============================================================ */}
+      {/* SECTION 3: Recently Used Tools                               */}
+      {/* ============================================================ */}
       <RecentTools />
 
-      {/* Role-Based Quick Access */}
-      <RoleQuickAccess />
+      {/* ============================================================ */}
 
-      {/* 🇯🇵 Japan-Exclusive Identity Section */}
-      <section className="py-10 bg-white dark:bg-gray-900">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-6">
-            <h2 className="text-2xl font-bold text-kon dark:text-blue-400 mb-2">🇯🇵 日本専用ツール</h2>
-            <p className="text-gray-600 dark:text-gray-400 text-sm">日本の法律・制度・書式に完全対応。海外ツールでは解決できない日本独自の課題に。</p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-            {[
-              { href: "/convert/bank-format", icon: "🏦", label: "全銀フォーマット", desc: "日本の銀行振込専用" },
-              { href: "/generator/hanko", icon: "🔴", label: "電子印鑑", desc: "日本式ハンコをPDFに" },
-              { href: "/document/invoice", icon: "📋", label: "請求書作成", desc: "インボイス対応・無料" },
-              { href: "/generator/t-number", icon: "🔢", label: "インボイス番号検証", desc: "Tナンバーを即チェック" },
-              { href: "/convert/wareki-seireki", icon: "📅", label: "和暦変換", desc: "元号↔西暦を即変換" },
-              { href: "/convert/furigana", icon: "あ", label: "ふりがな変換", desc: "漢字→ひらがな・カタカナ" },
-              { href: "/generator/envelope-print", icon: "✉️", label: "封筒印刷", desc: "宛名印刷・縦書き対応" },
-              { href: "/document/vertical-text", icon: "縦", label: "縦書きテキスト", desc: "日本式縦書きPDF作成" },
-              { href: "/pdf/combini-print", icon: "🏪", label: "コンビニ印刷", desc: "端切れなし余白追加" },
-              { href: "/generator/nenmatsu-calc", icon: "📝", label: "年末調整計算", desc: "扶養控除・保険料控除" },
-              { href: "/tax/furusato-nozei-calculator", icon: "🎁", label: "ふるさと納税", desc: "控除上限額を即計算" },
-              { href: "/convert/tsubo-converter", icon: "🏠", label: "坪変換", desc: "坪↔平米・畳を一括変換" },
-            ].map(({ href, icon, label, desc }) => (
-              <Link key={href} href={href} className="group bg-gray-50 dark:bg-gray-800 rounded-xl p-3 text-center hover:shadow-md hover:-translate-y-0.5 transition-all border border-gray-100 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600">
-                <div className="text-2xl mb-1.5">{icon}</div>
-                <p className="font-bold text-gray-800 dark:text-gray-100 text-sm leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400">{label}</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{desc}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Feature J: Stats Counter */}
-      <StatsCounter />
-
-      {/* Trust Badges */}
-      <section className="py-6">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 flex flex-wrap justify-around gap-4">
-            <div className="flex flex-col items-center text-center">
-              <span className="text-2xl mb-1">🏢</span>
-              <span className="font-bold text-gray-800 dark:text-gray-100 text-sm">法人利用実績</span>
-              <span className="text-kon dark:text-blue-400 font-bold">500社以上</span>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <span className="text-2xl mb-1">🔒</span>
-              <span className="font-bold text-gray-800 dark:text-gray-100 text-sm">SSL暗号化通信</span>
-              <span className="text-kon dark:text-blue-400 font-bold">常時HTTPS</span>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <span className="text-2xl mb-1">🇯🇵</span>
-              <span className="font-bold text-gray-800 dark:text-gray-100 text-sm">国内サーバー</span>
-              <span className="text-kon dark:text-blue-400 font-bold">100%</span>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <span className="text-2xl mb-1">⏱</span>
-              <span className="font-bold text-gray-800 dark:text-gray-100 text-sm">自動削除</span>
-              <span className="text-kon dark:text-blue-400 font-bold">60分以内</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Feature I: Use Case Cards */}
-      <section className="py-10 bg-gray-50 dark:bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-2xl font-bold text-kon dark:text-blue-400 text-center mb-8">🎯 用途から探す</h2>
-          <UseCaseCards />
-        </div>
-      </section>
-
-
-      {/* 担当業務から探す */}
-      <section className="py-8 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-4">担当業務から探す</p>
-          <div className="flex flex-wrap justify-center gap-3">
-            {[
-              { label: "経理・財務", icon: "🏦", href: "/tools?role=accounting" },
-              { label: "人事・給与", icon: "👥", href: "/tools?role=hr" },
-              { label: "総務・庶務", icon: "🏢", href: "/tools?role=general" },
-              { label: "PDF処理",   icon: "📄", href: "/tools?role=pdf" },
-              { label: "マーケ・営業", icon: "📊", href: "/tools?role=marketing" },
-            ].map(({ label, icon, href }) => (
-              <Link key={href} href={href}
-                className="flex items-center gap-2 px-5 py-2.5 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm font-medium text-gray-700 dark:text-gray-200 hover:border-kon hover:text-kon dark:hover:text-blue-400 transition-colors min-h-[44px]">
-                <span>{icon}</span>{label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 🔥 Popular Tools Section - Below Fold */}
-      <section id="popular-tools" className="py-16 bg-gradient-to-r from-rose-50 to-orange-50 dark:from-gray-800 dark:to-gray-900" style={{scrollMarginTop: "120px"}}>
+      {/* ============================================================ */}
+      {/* SECTION 5: Popular Tools                                     */}
+      {/* ============================================================ */}
+      <section id="popular-tools" className="py-16 bg-gray-50 dark:bg-gray-900" style={{scrollMarginTop: "120px"}}>
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-6">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white">🔥 人気ツール - 今すぐ使う</h2>
             <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">先月100万件以上の処理実績 · 法人500社以上が利用</p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-2">
-            {[
-              { href: '/pdf/compress', label: '📄 PDF圧縮' },
-              { href: '/pdf/merge', label: '📑 PDF結合' },
-              { href: '/image/compress', label: '🖼️ 画像圧縮' },
-              { href: '/convert/furigana', label: 'あ ふりがな' },
-              { href: '/document/invoice', label: '📋 請求書作成' },
-              { href: '/generator/envelope-print', label: '✉️ 封筒印刷' },
-              { href: '/convert/bank-format', label: '🏦 全銀変換' },
-              { href: '/generator/hanko', label: '🔴 電子印鑑' },
-            ].map(({ href, label }) => (
+            {popularTools.map((tool) => (
               <Link
-                key={href}
-                href={href}
-                className="relative bg-white shadow-md hover:shadow-lg text-kon px-3 py-3 rounded-xl font-medium transition-all hover:-translate-y-0.5 text-center text-sm min-h-[44px] flex items-center justify-center"
+                key={tool.id}
+                href={tool.path}
+                className="relative bg-white dark:bg-gray-800 shadow-md hover:shadow-lg text-kon dark:text-blue-300 px-3 py-3 rounded-xl font-medium transition-all hover:-translate-y-0.5 text-center text-sm min-h-[44px] flex items-center justify-center"
               >
-                {HOT_PATHS.has(href) && (
+                {HOT_PATHS.has(tool.path) && (
                   <span className="absolute -top-1.5 -right-1.5 text-xs bg-red-500 text-white px-1 py-0.5 rounded-full leading-none font-bold">🔥</span>
                 )}
-                {label}
+                <span>{tool.icon} {tool.nameJa}</span>
               </Link>
             ))}
           </div>
         </div>
       </section>
-      {/* 🆕 新ツール ＋ 💰 金融・資産運用ツール — MERGED SECTION */}
+
+      {/* ============================================================ */}
+      {/* SECTION 6: New Tools + Finance Tools (merged)                */}
+      {/* ============================================================ */}
       <section className="py-16 bg-gradient-to-r from-orange-50 to-amber-50 dark:from-gray-800 dark:to-gray-900">
         <div className="max-w-7xl mx-auto px-4">
-          {/* NEW tools sub-section */}
-          {featuredTools.filter(t => t.category !== "finance").length > 0 && (
+          {getNewTools().filter(t => t.category !== "finance").slice(0, 8).length > 0 && (
             <div className="mb-12">
               <div className="flex items-center gap-3 mb-6">
                 <span className="inline-block px-3 py-1 bg-orange-500 text-white text-sm font-bold rounded-full">🆕 新ツール</span>
                 <h2 className="text-xl font-bold text-gray-900 dark:text-white">新しいツールが登場！</h2>
               </div>
               <div className="grid md:grid-cols-2 gap-4 max-w-4xl">
-                {featuredTools.filter(t => t.category !== "finance").map((tool) => (
+                {getNewTools().filter(t => t.category !== "finance").slice(0, 8).map((tool) => (
                   <Link
                     key={tool.id}
                     href={tool.path}
@@ -311,7 +234,6 @@ export default function Home() {
             </div>
           )}
 
-          {/* Finance tools sub-section */}
           <div>
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
@@ -326,17 +248,15 @@ export default function Home() {
                 <Link
                   key={tool.id}
                   href={tool.path}
-                  className="group bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 overflow-hidden border border-amber-100 dark:border-gray-700 p-5"
+                  className="group bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 overflow-hidden border border-amber-100 dark:border-gray-700 p-5"
                 >
                   <div className="flex items-start gap-4">
-                    <span className="text-4xl flex-shrink-0">{tool.icon}</span>
+                    <span className="text-3xl flex-shrink-0">{tool.icon}</span>
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-1">
-                        <h3 className="text-base font-bold text-kon dark:text-white leading-tight">{tool.nameJa}</h3>
-                        <span className="px-1.5 py-0.5 bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200 text-xs font-bold rounded">Pro</span>
-                      </div>
+                      <h3 className="text-base font-bold text-kon dark:text-white leading-tight mb-1">{tool.nameJa}</h3>
                       <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{tool.description}</p>
                     </div>
+                    <span className="text-amber-400 group-hover:translate-x-1 transition-transform text-lg flex-shrink-0">→</span>
                   </div>
                 </Link>
               ))}
@@ -345,48 +265,29 @@ export default function Home() {
         </div>
       </section>
 
-      <TabbedToolsSection pdfTools={availablePdfTools} documentTools={availableDocTools} convertTools={availableConvertTools} imageTools={availableImageTools} generatorTools={availableGenTools} financeTools={availableFinanceTools} careerTools={careerTools.filter(t => t.available)} taxTools={taxTools.filter(t => t.available)} realestateTools={realestateTools.filter(t => t.available)} businessTools={businessTools.filter(t => t.available)} />
+      {/* ============================================================ */}
+      {/* SECTION 7: Tabbed Tools Section (category browse)            */}
+      {/* ============================================================ */}
+      <TabbedToolsSection
+        pdfTools={availablePdfTools}
+        documentTools={availableDocTools}
+        convertTools={availableConvertTools}
+        imageTools={availableImageTools}
+        generatorTools={availableGenTools}
+        financeTools={availableFinanceTools}
+        careerTools={careerTools.filter(t => t.available)}
+        taxTools={taxTools.filter(t => t.available)}
+        realestateTools={realestateTools.filter(t => t.available)}
+        businessTools={businessTools.filter(t => t.available)}
+        healthTools={availableHealthTools}
+        foodTools={availableFoodTools}
+        lifeTools={availableLifeTools}
+        clinicTools={clinicTools.filter(t => t.available)}
+      />
 
-      {/* Features Section */}
-      <section className="py-10">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-kon text-center mb-10">
-            選ばれる理由
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="text-center p-6">
-              <div className="text-4xl mb-4">🇯🇵</div>
-              <h3 className="font-bold text-xl mb-2 text-gray-900">日本国内サーバー</h3>
-              <p className="text-gray-600 text-sm">
-                大切なファイルは海外に送りたくない。
-                当サービスは日本国内のサーバーで運用しています。
-              </p>
-            </div>
-
-            <div className="text-center p-6">
-              <div className="text-4xl mb-4">⚡</div>
-              <h3 className="font-bold text-xl mb-2 text-gray-900">高速処理</h3>
-              <p className="text-gray-600 text-sm">
-                最新のサーバー環境で、大容量ファイルも素早く処理。
-                お待たせしません。
-              </p>
-            </div>
-
-            <div className="text-center p-6">
-              <div className="text-4xl mb-4">🔒</div>
-              <h3 className="font-bold text-xl mb-2 text-gray-900">プライバシー重視</h3>
-              <p className="text-gray-600 text-sm">
-                SSL暗号化通信、処理後は自動削除。
-                あなたのファイルを安全に守ります。
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      {/* Blog Section */}
+      {/* ============================================================ */}
+      {/* SECTION 8: Blog (3 latest)                                   */}
+      {/* ============================================================ */}
       {(() => {
         const dynamicBlogs = getDynamicBlogs();
         const recentBlogs = [...dynamicBlogs].sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()).slice(0, 3);
@@ -464,18 +365,22 @@ export default function Home() {
         );
       })()}
 
-
-
-      {/* Media Coverage Section */}
+      {/* ============================================================ */}
+      {/* SECTION 9: Trust + Media Coverage (Stats merged in)          */}
+      {/* ============================================================ */}
       <section className="py-12 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
-            📰 メディア掲載実績
+            📰 メディア掲載実績・信頼の数字
           </h2>
           <p className="text-gray-600 dark:text-gray-300 mb-8">
             日本最大級のソフトウェアレビューサイト「窓の杜」に掲載されました
           </p>
-          <a href="https://forest.watch.impress.co.jp/docs/digest/2077518.html" target="_blank" rel="noopener noreferrer" className="inline-block">
+
+          {/* Stats Counter merged in */}
+          <StatsCounter />
+
+          <a href="https://forest.watch.impress.co.jp/docs/digest/2077518.html" target="_blank" rel="noopener noreferrer" className="inline-block mt-4">
             <Image
               src="https://pub-a1dbb3c658b341fabe5015e209050298.r2.dev/mado-no-mori-banner.webp"
               alt="窓の杜にて紹介されました - 2026年1月13日掲載"
@@ -497,14 +402,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Newsletter Section */}
-      <section className="py-20 bg-white dark:bg-gray-800">
-        <div className="max-w-2xl mx-auto px-4">
-          <NewsletterSignup />
-        </div>
-      </section>
-
-      {/* Corporate CTA Section - NEW */}
+      {/* ============================================================ */}
+      {/* SECTION 10: Corporate B2B CTA                                */}
+      {/* ============================================================ */}
       <section className="py-20 bg-gradient-to-r from-slate-800 to-slate-900">
         <div className="max-w-4xl mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
@@ -529,26 +429,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Feature L: Footer CTA for free users */}
+      {/* ============================================================ */}
+      {/* SECTION 11: FooterCta (existing component for free users)    */}
+      {/* ============================================================ */}
       <FooterCta />
 
-      {/* CTA Section */}
-      <section className="py-20 bg-sakura/20">
-        <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-2xl font-bold text-kon mb-4">
-            今すぐ無料で使ってみる
-          </h2>
-          <p className="text-gray-600 mb-6 text-sm">
-            会員登録不要。すべてのツールが無料でご利用いただけます。
-          </p>
-          <Link
-            href="/pdf"
-            className="inline-block bg-kon text-white px-8 py-4 rounded-xl font-bold hover:bg-ai transition-colors"
-          >
-            PDFツールを使う →
-          </Link>
-        </div>
-      </section>
+      {/* Newsletter signup is now in Footer.tsx — no longer here */}
     </div>
   );
 }

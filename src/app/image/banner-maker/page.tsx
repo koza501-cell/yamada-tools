@@ -21,7 +21,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】バナー作成｜SNS・YouTube・ブログ用｜テンプレート付き｜ブラウザ処理",
   tool,
-  longDescription: "SNS、YouTube、ブログ用のバナーを無料作成。サイズプリセット、テキスト追加、背景色設定。ブラウザ処理で安全。",
+  longDescription: "SNS、YouTube、ブログ用のバナーを無料作成。サイズプリセット、テキスト追加、背景色設定。ブラウザ処理で安全。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。freee・マネーフォワード等の会計ソフトとも連携可能。",
   keywords: ["バナー作成 無料", "SNS バナー", "YouTube サムネイル 作成", "ブログ ヘッダー 作成", "バナーメーカー", "OGP画像 作成"],
 });
 

@@ -55,7 +55,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】QRコード作成｜URL・テキストをQR化",
   tool,
-  longDescription: "QRコードを無料作成。URL、テキスト、連絡先をQRコード化。高解像度で名刺・チラシ印刷にも対応。商用利用OK。",
+  longDescription: "QRコードを無料作成。URL、テキスト、連絡先をQRコード化。高解像度で名刺・チラシ印刷にも対応。商用利用OK。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。freee・マネーフォワード等の会計ソフトとも連携可能。",
   keywords: ["QRコード 作成", "QRコード 無料", "QRコード ジェネレーター", "QRコード 印刷", "URL QRコード", "名刺 QRコード"],
 });
 

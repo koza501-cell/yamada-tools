@@ -26,7 +26,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】ハッシュ生成｜MD5/SHA256計算",
   tool,
-  longDescription: "MD5、SHA-1、SHA-256などのハッシュ値を生成。ファイルの整合性確認やパスワードの検証に使用します。",
+  longDescription: "MD5、SHA-1、SHA-256などのハッシュ値を生成。ファイルの整合性確認やパスワードの検証に使用します。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。freee・マネーフォワード等の会計ソフトとも連携可能。",
   keywords: ['ハッシュ生成', 'MD5', 'SHA256', 'ハッシュ値', 'チェックサム'],
 });
 

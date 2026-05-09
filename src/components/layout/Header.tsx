@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { useAuth } from "@/contexts/AuthContext";
+import ThemeToggle from "@/components/common/ThemeToggle";
 import { pdfTools, documentTools, convertTools, imageTools, generatorTools, financeTools, insuranceTools, taxTools, careerTools, realestateTools, businessTools, healthTools, educationTools, debtTools, utilityTools } from "@/config/tools";
 import { searchTools } from "@/lib/searchUtils";
 const toolsMenu = {
@@ -10,19 +11,19 @@ const toolsMenu = {
   sections: [
     { name: "PDF", icon: "📄", href: "/pdf", tools: [{ name: "PDF結合", href: "/pdf/merge" },{ name: "PDF分割", href: "/pdf/split" },{ name: "PDF圧縮", href: "/pdf/compress" },{ name: "PDFに文字入力", href: "/pdf/text-input" },{ name: "PDF回転", href: "/pdf/rotate" }], moreLink: "/pdf" },
     { name: "画像", icon: "🖼️", href: "/image", tools: [{ name: "画像圧縮", href: "/image/compress" },{ name: "画像リサイズ", href: "/image/resize" },{ name: "QRコード作成", href: "/image/qr-code" },{ name: "画像反転", href: "/image/flip" },{ name: "モザイク加工", href: "/image/mosaic" }], moreLink: "/image" },
-    { name: "書類作成", icon: "📝", href: "/document", tools: [{ name: "請求書", href: "/document/invoice" },{ name: "見積書", href: "/document/quotation" },{ name: "領収書", href: "/document/receipt" },{ name: "履歴書", href: "/document/resume" },{ name: "封筒印刺", href: "/generator/envelope-print" }], moreLink: "/document" },
+    { name: "書類作成", icon: "📝", href: "/document", tools: [{ name: "請求書", href: "/document/invoice" },{ name: "見積書", href: "/document/quotation" },{ name: "領収書", href: "/document/receipt" },{ name: "履歴書", href: "/document/resume" },{ name: "封筒印刷", href: "/generator/envelope-print" }], moreLink: "/document" },
     { name: "変換", icon: "🔄", href: "/convert", tools: [{ name: "全銀フォーマット", href: "/convert/bank-format" },{ name: "ふりがな変換", href: "/convert/furigana" },{ name: "和暦・西暦変換", href: "/convert/date-converter" },{ name: "全角・半角変換", href: "/convert/zenkaku-hankaku" },{ name: "縦書き変換", href: "/document/vertical-text" }], moreLink: "/convert" },
     { name: "計算・生成", icon: "⚡", href: "/generator", tools: [{ name: "パスワード生成", href: "/generator/password" },{ name: "文字数カウント", href: "/generator/character-count" },{ name: "消費税計算", href: "/generator/tax-calculator" },{ name: "電子ハンコ作成", href: "/generator/hanko" },{ name: "QRコード読取", href: "/generator/qr-reader" }], moreLink: "/generator" },
   ],
 };
 const calcMenu = {
-  title: "計算・シュミレーター",
+  title: "計算・シミュレーター",
   sections: [
-    { name: "金融・投資", icon: "💰", href: "/finance", tools: [{ name: "住宅ローン計算", href: "/finance/jutaku-loan" },{ name: "NISA計算機", href: "/finance/nisa-simulator" },{ name: "老後資金計算", href: "/finance/retirement-simulator" },{ name: "為替計算", href: "/finance/fx-calculator" }], moreLink: "/finance" },
+    { name: "金融・投資", icon: "💰", href: "/finance", tools: [{ name: "住宅ローン計算", href: "/finance/jutaku-loan" },{ name: "NISA計算機", href: "/finance/nisa-simulator" },{ name: "為替計算", href: "/finance/fx-calculator" },{ name: "🆕 平均年収検索", href: "/finance/heikin-nenshu" },{ name: "🆕 人口推移", href: "/finance/jinko-suikei" }], moreLink: "/finance" },
     { name: "税金・保険", icon: "🧾", href: "/tax", tools: [{ name: "所得税計算", href: "/tax/income-tax-calculator" },{ name: "ふるさと納税", href: "/tax/furusato-nozei-calculator" },{ name: "相続税計算", href: "/tax/inheritance-tax-calculator" },{ name: "生命保険必要額", href: "/insurance/life-insurance-calculator" }], moreLink: "/tax" },
-    { name: "キャリア・転職", icon: "💼", href: "/career", tools: [{ name: "転職シュミレーター", href: "/career/job-change-simulator" },{ name: "残業代計算", href: "/career/overtime-calculator" },{ name: "失業保険計算", href: "/career/unemployment-calculator" },{ name: "年収交渉ツール", href: "/career/salary-negotiation" }], moreLink: "/career" },
-    { name: "不動産・ビジネス", icon: "🏢", href: "/realestate", tools: [{ name: "賃貸vs購入", href: "/realestate/rent-vs-buy" },{ name: "引越し費用", href: "/realestate/moving-cost-calculator" },{ name: "法人化シュミレーター", href: "/business/incorporation-simulator" },{ name: "役員報酬最適化", href: "/business/director-salary-optimizer" }], moreLink: "/business" },
-    { name: "健康・生活", icon: "🏥", href: "/health", tools: [{ name: "BMI計算", href: "/health/bmi-calculator" },{ name: "カロリー計算", href: "/health/calorie-calculator" },{ name: "借金返済シュミレーター", href: "/debt/repayment-simulator" },{ name: "教育費シュミレーター", href: "/education/education-cost-simulator" }], moreLink: "/health" },
+    { name: "キャリア・転職", icon: "💼", href: "/career", tools: [{ name: "転職シミュレーター", href: "/career/job-change-simulator" },{ name: "残業代計算", href: "/career/overtime-calculator" },{ name: "失業保険計算", href: "/career/unemployment-calculator" },{ name: "🆕 失業率データ", href: "/career/shitsugyo-ritsu" }], moreLink: "/career" },
+    { name: "不動産・ビジネス", icon: "🏢", href: "/realestate", tools: [{ name: "賃貸vs購入", href: "/realestate/rent-vs-buy" },{ name: "法人化シミュレーター", href: "/business/incorporation-simulator" },{ name: "🆕 法人検索", href: "/business/houjin-search" },{ name: "🆕 補助金検索", href: "/business/hojokin-active" }], moreLink: "/business" },
+    { name: "健康・生活", icon: "🏥", href: "/health", tools: [{ name: "BMI計算", href: "/health/bmi-calculator" },{ name: "カロリー計算", href: "/health/calorie-calculator" },{ name: "借金返済シミュレーター", href: "/debt/repayment-simulator" },{ name: "🆕 平均寿命データ", href: "/health/heikin-jumyo" }], moreLink: "/health" },
   ],
 };
 type MenuSection = { name: string; icon: string; href: string; tools: { name: string; href: string }[]; moreLink: string };
@@ -55,7 +56,7 @@ function NavDropdown({ label, menu }: { label: string; menu: MenuConfig }) {
       </div>
       {open && (
         <div
-          className="fixed top-14 left-0 w-full bg-white shadow-xl border-t border-gray-100 z-[1000]"
+          className="fixed top-14 left-0 w-full bg-white dark:bg-gray-800 shadow-xl border-t border-gray-100 dark:border-gray-700 z-[1000]"
           onMouseEnter={show}
           onMouseLeave={hide}
         >
@@ -63,14 +64,14 @@ function NavDropdown({ label, menu }: { label: string; menu: MenuConfig }) {
             <div className="grid grid-cols-3 lg:grid-cols-5 gap-4">
               {menu.sections.map((section) => (
                 <div key={section.name}>
-                  <Link href={section.href} className="flex items-center gap-2 text-kon font-semibold mb-3 hover:text-sakura transition-colors">
+                  <Link href={section.href} className="flex items-center gap-2 text-kon dark:text-gray-200 font-semibold mb-3 hover:text-sakura transition-colors">
                     <span>{section.icon}</span>
                     <span>{section.name}</span>
                   </Link>
                   <ul className="space-y-2">
                     {section.tools.map((tool) => (
                       <li key={tool.href}>
-                        <Link href={tool.href} className="text-sm text-gray-600 hover:text-sakura transition-colors block py-1">{tool.name}</Link>
+                        <Link href={tool.href} className="text-sm text-gray-600 dark:text-gray-400 hover:text-sakura transition-colors block py-1">{tool.name}</Link>
                       </li>
                     ))}
                     <li>
@@ -143,13 +144,14 @@ export default function Header() {
 
             <nav className="hidden lg:flex items-center gap-1">
               <NavDropdown label="ツール" menu={toolsMenu} />
-              <NavDropdown label="計算・シュミレーター" menu={calcMenu} />
+              <NavDropdown label="計算・シミュレーター" menu={calcMenu} />
               <Link href="/blog" className="px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px] flex items-center">ブログ</Link>
               <Link href="/ai" className="px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px] flex items-center">AI活用</Link>
               <Link href="/pricing" className="px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px] flex items-center">料金</Link>
             </nav>
 
             <div className="flex items-center gap-2">
+              <ThemeToggle />
               <button onClick={() => setIsSearchOpen(true)} className="flex items-center gap-2 px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-lg transition-colors min-w-[44px] min-h-[44px]" aria-label="検索">
                 <span>🔍</span>
                 <span className="text-sm hidden md:inline">検索</span>
@@ -181,13 +183,13 @@ export default function Header() {
 
       {mounted && showUserMenu && user && createPortal(
         <div
-          className="fixed bg-white rounded-lg shadow-lg py-2 text-gray-800 z-[1000] w-48"
+          className="fixed bg-white dark:bg-gray-800 rounded-lg shadow-lg py-2 text-gray-800 dark:text-gray-200 z-[1000] w-48"
           style={{ top: dropdownPos.top, right: dropdownPos.right }}
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="px-4 py-2 border-b text-sm text-gray-500 truncate">{user.email}</div>
+          <div className="px-4 py-2 border-b dark:border-gray-700 text-sm text-gray-500 dark:text-gray-400 truncate">{user.email}</div>
           <div className="px-4 py-2 text-sm"><span className="inline-block px-2 py-0.5 bg-gray-100 rounded text-xs">{user.effective_plan === "team" ? "TEAM" : user.effective_plan === "pro" ? "PRO" : user.effective_plan === "pro_trial" ? "PRO (試用)" : "FREE"}</span></div>
-          <Link href="/account" className="block px-4 py-2 hover:bg-gray-100 text-sm" onClick={() => setShowUserMenu(false)}>⚙️ アカウント管理</Link>
+          <Link href="/account" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-sm" onClick={() => setShowUserMenu(false)}>⚙️ アカウント管理</Link>
           {user.effective_plan === "team" ? null : user.effective_plan === "pro" ? (
             <Link href="/pricing" className="block px-4 py-2 hover:bg-gray-100 text-sm" onClick={() => setShowUserMenu(false)}>⭐ TEAMにアップグレード</Link>
           ) : (
@@ -223,7 +225,7 @@ export default function Header() {
                 ))}
               </div>
               <div className="mb-4">
-                <div className="px-4 py-2 text-xs text-white/60 uppercase tracking-wide">計算・シュミレーター</div>
+                <div className="px-4 py-2 text-xs text-white/60 uppercase tracking-wide">計算・シミュレーター</div>
                 {calcMenu.sections.map((s) => (
                   <Link key={s.href} href={s.href} onClick={() => setIsMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 transition-colors">
                     <span className="text-xl">{s.icon}</span><span className="font-medium">{s.name}</span>
@@ -249,24 +251,24 @@ export default function Header() {
 
       {isSearchOpen && (
         <div className="fixed inset-0 z-[1000] bg-black/50 flex items-start justify-center pt-20" onClick={() => setIsSearchOpen(false)}>
-          <div className="bg-white rounded-xl shadow-2xl w-full max-w-xl mx-4 p-4" onClick={(e) => e.stopPropagation()}>
-            <div className="flex items-center gap-3 border-b pb-4">
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl w-full max-w-xl mx-4 p-4" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center gap-3 border-b dark:border-gray-700 pb-4">
               <span className="text-2xl">🔍</span>
-              <input ref={searchInputRef} type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="ツールを検索..." className="flex-1 text-lg text-gray-900 outline-none" />
+              <input ref={searchInputRef} type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="ツールを検索..." className="flex-1 text-lg text-gray-900 dark:text-gray-100 dark:bg-transparent outline-none" />
               <kbd className="text-xs bg-gray-100 px-2 py-1 rounded text-gray-500">ESC</kbd>
             </div>
             {searchResults.length > 0 ? (
               <div className="pt-4 max-h-80 overflow-y-auto">
                 {searchResults.map((tool) => (
-                  <Link key={tool.id} href={tool.path} onClick={() => { setIsSearchOpen(false); setSearchQuery(""); }} className="flex items-center gap-3 px-3 py-3 hover:bg-gray-50 rounded-lg transition-colors">
+                  <Link key={tool.id} href={tool.path} onClick={() => { setIsSearchOpen(false); setSearchQuery(""); }} className="flex items-center gap-3 px-3 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors">
                     <span className="text-2xl">{tool.icon}</span>
-                    <div className="flex-1"><p className="font-bold text-gray-900">{tool.nameJa}</p><p className="text-sm text-gray-500 line-clamp-1">{tool.description}</p></div>
+                    <div className="flex-1"><p className="font-bold text-gray-900 dark:text-gray-100">{tool.nameJa}</p><p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-1">{tool.description}</p></div>
                     <span className="text-gray-400">→</span>
                   </Link>
                 ))}
               </div>
             ) : searchQuery.length >= 2 ? (
-              <div className="pt-4 text-sm text-gray-500 text-center">該当するツールが見つかりませんでした</div>
+              <div className="pt-4 text-sm text-gray-500 dark:text-gray-400 text-center">該当するツールが見つかりませんでした</div>
             ) : (
               <div className="pt-4 text-sm text-gray-500 text-center">キーワードを入力してツールを検索</div>
             )}

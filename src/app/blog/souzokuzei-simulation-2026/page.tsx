@@ -2,9 +2,10 @@ import { Metadata } from "next";
 import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
+import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】相続税シミュレーション完全ガイド｜基礎控除・税率・計算方法を徹底解説";
-const description = "相続税の計算方法を初心者向けに解説。基礎控除3,000万円+600万円×法定相続人の数で非課税枠を計算。遺産1億円の場合の税額シミュレーションや節税対策も紹介。";
+const description = "相続税の計算方法を初心者向けに解説。基礎控除3,000万円+600万円×法定相続人の数で非課税枠を計算。遺産1億円の場合の税額シミュレーションや節税対策も紹介。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("【2026年最新】相続税シミュレーション完全ガイド")}&type=blog&category=${encodeURIComponent("相続・贈与")}`;
 
 export const metadata: Metadata = {
@@ -279,6 +280,8 @@ export default function SouzokuzeiSimulation2026Blog() {
       <BlogAdUnit />
 
       <p className="text-sm text-gray-500 mt-8">この記事は2026年4月時点の情報に基づいています。最新情報は国税庁の公式サイトでご確認ください。</p>
-    </article>
+    
+      <ShareButtons url="https://yamada-tools.jp/blog/souzokuzei-simulation-2026" title="souzokuzei-simulation-2026" />
+</article>
   );
 }

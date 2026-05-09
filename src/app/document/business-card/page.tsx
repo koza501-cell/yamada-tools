@@ -26,7 +26,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】名刺作成｜印刷用データ作成",
   tool,
-  longDescription: "シンプルで美しい名刺を無料作成。会社名、名前、連絡先を入力するだけ。QRコード付きの名刺も作れます。",
+  longDescription: "シンプルで美しい名刺を無料作成。会社名、名前、連絡先を入力するだけ。QRコード付きの名刺も作れます。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。freee・マネーフォワード等の会計ソフトとも連携可能。",
   keywords: ['名刺 作成', '名刺 無料', '名刺 テンプレート', '名刺 デザイン', '名刺 印刷'],
 });
 

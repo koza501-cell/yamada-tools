@@ -97,12 +97,42 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     inLanguage: "ja",
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "ホーム", item: "https://yamada-tools.jp" },
+      { "@type": "ListItem", position: 2, name: "ブログ", item: "https://yamada-tools.jp/blog" },
+      { "@type": "ListItem", position: 3, name: blog.title, item: `https://yamada-tools.jp/blog/${slug}` },
+    ],
+  };
+
+  const faqSchema = blog.faq && Array.isArray(blog.faq) ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: (blog.faq as Array<{ q: string; a: string }>).map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  } : null;
+
   return (
     <article className="blog-article max-w-4xl mx-auto px-4 py-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
       {/* Hero Image */}
       {blog.featuredImage && (
         <div className="mb-8 -mx-4 md:mx-0">

@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "特定商取引法に基づく表記",
-  description: "山田ツールの特定商取引法に基づく表記です。",
+  description: "山田ツール（合同会社山田トレード運営）の特定商取引法に基づく表記。販売事業者情報、所在地、代表者、料金、支払方法、返品ポリシー、サービス提供時期など法定事項を明記。安心してサービスをご利用ください。",
   alternates: {
     canonical: 'https://yamada-tools.jp/legal/tokushoho',
   },

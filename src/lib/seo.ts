@@ -11,6 +11,12 @@ interface ToolSeoData {
   faq?: { question: string; answer: string }[];
 }
 
+// Helper: clean a tool description so it concatenates cleanly into a sentence.
+// Removes trailing punctuation (Japanese 。or English .) so we control the period.
+function cleanDesc(desc: string): string {
+  return desc.replace(/[。.\s]+$/, "");
+}
+
 export function generateToolMetadata({
   customTitle,
   tool,
@@ -27,9 +33,11 @@ export function generateToolMetadata({
     "登録不要",
   ];
 
+  // SEO/GEO-optimized fallback template (~140 chars)
+  // Includes: B2B intent keywords, trust signals, device support, use case
   const description =
     longDescription ||
-    `${tool.nameJa}を無料でオンライン変換。${tool.description}。日本国内サーバーで安心・安全。登録不要、ファイルは60分で自動削除。`;
+    `${tool.nameJa}を完全無料で使えるオンラインツール。${cleanDesc(tool.description)}。中小企業・個人事業主・フリーランスのビジネスに最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・インストール不要・60分で自動削除。スマホ・PC両対応。`;
 
   return {
     title: customTitle || `${tool.nameJa}【無料】`,
@@ -84,7 +92,7 @@ export function generateToolJsonLd(tool: Tool, faq?: { question: string; answer:
     url: `${baseUrl}${tool.path}`,
     description: `${tool.description}。日本国内サーバーで安心・安全。`,
     applicationCategory: "UtilitiesApplication",
-    applicationSubCategory: tool.category === "pdf" ? "PDF Tools" : 
+    applicationSubCategory: tool.category === "pdf" ? "PDF Tools" :
                             tool.category === "image" ? "Image Tools" :
                             tool.category === "document" ? "Document Tools" :
                             tool.category === "convert" ? "Conversion Tools" : "Utilities",
@@ -170,7 +178,7 @@ export function generateToolJsonLd(tool: Tool, faq?: { question: string; answer:
                        tool.category === "document" ? "書類作成" :
                        tool.category === "convert" ? "変換ツール" :
                        tool.category === "generator" ? "計算・生成" : "ツール";
-  
+
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",

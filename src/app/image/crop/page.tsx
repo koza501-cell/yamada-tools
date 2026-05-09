@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { getToolById } from "@/config/tools";
 import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
-import ToolPage from "@/components/tools/ToolPage";
+import ImageCropClient from "./client";
 import RelatedTools from "@/components/common/RelatedTools";
 
 const tool = getToolById("crop-image")!;
@@ -12,21 +12,10 @@ const faq = [
   { question: "切り抜き位置は調整できますか？", answer: "はい、ドラッグで自由に位置を調整できます。" },
 ];
 
-const seoContent = {
-  intro: "画像の必要な部分だけを切り抜き。SNSのプロフィール画像や、バナー作成に便利です。",
-  useCases: [
-    { title: "👤 プロフィール", desc: "SNS用の正方形アイコン作成" },
-    { title: "🖼️ バナー作成", desc: "ヘッダー画像を切り抜き" },
-    { title: "📷 写真加工", desc: "不要な部分をカット" },
-    { title: "📱 サムネイル", desc: "YouTube用サムネイル作成" },
-  ],
-  tips: "よく使う比率（1:1、16:9、4:3など）をワンクリックで選択できます。",
-};
-
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】画像切り抜き｜トリミング・範囲指定",
   tool,
-  longDescription: "画像の必要な部分だけを切り抜き。SNSのプロフィール画像や、バナー作成に便利です。",
+  longDescription: "画像の必要な部分だけを切り抜き。SNSのプロフィール画像や、バナー作成に便利です。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。freee・マネーフォワード等の会計ソフトとも連携可能。",
   keywords: ['画像 切り抜き', '画像 トリミング', '写真 切り抜き', '画像 crop'],
 });
 
@@ -36,11 +25,10 @@ export default function Page() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <ToolPage tool={tool} faq={faq} seoContent={seoContent} />
+      <ImageCropClient faq={faq} />
       <div className="max-w-4xl mx-auto px-4">
         <RelatedTools currentTool={tool} maxItems={6} />
       </div>
-
     </>
   );
 }

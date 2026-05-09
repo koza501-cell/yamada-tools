@@ -13,7 +13,7 @@ const faq = [
 ];
 
 const seoContent = {
-  intro: "WordファイルをPDFに変換。レイアウトを崩さずに、どの環境でも同じ見た目で表示されるPDFを作成します。",
+  intro: "Word（docx/doc）ファイルをPDFに変換する無料ツール。フォント・画像・表のレイアウトを崩さずに、どの環境でも同じ見た目で表示されるPDFを作成。履歴書・契約書・社内文書の配布用PDF化に。日本国内サーバーで安全処理、登録不要・完全無料・60分自動削除。",
   useCases: [
     { title: "📧 メール送付", desc: "Wordがない相手にも送れる" },
     { title: "📝 提出書類", desc: "編集されたくない文書に" },
@@ -26,7 +26,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】Word→PDF変換｜docxをPDFに変換",
   tool,
-  longDescription: "WordファイルをPDFに変換。レイアウトを崩さずに、どの環境でも同じ見た目で表示されるPDFを作成します。",
+  longDescription: "Word（docx/doc）ファイルをPDFに変換する無料ツール。フォント・画像・表のレイアウトを崩さずに、どの環境でも同じ見た目で表示されるPDFを作成。履歴書・契約書・社内文書の配布用PDF化に。日本国内サーバーで安全処理、登録不要・完全無料・60分自動削除。",
   keywords: ['Word PDF 変換', 'Word PDF', 'docx PDF', 'ワード PDF'],
 });
 
