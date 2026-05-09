@@ -365,7 +365,7 @@
       "CSV変換",
       "給与振込"
     ],
-    "featuredImage": "/images/blog/zengin-blog-hero.png",
+    "featuredImage": "https://pub-a1dbb3c658b341fabe5015e209050298.r2.dev/blog-zengin-format-kanzen-guide.webp",
     "publishDate": "2026-05-06",
     "author": "山田ツール編集部",
     "readTime": "14分",
@@ -385,7 +385,7 @@
       "学区",
       "住まい選び"
     ],
-    "featuredImage": "/images/blog/fudousan-blog-hero.png",
+    "featuredImage": "https://pub-a1dbb3c658b341fabe5015e209050298.r2.dev/blog-fudousan-joho-library-address-search.webp",
     "publishDate": "2026-05-05",
     "author": "山田ツール編集部",
     "readTime": "12分",
