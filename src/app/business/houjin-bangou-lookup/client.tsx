@@ -1163,6 +1163,10 @@ export default function HoujinBangouLookupClient() {
               <span className="text-gray-600">gBizINFO法人検索（社名・詳細情報）は → </span>
               <Link href="/business/houjin-search" className="text-kon hover:text-ai underline">法人検索 (gBizINFO)</Link>
             </div>
+            <div>
+              <span className="text-gray-600">法人番号の仕組みや活用方法は → </span>
+              <Link href="/blog/houjin-bangou-complete-guide" className="text-kon hover:text-ai underline">📖 法人番号の完全ガイド</Link>
+            </div>
           </div>
         )}
 
