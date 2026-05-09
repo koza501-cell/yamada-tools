@@ -74,6 +74,8 @@ const nextConfig = {
       { source: '/utility', destination: '/', permanent: true },
       { source: '/souzoku-touki/guide/gikaku-and-bassoku', destination: '/souzoku-touki/guide/gimuka-and-bassoku', permanent: true },
       { source: '/reference', destination: '/', permanent: true },
+      { source: '/business/houjin-bangou-search', destination: '/business/houjin-bangou-lookup', permanent: true },
+      { source: '/business/corporate-number-lookup', destination: '/business/houjin-bangou-lookup', permanent: true },
     ]
   }
 }

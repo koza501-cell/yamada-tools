@@ -225,6 +225,13 @@ function DetailDrawer({ corp, onClose }: DrawerProps) {
                 {copied ? Icons.Check : Icons.Copy}
               </button>
             </div>
+                 <div className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+              法人番号から直接検索する場合は{' '}
+              <Link href="/business/houjin-bangou-lookup" className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800">
+                法人番号検索ツール
+              </Link>
+              {' '}も便利です
+            </div>
           </div>
 
           {loading && (

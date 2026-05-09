@@ -940,6 +940,11 @@ export default function InvoiceBulkCheckerClient() {
                 📖 インボイス番号確認の完全ガイド →
               </Link>
             </div>
+            <div className="mt-2">
+              <Link href="/business/houjin-bangou-lookup" className="text-kon hover:text-ai underline">
+                🔢 法人番号検索（13桁で会社情報を確認）→
+              </Link>
+            </div>
           </div>
         )}
 

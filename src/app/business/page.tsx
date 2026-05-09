@@ -31,6 +31,7 @@ const businessTools = [
   { name: "法人税計算機", url: "/business/corporate-tax-calculator", description: "所得金額から法人税・地方税を計算", icon: "🏦" },
   { name: "フリーランス税金計算機", url: "/business/freelance-tax-calculator", description: "フリーランスの所得税・住民税・国保を一括計算", icon: "💻" },
   { name: "簡易課税計算機", url: "/business/simplified-tax-calculator", description: "簡易課税制度での消費税納税額を計算", icon: "📊" },
+  { name: "法人番号検索", url: "/business/houjin-bangou-lookup", description: "13桁の法人番号から会社名・所在地・変更履歴を国税庁公式データで即取得", icon: "🔢" },
 ];
 
 export default function BusinessPage() {
