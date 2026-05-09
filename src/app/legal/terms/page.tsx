@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "利用規約",
-  description: "山田ツールの利用規約です。",
+  description: "山田ツール（合同会社山田トレード運営）の利用規約。サービスの利用条件、禁止事項、免責事項、知的財産権、契約解除、準拠法など、ご利用にあたっての重要事項を定めています。ご利用前に必ずお読みください。",
   alternates: {
     canonical: 'https://yamada-tools.jp/legal/terms',
   },

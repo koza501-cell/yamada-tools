@@ -68,12 +68,7 @@ const nextConfig = {
       { source: '/tools/ideco-nisa-comparison', destination: '/finance/ideco-nisa-comparison', permanent: true },
       { source: '/tools/nisa-simulator', destination: '/finance/nisa-simulator', permanent: true },
       { source: '/ideco-nisa-comparison', destination: '/finance/ideco-nisa-comparison', permanent: true },
-      { source: '/insurance', destination: '/', permanent: true },
-      { source: '/debt', destination: '/', permanent: true },
-      { source: '/education', destination: '/', permanent: true },
-      { source: '/utility', destination: '/', permanent: true },
       { source: '/souzoku-touki/guide/gikaku-and-bassoku', destination: '/souzoku-touki/guide/gimuka-and-bassoku', permanent: true },
-      { source: '/reference', destination: '/', permanent: true },
       { source: '/business/houjin-bangou-search', destination: '/business/houjin-bangou-lookup', permanent: true },
       { source: '/business/corporate-number-lookup', destination: '/business/houjin-bangou-lookup', permanent: true },
     ]
