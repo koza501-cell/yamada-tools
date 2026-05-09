@@ -1009,6 +1009,10 @@ export default function HoujinCrossVerifyClient() {
               <span className="text-gray-600 dark:text-gray-400">法人番号の仕組みを学ぶ → </span>
               <Link href="/blog/houjin-bangou-complete-guide" className="text-kon hover:text-ai underline">📖 法人番号の完全ガイド</Link>
             </div>
+            <div>
+              <span className="text-gray-600 dark:text-gray-400">取引先KYCの実務手順を学ぶ → </span>
+              <Link href="/blog/torihikisaki-kyc-cross-verify-guide" className="text-kon hover:text-ai underline">📖 取引先KYC完全ガイド</Link>
+            </div>
           </div>
         </div>
 

@@ -39,3 +39,8 @@ feature-a-e2e-test.spec.ts
 check-page.mjs
 check-prod.mjs
 test-results.json
+
+# Backup files from sed/script editing
+*.backup-*
+*.bing-batch*-backup
+*.bak
