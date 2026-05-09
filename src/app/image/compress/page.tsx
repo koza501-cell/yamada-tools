@@ -71,7 +71,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "画像圧縮【無料・安全】写真を軽くする｜JPG・PNG対応｜日本国内サーバー処理・登録不要",
   tool,
-  longDescription: "画像をドラッグするだけで瞬時に圧縮。JPG・PNG・WebP対応、最大20枚一括処理。画質はそのまま、ファイルサイズ最大80%削減。メール添付・LINE送信・Webサイト高速化に。インストール不要・完全無料・国内サーバー処理。",
+  longDescription: "画像をドラッグするだけで瞬時に圧縮。JPG・PNG・WebP対応、最大20枚一括処理。画質はそのまま、ファイルサイズ最大80%削減。メール添付・LINE送信・Webサイト高速化に。インストール不要・完全無料・国内サーバー処理。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。",
   keywords: [
     "画像圧縮",
     "画像 圧縮",

@@ -26,7 +26,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】PDF電子署名｜印鑑・サインを追加",
   tool,
-  longDescription: "PDFに電子署名を追加。手書きサイン、テキスト、画像など様々な形式で署名できます。",
+  longDescription: "PDFに電子署名を追加。手書きサイン、テキスト、画像など様々な形式で署名できます。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。",
   keywords: ['PDF 署名', '電子署名', 'PDF サイン', 'PDF 印鑑'],
 });
 

@@ -26,7 +26,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】URLエンコード｜日本語URL変換",
   tool,
-  longDescription: "URLに使用できない文字をエンコード・デコード。日本語を含むURLの作成や、パラメータの受け渡しに必要な変換です。",
+  longDescription: "URLに使用できない文字をエンコード・デコード。日本語を含むURLの作成や、パラメータの受け渡しに必要な変換です。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。",
   keywords: ['URLエンコード', 'URL デコード', 'パーセントエンコード', 'URL 日本語'],
 });
 

@@ -26,7 +26,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】PDF透かし追加｜社外秘・コピー禁止",
   tool,
-  longDescription: "PDFに透かし（ウォーターマーク）を追加。「社外秘」「SAMPLE」「DRAFT」など、文書の状態を明示できます。",
+  longDescription: "PDFに透かし（ウォーターマーク）を追加。「社外秘」「SAMPLE」「DRAFT」など、文書の状態を明示できます。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。",
   keywords: ['PDF 透かし', 'PDF ウォーターマーク', 'PDF 社外秘', 'PDF スタンプ'],
 });
 

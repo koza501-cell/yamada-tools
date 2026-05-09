@@ -26,7 +26,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】ZIPパスワード設定｜ファイル暗号化",
   tool,
-  longDescription: "ファイルをパスワード付きのZIPファイルに圧縮。メール添付時のセキュリティ対策に便利です。",
+  longDescription: "ファイルをパスワード付きのZIPファイルに圧縮。メール添付時のセキュリティ対策に便利です。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。",
   keywords: ['パスワード付きZIP', 'ZIP 暗号化', 'ZIP パスワード', 'ファイル圧縮'],
 });
 

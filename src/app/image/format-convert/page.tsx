@@ -15,7 +15,7 @@ const faq = [
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】画像形式変換｜JPG/PNG/WebP相互変換",
   tool,
-  longDescription: "JPG、PNG、WebP、GIFなど画像形式を相互変換。Web用にWebPへ、印刷用にJPGへなど、用途に合わせて変換できます。",
+  longDescription: "JPG、PNG、WebP、GIFなど画像形式を相互変換。Web用にWebPへ、印刷用にJPGへなど、用途に合わせて変換できます。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。",
   keywords: ['画像 形式変換', 'JPG PNG 変換', 'WebP 変換', '画像 コンバーター'],
 });
 

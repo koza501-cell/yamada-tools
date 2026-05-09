@@ -21,7 +21,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】GIFアニメ作成｜画像からGIF変換｜ブラウザ処理で安全",
   tool,
-  longDescription: "複数の画像からGIFアニメーションを作成する無料ツール。フレーム間隔調整可能。ブラウザ処理で安全・登録不要。",
+  longDescription: "複数の画像からGIFアニメーションを作成する無料ツール。フレーム間隔調整可能。ブラウザ処理で安全・登録不要。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。",
   keywords: ["GIF 作成 無料", "GIFアニメ 作成", "画像 GIF変換", "GIFメーカー", "アニメGIF 作成", "GIF 作り方"],
 });
 

@@ -29,7 +29,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】PDF押印ツール｜電子印鑑をPDFに貼り付け",
   tool,
-  longDescription: "PDFに電子印鑑を押すツール。印鑑画像アップロードまたは自動生成。ブラウザ処理で安全。",
+  longDescription: "PDFに電子印鑑を押すツール。印鑑画像アップロードまたは自動生成。ブラウザ処理で安全。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。",
   keywords: ["PDF 押印 無料", "電子印鑑 PDF", "PDF ハンコ", "PDF 印鑑 貼り付け", "電子印鑑 作成"],
 });
 

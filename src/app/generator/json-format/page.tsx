@@ -26,7 +26,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】JSON整形｜見やすくフォーマット",
   tool,
-  longDescription: "JSONデータを見やすく整形（フォーマット）。圧縮されたJSONを読みやすく展開、または圧縮します。",
+  longDescription: "JSONデータを見やすく整形（フォーマット）。圧縮されたJSONを読みやすく展開、または圧縮します。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。",
   keywords: ['JSON 整形', 'JSON フォーマット', 'JSON 変換', 'JSON 圧縮'],
 });
 

@@ -26,7 +26,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】正規表現テスト｜リアルタイム検証",
   tool,
-  longDescription: "正規表現のパターンをリアルタイムでテスト。マッチ結果やグループのハイライト表示に対応。",
+  longDescription: "正規表現のパターンをリアルタイムでテスト。マッチ結果やグループのハイライト表示に対応。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。",
   keywords: ['正規表現 テスト', 'regex テスト', '正規表現 確認', '正規表現 ツール'],
 });
 

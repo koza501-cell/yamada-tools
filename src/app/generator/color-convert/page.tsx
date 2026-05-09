@@ -26,7 +26,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】カラーコード変換｜HEX/RGB/HSL",
   tool,
-  longDescription: "HEX、RGB、HSLなどのカラーコードを相互変換。Webデザインやアプリ開発で必要な色コードを簡単に取得できます。",
+  longDescription: "HEX、RGB、HSLなどのカラーコードを相互変換。Webデザインやアプリ開発で必要な色コードを簡単に取得できます。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。",
   keywords: ['カラーコード変換', 'HEX RGB', '色 変換', 'カラーピッカー'],
 });
 

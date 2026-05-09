@@ -26,7 +26,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】画像→PDF変換｜JPG/PNGをPDFに",
   tool,
-  longDescription: "JPG、PNG、WebPなどの画像をPDFに変換。複数画像を1つのPDFにまとめることもできます。写真のPDF化やスキャン画像の整理に便利です。",
+  longDescription: "JPG、PNG、WebPなどの画像をPDFに変換。複数画像を1つのPDFにまとめることもできます。写真のPDF化やスキャン画像の整理に便利です。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。",
   keywords: ['画像 PDF変換', 'JPG PDF', 'PNG PDF', '写真 PDF', '画像をPDFに'],
 });
 

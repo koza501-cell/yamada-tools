@@ -26,7 +26,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "テキスト差分チェック【無料】2つの文章の違いを比較｜文書・コード対応｜登録不要",
   tool,
-  longDescription: "2つのテキストを比較して差分を表示。変更箇所、追加箇所、削除箇所がハイライトされます。",
+  longDescription: "2つのテキストを比較して差分を表示。変更箇所、追加箇所、削除箇所がハイライトされます。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。",
   keywords: ['テキスト 比較', '差分 比較', 'diff', '文章 比較'],
 });
 

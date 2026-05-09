@@ -26,7 +26,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】PDF→画像変換｜JPG/PNGに一括変換",
   tool,
-  longDescription: "PDFをJPGやPNG画像に変換。プレゼン資料への挿入、SNSでの共有、サムネイル作成など、画像として使いたい時に便利です。",
+  longDescription: "PDFをJPGやPNG画像に変換。プレゼン資料への挿入、SNSでの共有、サムネイル作成など、画像として使いたい時に便利です。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。",
   keywords: ['PDF 画像変換', 'PDF JPG', 'PDF PNG', 'PDF 画像化', 'PDFを画像に'],
 });
 

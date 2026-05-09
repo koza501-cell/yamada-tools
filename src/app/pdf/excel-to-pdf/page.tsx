@@ -26,7 +26,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】Excel→PDF変換｜xlsxをPDFに",
   tool,
-  longDescription: "ExcelファイルをPDFに変換。表やグラフのレイアウトを維持したまま、PDFとして保存できます。",
+  longDescription: "ExcelファイルをPDFに変換。表やグラフのレイアウトを維持したまま、PDFとして保存できます。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。",
   keywords: ['Excel PDF 変換', 'Excel PDF', 'xlsx PDF', 'エクセル PDF'],
 });
 

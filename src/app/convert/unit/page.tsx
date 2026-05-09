@@ -26,7 +26,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】単位変換｜長さ・重さ・面積を一発変換",
   tool,
-  longDescription: "長さ、重さ、面積、体積など様々な単位を相互変換。坪・畳など日本独自の単位にも対応しています。",
+  longDescription: "長さ、重さ、面積、体積など様々な単位を相互変換。坪・畳など日本独自の単位にも対応しています。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。",
   keywords: ['単位変換', '坪 平米', '単位 計算', '長さ 変換'],
 });
 

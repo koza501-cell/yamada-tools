@@ -26,7 +26,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】PDFパスワード設定｜閲覧・編集を制限",
   tool,
-  longDescription: "PDFにパスワードを設定して保護。機密文書や個人情報を含むファイルを安全に共有できます。開封パスワードと編集パスワードを別々に設定可能。",
+  longDescription: "PDFにパスワードを設定して保護。機密文書や個人情報を含むファイルを安全に共有できます。開封パスワードと編集パスワードを別々に設定可能。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。",
   keywords: ['PDF パスワード', 'PDF 暗号化', 'PDF 保護', 'PDF ロック', 'PDF セキュリティ'],
 });
 

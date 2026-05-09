@@ -26,7 +26,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】PDFページ番号追加｜自動ナンバリング",
   tool,
-  longDescription: "PDFにページ番号を追加。報告書や資料のページ管理に便利です。位置、フォント、開始番号などカスタマイズ可能。",
+  longDescription: "PDFにページ番号を追加。報告書や資料のページ管理に便利です。位置、フォント、開始番号などカスタマイズ可能。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。",
   keywords: ['PDF ページ番号', 'PDF ページ番号追加', 'PDF フッター', 'PDF ヘッダー'],
 });
 
