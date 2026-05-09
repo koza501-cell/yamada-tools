@@ -26,7 +26,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】Base64変換｜エンコード・デコード",
   tool,
-  longDescription: "テキストや画像をBase64にエンコード・デコード。メール添付やWebでのデータ埋め込みに使われる形式です。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。",
+  longDescription: "テキストや画像をBase64にエンコード・デコード。メール添付やWebでのデータ埋め込みに使われる形式です。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。freee・マネーフォワード等の会計ソフトとも連携可能。",
   keywords: ['Base64 変換', 'Base64 エンコード', 'Base64 デコード', 'Base64 画像'],
 });
 

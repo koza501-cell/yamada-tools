@@ -26,7 +26,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】ダミーテキスト生成｜Lorem Ipsum",
   tool,
-  longDescription: "デザインやレイアウト確認用のダミーテキストを生成。日本語と英語のLorem Ipsumに対応しています。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。",
+  longDescription: "デザインやレイアウト確認用のダミーテキストを生成。日本語と英語のLorem Ipsumに対応しています。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。freee・マネーフォワード等の会計ソフトとも連携可能。",
   keywords: ['ダミーテキスト', 'Lorem Ipsum', 'サンプルテキスト', '仮テキスト'],
 });
 

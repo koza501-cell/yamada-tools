@@ -26,7 +26,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】PDF→Excel変換｜表をxlsxに抽出",
   tool,
-  longDescription: "PDFの表データをExcelに変換。手入力の手間を省いて、データ分析や編集が可能になります。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。",
+  longDescription: "PDFの表データをExcelに変換。手入力の手間を省いて、データ分析や編集が可能になります。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。freee・マネーフォワード等の会計ソフトとも連携可能。",
   keywords: ['PDF Excel 変換', 'PDF Excel', 'PDF 表 抽出', 'PDF xlsx'],
 });
 

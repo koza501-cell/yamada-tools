@@ -26,7 +26,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】QRコード読み取り｜カメラ・画像から解析",
   tool,
-  longDescription: "カメラや画像からQRコードを読み取り。スマホがなくてもパソコンで読み取れます。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。",
+  longDescription: "カメラや画像からQRコードを読み取り。スマホがなくてもパソコンで読み取れます。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。freee・マネーフォワード等の会計ソフトとも連携可能。",
   keywords: ['QRコード 読み取り', 'QR 読取 PC', 'QRコード デコード', 'QR リーダー'],
 });
 
