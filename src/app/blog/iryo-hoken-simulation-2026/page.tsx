@@ -5,7 +5,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】医療保険は必要？不要？シミュレーションで判断する方法";
-const description = "医療保険の必要性を徹底解説。高額療養費制度との関係、年齢・家族構成別の判断基準、保険料の相場、選び方のポイント。シミュレーターで必要額を計算。";
+const description = "医療保険の必要性を徹底解説。高額療養費制度との関係、年齢・家族構成別の判断基準、保険料の相場、選び方のポイント。シミュレーターで必要額を計算。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("医療保険シミュレーション")}&type=blog&category=${encodeURIComponent("保険・医療")}`;
 
 export const metadata: Metadata = {

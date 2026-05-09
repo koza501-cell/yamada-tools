@@ -5,7 +5,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "外国人採用の費用・ビザ手続き完全ガイド【技術・人文・国際業務ビザ vs 特定技能】";
-const description = "外国人を採用するためのビザ費用を徹底解説。技術・人文・国際業務ビザと特定技能の違い、必要書類、行政書士費用まで。無料計算ツールで総費用を今すぐ試算。";
+const description = "外国人を採用するためのビザ費用を徹底解説。技術・人文・国際業務ビザと特定技能の違い、必要書類、行政書士費用まで。無料計算ツールで総費用を今すぐ試算。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("外国人採用の費用・ビザ手続き完全ガイド")}&type=blog&category=${encodeURIComponent("人事・外国人雇用")}`;
 
 export const metadata: Metadata = {

@@ -5,7 +5,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "飲食店の原価率の目安と計算方法・フードロス削減で利益を最大化【無料計算ツール付き】";
-const description = "飲食店の原価率の業態別目安（ラーメン・カフェ・居酒屋）と正しい計算方法を解説。フードロス削減で年間数百万円の利益改善も可能。無料ツールで今すぐ計算。";
+const description = "飲食店の原価率の業態別目安（ラーメン・カフェ・居酒屋）と正しい計算方法を解説。フードロス削減で年間数百万円の利益改善も可能。無料ツールで今すぐ計算。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("飲食店の原価率の目安と計算方法・フードロス削減")}&type=blog&category=${encodeURIComponent("飲食・経営")}`;
 
 export const metadata: Metadata = {

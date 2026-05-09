@@ -6,7 +6,7 @@ import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "住所を入れるだけで不動産情報が全部わかる！国土交通省データを簡単に使う方法";
 const description =
-  "用途地域・ハザードマップ・地価・取引価格・学区・人口推計を住所一つで確認。国土交通省「不動産情報ライブラリ」のデータを無料で簡単に使える6つのツールを紹介します。";
+  "用途地域・ハザードマップ・地価・取引価格・学区・人口推計を住所一つで確認。国土交通省「不動産情報ライブラリ」のデータを無料で簡単に使える6つのツールを紹介します。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent(
   "住所で不動産情報を一括確認"
 )}&type=blog&category=${encodeURIComponent("不動産")}`;

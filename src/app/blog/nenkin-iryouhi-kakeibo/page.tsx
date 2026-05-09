@@ -5,7 +5,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "年金受給額の計算・医療費控除・家計貯蓄シミュレーション完全ガイド【2025年版】";
-const description = "老齢年金の受給額を繰上げ・繰下げ別に計算。医療費控除の節税額、毎月の貯蓄目標額も無料ツールで一発計算。老後資金2000万円問題も解説。";
+const description = "老齢年金の受給額を繰上げ・繰下げ別に計算。医療費控除の節税額、毎月の貯蓄目標額も無料ツールで一発計算。老後資金2000万円問題も解説。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("年金受給額の計算・医療費控除・家計貯蓄シミュレーション")}&type=blog&category=${encodeURIComponent("老後・資産形成")}`;
 
 export const metadata: Metadata = {

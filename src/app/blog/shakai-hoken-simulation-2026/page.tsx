@@ -5,7 +5,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】社会保険料の計算方法｜年収別早見表と手取り額シミュレーション";
-const description = "社会保険料の計算方法を徹底解説。健康保険・厚生年金・雇用保険の料率、年収別の保険料早見表、標準報酬月額の決まり方。手取り額シミュレーターで計算。";
+const description = "社会保険料の計算方法を徹底解説。健康保険・厚生年金・雇用保険の料率、年収別の保険料早見表、標準報酬月額の決まり方。手取り額シミュレーターで計算。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("社会保険料の計算")}&type=blog&category=${encodeURIComponent("給与・社会保険")}`;
 
 export const metadata: Metadata = {

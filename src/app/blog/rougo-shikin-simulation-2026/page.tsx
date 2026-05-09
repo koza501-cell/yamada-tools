@@ -5,7 +5,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】老後資金はいくら必要？2000万円問題の真実とシミュレーション";
-const description = "老後資金の必要額を徹底シミュレーション。夫婦で月25万円なら65歳から30年で約9,000万円必要。年金・退職金を差し引いた不足額と、今から始める対策を解説。";
+const description = "老後資金の必要額を徹底シミュレーション。夫婦で月25万円なら65歳から30年で約9,000万円必要。年金・退職金を差し引いた不足額と、今から始める対策を解説。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("老後資金はいくら必要？")}&type=blog&category=${encodeURIComponent("資産運用・老後")}`;
 
 export const metadata: Metadata = {

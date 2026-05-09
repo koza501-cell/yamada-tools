@@ -5,7 +5,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】所得税の計算方法｜年収別早見表と手取り額シミュレーション";
-const description = "所得税の計算方法を徹底解説。年収300万〜1500万円の税額早見表、控除の種類と活用法、確定申告で還付を受ける方法。手取り額シミュレーターで試算。";
+const description = "所得税の計算方法を徹底解説。年収300万〜1500万円の税額早見表、控除の種類と活用法、確定申告で還付を受ける方法。手取り額シミュレーターで試算。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("所得税の計算方法")}&type=blog&category=${encodeURIComponent("税金・給与")}`;
 
 export const metadata: Metadata = {

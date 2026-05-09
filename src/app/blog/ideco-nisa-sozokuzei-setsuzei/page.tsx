@@ -5,7 +5,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "iDeCo・NISA・相続税・法人化の節税を完全解説【無料シミュレーターで計算】";
-const description = "iDeCoで年間最大27万円節税、NISAで非課税運用、相続税の基礎控除計算、法人化の損益分岐点まで。日本一わかりやすく解説。";
+const description = "iDeCoで年間最大27万円節税、NISAで非課税運用、相続税の基礎控除計算、法人化の損益分岐点まで。日本一わかりやすく解説。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("iDeCo・NISA・相続税・法人化の節税完全解説")}&type=blog&category=${encodeURIComponent("資産運用・節税")}`;
 
 export const metadata: Metadata = {

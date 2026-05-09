@@ -5,7 +5,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "酪農・畜産の飼料コスト計算と削減方法【飼料高騰対策2025年版】";
-const description = "乳牛・肉牛・豚・鶏の頭数別飼料費を無料計算。配合飼料は2020年比40%高騰。自給飼料・補助金活用による飼料費削減の具体策を解説。";
+const description = "乳牛・肉牛・豚・鶏の頭数別飼料費を無料計算。配合飼料は2020年比40%高騰。自給飼料・補助金活用による飼料費削減の具体策を解説。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("酪農・畜産の飼料コスト計算と削減方法")}&type=blog&category=${encodeURIComponent("農業・畜産")}`;
 
 export const metadata: Metadata = {

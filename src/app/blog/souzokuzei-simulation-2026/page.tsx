@@ -5,7 +5,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】相続税シミュレーション完全ガイド｜基礎控除・税率・計算方法を徹底解説";
-const description = "相続税の計算方法を初心者向けに解説。基礎控除3,000万円+600万円×法定相続人の数で非課税枠を計算。遺産1億円の場合の税額シミュレーションや節税対策も紹介。";
+const description = "相続税の計算方法を初心者向けに解説。基礎控除3,000万円+600万円×法定相続人の数で非課税枠を計算。遺産1億円の場合の税額シミュレーションや節税対策も紹介。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("【2026年最新】相続税シミュレーション完全ガイド")}&type=blog&category=${encodeURIComponent("相続・贈与")}`;
 
 export const metadata: Metadata = {

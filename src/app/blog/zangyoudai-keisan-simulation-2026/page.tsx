@@ -5,7 +5,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】残業代の計算方法｜時給換算・割増率・未払い請求まで完全解説";
-const description = "残業代の正しい計算方法を徹底解説。基本給からの時給換算、25%・35%・50%の割増率、深夜・休日の計算例。未払い残業代の請求方法も紹介。";
+const description = "残業代の正しい計算方法を徹底解説。基本給からの時給換算、25%・35%・50%の割増率、深夜・休日の計算例。未払い残業代の請求方法も紹介。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("残業代の計算方法")}&type=blog&category=${encodeURIComponent("給与・労働")}`;
 
 export const metadata: Metadata = {

@@ -5,7 +5,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "年収の壁・配偶者控除・扶養控除を完全解説【2025年・2026年改正対応】";
-const description = "103万円→123万円→136万円の壁の変化を図解。配偶者控除・扶養控除の節税額を無料計算。パートの損しない働き方を徹底解説。";
+const description = "103万円→123万円→136万円の壁の変化を図解。配偶者控除・扶養控除の節税額を無料計算。パートの損しない働き方を徹底解説。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("年収の壁・配偶者控除・扶養控除を完全解説")}&type=blog&category=${encodeURIComponent("税金・節税")}`;
 
 export const metadata: Metadata = {

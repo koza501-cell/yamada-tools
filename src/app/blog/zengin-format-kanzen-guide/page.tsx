@@ -6,7 +6,7 @@ import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "全銀フォーマット完全ガイド【2026年最新】経理担当者のための変換・作り方・エラー対処法";
 const description =
-  "全銀フォーマット（FBデータ）とは何か、CSVからの変換方法、Excelでの作り方、エラー対処法まで経理担当者向けに完全解説。無料ツールで登録不要・ブラウザだけで変換できる方法も紹介。";
+  "全銀フォーマット（FBデータ）とは何か、CSVからの変換方法、Excelでの作り方、エラー対処法まで経理担当者向けに完全解説。無料ツールで登録不要・ブラウザだけで変換できる方法も紹介。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent(
   "全銀フォーマット完全ガイド"
 )}&type=blog&category=${encodeURIComponent("ビジネス")}`;

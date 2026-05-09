@@ -5,7 +5,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】教育費シミュレーション｜幼稚園から大学までいくらかかる？";
-const description = "子どもの教育費を徹底解説。幼稚園・小学校・中学校・高校・大学の公立/私立別費用、学費の準備方法、教育費を抑えるコツ。シミュレーターで今すぐ計算。";
+const description = "子どもの教育費を徹底解説。幼稚園・小学校・中学校・高校・大学の公立/私立別費用、学費の準備方法、教育費を抑えるコツ。シミュレーターで今すぐ計算。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("教育費シミュレーション")}&type=blog&category=${encodeURIComponent("教育・子育て")}`;
 
 export const metadata: Metadata = {

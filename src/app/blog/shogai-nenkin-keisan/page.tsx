@@ -5,7 +5,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "障害年金はいくらもらえる？2026年度版・等級別受給額と計算方法を完全解説";
-const description = "障害基礎年金・障害厚生年金の2026年度受給額を等級別に解説。子の加算・配偶者加給年金も含めた合計額を無料計算ツールで今すぐ確認。";
+const description = "障害基礎年金・障害厚生年金の2026年度受給額を等級別に解説。子の加算・配偶者加給年金も含めた合計額を無料計算ツールで今すぐ確認。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("障害年金はいくらもらえる？2026年度版")}&type=blog&category=${encodeURIComponent("年金・社会保障")}`;
 
 export const metadata: Metadata = {

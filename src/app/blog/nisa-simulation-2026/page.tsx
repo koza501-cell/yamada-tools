@@ -5,7 +5,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】新NISAシミュレーション完全ガイド｜初心者でも5分でわかる積立計算";
-const description = "新NISAの積立シミュレーションを無料で計算。毎月1万円で20年後にいくら？つみたて投資枠と成長投資枠の違い、2026年税制改正のポイントを初心者向けにわかりやすく解説。";
+const description = "新NISAの積立シミュレーションを無料で計算。毎月1万円で20年後にいくら？つみたて投資枠と成長投資枠の違い、2026年税制改正のポイントを初心者向けにわかりやすく解説。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("【2026年最新】新NISAシミュレーション完全ガイド")}&type=blog&category=${encodeURIComponent("資産運用")}`;
 
 export const metadata: Metadata = {

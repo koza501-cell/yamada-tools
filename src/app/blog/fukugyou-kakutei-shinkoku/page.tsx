@@ -5,7 +5,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "副業の確定申告はいくらから必要？20万円ルール・住民税・経費を完全解説【2025年版】";
-const description = "会社員・サラリーマンの副業確定申告を完全解説。20万円ルール、住民税の落とし穴、会社バレ防止、経費の認め方まで。無料の判定ツールで今すぐチェック。";
+const description = "会社員・サラリーマンの副業確定申告を完全解説。20万円ルール、住民税の落とし穴、会社バレ防止、経費の認め方まで。無料の判定ツールで今すぐチェック。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("副業の確定申告はいくらから必要？")}&type=blog&category=${encodeURIComponent("税金・確定申告")}`;
 
 export const metadata: Metadata = {

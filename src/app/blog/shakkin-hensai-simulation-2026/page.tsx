@@ -5,7 +5,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】借金返済シミュレーション｜完済までの期間と総支払額を計算";
-const description = "借金返済の計画を徹底解説。毎月の返済額から完済期間を計算、繰り上げ返済の効果、おまとめローンのメリット・デメリット。シミュレーターで返済計画を立てる。";
+const description = "借金返済の計画を徹底解説。毎月の返済額から完済期間を計算、繰り上げ返済の効果、おまとめローンのメリット・デメリット。シミュレーターで返済計画を立てる。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("借金返済シミュレーション")}&type=blog&category=${encodeURIComponent("借金・ローン")}`;
 
 export const metadata: Metadata = {

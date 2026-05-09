@@ -5,7 +5,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "引越し費用の相場と賃貸vs購入を完全比較【2025年最新・無料計算ツール付き】";
-const description = "引越し費用の相場を時期・距離・人数別に解説。賃貸と購入どちらが得かも中立シミュレーターで比較。繁忙期を避けて50%節約する方法も。";
+const description = "引越し費用の相場を時期・距離・人数別に解説。賃貸と購入どちらが得かも中立シミュレーターで比較。繁忙期を避けて50%節約する方法も。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("引越し費用の相場と賃貸vs購入を完全比較")}&type=blog&category=${encodeURIComponent("生活・住まい")}`;
 
 export const metadata: Metadata = {

@@ -5,7 +5,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】副業の税金はいくら？確定申告が必要な条件と節税方法を解説";
-const description = "副業収入20万円以下でも住民税は申告必要？副業バレを防ぐ方法、経費で落とせるもの、確定申告のやり方まで完全解説。副業税金シミュレーターで試算。";
+const description = "副業収入20万円以下でも住民税は申告必要？副業バレを防ぐ方法、経費で落とせるもの、確定申告のやり方まで完全解説。副業税金シミュレーターで試算。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("副業の税金はいくら？")}&type=blog&category=${encodeURIComponent("副業・税金")}`;
 
 export const metadata: Metadata = {

@@ -5,7 +5,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】資格取得は投資になる？費用対効果（ROI）をシミュレーション";
-const description = "資格取得の費用対効果を徹底解説。取得費用・勉強時間と年収アップ効果、元が取れる資格・取れない資格、ROI計算方法。シミュレーターで投資回収期間を計算。";
+const description = "資格取得の費用対効果を徹底解説。取得費用・勉強時間と年収アップ効果、元が取れる資格・取れない資格、ROI計算方法。シミュレーターで投資回収期間を計算。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("資格取得ROI計算")}&type=blog&category=${encodeURIComponent("キャリア・資格")}`;
 
 export const metadata: Metadata = {

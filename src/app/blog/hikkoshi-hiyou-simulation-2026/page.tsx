@@ -5,7 +5,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】引越し費用の相場と計算方法｜単身・家族別シミュレーション";
-const description = "引越し費用の相場を徹底解説。単身・2人・家族の距離別料金表、初期費用の内訳、安く抑えるコツ。引越し費用シミュレーターで今すぐ計算。";
+const description = "引越し費用の相場を徹底解説。単身・2人・家族の距離別料金表、初期費用の内訳、安く抑えるコツ。引越し費用シミュレーターで今すぐ計算。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("引越し費用の相場")}&type=blog&category=${encodeURIComponent("不動産・引越し")}`;
 
 export const metadata: Metadata = {

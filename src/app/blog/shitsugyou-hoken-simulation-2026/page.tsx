@@ -5,7 +5,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】失業保険はいくらもらえる？受給額・期間シミュレーション完全ガイド";
-const description = "失業保険（雇用保険）の受給額を徹底解説。月給30万円なら日額約6,000円、総額約100万円が目安。自己都合・会社都合の違い、受給期間、手続き方法まで網羅。";
+const description = "失業保険（雇用保険）の受給額を徹底解説。月給30万円なら日額約6,000円、総額約100万円が目安。自己都合・会社都合の違い、受給期間、手続き方法まで網羅。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("失業保険はいくらもらえる？")}&type=blog&category=${encodeURIComponent("転職・キャリア")}`;
 
 export const metadata: Metadata = {

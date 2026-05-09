@@ -5,7 +5,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
 
 const title = "【2026年最新】退職金の計算方法と相場｜勤続年数別シミュレーション完全ガイド";
-const description = "退職金の計算方法を徹底解説。勤続20年で約800万円、30年で約1,500万円が目安。退職所得控除の計算、税金の仕組み、もらえない場合の対処法まで網羅。";
+const description = "退職金の計算方法を徹底解説。勤続20年で約800万円、30年で約1,500万円が目安。退職所得控除の計算、税金の仕組み、もらえない場合の対処法まで網羅。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("退職金の計算方法と相場")}&type=blog&category=${encodeURIComponent("転職・キャリア")}`;
 
 export const metadata: Metadata = {
