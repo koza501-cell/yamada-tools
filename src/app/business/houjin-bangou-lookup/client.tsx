@@ -1167,6 +1167,10 @@ export default function HoujinBangouLookupClient() {
               <span className="text-gray-600">法人番号の仕組みや活用方法は → </span>
               <Link href="/blog/houjin-bangou-complete-guide" className="text-kon hover:text-ai underline">📖 法人番号の完全ガイド</Link>
             </div>
+            <div>
+              <span className="text-gray-600">会社名と法人番号が一致するか確認したい場合は → </span>
+              <Link href="/business/houjin-cross-verify" className="text-kon hover:text-ai underline">🔍 法人名×番号 クロス検証</Link>
+            </div>
           </div>
         )}
 

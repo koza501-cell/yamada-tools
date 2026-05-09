@@ -3,12 +3,12 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "ビジネス・法人税計算ツール【無料】法人化・役員報酬・フリーランス税金",
-  description: "法人化シミュレーター・役員報酬最適化・法人税・フリーランス税金・簡易課税を無料で計算。登録不要・日本国内サーバー処理。",
+  description: "法人化シミュレーター・役員報酬最適化・法人税計算・フリーランス税金・簡易課税・補助金検索・法人番号検索・特定技能ビザ計算など中小企業・個人事業主向け業務ツールを無料提供。登録不要・日本国内サーバー処理・完全無料。",
   keywords: ["法人化 シミュレーター", "役員報酬 最適化", "法人税 計算", "フリーランス 税金", "簡易課税 計算"],
   alternates: { canonical: "https://yamada-tools.jp/business" },
   openGraph: {
     title: "ビジネス・法人税計算ツール【無料】法人化・役員報酬・フリーランス税金",
-    description: "法人化シミュレーター・役員報酬最適化・法人税・フリーランス税金・簡易課税を無料で計算。登録不要・日本国内サーバー処理。",
+    description: "法人化シミュレーター・役員報酬最適化・法人税計算・フリーランス税金・簡易課税・補助金検索・法人番号検索・特定技能ビザ計算など中小企業・個人事業主向け業務ツールを無料提供。登録不要・日本国内サーバー処理・完全無料。",
     url: "https://yamada-tools.jp/business",
     siteName: "山田ツール",
     locale: "ja_JP",
@@ -32,6 +32,7 @@ const businessTools = [
   { name: "フリーランス税金計算機", url: "/business/freelance-tax-calculator", description: "フリーランスの所得税・住民税・国保を一括計算", icon: "💻" },
   { name: "簡易課税計算機", url: "/business/simplified-tax-calculator", description: "簡易課税制度での消費税納税額を計算", icon: "📊" },
   { name: "法人番号検索", url: "/business/houjin-bangou-lookup", description: "13桁の法人番号から会社名・所在地・変更履歴を国税庁公式データで即取得", icon: "🔢" },
+  { name: "法人名×法人番号 クロス検証", url: "/business/houjin-cross-verify", description: "会社名と法人番号が一致するか国税庁公式データで照合。6段階判定・最大50件一括検証。KYC・取引先確認に。", icon: "🔍" },
 ];
 
 export default function BusinessPage() {

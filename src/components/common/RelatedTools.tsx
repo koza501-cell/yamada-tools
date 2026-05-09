@@ -165,7 +165,10 @@ const relatedToolsMap: Record<string, string[]> = {
   "shitsugyo-ritsu": ["heikin-nenshu", "jinko-suikei", "unemployment-calculator", "job-change-simulator", "salary-negotiation"],
 
   // Government API business tools (gBizINFO + Jグランツ)
-  "houjin-search": ["hojokin-active", "hojokin-history", "incorporation-simulator", "corporate-tax-calculator", "invoice", "invoice-validator"],
+  "houjin-cross-verify": ["houjin-bangou-lookup", "houjin-search", "invoice-validator", "invoice", "corporate-tax-calculator", "incorporation-simulator"],
+  "houjin-bangou-lookup": ["houjin-cross-verify", "houjin-search", "invoice-validator", "invoice", "corporate-tax-calculator", "incorporation-simulator"],
+  
+  "houjin-search": ["houjin-cross-verify", "houjin-bangou-lookup", "hojokin-active", "hojokin-history", "incorporation-simulator", "corporate-tax-calculator"],
   "hojokin-active": ["houjin-search", "hojokin-history", "incorporation-simulator", "freelance-tax-calculator"],
   "hojokin-history": ["houjin-search", "hojokin-active", "incorporation-simulator", "corporate-tax-calculator"],
 

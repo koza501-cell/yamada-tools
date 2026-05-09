@@ -232,6 +232,13 @@ function DetailDrawer({ corp, onClose }: DrawerProps) {
               </Link>
               {' '}も便利です
             </div>
+            <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              法人名と番号が一致するか確認したい場合は{' '}
+              <Link href="/business/houjin-cross-verify" className="text-kon underline hover:text-sakura">
+                クロス検証ツール
+              </Link>
+              {' '}が便利です
+            </div>
           </div>
 
           {loading && (

@@ -40,7 +40,8 @@ check-page.mjs
 check-prod.mjs
 test-results.json
 
-# Backup files (created during deployments)
+# Backup files
 *.backup-*
 *.backup
+*.bing-batch*-backup
 *.bak

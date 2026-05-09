@@ -945,6 +945,11 @@ export default function InvoiceBulkCheckerClient() {
                 🔢 法人番号検索（13桁で会社情報を確認）→
               </Link>
             </div>
+            <div className="mt-2">
+              <Link href="/business/houjin-cross-verify" className="text-kon hover:text-ai underline">
+                🔍 法人名×T番号 クロス検証（名前と番号の一致を確認）→
+              </Link>
+            </div>
           </div>
         )}
 

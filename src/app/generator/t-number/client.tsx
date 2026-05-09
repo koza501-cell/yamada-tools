@@ -423,6 +423,14 @@ export default function TNumberClient() {
               🔢 法人番号検索（13桁で会社詳細・変更履歴を確認）
             </Link>
 
+            <Link
+              href="/business/houjin-cross-verify"
+              className="flex items-center gap-2 text-sm text-kon hover:text-ai font-medium pt-1"
+            >
+              <Icons.ArrowRight />
+              🔍 法人名×T番号 クロス検証（請求書の名前と番号の一致を確認）
+            </Link>
+
             <p className="text-xs text-gray-400 italic leading-relaxed pt-2 border-t border-gray-100">
               このサービスは、国税庁適格請求書発行事業者公表システムのWeb-API機能を利用して取得した情報をもとに作成しているが、サービスの内容は国税庁によって保証されたものではない。
             </p>
