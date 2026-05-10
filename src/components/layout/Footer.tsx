@@ -12,6 +12,24 @@ export default function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 py-12">
+        <div className="mb-8 pb-8 border-b border-white/10">
+          <h3 className="text-lg font-bold mb-4">役割別ツール集</h3>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-2 text-sm">
+            {[
+              { slug: 'keieisha', name: '中小企業の経営者向け' },
+              { slug: 'freelance', name: '個人事業主・フリーランス向け' },
+              { slug: 'clinic', name: 'クリニック・士業向け' },
+              { slug: 'fudousan', name: '不動産・建設関係者向け' },
+              { slug: 'inshoku', name: '飲食店経営者向け' },
+              { slug: 'kazoku', name: '家族の生活・将来設計向け' },
+            ].map(r => (
+              <Link key={r.slug} href={`/for/${r.slug}`} className="text-gray-300 hover:text-sakura transition-colors">
+                {r.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           <div>
             <div className="flex items-center gap-3 mb-4">

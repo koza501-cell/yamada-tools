@@ -30,6 +30,45 @@ const calcMenu = {
 type MenuSection = { name: string; icon: string; href: string; tools: { name: string; href: string }[]; moreLink: string };
 type MenuConfig = { title: string; sections: MenuSection[] };
 
+function RoleDropdown() {
+  const [open, setOpen] = useState(false);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const show = () => { if (timer.current) clearTimeout(timer.current); setOpen(true); };
+  const hide = () => { timer.current = setTimeout(() => setOpen(false), 300); };
+  const roles = [
+    { slug: "keieisha", name: "中小企業の経営者向け" },
+    { slug: "freelance", name: "個人事業主・フリーランス向け" },
+    { slug: "clinic", name: "クリニック・士業向け" },
+    { slug: "fudousan", name: "不動産・建設関係者向け" },
+    { slug: "inshoku", name: "飲食店経営者向け" },
+    { slug: "kazoku", name: "家族の生活・将来設計向け" },
+  ];
+  return (
+    <>
+      <div className="self-stretch flex items-center" onMouseEnter={show} onMouseLeave={hide}>
+        <button className="flex items-center gap-1 px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px]">
+          <span>役割別</span>
+          <svg className={`w-4 h-4 transition-transform duration-200 ${open ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </div>
+      {open && (
+        <div className="fixed top-14 left-0 w-full bg-white dark:bg-gray-800 shadow-xl border-t border-gray-100 dark:border-gray-700 z-[1000]" onMouseEnter={show} onMouseLeave={hide}>
+          <div className="max-w-7xl mx-auto px-6 py-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+              {roles.map((r) => (
+                <Link key={r.slug} href={`/for/${r.slug}`} className="block px-4 py-3 rounded-lg border border-gray-100 dark:border-gray-700 hover:border-ai hover:text-ai text-kon dark:text-gray-200 text-sm font-medium transition-colors">
+                  {r.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
 function NavDropdown({ label, menu }: { label: string; menu: MenuConfig }) {
   const [open, setOpen] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -144,6 +183,7 @@ export default function Header() {
             </Link>
 
             <nav className="hidden lg:flex items-center gap-1">
+              <RoleDropdown />
               <NavDropdown label="ツール" menu={toolsMenu} />
               <NavDropdown label="計算・シミュレーター" menu={calcMenu} />
               <Link href="/blog" className="px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px] flex items-center">ブログ</Link>
@@ -217,6 +257,21 @@ export default function Header() {
               </button>
             </div>
             <nav className="flex-1 py-4">
+              <div className="mb-4">
+                <div className="px-4 py-2 text-xs text-white/60 uppercase tracking-wide">役割別</div>
+                {[
+                  { slug: "keieisha", name: "中小企業の経営者向け", icon: "🏢" },
+                  { slug: "freelance", name: "フリーランス向け", icon: "💼" },
+                  { slug: "clinic", name: "クリニック・士業向け", icon: "🏥" },
+                  { slug: "fudousan", name: "不動産・建設向け", icon: "🏠" },
+                  { slug: "inshoku", name: "飲食店向け", icon: "🍜" },
+                  { slug: "kazoku", name: "家族向け", icon: "👨‍👩‍👧" },
+                ].map((r) => (
+                  <Link key={r.slug} href={`/for/${r.slug}`} onClick={() => setIsMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 transition-colors">
+                    <span className="text-xl">{r.icon}</span><span className="font-medium">{r.name}</span>
+                  </Link>
+                ))}
+              </div>
               <div className="mb-4">
                 <div className="px-4 py-2 text-xs text-white/60 uppercase tracking-wide">ツール</div>
                 {toolsMenu.sections.map((s) => (

@@ -155,6 +155,34 @@ export default function Home() {
       </section>
 
       {/* ============================================================ */}
+      {/* IDENTITY TIER: 役割別ナビゲーション                          */}
+      {/* ============================================================ */}
+      <section className="py-12 bg-white dark:bg-gray-900">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-kon dark:text-white mb-2">役割別に探す</h2>
+            <p className="text-sm text-sumi dark:text-gray-400">お仕事や立場に合わせて、必要なツールをまとめています。</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              { slug: 'keieisha', name: '中小企業の経営者', desc: '法人検索・補助金・給与・請求書' },
+              { slug: 'freelance', name: '個人事業主・フリーランス', desc: '確定申告・インボイス・節税' },
+              { slug: 'clinic', name: 'クリニック・士業', desc: '開業・経営・労務・医療報酬' },
+              { slug: 'fudousan', name: '不動産・建設関係者', desc: '物件調査・経審・収益計算' },
+              { slug: 'inshoku', name: '飲食店経営者', desc: '原価率・栄養・補助金' },
+              { slug: 'kazoku', name: '家族の生活・将来設計', desc: '家計・住宅・教育・相続' },
+            ].map(r => (
+              <Link key={r.slug} href={`/for/${r.slug}`}
+                className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-ai dark:hover:border-ai rounded-xl p-5 transition-colors group">
+                <div className="font-semibold text-kon dark:text-white group-hover:text-ai text-lg mb-1">{r.name}向け</div>
+                <div className="text-sm text-sumi dark:text-gray-400">{r.desc}</div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
       {/* SECTION 2: Niche Bento Grid                                  */}
       {/* ============================================================ */}
       <NicheBentoSection />
