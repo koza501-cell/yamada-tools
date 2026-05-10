@@ -24,6 +24,7 @@ const calcMenu = {
     { name: "キャリア・転職", icon: "💼", href: "/career", tools: [{ name: "転職シミュレーター", href: "/career/job-change-simulator" },{ name: "残業代計算", href: "/career/overtime-calculator" },{ name: "失業保険計算", href: "/career/unemployment-calculator" },{ name: "🆕 失業率データ", href: "/career/shitsugyo-ritsu" }], moreLink: "/career" },
     { name: "不動産・ビジネス", icon: "🏢", href: "/realestate", tools: [{ name: "賃貸vs購入", href: "/realestate/rent-vs-buy" },{ name: "法人化シミュレーター", href: "/business/incorporation-simulator" },{ name: "🆕 法人検索", href: "/business/houjin-search" },{ name: "🆕 補助金検索", href: "/business/hojokin-active" }], moreLink: "/business" },
     { name: "健康・生活", icon: "🏥", href: "/health", tools: [{ name: "BMI計算", href: "/health/bmi-calculator" },{ name: "カロリー計算", href: "/health/calorie-calculator" },{ name: "借金返済シミュレーター", href: "/debt/repayment-simulator" },{ name: "🆕 平均寿命データ", href: "/health/heikin-jumyo" }], moreLink: "/health" },
+    { name: "教育・子育て", icon: "🎓", href: "/education", tools: [{ name: "教育費シミュレーター", href: "/education/education-cost-simulator" },{ name: "塾代計算機", href: "/education/cram-school-calculator" },{ name: "🆕 月謝計算機", href: "/education/juku-ryokin-calculator" },{ name: "🆕 保育料計算", href: "/health/hoikuryo-calculator" }], moreLink: "/education" },
   ],
 };
 type MenuSection = { name: string; icon: string; href: string; tools: { name: string; href: string }[]; moreLink: string };

@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { educationTools } from "@/config/tools";
 
 export const metadata: Metadata = {
   title: "教育費シミュレーター【無料】塾代・学費・偏差値・資格ROI計算",
@@ -25,12 +26,6 @@ const breadcrumbJsonLd = {
   ],
 };
 
-const educationTools = [
-  { name: "教育費シミュレーター", url: "/education/education-cost-simulator", description: "幼稚園から大学までの教育費総額を自動計算。公立・私立の費用比較に対応", icon: "🎓" },
-  { name: "塾代計算機", url: "/education/cram-school-calculator", description: "月謝・入会金・季節講習・交通費を含めた通塾期間の総費用を計算", icon: "📚" },
-  { name: "偏差値計算機", url: "/education/deviation-score", description: "点数・平均点・標準偏差から偏差値・上位%・大学合格難易度を表示", icon: "📊" },
-  { name: "資格取得ROI計算機", url: "/education/certification-roi", description: "受験料・教材費と年収アップ効果を比較。9資格のプリセット付き", icon: "🏆" },
-];
 
 export default function EducationPage() {
   return (
@@ -53,17 +48,17 @@ export default function EducationPage() {
               子育て・進学・キャリアアップに。教育投資の意思決定を支援する正確な計算ツール。
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {educationTools.map((tool) => (
+              {educationTools.filter((t) => t.available).map((tool) => (
                 <Link
-                  key={tool.url}
-                  href={tool.url}
+                  key={tool.path}
+                  href={tool.path}
                   className="group bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700"
                 >
                   <div className="p-6">
                     <div className="flex items-start gap-4">
                       <div className="text-4xl flex-shrink-0">{tool.icon}</div>
                       <div className="flex-1 min-w-0">
-                        <h2 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-ai transition-colors mb-2">{tool.name}</h2>
+                        <h2 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-ai transition-colors mb-2">{tool.nameJa}</h2>
                         <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{tool.description}</p>
                         <div className="mt-4">
                           <span className="text-sm text-ai font-medium group-hover:translate-x-1 transition-transform inline-block">ツールを使う →</span>

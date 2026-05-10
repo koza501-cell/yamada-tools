@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { businessTools } from "@/config/tools";
 
 export const metadata: Metadata = {
   title: "ビジネス・法人税計算ツール【無料】法人化・役員報酬・フリーランス税金",
@@ -25,15 +26,6 @@ const breadcrumbJsonLd = {
   ],
 };
 
-const businessTools = [
-  { name: "法人化シミュレーター", url: "/business/incorporation-simulator", description: "個人事業主vs法人の税金・社保を比較", icon: "🏢" },
-  { name: "役員報酬最適化ツール", url: "/business/director-salary-optimizer", description: "法人税・所得税・社保のバランスで最適な役員報酬を計算", icon: "👔" },
-  { name: "法人税計算機", url: "/business/corporate-tax-calculator", description: "所得金額から法人税・地方税を計算", icon: "🏦" },
-  { name: "フリーランス税金計算機", url: "/business/freelance-tax-calculator", description: "フリーランスの所得税・住民税・国保を一括計算", icon: "💻" },
-  { name: "簡易課税計算機", url: "/business/simplified-tax-calculator", description: "簡易課税制度での消費税納税額を計算", icon: "📊" },
-  { name: "法人番号検索", url: "/business/houjin-bangou-lookup", description: "13桁の法人番号から会社名・所在地・変更履歴を国税庁公式データで即取得", icon: "🔢" },
-  { name: "法人名×法人番号 クロス検証", url: "/business/houjin-cross-verify", description: "会社名と法人番号が一致するか国税庁公式データで照合。6段階判定・最大50件一括検証。KYC・取引先確認に。", icon: "🔍" },
-];
 
 export default function BusinessPage() {
   return (
@@ -56,17 +48,17 @@ export default function BusinessPage() {
               個人事業主・フリーランス・法人経営者に。日本の法人税制・社会保険に完全対応。
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {businessTools.map((tool) => (
+              {businessTools.filter((t) => t.available).map((tool) => (
                 <Link
-                  key={tool.url}
-                  href={tool.url}
+                  key={tool.path}
+                  href={tool.path}
                   className="group bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700"
                 >
                   <div className="p-6">
                     <div className="flex items-start gap-4">
                       <div className="text-4xl flex-shrink-0">{tool.icon}</div>
                       <div className="flex-1 min-w-0">
-                        <h2 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-ai transition-colors mb-2">{tool.name}</h2>
+                        <h2 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-ai transition-colors mb-2">{tool.nameJa}</h2>
                         <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{tool.description}</p>
                         <div className="mt-4">
                           <span className="text-sm text-ai font-medium group-hover:translate-x-1 transition-transform inline-block">ツールを使う →</span>
