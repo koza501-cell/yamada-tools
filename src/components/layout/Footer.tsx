@@ -130,7 +130,7 @@ export default function Footer() {
               </div>
               <div>
                 <Link href="/about/story" className="text-gray-300 hover:text-sakura transition-colors">
-                  開発者ストーリー
+                  運営ストーリー
                 </Link>
               </div>
               <div>

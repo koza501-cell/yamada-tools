@@ -1,130 +1,198 @@
-import { Metadata } from "next";
-import Link from "next/link";
+import { Metadata } from 'next';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: "開発者ストーリー | 山田ツールを作った理由",
-  description: "なぜ山田ツールを作ったのか。日本の中小企業やフリーランスの方々を支援するために、安全で使いやすい無料ツールを提供しています。",
-  alternates: {
-    canonical: 'https://yamada-tools.jp/about/story',
+  title: 'yamada-tools.jpができるまで｜運営ストーリー',
+  description:
+    '日本の中小企業・個人事業主の方が、安心して使える業務ツールを。yamada-tools.jpの運営方針と、これまでの歩みについてご紹介します。',
+  alternates: { canonical: 'https://yamada-tools.jp/about/story' },
+  openGraph: {
+    title: 'yamada-tools.jpができるまで｜運営ストーリー',
+    description:
+      '国内サーバー運営・公的データ活用・1人会社からでも使える価格帯。yamada-tools.jpが大切にしていること。',
+    type: 'website',
   },
 };
 
 export default function StoryPage() {
   return (
-    <div className="min-h-screen py-12 bg-gradient-to-b from-gray-50 to-white">
-      <div className="max-w-3xl mx-auto px-4">
-        
-        <header className="text-center mb-12">
-          <h1 className="text-3xl font-bold text-kon mb-4">山田ツールを作った理由</h1>
-          <p className="text-gray-600">〜 日本の中小企業とフリーランスを応援したい 〜</p>
-        </header>
+    <>
+      <section className='bg-gradient-to-b from-slate-900 to-kon py-12 border-b border-white/10'>
+        <div className='max-w-3xl mx-auto px-4'>
+          <p className='text-sm text-white/70 mb-2'>
+            ホーム / 運営情報 / yamada-tools.jpができるまで
+          </p>
+          <h1 className='text-3xl md:text-4xl font-bold text-white mb-3'>
+            yamada-tools.jpができるまで
+          </h1>
+          <p className='text-white/80 text-base'>
+            日本の中小企業・個人事業主の方が、安心して使える業務ツールを目指して。
+          </p>
+        </div>
+      </section>
 
-        <article className="space-y-8">
-          
-          <section className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-            <h2 className="text-xl font-bold text-kon mb-4 flex items-center gap-2">
-              <span>👋</span> はじめまして
-            </h2>
-            <p className="text-gray-700 leading-relaxed mb-4">
-              山田ツールをご利用いただき、ありがとうございます。
+      <main className='max-w-3xl mx-auto px-4 py-10 space-y-12'>
+        {/* なぜ作ったか */}
+        <section>
+          <h2 className='text-xl md:text-2xl font-bold text-gray-900 mb-4'>
+            なぜyamada-tools.jpを作ったのか
+          </h2>
+          <div className='space-y-4 text-sumi leading-relaxed'>
+            <p>
+              日本国内でビジネス向けのオンラインツールを使う際、多くの方が共通して感じている不安があります。
+              「入力したデータは、どこに保存されるのか」「海外のサーバーに送られて、どのように利用されるのか」――
+              特に、お客様の情報や経営に関わる数字を扱う場面では、見過ごせない疑問です。
             </p>
-            <p className="text-gray-700 leading-relaxed">
-              私たちは千葉県東金市に拠点を置く<strong>合同会社山田トレード</strong>です。
-              2024年に設立し、日本国内の中小企業やフリーランスの方々が日々の業務で直面する
-              「ちょっとした不便」を解決するためのツールを開発しています。
+            <p>
+              yamada-tools.jpは、こうした不安を取り除くために作りました。
+              <strong className='text-kon'>運営会社は日本国内の合同会社</strong>
+              であり、サーバーも日本国内に設置しています。
+              ツールで扱うデータは原則ブラウザ内で処理され、サーバー側に送られた一時データも
+              <strong className='text-kon'>60分後に自動削除</strong>
+              される設計です。
             </p>
-          </section>
+          </div>
+        </section>
 
-          <section className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-            <h2 className="text-xl font-bold text-kon mb-4 flex items-center gap-2">
-              <span>💭</span> きっかけ
-            </h2>
-            <p className="text-gray-700 leading-relaxed mb-4">
-              「PDFを圧縮したいだけなのに、なぜ海外のサイトにファイルをアップロードしなければならないのか？」
+        {/* もう一つの動機 */}
+        <section>
+          <h2 className='text-xl md:text-2xl font-bold text-gray-900 mb-4'>
+            1人の会社でも、迷わず使える価格帯で
+          </h2>
+          <div className='space-y-4 text-sumi leading-relaxed'>
+            <p>
+              業務効率化のSaaSは、月額数千円から数万円というものが少なくありません。
+              年間で見れば決して小さくない金額です。
+              「機能は便利そうだが、月数回しか使わないツールに毎月お金を払い続けるのは難しい」――
+              小さな会社・個人事業主・フリーランスの方からよく聞く声です。
             </p>
-            <p className="text-gray-700 leading-relaxed mb-4">
-              「請求書を作るだけなのに、なぜ月額料金を払わなければならないのか？」
+            <p>
+              そこでyamada-tools.jpは、
+              <strong className='text-kon'>基本機能はすべて無料</strong>
+              で公開し、毎日の業務でそのまま使えるかたちにしています。
+              さらに利用回数の多い方や法人のお客様向けに、
+              <strong className='text-kon'>1人会社からでも導入できる価格帯</strong>
+              のサブスクリプションをご用意しています。
+              これにより、サービスの質を維持しながら、必要な方に必要な分だけご利用いただけます。
             </p>
-            <p className="text-gray-700 leading-relaxed mb-4">
-              「会社の機密データを、どこにあるか分からないサーバーに送るのは不安...」
-            </p>
-            <p className="text-gray-700 leading-relaxed">
-              こうした声を、私たち自身も感じていました。日本語で、安心して使える、シンプルなツールがあればいいのに。
-              それが山田ツールを作ったきっかけです。
-            </p>
-          </section>
+          </div>
+        </section>
 
-          <section className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-            <h2 className="text-xl font-bold text-kon mb-4 flex items-center gap-2">
-              <span>🛡️</span> 私たちのこだわり
-            </h2>
-            <div className="space-y-6">
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center text-2xl">🇯🇵</div>
-                <div>
-                  <h3 className="font-bold text-gray-800 mb-1">日本国内サーバー完結</h3>
-                  <p className="text-gray-600 text-sm">アップロードされたファイルは日本国内のサーバーでのみ処理されます。海外にデータを送信することは一切ありません。</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-green-50 rounded-full flex items-center justify-center text-2xl">🗑️</div>
-                <div>
-                  <h3 className="font-bold text-gray-800 mb-1">60分で自動削除</h3>
-                  <p className="text-gray-600 text-sm">処理されたファイルは60分後に自動削除されます。私たちもお客様のデータを保持しません。</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center text-2xl">🆓</div>
-                <div>
-                  <h3 className="font-bold text-gray-800 mb-1">完全無料・登録不要</h3>
-                  <p className="text-gray-600 text-sm">すべてのツールは無料でご利用いただけます。メールアドレスの登録も不要です。</p>
-                </div>
-              </div>
+        {/* 大切にしていること */}
+        <section>
+          <h2 className='text-xl md:text-2xl font-bold text-gray-900 mb-6'>
+            大切にしていること
+          </h2>
+
+          <div className='space-y-4'>
+            <div className='bg-white border border-gray-200 rounded-xl p-5'>
+              <h3 className='font-semibold text-kon mb-2'>
+                公的データを正しく活用する
+              </h3>
+              <p className='text-sm text-sumi leading-relaxed'>
+                法人検索・補助金検索・不動産情報などのツールは、すべて経済産業省・国土交通省・国税庁などの公的APIを直接利用しています。
+                独自に集めた不確かな情報ではなく、信頼できる出典のあるデータのみを扱っています。
+              </p>
             </div>
-          </section>
 
-          <section className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-            <h2 className="text-xl font-bold text-kon mb-4 flex items-center gap-2">
-              <span>🎯</span> こんな方のために
-            </h2>
-            <ul className="space-y-3 text-gray-700">
-              <li className="flex items-start gap-2"><span className="text-kon mt-1">✓</span><span>経理や事務作業を一人でこなしている<strong>中小企業の経営者</strong>の方</span></li>
-              <li className="flex items-start gap-2"><span className="text-kon mt-1">✓</span><span>請求書や見積書を手軽に作りたい<strong>フリーランス</strong>の方</span></li>
-              <li className="flex items-start gap-2"><span className="text-kon mt-1">✓</span><span>PDFの編集や変換が必要な<strong>オフィスワーカー</strong>の方</span></li>
-              <li className="flex items-start gap-2"><span className="text-kon mt-1">✓</span><span>日本で生活・仕事をしている<strong>外国人</strong>の方</span></li>
-            </ul>
-          </section>
-
-          <section className="bg-gradient-to-r from-kon to-ai rounded-2xl p-8 text-white">
-            <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-              <span>🚀</span> これからの目標
-            </h2>
-            <p className="leading-relaxed mb-4 opacity-95">
-              現在71種類のツールを提供していますが、これで終わりではありません。
-              皆様からのフィードバックをもとに、本当に必要とされているツールを追加していきます。
-            </p>
-            <p className="leading-relaxed opacity-95">
-              「こんなツールがあったらいいな」というご要望があれば、ぜひお聞かせください。
-              日本の働く人々の「小さな不便」を、一つずつ解決していくことが私たちの使命です。
-            </p>
-          </section>
-
-          <section className="text-center">
-            <p className="text-gray-600 mb-6">山田ツールをご利用いただき、本当にありがとうございます。</p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/" className="px-6 py-3 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors">ツールを使ってみる</Link>
-              <Link href="/about/company" className="px-6 py-3 border-2 border-kon text-kon rounded-xl font-bold hover:bg-kon/5 transition-colors">会社概要</Link>
+            <div className='bg-white border border-gray-200 rounded-xl p-5'>
+              <h3 className='font-semibold text-kon mb-2'>
+                日本のユーザーのために最適化する
+              </h3>
+              <p className='text-sm text-sumi leading-relaxed'>
+                日本の法律・制度・業界慣習に合わせた設計を徹底しています。
+                住宅宿泊事業法、貨物自動車運送事業の標準的運賃、年収の壁、社会保険料など、最新の制度に準拠した計算結果を提供します。
+              </p>
             </div>
-          </section>
 
-        </article>
+            <div className='bg-white border border-gray-200 rounded-xl p-5'>
+              <h3 className='font-semibold text-kon mb-2'>
+                派手さよりも、毎日の業務で本当に役立つこと
+              </h3>
+              <p className='text-sm text-sumi leading-relaxed'>
+                話題性のある機能を追加するのではなく、実際の業務で繰り返し使うツールを丁寧に作ることを優先しています。
+                請求書作成、PDF処理、計算機など、地味でも欠かせない機能の品質に時間をかけています。
+              </p>
+            </div>
+          </div>
+        </section>
 
-        <footer className="mt-12 text-center text-gray-500 text-sm">
-          <p>合同会社山田トレード</p>
-          <p>千葉県東金市台方937-13</p>
-        </footer>
+        {/* 運営者の背景 */}
+        <section>
+          <h2 className='text-xl md:text-2xl font-bold text-gray-900 mb-4'>
+            運営者の背景
+          </h2>
+          <div className='space-y-4 text-sumi leading-relaxed'>
+            <p>
+              yamada-tools.jpを運営する合同会社山田トレードの代表は、
+              <strong className='text-kon'>1994年から学生時代にコンピュータと出会い</strong>、以来30年にわたり独学と実務を通じてIT分野の技術変化を見続けてきました。
+              代表自身が日本に長く居住し、日本のビジネス慣習・法制度・利用者の感覚を理解した上で、サービス設計を行っています。
+            </p>
+            <p>
+              「日本の現場で本当に必要とされているもの」を、技術と運営の両面で形にすることが、当社の役割だと考えています。
+            </p>
+          </div>
+        </section>
 
-      </div>
-    </div>
+        {/* これから */}
+        <section>
+          <h2 className='text-xl md:text-2xl font-bold text-gray-900 mb-4'>
+            これからの目標
+          </h2>
+          <div className='space-y-4 text-sumi leading-relaxed'>
+            <p>
+              yamada-tools.jpは、
+              <strong className='text-kon'>
+                日本でもっとも信頼される業務ツールサイトの一つ
+              </strong>
+              になることを目指しています。
+            </p>
+            <p>
+              そのために、(1) 公的データに基づく信頼性の高い情報提供、(2)
+              利用者の不安を取り除く運営体制、(3)
+              小さな会社からでも導入できる適正な価格、この3点を継続的に強化していきます。
+            </p>
+            <p className='text-sm text-gin'>
+              運営はGoogle AdSenseおよびサブスクリプションのご利用料で支えられています。広告のない快適な利用環境をご希望の方は、有料プランもご検討いただけます。
+            </p>
+          </div>
+        </section>
+
+        {/* 関連リンク */}
+        <section className='bg-gray-50 border border-gray-200 rounded-xl p-6'>
+          <h2 className='text-lg font-bold text-gray-900 mb-4'>関連情報</h2>
+          <ul className='space-y-2 text-sm'>
+            <li>
+              <Link
+                href='/about/numbers'
+                className='text-kon hover:text-ai underline underline-offset-2'
+              >
+                数字で見るyamada-tools.jp（運営情報・データ出典）
+              </Link>
+            </li>
+            <li>
+              <Link
+                href='/security'
+                className='text-kon hover:text-ai underline underline-offset-2'
+              >
+                セキュリティとデータの取り扱い
+              </Link>
+            </li>
+            <li>
+              <Link
+                href='/privacy'
+                className='text-kon hover:text-ai underline underline-offset-2'
+              >
+                プライバシーポリシー
+              </Link>
+            </li>
+          </ul>
+        </section>
+
+        <section className='text-xs text-gin border-t border-gray-200 pt-6'>
+          <p>合同会社山田トレード ／ 千葉県東金市 ／ 2024年設立</p>
+        </section>
+      </main>
+    </>
   );
 }
