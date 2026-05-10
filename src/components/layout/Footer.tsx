@@ -154,6 +154,11 @@ export default function Footer() {
                 </Link>
               </div>
               <div>
+                <Link href="/security" className="text-gray-300 hover:text-sakura transition-colors">
+                  セキュリティ
+                </Link>
+              </div>
+              <div>
                 <Link href="/legal/tokushoho" className="text-gray-300 hover:text-sakura transition-colors">
                   特定商取引法に基づく表記
                 </Link>
