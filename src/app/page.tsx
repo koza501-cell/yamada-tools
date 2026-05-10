@@ -120,6 +120,12 @@ export default function Home() {
             </span>
           </div>
 
+          <div className="mb-3 text-center">
+            <Link href="/about/numbers" className="text-xs text-kon hover:text-ai underline underline-offset-2">
+              数字で見るyamada-tools.jp →
+            </Link>
+          </div>
+
           <HeroAnimation />
 
           <div className="mb-3 flex justify-center">

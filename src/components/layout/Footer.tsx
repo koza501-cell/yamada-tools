@@ -119,6 +119,11 @@ export default function Footer() {
                 </Link>
               </div>
               <div>
+                <Link href="/about/numbers" className="text-gray-300 hover:text-sakura transition-colors">
+                  数字で見るyamada-tools.jp
+                </Link>
+              </div>
+              <div>
                 <Link href="/about/faq" className="text-gray-300 hover:text-sakura transition-colors">
                   よくある質問（FAQ）
                 </Link>
