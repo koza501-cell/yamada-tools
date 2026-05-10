@@ -175,7 +175,7 @@ const relatedToolsMap: Record<string, string[]> = {
   // Utility duplicate
   "unit-converter-utility": ["unit-converter", "tsubo-converter", "wareki-seireki"],
   // ===== 不動産情報ツール =====
-  "yoto-chiiki-checker": ["hazard-checker", "land-price", "transaction-price", "school-district"],
+  "yoto-chiiki-checker": ["hazard-checker", "land-price", "transaction-price", "population"],
   "hazard-checker": ["yoto-chiiki-checker", "land-price", "transaction-price", "population"],
   "land-price": ["transaction-price", "yoto-chiiki-checker", "hazard-checker", "population"],
   "transaction-price": ["land-price", "yoto-chiiki-checker", "hazard-checker", "school-district"],
