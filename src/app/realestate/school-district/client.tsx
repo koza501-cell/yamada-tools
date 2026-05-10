@@ -4,6 +4,7 @@ import RelatedTools from "@/components/common/RelatedTools";
 import { getToolById } from "@/config/tools";
 
 import { useState } from "react";
+import { FAQSection } from "@/components/FAQSection";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "/api-backend";
 
@@ -59,6 +60,16 @@ function SchoolCard({ icon, label, school, color }: {
     </div>
   );
 }
+
+
+const faqItems = [
+  { question: "学区とは何ですか？", answer: "公立小学校・中学校に通う際に、住所によって指定される通学区域のことです。引越しや不動産購入の際に重要な情報です。" },
+  { question: "学区は変わることがありますか？", answer: "はい。市区町村の教育委員会の判断により、学区は変更される場合があります。最新情報は必ず各市区町村の教育委員会にご確認ください。" },
+  { question: "私立学校の学区は調べられますか？", answer: "このツールは公立学校の学区情報のみ対応しています。私立学校は通常学区制を採用していないため、各学校に直接お問い合わせください。" },
+  { question: "学区データが見つからない場合は？", answer: "一部の自治体では学区データが国土交通省のデータベースに未登録の場合があります。お住まいの市区町村の教育委員会に直接お問い合わせください。" },
+  { question: "このツールのデータはどこから来ていますか？", answer: "国土交通省「不動産情報ライブラリ API（XKT004・XKT005）」の小学校区・中学校区データを使用しています。参考情報としてご活用ください。" },
+  { question: "無料で使えますか？", answer: "はい、山田ツール（yamada-tools.jp）の学区チェッカーは完全無料・登録不要でご利用いただけます。引越し先の候補を複数調べる際にも費用はかかりません。" },
+];
 
 export default function SchoolDistrictClient() {
   const tool = getToolById("school-district");
@@ -213,22 +224,8 @@ export default function SchoolDistrictClient() {
           </div>
         )}
 
-        <div className="mt-10 print:hidden">
-          <h2 className="text-lg font-bold text-gray-800 mb-4">よくある質問</h2>
-          <div className="space-y-3">
-            {[
-              { q: "学区とは何ですか？", a: "公立小学校・中学校に通う際に、住所によって指定される通学区域のことです。引越しや不動産購入の際に重要な情報です。" },
-              { q: "学区は変わることがありますか？", a: "はい。市区町村の教育委員会の判断により、学区は変更される場合があります。最新情報は必ず各市区町村の教育委員会にご確認ください。" },
-              { q: "私立学校の学区は調べられますか？", a: "このツールは公立学校の学区情報のみ対応しています。私立学校は通常学区制を採用していないため、各学校に直接お問い合わせください。" },
-              { q: "学区データが見つからない場合は？", a: "一部の自治体では学区データが国土交通省のデータベースに未登録の場合があります。お住まいの市区町村の教育委員会に直接お問い合わせください。" },
-              { q: "このツールのデータはどこから来ていますか？", a: "国土交通省「不動産情報ライブラリ API（XKT004・XKT005）」の小学校区・中学校区データを使用しています。参考情報としてご活用ください。" },
-            ].map(({ q, a }, i) => (
-              <details key={i} className="border border-gray-200 rounded-lg">
-                <summary className="px-4 py-3 font-medium text-gray-800 cursor-pointer hover:bg-gray-50 text-sm">Q. {q}</summary>
-                <p className="px-4 pb-4 text-sm text-gray-600 leading-relaxed">{a}</p>
-              </details>
-            ))}
-          </div>
+        <div className="print:hidden">
+          <FAQSection faq={faqItems} />
         </div>
 
         {tool && <RelatedTools currentTool={tool} maxItems={4} />}

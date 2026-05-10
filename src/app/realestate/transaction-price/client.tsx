@@ -4,6 +4,7 @@ import RelatedTools from "@/components/common/RelatedTools";
 import { getToolById } from "@/config/tools";
 
 import { useState } from "react";
+import { FAQSection } from "@/components/FAQSection";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "/api-backend";
 
@@ -47,6 +48,16 @@ interface TransactionResult {
   type_stats: Stats;
   recent_transactions: Transaction[];
 }
+
+
+const faqItems = [
+  { question: "取引価格情報とは何ですか？", answer: "国土交通省が収集・公表している実際の不動産売買取引価格のデータです。土地・建物・マンションなどの実取引に基づくため、売買価格の参考として活用できます。" },
+  { question: "地価公示との違いは？", answer: "地価公示は国が定める基準地価（公示価格）であり、実際の取引価格とは異なる場合があります。取引価格情報は実際に売買された価格のため、より市場実態を反映しています。" },
+  { question: "データはどの期間のものですか？", answer: "直近約1.5年分（2024年第1四半期〜2025年第2四半期）の取引データを表示しています。" },
+  { question: "取引件数が少ない場合は？", answer: "地方や農村部など取引が少ないエリアではデータが見つからない場合があります。より広い範囲で検索するか、市区町村名のみで検索をお試しください。" },
+  { question: "このツールのデータはどこから来ていますか？", answer: "国土交通省「不動産情報ライブラリ API（XPT001）」の不動産取引価格情報を使用しています。参考情報としてご活用ください。" },
+  { question: "無料で使えますか？", answer: "はい、山田ツール（yamada-tools.jp）の不動産取引価格チェッカーは完全無料・登録不要でご利用いただけます。購入・売却価格の相場確認にお役立てください。" },
+];
 
 export default function TransactionPriceClient() {
   const tool = getToolById("transaction-price");
@@ -272,22 +283,8 @@ export default function TransactionPriceClient() {
           </div>
         )}
 
-        <div className="mt-10 print:hidden">
-          <h2 className="text-lg font-bold text-gray-800 mb-4">よくある質問</h2>
-          <div className="space-y-3">
-            {[
-              { q: "取引価格情報とは何ですか？", a: "国土交通省が収集・公表している実際の不動産売買取引価格のデータです。土地・建物・マンションなどの実取引に基づくため、売買価格の参考として活用できます。" },
-              { q: "地価公示との違いは？", a: "地価公示は国が定める基準地価（公示価格）であり、実際の取引価格とは異なる場合があります。取引価格情報は実際に売買された価格のため、より市場実態を反映しています。" },
-              { q: "データはどの期間のものですか？", a: "直近約1.5年分（2024年第1四半期〜2025年第2四半期）の取引データを表示しています。" },
-              { q: "取引件数が少ない場合は？", a: "地方や農村部など取引が少ないエリアではデータが見つからない場合があります。より広い範囲で検索するか、市区町村名のみで検索をお試しください。" },
-              { q: "このツールのデータはどこから来ていますか？", a: "国土交通省「不動産情報ライブラリ API（XPT001）」の不動産取引価格情報を使用しています。参考情報としてご活用ください。" },
-            ].map(({ q, a }, i) => (
-              <details key={i} className="border border-gray-200 rounded-lg">
-                <summary className="px-4 py-3 font-medium text-gray-800 cursor-pointer hover:bg-gray-50 text-sm">Q. {q}</summary>
-                <p className="px-4 pb-4 text-sm text-gray-600 leading-relaxed">{a}</p>
-              </details>
-            ))}
-          </div>
+        <div className="print:hidden">
+          <FAQSection faq={faqItems} />
         </div>
 
         {tool && <RelatedTools currentTool={tool} maxItems={4} />}

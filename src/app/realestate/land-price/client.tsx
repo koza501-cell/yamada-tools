@@ -4,6 +4,7 @@ import RelatedTools from "@/components/common/RelatedTools";
 import { getToolById } from "@/config/tools";
 
 import { useState } from "react";
+import { FAQSection } from "@/components/FAQSection";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "/api-backend";
 
@@ -48,6 +49,16 @@ interface LandPriceResult {
     radius_km: number;
   };
 }
+
+
+const faqItems = [
+  { question: "地価公示とは何ですか？", answer: "国土交通省が毎年1月1日時点の土地価格を公示するものです。相続税・固定資産税の算定基準や、不動産売買の参考価格として使われます。全国約26,000地点で調査されています。" },
+  { question: "地価公示と実際の売買価格は違いますか？", answer: "地価公示は公的な基準地価であり、実際の売買価格とは異なる場合があります。売買価格は需給や個別条件によって変動します。あくまで参考値としてご利用ください。" },
+  { question: "前年比変動率の見方は？", answer: "プラスは地価上昇、マイナスは地価下落を示します。例えば+8.3%なら前年より8.3%土地価格が上がったことを意味します。" },
+  { question: "地価データが見つからない場合は？", answer: "地価公示地点は全国に約26,000点あり、すべての住所に近接しているわけではありません。農村部や山間部では地点が少ない場合があります。" },
+  { question: "このツールのデータはどこから来ていますか？", answer: "国土交通省「不動産情報ライブラリ API（XPT002）」の地価公示・地価調査データを使用しています。参考情報としてご活用ください。" },
+  { question: "無料で使えますか？", answer: "はい、山田ツール（yamada-tools.jp）の地価チェッカーは完全無料・登録不要でご利用いただけます。内見時や購入検討時に手軽に周辺地価を確認できます。" },
+];
 
 export default function LandPriceClient() {
   const tool = getToolById("land-price");
@@ -265,22 +276,8 @@ export default function LandPriceClient() {
           </div>
         )}
 
-        <div className="mt-10 print:hidden">
-          <h2 className="text-lg font-bold text-gray-800 mb-4">よくある質問</h2>
-          <div className="space-y-3">
-            {[
-              { q: "地価公示とは何ですか？", a: "国土交通省が毎年1月1日時点の土地価格を公示するものです。相続税・固定資産税の算定基準や、不動産売買の参考価格として使われます。全国約26,000地点で調査されています。" },
-              { q: "地価公示と実際の売買価格は違いますか？", a: "地価公示は公的な基準地価であり、実際の売買価格とは異なる場合があります。売買価格は需給や個別条件によって変動します。あくまで参考値としてご利用ください。" },
-              { q: "前年比変動率の見方は？", a: "プラスは地価上昇、マイナスは地価下落を示します。例えば+8.3%なら前年より8.3%土地価格が上がったことを意味します。" },
-              { q: "地価データが見つからない場合は？", a: "地価公示地点は全国に約26,000点あり、すべての住所に近接しているわけではありません。農村部や山間部では地点が少ない場合があります。" },
-              { q: "このツールのデータはどこから来ていますか？", a: "国土交通省「不動産情報ライブラリ API（XPT002）」の地価公示・地価調査データを使用しています。参考情報としてご活用ください。" },
-            ].map(({ q, a }, i) => (
-              <details key={i} className="border border-gray-200 rounded-lg">
-                <summary className="px-4 py-3 font-medium text-gray-800 cursor-pointer hover:bg-gray-50 text-sm">Q. {q}</summary>
-                <p className="px-4 pb-4 text-sm text-gray-600 leading-relaxed">{a}</p>
-              </details>
-            ))}
-          </div>
+        <div className="print:hidden">
+          <FAQSection faq={faqItems} />
         </div>
 
         {tool && <RelatedTools currentTool={tool} maxItems={4} />}
