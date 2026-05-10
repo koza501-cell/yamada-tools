@@ -19,7 +19,7 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
         <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-          お名前 <span className="text-red-500">*</span>
+          お名前 <span className="text-danger">*</span>
         </label>
         <input
           type="text"
@@ -34,7 +34,7 @@ export default function ContactForm() {
 
       <div>
         <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-          メールアドレス <span className="text-red-500">*</span>
+          メールアドレス <span className="text-danger">*</span>
         </label>
         <input
           type="email"
@@ -67,7 +67,7 @@ export default function ContactForm() {
 
       <div>
         <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-          メッセージ <span className="text-red-500">*</span>
+          メッセージ <span className="text-danger">*</span>
         </label>
         <textarea
           id="message"

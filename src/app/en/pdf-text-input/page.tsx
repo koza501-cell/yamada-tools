@@ -86,11 +86,11 @@ export default function EnglishPdfTextPage() {
         {/* Breadcrumb */}
         <nav className="mb-8 text-sm text-gray-500">
           <ol className="flex items-center gap-2">
-            <li><Link href="/" className="hover:text-orange-600">Home</Link></li>
+            <li><Link href="/" className="hover:text-ai">Home</Link></li>
             <li>/</li>
-            <li><Link href="/pdf" className="hover:text-orange-600">PDF Tools</Link></li>
+            <li><Link href="/pdf" className="hover:text-ai">PDF Tools</Link></li>
             <li>/</li>
-            <li className="text-orange-600">Add Text to PDF</li>
+            <li className="text-kon">Add Text to PDF</li>
           </ol>
         </nav>
 
@@ -103,7 +103,7 @@ export default function EnglishPdfTextPage() {
             Type on any PDF directly in your browser. Add text, electronic Japanese stamps, and auto-fill dates.
             Fill in application forms, contracts, and resumes — completely free with zero server upload.
           </p>
-          <Link href="/pdf/text-input" className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-4 rounded-xl text-lg transition-colors shadow-lg">
+          <Link href="/pdf/text-input" className="inline-block bg-kon hover:bg-ai text-white font-bold px-8 py-4 rounded-xl text-lg transition-colors shadow-lg">
             Open PDF Editor (Free) →
           </Link>
           <p className="text-xs text-gray-400 mt-3">Japanese UI • Tool opens in Japanese — functionality is the same</p>
@@ -141,15 +141,15 @@ export default function EnglishPdfTextPage() {
               { step: "2", title: "Click & Type", desc: "Click the 'Add Text' button, then click anywhere on the PDF. Type your text, adjust font size and color." },
               { step: "3", title: "Download", desc: "Click the 'Download' button. Your edited PDF is generated locally and saved directly to your device." },
             ].map((s) => (
-              <div key={s.step} className="text-center p-6 bg-orange-50 dark:bg-gray-800 rounded-xl">
-                <div className="w-12 h-12 bg-orange-500 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">{s.step}</div>
+              <div key={s.step} className="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
+                <div className="w-12 h-12 bg-kon text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">{s.step}</div>
                 <h3 className="font-bold text-gray-800 dark:text-white mb-2">{s.title}</h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400">{s.desc}</p>
               </div>
             ))}
           </div>
           <div className="text-center mt-8">
-            <Link href="/pdf/text-input" className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-3 rounded-xl transition-colors">
+            <Link href="/pdf/text-input" className="inline-block bg-kon hover:bg-ai text-white font-bold px-8 py-3 rounded-xl transition-colors">
               Start Editing PDF Now — Free →
             </Link>
           </div>
@@ -161,9 +161,9 @@ export default function EnglishPdfTextPage() {
           <div className="overflow-x-auto rounded-xl shadow-sm">
             <table className="w-full text-sm border-collapse bg-white dark:bg-gray-800">
               <thead>
-                <tr className="bg-orange-50 dark:bg-gray-700">
+                <tr className="bg-gray-50 dark:bg-gray-700">
                   <th className="border border-gray-200 dark:border-gray-600 px-4 py-3 text-left font-bold">Feature</th>
-                  <th className="border border-gray-200 dark:border-gray-600 px-4 py-3 text-center font-bold text-orange-600">Yamada Tools</th>
+                  <th className="border border-gray-200 dark:border-gray-600 px-4 py-3 text-center font-bold text-kon">Yamada Tools</th>
                   <th className="border border-gray-200 dark:border-gray-600 px-4 py-3 text-center text-gray-600 font-bold">Adobe Acrobat Online</th>
                   <th className="border border-gray-200 dark:border-gray-600 px-4 py-3 text-center text-gray-600 font-bold">iLovePDF</th>
                   <th className="border border-gray-200 dark:border-gray-600 px-4 py-3 text-center text-gray-600 font-bold">PDF24</th>
@@ -181,7 +181,7 @@ export default function EnglishPdfTextPage() {
                   <tr key={i} className={i % 2 === 0 ? "bg-white dark:bg-gray-800" : "bg-gray-50 dark:bg-gray-750"}>
                     <td className="border border-gray-200 dark:border-gray-600 px-4 py-3 font-medium">{f}</td>
                     {cols.map((c, j) => (
-                      <td key={j} className={`border border-gray-200 dark:border-gray-600 px-4 py-3 text-center ${j === 0 ? "font-bold text-orange-600" : "text-gray-600"}`}>{c}</td>
+                      <td key={j} className={`border border-gray-200 dark:border-gray-600 px-4 py-3 text-center ${j === 0 ? "font-bold text-kon" : "text-gray-600"}`}>{c}</td>
                     ))}
                   </tr>
                 ))}
@@ -191,7 +191,7 @@ export default function EnglishPdfTextPage() {
         </section>
 
         {/* Security */}
-        <section className="mb-16 bg-blue-50 dark:bg-gray-800 rounded-2xl p-8">
+        <section className="mb-16 bg-gray-50 dark:bg-gray-800 rounded-2xl p-8">
           <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">🔒 Privacy & Security — Your File Never Leaves Your Browser</h2>
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
             All PDF processing in Yamada Tools runs entirely client-side using <strong>PDF.js (Mozilla)</strong> and <strong>pdf-lib</strong> — two trusted open-source libraries. Your PDF file is loaded directly into browser memory. No data is transmitted to any server at any point.
@@ -218,10 +218,10 @@ export default function EnglishPdfTextPage() {
         </section>
 
         {/* CTA */}
-        <section className="text-center bg-orange-50 dark:bg-gray-800 rounded-2xl p-10">
+        <section className="text-center bg-gray-50 dark:bg-gray-800 rounded-2xl p-10">
           <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">Ready to Fill in Your PDF?</h2>
           <p className="text-gray-600 dark:text-gray-400 mb-6">Free. No sign-up. Your file stays in your browser.</p>
-          <Link href="/pdf/text-input" className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold px-10 py-4 rounded-xl text-lg transition-colors shadow-lg">
+          <Link href="/pdf/text-input" className="inline-block bg-kon hover:bg-ai text-white font-bold px-10 py-4 rounded-xl text-lg transition-colors shadow-lg">
             Open Free PDF Editor →
           </Link>
           <p className="text-xs text-gray-400 mt-4">Note: The PDF editor interface is in Japanese. All features work the same regardless of language.</p>

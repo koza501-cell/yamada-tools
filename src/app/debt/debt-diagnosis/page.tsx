@@ -118,9 +118,9 @@ function diagnose(answers: string[]): DiagnosisResult {
     return {
       type: "緊急相談",
       icon: "🚨",
-      colorBg: "bg-red-50",
-      colorText: "text-red-700",
-      colorBorder: "border-red-400",
+      colorBg: "bg-gray-50",
+      colorText: "text-danger",
+      colorBorder: "border-danger",
       title: "今すぐ弁護士に相談してください",
       message:
         "督促・取り立てがある場合、弁護士に依頼すると即日停止できます。放置するほど状況は悪化します。まず無料相談の電話一本が、生活を取り戻す第一歩です。一人で抱え込まないでください。",
@@ -139,9 +139,9 @@ function diagnose(answers: string[]): DiagnosisResult {
     return {
       type: "自己破産",
       icon: "🔴",
-      colorBg: "bg-orange-50",
-      colorText: "text-orange-700",
-      colorBorder: "border-orange-400",
+      colorBg: "bg-gray-50",
+      colorText: "text-kon",
+      colorBorder: "border-gray-200",
       title: "「自己破産」の検討をお勧めします",
       message:
         "借金問題は一人で抱え込まず、専門家に相談することで必ず解決の道があります。あなたの状況からは自己破産が有効な選択肢の一つです。自己破産により借金の支払い義務がなくなり、生活を再スタートできます。",
@@ -164,9 +164,9 @@ function diagnose(answers: string[]): DiagnosisResult {
     return {
       type: "個人再生",
       icon: "🟠",
-      colorBg: "bg-amber-50",
-      colorText: "text-amber-700",
-      colorBorder: "border-amber-400",
+      colorBg: "bg-gray-50",
+      colorText: "text-kon",
+      colorBorder: "border-gray-200",
       title: "「個人再生」の検討をお勧めします",
       message:
         "借金問題は一人で抱え込まず、専門家に相談することで必ず解決の道があります。あなたの状況からは個人再生が有効な選択肢の一つです。個人再生で借金を最大1/5に減額しながら、マイホームを守れる可能性があります。",
@@ -272,9 +272,9 @@ export default function DebtDiagnosisPage() {
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-3xl mx-auto px-4 py-4">
           <nav className="text-sm text-gray-500 mb-2">
-            <Link href="/" className="hover:text-blue-600">ホーム</Link>
+            <Link href="/" className="hover:text-ai">ホーム</Link>
             <span className="mx-1">&gt;</span>
-            <Link href="/debt" className="hover:text-blue-600">借金・債務整理</Link>
+            <Link href="/debt" className="hover:text-ai">借金・債務整理</Link>
             <span className="mx-1">&gt;</span>
             <span className="text-gray-700">債務整理 診断ツール</span>
           </nav>
@@ -306,8 +306,8 @@ export default function DebtDiagnosisPage() {
                   あなたの状況に合った方法をご提案します。
                 </p>
               </div>
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-                <p className="text-sm text-blue-800">
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
+                <p className="text-sm text-kon">
                   ✅ 登録不要・完全無料&nbsp;&nbsp;✅ 所要時間：約1分&nbsp;&nbsp;✅ 個人情報の入力なし
                 </p>
               </div>
@@ -326,7 +326,7 @@ export default function DebtDiagnosisPage() {
               </div>
               <button
                 onClick={handleStart}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-xl text-lg transition-colors"
+                className="w-full bg-kon hover:bg-ai text-white font-bold py-4 px-6 rounded-xl text-lg transition-colors"
               >
                 診断を始める →
               </button>
@@ -354,11 +354,11 @@ export default function DebtDiagnosisPage() {
                 <span className="text-sm font-medium text-gray-600">
                   質問 {step} / 5
                 </span>
-                <span className="text-sm text-blue-600 font-semibold">{Math.round(progress)}%</span>
+                <span className="text-sm text-kon font-semibold">{Math.round(progress)}%</span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-3">
                 <div
-                  className="bg-blue-600 h-3 rounded-full transition-all duration-500"
+                  className="bg-kon h-3 rounded-full transition-all duration-500"
                   style={{ width: `${progress}%` }}
                 />
               </div>
@@ -377,8 +377,8 @@ export default function DebtDiagnosisPage() {
                   onClick={() => setSelected(opt.value)}
                   className={`w-full text-left px-5 py-4 rounded-xl border-2 transition-all font-medium text-gray-800 ${
                     selected === opt.value
-                      ? "border-blue-500 bg-blue-50 text-blue-800"
-                      : "border-gray-200 bg-gray-50 hover:border-blue-300 hover:bg-blue-50"
+                      ? "border-kon bg-gray-50 text-kon"
+                      : "border-gray-200 bg-gray-50 hover:border-ai hover:bg-gray-50"
                   }`}
                 >
                   <span className="inline-block w-7 h-7 rounded-full border-2 border-current mr-3 text-center text-sm leading-6 font-bold">
@@ -410,7 +410,7 @@ export default function DebtDiagnosisPage() {
                 disabled={!selected}
                 className={`flex-1 py-3 rounded-xl font-bold text-lg transition-colors ${
                   selected
-                    ? "bg-blue-600 hover:bg-blue-700 text-white"
+                    ? "bg-kon hover:bg-ai text-white"
                     : "bg-gray-200 text-gray-400 cursor-not-allowed"
                 }`}
               >
@@ -438,7 +438,7 @@ export default function DebtDiagnosisPage() {
             {/* Section 2: 状況サマリー */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-4">
               <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <span className="bg-blue-600 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">1</span>
+                <span className="bg-kon text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">1</span>
                 あなたの状況サマリー
               </h3>
               <div className="space-y-2 mb-4">
@@ -456,12 +456,12 @@ export default function DebtDiagnosisPage() {
                 </div>
               </div>
               {result.monthlyReduction !== null && (
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                  <div className="text-sm text-blue-700 mb-1">推定月返済削減額</div>
-                  <div className="text-2xl font-bold text-blue-800">
+                <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                  <div className="text-sm text-kon mb-1">推定月返済削減額</div>
+                  <div className="text-2xl font-bold text-kon">
                     月約 {result.monthlyReduction.toLocaleString()}円 の削減が見込める可能性
                   </div>
-                  <div className="text-xs text-blue-500 mt-1">※ 概算です。実際は弁護士にご確認ください</div>
+                  <div className="text-xs text-kon mt-1">※ 概算です。実際は弁護士にご確認ください</div>
                 </div>
               )}
             </div>
@@ -469,13 +469,13 @@ export default function DebtDiagnosisPage() {
             {/* Section 3: 推奨方法の詳細 */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-4">
               <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <span className="bg-blue-600 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">2</span>
+                <span className="bg-kon text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">2</span>
                 {result.type === "緊急相談" ? "今すぐ取るべき行動" : `${result.type}の特徴`}
               </h3>
               <ul className="space-y-2">
                 {result.details.map((d, i) => (
                   <li key={i} className="flex items-start gap-2 text-gray-700">
-                    <span className="text-blue-500 font-bold mt-0.5">✦</span>
+                    <span className="text-kon font-bold mt-0.5">✦</span>
                     <span>{d}</span>
                   </li>
                 ))}
@@ -488,7 +488,7 @@ export default function DebtDiagnosisPage() {
             {/* Section 4: 今すぐできること */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-4">
               <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <span className="bg-blue-600 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">3</span>
+                <span className="bg-kon text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">3</span>
                 今すぐできること（3ステップ）
               </h3>
               <div className="space-y-4">
@@ -510,7 +510,7 @@ export default function DebtDiagnosisPage() {
                   },
                 ].map((s) => (
                   <div key={s.step} className="flex gap-4">
-                    <div className="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center font-bold text-sm">
+                    <div className="flex-shrink-0 w-8 h-8 bg-gray-50 text-kon rounded-full flex items-center justify-center font-bold text-sm">
                       {s.step}
                     </div>
                     <div>
@@ -535,7 +535,7 @@ export default function DebtDiagnosisPage() {
                   <Link
                     key={l.href}
                     href={l.href}
-                    className="flex items-center gap-2 text-blue-600 hover:text-blue-800 hover:underline text-sm"
+                    className="flex items-center gap-2 text-kon hover:text-ai hover:underline text-sm"
                   >
                     <span>→</span>
                     {l.label}
@@ -582,8 +582,8 @@ export default function DebtDiagnosisPage() {
               </li>
             ))}
           </ul>
-          <div className="bg-orange-50 border border-orange-200 rounded-lg p-3">
-            <p className="text-sm text-orange-800 font-medium">
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-3">
+            <p className="text-sm text-kon font-medium">
               3つ以上当てはまる場合は、専門家への相談を強くお勧めします
             </p>
           </div>
@@ -608,7 +608,7 @@ export default function DebtDiagnosisPage() {
               "給与・預金の差し押さえ",
             ].map((r, i) => (
               <li key={i} className="flex gap-2">
-                <span className="text-red-500 font-bold">{i + 1}.</span>
+                <span className="text-danger font-bold">{i + 1}.</span>
                 <span>{r}</span>
               </li>
             ))}
@@ -622,7 +622,7 @@ export default function DebtDiagnosisPage() {
               "生活費が借金で賄えない状態",
             ].map((r, i) => (
               <li key={i} className="flex gap-2">
-                <span className="text-orange-500">●</span>
+                <span className="text-kon">●</span>
                 <span>{r}</span>
               </li>
             ))}
@@ -636,7 +636,7 @@ export default function DebtDiagnosisPage() {
               "市区町村の消費生活センター",
             ].map((r, i) => (
               <li key={i} className="flex gap-2">
-                <span className="text-blue-500">→</span>
+                <span className="text-kon">→</span>
                 <span>{r}</span>
               </li>
             ))}
@@ -696,7 +696,7 @@ export default function DebtDiagnosisPage() {
               <Link
                 key={l.href}
                 href={l.href}
-                className="flex items-center gap-2 p-3 rounded-lg border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-colors text-blue-600 text-sm font-medium"
+                className="flex items-center gap-2 p-3 rounded-lg border border-gray-200 hover:border-ai hover:bg-gray-50 transition-colors text-kon text-sm font-medium"
               >
                 <span>→</span>
                 {l.label}

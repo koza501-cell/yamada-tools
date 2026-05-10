@@ -211,7 +211,7 @@ export default function MedicalInsuranceSimPage() {
               {/* 入院日数 */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  入院日数 <span className="text-red-500">*</span>
+                  入院日数 <span className="text-danger">*</span>
                 </label>
                 <div className="flex items-center gap-2">
                   <input
@@ -221,7 +221,7 @@ export default function MedicalInsuranceSimPage() {
                     value={form.nyuinDays}
                     onChange={(e) => handleChange("nyuinDays", e.target.value)}
                     placeholder="例: 14"
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon focus:border-transparent"
                   />
                   <span className="text-sm text-gray-500 whitespace-nowrap">日</span>
                 </div>
@@ -235,7 +235,7 @@ export default function MedicalInsuranceSimPage() {
                 <select
                   value={form.nichigaku}
                   onChange={(e) => handleChange("nichigaku", e.target.value)}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                 >
                   {[3000, 5000, 10000, 15000, 20000].map((v) => (
                     <option key={v} value={v}>{v.toLocaleString()} 円</option>
@@ -251,7 +251,7 @@ export default function MedicalInsuranceSimPage() {
                 <select
                   value={form.surgeryMultiplier}
                   onChange={(e) => handleChange("surgeryMultiplier", e.target.value)}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                 >
                   <option value="0">なし</option>
                   <option value="10">10倍</option>
@@ -272,8 +272,8 @@ export default function MedicalInsuranceSimPage() {
                       onClick={() => handleChange("hasSurgery", opt.value)}
                       className={`flex-1 py-2 rounded-lg text-sm font-medium border transition-colors ${
                         form.hasSurgery === opt.value
-                          ? "bg-blue-600 text-white border-blue-600"
-                          : "bg-white text-gray-600 border-gray-300 hover:border-blue-400"
+                          ? "bg-kon text-white border-kon"
+                          : "bg-white text-gray-600 border-gray-300 hover:border-ai"
                       }`}
                     >
                       {opt.label}
@@ -294,8 +294,8 @@ export default function MedicalInsuranceSimPage() {
                       onClick={() => handleChange("hasAdvancedRider", opt.value)}
                       className={`flex-1 py-2 rounded-lg text-sm font-medium border transition-colors ${
                         form.hasAdvancedRider === opt.value
-                          ? "bg-blue-600 text-white border-blue-600"
-                          : "bg-white text-gray-600 border-gray-300 hover:border-blue-400"
+                          ? "bg-kon text-white border-kon"
+                          : "bg-white text-gray-600 border-gray-300 hover:border-ai"
                       }`}
                     >
                       {opt.label}
@@ -308,7 +308,7 @@ export default function MedicalInsuranceSimPage() {
               {form.hasAdvancedRider && (
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    先進医療費用 <span className="text-red-500">*</span>
+                    先進医療費用 <span className="text-danger">*</span>
                   </label>
                   <div className="flex items-center gap-2">
                     <input
@@ -317,7 +317,7 @@ export default function MedicalInsuranceSimPage() {
                       value={form.advancedCost}
                       onChange={(e) => handleChange("advancedCost", e.target.value)}
                       placeholder="例: 200"
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon focus:border-transparent"
                     />
                     <span className="text-sm text-gray-500 whitespace-nowrap">万円</span>
                   </div>
@@ -325,7 +325,7 @@ export default function MedicalInsuranceSimPage() {
               )}
 
               {error && (
-                <p className="text-red-500 text-sm bg-red-50 rounded-lg px-3 py-2">{error}</p>
+                <p className="text-danger text-sm bg-gray-50 rounded-lg px-3 py-2">{error}</p>
               )}
 
               <div className="flex gap-3 pt-2">
@@ -337,7 +337,7 @@ export default function MedicalInsuranceSimPage() {
                 </button>
                 <button
                   onClick={handleCalculate}
-                  className="flex-1 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition-colors shadow-sm"
+                  className="flex-1 py-2.5 rounded-lg bg-kon text-white text-sm font-semibold hover:bg-ai transition-colors shadow-sm"
                 >
                   計算する
                 </button>
@@ -349,7 +349,7 @@ export default function MedicalInsuranceSimPage() {
           <div className="flex flex-col gap-4">
             {result ? (
               <>
-                <div className="bg-blue-600 rounded-xl p-6 text-white shadow-sm">
+                <div className="bg-kon rounded-xl p-6 text-white shadow-sm">
                   <p className="text-sm font-medium opacity-80 mb-1">合計給付金</p>
                   <p className="text-4xl font-bold mb-1">
                     {fmt(result.goukei)}<span className="text-2xl ml-1">円</span>
@@ -376,9 +376,9 @@ export default function MedicalInsuranceSimPage() {
                           <td className="py-2 text-right font-medium text-gray-900">{fmt(result.sensinKyufu)} 円</td>
                         </tr>
                       )}
-                      <tr className="bg-blue-50">
-                        <td className="py-2 px-2 text-blue-700 font-medium">合計給付金</td>
-                        <td className="py-2 px-2 text-right font-bold text-blue-700">{fmt(result.goukei)} 円</td>
+                      <tr className="bg-gray-50">
+                        <td className="py-2 px-2 text-kon font-medium">合計給付金</td>
+                        <td className="py-2 px-2 text-right font-bold text-kon">{fmt(result.goukei)} 円</td>
                       </tr>
                     </tbody>
                   </table>
@@ -414,8 +414,8 @@ export default function MedicalInsuranceSimPage() {
               </>
             ) : (
               <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 flex flex-col items-center justify-center text-center h-full min-h-64">
-                <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4">
-                  <svg className="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mb-4">
+                  <svg className="w-8 h-8 text-kon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                 </div>
@@ -432,7 +432,7 @@ export default function MedicalInsuranceSimPage() {
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="bg-blue-600 text-white">
+                  <tr className="bg-kon text-white">
                     <th className="px-4 py-3 text-left font-semibold">入院日数</th>
                     <th className="px-4 py-3 text-left font-semibold">日額給付金</th>
                     <th className="px-4 py-3 text-left font-semibold">手術</th>
@@ -444,31 +444,31 @@ export default function MedicalInsuranceSimPage() {
                     <td className="px-4 py-3 text-gray-800">7日</td>
                     <td className="px-4 py-3 text-gray-800">5,000円</td>
                     <td className="px-4 py-3 text-gray-800">なし</td>
-                    <td className="px-4 py-3 font-semibold text-blue-700">35,000円</td>
+                    <td className="px-4 py-3 font-semibold text-kon">35,000円</td>
                   </tr>
                   <tr className="hover:bg-gray-50">
                     <td className="px-4 py-3 text-gray-800">14日</td>
                     <td className="px-4 py-3 text-gray-800">10,000円</td>
                     <td className="px-4 py-3 text-gray-800">あり(10倍)</td>
-                    <td className="px-4 py-3 font-semibold text-blue-700">240,000円</td>
+                    <td className="px-4 py-3 font-semibold text-kon">240,000円</td>
                   </tr>
                   <tr className="hover:bg-gray-50">
                     <td className="px-4 py-3 text-gray-800">30日</td>
                     <td className="px-4 py-3 text-gray-800">10,000円</td>
                     <td className="px-4 py-3 text-gray-800">あり(20倍)</td>
-                    <td className="px-4 py-3 font-semibold text-blue-700">500,000円</td>
+                    <td className="px-4 py-3 font-semibold text-kon">500,000円</td>
                   </tr>
                   <tr className="hover:bg-gray-50">
                     <td className="px-4 py-3 text-gray-800">60日</td>
                     <td className="px-4 py-3 text-gray-800">5,000円</td>
                     <td className="px-4 py-3 text-gray-800">なし</td>
-                    <td className="px-4 py-3 font-semibold text-blue-700">300,000円</td>
+                    <td className="px-4 py-3 font-semibold text-kon">300,000円</td>
                   </tr>
                   <tr className="hover:bg-gray-50">
                     <td className="px-4 py-3 text-gray-800">14日</td>
                     <td className="px-4 py-3 text-gray-800">10,000円</td>
                     <td className="px-4 py-3 text-gray-800">あり + 先進医療100万</td>
-                    <td className="px-4 py-3 font-semibold text-blue-700">1,340,000円</td>
+                    <td className="px-4 py-3 font-semibold text-kon">1,340,000円</td>
                   </tr>
                 </tbody>
               </table>
@@ -487,9 +487,9 @@ export default function MedicalInsuranceSimPage() {
             <div>
               <p className="font-semibold text-gray-800 mb-2">主な給付金の種類：</p>
               <ul className="space-y-1.5 ml-4">
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span><span className="font-medium">入院給付金：</span>入院1日あたりの給付金（日額3,000円〜20,000円が一般的）</span></li>
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span><span className="font-medium">手術給付金：</span>手術を受けた際に日額の10〜40倍が支給</span></li>
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span><span className="font-medium">先進医療給付金：</span>公的保険が適用されない先進医療の費用を実費補償</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span><span className="font-medium">入院給付金：</span>入院1日あたりの給付金（日額3,000円〜20,000円が一般的）</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span><span className="font-medium">手術給付金：</span>手術を受けた際に日額の10〜40倍が支給</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span><span className="font-medium">先進医療給付金：</span>公的保険が適用されない先進医療の費用を実費補償</span></li>
               </ul>
             </div>
             <div>
@@ -529,7 +529,7 @@ export default function MedicalInsuranceSimPage() {
             ].map((item, i) => (
               <div key={i} className="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
                 <p className="font-semibold text-gray-800 mb-2 flex gap-2">
-                  <span className="text-blue-600 font-bold shrink-0">Q{i + 1}.</span>
+                  <span className="text-kon font-bold shrink-0">Q{i + 1}.</span>
                   {item.q}
                 </p>
                 <p className="text-sm text-gray-600 leading-relaxed flex gap-2">
@@ -554,15 +554,15 @@ export default function MedicalInsuranceSimPage() {
               <Link
                 key={tool.href}
                 href={tool.href}
-                className="flex items-start gap-3 bg-white rounded-xl border border-blue-100 hover:border-blue-400 hover:shadow-md transition-all p-4 group"
+                className="flex items-start gap-3 bg-white rounded-xl border border-gray-200 hover:border-ai hover:shadow-md transition-all p-4 group"
               >
-                <div className="w-9 h-9 rounded-lg bg-blue-50 group-hover:bg-blue-100 flex items-center justify-center shrink-0 transition-colors">
-                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-9 h-9 rounded-lg bg-gray-50 group-hover:bg-ai flex items-center justify-center shrink-0 transition-colors">
+                  <svg className="w-5 h-5 text-kon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 11h.01M12 11h.01M15 11h.01M4 19h16a2 2 0 002-2V7a2 2 0 00-2-2H4a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-blue-700 group-hover:text-blue-800">{tool.label}</p>
+                  <p className="text-sm font-semibold text-kon group-hover:text-ai">{tool.label}</p>
                   <p className="text-xs text-gray-500 mt-0.5">{tool.desc}</p>
                 </div>
               </Link>
@@ -573,15 +573,15 @@ export default function MedicalInsuranceSimPage() {
           <h2 className="text-xl font-bold text-gray-900 mb-4">📝 関連ブログ記事</h2>
           <Link
             href="/blog/iryo-hoken-simulation-2026"
-            className="flex items-center gap-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl border border-purple-200 hover:border-purple-400 hover:shadow-md transition-all p-5 group"
+            className="flex items-center gap-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl border border-kon hover:border-ai hover:shadow-md transition-all p-5 group"
           >
-            <div className="w-12 h-12 rounded-lg bg-purple-100 group-hover:bg-purple-200 flex items-center justify-center shrink-0 transition-colors">
-              <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-12 h-12 rounded-lg bg-gray-50 group-hover:bg-ai flex items-center justify-center shrink-0 transition-colors">
+              <svg className="w-6 h-6 text-kon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
               </svg>
             </div>
             <div>
-              <p className="text-sm font-semibold text-purple-700 group-hover:text-purple-800">【2026年最新】医療保険は必要？不要？シミュレーションで判断する方法</p>
+              <p className="text-sm font-semibold text-kon group-hover:text-ai">【2026年最新】医療保険は必要？不要？シミュレーションで判断する方法</p>
               <p className="text-xs text-gray-500 mt-1">詳しい解説・計算例・注意点はこちら →</p>
             </div>
           </Link>

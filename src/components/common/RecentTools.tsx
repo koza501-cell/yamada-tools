@@ -31,7 +31,7 @@ export default function RecentTools() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center gap-2 mb-3">
           <span className="text-xl">🕐</span>
-          <h2 className="text-base font-bold text-kon dark:text-blue-300">
+          <h2 className="text-base font-bold text-kon dark:text-gray-300">
             最近使ったツール
           </h2>
         </div>

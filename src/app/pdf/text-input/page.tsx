@@ -213,9 +213,9 @@ export default function PdfTextPage() {
           <div className="overflow-x-auto rounded-xl shadow-sm">
             <table className="w-full text-sm border-collapse bg-white dark:bg-gray-800">
               <thead>
-                <tr className="bg-orange-50 dark:bg-gray-700">
+                <tr className="bg-gray-50 dark:bg-gray-700">
                   <th className="border border-gray-200 dark:border-gray-600 px-4 py-3 text-left font-bold">機能</th>
-                  <th className="border border-gray-200 dark:border-gray-600 px-4 py-3 text-center font-bold text-orange-600">山田ツール</th>
+                  <th className="border border-gray-200 dark:border-gray-600 px-4 py-3 text-center font-bold text-kon">山田ツール</th>
                   <th className="border border-gray-200 dark:border-gray-600 px-4 py-3 text-center font-bold text-gray-600">Adobe Acrobat Online</th>
                   <th className="border border-gray-200 dark:border-gray-600 px-4 py-3 text-center font-bold text-gray-600">iLovePDF</th>
                   <th className="border border-gray-200 dark:border-gray-600 px-4 py-3 text-center font-bold text-gray-600">PDF24</th>
@@ -234,7 +234,7 @@ export default function PdfTextPage() {
                   <tr key={i} className={i % 2 === 0 ? "bg-white dark:bg-gray-800" : "bg-gray-50 dark:bg-gray-750"}>
                     <td className="border border-gray-200 dark:border-gray-600 px-4 py-3 font-medium">{feature}</td>
                     {cols.map((col, j) => (
-                      <td key={j} className={`border border-gray-200 dark:border-gray-600 px-4 py-3 text-center ${j === 0 ? "font-bold text-orange-600" : "text-gray-600"}`}>{col}</td>
+                      <td key={j} className={`border border-gray-200 dark:border-gray-600 px-4 py-3 text-center ${j === 0 ? "font-bold text-kon" : "text-gray-600"}`}>{col}</td>
                     ))}
                   </tr>
                 ))}
@@ -270,7 +270,7 @@ export default function PdfTextPage() {
             </div>
           </div>
         </section>
-        <section className="bg-blue-50 dark:bg-gray-800 rounded-2xl p-8">
+        <section className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8">
           <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">🔒 セキュリティとプライバシーについて</h2>
           <div className="space-y-4 text-gray-600 dark:text-gray-400 leading-relaxed">
             <p>山田ツールのPDF文字入力は、<strong className="text-gray-800 dark:text-white">全ての処理をお使いのブラウザ内で完結</strong>させています。オープンソースのPDF処理ライブラリ「PDF.js」を使用してPDFを読み込み、描画・編集もすべてクライアントサイドで行われます。</p>

@@ -63,7 +63,7 @@ export default function EditBlogPage() {
     return (
       <div className="min-h-screen bg-gray-50 p-8">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-kon"></div>
           <p className="mt-4 text-gray-600">読み込み中...</p>
         </div>
       </div>
@@ -90,7 +90,7 @@ export default function EditBlogPage() {
                 type="text"
                 value={blog.title}
                 onChange={(e) => setBlog({ ...blog, title: e.target.value })}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-kon"
               />
             </div>
 
@@ -102,7 +102,7 @@ export default function EditBlogPage() {
                 value={blog.description}
                 onChange={(e) => setBlog({ ...blog, description: e.target.value })}
                 rows={3}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-kon"
               />
             </div>
 
@@ -113,7 +113,7 @@ export default function EditBlogPage() {
               <select
                 value={blog.category}
                 onChange={(e) => setBlog({ ...blog, category: e.target.value })}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-kon"
               >
                 <option value="PDF">PDF</option>
                 <option value="セキュリティ">セキュリティ</option>
@@ -131,7 +131,7 @@ export default function EditBlogPage() {
                 type="text"
                 value={blog.tags?.join(', ')}
                 onChange={(e) => setBlog({ ...blog, tags: e.target.value.split(',').map((t: string) => t.trim()) })}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-kon"
               />
             </div>
 
@@ -144,7 +144,7 @@ export default function EditBlogPage() {
                 value={blog.featuredImage || ''}
                 onChange={(e) => setBlog({ ...blog, featuredImage: e.target.value })}
                 placeholder="https://example.com/image.jpg"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-kon"
               />
             </div>
 
@@ -156,7 +156,7 @@ export default function EditBlogPage() {
                 type="date"
                 value={blog.publishDate}
                 onChange={(e) => setBlog({ ...blog, publishDate: e.target.value })}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-kon"
               />
             </div>
 
@@ -167,7 +167,7 @@ export default function EditBlogPage() {
               <select
                 value={blog.status || 'published'}
                 onChange={(e) => setBlog({ ...blog, status: e.target.value })}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-kon"
               >
                 <option value="published">公開</option>
                 <option value="draft">下書き</option>
@@ -183,7 +183,7 @@ export default function EditBlogPage() {
                 value={blog.content}
                 onChange={(e) => setBlog({ ...blog, content: e.target.value })}
                 rows={20}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 font-mono text-sm"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-kon font-mono text-sm"
               />
             </div>
 
@@ -197,7 +197,7 @@ export default function EditBlogPage() {
               <button
                 onClick={handleSave}
                 disabled={saving}
-                className="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 disabled:bg-gray-400 font-medium"
+                className="flex-1 bg-kon text-white py-3 px-6 rounded-lg hover:bg-ai disabled:bg-gray-400 font-medium"
               >
                 {saving ? '保存中...' : '保存'}
               </button>

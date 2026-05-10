@@ -206,7 +206,7 @@ export default function SettingsPage() {
             </label>
           </div>
           {settings.maintenance_mode && (
-            <div className="mt-4 p-4 bg-red-50 rounded-xl text-red-600 text-sm">
+            <div className="mt-4 p-4 bg-gray-50 rounded-xl text-danger text-sm">
               ⚠️ メンテナンスモードが有効です。ユーザーはサイトにアクセスできません。
             </div>
           )}

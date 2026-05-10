@@ -53,9 +53,9 @@ export default function Page() {
               ].map(([income, ins, it, res, takehome]) => (
                 <tr key={income} className="border-t border-gray-100 hover:bg-gray-50">
                   <td className="py-2 px-4 font-bold">{income}</td>
-                  <td className="py-2 px-4 text-blue-600">{ins}</td>
-                  <td className="py-2 px-4 text-red-600">{it}</td>
-                  <td className="py-2 px-4 text-orange-600">{res}</td>
+                  <td className="py-2 px-4 text-kon">{ins}</td>
+                  <td className="py-2 px-4 text-danger">{it}</td>
+                  <td className="py-2 px-4 text-kon">{res}</td>
                   <td className="py-2 px-4 font-bold text-green-700">{takehome}</td>
                 </tr>
               ))}

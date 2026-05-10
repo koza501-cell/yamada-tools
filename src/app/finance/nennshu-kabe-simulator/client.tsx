@@ -96,7 +96,7 @@ export default function NennshuKabeClient() {
                 <div className="flex gap-2 mt-2 flex-wrap">
                   {[98, 106, 123, 130, 150, 180].map(v => (
                     <button key={v} onClick={() => setSpouseIncome(v)}
-                      className={`text-xs px-2 py-1 rounded border transition-colors ${spouseIncome === v ? "bg-blue-500 text-white border-blue-500" : "border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 hover:border-blue-400"}`}>
+                      className={`text-xs px-2 py-1 rounded border transition-colors ${spouseIncome === v ? "bg-kon text-white border-kon" : "border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 hover:border-ai"}`}>
                       {v}万
                     </button>
                   ))}
@@ -127,15 +127,15 @@ export default function NennshuKabeClient() {
               <h2 className="font-semibold text-gray-700 dark:text-gray-300 mb-3">壁チェック（現在 {spouseIncome}万円）</h2>
               <div className="space-y-2">
                 {calc.walls.map((w) => (
-                  <div key={w.name} className={`p-3 rounded-lg border ${w.crossed ? "bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-700" : "bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-700"}`}>
+                  <div key={w.name} className={`p-3 rounded-lg border ${w.crossed ? "bg-gray-50 dark:bg-danger/20 border-gray-200 dark:border-danger" : "bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-700"}`}>
                     <div className="flex items-center justify-between">
                       <span className="font-semibold text-sm text-gray-800 dark:text-white">{w.crossed ? "⚠️" : "✅"} {w.name}</span>
-                      <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${w.crossed ? "bg-red-100 dark:bg-red-800 text-red-700 dark:text-red-300" : "bg-green-100 dark:bg-green-800 text-green-700 dark:text-green-300"}`}>
+                      <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${w.crossed ? "bg-gray-50 dark:bg-danger text-danger dark:text-gin" : "bg-green-100 dark:bg-green-800 text-green-700 dark:text-green-300"}`}>
                         {w.crossed ? "超過" : "以内"}
                       </span>
                     </div>
                     <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{w.desc}</p>
-                    {w.crossed && w.loss > 0 && <p className="text-xs text-red-600 dark:text-red-400 mt-1">年間損失目安: 約{n(w.loss)}万円</p>}
+                    {w.crossed && w.loss > 0 && <p className="text-xs text-danger dark:text-danger mt-1">年間損失目安: 約{n(w.loss)}万円</p>}
                   </div>
                 ))}
               </div>
@@ -145,10 +145,10 @@ export default function NennshuKabeClient() {
               <h2 className="font-semibold text-gray-700 dark:text-gray-300 mb-3">収支の内訳</h2>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between"><span className="text-gray-600 dark:text-gray-400">配偶者の収入</span><span className="text-green-600 dark:text-green-400">+{spouseIncome}万円</span></div>
-                {calc.spSocialIns > 0 && <div className="flex justify-between"><span className="text-gray-600 dark:text-gray-400">社会保険料（配偶者）</span><span className="text-red-500">−{n(calc.spSocialIns)}万円</span></div>}
-                {calc.spIncomeTax > 0 && <div className="flex justify-between"><span className="text-gray-600 dark:text-gray-400">所得税（配偶者）</span><span className="text-red-500">−{n(calc.spIncomeTax)}万円</span></div>}
-                {calc.spResidentTax > 0 && <div className="flex justify-between"><span className="text-gray-600 dark:text-gray-400">住民税（配偶者）</span><span className="text-red-500">−{n(calc.spResidentTax)}万円</span></div>}
-                {calc.headTaxIncrease > 0 && <div className="flex justify-between"><span className="text-gray-600 dark:text-gray-400">世帯主の税負担増（控除減）</span><span className="text-red-500">−{n(calc.headTaxIncrease)}万円</span></div>}
+                {calc.spSocialIns > 0 && <div className="flex justify-between"><span className="text-gray-600 dark:text-gray-400">社会保険料（配偶者）</span><span className="text-danger">−{n(calc.spSocialIns)}万円</span></div>}
+                {calc.spIncomeTax > 0 && <div className="flex justify-between"><span className="text-gray-600 dark:text-gray-400">所得税（配偶者）</span><span className="text-danger">−{n(calc.spIncomeTax)}万円</span></div>}
+                {calc.spResidentTax > 0 && <div className="flex justify-between"><span className="text-gray-600 dark:text-gray-400">住民税（配偶者）</span><span className="text-danger">−{n(calc.spResidentTax)}万円</span></div>}
+                {calc.headTaxIncrease > 0 && <div className="flex justify-between"><span className="text-gray-600 dark:text-gray-400">世帯主の税負担増（控除減）</span><span className="text-danger">−{n(calc.headTaxIncrease)}万円</span></div>}
                 <div className="border-t border-gray-200 dark:border-gray-700 pt-2">
                   <div className="flex justify-between items-center">
                     <span className="font-semibold text-gray-700 dark:text-gray-300">配偶者の実質手取り</span>
@@ -163,7 +163,7 @@ export default function NennshuKabeClient() {
               </div>
             </div>
 
-            <div className={`rounded-xl p-4 border ${calc.hasSocialIns ? "bg-orange-50 dark:bg-orange-900/20 border-orange-200 dark:border-orange-700" : calc.crossed123 ? "bg-yellow-50 dark:bg-yellow-900/20 border-yellow-200 dark:border-yellow-700" : "bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-700"}`}>
+            <div className={`rounded-xl p-4 border ${calc.hasSocialIns ? "bg-gray-50 dark:bg-kon/20 border-gray-200 dark:border-gray-200" : calc.crossed123 ? "bg-yellow-50 dark:bg-yellow-900/20 border-yellow-200 dark:border-yellow-700" : "bg-gray-50 dark:bg-kon/20 border-gray-200 dark:border-kon"}`}>
               <p className="font-semibold text-sm text-gray-700 dark:text-gray-300 mb-1">💡 アドバイス</p>
               <p className="text-xs text-gray-600 dark:text-gray-400">
                 {!calc.crossed98 && "98万円以内なら住民税も発生せず、扶養メリットを最大限享受できます。"}
@@ -176,7 +176,7 @@ export default function NennshuKabeClient() {
           </div>
         </div>
 
-        <div className="mt-6 bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 border border-blue-200 dark:border-blue-700 text-xs text-blue-700 dark:text-blue-400 space-y-1">
+        <div className="mt-6 bg-gray-50 dark:bg-kon/20 rounded-xl p-4 border border-gray-200 dark:border-kon text-xs text-kon dark:text-gray-300 space-y-1">
           <p className="font-semibold text-sm">📋 2025年税制改正のポイント</p>
           <p>・基礎控除が48万円→58万円に引き上げ（10万円増）</p>
           <p>・配偶者控除の適用上限が<strong>103万円→123万円</strong>に拡大（合計所得68万円以下）</p>

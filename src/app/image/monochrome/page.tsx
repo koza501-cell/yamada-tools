@@ -87,7 +87,7 @@ export default function Page() {
       {/* Educational Content Section */}
       <section className="max-w-4xl mx-auto px-4 py-12">
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-8">
-          <h2 className="text-2xl font-bold text-kon dark:text-blue-300 mb-6">画像の白黒変換をブラウザで瞬時に</h2>
+          <h2 className="text-2xl font-bold text-kon dark:text-gray-300 mb-6">画像の白黒変換をブラウザで瞬時に</h2>
 
           <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
             「写真を白黒にしたい」「カラー画像をモノクロに変換したい」「印刷コスト削減のため資料を白黒化したい」——そんな時に便利なのが本ツールです。画像をドラッグ＆ドロップするだけで、PNG・JPG・WebPなどあらゆる画像をモノクロ（グレースケール）に瞬時変換できます。<strong>すべてブラウザ内で処理</strong>されるため、機密性の高いデザインデータや社内資料も外部に送信されることなく安全に白黒変換できます。
@@ -102,12 +102,12 @@ export default function Page() {
 
           <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mt-6 mb-3">白黒変換が役立つシーン</h3>
           <ul className="text-gray-700 dark:text-gray-300 space-y-2 mb-4">
-            <li className="flex items-start gap-2"><span className="text-kon dark:text-blue-300 font-bold">・</span><strong>印刷コスト削減</strong>：カラー印刷より安価な白黒印刷用に画像を変換</li>
-            <li className="flex items-start gap-2"><span className="text-kon dark:text-blue-300 font-bold">・</span><strong>資料の統一感</strong>：プレゼン資料・報告書を白黒で統一して読みやすく</li>
-            <li className="flex items-start gap-2"><span className="text-kon dark:text-blue-300 font-bold">・</span><strong>レトロ・ヴィンテージ加工</strong>：写真をモノクロにして雰囲気のある仕上がりに</li>
-            <li className="flex items-start gap-2"><span className="text-kon dark:text-blue-300 font-bold">・</span><strong>新聞・雑誌風デザイン</strong>：白黒写真でクラシックな印象を演出</li>
-            <li className="flex items-start gap-2"><span className="text-kon dark:text-blue-300 font-bold">・</span><strong>FAX送信用</strong>：白黒FAXで送る画像の事前確認</li>
-            <li className="flex items-start gap-2"><span className="text-kon dark:text-blue-300 font-bold">・</span><strong>アクセシビリティ確認</strong>：色覚多様性対応のため白黒でデザインチェック</li>
+            <li className="flex items-start gap-2"><span className="text-kon dark:text-gray-300 font-bold">・</span><strong>印刷コスト削減</strong>：カラー印刷より安価な白黒印刷用に画像を変換</li>
+            <li className="flex items-start gap-2"><span className="text-kon dark:text-gray-300 font-bold">・</span><strong>資料の統一感</strong>：プレゼン資料・報告書を白黒で統一して読みやすく</li>
+            <li className="flex items-start gap-2"><span className="text-kon dark:text-gray-300 font-bold">・</span><strong>レトロ・ヴィンテージ加工</strong>：写真をモノクロにして雰囲気のある仕上がりに</li>
+            <li className="flex items-start gap-2"><span className="text-kon dark:text-gray-300 font-bold">・</span><strong>新聞・雑誌風デザイン</strong>：白黒写真でクラシックな印象を演出</li>
+            <li className="flex items-start gap-2"><span className="text-kon dark:text-gray-300 font-bold">・</span><strong>FAX送信用</strong>：白黒FAXで送る画像の事前確認</li>
+            <li className="flex items-start gap-2"><span className="text-kon dark:text-gray-300 font-bold">・</span><strong>アクセシビリティ確認</strong>：色覚多様性対応のため白黒でデザインチェック</li>
           </ul>
 
           <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mt-6 mb-3">完全白黒・グレースケール・セピア風の違い</h3>
@@ -117,7 +117,7 @@ export default function Page() {
 
           <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mt-6 mb-3">白黒画像の活用事例</h3>
           <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-            白黒変換した画像は、<a href="/pdf/image-to-pdf" className="text-kon dark:text-blue-300 hover:text-ai underline">複数の画像をPDFにまとめるツール</a>と組み合わせれば、白黒のPDF資料を作成できます。また、<a href="/image/compress" className="text-kon dark:text-blue-300 hover:text-ai underline">画像圧縮ツール</a>と併用すると、白黒化＋ファイルサイズ削減で更に軽量化が可能です。プレゼン資料の差し替え、社内文書のモノクロ化、印刷物の事前確認など、ビジネスシーンでも幅広く活用できます。
+            白黒変換した画像は、<a href="/pdf/image-to-pdf" className="text-kon dark:text-gray-300 hover:text-ai underline">複数の画像をPDFにまとめるツール</a>と組み合わせれば、白黒のPDF資料を作成できます。また、<a href="/image/compress" className="text-kon dark:text-gray-300 hover:text-ai underline">画像圧縮ツール</a>と併用すると、白黒化＋ファイルサイズ削減で更に軽量化が可能です。プレゼン資料の差し替え、社内文書のモノクロ化、印刷物の事前確認など、ビジネスシーンでも幅広く活用できます。
           </p>
         </div>
       </section>

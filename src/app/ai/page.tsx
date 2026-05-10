@@ -9,8 +9,8 @@ const NICHE = {
   tagline: 'コピペで使える！AIツールの実践レシピ集',
   description: 'ChatGPT、Claude、Geminiなど、AIツールの具体的な活用法をレシピ形式でお届け。コピペできるプロンプト付きで、今すぐ使えます。',
   emoji: '🤖',
-  gradient: 'from-blue-600 to-purple-600',
-  gradientDark: 'dark:from-blue-800 dark:to-purple-800',
+  gradient: 'from-slate-900 to-kon',
+  gradientDark: 'dark:from-ai dark:to-kon',
   dataFile: 'aiPosts.json',
 };
 

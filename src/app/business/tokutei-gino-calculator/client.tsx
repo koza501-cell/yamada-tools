@@ -63,7 +63,7 @@ export default function TokuteiClient() {
   }, [ninzu, kokuseki, hoho, useSupport, supportPeriod, supportMonthly]);
 
   const r = calc();
-  const ic = "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400";
+  const ic = "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon";
   const lc = "block text-sm font-medium text-gray-700 mb-1";
 
   const breakdown = [
@@ -136,7 +136,7 @@ export default function TokuteiClient() {
         </div>
       </div>
 
-      <div className="bg-blue-700 text-white rounded-t-xl px-6 py-4">
+      <div className="bg-kon text-white rounded-t-xl px-6 py-4">
         <div className="text-sm opacity-80">支援期間合計費用（{r.n}人）</div>
         <div className="text-3xl font-bold mt-1">{fmt(r.grandTotal)}</div>
         <div className="text-xs opacity-70 mt-1">初期費用 {fmt(r.initialTotal)} + 支援費用 {fmt(r.supportTotal)}</div>
@@ -158,9 +158,9 @@ export default function TokuteiClient() {
                 <td className="px-4 py-2 text-right text-gray-400 text-xs hidden sm:table-cell">{row.note}</td>
               </tr>
             ))}
-            <tr className="bg-blue-50 font-semibold">
-              <td className="px-4 py-2 text-blue-800">初期費用合計（1人）</td>
-              <td className="px-4 py-2 text-right text-blue-800">{fmt(r.initialPerPerson)}</td>
+            <tr className="bg-gray-50 font-semibold">
+              <td className="px-4 py-2 text-kon">初期費用合計（1人）</td>
+              <td className="px-4 py-2 text-right text-kon">{fmt(r.initialPerPerson)}</td>
               <td className="hidden sm:table-cell" />
             </tr>
             {useSupport && (
@@ -174,15 +174,15 @@ export default function TokuteiClient() {
         </table>
       </div>
 
-      <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 text-sm">
-        <p className="font-medium text-amber-800 mb-1">人材派遣との比較</p>
-        <p className="text-amber-700">人材派遣（紹介予定）は一般的に <strong>50〜80万円/人</strong> の紹介手数料がかかります。特定技能は初期費用は類似しますが、長期在籍・直接雇用のメリットがあります。</p>
+      <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-6 text-sm">
+        <p className="font-medium text-kon mb-1">人材派遣との比較</p>
+        <p className="text-kon">人材派遣（紹介予定）は一般的に <strong>50〜80万円/人</strong> の紹介手数料がかかります。特定技能は初期費用は類似しますが、長期在籍・直接雇用のメリットがあります。</p>
       </div>
 
       {kokuseki === "ベトナム" && (
-        <div className="bg-red-50 border border-red-200 rounded-xl p-4 mb-6 text-sm">
-          <p className="font-semibold text-red-800 mb-1">注意：ベトナム国籍の場合</p>
-          <p className="text-red-700">ベトナム政府通達により、送り出し機関が特定技能の受入れ機関または外国人から手数料を徴収することは禁止されています（2019年施行）。</p>
+        <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-6 text-sm">
+          <p className="font-semibold text-danger mb-1">注意：ベトナム国籍の場合</p>
+          <p className="text-danger">ベトナム政府通達により、送り出し機関が特定技能の受入れ機関または外国人から手数料を徴収することは禁止されています（2019年施行）。</p>
         </div>
       )}
 
@@ -191,7 +191,7 @@ export default function TokuteiClient() {
         <div className="space-y-2">
           {TIMELINE.map((step, i) => (
             <div key={i} className="flex items-start gap-3">
-              <div className="w-6 h-6 rounded-full bg-blue-600 text-white text-xs flex items-center justify-center flex-shrink-0 mt-0.5">{i + 1}</div>
+              <div className="w-6 h-6 rounded-full bg-kon text-white text-xs flex items-center justify-center flex-shrink-0 mt-0.5">{i + 1}</div>
               <p className="text-sm text-gray-700">{step}</p>
             </div>
           ))}

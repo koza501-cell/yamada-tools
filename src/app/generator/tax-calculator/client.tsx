@@ -47,7 +47,7 @@ export default function TaxCalculatorClient({ faq }: { faq?: FAQ[] }) {
               onClick={() => setMode("exclude")}
               className={`flex-1 py-3 rounded-lg font-medium transition-colors ${
                 mode === "exclude"
-                  ? "bg-blue-600 text-white"
+                  ? "bg-kon text-white"
                   : "bg-gray-100 text-gray-700 hover:bg-gray-200"
               }`}
             >
@@ -57,7 +57,7 @@ export default function TaxCalculatorClient({ faq }: { faq?: FAQ[] }) {
               onClick={() => setMode("include")}
               className={`flex-1 py-3 rounded-lg font-medium transition-colors ${
                 mode === "include"
-                  ? "bg-blue-600 text-white"
+                  ? "bg-kon text-white"
                   : "bg-gray-100 text-gray-700 hover:bg-gray-200"
               }`}
             >
@@ -99,7 +99,7 @@ export default function TaxCalculatorClient({ faq }: { faq?: FAQ[] }) {
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
               placeholder="金額を入力"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-kon focus:border-transparent text-lg"
             />
           </div>
 
@@ -114,13 +114,13 @@ export default function TaxCalculatorClient({ faq }: { faq?: FAQ[] }) {
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-gray-600">消費税（{taxRate}%）</span>
-                <span className="text-xl font-bold text-red-600">
+                <span className="text-xl font-bold text-danger">
                   ¥{taxAmount.toLocaleString()}
                 </span>
               </div>
               <div className="border-t pt-4 flex justify-between items-center">
                 <span className="text-gray-900 font-medium">税込価格</span>
-                <span className="text-2xl font-bold text-blue-600">
+                <span className="text-2xl font-bold text-kon">
                   ¥{taxIncluded.toLocaleString()}
                 </span>
               </div>

@@ -61,8 +61,8 @@ interface RateStatus {
 
 function getStatus(r: NtaResult): { label: string; color: string; icon: string } {
   if (r.notFound) return { label: "該当なし", color: "text-gray-500 bg-gray-100", icon: "⚫" };
-  if (r.disposalDate) return { label: "取消", color: "text-red-700 bg-red-100", icon: "🔴" };
-  if (r.expireDate) return { label: "失効", color: "text-orange-700 bg-orange-100", icon: "🟡" };
+  if (r.disposalDate) return { label: "取消", color: "text-danger bg-gray-50", icon: "🔴" };
+  if (r.expireDate) return { label: "失効", color: "text-kon bg-gray-50", icon: "🟡" };
   if (r.latest === "0") return { label: "履歴", color: "text-yellow-700 bg-yellow-100", icon: "🟡" };
   return { label: "有効", color: "text-green-700 bg-green-100", icon: "🟢" };
 }
@@ -127,14 +127,14 @@ function ResultCard({ r }: { r: NtaResult }) {
           )}
           {r.expireDate && (
             <div>
-              <dt className="text-gray-400 text-xs text-orange-600">失効年月日</dt>
-              <dd className="text-orange-700 font-medium">{formatDate(r.expireDate)}</dd>
+              <dt className="text-gray-400 text-xs text-kon">失効年月日</dt>
+              <dd className="text-kon font-medium">{formatDate(r.expireDate)}</dd>
             </div>
           )}
           {r.disposalDate && (
             <div>
-              <dt className="text-gray-400 text-xs text-red-600">取消年月日</dt>
-              <dd className="text-red-700 font-medium">{formatDate(r.disposalDate)}</dd>
+              <dt className="text-gray-400 text-xs text-danger">取消年月日</dt>
+              <dd className="text-danger font-medium">{formatDate(r.disposalDate)}</dd>
             </div>
           )}
           {!isLegal && r.tradeName && (
@@ -296,8 +296,8 @@ export default function TNumberClient() {
           <div
             className={`flex items-center gap-2 text-sm px-4 py-2 rounded-lg mb-5 ${
               isLimited
-                ? "bg-red-50 text-red-700 border border-red-200"
-                : "bg-blue-50 text-blue-700 border border-blue-100"
+                ? "bg-gray-50 text-danger border border-gray-200"
+                : "bg-gray-50 text-kon border border-gray-200"
             }`}
           >
             <Icons.Info />
@@ -351,7 +351,7 @@ export default function TNumberClient() {
         </section>
 
         {error && (
-          <div className="flex items-start gap-3 bg-red-50 border border-red-200 rounded-xl p-4 mb-6 text-red-700 text-sm">
+          <div className="flex items-start gap-3 bg-gray-50 border border-gray-200 rounded-xl p-4 mb-6 text-danger text-sm">
             <Icons.AlertCircle />
             <span>{error}</span>
           </div>

@@ -155,12 +155,12 @@ export default function SozokuzeiClient() {
           </div>
 
           <div className="space-y-4">
-            <div className={`rounded-xl p-6 border-2 text-center ${hasTax ? "bg-red-50 dark:bg-red-900/20 border-red-400 dark:border-red-600" : "bg-green-50 dark:bg-green-900/20 border-green-400 dark:border-green-600"}`}>
-              <p className={`text-lg font-bold mb-2 ${hasTax ? "text-red-700 dark:text-red-300" : "text-green-700 dark:text-green-300"}`}>
+            <div className={`rounded-xl p-6 border-2 text-center ${hasTax ? "bg-gray-50 dark:bg-danger/20 border-danger dark:border-danger" : "bg-green-50 dark:bg-green-900/20 border-green-400 dark:border-green-600"}`}>
+              <p className={`text-lg font-bold mb-2 ${hasTax ? "text-danger dark:text-gin" : "text-green-700 dark:text-green-300"}`}>
                 {hasTax ? "⚠️ 相続税 あり" : "✅ 相続税 なし"}
               </p>
               {hasTax ? (
-                <p className="text-3xl font-bold text-red-700 dark:text-red-300">{fmtM(calc.finalTax)}</p>
+                <p className="text-3xl font-bold text-danger dark:text-gin">{fmtM(calc.finalTax)}</p>
               ) : (
                 <p className="text-sm text-green-600 dark:text-green-400">遺産額が基礎控除内に収まっています</p>
               )}
@@ -175,7 +175,7 @@ export default function SozokuzeiClient() {
               <div className="flex justify-between"><span className="text-gray-600 dark:text-gray-400">遺産純額</span><span className="dark:text-white">{fmtM(calc.netAssets)}</span></div>
               <div className="flex justify-between font-semibold border-t border-gray-200 dark:border-gray-700 pt-2">
                 <span className="text-gray-700 dark:text-gray-300">課税遺産総額</span>
-                <span className={hasTax ? "text-red-600 dark:text-red-400" : "text-green-600 dark:text-green-400"}>{fmtM(calc.taxableBase)}</span>
+                <span className={hasTax ? "text-danger dark:text-danger" : "text-green-600 dark:text-green-400"}>{fmtM(calc.taxableBase)}</span>
               </div>
             </div>
 

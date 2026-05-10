@@ -77,22 +77,22 @@ export function PricingPopup({ type, onClose, remainingUses = 0 }: PricingPopupP
         )}
 
         {/* Benefits */}
-        <div className="bg-pink-50 rounded-xl p-4 mb-4">
+        <div className="bg-sakura/30 rounded-xl p-4 mb-4">
           <ul className="space-y-2 text-sm">
             <li className="flex items-center gap-2">
-              <span className="text-pink-500">✓</span>
+              <span className="text-sakura">✓</span>
               <span>無制限で使い放題</span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="text-pink-500">✓</span>
+              <span className="text-sakura">✓</span>
               <span>広告なしでサクサク</span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="text-pink-500">✓</span>
+              <span className="text-sakura">✓</span>
               <span>ファイルサイズ200MBまで</span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="text-pink-500">✓</span>
+              <span className="text-sakura">✓</span>
               <span>作業履歴の保存</span>
             </li>
           </ul>
@@ -100,7 +100,7 @@ export function PricingPopup({ type, onClose, remainingUses = 0 }: PricingPopupP
 
         {/* Price */}
         <div className="text-center mb-4">
-          <span className="text-3xl font-bold text-pink-500">¥980</span>
+          <span className="text-3xl font-bold text-sakura">¥980</span>
           <span className="text-gray-500">/月</span>
           <p className="text-xs text-gray-400 mt-1">年払いなら¥7,980/年（2ヶ月分お得！）</p>
         </div>
@@ -109,7 +109,7 @@ export function PricingPopup({ type, onClose, remainingUses = 0 }: PricingPopupP
         <Link
           href="/pricing"
           onClick={onClose}
-          className="block w-full bg-gradient-to-r from-pink-500 to-rose-500 text-white text-center py-3 rounded-xl font-bold hover:from-pink-600 hover:to-rose-600 transition-all shadow-lg hover:shadow-xl"
+          className="block w-full bg-gradient-to-r from-slate-900 to-rose-500 text-white text-center py-3 rounded-xl font-bold hover:from-slate-900 hover:to-rose-600 transition-all shadow-lg hover:shadow-xl"
         >
           PROプランを見る
         </Link>

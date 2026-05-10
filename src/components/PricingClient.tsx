@@ -166,7 +166,7 @@ export default function PricingClient() {
 
       {/* Error banner */}
       {errorMessage && (
-        <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-red-500 text-white px-6 py-3 rounded-xl shadow-lg font-medium flex items-center gap-3">
+        <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-danger text-white px-6 py-3 rounded-xl shadow-lg font-medium flex items-center gap-3">
           <span>{errorMessage}</span>
           <button onClick={() => setErrorMessage(null)} className="text-white/80 hover:text-white text-lg leading-none">×</button>
         </div>
@@ -275,7 +275,7 @@ export default function PricingClient() {
                   <p className="text-gray-400 text-xs mt-0.5">
                     <span className="line-through mr-1">¥980</span>年額 ¥7,980（税込）
                   </p>
-                  <span className="inline-block mt-1 text-xs font-bold text-white bg-red-500 px-2 py-0.5 rounded-full">33%お得</span>
+                  <span className="inline-block mt-1 text-xs font-bold text-white bg-danger px-2 py-0.5 rounded-full">33%お得</span>
                 </>
               )}
             </div>
@@ -312,14 +312,14 @@ export default function PricingClient() {
           </div>
 
           {/* TEAM */}
-          <div className="bg-white dark:bg-gray-800 rounded-2xl border-2 border-kon dark:border-blue-500 p-6 flex flex-col shadow-sm hover:shadow-md transition-shadow">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl border-2 border-kon dark:border-kon p-6 flex flex-col shadow-sm hover:shadow-md transition-shadow">
             <div>
               {isTeamPlan ? (
                 <span className="inline-block text-xs font-bold text-green-600 bg-green-100 dark:bg-green-900/40 dark:text-green-400 px-3 py-1 rounded-full">
                   契約中
                 </span>
               ) : (
-                <span className="inline-block text-xs font-bold text-kon dark:text-blue-400 bg-kon/10 dark:bg-blue-900/40 px-3 py-1 rounded-full">
+                <span className="inline-block text-xs font-bold text-kon dark:text-gray-300 bg-kon/10 dark:bg-kon/40 px-3 py-1 rounded-full">
                   法人向け
                 </span>
               )}
@@ -331,20 +331,20 @@ export default function PricingClient() {
               {billing === 'monthly' ? (
                 <>
                   <div>
-                    <span className="text-4xl font-bold text-kon dark:text-blue-400">¥1,480</span>
+                    <span className="text-4xl font-bold text-kon dark:text-gray-300">¥1,480</span>
                   </div>
                   <p className="text-gray-400 text-xs mt-1">/ユーザー/月（税込）</p>
                 </>
               ) : (
                 <>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-4xl font-bold text-kon dark:text-blue-400">¥980</span>
+                    <span className="text-4xl font-bold text-kon dark:text-gray-300">¥980</span>
                     <span className="text-gray-500 text-sm">/ユーザー/月</span>
                   </div>
                   <p className="text-gray-400 text-xs mt-0.5">
                     <span className="line-through mr-1">¥1,480</span>年額 ¥11,760/ユーザー（税込）
                   </p>
-                  <span className="inline-block mt-1 text-xs font-bold text-white bg-red-500 px-2 py-0.5 rounded-full">33%お得</span>
+                  <span className="inline-block mt-1 text-xs font-bold text-white bg-danger px-2 py-0.5 rounded-full">33%お得</span>
                 </>
               )}
             </div>
@@ -396,7 +396,7 @@ export default function PricingClient() {
             </ul>
             <a
               href="mailto:support@yamada-tools.jp?subject=エンタープライズプランのお問い合わせ"
-              className="w-full py-3 border-2 border-kon dark:border-blue-500 text-kon dark:text-blue-400 rounded-xl font-bold transition-colors hover:bg-kon/5 dark:hover:bg-blue-900/20 text-sm text-center block"
+              className="w-full py-3 border-2 border-kon dark:border-kon text-kon dark:text-gray-300 rounded-xl font-bold transition-colors hover:bg-kon/5 dark:hover:bg-ai/20 text-sm text-center block"
             >
               お問い合わせ
             </a>
@@ -411,7 +411,7 @@ export default function PricingClient() {
           <p className="text-center text-sm text-gray-500 mb-6">広告なし・全機能・当日限り有効</p>
           <div className="grid grid-cols-3 gap-4">
             <div className="flex flex-col items-center rounded-xl border-2 border-gray-200 bg-gray-50 dark:bg-gray-800 p-4"><div className="text-sm font-semibold text-gray-700 dark:text-gray-200 mt-1">1日パス</div><div className="text-2xl font-bold text-gray-900 dark:text-white mt-1">¥120</div><div className="text-xs text-gray-400 mb-2">税込</div></div>
-            <div className="relative flex flex-col items-center rounded-xl border-2 border-blue-500 bg-blue-50 dark:bg-blue-950 p-4"><span className="absolute -top-2.5 left-1/2 -translate-x-1/2 text-xs font-bold px-2 py-0.5 rounded-full whitespace-nowrap bg-blue-500 text-white">おすすめ</span><div className="text-sm font-semibold text-gray-700 dark:text-gray-200 mt-1">3日パス</div><div className="text-2xl font-bold text-gray-900 dark:text-white mt-1">¥290</div><div className="text-xs text-gray-400 mb-2">税込</div></div>
+            <div className="relative flex flex-col items-center rounded-xl border-2 border-kon bg-gray-50 dark:bg-kon p-4"><span className="absolute -top-2.5 left-1/2 -translate-x-1/2 text-xs font-bold px-2 py-0.5 rounded-full whitespace-nowrap bg-kon text-white">おすすめ</span><div className="text-sm font-semibold text-gray-700 dark:text-gray-200 mt-1">3日パス</div><div className="text-2xl font-bold text-gray-900 dark:text-white mt-1">¥290</div><div className="text-xs text-gray-400 mb-2">税込</div></div>
             <div className="relative flex flex-col items-center rounded-xl border-2 border-green-500 bg-green-50 dark:bg-green-950 p-4"><span className="absolute -top-2.5 left-1/2 -translate-x-1/2 text-xs font-bold px-2 py-0.5 rounded-full whitespace-nowrap bg-green-500 text-white">最もお得</span><div className="text-sm font-semibold text-gray-700 dark:text-gray-200 mt-1">7日パス</div><div className="text-2xl font-bold text-gray-900 dark:text-white mt-1">¥490</div><div className="text-xs text-gray-400 mb-2">税込</div></div>
           </div>
           <p className="text-center text-xs text-gray-400 mt-3">デイパスはツール利用時に購入できます（Stripe決済）</p>
@@ -444,15 +444,15 @@ export default function PricingClient() {
                     <td className="px-4 py-3.5 text-center text-gray-700 dark:text-gray-300">{row.enterprise}</td>
                   </tr>
                 ))}
-                <tr className="bg-blue-50 dark:bg-slate-800 border-l-4 border-l-blue-600">
-                  <td colSpan={5} className="px-5 py-3 font-bold text-blue-800 dark:text-blue-300 text-sm">
+                <tr className="bg-gray-50 dark:bg-slate-800 border-l-4 border-l-blue-600">
+                  <td colSpan={5} className="px-5 py-3 font-bold text-kon dark:text-gray-300 text-sm">
                     📮 封筒印刷機能
                   </td>
                 </tr>
                 {envelopeRows.map((row, i) => (
                   <tr
                     key={row.feature}
-                    className={i % 2 === 0 ? 'bg-blue-50/40 dark:bg-slate-800/60' : 'bg-white dark:bg-gray-800'}
+                    className={i % 2 === 0 ? 'bg-gray-50/40 dark:bg-slate-800/60' : 'bg-white dark:bg-gray-800'}
                   >
                     <td className="px-5 py-3.5 font-medium text-gray-700 dark:text-gray-300 pl-8">{row.feature}</td>
                     <td className="px-4 py-3.5 text-center text-gray-500 dark:text-gray-400">{row.free}</td>
@@ -505,7 +505,7 @@ export default function PricingClient() {
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
             まずは無料でお試しください
           </h2>
-          <p className="text-blue-200 mb-8 text-base">
+          <p className="text-gin mb-8 text-base">
             クレジットカード不要。今すぐすべてのツールをお使いいただけます。
           </p>
           <Link
@@ -514,7 +514,7 @@ export default function PricingClient() {
           >
             無料で始める →
           </Link>
-          <p className="text-blue-300 text-sm mt-4">有料プランへのアップグレードはいつでも可能です</p>
+          <p className="text-gin text-sm mt-4">有料プランへのアップグレードはいつでも可能です</p>
         </div>
       </div>
 

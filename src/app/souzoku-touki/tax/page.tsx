@@ -63,13 +63,13 @@ export default function TaxPage() {
 
       <div className="max-w-3xl mx-auto px-4 py-8">
         {/* Formula explanation */}
-        <div className="bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 rounded-2xl p-5 mb-6">
-          <h2 className="font-bold text-blue-800 dark:text-blue-300 mb-3">計算式</h2>
-          <div className="space-y-1.5 text-sm text-blue-900 dark:text-blue-200">
+        <div className="bg-gray-50 dark:bg-kon/30 border border-gray-200 dark:border-kon rounded-2xl p-5 mb-6">
+          <h2 className="font-bold text-kon dark:text-gray-300 mb-3">計算式</h2>
+          <div className="space-y-1.5 text-sm text-kon dark:text-gray-300">
             <div className="flex items-center gap-2">
-              <span className="bg-blue-100 dark:bg-blue-900 rounded px-2 py-0.5 font-mono font-bold">登録免許税 = 固定資産税評価額合計 × 0.4%</span>
+              <span className="bg-gray-50 dark:bg-kon rounded px-2 py-0.5 font-mono font-bold">登録免許税 = 固定資産税評価額合計 × 0.4%</span>
             </div>
-            <ul className="list-disc list-inside text-blue-700 dark:text-blue-300 space-y-1 ml-1">
+            <ul className="list-disc list-inside text-kon dark:text-gray-300 space-y-1 ml-1">
               <li>100円未満は切り捨て</li>
               <li>最低1,000円（切捨て後が1,000円未満の場合）</li>
               <li>固定資産税評価額が100万円以下の土地は免税</li>
@@ -105,7 +105,7 @@ export default function TaxPage() {
                 {properties.length > 1 && (
                   <button
                     onClick={() => removeProperty(prop.id)}
-                    className="text-red-400 hover:text-red-600 dark:hover:text-red-300 text-sm flex-shrink-0"
+                    className="text-danger hover:text-danger dark:hover:text-gin text-sm flex-shrink-0"
                   >
                     削除
                   </button>
@@ -115,7 +115,7 @@ export default function TaxPage() {
           </div>
           <button
             onClick={addProperty}
-            className="mt-4 text-sm text-ai hover:text-blue-600 font-medium flex items-center gap-1"
+            className="mt-4 text-sm text-ai hover:text-ai font-medium flex items-center gap-1"
           >
             + 不動産を追加
           </button>

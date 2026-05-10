@@ -338,7 +338,7 @@ export default function RandomPickerClient({ faq }: Props) {
                         <button key={pi}
                           onClick={() => { if (!winner && a && b) advanceBracket(1, matchIdx, p); }}
                           disabled={!!winner || !a || !b}
-                          className={`px-3 py-2 rounded-lg text-sm font-medium border text-left min-w-[90px] transition-colors ${winner === p ? "bg-green-500 text-white border-green-500" : winner ? "bg-gray-100 text-gray-400 border-gray-200" : (a && b) ? "bg-white border-kon text-kon hover:bg-kon/10 cursor-pointer" : "bg-blue-50 text-blue-700 border-blue-200"}`}
+                          className={`px-3 py-2 rounded-lg text-sm font-medium border text-left min-w-[90px] transition-colors ${winner === p ? "bg-green-500 text-white border-green-500" : winner ? "bg-gray-100 text-gray-400 border-gray-200" : (a && b) ? "bg-white border-kon text-kon hover:bg-kon/10 cursor-pointer" : "bg-gray-50 text-kon border-gray-200"}`}
                         >
                           {p}{(!a || !b) ? " (不戦勝)" : ""}
                         </button>
@@ -408,7 +408,7 @@ export default function RandomPickerClient({ faq }: Props) {
     <div className="min-h-screen py-12">
       <div className="max-w-4xl mx-auto px-4">
         {sharedResult && (
-          <div className="mb-6 bg-gradient-to-r from-yellow-50 to-amber-50 border border-amber-200 rounded-2xl p-6 text-center">
+          <div className="mb-6 bg-gradient-to-r from-yellow-50 to-amber-50 border border-gray-200 rounded-2xl p-6 text-center">
             <h2 className="text-xl font-bold text-kon mb-2">🎉 共有された抽選結果</h2>
             <p className="text-gray-700 mb-1">当選者：<strong className="text-2xl text-kon">{sharedResult.w.join("、")}</strong></p>
             <p className="text-sm text-gray-500 mb-4">（{sharedResult.c}人から抽選）</p>
@@ -422,9 +422,9 @@ export default function RandomPickerClient({ faq }: Props) {
           <p className="text-gray-600 text-lg">公平にランダムで選ぼう</p>
           <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
             <span className="bg-green-50 text-green-700 px-3 py-1 rounded-full">✓ 完全無料</span>
-            <span className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full">🎯 公平な抽選</span>
-            <span className="bg-purple-50 text-purple-700 px-3 py-1 rounded-full">📝 履歴機能</span>
-            <span className="bg-orange-50 text-orange-700 px-3 py-1 rounded-full">🔒 登録不要</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">🎯 公平な抽選</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">📝 履歴機能</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">🔒 登録不要</span>
           </div>
         </header>
 
@@ -472,14 +472,14 @@ export default function RandomPickerClient({ faq }: Props) {
             <div className="mb-6">
               <div className="flex items-center justify-between mb-2">
                 <label className="text-sm font-medium text-gray-700">登録済み（{items.length}件）</label>
-                <button onClick={clearAll} className="text-xs text-red-500 hover:text-red-700">すべて削除</button>
+                <button onClick={clearAll} className="text-xs text-danger hover:text-danger">すべて削除</button>
               </div>
               <div className="flex flex-wrap gap-2 p-4 bg-gray-50 rounded-xl max-h-48 overflow-y-auto">
                 {items.map((item, idx) => (
                   <span key={idx} className="inline-flex items-center gap-1 px-3 py-1 bg-white border border-gray-200 rounded-full text-sm">
                     {item}
                     {mode === "weighted" && <span className="text-xs text-gray-400">({getPercentage(item)}%)</span>}
-                    <button onClick={() => removeItem(idx)} className="text-gray-400 hover:text-red-500 ml-1">×</button>
+                    <button onClick={() => removeItem(idx)} className="text-gray-400 hover:text-danger ml-1">×</button>
                   </span>
                 ))}
               </div>

@@ -256,7 +256,7 @@ export default function KakeiboSimulatorClient() {
                         <div className="flex justify-between items-center">
                           <span className="text-xs font-medium text-gray-500 dark:text-gray-400">子供 {idx + 1}</span>
                           {children.length > 1 && (
-                            <button onClick={() => removeChild(c.id)} className="text-red-400 hover:text-red-600 text-lg leading-none font-bold">×</button>
+                            <button onClick={() => removeChild(c.id)} className="text-danger hover:text-danger text-lg leading-none font-bold">×</button>
                           )}
                         </div>
                         <div className="grid grid-cols-2 gap-2">
@@ -280,7 +280,7 @@ export default function KakeiboSimulatorClient() {
                       </div>
                     ))}
                     {children.length < 4 && (
-                      <button onClick={addChild} className="text-sm text-blue-500 hover:text-blue-700">＋ 子供を追加</button>
+                      <button onClick={addChild} className="text-sm text-kon hover:text-ai">＋ 子供を追加</button>
                     )}
                   </div>
                 )}
@@ -335,13 +335,13 @@ export default function KakeiboSimulatorClient() {
                 </div>
                 <div className="border-t border-gray-200 dark:border-gray-700 pt-2 flex justify-between items-center">
                   <span className="font-semibold text-gray-700 dark:text-gray-300">月間貯蓄可能額</span>
-                  <span className={`text-3xl font-bold ${result.monthlySavable >= 0 ? "text-blue-600 dark:text-blue-400" : "text-red-600 dark:text-red-400"}`}>
+                  <span className={`text-3xl font-bold ${result.monthlySavable >= 0 ? "text-kon dark:text-gray-300" : "text-danger dark:text-danger"}`}>
                     ¥{fmt(Math.round(result.monthlySavable))}
                   </span>
                 </div>
                 <div className="flex justify-between text-gray-500 dark:text-gray-400">
                   <span>貯蓄率</span>
-                  <span className={`font-medium ${result.savingRate >= 20 ? "text-green-600 dark:text-green-400" : result.savingRate >= 10 ? "text-yellow-600 dark:text-yellow-400" : "text-red-500"}`}>
+                  <span className={`font-medium ${result.savingRate >= 20 ? "text-green-600 dark:text-green-400" : result.savingRate >= 10 ? "text-yellow-600 dark:text-yellow-400" : "text-danger"}`}>
                     {result.savingRate.toFixed(1)}%
                     {result.savingRate >= 20 ? " ✓ 優良" : result.savingRate >= 10 ? " △ 標準" : " ⚠ 低い"}
                   </span>
@@ -373,7 +373,7 @@ export default function KakeiboSimulatorClient() {
 
             {/* Surplus/deficit verdict */}
             {result.goals.length > 0 && (
-              <div className={`rounded-xl p-5 border-2 ${result.surplus >= 0 ? "bg-green-50 dark:bg-green-900/20 border-green-400" : "bg-red-50 dark:bg-red-900/20 border-red-400"}`}>
+              <div className={`rounded-xl p-5 border-2 ${result.surplus >= 0 ? "bg-green-50 dark:bg-green-900/20 border-green-400" : "bg-gray-50 dark:bg-danger/20 border-danger"}`}>
                 <p className="text-lg font-bold mb-1">
                   {result.surplus >= 0
                     ? `✅ 余裕 ¥${fmt(Math.round(result.surplus))}/月`
@@ -389,14 +389,14 @@ export default function KakeiboSimulatorClient() {
 
             {/* Investment benefit */}
             {result.monthlySavable > 0 && (
-              <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 border border-blue-200 dark:border-blue-700">
-                <p className="text-sm font-semibold text-blue-700 dark:text-blue-300 mb-1">📈 運用すると…（3%複利・30年）</p>
-                <p className="text-sm text-blue-700 dark:text-blue-300">
+              <div className="bg-gray-50 dark:bg-kon/20 rounded-xl p-4 border border-gray-200 dark:border-kon">
+                <p className="text-sm font-semibold text-kon dark:text-gray-300 mb-1">📈 運用すると…（3%複利・30年）</p>
+                <p className="text-sm text-kon dark:text-gray-300">
                   貯蓄可能額 ¥{fmt(Math.round(result.monthlySavable))}/月を30年運用すると
                   <span className="font-bold mx-1">¥{fmtM(Math.round(result.investGain))}多く</span>
                   貯まります（運用なしとの差額）。
                 </p>
-                <p className="text-xs text-blue-500 dark:text-blue-400 mt-1">NISAやiDeCoの活用でこの効果を非課税で得られます。</p>
+                <p className="text-xs text-kon dark:text-gray-300 mt-1">NISAやiDeCoの活用でこの効果を非課税で得られます。</p>
               </div>
             )}
 

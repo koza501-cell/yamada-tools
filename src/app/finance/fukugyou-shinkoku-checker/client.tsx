@@ -93,7 +93,7 @@ export default function FukugyouShinkokuClient() {
   const inp = "w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-gray-700 dark:text-white";
 
   const verdictColor = result.needsFiling
-    ? "bg-red-50 dark:bg-red-900/20 border-red-400 dark:border-red-600"
+    ? "bg-gray-50 dark:bg-danger/20 border-danger dark:border-danger"
     : result.canRefund
       ? "bg-yellow-50 dark:bg-yellow-900/20 border-yellow-400 dark:border-yellow-600"
       : "bg-green-50 dark:bg-green-900/20 border-green-400 dark:border-green-600";
@@ -127,7 +127,7 @@ export default function FukugyouShinkokuClient() {
                 <p className="text-xs text-gray-400 mt-2">年末調整されなかった給与収入 + その他所得が20万円超で申告必要。</p>
               )}
               {mainJob === "self_employed" && (
-                <p className="text-xs text-orange-500 mt-2">個人事業主は20万円ルール適用外。すべての所得を申告してください。</p>
+                <p className="text-xs text-kon mt-2">個人事業主は20万円ルール適用外。すべての所得を申告してください。</p>
               )}
             </div>
 
@@ -138,7 +138,7 @@ export default function FukugyouShinkokuClient() {
                   <div className="flex justify-between items-center">
                     <span className="text-sm font-medium text-gray-600 dark:text-gray-400">副業 {idx + 1}</span>
                     {jobs.length > 1 && (
-                      <button onClick={() => removeJob(job.id)} className="text-red-400 hover:text-red-600 text-xl leading-none font-bold" aria-label="削除">×</button>
+                      <button onClick={() => removeJob(job.id)} className="text-danger hover:text-danger text-xl leading-none font-bold" aria-label="削除">×</button>
                     )}
                   </div>
                   <input type="text" placeholder="副業名（任意）" value={job.name}
@@ -169,7 +169,7 @@ export default function FukugyouShinkokuClient() {
                     </div>
                   </div>
                   <button onClick={() => setOpenExpense(openExpense === job.id ? null : job.id)}
-                    className="text-xs text-blue-500 hover:text-blue-700 flex items-center gap-1">
+                    className="text-xs text-kon hover:text-ai flex items-center gap-1">
                     {openExpense === job.id ? "▲" : "▼"} {JOB_LABELS[job.type]}の経費例
                   </button>
                   {openExpense === job.id && (
@@ -185,7 +185,7 @@ export default function FukugyouShinkokuClient() {
                 </div>
               ))}
               {jobs.length < 5 && (
-                <button onClick={addJob} className="w-full py-2 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600 text-sm text-gray-500 dark:text-gray-400 hover:border-blue-400 hover:text-blue-500 transition-colors">
+                <button onClick={addJob} className="w-full py-2 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600 text-sm text-gray-500 dark:text-gray-400 hover:border-ai hover:text-ai transition-colors">
                   ＋ 副業を追加（{5 - jobs.length}件追加可）
                 </button>
               )}
@@ -219,7 +219,7 @@ export default function FukugyouShinkokuClient() {
                       <span>¥200,000</span>
                     </div>
                     {result.needsFiling ? (
-                      <div className="flex justify-between text-red-600 dark:text-red-400">
+                      <div className="flex justify-between text-danger dark:text-danger">
                         <span>超過額</span>
                         <span>+¥{fmt(result.over)}</span>
                       </div>
@@ -232,7 +232,7 @@ export default function FukugyouShinkokuClient() {
                   </>
                 )}
                 {result.totalWithheld > 0 && (
-                  <div className="flex justify-between text-blue-600 dark:text-blue-400 border-t border-gray-100 dark:border-gray-700 pt-2">
+                  <div className="flex justify-between text-kon dark:text-gray-300 border-t border-gray-100 dark:border-gray-700 pt-2">
                     <span>源泉徴収額合計</span>
                     <span>¥{fmt(result.totalWithheld)}</span>
                   </div>
@@ -241,14 +241,14 @@ export default function FukugyouShinkokuClient() {
             </div>
 
             {result.canRefund && (
-              <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 border border-blue-200 dark:border-blue-700 text-sm text-blue-700 dark:text-blue-300">
+              <div className="bg-gray-50 dark:bg-kon/20 rounded-xl p-4 border border-gray-200 dark:border-kon text-sm text-kon dark:text-gray-300">
                 <p className="font-semibold mb-1">💰 還付の可能性があります</p>
                 <p>源泉徴収額 ¥{fmt(result.totalWithheld)} が納めすぎている可能性があります。確定申告（還付申告）をすることで取り戻せる場合があります。還付申告は1月1日から5年間有効です。</p>
               </div>
             )}
 
             {result.needsJuumin && (
-              <div className="bg-orange-50 dark:bg-orange-900/20 rounded-xl p-4 border border-orange-200 dark:border-orange-700 text-sm text-orange-700 dark:text-orange-300">
+              <div className="bg-gray-50 dark:bg-kon/20 rounded-xl p-4 border border-gray-200 dark:border-gray-200 text-sm text-kon dark:text-gray-300">
                 <p className="font-semibold mb-1">⚠️ 住民税の申告は必要な場合があります</p>
                 <p>所得税の確定申告が不要でも、副業収入がある場合は<span className="font-semibold">市区町村への住民税申告が必要</span>です（翌年3月15日まで）。</p>
               </div>

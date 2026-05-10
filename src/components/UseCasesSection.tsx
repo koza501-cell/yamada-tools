@@ -30,7 +30,7 @@ export function UseCasesSection({
             <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
               {c.title}
             </p>
-            <p className="text-xs text-kon dark:text-blue-400 font-medium">
+            <p className="text-xs text-kon dark:text-gray-300 font-medium">
               → {c.benefit}
             </p>
           </div>

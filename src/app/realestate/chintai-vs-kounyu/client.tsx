@@ -175,7 +175,7 @@ export default function ChintaiVsKounyuClient() {
         <div className="flex gap-3 mb-6">
           {PERIODS.map(p => (
             <button key={p} onClick={() => setPeriod(p)}
-              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${period === p ? "bg-blue-600 text-white" : "bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 border border-gray-300 dark:border-gray-600"}`}>
+              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${period === p ? "bg-kon text-white" : "bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 border border-gray-300 dark:border-gray-600"}`}>
               {p}年間
             </button>
           ))}
@@ -187,7 +187,7 @@ export default function ChintaiVsKounyuClient() {
             {/* Rent inputs */}
             <div className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm space-y-3">
               <h2 className="font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
-                <span className="bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded px-2 py-0.5 text-xs">賃貸</span>
+                <span className="bg-gray-50 dark:bg-kon text-kon dark:text-gray-300 rounded px-2 py-0.5 text-xs">賃貸</span>
                 賃貸の条件
               </h2>
               <div className="grid grid-cols-2 gap-3">
@@ -250,7 +250,7 @@ export default function ChintaiVsKounyuClient() {
           {/* Results */}
           <div className="space-y-4">
             {/* Verdict */}
-            <div className={`rounded-xl p-5 border-2 ${result.buyWins ? "bg-green-50 dark:bg-green-900/20 border-green-400" : "bg-blue-50 dark:bg-blue-900/20 border-blue-400"}`}>
+            <div className={`rounded-xl p-5 border-2 ${result.buyWins ? "bg-green-50 dark:bg-green-900/20 border-green-400" : "bg-gray-50 dark:bg-kon/20 border-kon"}`}>
               <p className="text-lg font-bold mb-1">
                 {result.buyWins ? "🏠 購入の方が生涯コストが低い" : "🏢 賃貸の方が生涯コストが低い"}
               </p>
@@ -270,7 +270,7 @@ export default function ChintaiVsKounyuClient() {
               <h2 className="font-semibold text-gray-700 dark:text-gray-300 mb-3">{period}年間 総費用比較</h2>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-blue-600 dark:text-blue-400 font-medium">賃貸 総費用</span>
+                  <span className="text-sm text-kon dark:text-gray-300 font-medium">賃貸 総費用</span>
                   <span className="font-bold text-xl text-gray-800 dark:text-white">¥{fmt(result.totalRent)}</span>
                 </div>
                 <div className="flex justify-between items-center">
@@ -296,9 +296,9 @@ export default function ChintaiVsKounyuClient() {
                       <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">{p.year}年後</p>
                       <div className="space-y-1">
                         <div className="flex items-center gap-2">
-                          <span className="text-xs w-8 text-blue-600 dark:text-blue-400">賃貸</span>
+                          <span className="text-xs w-8 text-kon dark:text-gray-300">賃貸</span>
                           <div className="flex-1 bg-gray-100 dark:bg-gray-700 rounded-full h-4 overflow-hidden">
-                            <div className="bg-blue-400 h-4 rounded-full" style={{ width: `${result.maxVal > 0 ? (p.r / result.maxVal) * 100 : 0}%` }} />
+                            <div className="bg-kon h-4 rounded-full" style={{ width: `${result.maxVal > 0 ? (p.r / result.maxVal) * 100 : 0}%` }} />
                           </div>
                           <span className="text-xs text-gray-600 dark:text-gray-400 w-16 text-right">{fmtM(p.r)}</span>
                         </div>
@@ -330,7 +330,7 @@ export default function ChintaiVsKounyuClient() {
                   </ul>
                 </div>
                 <div>
-                  <p className="text-blue-600 dark:text-blue-400 font-medium mb-1">🏢 賃貸向き</p>
+                  <p className="text-kon dark:text-gray-300 font-medium mb-1">🏢 賃貸向き</p>
                   <ul className="space-y-1 text-xs text-gray-600 dark:text-gray-400">
                     <li>✓ 転勤・転職の可能性あり</li>
                     <li>✓ ライフスタイルが変わりやすい</li>

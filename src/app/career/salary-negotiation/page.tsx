@@ -493,8 +493,8 @@ const schema = {
 };
 
 const labelClass = "block text-xs font-medium text-gray-600 mb-1";
-const inputClass = "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent";
-const selectClass = "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent bg-white";
+const inputClass = "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon focus:border-transparent";
+const selectClass = "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon focus:border-transparent bg-white";
 
 export default function SalaryNegotiationPage() {
   const [form, setForm] = useState<FormState>(DEFAULT_FORM);
@@ -570,9 +570,9 @@ export default function SalaryNegotiationPage() {
         {/* Header */}
         <div className="mb-6">
           <nav className="text-xs text-gray-400 mb-3">
-            <Link href="/" className="hover:text-blue-500">ホーム</Link>
+            <Link href="/" className="hover:text-ai">ホーム</Link>
             <span className="mx-1">/</span>
-            <Link href="/career" className="hover:text-blue-500">転職・年収</Link>
+            <Link href="/career" className="hover:text-ai">転職・年収</Link>
             <span className="mx-1">/</span>
             <span className="text-gray-600">給与交渉額シミュレーター</span>
           </nav>
@@ -589,15 +589,15 @@ export default function SalaryNegotiationPage() {
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
 
             {/* Section 1 */}
-            <h2 className="text-base font-semibold text-blue-700 mb-4 pb-2 border-b-2 border-blue-100 flex items-center gap-2">
-              <span className="w-6 h-6 bg-blue-600 text-white rounded-full text-xs flex items-center justify-center font-bold">1</span>
+            <h2 className="text-base font-semibold text-kon mb-4 pb-2 border-b-2 border-gray-200 flex items-center gap-2">
+              <span className="w-6 h-6 bg-kon text-white rounded-full text-xs flex items-center justify-center font-bold">1</span>
               あなたのプロフィール
             </h2>
 
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className={labelClass}>年齢 <span className="text-red-500">*</span></label>
+                  <label className={labelClass}>年齢 <span className="text-danger">*</span></label>
                   <div className="flex items-center gap-2">
                     <input
                       type="number"
@@ -612,7 +612,7 @@ export default function SalaryNegotiationPage() {
                   </div>
                 </div>
                 <div>
-                  <label className={labelClass}>現在の年収 <span className="text-red-500">*</span></label>
+                  <label className={labelClass}>現在の年収 <span className="text-danger">*</span></label>
                   <div className="flex items-center gap-2">
                     <input
                       type="number"
@@ -628,7 +628,7 @@ export default function SalaryNegotiationPage() {
               </div>
 
               <div>
-                <label className={labelClass}>業界 <span className="text-red-500">*</span></label>
+                <label className={labelClass}>業界 <span className="text-danger">*</span></label>
                 <select value={form.industry} onChange={(e) => handleChange("industry", e.target.value)} className={selectClass}>
                   <option value="">選択してください</option>
                   {["IT・ソフトウェア", "金融・保険", "コンサルティング", "医療・製薬", "メーカー（製造業）", "商社・卸売", "小売・サービス", "不動産・建設", "広告・メディア", "教育", "公務員・非営利", "その他"].map((v) => (
@@ -638,7 +638,7 @@ export default function SalaryNegotiationPage() {
               </div>
 
               <div>
-                <label className={labelClass}>職種 <span className="text-red-500">*</span></label>
+                <label className={labelClass}>職種 <span className="text-danger">*</span></label>
                 <select value={form.jobType} onChange={(e) => handleChange("jobType", e.target.value)} className={selectClass}>
                   <option value="">選択してください</option>
                   {["エンジニア・IT", "営業", "マーケティング", "経理・財務", "人事・労務", "企画・経営", "研究・開発", "デザイン", "医療・看護", "事務・アシスタント", "管理職・マネージャー", "その他"].map((v) => (
@@ -649,7 +649,7 @@ export default function SalaryNegotiationPage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className={labelClass}>経験年数 <span className="text-red-500">*</span></label>
+                  <label className={labelClass}>経験年数 <span className="text-danger">*</span></label>
                   <div className="flex items-center gap-2">
                     <input
                       type="number"
@@ -675,8 +675,8 @@ export default function SalaryNegotiationPage() {
             </div>
 
             {/* Section 2 */}
-            <h2 className="text-base font-semibold text-blue-700 mt-6 mb-4 pb-2 border-b-2 border-blue-100 flex items-center gap-2">
-              <span className="w-6 h-6 bg-blue-600 text-white rounded-full text-xs flex items-center justify-center font-bold">2</span>
+            <h2 className="text-base font-semibold text-kon mt-6 mb-4 pb-2 border-b-2 border-gray-200 flex items-center gap-2">
+              <span className="w-6 h-6 bg-kon text-white rounded-full text-xs flex items-center justify-center font-bold">2</span>
               スキル・実績
             </h2>
 
@@ -728,8 +728,8 @@ export default function SalaryNegotiationPage() {
             </div>
 
             {/* Section 3 */}
-            <h2 className="text-base font-semibold text-blue-700 mt-6 mb-4 pb-2 border-b-2 border-blue-100 flex items-center gap-2">
-              <span className="w-6 h-6 bg-blue-600 text-white rounded-full text-xs flex items-center justify-center font-bold">3</span>
+            <h2 className="text-base font-semibold text-kon mt-6 mb-4 pb-2 border-b-2 border-gray-200 flex items-center gap-2">
+              <span className="w-6 h-6 bg-kon text-white rounded-full text-xs flex items-center justify-center font-bold">3</span>
               交渉の状況
             </h2>
 
@@ -771,7 +771,7 @@ export default function SalaryNegotiationPage() {
             </div>
 
             {error && (
-              <p className="text-red-500 text-sm bg-red-50 rounded-lg px-3 py-2 mt-4">{error}</p>
+              <p className="text-danger text-sm bg-gray-50 rounded-lg px-3 py-2 mt-4">{error}</p>
             )}
 
             <div className="flex gap-3 mt-6">
@@ -783,7 +783,7 @@ export default function SalaryNegotiationPage() {
               </button>
               <button
                 onClick={handleCalculate}
-                className="flex-1 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition-colors shadow-sm"
+                className="flex-1 py-2.5 rounded-lg bg-kon text-white text-sm font-semibold hover:bg-ai transition-colors shadow-sm"
               >
                 計算する
               </button>
@@ -795,7 +795,7 @@ export default function SalaryNegotiationPage() {
             {result ? (
               <>
                 {/* Card 1: 市場適正年収 */}
-                <div className="bg-blue-600 rounded-xl p-6 text-white shadow-sm">
+                <div className="bg-kon rounded-xl p-6 text-white shadow-sm">
                   <p className="text-sm font-medium opacity-80 mb-1">あなたの市場適正年収</p>
                   <p className="text-4xl font-bold mb-1">
                     {Math.round(result.marketSalary * 0.95)}〜{Math.round(result.marketSalary * 1.05)}
@@ -836,14 +836,14 @@ export default function SalaryNegotiationPage() {
                           <p className="text-xs text-gray-400">強気の場合</p>
                         </div>
                       </div>
-                      <p className="text-xl font-bold text-blue-600">{result.stretchTarget}<span className="text-sm font-normal text-gray-500 ml-1">万円</span></p>
+                      <p className="text-xl font-bold text-kon">{result.stretchTarget}<span className="text-sm font-normal text-gray-500 ml-1">万円</span></p>
                     </div>
                   </div>
                 </div>
 
                 {/* Card 3: 現年収との比較 */}
                 <div className={`rounded-xl shadow-sm border p-5 ${
-                  result.stanceType === "low" ? "bg-amber-50 border-amber-200" :
+                  result.stanceType === "low" ? "bg-gray-50 border-gray-200" :
                   result.stanceType === "high" ? "bg-gray-50 border-gray-200" :
                   "bg-white border-gray-200"
                 }`}>
@@ -865,7 +865,7 @@ export default function SalaryNegotiationPage() {
                     </div>
                   </div>
                   <p className={`text-xs mt-3 leading-relaxed ${
-                    result.stanceType === "low" ? "text-amber-800" :
+                    result.stanceType === "low" ? "text-kon" :
                     result.stanceType === "high" ? "text-gray-500" :
                     "text-gray-600"
                   }`}>{result.stance}</p>
@@ -875,7 +875,7 @@ export default function SalaryNegotiationPage() {
                 <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
                   <h3 className="text-sm font-semibold text-gray-700 mb-2">交渉タイミング・スタンス</h3>
                   <div className="flex items-start gap-2">
-                    <span className="text-blue-500 mt-0.5">●</span>
+                    <span className="text-kon mt-0.5">●</span>
                     <p className="text-sm text-gray-600 leading-relaxed">{result.negotiationAdvice}</p>
                   </div>
                   {form.targetSalary && parseInt(form.targetSalary) > 0 && (
@@ -898,7 +898,7 @@ export default function SalaryNegotiationPage() {
                   <ul className="space-y-2">
                     {result.talkingPoints.map((point, i) => (
                       <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
-                        <span className="text-blue-400 mt-0.5 shrink-0">▶</span>
+                        <span className="text-kon mt-0.5 shrink-0">▶</span>
                         <span>「{point}」</span>
                       </li>
                     ))}
@@ -911,8 +911,8 @@ export default function SalaryNegotiationPage() {
               </>
             ) : (
               <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 flex flex-col items-center justify-center text-center h-full min-h-64">
-                <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4">
-                  <svg className="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mb-4">
+                  <svg className="w-8 h-8 text-kon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
@@ -932,7 +932,7 @@ export default function SalaryNegotiationPage() {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="bg-blue-600 text-white">
+                    <tr className="bg-kon text-white">
                       <th className="px-4 py-3 text-left font-semibold">職種</th>
                       <th className="px-4 py-3 text-center font-semibold">20代</th>
                       <th className="px-4 py-3 text-center font-semibold">30代</th>
@@ -980,7 +980,7 @@ export default function SalaryNegotiationPage() {
                     "最低ライン・現実的目標・ストレッチ目標の3段階を設定する",
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-0.5">・</span>
+                      <span className="text-kon mt-0.5">・</span>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -997,7 +997,7 @@ export default function SalaryNegotiationPage() {
                     "一度で決めようとする（複数回の交渉を前提に）",
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <span className="text-red-400 mt-0.5">✕</span>
+                      <span className="text-danger mt-0.5">✕</span>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -1060,9 +1060,9 @@ export default function SalaryNegotiationPage() {
                 <Link
                   key={tool.href}
                   href={tool.href}
-                  className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 hover:border-blue-300 hover:shadow-md transition-all group"
+                  className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 hover:border-ai hover:shadow-md transition-all group"
                 >
-                  <p className="font-semibold text-sm text-blue-600 group-hover:text-blue-700 mb-1">{tool.title}</p>
+                  <p className="font-semibold text-sm text-kon group-hover:text-ai mb-1">{tool.title}</p>
                   <p className="text-xs text-gray-500">{tool.desc}</p>
                 </Link>
               ))}

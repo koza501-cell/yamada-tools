@@ -170,10 +170,10 @@ export default function RetirementBonusCalculatorPage() {
   const [error, setError] = useState("");
 
   const inputClass =
-    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent";
+    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon focus:border-transparent";
   const labelClass = "block text-sm font-medium text-gray-700 mb-1";
   const selectClass =
-    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white";
+    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon focus:border-transparent bg-white";
 
   function handleChange(key: keyof FormState, value: string | boolean) {
     setForm((p) => ({ ...p, [key]: value }));
@@ -239,9 +239,9 @@ export default function RetirementBonusCalculatorPage() {
         {/* Breadcrumb & Header */}
         <div className="mb-6">
           <nav className="text-sm text-gray-500 mb-3">
-            <Link href="/" className="hover:text-blue-600">ホーム</Link>
+            <Link href="/" className="hover:text-ai">ホーム</Link>
             <span className="mx-2">/</span>
-            <Link href="/career" className="hover:text-blue-600">転職・年収</Link>
+            <Link href="/career" className="hover:text-ai">転職・年収</Link>
             <span className="mx-2">/</span>
             <span className="text-gray-800">退職金計算機</span>
           </nav>
@@ -251,9 +251,9 @@ export default function RetirementBonusCalculatorPage() {
           </p>
           <div className="flex flex-wrap gap-2 mt-3">
             <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-medium">登録不要</span>
-            <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full font-medium">2026年最新税制</span>
-            <span className="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded-full font-medium">一般・役員・早期退職対応</span>
-            <span className="text-xs bg-orange-100 text-orange-700 px-2 py-1 rounded-full font-medium">手取り額まで計算</span>
+            <span className="text-xs bg-gray-50 text-kon px-2 py-1 rounded-full font-medium">2026年最新税制</span>
+            <span className="text-xs bg-gray-50 text-kon px-2 py-1 rounded-full font-medium">一般・役員・早期退職対応</span>
+            <span className="text-xs bg-gray-50 text-kon px-2 py-1 rounded-full font-medium">手取り額まで計算</span>
           </div>
         </div>
 
@@ -261,13 +261,13 @@ export default function RetirementBonusCalculatorPage() {
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
           {/* Section 1 */}
           <div className="mb-6">
-            <div className="flex items-center gap-3 mb-4 pb-3 border-b-2 border-blue-100">
-              <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold flex-shrink-0">1</div>
+            <div className="flex items-center gap-3 mb-4 pb-3 border-b-2 border-gray-200">
+              <div className="bg-kon text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold flex-shrink-0">1</div>
               <h2 className="font-bold text-gray-800">基本情報</h2>
             </div>
             <div className="space-y-4">
               <div>
-                <label className={labelClass}>退職金の種類 <span className="text-red-500">*</span></label>
+                <label className={labelClass}>退職金の種類 <span className="text-danger">*</span></label>
                 <select
                   value={form.retirementType}
                   onChange={(e) => handleChange("retirementType", e.target.value as RetirementType)}
@@ -280,7 +280,7 @@ export default function RetirementBonusCalculatorPage() {
               </div>
 
               <div>
-                <label className={labelClass}>退職金の額 <span className="text-red-500">*</span></label>
+                <label className={labelClass}>退職金の額 <span className="text-danger">*</span></label>
                 <div className="flex items-center gap-2">
                   <input
                     type="number"
@@ -295,7 +295,7 @@ export default function RetirementBonusCalculatorPage() {
               </div>
 
               <div>
-                <label className={labelClass}>勤続年数 <span className="text-red-500">*</span></label>
+                <label className={labelClass}>勤続年数 <span className="text-danger">*</span></label>
                 <div className="flex items-center gap-2">
                   <input
                     type="number"
@@ -331,14 +331,14 @@ export default function RetirementBonusCalculatorPage() {
                   <button
                     type="button"
                     onClick={() => handleChange("isDisabled", true)}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium border transition-colors ${form.isDisabled ? "bg-blue-600 text-white border-blue-600" : "bg-white text-gray-700 border-gray-300 hover:border-blue-400"}`}
+                    className={`px-4 py-2 rounded-lg text-sm font-medium border transition-colors ${form.isDisabled ? "bg-kon text-white border-kon" : "bg-white text-gray-700 border-gray-300 hover:border-ai"}`}
                   >
                     はい（控除+100万円）
                   </button>
                   <button
                     type="button"
                     onClick={() => handleChange("isDisabled", false)}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium border transition-colors ${!form.isDisabled ? "bg-blue-600 text-white border-blue-600" : "bg-white text-gray-700 border-gray-300 hover:border-blue-400"}`}
+                    className={`px-4 py-2 rounded-lg text-sm font-medium border transition-colors ${!form.isDisabled ? "bg-kon text-white border-kon" : "bg-white text-gray-700 border-gray-300 hover:border-ai"}`}
                   >
                     いいえ
                   </button>
@@ -351,14 +351,14 @@ export default function RetirementBonusCalculatorPage() {
                   <button
                     type="button"
                     onClick={() => handleChange("hadPreviousRetirement", true)}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium border transition-colors ${form.hadPreviousRetirement ? "bg-blue-600 text-white border-blue-600" : "bg-white text-gray-700 border-gray-300 hover:border-blue-400"}`}
+                    className={`px-4 py-2 rounded-lg text-sm font-medium border transition-colors ${form.hadPreviousRetirement ? "bg-kon text-white border-kon" : "bg-white text-gray-700 border-gray-300 hover:border-ai"}`}
                   >
                     はい
                   </button>
                   <button
                     type="button"
                     onClick={() => handleChange("hadPreviousRetirement", false)}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium border transition-colors ${!form.hadPreviousRetirement ? "bg-blue-600 text-white border-blue-600" : "bg-white text-gray-700 border-gray-300 hover:border-blue-400"}`}
+                    className={`px-4 py-2 rounded-lg text-sm font-medium border transition-colors ${!form.hadPreviousRetirement ? "bg-kon text-white border-kon" : "bg-white text-gray-700 border-gray-300 hover:border-ai"}`}
                   >
                     いいえ
                   </button>
@@ -389,8 +389,8 @@ export default function RetirementBonusCalculatorPage() {
 
           {/* Section 2 */}
           <div className="mb-6">
-            <div className="flex items-center gap-3 mb-4 pb-3 border-b-2 border-blue-100">
-              <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold flex-shrink-0">2</div>
+            <div className="flex items-center gap-3 mb-4 pb-3 border-b-2 border-gray-200">
+              <div className="bg-kon text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold flex-shrink-0">2</div>
               <h2 className="font-bold text-gray-800">税額計算用</h2>
             </div>
             <div className="space-y-4">
@@ -408,20 +408,20 @@ export default function RetirementBonusCalculatorPage() {
                   <button
                     type="button"
                     onClick={() => handleChange("otherIncome", true)}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium border transition-colors ${form.otherIncome ? "bg-blue-600 text-white border-blue-600" : "bg-white text-gray-700 border-gray-300 hover:border-blue-400"}`}
+                    className={`px-4 py-2 rounded-lg text-sm font-medium border transition-colors ${form.otherIncome ? "bg-kon text-white border-kon" : "bg-white text-gray-700 border-gray-300 hover:border-ai"}`}
                   >
                     はい
                   </button>
                   <button
                     type="button"
                     onClick={() => handleChange("otherIncome", false)}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium border transition-colors ${!form.otherIncome ? "bg-blue-600 text-white border-blue-600" : "bg-white text-gray-700 border-gray-300 hover:border-blue-400"}`}
+                    className={`px-4 py-2 rounded-lg text-sm font-medium border transition-colors ${!form.otherIncome ? "bg-kon text-white border-kon" : "bg-white text-gray-700 border-gray-300 hover:border-ai"}`}
                   >
                     いいえ
                   </button>
                 </div>
                 {form.otherIncome && (
-                  <p className="text-xs text-blue-600 mt-1">退職所得は分離課税のため、他の所得の税率には影響しません。</p>
+                  <p className="text-xs text-kon mt-1">退職所得は分離課税のため、他の所得の税率には影響しません。</p>
                 )}
               </div>
 
@@ -444,15 +444,15 @@ export default function RetirementBonusCalculatorPage() {
 
           {/* Buttons */}
           {error && (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-3 mb-4">
-              <p className="text-red-600 text-sm">{error}</p>
+            <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 mb-4">
+              <p className="text-danger text-sm">{error}</p>
             </div>
           )}
           <div className="flex gap-3">
             <button
               type="button"
               onClick={handleCalculate}
-              className="flex-1 bg-blue-600 text-white py-3 rounded-lg font-bold text-base hover:bg-blue-700 transition-colors shadow-sm"
+              className="flex-1 bg-kon text-white py-3 rounded-lg font-bold text-base hover:bg-ai transition-colors shadow-sm"
             >
               計算する
             </button>
@@ -470,9 +470,9 @@ export default function RetirementBonusCalculatorPage() {
         {result && (
           <div className="mb-8">
             {result.isOfficerShortTerm && (
-              <div className="bg-orange-50 border border-orange-300 rounded-xl p-4 mb-4">
-                <p className="text-orange-800 font-bold text-sm">⚠ 役員退職金・勤続5年以下の特例</p>
-                <p className="text-orange-700 text-sm mt-1">役員で勤続5年以下の場合、退職所得の1/2課税が適用されません。課税退職所得 = 退職金 − 退職所得控除（1/2計算なし）</p>
+              <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-4">
+                <p className="text-kon font-bold text-sm">⚠ 役員退職金・勤続5年以下の特例</p>
+                <p className="text-kon text-sm mt-1">役員で勤続5年以下の場合、退職所得の1/2課税が適用されません。課税退職所得 = 退職金 − 退職所得控除（1/2計算なし）</p>
               </div>
             )}
             {result.isShortTermSpecial && !result.isOfficerShortTerm && (
@@ -487,7 +487,7 @@ export default function RetirementBonusCalculatorPage() {
               <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4">
                 <p className="text-xs text-gray-500 mb-1">退職所得控除額</p>
                 <p className="text-xl font-bold text-gray-900">{fmtMan(result.deduction)}<span className="text-sm font-normal text-gray-500">万円</span></p>
-                <p className="text-xs text-blue-600 mt-0.5">勤続{form.yearsOfService}年の控除額</p>
+                <p className="text-xs text-kon mt-0.5">勤続{form.yearsOfService}年の控除額</p>
               </div>
               <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4">
                 <p className="text-xs text-gray-500 mb-1">課税退職所得</p>
@@ -509,10 +509,10 @@ export default function RetirementBonusCalculatorPage() {
                 <p className="text-xl font-bold text-gray-900">{fmtManRound(result.totalTax)}<span className="text-sm font-normal text-gray-500">万円</span></p>
                 <p className="text-xs text-gray-400 mt-0.5">所得税+住民税</p>
               </div>
-              <div className="bg-blue-600 rounded-xl shadow-sm p-4">
-                <p className="text-xs text-blue-100 mb-1">手取り退職金</p>
+              <div className="bg-kon rounded-xl shadow-sm p-4">
+                <p className="text-xs text-gin mb-1">手取り退職金</p>
                 <p className="text-2xl font-bold text-white">約{fmtMan(result.netAmount)}万円</p>
-                <p className="text-xs text-blue-200 mt-0.5">実効税率 {result.effectiveRate.toFixed(1)}%</p>
+                <p className="text-xs text-gin mt-0.5">実効税率 {result.effectiveRate.toFixed(1)}%</p>
               </div>
             </div>
 
@@ -536,9 +536,9 @@ export default function RetirementBonusCalculatorPage() {
                     { label: "住民税", value: `−${fmtManRound(result.residentTax)}万円`, highlight: false },
                     { label: "手取り額", value: `約${fmtMan(result.netAmount)}万円`, highlight: true },
                   ].map((row, i) => (
-                    <tr key={i} className={row.highlight ? "bg-blue-50" : ""}>
-                      <td className={`py-2.5 px-3 ${row.highlight ? "font-bold text-blue-800" : "text-gray-600"}`}>{row.label}</td>
-                      <td className={`py-2.5 px-3 text-right font-semibold ${row.highlight ? "text-blue-700 text-base" : "text-gray-800"}`}>{row.value}</td>
+                    <tr key={i} className={row.highlight ? "bg-gray-50" : ""}>
+                      <td className={`py-2.5 px-3 ${row.highlight ? "font-bold text-kon" : "text-gray-600"}`}>{row.label}</td>
+                      <td className={`py-2.5 px-3 text-right font-semibold ${row.highlight ? "text-kon text-base" : "text-gray-800"}`}>{row.value}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -564,7 +564,7 @@ export default function RetirementBonusCalculatorPage() {
                       <tr key={i} className={i % 2 === 1 ? "bg-gray-50" : ""}>
                         <td className="py-2 px-3 font-medium text-gray-700">{row.years}年</td>
                         <td className="py-2 px-3 text-gray-700">{fmt(row.deduction)}万円</td>
-                        <td className="py-2 px-3 text-blue-700 font-medium">{calcTaxForTable(row.years, amountForTable)}</td>
+                        <td className="py-2 px-3 text-kon font-medium">{calcTaxForTable(row.years, amountForTable)}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -599,7 +599,7 @@ export default function RetirementBonusCalculatorPage() {
                   ].map((row, i) => (
                     <tr key={i} className={i % 2 === 1 ? "bg-gray-50" : ""}>
                       {row.map((cell, j) => (
-                        <td key={j} className={`py-2 px-3 ${j === 3 ? "text-blue-700 font-bold" : ""}`}>{cell}</td>
+                        <td key={j} className={`py-2 px-3 ${j === 3 ? "text-kon font-bold" : ""}`}>{cell}</td>
                       ))}
                     </tr>
                   ))}
@@ -669,7 +669,7 @@ export default function RetirementBonusCalculatorPage() {
               ].map((item, i) => (
                 <div key={i} className="border border-gray-100 rounded-lg p-4">
                   <p className="text-sm font-semibold text-gray-900 mb-2">
-                    <span className="text-blue-600 mr-2">Q.</span>{item.q}
+                    <span className="text-kon mr-2">Q.</span>{item.q}
                   </p>
                   <p className="text-sm text-gray-700">
                     <span className="text-green-600 font-semibold mr-2">A.</span>{item.a}
@@ -692,15 +692,15 @@ export default function RetirementBonusCalculatorPage() {
                 <Link
                   key={tool.href}
                   href={tool.href}
-                  className="flex items-start gap-3 p-3 rounded-lg border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-colors group"
+                  className="flex items-start gap-3 p-3 rounded-lg border border-gray-200 hover:border-ai hover:bg-gray-50 transition-colors group"
                 >
-                  <div className="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
-                    <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-8 h-8 rounded-lg bg-gray-50 flex items-center justify-center flex-shrink-0">
+                    <svg className="w-4 h-4 text-kon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 11h.01M12 11h.01M15 11h.01M4 19h16a2 2 0 002-2V7a2 2 0 00-2-2H4a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-gray-800 group-hover:text-blue-700">{tool.label}</p>
+                    <p className="text-sm font-semibold text-gray-800 group-hover:text-ai">{tool.label}</p>
                     <p className="text-xs text-gray-500">{tool.desc}</p>
                   </div>
                 </Link>

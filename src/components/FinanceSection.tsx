@@ -106,7 +106,7 @@ export default function FinanceSection() {
       <section
         id="finance-tools"
         aria-labelledby="finance-section-heading"
-        className="py-12 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 border-l-4 border-amber-400"
+        className="py-12 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 border-l-4 border-gray-200"
       >
         <div className="max-w-7xl mx-auto px-4">
           {/* Section Header */}
@@ -114,7 +114,7 @@ export default function FinanceSection() {
             <div className="flex items-center gap-3">
               <h2
                 id="finance-section-heading"
-                className="text-2xl font-bold text-kon dark:text-blue-400"
+                className="text-2xl font-bold text-kon dark:text-gray-300"
               >
                 <span aria-hidden="true">💰</span> 金融・資産運用ツール
               </h2>
@@ -140,7 +140,7 @@ export default function FinanceSection() {
               <article
                 key={tool.id}
                 aria-label={tool.name}
-                className="group bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 overflow-hidden border border-amber-100 dark:border-gray-700"
+                className="group bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 overflow-hidden border border-gray-200 dark:border-gray-700"
               >
                 <div className="p-5">
                   <div className="flex items-start gap-4">
@@ -159,7 +159,7 @@ export default function FinanceSection() {
                         <h3 className="text-base font-bold text-kon dark:text-white leading-tight">
                           {tool.name}
                         </h3>
-                        <span className="px-1.5 py-0.5 bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200 text-xs font-bold rounded">
+                        <span className="px-1.5 py-0.5 bg-gray-50 text-kon dark:bg-kon dark:text-amber-200 text-xs font-bold rounded">
                           Pro
                         </span>
 
@@ -189,7 +189,7 @@ export default function FinanceSection() {
           </div>
 
           {/* Bottom CTA Banner */}
-          <div className="mt-8 bg-gradient-to-r from-amber-100 to-yellow-100 dark:from-gray-700 dark:to-gray-700 rounded-xl p-6 border border-amber-200 dark:border-gray-600">
+          <div className="mt-8 bg-gradient-to-r from-amber-100 to-yellow-100 dark:from-gray-700 dark:to-gray-700 rounded-xl p-6 border border-gray-200 dark:border-gray-600">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
               <div className="text-center md:text-left">
                 <p className="text-gray-800 dark:text-gray-200 font-medium">

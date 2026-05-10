@@ -10,7 +10,7 @@ function Tip({ text }: { text: string }) {
   return (
     <span className="relative inline-block ml-1">
       <button type="button"
-        className="text-blue-500 text-xs border border-blue-300 rounded-full w-4 h-4 inline-flex items-center justify-center leading-none"
+        className="text-kon text-xs border border-kon rounded-full w-4 h-4 inline-flex items-center justify-center leading-none"
         onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false)}
         onClick={() => setShow(s => !s)} aria-label="説明">?</button>
       {show && (
@@ -26,7 +26,7 @@ function Row({ label, value, tip, highlight }: { label: string; value: string; t
   return (
     <div className={`flex items-center justify-between py-2 border-b border-gray-100 ${highlight ? "font-bold" : ""}`}>
       <span className={`text-sm ${highlight ? "text-gray-900" : "text-gray-600"}`}>{label}{tip && <Tip text={tip} />}</span>
-      <span className={`text-sm ${highlight ? "text-blue-700 text-base" : "text-gray-800"}`}>{value}</span>
+      <span className={`text-sm ${highlight ? "text-kon text-base" : "text-gray-800"}`}>{value}</span>
     </div>
   );
 }
@@ -125,7 +125,7 @@ export default function OvertimeClient() {
               基本月給（額面）<Tip text="固定残業代が含まれている場合はその分を含めた総支給額を入力してください" />
             </label>
             <div className="flex items-center gap-2">
-              <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+              <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-kon outline-none"
                 value={baseSalary} onChange={e => setBaseSalary(e.target.value)} placeholder="250000" />
               <span className="text-gray-500 text-sm whitespace-nowrap">円/月</span>
             </div>
@@ -137,7 +137,7 @@ export default function OvertimeClient() {
                 1日の所定労働時間<Tip text="会社の規定で定められた1日の労働時間。一般的には8時間です" />
               </label>
               <div className="flex items-center gap-1">
-                <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-kon outline-none"
                   value={hoursPerDay} onChange={e => setHoursPerDay(e.target.value)} placeholder="8" step="0.5" />
                 <span className="text-gray-500 text-xs">時間</span>
               </div>
@@ -147,7 +147,7 @@ export default function OvertimeClient() {
                 月平均所定労働日数<Tip text="1ヶ月の平均出勤日数。（年間所定労働日数 ÷ 12）で計算します。一般的には20〜22日です" />
               </label>
               <div className="flex items-center gap-1">
-                <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-kon outline-none"
                   value={daysPerMonth} onChange={e => setDaysPerMonth(e.target.value)} placeholder="20" step="0.5" />
                 <span className="text-gray-500 text-xs">日</span>
               </div>
@@ -163,7 +163,7 @@ export default function OvertimeClient() {
               残業時間<Tip text="法定労働時間（1日8時間または週40時間）を超えた時間。60時間超えは50%割増（2023年法改正）" />
             </label>
             <div className="flex items-center gap-1">
-              <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+              <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-kon outline-none"
                 value={overtimeHours} onChange={e => setOvertimeHours(e.target.value)} placeholder="20" min="0" />
               <span className="text-gray-500 text-xs">時間</span>
             </div>
@@ -173,7 +173,7 @@ export default function OvertimeClient() {
               深夜残業<Tip text="22時〜翌5時の労働時間。通常の割増に加えさらに25%が加算されます" />
             </label>
             <div className="flex items-center gap-1">
-              <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+              <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-kon outline-none"
                 value={lateNightHours} onChange={e => setLateNightHours(e.target.value)} placeholder="0" min="0" />
               <span className="text-gray-500 text-xs">時間</span>
             </div>
@@ -183,18 +183,18 @@ export default function OvertimeClient() {
               法定休日労働<Tip text="週1日以上の法定休日（通常は日曜）に働いた時間。35%割増が適用されます" />
             </label>
             <div className="flex items-center gap-1">
-              <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+              <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-kon outline-none"
                 value={holidayHours} onChange={e => setHolidayHours(e.target.value)} placeholder="0" min="0" />
               <span className="text-gray-500 text-xs">時間</span>
             </div>
           </div>
         </div>
 
-        <div className="bg-amber-50 border border-amber-200 rounded-lg p-3">
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-3">
           <label className="flex items-center gap-2 cursor-pointer">
             <input type="checkbox" checked={fixedOvertime} onChange={e => setFixedOvertime(e.target.checked)}
               className="w-4 h-4 accent-amber-500" />
-            <span className="text-sm font-medium text-amber-800">
+            <span className="text-sm font-medium text-kon">
               固定残業代（みなし残業）あり
               <Tip text="固定残業代とは、あらかじめ一定時間分の残業代を月給に含めた制度です。実際の残業がその時間を超えた場合、超過分は別途支払われる必要があります" />
             </span>
@@ -202,19 +202,19 @@ export default function OvertimeClient() {
           {fixedOvertime && (
             <div className="mt-3 grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs text-amber-700 mb-1">固定残業時間</label>
+                <label className="block text-xs text-kon mb-1">固定残業時間</label>
                 <div className="flex items-center gap-1">
-                  <input type="number" className="border border-amber-300 rounded-lg px-3 py-2 w-full text-sm outline-none"
+                  <input type="number" className="border border-gray-200 rounded-lg px-3 py-2 w-full text-sm outline-none"
                     value={fixedOvertimeHours} onChange={e => setFixedOvertimeHours(e.target.value)} placeholder="20" />
-                  <span className="text-amber-600 text-xs">時間</span>
+                  <span className="text-kon text-xs">時間</span>
                 </div>
               </div>
               <div>
-                <label className="block text-xs text-amber-700 mb-1">固定残業代（月額）</label>
+                <label className="block text-xs text-kon mb-1">固定残業代（月額）</label>
                 <div className="flex items-center gap-1">
-                  <input type="number" className="border border-amber-300 rounded-lg px-3 py-2 w-full text-sm outline-none"
+                  <input type="number" className="border border-gray-200 rounded-lg px-3 py-2 w-full text-sm outline-none"
                     value={fixedOvertimeAmount} onChange={e => setFixedOvertimeAmount(e.target.value)} placeholder="30000" />
-                  <span className="text-amber-600 text-xs">円</span>
+                  <span className="text-kon text-xs">円</span>
                 </div>
               </div>
             </div>
@@ -223,10 +223,10 @@ export default function OvertimeClient() {
       </div>
 
       <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden mb-6">
-        <div className="bg-blue-600 text-white p-4">
+        <div className="bg-kon text-white p-4">
           <p className="text-sm opacity-80 mb-1">計算結果</p>
           <p className="text-3xl font-bold">{fmt(r.total)}</p>
-          <p className="text-blue-200 text-sm mt-1">今月の残業代合計</p>
+          <p className="text-gin text-sm mt-1">今月の残業代合計</p>
         </div>
         <div className="p-4 space-y-0">
           <Row label="基礎時給" value={`${Math.floor(r.hourlyBase).toLocaleString()}円/時間`}
@@ -257,12 +257,12 @@ export default function OvertimeClient() {
           <Row label="合計残業代" value={fmt(r.total)} highlight />
         </div>
         {r.otOver60 > 0 && (
-          <div className="bg-red-50 border-t border-red-200 px-4 py-3 text-xs text-red-700">
+          <div className="bg-gray-50 border-t border-gray-200 px-4 py-3 text-xs text-danger">
             ⚠️ 月60時間を超える残業があります。2023年4月以降、中小企業も50%割増が適用されます。
           </div>
         )}
         {fixedOvertime && r.extraPay > 0 && (
-          <div className="bg-amber-50 border-t border-amber-200 px-4 py-3 text-xs text-amber-700">
+          <div className="bg-gray-50 border-t border-gray-200 px-4 py-3 text-xs text-kon">
             ℹ️ {r.fixedNote}
           </div>
         )}

@@ -212,9 +212,9 @@ export default function MedicalStaffPayrollClient() {
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-3xl mx-auto px-4 py-8">
         <nav className="text-sm text-gray-500 mb-6">
-          <a href="/" className="hover:text-blue-600">ホーム</a>
+          <a href="/" className="hover:text-ai">ホーム</a>
           <span className="mx-2">/</span>
-          <a href="/clinic" className="hover:text-blue-600">クリニック経営</a>
+          <a href="/clinic" className="hover:text-ai">クリニック経営</a>
           <span className="mx-2">/</span>
           <span className="text-gray-700">医療スタッフ給与計算機</span>
         </nav>
@@ -234,72 +234,72 @@ export default function MedicalStaffPayrollClient() {
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">職種</label>
               <select value={jobType} onChange={e => handleJobChange(e.target.value)}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon">
                 {JOB_TYPES.map(j => <option key={j} value={j}>{j}</option>)}
               </select>
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">勤務形態</label>
               <select value={shiftType} onChange={e => handleShiftChange(e.target.value)}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon">
                 {SHIFT_TYPES.map(s => <option key={s} value={s}>{s}</option>)}
               </select>
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">基本給（月）<span className="text-red-500 ml-1">*</span></label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">基本給（月）<span className="text-danger ml-1">*</span></label>
               <div className="relative">
                 <span className="absolute left-3 top-2 text-gray-400 text-sm">¥</span>
                 <input type="number" value={baseSalary} onChange={e => setBaseSalary(e.target.value)} placeholder="250000"
-                  className="w-full border border-gray-300 rounded-lg pl-6 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                  className="w-full border border-gray-300 rounded-lg pl-6 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon" />
               </div>
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">月間労働時間</label>
               <div className="relative">
                 <input type="number" value={workHours} onChange={e => setWorkHours(e.target.value)} placeholder="160"
-                  className="w-full border border-gray-300 rounded-lg px-3 pr-10 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                  className="w-full border border-gray-300 rounded-lg px-3 pr-10 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon" />
                 <span className="absolute right-3 top-2 text-gray-400 text-sm">時間</span>
               </div>
             </div>
           </div>
           {(shiftType === "2交代制" || shiftType === "夜勤専従") && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4 p-4 bg-blue-50 rounded-xl">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4 p-4 bg-gray-50 rounded-xl">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">夜勤手当（1回あたり）</label>
                 <div className="relative">
                   <span className="absolute left-3 top-2 text-gray-400 text-sm">¥</span>
                   <input type="number" value={twoShiftAllowance} onChange={e => setTwoShiftAllowance(e.target.value)}
-                    className="w-full border border-gray-300 rounded-lg pl-6 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    className="w-full border border-gray-300 rounded-lg pl-6 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon" />
                 </div>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">夜勤回数（月）</label>
                 <div className="relative">
                   <input type="number" value={twoShiftCount} onChange={e => setTwoShiftCount(e.target.value)} placeholder="4"
-                    className="w-full border border-gray-300 rounded-lg px-3 pr-8 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    className="w-full border border-gray-300 rounded-lg px-3 pr-8 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon" />
                   <span className="absolute right-3 top-2 text-gray-400 text-sm">回</span>
                 </div>
               </div>
             </div>
           )}
           {shiftType === "3交代制" && (
-            <div className="p-4 bg-blue-50 rounded-xl mb-4 space-y-3">
+            <div className="p-4 bg-gray-50 rounded-xl mb-4 space-y-3">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">準夜勤手当（1回）</label>
                   <div className="relative">
                     <span className="absolute left-3 top-2 text-gray-400 text-sm">¥</span>
                     <input type="number" value={jyunyaAllowance} onChange={e => setJyunyaAllowance(e.target.value)}
-                      className="w-full border border-gray-300 rounded-lg pl-6 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                      className="w-full border border-gray-300 rounded-lg pl-6 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon" />
                   </div>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">準夜勤回数（月）</label>
                   <div className="relative">
                     <input type="number" value={jyunyaCount} onChange={e => setJyunyaCount(e.target.value)} placeholder="5"
-                      className="w-full border border-gray-300 rounded-lg px-3 pr-8 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                      className="w-full border border-gray-300 rounded-lg px-3 pr-8 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon" />
                     <span className="absolute right-3 top-2 text-gray-400 text-sm">回</span>
                   </div>
                 </div>
@@ -310,14 +310,14 @@ export default function MedicalStaffPayrollClient() {
                   <div className="relative">
                     <span className="absolute left-3 top-2 text-gray-400 text-sm">¥</span>
                     <input type="number" value={shinyaAllowance} onChange={e => setShinyaAllowance(e.target.value)}
-                      className="w-full border border-gray-300 rounded-lg pl-6 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                      className="w-full border border-gray-300 rounded-lg pl-6 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon" />
                   </div>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">深夜勤回数（月）</label>
                   <div className="relative">
                     <input type="number" value={shinyaCount} onChange={e => setShinyaCount(e.target.value)} placeholder="4"
-                      className="w-full border border-gray-300 rounded-lg px-3 pr-8 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                      className="w-full border border-gray-300 rounded-lg px-3 pr-8 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon" />
                     <span className="absolute right-3 top-2 text-gray-400 text-sm">回</span>
                   </div>
                 </div>
@@ -329,7 +329,7 @@ export default function MedicalStaffPayrollClient() {
               <label className="block text-sm font-medium text-gray-700 mb-1">残業時間（月）</label>
               <div className="relative">
                 <input type="number" value={overtime} onChange={e => setOvertime(e.target.value)} placeholder="10"
-                  className="w-full border border-gray-300 rounded-lg px-3 pr-10 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                  className="w-full border border-gray-300 rounded-lg px-3 pr-10 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon" />
                 <span className="absolute right-3 top-2 text-gray-400 text-sm">時間</span>
               </div>
             </div>
@@ -337,7 +337,7 @@ export default function MedicalStaffPayrollClient() {
               <label className="block text-sm font-medium text-gray-700 mb-1">深夜残業（22-5時）</label>
               <div className="relative">
                 <input type="number" value={lateNightOvertime} onChange={e => setLateNightOvertime(e.target.value)} placeholder="0"
-                  className="w-full border border-gray-300 rounded-lg px-3 pr-10 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                  className="w-full border border-gray-300 rounded-lg px-3 pr-10 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon" />
                 <span className="absolute right-3 top-2 text-gray-400 text-sm">時間</span>
               </div>
             </div>
@@ -345,7 +345,7 @@ export default function MedicalStaffPayrollClient() {
               <label className="block text-sm font-medium text-gray-700 mb-1">休日出勤（月）</label>
               <div className="relative">
                 <input type="number" value={holidayWork} onChange={e => setHolidayWork(e.target.value)} placeholder="0"
-                  className="w-full border border-gray-300 rounded-lg px-3 pr-10 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                  className="w-full border border-gray-300 rounded-lg px-3 pr-10 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon" />
                 <span className="absolute right-3 top-2 text-gray-400 text-sm">時間</span>
               </div>
             </div>
@@ -356,14 +356,14 @@ export default function MedicalStaffPayrollClient() {
               <div className="relative">
                 <span className="absolute left-3 top-2 text-gray-400 text-sm">¥</span>
                 <input type="number" value={onCallRate} onChange={e => setOnCallRate(e.target.value)} placeholder="3000"
-                  className="w-full border border-gray-300 rounded-lg pl-6 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                  className="w-full border border-gray-300 rounded-lg pl-6 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon" />
               </div>
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">オンコール回数（月）</label>
               <div className="relative">
                 <input type="number" value={onCallCount} onChange={e => setOnCallCount(e.target.value)} placeholder="0"
-                  className="w-full border border-gray-300 rounded-lg px-3 pr-8 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                  className="w-full border border-gray-300 rounded-lg px-3 pr-8 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon" />
                 <span className="absolute right-3 top-2 text-gray-400 text-sm">回</span>
               </div>
             </div>
@@ -382,14 +382,14 @@ export default function MedicalStaffPayrollClient() {
                   <div className="relative">
                     <span className="absolute left-2 top-2 text-gray-400 text-xs">¥</span>
                     <input type="number" value={item.value} onChange={e => item.setter(e.target.value)} placeholder="0"
-                      className="w-full border border-gray-300 rounded-lg pl-5 pr-2 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                      className="w-full border border-gray-300 rounded-lg pl-5 pr-2 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon" />
                   </div>
                 </div>
               ))}
             </div>
           </div>
           <button type="button" onClick={handleCalculate}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl transition-colors text-base">
+            className="w-full bg-kon hover:bg-ai text-white font-semibold py-3 rounded-xl transition-colors text-base">
             計算する
           </button>
         </div>
@@ -398,7 +398,7 @@ export default function MedicalStaffPayrollClient() {
         {result && (
           <div>
             {result.error ? (
-              <div className="bg-red-50 border border-red-200 rounded-2xl p-5 mb-6 text-red-700 text-sm">{result.error}</div>
+              <div className="bg-gray-50 border border-gray-200 rounded-2xl p-5 mb-6 text-danger text-sm">{result.error}</div>
             ) : (
               <>
                 {/* 月給内訳テーブル */}
@@ -420,9 +420,9 @@ export default function MedicalStaffPayrollClient() {
                           <td className="py-2 text-right font-mono text-gray-800">¥{fmt(row.value || 0)}</td>
                         </tr>
                       ))}
-                      <tr className="bg-blue-50">
+                      <tr className="bg-gray-50">
                         <td className="py-3 font-bold text-gray-900">月給総額</td>
-                        <td className="py-3 text-right font-bold text-blue-700 font-mono text-lg">¥{fmt(result.grossMonthly || 0)}</td>
+                        <td className="py-3 text-right font-bold text-kon font-mono text-lg">¥{fmt(result.grossMonthly || 0)}</td>
                       </tr>
                       <tr className="border-t border-gray-200">
                         <td className="py-2 text-gray-500 text-xs">時給換算</td>
@@ -433,8 +433,8 @@ export default function MedicalStaffPayrollClient() {
                 </div>
 
                 {/* 年収目安 */}
-                <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-6 mb-6 text-white">
-                  <p className="text-sm text-blue-100 mb-1">推定年収（月給×12 + 賞与4ヶ月）</p>
+                <div className="bg-gradient-to-r from-slate-900 to-kon rounded-2xl p-6 mb-6 text-white">
+                  <p className="text-sm text-gin mb-1">推定年収（月給×12 + 賞与4ヶ月）</p>
                   <p className="text-3xl font-bold">¥{fmt(result.estimatedAnnual || 0)}</p>
                 </div>
 
@@ -451,7 +451,7 @@ export default function MedicalStaffPayrollClient() {
                     </p>
                     <p className="text-sm mt-1">
                       差額:{" "}
-                      <span className={(result.diff || 0) >= 0 ? "text-green-600 font-bold" : "text-red-600 font-bold"}>
+                      <span className={(result.diff || 0) >= 0 ? "text-green-600 font-bold" : "text-danger font-bold"}>
                         {(result.diff || 0) >= 0 ? "+" : ""}¥{fmt(Math.abs(result.diff || 0))}
                         （{(result.diff || 0) >= 0 ? "+" : ""}{result.diffPercent}%）
                       </span>
@@ -492,7 +492,7 @@ export default function MedicalStaffPayrollClient() {
               <a
                 key={tool.path}
                 href={"coming" in tool && tool.coming ? undefined : tool.path}
-                className={`flex items-center gap-3 p-3 rounded-xl border transition-colors ${"coming" in tool && tool.coming ? "border-gray-100 bg-gray-50 cursor-default" : "border-gray-200 hover:border-blue-300 hover:bg-blue-50"}`}
+                className={`flex items-center gap-3 p-3 rounded-xl border transition-colors ${"coming" in tool && tool.coming ? "border-gray-100 bg-gray-50 cursor-default" : "border-gray-200 hover:border-ai hover:bg-gray-50"}`}
               >
                 <span className="text-2xl">🔗</span>
                 <div>

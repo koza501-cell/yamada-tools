@@ -109,7 +109,7 @@ export default function GlobalSearchModal() {
                 key={item.path}
                 href={item.path}
                 onClick={() => setOpen(false)}
-                className={`flex items-center gap-3 px-4 py-3 transition-colors border-b border-gray-50 dark:border-gray-700 last:border-0 ${idx === selectedIdx ? "bg-blue-50 dark:bg-blue-900/30" : "hover:bg-gray-50 dark:hover:bg-gray-700/50"}`}
+                className={`flex items-center gap-3 px-4 py-3 transition-colors border-b border-gray-50 dark:border-gray-700 last:border-0 ${idx === selectedIdx ? "bg-gray-50 dark:bg-kon/30" : "hover:bg-gray-50 dark:hover:bg-gray-700/50"}`}
                 onMouseEnter={() => setSelectedIdx(idx)}
               >
                 <span className="text-2xl flex-shrink-0">{item.icon}</span>

@@ -113,7 +113,7 @@ export default function StickyTabBar() {
               aria-label={cat.ariaLabel}
               className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-all ${
                 activeTab === cat.id
-                  ? "bg-pink-500 text-white shadow-md"
+                  ? "bg-kon text-white shadow-md"
                   : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
               }`}
             >

@@ -175,8 +175,8 @@ export default function TextDiffClient({
           
           <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
             <span className="bg-green-50 text-green-700 px-3 py-1 rounded-full">追加: 完全無料</span>
-            <span className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full">色分け表示</span>
-            <span className="bg-purple-50 text-purple-700 px-3 py-1 rounded-full">日本語対応</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">色分け表示</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">日本語対応</span>
           </div>
         </header>
 
@@ -258,7 +258,7 @@ export default function TextDiffClient({
                   <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full">
                     +{stats.added} 追加
                   </span>
-                  <span className="px-3 py-1 bg-red-100 text-red-700 rounded-full">
+                  <span className="px-3 py-1 bg-gray-50 text-danger rounded-full">
                     -{stats.removed} 削除
                   </span>
                   <span className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full">
@@ -283,7 +283,7 @@ export default function TextDiffClient({
                         line.type === "added"
                           ? "bg-green-900/50 text-green-300"
                           : line.type === "removed"
-                          ? "bg-red-900/50 text-red-300"
+                          ? "bg-danger/50 text-gin"
                           : "text-gray-300"
                       }`}
                     >
@@ -311,7 +311,7 @@ export default function TextDiffClient({
                   <span>追加された行</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="w-4 h-4 bg-red-900/50 rounded"></span>
+                  <span className="w-4 h-4 bg-danger/50 rounded"></span>
                   <span>削除された行</span>
                 </div>
                 <div className="flex items-center gap-2">

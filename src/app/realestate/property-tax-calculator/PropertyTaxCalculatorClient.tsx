@@ -228,8 +228,8 @@ export default function PropertyTaxCalculatorPage() {
     }, 100);
   };
 
-  const inputClass = "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400";
-  const selectClass = "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white";
+  const inputClass = "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon";
+  const selectClass = "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon bg-white";
   const labelClass = "block text-sm font-medium text-gray-700 mb-1";
 
   const ToggleBtn = ({
@@ -240,8 +240,8 @@ export default function PropertyTaxCalculatorPage() {
   }) => {
     const activeClass = color === "green"
       ? "bg-green-600 text-white border-green-600"
-      : "bg-blue-600 text-white border-blue-600";
-    const inactiveClass = "bg-white text-gray-600 border-gray-300 hover:border-blue-400";
+      : "bg-kon text-white border-kon";
+    const inactiveClass = "bg-white text-gray-600 border-gray-300 hover:border-ai";
     return (
       <div className="flex gap-2 mt-1">
         <button type="button"
@@ -261,31 +261,31 @@ export default function PropertyTaxCalculatorPage() {
 
         <div className="mb-6">
           <nav className="text-xs text-gray-400 mb-3">
-            <Link href="/" className="hover:text-blue-600">ホーム</Link>
+            <Link href="/" className="hover:text-ai">ホーム</Link>
             <span className="mx-1">/</span>
-            <Link href="/realestate" className="hover:text-blue-600">不動産・住まい</Link>
+            <Link href="/realestate" className="hover:text-ai">不動産・住まい</Link>
             <span className="mx-1">/</span>
             <span className="text-gray-600">固定資産税 計算機</span>
           </nav>
           <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">固定資産税 計算機</h1>
           <p className="text-gray-600 text-sm md:text-base">
             固定資産税・都市計画税を軽減措置込みで自動計算。住宅用地特例・新築1/2軽減に対応。
-            <span className="inline-block ml-1 bg-orange-100 text-orange-700 text-xs font-semibold px-2 py-0.5 rounded">2026年最新対応</span>
+            <span className="inline-block ml-1 bg-gray-50 text-kon text-xs font-semibold px-2 py-0.5 rounded">2026年最新対応</span>
           </p>
         </div>
 
         <AdUnit slot="5612038947" format="horizontal" className="mb-6" />
 
         {/* Section 1: 土地 */}
-        <div className="bg-white rounded-2xl shadow-sm border border-amber-100 p-6 mb-4">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 mb-4">
           <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
-            <h2 className="text-lg font-bold text-amber-700 flex items-center gap-2">
-              <span className="bg-amber-100 text-amber-700 rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
+            <h2 className="text-lg font-bold text-kon flex items-center gap-2">
+              <span className="bg-gray-50 text-kon rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
               土地の情報
             </h2>
             <div className="flex gap-2 flex-shrink-0">
               <button type="button"
-                className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition-colors ${landEnabled ? "bg-amber-600 text-white border-amber-600" : "bg-white text-gray-500 border-gray-300"}`}
+                className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition-colors ${landEnabled ? "bg-kon text-white border-gray-200" : "bg-white text-gray-500 border-gray-300"}`}
                 onClick={() => setLandEnabled(true)}>所有する</button>
               <button type="button"
                 className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition-colors ${!landEnabled ? "bg-gray-500 text-white border-gray-500" : "bg-white text-gray-500 border-gray-300"}`}
@@ -327,15 +327,15 @@ export default function PropertyTaxCalculatorPage() {
         </div>
 
         {/* Section 2: 建物 */}
-        <div className="bg-white rounded-2xl shadow-sm border border-blue-100 p-6 mb-6">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 mb-6">
           <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
-            <h2 className="text-lg font-bold text-blue-700 flex items-center gap-2">
-              <span className="bg-blue-100 text-blue-700 rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold flex-shrink-0">2</span>
+            <h2 className="text-lg font-bold text-kon flex items-center gap-2">
+              <span className="bg-gray-50 text-kon rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold flex-shrink-0">2</span>
               建物の情報
             </h2>
             <div className="flex gap-2 flex-shrink-0">
               <button type="button"
-                className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition-colors ${buildingEnabled ? "bg-blue-600 text-white border-blue-600" : "bg-white text-gray-500 border-gray-300"}`}
+                className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition-colors ${buildingEnabled ? "bg-kon text-white border-kon" : "bg-white text-gray-500 border-gray-300"}`}
                 onClick={() => setBuildingEnabled(true)}>所有する</button>
               <button type="button"
                 className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition-colors ${!buildingEnabled ? "bg-gray-500 text-white border-gray-500" : "bg-white text-gray-500 border-gray-300"}`}
@@ -388,7 +388,7 @@ export default function PropertyTaxCalculatorPage() {
         </div>
 
         <button type="button" onClick={handleCalc}
-          className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold py-4 rounded-xl text-lg shadow-md transition-all mb-8">
+          className="w-full bg-gradient-to-r from-slate-900 to-kon hover:from-slate-900 hover:to-kon text-white font-bold py-4 rounded-xl text-lg shadow-md transition-all mb-8">
           固定資産税・都市計画税を計算する
         </button>
 
@@ -396,19 +396,19 @@ export default function PropertyTaxCalculatorPage() {
           <div id="result-section" className="space-y-5">
 
             {/* 年間・月額合計 BIG */}
-            <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl border border-amber-200 p-6 text-center">
+            <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl border border-gray-200 p-6 text-center">
               <h2 className="text-lg font-bold text-gray-700 mb-1">年間 固定資産税＋都市計画税</h2>
-              <p className="text-4xl font-bold text-orange-600 mb-1">{fmtYen(result.grandTotal)}</p>
+              <p className="text-4xl font-bold text-kon mb-1">{fmtYen(result.grandTotal)}</p>
               <p className="text-sm text-gray-500">月額換算：約{fmtYen(result.monthlyTotal)}/月</p>
               {result.grandTotal === 0 && (
                 <div className="mt-3 bg-green-100 text-green-700 rounded-lg px-4 py-2 text-sm font-medium">免税点以下のため非課税です</div>
               )}
               <div className="grid grid-cols-2 gap-3 mt-4">
-                <div className="bg-white rounded-xl p-3 border border-amber-100">
+                <div className="bg-white rounded-xl p-3 border border-gray-200">
                   <p className="text-xs text-gray-500 mb-1">固定資産税合計</p>
                   <p className="text-lg font-bold text-gray-700">{fmtYen(result.totalPropertyTax)}</p>
                 </div>
-                <div className="bg-white rounded-xl p-3 border border-blue-100">
+                <div className="bg-white rounded-xl p-3 border border-gray-200">
                   <p className="text-xs text-gray-500 mb-1">都市計画税合計</p>
                   <p className="text-lg font-bold text-gray-700">
                     {result.landInCityPlan || result.buildingInCityPlan ? fmtYen(result.totalCityPlanTax) : "対象外"}
@@ -418,8 +418,8 @@ export default function PropertyTaxCalculatorPage() {
             </div>
 
             {/* 固定資産税内訳 */}
-            <div className="bg-white rounded-2xl shadow-sm border border-amber-100 p-5">
-              <h3 className="font-bold text-amber-700 mb-3">固定資産税の内訳（税率 1.4%）</h3>
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-5">
+              <h3 className="font-bold text-kon mb-3">固定資産税の内訳（税率 1.4%）</h3>
               <div className="grid grid-cols-4 gap-2 text-xs text-gray-400 mb-2">
                 <div className="col-span-2">項目</div>
                 <div className="text-right">課税標準額</div>
@@ -461,14 +461,14 @@ export default function PropertyTaxCalculatorPage() {
               )}
               <div className="grid grid-cols-4 gap-2 pt-2 mt-1 border-t border-gray-200 text-sm font-bold">
                 <div className="col-span-3 text-gray-700">固定資産税合計</div>
-                <div className="text-right text-orange-600">{fmtYen(result.totalPropertyTax)}</div>
+                <div className="text-right text-kon">{fmtYen(result.totalPropertyTax)}</div>
               </div>
             </div>
 
             {/* 都市計画税内訳 */}
             {(result.landInCityPlan || result.buildingInCityPlan) && (
-              <div className="bg-white rounded-2xl shadow-sm border border-blue-100 p-5">
-                <h3 className="font-bold text-blue-700 mb-3">都市計画税の内訳（税率 0.3%）</h3>
+              <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-5">
+                <h3 className="font-bold text-kon mb-3">都市計画税の内訳（税率 0.3%）</h3>
                 <div className="grid grid-cols-4 gap-2 text-xs text-gray-400 mb-2">
                   <div className="col-span-2">項目</div>
                   <div className="text-right">課税標準額</div>
@@ -497,7 +497,7 @@ export default function PropertyTaxCalculatorPage() {
                 )}
                 <div className="grid grid-cols-4 gap-2 pt-2 mt-1 border-t border-gray-200 text-sm font-bold">
                   <div className="col-span-3 text-gray-700">都市計画税合計</div>
-                  <div className="text-right text-blue-600">{fmtYen(result.totalCityPlanTax)}</div>
+                  <div className="text-right text-kon">{fmtYen(result.totalCityPlanTax)}</div>
                 </div>
               </div>
             )}
@@ -570,8 +570,8 @@ export default function PropertyTaxCalculatorPage() {
 
             {/* 軽減期間シミュレーション */}
             {result.simRows.length > 0 && (
-              <div className="bg-white rounded-2xl shadow-sm border border-amber-100 p-5">
-                <h3 className="font-bold text-amber-700 mb-1">軽減期間シミュレーション</h3>
+              <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-5">
+                <h3 className="font-bold text-kon mb-1">軽減期間シミュレーション</h3>
                 <p className="text-xs text-gray-400 mb-3">新築住宅軽減（1/2）が終了すると建物の固定資産税が倍増します</p>
                 <div className="overflow-x-auto">
                   <table className="w-full text-sm">
@@ -592,7 +592,7 @@ export default function PropertyTaxCalculatorPage() {
                               <span className={`font-medium ${inRed ? "text-green-700" : "text-gray-700"}`}>{row.year}年目</span>
                               {inRed && <span className="ml-1 text-xs bg-green-100 text-green-600 px-1.5 py-0.5 rounded">軽減中</span>}
                               {!inRed && row.year === result.buildingReductionYears + 1 && (
-                                <span className="ml-1 text-xs bg-red-100 text-red-500 px-1.5 py-0.5 rounded">軽減終了</span>
+                                <span className="ml-1 text-xs bg-gray-50 text-danger px-1.5 py-0.5 rounded">軽減終了</span>
                               )}
                             </td>
                             <td className="py-2 text-right text-gray-600">
@@ -602,7 +602,7 @@ export default function PropertyTaxCalculatorPage() {
                               {row.cityPlanTaxLand + row.cityPlanTaxBuilding > 0
                                 ? fmtYen(row.cityPlanTaxLand + row.cityPlanTaxBuilding) : "—"}
                             </td>
-                            <td className={`py-2 text-right font-bold ${inRed ? "text-green-600" : "text-orange-600"}`}>
+                            <td className={`py-2 text-right font-bold ${inRed ? "text-green-600" : "text-kon"}`}>
                               {fmtYen(row.total)}
                             </td>
                           </tr>
@@ -614,7 +614,7 @@ export default function PropertyTaxCalculatorPage() {
               </div>
             )}
 
-            <div className="bg-blue-50 rounded-xl border border-blue-100 p-4 text-xs text-blue-700 space-y-1">
+            <div className="bg-gray-50 rounded-xl border border-gray-200 p-4 text-xs text-kon space-y-1">
               <p>※ 固定資産税の標準税率1.4%、都市計画税の上限0.3%を使用しています。実際の税率は市区町村によって異なる場合があります。</p>
               <p>※ 固定資産税評価額は3年ごとに見直されます（次回評価替えは2027年予定）。</p>
               <p>※ 本ツールはあくまでも目安です。実際の税額は市区町村の課税明細書をご確認ください。</p>
@@ -630,10 +630,10 @@ export default function PropertyTaxCalculatorPage() {
             <div className="overflow-x-auto">
               <table className="w-full border-collapse text-sm">
                 <thead>
-                  <tr className="bg-amber-50 border border-amber-100">
-                    <th className="p-3 text-left font-medium text-gray-700 border border-amber-100">物件種別</th>
-                    <th className="p-3 text-left font-medium text-gray-700 border border-amber-100">固定資産税評価額（目安）</th>
-                    <th className="p-3 text-left font-medium text-gray-700 border border-amber-100">年間固定資産税目安</th>
+                  <tr className="bg-gray-50 border border-gray-200">
+                    <th className="p-3 text-left font-medium text-gray-700 border border-gray-200">物件種別</th>
+                    <th className="p-3 text-left font-medium text-gray-700 border border-gray-200">固定資産税評価額（目安）</th>
+                    <th className="p-3 text-left font-medium text-gray-700 border border-gray-200">年間固定資産税目安</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -646,7 +646,7 @@ export default function PropertyTaxCalculatorPage() {
                     <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
                       <td className="p-3 border border-gray-100">{type}</td>
                       <td className="p-3 border border-gray-100 text-gray-600">{ev}</td>
-                      <td className="p-3 border border-gray-100 font-medium text-orange-600">{tax}</td>
+                      <td className="p-3 border border-gray-100 font-medium text-kon">{tax}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -660,10 +660,10 @@ export default function PropertyTaxCalculatorPage() {
               <p className="leading-relaxed">
                 固定資産税は毎年1月1日時点で土地・建物を所有している人に課税される地方税です（市区町村が徴収）。
               </p>
-              <div className="bg-amber-50 rounded-lg p-3 text-sm">
-                <p className="font-medium text-amber-800 mb-1">固定資産税の計算式</p>
-                <p className="text-amber-700">固定資産税 ＝ 固定資産税評価額 × 1.4%</p>
-                <p className="text-amber-600 text-xs mt-1">※ 住宅用地や新築住宅には特例で大幅軽減あり</p>
+              <div className="bg-gray-50 rounded-lg p-3 text-sm">
+                <p className="font-medium text-kon mb-1">固定資産税の計算式</p>
+                <p className="text-kon">固定資産税 ＝ 固定資産税評価額 × 1.4%</p>
+                <p className="text-kon text-xs mt-1">※ 住宅用地や新築住宅には特例で大幅軽減あり</p>
               </div>
               <div>
                 <h3 className="font-semibold text-gray-800 mb-2">住宅用地の特例（最重要）</h3>
@@ -742,10 +742,10 @@ export default function PropertyTaxCalculatorPage() {
                 { href: "/tax/inheritance-tax-calculator", label: "相続税 簡易計算機", desc: "不動産相続時の相続税目安を計算" },
               ].map((tool) => (
                 <Link key={tool.href} href={tool.href}
-                  className="flex items-start gap-3 bg-white rounded-xl border border-gray-100 p-4 hover:border-blue-200 hover:shadow-sm transition-all group">
-                  <span className="text-blue-500 text-lg flex-shrink-0">🔗</span>
+                  className="flex items-start gap-3 bg-white rounded-xl border border-gray-100 p-4 hover:border-ai hover:shadow-sm transition-all group">
+                  <span className="text-kon text-lg flex-shrink-0">🔗</span>
                   <div>
-                    <p className="font-medium text-gray-800 group-hover:text-blue-600 text-sm">{tool.label}</p>
+                    <p className="font-medium text-gray-800 group-hover:text-ai text-sm">{tool.label}</p>
                     <p className="text-xs text-gray-500 mt-0.5">{tool.desc}</p>
                   </div>
                 </Link>

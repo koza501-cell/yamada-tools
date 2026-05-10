@@ -146,7 +146,7 @@ export default function JsonFormatClient() {
           </div>
 
           {error && (
-            <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm">
+            <div className="mb-4 p-3 bg-gray-50 border border-gray-200 rounded-xl text-danger text-sm">
               {error}
             </div>
           )}

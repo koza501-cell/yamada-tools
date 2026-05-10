@@ -47,7 +47,7 @@ export default function MultiImageUpload({
             <h3 className="text-lg font-semibold text-gray-900">{position}</h3>
             <button
               onClick={() => navigator.clipboard.writeText(prompt)}
-              className="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded hover:bg-blue-200"
+              className="px-3 py-1 bg-gray-50 text-kon text-sm rounded hover:bg-ai"
             >
               プロンプトをコピー
             </button>
@@ -66,14 +66,14 @@ export default function MultiImageUpload({
               />
               <button
                 onClick={() => onImageUpload(position, '')}
-                className="absolute top-2 right-2 bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                className="absolute top-2 right-2 bg-danger text-white px-3 py-1 rounded hover:bg-danger"
               >
                 削除
               </button>
             </div>
           ) : (
             <div>
-              <label className="flex flex-col items-center justify-center w-full h-64 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-blue-500 hover:bg-blue-50 transition-colors">
+              <label className="flex flex-col items-center justify-center w-full h-64 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-ai hover:bg-gray-50 transition-colors">
                 <div className="flex flex-col items-center justify-center pt-5 pb-6">
                   <svg
                     className="w-10 h-10 mb-3 text-gray-400"
@@ -107,7 +107,7 @@ export default function MultiImageUpload({
                 />
               </label>
               {uploading[position] && (
-                <div className="mt-2 text-center text-sm text-blue-600">
+                <div className="mt-2 text-center text-sm text-kon">
                   アップロード中...
                 </div>
               )}

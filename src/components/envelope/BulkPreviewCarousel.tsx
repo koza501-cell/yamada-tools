@@ -60,16 +60,16 @@ export default function BulkPreviewCarousel({
             <CheckCircle2 className="w-3 h-3" /> {totalValid}件OK
           </span>
           {totalErrors > 0 && (
-            <span className="text-red-600 flex items-center gap-1">
+            <span className="text-danger flex items-center gap-1">
               <XCircle className="w-3 h-3" /> {totalErrors}件エラー
             </span>
           )}
           {totalWarnings > 0 && (
-            <span className="text-amber-600 flex items-center gap-1">
+            <span className="text-kon flex items-center gap-1">
               <AlertCircle className="w-3 h-3" /> {totalWarnings}件警告
             </span>
           )}
-          <span className="text-blue-600 font-medium">{selectedCount}件選択中</span>
+          <span className="text-kon font-medium">{selectedCount}件選択中</span>
         </div>
         <div className="flex gap-1">
           <button
@@ -91,13 +91,13 @@ export default function BulkPreviewCarousel({
       <div className="px-4 py-2 border-b border-gray-100 flex gap-2">
         <button
           onClick={() => setViewMode("carousel")}
-          className={`text-xs px-3 py-1 rounded-full ${viewMode === "carousel" ? "bg-blue-100 text-blue-700 font-medium" : "text-gray-500 hover:bg-gray-100"}`}
+          className={`text-xs px-3 py-1 rounded-full ${viewMode === "carousel" ? "bg-gray-50 text-kon font-medium" : "text-gray-500 hover:bg-gray-100"}`}
         >
           カルーセル
         </button>
         <button
           onClick={() => setViewMode("grid")}
-          className={`text-xs px-3 py-1 rounded-full ${viewMode === "grid" ? "bg-blue-100 text-blue-700 font-medium" : "text-gray-500 hover:bg-gray-100"}`}
+          className={`text-xs px-3 py-1 rounded-full ${viewMode === "grid" ? "bg-gray-50 text-kon font-medium" : "text-gray-500 hover:bg-gray-100"}`}
         >
           サムネイル一覧
         </button>
@@ -141,7 +141,7 @@ export default function BulkPreviewCarousel({
           </div>
 
           {/* Row content card */}
-          <div className={`rounded-xl border-2 p-4 ${isValid ? "border-gray-200" : "border-red-300 bg-red-50"}`}>
+          <div className={`rounded-xl border-2 p-4 ${isValid ? "border-gray-200" : "border-gray-200 bg-gray-50"}`}>
             <div className="flex items-start justify-between mb-2">
               <span className="text-xs font-bold text-gray-500">行 {currentPage + 1}</span>
               <label className="flex items-center gap-1.5 text-xs cursor-pointer">
@@ -172,7 +172,7 @@ export default function BulkPreviewCarousel({
             {currentValidation && !currentValidation.valid && (
               <div className="mt-3 space-y-1">
                 {currentValidation.errors.map((err, i) => (
-                  <p key={i} className="text-xs text-red-600 flex items-start gap-1">
+                  <p key={i} className="text-xs text-danger flex items-start gap-1">
                     <XCircle className="w-3 h-3 mt-0.5 shrink-0" /> {err.message}
                   </p>
                 ))}
@@ -181,7 +181,7 @@ export default function BulkPreviewCarousel({
             {currentValidation && currentValidation.warnings.length > 0 && (
               <div className="mt-2 space-y-1">
                 {currentValidation.warnings.map((w, i) => (
-                  <p key={i} className="text-xs text-amber-600 flex items-start gap-1">
+                  <p key={i} className="text-xs text-kon flex items-start gap-1">
                     <AlertCircle className="w-3 h-3 mt-0.5 shrink-0" /> {w.message}
                   </p>
                 ))}
@@ -200,8 +200,8 @@ export default function BulkPreviewCarousel({
                   key={i}
                   onClick={() => setCurrentPage(i)}
                   className={`w-6 h-6 rounded text-[10px] font-medium flex items-center justify-center shrink-0 transition-all
-                    ${isCurrent ? "ring-2 ring-blue-400 scale-110" : ""}
-                    ${!v?.valid ? "bg-red-100 text-red-700" : isSelected ? "bg-blue-100 text-blue-700" : "bg-gray-100 text-gray-500"}
+                    ${isCurrent ? "ring-2 ring-kon scale-110" : ""}
+                    ${!v?.valid ? "bg-gray-50 text-danger" : isSelected ? "bg-gray-50 text-kon" : "bg-gray-100 text-gray-500"}
                     ${!isSelected && v?.valid ? "opacity-50" : ""}`}
                 >
                   {i + 1}
@@ -223,8 +223,8 @@ export default function BulkPreviewCarousel({
                   key={i}
                   onClick={() => setCurrentPage(i)}
                   className={`p-2 rounded-lg border text-xs cursor-pointer transition-all
-                    ${isSelected ? "border-blue-300 bg-blue-50" : "border-gray-200 hover:border-gray-300"}
-                    ${!v?.valid ? "border-red-200 bg-red-50" : ""}`}
+                    ${isSelected ? "border-kon bg-gray-50" : "border-gray-200 hover:border-gray-300"}
+                    ${!v?.valid ? "border-gray-200 bg-gray-50" : ""}`}
                 >
                   <div className="flex items-center justify-between mb-1">
                     <span className="font-bold text-gray-500">#{i + 1}</span>
@@ -239,8 +239,8 @@ export default function BulkPreviewCarousel({
                   <p className="truncate font-medium text-gray-800">
                     {row.name || row.companyName || "(氏名なし)"}
                   </p>
-                  {!v?.valid && <XCircle className="w-3 h-3 text-red-500 mt-1" />}
-                  {v?.valid && v.warnings.length > 0 && <AlertCircle className="w-3 h-3 text-amber-500 mt-1" />}
+                  {!v?.valid && <XCircle className="w-3 h-3 text-danger mt-1" />}
+                  {v?.valid && v.warnings.length > 0 && <AlertCircle className="w-3 h-3 text-kon mt-1" />}
                 </div>
               );
             })}
@@ -253,7 +253,7 @@ export default function BulkPreviewCarousel({
         <button
           onClick={onExportPdf}
           disabled={selectedCount === 0}
-          className="flex items-center gap-1.5 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex items-center gap-1.5 px-4 py-2 bg-kon text-white rounded-lg text-sm font-medium hover:bg-ai disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <Download className="w-4 h-4" /> PDF一括出力 ({selectedCount}件)
         </button>

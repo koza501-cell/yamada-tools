@@ -26,7 +26,7 @@ function InputRow({ label, value, onChange, unit, placeholder }: {
       <div className="flex items-center gap-2">
         <input
           type="number"
-          className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+          className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-kon outline-none"
           value={value}
           onChange={e => onChange(e.target.value)}
           placeholder={placeholder ?? "0"}
@@ -100,7 +100,7 @@ export default function FurimaClient() {
         <div>
           <label className="block text-sm text-gray-600 mb-1">プラットフォーム</label>
           <select
-            className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+            className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-kon outline-none"
             value={platformIdx}
             onChange={e => setPlatformIdx(Number(e.target.value))}
           >
@@ -112,7 +112,7 @@ export default function FurimaClient() {
             <div className="mt-2 flex items-center gap-2">
               <input
                 type="number"
-                className="border border-gray-300 rounded-lg px-3 py-2 w-28 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                className="border border-gray-300 rounded-lg px-3 py-2 w-28 text-sm focus:ring-2 focus:ring-kon outline-none"
                 value={customRate}
                 onChange={e => setCustomRate(e.target.value)}
                 placeholder="10"
@@ -133,7 +133,7 @@ export default function FurimaClient() {
       </div>
 
       <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden mb-6">
-        <div className={profitPositive ? "p-4 text-white bg-green-600" : "p-4 text-white bg-red-600"}>
+        <div className={profitPositive ? "p-4 text-white bg-green-600" : "p-4 text-white bg-danger"}>
           <p className="text-sm opacity-80 mb-1">利益</p>
           <p className="text-3xl font-bold">{fmt(r.profit)}</p>
           <p className="text-sm opacity-80 mt-1">利益率 {r.profitRate.toFixed(1)}%</p>
@@ -147,7 +147,7 @@ export default function FurimaClient() {
           </div>
           <div className="w-full bg-gray-100 rounded-full h-3 mb-3">
             <div
-              className={r.profitRate >= 30 ? "h-3 rounded-full bg-green-500 transition-all" : r.profitRate >= 15 ? "h-3 rounded-full bg-yellow-400 transition-all" : "h-3 rounded-full bg-red-400 transition-all"}
+              className={r.profitRate >= 30 ? "h-3 rounded-full bg-green-500 transition-all" : r.profitRate >= 15 ? "h-3 rounded-full bg-yellow-400 transition-all" : "h-3 rounded-full bg-danger transition-all"}
               style={{ width: gaugeWidth + "%" }}
             />
           </div>
@@ -171,21 +171,21 @@ export default function FurimaClient() {
         </div>
       </div>
 
-      <div className="bg-amber-50 border border-amber-200 rounded-xl p-5 mb-6">
+      <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 mb-6">
         <label className="flex items-center gap-2 cursor-pointer mb-3">
           <input type="checkbox" checked={reverseMode} onChange={e => setReverseMode(e.target.checked)} className="w-4 h-4 accent-amber-500" />
-          <span className="font-semibold text-amber-800 text-sm">🎯 目標利益率から逆算する</span>
+          <span className="font-semibold text-kon text-sm">🎯 目標利益率から逆算する</span>
         </label>
         {reverseMode && (
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <input type="number" className="border border-amber-300 rounded-lg px-3 py-2 w-24 text-sm outline-none"
+              <input type="number" className="border border-gray-200 rounded-lg px-3 py-2 w-24 text-sm outline-none"
                 value={targetRate} onChange={e => setTargetRate(e.target.value)} placeholder="20" min="1" max="90" />
-              <span className="text-amber-700 text-sm">% の利益率を達成するには</span>
+              <span className="text-kon text-sm">% の利益率を達成するには</span>
             </div>
-            <div className="bg-white border border-amber-300 rounded-lg p-3">
-              <p className="text-xs text-amber-600 mb-1">必要販売価格</p>
-              <p className="text-2xl font-bold text-amber-700">{fmt(r.neededPrice)}</p>
+            <div className="bg-white border border-gray-200 rounded-lg p-3">
+              <p className="text-xs text-kon mb-1">必要販売価格</p>
+              <p className="text-2xl font-bold text-kon">{fmt(r.neededPrice)}</p>
               <p className="text-xs text-gray-500 mt-1">以上で販売すれば目標利益率を達成できます</p>
             </div>
           </div>

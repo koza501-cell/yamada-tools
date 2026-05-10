@@ -160,9 +160,9 @@ export default function HojokinHistoryClient() {
       <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-4xl mx-auto px-4 py-8">
           <nav className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-            <Link href="/" className="hover:text-blue-600">ホーム</Link>
+            <Link href="/" className="hover:text-ai">ホーム</Link>
             <span className="mx-1">/</span>
-            <Link href="/business" className="hover:text-blue-600">ビジネス・法人</Link>
+            <Link href="/business" className="hover:text-ai">ビジネス・法人</Link>
             <span className="mx-1">/</span>
             <span>補助金履歴検索</span>
           </nav>
@@ -185,7 +185,7 @@ export default function HojokinHistoryClient() {
                 onClick={() => { setMode("name"); setError(null); setSearchInput(""); }}
                 className={`flex-1 px-4 py-2 rounded-lg font-semibold transition ${
                   mode === "name"
-                    ? "bg-pink-500 text-white"
+                    ? "bg-kon text-white"
                     : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600"
                 }`}
               >
@@ -195,7 +195,7 @@ export default function HojokinHistoryClient() {
                 onClick={() => { setMode("number"); setError(null); setSearchInput(""); }}
                 className={`flex-1 px-4 py-2 rounded-lg font-semibold transition ${
                   mode === "number"
-                    ? "bg-pink-500 text-white"
+                    ? "bg-kon text-white"
                     : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600"
                 }`}
               >
@@ -208,7 +208,7 @@ export default function HojokinHistoryClient() {
               className="bg-white dark:bg-gray-800 rounded-lg shadow p-6"
             >
               <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                {mode === "name" ? "法人名・会社名" : "法人番号（13桁）"} <span className="text-red-500">*</span>
+                {mode === "name" ? "法人名・会社名" : "法人番号（13桁）"} <span className="text-danger">*</span>
               </label>
               <div className="flex flex-col sm:flex-row gap-3">
                 <input
@@ -217,13 +217,13 @@ export default function HojokinHistoryClient() {
                   onChange={(e) => setSearchInput(e.target.value)}
                   placeholder={mode === "name" ? "例：トヨタ自動車" : "例：1010001012345"}
                   maxLength={mode === "name" ? 100 : 13}
-                  className="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 dark:bg-gray-700 dark:text-white"
+                  className="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-sakura dark:bg-gray-700 dark:text-white"
                   disabled={loading}
                 />
                 <button
                   type="submit"
                   disabled={loading || !searchInput.trim()}
-                  className="px-6 py-3 bg-pink-500 hover:bg-pink-600 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition"
+                  className="px-6 py-3 bg-kon hover:bg-ai disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition"
                 >
                   {loading ? "検索中..." : "🔍 検索"}
                 </button>
@@ -256,7 +256,7 @@ export default function HojokinHistoryClient() {
                 <button
                   key={corp.corporate_number}
                   onClick={() => fetchSubsidies(corp)}
-                  className="w-full text-left bg-white dark:bg-gray-800 rounded-lg shadow p-4 hover:shadow-md hover:border-pink-300 dark:hover:border-pink-700 transition border border-transparent"
+                  className="w-full text-left bg-white dark:bg-gray-800 rounded-lg shadow p-4 hover:shadow-md hover:border-sakura dark:hover:border-sakura transition border border-transparent"
                   disabled={loading}
                 >
                   <div className="font-semibold text-gray-900 dark:text-white">{corp.name}</div>
@@ -293,7 +293,7 @@ export default function HojokinHistoryClient() {
                 </button>
               </div>
               <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mt-3">
-                補助金履歴: <span className="text-pink-600 dark:text-pink-400">{subsidies.length}件</span>
+                補助金履歴: <span className="text-sakura dark:text-sakura">{subsidies.length}件</span>
               </p>
             </div>
 
@@ -363,7 +363,7 @@ export default function HojokinHistoryClient() {
 
         {/* Error */}
         {error && (
-          <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-800 dark:text-red-200 p-4 rounded-lg mt-4">
+          <div className="bg-gray-50 dark:bg-danger/20 border border-gray-200 dark:border-danger text-danger dark:text-gin p-4 rounded-lg mt-4">
             ⚠️ {error}
           </div>
         )}
@@ -371,13 +371,13 @@ export default function HojokinHistoryClient() {
         {/* Loading */}
         {loading && (
           <div className="text-center py-8">
-            <div className="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-pink-500"></div>
+            <div className="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-sakura"></div>
             <p className="mt-3 text-sm text-gray-600 dark:text-gray-400">読み込み中...</p>
           </div>
         )}
 
         {/* Info section */}
-        <div className="mt-12 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-5">
+        <div className="mt-12 bg-gray-50 dark:bg-kon/20 border border-gray-200 dark:border-kon rounded-lg p-5">
           <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
             💡 補助金履歴検索ツールについて
           </h3>
@@ -388,12 +388,12 @@ export default function HojokinHistoryClient() {
             <li>無料・登録不要</li>
           </ul>
           <p className="mt-3 text-xs text-gray-600 dark:text-gray-400">
-            ※ <strong>現在募集中の補助金</strong>を探したい場合は <Link href="/business/hojokin-active" className="text-pink-600 dark:text-pink-400 underline">補助金検索ツール</Link> をご利用ください
+            ※ <strong>現在募集中の補助金</strong>を探したい場合は <Link href="/business/hojokin-active" className="text-sakura dark:text-sakura underline">補助金検索ツール</Link> をご利用ください
           </p>
         </div>
 
         <p className="mt-6 text-xs text-gray-500 dark:text-gray-400 text-center">
-          データ提供: 経済産業省 gBizINFO（<a href="https://info.gbiz.go.jp/" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-600">https://info.gbiz.go.jp/</a>）
+          データ提供: 経済産業省 gBizINFO（<a href="https://info.gbiz.go.jp/" target="_blank" rel="noopener noreferrer" className="underline hover:text-ai">https://info.gbiz.go.jp/</a>）
         </p>
       </div>
     </div>

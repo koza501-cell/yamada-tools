@@ -52,9 +52,9 @@ export default function IdecoNisaSozokuzeiSetsuzei() {
       />
 
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-blue-500">ホーム</Link>
+        <Link href="/" className="hover:text-ai">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-blue-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-ai">ブログ</Link>
         <span className="mx-2">/</span>
         <span>iDeCo・NISA・相続税・法人化節税解説</span>
       </nav>
@@ -66,7 +66,7 @@ export default function IdecoNisaSozokuzeiSetsuzei() {
       <h1 className="text-3xl font-bold text-gray-800 mb-4">{title}</h1>
       <p className="text-gray-500 text-sm mb-8">最終更新: 2025年5月 ｜ 読了時間: 約10分</p>
 
-      <div className="bg-purple-50 border-l-4 border-purple-400 p-4 mb-8">
+      <div className="bg-gray-50 border-l-4 border-kon p-4 mb-8">
         <p className="font-bold text-gray-800 mb-2">この記事でわかること</p>
         <ul className="text-gray-700 space-y-1 text-sm">
           <li>✓ iDeCoの節税効果（年収別の節税額早見表）</li>
@@ -81,15 +81,15 @@ export default function IdecoNisaSozokuzeiSetsuzei() {
         <StaticAdSlot />
         <h2 className="text-2xl font-bold text-gray-800 mb-4">iDeCo（個人型確定拠出年金）の節税効果は？</h2>
         <p className="text-gray-700 mb-4">
-          iDeCoは老後資金を積み立てながら節税できる制度です。最大の特徴は<strong className="text-purple-700">掛金が全額「所得控除」になること</strong>。つまり今年払う所得税と住民税を直接減らせます。
+          iDeCoは老後資金を積み立てながら節税できる制度です。最大の特徴は<strong className="text-kon">掛金が全額「所得控除」になること</strong>。つまり今年払う所得税と住民税を直接減らせます。
         </p>
 
-        <div className="bg-white border-2 border-purple-200 rounded-lg p-5 mb-6">
+        <div className="bg-white border-2 border-kon rounded-lg p-5 mb-6">
           <h3 className="font-bold text-gray-800 mb-3">職業別のiDeCo掛金上限（月額）</h3>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>
-                <tr className="bg-purple-600 text-white">
+                <tr className="bg-kon text-white">
                   <th className="p-2 text-left">職業・状況</th>
                   <th className="p-2 text-center">月額上限</th>
                   <th className="p-2 text-center">年間上限</th>
@@ -107,7 +107,7 @@ export default function IdecoNisaSozokuzeiSetsuzei() {
                   <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
                     <td className="p-2 border border-gray-200">{type}</td>
                     <td className="p-2 border border-gray-200 text-center font-bold">{monthly}</td>
-                    <td className="p-2 border border-gray-200 text-center text-purple-700 font-bold">{yearly}</td>
+                    <td className="p-2 border border-gray-200 text-center text-kon font-bold">{yearly}</td>
                   </tr>
                 ))}
               </tbody>
@@ -140,7 +140,7 @@ export default function IdecoNisaSozokuzeiSetsuzei() {
                     <td className="p-2 border border-gray-200 text-center">{rate}</td>
                     <td className="p-2 border border-gray-200 text-center">{kakkin}</td>
                     <td className="p-2 border border-gray-200 text-center text-green-700 font-bold">{saving}</td>
-                    <td className="p-2 border border-gray-200 text-center text-purple-700 font-bold">{total}</td>
+                    <td className="p-2 border border-gray-200 text-center text-kon font-bold">{total}</td>
                   </tr>
                 ))}
               </tbody>
@@ -165,7 +165,7 @@ export default function IdecoNisaSozokuzeiSetsuzei() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <div className="bg-white border border-gray-200 rounded-lg p-4">
-            <h3 className="font-bold text-blue-700 mb-2">つみたて投資枠</h3>
+            <h3 className="font-bold text-kon mb-2">つみたて投資枠</h3>
             <ul className="text-sm text-gray-700 space-y-1">
               <li>年間上限：<strong>120万円</strong></li>
               <li>対象：長期・積立・分散投資向けの投資信託</li>
@@ -184,16 +184,16 @@ export default function IdecoNisaSozokuzeiSetsuzei() {
           </div>
         </div>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-          <h3 className="font-bold text-blue-800 mb-2">20年間運用のシミュレーション例（年率5%想定）</h3>
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
+          <h3 className="font-bold text-kon mb-2">20年間運用のシミュレーション例（年率5%想定）</h3>
           <div className="grid grid-cols-3 gap-3 text-center text-sm">
             {[
               { label: "月3万円積立", amount: "約1,233万円", total: "元本720万円", gain: "運用益+513万円" },
               { label: "月5万円積立", amount: "約2,055万円", total: "元本1,200万円", gain: "運用益+855万円" },
               { label: "月10万円積立", amount: "約4,110万円", total: "元本2,400万円", gain: "運用益+1,710万円" },
             ].map((item, i) => (
-              <div key={i} className="bg-white rounded-lg p-3 border border-blue-100">
-                <p className="font-bold text-blue-700 mb-1">{item.label}</p>
+              <div key={i} className="bg-white rounded-lg p-3 border border-gray-200">
+                <p className="font-bold text-kon mb-1">{item.label}</p>
                 <p className="text-xl font-bold text-gray-800 mb-1">{item.amount}</p>
                 <p className="text-xs text-gray-500">{item.total}</p>
                 <p className="text-xs text-green-600 font-medium">{item.gain}</p>
@@ -206,8 +206,8 @@ export default function IdecoNisaSozokuzeiSetsuzei() {
         <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
           <p className="font-bold text-gray-800 mb-2">iDeCoとNISA、どちらを優先するべきか</p>
           <div className="text-sm text-gray-700 space-y-2">
-            <p><strong className="text-purple-600">iDeCo優先ケース：</strong>所得税率が高い（年収600万円超）・老後資金を確実に貯めたい・会社員で掛金上限が使いきれていない</p>
-            <p><strong className="text-blue-600">NISA優先ケース：</strong>いつでも引き出せる資金が必要・投資初心者でシンプルに始めたい・専業主婦など所得税がかからない</p>
+            <p><strong className="text-kon">iDeCo優先ケース：</strong>所得税率が高い（年収600万円超）・老後資金を確実に貯めたい・会社員で掛金上限が使いきれていない</p>
+            <p><strong className="text-kon">NISA優先ケース：</strong>いつでも引き出せる資金が必要・投資初心者でシンプルに始めたい・専業主婦など所得税がかからない</p>
             <p>余裕があれば<strong>iDeCo＋NISAの両方を活用</strong>するのが最善策です。</p>
           </div>
         </div>
@@ -221,10 +221,10 @@ export default function IdecoNisaSozokuzeiSetsuzei() {
           「うちは財産が少ないから相続税は関係ない」と思っている方も多いですが、土地の相続を含む場合は想定以上の課税になるケースがあります。
         </p>
 
-        <div className="bg-white border-2 border-orange-200 rounded-lg p-5 mb-6">
+        <div className="bg-white border-2 border-gray-200 rounded-lg p-5 mb-6">
           <h3 className="font-bold text-gray-800 mb-3">相続税の基礎控除の計算式</h3>
-          <div className="bg-orange-50 rounded p-4 text-center mb-4">
-            <p className="text-xl font-bold text-orange-800">基礎控除 = 3,000万円 + 600万円 × 法定相続人数</p>
+          <div className="bg-gray-50 rounded p-4 text-center mb-4">
+            <p className="text-xl font-bold text-kon">基礎控除 = 3,000万円 + 600万円 × 法定相続人数</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-center text-sm">
             {[
@@ -233,9 +233,9 @@ export default function IdecoNisaSozokuzeiSetsuzei() {
               { people: "相続人3人", amount: "4,800万円" },
               { people: "相続人4人", amount: "5,400万円" },
             ].map((item, i) => (
-              <div key={i} className="bg-orange-50 rounded p-2">
+              <div key={i} className="bg-gray-50 rounded p-2">
                 <p className="text-gray-600 text-xs mb-1">{item.people}</p>
-                <p className="font-bold text-orange-700">{item.amount}</p>
+                <p className="font-bold text-kon">{item.amount}</p>
                 <p className="text-xs text-gray-500">まで非課税</p>
               </div>
             ))}
@@ -247,7 +247,7 @@ export default function IdecoNisaSozokuzeiSetsuzei() {
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>
-                <tr className="bg-orange-600 text-white">
+                <tr className="bg-kon text-white">
                   <th className="p-2 text-left">取得金額</th>
                   <th className="p-2 text-center">税率</th>
                   <th className="p-2 text-center">控除額</th>
@@ -266,7 +266,7 @@ export default function IdecoNisaSozokuzeiSetsuzei() {
                 ].map(([range, rate, deduct], i) => (
                   <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
                     <td className="p-2 border border-gray-200">{range}</td>
-                    <td className="p-2 border border-gray-200 text-center font-bold text-orange-600">{rate}</td>
+                    <td className="p-2 border border-gray-200 text-center font-bold text-kon">{rate}</td>
                     <td className="p-2 border border-gray-200 text-center">{deduct}</td>
                   </tr>
                 ))}
@@ -280,8 +280,8 @@ export default function IdecoNisaSozokuzeiSetsuzei() {
             <p className="font-bold text-green-800 mb-1">配偶者の税額軽減（最大1.6億円まで非課税）</p>
             <p className="text-sm text-gray-700">配偶者が相続する場合、法定相続分または1億6,000万円のいずれか多い金額まで相続税がかかりません。ただし二次相続（配偶者が亡くなった際）で子どもの税負担が増えることも考慮が必要です。</p>
           </div>
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-            <p className="font-bold text-blue-800 mb-1">年間110万円の暦年贈与による生前対策</p>
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+            <p className="font-bold text-kon mb-1">年間110万円の暦年贈与による生前対策</p>
             <p className="text-sm text-gray-700">贈与税の基礎控除は年間110万円。毎年この範囲内で子ども・孫に贈与することで、長期的に相続財産を圧縮できます。ただし2024年から持ち戻し期間が3年→7年に延長されました。</p>
           </div>
         </div>
@@ -296,17 +296,17 @@ export default function IdecoNisaSozokuzeiSetsuzei() {
         <div className="bg-white border-2 border-indigo-200 rounded-lg p-5 mb-6">
           <h3 className="font-bold text-gray-800 mb-3">個人 vs 法人の税率比較</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-            <div className="bg-red-50 rounded p-4">
-              <p className="font-bold text-red-700 mb-2">個人（所得税）</p>
-              <p className="text-sm text-gray-700">累進課税：195万円超で5%〜、4,000万円超で<strong className="text-red-600">45%</strong></p>
+            <div className="bg-gray-50 rounded p-4">
+              <p className="font-bold text-danger mb-2">個人（所得税）</p>
+              <p className="text-sm text-gray-700">累進課税：195万円超で5%〜、4,000万円超で<strong className="text-danger">45%</strong></p>
               <p className="text-sm text-gray-700 mt-1">＋住民税10%、個人事業税最大5%</p>
-              <p className="text-sm font-bold text-red-600 mt-2">実質最大60%程度</p>
+              <p className="text-sm font-bold text-danger mt-2">実質最大60%程度</p>
             </div>
-            <div className="bg-blue-50 rounded p-4">
-              <p className="font-bold text-blue-700 mb-2">法人（法人税等）</p>
-              <p className="text-sm text-gray-700">法人税率（中小企業）：800万円以下の部分は<strong className="text-blue-600">15%</strong></p>
+            <div className="bg-gray-50 rounded p-4">
+              <p className="font-bold text-kon mb-2">法人（法人税等）</p>
+              <p className="text-sm text-gray-700">法人税率（中小企業）：800万円以下の部分は<strong className="text-kon">15%</strong></p>
               <p className="text-sm text-gray-700 mt-1">法人実効税率：約33〜34%</p>
-              <p className="text-sm font-bold text-blue-600 mt-2">実質約33〜35%</p>
+              <p className="text-sm font-bold text-kon mt-2">実質約33〜35%</p>
             </div>
           </div>
           <p className="text-gray-700 text-sm">年収が高くなるほど個人と法人の税率差が広がり、法人化による節税効果が大きくなります。一般的な損益分岐点の目安は<strong className="text-indigo-700">年収700万〜1,000万円</strong>です。</p>
@@ -324,7 +324,7 @@ export default function IdecoNisaSozokuzeiSetsuzei() {
             </ul>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-4">
-            <h3 className="font-bold text-red-700 mb-2">法人化のデメリット</h3>
+            <h3 className="font-bold text-danger mb-2">法人化のデメリット</h3>
             <ul className="text-sm text-gray-700 space-y-1">
               <li>❌ 設立費用（株式会社で約25万円、合同会社で約10万円）</li>
               <li>❌ 毎年の維持費（税理士費用・法人住民税均等割）</li>
@@ -351,10 +351,10 @@ export default function IdecoNisaSozokuzeiSetsuzei() {
           節税の効果は個人の年収・家族構成・資産状況によって大きく異なります。以下の無料ツールで自分の状況を数字で確認しましょう。
         </p>
 
-        <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl p-6 mb-6 text-center">
+        <div className="bg-gradient-to-r from-slate-900 to-indigo-600 text-white rounded-xl p-6 mb-6 text-center">
           <p className="text-lg font-bold mb-2">iDeCo・NISA シミュレーター</p>
           <p className="text-sm opacity-90 mb-4">年収・掛金・運用期間を入力するだけで節税額と将来の資産額を試算。</p>
-          <Link href="/finance/ideco-nisa-calculator" className="inline-block bg-white text-purple-700 font-bold px-6 py-3 rounded-lg hover:bg-purple-50 transition-colors">
+          <Link href="/finance/ideco-nisa-calculator" className="inline-block bg-white text-kon font-bold px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors">
             無料でシミュレーション →
           </Link>
         </div>
@@ -363,35 +363,35 @@ export default function IdecoNisaSozokuzeiSetsuzei() {
           <div className="bg-white border border-gray-200 rounded-lg p-4">
             <p className="font-bold text-gray-800 mb-2">相続税シミュレーター</p>
             <p className="text-sm text-gray-600 mb-3">遺産総額・法定相続人数を入力して相続税の概算を計算。基礎控除との比較も。</p>
-            <Link href="/finance/sozokuzei-simulator" className="text-purple-600 text-sm font-medium hover:underline">試してみる →</Link>
+            <Link href="/finance/sozokuzei-simulator" className="text-kon text-sm font-medium hover:underline">試してみる →</Link>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-4">
             <p className="font-bold text-gray-800 mb-2">法人化シミュレーター</p>
             <p className="text-sm text-gray-600 mb-3">現在の年収から法人化した場合の節税額と損益分岐点を計算。</p>
-            <Link href="/finance/hojinka-simulator" className="text-purple-600 text-sm font-medium hover:underline">試してみる →</Link>
+            <Link href="/finance/hojinka-simulator" className="text-kon text-sm font-medium hover:underline">試してみる →</Link>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-4">
             <p className="font-bold text-gray-800 mb-2">年金受給額シミュレーター</p>
             <p className="text-sm text-gray-600 mb-3">繰上げ・繰下げ受給の損益分岐点。iDeCoとの組み合わせ戦略に。</p>
-            <Link href="/finance/nenkin-simulator" className="text-purple-600 text-sm font-medium hover:underline">試してみる →</Link>
+            <Link href="/finance/nenkin-simulator" className="text-kon text-sm font-medium hover:underline">試してみる →</Link>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-4">
             <p className="font-bold text-gray-800 mb-2">家計簿貯蓄シミュレーター</p>
             <p className="text-sm text-gray-600 mb-3">毎月の貯蓄可能額と目標達成年を計算。iDeCo・NISAの積立計画に。</p>
-            <Link href="/life/kakeibo-simulator" className="text-purple-600 text-sm font-medium hover:underline">試してみる →</Link>
+            <Link href="/life/kakeibo-simulator" className="text-kon text-sm font-medium hover:underline">試してみる →</Link>
           </div>
         </div>
       </section>
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">まとめ：節税4本柱のポイント</h2>
-        <div className="bg-purple-50 rounded-xl p-6">
+        <div className="bg-gray-50 rounded-xl p-6">
           <ul className="space-y-3 text-gray-700">
-            <li className="flex gap-2"><span className="text-purple-600 font-bold">①</span> iDeCoは掛金が全額所得控除。年収600万円なら年間8万円以上の節税効果</li>
-            <li className="flex gap-2"><span className="text-purple-600 font-bold">②</span> NISAは運用益・配当が非課税。早く始めるほど複利効果が大きい</li>
-            <li className="flex gap-2"><span className="text-purple-600 font-bold">③</span> 相続税は基礎控除（3,000万円＋600万円×相続人数）で大半の家庭は非課税</li>
-            <li className="flex gap-2"><span className="text-purple-600 font-bold">④</span> 法人化は年収700万円超が損益分岐の目安。配偶者への所得分散が有効</li>
-            <li className="flex gap-2"><span className="text-purple-600 font-bold">⑤</span> iDeCoは先に・NISAは追加で・相続は生前対策を早めに始めるほど有利</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">①</span> iDeCoは掛金が全額所得控除。年収600万円なら年間8万円以上の節税効果</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">②</span> NISAは運用益・配当が非課税。早く始めるほど複利効果が大きい</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">③</span> 相続税は基礎控除（3,000万円＋600万円×相続人数）で大半の家庭は非課税</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">④</span> 法人化は年収700万円超が損益分岐の目安。配偶者への所得分散が有効</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">⑤</span> iDeCoは先に・NISAは追加で・相続は生前対策を早めに始めるほど有利</li>
           </ul>
         </div>
       </section>

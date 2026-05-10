@@ -196,7 +196,7 @@ export default function Header() {
           ) : (
             <Link href="/pricing" className="block px-4 py-2 hover:bg-gray-100 text-sm" onClick={() => setShowUserMenu(false)}>⭐ PROにアップグレード</Link>
           )}
-          <button onClick={async () => { await logout(); setShowUserMenu(false); }} className="w-full text-left px-4 py-2 hover:bg-gray-100 text-sm text-red-600">ログアウト</button>
+          <button onClick={async () => { await logout(); setShowUserMenu(false); }} className="w-full text-left px-4 py-2 hover:bg-gray-100 text-sm text-danger">ログアウト</button>
         </div>,
         document.body
       )}

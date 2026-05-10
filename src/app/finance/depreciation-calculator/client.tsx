@@ -141,7 +141,7 @@ export default function DepreciationClient() {
         <div>
           <label className="block text-sm text-gray-600 mb-1">取得価額（購入価格）</label>
           <div className="flex items-center gap-2">
-            <input type="text" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+            <input type="text" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-kon outline-none"
               value={cost} onChange={e => setCost(e.target.value)} placeholder="1,000,000" />
             <span className="text-gray-500 text-sm whitespace-nowrap">円</span>
           </div>
@@ -158,7 +158,7 @@ export default function DepreciationClient() {
         <div>
           <label className="block text-sm text-gray-600 mb-1">耐用年数</label>
           <select
-            className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+            className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-kon outline-none"
             value={isCustom ? "0" : lifePreset}
             onChange={e => {
               if (e.target.value === "0") { setIsCustom(true); }
@@ -194,25 +194,25 @@ export default function DepreciationClient() {
       {costNum > 0 && (
         <>
           <div className="grid grid-cols-2 gap-4 mb-6">
-            <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
-              <p className="text-xs text-blue-600 font-semibold mb-1">📊 定額法（初年度）</p>
-              <p className="text-2xl font-bold text-blue-800">{fmt(slRows[0]?.depreciation || 0)}</p>
-              <p className="text-xs text-blue-600 mt-1">毎年均等に償却</p>
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
+              <p className="text-xs text-kon font-semibold mb-1">📊 定額法（初年度）</p>
+              <p className="text-2xl font-bold text-kon">{fmt(slRows[0]?.depreciation || 0)}</p>
+              <p className="text-xs text-kon mt-1">毎年均等に償却</p>
             </div>
-            <div className="bg-purple-50 border border-purple-200 rounded-xl p-4">
-              <p className="text-xs text-purple-600 font-semibold mb-1">📈 定率法（初年度）</p>
-              <p className="text-2xl font-bold text-purple-800">{fmt(dbRows[0]?.depreciation || 0)}</p>
-              <p className="text-xs text-purple-600 mt-1">初期に多く償却</p>
+            <div className="bg-gray-50 border border-kon rounded-xl p-4">
+              <p className="text-xs text-kon font-semibold mb-1">📈 定率法（初年度）</p>
+              <p className="text-2xl font-bold text-kon">{fmt(dbRows[0]?.depreciation || 0)}</p>
+              <p className="text-xs text-kon mt-1">初期に多く償却</p>
             </div>
           </div>
 
           <div className="flex gap-2 mb-4">
             <button type="button" onClick={() => setShowComparison(true)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium ${showComparison ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-600"}`}>
+              className={`px-4 py-2 rounded-lg text-sm font-medium ${showComparison ? "bg-kon text-white" : "bg-gray-100 text-gray-600"}`}>
               比較表示
             </button>
             <button type="button" onClick={() => setShowComparison(false)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium ${!showComparison ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-600"}`}>
+              className={`px-4 py-2 rounded-lg text-sm font-medium ${!showComparison ? "bg-kon text-white" : "bg-gray-100 text-gray-600"}`}>
               グラフ表示
             </button>
           </div>
@@ -224,10 +224,10 @@ export default function DepreciationClient() {
                   <thead className="bg-gray-50">
                     <tr>
                       <th className="px-3 py-2 text-left text-gray-600">年</th>
-                      <th className="px-3 py-2 text-right text-blue-700">定額法 償却費</th>
-                      <th className="px-3 py-2 text-right text-blue-500">期末簿価</th>
-                      <th className="px-3 py-2 text-right text-purple-700">定率法 償却費</th>
-                      <th className="px-3 py-2 text-right text-purple-500">期末簿価</th>
+                      <th className="px-3 py-2 text-right text-kon">定額法 償却費</th>
+                      <th className="px-3 py-2 text-right text-kon">期末簿価</th>
+                      <th className="px-3 py-2 text-right text-kon">定率法 償却費</th>
+                      <th className="px-3 py-2 text-right text-kon">期末簿価</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -237,9 +237,9 @@ export default function DepreciationClient() {
                       return (
                         <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
                           <td className="px-3 py-2 text-gray-500">{i + 1}年目</td>
-                          <td className="px-3 py-2 text-right text-blue-700">{sl ? fmt(sl.depreciation) : "—"}</td>
+                          <td className="px-3 py-2 text-right text-kon">{sl ? fmt(sl.depreciation) : "—"}</td>
                           <td className="px-3 py-2 text-right text-gray-600">{sl ? fmt(sl.endBook) : "—"}</td>
-                          <td className="px-3 py-2 text-right text-purple-700">{db ? fmt(db.depreciation) : "—"}</td>
+                          <td className="px-3 py-2 text-right text-kon">{db ? fmt(db.depreciation) : "—"}</td>
                           <td className="px-3 py-2 text-right text-gray-600">{db ? fmt(db.endBook) : "—"}</td>
                         </tr>
                       );
@@ -260,12 +260,12 @@ export default function DepreciationClient() {
                       <span className="text-xs text-gray-500 w-10">{i + 1}年</span>
                       <div className="flex-1 space-y-1">
                         {sl && <div className="flex items-center gap-2">
-                          <div className="bg-blue-400 h-3 rounded" style={{ width: `${(sl.depreciation / maxDep) * 100}%`, minWidth: 2 }} />
-                          <span className="text-xs text-blue-700">{fmt(sl.depreciation)}</span>
+                          <div className="bg-kon h-3 rounded" style={{ width: `${(sl.depreciation / maxDep) * 100}%`, minWidth: 2 }} />
+                          <span className="text-xs text-kon">{fmt(sl.depreciation)}</span>
                         </div>}
                         {db && <div className="flex items-center gap-2">
-                          <div className="bg-purple-400 h-3 rounded" style={{ width: `${(db.depreciation / maxDep) * 100}%`, minWidth: 2 }} />
-                          <span className="text-xs text-purple-700">{fmt(db.depreciation)}</span>
+                          <div className="bg-kon h-3 rounded" style={{ width: `${(db.depreciation / maxDep) * 100}%`, minWidth: 2 }} />
+                          <span className="text-xs text-kon">{fmt(db.depreciation)}</span>
                         </div>}
                       </div>
                     </div>
@@ -273,8 +273,8 @@ export default function DepreciationClient() {
                 })}
               </div>
               <div className="flex gap-4 mt-3">
-                <div className="flex items-center gap-1"><div className="w-3 h-3 bg-blue-400 rounded" /><span className="text-xs text-gray-500">定額法</span></div>
-                <div className="flex items-center gap-1"><div className="w-3 h-3 bg-purple-400 rounded" /><span className="text-xs text-gray-500">定率法</span></div>
+                <div className="flex items-center gap-1"><div className="w-3 h-3 bg-kon rounded" /><span className="text-xs text-gray-500">定額法</span></div>
+                <div className="flex items-center gap-1"><div className="w-3 h-3 bg-kon rounded" /><span className="text-xs text-gray-500">定率法</span></div>
               </div>
             </div>
           )}

@@ -288,7 +288,7 @@ export default function SougiClient() {
               {govSubsidy && (
                 <div className="flex justify-between py-2 border-t border-gray-200 mt-1">
                   <span className="text-sm font-bold text-gray-700">実質負担額</span>
-                  <span className="text-sm font-bold text-blue-700">{fmtPrice(r.netTotal)}</span>
+                  <span className="text-sm font-bold text-kon">{fmtPrice(r.netTotal)}</span>
                 </div>
               )}
             </div>
@@ -321,9 +321,9 @@ export default function SougiClient() {
         )}
       </div>
 
-      <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6">
-        <p className="text-sm font-semibold text-amber-800 mb-1">⚠️ 複数の葬儀社に見積もりを取ることをお勧めします</p>
-        <p className="text-xs text-amber-700">葬儀費用は葬儀社によって大きく異なります。急いでいる状況でも、事前相談や2〜3社への見積もり比較が適正価格を知る近道です。</p>
+      <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-6">
+        <p className="text-sm font-semibold text-kon mb-1">⚠️ 複数の葬儀社に見積もりを取ることをお勧めします</p>
+        <p className="text-xs text-kon">葬儀費用は葬儀社によって大きく異なります。急いでいる状況でも、事前相談や2〜3社への見積もり比較が適正価格を知る近道です。</p>
       </div>
 
       <p className="text-xs text-gray-400 mb-8">

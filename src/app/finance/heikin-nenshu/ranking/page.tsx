@@ -84,21 +84,21 @@ export default function RankingPage() {
             <div>
               <label className="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1">年齢階級</label>
               <select value={ageClass} onChange={(e) => setAgeClass(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon">
                 {AGE_CLASSES.map((a) => <option key={a.code} value={a.code}>{a.label}</option>)}
               </select>
             </div>
             <div>
               <label className="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1">業種</label>
               <select value={industry} onChange={(e) => setIndustry(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon">
                 {INDUSTRIES.map((i) => <option key={i.code} value={i.code}>{i.label}</option>)}
               </select>
             </div>
             <div>
               <label className="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1">性別</label>
               <select value={gender} onChange={(e) => setGender(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon">
                 <option value="01">男女計</option>
                 <option value="02">男性</option>
                 <option value="03">女性</option>
@@ -140,7 +140,7 @@ export default function RankingPage() {
                     <div className="flex-1">
                       <div className="h-4 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
                         <div
-                          className={`h-full rounded-full transition-all ${isAboveAvg ? "bg-blue-500" : "bg-blue-300"}`}
+                          className={`h-full rounded-full transition-all ${isAboveAvg ? "bg-kon" : "bg-gray-50"}`}
                           style={{ width: `${barWidth}%` }}
                         />
                       </div>

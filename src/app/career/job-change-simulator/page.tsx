@@ -325,7 +325,7 @@ function fmtMan(n: number): string {
 
 function diffColor(n: number): string {
   if (n > 0) return "text-green-600";
-  if (n < 0) return "text-red-600";
+  if (n < 0) return "text-danger";
   return "text-gray-600";
 }
 
@@ -416,7 +416,7 @@ export default function JobChangeSimulatorPage() {
     setError("");
   }
 
-  const inputClass = "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent";
+  const inputClass = "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon focus:border-transparent";
   const labelClass = "block text-sm font-medium text-gray-700 mb-1";
   const unitClass = "text-sm text-gray-500 whitespace-nowrap";
 
@@ -471,7 +471,7 @@ export default function JobChangeSimulatorPage() {
         {/* Header */}
         <div className="mb-6">
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-medium bg-blue-100 text-blue-700 px-2 py-0.5 rounded">2026年最新</span>
+            <span className="text-xs font-medium bg-gray-50 text-kon px-2 py-0.5 rounded">2026年最新</span>
             <span className="text-xs text-gray-500">社会保険・税制対応</span>
           </div>
           <h1 className="text-2xl font-bold text-gray-900 mb-2">
@@ -489,20 +489,20 @@ export default function JobChangeSimulatorPage() {
 
             {/* Section 1: 現在の職場 */}
             <div>
-              <h2 className="text-base font-semibold text-blue-700 mb-4 pb-2 border-b-2 border-blue-100 flex items-center gap-2">
-                <span className="w-6 h-6 bg-blue-600 text-white rounded-full text-xs flex items-center justify-center font-bold">1</span>
+              <h2 className="text-base font-semibold text-kon mb-4 pb-2 border-b-2 border-gray-200 flex items-center gap-2">
+                <span className="w-6 h-6 bg-kon text-white rounded-full text-xs flex items-center justify-center font-bold">1</span>
                 現在の職場（転職前）
               </h2>
               <div className="space-y-3">
                 <div>
-                  <label className={labelClass}>現在の年収 <span className="text-red-500">*</span></label>
+                  <label className={labelClass}>現在の年収 <span className="text-danger">*</span></label>
                   <div className="flex items-center gap-2">
                     <input type="number" min={0} value={form.currentAnnual} onChange={(e) => handleChange("currentAnnual", e.target.value)} placeholder="例: 500" className={inputClass} />
                     <span className={unitClass}>万円</span>
                   </div>
                 </div>
                 <div>
-                  <label className={labelClass}>現在の月給（基本給） <span className="text-red-500">*</span></label>
+                  <label className={labelClass}>現在の月給（基本給） <span className="text-danger">*</span></label>
                   <div className="flex items-center gap-2">
                     <input type="number" min={0} value={form.currentMonthly} onChange={(e) => handleChange("currentMonthly", e.target.value)} placeholder="例: 30" className={inputClass} />
                     <span className={unitClass}>万円</span>
@@ -536,20 +536,20 @@ export default function JobChangeSimulatorPage() {
 
             {/* Section 2: 転職後の条件 */}
             <div>
-              <h2 className="text-base font-semibold text-blue-700 mb-4 pb-2 border-b-2 border-blue-100 flex items-center gap-2">
-                <span className="w-6 h-6 bg-blue-600 text-white rounded-full text-xs flex items-center justify-center font-bold">2</span>
+              <h2 className="text-base font-semibold text-kon mb-4 pb-2 border-b-2 border-gray-200 flex items-center gap-2">
+                <span className="w-6 h-6 bg-kon text-white rounded-full text-xs flex items-center justify-center font-bold">2</span>
                 転職後の条件
               </h2>
               <div className="space-y-3">
                 <div>
-                  <label className={labelClass}>転職後の年収 <span className="text-red-500">*</span></label>
+                  <label className={labelClass}>転職後の年収 <span className="text-danger">*</span></label>
                   <div className="flex items-center gap-2">
                     <input type="number" min={0} value={form.newAnnual} onChange={(e) => handleChange("newAnnual", e.target.value)} placeholder="例: 600" className={inputClass} />
                     <span className={unitClass}>万円</span>
                   </div>
                 </div>
                 <div>
-                  <label className={labelClass}>転職後の月給（基本給） <span className="text-red-500">*</span></label>
+                  <label className={labelClass}>転職後の月給（基本給） <span className="text-danger">*</span></label>
                   <div className="flex items-center gap-2">
                     <input type="number" min={0} value={form.newMonthly} onChange={(e) => handleChange("newMonthly", e.target.value)} placeholder="例: 36" className={inputClass} />
                     <span className={unitClass}>万円</span>
@@ -578,14 +578,14 @@ export default function JobChangeSimulatorPage() {
                     <label className="text-sm font-medium text-gray-700">試用期間あり？</label>
                     <button
                       onClick={() => handleChange("hasProbation", !form.hasProbation)}
-                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${form.hasProbation ? "bg-blue-600" : "bg-gray-300"}`}
+                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${form.hasProbation ? "bg-kon" : "bg-gray-300"}`}
                     >
                       <span className={`inline-block h-4 w-4 transform rounded-full bg-white shadow transition-transform ${form.hasProbation ? "translate-x-6" : "translate-x-1"}`} />
                     </button>
                     <span className="text-sm text-gray-500">{form.hasProbation ? "あり" : "なし"}</span>
                   </div>
                   {form.hasProbation && (
-                    <div className="pl-3 border-l-2 border-blue-200 space-y-2">
+                    <div className="pl-3 border-l-2 border-gray-200 space-y-2">
                       <div className="grid grid-cols-2 gap-3">
                         <div>
                           <label className={labelClass}>試用期間</label>
@@ -596,7 +596,7 @@ export default function JobChangeSimulatorPage() {
                           </select>
                         </div>
                         <div>
-                          <label className={labelClass}>試用期間中の月給 <span className="text-red-500">*</span></label>
+                          <label className={labelClass}>試用期間中の月給 <span className="text-danger">*</span></label>
                           <div className="flex items-center gap-2">
                             <input type="number" min={0} value={form.probationMonthly} onChange={(e) => handleChange("probationMonthly", e.target.value)} placeholder="例: 28" className={inputClass} />
                             <span className={unitClass}>万円</span>
@@ -611,14 +611,14 @@ export default function JobChangeSimulatorPage() {
 
             {/* Section 3: 個人情報 */}
             <div>
-              <h2 className="text-base font-semibold text-blue-700 mb-4 pb-2 border-b-2 border-blue-100 flex items-center gap-2">
-                <span className="w-6 h-6 bg-blue-600 text-white rounded-full text-xs flex items-center justify-center font-bold">3</span>
+              <h2 className="text-base font-semibold text-kon mb-4 pb-2 border-b-2 border-gray-200 flex items-center gap-2">
+                <span className="w-6 h-6 bg-kon text-white rounded-full text-xs flex items-center justify-center font-bold">3</span>
                 個人情報（控除計算用）
               </h2>
               <div className="space-y-3">
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className={labelClass}>年齢 <span className="text-red-500">*</span></label>
+                    <label className={labelClass}>年齢 <span className="text-danger">*</span></label>
                     <div className="flex items-center gap-2">
                       <input type="number" min={18} max={75} value={form.age} onChange={(e) => handleChange("age", e.target.value)} placeholder="例: 30" className={inputClass} />
                       <span className={unitClass}>歳</span>
@@ -640,7 +640,7 @@ export default function JobChangeSimulatorPage() {
                     <label className="text-sm font-medium text-gray-700">配偶者あり？</label>
                     <button
                       onClick={() => handleChange("hasSpouse", !form.hasSpouse)}
-                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${form.hasSpouse ? "bg-blue-600" : "bg-gray-300"}`}
+                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${form.hasSpouse ? "bg-kon" : "bg-gray-300"}`}
                     >
                       <span className={`inline-block h-4 w-4 transform rounded-full bg-white shadow transition-transform ${form.hasSpouse ? "translate-x-6" : "translate-x-1"}`} />
                     </button>
@@ -671,7 +671,7 @@ export default function JobChangeSimulatorPage() {
 
             {/* Error */}
             {error && (
-              <div className="bg-red-50 border border-red-200 rounded-lg px-4 py-3 text-sm text-red-700">
+              <div className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-sm text-danger">
                 {error}
               </div>
             )}
@@ -680,7 +680,7 @@ export default function JobChangeSimulatorPage() {
             <div className="flex gap-3">
               <button
                 onClick={handleCalculate}
-                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-bold text-sm transition-colors shadow-sm"
+                className="flex-1 bg-kon hover:bg-ai text-white py-3 rounded-lg font-bold text-sm transition-colors shadow-sm"
               >
                 計算する
               </button>
@@ -785,10 +785,10 @@ export default function JobChangeSimulatorPage() {
                             {fmtDiff(result.newJob.residentTax - result.current.residentTax)}
                           </td>
                         </tr>
-                        <tr className="border-t-2 border-blue-200 bg-blue-50">
-                          <td className="py-3 text-blue-900 font-bold">月手取り</td>
-                          <td className="py-3 text-right font-bold text-blue-900">{fmtYen(result.current.monthlyTakeHome)}</td>
-                          <td className="py-3 text-right font-bold text-blue-900">{fmtYen(result.newJob.monthlyTakeHome)}</td>
+                        <tr className="border-t-2 border-gray-200 bg-gray-50">
+                          <td className="py-3 text-kon font-bold">月手取り</td>
+                          <td className="py-3 text-right font-bold text-kon">{fmtYen(result.current.monthlyTakeHome)}</td>
+                          <td className="py-3 text-right font-bold text-kon">{fmtYen(result.newJob.monthlyTakeHome)}</td>
                           <td className={`py-3 text-right font-bold text-lg ${diffColor(result.monthlyDiff)}`}>
                             {fmtDiff(result.monthlyDiff)}
                           </td>
@@ -825,25 +825,25 @@ export default function JobChangeSimulatorPage() {
 
                 {/* 試用期間 */}
                 {result.probation && (
-                  <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
-                    <h3 className="text-sm font-semibold text-amber-800 mb-3">試用期間の影響</h3>
+                  <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
+                    <h3 className="text-sm font-semibold text-kon mb-3">試用期間の影響</h3>
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
-                        <span className="text-amber-700">試用期間中の月手取り（概算）</span>
+                        <span className="text-kon">試用期間中の月手取り（概算）</span>
                         <span className="font-medium">{fmtYen(result.probation.monthlyTakeHome)}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-amber-700">試用期間の収入損失（{result.probation.months}ヶ月分）</span>
-                        <span className="font-medium text-red-600">約 {fmt(Math.round(result.probation.totalLoss / 10000))}万円</span>
+                        <span className="text-kon">試用期間の収入損失（{result.probation.months}ヶ月分）</span>
+                        <span className="font-medium text-danger">約 {fmt(Math.round(result.probation.totalLoss / 10000))}万円</span>
                       </div>
                       {result.breakEvenMonths !== undefined && (
-                        <div className="flex justify-between border-t border-amber-200 pt-2 mt-2">
-                          <span className="text-amber-700 font-medium">損益分岐点</span>
-                          <span className="font-bold text-amber-900">転職後 約{result.breakEvenMonths}ヶ月</span>
+                        <div className="flex justify-between border-t border-gray-200 pt-2 mt-2">
+                          <span className="text-kon font-medium">損益分岐点</span>
+                          <span className="font-bold text-kon">転職後 約{result.breakEvenMonths}ヶ月</span>
                         </div>
                       )}
                       {result.breakEvenMonths !== undefined && (
-                        <p className="text-xs text-amber-600 mt-1">
+                        <p className="text-xs text-kon mt-1">
                           転職後{result.breakEvenMonths}ヶ月で試用期間の収入損失を回収できます
                         </p>
                       )}
@@ -852,9 +852,9 @@ export default function JobChangeSimulatorPage() {
                 )}
 
                 {/* 転職タイミングアドバイス */}
-                <div className="bg-blue-50 border-l-4 border-blue-500 rounded-r-xl p-4">
-                  <h3 className="text-sm font-semibold text-blue-800 mb-2">転職タイミングアドバイス</h3>
-                  <ul className="text-xs text-blue-700 space-y-1.5">
+                <div className="bg-gray-50 border-l-4 border-kon rounded-r-xl p-4">
+                  <h3 className="text-sm font-semibold text-kon mb-2">転職タイミングアドバイス</h3>
+                  <ul className="text-xs text-kon space-y-1.5">
                     <li>• 住民税は前年収入に基づくため、転職直後も現年収ベースで課税されます</li>
                     <li>• <span className="font-medium">12月退職→1月入社</span>が最も手続きがシンプルです</li>
                     <li>• 月末退職で当月分・月中退職で前月分まで社会保険料が発生します</li>
@@ -894,8 +894,8 @@ export default function JobChangeSimulatorPage() {
                     <td className="py-2 text-gray-700">{row.before}</td>
                     <td className="py-2 text-gray-700">{row.after}</td>
                     <td className="py-2 text-gray-500">{row.age}</td>
-                    <td className={`py-2 text-right font-medium ${row.pos ? "text-green-600" : "text-red-600"}`}>{row.monthly}</td>
-                    <td className={`py-2 text-right font-medium ${row.pos ? "text-green-600" : "text-red-600"}`}>{row.annual}</td>
+                    <td className={`py-2 text-right font-medium ${row.pos ? "text-green-600" : "text-danger"}`}>{row.monthly}</td>
+                    <td className={`py-2 text-right font-medium ${row.pos ? "text-green-600" : "text-danger"}`}>{row.annual}</td>
                   </tr>
                 ))}
               </tbody>
@@ -964,9 +964,9 @@ export default function JobChangeSimulatorPage() {
               <Link
                 key={tool.href}
                 href={tool.href}
-                className="flex flex-col gap-1 p-3 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors"
+                className="flex flex-col gap-1 p-3 border border-gray-200 rounded-lg hover:border-ai hover:bg-gray-50 transition-colors"
               >
-                <span className="text-sm font-medium text-blue-700">{tool.label}</span>
+                <span className="text-sm font-medium text-kon">{tool.label}</span>
                 <span className="text-xs text-gray-500">{tool.desc}</span>
               </Link>
             ))}
@@ -976,15 +976,15 @@ export default function JobChangeSimulatorPage() {
           <h2 className="text-xl font-bold text-gray-900 mb-4">📝 関連ブログ記事</h2>
           <Link
             href="/blog/tenshoku-nenshu-simulation-2026"
-            className="flex items-center gap-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl border border-purple-200 hover:border-purple-400 hover:shadow-md transition-all p-5 group"
+            className="flex items-center gap-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl border border-kon hover:border-ai hover:shadow-md transition-all p-5 group"
           >
-            <div className="w-12 h-12 rounded-lg bg-purple-100 group-hover:bg-purple-200 flex items-center justify-center shrink-0 transition-colors">
-              <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-12 h-12 rounded-lg bg-gray-50 group-hover:bg-ai flex items-center justify-center shrink-0 transition-colors">
+              <svg className="w-6 h-6 text-kon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
               </svg>
             </div>
             <div>
-              <p className="text-sm font-semibold text-purple-700 group-hover:text-purple-800">【2026年最新】転職で年収はいくら上がる？年収アップシミュレーション</p>
+              <p className="text-sm font-semibold text-kon group-hover:text-ai">【2026年最新】転職で年収はいくら上がる？年収アップシミュレーション</p>
               <p className="text-xs text-gray-500 mt-1">詳しい解説・計算例・注意点はこちら →</p>
             </div>
           </Link>

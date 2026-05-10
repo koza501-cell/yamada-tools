@@ -46,9 +46,9 @@ export default function HoujinkaSimulation2026Blog() {
         }}
       />
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-pink-500">ホーム</Link>
+        <Link href="/" className="hover:text-sakura">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-pink-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-sakura">ブログ</Link>
         <span className="mx-2">/</span>
         <span>法人化シミュレーション2026</span>
       </nav>
@@ -123,7 +123,7 @@ export default function HoujinkaSimulation2026Blog() {
             </tr>
           </thead>
           <tbody>
-            <tr><td className="px-3 py-3 border-b font-bold">500万円</td><td className="px-3 py-3 border-b text-right">約105万円</td><td className="px-3 py-3 border-b text-right">約115万円</td><td className="px-3 py-3 border-b text-center text-red-600">+10万円</td></tr>
+            <tr><td className="px-3 py-3 border-b font-bold">500万円</td><td className="px-3 py-3 border-b text-right">約105万円</td><td className="px-3 py-3 border-b text-right">約115万円</td><td className="px-3 py-3 border-b text-center text-danger">+10万円</td></tr>
             <tr><td className="px-3 py-3 border-b font-bold">700万円</td><td className="px-3 py-3 border-b text-right">約175万円</td><td className="px-3 py-3 border-b text-right">約170万円</td><td className="px-3 py-3 border-b text-center text-green-600">−5万円</td></tr>
             <tr className="bg-yellow-50"><td className="px-3 py-3 border-b font-bold">800万円</td><td className="px-3 py-3 border-b text-right">約215万円</td><td className="px-3 py-3 border-b text-right">約195万円</td><td className="px-3 py-3 border-b text-center font-bold text-green-600">−20万円</td></tr>
             <tr className="bg-yellow-50"><td className="px-3 py-3 border-b font-bold">1,000万円</td><td className="px-3 py-3 border-b text-right">約305万円</td><td className="px-3 py-3 border-b text-right">約260万円</td><td className="px-3 py-3 border-b text-center font-bold text-green-600">−45万円</td></tr>
@@ -140,8 +140,8 @@ export default function HoujinkaSimulation2026Blog() {
           </p>
         </div>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-          <p className="text-lg font-bold text-blue-800 mb-2">🔧 あなたの法人化メリットを計算！</p>
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+          <p className="text-lg font-bold text-kon mb-2">🔧 あなたの法人化メリットを計算！</p>
           <p className="text-gray-700 mb-4">年収と経費を入力して、法人化した場合の節税効果をシミュレーションしましょう。</p>
           <Link href="/business/incorporation-simulator" className="inline-block bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg transition">
             → 法人化シミュレーターを使う
@@ -186,24 +186,24 @@ export default function HoujinkaSimulation2026Blog() {
         <h2 className="text-2xl font-bold text-gray-800 mb-4">法人化のデメリット</h2>
         
         <div className="space-y-4">
-          <div className="bg-white border border-red-200 rounded-lg p-5">
-            <h3 className="font-bold text-red-600 mb-2">1. 設立費用がかかる</h3>
+          <div className="bg-white border border-gray-200 rounded-lg p-5">
+            <h3 className="font-bold text-danger mb-2">1. 設立費用がかかる</h3>
             <p className="text-gray-700 text-sm">株式会社：約25万円、合同会社：約10万円。登記費用、定款認証などが必要です。</p>
           </div>
-          <div className="bg-white border border-red-200 rounded-lg p-5">
-            <h3 className="font-bold text-red-600 mb-2">2. 維持コストが発生</h3>
+          <div className="bg-white border border-gray-200 rounded-lg p-5">
+            <h3 className="font-bold text-danger mb-2">2. 維持コストが発生</h3>
             <p className="text-gray-700 text-sm">赤字でも法人住民税の均等割（年7万円〜）、税理士費用（年20〜50万円）がかかります。</p>
           </div>
-          <div className="bg-white border border-red-200 rounded-lg p-5">
-            <h3 className="font-bold text-red-600 mb-2">3. 社会保険料の負担</h3>
+          <div className="bg-white border border-gray-200 rounded-lg p-5">
+            <h3 className="font-bold text-danger mb-2">3. 社会保険料の負担</h3>
             <p className="text-gray-700 text-sm">会社負担分が約15%。役員報酬が高いと国保より負担増になることも。</p>
           </div>
-          <div className="bg-white border border-red-200 rounded-lg p-5">
-            <h3 className="font-bold text-red-600 mb-2">4. 事務負担が増える</h3>
+          <div className="bg-white border border-gray-200 rounded-lg p-5">
+            <h3 className="font-bold text-danger mb-2">4. 事務負担が増える</h3>
             <p className="text-gray-700 text-sm">決算書作成、法人税申告、社会保険手続きなど、事務作業が複雑になります。</p>
           </div>
-          <div className="bg-white border border-red-200 rounded-lg p-5">
-            <h3 className="font-bold text-red-600 mb-2">5. お金を自由に使えない</h3>
+          <div className="bg-white border border-gray-200 rounded-lg p-5">
+            <h3 className="font-bold text-danger mb-2">5. お金を自由に使えない</h3>
             <p className="text-gray-700 text-sm">会社のお金と個人のお金は完全に分離。個人で使うには役員報酬として受け取る必要があります。</p>
           </div>
         </div>
@@ -299,7 +299,7 @@ export default function HoujinkaSimulation2026Blog() {
           法人化は<strong>所得800万円〜1,000万円以上</strong>が目安ですが、数字だけでなく将来の事業計画、信用力、社会保険加入のニーズなども考慮しましょう。
         </p>
         
-        <div className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-lg p-6 text-center">
+        <div className="bg-gradient-to-r from-indigo-500 to-kon text-white rounded-lg p-6 text-center">
           <p className="text-lg font-bold mb-4">法人化した場合の節税効果をシミュレーション</p>
           <Link href="/business/incorporation-simulator" className="inline-block bg-white text-indigo-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition">
             → 法人化シミュレーターを使う

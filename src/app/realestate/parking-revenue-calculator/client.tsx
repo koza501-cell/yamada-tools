@@ -56,7 +56,7 @@ export default function ParkingClient() {
 
   const mBetter = mProfit >= cProfit;
 
-  const ic = "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400";
+  const ic = "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon";
   const lc = "block text-sm font-medium text-gray-700 mb-1";
 
   return (
@@ -91,13 +91,13 @@ export default function ParkingClient() {
 
         <div className="grid grid-cols-2 gap-6">
           <div className="space-y-3">
-            <p className="text-sm font-semibold text-blue-700">月極モード</p>
+            <p className="text-sm font-semibold text-kon">月極モード</p>
             <div><label className={lc}>月額賃料/台（円）</label><input type="number" className={ic} value={mRent} onChange={e => setMRent(e.target.value)} /></div>
             <div><label className={lc}>管理委託費/月（円）</label><input type="number" className={ic} value={mMgmt} onChange={e => setMMgmt(e.target.value)} /></div>
             <div><label className={lc}>固定資産税/年（円）</label><input type="number" className={ic} value={mTax} onChange={e => setMTax(e.target.value)} /></div>
           </div>
           <div className="space-y-3">
-            <p className="text-sm font-semibold text-orange-600">コインパーキングモード</p>
+            <p className="text-sm font-semibold text-kon">コインパーキングモード</p>
             <div><label className={lc}>最初の30分料金（円）</label><input type="number" className={ic} value={cFirst30} onChange={e => setCFirst30(e.target.value)} /></div>
             <div><label className={lc}>以降30分料金（円）</label><input type="number" className={ic} value={cPer30} onChange={e => setCPer30(e.target.value)} /></div>
             <div><label className={lc}>管理・機器リース/月（円）</label><input type="number" className={ic} value={cMgmt} onChange={e => setCMgmt(e.target.value)} /></div>
@@ -111,7 +111,7 @@ export default function ParkingClient() {
         </div>
       </div>
 
-      <div className={`text-center py-3 px-4 rounded-xl mb-4 text-sm font-semibold ${mBetter ? "bg-blue-100 text-blue-800" : "bg-orange-100 text-orange-800"}`}>
+      <div className={`text-center py-3 px-4 rounded-xl mb-4 text-sm font-semibold ${mBetter ? "bg-gray-50 text-kon" : "bg-gray-50 text-kon"}`}>
         {mBetter ? "月極の方が月次利益が高い" : "コインパーキングの方が月次利益が高い"}
         {" — 差額: " + fmt(Math.abs(mProfit - cProfit)) + "/月"}
       </div>
@@ -121,8 +121,8 @@ export default function ParkingClient() {
           { title: "月極", color: "blue", revenue: mMonthlyRevenue, expense: mExpenses, profit: mProfit, yearly: mYearlyProfit, initial: mInitial, payback: mPayback, yld: mYield, y10: mYearlyProfit * 10 - mInitial, y20: mYearlyProfit * 20 - mInitial },
           { title: "コインパーキング", color: "orange", revenue: cMonthlyRevenue, expense: cExpenses, profit: cProfit, yearly: cYearlyProfit, initial: cInitial, payback: cPayback, yld: cYield, y10: cYearlyProfit * 10 - cInitial, y20: cYearlyProfit * 20 - cInitial },
         ].map(c => (
-          <div key={c.title} className={`bg-white border-2 rounded-xl overflow-hidden ${c.color === "blue" ? "border-blue-300" : "border-orange-300"}`}>
-            <div className={`px-4 py-3 text-white font-bold ${c.color === "blue" ? "bg-blue-600" : "bg-orange-500"}`}>{c.title}</div>
+          <div key={c.title} className={`bg-white border-2 rounded-xl overflow-hidden ${c.color === "blue" ? "border-kon" : "border-gray-200"}`}>
+            <div className={`px-4 py-3 text-white font-bold ${c.color === "blue" ? "bg-kon" : "bg-kon"}`}>{c.title}</div>
             <div className="divide-y divide-gray-100 text-sm">
               {[
                 ["月額収入", fmt(c.revenue)],
@@ -145,7 +145,7 @@ export default function ParkingClient() {
         ))}
       </div>
 
-      <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-8 text-sm text-amber-800">
+      <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-8 text-sm text-kon">
         <p className="font-medium mb-1">固定資産税について</p>
         <p>駐車場（更地）は住宅用地の特例（6分の1軽減）が適用されません。<a href="/realestate/property-tax-calculator" className="underline">固定資産税計算機</a>で正確な税額を確認してください。</p>
       </div>

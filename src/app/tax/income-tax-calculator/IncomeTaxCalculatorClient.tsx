@@ -236,11 +236,11 @@ export default function IncomeTaxCalculatorPage() {
   }
 
   const inputClass =
-    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500";
+    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon";
   const labelClass = "block text-sm font-medium text-gray-700 mb-1";
   const toggleClass = (active: boolean) =>
     `flex-1 py-2 text-sm font-medium rounded-md transition-colors ${
-      active ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+      active ? "bg-kon text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
     }`;
 
   const faqItems = [
@@ -265,10 +265,10 @@ export default function IncomeTaxCalculatorPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
       {/* Header */}
-      <div className="bg-gradient-to-r from-blue-700 to-blue-500 text-white py-10 px-4">
+      <div className="bg-gradient-to-r from-blue-700 to-kon text-white py-10 px-4">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-2xl md:text-3xl font-bold mb-2">所得税・住民税 計算機</h1>
-          <p className="text-blue-100 text-sm md:text-base">
+          <p className="text-gin text-sm md:text-base">
             年収・家族構成・各種控除から所得税・住民税・手取り額を自動計算（2024年度税制）
           </p>
         </div>
@@ -442,7 +442,7 @@ export default function IncomeTaxCalculatorPage() {
               </button>
               <button
                 onClick={handleCalculate}
-                className="flex-1 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-bold hover:bg-blue-700 transition-colors"
+                className="flex-1 py-2.5 rounded-lg bg-kon text-white text-sm font-bold hover:bg-ai transition-colors"
               >
                 計算する
               </button>
@@ -457,7 +457,7 @@ export default function IncomeTaxCalculatorPage() {
                 <div className="grid grid-cols-2 gap-3">
                   <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
                     <p className="text-xs text-gray-500 mb-1">所得税</p>
-                    <p className="text-xl font-bold text-blue-700">
+                    <p className="text-xl font-bold text-kon">
                       {fmt1(result.incomeTax)}
                       <span className="text-sm font-normal ml-1">万円</span>
                     </p>
@@ -469,9 +469,9 @@ export default function IncomeTaxCalculatorPage() {
                       <span className="text-sm font-normal ml-1">万円</span>
                     </p>
                   </div>
-                  <div className="bg-white rounded-xl shadow-sm border border-blue-100 p-4 col-span-2 bg-blue-50">
-                    <p className="text-xs text-blue-600 mb-1">手取り概算</p>
-                    <p className="text-2xl font-bold text-blue-800">
+                  <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 col-span-2 bg-gray-50">
+                    <p className="text-xs text-kon mb-1">手取り概算</p>
+                    <p className="text-2xl font-bold text-kon">
                       {fmt1(result.takeHome)}
                       <span className="text-sm font-normal ml-1">万円</span>
                     </p>
@@ -498,7 +498,7 @@ export default function IncomeTaxCalculatorPage() {
                       </tr>
                       <tr className="border-b bg-gray-50">
                         <td className="py-1.5 text-gray-600">給与所得控除</td>
-                        <td className="py-1.5 text-right text-red-600">
+                        <td className="py-1.5 text-right text-danger">
                           − {fmt1(result.salaryCut)} 万円
                         </td>
                       </tr>
@@ -508,20 +508,20 @@ export default function IncomeTaxCalculatorPage() {
                       </tr>
                       <tr className="border-b bg-gray-50">
                         <td className="py-1.5 text-gray-600 pl-3">基礎控除</td>
-                        <td className="py-1.5 text-right text-red-600">
+                        <td className="py-1.5 text-right text-danger">
                           − {fmt1(result.basicDeduction)} 万円
                         </td>
                       </tr>
                       <tr className="border-b">
                         <td className="py-1.5 text-gray-600 pl-3">社会保険料控除</td>
-                        <td className="py-1.5 text-right text-red-600">
+                        <td className="py-1.5 text-right text-danger">
                           − {fmt1(result.socialInsuranceDeduction)} 万円
                         </td>
                       </tr>
                       {result.spouseDeduction > 0 && (
                         <tr className="border-b bg-gray-50">
                           <td className="py-1.5 text-gray-600 pl-3">配偶者控除</td>
-                          <td className="py-1.5 text-right text-red-600">
+                          <td className="py-1.5 text-right text-danger">
                             − {fmt1(result.spouseDeduction)} 万円
                           </td>
                         </tr>
@@ -529,7 +529,7 @@ export default function IncomeTaxCalculatorPage() {
                       {result.dependentDeduction > 0 && (
                         <tr className="border-b">
                           <td className="py-1.5 text-gray-600 pl-3">扶養控除</td>
-                          <td className="py-1.5 text-right text-red-600">
+                          <td className="py-1.5 text-right text-danger">
                             − {fmt1(result.dependentDeduction)} 万円
                           </td>
                         </tr>
@@ -537,7 +537,7 @@ export default function IncomeTaxCalculatorPage() {
                       {result.lifeInsuranceDeduction > 0 && (
                         <tr className="border-b bg-gray-50">
                           <td className="py-1.5 text-gray-600 pl-3">生命保険料控除</td>
-                          <td className="py-1.5 text-right text-red-600">
+                          <td className="py-1.5 text-right text-danger">
                             − {fmt1(result.lifeInsuranceDeduction)} 万円
                           </td>
                         </tr>
@@ -545,7 +545,7 @@ export default function IncomeTaxCalculatorPage() {
                       {result.earthquakeDeduction > 0 && (
                         <tr className="border-b">
                           <td className="py-1.5 text-gray-600 pl-3">地震保険料控除</td>
-                          <td className="py-1.5 text-right text-red-600">
+                          <td className="py-1.5 text-right text-danger">
                             − {fmt1(result.earthquakeDeduction)} 万円
                           </td>
                         </tr>
@@ -553,7 +553,7 @@ export default function IncomeTaxCalculatorPage() {
                       {result.disabilityDeduction > 0 && (
                         <tr className="border-b bg-gray-50">
                           <td className="py-1.5 text-gray-600 pl-3">障害者控除</td>
-                          <td className="py-1.5 text-right text-red-600">
+                          <td className="py-1.5 text-right text-danger">
                             − {fmt1(result.disabilityDeduction)} 万円
                           </td>
                         </tr>
@@ -561,14 +561,14 @@ export default function IncomeTaxCalculatorPage() {
                       {result.singleParentDeduction > 0 && (
                         <tr className="border-b">
                           <td className="py-1.5 text-gray-600 pl-3">寡婦・ひとり親控除</td>
-                          <td className="py-1.5 text-right text-red-600">
+                          <td className="py-1.5 text-right text-danger">
                             − {fmt1(result.singleParentDeduction)} 万円
                           </td>
                         </tr>
                       )}
                       <tr className="border-b bg-gray-50 font-semibold">
                         <td className="py-1.5 pl-3">所得控除合計</td>
-                        <td className="py-1.5 text-right text-red-700">
+                        <td className="py-1.5 text-right text-danger">
                           − {fmt1(result.totalDeductions)} 万円
                         </td>
                       </tr>
@@ -582,7 +582,7 @@ export default function IncomeTaxCalculatorPage() {
                       </tr>
                       <tr className="border-b">
                         <td className="py-1.5 text-gray-600">復興特別所得税（×1.021）</td>
-                        <td className="py-1.5 text-right font-semibold text-blue-700">
+                        <td className="py-1.5 text-right font-semibold text-kon">
                           {fmt1(result.incomeTax)} 万円
                         </td>
                       </tr>
@@ -623,7 +623,7 @@ export default function IncomeTaxCalculatorPage() {
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="bg-blue-600 text-white">
+                  <tr className="bg-kon text-white">
                     <th className="px-4 py-3 text-left font-semibold">年収</th>
                     <th className="px-4 py-3 text-left font-semibold">家族構成</th>
                     <th className="px-4 py-3 text-left font-semibold">所得税目安</th>
@@ -637,35 +637,35 @@ export default function IncomeTaxCalculatorPage() {
                     <td className="px-4 py-3 text-gray-800">独身</td>
                     <td className="px-4 py-3 text-gray-800">約5万円</td>
                     <td className="px-4 py-3 text-gray-800">約9万円</td>
-                    <td className="px-4 py-3 font-semibold text-blue-700">約236万円</td>
+                    <td className="px-4 py-3 font-semibold text-kon">約236万円</td>
                   </tr>
                   <tr className="hover:bg-gray-50">
                     <td className="px-4 py-3 text-gray-800">400万円</td>
                     <td className="px-4 py-3 text-gray-800">配偶者あり</td>
                     <td className="px-4 py-3 text-gray-800">約6万円</td>
                     <td className="px-4 py-3 text-gray-800">約13万円</td>
-                    <td className="px-4 py-3 font-semibold text-blue-700">約317万円</td>
+                    <td className="px-4 py-3 font-semibold text-kon">約317万円</td>
                   </tr>
                   <tr className="hover:bg-gray-50">
                     <td className="px-4 py-3 text-gray-800">500万円</td>
                     <td className="px-4 py-3 text-gray-800">配偶者+子1人</td>
                     <td className="px-4 py-3 text-gray-800">約10万円</td>
                     <td className="px-4 py-3 text-gray-800">約18万円</td>
-                    <td className="px-4 py-3 font-semibold text-blue-700">約392万円</td>
+                    <td className="px-4 py-3 font-semibold text-kon">約392万円</td>
                   </tr>
                   <tr className="hover:bg-gray-50">
                     <td className="px-4 py-3 text-gray-800">600万円</td>
                     <td className="px-4 py-3 text-gray-800">配偶者+子2人</td>
                     <td className="px-4 py-3 text-gray-800">約15万円</td>
                     <td className="px-4 py-3 text-gray-800">約23万円</td>
-                    <td className="px-4 py-3 font-semibold text-blue-700">約472万円</td>
+                    <td className="px-4 py-3 font-semibold text-kon">約472万円</td>
                   </tr>
                   <tr className="hover:bg-gray-50">
                     <td className="px-4 py-3 text-gray-800">800万円</td>
                     <td className="px-4 py-3 text-gray-800">配偶者+子2人</td>
                     <td className="px-4 py-3 text-gray-800">約40万円</td>
                     <td className="px-4 py-3 text-gray-800">約40万円</td>
-                    <td className="px-4 py-3 font-semibold text-blue-700">約600万円</td>
+                    <td className="px-4 py-3 font-semibold text-kon">約600万円</td>
                   </tr>
                 </tbody>
               </table>
@@ -683,18 +683,18 @@ export default function IncomeTaxCalculatorPage() {
             <div>
               <p className="font-semibold text-gray-800 mb-2">所得税の計算ステップ：</p>
               <ul className="space-y-1.5 ml-4">
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span>給与収入から給与所得控除を差し引いて「給与所得」を求める</span></li>
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span>基礎控除・社会保険料控除・扶養控除などを差し引いて「課税所得」を求める</span></li>
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span>課税所得に累進税率（5%〜45%）を適用して所得税額を計算する</span></li>
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span>復興特別所得税（所得税×2.1%）を加算する</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span>給与収入から給与所得控除を差し引いて「給与所得」を求める</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span>基礎控除・社会保険料控除・扶養控除などを差し引いて「課税所得」を求める</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span>課税所得に累進税率（5%〜45%）を適用して所得税額を計算する</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span>復興特別所得税（所得税×2.1%）を加算する</span></li>
               </ul>
             </div>
             <div>
               <p className="font-semibold text-gray-800 mb-2">住民税の計算ステップ：</p>
               <ul className="space-y-1.5 ml-4">
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span>所得税と同様に課税所得を計算（基礎控除額が43万円と異なる）</span></li>
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span>課税所得に一律10%（都道府県4%+市区町村6%）を乗じる</span></li>
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span>調整控除を差し引いて最終税額を算出する</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span>所得税と同様に課税所得を計算（基礎控除額が43万円と異なる）</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span>課税所得に一律10%（都道府県4%+市区町村6%）を乗じる</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span>調整控除を差し引いて最終税額を算出する</span></li>
               </ul>
             </div>
             <div>
@@ -733,7 +733,7 @@ export default function IncomeTaxCalculatorPage() {
             ].map((item, i) => (
               <div key={i} className="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
                 <p className="font-semibold text-gray-800 mb-2 flex gap-2">
-                  <span className="text-blue-600 font-bold shrink-0">Q{i + 1}.</span>
+                  <span className="text-kon font-bold shrink-0">Q{i + 1}.</span>
                   {item.q}
                 </p>
                 <p className="text-sm text-gray-600 leading-relaxed flex gap-2">
@@ -758,15 +758,15 @@ export default function IncomeTaxCalculatorPage() {
               <Link
                 key={tool.href}
                 href={tool.href}
-                className="flex items-start gap-3 bg-white rounded-xl border border-blue-100 hover:border-blue-400 hover:shadow-md transition-all p-4 group"
+                className="flex items-start gap-3 bg-white rounded-xl border border-gray-200 hover:border-ai hover:shadow-md transition-all p-4 group"
               >
-                <div className="w-9 h-9 rounded-lg bg-blue-50 group-hover:bg-blue-100 flex items-center justify-center shrink-0 transition-colors">
-                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-9 h-9 rounded-lg bg-gray-50 group-hover:bg-ai flex items-center justify-center shrink-0 transition-colors">
+                  <svg className="w-5 h-5 text-kon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 11h.01M12 11h.01M15 11h.01M4 19h16a2 2 0 002-2V7a2 2 0 00-2-2H4a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-blue-700 group-hover:text-blue-800">{tool.label}</p>
+                  <p className="text-sm font-semibold text-kon group-hover:text-ai">{tool.label}</p>
                   <p className="text-xs text-gray-500 mt-0.5">{tool.desc}</p>
                 </div>
               </Link>

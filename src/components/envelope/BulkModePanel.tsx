@@ -101,8 +101,8 @@ export default function BulkModePanel({ envelopeSize, sender, onAddressSelect, u
       {/* Status message */}
       {message && (
         <div className={`text-sm px-4 py-2 rounded-lg ${
-          message.includes("エラー") ? "bg-red-50 text-red-700 border border-red-200"
-          : message.includes("制限") ? "bg-amber-50 text-amber-700 border border-amber-200"
+          message.includes("エラー") ? "bg-gray-50 text-danger border border-gray-200"
+          : message.includes("制限") ? "bg-gray-50 text-kon border border-gray-200"
           : "bg-green-50 text-green-700 border border-green-200"
         }`}>
           {message}
@@ -145,7 +145,7 @@ export default function BulkModePanel({ envelopeSize, sender, onAddressSelect, u
             setRows([]);
             setMessage("");
           }}
-          className="text-sm text-blue-600 hover:underline"
+          className="text-sm text-kon hover:underline"
         >
           別のファイルを読み込む
         </button>

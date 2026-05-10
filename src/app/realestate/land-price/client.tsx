@@ -85,9 +85,9 @@ export default function LandPriceClient() {
   }
 
   const changeColor = result?.price.change_direction === "up"
-    ? "text-red-600"
+    ? "text-danger"
     : result?.price.change_direction === "down"
-    ? "text-blue-600"
+    ? "text-kon"
     : "text-gray-600";
 
   const changeIcon = result?.price.change_direction === "up" ? "▲" : result?.price.change_direction === "down" ? "▼" : "━";
@@ -141,7 +141,7 @@ export default function LandPriceClient() {
         </div>
 
         {error && (
-          <div className={`rounded-xl p-4 mb-6 text-sm ${error.includes("見つかりませんでした") ? "bg-amber-50 border border-amber-300 text-amber-800" : "bg-red-50 border border-red-200 text-red-700"}`}>
+          <div className={`rounded-xl p-4 mb-6 text-sm ${error.includes("見つかりませんでした") ? "bg-gray-50 border border-gray-200 text-kon" : "bg-gray-50 border border-gray-200 text-danger"}`}>
             {error.includes("見つかりませんでした") ? "📭 " : "⚠️ "}{error}
             {error.includes("見つかりませんでした") && (
               <p className="mt-2 text-xs">地価公示地点は全国約26,000点のため、農村部・山間部では近隣に地点がない場合があります。</p>
@@ -153,7 +153,7 @@ export default function LandPriceClient() {
           <div id="landprice-print-area">
             <div className="print-header hidden items-center justify-between px-4 py-3 border-b border-gray-200 mb-3">
               <div>
-                <p className="text-lg font-bold text-blue-700">山田ツール</p>
+                <p className="text-lg font-bold text-kon">山田ツール</p>
                 <p className="text-xs text-gray-500">yamada-tools.jp — 地価チェッカー</p>
               </div>
               <div className="text-right">
@@ -161,7 +161,7 @@ export default function LandPriceClient() {
               </div>
             </div>
 
-            <div className="bg-blue-600 text-white rounded-xl p-5 mb-4">
+            <div className="bg-kon text-white rounded-xl p-5 mb-4">
               <p className="text-xs opacity-75 mb-1">📍 {result.address}</p>
               <p className="text-sm opacity-80">最寄り地価公示地点: {result.nearest_point.distance_m}m先 ({result.nearest_point.land_price_type})</p>
             </div>
@@ -203,11 +203,11 @@ export default function LandPriceClient() {
                     </div>
                     <div className="bg-white rounded-lg p-3 border border-gray-100">
                       <p className="text-xs text-gray-500 mb-1">最安値</p>
-                      <p className="font-bold text-blue-700 text-sm">{result.area_stats.min_formatted ?? "-"}</p>
+                      <p className="font-bold text-kon text-sm">{result.area_stats.min_formatted ?? "-"}</p>
                     </div>
                     <div className="bg-white rounded-lg p-3 border border-gray-100">
                       <p className="text-xs text-gray-500 mb-1">最高値</p>
-                      <p className="font-bold text-red-600 text-sm">{result.area_stats.max_formatted ?? "-"}</p>
+                      <p className="font-bold text-danger text-sm">{result.area_stats.max_formatted ?? "-"}</p>
                     </div>
                   </div>
                   <p className="text-xs text-gray-400 mt-2">※ {result.area_stats.count}地点のデータを集計</p>
@@ -261,7 +261,7 @@ export default function LandPriceClient() {
                   <button
                     type="button"
                     onClick={() => window.print()}
-                    className="text-sm bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors font-medium"
+                    className="text-sm bg-kon hover:bg-ai text-white px-4 py-2 rounded-lg transition-colors font-medium"
                   >
                     🖨 印刷・PDF保存
                   </button>

@@ -128,9 +128,9 @@ function getMatchBadge(status: string, score: number) {
     case "similar":
       return { label: "類似（要確認）", emoji: "⚠️", bg: "bg-yellow-100 dark:bg-yellow-900/30", text: "text-yellow-800 dark:text-yellow-200", border: "border-yellow-300 dark:border-yellow-700", desc: `スコア: ${pct}%` };
     case "mismatch":
-      return { label: "不一致", emoji: "❌", bg: "bg-red-100 dark:bg-red-900/30", text: "text-red-800 dark:text-red-200", border: "border-red-300 dark:border-red-700", desc: `スコア: ${pct}%` };
+      return { label: "不一致", emoji: "❌", bg: "bg-gray-50 dark:bg-danger/30", text: "text-danger dark:text-gin", border: "border-gray-200 dark:border-danger", desc: `スコア: ${pct}%` };
     case "closed":
-      return { label: "登記閉鎖", emoji: "🔴", bg: "bg-red-100 dark:bg-red-900/30", text: "text-red-800 dark:text-red-200", border: "border-red-300 dark:border-red-700", desc: "登記閉鎖" };
+      return { label: "登記閉鎖", emoji: "🔴", bg: "bg-gray-50 dark:bg-danger/30", text: "text-danger dark:text-gin", border: "border-gray-200 dark:border-danger", desc: "登記閉鎖" };
     case "not_found":
       return { label: "該当なし", emoji: "⚫", bg: "bg-gray-100 dark:bg-gray-800", text: "text-gray-600 dark:text-gray-400", border: "border-gray-300 dark:border-gray-600", desc: "番号が見つかりません" };
     default:
@@ -141,7 +141,7 @@ function getMatchBadge(status: string, score: number) {
 function getAdviceStyle(status: string): string {
   if (status === "exact" || status === "match") return "bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-700 text-green-800 dark:text-green-200";
   if (status === "similar") return "bg-yellow-50 dark:bg-yellow-900/20 border-yellow-200 dark:border-yellow-700 text-yellow-800 dark:text-yellow-200";
-  if (status === "mismatch" || status === "closed") return "bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-700 text-red-800 dark:text-red-200";
+  if (status === "mismatch" || status === "closed") return "bg-gray-50 dark:bg-danger/20 border-gray-200 dark:border-danger text-danger dark:text-gin";
   return "bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300";
 }
 
@@ -159,7 +159,7 @@ function composeAddress(h: HoujinData): string {
 
 function getInvoiceStatus(inv: InvoiceData): { label: string; color: string; emoji: string } {
   if (!inv.registered) return { label: "インボイス未登録", color: "text-gray-500 dark:text-gray-400", emoji: "⚫" };
-  if (!inv.is_active) return { label: "インボイス登録 — 失効/取消", color: "text-red-600 dark:text-red-400", emoji: "🔴" };
+  if (!inv.is_active) return { label: "インボイス登録 — 失効/取消", color: "text-danger dark:text-danger", emoji: "🔴" };
   return { label: "インボイス登録 — 有効", color: "text-green-600 dark:text-green-400", emoji: "🟢" };
 }
 
@@ -262,7 +262,7 @@ function ResultCard({ result, idx }: { result: VerifyResult; idx: number }) {
           </div>
 
           {result.detection_note && (
-            <div className="flex items-start gap-2 text-xs text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-lg p-3">
+            <div className="flex items-start gap-2 text-xs text-kon dark:text-gray-300 bg-gray-50 dark:bg-kon/20 border border-gray-200 dark:border-kon rounded-lg p-3">
               <span className="flex-shrink-0 mt-0.5"><Icons.Info /></span>
               <span>{result.detection_note}</span>
             </div>
@@ -294,7 +294,7 @@ function ResultCard({ result, idx }: { result: VerifyResult; idx: number }) {
                   <div><span className="text-gray-500 dark:text-gray-400">法人番号指定日: </span><span className="text-gray-900 dark:text-white">{formatDate(h.assignmentDate)}</span></div>
                 )}
                 {h.closeDate && (
-                  <div className="sm:col-span-2"><span className="text-red-500 dark:text-red-400">登記閉鎖日: </span><span className="text-red-700 dark:text-red-300 font-semibold">{formatDate(h.closeDate)}</span></div>
+                  <div className="sm:col-span-2"><span className="text-danger dark:text-danger">登記閉鎖日: </span><span className="text-danger dark:text-gin font-semibold">{formatDate(h.closeDate)}</span></div>
                 )}
               </div>
             </div>
@@ -559,8 +559,8 @@ export default function HoujinCrossVerifyClient() {
         {rateStatus && (
           <div className={`flex items-center gap-2 rounded-xl px-4 py-3 text-sm border ${
             isRateLimited
-              ? "bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-700 text-red-700 dark:text-red-300"
-              : "bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-700 text-blue-700 dark:text-blue-300"
+              ? "bg-gray-50 dark:bg-danger/20 border-gray-200 dark:border-danger text-danger dark:text-gin"
+              : "bg-gray-50 dark:bg-kon/20 border-gray-200 dark:border-kon text-kon dark:text-gray-300"
           }`}>
             <Icons.Info />
             {isRateLimited
@@ -631,7 +631,7 @@ export default function HoujinCrossVerifyClient() {
             </div>
 
             {singleError && (
-              <div className="flex items-center gap-2 text-sm text-red-600 dark:text-red-400">
+              <div className="flex items-center gap-2 text-sm text-danger dark:text-danger">
                 <Icons.AlertCircle />
                 <span>{singleError}</span>
               </div>
@@ -782,7 +782,7 @@ export default function HoujinCrossVerifyClient() {
                                 <th
                                   key={ci}
                                   className={`border-b border-gray-200 dark:border-gray-700 px-3 py-2 text-left text-gray-500 dark:text-gray-400 ${
-                                    ci === csvNameCol ? "bg-blue-100 dark:bg-blue-900/30" : ci === csvNumCol ? "bg-green-100 dark:bg-green-900/30" : "bg-gray-100 dark:bg-gray-800"
+                                    ci === csvNameCol ? "bg-gray-50 dark:bg-kon/30" : ci === csvNumCol ? "bg-green-100 dark:bg-green-900/30" : "bg-gray-100 dark:bg-gray-800"
                                   }`}
                                 >
                                   列{ci + 1}{ci === csvNameCol ? "（名前）" : ci === csvNumCol ? "（番号）" : ""}
@@ -798,7 +798,7 @@ export default function HoujinCrossVerifyClient() {
                                   <td
                                     key={ci}
                                     className={`px-3 py-1.5 text-gray-900 dark:text-white ${
-                                      ci === csvNameCol ? "bg-blue-50 dark:bg-blue-900/10" : ci === csvNumCol ? "bg-green-50 dark:bg-green-900/10" : ""
+                                      ci === csvNameCol ? "bg-gray-50 dark:bg-kon/10" : ci === csvNumCol ? "bg-green-50 dark:bg-green-900/10" : ""
                                     }`}
                                   >
                                     {cell}
@@ -819,7 +819,7 @@ export default function HoujinCrossVerifyClient() {
               )}
 
               {bulkError && (
-                <div className="flex items-center gap-2 text-sm text-red-600 dark:text-red-400">
+                <div className="flex items-center gap-2 text-sm text-danger dark:text-danger">
                   <Icons.AlertCircle />
                   <span>{bulkError}</span>
                 </div>
@@ -854,9 +854,9 @@ export default function HoujinCrossVerifyClient() {
                         <p className="text-2xl font-bold text-yellow-700 dark:text-yellow-300">{bulkSummary.similar || 0}</p>
                         <p className="text-xs text-yellow-600 dark:text-yellow-400 mt-1">⚠️ 類似（要確認）</p>
                       </div>
-                      <div className="text-center p-3 bg-red-50 dark:bg-red-900/20 rounded-xl">
-                        <p className="text-2xl font-bold text-red-700 dark:text-red-300">{(bulkSummary.mismatch || 0) + (bulkSummary.closed || 0)}</p>
-                        <p className="text-xs text-red-600 dark:text-red-400 mt-1">❌ 不一致・閉鎖</p>
+                      <div className="text-center p-3 bg-gray-50 dark:bg-danger/20 rounded-xl">
+                        <p className="text-2xl font-bold text-danger dark:text-gin">{(bulkSummary.mismatch || 0) + (bulkSummary.closed || 0)}</p>
+                        <p className="text-xs text-danger dark:text-danger mt-1">❌ 不一致・閉鎖</p>
                       </div>
                       <div className="text-center p-3 bg-gray-50 dark:bg-gray-700 rounded-xl">
                         <p className="text-2xl font-bold text-gray-600 dark:text-gray-300">{bulkSummary.not_found || 0}</p>

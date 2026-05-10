@@ -31,9 +31,9 @@ const W_ITEMS = [
 ];
 
 function gaugeColor(p: number): { bar: string; text: string; label: string } {
-  if (p < 600) return { bar: "#ef4444", text: "text-red-600", label: "D（入札困難）" };
-  if (p < 700) return { bar: "#f59e0b", text: "text-amber-600", label: "C（中小規模向け）" };
-  if (p < 900) return { bar: "#3b82f6", text: "text-blue-600", label: "B（中規模）" };
+  if (p < 600) return { bar: "#ef4444", text: "text-danger", label: "D（入札困難）" };
+  if (p < 700) return { bar: "#f59e0b", text: "text-kon", label: "C（中小規模向け）" };
+  if (p < 900) return { bar: "#3b82f6", text: "text-kon", label: "B（中規模）" };
   return { bar: "#22c55e", text: "text-green-600", label: "A（大規模）" };
 }
 export default function KeishinClient() {
@@ -80,7 +80,7 @@ export default function KeishinClient() {
         <input type="number" value={x1Amount} onChange={e => setX1Amount(e.target.value)}
           className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" placeholder="例: 50000000" />
         <p className="text-xs text-gray-400 mt-1">直近2年または3年の平均完成工事高（円）</p>
-        <p className="text-xs text-blue-600 mt-1">→ X1評点: {fmt(r.x1)}</p>
+        <p className="text-xs text-kon mt-1">→ X1評点: {fmt(r.x1)}</p>
       </section>
 
       <section className="mb-6 bg-white rounded-xl border border-gray-200 p-4">
@@ -91,7 +91,7 @@ export default function KeishinClient() {
         <label className="block text-xs text-gray-600 mb-1">X22 平均利益額（営業利益+減価償却費）（円）</label>
         <input type="number" value={x22Amount} onChange={e => setX22Amount(e.target.value)}
           className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" />
-        <p className="text-xs text-blue-600 mt-1">→ X2評点: {fmt(r.x2)} （X21={fmt(r.x21)}, X22={fmt(r.x22)}）</p>
+        <p className="text-xs text-kon mt-1">→ X2評点: {fmt(r.x2)} （X21={fmt(r.x21)}, X22={fmt(r.x22)}）</p>
       </section>
       <section className="mb-6 bg-white rounded-xl border border-gray-200 p-4">
         <h2 className="font-semibold text-gray-700 mb-3">Y — 経営状況（財務評点）</h2>
@@ -122,7 +122,7 @@ export default function KeishinClient() {
         <label className="block text-xs text-gray-600 mb-1">Z2 元請完成工事高（円）</label>
         <input type="number" value={z2Amount} onChange={e => setZ2Amount(e.target.value)}
           className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" />
-        <p className="text-xs text-blue-600 mt-1">→ Z評点: {fmt(r.z)} （技術者点Z1={fmt(r.z1)}, 元請Z2={fmt(r.z2)}）</p>
+        <p className="text-xs text-kon mt-1">→ Z評点: {fmt(r.z)} （技術者点Z1={fmt(r.z1)}, 元請Z2={fmt(r.z2)}）</p>
       </section>
 
       <section className="mb-6 bg-white rounded-xl border border-gray-200 p-4">
@@ -137,7 +137,7 @@ export default function KeishinClient() {
             </label>
           ))}
         </div>
-        <p className="text-xs text-blue-600 mt-2">→ W評点: {fmt(r.wScore)} （加点合計{r.wRaw}点）</p>
+        <p className="text-xs text-kon mt-2">→ W評点: {fmt(r.wScore)} （加点合計{r.wRaw}点）</p>
       </section>
       <div className="bg-white rounded-xl border-2 border-gray-200 p-6 mb-6">
         <div className="flex items-end justify-between mb-2">

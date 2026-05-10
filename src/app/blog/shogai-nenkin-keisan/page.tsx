@@ -52,9 +52,9 @@ export default function ShogaiNenkinKeisanBlog() {
       />
 
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-blue-500">ホーム</Link>
+        <Link href="/" className="hover:text-ai">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-blue-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-ai">ブログ</Link>
         <span className="mx-2">/</span>
         <span>障害年金 受給額・計算方法ガイド</span>
       </nav>
@@ -66,7 +66,7 @@ export default function ShogaiNenkinKeisanBlog() {
       <h1 className="text-3xl font-bold text-gray-800 mb-4">{title}</h1>
       <p className="text-gray-500 text-sm mb-8">最終更新: 2025年5月 ｜ 読了時間: 約9分</p>
 
-      <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mb-8">
+      <div className="bg-gray-50 border-l-4 border-kon p-4 mb-8">
         <p className="font-bold text-gray-800 mb-2">この記事でわかること</p>
         <ul className="text-gray-700 space-y-1 text-sm">
           <li>✓ 2026年度の障害基礎年金・障害厚生年金の等級別受給額</li>
@@ -83,12 +83,12 @@ export default function ShogaiNenkinKeisanBlog() {
         <h2 className="text-2xl font-bold text-gray-800 mb-4">障害年金とは？2種類の仕組みを解説</h2>
         <p className="text-gray-700 mb-4">
           障害年金は、病気やケガで働くことが難しくなった場合に受給できる公的年金です。
-          <strong className="text-blue-600">障害基礎年金</strong>と<strong className="text-blue-600">障害厚生年金</strong>の2種類があり、加入していた年金の種類によって受給できる内容が異なります。
+          <strong className="text-kon">障害基礎年金</strong>と<strong className="text-kon">障害厚生年金</strong>の2種類があり、加入していた年金の種類によって受給できる内容が異なります。
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-          <div className="bg-blue-50 rounded-xl p-5">
-            <h3 className="font-bold text-blue-800 mb-3">1階：障害基礎年金（国民年金）</h3>
+          <div className="bg-gray-50 rounded-xl p-5">
+            <h3 className="font-bold text-kon mb-3">1階：障害基礎年金（国民年金）</h3>
             <ul className="text-sm text-gray-700 space-y-2">
               <li>・国民年金加入者（自営業・学生・専業主婦等）が対象</li>
               <li>・障害等級1級・2級のみ支給</li>
@@ -118,7 +118,7 @@ export default function ShogaiNenkinKeisanBlog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">2026年度（令和8年度）障害年金の受給額一覧</h2>
         <p className="text-gray-700 mb-4">
-          2026年度の障害年金額は前年比<strong className="text-blue-600">1.9%増</strong>となっています（物価・賃金上昇に伴うマクロ経済スライド適用）。等級別の受給額は以下の通りです。
+          2026年度の障害年金額は前年比<strong className="text-kon">1.9%増</strong>となっています（物価・賃金上昇に伴うマクロ経済スライド適用）。等級別の受給額は以下の通りです。
         </p>
 
         <div className="overflow-x-auto mb-6">
@@ -142,7 +142,7 @@ export default function ShogaiNenkinKeisanBlog() {
               ].map(([type, monthly, annual, note], i) => (
                 <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
                   <td className="p-3 border border-gray-200 font-medium">{type}</td>
-                  <td className="p-3 border border-gray-200 text-center text-blue-700 font-bold">{monthly}</td>
+                  <td className="p-3 border border-gray-200 text-center text-kon font-bold">{monthly}</td>
                   <td className="p-3 border border-gray-200 text-center font-bold">{annual}</td>
                   <td className="p-3 border border-gray-200 text-gray-600 text-xs">{note}</td>
                 </tr>
@@ -152,20 +152,20 @@ export default function ShogaiNenkinKeisanBlog() {
         </div>
         <p className="text-gray-500 text-xs mb-6">※ 2026年度の金額は概算です。実際の受給額は日本年金機構の通知書でご確認ください。</p>
 
-        <div className="bg-white border-2 border-blue-200 rounded-xl p-5 mb-6">
+        <div className="bg-white border-2 border-gray-200 rounded-xl p-5 mb-6">
           <h3 className="font-bold text-gray-800 mb-4">具体例：障害厚生年金2級（月収30万円・30年加入）の場合</h3>
           <div className="space-y-2 text-sm">
             <div className="flex justify-between border-b border-gray-100 pb-2">
               <span className="text-gray-600">障害基礎年金 2級</span>
-              <span className="font-bold text-blue-600">847,296円/年</span>
+              <span className="font-bold text-kon">847,296円/年</span>
             </div>
             <div className="flex justify-between border-b border-gray-100 pb-2">
               <span className="text-gray-600">障害厚生年金（報酬比例）300,000 × 5.481/1,000 × 360月</span>
               <span className="font-bold text-green-600">591,948円/年</span>
             </div>
-            <div className="flex justify-between bg-blue-50 rounded p-2 mt-2">
+            <div className="flex justify-between bg-gray-50 rounded p-2 mt-2">
               <span className="font-bold text-gray-800">合計受給額</span>
-              <span className="text-xl font-bold text-blue-700">約1,439,244円/年（月額 約119,937円）</span>
+              <span className="text-xl font-bold text-kon">約1,439,244円/年（月額 約119,937円）</span>
             </div>
           </div>
           <p className="text-gray-500 text-xs mt-3">※ 加入月数300月未満の場合は300月とみなして計算します。</p>
@@ -177,18 +177,18 @@ export default function ShogaiNenkinKeisanBlog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">子の加算・配偶者加給年金はいくら？</h2>
         <p className="text-gray-700 mb-4">
-          障害年金には、子どもや配偶者がいる場合に<strong className="text-blue-600">加算額</strong>が上乗せされます。家族構成によって受給額が大きく変わるため、必ず確認しましょう。
+          障害年金には、子どもや配偶者がいる場合に<strong className="text-kon">加算額</strong>が上乗せされます。家族構成によって受給額が大きく変わるため、必ず確認しましょう。
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-          <div className="bg-blue-50 rounded-xl p-5">
-            <h3 className="font-bold text-blue-800 mb-3">子の加算（障害基礎年金受給者）</h3>
+          <div className="bg-gray-50 rounded-xl p-5">
+            <h3 className="font-bold text-kon mb-3">子の加算（障害基礎年金受給者）</h3>
             <div className="space-y-2 text-sm">
-              <div className="flex justify-between border-b border-blue-100 pb-2">
+              <div className="flex justify-between border-b border-gray-200 pb-2">
                 <span>第1子・第2子（各）</span>
                 <span className="font-bold">239,300円/年</span>
               </div>
-              <div className="flex justify-between border-b border-blue-100 pb-2">
+              <div className="flex justify-between border-b border-gray-200 pb-2">
                 <span>第3子以降（各）</span>
                 <span className="font-bold">79,800円/年</span>
               </div>
@@ -230,13 +230,13 @@ export default function ShogaiNenkinKeisanBlog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">障害厚生年金の計算方法（報酬比例部分）</h2>
         <p className="text-gray-700 mb-4">
-          障害厚生年金の<strong className="text-blue-600">報酬比例部分</strong>は、老齢厚生年金と同じ計算式で算出されます。収入が高く加入期間が長いほど受給額が多くなります。
+          障害厚生年金の<strong className="text-kon">報酬比例部分</strong>は、老齢厚生年金と同じ計算式で算出されます。収入が高く加入期間が長いほど受給額が多くなります。
         </p>
 
-        <div className="bg-blue-50 rounded-xl p-5 mb-6">
-          <h3 className="font-bold text-blue-800 mb-3">計算式</h3>
+        <div className="bg-gray-50 rounded-xl p-5 mb-6">
+          <h3 className="font-bold text-kon mb-3">計算式</h3>
           <div className="bg-white rounded-lg p-4 text-sm">
-            <p className="font-bold text-lg text-blue-700 mb-2">報酬比例部分 = 平均標準報酬月額 × 5.481 ÷ 1,000 × 加入月数</p>
+            <p className="font-bold text-lg text-kon mb-2">報酬比例部分 = 平均標準報酬月額 × 5.481 ÷ 1,000 × 加入月数</p>
             <p className="text-gray-600">※ 加入月数が300月（25年）未満の場合は300月とみなして計算</p>
           </div>
         </div>
@@ -262,7 +262,7 @@ export default function ShogaiNenkinKeisanBlog() {
                   <td className="p-3 border border-gray-200 font-medium">{income}</td>
                   <td className="p-3 border border-gray-200 text-center">{y10}</td>
                   <td className="p-3 border border-gray-200 text-center">{y20}</td>
-                  <td className="p-3 border border-gray-200 text-center text-blue-600 font-semibold">{y30}</td>
+                  <td className="p-3 border border-gray-200 text-center text-kon font-semibold">{y30}</td>
                 </tr>
               ))}
             </tbody>
@@ -297,9 +297,9 @@ export default function ShogaiNenkinKeisanBlog() {
               content: "初診日から1年6ヶ月後の「障害認定日」に、障害年金の等級（1〜3級）に該当する状態であることが必要です。認定日時点で状態が軽快していた場合でも、後に悪化した際に「事後重症」として請求できます。"
             }
           ].map((item, i) => (
-            <div key={i} className="bg-white border border-blue-200 rounded-xl p-5">
+            <div key={i} className="bg-white border border-gray-200 rounded-xl p-5">
               <div className="flex items-start gap-3">
-                <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">{item.num}</div>
+                <div className="w-8 h-8 bg-kon text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">{item.num}</div>
                 <div>
                   <h3 className="font-bold text-gray-800 mb-2">{item.title}</h3>
                   <p className="text-gray-700 text-sm">{item.content}</p>
@@ -318,7 +318,7 @@ export default function ShogaiNenkinKeisanBlog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">障害年金は非課税！税金はかかる？</h2>
         <p className="text-gray-700 mb-4">
-          障害年金の大きなメリットは<strong className="text-blue-600">非課税</strong>であることです。老齢年金とは異なり、所得税・住民税はいっさいかかりません。
+          障害年金の大きなメリットは<strong className="text-kon">非課税</strong>であることです。老齢年金とは異なり、所得税・住民税はいっさいかかりません。
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -332,9 +332,9 @@ export default function ShogaiNenkinKeisanBlog() {
             <p className="text-2xl font-bold text-green-600">非課税</p>
             <p className="text-sm text-gray-600 mt-2">所得に算入されない</p>
           </div>
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
-            <p className="font-bold text-blue-700 mb-2">扶養判定</p>
-            <p className="text-2xl font-bold text-blue-600">影響なし</p>
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center">
+            <p className="font-bold text-kon mb-2">扶養判定</p>
+            <p className="text-2xl font-bold text-kon">影響なし</p>
             <p className="text-sm text-gray-600 mt-2">配偶者・親族の扶養に影響しない</p>
           </div>
         </div>
@@ -342,8 +342,8 @@ export default function ShogaiNenkinKeisanBlog() {
         <div className="bg-white border border-gray-200 rounded-lg p-4 mb-4">
           <h3 className="font-bold text-gray-800 mb-3">注意が必要な点</h3>
           <ul className="space-y-2 text-sm text-gray-700">
-            <li className="flex gap-2"><span className="text-orange-500 font-bold">▲</span><div><strong>健康保険・介護保険</strong>の保険料は、世帯の所得に応じて計算されるため、家族の収入によっては影響を受ける場合があります。</div></li>
-            <li className="flex gap-2"><span className="text-orange-500 font-bold">▲</span><div><strong>生活保護との併給</strong>：障害年金を受給すると、その分だけ生活保護費から差し引かれます（合計額は変わらない）。</div></li>
+            <li className="flex gap-2"><span className="text-kon font-bold">▲</span><div><strong>健康保険・介護保険</strong>の保険料は、世帯の所得に応じて計算されるため、家族の収入によっては影響を受ける場合があります。</div></li>
+            <li className="flex gap-2"><span className="text-kon font-bold">▲</span><div><strong>生活保護との併給</strong>：障害年金を受給すると、その分だけ生活保護費から差し引かれます（合計額は変わらない）。</div></li>
             <li className="flex gap-2"><span className="text-green-500 font-bold">✅</span><div><strong>働きながら受給</strong>：就労中でも受給できます（等級によっては審査が厳しくなる場合あり）。</div></li>
           </ul>
         </div>
@@ -352,7 +352,7 @@ export default function ShogaiNenkinKeisanBlog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">病気・傷病別の受給目安</h2>
         <p className="text-gray-700 mb-4">
-          障害年金の等級は、傷病の種類ではなく<strong className="text-blue-600">日常生活・労働能力への影響度</strong>で判定されます。ただし、傷病別に認定されやすい等級の目安があります。
+          障害年金の等級は、傷病の種類ではなく<strong className="text-kon">日常生活・労働能力への影響度</strong>で判定されます。ただし、傷病別に認定されやすい等級の目安があります。
         </p>
 
         <div className="overflow-x-auto mb-6">
@@ -377,7 +377,7 @@ export default function ShogaiNenkinKeisanBlog() {
               ].map(([disease, grade, point], i) => (
                 <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
                   <td className="p-3 border border-gray-200 font-medium">{disease}</td>
-                  <td className="p-3 border border-gray-200 text-center text-blue-700 font-semibold">{grade}</td>
+                  <td className="p-3 border border-gray-200 text-center text-kon font-semibold">{grade}</td>
                   <td className="p-3 border border-gray-200 text-gray-600 text-xs">{point}</td>
                 </tr>
               ))}
@@ -393,10 +393,10 @@ export default function ShogaiNenkinKeisanBlog() {
           自分の等級・加入状況・家族構成を入力するだけで、障害年金の概算受給額を計算できます。申請前の目安確認にご活用ください。
         </p>
 
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl p-6 mb-6 text-center">
+        <div className="bg-gradient-to-r from-slate-900 to-kon text-white rounded-xl p-6 mb-6 text-center">
           <p className="text-lg font-bold mb-2">障害年金 受給額 簡易計算機</p>
           <p className="text-sm opacity-90 mb-4">障害等級・年金種別・子の人数・配偶者の有無を入力するだけで概算受給額を即計算。</p>
-          <Link href="/health/shogai-nenkin-calculator" className="inline-block bg-white text-blue-700 font-bold px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors">
+          <Link href="/health/shogai-nenkin-calculator" className="inline-block bg-white text-kon font-bold px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors">
             今すぐ受給額を試算する →
           </Link>
         </div>
@@ -405,26 +405,26 @@ export default function ShogaiNenkinKeisanBlog() {
           <div className="bg-white border border-gray-200 rounded-lg p-4">
             <p className="font-bold text-gray-800 mb-2">老齢年金シミュレーター</p>
             <p className="text-sm text-gray-600 mb-3">将来の老齢年金（基礎＋厚生）の見込み額を計算。繰上げ・繰下げの損益分岐点も確認できます。</p>
-            <Link href="/finance/nenkin-simulator" className="text-blue-600 text-sm font-medium hover:underline">試してみる →</Link>
+            <Link href="/finance/nenkin-simulator" className="text-kon text-sm font-medium hover:underline">試してみる →</Link>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-4">
             <p className="font-bold text-gray-800 mb-2">健康・年金ツール一覧</p>
             <p className="text-sm text-gray-600 mb-3">遺族年金・国民健康保険料など、健康・社会保険に関する無料計算ツールをまとめています。</p>
-            <Link href="/health" className="text-blue-600 text-sm font-medium hover:underline">一覧を見る →</Link>
+            <Link href="/health" className="text-kon text-sm font-medium hover:underline">一覧を見る →</Link>
           </div>
         </div>
       </section>
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">まとめ：障害年金の重要ポイント</h2>
-        <div className="bg-blue-50 rounded-xl p-6">
+        <div className="bg-gray-50 rounded-xl p-6">
           <ul className="space-y-3 text-gray-700">
-            <li className="flex gap-2"><span className="text-blue-600 font-bold">①</span> 2026年度の障害基礎年金は1級：約106万円/年、2級：約85万円/年（前年比1.9%増）</li>
-            <li className="flex gap-2"><span className="text-blue-600 font-bold">②</span> 会社員は障害厚生年金が加算。月収30万円・30年加入で計約144万円/年</li>
-            <li className="flex gap-2"><span className="text-blue-600 font-bold">③</span> 子の加算（239,300円/年×子の数）・配偶者加給年金（239,300円/年）で受給額が大幅増</li>
-            <li className="flex gap-2"><span className="text-blue-600 font-bold">④</span> 初診日・納付要件・障害状態の3条件を満たすと申請可能（初診日から1年6ヶ月後〜）</li>
-            <li className="flex gap-2"><span className="text-blue-600 font-bold">⑤</span> 障害年金は所得税・住民税ともに非課税。手取りがそのまま受け取れる</li>
-            <li className="flex gap-2"><span className="text-blue-600 font-bold">⑥</span> 上記の無料ツールで等級・家族構成を入力すると概算受給額を即座に確認できる</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">①</span> 2026年度の障害基礎年金は1級：約106万円/年、2級：約85万円/年（前年比1.9%増）</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">②</span> 会社員は障害厚生年金が加算。月収30万円・30年加入で計約144万円/年</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">③</span> 子の加算（239,300円/年×子の数）・配偶者加給年金（239,300円/年）で受給額が大幅増</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">④</span> 初診日・納付要件・障害状態の3条件を満たすと申請可能（初診日から1年6ヶ月後〜）</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">⑤</span> 障害年金は所得税・住民税ともに非課税。手取りがそのまま受け取れる</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">⑥</span> 上記の無料ツールで等級・家族構成を入力すると概算受給額を即座に確認できる</li>
           </ul>
         </div>
       </section>

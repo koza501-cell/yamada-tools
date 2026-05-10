@@ -80,7 +80,7 @@ export default function SocialInsuranceCalculatorPage() {
               ].map((row, i) => (
                 <tr key={i} className="border-t border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50">
                   <td className="py-2 px-4 font-medium">{row[0]}</td>
-                  <td className="py-2 px-4 text-blue-600 dark:text-blue-400">{row[1]}</td>
+                  <td className="py-2 px-4 text-kon dark:text-gray-300">{row[1]}</td>
                   <td className="py-2 px-4">{row[2]}</td>
                   <td className="py-2 px-4">{row[3]}</td>
                 </tr>
@@ -102,15 +102,15 @@ export default function SocialInsuranceCalculatorPage() {
           <h2 className="text-xl font-bold text-gray-900 mb-4">📝 関連ブログ記事</h2>
           <Link
             href="/blog/shakai-hoken-simulation-2026"
-            className="flex items-center gap-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl border border-purple-200 hover:border-purple-400 hover:shadow-md transition-all p-5 group"
+            className="flex items-center gap-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl border border-kon hover:border-ai hover:shadow-md transition-all p-5 group"
           >
-            <div className="w-12 h-12 rounded-lg bg-purple-100 group-hover:bg-purple-200 flex items-center justify-center shrink-0 transition-colors">
-              <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-12 h-12 rounded-lg bg-gray-50 group-hover:bg-ai flex items-center justify-center shrink-0 transition-colors">
+              <svg className="w-6 h-6 text-kon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
               </svg>
             </div>
             <div>
-              <p className="text-sm font-semibold text-purple-700 group-hover:text-purple-800">【2026年最新】社会保険料の計算方法｜年収別早見表と手取り額</p>
+              <p className="text-sm font-semibold text-kon group-hover:text-ai">【2026年最新】社会保険料の計算方法｜年収別早見表と手取り額</p>
               <p className="text-xs text-gray-500 mt-1">詳しい解説・計算例・注意点はこちら →</p>
             </div>
           </Link>

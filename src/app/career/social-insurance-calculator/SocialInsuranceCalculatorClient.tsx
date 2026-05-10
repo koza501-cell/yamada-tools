@@ -239,11 +239,11 @@ export default function SocialInsuranceCalculatorPage() {
   const [error, setError] = useState("");
 
   const inputClass =
-    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500";
+    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon";
   const labelClass = "block text-sm font-medium text-gray-700 mb-1";
   const toggleClass = (active: boolean) =>
     `flex-1 py-2 text-xs font-medium rounded-md transition-colors ${
-      active ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+      active ? "bg-kon text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
     }`;
 
   function handleChange(field: keyof FormState, value: string | boolean) {
@@ -298,11 +298,11 @@ export default function SocialInsuranceCalculatorPage() {
       <div className="min-h-screen bg-gray-50">
         <Mascot state={mascotState} className="mb-6" />
       {/* Hero */}
-      <div className="bg-gradient-to-r from-blue-700 to-blue-500 text-white py-10 px-4">
+      <div className="bg-gradient-to-r from-blue-700 to-kon text-white py-10 px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="text-xs text-blue-200 mb-2">転職・年収 &gt; 社会保険料計算機</div>
+          <div className="text-xs text-gin mb-2">転職・年収 &gt; 社会保険料計算機</div>
           <h1 className="text-2xl md:text-3xl font-bold mb-2">社会保険料計算機</h1>
-          <p className="text-blue-100 text-sm md:text-base max-w-2xl">
+          <p className="text-gin text-sm md:text-base max-w-2xl">
             月給・都道府県・年齢を入力するだけで健康保険・厚生年金・雇用保険・介護保険を一括計算。
             本人負担と会社負担の両方を表示。2026年最新料率対応。
           </p>
@@ -468,7 +468,7 @@ export default function SocialInsuranceCalculatorPage() {
 
             {/* Error */}
             {error && (
-              <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2">
+              <p className="text-sm text-danger bg-gray-50 border border-gray-200 rounded-lg px-3 py-2">
                 {error}
               </p>
             )}
@@ -483,7 +483,7 @@ export default function SocialInsuranceCalculatorPage() {
               </button>
               <button
                 onClick={handleCalculate}
-                className="flex-1 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-bold hover:bg-blue-700 transition-colors"
+                className="flex-1 py-2.5 rounded-lg bg-kon text-white text-sm font-bold hover:bg-ai transition-colors"
               >
                 計算する
               </button>
@@ -498,7 +498,7 @@ export default function SocialInsuranceCalculatorPage() {
                 <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
                   <h3 className="text-sm font-bold text-gray-700 mb-3">標準報酬月額</h3>
                   <div className="flex items-center gap-3">
-                    <span className="text-2xl font-bold text-blue-700">
+                    <span className="text-2xl font-bold text-kon">
                       {result.hyojunGrade}等級
                     </span>
                     <span className="text-gray-400">/</span>
@@ -519,45 +519,45 @@ export default function SocialInsuranceCalculatorPage() {
                       <thead>
                         <tr className="border-b border-gray-100">
                           <th className="text-left py-2 text-gray-500 font-medium">保険種別</th>
-                          <th className="text-right py-2 text-blue-600 font-medium">本人負担</th>
-                          <th className="text-right py-2 text-orange-600 font-medium">会社負担</th>
+                          <th className="text-right py-2 text-kon font-medium">本人負担</th>
+                          <th className="text-right py-2 text-kon font-medium">会社負担</th>
                           <th className="text-right py-2 text-gray-500 font-medium">合計</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-gray-50">
                         <tr className="hover:bg-gray-50">
                           <td className="py-2 text-gray-700">健康保険料</td>
-                          <td className="py-2 text-right text-blue-700 font-medium">{fmt(result.health.employee)}</td>
-                          <td className="py-2 text-right text-orange-600 font-medium">{fmt(result.health.employer)}</td>
+                          <td className="py-2 text-right text-kon font-medium">{fmt(result.health.employee)}</td>
+                          <td className="py-2 text-right text-kon font-medium">{fmt(result.health.employer)}</td>
                           <td className="py-2 text-right text-gray-600">{fmt(result.health.employee + result.health.employer)}</td>
                         </tr>
                         {result.nursing && (
                           <tr className="hover:bg-gray-50">
                             <td className="py-2 text-gray-700">
                               介護保険料
-                              <span className="ml-1 text-xs text-purple-500 bg-purple-50 px-1 rounded">40歳以上</span>
+                              <span className="ml-1 text-xs text-kon bg-gray-50 px-1 rounded">40歳以上</span>
                             </td>
-                            <td className="py-2 text-right text-blue-700 font-medium">{fmt(result.nursing.employee)}</td>
-                            <td className="py-2 text-right text-orange-600 font-medium">{fmt(result.nursing.employer)}</td>
+                            <td className="py-2 text-right text-kon font-medium">{fmt(result.nursing.employee)}</td>
+                            <td className="py-2 text-right text-kon font-medium">{fmt(result.nursing.employer)}</td>
                             <td className="py-2 text-right text-gray-600">{fmt(result.nursing.employee + result.nursing.employer)}</td>
                           </tr>
                         )}
                         <tr className="hover:bg-gray-50">
                           <td className="py-2 text-gray-700">厚生年金保険料</td>
-                          <td className="py-2 text-right text-blue-700 font-medium">{fmt(result.pension.employee)}</td>
-                          <td className="py-2 text-right text-orange-600 font-medium">{fmt(result.pension.employer)}</td>
+                          <td className="py-2 text-right text-kon font-medium">{fmt(result.pension.employee)}</td>
+                          <td className="py-2 text-right text-kon font-medium">{fmt(result.pension.employer)}</td>
                           <td className="py-2 text-right text-gray-600">{fmt(result.pension.employee + result.pension.employer)}</td>
                         </tr>
                         <tr className="hover:bg-gray-50">
                           <td className="py-2 text-gray-700">雇用保険料</td>
-                          <td className="py-2 text-right text-blue-700 font-medium">{fmt(result.employment.employee)}</td>
-                          <td className="py-2 text-right text-orange-600 font-medium">{fmt(result.employment.employer)}</td>
+                          <td className="py-2 text-right text-kon font-medium">{fmt(result.employment.employee)}</td>
+                          <td className="py-2 text-right text-kon font-medium">{fmt(result.employment.employer)}</td>
                           <td className="py-2 text-right text-gray-600">{fmt(result.employment.employee + result.employment.employer)}</td>
                         </tr>
-                        <tr className="bg-blue-50 font-bold">
+                        <tr className="bg-gray-50 font-bold">
                           <td className="py-2.5 px-1 rounded-l text-gray-800">月額合計</td>
-                          <td className="py-2.5 text-right text-blue-700 text-base">{fmt(result.monthlyEmployee)}</td>
-                          <td className="py-2.5 text-right text-orange-600 text-base">{fmt(result.monthlyEmployer)}</td>
+                          <td className="py-2.5 text-right text-kon text-base">{fmt(result.monthlyEmployee)}</td>
+                          <td className="py-2.5 text-right text-kon text-base">{fmt(result.monthlyEmployer)}</td>
                           <td className="py-2.5 text-right rounded-r text-gray-700">{fmt(result.monthlyEmployee + result.monthlyEmployer)}</td>
                         </tr>
                       </tbody>
@@ -573,29 +573,29 @@ export default function SocialInsuranceCalculatorPage() {
                       <thead>
                         <tr className="border-b border-gray-100">
                           <th className="text-left py-2 text-gray-500 font-medium"></th>
-                          <th className="text-right py-2 text-blue-600 font-medium">本人負担</th>
-                          <th className="text-right py-2 text-orange-600 font-medium">会社負担</th>
+                          <th className="text-right py-2 text-kon font-medium">本人負担</th>
+                          <th className="text-right py-2 text-kon font-medium">会社負担</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-gray-50">
                         <tr className="hover:bg-gray-50">
                           <td className="py-2 text-gray-700">月給分（×12）</td>
-                          <td className="py-2 text-right text-blue-700 font-medium">{fmt(result.monthlyEmployee * 12)}</td>
-                          <td className="py-2 text-right text-orange-600 font-medium">{fmt(result.monthlyEmployer * 12)}</td>
+                          <td className="py-2 text-right text-kon font-medium">{fmt(result.monthlyEmployee * 12)}</td>
+                          <td className="py-2 text-right text-kon font-medium">{fmt(result.monthlyEmployer * 12)}</td>
                         </tr>
                         <tr className="hover:bg-gray-50">
                           <td className="py-2 text-gray-700">賞与分</td>
-                          <td className="py-2 text-right text-blue-700 font-medium">
+                          <td className="py-2 text-right text-kon font-medium">
                             {fmt(result.bonusHealth.employee + result.bonusPension.employee + result.bonusEmployment.employee)}
                           </td>
-                          <td className="py-2 text-right text-orange-600 font-medium">
+                          <td className="py-2 text-right text-kon font-medium">
                             {fmt(result.bonusHealth.employer + result.bonusPension.employer + result.bonusEmployment.employer)}
                           </td>
                         </tr>
-                        <tr className="bg-blue-50 font-bold">
+                        <tr className="bg-gray-50 font-bold">
                           <td className="py-2.5 px-1 rounded-l text-gray-800">年間合計</td>
-                          <td className="py-2.5 text-right text-blue-700 text-base">{fmt(result.annualEmployee)}</td>
-                          <td className="py-2.5 text-right text-orange-600 text-base rounded-r">{fmt(result.annualEmployer)}</td>
+                          <td className="py-2.5 text-right text-kon text-base">{fmt(result.annualEmployee)}</td>
+                          <td className="py-2.5 text-right text-kon text-base rounded-r">{fmt(result.annualEmployer)}</td>
                         </tr>
                       </tbody>
                     </table>
@@ -603,13 +603,13 @@ export default function SocialInsuranceCalculatorPage() {
                 </div>
 
                 {/* 実質給与コスト */}
-                <div className="bg-gradient-to-br from-orange-50 to-amber-50 border border-orange-200 rounded-xl p-5">
-                  <h3 className="text-sm font-bold text-orange-800 mb-3">実質の給与コスト（会社視点）</h3>
+                <div className="bg-gradient-to-br from-orange-50 to-amber-50 border border-gray-200 rounded-xl p-5">
+                  <h3 className="text-sm font-bold text-kon mb-3">実質の給与コスト（会社視点）</h3>
                   {parseFloat(form.monthlySalary) > 0 && (
                     <>
                       <div className="text-center py-3">
                         <p className="text-xs text-gray-500 mb-1">会社があなたに支払う実質コスト</p>
-                        <p className="text-3xl font-bold text-orange-700">
+                        <p className="text-3xl font-bold text-kon">
                           {fmt(parseFloat(form.monthlySalary) * 10000 + result.monthlyEmployer)}
                           <span className="text-base font-normal text-gray-500">/月</span>
                         </p>
@@ -618,7 +618,7 @@ export default function SocialInsuranceCalculatorPage() {
                           会社負担保険料 {fmt(result.monthlyEmployer)}
                         </p>
                       </div>
-                      <p className="text-xs text-orange-700 bg-orange-100 rounded-lg p-2 mt-2">
+                      <p className="text-xs text-kon bg-gray-50 rounded-lg p-2 mt-2">
                         💡 会社はあなたの月給以外に毎月 <strong>{fmt(result.monthlyEmployer)}</strong> の社会保険料を負担しています。
                       </p>
                     </>
@@ -631,22 +631,22 @@ export default function SocialInsuranceCalculatorPage() {
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between py-1.5 border-b">
                       <span className="text-gray-600">厚生年金（月額概算）</span>
-                      <span className="font-bold text-blue-700">約 {fmt(result.pensionMonthly)}/月</span>
+                      <span className="font-bold text-kon">約 {fmt(result.pensionMonthly)}/月</span>
                     </div>
                     <div className="flex justify-between py-1.5 border-b">
                       <span className="text-gray-600">国民年金（基礎年金・満額）</span>
                       <span className="font-bold text-gray-700">約 68,000円/月</span>
                     </div>
-                    <div className="flex justify-between py-2 bg-blue-50 rounded-lg px-3 mt-1">
-                      <span className="font-bold text-blue-800">合計受給見込み</span>
-                      <span className="text-lg font-bold text-blue-800">
+                    <div className="flex justify-between py-2 bg-gray-50 rounded-lg px-3 mt-1">
+                      <span className="font-bold text-kon">合計受給見込み</span>
+                      <span className="text-lg font-bold text-kon">
                         約 {fmtMan(result.pensionMonthly + 68000)}/月
                       </span>
                     </div>
                   </div>
                   <p className="text-xs text-gray-400 mt-3">
                     ※ 現在の標準報酬月額が65歳まで継続すると仮定した概算です。
-                    <a href="https://www.nenkin.go.jp/n_net/" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline ml-1">
+                    <a href="https://www.nenkin.go.jp/n_net/" target="_blank" rel="noopener noreferrer" className="text-kon underline ml-1">
                       ねんきんネット
                     </a>
                     でより正確な試算ができます。
@@ -677,7 +677,7 @@ export default function SocialInsuranceCalculatorPage() {
                     <th className="text-right py-2.5 px-3 font-medium text-gray-600">健康保険</th>
                     <th className="text-right py-2.5 px-3 font-medium text-gray-600">厚生年金</th>
                     <th className="text-right py-2.5 px-3 font-medium text-gray-600">雇用保険</th>
-                    <th className="text-right py-2.5 px-3 font-medium text-blue-600">合計（本人）</th>
+                    <th className="text-right py-2.5 px-3 font-medium text-kon">合計（本人）</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-50">
@@ -693,7 +693,7 @@ export default function SocialInsuranceCalculatorPage() {
                       <td className="py-2.5 px-3 text-right text-gray-600">{row.health}</td>
                       <td className="py-2.5 px-3 text-right text-gray-600">{row.pension}</td>
                       <td className="py-2.5 px-3 text-right text-gray-600">{row.emp}</td>
-                      <td className="py-2.5 px-3 text-right font-bold text-blue-700">{row.total}</td>
+                      <td className="py-2.5 px-3 text-right font-bold text-kon">{row.total}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -740,8 +740,8 @@ export default function SocialInsuranceCalculatorPage() {
                 </div>
               ))}
             </div>
-            <div className="mt-4 bg-blue-50 rounded-lg p-4">
-              <h3 className="font-bold text-blue-800 mb-2">📊 標準報酬月額とは</h3>
+            <div className="mt-4 bg-gray-50 rounded-lg p-4">
+              <h3 className="font-bold text-kon mb-2">📊 標準報酬月額とは</h3>
               <p className="text-sm text-gray-600 leading-relaxed">
                 実際の月給を一定の等級に当てはめた金額で、社会保険料計算の基準となります。
                 毎年4〜6月の平均月給を基に9月に改定されます。
@@ -801,9 +801,9 @@ export default function SocialInsuranceCalculatorPage() {
                 <Link
                   key={tool.href}
                   href={tool.href}
-                  className="block p-3 border border-gray-100 rounded-lg hover:border-blue-200 hover:bg-blue-50 transition-colors"
+                  className="block p-3 border border-gray-100 rounded-lg hover:border-ai hover:bg-gray-50 transition-colors"
                 >
-                  <p className="text-sm font-medium text-blue-700">{tool.label}</p>
+                  <p className="text-sm font-medium text-kon">{tool.label}</p>
                   <p className="text-xs text-gray-500 mt-0.5">{tool.desc}</p>
                 </Link>
               ))}

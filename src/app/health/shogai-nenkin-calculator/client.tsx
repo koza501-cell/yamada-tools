@@ -227,7 +227,7 @@ export default function ShogaiNenkinClient() {
             </div>
 
             {grade !== "teate" && (
-              <div className="bg-blue-600 rounded-xl shadow p-6 text-white text-center">
+              <div className="bg-kon rounded-xl shadow p-6 text-white text-center">
                 <p className="text-sm opacity-80 mb-1">年間受給額合計</p>
                 <p className="text-4xl font-bold">{fmt(result.totalNenkin)} 円</p>
                 <p className="text-sm opacity-80 mt-3 mb-1">月額の目安</p>
@@ -236,7 +236,7 @@ export default function ShogaiNenkinClient() {
             )}
 
             {grade === "teate" && result.teatekin > 0 && (
-              <div className="bg-amber-500 rounded-xl shadow p-6 text-white text-center">
+              <div className="bg-kon rounded-xl shadow p-6 text-white text-center">
                 <p className="text-sm opacity-80 mb-1">障害手当金（一時金）</p>
                 <p className="text-4xl font-bold">{fmt(result.teatekin)} 円</p>
                 <p className="text-xs opacity-70 mt-2">年金ではなく一回限りの一時金です</p>
@@ -246,7 +246,7 @@ export default function ShogaiNenkinClient() {
             <div className="text-center">
               <button
                 onClick={() => window.print()}
-                className="mt-1 text-xs text-blue-600 hover:underline print:hidden"
+                className="mt-1 text-xs text-kon hover:underline print:hidden"
               >
                 🖨️ 印刷 / PDFとして保存
               </button>
@@ -255,13 +255,13 @@ export default function ShogaiNenkinClient() {
         </div>
 
         <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-amber-50 dark:bg-amber-900/30 border border-amber-200 dark:border-amber-700 rounded-lg p-4">
-            <p className="text-xs text-amber-800 dark:text-amber-200">
+          <div className="bg-gray-50 dark:bg-kon/30 border border-gray-200 dark:border-gray-200 rounded-lg p-4">
+            <p className="text-xs text-kon dark:text-amber-200">
               ⚠️ この計算は概算です。実際の受給額は年金事務所にご確認ください。
             </p>
           </div>
-          <div className="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700 rounded-lg p-4">
-            <p className="text-xs text-blue-800 dark:text-blue-200">
+          <div className="bg-gray-50 dark:bg-kon/30 border border-gray-200 dark:border-kon rounded-lg p-4">
+            <p className="text-xs text-kon dark:text-gray-300">
               📋 障害年金の申請には初診日の証明・診断書が必要です。
             </p>
           </div>
@@ -270,8 +270,8 @@ export default function ShogaiNenkinClient() {
               ✅ 障害年金は非課税所得です（所得税・住民税ともに課税されません）。
             </p>
           </div>
-          <div className="bg-purple-50 dark:bg-purple-900/30 border border-purple-200 dark:border-purple-700 rounded-lg p-4">
-            <p className="text-xs text-purple-800 dark:text-purple-200">
+          <div className="bg-gray-50 dark:bg-kon/30 border border-kon dark:border-kon rounded-lg p-4">
+            <p className="text-xs text-kon dark:text-gray-300">
               📅 申請は初診日から1年6ヶ月後（障害認定日）から可能です。
             </p>
           </div>

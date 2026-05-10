@@ -17,36 +17,36 @@ interface Blog {
 }
 
 const CAT_BADGE: Record<string, string> = {
-  "ビジネス": "bg-blue-100 text-blue-700",
-  "PDF":      "bg-red-100 text-red-700",
+  "ビジネス": "bg-gray-50 text-kon",
+  "PDF":      "bg-gray-50 text-danger",
   "不動産":   "bg-green-100 text-green-700",
-  "税金":     "bg-amber-100 text-amber-700",
+  "税金":     "bg-gray-50 text-kon",
   "金融":     "bg-emerald-100 text-emerald-700",
-  "SEO":      "bg-purple-100 text-purple-700",
+  "SEO":      "bg-gray-50 text-kon",
   "効率化":   "bg-cyan-100 text-cyan-700",
 };
 const CAT_ACTIVE: Record<string, string> = {
-  "ビジネス": "bg-blue-500 text-white shadow-md",
-  "PDF":      "bg-red-500 text-white shadow-md",
+  "ビジネス": "bg-kon text-white shadow-md",
+  "PDF":      "bg-danger text-white shadow-md",
   "不動産":   "bg-green-500 text-white shadow-md",
-  "税金":     "bg-amber-500 text-white shadow-md",
+  "税金":     "bg-kon text-white shadow-md",
   "金融":     "bg-emerald-500 text-white shadow-md",
-  "SEO":      "bg-purple-500 text-white shadow-md",
+  "SEO":      "bg-kon text-white shadow-md",
   "効率化":   "bg-cyan-500 text-white shadow-md",
 };
 const CAT_GRAD: Record<string, string> = {
-  "ビジネス": "from-blue-400 to-indigo-500",
+  "ビジネス": "from-slate-900 to-indigo-500",
   "PDF":      "from-red-400 to-rose-500",
   "不動産":   "from-green-400 to-emerald-500",
-  "税金":     "from-amber-400 to-yellow-500",
+  "税金":     "from-slate-900 to-yellow-500",
   "金融":     "from-emerald-400 to-teal-500",
-  "SEO":      "from-purple-400 to-violet-500",
+  "SEO":      "from-slate-900 to-violet-500",
   "効率化":   "from-cyan-400 to-sky-500",
 };
 
 function badgeClass(cat: string) { return CAT_BADGE[cat] ?? "bg-gray-100 text-gray-600"; }
-function activeClass(cat: string) { return CAT_ACTIVE[cat] ?? "bg-blue-500 text-white shadow-md"; }
-function gradClass(cat: string) { return CAT_GRAD[cat] ?? "from-blue-400 to-indigo-500"; }
+function activeClass(cat: string) { return CAT_ACTIVE[cat] ?? "bg-kon text-white shadow-md"; }
+function gradClass(cat: string) { return CAT_GRAD[cat] ?? "from-slate-900 to-indigo-500"; }
 
 const PER_PAGE = 12;
 
@@ -94,7 +94,7 @@ export default function BlogIndexClient({ blogs }: { blogs: Blog[] }) {
       <div className="bg-gradient-to-br from-kon to-ai text-white py-14 px-4">
         <div className="max-w-5xl mx-auto text-center">
           <h1 className="text-3xl md:text-4xl font-extrabold mb-3 tracking-tight">📝 山田ツール ブログ</h1>
-          <p className="text-blue-100 text-base md:text-lg mb-5 max-w-xl mx-auto">
+          <p className="text-gin text-base md:text-lg mb-5 max-w-xl mx-auto">
             ビジネス効率化・PDF活用・不動産情報・税金・金融の実践ノウハウを発信
           </p>
           <span className="inline-block bg-white/20 backdrop-blur-sm text-white text-sm font-semibold px-4 py-1.5 rounded-full">
@@ -110,7 +110,7 @@ export default function BlogIndexClient({ blogs }: { blogs: Blog[] }) {
             <svg className="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" /></svg>
           </div>
           <input type="text" value={search} onChange={handleSearch} placeholder="記事を検索..."
-            className="w-full pl-12 pr-10 py-3.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-700 dark:text-gray-200 placeholder-gray-400" />
+            className="w-full pl-12 pr-10 py-3.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm focus:outline-none focus:ring-2 focus:ring-kon text-gray-700 dark:text-gray-200 placeholder-gray-400" />
           {search && (
             <button onClick={() => { setSearch(""); setPage(1); }} className="absolute inset-y-0 right-4 flex items-center text-gray-400 hover:text-gray-600">
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
@@ -121,7 +121,7 @@ export default function BlogIndexClient({ blogs }: { blogs: Blog[] }) {
         {/* Category tabs */}
         <div className="flex gap-2 overflow-x-auto pb-2 mb-5 -mx-1 px-1">
           <button onClick={() => handleCategory("すべて")}
-            className={`flex-shrink-0 inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold transition-all ${activeCategory === "すべて" ? "bg-blue-600 text-white shadow-md" : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:bg-gray-50"}`}>
+            className={`flex-shrink-0 inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold transition-all ${activeCategory === "すべて" ? "bg-kon text-white shadow-md" : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:bg-gray-50"}`}>
             すべて
             <span className={`text-xs px-1.5 py-0.5 rounded-full ${activeCategory === "すべて" ? "bg-white/25 text-white" : "bg-gray-100 dark:bg-gray-700 text-gray-500"}`}>{blogs.length}</span>
           </button>
@@ -140,7 +140,7 @@ export default function BlogIndexClient({ blogs }: { blogs: Blog[] }) {
             <span className="text-gray-900 dark:text-white font-bold text-base">{filtered.length}</span> 件の記事
           </p>
           <select value={sort} onChange={handleSort}
-            className="text-sm border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400 cursor-pointer">
+            className="text-sm border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-kon cursor-pointer">
             <option value="new">新しい順</option>
             <option value="old">古い順</option>
             <option value="read">よく読まれる順（読了時間）</option>
@@ -163,12 +163,12 @@ export default function BlogIndexClient({ blogs }: { blogs: Blog[] }) {
                       </div>
                     )}
                     {blog.featured && (
-                      <div className="absolute top-2 left-2 bg-amber-400 text-white text-xs font-bold px-2 py-1 rounded-full flex items-center gap-1 shadow-md">⭐ 注目</div>
+                      <div className="absolute top-2 left-2 bg-kon text-white text-xs font-bold px-2 py-1 rounded-full flex items-center gap-1 shadow-md">⭐ 注目</div>
                     )}
                   </div>
                   <div className="p-4 flex flex-col flex-1">
                     <span className={`inline-block self-start text-xs font-semibold px-2.5 py-1 rounded-full mb-2 ${badgeClass(blog.category)}`}>{blog.category}</span>
-                    <h2 className="font-bold text-gray-900 dark:text-white text-sm leading-snug mb-2 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{blog.title}</h2>
+                    <h2 className="font-bold text-gray-900 dark:text-white text-sm leading-snug mb-2 line-clamp-2 group-hover:text-ai dark:group-hover:text-ai transition-colors">{blog.title}</h2>
                     <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-2 mb-3 flex-1">{blog.description}</p>
                     {blog.tags && blog.tags.length > 0 && (
                       <div className="flex flex-wrap gap-1 mb-3">
@@ -194,7 +194,7 @@ export default function BlogIndexClient({ blogs }: { blogs: Blog[] }) {
                   className="px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 text-sm font-medium text-gray-600 dark:text-gray-300 disabled:opacity-40 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:cursor-not-allowed transition">← 前へ</button>
                 {pageNumbers().map((n) => (
                   <button key={n} onClick={() => setPage(n)}
-                    className={`w-9 h-9 rounded-lg text-sm font-semibold transition ${n === page ? "bg-blue-600 text-white shadow-md" : "border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"}`}>{n}</button>
+                    className={`w-9 h-9 rounded-lg text-sm font-semibold transition ${n === page ? "bg-kon text-white shadow-md" : "border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"}`}>{n}</button>
                 ))}
                 <button onClick={() => setPage((p) => Math.min(totalPages, p + 1))} disabled={page === totalPages}
                   className="px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 text-sm font-medium text-gray-600 dark:text-gray-300 disabled:opacity-40 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:cursor-not-allowed transition">次へ →</button>
@@ -206,7 +206,7 @@ export default function BlogIndexClient({ blogs }: { blogs: Blog[] }) {
             <span className="text-6xl mb-4">📝</span>
             <h3 className="text-lg font-bold text-gray-700 dark:text-gray-300 mb-2">記事が見つかりませんでした</h3>
             <p className="text-gray-500 dark:text-gray-400 text-sm mb-6">検索条件を変えるか、カテゴリをリセットしてみてください</p>
-            <button onClick={resetFilters} className="px-6 py-2.5 bg-blue-600 text-white rounded-full font-semibold text-sm hover:bg-blue-700 transition">フィルターをリセット</button>
+            <button onClick={resetFilters} className="px-6 py-2.5 bg-kon text-white rounded-full font-semibold text-sm hover:bg-ai transition">フィルターをリセット</button>
           </div>
         )}
       </div>

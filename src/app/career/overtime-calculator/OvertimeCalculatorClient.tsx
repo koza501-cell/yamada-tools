@@ -279,7 +279,7 @@ export default function OvertimeCalculatorPage() {
     setError("");
   }
 
-  const inputClass = "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent";
+  const inputClass = "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon focus:border-transparent";
   const labelClass = "block text-sm font-medium text-gray-700 mb-1";
 
 
@@ -307,7 +307,7 @@ export default function OvertimeCalculatorPage() {
       <div className="max-w-4xl mx-auto px-4 py-8">
         <div className="mb-6">
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-medium bg-blue-100 text-blue-700 px-2 py-0.5 rounded">2026年最新</span>
+            <span className="text-xs font-medium bg-gray-50 text-kon px-2 py-0.5 rounded">2026年最新</span>
             <span className="text-xs text-gray-500">月60時間超1.5倍対応</span>
           </div>
           <h1 className="text-2xl font-bold text-gray-900 mb-2">
@@ -323,15 +323,15 @@ export default function OvertimeCalculatorPage() {
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
 
             {/* Section 1 */}
-            <h2 className="text-base font-semibold text-blue-700 mb-4 pb-2 border-b-2 border-blue-100 flex items-center gap-2">
-              <span className="w-6 h-6 bg-blue-600 text-white rounded-full text-xs flex items-center justify-center font-bold">1</span>
+            <h2 className="text-base font-semibold text-kon mb-4 pb-2 border-b-2 border-gray-200 flex items-center gap-2">
+              <span className="w-6 h-6 bg-kon text-white rounded-full text-xs flex items-center justify-center font-bold">1</span>
               基本給与情報
             </h2>
 
             <div className="space-y-4">
               {/* 雇用形態 */}
               <div>
-                <label className={labelClass}>雇用形態 <span className="text-red-500">*</span></label>
+                <label className={labelClass}>雇用形態 <span className="text-danger">*</span></label>
                 <div className="flex gap-2">
                   {(["monthly", "hourly", "daily"] as const).map((type) => {
                     const labels: Record<EmploymentType, string> = { monthly: "月給制", hourly: "時給制", daily: "日給制" };
@@ -341,8 +341,8 @@ export default function OvertimeCalculatorPage() {
                         onClick={() => handleChange("employmentType", type)}
                         className={`flex-1 py-2 rounded-lg text-sm font-medium border transition-colors ${
                           form.employmentType === type
-                            ? "bg-blue-600 text-white border-blue-600"
-                            : "bg-white text-gray-600 border-gray-300 hover:border-blue-400"
+                            ? "bg-kon text-white border-kon"
+                            : "bg-white text-gray-600 border-gray-300 hover:border-ai"
                         }`}
                       >
                         {labels[type]}
@@ -355,7 +355,7 @@ export default function OvertimeCalculatorPage() {
               {/* 月給 */}
               {form.employmentType === "monthly" && (
                 <div>
-                  <label className={labelClass}>月給 <span className="text-red-500">*</span></label>
+                  <label className={labelClass}>月給 <span className="text-danger">*</span></label>
                   <div className="flex items-center gap-2">
                     <input type="number" min={0} value={form.monthlySalary} onChange={(e) => handleChange("monthlySalary", e.target.value)} placeholder="例: 300000" className={inputClass} />
                     <span className="text-sm text-gray-500 whitespace-nowrap">円</span>
@@ -366,7 +366,7 @@ export default function OvertimeCalculatorPage() {
               {/* 時給 */}
               {form.employmentType === "hourly" && (
                 <div>
-                  <label className={labelClass}>時給 <span className="text-red-500">*</span></label>
+                  <label className={labelClass}>時給 <span className="text-danger">*</span></label>
                   <div className="flex items-center gap-2">
                     <input type="number" min={0} value={form.hourlySalary} onChange={(e) => handleChange("hourlySalary", e.target.value)} placeholder="例: 1500" className={inputClass} />
                     <span className="text-sm text-gray-500 whitespace-nowrap">円</span>
@@ -377,7 +377,7 @@ export default function OvertimeCalculatorPage() {
               {/* 日給 */}
               {form.employmentType === "daily" && (
                 <div>
-                  <label className={labelClass}>日給 <span className="text-red-500">*</span></label>
+                  <label className={labelClass}>日給 <span className="text-danger">*</span></label>
                   <div className="flex items-center gap-2">
                     <input type="number" min={0} value={form.dailySalary} onChange={(e) => handleChange("dailySalary", e.target.value)} placeholder="例: 15000" className={inputClass} />
                     <span className="text-sm text-gray-500 whitespace-nowrap">円</span>
@@ -430,8 +430,8 @@ export default function OvertimeCalculatorPage() {
             </div>
 
             {/* Section 2 */}
-            <h2 className="text-base font-semibold text-blue-700 mt-6 mb-4 pb-2 border-b-2 border-blue-100 flex items-center gap-2">
-              <span className="w-6 h-6 bg-blue-600 text-white rounded-full text-xs flex items-center justify-center font-bold">2</span>
+            <h2 className="text-base font-semibold text-kon mt-6 mb-4 pb-2 border-b-2 border-gray-200 flex items-center gap-2">
+              <span className="w-6 h-6 bg-kon text-white rounded-full text-xs flex items-center justify-center font-bold">2</span>
               残業時間の入力
             </h2>
 
@@ -490,8 +490,8 @@ export default function OvertimeCalculatorPage() {
             </div>
 
             {/* Section 3 */}
-            <h2 className="text-base font-semibold text-blue-700 mt-6 mb-4 pb-2 border-b-2 border-blue-100 flex items-center gap-2">
-              <span className="w-6 h-6 bg-blue-600 text-white rounded-full text-xs flex items-center justify-center font-bold">3</span>
+            <h2 className="text-base font-semibold text-kon mt-6 mb-4 pb-2 border-b-2 border-gray-200 flex items-center gap-2">
+              <span className="w-6 h-6 bg-kon text-white rounded-full text-xs flex items-center justify-center font-bold">3</span>
               固定残業代チェック
               <span className="text-xs font-normal text-gray-400">（任意）</span>
             </h2>
@@ -506,8 +506,8 @@ export default function OvertimeCalculatorPage() {
                       onClick={() => handleChange("hasFixedOvertime", opt.value)}
                       className={`flex-1 py-2 rounded-lg text-sm font-medium border transition-colors ${
                         form.hasFixedOvertime === opt.value
-                          ? "bg-blue-600 text-white border-blue-600"
-                          : "bg-white text-gray-600 border-gray-300 hover:border-blue-400"
+                          ? "bg-kon text-white border-kon"
+                          : "bg-white text-gray-600 border-gray-300 hover:border-ai"
                       }`}
                     >
                       {opt.label}
@@ -519,14 +519,14 @@ export default function OvertimeCalculatorPage() {
               {form.hasFixedOvertime && (
                 <>
                   <div>
-                    <label className={labelClass}>固定残業代の金額 <span className="text-red-500">*</span></label>
+                    <label className={labelClass}>固定残業代の金額 <span className="text-danger">*</span></label>
                     <div className="flex items-center gap-2">
                       <input type="number" min={0} value={form.fixedOvertimePay} onChange={(e) => handleChange("fixedOvertimePay", e.target.value)} placeholder="例: 50000" className={inputClass} />
                       <span className="text-sm text-gray-500 whitespace-nowrap">円/月</span>
                     </div>
                   </div>
                   <div>
-                    <label className={labelClass}>固定残業時間 <span className="text-red-500">*</span></label>
+                    <label className={labelClass}>固定残業時間 <span className="text-danger">*</span></label>
                     <div className="flex items-center gap-2">
                       <input type="number" min={0} step="0.5" value={form.fixedOvertimeHours} onChange={(e) => handleChange("fixedOvertimeHours", e.target.value)} placeholder="例: 30" className={inputClass} />
                       <span className="text-sm text-gray-500 whitespace-nowrap">時間</span>
@@ -537,7 +537,7 @@ export default function OvertimeCalculatorPage() {
             </div>
 
             {error && (
-              <p className="text-red-500 text-sm bg-red-50 rounded-lg px-3 py-2 mt-4">{error}</p>
+              <p className="text-danger text-sm bg-gray-50 rounded-lg px-3 py-2 mt-4">{error}</p>
             )}
 
             <div className="flex gap-3 mt-6">
@@ -549,7 +549,7 @@ export default function OvertimeCalculatorPage() {
               </button>
               <button
                 onClick={handleCalculate}
-                className="flex-1 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition-colors shadow-sm"
+                className="flex-1 py-2.5 rounded-lg bg-kon text-white text-sm font-semibold hover:bg-ai transition-colors shadow-sm"
               >
                 計算する
               </button>
@@ -569,7 +569,7 @@ export default function OvertimeCalculatorPage() {
                 </div>
 
                 {/* 合計 BIG */}
-                <div className="bg-blue-600 rounded-xl p-6 text-white shadow-sm">
+                <div className="bg-kon rounded-xl p-6 text-white shadow-sm">
                   <p className="text-sm font-medium opacity-80 mb-1">今月の残業代合計</p>
                   <p className="text-4xl font-bold mb-1">
                     {fmt(result.monthlyTotal)}<span className="text-2xl ml-1">円</span>
@@ -620,9 +620,9 @@ export default function OvertimeCalculatorPage() {
                           <td className="py-2 text-right text-gray-500 text-xs">1.25倍</td>
                           <td className="py-2 text-right font-medium text-gray-900">{fmt(result.nonLegalHolidayPay)}円</td>
                         </tr>
-                        <tr className="bg-blue-50">
-                          <td className="py-2 px-2 text-blue-700 font-semibold text-xs" colSpan={3}>合計</td>
-                          <td className="py-2 px-2 text-right font-bold text-blue-700">{fmt(result.monthlyTotal)}円</td>
+                        <tr className="bg-gray-50">
+                          <td className="py-2 px-2 text-kon font-semibold text-xs" colSpan={3}>合計</td>
+                          <td className="py-2 px-2 text-right font-bold text-kon">{fmt(result.monthlyTotal)}円</td>
                         </tr>
                       </tbody>
                     </table>
@@ -640,12 +640,12 @@ export default function OvertimeCalculatorPage() {
 
                 {/* 固定残業代診断 */}
                 {result.fixedCheck && (
-                  <div className={`rounded-xl shadow-sm border p-5 ${result.fixedCheck.isAdequate ? "bg-green-50 border-green-200" : "bg-red-50 border-red-200"}`}>
+                  <div className={`rounded-xl shadow-sm border p-5 ${result.fixedCheck.isAdequate ? "bg-green-50 border-green-200" : "bg-gray-50 border-gray-200"}`}>
                     <h3 className="text-sm font-semibold mb-3 flex items-center gap-2">
-                      <span className={`w-5 h-5 rounded-full flex items-center justify-center text-white text-xs font-bold ${result.fixedCheck.isAdequate ? "bg-green-500" : "bg-red-500"}`}>
+                      <span className={`w-5 h-5 rounded-full flex items-center justify-center text-white text-xs font-bold ${result.fixedCheck.isAdequate ? "bg-green-500" : "bg-danger"}`}>
                         {result.fixedCheck.isAdequate ? "✓" : "!"}
                       </span>
-                      <span className={result.fixedCheck.isAdequate ? "text-green-800" : "text-red-800"}>
+                      <span className={result.fixedCheck.isAdequate ? "text-green-800" : "text-danger"}>
                         固定残業代診断
                       </span>
                     </h3>
@@ -664,9 +664,9 @@ export default function OvertimeCalculatorPage() {
                           <p className="text-green-600 text-xs mt-0.5">法定割増賃金を上回っています（差額 +{fmt(result.fixedCheck.difference)}円）</p>
                         </div>
                       ) : (
-                        <div className="mt-3 pt-3 border-t border-red-200">
-                          <p className="text-red-700 font-semibold">固定残業代が不足している可能性があります</p>
-                          <p className="text-red-600 text-xs mt-0.5">不足額：{fmt(Math.abs(result.fixedCheck.difference))}円</p>
+                        <div className="mt-3 pt-3 border-t border-gray-200">
+                          <p className="text-danger font-semibold">固定残業代が不足している可能性があります</p>
+                          <p className="text-danger text-xs mt-0.5">不足額：{fmt(Math.abs(result.fixedCheck.difference))}円</p>
                         </div>
                       )}
                       {result.fixedCheck.additionalRequired > 0 && (
@@ -686,8 +686,8 @@ export default function OvertimeCalculatorPage() {
               </>
             ) : (
               <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 flex flex-col items-center justify-center text-center h-full min-h-64">
-                <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4">
-                  <svg className="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mb-4">
+                  <svg className="w-8 h-8 text-kon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
@@ -704,7 +704,7 @@ export default function OvertimeCalculatorPage() {
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="bg-blue-600 text-white">
+                  <tr className="bg-kon text-white">
                     <th className="px-4 py-3 text-left font-semibold">月給</th>
                     <th className="px-4 py-3 text-left font-semibold">残業（通常）</th>
                     <th className="px-4 py-3 text-left font-semibold">深夜</th>
@@ -725,7 +725,7 @@ export default function OvertimeCalculatorPage() {
                       <td className="px-4 py-3 text-gray-800">{row.ot}</td>
                       <td className="px-4 py-3 text-gray-800">{row.night}</td>
                       <td className="px-4 py-3 text-gray-800">{row.holiday}</td>
-                      <td className="px-4 py-3 font-semibold text-blue-700">{row.total}</td>
+                      <td className="px-4 py-3 font-semibold text-kon">{row.total}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -754,11 +754,11 @@ export default function OvertimeCalculatorPage() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100">
-                    <tr><td className="px-3 py-2 text-gray-600">法定時間外労働（月60時間以下）</td><td className="px-3 py-2 font-semibold text-blue-700">×1.25</td></tr>
-                    <tr className="bg-blue-50"><td className="px-3 py-2 text-gray-600">法定時間外労働（月60時間超）</td><td className="px-3 py-2 font-semibold text-blue-700">×1.50 ※2023年4月〜全企業対象</td></tr>
-                    <tr><td className="px-3 py-2 text-gray-600">深夜労働（22:00〜翌5:00）</td><td className="px-3 py-2 font-semibold text-blue-700">×1.25（+0.25割増）</td></tr>
-                    <tr><td className="px-3 py-2 text-gray-600">法定休日労働</td><td className="px-3 py-2 font-semibold text-blue-700">×1.35</td></tr>
-                    <tr><td className="px-3 py-2 text-gray-600">深夜かつ時間外</td><td className="px-3 py-2 font-semibold text-blue-700">×1.50（合算）</td></tr>
+                    <tr><td className="px-3 py-2 text-gray-600">法定時間外労働（月60時間以下）</td><td className="px-3 py-2 font-semibold text-kon">×1.25</td></tr>
+                    <tr className="bg-gray-50"><td className="px-3 py-2 text-gray-600">法定時間外労働（月60時間超）</td><td className="px-3 py-2 font-semibold text-kon">×1.50 ※2023年4月〜全企業対象</td></tr>
+                    <tr><td className="px-3 py-2 text-gray-600">深夜労働（22:00〜翌5:00）</td><td className="px-3 py-2 font-semibold text-kon">×1.25（+0.25割増）</td></tr>
+                    <tr><td className="px-3 py-2 text-gray-600">法定休日労働</td><td className="px-3 py-2 font-semibold text-kon">×1.35</td></tr>
+                    <tr><td className="px-3 py-2 text-gray-600">深夜かつ時間外</td><td className="px-3 py-2 font-semibold text-kon">×1.50（合算）</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -768,9 +768,9 @@ export default function OvertimeCalculatorPage() {
               <p className="font-semibold text-gray-800 mb-2">固定残業代（みなし残業）について：</p>
               <p className="mb-2">固定残業代とは、一定時間分の残業代をあらかじめ給与に含める制度です。ただし以下の条件を満たさなければ違法となります：</p>
               <ul className="space-y-1 ml-4">
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span>固定残業時間と金額が明示されていること</span></li>
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span>実際の残業が固定時間を超えた場合は追加支払いが必要</span></li>
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span>固定残業代が法定の割増賃金を下回ってはならない</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span>固定残業時間と金額が明示されていること</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span>実際の残業が固定時間を超えた場合は追加支払いが必要</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span>固定残業代が法定の割増賃金を下回ってはならない</span></li>
               </ul>
             </div>
 
@@ -809,7 +809,7 @@ export default function OvertimeCalculatorPage() {
             ].map((item, i) => (
               <div key={i} className="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
                 <p className="font-semibold text-gray-800 mb-2 flex gap-2">
-                  <span className="text-blue-600 font-bold shrink-0">Q{i + 1}.</span>
+                  <span className="text-kon font-bold shrink-0">Q{i + 1}.</span>
                   {item.q}
                 </p>
                 <p className="text-sm text-gray-600 leading-relaxed flex gap-2">
@@ -834,15 +834,15 @@ export default function OvertimeCalculatorPage() {
               <Link
                 key={tool.href}
                 href={tool.href}
-                className="flex items-start gap-3 bg-white rounded-xl border border-blue-100 hover:border-blue-400 hover:shadow-md transition-all p-4 group"
+                className="flex items-start gap-3 bg-white rounded-xl border border-gray-200 hover:border-ai hover:shadow-md transition-all p-4 group"
               >
-                <div className="w-9 h-9 rounded-lg bg-blue-50 group-hover:bg-blue-100 flex items-center justify-center shrink-0 transition-colors">
-                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-9 h-9 rounded-lg bg-gray-50 group-hover:bg-ai flex items-center justify-center shrink-0 transition-colors">
+                  <svg className="w-5 h-5 text-kon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 11h.01M12 11h.01M15 11h.01M4 19h16a2 2 0 002-2V7a2 2 0 00-2-2H4a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-blue-700 group-hover:text-blue-800">{tool.label}</p>
+                  <p className="text-sm font-semibold text-kon group-hover:text-ai">{tool.label}</p>
                   <p className="text-xs text-gray-500 mt-0.5">{tool.desc}</p>
                 </div>
               </Link>

@@ -423,7 +423,7 @@ export default function EducationCostSimulator() {
         </div>
 
         {error && (
-          <div className="bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-sm text-red-700">{error}</div>
+          <div className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-danger">{error}</div>
         )}
 
         <button
@@ -515,7 +515,7 @@ export default function EducationCostSimulator() {
                           <td className="px-4 py-2.5">{METHOD_LABELS[m.method]}</td>
                           <td className="px-4 py-2.5 text-right font-semibold">{fmt(m.fv)}万円</td>
                           <td className="px-4 py-2.5 text-right">
-                            <span className={`font-bold ${pct >= 100 ? "text-green-600" : pct >= 80 ? "text-yellow-600" : "text-red-500"}`}>
+                            <span className={`font-bold ${pct >= 100 ? "text-green-600" : pct >= 80 ? "text-yellow-600" : "text-danger"}`}>
                               {pct}%
                             </span>
                           </td>
@@ -528,8 +528,8 @@ export default function EducationCostSimulator() {
             </div>
 
             {/* Gap analysis */}
-            <div className={`rounded-xl p-5 border ${result.gap >= 0 ? "bg-green-50 border-green-200" : "bg-red-50 border-red-200"}`}>
-              <p className={`font-semibold mb-2 text-sm ${result.gap >= 0 ? "text-green-700" : "text-red-700"}`}>
+            <div className={`rounded-xl p-5 border ${result.gap >= 0 ? "bg-green-50 border-green-200" : "bg-gray-50 border-gray-200"}`}>
+              <p className={`font-semibold mb-2 text-sm ${result.gap >= 0 ? "text-green-700" : "text-danger"}`}>
                 ギャップ分析
               </p>
               {result.gap >= 0 ? (
@@ -538,7 +538,7 @@ export default function EducationCostSimulator() {
                   <span className="font-bold"> {fmt(result.gap)}万円</span> の余裕が生まれます。
                 </p>
               ) : (
-                <p className="text-sm text-red-700">
+                <p className="text-sm text-danger">
                   現在の積立ペースでは約<span className="font-bold"> {fmt(Math.abs(result.gap))}万円</span> 不足します。
                   月あと<span className="font-bold"> {fmt(result.requiredMonthly - parseFloat(monthlyInput))}万円</span> 追加するか、教育プランの見直しを検討しましょう。
                 </p>
@@ -603,7 +603,7 @@ export default function EducationCostSimulator() {
                     <td className="px-4 py-2.5 font-medium">{row.stage}</td>
                     <td className="px-4 py-2.5 text-right">{row.public}</td>
                     <td className="px-4 py-2.5 text-right">{row.private}</td>
-                    <td className="px-4 py-2.5 text-right text-orange-600 font-medium">{row.diff}</td>
+                    <td className="px-4 py-2.5 text-right text-kon font-medium">{row.diff}</td>
                   </tr>
                 ))}
                 <tr className="border-t-2 border-gray-300 bg-gray-50">
@@ -616,7 +616,7 @@ export default function EducationCostSimulator() {
                   <td className="px-4 py-2.5 font-bold">合計（全私立）</td>
                   <td className="px-4 py-2.5 text-right text-gray-400">—</td>
                   <td className="px-4 py-2.5 text-right font-bold">約2,400万円</td>
-                  <td className="px-4 py-2.5 text-right text-orange-600 font-bold">+1,550万円</td>
+                  <td className="px-4 py-2.5 text-right text-kon font-bold">+1,550万円</td>
                 </tr>
               </tbody>
             </table>
@@ -690,20 +690,20 @@ export default function EducationCostSimulator() {
         </div>
       
         {/* 関連ブログ記事 */}
-        <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl border border-purple-200 p-5 mt-4">
+        <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl border border-kon p-5 mt-4">
           <h2 className="font-bold text-gray-800 mb-3 text-sm">📝 関連ブログ記事</h2>
           
             <a
             href="/blog/kyouikuhi-simulation-2026"
             className="flex items-center gap-3 group"
           >
-            <div className="w-10 h-10 rounded-lg bg-purple-100 group-hover:bg-purple-200 flex items-center justify-center shrink-0 transition-colors">
-              <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-10 h-10 rounded-lg bg-gray-50 group-hover:bg-ai flex items-center justify-center shrink-0 transition-colors">
+              <svg className="w-5 h-5 text-kon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
               </svg>
             </div>
             <div>
-              <p className="text-sm font-semibold text-purple-700 group-hover:text-purple-800">【2026年最新】教育費シミュレーション｜幼稚園から大学までいくらかかる？</p>
+              <p className="text-sm font-semibold text-kon group-hover:text-ai">【2026年最新】教育費シミュレーション｜幼稚園から大学までいくらかかる？</p>
               <p className="text-xs text-gray-500 mt-0.5">詳しい解説・計算例 →</p>
             </div>
           </a>

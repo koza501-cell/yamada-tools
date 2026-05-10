@@ -109,7 +109,7 @@ export default function TrialPage() {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                メールアドレス <span className="text-red-500">*</span>
+                メールアドレス <span className="text-danger">*</span>
               </label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -141,7 +141,7 @@ export default function TrialPage() {
             </div>
 
             {error && (
-              <div className="bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 px-4 py-3 rounded-lg text-sm">
+              <div className="bg-gray-50 dark:bg-danger/30 text-danger dark:text-danger px-4 py-3 rounded-lg text-sm">
                 {error}
               </div>
             )}

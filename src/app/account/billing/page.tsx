@@ -97,7 +97,7 @@ export default function BillingPage() {
       <div className="bg-white rounded-xl shadow-sm p-6">
         <div className="flex items-center justify-between mb-5">
           <h2 className="text-base font-semibold text-gray-900">相続登記 書類作成ケース</h2>
-          <Link href="/souzoku-touki/case/new" className="text-xs px-3 py-1.5 bg-ai text-white rounded-lg hover:bg-blue-600 transition-colors">
+          <Link href="/souzoku-touki/case/new" className="text-xs px-3 py-1.5 bg-ai text-white rounded-lg hover:bg-ai transition-colors">
             + 新規ケース
           </Link>
         </div>

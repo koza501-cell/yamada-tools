@@ -147,7 +147,7 @@ export default function BlogManagementPage() {
       <div className="container mx-auto px-4 py-8">
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-3xl font-bold">ブログ管理</h1>
-          <Link href="/blog" className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+          <Link href="/blog" className="px-4 py-2 bg-kon text-white rounded-lg hover:bg-ai">
             ブログ一覧を見る
           </Link>
         </div>
@@ -157,7 +157,7 @@ export default function BlogManagementPage() {
             <button
               onClick={() => setActiveTab('manage')}
               className={`flex-1 px-6 py-4 text-center font-medium transition-colors ${
-                activeTab === 'manage' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600 hover:text-gray-900'
+                activeTab === 'manage' ? 'text-kon border-b-2 border-kon' : 'text-gray-600 hover:text-gray-900'
               }`}
             >
               📋 管理
@@ -165,7 +165,7 @@ export default function BlogManagementPage() {
             <button
               onClick={() => setActiveTab('create')}
               className={`flex-1 px-6 py-4 text-center font-medium transition-colors ${
-                activeTab === 'create' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600 hover:text-gray-900'
+                activeTab === 'create' ? 'text-kon border-b-2 border-kon' : 'text-gray-600 hover:text-gray-900'
               }`}
             >
               ✨ 新規作成
@@ -176,20 +176,20 @@ export default function BlogManagementPage() {
         {activeTab === 'manage' && (
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex gap-2 mb-6 flex-wrap">
-              <button onClick={() => filterByCategory('all')} className={`px-4 py-2 rounded-lg font-medium ${selectedCategory === 'all' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>
+              <button onClick={() => filterByCategory('all')} className={`px-4 py-2 rounded-lg font-medium ${selectedCategory === 'all' ? 'bg-kon text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>
                 すべて ({getBlogCount('all')})
               </button>
-              <button onClick={() => filterByCategory('PDF')} className={`px-4 py-2 rounded-lg font-medium ${selectedCategory === 'PDF' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>
+              <button onClick={() => filterByCategory('PDF')} className={`px-4 py-2 rounded-lg font-medium ${selectedCategory === 'PDF' ? 'bg-kon text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>
                 PDF ({getBlogCount('PDF')})
               </button>
-              <button onClick={() => filterByCategory('業務効率化')} className={`px-4 py-2 rounded-lg font-medium ${selectedCategory === '業務効率化' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>
+              <button onClick={() => filterByCategory('業務効率化')} className={`px-4 py-2 rounded-lg font-medium ${selectedCategory === '業務効率化' ? 'bg-kon text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>
                 業務効率化 ({getBlogCount('業務効率化')})
               </button>
             </div>
 
             {isLoading ? (
               <div className="text-center py-12">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-kon mx-auto"></div>
               </div>
             ) : filteredBlogs.length === 0 ? (
               <div className="text-center py-12 text-gray-500">ブログがありません</div>
@@ -217,13 +217,13 @@ export default function BlogManagementPage() {
                         </td>
                         <td className="px-6 py-4 font-medium">{blog.title}</td>
                         <td className="px-6 py-4">
-                          <span className="px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded">{blog.category}</span>
+                          <span className="px-2 py-1 text-xs font-medium bg-gray-50 text-kon rounded">{blog.category}</span>
                         </td>
                         <td className="px-6 py-4 text-sm text-gray-600">{blog.publishDate}</td>
                         <td className="px-6 py-4">
                           <div className="flex gap-2">
-                            <Link href={`/blog/${blog.slug}`} className="text-blue-600 hover:text-blue-800 text-sm" target="_blank">表示</Link>
-                            <button onClick={() => handleDelete(blog.slug)} className="text-red-600 hover:text-red-800 text-sm">削除</button>
+                            <Link href={`/blog/${blog.slug}`} className="text-kon hover:text-ai text-sm" target="_blank">表示</Link>
+                            <button onClick={() => handleDelete(blog.slug)} className="text-danger hover:text-danger text-sm">削除</button>
                           </div>
                         </td>
                       </tr>
@@ -262,7 +262,7 @@ export default function BlogManagementPage() {
                 <button
                   onClick={handleGenerateBlog}
                   disabled={isGenerating || !topic.trim()}
-                  className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-300"
+                  className="w-full bg-kon text-white py-3 rounded-lg font-medium hover:bg-ai disabled:bg-gray-300"
                 >
                   {isGenerating ? '生成中...' : 'ブログを生成'}
                 </button>

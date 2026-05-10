@@ -81,7 +81,7 @@ export default function KaigoClient() {
     const perUse = n > 0 ? userBurden / n : 0;
     return { totalUnits, totalReward, userBurden, insurance, perUse, n, baseUnits };
   }, [svcIdx, count, futan, pct, unitAdd, unitPrice]);
-  const ic = "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400";
+  const ic = "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon";
   const lc = "block text-sm font-medium text-gray-700 mb-1";
 
   return (
@@ -108,7 +108,7 @@ export default function KaigoClient() {
             </select>
           </div>
         </div>
-        <div className="text-xs text-blue-700 bg-blue-50 rounded-lg px-3 py-2">
+        <div className="text-xs text-kon bg-gray-50 rounded-lg px-3 py-2">
           地域区分: {GRADE_LABELS[grade]}（1単位 = {unitPrice.toFixed(2)}円）
         </div>
         <div>
@@ -141,7 +141,7 @@ export default function KaigoClient() {
         </div>
       </div>
 
-      <div className="bg-blue-700 text-white rounded-t-xl px-6 py-4">
+      <div className="bg-kon text-white rounded-t-xl px-6 py-4">
         <div className="text-sm font-medium opacity-80">月額総報酬額（事業者受取）</div>
         <div className="text-3xl font-bold mt-1">{fmt(r.totalReward)}</div>
         <div className="text-xs opacity-70 mt-1">{Math.round(r.totalUnits).toLocaleString()}単位 × {unitPrice.toFixed(2)}円</div>
@@ -152,13 +152,13 @@ export default function KaigoClient() {
           { label: `保険給付額（${10 - futan}割）`, value: fmt(r.insurance) },
           { label: "1回あたり利用者負担額", value: fmt(r.perUse) },
         ].map(row => (
-          <div key={row.label} className={`flex justify-between items-center px-6 py-3 text-sm ${row.hi ? "font-semibold text-blue-700" : "text-gray-700"}`}>
+          <div key={row.label} className={`flex justify-between items-center px-6 py-3 text-sm ${row.hi ? "font-semibold text-kon" : "text-gray-700"}`}>
             <span>{row.label}</span><span>{row.value}</span>
           </div>
         ))}
       </div>
 
-      <button onClick={() => setExplain(e => !e)} className="text-sm text-blue-600 underline mb-4 print:hidden">
+      <button onClick={() => setExplain(e => !e)} className="text-sm text-kon underline mb-4 print:hidden">
         {explain ? "▲ 説明を閉じる" : "▼ わかりやすく説明"}
       </button>
       {explain && (

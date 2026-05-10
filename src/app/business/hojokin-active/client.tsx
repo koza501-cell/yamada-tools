@@ -116,9 +116,9 @@ export default function HojokinActiveClient() {
       <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-4xl mx-auto px-4 py-8">
           <nav className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-            <Link href="/" className="hover:text-blue-600">ホーム</Link>
+            <Link href="/" className="hover:text-ai">ホーム</Link>
             <span className="mx-1">/</span>
-            <Link href="/business" className="hover:text-blue-600">ビジネス・法人</Link>
+            <Link href="/business" className="hover:text-ai">ビジネス・法人</Link>
             <span className="mx-1">/</span>
             <span>補助金検索（募集中）</span>
           </nav>
@@ -135,7 +135,7 @@ export default function HojokinActiveClient() {
       <div className="max-w-4xl mx-auto px-4 py-8">
         <form onSubmit={handleSearch} className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 mb-6">
           <label htmlFor="keyword" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-            キーワード <span className="text-red-500">*</span>
+            キーワード <span className="text-danger">*</span>
           </label>
           <div className="flex flex-col sm:flex-row gap-3">
             <input
@@ -145,13 +145,13 @@ export default function HojokinActiveClient() {
               onChange={(e) => setKeyword(e.target.value)}
               placeholder="例：IT、DX、中小企業、創業..."
               maxLength={255}
-              className="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 dark:bg-gray-700 dark:text-white"
+              className="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-sakura dark:bg-gray-700 dark:text-white"
               disabled={loading}
             />
             <button
               type="submit"
               disabled={loading || keyword.trim().length < 2}
-              className="px-6 py-3 bg-pink-500 hover:bg-pink-600 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition"
+              className="px-6 py-3 bg-kon hover:bg-ai disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition"
             >
               {loading ? "検索中..." : "🔍 検索"}
             </button>
@@ -165,7 +165,7 @@ export default function HojokinActiveClient() {
                 key={kw}
                 type="button"
                 onClick={() => setKeyword(kw)}
-                className="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-pink-100 dark:hover:bg-pink-900/30 transition"
+                className="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-ai dark:hover:bg-ai/30 transition"
                 disabled={loading}
               >
                 {kw}
@@ -205,7 +205,7 @@ export default function HojokinActiveClient() {
 
         {/* Error */}
         {error && (
-          <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-800 dark:text-red-200 p-4 rounded-lg mb-6">
+          <div className="bg-gray-50 dark:bg-danger/20 border border-gray-200 dark:border-danger text-danger dark:text-gin p-4 rounded-lg mb-6">
             ⚠️ {error}
           </div>
         )}
@@ -213,7 +213,7 @@ export default function HojokinActiveClient() {
         {/* Loading */}
         {loading && (
           <div className="text-center py-12">
-            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-pink-500"></div>
+            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-sakura"></div>
             <p className="mt-4 text-gray-600 dark:text-gray-400">補助金を検索中...</p>
           </div>
         )}
@@ -243,7 +243,7 @@ export default function HojokinActiveClient() {
               return (
                 <div
                   key={sub.id}
-                  className="bg-white dark:bg-gray-800 rounded-lg shadow p-5 hover:shadow-md transition border border-transparent hover:border-pink-200 dark:hover:border-pink-800"
+                  className="bg-white dark:bg-gray-800 rounded-lg shadow p-5 hover:shadow-md transition border border-transparent hover:border-sakura dark:hover:border-sakura"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-3">
                     <h2 className="text-lg font-bold text-gray-900 dark:text-white flex-1">
@@ -253,7 +253,7 @@ export default function HojokinActiveClient() {
                       <span
                         className={`flex-shrink-0 text-xs font-semibold px-3 py-1 rounded-full whitespace-nowrap ${
                           isUrgent
-                            ? "bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300"
+                            ? "bg-gray-50 dark:bg-danger/40 text-danger dark:text-gin"
                             : "bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300"
                         }`}
                       >
@@ -307,7 +307,7 @@ export default function HojokinActiveClient() {
                       href={`https://www.jgrants-portal.go.jp/subsidy/${sub.id}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm text-pink-600 dark:text-pink-400 hover:underline font-medium"
+                      className="text-sm text-sakura dark:text-sakura hover:underline font-medium"
                     >
                       Jグランツで詳細を見る →
                     </a>
@@ -319,7 +319,7 @@ export default function HojokinActiveClient() {
         )}
 
         {/* Info section */}
-        <div className="mt-12 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-5">
+        <div className="mt-12 bg-gray-50 dark:bg-kon/20 border border-gray-200 dark:border-kon rounded-lg p-5">
           <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
             💡 補助金検索ツールについて
           </h3>
@@ -332,7 +332,7 @@ export default function HojokinActiveClient() {
         </div>
 
         <p className="mt-6 text-xs text-gray-500 dark:text-gray-400 text-center">
-          データ提供: デジタル庁 Jグランツ（<a href="https://www.jgrants-portal.go.jp/" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-600">https://www.jgrants-portal.go.jp/</a>）
+          データ提供: デジタル庁 Jグランツ（<a href="https://www.jgrants-portal.go.jp/" target="_blank" rel="noopener noreferrer" className="underline hover:text-ai">https://www.jgrants-portal.go.jp/</a>）
         </p>
       </div>
     </div>

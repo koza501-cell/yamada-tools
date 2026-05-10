@@ -596,7 +596,7 @@ export default function FlipClient({
           <p className="text-gray-600 text-lg">写真を水平反転・垂直反転・回転</p>
           <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
             <span className="bg-green-50 text-green-700 px-3 py-1 rounded-full">✓ 完全無料</span>
-            <span className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full">🔒 ブラウザ内処理</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">🔒 ブラウザ内処理</span>
           </div>
         </header>
 
@@ -628,7 +628,7 @@ export default function FlipClient({
                 onDragOver={(e) => { e.preventDefault(); setBatchIsDragging(true); }}
                 onDragLeave={() => setBatchIsDragging(false)}
                 className={`border-2 border-dashed rounded-xl p-8 text-center cursor-pointer mb-4 transition-colors ${
-                  batchIsDragging ? "border-kon bg-blue-50 dark:bg-blue-900/20" : "border-gray-300 dark:border-gray-600 hover:border-kon dark:hover:border-blue-400"
+                  batchIsDragging ? "border-kon bg-gray-50 dark:bg-kon/20" : "border-gray-300 dark:border-gray-600 hover:border-kon dark:hover:border-ai"
                 }`}
                 onClick={() => document.getElementById("batch-upload")?.click()}
               >
@@ -660,7 +660,7 @@ export default function FlipClient({
                         </div>
                         <button
                           onClick={() => removeBatchFile(id)}
-                          className="flex-shrink-0 w-6 h-6 flex items-center justify-center text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-full transition-colors font-bold text-xs"
+                          className="flex-shrink-0 w-6 h-6 flex items-center justify-center text-gray-400 hover:text-danger hover:bg-gray-50 dark:hover:bg-danger/20 rounded-full transition-colors font-bold text-xs"
                         >✕</button>
                       </div>
                     ))}
@@ -695,7 +695,7 @@ export default function FlipClient({
                       className="flex-1 accent-kon" />
                     <span className="text-xs text-gray-500 w-10 text-right flex-shrink-0">{rotation}°</span>
                   </div>
-                  <div className={`text-center text-xs px-3 py-2 rounded-lg mt-3 font-medium ${statusParts.length > 0 ? "bg-kon/10 text-kon dark:text-blue-300" : "bg-gray-100 dark:bg-gray-700/30 text-gray-400"}`}>
+                  <div className={`text-center text-xs px-3 py-2 rounded-lg mt-3 font-medium ${statusParts.length > 0 ? "bg-kon/10 text-kon dark:text-gray-300" : "bg-gray-100 dark:bg-gray-700/30 text-gray-400"}`}>
                     {statusText}
                   </div>
                 </div>
@@ -730,7 +730,7 @@ export default function FlipClient({
               {batchFiles.length > 0 && (
                 <div className="space-y-2">
                   {batchProgress && (
-                    <div className="text-center text-sm font-medium text-kon dark:text-blue-300 bg-kon/10 px-4 py-2 rounded-xl">
+                    <div className="text-center text-sm font-medium text-kon dark:text-gray-300 bg-kon/10 px-4 py-2 rounded-xl">
                       <span aria-live="polite">⏳ {batchProgress}</span>
                     </div>
                   )}
@@ -758,7 +758,7 @@ export default function FlipClient({
               onDragLeave={() => setIsDragging(false)}
               role="button"
               aria-label="画像ファイルをアップロード。JPG、PNG、WebP、BMP、GIF対応"
-              className={`border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-colors ${isDragging ? "border-kon bg-blue-50 dark:bg-blue-900/20" : "border-gray-300 dark:border-gray-600 hover:border-kon dark:hover:border-blue-400"}`}
+              className={`border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-colors ${isDragging ? "border-kon bg-gray-50 dark:bg-kon/20" : "border-gray-300 dark:border-gray-600 hover:border-kon dark:hover:border-ai"}`}
               onClick={() => document.getElementById("img-upload")?.click()}
             >
               <div className="text-5xl mb-3">🖼️</div>
@@ -785,14 +785,14 @@ export default function FlipClient({
                   <p className="text-xs text-gray-500 dark:text-gray-400">{dimensions.w} × {dimensions.h} px</p>
                   <p className="text-xs text-gray-500 dark:text-gray-400">{formatBytes(fileSize)}</p>
                 </div>
-                <button onClick={reset} aria-label="ファイルを削除" className="flex-shrink-0 text-sm text-red-500 hover:text-red-600 font-bold transition-colors">✕削除</button>
+                <button onClick={reset} aria-label="ファイルを削除" className="flex-shrink-0 text-sm text-danger hover:text-danger font-bold transition-colors">✕削除</button>
               </div>
 
               {/* Undo / Redo / Reset */}
               <div className="flex justify-center gap-2 mb-4">
                 <button onClick={undoAction} disabled={!canUndo} aria-label="元に戻す" aria-disabled={!canUndo} className={canUndo ? btnNormal : btnDisabled}>↩ 元に戻す</button>
                 <button onClick={redoAction} disabled={!canRedo} aria-label="やり直し" aria-disabled={!canRedo} className={canRedo ? btnNormal : btnDisabled}>↪ やり直し</button>
-                <button onClick={resetTransforms} className={`${btnBase} bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-900/20 dark:hover:text-red-400`}>🔄 リセット</button>
+                <button onClick={resetTransforms} className={`${btnBase} bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-50 hover:text-danger dark:hover:bg-danger/20 dark:hover:text-danger`}>🔄 リセット</button>
               </div>
 
               {/* Flip toggles */}
@@ -841,7 +841,7 @@ export default function FlipClient({
               )}
 
               {/* Status */}
-              <div className={`text-center text-xs px-3 py-2 rounded-lg mb-4 font-medium ${statusParts.length > 0 ? "bg-kon/10 text-kon dark:text-blue-300" : "bg-gray-50 dark:bg-gray-700/30 text-gray-400 dark:text-gray-500"}`}>
+              <div className={`text-center text-xs px-3 py-2 rounded-lg mb-4 font-medium ${statusParts.length > 0 ? "bg-kon/10 text-kon dark:text-gray-300" : "bg-gray-50 dark:bg-gray-700/30 text-gray-400 dark:text-gray-500"}`}>
                 <span aria-live="polite" aria-atomic="true">{statusText}</span>
               </div>
 
@@ -1007,7 +1007,7 @@ export default function FlipClient({
               {outputDims && (
                 <p className="text-center text-xs text-gray-400 dark:text-gray-500 mb-4">
                   出力サイズ: {outputDims.w} × {outputDims.h} px
-                  {resizeEnabled && <span className="ml-1 text-kon dark:text-blue-400 font-medium">(リサイズ適用)</span>}
+                  {resizeEnabled && <span className="ml-1 text-kon dark:text-gray-300 font-medium">(リサイズ適用)</span>}
                 </p>
               )}
 

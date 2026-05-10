@@ -374,11 +374,11 @@ export default function FreelanceTaxCalculatorPage() {
         <nav className="text-sm mb-6">
           <ol className="flex items-center space-x-2 text-gray-500">
             <li>
-              <Link href="/" className="hover:text-blue-600">ホーム</Link>
+              <Link href="/" className="hover:text-ai">ホーム</Link>
             </li>
             <li>/</li>
             <li>
-              <Link href="/business" className="hover:text-blue-600">ビジネス・法人</Link>
+              <Link href="/business" className="hover:text-ai">ビジネス・法人</Link>
             </li>
             <li>/</li>
             <li className="text-gray-900 font-medium">フリーランス税金計算機</li>
@@ -411,7 +411,7 @@ export default function FreelanceTaxCalculatorPage() {
           {/* Section 1: Revenue */}
           <div className="mb-8">
             <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-              <span className="text-blue-600"><Icons.TrendingUp /></span>
+              <span className="text-kon"><Icons.TrendingUp /></span>
               売上・収入
             </h2>
             <div className="grid md:grid-cols-2 gap-4">
@@ -424,7 +424,7 @@ export default function FreelanceTaxCalculatorPage() {
                     type="number"
                     value={inputs.annualRevenue}
                     onChange={(e) => setInputs({ ...inputs, annualRevenue: Number(e.target.value) || 0 })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-kon focus:border-kon"
                   />
                   <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500">万円</span>
                 </div>
@@ -439,7 +439,7 @@ export default function FreelanceTaxCalculatorPage() {
                     type="number"
                     value={inputs.withholdingTax}
                     onChange={(e) => setInputs({ ...inputs, withholdingTax: Number(e.target.value) || 0 })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-kon focus:border-kon"
                   />
                   <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500">万円</span>
                 </div>
@@ -449,7 +449,7 @@ export default function FreelanceTaxCalculatorPage() {
                 <select
                   value={inputs.consumptionTaxType}
                   onChange={(e) => setInputs({ ...inputs, consumptionTaxType: e.target.value as CalculationInputs["consumptionTaxType"] })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-kon focus:border-kon"
                 >
                   <option value="exempt">免税事業者（売上1,000万円以下）</option>
                   <option value="standard">課税事業者（本則課税）</option>
@@ -468,7 +468,7 @@ export default function FreelanceTaxCalculatorPage() {
               className="w-full flex items-center justify-between text-lg font-bold text-gray-900 mb-4"
             >
               <span className="flex items-center gap-2">
-                <span className="text-orange-600"><Icons.Receipt /></span>
+                <span className="text-kon"><Icons.Receipt /></span>
                 経費（カテゴリ別入力）
                 <span className="text-sm font-normal text-gray-500">合計: {totalExpenses.toFixed(1)}万円</span>
               </span>
@@ -626,7 +626,7 @@ export default function FreelanceTaxCalculatorPage() {
               className="w-full flex items-center justify-between text-lg font-bold text-gray-900 mb-4"
             >
               <span className="flex items-center gap-2">
-                <span className="text-purple-600"><Icons.FileText /></span>
+                <span className="text-kon"><Icons.FileText /></span>
                 申告方法・控除
               </span>
               {showDeductions ? <Icons.ChevronUp /> : <Icons.ChevronDown />}
@@ -729,7 +729,7 @@ export default function FreelanceTaxCalculatorPage() {
                     <button
                       type="button"
                       onClick={() => setInputs({ ...inputs, autoCalcNHI: !inputs.autoCalcNHI })}
-                      className={`px-4 py-3 rounded-lg text-sm font-medium ${inputs.autoCalcNHI ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-700"}`}
+                      className={`px-4 py-3 rounded-lg text-sm font-medium ${inputs.autoCalcNHI ? "bg-kon text-white" : "bg-gray-200 text-gray-700"}`}
                     >
                       自動
                     </button>
@@ -840,7 +840,7 @@ export default function FreelanceTaxCalculatorPage() {
                     )}
                     <tr className="bg-gray-50 font-bold">
                       <td className="py-3 px-4">合計</td>
-                      <td className="text-right py-3 px-4 text-red-600">{formatCurrency(results.totalTaxes)}円</td>
+                      <td className="text-right py-3 px-4 text-danger">{formatCurrency(results.totalTaxes)}円</td>
                     </tr>
                   </tbody>
                 </table>
@@ -849,24 +849,24 @@ export default function FreelanceTaxCalculatorPage() {
 
             {/* Invoice Warning Card */}
             {inputs.consumptionTaxType === "exempt" && inputs.annualRevenue > 300 && (
-              <div className="bg-amber-50 border border-amber-200 rounded-xl p-6">
+              <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
                 <div className="flex items-start gap-3">
-                  <span className="text-amber-600 flex-shrink-0"><Icons.AlertCircle /></span>
+                  <span className="text-kon flex-shrink-0"><Icons.AlertCircle /></span>
                   <div>
-                    <h3 className="font-bold text-amber-800 mb-2">インボイス制度の影響</h3>
-                    <p className="text-amber-700 text-sm mb-3">
+                    <h3 className="font-bold text-kon mb-2">インボイス制度の影響</h3>
+                    <p className="text-kon text-sm mb-3">
                       インボイス登録すると消費税の申告・納付が必要になります。
                     </p>
                     <div className="grid md:grid-cols-2 gap-4 text-sm">
                       <div className="bg-white rounded-lg p-3">
                         <p className="text-gray-600">本則課税の場合</p>
-                        <p className="text-lg font-bold text-red-600">
+                        <p className="text-lg font-bold text-danger">
                           約{formatManYen(inputs.annualRevenue * 10000 * 0.1 * 0.3)}万円/年
                         </p>
                       </div>
                       <div className="bg-white rounded-lg p-3">
                         <p className="text-gray-600">2割特例の場合</p>
-                        <p className="text-lg font-bold text-amber-600">
+                        <p className="text-lg font-bold text-kon">
                           約{formatManYen(inputs.annualRevenue * 10000 * 0.1 * 0.2)}万円/年
                         </p>
                       </div>
@@ -878,8 +878,8 @@ export default function FreelanceTaxCalculatorPage() {
 
             {/* Tax Saving Advice */}
             {taxAdvice.length > 0 && (
-              <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
-                <h3 className="font-bold text-blue-800 mb-4 flex items-center gap-2">
+              <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
+                <h3 className="font-bold text-kon mb-4 flex items-center gap-2">
                   <Icons.Lightbulb /> 節税アドバイス
                 </h3>
                 <div className="space-y-4">
@@ -974,9 +974,9 @@ export default function FreelanceTaxCalculatorPage() {
           <div className="grid md:grid-cols-2 gap-4">
             <Link
               href="/business/incorporation-simulator"
-              className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors"
+              className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg hover:border-ai hover:bg-gray-50 transition-colors"
             >
-              <span className="text-blue-600"><Icons.Building2 /></span>
+              <span className="text-kon"><Icons.Building2 /></span>
               <div>
                 <h3 className="font-medium text-gray-900">個人事業主 vs 法人化</h3>
                 <p className="text-sm text-gray-500">どちらがお得か比較</p>
@@ -985,9 +985,9 @@ export default function FreelanceTaxCalculatorPage() {
             </Link>
             <Link
               href="/business/simplified-tax-calculator"
-              className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors"
+              className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg hover:border-ai hover:bg-gray-50 transition-colors"
             >
-              <span className="text-orange-600"><Icons.Receipt /></span>
+              <span className="text-kon"><Icons.Receipt /></span>
               <div>
                 <h3 className="font-medium text-gray-900">消費税 簡易課税 判定</h3>
                 <p className="text-sm text-gray-500">本則vs簡易vs2割特例</p>

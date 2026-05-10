@@ -98,7 +98,7 @@ interface RateStatus {
 function getStatusBadge(r: HoujinResult): { label: string; color: string; icon: string } {
   if (r._notFound === "1") return { label: "該当なし", color: "text-gray-500 bg-gray-100", icon: "⚫" };
   if (r.latest === "0") return { label: "変更前履歴", color: "text-yellow-700 bg-yellow-100", icon: "🟡" };
-  if (r.closeDate) return { label: "登記閉鎖", color: "text-red-700 bg-red-100", icon: "🔴" };
+  if (r.closeDate) return { label: "登記閉鎖", color: "text-danger bg-gray-50", icon: "🔴" };
   return { label: "登記あり", color: "text-green-700 bg-green-100", icon: "🟢" };
 }
 
@@ -190,7 +190,7 @@ function ResultRow({ r, idx }: { r: HoujinResult; idx: number }) {
         <td className="px-3 py-3 text-gray-400">{expanded ? <Icons.ChevronUp /> : <Icons.ChevronDown />}</td>
       </tr>
       {expanded && r._notFound !== "1" && (
-        <tr className="bg-blue-50/30 border-b border-gray-100">
+        <tr className="bg-gray-50/30 border-b border-gray-100">
           <td colSpan={6} className="px-4 py-3">
             <dl className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-2 text-xs">
               {r.kind && (
@@ -225,8 +225,8 @@ function ResultRow({ r, idx }: { r: HoujinResult; idx: number }) {
               )}
               {r.closeDate && (
                 <div>
-                  <dt className="text-red-400">登記閉鎖年月日</dt>
-                  <dd className="text-red-600 font-medium">{formatDate(r.closeDate)}</dd>
+                  <dt className="text-danger">登記閉鎖年月日</dt>
+                  <dd className="text-danger font-medium">{formatDate(r.closeDate)}</dd>
                 </div>
               )}
               {r.closeCause && (
@@ -280,7 +280,7 @@ function NameResultRow({ r, idx }: { r: HoujinResult; idx: number }) {
         <td className="px-3 py-3 text-gray-400">{expanded ? <Icons.ChevronUp /> : <Icons.ChevronDown />}</td>
       </tr>
       {expanded && (
-        <tr className="bg-blue-50/30 border-b border-gray-100">
+        <tr className="bg-gray-50/30 border-b border-gray-100">
           <td colSpan={5} className="px-4 py-3">
             <dl className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-2 text-xs">
               <div>
@@ -307,8 +307,8 @@ function NameResultRow({ r, idx }: { r: HoujinResult; idx: number }) {
               )}
               {r.closeDate && (
                 <div>
-                  <dt className="text-red-400">登記閉鎖年月日</dt>
-                  <dd className="text-red-600 font-medium">{formatDate(r.closeDate)}</dd>
+                  <dt className="text-danger">登記閉鎖年月日</dt>
+                  <dd className="text-danger font-medium">{formatDate(r.closeDate)}</dd>
                 </div>
               )}
               {r.postCode && (
@@ -696,8 +696,8 @@ export default function HoujinBangouLookupClient() {
           <div
             className={`flex items-center gap-2 text-sm px-4 py-2 rounded-lg mb-5 ${
               isLimited
-                ? "bg-red-50 text-red-700 border border-red-200"
-                : "bg-blue-50 text-blue-700 border border-blue-100"
+                ? "bg-gray-50 text-danger border border-gray-200"
+                : "bg-gray-50 text-kon border border-gray-200"
             }`}
           >
             <Icons.Info />
@@ -813,7 +813,7 @@ export default function HoujinBangouLookupClient() {
                       }}
                     />
                     {csvRows.length > 0 && csvColumns.length === 0 && (
-                      <p className="text-sm text-orange-600 mt-3">
+                      <p className="text-sm text-kon mt-3">
                         13桁の法人番号を含む列が見つかりませんでした。テキスト貼り付けをお試しください。
                       </p>
                     )}
@@ -847,7 +847,7 @@ export default function HoujinBangouLookupClient() {
                                     <td
                                       key={j}
                                       className={`px-2 py-1 border-r border-gray-100 ${
-                                        j === csvColIdx ? "bg-blue-50 font-medium text-kon" : "text-gray-600"
+                                        j === csvColIdx ? "bg-gray-50 font-medium text-kon" : "text-gray-600"
                                       }`}
                                     >
                                       {cell || "—"}
@@ -935,7 +935,7 @@ export default function HoujinBangouLookupClient() {
             )}
 
             {error && (
-              <div className="flex items-start gap-2 mt-4 bg-red-50 border border-red-200 rounded-lg px-4 py-3 text-red-700 text-sm">
+              <div className="flex items-start gap-2 mt-4 bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-danger text-sm">
                 <span className="shrink-0 mt-0.5"><Icons.AlertCircle /></span>
                 <span>{error}</span>
               </div>
@@ -993,9 +993,9 @@ export default function HoujinBangouLookupClient() {
                   <div className="text-2xl font-bold text-green-700">{summaryStats.active}</div>
                   <div className="text-xs text-green-600 mt-1">🟢 登記あり</div>
                 </div>
-                <div className="bg-red-50 rounded-xl border border-red-200 p-4 text-center">
-                  <div className="text-2xl font-bold text-red-700">{summaryStats.closed}</div>
-                  <div className="text-xs text-red-600 mt-1">🔴 登記閉鎖</div>
+                <div className="bg-gray-50 rounded-xl border border-gray-200 p-4 text-center">
+                  <div className="text-2xl font-bold text-danger">{summaryStats.closed}</div>
+                  <div className="text-xs text-danger mt-1">🔴 登記閉鎖</div>
                 </div>
                 <div className="bg-gray-50 rounded-xl border border-gray-200 p-4 text-center">
                   <div className="text-2xl font-bold text-gray-600">{summaryStats.notFound}</div>

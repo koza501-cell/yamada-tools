@@ -14,7 +14,7 @@ export default function StagingBanner() {
   if (!isStaging || dismissed) return null;
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-[9999] bg-gradient-to-r from-amber-500 to-orange-500 text-white text-center text-xs py-1 px-4 flex items-center justify-center gap-3 shadow-lg">
+    <div className="fixed top-0 left-0 right-0 z-[9999] bg-gradient-to-r from-slate-900 to-kon text-white text-center text-xs py-1 px-4 flex items-center justify-center gap-3 shadow-lg">
       <span className="font-bold tracking-wide">STAGING</span>
       <span className="hidden sm:inline text-white/80">— テスト環境です。本番環境ではありません</span>
       <button

@@ -56,10 +56,10 @@ function getBmiCategory(bmi: number) {
   if (bmi < 18.5)
     return {
       label: "低体重（やせ）",
-      colorClass: "text-blue-600",
-      colorBg: "bg-blue-50",
-      colorBorder: "border-blue-400",
-      colorText: "text-blue-700",
+      colorClass: "text-kon",
+      colorBg: "bg-gray-50",
+      colorBorder: "border-kon",
+      colorText: "text-kon",
     };
   if (bmi < 25.0)
     return {
@@ -80,25 +80,25 @@ function getBmiCategory(bmi: number) {
   if (bmi < 35.0)
     return {
       label: "肥満（2度）",
-      colorClass: "text-orange-600",
-      colorBg: "bg-orange-50",
-      colorBorder: "border-orange-400",
-      colorText: "text-orange-700",
+      colorClass: "text-kon",
+      colorBg: "bg-gray-50",
+      colorBorder: "border-gray-200",
+      colorText: "text-kon",
     };
   if (bmi < 40.0)
     return {
       label: "肥満（3度）",
-      colorClass: "text-red-600",
-      colorBg: "bg-red-50",
-      colorBorder: "border-red-400",
-      colorText: "text-red-700",
+      colorClass: "text-danger",
+      colorBg: "bg-gray-50",
+      colorBorder: "border-danger",
+      colorText: "text-danger",
     };
   return {
     label: "肥満（4度）",
-    colorClass: "text-red-800",
-    colorBg: "bg-red-100",
-    colorBorder: "border-red-600",
-    colorText: "text-red-800",
+    colorClass: "text-danger",
+    colorBg: "bg-gray-50",
+    colorBorder: "border-danger",
+    colorText: "text-danger",
   };
 }
 
@@ -106,18 +106,18 @@ function getObesityCategory(degree: number) {
   if (degree < -20)
     return {
       label: "やせすぎ",
-      colorClass: "text-blue-700",
-      colorBg: "bg-blue-100",
-      colorBorder: "border-blue-500",
-      colorText: "text-blue-800",
+      colorClass: "text-kon",
+      colorBg: "bg-gray-50",
+      colorBorder: "border-kon",
+      colorText: "text-kon",
     };
   if (degree < -10)
     return {
       label: "やせ",
-      colorClass: "text-blue-600",
-      colorBg: "bg-blue-50",
-      colorBorder: "border-blue-400",
-      colorText: "text-blue-700",
+      colorClass: "text-kon",
+      colorBg: "bg-gray-50",
+      colorBorder: "border-kon",
+      colorText: "text-kon",
     };
   if (degree <= 10)
     return {
@@ -138,25 +138,25 @@ function getObesityCategory(degree: number) {
   if (degree <= 30)
     return {
       label: "軽度肥満",
-      colorClass: "text-orange-500",
-      colorBg: "bg-orange-50",
-      colorBorder: "border-orange-400",
-      colorText: "text-orange-700",
+      colorClass: "text-kon",
+      colorBg: "bg-gray-50",
+      colorBorder: "border-gray-200",
+      colorText: "text-kon",
     };
   if (degree <= 50)
     return {
       label: "中程度肥満",
-      colorClass: "text-orange-600",
-      colorBg: "bg-orange-100",
-      colorBorder: "border-orange-500",
-      colorText: "text-orange-800",
+      colorClass: "text-kon",
+      colorBg: "bg-gray-50",
+      colorBorder: "border-gray-200",
+      colorText: "text-kon",
     };
   return {
     label: "高度肥満",
-    colorClass: "text-red-600",
-    colorBg: "bg-red-50",
-    colorBorder: "border-red-400",
-    colorText: "text-red-700",
+    colorClass: "text-danger",
+    colorBg: "bg-gray-50",
+    colorBorder: "border-danger",
+    colorText: "text-danger",
   };
 }
 
@@ -174,20 +174,20 @@ function getBodyFatJudge(
 ): { judge: string; range: string; colorClass: string } {
   if (gender === "male") {
     if (pct < 10)
-      return { judge: "アスリート体型", range: "10〜20%", colorClass: "text-blue-600" };
+      return { judge: "アスリート体型", range: "10〜20%", colorClass: "text-kon" };
     if (pct <= 20)
       return { judge: "標準・健康的", range: "10〜20%", colorClass: "text-green-600" };
     if (pct <= 25)
       return { judge: "やや高め", range: "10〜20%", colorClass: "text-yellow-600" };
-    return { judge: "高体脂肪（肥満）", range: "10〜20%", colorClass: "text-red-600" };
+    return { judge: "高体脂肪（肥満）", range: "10〜20%", colorClass: "text-danger" };
   } else {
     if (pct < 18)
-      return { judge: "やや低め", range: "18〜28%", colorClass: "text-blue-600" };
+      return { judge: "やや低め", range: "18〜28%", colorClass: "text-kon" };
     if (pct <= 28)
       return { judge: "標準・健康的", range: "18〜28%", colorClass: "text-green-600" };
     if (pct <= 35)
       return { judge: "やや高め", range: "18〜28%", colorClass: "text-yellow-600" };
-    return { judge: "高体脂肪（肥満）", range: "18〜28%", colorClass: "text-red-600" };
+    return { judge: "高体脂肪（肥満）", range: "18〜28%", colorClass: "text-danger" };
   }
 }
 
@@ -335,8 +335,8 @@ function RiskBadge({ level }: { level: "low" | "medium" | "high" }) {
       </span>
     );
   return (
-    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-red-100 text-red-700 text-sm font-semibold">
-      <span className="w-2 h-2 rounded-full bg-red-500" />
+    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gray-50 text-danger text-sm font-semibold">
+      <span className="w-2 h-2 rounded-full bg-danger" />
       総合リスク: 高
     </span>
   );
@@ -438,9 +438,9 @@ export default function IdealWeightCalculatorPage() {
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-3xl mx-auto px-4 py-4">
           <nav className="text-sm text-gray-500 mb-2">
-            <Link href="/" className="hover:text-blue-600">ホーム</Link>
+            <Link href="/" className="hover:text-ai">ホーム</Link>
             <span className="mx-1">&gt;</span>
-            <Link href="/health" className="hover:text-blue-600">健康・ウェルネス</Link>
+            <Link href="/health" className="hover:text-ai">健康・ウェルネス</Link>
             <span className="mx-1">&gt;</span>
             <span className="text-gray-700">標準体重・肥満度 判定ツール</span>
           </nav>
@@ -459,7 +459,7 @@ export default function IdealWeightCalculatorPage() {
         {/* ── Input Form ── */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6 mb-4">
           <h2 className="font-bold text-gray-900 mb-5 flex items-center gap-2">
-            <span className="bg-blue-600 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">1</span>
+            <span className="bg-kon text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">1</span>
             基本情報を入力
           </h2>
 
@@ -470,7 +470,7 @@ export default function IdealWeightCalculatorPage() {
               <button
                 onClick={() => setGender("male")}
                 className={`flex-1 py-2 text-sm font-semibold transition-colors ${
-                  gender === "male" ? "bg-blue-600 text-white" : "bg-white text-gray-600 hover:bg-gray-50"
+                  gender === "male" ? "bg-kon text-white" : "bg-white text-gray-600 hover:bg-gray-50"
                 }`}
               >
                 男性
@@ -478,7 +478,7 @@ export default function IdealWeightCalculatorPage() {
               <button
                 onClick={() => setGender("female")}
                 className={`flex-1 py-2 text-sm font-semibold transition-colors ${
-                  gender === "female" ? "bg-pink-500 text-white" : "bg-white text-gray-600 hover:bg-gray-50"
+                  gender === "female" ? "bg-kon text-white" : "bg-white text-gray-600 hover:bg-gray-50"
                 }`}
               >
                 女性
@@ -500,7 +500,7 @@ export default function IdealWeightCalculatorPage() {
                   placeholder="例: 35"
                   min={10}
                   max={100}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-right focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-right focus:outline-none focus:ring-2 focus:ring-kon"
                 />
                 <span className="text-gray-600 text-sm whitespace-nowrap">歳</span>
               </div>
@@ -509,7 +509,7 @@ export default function IdealWeightCalculatorPage() {
             {/* Height */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                身長 <span className="text-red-500">*</span>
+                身長 <span className="text-danger">*</span>
               </label>
               <div className="flex items-center gap-2">
                 <input
@@ -520,7 +520,7 @@ export default function IdealWeightCalculatorPage() {
                   min={50}
                   max={250}
                   step={0.1}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-right focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-right focus:outline-none focus:ring-2 focus:ring-kon"
                 />
                 <span className="text-gray-600 text-sm">cm</span>
               </div>
@@ -529,7 +529,7 @@ export default function IdealWeightCalculatorPage() {
             {/* Weight */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                体重 <span className="text-red-500">*</span>
+                体重 <span className="text-danger">*</span>
               </label>
               <div className="flex items-center gap-2">
                 <input
@@ -540,7 +540,7 @@ export default function IdealWeightCalculatorPage() {
                   min={10}
                   max={300}
                   step={0.1}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-right focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-right focus:outline-none focus:ring-2 focus:ring-kon"
                 />
                 <span className="text-gray-600 text-sm">kg</span>
               </div>
@@ -562,7 +562,7 @@ export default function IdealWeightCalculatorPage() {
                   min={40}
                   max={200}
                   step={0.1}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-right focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-right focus:outline-none focus:ring-2 focus:ring-kon"
                 />
                 <span className="text-gray-600 text-sm">cm</span>
               </div>
@@ -585,21 +585,21 @@ export default function IdealWeightCalculatorPage() {
                 min={1}
                 max={70}
                 step={0.1}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-right focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-right focus:outline-none focus:ring-2 focus:ring-kon"
               />
               <span className="text-gray-600 text-sm">%</span>
             </div>
           </div>
 
           {error && (
-            <div className="bg-red-50 border border-red-300 text-red-700 rounded-lg px-4 py-2 mb-4 text-sm">
+            <div className="bg-gray-50 border border-gray-200 text-danger rounded-lg px-4 py-2 mb-4 text-sm">
               {error}
             </div>
           )}
 
           <button
             onClick={handleCalc}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl text-lg transition-colors"
+            className="w-full bg-kon hover:bg-ai text-white font-bold py-3.5 rounded-xl text-lg transition-colors"
           >
             判定する
           </button>
@@ -658,7 +658,7 @@ export default function IdealWeightCalculatorPage() {
                     </tr>
                     <tr>
                       <td className="py-2.5 text-gray-600">標準体重との差</td>
-                      <td className={`py-2.5 text-right font-bold whitespace-nowrap ${result.diffFromBmi > 0 ? "text-red-600" : result.diffFromBmi < 0 ? "text-blue-600" : "text-green-600"}`}>
+                      <td className={`py-2.5 text-right font-bold whitespace-nowrap ${result.diffFromBmi > 0 ? "text-danger" : result.diffFromBmi < 0 ? "text-kon" : "text-green-600"}`}>
                         {sign(result.diffFromBmi)}{fmt(result.diffFromBmi)} kg
                       </td>
                       <td className="py-2.5 text-right text-gray-400">—</td>
@@ -671,7 +671,7 @@ export default function IdealWeightCalculatorPage() {
             {/* Section 2: 各種標準体重の比較 */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6 mb-4">
               <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <span className="bg-blue-600 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">2</span>
+                <span className="bg-kon text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">2</span>
                 各種標準体重の比較
               </h3>
               <div className="overflow-x-auto">
@@ -690,7 +690,7 @@ export default function IdealWeightCalculatorPage() {
                         <div className="text-xs text-gray-400">日本肥満学会推奨・最も医学的根拠が強い</div>
                       </td>
                       <td className="py-2.5 px-3 text-right font-semibold text-green-700">{fmt(result.bmiWeight)} kg</td>
-                      <td className={`py-2.5 px-3 text-right font-semibold ${result.diffFromBmi > 0 ? "text-red-600" : result.diffFromBmi < 0 ? "text-blue-600" : "text-green-600"}`}>
+                      <td className={`py-2.5 px-3 text-right font-semibold ${result.diffFromBmi > 0 ? "text-danger" : result.diffFromBmi < 0 ? "text-kon" : "text-green-600"}`}>
                         {sign(result.diffFromBmi)}{fmt(result.diffFromBmi)} kg
                       </td>
                     </tr>
@@ -699,8 +699,8 @@ export default function IdealWeightCalculatorPage() {
                         <div className="font-medium text-gray-700">BMI美容体重（BMI=20）</div>
                         <div className="text-xs text-gray-400">スリムに見える目安（医学的根拠なし）</div>
                       </td>
-                      <td className="py-2.5 px-3 text-right font-semibold text-purple-600">{fmt(result.beautyWeight)} kg</td>
-                      <td className={`py-2.5 px-3 text-right font-semibold ${result.diffFromBeauty > 0 ? "text-red-600" : result.diffFromBeauty < 0 ? "text-blue-600" : "text-green-600"}`}>
+                      <td className="py-2.5 px-3 text-right font-semibold text-kon">{fmt(result.beautyWeight)} kg</td>
+                      <td className={`py-2.5 px-3 text-right font-semibold ${result.diffFromBeauty > 0 ? "text-danger" : result.diffFromBeauty < 0 ? "text-kon" : "text-green-600"}`}>
                         {sign(result.diffFromBeauty)}{fmt(result.diffFromBeauty)} kg
                       </td>
                     </tr>
@@ -709,8 +709,8 @@ export default function IdealWeightCalculatorPage() {
                         <div className="font-medium text-gray-700">ブローカ式</div>
                         <div className="text-xs text-gray-400">古くから使われる経験則的な計算式</div>
                       </td>
-                      <td className="py-2.5 px-3 text-right font-semibold text-blue-600">{fmt(result.brokaWeight)} kg</td>
-                      <td className={`py-2.5 px-3 text-right font-semibold ${result.diffFromBroka > 0 ? "text-red-600" : result.diffFromBroka < 0 ? "text-blue-600" : "text-green-600"}`}>
+                      <td className="py-2.5 px-3 text-right font-semibold text-kon">{fmt(result.brokaWeight)} kg</td>
+                      <td className={`py-2.5 px-3 text-right font-semibold ${result.diffFromBroka > 0 ? "text-danger" : result.diffFromBroka < 0 ? "text-kon" : "text-green-600"}`}>
                         {sign(result.diffFromBroka)}{fmt(result.diffFromBroka)} kg
                       </td>
                     </tr>
@@ -740,17 +740,17 @@ export default function IdealWeightCalculatorPage() {
 
             {/* Section 3: 腹囲・メタボ判定 */}
             {result.waistRisk !== null && (
-              <div className={`rounded-xl border-2 p-4 sm:p-5 mb-4 ${result.waistRisk ? "bg-orange-50 border-orange-400" : "bg-green-50 border-green-400"}`}>
+              <div className={`rounded-xl border-2 p-4 sm:p-5 mb-4 ${result.waistRisk ? "bg-gray-50 border-gray-200" : "bg-green-50 border-green-400"}`}>
                 <h3 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
-                  <span className="bg-blue-600 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">3</span>
+                  <span className="bg-kon text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">3</span>
                   腹囲・メタボリックシンドローム判定
                 </h3>
                 {result.waistRisk ? (
                   <div>
-                    <p className="text-orange-800 font-semibold mb-1">
+                    <p className="text-kon font-semibold mb-1">
                       🟠 腹囲{waist}cm — メタボリックシンドロームの基準値（{gender === "male" ? "男性85cm" : "女性90cm"}）を超えています
                     </p>
-                    <p className="text-orange-700 text-sm">内臓脂肪型肥満の可能性があります。医療機関での検査をお勧めします。</p>
+                    <p className="text-kon text-sm">内臓脂肪型肥満の可能性があります。医療機関での検査をお勧めします。</p>
                   </div>
                 ) : (
                   <p className="text-green-800 font-semibold">
@@ -764,7 +764,7 @@ export default function IdealWeightCalculatorPage() {
             {result.bodyFatJudge !== null && (
               <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6 mb-4">
                 <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <span className="bg-blue-600 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">
+                  <span className="bg-kon text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">
                     {result.waistRisk !== null ? "4" : "3"}
                   </span>
                   体脂肪率判定
@@ -789,7 +789,7 @@ export default function IdealWeightCalculatorPage() {
             {/* Section 5: 総合アドバイス */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6 mb-4">
               <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <span className="bg-blue-600 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">
+                <span className="bg-kon text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">
                   {2 + optionalSectionOffset + 1}
                 </span>
                 総合アドバイス
@@ -823,8 +823,8 @@ export default function IdealWeightCalculatorPage() {
                 <tr className="bg-gray-50 border-b border-gray-200">
                   <th className="py-2 px-3 text-left text-gray-600">身長</th>
                   <th className="py-2 px-3 text-right text-green-700">標準体重<br />(BMI22)</th>
-                  <th className="py-2 px-3 text-right text-purple-600">美容体重<br />(BMI20)</th>
-                  <th className="py-2 px-3 text-right text-blue-600">ブローカ式<br />（男性）</th>
+                  <th className="py-2 px-3 text-right text-kon">美容体重<br />(BMI20)</th>
+                  <th className="py-2 px-3 text-right text-kon">ブローカ式<br />（男性）</th>
                   <th className="py-2 px-3 text-right text-yellow-700">肥満開始<br />(BMI25)</th>
                 </tr>
               </thead>
@@ -841,8 +841,8 @@ export default function IdealWeightCalculatorPage() {
                   <tr key={row.h} className="border-b border-gray-100 last:border-0 hover:bg-gray-50">
                     <td className="py-2.5 px-3 font-medium text-gray-900">{row.h}cm</td>
                     <td className="py-2.5 px-3 text-right text-green-700 font-semibold">{row.bmi22}kg</td>
-                    <td className="py-2.5 px-3 text-right text-purple-600 font-semibold">{row.bmi20}kg</td>
-                    <td className="py-2.5 px-3 text-right text-blue-600">{row.broka}kg</td>
+                    <td className="py-2.5 px-3 text-right text-kon font-semibold">{row.bmi20}kg</td>
+                    <td className="py-2.5 px-3 text-right text-kon">{row.broka}kg</td>
                     <td className="py-2.5 px-3 text-right text-yellow-700">{row.bmi25}kg以上</td>
                   </tr>
                 ))}
@@ -929,7 +929,7 @@ export default function IdealWeightCalculatorPage() {
               <Link
                 key={l.href}
                 href={l.href}
-                className="flex items-center gap-2 p-3 rounded-lg border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-colors text-blue-600 text-sm font-medium"
+                className="flex items-center gap-2 p-3 rounded-lg border border-gray-200 hover:border-ai hover:bg-gray-50 transition-colors text-kon text-sm font-medium"
               >
                 <span>→</span>
                 {l.label}

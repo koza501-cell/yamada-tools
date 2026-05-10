@@ -314,8 +314,8 @@ export default function ConcentrationLinesClient({
           <p className="text-gray-600 dark:text-gray-300 text-lg">漫画風の集中線エフェクトを画像に追加</p>
           <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
             <span className="bg-green-50 text-green-700 px-3 py-1 rounded-full">✓ 完全無料</span>
-            <span className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full">🔒 ブラウザ内処理</span>
-            <span className="bg-purple-50 text-purple-700 px-3 py-1 rounded-full">📱 スマホ対応</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">🔒 ブラウザ内処理</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">📱 スマホ対応</span>
           </div>
         </header>
 
@@ -460,8 +460,8 @@ export default function ConcentrationLinesClient({
                 </div>
               )}
               {seoContent.tips && (
-                <div className="bg-blue-50 dark:bg-blue-900/30 rounded-lg p-4 mt-4">
-                  <p className="text-sm text-blue-800 dark:text-blue-200">💡 <strong>ヒント:</strong> {seoContent.tips}</p>
+                <div className="bg-gray-50 dark:bg-kon/30 rounded-lg p-4 mt-4">
+                  <p className="text-sm text-kon dark:text-gray-300">💡 <strong>ヒント:</strong> {seoContent.tips}</p>
                 </div>
               )}
             </div>
@@ -479,7 +479,7 @@ export default function ConcentrationLinesClient({
           </div>
         </section>
 
-        <section className="mt-8 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-xl p-6 border border-blue-100 dark:border-blue-800">
+        <section className="mt-8 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-xl p-6 border border-gray-200 dark:border-kon">
           <h2 className="font-bold text-kon mb-6 text-lg text-center">📖 かんたん3ステップ</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {[{ icon: "📁", step: "Step 1", text: "画像をアップロード" }, { icon: "👆", step: "Step 2", text: "中心をクリックして調整" }, { icon: "💾", step: "Step 3", text: "ダウンロード" }].map((s, i) => (

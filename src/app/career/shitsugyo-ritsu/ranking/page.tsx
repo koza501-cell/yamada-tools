@@ -39,7 +39,7 @@ export default function ShitsugyoRankingPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <div className="bg-gradient-to-br from-indigo-700 to-blue-600 text-white py-10">
+      <div className="bg-gradient-to-br from-indigo-700 to-kon text-white py-10">
         <div className="max-w-4xl mx-auto px-4">
           <nav className="text-sm text-white/70 mb-2 flex items-center gap-1 flex-wrap">
             <Link href="/career" className="hover:text-white">キャリア・転職</Link>
@@ -146,7 +146,7 @@ export default function ShitsugyoRankingPage() {
                         />
                       </div>
                     </div>
-                    <span className={`text-sm font-bold w-20 text-right shrink-0 ${sort === "asc" && p.rank <= 3 ? "text-emerald-600 dark:text-emerald-400" : sort === "desc" && p.rank <= 3 ? "text-red-500 dark:text-red-400" : "text-gray-900 dark:text-white"}`}>
+                    <span className={`text-sm font-bold w-20 text-right shrink-0 ${sort === "asc" && p.rank <= 3 ? "text-emerald-600 dark:text-emerald-400" : sort === "desc" && p.rank <= 3 ? "text-danger dark:text-danger" : "text-gray-900 dark:text-white"}`}>
                       {p.unemployment_rate}%
                     </span>
                     <span className="text-xs w-20 text-right shrink-0 text-gray-500 dark:text-gray-400 hidden sm:block">

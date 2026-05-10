@@ -17,7 +17,7 @@ export function CitationsSection({
               href={s.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
+              className="text-kon dark:text-gray-300 hover:underline font-medium"
             >
               {s.name}
             </a>

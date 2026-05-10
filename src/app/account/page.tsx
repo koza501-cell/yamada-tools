@@ -34,7 +34,7 @@ export default function AccountPage() {
         <h1 className="text-xl font-bold text-gray-900">こんにちは、{displayName}さん</h1>
         <p className="text-gray-500 text-sm mt-1">{user.email}</p>
         {user.trial_active && user.trial_days_remaining != null && (
-          <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm text-blue-700">
+          <div className="mt-4 p-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-kon">
             トライアル残り <strong>{user.trial_days_remaining}日</strong> — トライアル終了前にPROプランへアップグレードしてください
           </div>
         )}

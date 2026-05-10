@@ -46,7 +46,7 @@ export default function YomeiPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <div className="bg-gradient-to-br from-purple-600 to-violet-500 text-white py-10">
+      <div className="bg-gradient-to-br from-slate-900 to-violet-500 text-white py-10">
         <div className="max-w-4xl mx-auto px-4">
           <nav className="text-sm text-white/70 mb-2 flex items-center gap-1 flex-wrap">
             <Link href="/health" className="hover:text-white">健康・生活</Link>
@@ -70,13 +70,13 @@ export default function YomeiPage() {
               <input
                 type="number" min={0} max={100} value={age}
                 onChange={(e) => setAge(Math.max(0, Math.min(100, Number(e.target.value))))}
-                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
               />
             </div>
             <div>
               <label className="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1">性別</label>
               <select value={gender} onChange={(e) => setGender(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon">
                 <option value="male">男性</option>
                 <option value="female">女性</option>
               </select>
@@ -84,13 +84,13 @@ export default function YomeiPage() {
             <div>
               <label className="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1">都道府県</label>
               <select value={slug} onChange={(e) => setSlug(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon">
                 {Object.entries(PREF_NAMES).map(([k, v]) => (<option key={k} value={k}>{v}</option>))}
               </select>
             </div>
           </div>
           <button onClick={calculate} disabled={loading}
-            className="w-full bg-purple-600 hover:bg-purple-700 disabled:opacity-50 text-white font-bold py-3 rounded-xl transition-colors">
+            className="w-full bg-kon hover:bg-ai disabled:opacity-50 text-white font-bold py-3 rounded-xl transition-colors">
             {loading ? "計算中..." : "余命を計算する"}
           </button>
         </div>
@@ -103,7 +103,7 @@ export default function YomeiPage() {
                 <div className="text-sm text-gray-500 dark:text-gray-400 mb-2">
                   {data.pref_name}の{age}歳{genderLabel}の統計的余命
                 </div>
-                <div className="text-6xl font-bold text-purple-600 dark:text-purple-400 mb-1">
+                <div className="text-6xl font-bold text-kon dark:text-gray-300 mb-1">
                   {data.remaining_years}
                 </div>
                 <div className="text-gray-600 dark:text-gray-400 text-lg">年</div>
@@ -116,14 +116,14 @@ export default function YomeiPage() {
                   <div className="text-xs text-gray-500 dark:text-gray-400 mb-1">全国平均の余命</div>
                   <div className="text-2xl font-bold text-gray-700 dark:text-gray-300">{data.national_remaining}年</div>
                 </div>
-                <div className="bg-purple-50 dark:bg-purple-900/20 rounded-xl p-4 text-center">
+                <div className="bg-gray-50 dark:bg-kon/20 rounded-xl p-4 text-center">
                   <div className="text-xs text-gray-500 dark:text-gray-400 mb-1">全国比</div>
-                  <div className={`text-2xl font-bold ${data.remaining_years >= data.national_remaining ? "text-green-600 dark:text-green-400" : "text-red-500 dark:text-red-400"}`}>
+                  <div className={`text-2xl font-bold ${data.remaining_years >= data.national_remaining ? "text-green-600 dark:text-green-400" : "text-danger dark:text-danger"}`}>
                     {data.remaining_years >= data.national_remaining ? "+" : ""}{(data.remaining_years - data.national_remaining).toFixed(1)}年
                   </div>
                 </div>
               </div>
-              <div className="mt-4 p-3 bg-amber-50 dark:bg-amber-900/20 rounded-xl text-xs text-amber-700 dark:text-amber-400">
+              <div className="mt-4 p-3 bg-gray-50 dark:bg-kon/20 rounded-xl text-xs text-kon dark:text-kon">
                 ※ 厚生労働省 令和2年完全生命表・都道府県別生命表に基づく統計的推計値です。実際の寿命は健康状態・生活習慣・遺伝等により大きく異なります。
               </div>
             </div>
@@ -155,11 +155,11 @@ export default function YomeiPage() {
                 </thead>
                 <tbody className="divide-y divide-gray-50 dark:divide-gray-700">
                   {data.table.map((row) => (
-                    <tr key={row.age} className={`hover:bg-gray-50 dark:hover:bg-gray-700/50 ${row.age === age ? "bg-purple-50 dark:bg-purple-900/20" : ""}`}>
+                    <tr key={row.age} className={`hover:bg-gray-50 dark:hover:bg-gray-700/50 ${row.age === age ? "bg-gray-50 dark:bg-kon/20" : ""}`}>
                       <td className="px-5 py-2 font-medium text-gray-900 dark:text-white">
                         {row.age}歳{row.age === age ? " ← 現在" : ""}
                       </td>
-                      <td className="px-5 py-2 text-right text-purple-600 dark:text-purple-400 font-bold">{row.remaining_years}年</td>
+                      <td className="px-5 py-2 text-right text-kon dark:text-gray-300 font-bold">{row.remaining_years}年</td>
                       <td className="px-5 py-2 text-right text-gray-700 dark:text-gray-300">{row.expected_death_age}歳</td>
                     </tr>
                   ))}

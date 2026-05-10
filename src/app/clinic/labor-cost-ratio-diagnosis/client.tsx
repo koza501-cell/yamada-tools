@@ -179,9 +179,9 @@ export default function LaborCostRatioClient() {
 
   const judgmentStyles: Record<string, string> = {
     green: 'bg-green-100 text-green-800 border-green-300',
-    blue: 'bg-blue-100 text-blue-800 border-blue-300',
+    blue: 'bg-gray-50 text-kon border-kon',
     yellow: 'bg-yellow-100 text-yellow-800 border-yellow-300',
-    red: 'bg-red-100 text-red-800 border-red-300',
+    red: 'bg-gray-50 text-danger border-gray-200',
   };
 
   return (
@@ -200,7 +200,7 @@ export default function LaborCostRatioClient() {
       <div className="bg-white border border-gray-200 rounded-xl p-6 mb-6 shadow-sm">
         <div className="mb-5">
           <label className="block text-sm font-semibold text-gray-700 mb-1">クリニック形態</label>
-          <select value={clinicType} onChange={e => setClinicType(e.target.value)} className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+          <select value={clinicType} onChange={e => setClinicType(e.target.value)} className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon focus:border-transparent">
             {CLINIC_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
           </select>
         </div>
@@ -208,18 +208,18 @@ export default function LaborCostRatioClient() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-1">月間医業収入（円）</label>
-            <input type="number" value={monthlyRevenue} onChange={e => setMonthlyRevenue(e.target.value)} placeholder="例: 5000000" className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+            <input type="number" value={monthlyRevenue} onChange={e => setMonthlyRevenue(e.target.value)} placeholder="例: 5000000" className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon focus:border-transparent" />
           </div>
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-1">月間変動費（医薬品・材料費等、円）</label>
-            <input type="number" value={monthlyVariableCost} onChange={e => setMonthlyVariableCost(e.target.value)} placeholder="例: 1000000" className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+            <input type="number" value={monthlyVariableCost} onChange={e => setMonthlyVariableCost(e.target.value)} placeholder="例: 1000000" className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon focus:border-transparent" />
           </div>
         </div>
 
         <div className="mb-5">
           <div className="flex items-center justify-between mb-2">
             <label className="text-sm font-semibold text-gray-700">スタッフ構成</label>
-            <button type="button" onClick={addRow} className="text-xs bg-blue-600 text-white px-3 py-1 rounded-lg hover:bg-blue-700">+ スタッフ追加</button>
+            <button type="button" onClick={addRow} className="text-xs bg-kon text-white px-3 py-1 rounded-lg hover:bg-ai">+ スタッフ追加</button>
           </div>
           <div className="space-y-2">
             <div className="grid grid-cols-12 gap-2 text-xs text-gray-500 font-medium px-1">
@@ -243,7 +243,7 @@ export default function LaborCostRatioClient() {
                 </div>
                 <div className="col-span-1 flex justify-center">
                   {staffRows.length > 1 && (
-                    <button type="button" onClick={() => removeRow(row.id)} className="text-red-400 hover:text-red-600 text-xl leading-none">×</button>
+                    <button type="button" onClick={() => removeRow(row.id)} className="text-danger hover:text-danger text-xl leading-none">×</button>
                   )}
                 </div>
               </div>
@@ -253,10 +253,10 @@ export default function LaborCostRatioClient() {
 
         <div className="mb-6">
           <label className="block text-sm font-semibold text-gray-700 mb-1">法定福利費率（%、標準15%）</label>
-          <input type="number" value={legalBenefitRate} onChange={e => setLegalBenefitRate(e.target.value)} min="0" max="30" className="w-40 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+          <input type="number" value={legalBenefitRate} onChange={e => setLegalBenefitRate(e.target.value)} min="0" max="30" className="w-40 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon focus:border-transparent" />
         </div>
 
-        <button type="button" onClick={handleCalculate} className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-base transition-colors">
+        <button type="button" onClick={handleCalculate} className="w-full bg-kon hover:bg-ai text-white font-bold py-3 rounded-xl text-base transition-colors">
           診断する
         </button>
       </div>
@@ -264,7 +264,7 @@ export default function LaborCostRatioClient() {
       {result && (
         <div className="mb-6">
           {result.error ? (
-            <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-red-700">{result.error}</div>
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-danger">{result.error}</div>
           ) : (
             <>
               <div className="bg-white border border-gray-200 rounded-xl p-6 mb-4 shadow-sm">
@@ -275,12 +275,12 @@ export default function LaborCostRatioClient() {
                   </span>
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-4">
-                  <div className="text-center bg-blue-50 rounded-lg p-3">
-                    <div className="text-2xl font-bold text-blue-700">{result.laborCostRatio}%</div>
+                  <div className="text-center bg-gray-50 rounded-lg p-3">
+                    <div className="text-2xl font-bold text-kon">{result.laborCostRatio}%</div>
                     <div className="text-xs text-gray-600 mt-1">人件費率</div>
                   </div>
-                  <div className="text-center bg-amber-50 rounded-lg p-3">
-                    <div className="text-2xl font-bold text-amber-700">{result.laborDistributionRatio}%</div>
+                  <div className="text-center bg-gray-50 rounded-lg p-3">
+                    <div className="text-2xl font-bold text-kon">{result.laborDistributionRatio}%</div>
                     <div className="text-xs text-gray-600 mt-1">労働分配率</div>
                   </div>
                   <div className="text-center bg-green-50 rounded-lg p-3 col-span-2 sm:col-span-1">
@@ -310,7 +310,7 @@ export default function LaborCostRatioClient() {
                 <ul className="space-y-2">
                   {result.suggestions!.map((s, i) => (
                     <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
-                      <span className="text-blue-500 mt-0.5 flex-shrink-0">•</span>
+                      <span className="text-kon mt-0.5 flex-shrink-0">•</span>
                       {s}
                     </li>
                   ))}
@@ -340,7 +340,7 @@ export default function LaborCostRatioClient() {
             <a
               key={tool.path}
               href={'coming' in tool && tool.coming ? '#' : tool.path}
-              className={`block border rounded-lg p-3 text-sm hover:shadow-md transition-shadow ${'coming' in tool && tool.coming ? 'border-gray-200 bg-gray-50 text-gray-400 cursor-default' : 'border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100'}`}
+              className={`block border rounded-lg p-3 text-sm hover:shadow-md transition-shadow ${'coming' in tool && tool.coming ? 'border-gray-200 bg-gray-50 text-gray-400 cursor-default' : 'border-gray-200 bg-gray-50 text-kon hover:bg-ai'}`}
             >
               {tool.nameJa}
               {'coming' in tool && tool.coming && <span className="ml-2 text-xs bg-gray-200 text-gray-500 px-1 rounded">近日公開</span>}

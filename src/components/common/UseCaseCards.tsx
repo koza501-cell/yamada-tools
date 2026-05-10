@@ -61,7 +61,7 @@ export default function UseCaseCards() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-xs text-blue-600 dark:text-blue-400 hover:underline"
+                className="text-xs text-kon dark:text-gray-300 hover:underline"
                 onClick={(e) => e.stopPropagation()}
               >
                 {link.label} →

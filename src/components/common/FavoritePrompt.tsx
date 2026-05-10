@@ -56,13 +56,13 @@ export default function FavoritePrompt() {
         <div className="flex items-start gap-3">
           <div className="text-3xl">⭐</div>
           <div>
-            <p className="font-bold text-kon dark:text-blue-300 text-sm mb-1">お気に入りに追加</p>
+            <p className="font-bold text-kon dark:text-gray-300 text-sm mb-1">お気に入りに追加</p>
             <p className="text-xs text-gray-600 dark:text-gray-300 mb-3">
               次回からすぐアクセスできます！
             </p>
             <button
               onClick={handleAddFavorite}
-              className="w-full py-2 bg-kon hover:bg-ai dark:bg-blue-600 dark:hover:bg-blue-500 text-white rounded-lg text-sm font-bold transition-colors"
+              className="w-full py-2 bg-kon hover:bg-ai dark:bg-kon dark:hover:bg-ai text-white rounded-lg text-sm font-bold transition-colors"
             >
               追加する
             </button>

@@ -131,7 +131,7 @@ export default function JinkoRankingPage() {
                         </div>
                       </div>
                       <span className="text-sm font-bold text-gray-900 dark:text-white w-24 text-right shrink-0">{fmtPop(p.population_2024)}</span>
-                      <span className={`text-xs w-14 text-right shrink-0 font-medium ${p.growth_pct >= 0 ? "text-green-600" : "text-red-500"}`}>
+                      <span className={`text-xs w-14 text-right shrink-0 font-medium ${p.growth_pct >= 0 ? "text-green-600" : "text-danger"}`}>
                         {p.growth_pct >= 0 ? "+" : ""}{p.growth_pct}%
                       </span>
                       <span className="text-xs w-12 text-right shrink-0 text-gray-500 dark:text-gray-400 hidden sm:block">{p.aging_rate}%高齢</span>

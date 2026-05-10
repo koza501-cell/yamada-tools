@@ -80,7 +80,7 @@ export default function SalaryCalcClient() {
   const deductionRate = ((monthlyDeductions / monthlyGross) * 100).toFixed(1);
 
   if (!mounted) {
-    return <div className="min-h-screen bg-gray-50 flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div></div>;
+    return <div className="min-h-screen bg-gray-50 flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-kon"></div></div>;
   }
 
   return (
@@ -106,10 +106,10 @@ export default function SalaryCalcClient() {
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700 mb-2">入力方法</label>
               <div className="flex gap-2">
-                <button onClick={() => setInputType("monthly")} className={`flex-1 py-2 rounded-lg text-sm font-medium ${inputType === "monthly" ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-700"}`}>
+                <button onClick={() => setInputType("monthly")} className={`flex-1 py-2 rounded-lg text-sm font-medium ${inputType === "monthly" ? "bg-kon text-white" : "bg-gray-100 text-gray-700"}`}>
                   月給で入力
                 </button>
-                <button onClick={() => setInputType("annual")} className={`flex-1 py-2 rounded-lg text-sm font-medium ${inputType === "annual" ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-700"}`}>
+                <button onClick={() => setInputType("annual")} className={`flex-1 py-2 rounded-lg text-sm font-medium ${inputType === "annual" ? "bg-kon text-white" : "bg-gray-100 text-gray-700"}`}>
                   年収で入力
                 </button>
               </div>
@@ -165,7 +165,7 @@ export default function SalaryCalcClient() {
           <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
             <h2 className="font-bold text-gray-900 mb-4">計算結果</h2>
 
-            <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl p-6 mb-6 text-center">
+            <div className="bg-gradient-to-r from-slate-900 to-kon text-white rounded-xl p-6 mb-6 text-center">
               <p className="text-sm opacity-80 mb-1">月々の手取り（税引後）</p>
               <p className="text-4xl font-bold">{monthlyNet.toLocaleString()}<span className="text-lg ml-1">円</span></p>
               <p className="text-sm opacity-80 mt-2">年間手取り: 約 {annualNet.toLocaleString()}円</p>
@@ -185,37 +185,37 @@ export default function SalaryCalcClient() {
               <div className="pl-4 border-l-2 border-gray-200 space-y-2">
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-500">健康保険</span>
-                  <span className="text-red-600">-{healthInsurance.toLocaleString()}円</span>
+                  <span className="text-danger">-{healthInsurance.toLocaleString()}円</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-500">厚生年金</span>
-                  <span className="text-red-600">-{pension.toLocaleString()}円</span>
+                  <span className="text-danger">-{pension.toLocaleString()}円</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-500">雇用保険</span>
-                  <span className="text-red-600">-{employmentInsurance.toLocaleString()}円</span>
+                  <span className="text-danger">-{employmentInsurance.toLocaleString()}円</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-500">所得税</span>
-                  <span className="text-red-600">-{monthlyIncomeTax.toLocaleString()}円</span>
+                  <span className="text-danger">-{monthlyIncomeTax.toLocaleString()}円</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-500">住民税</span>
-                  <span className="text-red-600">-{monthlyResidentTax.toLocaleString()}円</span>
+                  <span className="text-danger">-{monthlyResidentTax.toLocaleString()}円</span>
                 </div>
               </div>
 
               <div className="pt-2 border-t">
                 <div className="flex justify-between">
                   <span className="font-medium">控除合計</span>
-                  <span className="font-medium text-red-600">-{monthlyDeductions.toLocaleString()}円</span>
+                  <span className="font-medium text-danger">-{monthlyDeductions.toLocaleString()}円</span>
                 </div>
                 <p className="text-xs text-gray-500 mt-1">（額面の約{deductionRate}%）</p>
               </div>
             </div>
 
-            <div className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
-              <p className="text-sm text-amber-800">
+            <div className="mt-6 p-4 bg-gray-50 border border-gray-200 rounded-lg">
+              <p className="text-sm text-kon">
                 ⚠️ この計算は概算です。実際の金額は勤務先・地域・加入保険により異なります。
               </p>
             </div>
@@ -227,7 +227,7 @@ export default function SalaryCalcClient() {
           <h2 className="font-bold text-gray-900 mb-4">控除の内訳について</h2>
           <div className="grid md:grid-cols-2 gap-4 text-sm">
             <div>
-              <h3 className="font-medium text-blue-600 mb-1">社会保険料</h3>
+              <h3 className="font-medium text-kon mb-1">社会保険料</h3>
               <ul className="text-gray-600 space-y-1">
                 <li>• 健康保険: 約10%（会社と折半で約5%）</li>
                 <li>• 厚生年金: 18.3%（会社と折半で約9.15%）</li>
@@ -235,7 +235,7 @@ export default function SalaryCalcClient() {
               </ul>
             </div>
             <div>
-              <h3 className="font-medium text-blue-600 mb-1">税金</h3>
+              <h3 className="font-medium text-kon mb-1">税金</h3>
               <ul className="text-gray-600 space-y-1">
                 <li>• 所得税: 5%〜45%（累進課税）</li>
                 <li>• 住民税: 約10%（翌年6月から徴収）</li>
@@ -258,11 +258,11 @@ export default function SalaryCalcClient() {
                 </tr>
               </thead>
               <tbody className="divide-y">
-                <tr><td className="px-3 py-2">20万円</td><td className="px-3 py-2">約2.9万円</td><td className="px-3 py-2">約0.4万円</td><td className="px-3 py-2 font-bold text-blue-600">約16.7万円</td></tr>
-                <tr><td className="px-3 py-2">25万円</td><td className="px-3 py-2">約3.7万円</td><td className="px-3 py-2">約0.5万円</td><td className="px-3 py-2 font-bold text-blue-600">約20.8万円</td></tr>
-                <tr><td className="px-3 py-2">30万円</td><td className="px-3 py-2">約4.4万円</td><td className="px-3 py-2">約0.8万円</td><td className="px-3 py-2 font-bold text-blue-600">約24.8万円</td></tr>
-                <tr><td className="px-3 py-2">40万円</td><td className="px-3 py-2">約5.9万円</td><td className="px-3 py-2">約1.5万円</td><td className="px-3 py-2 font-bold text-blue-600">約32.6万円</td></tr>
-                <tr><td className="px-3 py-2">50万円</td><td className="px-3 py-2">約7.4万円</td><td className="px-3 py-2">約2.5万円</td><td className="px-3 py-2 font-bold text-blue-600">約40.1万円</td></tr>
+                <tr><td className="px-3 py-2">20万円</td><td className="px-3 py-2">約2.9万円</td><td className="px-3 py-2">約0.4万円</td><td className="px-3 py-2 font-bold text-kon">約16.7万円</td></tr>
+                <tr><td className="px-3 py-2">25万円</td><td className="px-3 py-2">約3.7万円</td><td className="px-3 py-2">約0.5万円</td><td className="px-3 py-2 font-bold text-kon">約20.8万円</td></tr>
+                <tr><td className="px-3 py-2">30万円</td><td className="px-3 py-2">約4.4万円</td><td className="px-3 py-2">約0.8万円</td><td className="px-3 py-2 font-bold text-kon">約24.8万円</td></tr>
+                <tr><td className="px-3 py-2">40万円</td><td className="px-3 py-2">約5.9万円</td><td className="px-3 py-2">約1.5万円</td><td className="px-3 py-2 font-bold text-kon">約32.6万円</td></tr>
+                <tr><td className="px-3 py-2">50万円</td><td className="px-3 py-2">約7.4万円</td><td className="px-3 py-2">約2.5万円</td><td className="px-3 py-2 font-bold text-kon">約40.1万円</td></tr>
               </tbody>
             </table>
           </div>
@@ -270,7 +270,7 @@ export default function SalaryCalcClient() {
         </div>
 
         <div className="mt-8 text-center">
-          <Link href="/generator" className="text-blue-600 hover:text-blue-800">← 計算・生成ツール一覧に戻る</Link>
+          <Link href="/generator" className="text-kon hover:text-ai">← 計算・生成ツール一覧に戻る</Link>
         </div>
         <AdUnit slot="5612038947" format="horizontal" />
       </div>

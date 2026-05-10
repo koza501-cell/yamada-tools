@@ -107,7 +107,7 @@ export default function FuyouKoujoClient() {
                 <div className="flex gap-2">
                   {(["2025", "2026"] as Year[]).map(y => (
                     <button key={y} onClick={() => setYear(y)}
-                      className={"px-3 py-1 rounded-lg text-xs border transition-colors " + (year === y ? "bg-blue-500 text-white border-blue-500" : "bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600")}>
+                      className={"px-3 py-1 rounded-lg text-xs border transition-colors " + (year === y ? "bg-kon text-white border-kon" : "bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600")}>
                       {y}年
                     </button>
                   ))}
@@ -129,7 +129,7 @@ export default function FuyouKoujoClient() {
                       {RELATIONS.map(r => <option key={r}>{r}</option>)}
                     </select>
                     {deps.length > 1 && (
-                      <button onClick={() => removeDep(dep.id)} className="text-red-400 hover:text-red-600 text-lg font-bold leading-none">×</button>
+                      <button onClick={() => removeDep(dep.id)} className="text-danger hover:text-danger text-lg font-bold leading-none">×</button>
                     )}
                   </div>
                   <div className="grid grid-cols-2 gap-2">
@@ -158,7 +158,7 @@ export default function FuyouKoujoClient() {
               ))}
               {deps.length < 6 && (
                 <button onClick={addDep}
-                  className="w-full py-2 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600 text-sm text-gray-500 dark:text-gray-400 hover:border-blue-400 hover:text-blue-500 transition-colors">
+                  className="w-full py-2 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600 text-sm text-gray-500 dark:text-gray-400 hover:border-ai hover:text-ai transition-colors">
                   ＋ 扶養親族を追加
                 </button>
               )}
@@ -185,7 +185,7 @@ export default function FuyouKoujoClient() {
               </div>
             </div>
             {result.hasSpecial && (
-              <div className="bg-purple-50 dark:bg-purple-900/20 rounded-xl p-4 border border-purple-200 dark:border-purple-700 text-xs text-purple-700 dark:text-purple-300">
+              <div className="bg-gray-50 dark:bg-kon/20 rounded-xl p-4 border border-kon dark:border-kon text-xs text-kon dark:text-gray-300">
                 <p className="font-semibold mb-1">2026年新設: 特定親族特別控除</p>
                 <p>19〜22歳の扶養親族で年収123万超〜150万円以下の場合、段階的に控除が適用されます。従来は年収103万超で控除ゼロでしたが、2026年改正により緩和されました。</p>
               </div>
@@ -205,9 +205,9 @@ export default function FuyouKoujoClient() {
                   <div className="text-xs text-gray-500 dark:text-gray-400">世帯主の税率</div>
                   <div className="font-bold text-gray-800 dark:text-white">{Math.round(result.headRate * 100)}%</div>
                 </div>
-                <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
-                  <div className="text-xs text-blue-500 dark:text-blue-400">年間節税額（目安）</div>
-                  <div className="font-bold text-blue-700 dark:text-blue-300 text-lg">{fmt(result.saving)}円</div>
+                <div className="bg-gray-50 dark:bg-kon/20 rounded-lg p-3">
+                  <div className="text-xs text-kon dark:text-gray-300">年間節税額（目安）</div>
+                  <div className="font-bold text-kon dark:text-gray-300 text-lg">{fmt(result.saving)}円</div>
                 </div>
               </div>
             </div>

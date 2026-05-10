@@ -139,12 +139,12 @@ export default function BreakEvenCalculatorClient() {
 
   function getRatioJudgment(ratio: number) {
     if (ratio < 70) return { label: "良好", color: "text-green-600 bg-green-50 border-green-200" };
-    if (ratio < 85) return { label: "適正", color: "text-blue-600 bg-blue-50 border-blue-200" };
+    if (ratio < 85) return { label: "適正", color: "text-kon bg-gray-50 border-gray-200" };
     if (ratio < 95) return { label: "要注意", color: "text-yellow-600 bg-yellow-50 border-yellow-200" };
-    return { label: "危険", color: "text-red-600 bg-red-50 border-red-200" };
+    return { label: "危険", color: "text-danger bg-gray-50 border-gray-200" };
   }
 
-  const ic = "border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-blue-500 outline-none";
+  const ic = "border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-kon outline-none";
   const lc = "block text-sm text-gray-600 mb-1";
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
@@ -186,19 +186,19 @@ export default function BreakEvenCalculatorClient() {
         </div>
         <div className="mt-3"><label className={lc}>月間診療日数</label><input type="number" className={ic} value={monthlyDays} onChange={e => setMonthlyDays(e.target.value)} min="1" max="31" /></div>
       </div>
-      <button type="button" onClick={handleCalculate} className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl text-base transition mb-6">計算する</button>
+      <button type="button" onClick={handleCalculate} className="w-full bg-kon hover:bg-ai text-white font-bold py-3 px-6 rounded-xl text-base transition mb-6">計算する</button>
       {result && (
         <>
           {result.error ? (
-            <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-red-700 text-sm mb-6">{result.error}</div>
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-danger text-sm mb-6">{result.error}</div>
           ) : (
             <div className="bg-white border border-gray-200 rounded-xl shadow-sm mb-6 overflow-hidden">
-              <div className="bg-blue-600 px-5 py-3"><h2 className="text-white font-bold text-sm">計算結果</h2></div>
+              <div className="bg-kon px-5 py-3"><h2 className="text-white font-bold text-sm">計算結果</h2></div>
               <div className="p-5 space-y-4">
                 <div className="grid grid-cols-2 gap-3">
-                  <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 text-center">
-                    <div className="text-xs text-blue-600 font-medium mb-1">損益分岐点売上高</div>
-                    <div className="text-xl font-bold text-blue-700">¥{fmt(result.breakEvenRevenue!)}<span className="text-sm font-normal">/月</span></div>
+                  <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center">
+                    <div className="text-xs text-kon font-medium mb-1">損益分岐点売上高</div>
+                    <div className="text-xl font-bold text-kon">¥{fmt(result.breakEvenRevenue!)}<span className="text-sm font-normal">/月</span></div>
                   </div>
                   <div className="bg-green-50 border border-green-200 rounded-xl p-4 text-center">
                     <div className="text-xs text-green-600 font-medium mb-1">必要患者数</div>
@@ -233,7 +233,7 @@ export default function BreakEvenCalculatorClient() {
         <h2 className="font-semibold text-gray-800 mb-3 text-sm">📋 使い方（5ステップ）</h2>
         <ol className="space-y-2 text-sm text-gray-700">
           {["診療科を選択（業界平均値が自動入力されます）", "月間の固定費（家賃・人件費・リース料など）を入力", "平均診療単価と月間診療日数を確認・調整", "「計算する」ボタンをクリック", "損益分岐点売上高と1日必要患者数を確認、必要に応じて印刷"].map((step, i) => (
-            <li key={i} className="flex gap-3"><span className="flex-shrink-0 w-5 h-5 bg-blue-600 text-white rounded-full text-xs flex items-center justify-center font-bold">{i + 1}</span><span>{step}</span></li>
+            <li key={i} className="flex gap-3"><span className="flex-shrink-0 w-5 h-5 bg-kon text-white rounded-full text-xs flex items-center justify-center font-bold">{i + 1}</span><span>{step}</span></li>
           ))}
         </ol>
       </div>
@@ -241,7 +241,7 @@ export default function BreakEvenCalculatorClient() {
         <h2 className="font-semibold text-gray-800 mb-3 text-sm">🔗 関連ツール</h2>
         <div className="grid grid-cols-2 gap-3">
           {RELATED_TOOLS.map(tool => (
-            <Link key={tool.href} href={tool.href} className="block bg-white border border-gray-200 rounded-lg p-3 hover:shadow-md hover:border-blue-300 transition text-sm">
+            <Link key={tool.href} href={tool.href} className="block bg-white border border-gray-200 rounded-lg p-3 hover:shadow-md hover:border-ai transition text-sm">
               <span className="font-medium text-gray-800">{tool.label}</span>
               {tool.note && (<span className="ml-2 text-xs text-gray-400">({tool.note})</span>)}
             </Link>

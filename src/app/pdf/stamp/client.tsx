@@ -529,8 +529,8 @@ export default function PdfStampClient({
           <p className="text-gray-600 dark:text-gray-300 text-lg">PDFに電子印鑑（ハンコ）をかんたん押印</p>
           <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
             <span className="bg-green-50 text-green-700 px-3 py-1 rounded-full">✓ 完全無料</span>
-            <span className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full">🔒 ブラウザ内処理</span>
-            <span className="bg-purple-50 text-purple-700 px-3 py-1 rounded-full">📱 スマホ対応</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">🔒 ブラウザ内処理</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">📱 スマホ対応</span>
           </div>
         </header>
 
@@ -669,7 +669,7 @@ export default function PdfStampClient({
                 <div ref={containerRef}
                   className="bg-gray-200 dark:bg-gray-900 rounded-xl p-2 overflow-auto">
                   {!stampImg && (
-                    <p className="text-center text-xs text-amber-600 bg-amber-50 rounded-lg p-2 mb-2">⚠ まず印鑑を用意してからPDFをクリックしてください</p>
+                    <p className="text-center text-xs text-kon bg-gray-50 rounded-lg p-2 mb-2">⚠ まず印鑑を用意してからPDFをクリックしてください</p>
                   )}
                   <canvas
                     ref={canvasRef}
@@ -691,10 +691,10 @@ export default function PdfStampClient({
                   </p>
                   {placements.length > 0 && (
                     <div className="flex gap-2">
-                      <button onClick={removeLastStamp} className="px-4 py-2 bg-amber-50 text-amber-700 border border-amber-200 rounded-lg text-xs font-bold hover:bg-amber-100 transition-colors">
+                      <button onClick={removeLastStamp} className="px-4 py-2 bg-gray-50 text-kon border border-gray-200 rounded-lg text-xs font-bold hover:bg-gray-50 transition-colors">
                         ↩ 元に戻す（Undo）
                       </button>
-                      <button onClick={resetAllStamps} className="px-4 py-2 bg-red-50 text-red-600 border border-red-200 rounded-lg text-xs font-bold hover:bg-red-100 transition-colors">
+                      <button onClick={resetAllStamps} className="px-4 py-2 bg-gray-50 text-danger border border-gray-200 rounded-lg text-xs font-bold hover:bg-gray-50 transition-colors">
                         🗑️ 全押印リセット
                       </button>
                     </div>
@@ -739,8 +739,8 @@ export default function PdfStampClient({
                 </div>
               )}
               {seoContent.tips && (
-                <div className="bg-blue-50 dark:bg-blue-900/30 rounded-lg p-4 mt-4">
-                  <p className="text-sm text-blue-800 dark:text-blue-200">💡 <strong>ヒント:</strong> {seoContent.tips}</p>
+                <div className="bg-gray-50 dark:bg-kon/30 rounded-lg p-4 mt-4">
+                  <p className="text-sm text-kon dark:text-gray-300">💡 <strong>ヒント:</strong> {seoContent.tips}</p>
                 </div>
               )}
             </div>
@@ -758,7 +758,7 @@ export default function PdfStampClient({
           </div>
         </section>
 
-        <section className="mt-8 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-xl p-6 border border-blue-100 dark:border-blue-800">
+        <section className="mt-8 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-xl p-6 border border-gray-200 dark:border-kon">
           <h2 className="font-bold text-kon mb-6 text-lg text-center">📖 かんたん3ステップ</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {[{ icon: "📄", step: "Step 1", text: "PDFをアップロード" }, { icon: "🔏", step: "Step 2", text: "印鑑を用意して押印" }, { icon: "💾", step: "Step 3", text: "押印済みPDFをダウンロード" }].map((s, i) => (

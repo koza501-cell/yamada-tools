@@ -20,7 +20,7 @@ export default function ShareButtons({ url, title }: ShareButtonsProps) {
           X でシェア
         </button>
         <button onClick={() => share(`https://www.facebook.com/sharer/sharer.php?u=${encoded}`)}
-          className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-bold rounded-lg hover:bg-blue-700 transition">
+          className="flex items-center gap-2 px-4 py-2 bg-kon text-white text-sm font-bold rounded-lg hover:bg-ai transition">
           Facebook
         </button>
         <button onClick={() => share(`https://social-plugins.line.me/lineit/share?url=${encoded}`)}

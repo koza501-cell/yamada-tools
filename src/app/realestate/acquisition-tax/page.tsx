@@ -410,9 +410,9 @@ export default function AcquisitionTaxPage() {
   };
 
   const inputClass =
-    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400";
+    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon";
   const selectClass =
-    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white";
+    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon bg-white";
   const labelClass = "block text-sm font-medium text-gray-700 mb-1";
 
   const ToggleBtn = ({
@@ -431,8 +431,8 @@ export default function AcquisitionTaxPage() {
     const activeClass =
       color === "green"
         ? "bg-green-600 text-white border-green-600"
-        : "bg-blue-600 text-white border-blue-600";
-    const inactiveClass = "bg-white text-gray-600 border-gray-300 hover:border-blue-400";
+        : "bg-kon text-white border-kon";
+    const inactiveClass = "bg-white text-gray-600 border-gray-300 hover:border-ai";
     return (
       <div className="flex gap-2 mt-1">
         <button
@@ -474,9 +474,9 @@ export default function AcquisitionTaxPage() {
           highlight === "green"
             ? "text-green-600"
             : highlight === "blue"
-            ? "text-blue-600"
+            ? "text-kon"
             : highlight === "red"
-            ? "text-red-500"
+            ? "text-danger"
             : "text-gray-800"
         }`}
       >
@@ -493,9 +493,9 @@ export default function AcquisitionTaxPage() {
         {/* Header */}
         <div className="mb-6">
           <nav className="text-xs text-gray-400 mb-3">
-            <Link href="/" className="hover:text-blue-600">ホーム</Link>
+            <Link href="/" className="hover:text-ai">ホーム</Link>
             <span className="mx-1">/</span>
-            <Link href="/realestate" className="hover:text-blue-600">不動産・住まい</Link>
+            <Link href="/realestate" className="hover:text-ai">不動産・住まい</Link>
             <span className="mx-1">/</span>
             <span className="text-gray-600">不動産取得税 計算機</span>
           </nav>
@@ -504,7 +504,7 @@ export default function AcquisitionTaxPage() {
           </h1>
           <p className="text-gray-600 text-sm md:text-base">
             軽減措置を自動適用して不動産取得税を計算。土地・建物の両方に対応。
-            <span className="inline-block ml-1 bg-orange-100 text-orange-700 text-xs font-semibold px-2 py-0.5 rounded">
+            <span className="inline-block ml-1 bg-gray-50 text-kon text-xs font-semibold px-2 py-0.5 rounded">
               令和9年3月31日まで延長特例対応
             </span>
           </p>
@@ -513,10 +513,10 @@ export default function AcquisitionTaxPage() {
         <AdUnit slot="5612038947" format="horizontal" className="mb-6" />
 
         {/* Section 1: 土地 */}
-        <div className="bg-white rounded-2xl shadow-sm border border-amber-100 p-6 mb-4">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 mb-4">
           <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
-            <h2 className="text-lg font-bold text-amber-700 flex items-center gap-2">
-              <span className="bg-amber-100 text-amber-700 rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold flex-shrink-0">
+            <h2 className="text-lg font-bold text-kon flex items-center gap-2">
+              <span className="bg-gray-50 text-kon rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold flex-shrink-0">
                 1
               </span>
               土地の情報
@@ -524,7 +524,7 @@ export default function AcquisitionTaxPage() {
             <div className="flex gap-2 flex-shrink-0">
               <button
                 type="button"
-                className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition-colors ${landEnabled ? "bg-amber-600 text-white border-amber-600" : "bg-white text-gray-500 border-gray-300"}`}
+                className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition-colors ${landEnabled ? "bg-kon text-white border-gray-200" : "bg-white text-gray-500 border-gray-300"}`}
                 onClick={() => setLandEnabled(true)}
               >
                 取得する
@@ -590,10 +590,10 @@ export default function AcquisitionTaxPage() {
         </div>
 
         {/* Section 2: 建物 */}
-        <div className="bg-white rounded-2xl shadow-sm border border-blue-100 p-6 mb-6">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 mb-6">
           <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
-            <h2 className="text-lg font-bold text-blue-700 flex items-center gap-2">
-              <span className="bg-blue-100 text-blue-700 rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold flex-shrink-0">
+            <h2 className="text-lg font-bold text-kon flex items-center gap-2">
+              <span className="bg-gray-50 text-kon rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold flex-shrink-0">
                 2
               </span>
               建物の情報
@@ -601,7 +601,7 @@ export default function AcquisitionTaxPage() {
             <div className="flex gap-2 flex-shrink-0">
               <button
                 type="button"
-                className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition-colors ${buildingEnabled ? "bg-blue-600 text-white border-blue-600" : "bg-white text-gray-500 border-gray-300"}`}
+                className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition-colors ${buildingEnabled ? "bg-kon text-white border-kon" : "bg-white text-gray-500 border-gray-300"}`}
                 onClick={() => setBuildingEnabled(true)}
               >
                 取得する
@@ -657,8 +657,8 @@ export default function AcquisitionTaxPage() {
                           type="button"
                           className={`flex-1 min-w-0 py-2 rounded-lg text-sm font-medium border transition-colors ${
                             (v === "新築") === isNew
-                              ? "bg-blue-600 text-white border-blue-600"
-                              : "bg-white text-gray-600 border-gray-300 hover:border-blue-400"
+                              ? "bg-kon text-white border-kon"
+                              : "bg-white text-gray-600 border-gray-300 hover:border-ai"
                           }`}
                           onClick={() => setIsNew(v === "新築")}
                         >
@@ -737,7 +737,7 @@ export default function AcquisitionTaxPage() {
         <button
           type="button"
           onClick={handleCalc}
-          className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold py-4 rounded-xl text-lg shadow-md transition-all mb-8"
+          className="w-full bg-gradient-to-r from-slate-900 to-kon hover:from-slate-900 hover:to-kon text-white font-bold py-4 rounded-xl text-lg shadow-md transition-all mb-8"
         >
           不動産取得税を計算する
         </button>
@@ -747,7 +747,7 @@ export default function AcquisitionTaxPage() {
           <div id="result-section" className="space-y-5">
 
             {/* Total Big Card — Bug 1 fix: grid-cols-1 sm:grid-cols-3 */}
-            <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl border border-amber-200 p-6 text-center">
+            <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl border border-gray-200 p-6 text-center">
               <h2 className="text-lg font-bold text-gray-700 mb-4">不動産取得税 合計</h2>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
                 <div className="bg-white rounded-xl p-4 border border-gray-200">
@@ -756,9 +756,9 @@ export default function AcquisitionTaxPage() {
                     {fmt(result.totalBeforeRelief)}
                   </p>
                 </div>
-                <div className="bg-white rounded-xl p-4 border border-orange-300">
-                  <p className="text-xs text-orange-600 font-medium mb-1">実際の納税額</p>
-                  <p className="text-xl font-bold text-orange-600">
+                <div className="bg-white rounded-xl p-4 border border-gray-200">
+                  <p className="text-xs text-kon font-medium mb-1">実際の納税額</p>
+                  <p className="text-xl font-bold text-kon">
                     {fmt(result.totalAfterRelief)}
                   </p>
                 </div>
@@ -814,8 +814,8 @@ export default function AcquisitionTaxPage() {
 
             {/* Land detail */}
             {result.landEnabled && (
-              <div className="bg-white rounded-2xl shadow-sm border border-amber-100 p-5">
-                <h3 className="font-bold text-amber-700 mb-3 flex items-center gap-2">
+              <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-5">
+                <h3 className="font-bold text-kon mb-3 flex items-center gap-2">
                   <span className="text-lg">🌏</span> 土地の不動産取得税
                 </h3>
                 {result.landExempt ? (
@@ -850,8 +850,8 @@ export default function AcquisitionTaxPage() {
                       />
                     )}
                     <div className="flex flex-wrap justify-between items-center gap-2 pt-2 border-t border-gray-200">
-                      <span className="text-sm font-bold text-amber-700">土地の税額</span>
-                      <span className="text-lg font-bold text-orange-600">
+                      <span className="text-sm font-bold text-kon">土地の税額</span>
+                      <span className="text-lg font-bold text-kon">
                         {fmt(result.landTaxFinal)}
                       </span>
                     </div>
@@ -862,8 +862,8 @@ export default function AcquisitionTaxPage() {
 
             {/* Building detail */}
             {result.buildingEnabled && (
-              <div className="bg-white rounded-2xl shadow-sm border border-blue-100 p-5">
-                <h3 className="font-bold text-blue-700 mb-3 flex items-center gap-2">
+              <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-5">
+                <h3 className="font-bold text-kon mb-3 flex items-center gap-2">
                   <span className="text-lg">🏠</span> 建物の不動産取得税
                 </h3>
                 {result.buildingExempt ? (
@@ -885,7 +885,7 @@ export default function AcquisitionTaxPage() {
                       }
                     />
                     {!result.buildingFloorOk && (
-                      <div className="bg-orange-50 rounded-lg p-2 text-xs text-orange-600 my-1">
+                      <div className="bg-gray-50 rounded-lg p-2 text-xs text-kon my-1">
                         床面積が50㎡以上240㎡以下の要件を満たさないため軽減措置の控除が適用されません
                       </div>
                     )}
@@ -899,7 +899,7 @@ export default function AcquisitionTaxPage() {
                       highlight={result.buildingDeduction > 0 ? "green" : undefined}
                     />
                     {result.usedDeductionInfo && (
-                      <div className="bg-blue-50 rounded-lg p-2 text-xs text-blue-600 my-1">
+                      <div className="bg-gray-50 rounded-lg p-2 text-xs text-kon my-1">
                         適用控除: {result.usedDeductionInfo.label}
                       </div>
                     )}
@@ -908,8 +908,8 @@ export default function AcquisitionTaxPage() {
                       value={fmt(result.buildingTaxableBase)}
                     />
                     <div className="flex flex-wrap justify-between items-center gap-2 pt-2 border-t border-gray-200">
-                      <span className="text-sm font-bold text-blue-700">建物の税額</span>
-                      <span className="text-lg font-bold text-orange-600">
+                      <span className="text-sm font-bold text-kon">建物の税額</span>
+                      <span className="text-lg font-bold text-kon">
                         {fmt(result.buildingTaxFinal)}
                       </span>
                     </div>
@@ -919,7 +919,7 @@ export default function AcquisitionTaxPage() {
             )}
 
             {/* Notes */}
-            <div className="bg-blue-50 rounded-xl border border-blue-100 p-4 text-xs text-blue-700 space-y-1">
+            <div className="bg-gray-50 rounded-xl border border-gray-200 p-4 text-xs text-kon space-y-1">
               <p className="font-semibold">計算の前提・注意事項</p>
               <p>• 土地の住宅用地追加減額（減額B）は土地の㎡あたり評価額が必要なため、確実に適用される最低額（45,000円）のみ表示しています。実際は更に大きくなる場合があります。</p>
               <p>• 長期優良住宅の控除1,300万円の適用には認定証が必要です。</p>
@@ -958,12 +958,12 @@ export default function AcquisitionTaxPage() {
                     <tr key={i} className={i % 2 === 1 ? "bg-gray-50" : ""}>
                       <td className="border border-gray-200 px-3 py-2">{label}</td>
                       <td className="border border-gray-200 px-3 py-2">{eval_}</td>
-                      <td className="border border-gray-200 px-3 py-2 text-orange-600">
+                      <td className="border border-gray-200 px-3 py-2 text-kon">
                         {before}
                       </td>
                       <td
                         className={`border border-gray-200 px-3 py-2 font-medium ${
-                          after === "0円" ? "text-green-600" : "text-orange-600"
+                          after === "0円" ? "text-green-600" : "text-kon"
                         }`}
                       >
                         {after}
@@ -1021,15 +1021,15 @@ export default function AcquisitionTaxPage() {
                     多くの場合、税額はゼロになります。
                   </p>
                 </div>
-                <div className="bg-blue-50 rounded-xl p-4">
-                  <h4 className="font-bold text-blue-700 mb-1">中古住宅の築年数別控除（100万〜1,200万円）</h4>
+                <div className="bg-gray-50 rounded-xl p-4">
+                  <h4 className="font-bold text-kon mb-1">中古住宅の築年数別控除（100万〜1,200万円）</h4>
                   <p className="text-sm">
                     自己居住用で床面積50㎡以上240㎡以下の中古住宅は、建築年に応じた控除額が適用されます。
                     1997年4月以降の建物は1,200万円控除で、ほとんどの場合で税額がゼロになります。
                   </p>
                 </div>
-                <div className="bg-amber-50 rounded-xl p-4">
-                  <h4 className="font-bold text-amber-700 mb-1">宅地の課税標準1/2特例</h4>
+                <div className="bg-gray-50 rounded-xl p-4">
+                  <h4 className="font-bold text-kon mb-1">宅地の課税標準1/2特例</h4>
                   <p className="text-sm">
                     宅地（宅地評価土地）を取得した場合、課税標準額が固定資産税評価額の1/2となります。
                     令和9年3月31日まで延長された特例です。
@@ -1080,7 +1080,7 @@ export default function AcquisitionTaxPage() {
           </div>
 
           {/* Related tools */}
-          <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl border border-amber-100 p-6">
+          <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl border border-gray-200 p-6">
             <h3 className="font-bold text-gray-800 mb-4">あわせて使えるツール</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
@@ -1111,7 +1111,7 @@ export default function AcquisitionTaxPage() {
                   className="flex items-center gap-3 p-3 bg-white rounded-xl hover:shadow-md transition-all group"
                 >
                   <span className="text-2xl">{tool.icon}</span>
-                  <span className="font-medium text-gray-700 group-hover:text-amber-600 transition-colors text-sm">
+                  <span className="font-medium text-gray-700 group-hover:text-kon transition-colors text-sm">
                     {tool.name}
                   </span>
                   <span className="ml-auto text-gray-400 group-hover:translate-x-1 transition-transform">

@@ -39,7 +39,7 @@ function StatCard({ item, active }: { item: StatItem; active: boolean }) {
   const count = useCountUp(item.value, 2000, active);
   return (
     <div className="flex flex-col items-center">
-      <span className="text-3xl font-bold text-kon dark:text-blue-400">
+      <span className="text-3xl font-bold text-kon dark:text-gray-300">
         {item.value % 1 === 0 ? Math.round(count) : count.toFixed(1)}{item.suffix}
       </span>
       <span className="text-sm text-gray-500 dark:text-gray-400 mt-1">{item.label}</span>

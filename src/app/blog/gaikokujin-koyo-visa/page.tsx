@@ -52,9 +52,9 @@ export default function GaikokujinKoyoVisaBlog() {
       />
 
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-blue-500">ホーム</Link>
+        <Link href="/" className="hover:text-ai">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-blue-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-ai">ブログ</Link>
         <span className="mx-2">/</span>
         <span>外国人採用ビザ費用完全ガイド</span>
       </nav>
@@ -66,7 +66,7 @@ export default function GaikokujinKoyoVisaBlog() {
       <h1 className="text-3xl font-bold text-gray-800 mb-4">{title}</h1>
       <p className="text-gray-500 text-sm mb-8">最終更新: 2025年5月 ｜ 読了時間: 約9分</p>
 
-      <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mb-8">
+      <div className="bg-gray-50 border-l-4 border-kon p-4 mb-8">
         <p className="font-bold text-gray-800 mb-2">この記事でわかること</p>
         <ul className="text-gray-700 space-y-1 text-sm">
           <li>✓ 就労可能な在留資格（ビザ）の種類と特徴</li>
@@ -82,7 +82,7 @@ export default function GaikokujinKoyoVisaBlog() {
         <StaticAdSlot />
         <h2 className="text-2xl font-bold text-gray-800 mb-4">外国人採用できるビザの種類（就労可能な在留資格）</h2>
         <p className="text-gray-700 mb-4">
-          外国人を採用する際は、本人が<strong className="text-blue-600">就労可能な在留資格（ビザ）</strong>を持っているか、または新たに取得する必要があります。主な就労ビザは以下の4種類です。
+          外国人を採用する際は、本人が<strong className="text-kon">就労可能な在留資格（ビザ）</strong>を持っているか、または新たに取得する必要があります。主な就労ビザは以下の4種類です。
         </p>
 
         <div className="overflow-x-auto mb-6">
@@ -103,7 +103,7 @@ export default function GaikokujinKoyoVisaBlog() {
                 ["高度専門職", "研究者・教授・経営者等", "可", "ポイント制。優遇多数"],
               ].map(([visa, job, family, feature], i) => (
                 <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
-                  <td className="p-3 border border-gray-200 font-medium text-blue-700">{visa}</td>
+                  <td className="p-3 border border-gray-200 font-medium text-kon">{visa}</td>
                   <td className="p-3 border border-gray-200">{job}</td>
                   <td className="p-3 border border-gray-200 text-center">{family}</td>
                   <td className="p-3 border border-gray-200 text-gray-600 text-xs">{feature}</td>
@@ -124,19 +124,19 @@ export default function GaikokujinKoyoVisaBlog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">技術・人文知識・国際業務ビザとは？</h2>
         <p className="text-gray-700 mb-4">
-          日本で最も多く活用される就労ビザです。ITエンジニア・経理・営業・通訳・デザイナーなど幅広い職種で活用でき、<strong className="text-blue-600">更新回数に制限がない</strong>ため長期雇用に向いています。
+          日本で最も多く活用される就労ビザです。ITエンジニア・経理・営業・通訳・デザイナーなど幅広い職種で活用でき、<strong className="text-kon">更新回数に制限がない</strong>ため長期雇用に向いています。
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-          <div className="bg-blue-50 rounded-xl p-5">
-            <h3 className="font-bold text-blue-800 mb-3">対象職種・要件</h3>
+          <div className="bg-gray-50 rounded-xl p-5">
+            <h3 className="font-bold text-kon mb-3">対象職種・要件</h3>
             <ul className="text-sm text-gray-700 space-y-2">
               <li>・ITエンジニア・システム開発・SE</li>
               <li>・経理・財務・人事・総務</li>
               <li>・営業・マーケティング・貿易</li>
               <li>・通訳・翻訳・語学講師</li>
               <li>・デザイナー・クリエイター</li>
-              <li className="text-blue-700 font-semibold mt-2">要件：大卒以上 or 実務経験10年以上</li>
+              <li className="text-kon font-semibold mt-2">要件：大卒以上 or 実務経験10年以上</li>
             </ul>
           </div>
           <div className="bg-green-50 rounded-xl p-5">
@@ -155,7 +155,7 @@ export default function GaikokujinKoyoVisaBlog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">技術・人文ビザの採用費用内訳</h2>
         <p className="text-gray-700 mb-4">
-          採用費用は<strong className="text-blue-600">海外から招へいする場合</strong>と<strong className="text-blue-600">国内在留者の在留資格変更</strong>で大きく異なります。
+          採用費用は<strong className="text-kon">海外から招へいする場合</strong>と<strong className="text-kon">国内在留者の在留資格変更</strong>で大きく異なります。
         </p>
 
         <div className="mb-6">
@@ -163,7 +163,7 @@ export default function GaikokujinKoyoVisaBlog() {
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-sm">
               <thead>
-                <tr className="bg-blue-600 text-white">
+                <tr className="bg-kon text-white">
                   <th className="p-3 text-left">費用項目</th>
                   <th className="p-3 text-center">最小</th>
                   <th className="p-3 text-center">最大</th>
@@ -187,10 +187,10 @@ export default function GaikokujinKoyoVisaBlog() {
                     <td className="p-3 border border-gray-200 text-gray-600 text-xs">{note}</td>
                   </tr>
                 ))}
-                <tr className="bg-blue-50 font-bold">
+                <tr className="bg-gray-50 font-bold">
                   <td className="p-3 border border-gray-200">合計初期費用目安</td>
-                  <td className="p-3 border border-gray-200 text-center text-blue-700">約433,000円</td>
-                  <td className="p-3 border border-gray-200 text-center text-blue-700">約1,456,000円</td>
+                  <td className="p-3 border border-gray-200 text-center text-kon">約433,000円</td>
+                  <td className="p-3 border border-gray-200 text-center text-kon">約1,456,000円</td>
                   <td className="p-3 border border-gray-200 text-gray-600 text-xs">研修費含む/1人あたり</td>
                 </tr>
               </tbody>
@@ -216,20 +216,20 @@ export default function GaikokujinKoyoVisaBlog() {
               </div>
             </div>
           </div>
-          <div className="bg-orange-50 rounded-xl p-5">
-            <h3 className="font-bold text-orange-800 mb-3">年間更新費用（1人あたり）</h3>
+          <div className="bg-gray-50 rounded-xl p-5">
+            <h3 className="font-bold text-kon mb-3">年間更新費用（1人あたり）</h3>
             <div className="space-y-2 text-sm">
-              <div className="flex justify-between border-b border-orange-100 pb-2">
+              <div className="flex justify-between border-b border-gray-200 pb-2">
                 <span>行政書士費用</span>
                 <span className="font-bold">30,000〜80,000円</span>
               </div>
-              <div className="flex justify-between border-b border-orange-100 pb-2">
+              <div className="flex justify-between border-b border-gray-200 pb-2">
                 <span>更新申請料</span>
                 <span className="font-bold">4,000円</span>
               </div>
-              <div className="flex justify-between bg-orange-100 rounded p-2 mt-2">
+              <div className="flex justify-between bg-gray-50 rounded p-2 mt-2">
                 <span className="font-bold">年間合計目安</span>
-                <span className="font-bold text-orange-700">34,000〜84,000円</span>
+                <span className="font-bold text-kon">34,000〜84,000円</span>
               </div>
             </div>
           </div>
@@ -264,7 +264,7 @@ export default function GaikokujinKoyoVisaBlog() {
               ].map(([item, tech, tokutei], i) => (
                 <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
                   <td className="p-3 border border-gray-200 font-medium">{item}</td>
-                  <td className="p-3 border border-gray-200 text-center text-blue-700">{tech}</td>
+                  <td className="p-3 border border-gray-200 text-center text-kon">{tech}</td>
                   <td className="p-3 border border-gray-200 text-center text-green-700">{tokutei}</td>
                 </tr>
               ))}
@@ -273,8 +273,8 @@ export default function GaikokujinKoyoVisaBlog() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <div className="bg-blue-50 rounded-xl p-5">
-            <h3 className="font-bold text-blue-800 mb-3">技術・人文・国際業務が向いているケース</h3>
+          <div className="bg-gray-50 rounded-xl p-5">
+            <h3 className="font-bold text-kon mb-3">技術・人文・国際業務が向いているケース</h3>
             <ul className="text-sm text-gray-700 space-y-1">
               <li>✅ ITエンジニア・プログラマーを採用したい</li>
               <li>✅ 事務・経理・人事スタッフが必要</li>
@@ -299,18 +299,18 @@ export default function GaikokujinKoyoVisaBlog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">申請に必要な主な書類</h2>
         <p className="text-gray-700 mb-4">
-          在留資格の申請には、会社側と本人側の両方から書類を準備する必要があります。学歴証明書の認証など、時間がかかるものがあるため<strong className="text-blue-600">2〜3ヶ月前から準備</strong>を始めましょう。
+          在留資格の申請には、会社側と本人側の両方から書類を準備する必要があります。学歴証明書の認証など、時間がかかるものがあるため<strong className="text-kon">2〜3ヶ月前から準備</strong>を始めましょう。
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-          <div className="bg-white border border-blue-200 rounded-xl p-5">
-            <h3 className="font-bold text-blue-800 mb-3">会社（雇用主）側の書類</h3>
+          <div className="bg-white border border-gray-200 rounded-xl p-5">
+            <h3 className="font-bold text-kon mb-3">会社（雇用主）側の書類</h3>
             <ul className="text-sm text-gray-700 space-y-2">
-              <li className="flex gap-2"><span className="text-blue-500">📄</span> 登記簿謄本（3ヶ月以内）</li>
-              <li className="flex gap-2"><span className="text-blue-500">📄</span> 直近2期分の決算書・税務申告書</li>
-              <li className="flex gap-2"><span className="text-blue-500">📄</span> 雇用契約書（労働条件通知書）</li>
-              <li className="flex gap-2"><span className="text-blue-500">📄</span> 会社概要・事業内容説明書</li>
-              <li className="flex gap-2"><span className="text-blue-500">📄</span> 採用理由説明書</li>
+              <li className="flex gap-2"><span className="text-kon">📄</span> 登記簿謄本（3ヶ月以内）</li>
+              <li className="flex gap-2"><span className="text-kon">📄</span> 直近2期分の決算書・税務申告書</li>
+              <li className="flex gap-2"><span className="text-kon">📄</span> 雇用契約書（労働条件通知書）</li>
+              <li className="flex gap-2"><span className="text-kon">📄</span> 会社概要・事業内容説明書</li>
+              <li className="flex gap-2"><span className="text-kon">📄</span> 採用理由説明書</li>
             </ul>
           </div>
           <div className="bg-white border border-green-200 rounded-xl p-5">
@@ -330,12 +330,12 @@ export default function GaikokujinKoyoVisaBlog() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
             <div className="bg-white rounded p-3 text-center">
               <p className="font-bold text-gray-700">在留資格認定証明書</p>
-              <p className="text-orange-600 font-bold">2〜3ヶ月</p>
+              <p className="text-kon font-bold">2〜3ヶ月</p>
               <p className="text-gray-500 text-xs">海外からの招へい</p>
             </div>
             <div className="bg-white rounded p-3 text-center">
               <p className="font-bold text-gray-700">在留資格変更許可</p>
-              <p className="text-blue-600 font-bold">1〜2ヶ月</p>
+              <p className="text-kon font-bold">1〜2ヶ月</p>
               <p className="text-gray-500 text-xs">国内在留者の変更</p>
             </div>
             <div className="bg-white rounded p-3 text-center">
@@ -384,10 +384,10 @@ export default function GaikokujinKoyoVisaBlog() {
           採用人数・招へい方法・行政書士依頼の有無・日本語研修の有無などを入力するだけで、初期費用・年間更新費用・N年間総費用の目安を計算できます。
         </p>
 
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl p-6 mb-6 text-center">
+        <div className="bg-gradient-to-r from-slate-900 to-indigo-600 text-white rounded-xl p-6 mb-6 text-center">
           <p className="text-lg font-bold mb-2">外国人採用 ビザ費用計算機</p>
           <p className="text-sm opacity-90 mb-4">採用人数・国籍・採用方法・行政書士依頼・日本語研修の有無から初期費用〜N年間総費用を試算。</p>
-          <Link href="/business/gaikokujin-visa-calculator" className="inline-block bg-white text-blue-700 font-bold px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors">
+          <Link href="/business/gaikokujin-visa-calculator" className="inline-block bg-white text-kon font-bold px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors">
             今すぐ費用を試算する →
           </Link>
         </div>
@@ -396,26 +396,26 @@ export default function GaikokujinKoyoVisaBlog() {
           <div className="bg-white border border-gray-200 rounded-lg p-4">
             <p className="font-bold text-gray-800 mb-2">特定技能 費用計算機</p>
             <p className="text-sm text-gray-600 mb-3">特定技能1号・2号の採用費用（登録支援機関費用含む）を計算。技術・人文・国際業務ビザとの比較も。</p>
-            <Link href="/business/tokutei-gino-calculator" className="text-blue-600 text-sm font-medium hover:underline">試してみる →</Link>
+            <Link href="/business/tokutei-gino-calculator" className="text-kon text-sm font-medium hover:underline">試してみる →</Link>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-4">
             <p className="font-bold text-gray-800 mb-2">給与・社会保険料計算機</p>
             <p className="text-sm text-gray-600 mb-3">外国人スタッフの給与から社会保険料・雇用保険料の会社負担分を計算。採用コストの総額把握に。</p>
-            <Link href="/business" className="text-blue-600 text-sm font-medium hover:underline">ビジネスツール一覧 →</Link>
+            <Link href="/business" className="text-kon text-sm font-medium hover:underline">ビジネスツール一覧 →</Link>
           </div>
         </div>
       </section>
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">まとめ：外国人採用の重要ポイント</h2>
-        <div className="bg-blue-50 rounded-xl p-6">
+        <div className="bg-gray-50 rounded-xl p-6">
           <ul className="space-y-3 text-gray-700">
-            <li className="flex gap-2"><span className="text-blue-600 font-bold">①</span> IT・事務・営業職には「技術・人文・国際業務ビザ」が最適。更新制限なし・家族帯同可</li>
-            <li className="flex gap-2"><span className="text-blue-600 font-bold">②</span> 製造・農業・飲食には「特定技能」が向いているが、家族帯同不可・通算5年の制限あり</li>
-            <li className="flex gap-2"><span className="text-blue-600 font-bold">③</span> 海外招へいの初期費用は43〜146万円/人。国内在留者変更なら5〜15万円程度</li>
-            <li className="flex gap-2"><span className="text-blue-600 font-bold">④</span> 在留資格認定証明書の取得まで2〜3ヶ月かかる。入社日から逆算して早めに準備</li>
-            <li className="flex gap-2"><span className="text-blue-600 font-bold">⑤</span> 採用時の在留カード確認と、雇用・退職時のハローワーク届出は法定義務</li>
-            <li className="flex gap-2"><span className="text-blue-600 font-bold">⑥</span> 行政書士への依頼を推奨。審査落ちリスクを下げ、書類準備の工数を削減できる</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">①</span> IT・事務・営業職には「技術・人文・国際業務ビザ」が最適。更新制限なし・家族帯同可</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">②</span> 製造・農業・飲食には「特定技能」が向いているが、家族帯同不可・通算5年の制限あり</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">③</span> 海外招へいの初期費用は43〜146万円/人。国内在留者変更なら5〜15万円程度</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">④</span> 在留資格認定証明書の取得まで2〜3ヶ月かかる。入社日から逆算して早めに準備</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">⑤</span> 採用時の在留カード確認と、雇用・退職時のハローワーク届出は法定義務</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">⑥</span> 行政書士への依頼を推奨。審査落ちリスクを下げ、書類準備の工数を削減できる</li>
           </ul>
         </div>
       </section>

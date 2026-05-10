@@ -166,13 +166,13 @@ export default function SouzokuToukiHubPage() {
 
               {/* Right: Warning urgency box */}
               <div className="bg-white dark:bg-gray-800 border border-stone-200 dark:border-gray-700 rounded-2xl p-5">
-                <div className="text-[11px] font-medium text-red-600 dark:text-red-400 mb-3">
+                <div className="text-[11px] font-medium text-danger dark:text-danger mb-3">
                   ⚠️ 重要なお知らせ
                 </div>
 
                 <div className="space-y-3">
-                  <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-3">
-                    <div className="text-sm font-medium text-red-900 dark:text-red-200">
+                  <div className="bg-gray-50 dark:bg-danger/20 rounded-lg p-3">
+                    <div className="text-sm font-medium text-danger dark:text-gin">
                       2024年4月から義務化
                     </div>
                     <div className="text-xs text-stone-600 dark:text-gray-400 mt-1">
@@ -180,8 +180,8 @@ export default function SouzokuToukiHubPage() {
                     </div>
                   </div>
 
-                  <div className="bg-amber-50 dark:bg-amber-900/20 rounded-lg p-3">
-                    <div className="text-sm font-medium text-amber-800 dark:text-amber-200">
+                  <div className="bg-gray-50 dark:bg-kon/20 rounded-lg p-3">
+                    <div className="text-sm font-medium text-kon dark:text-amber-200">
                       10万円以下の過料
                     </div>
                     <div className="text-xs text-stone-600 dark:text-gray-400 mt-1">
@@ -239,7 +239,7 @@ export default function SouzokuToukiHubPage() {
                 >
                   <div
                     className={`text-[10px] font-medium mb-2 ${
-                      tool.primary ? "text-amber-800" : ""
+                      tool.primary ? "text-kon" : ""
                     }`}
                     style={!tool.primary ? { color: colors.textMuted } : undefined}
                   >

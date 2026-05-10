@@ -301,10 +301,10 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
       <FinancialDisclaimer type="tax" />
       
       {/* Header */}
-      <div className="bg-gradient-to-r from-blue-700 to-blue-500 text-white py-10 px-4">
+      <div className="bg-gradient-to-r from-blue-700 to-kon text-white py-10 px-4">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-2xl md:text-3xl font-bold">FX損益計算機</h1>
-          <p className="text-blue-100 text-sm md:text-base mt-2">損益・証拠金・ロスカット・スワップ・確定申告 完全対応</p>
+          <p className="text-gin text-sm md:text-base mt-2">損益・証拠金・ロスカット・スワップ・確定申告 完全対応</p>
         </div>
       </div>
 
@@ -318,7 +318,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                 onClick={() => setMode(m)}
                 className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${
                   mode === m
-                    ? "bg-blue-600 text-white"
+                    ? "bg-kon text-white"
                     : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                 }`}
               >
@@ -346,7 +346,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                     <select
                       value={profitPair}
                       onChange={(e) => setProfitPair(e.target.value)}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon"
                     >
                       {CURRENCY_PAIRS.map(p => <option key={p} value={p}>{p}</option>)}
                     </select>
@@ -357,13 +357,13 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                     <div className="flex rounded-lg border border-gray-200 overflow-hidden">
                       <button
                         onClick={() => setProfitType("buy")}
-                        className={`flex-1 py-2 text-sm transition-all ${profitType === "buy" ? "bg-blue-600 text-white" : "bg-white text-gray-600"}`}
+                        className={`flex-1 py-2 text-sm transition-all ${profitType === "buy" ? "bg-kon text-white" : "bg-white text-gray-600"}`}
                       >
                         買い（ロング）
                       </button>
                       <button
                         onClick={() => setProfitType("sell")}
-                        className={`flex-1 py-2 text-sm transition-all ${profitType === "sell" ? "bg-red-600 text-white" : "bg-white text-gray-600"}`}
+                        className={`flex-1 py-2 text-sm transition-all ${profitType === "sell" ? "bg-danger text-white" : "bg-white text-gray-600"}`}
                       >
                         売り（ショート）
                       </button>
@@ -379,7 +379,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                         type="number"
                         value={profitQuantity}
                         onChange={(e) => setProfitQuantity(Number(e.target.value))}
-                        className="flex-1 border border-gray-300 rounded-l-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500"
+                        className="flex-1 border border-gray-300 rounded-l-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon"
                       />
                       <button
                         onClick={() => setProfitUnit(profitUnit === "currency" ? "lot" : "currency")}
@@ -399,7 +399,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                       type="number"
                       value={spread}
                       onChange={(e) => setSpread(Number(e.target.value))}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon"
                     />
                   </div>
                 </div>
@@ -412,7 +412,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                       step="0.001"
                       value={entryRate}
                       onChange={(e) => setEntryRate(e.target.value)}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon"
                     />
                   </div>
                   
@@ -423,7 +423,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                       step="0.001"
                       value={exitRate}
                       onChange={(e) => setExitRate(e.target.value)}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon"
                     />
                   </div>
                 </div>
@@ -436,17 +436,17 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                       step="0.001"
                       value={crossRate}
                       onChange={(e) => setCrossRate(e.target.value)}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon"
                     />
                     <p className="text-xs text-gray-400 mt-1">ドル建て通貨ペアの損益を円換算するために必要です</p>
                   </div>
                 )}
 
                 {/* Results */}
-                <div className={`rounded-xl p-6 ${profitResult.isProfit ? "bg-green-50 border border-green-200" : "bg-red-50 border border-red-200"}`}>
+                <div className={`rounded-xl p-6 ${profitResult.isProfit ? "bg-green-50 border border-green-200" : "bg-gray-50 border border-gray-200"}`}>
                   <div className="flex items-center gap-2 mb-4">
                     <span className="text-2xl">{profitResult.isProfit ? "✅" : "❌"}</span>
-                    <span className={`text-xl font-bold ${profitResult.isProfit ? "text-green-700" : "text-red-700"}`}>
+                    <span className={`text-xl font-bold ${profitResult.isProfit ? "text-green-700" : "text-danger"}`}>
                       {profitResult.isProfit ? "利益" : "損失"}
                     </span>
                   </div>
@@ -454,19 +454,19 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                   <div className="grid grid-cols-3 gap-4">
                     <div className="text-center">
                       <p className="text-xs text-gray-500 mb-1">獲得pips</p>
-                      <p className={`text-xl font-bold ${profitResult.isProfit ? "text-green-700" : "text-red-700"}`}>
+                      <p className={`text-xl font-bold ${profitResult.isProfit ? "text-green-700" : "text-danger"}`}>
                         {profitResult.pips > 0 ? "+" : ""}{profitResult.pips}
                       </p>
                     </div>
                     <div className="text-center">
                       <p className="text-xs text-gray-500 mb-1">損益（円）</p>
-                      <p className={`text-xl font-bold ${profitResult.isProfit ? "text-green-700" : "text-red-700"}`}>
+                      <p className={`text-xl font-bold ${profitResult.isProfit ? "text-green-700" : "text-danger"}`}>
                         ¥{profitResult.profit.toLocaleString()}
                       </p>
                     </div>
                     <div className="text-center">
                       <p className="text-xs text-gray-500 mb-1">損益（%）</p>
-                      <p className={`text-xl font-bold ${profitResult.isProfit ? "text-green-700" : "text-red-700"}`}>
+                      <p className={`text-xl font-bold ${profitResult.isProfit ? "text-green-700" : "text-danger"}`}>
                         {profitResult.profitPercent > 0 ? "+" : ""}{profitResult.profitPercent}%
                       </p>
                     </div>
@@ -500,7 +500,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                     <select
                       value={marginPair}
                       onChange={(e) => setMarginPair(e.target.value)}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon"
                     >
                       {CURRENCY_PAIRS.map(p => <option key={p} value={p}>{p}</option>)}
                     </select>
@@ -513,7 +513,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                       step="0.001"
                       value={currentRate}
                       onChange={(e) => setCurrentRate(e.target.value)}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon"
                     />
                   </div>
                 </div>
@@ -525,7 +525,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                       type="number"
                       value={marginQuantity}
                       onChange={(e) => setMarginQuantity(Number(e.target.value))}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon"
                     />
                   </div>
                   
@@ -535,14 +535,14 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                       type="number"
                       value={accountBalance}
                       onChange={(e) => setAccountBalance(Number(e.target.value))}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon"
                     />
                   </div>
                 </div>
 
                 <div className="mb-6">
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    レバレッジ: <span className="text-blue-600 font-bold">{leverage}x</span>
+                    レバレッジ: <span className="text-kon font-bold">{leverage}x</span>
                   </label>
                   <input
                     type="range"
@@ -560,7 +560,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
 
                 <div className="mb-6">
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    維持証拠金率: <span className="text-blue-600 font-bold">{maintenanceRate}%</span>
+                    維持証拠金率: <span className="text-kon font-bold">{maintenanceRate}%</span>
                   </label>
                   <input
                     type="range"
@@ -581,25 +581,25 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                 )}
 
                 {/* Results */}
-                <div className="bg-blue-50 rounded-xl p-6 border border-blue-200">
+                <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div className="text-center">
                       <p className="text-xs text-gray-500 mb-1">必要証拠金</p>
-                      <p className="text-lg font-bold text-blue-700">¥{marginResult.requiredMargin.toLocaleString()}</p>
+                      <p className="text-lg font-bold text-kon">¥{marginResult.requiredMargin.toLocaleString()}</p>
                     </div>
                     <div className="text-center">
                       <p className="text-xs text-gray-500 mb-1">実効レバレッジ</p>
-                      <p className={`text-lg font-bold ${marginResult.effectiveLeverage > 10 ? "text-red-600" : "text-blue-700"}`}>
+                      <p className={`text-lg font-bold ${marginResult.effectiveLeverage > 10 ? "text-danger" : "text-kon"}`}>
                         {marginResult.effectiveLeverage}x
                       </p>
                     </div>
                     <div className="text-center">
                       <p className="text-xs text-gray-500 mb-1">ロスカットレート</p>
-                      <p className="text-lg font-bold text-red-600">{marginResult.losscutRate}</p>
+                      <p className="text-lg font-bold text-danger">{marginResult.losscutRate}</p>
                     </div>
                     <div className="text-center">
                       <p className="text-xs text-gray-500 mb-1">ロスカットまで</p>
-                      <p className="text-lg font-bold text-red-600">{marginResult.losscutPips}pips</p>
+                      <p className="text-lg font-bold text-danger">{marginResult.losscutPips}pips</p>
                     </div>
                   </div>
                 </div>
@@ -629,7 +629,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                     <select
                       value={swapPair}
                       onChange={(e) => setSwapPair(e.target.value)}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon"
                     >
                       {CURRENCY_PAIRS.map(p => <option key={p} value={p}>{p}</option>)}
                     </select>
@@ -640,13 +640,13 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                     <div className="flex rounded-lg border border-gray-200 overflow-hidden">
                       <button
                         onClick={() => setSwapType("buy")}
-                        className={`flex-1 py-2 text-sm transition-all ${swapType === "buy" ? "bg-blue-600 text-white" : "bg-white text-gray-600"}`}
+                        className={`flex-1 py-2 text-sm transition-all ${swapType === "buy" ? "bg-kon text-white" : "bg-white text-gray-600"}`}
                       >
                         買い
                       </button>
                       <button
                         onClick={() => setSwapType("sell")}
-                        className={`flex-1 py-2 text-sm transition-all ${swapType === "sell" ? "bg-red-600 text-white" : "bg-white text-gray-600"}`}
+                        className={`flex-1 py-2 text-sm transition-all ${swapType === "sell" ? "bg-danger text-white" : "bg-white text-gray-600"}`}
                       >
                         売り
                       </button>
@@ -661,7 +661,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                       type="number"
                       value={swapQuantity}
                       onChange={(e) => setSwapQuantity(Number(e.target.value))}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon"
                     />
                   </div>
                   
@@ -671,7 +671,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                       type="number"
                       value={swapPoint}
                       onChange={(e) => setSwapPoint(Number(e.target.value))}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon"
                     />
                     <p className="text-xs text-gray-400 mt-1">証券会社のスワップポイントを入力</p>
                   </div>
@@ -679,7 +679,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
 
                 <div className="mb-6">
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    保有日数: <span className="text-blue-600 font-bold">{holdingDays}日</span>
+                    保有日数: <span className="text-kon font-bold">{holdingDays}日</span>
                   </label>
                   <input
                     type="range"
@@ -701,7 +701,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                       type="checkbox"
                       checked={compoundSwap}
                       onChange={(e) => setCompoundSwap(e.target.checked)}
-                      className="w-4 h-4 text-blue-600"
+                      className="w-4 h-4 text-kon"
                     />
                     <span className="text-sm text-gray-700">スワップを再投資する（複利）</span>
                   </label>
@@ -716,7 +716,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                     </div>
                     <div className="text-center">
                       <p className="text-xs text-gray-500 mb-1">年換算利回り</p>
-                      <p className="text-2xl font-bold text-blue-700">{swapResult.annualRate}%</p>
+                      <p className="text-2xl font-bold text-kon">{swapResult.annualRate}%</p>
                     </div>
                   </div>
                 </div>
@@ -827,7 +827,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                         <td className="px-2 py-2 text-center">
                           <button
                             onClick={() => removeTrade(trade.id)}
-                            className="text-red-500 hover:text-red-700"
+                            className="text-danger hover:text-danger"
                             disabled={trades.length <= 1}
                           >
                             ×
@@ -842,7 +842,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
               <button
                 onClick={addTrade}
                 disabled={trades.length >= 20}
-                className="w-full py-2 bg-blue-50 text-blue-600 rounded-lg text-sm font-medium hover:bg-blue-100 disabled:opacity-50 disabled:cursor-not-allowed mb-6"
+                className="w-full py-2 bg-gray-50 text-kon rounded-lg text-sm font-medium hover:bg-ai disabled:opacity-50 disabled:cursor-not-allowed mb-6"
               >
                 + 取引を追加 ({trades.length}/20)
               </button>
@@ -854,21 +854,21 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
                   <div className="text-center">
                     <p className="text-xs text-gray-500 mb-1">合計損益</p>
-                    <p className={`text-xl font-bold ${batchResult.totalProfit >= 0 ? "text-green-700" : "text-red-700"}`}>
+                    <p className={`text-xl font-bold ${batchResult.totalProfit >= 0 ? "text-green-700" : "text-danger"}`}>
                       ¥{batchResult.totalProfit.toLocaleString()}
                     </p>
                   </div>
                   <div className="text-center">
                     <p className="text-xs text-gray-500 mb-1">勝ち/負け</p>
-                    <p className="text-xl font-bold text-blue-700">{batchResult.winCount}/{batchResult.lossCount}</p>
+                    <p className="text-xl font-bold text-kon">{batchResult.winCount}/{batchResult.lossCount}</p>
                   </div>
                   <div className="text-center">
                     <p className="text-xs text-gray-500 mb-1">勝率</p>
-                    <p className="text-xl font-bold text-blue-700">{batchResult.winRate}%</p>
+                    <p className="text-xl font-bold text-kon">{batchResult.winRate}%</p>
                   </div>
                   <div className="text-center">
                     <p className="text-xs text-gray-500 mb-1">PF</p>
-                    <p className="text-xl font-bold text-blue-700">{batchResult.profitFactor}</p>
+                    <p className="text-xl font-bold text-kon">{batchResult.profitFactor}</p>
                   </div>
                 </div>
 
@@ -877,9 +877,9 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                     <p className="text-xs text-gray-500">平均利益</p>
                     <p className="font-bold text-green-700">¥{batchResult.avgWin.toLocaleString()}</p>
                   </div>
-                  <div className="bg-red-50 rounded-lg p-3">
+                  <div className="bg-gray-50 rounded-lg p-3">
                     <p className="text-xs text-gray-500">平均損失</p>
-                    <p className="font-bold text-red-700">¥{batchResult.avgLoss.toLocaleString()}</p>
+                    <p className="font-bold text-danger">¥{batchResult.avgLoss.toLocaleString()}</p>
                   </div>
                 </div>
               </div>
@@ -901,7 +901,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                         onClick={() => setEmploymentType(t)}
                         className={`px-4 py-2 rounded-lg text-sm transition-all ${
                           employmentType === t
-                            ? "bg-blue-600 text-white"
+                            ? "bg-kon text-white"
                             : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                         }`}
                       >
@@ -918,7 +918,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                       type="number"
                       value={salaryIncome}
                       onChange={(e) => setSalaryIncome(Number(e.target.value))}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon"
                     />
                   </div>
                 )}
@@ -930,7 +930,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                       type="number"
                       value={fxProfit}
                       onChange={(e) => setFxProfit(Number(e.target.value))}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon"
                     />
                   </div>
                   
@@ -940,7 +940,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                       type="number"
                       value={fxSwapIncome}
                       onChange={(e) => setFxSwapIncome(Number(e.target.value))}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon"
                     />
                   </div>
                 </div>
@@ -952,7 +952,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                       type="number"
                       value={cfdLoss}
                       onChange={(e) => setCfdLoss(Number(e.target.value))}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon"
                     />
                     <p className="text-xs text-gray-400 mt-1">損失の場合はマイナス値で入力（損益通算）</p>
                   </div>
@@ -963,7 +963,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                       type="number"
                       value={expenses}
                       onChange={(e) => setExpenses(Number(e.target.value))}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon"
                     />
                     <p className="text-xs text-gray-400 mt-1">書籍代、セミナー費、インターネット代（按分）、ソフトウェア代 等</p>
                   </div>
@@ -975,21 +975,21 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                     type="number"
                     value={carryoverLoss}
                     onChange={(e) => setCarryoverLoss(Number(e.target.value))}
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500"
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon"
                   />
                   <p className="text-xs text-gray-400 mt-1">損失繰越控除（過去3年間の損失）</p>
                 </div>
 
                 {/* Results */}
-                <div className="bg-blue-50 rounded-xl p-6 border border-blue-200 mb-6">
+                <div className="bg-gray-50 rounded-xl p-6 border border-gray-200 mb-6">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                     <div className="text-center">
                       <p className="text-xs text-gray-500 mb-1">FX課税所得</p>
-                      <p className="text-xl font-bold text-blue-700">¥{taxResult.taxableIncome.toLocaleString()}</p>
+                      <p className="text-xl font-bold text-kon">¥{taxResult.taxableIncome.toLocaleString()}</p>
                     </div>
                     <div className="text-center">
                       <p className="text-xs text-gray-500 mb-1">税額（20.315%）</p>
-                      <p className="text-xl font-bold text-red-600">¥{taxResult.taxAmount.toLocaleString()}</p>
+                      <p className="text-xl font-bold text-danger">¥{taxResult.taxAmount.toLocaleString()}</p>
                     </div>
                     <div className="text-center">
                       <p className="text-xs text-gray-500 mb-1">内訳</p>
@@ -997,8 +997,8 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                     </div>
                   </div>
 
-                  <div className={`rounded-lg p-4 text-center ${taxResult.filingRequired ? "bg-red-100" : "bg-green-100"}`}>
-                    <p className={`font-bold ${taxResult.filingRequired ? "text-red-700" : "text-green-700"}`}>
+                  <div className={`rounded-lg p-4 text-center ${taxResult.filingRequired ? "bg-gray-50" : "bg-green-100"}`}>
+                    <p className={`font-bold ${taxResult.filingRequired ? "text-danger" : "text-green-700"}`}>
                       {taxResult.filingMessage}
                     </p>
                   </div>
@@ -1031,7 +1031,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                       type="number"
                       value={thisYearLoss}
                       onChange={(e) => setThisYearLoss(Number(e.target.value))}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon"
                     />
                   </div>
 
@@ -1084,7 +1084,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
         <div className="flex flex-wrap gap-3 my-8">
           <button
             onClick={handleCopy}
-            className="flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-sm font-medium transition-colors"
+            className="flex items-center gap-2 px-5 py-2.5 bg-kon hover:bg-ai text-white rounded-xl text-sm font-medium transition-colors"
           >
             結果をコピー
           </button>
@@ -1142,8 +1142,8 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
 
             <h3 className="text-lg font-bold text-gray-800">標準的なロットサイズ</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
-              <div className="bg-blue-50 rounded-xl p-4">
-                <h4 className="font-bold text-blue-700 mb-2">スタンダードロット</h4>
+              <div className="bg-gray-50 rounded-xl p-4">
+                <h4 className="font-bold text-kon mb-2">スタンダードロット</h4>
                 <p className="text-sm">100,000通貨単位</p>
                 <p className="text-xs text-gray-500 mt-1">USD/JPYで約1,500万円相当</p>
               </div>
@@ -1152,8 +1152,8 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                 <p className="text-sm">10,000通貨単位</p>
                 <p className="text-xs text-gray-500 mt-1">USD/JPYで約150万円相当</p>
               </div>
-              <div className="bg-purple-50 rounded-xl p-4">
-                <h4 className="font-bold text-purple-700 mb-2">マイクロロット</h4>
+              <div className="bg-gray-50 rounded-xl p-4">
+                <h4 className="font-bold text-kon mb-2">マイクロロット</h4>
                 <p className="text-sm">1,000通貨単位</p>
                 <p className="text-xs text-gray-500 mt-1">USD/JPYで約15万円相当</p>
               </div>
@@ -1203,7 +1203,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                     <td className="px-4 py-3 text-right">190.00円</td>
                     <td className="px-4 py-3 text-right">188.50円</td>
                     <td className="px-4 py-3 text-right">10万通貨</td>
-                    <td className="px-4 py-3 text-right text-red-600 font-bold">-150,000円</td>
+                    <td className="px-4 py-3 text-right text-danger font-bold">-150,000円</td>
                   </tr>
                   <tr>
                     <td className="px-4 py-3 font-medium">⑤ 豪ドル円売り</td>

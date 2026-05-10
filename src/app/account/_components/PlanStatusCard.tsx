@@ -17,9 +17,9 @@ function formatRemaining(expiresAt: string): string {
 
 const PLAN_CFG: Record<string, { label: string; badge: string; border: string }> = {
   free:      { label: "FREE",    badge: "bg-gray-100 text-gray-600",   border: "border-gray-200" },
-  pro_trial: { label: "デイパス", badge: "bg-amber-100 text-amber-700", border: "border-amber-200" },
-  pro:       { label: "PRO",     badge: "bg-[#223A70] text-white",      border: "border-blue-200" },
-  team:      { label: "TEAM",    badge: "bg-purple-600 text-white",     border: "border-purple-200" },
+  pro_trial: { label: "デイパス", badge: "bg-gray-50 text-kon", border: "border-gray-200" },
+  pro:       { label: "PRO",     badge: "bg-[#223A70] text-white",      border: "border-gray-200" },
+  team:      { label: "TEAM",    badge: "bg-kon text-white",     border: "border-kon" },
 };
 
 export function PlanStatusCard() {
@@ -46,13 +46,13 @@ export function PlanStatusCard() {
           <p className="text-xs text-gray-500 mb-1.5">現在のプラン</p>
           <div className="flex items-center gap-2">
             <span className={`px-3 py-0.5 rounded-full text-sm font-bold ${cfg.badge}`}>{cfg.label}</span>
-            {isDayPass && <span className="text-sm font-medium text-amber-600">ご利用中</span>}
+            {isDayPass && <span className="text-sm font-medium text-kon">ご利用中</span>}
           </div>
         </div>
         {isDayPass && expiresAt ? (
           <div className="text-right">
             <p className="text-xs text-gray-500 mb-0.5">有効期限</p>
-            <p className="text-base font-bold text-amber-600">{formatRemaining(expiresAt)}</p>
+            <p className="text-base font-bold text-kon">{formatRemaining(expiresAt)}</p>
             <p className="text-xs text-gray-400">
               {new Date(expiresAt).toLocaleDateString("ja-JP", { month: "long", day: "numeric" })}{" "}
               {new Date(expiresAt).toLocaleTimeString("ja-JP", { hour: "2-digit", minute: "2-digit" })} まで

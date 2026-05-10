@@ -394,9 +394,9 @@ export default function RentVsBuyPage() {
   };
 
   const inputClass =
-    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400";
+    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon";
   const selectClass =
-    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white";
+    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon bg-white";
   const labelClass = "block text-sm font-medium text-gray-700 mb-1";
 
   return (
@@ -407,9 +407,9 @@ export default function RentVsBuyPage() {
         {/* Header */}
         <div className="mb-6">
           <nav className="text-xs text-gray-400 mb-3">
-            <Link href="/" className="hover:text-blue-600">ホーム</Link>
+            <Link href="/" className="hover:text-ai">ホーム</Link>
             <span className="mx-1">/</span>
-            <Link href="/realestate" className="hover:text-blue-600">不動産・住まい</Link>
+            <Link href="/realestate" className="hover:text-ai">不動産・住まい</Link>
             <span className="mx-1">/</span>
             <span className="text-gray-600">家賃 vs 購入 比較計算機</span>
           </nav>
@@ -427,9 +427,9 @@ export default function RentVsBuyPage() {
         <AdUnit slot="7823491056" format="horizontal" className="mb-6" />
 
         {/* Section 1: 賃貸の条件 */}
-        <div className="bg-white rounded-2xl shadow-sm border border-blue-100 p-6 mb-4">
-          <h2 className="text-lg font-bold text-blue-700 mb-4 flex items-center gap-2">
-            <span className="bg-blue-100 text-blue-700 rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 mb-4">
+          <h2 className="text-lg font-bold text-kon mb-4 flex items-center gap-2">
+            <span className="bg-gray-50 text-kon rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">
               1
             </span>
             賃貸の条件
@@ -620,7 +620,7 @@ export default function RentVsBuyPage() {
                 固定資産税（万円/年）
                 <button
                   type="button"
-                  className="ml-2 text-xs text-blue-500 underline"
+                  className="ml-2 text-xs text-kon underline"
                   onClick={() => setFixedAssetTaxAuto(!fixedAssetTaxAuto)}
                 >
                   {fixedAssetTaxAuto ? "手動入力する" : "自動計算に戻す"}
@@ -684,9 +684,9 @@ export default function RentVsBuyPage() {
         </div>
 
         {/* Section 3: 個人条件 */}
-        <div className="bg-white rounded-2xl shadow-sm border border-purple-100 p-6 mb-6">
-          <h2 className="text-lg font-bold text-purple-700 mb-4 flex items-center gap-2">
-            <span className="bg-purple-100 text-purple-700 rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">
+        <div className="bg-white rounded-2xl shadow-sm border border-kon p-6 mb-6">
+          <h2 className="text-lg font-bold text-kon mb-4 flex items-center gap-2">
+            <span className="bg-gray-50 text-kon rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">
               3
             </span>
             個人条件
@@ -712,8 +712,8 @@ export default function RentVsBuyPage() {
                     type="button"
                     className={`flex-1 py-2 rounded-lg text-sm font-medium border transition-colors ${
                       useLoanDeduction === v
-                        ? "bg-purple-600 text-white border-purple-600"
-                        : "bg-white text-gray-600 border-gray-300 hover:border-purple-400"
+                        ? "bg-kon text-white border-kon"
+                        : "bg-white text-gray-600 border-gray-300 hover:border-ai"
                     }`}
                     onClick={() => setUseLoanDeduction(v)}
                   >
@@ -755,7 +755,7 @@ export default function RentVsBuyPage() {
         <button
           type="button"
           onClick={handleCalculate}
-          className="w-full bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 text-white font-bold py-4 rounded-xl text-lg shadow-md transition-all mb-8"
+          className="w-full bg-gradient-to-r from-slate-900 to-green-600 hover:from-blue-700 hover:to-green-700 text-white font-bold py-4 rounded-xl text-lg shadow-md transition-all mb-8"
         >
           計算する
         </button>
@@ -768,9 +768,9 @@ export default function RentVsBuyPage() {
             <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
               <h2 className="text-lg font-bold text-gray-800 mb-4">月額コスト比較</h2>
               <div className="grid grid-cols-2 gap-4">
-                <div className="bg-blue-50 rounded-xl p-4 text-center">
-                  <p className="text-sm text-blue-600 font-medium mb-1">賃貸 月額</p>
-                  <p className="text-2xl font-bold text-blue-700">
+                <div className="bg-gray-50 rounded-xl p-4 text-center">
+                  <p className="text-sm text-kon font-medium mb-1">賃貸 月額</p>
+                  <p className="text-2xl font-bold text-kon">
                     {fmtMan(results.monthlyRent / MAN)}
                   </p>
                 </div>
@@ -798,7 +798,7 @@ export default function RentVsBuyPage() {
                   <thead>
                     <tr className="bg-gray-50">
                       <th className="px-3 py-3 text-left font-semibold text-gray-600">期間</th>
-                      <th className="px-3 py-3 text-right font-semibold text-blue-600">
+                      <th className="px-3 py-3 text-right font-semibold text-kon">
                         賃貸 累計
                       </th>
                       <th className="px-3 py-3 text-right font-semibold text-green-600">
@@ -819,7 +819,7 @@ export default function RentVsBuyPage() {
                             className={i === 3 ? "bg-yellow-50 font-semibold" : ""}
                           >
                             <td className="px-3 py-3">{label}</td>
-                            <td className="px-3 py-3 text-right text-blue-600">
+                            <td className="px-3 py-3 text-right text-kon">
                               {fmt(row.rentalCumulative)}
                             </td>
                             <td className="px-3 py-3 text-right text-green-600">
@@ -830,7 +830,7 @@ export default function RentVsBuyPage() {
                                 diff > 0
                                   ? "text-green-600"
                                   : diff < 0
-                                  ? "text-blue-600"
+                                  ? "text-kon"
                                   : "text-gray-500"
                               }`}
                             >
@@ -856,14 +856,14 @@ export default function RentVsBuyPage() {
             <div
               className={`rounded-2xl shadow-sm border p-6 text-center ${
                 results.breakEvenYear !== null && results.breakEvenYear <= residenceYears
-                  ? "bg-amber-50 border-amber-200"
-                  : "bg-blue-50 border-blue-200"
+                  ? "bg-gray-50 border-gray-200"
+                  : "bg-gray-50 border-gray-200"
               }`}
             >
               <h2 className="text-lg font-bold text-gray-800 mb-3">損益分岐点</h2>
               {results.breakEvenYear !== null ? (
                 <>
-                  <p className="text-4xl font-bold text-amber-600 mb-2">
+                  <p className="text-4xl font-bold text-kon mb-2">
                     {results.breakEvenYear}年後
                   </p>
                   <p className="text-gray-600">
@@ -871,14 +871,14 @@ export default function RentVsBuyPage() {
                     <strong>{results.breakEvenYear}年後</strong> からです
                   </p>
                   {results.breakEvenYear > residenceYears && (
-                    <p className="text-sm text-orange-600 mt-2">
+                    <p className="text-sm text-kon mt-2">
                       ※居住年数（{residenceYears}年）内に損益分岐点に達しません
                     </p>
                   )}
                 </>
               ) : (
                 <>
-                  <p className="text-2xl font-bold text-blue-600 mb-2">
+                  <p className="text-2xl font-bold text-kon mb-2">
                     50年以内に達成せず
                   </p>
                   <p className="text-gray-600">
@@ -935,8 +935,8 @@ export default function RentVsBuyPage() {
                   </div>
                 </div>
               </div>
-              <div className="bg-white rounded-2xl shadow-sm border border-blue-100 p-5">
-                <h3 className="font-bold text-blue-700 mb-3">賃貸コストの内訳</h3>
+              <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-5">
+                <h3 className="font-bold text-kon mb-3">賃貸コストの内訳</h3>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
                     <span className="text-gray-600">初期費用（礼金・仲介等）</span>
@@ -950,16 +950,16 @@ export default function RentVsBuyPage() {
                     <span className="text-gray-600">更新料（総額）</span>
                     <span className="font-medium">{fmt(results.rentalKoshinTotal)}</span>
                   </div>
-                  <div className="flex justify-between border-t pt-2 font-bold text-blue-700">
+                  <div className="flex justify-between border-t pt-2 font-bold text-kon">
                     <span>賃貸実質コスト</span>
                     <span>{fmt(results.rentalTotal)}</span>
                   </div>
                   {investmentReturn > 0 && results.opportunityCost > 0 && (
-                    <div className="mt-3 bg-blue-50 rounded-lg p-3">
-                      <p className="text-xs text-blue-600 font-medium">
+                    <div className="mt-3 bg-gray-50 rounded-lg p-3">
+                      <p className="text-xs text-kon font-medium">
                         頭金運用益（機会費用）
                       </p>
-                      <p className="text-sm font-bold text-blue-700">
+                      <p className="text-sm font-bold text-kon">
                         +{fmt(results.opportunityCost)}
                       </p>
                       <p className="text-xs text-gray-500">
@@ -978,8 +978,8 @@ export default function RentVsBuyPage() {
                 results.verdictType === "buy-short"
                   ? "bg-green-50 border-green-200"
                   : results.verdictType === "buy-long"
-                  ? "bg-amber-50 border-amber-200"
-                  : "bg-blue-50 border-blue-200"
+                  ? "bg-gray-50 border-gray-200"
+                  : "bg-gray-50 border-gray-200"
               }`}
             >
               <h3
@@ -987,8 +987,8 @@ export default function RentVsBuyPage() {
                   results.verdictType === "buy-short"
                     ? "text-green-700"
                     : results.verdictType === "buy-long"
-                    ? "text-amber-700"
-                    : "text-blue-700"
+                    ? "text-kon"
+                    : "text-kon"
                 }`}
               >
                 中立な判定
@@ -1035,7 +1035,7 @@ export default function RentVsBuyPage() {
                       <td className="border border-gray-200 px-3 py-2">{be}</td>
                       <td
                         className={`border border-gray-200 px-3 py-2 font-medium ${
-                          isBuy ? "text-green-600" : "text-blue-600"
+                          isBuy ? "text-green-600" : "text-kon"
                         }`}
                       >
                         {verdict}
@@ -1062,8 +1062,8 @@ export default function RentVsBuyPage() {
                   <li>✅ 住宅ローン控除をフル活用できる年収がある</li>
                 </ul>
               </div>
-              <div className="bg-blue-50 rounded-xl p-4">
-                <h3 className="font-bold text-blue-700 mb-2">賃貸が有利になる条件</h3>
+              <div className="bg-gray-50 rounded-xl p-4">
+                <h3 className="font-bold text-kon mb-2">賃貸が有利になる条件</h3>
                 <ul className="space-y-1 text-sm">
                   <li>✅ 転勤・転職などで5〜10年以内に引越す可能性がある</li>
                   <li>✅ 頭金を高利回りで運用できる</li>
@@ -1120,7 +1120,7 @@ export default function RentVsBuyPage() {
             ))}
           </div>
 
-          <div className="bg-gradient-to-r from-blue-50 to-green-50 rounded-2xl border border-blue-100 p-6">
+          <div className="bg-gradient-to-r from-blue-50 to-green-50 rounded-2xl border border-gray-200 p-6">
             <h3 className="font-bold text-gray-800 mb-4">あわせて使えるツール</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
@@ -1151,7 +1151,7 @@ export default function RentVsBuyPage() {
                   className="flex items-center gap-3 p-3 bg-white rounded-xl hover:shadow-md transition-all group"
                 >
                   <span className="text-2xl">{tool.icon}</span>
-                  <span className="font-medium text-gray-700 group-hover:text-blue-600 transition-colors text-sm">
+                  <span className="font-medium text-gray-700 group-hover:text-ai transition-colors text-sm">
                     {tool.name}
                   </span>
                   <span className="ml-auto text-gray-400 group-hover:translate-x-1 transition-transform">
@@ -1166,15 +1166,15 @@ export default function RentVsBuyPage() {
             <h2 className="text-xl font-bold text-gray-900 mb-4">📝 関連ブログ記事</h2>
             <Link
               href="/blog/chintai-vs-koubai-simulation-2026"
-              className="flex items-center gap-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl border border-purple-200 hover:border-purple-400 hover:shadow-md transition-all p-5 group"
+              className="flex items-center gap-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl border border-kon hover:border-ai hover:shadow-md transition-all p-5 group"
             >
-              <div className="w-12 h-12 rounded-lg bg-purple-100 group-hover:bg-purple-200 flex items-center justify-center shrink-0 transition-colors">
-                <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-12 h-12 rounded-lg bg-gray-50 group-hover:bg-ai flex items-center justify-center shrink-0 transition-colors">
+                <svg className="w-6 h-6 text-kon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                 </svg>
               </div>
               <div>
-                <p className="text-sm font-semibold text-purple-700 group-hover:text-purple-800">【2026年最新】賃貸と購入どっちが得？50年シミュレーションで徹底比較</p>
+                <p className="text-sm font-semibold text-kon group-hover:text-ai">【2026年最新】賃貸と購入どっちが得？50年シミュレーションで徹底比較</p>
                 <p className="text-xs text-gray-500 mt-1">詳しい解説・計算例・注意点はこちら →</p>
               </div>
             </Link>

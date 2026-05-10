@@ -155,13 +155,13 @@ export default function ReceiptClient() {
               ref={errorBannerRef}
               role="alert"
               aria-live="assertive"
-              className="print:hidden mb-4 p-4 bg-red-50 border border-red-300 rounded-lg"
+              className="print:hidden mb-4 p-4 bg-gray-50 border border-gray-200 rounded-lg"
             >
-              <p className="font-bold text-red-700 mb-2">入力内容を確認してください</p>
+              <p className="font-bold text-danger mb-2">入力内容を確認してください</p>
               <ul className="list-disc list-inside space-y-1">
                 {errorFields.map(({ id, label }) => (
                   <li key={id}>
-                    <a href={`#${id}`} className="text-red-600 underline hover:text-red-800">
+                    <a href={`#${id}`} className="text-danger underline hover:text-danger">
                       {label}
                     </a>
                   </li>
@@ -336,13 +336,13 @@ export default function ReceiptClient() {
 
               {/* Stamp tax warning */}
               {(Number(watchedAmount) || 0) > 50000 && (
-                <div className="mt-4 p-4 bg-amber-50 border border-amber-200 rounded-lg">
-                  <p className="text-amber-800 font-medium">⚠️ 収入印紙が必要です</p>
-                  <p className="text-amber-700 text-sm mt-1">
+                <div className="mt-4 p-4 bg-gray-50 border border-gray-200 rounded-lg">
+                  <p className="text-kon font-medium">⚠️ 収入印紙が必要です</p>
+                  <p className="text-kon text-sm mt-1">
                     金額 {fmt(Number(watchedAmount))}円 → 印紙税:{" "}
                     <strong>{stampTax.label}</strong>
                   </p>
-                  <p className="text-amber-600 text-xs mt-1">
+                  <p className="text-kon text-xs mt-1">
                     ※ 電子発行の場合は印紙税不要です
                   </p>
                 </div>
@@ -353,7 +353,7 @@ export default function ReceiptClient() {
             <div className="mt-6 print:hidden">
               <button
                 type="submit"
-                className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-lg"
+                className="w-full py-4 bg-kon hover:bg-ai text-white rounded-xl font-bold text-lg"
               >
                 印刷 / PDF保存
               </button>
@@ -430,13 +430,13 @@ export default function ReceiptClient() {
             <h2 className="text-xl font-bold mb-4 text-gray-900">よくある質問</h2>
             <div className="space-y-4 text-sm">
               <div>
-                <h3 className="font-bold text-blue-600">Q: 印紙税はいつ必要？</h3>
+                <h3 className="font-bold text-kon">Q: 印紙税はいつ必要？</h3>
                 <p className="text-gray-600">
                   5万円以上の領収書には収入印紙が必要です。ただし、電子発行（PDF）の場合は不要です。
                 </p>
               </div>
               <div>
-                <h3 className="font-bold text-blue-600">Q: クレジットカード払いの場合は？</h3>
+                <h3 className="font-bold text-kon">Q: クレジットカード払いの場合は？</h3>
                 <p className="text-gray-600">
                   クレジットカード払いと明記すれば、印紙税は不要です。
                 </p>
@@ -445,7 +445,7 @@ export default function ReceiptClient() {
           </div>
 
           <div className="mt-8 text-center print:hidden">
-            <Link href="/document" className="text-blue-600 hover:text-blue-800">
+            <Link href="/document" className="text-kon hover:text-ai">
               ← 書類作成一覧に戻る
             </Link>
           </div>

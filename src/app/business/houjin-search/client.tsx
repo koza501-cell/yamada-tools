@@ -84,7 +84,7 @@ const Icons = {
 
 const BADGE_STYLE = {
   green: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
-  red:   "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400",
+  red:   "bg-gray-50 text-danger dark:bg-danger/30 dark:text-danger",
   gray:  "bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-400",
 } as const;
 
@@ -227,7 +227,7 @@ function DetailDrawer({ corp, onClose }: DrawerProps) {
             </div>
                  <div className="text-xs text-gray-500 dark:text-gray-400 mt-2">
               法人番号から直接検索する場合は{' '}
-              <Link href="/business/houjin-bangou-lookup" className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800">
+              <Link href="/business/houjin-bangou-lookup" className="text-kon dark:text-gray-300 underline hover:text-ai">
                 法人番号検索ツール
               </Link>
               {' '}も便利です
@@ -250,7 +250,7 @@ function DetailDrawer({ corp, onClose }: DrawerProps) {
           )}
 
           {fetchError && (
-            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-300 p-4 rounded-lg text-sm">
+            <div className="bg-gray-50 dark:bg-danger/20 border border-gray-200 dark:border-danger text-danger dark:text-gin p-4 rounded-lg text-sm">
               ⚠️ 詳細情報の取得に失敗しました。({fetchError})
             </div>
           )}
@@ -295,7 +295,7 @@ function DetailDrawer({ corp, onClose }: DrawerProps) {
                     href={detail.company_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-blue-600 dark:text-blue-400 hover:underline break-all"
+                    className="text-sm text-kon dark:text-gray-300 hover:underline break-all"
                   >
                     {detail.company_url}
                     {Icons.ExternalLink}
@@ -408,9 +408,9 @@ export default function HoujinSearchClient() {
       <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-4xl mx-auto px-4 py-8">
           <nav className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-            <Link href="/" className="hover:text-blue-600">ホーム</Link>
+            <Link href="/" className="hover:text-ai">ホーム</Link>
             <span className="mx-1">/</span>
-            <Link href="/business" className="hover:text-blue-600">ビジネス・法人</Link>
+            <Link href="/business" className="hover:text-ai">ビジネス・法人</Link>
             <span className="mx-1">/</span>
             <span>法人検索</span>
           </nav>
@@ -432,7 +432,7 @@ export default function HoujinSearchClient() {
             onClick={() => handleModeChange("ja")}
             className={`px-4 py-2 rounded text-sm font-medium transition ${
               searchMode === "ja"
-                ? "bg-pink-500 text-white"
+                ? "bg-kon text-white"
                 : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700"
             }`}
           >
@@ -443,7 +443,7 @@ export default function HoujinSearchClient() {
             onClick={() => handleModeChange("en")}
             className={`px-4 py-2 rounded text-sm font-medium transition ${
               searchMode === "en"
-                ? "bg-pink-500 text-white"
+                ? "bg-kon text-white"
                 : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700"
             }`}
           >
@@ -454,7 +454,7 @@ export default function HoujinSearchClient() {
         <form onSubmit={handleSearch} className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 mb-6">
           <label htmlFor="company-name" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
             {searchMode === "ja" ? "法人名・会社名" : "Company name / Romaji"}{" "}
-            <span className="text-red-500">*</span>
+            <span className="text-danger">*</span>
           </label>
           <div className="flex flex-col sm:flex-row gap-3">
             <input
@@ -471,13 +471,13 @@ export default function HoujinSearchClient() {
                   : "e.g., Toyota, Rakuten, SoftBank"
               }
               maxLength={100}
-              className="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 dark:bg-gray-700 dark:text-white"
+              className="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-sakura dark:bg-gray-700 dark:text-white"
               disabled={loading}
             />
             <button
               type="submit"
               disabled={loading}
-              className="px-6 py-3 bg-pink-500 hover:bg-pink-600 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition"
+              className="px-6 py-3 bg-kon hover:bg-ai disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition"
             >
               {loading
                 ? (searchMode === "ja" ? "検索中..." : "Searching...")
@@ -485,7 +485,7 @@ export default function HoujinSearchClient() {
             </button>
           </div>
           {inputError && (
-            <p className="mt-1.5 text-xs text-red-500 dark:text-red-400">{inputError}</p>
+            <p className="mt-1.5 text-xs text-danger dark:text-danger">{inputError}</p>
           )}
           <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
             {searchMode === "ja"
@@ -496,12 +496,12 @@ export default function HoujinSearchClient() {
 
         {/* Error */}
         {error && (
-          <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-800 dark:text-red-200 p-4 rounded-lg mb-6 flex items-start justify-between gap-3">
+          <div className="bg-gray-50 dark:bg-danger/20 border border-gray-200 dark:border-danger text-danger dark:text-gin p-4 rounded-lg mb-6 flex items-start justify-between gap-3">
             <span>⚠️ {error}</span>
             <button
               type="button"
               onClick={() => setError(null)}
-              className="text-red-600 dark:text-red-400 hover:underline text-sm flex-shrink-0"
+              className="text-danger dark:text-danger hover:underline text-sm flex-shrink-0"
             >
               閉じる
             </button>
@@ -555,7 +555,7 @@ export default function HoujinSearchClient() {
                   onKeyDown={(e) => {
                     if (e.key === "Enter" || e.key === " ") setSelectedCorp(corp);
                   }}
-                  className="bg-white dark:bg-gray-800 rounded-lg shadow p-5 hover:shadow-md transition border border-transparent hover:border-pink-200 dark:hover:border-pink-800 cursor-pointer"
+                  className="bg-white dark:bg-gray-800 rounded-lg shadow p-5 hover:shadow-md transition border border-transparent hover:border-sakura dark:hover:border-sakura cursor-pointer"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
                     <div className="flex-1 min-w-0">
@@ -573,7 +573,7 @@ export default function HoujinSearchClient() {
                         </p>
                       )}
                       {corp.corp_type_info && (
-                        <p className="text-xs text-blue-600 dark:text-blue-400 mb-2">
+                        <p className="text-xs text-kon dark:text-gray-300 mb-2">
                           {corp.corp_type_info.japanese}（{corp.corp_type_info.en_short} · {corp.corp_type_info.us_equivalent}）
                         </p>
                       )}
@@ -604,9 +604,9 @@ export default function HoujinSearchClient() {
                     </div>
                     <div className="flex flex-shrink-0 flex-col gap-2 items-end">
                       {corp.number_of_activity && (Number(corp.number_of_activity) || 0) > 0 && (
-                        <div className="text-center bg-blue-50 dark:bg-blue-900/30 px-3 py-2 rounded">
+                        <div className="text-center bg-gray-50 dark:bg-kon/30 px-3 py-2 rounded">
                           <div className="text-xs text-gray-600 dark:text-gray-400">活動情報</div>
-                          <div className="text-lg font-bold text-blue-600 dark:text-blue-400">
+                          <div className="text-lg font-bold text-kon dark:text-gray-300">
                             {corp.number_of_activity}件
                           </div>
                         </div>
@@ -623,7 +623,7 @@ export default function HoujinSearchClient() {
         )}
 
         {/* Info section */}
-        <div className="mt-12 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-5">
+        <div className="mt-12 bg-gray-50 dark:bg-kon/20 border border-gray-200 dark:border-kon rounded-lg p-5">
           <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
             💡 法人検索ツールについて
           </h3>
@@ -638,7 +638,7 @@ export default function HoujinSearchClient() {
         </div>
 
         <p className="mt-6 text-xs text-gray-500 dark:text-gray-400 text-center">
-          データ提供: 経済産業省 gBizINFO（<a href="https://info.gbiz.go.jp/" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-600">https://info.gbiz.go.jp/</a>）
+          データ提供: 経済産業省 gBizINFO（<a href="https://info.gbiz.go.jp/" target="_blank" rel="noopener noreferrer" className="underline hover:text-ai">https://info.gbiz.go.jp/</a>）
         </p>
       </div>
 

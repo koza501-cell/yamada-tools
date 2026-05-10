@@ -520,7 +520,7 @@ export default function SideIncomeTaxCalculatorPage() {
                     {entry.enabled && (
                       <div className="px-3 pb-3 bg-gray-50 border-t border-gray-100 space-y-3">
                         {cfg.note && (
-                          <p className="text-xs text-blue-600 bg-blue-50 rounded px-2 py-1.5 mt-2">{cfg.note}</p>
+                          <p className="text-xs text-kon bg-gray-50 rounded px-2 py-1.5 mt-2">{cfg.note}</p>
                         )}
                         {cfg.type !== "stock" && (
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2">
@@ -677,7 +677,7 @@ export default function SideIncomeTaxCalculatorPage() {
                         <td className="py-2.5 pr-4 font-medium text-gray-700">{row.label}</td>
                         <td className="text-right py-2.5 px-2">{fmtMan(row.main)}</td>
                         <td className="text-right py-2.5 px-2">{fmtMan(row.combined)}</td>
-                        <td className={"text-right py-2.5 pl-2 font-bold " + (row.diff > 0 ? "text-red-600" : "text-green-600")}>
+                        <td className={"text-right py-2.5 pl-2 font-bold " + (row.diff > 0 ? "text-danger" : "text-green-600")}>
                           {fmtManSigned(row.diff)}
                         </td>
                       </tr>
@@ -693,9 +693,9 @@ export default function SideIncomeTaxCalculatorPage() {
                 {[
                   { label: "副業収入合計", value: fmtMan(result.totalSideIncome), color: "text-gray-900", large: false },
                   { label: "副業経費合計", value: fmtMan(result.totalSideExpenses), color: "text-gray-600", large: false },
-                  { label: "追加税負担", value: fmtMan(result.additionalTotalTax), color: "text-red-600", large: false },
-                  { label: "副業の実質手取り", value: fmtMan(result.netTakeHome), color: result.netTakeHome >= 0 ? "text-emerald-600" : "text-red-600", large: true },
-                  { label: "副業の実効税率", value: (result.totalSideIncome - result.totalSideExpenses) > 0 ? fmtPct(result.effectiveTaxRate) : "—", color: "text-orange-600", large: false },
+                  { label: "追加税負担", value: fmtMan(result.additionalTotalTax), color: "text-danger", large: false },
+                  { label: "副業の実質手取り", value: fmtMan(result.netTakeHome), color: result.netTakeHome >= 0 ? "text-emerald-600" : "text-danger", large: true },
+                  { label: "副業の実効税率", value: (result.totalSideIncome - result.totalSideExpenses) > 0 ? fmtPct(result.effectiveTaxRate) : "—", color: "text-kon", large: false },
                 ].map((card) => (
                   <div key={card.label}
                     className={"bg-gray-50 rounded-lg p-3 text-center " + (card.large ? "col-span-2 lg:col-span-1 bg-emerald-50 border border-emerald-200" : "")}>
@@ -705,14 +705,14 @@ export default function SideIncomeTaxCalculatorPage() {
                 ))}
               </div>
               {result.netTakeHome < 0 && (
-                <p className="text-xs text-red-600 mt-3 bg-red-50 rounded p-2">
+                <p className="text-xs text-danger mt-3 bg-gray-50 rounded p-2">
                   副業コストと税負担が収入を上回っています。経費の見直しや節税対策をご検討ください。
                 </p>
               )}
             </div>
             {/* 確定申告判定 */}
             <div className={
-              result.filing.color === "red" ? "rounded-xl shadow-sm border p-6 bg-red-50 border-red-200"
+              result.filing.color === "red" ? "rounded-xl shadow-sm border p-6 bg-gray-50 border-gray-200"
               : result.filing.color === "yellow" ? "rounded-xl shadow-sm border p-6 bg-yellow-50 border-yellow-200"
               : "rounded-xl shadow-sm border p-6 bg-green-50 border-green-200"
             }>
@@ -722,7 +722,7 @@ export default function SideIncomeTaxCalculatorPage() {
                   {result.filing.color === "red" ? "🔴" : result.filing.color === "yellow" ? "⚠️" : "✅"}
                 </span>
                 <p className={
-                  result.filing.color === "red" ? "text-xl font-bold text-red-700"
+                  result.filing.color === "red" ? "text-xl font-bold text-danger"
                   : result.filing.color === "yellow" ? "text-xl font-bold text-yellow-700"
                   : "text-xl font-bold text-green-700"
                 }>
@@ -739,9 +739,9 @@ export default function SideIncomeTaxCalculatorPage() {
                 <h2 className="text-base font-bold text-gray-800 mb-4">節税アドバイス</h2>
                 <div className="space-y-3">
                   {result.advices.map((adv, i) => (
-                    <div key={i} className="bg-blue-50 rounded-lg p-4 border border-blue-100">
-                      <p className="text-sm font-bold text-blue-800 mb-1">{adv.title}</p>
-                      <p className="text-sm text-blue-700 leading-relaxed">{adv.body}</p>
+                    <div key={i} className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                      <p className="text-sm font-bold text-kon mb-1">{adv.title}</p>
+                      <p className="text-sm text-kon leading-relaxed">{adv.body}</p>
                     </div>
                   ))}
                 </div>

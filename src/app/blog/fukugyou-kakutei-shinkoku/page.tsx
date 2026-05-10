@@ -52,9 +52,9 @@ export default function FukugyouKakuteiShinkokuBlog() {
       />
 
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-blue-500">ホーム</Link>
+        <Link href="/" className="hover:text-ai">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-blue-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-ai">ブログ</Link>
         <span className="mx-2">/</span>
         <span>副業の確定申告完全解説</span>
       </nav>
@@ -66,7 +66,7 @@ export default function FukugyouKakuteiShinkokuBlog() {
       <h1 className="text-3xl font-bold text-gray-800 mb-4">{title}</h1>
       <p className="text-gray-500 text-sm mb-8">最終更新: 2025年5月 ｜ 読了時間: 約8分</p>
 
-      <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mb-8">
+      <div className="bg-gray-50 border-l-4 border-kon p-4 mb-8">
         <p className="font-bold text-gray-800 mb-2">この記事でわかること</p>
         <ul className="text-gray-700 space-y-1 text-sm">
           <li>✓ 副業収入20万円ルールの正確な意味</li>
@@ -82,7 +82,7 @@ export default function FukugyouKakuteiShinkokuBlog() {
         <StaticAdSlot />
         <h2 className="text-2xl font-bold text-gray-800 mb-4">副業の確定申告、いくらから必要？結論から解説</h2>
         <p className="text-gray-700 mb-4">
-          会社員（給与所得者）の場合、<strong className="text-blue-600">副業の「所得」が年間20万円を超えると確定申告が必要</strong>になります。これを「20万円ルール」と呼びます。
+          会社員（給与所得者）の場合、<strong className="text-kon">副業の「所得」が年間20万円を超えると確定申告が必要</strong>になります。これを「20万円ルール」と呼びます。
         </p>
         <div className="bg-yellow-50 border border-yellow-300 rounded-lg p-4 mb-6">
           <p className="font-bold text-yellow-800 mb-2">⚠️ 重要：「収入」ではなく「所得」が基準</p>
@@ -102,8 +102,8 @@ export default function FukugyouKakuteiShinkokuBlog() {
               <li>・不用品売却（転売目的でない）</li>
             </ul>
           </div>
-          <div className="bg-red-50 rounded-lg p-4">
-            <p className="font-bold text-red-800 mb-2">❗ 申告が必要なケース</p>
+          <div className="bg-gray-50 rounded-lg p-4">
+            <p className="font-bold text-danger mb-2">❗ 申告が必要なケース</p>
             <ul className="text-sm text-gray-700 space-y-1">
               <li>・副業所得が年間20万円超</li>
               <li>・給与を2か所以上からもらっている</li>
@@ -122,7 +122,7 @@ export default function FukugyouKakuteiShinkokuBlog() {
         <div className="overflow-x-auto mb-6">
           <table className="w-full border-collapse text-sm">
             <thead>
-              <tr className="bg-blue-600 text-white">
+              <tr className="bg-kon text-white">
                 <th className="p-3 text-left">副業の種類</th>
                 <th className="p-3 text-left">所得区分</th>
                 <th className="p-3 text-left">申告判断基準</th>
@@ -156,7 +156,7 @@ export default function FukugyouKakuteiShinkokuBlog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">20万円以下でも確定申告したほうがいいケース</h2>
         <p className="text-gray-700 mb-4">
-          副業所得が20万円以下であっても、確定申告をすることで<strong className="text-blue-600">税金が還付される</strong>ケースがあります。
+          副業所得が20万円以下であっても、確定申告をすることで<strong className="text-kon">税金が還付される</strong>ケースがあります。
         </p>
 
         <div className="space-y-4 mb-6">
@@ -174,8 +174,8 @@ export default function FukugyouKakuteiShinkokuBlog() {
           </div>
         </div>
 
-        <div className="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
-          <p className="font-bold text-red-800 mb-2">🚨 住民税は20万円以下でも別途申告が必要！</p>
+        <div className="bg-gray-50 border-l-4 border-danger p-4 mb-6">
+          <p className="font-bold text-danger mb-2">🚨 住民税は20万円以下でも別途申告が必要！</p>
           <p className="text-gray-700 text-sm">
             「20万円ルール」は<strong>所得税</strong>の確定申告免除の特例です。<strong>住民税には適用されません。</strong>副業所得が1円でもあれば、翌年3月15日までに市区町村に住民税の申告が必要です。住民税申告を怠ると後から追徴課税されるリスクがあります。ただし、確定申告をした場合はその情報が自動的に住民税にも反映されるため、確定申告さえすれば住民税の別途申告は不要です。
           </p>
@@ -190,7 +190,7 @@ export default function FukugyouKakuteiShinkokuBlog() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <div className="bg-white border border-gray-200 rounded-lg p-4">
-            <h3 className="font-bold text-blue-700 mb-3">フリーランス・業務委託</h3>
+            <h3 className="font-bold text-kon mb-3">フリーランス・業務委託</h3>
             <ul className="text-sm text-gray-700 space-y-1">
               <li>📱 通信費（スマホ・インターネット代）</li>
               <li>📚 書籍代・セミナー受講料</li>
@@ -201,7 +201,7 @@ export default function FukugyouKakuteiShinkokuBlog() {
             </ul>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-4">
-            <h3 className="font-bold text-orange-700 mb-3">せどり・転売・ハンドメイド</h3>
+            <h3 className="font-bold text-kon mb-3">せどり・転売・ハンドメイド</h3>
             <ul className="text-sm text-gray-700 space-y-1">
               <li>🛒 仕入れ代・材料費</li>
               <li>📦 梱包材・段ボール代</li>
@@ -212,7 +212,7 @@ export default function FukugyouKakuteiShinkokuBlog() {
             </ul>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-4">
-            <h3 className="font-bold text-purple-700 mb-3">アフィリエイト・ブログ・YouTube</h3>
+            <h3 className="font-bold text-kon mb-3">アフィリエイト・ブログ・YouTube</h3>
             <ul className="text-sm text-gray-700 space-y-1">
               <li>🌐 サーバー代・ドメイン代</li>
               <li>🎨 デザインツール（Canvaなど）</li>
@@ -228,7 +228,7 @@ export default function FukugyouKakuteiShinkokuBlog() {
             </p>
             <div className="bg-gray-50 rounded p-2 text-sm">
               <p className="font-medium">例）家賃8万円・部屋全体20㎡・作業スペース5㎡</p>
-              <p className="text-blue-600 font-bold">経費算入額 = 8万円 × 5/20 = 2万円/月</p>
+              <p className="text-kon font-bold">経費算入額 = 8万円 × 5/20 = 2万円/月</p>
             </div>
           </div>
         </div>
@@ -251,9 +251,9 @@ export default function FukugyouKakuteiShinkokuBlog() {
             { name: "延滞税", rate: "最大8.7%/年", desc: "納付期限（3月15日）を過ぎた場合に発生。2か月以内は2.4%、2か月超は8.7%（2024年度）。毎日複利で増えていくため放置するほど金額が膨らみます。" },
             { name: "重加算税", rate: "35〜40%", desc: "仮装・隠蔽など意図的な脱税の場合に課される。過去5〜7年分にさかのぼって調査され、場合によっては刑事告発の対象にもなります。" },
           ].map((item, i) => (
-            <div key={i} className="bg-red-50 border border-red-200 rounded-lg p-4 flex gap-4">
+            <div key={i} className="bg-gray-50 border border-gray-200 rounded-lg p-4 flex gap-4">
               <div className="min-w-fit">
-                <span className="font-bold text-red-700 text-lg">{item.rate}</span>
+                <span className="font-bold text-danger text-lg">{item.rate}</span>
               </div>
               <div>
                 <p className="font-bold text-gray-800 mb-1">{item.name}</p>
@@ -270,19 +270,19 @@ export default function FukugyouKakuteiShinkokuBlog() {
           副業を会社にバレる主なルートは「住民税の金額」です。副業収入がある場合、住民税が高くなり、会社の経理担当者に気づかれることがあります。
         </p>
 
-        <div className="bg-white border-2 border-blue-200 rounded-lg p-6 mb-6">
-          <h3 className="font-bold text-blue-800 mb-4 text-lg">普通徴収を選択する方法</h3>
+        <div className="bg-white border-2 border-gray-200 rounded-lg p-6 mb-6">
+          <h3 className="font-bold text-kon mb-4 text-lg">普通徴収を選択する方法</h3>
           <div className="space-y-3 text-sm text-gray-700">
             <div className="flex gap-3">
-              <span className="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold shrink-0">1</span>
+              <span className="bg-kon text-white rounded-full w-6 h-6 flex items-center justify-center font-bold shrink-0">1</span>
               <p>確定申告書（第二表）の「住民税・事業税に関する事項」欄を確認する</p>
             </div>
             <div className="flex gap-3">
-              <span className="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold shrink-0">2</span>
+              <span className="bg-kon text-white rounded-full w-6 h-6 flex items-center justify-center font-bold shrink-0">2</span>
               <p>「給与から差し引き」ではなく<strong>「自分で納付（普通徴収）」</strong>を選択する</p>
             </div>
             <div className="flex gap-3">
-              <span className="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold shrink-0">3</span>
+              <span className="bg-kon text-white rounded-full w-6 h-6 flex items-center justify-center font-bold shrink-0">3</span>
               <p>これにより副業分の住民税が会社の給与天引き（特別徴収）に含まれなくなる</p>
             </div>
           </div>
@@ -296,10 +296,10 @@ export default function FukugyouKakuteiShinkokuBlog() {
           自分の副業に確定申告が必要かどうか、複数の副業をまとめて判定できる無料ツールをご用意しています。副業の種類・収入・経費を入力するだけで、申告要否と理由が即座に表示されます。
         </p>
 
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl p-6 mb-6 text-center">
+        <div className="bg-gradient-to-r from-slate-900 to-indigo-600 text-white rounded-xl p-6 mb-6 text-center">
           <p className="text-lg font-bold mb-2">副業 確定申告 必要判定ツール</p>
           <p className="text-sm opacity-90 mb-4">複数の副業をまとめて入力 → 申告要否を即判定。20万円ルール・住民税まで自動チェック。</p>
-          <Link href="/finance/fukugyou-shinkoku-checker" className="inline-block bg-white text-blue-700 font-bold px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors">
+          <Link href="/finance/fukugyou-shinkoku-checker" className="inline-block bg-white text-kon font-bold px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors">
             無料で判定する →
           </Link>
         </div>
@@ -308,26 +308,26 @@ export default function FukugyouKakuteiShinkokuBlog() {
           <div className="bg-white border border-gray-200 rounded-lg p-4">
             <p className="font-bold text-gray-800 mb-2">法人化シミュレーター</p>
             <p className="text-sm text-gray-600 mb-3">副業収入が増えてきたら法人化で節税。損益分岐点の年収を計算。</p>
-            <Link href="/finance/hojinka-simulator" className="text-blue-600 text-sm font-medium hover:underline">試してみる →</Link>
+            <Link href="/finance/hojinka-simulator" className="text-kon text-sm font-medium hover:underline">試してみる →</Link>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-4">
             <p className="font-bold text-gray-800 mb-2">医療費控除計算機</p>
             <p className="text-sm text-gray-600 mb-3">確定申告のついでに医療費控除も確認。セルフメディケーション税制との比較も。</p>
-            <Link href="/finance/iryouhi-koujo-calculator" className="text-blue-600 text-sm font-medium hover:underline">試してみる →</Link>
+            <Link href="/finance/iryouhi-koujo-calculator" className="text-kon text-sm font-medium hover:underline">試してみる →</Link>
           </div>
         </div>
       </section>
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">まとめ：副業確定申告の重要ポイント</h2>
-        <div className="bg-blue-50 rounded-xl p-6">
+        <div className="bg-gray-50 rounded-xl p-6">
           <ul className="space-y-3 text-gray-700">
-            <li className="flex gap-2"><span className="text-blue-600 font-bold">①</span> 副業の「所得（収入−経費）」が20万円を超えると確定申告が必要</li>
-            <li className="flex gap-2"><span className="text-blue-600 font-bold">②</span> 20万円以下でも住民税の申告は別途必要（確定申告すれば一緒に処理される）</li>
-            <li className="flex gap-2"><span className="text-blue-600 font-bold">③</span> アフィリエイト・転売・FXなど副業の種類で所得区分が異なる</li>
-            <li className="flex gap-2"><span className="text-blue-600 font-bold">④</span> 通信費・書籍代・仕入れ代などは経費として所得から差し引ける</li>
-            <li className="flex gap-2"><span className="text-blue-600 font-bold">⑤</span> 会社バレを防ぐには確定申告時に「普通徴収」を選択</li>
-            <li className="flex gap-2"><span className="text-blue-600 font-bold">⑥</span> 無申告は無申告加算税・延滞税のペナルティあり。早めの申告が大切</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">①</span> 副業の「所得（収入−経費）」が20万円を超えると確定申告が必要</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">②</span> 20万円以下でも住民税の申告は別途必要（確定申告すれば一緒に処理される）</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">③</span> アフィリエイト・転売・FXなど副業の種類で所得区分が異なる</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">④</span> 通信費・書籍代・仕入れ代などは経費として所得から差し引ける</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">⑤</span> 会社バレを防ぐには確定申告時に「普通徴収」を選択</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">⑥</span> 無申告は無申告加算税・延滞税のペナルティあり。早めの申告が大切</li>
           </ul>
         </div>
       </section>

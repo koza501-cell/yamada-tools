@@ -46,9 +46,9 @@ export default function TenshokuNenshuSimulation2026Blog() {
         }}
       />
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-pink-500">ホーム</Link>
+        <Link href="/" className="hover:text-sakura">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-pink-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-sakura">ブログ</Link>
         <span className="mx-2">/</span>
         <span>転職年収シミュレーション2026</span>
       </nav>
@@ -91,8 +91,8 @@ export default function TenshokuNenshuSimulation2026Blog() {
               <p className="text-3xl font-bold text-gray-600">25-30%</p>
               <p className="text-sm text-gray-600">横ばい</p>
             </div>
-            <div className="bg-red-50 rounded-lg p-4">
-              <p className="text-3xl font-bold text-red-500">30-35%</p>
+            <div className="bg-gray-50 rounded-lg p-4">
+              <p className="text-3xl font-bold text-danger">30-35%</p>
               <p className="text-sm text-gray-600">年収ダウン</p>
             </div>
           </div>
@@ -152,8 +152,8 @@ export default function TenshokuNenshuSimulation2026Blog() {
           </tbody>
         </table>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-          <p className="text-lg font-bold text-blue-800 mb-2">🔧 あなたの転職後年収を試算！</p>
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+          <p className="text-lg font-bold text-kon mb-2">🔧 あなたの転職後年収を試算！</p>
           <p className="text-gray-700 mb-4">現在の年収・業界・スキルを入力して、転職後の想定年収を計算しましょう。</p>
           <Link href="/career/job-change-simulator" className="inline-block bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-lg transition">
             → 転職年収シミュレーターを使う
@@ -207,16 +207,16 @@ export default function TenshokuNenshuSimulation2026Blog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">転職で年収が下がる3つのパターン</h2>
         <div className="space-y-4">
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-            <h3 className="font-bold text-red-800 mb-2">❌ 未経験業界・職種へのキャリアチェンジ</h3>
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+            <h3 className="font-bold text-danger mb-2">❌ 未経験業界・職種へのキャリアチェンジ</h3>
             <p className="text-gray-700">経験が活かせない転職は、一時的に年収が下がることが多い。長期的なキャリア戦略として考えるべき。</p>
           </div>
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-            <h3 className="font-bold text-red-800 mb-2">❌ 焦って転職先を決める</h3>
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+            <h3 className="font-bold text-danger mb-2">❌ 焦って転職先を決める</h3>
             <p className="text-gray-700">「早く辞めたい」気持ちが先行すると、条件の悪い企業に決めてしまいがち。在職中の転職活動がベスト。</p>
           </div>
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-            <h3 className="font-bold text-red-800 mb-2">❌ 年収交渉をしない</h3>
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+            <h3 className="font-bold text-danger mb-2">❌ 年収交渉をしない</h3>
             <p className="text-gray-700">提示された条件をそのまま受け入れると、本来得られるはずの年収を逃すことも。交渉は必ず行いましょう。</p>
           </div>
         </div>

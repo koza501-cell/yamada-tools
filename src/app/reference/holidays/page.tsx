@@ -113,8 +113,8 @@ export default function HolidaysPage() {
           <h1 className="text-3xl font-bold text-kon mb-4">日本の祝日一覧</h1>
           <p className="text-gray-600">2024年〜2026年の国民の祝日・振替休日</p>
         </header>
-        <div className="bg-blue-50 rounded-xl p-4 mb-8">
-          <p className="text-blue-800 text-sm">
+        <div className="bg-gray-50 rounded-xl p-4 mb-8">
+          <p className="text-kon text-sm">
             💡 祝日が日曜日の場合、翌日が振替休日になります。
             <Link href="/generator/holiday-checker" className="underline ml-1">祝日判定ツール</Link>もご活用ください。
           </p>

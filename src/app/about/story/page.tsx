@@ -60,7 +60,7 @@ export default function StoryPage() {
             </h2>
             <div className="space-y-6">
               <div className="flex gap-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-2xl">🇯🇵</div>
+                <div className="flex-shrink-0 w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center text-2xl">🇯🇵</div>
                 <div>
                   <h3 className="font-bold text-gray-800 mb-1">日本国内サーバー完結</h3>
                   <p className="text-gray-600 text-sm">アップロードされたファイルは日本国内のサーバーでのみ処理されます。海外にデータを送信することは一切ありません。</p>
@@ -74,7 +74,7 @@ export default function StoryPage() {
                 </div>
               </div>
               <div className="flex gap-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-purple-50 rounded-full flex items-center justify-center text-2xl">🆓</div>
+                <div className="flex-shrink-0 w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center text-2xl">🆓</div>
                 <div>
                   <h3 className="font-bold text-gray-800 mb-1">完全無料・登録不要</h3>
                   <p className="text-gray-600 text-sm">すべてのツールは無料でご利用いただけます。メールアドレスの登録も不要です。</p>

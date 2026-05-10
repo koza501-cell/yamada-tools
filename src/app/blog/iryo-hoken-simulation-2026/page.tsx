@@ -46,9 +46,9 @@ export default function IryoHokenSimulation2026Blog() {
         }}
       />
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-pink-500">ホーム</Link>
+        <Link href="/" className="hover:text-sakura">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-pink-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-sakura">ブログ</Link>
         <span className="mx-2">/</span>
         <span>医療保険シミュレーション2026</span>
       </nav>
@@ -77,8 +77,8 @@ export default function IryoHokenSimulation2026Blog() {
         <h2 className="text-2xl font-bold text-gray-800 mb-4">結論：医療保険が必要な人・不要な人</h2>
         
         <div className="grid md:grid-cols-2 gap-4 mb-6">
-          <div className="bg-red-50 border border-red-200 rounded-lg p-5">
-            <h3 className="font-bold text-red-600 mb-3">⚠️ 医療保険が必要な人</h3>
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-5">
+            <h3 className="font-bold text-danger mb-3">⚠️ 医療保険が必要な人</h3>
             <ul className="text-gray-700 space-y-2 text-sm">
               <li>・貯蓄が<strong>100万円未満</strong>の人</li>
               <li>・自営業・フリーランス（傷病手当金なし）</li>
@@ -87,8 +87,8 @@ export default function IryoHokenSimulation2026Blog() {
               <li>・子どもが小さく収入が途絶えると困る人</li>
             </ul>
           </div>
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-5">
-            <h3 className="font-bold text-blue-600 mb-3">✅ 医療保険が不要な人</h3>
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-5">
+            <h3 className="font-bold text-kon mb-3">✅ 医療保険が不要な人</h3>
             <ul className="text-gray-700 space-y-2 text-sm">
               <li>・貯蓄が<strong>200万円以上</strong>ある人</li>
               <li>・会社員で傷病手当金がある人</li>
@@ -164,7 +164,7 @@ export default function IryoHokenSimulation2026Blog() {
           </tbody>
         </table>
 
-        <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+        <div className="bg-gray-50 border-l-4 border-danger p-4 mb-6">
           <p className="font-bold text-gray-800 mb-2">⚠️ 入院1ヶ月の実質負担例</p>
           <p className="text-gray-700">
             医療費8万円＋差額ベッド15万円＋食事4万円＋雑費3万円＝<strong>約30万円</strong>。
@@ -188,7 +188,7 @@ export default function IryoHokenSimulation2026Blog() {
           </thead>
           <tbody>
             <tr><td className="px-4 py-3 border-b font-bold">高額療養費</td><td className="px-4 py-3 border-b text-center">✅ あり</td><td className="px-4 py-3 border-b text-center">✅ あり</td></tr>
-            <tr><td className="px-4 py-3 border-b font-bold">傷病手当金</td><td className="px-4 py-3 border-b text-center text-green-600 font-bold">✅ 給与の2/3（最長1.5年）</td><td className="px-4 py-3 border-b text-center text-red-600 font-bold">❌ なし</td></tr>
+            <tr><td className="px-4 py-3 border-b font-bold">傷病手当金</td><td className="px-4 py-3 border-b text-center text-green-600 font-bold">✅ 給与の2/3（最長1.5年）</td><td className="px-4 py-3 border-b text-center text-danger font-bold">❌ なし</td></tr>
             <tr><td className="px-4 py-3 border-b font-bold">有給休暇</td><td className="px-4 py-3 border-b text-center">✅ あり</td><td className="px-4 py-3 border-b text-center">❌ なし</td></tr>
             <tr><td className="px-4 py-3 border-b font-bold">付加給付</td><td className="px-4 py-3 border-b text-center">組合による（月2万円上限も）</td><td className="px-4 py-3 border-b text-center">❌ なし</td></tr>
           </tbody>
@@ -223,8 +223,8 @@ export default function IryoHokenSimulation2026Blog() {
           </tbody>
         </table>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-          <p className="text-lg font-bold text-blue-800 mb-2">🔧 あなたに必要な医療保険を計算！</p>
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+          <p className="text-lg font-bold text-kon mb-2">🔧 あなたに必要な医療保険を計算！</p>
           <p className="text-gray-700 mb-4">年齢・家族構成・貯蓄額から、最適な保障額をシミュレーションしましょう。</p>
           <Link href="/insurance/medical-insurance-sim" className="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition">
             → 医療保険シミュレーターを使う

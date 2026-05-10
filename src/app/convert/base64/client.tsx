@@ -101,7 +101,7 @@ export default function Base64Client({
           <p className="text-gray-600 text-lg">エンコード・デコード</p>
           <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
             <span className="bg-green-50 text-green-700 px-3 py-1 rounded-full">完全無料</span>
-            <span className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full">日本語対応</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">日本語対応</span>
           </div>
         </header>
 
@@ -157,7 +157,7 @@ export default function Base64Client({
           </div>
 
           {error && (
-            <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm">
+            <div className="mb-4 p-3 bg-gray-50 border border-gray-200 rounded-xl text-danger text-sm">
               {error}
             </div>
           )}

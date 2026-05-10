@@ -57,9 +57,9 @@ export default function NisaSimulation2026Blog() {
         }}
       />
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-pink-500">ホーム</Link>
+        <Link href="/" className="hover:text-sakura">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-pink-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-sakura">ブログ</Link>
         <span className="mx-2">/</span>
         <span>新NISAシミュレーション2026</span>
       </nav>
@@ -70,7 +70,7 @@ export default function NisaSimulation2026Blog() {
       
       <p className="text-gray-500 text-sm mb-8">最終更新: 2026年4月</p>
 
-      <div className="bg-pink-50 border-l-4 border-pink-400 p-4 mb-8">
+      <div className="bg-sakura/30 border-l-4 border-sakura p-4 mb-8">
         <p className="font-bold text-gray-800 mb-2">この記事でわかること</p>
         <ul className="text-gray-700 space-y-1">
           <li>✓ 新NISAの「つみたて投資枠」と「成長投資枠」の違い</li>
@@ -87,7 +87,7 @@ export default function NisaSimulation2026Blog() {
         <h2 className="text-2xl font-bold text-gray-800 mb-4">新NISAとは？2024年からの大改正をおさらい</h2>
         <p className="text-gray-700 mb-4">
           2024年1月から始まった新NISA（少額投資非課税制度）は、投資で得た利益に税金がかからない国の制度です。
-          通常、株式や投資信託の利益には約20%の税金がかかりますが、NISA口座で運用すれば<strong className="text-pink-600">非課税</strong>になります。
+          通常、株式や投資信託の利益には約20%の税金がかかりますが、NISA口座で運用すれば<strong className="text-sakura">非課税</strong>になります。
         </p>
         <p className="text-gray-700 mb-4">
           例えば、100万円の利益が出た場合、通常なら約20万円が税金として引かれますが、NISAなら100万円まるまる受け取れます。
@@ -105,7 +105,7 @@ export default function NisaSimulation2026Blog() {
           <tbody>
             <tr><td className="px-4 py-3 border-b">年間投資枠</td><td className="px-4 py-3 border-b">最大360万円（つみたて120万円＋成長240万円）</td></tr>
             <tr><td className="px-4 py-3 border-b">生涯投資枠</td><td className="px-4 py-3 border-b">1,800万円（成長投資枠は1,200万円まで）</td></tr>
-            <tr><td className="px-4 py-3 border-b">非課税期間</td><td className="px-4 py-3 border-b font-bold text-pink-600">無期限</td></tr>
+            <tr><td className="px-4 py-3 border-b">非課税期間</td><td className="px-4 py-3 border-b font-bold text-sakura">無期限</td></tr>
             <tr><td className="px-4 py-3 border-b">対象者</td><td className="px-4 py-3 border-b">18歳以上の日本居住者</td></tr>
             <tr><td className="px-4 py-3 border-b">口座開設</td><td className="px-4 py-3 border-b">1人1口座のみ（金融機関は変更可能）</td></tr>
           </tbody>
@@ -136,7 +136,7 @@ export default function NisaSimulation2026Blog() {
             <tr><td className="px-4 py-3 border-b">生涯投資上限</td><td className="px-4 py-3 border-b">1,800万円の内数</td><td className="px-4 py-3 border-b">1,200万円まで</td></tr>
             <tr><td className="px-4 py-3 border-b">投資対象</td><td className="px-4 py-3 border-b">金融庁認定の投資信託のみ</td><td className="px-4 py-3 border-b">株式・ETF・投資信託など幅広い</td></tr>
             <tr><td className="px-4 py-3 border-b">購入方法</td><td className="px-4 py-3 border-b">積立のみ</td><td className="px-4 py-3 border-b">積立・一括どちらもOK</td></tr>
-            <tr><td className="px-4 py-3 border-b">おすすめの人</td><td className="px-4 py-3 border-b text-blue-600">投資初心者・コツコツ派</td><td className="px-4 py-3 border-b text-green-600">経験者・まとまった資金がある人</td></tr>
+            <tr><td className="px-4 py-3 border-b">おすすめの人</td><td className="px-4 py-3 border-b text-kon">投資初心者・コツコツ派</td><td className="px-4 py-3 border-b text-green-600">経験者・まとまった資金がある人</td></tr>
           </tbody>
         </table>
 
@@ -144,7 +144,7 @@ export default function NisaSimulation2026Blog() {
         <p className="text-gray-700 mb-4">
           <strong>投資初心者の方</strong>には、まず「つみたて投資枠」からスタートすることをおすすめします。理由は3つ：
         </p>
-        <div className="bg-blue-50 rounded-lg p-4 mb-4">
+        <div className="bg-gray-50 rounded-lg p-4 mb-4">
           <ul className="space-y-2 text-gray-700">
             <li><strong>1. 商品が厳選されている</strong> - 金融庁が「長期・積立・分散投資に適している」と認めた商品だけが対象</li>
             <li><strong>2. 少額から始められる</strong> - 月100円からでもOK</li>
@@ -178,7 +178,7 @@ export default function NisaSimulation2026Blog() {
 
         <h3 className="text-xl font-semibold text-gray-700 mb-3">ケース2：毎月3万円を20年間積立</h3>
         <table className="min-w-full border border-gray-200 mb-6">
-          <thead className="bg-pink-50">
+          <thead className="bg-sakura/30">
             <tr>
               <th className="px-4 py-3 text-left border-b">想定利回り</th>
               <th className="px-4 py-3 text-left border-b">元本</th>
@@ -218,10 +218,10 @@ export default function NisaSimulation2026Blog() {
           </p>
         </div>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-          <p className="text-lg font-bold text-blue-800 mb-2">🔧 今すぐ試算！NISAシミュレーター</p>
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+          <p className="text-lg font-bold text-kon mb-2">🔧 今すぐ試算！NISAシミュレーター</p>
           <p className="text-gray-700 mb-4">あなたの条件で将来の資産をシミュレーションしてみませんか？</p>
-          <Link href="/finance/nisa-simulator" className="inline-block bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-6 rounded-lg transition">
+          <Link href="/finance/nisa-simulator" className="inline-block bg-kon hover:bg-ai text-white font-bold py-3 px-6 rounded-lg transition">
             → 無料NISAシミュレーターを使う
           </Link>
         </div>
@@ -238,7 +238,7 @@ export default function NisaSimulation2026Blog() {
         <div className="space-y-4">
           <div className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
             <h3 className="font-bold text-gray-800 mb-2 flex items-center">
-              <span className="bg-pink-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">1</span>
+              <span className="bg-kon text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">1</span>
               未成年へのNISA拡大
             </h3>
             <p className="text-gray-700">
@@ -248,7 +248,7 @@ export default function NisaSimulation2026Blog() {
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
             <h3 className="font-bold text-gray-800 mb-2 flex items-center">
-              <span className="bg-pink-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">2</span>
+              <span className="bg-kon text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">2</span>
               対象商品の拡充
             </h3>
             <p className="text-gray-700">
@@ -258,7 +258,7 @@ export default function NisaSimulation2026Blog() {
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
             <h3 className="font-bold text-gray-800 mb-2 flex items-center">
-              <span className="bg-pink-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">3</span>
+              <span className="bg-kon text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">3</span>
               非課税枠の年内復活
             </h3>
             <p className="text-gray-700">
@@ -273,35 +273,35 @@ export default function NisaSimulation2026Blog() {
         
         <div className="space-y-6">
           <div className="flex items-start gap-4">
-            <span className="bg-pink-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0 text-lg">1</span>
+            <span className="bg-kon text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0 text-lg">1</span>
             <div>
               <h3 className="font-bold text-gray-800 text-lg mb-1">長期目線で考える</h3>
               <p className="text-gray-700">理想的な投資期間は20年以上。短期売買には向いていません。</p>
             </div>
           </div>
           <div className="flex items-start gap-4">
-            <span className="bg-pink-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0 text-lg">2</span>
+            <span className="bg-kon text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0 text-lg">2</span>
             <div>
               <h3 className="font-bold text-gray-800 text-lg mb-1">生活費を削ってまで投資しない</h3>
               <p className="text-gray-700">まずは生活費の3〜6ヶ月分の貯金を確保してから始めましょう。</p>
             </div>
           </div>
           <div className="flex items-start gap-4">
-            <span className="bg-pink-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0 text-lg">3</span>
+            <span className="bg-kon text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0 text-lg">3</span>
             <div>
               <h3 className="font-bold text-gray-800 text-lg mb-1">一度に大金を投入しない</h3>
               <p className="text-gray-700">「ドルコスト平均法」で高値掴みのリスクを軽減しましょう。</p>
             </div>
           </div>
           <div className="flex items-start gap-4">
-            <span className="bg-pink-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0 text-lg">4</span>
+            <span className="bg-kon text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0 text-lg">4</span>
             <div>
               <h3 className="font-bold text-gray-800 text-lg mb-1">相場の上下に一喜一憂しない</h3>
               <p className="text-gray-700">長期投資では短期的な変動は「ノイズ」。淡々と積み立てを続けましょう。</p>
             </div>
           </div>
           <div className="flex items-start gap-4">
-            <span className="bg-pink-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0 text-lg">5</span>
+            <span className="bg-kon text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0 text-lg">5</span>
             <div>
               <h3 className="font-bold text-gray-800 text-lg mb-1">年に1回は見直しを</h3>
               <p className="text-gray-700">資産配分や生活状況の変化をチェックしましょう。</p>
@@ -353,9 +353,9 @@ export default function NisaSimulation2026Blog() {
           新NISAは、非課税期間が無期限、年間360万円・生涯1,800万円まで投資可能という、これまでにない優遇制度です。
         </p>
         
-        <div className="bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-lg p-6 text-center">
+        <div className="bg-gradient-to-r from-slate-900 to-rose-500 text-white rounded-lg p-6 text-center">
           <p className="text-lg font-bold mb-4">まずはシミュレーションで、自分の目標に合った積立プランを確認してみましょう。</p>
-          <Link href="/finance/nisa-simulator" className="inline-block bg-white text-pink-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition">
+          <Link href="/finance/nisa-simulator" className="inline-block bg-white text-sakura font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition">
             → 無料NISAシミュレーターで試算する
           </Link>
         </div>
@@ -364,19 +364,19 @@ export default function NisaSimulation2026Blog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">関連ツール</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Link href="/finance/nisa-simulator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-pink-300 transition">
+          <Link href="/finance/nisa-simulator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-sakura transition">
             <span className="font-bold text-gray-800">NISAシミュレーター</span>
             <p className="text-sm text-gray-600">積立金額・期間・利回りから将来の資産を計算</p>
           </Link>
-          <Link href="/finance/ideco-nisa-comparison" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-pink-300 transition">
+          <Link href="/finance/ideco-nisa-comparison" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-sakura transition">
             <span className="font-bold text-gray-800">iDeCo vs NISA 比較ツール</span>
             <p className="text-sm text-gray-600">どちらが自分に合っているか診断</p>
           </Link>
-          <Link href="/finance/jutaku-loan" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-pink-300 transition">
+          <Link href="/finance/jutaku-loan" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-sakura transition">
             <span className="font-bold text-gray-800">住宅ローンシミュレーター</span>
             <p className="text-sm text-gray-600">住宅購入と資産形成を両立させたい方に</p>
           </Link>
-          <Link href="/finance/retirement-simulator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-pink-300 transition">
+          <Link href="/finance/retirement-simulator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-sakura transition">
             <span className="font-bold text-gray-800">老後資金シミュレーター</span>
             <p className="text-sm text-gray-600">何歳まで働けば大丈夫？を計算</p>
           </Link>

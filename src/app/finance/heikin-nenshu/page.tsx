@@ -140,9 +140,9 @@ export default function HeikinNenshuPage() {
     const ratio = mine / prefAnnual;
     if (ratio >= 1.5) return { label: "上位10%以内", color: "text-green-600" };
     if (ratio >= 1.2) return { label: "上位25%以内", color: "text-green-500" };
-    if (ratio >= 1.0) return { label: "平均以上（上位50%）", color: "text-blue-500" };
+    if (ratio >= 1.0) return { label: "平均以上（上位50%）", color: "text-kon" };
     if (ratio >= 0.8) return { label: "平均以下（下位50%）", color: "text-yellow-600" };
-    return { label: "下位25%以内", color: "text-red-500" };
+    return { label: "下位25%以内", color: "text-danger" };
   })();
 
   const chartData = ranking.slice(0, 47).map((p) => ({
@@ -175,9 +175,9 @@ export default function HeikinNenshuPage() {
 
       <div className="max-w-4xl mx-auto px-4 py-8 space-y-6">
         {/* Mascot */}
-        <div className="bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 rounded-xl p-4 flex items-start gap-3">
+        <div className="bg-gray-50 dark:bg-kon/30 border border-gray-200 dark:border-kon rounded-xl p-4 flex items-start gap-3">
           <div className="text-2xl shrink-0">🤖</div>
-          <p className="text-sm text-blue-800 dark:text-blue-300">
+          <p className="text-sm text-kon dark:text-gray-300">
             あなたの地域の平均年収をチェック！都道府県・年齢・業種・性別で絞り込めます。
             <span className="font-semibold">データ更新: 2026年4月（2023年調査分）</span>
           </p>
@@ -192,7 +192,7 @@ export default function HeikinNenshuPage() {
               <select
                 value={prefCode}
                 onChange={(e) => setPrefCode(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
               >
                 {PREFECTURES.map((p) => (
                   <option key={p.code} value={p.code}>{p.name}</option>
@@ -204,7 +204,7 @@ export default function HeikinNenshuPage() {
               <select
                 value={ageClass}
                 onChange={(e) => setAgeClass(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
               >
                 {AGE_CLASSES.map((a) => (
                   <option key={a.code} value={a.code}>{a.label}</option>
@@ -216,7 +216,7 @@ export default function HeikinNenshuPage() {
               <select
                 value={industry}
                 onChange={(e) => setIndustry(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
               >
                 {INDUSTRIES.map((i) => (
                   <option key={i.code} value={i.code}>{i.label}</option>
@@ -228,7 +228,7 @@ export default function HeikinNenshuPage() {
               <select
                 value={gender}
                 onChange={(e) => setGender(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
               >
                 <option value="01">男女計</option>
                 <option value="02">男性</option>
@@ -240,7 +240,7 @@ export default function HeikinNenshuPage() {
 
         {/* Result */}
         {error && (
-          <div className="bg-red-50 dark:bg-red-950/40 border border-red-200 rounded-xl p-4 text-sm text-red-600">
+          <div className="bg-gray-50 dark:bg-red-950/40 border border-gray-200 rounded-xl p-4 text-sm text-danger">
             {error}
           </div>
         )}
@@ -266,7 +266,7 @@ export default function HeikinNenshuPage() {
                 <span className="text-gray-500 dark:text-gray-400">
                   全国平均: <strong className="text-gray-900 dark:text-white">¥{result.national_avg_man.toFixed(1)}万</strong>
                 </span>
-                <span className={`font-semibold ${result.diff_man >= 0 ? "text-green-600" : "text-red-500"}`}>
+                <span className={`font-semibold ${result.diff_man >= 0 ? "text-green-600" : "text-danger"}`}>
                   {result.diff_man >= 0 ? "+" : ""}{result.diff_man.toFixed(1)}万
                 </span>
                 <span className="text-gray-500 dark:text-gray-400">
@@ -298,7 +298,7 @@ export default function HeikinNenshuPage() {
                   value={mySalary}
                   onChange={(e) => setMySalary(e.target.value)}
                   placeholder="例: 450"
-                  className="flex-1 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="flex-1 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                 />
                 <span className="flex items-center text-sm text-gray-500 dark:text-gray-400">万円</span>
               </div>
@@ -318,7 +318,7 @@ export default function HeikinNenshuPage() {
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-6">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-bold text-gray-900 dark:text-white">全国47都道府県 年収ランキング</h3>
-            <Link href="/finance/heikin-nenshu/ranking" className="text-xs text-blue-600 dark:text-blue-400 hover:underline">
+            <Link href="/finance/heikin-nenshu/ranking" className="text-xs text-kon dark:text-gray-300 hover:underline">
               表で見る →
             </Link>
           </div>

@@ -230,7 +230,7 @@ export default function HoikuryoClient() {
             <button
               type="button"
               onClick={handleCalculate}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl shadow-sm transition"
+              className="w-full bg-kon hover:bg-ai text-white font-semibold py-3 rounded-xl shadow-sm transition"
             >
               判定する
             </button>
@@ -276,8 +276,8 @@ export default function HoikuryoClient() {
                         <span className="font-semibold text-gray-700 dark:text-gray-300">¥{fmt(result.annualBurden)}</span>
                       </div>
                     </div>
-                    <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3 text-xs text-gray-600 dark:text-gray-400 mt-3">
-                      推定 市民税所得割額: <span className="font-semibold text-blue-700 dark:text-blue-300">約¥{fmt(result.wariKin)}/年</span>
+                    <div className="bg-gray-50 dark:bg-kon/20 rounded-lg p-3 text-xs text-gray-600 dark:text-gray-400 mt-3">
+                      推定 市民税所得割額: <span className="font-semibold text-kon dark:text-gray-300">約¥{fmt(result.wariKin)}/年</span>
                       {result.isNonTaxable && <span className="ml-2 text-green-600 dark:text-green-400">（非課税世帯）</span>}
                     </div>
                   </div>
@@ -289,9 +289,9 @@ export default function HoikuryoClient() {
               </div>
             )}
 
-            <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 text-sm space-y-2">
-              <p className="font-semibold text-blue-800 dark:text-blue-300">ℹ️ 2026年 幼児教育無償化ポイント</p>
-              <ul className="text-xs text-blue-700 dark:text-blue-300 space-y-1 list-disc list-inside">
+            <div className="bg-gray-50 dark:bg-kon/20 rounded-xl p-4 text-sm space-y-2">
+              <p className="font-semibold text-kon dark:text-gray-300">ℹ️ 2026年 幼児教育無償化ポイント</p>
+              <ul className="text-xs text-kon dark:text-gray-300 space-y-1 list-disc list-inside">
                 <li>3〜5歳: 認可保育所・幼稚園・こども園→無償（上限なし）</li>
                 <li>0〜2歳: 住民税非課税世帯のみ無償</li>
                 <li>認可外: 3-5歳→月3.7万円まで補助</li>

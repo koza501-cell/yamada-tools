@@ -213,7 +213,7 @@ export default function ContentManagement() {
                       className={`text-sm font-bold ${
                         wordCount(formData.how_to_content || "") >= 600
                           ? "text-green-600"
-                          : "text-orange-500"
+                          : "text-kon"
                       }`}
                     >
                       {wordCount(formData.how_to_content || "")} / 600字

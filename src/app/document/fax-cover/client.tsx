@@ -169,13 +169,13 @@ export default function FaxCoverClient() {
               ref={errorBannerRef}
               role="alert"
               aria-live="assertive"
-              className="print:hidden mb-4 p-4 bg-red-50 border border-red-300 rounded-lg"
+              className="print:hidden mb-4 p-4 bg-gray-50 border border-gray-200 rounded-lg"
             >
-              <p className="font-bold text-red-700 mb-2">入力内容を確認してください</p>
+              <p className="font-bold text-danger mb-2">入力内容を確認してください</p>
               <ul className="list-disc list-inside space-y-1">
                 {errorFields.map(({ id, label }) => (
                   <li key={id}>
-                    <a href={`#${id}`} className="text-red-600 underline hover:text-red-800">
+                    <a href={`#${id}`} className="text-danger underline hover:text-danger">
                       {label}
                     </a>
                   </li>
@@ -325,7 +325,7 @@ export default function FaxCoverClient() {
                           onClick={() => handleGreetingType(t.id)}
                           className={`px-3 py-1 text-sm rounded-full ${
                             greetingType === t.id
-                              ? "bg-blue-600 text-white"
+                              ? "bg-kon text-white"
                               : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                           }`}
                         >
@@ -367,7 +367,7 @@ export default function FaxCoverClient() {
                       onClick={() => toggleAction(opt.id)}
                       className={`px-3 py-1 text-sm rounded-lg border ${
                         selectedActions.includes(opt.id)
-                          ? "bg-blue-100 border-blue-500 text-blue-700"
+                          ? "bg-gray-50 border-kon text-kon"
                           : "bg-white border-gray-300 text-gray-700 hover:bg-gray-50"
                       }`}
                     >
@@ -391,7 +391,7 @@ export default function FaxCoverClient() {
             <div className="mt-6 print:hidden">
               <button
                 type="submit"
-                className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-lg"
+                className="w-full py-4 bg-kon hover:bg-ai text-white rounded-xl font-bold text-lg"
               >
                 印刷 / PDF保存
               </button>
@@ -469,7 +469,7 @@ export default function FaxCoverClient() {
           </div>
 
           <div className="mt-8 text-center print:hidden">
-            <Link href="/document" className="text-blue-600 hover:text-blue-800">
+            <Link href="/document" className="text-kon hover:text-ai">
               ← 書類作成一覧に戻る
             </Link>
           </div>

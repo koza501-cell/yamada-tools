@@ -256,7 +256,7 @@ export default function CaseIdPage({ params }: { params: Promise<{ id: string }>
               <h2 className="text-base font-bold text-gray-900 dark:text-white mb-5">申請先・申請日</h2>
               {fi("管轄法務局", form.houmukyoku, (v) => setForm((f) => ({ ...f, houmukyoku: v })), { placeholder: "例：東京法務局新宿出張所" })}
               {fi("申請日", form.application_date, (v) => setForm((f) => ({ ...f, application_date: v })), { type: "date" })}
-              <div className="bg-blue-50 dark:bg-blue-950/30 rounded-xl p-3 text-xs text-blue-700 dark:text-blue-300 mt-2">
+              <div className="bg-gray-50 dark:bg-kon/30 rounded-xl p-3 text-xs text-kon dark:text-gray-300 mt-2">
                 💡 管轄法務局は <Link href="/souzoku-touki/houmukyoku" className="underline" target="_blank">法務局検索</Link> で確認できます。
               </div>
             </div>
@@ -284,7 +284,7 @@ export default function CaseIdPage({ params }: { params: Promise<{ id: string }>
                   <div className="flex items-center justify-between mb-3">
                     <span className="font-semibold text-sm text-gray-900 dark:text-white">不動産 {i + 1}</span>
                     {form.properties.length > 1 && (
-                      <button onClick={() => removeProp(i)} className="text-xs text-red-500 hover:text-red-700">削除</button>
+                      <button onClick={() => removeProp(i)} className="text-xs text-danger hover:text-danger">削除</button>
                     )}
                   </div>
                   <div className="grid grid-cols-2 gap-2 mb-3">
@@ -333,7 +333,7 @@ export default function CaseIdPage({ params }: { params: Promise<{ id: string }>
                   <div className="flex items-center justify-between mb-3">
                     <span className="font-semibold text-sm text-gray-900 dark:text-white">相続人 {i + 1}</span>
                     {form.heirs.length > 1 && (
-                      <button onClick={() => removeHeir(i)} className="text-xs text-red-500 hover:text-red-700">削除</button>
+                      <button onClick={() => removeHeir(i)} className="text-xs text-danger hover:text-danger">削除</button>
                     )}
                   </div>
                   {fi("氏名", heir.name, (v) => setHeir(i, "name", v), { placeholder: "山田花子" })}
@@ -490,7 +490,7 @@ export default function CaseIdPage({ params }: { params: Promise<{ id: string }>
                   </button>
                 ))}
               </div>
-              <p className="text-xs text-amber-700 dark:text-amber-400 mt-3">
+              <p className="text-xs text-kon dark:text-kon mt-3">
                 ⚠️ 本ツールは書類作成補助です。法律相談・代理申請は行いません。
               </p>
             </div>

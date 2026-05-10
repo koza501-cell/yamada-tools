@@ -46,9 +46,9 @@ export default function FukugyouZeikinSimulation2026Blog() {
         }}
       />
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-pink-500">ホーム</Link>
+        <Link href="/" className="hover:text-sakura">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-pink-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-sakura">ブログ</Link>
         <span className="mx-2">/</span>
         <span>副業税金シミュレーション2026</span>
       </nav>
@@ -92,11 +92,11 @@ export default function FukugyouZeikinSimulation2026Blog() {
           </div>
         </div>
 
-        <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+        <div className="bg-gray-50 border-l-4 border-danger p-4 mb-6">
           <p className="font-bold text-gray-800 mb-2">⚠️ 「20万円以下なら申告不要」の落とし穴</p>
           <p className="text-gray-700">
             副業所得20万円以下で<strong>所得税の確定申告は不要</strong>ですが、
-            <strong className="text-red-600">住民税の申告は必要</strong>です。市区町村に直接申告するか、確定申告をする必要があります。
+            <strong className="text-danger">住民税の申告は必要</strong>です。市区町村に直接申告するか、確定申告をする必要があります。
           </p>
         </div>
       </section>
@@ -120,15 +120,15 @@ export default function FukugyouZeikinSimulation2026Blog() {
             <tr className="bg-green-50"><td className="px-4 py-3 border-b font-bold">10万円</td><td className="px-4 py-3 border-b text-right">約2万円</td><td className="px-4 py-3 border-b text-right">約1万円</td><td className="px-4 py-3 border-b text-right font-bold">約3万円</td></tr>
             <tr><td className="px-4 py-3 border-b font-bold">20万円</td><td className="px-4 py-3 border-b text-right">約4万円</td><td className="px-4 py-3 border-b text-right">約2万円</td><td className="px-4 py-3 border-b text-right font-bold">約6万円</td></tr>
             <tr><td className="px-4 py-3 border-b font-bold">50万円</td><td className="px-4 py-3 border-b text-right">約10万円</td><td className="px-4 py-3 border-b text-right">約5万円</td><td className="px-4 py-3 border-b text-right font-bold">約15万円</td></tr>
-            <tr className="bg-yellow-50"><td className="px-4 py-3 border-b font-bold">100万円</td><td className="px-4 py-3 border-b text-right">約20万円</td><td className="px-4 py-3 border-b text-right">約10万円</td><td className="px-4 py-3 border-b text-right font-bold text-red-600">約30万円</td></tr>
-            <tr><td className="px-4 py-3 border-b font-bold">200万円</td><td className="px-4 py-3 border-b text-right">約46万円</td><td className="px-4 py-3 border-b text-right">約20万円</td><td className="px-4 py-3 border-b text-right font-bold text-red-600">約66万円</td></tr>
+            <tr className="bg-yellow-50"><td className="px-4 py-3 border-b font-bold">100万円</td><td className="px-4 py-3 border-b text-right">約20万円</td><td className="px-4 py-3 border-b text-right">約10万円</td><td className="px-4 py-3 border-b text-right font-bold text-danger">約30万円</td></tr>
+            <tr><td className="px-4 py-3 border-b font-bold">200万円</td><td className="px-4 py-3 border-b text-right">約46万円</td><td className="px-4 py-3 border-b text-right">約20万円</td><td className="px-4 py-3 border-b text-right font-bold text-danger">約66万円</td></tr>
           </tbody>
         </table>
 
         <p className="text-sm text-gray-600 mb-6">※本業年収500万円（課税所得約280万円）の場合の概算。適用税率は所得全体で決まるため、副業分は上乗せ税率で計算。</p>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-          <p className="text-lg font-bold text-blue-800 mb-2">🔧 あなたの副業税金を計算！</p>
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+          <p className="text-lg font-bold text-kon mb-2">🔧 あなたの副業税金を計算！</p>
           <p className="text-gray-700 mb-4">本業年収と副業収入を入力して、正確な税額をシミュレーションしましょう。</p>
           <Link href="/career/side-income-tax-calculator" className="inline-block bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg transition">
             → 副業税金計算機を使う
@@ -201,8 +201,8 @@ export default function FukugyouZeikinSimulation2026Blog() {
               <li>・名刺、文房具</li>
             </ul>
           </div>
-          <div className="bg-red-50 border border-red-200 rounded-lg p-5">
-            <h3 className="font-bold text-red-800 text-lg mb-3">❌ 経費にできないもの</h3>
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-5">
+            <h3 className="font-bold text-danger text-lg mb-3">❌ 経費にできないもの</h3>
             <ul className="space-y-2 text-gray-700 text-sm">
               <li>・プライベートの食事</li>
               <li>・趣味の本・グッズ</li>
@@ -287,7 +287,7 @@ export default function FukugyouZeikinSimulation2026Blog() {
           まずは副業税金計算機で、あなたの場合にいくら税金がかかるかシミュレーションしてみましょう。
         </p>
         
-        <div className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-lg p-6 text-center">
+        <div className="bg-gradient-to-r from-indigo-500 to-kon text-white rounded-lg p-6 text-center">
           <p className="text-lg font-bold mb-4">あなたの副業税金をシミュレーション</p>
           <Link href="/career/side-income-tax-calculator" className="inline-block bg-white text-indigo-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition">
             → 副業税金計算機を使う

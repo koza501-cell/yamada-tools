@@ -169,7 +169,7 @@ export default function ImageRotateClient({
           <p className="text-gray-600 text-lg">画像を回転・反転</p>
           <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
             <span className="bg-green-50 text-green-700 px-3 py-1 rounded-full">完全無料</span>
-            <span className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full">複数ファイル対応</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">複数ファイル対応</span>
           </div>
         </header>
 
@@ -198,7 +198,7 @@ export default function ImageRotateClient({
             <div className="mt-6">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm font-medium">{files.length}枚選択中</span>
-                <button onClick={clearAll} className="text-xs text-red-500">すべて削除</button>
+                <button onClick={clearAll} className="text-xs text-danger">すべて削除</button>
               </div>
               <div className="grid grid-cols-4 gap-2">
                 {previews.slice(0, 8).map((p, i) => (

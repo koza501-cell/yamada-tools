@@ -293,8 +293,8 @@ export default function CombiniPrintClient({
           <p className="text-gray-600 dark:text-gray-300 text-lg">セブン・ローソン・ファミマで端が切れずにきれいに印刷</p>
           <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
             <span className="bg-green-50 text-green-700 px-3 py-1 rounded-full">✓ 完全無料</span>
-            <span className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full">🔒 ブラウザ内処理</span>
-            <span className="bg-purple-50 text-purple-700 px-3 py-1 rounded-full">📱 スマホ対応</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">🔒 ブラウザ内処理</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">📱 スマホ対応</span>
           </div>
         </header>
 
@@ -341,29 +341,29 @@ export default function CombiniPrintClient({
                     <p className="text-xs text-gray-500">{pageCount}ページ • {((pdfFile?.size || 0) / 1024).toFixed(0)} KB</p>
                   </div>
                 </div>
-                <button onClick={clearAll} className="text-sm text-red-500 hover:text-red-700 font-bold px-3 py-1 rounded-lg hover:bg-red-50 transition">
+                <button onClick={clearAll} className="text-sm text-danger hover:text-danger font-bold px-3 py-1 rounded-lg hover:bg-gray-50 transition">
                   ✕ 閉じる
                 </button>
               </div>
 
               {/* Problem Explanation */}
-              <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl p-4 mb-4">
+              <div className="bg-gray-50 dark:bg-danger/20 border border-gray-200 dark:border-danger rounded-xl p-4 mb-4">
                 <div className="flex items-start gap-3">
                   <span className="text-2xl">⚠️</span>
                   <div>
-                    <p className="font-bold text-red-800 dark:text-red-200 text-sm">コンビニのコピー機は端から約5mmが印刷されません</p>
-                    <p className="text-red-600 dark:text-red-300 text-xs mt-1">赤い点線の外側にあるコンテンツは切れてしまいます。余白を追加して解決しましょう。</p>
+                    <p className="font-bold text-danger dark:text-gin text-sm">コンビニのコピー機は端から約5mmが印刷されません</p>
+                    <p className="text-danger dark:text-gin text-xs mt-1">赤い点線の外側にあるコンテンツは切れてしまいます。余白を追加して解決しましょう。</p>
                   </div>
                 </div>
               </div>
 
               {/* Scale Control */}
-              <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-4 mb-4">
+              <div className="bg-gray-50 dark:bg-kon/20 border border-gray-200 dark:border-kon rounded-xl p-4 mb-4">
                 <div className="flex items-center justify-between mb-2">
-                  <label className="font-bold text-sm text-blue-800 dark:text-blue-200">📐 縮小率</label>
+                  <label className="font-bold text-sm text-kon dark:text-gray-300">📐 縮小率</label>
                   <div className="flex items-center gap-2">
-                    <span className="text-2xl font-bold text-blue-700 dark:text-blue-300">{scale}%</span>
-                    <span className="text-xs text-blue-500 bg-blue-100 dark:bg-blue-800 px-2 py-0.5 rounded-full">
+                    <span className="text-2xl font-bold text-kon dark:text-gray-300">{scale}%</span>
+                    <span className="text-xs text-kon bg-gray-50 dark:bg-kon px-2 py-0.5 rounded-full">
                       余白 約{marginMm}mm
                     </span>
                   </div>
@@ -376,7 +376,7 @@ export default function CombiniPrintClient({
                   onChange={(e) => setScale(Number(e.target.value))}
                   className="w-full accent-kon"
                 />
-                <div className="flex justify-between text-xs text-blue-500 mt-1">
+                <div className="flex justify-between text-xs text-kon mt-1">
                   <span>85%（余白多め）</span>
                   <span className="font-bold">← 95%推奨 →</span>
                   <span>99%（余白少なめ）</span>
@@ -394,7 +394,7 @@ export default function CombiniPrintClient({
                       className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all ${
                         scale === p.value
                           ? "bg-kon text-white shadow-md"
-                          : "bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 border border-blue-200 dark:border-gray-600 hover:bg-blue-100"
+                          : "bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-600 hover:bg-ai"
                       }`}
                     >
                       <div>{p.label}</div>
@@ -410,7 +410,7 @@ export default function CombiniPrintClient({
                   onClick={() => setPreviewMode("before")}
                   className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${
                     previewMode === "before"
-                      ? "bg-red-500 text-white shadow-md"
+                      ? "bg-danger text-white shadow-md"
                       : "bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300"
                   }`}
                 >
@@ -446,7 +446,7 @@ export default function CombiniPrintClient({
                 {/* Preview label */}
                 <div className="text-center mt-2">
                   {previewMode === "before" ? (
-                    <span className="text-xs text-red-600 font-bold bg-red-50 px-3 py-1 rounded-full">
+                    <span className="text-xs text-danger font-bold bg-gray-50 px-3 py-1 rounded-full">
                       ⚠️ 赤い点線の外側は切れます
                     </span>
                   ) : (
@@ -488,9 +488,9 @@ export default function CombiniPrintClient({
               </button>
 
               {/* Convenience store tips */}
-              <div className="mt-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-xl p-4">
-                <h3 className="font-bold text-amber-800 dark:text-amber-200 text-sm mb-2">🏪 コンビニでの印刷手順</h3>
-                <div className="text-xs text-amber-700 dark:text-amber-300 space-y-1">
+              <div className="mt-4 bg-gray-50 dark:bg-kon/20 border border-gray-200 dark:border-gray-200 rounded-xl p-4">
+                <h3 className="font-bold text-kon dark:text-amber-200 text-sm mb-2">🏪 コンビニでの印刷手順</h3>
+                <div className="text-xs text-kon dark:text-amber-300 space-y-1">
                   <p>1. このツールでPDFを変換してダウンロード</p>
                   <p>2. netprint（セブン）またはネットワークプリント（ローソン・ファミマ）にアップロード</p>
                   <p>3. コピー機で「用紙に合わせる」をオフにして「実際のサイズ」で印刷</p>
@@ -501,7 +501,7 @@ export default function CombiniPrintClient({
 
           {/* Error */}
           {error && (
-            <div className="bg-red-50 border border-red-200 text-red-600 rounded-xl p-3 mt-4 text-sm">
+            <div className="bg-gray-50 border border-gray-200 text-danger rounded-xl p-3 mt-4 text-sm">
               ⚠️ {error}
             </div>
           )}
@@ -532,8 +532,8 @@ export default function CombiniPrintClient({
                 </div>
               )}
               {seoContent.tips && (
-                <div className="bg-blue-50 dark:bg-blue-900/30 rounded-lg p-4 mt-4">
-                  <p className="text-sm text-blue-800 dark:text-blue-200">💡 <strong>ヒント:</strong> {seoContent.tips}</p>
+                <div className="bg-gray-50 dark:bg-kon/30 rounded-lg p-4 mt-4">
+                  <p className="text-sm text-kon dark:text-gray-300">💡 <strong>ヒント:</strong> {seoContent.tips}</p>
                 </div>
               )}
             </div>
@@ -541,7 +541,7 @@ export default function CombiniPrintClient({
         )}
 
         {/* How-to Steps */}
-        <section className="mt-8 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-xl p-6 border border-blue-100 dark:border-blue-800">
+        <section className="mt-8 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-xl p-6 border border-gray-200 dark:border-kon">
           <h2 className="font-bold text-kon mb-6 text-lg text-center">📖 かんたん3ステップ</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {[

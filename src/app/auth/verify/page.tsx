@@ -47,7 +47,7 @@ export default function VerifyPage() {
         {status === "error" && (
           <>
             <div className="text-5xl mb-4">❌</div>
-            <h1 className="text-2xl font-bold text-red-600 mb-4">認証エラー</h1>
+            <h1 className="text-2xl font-bold text-danger mb-4">認証エラー</h1>
             <p className="text-gray-600 mb-6">{message}</p>
             <Link href="/auth/login" className="text-sakura hover:underline">もう一度ログインする</Link>
           </>

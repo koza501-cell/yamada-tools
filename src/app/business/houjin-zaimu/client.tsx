@@ -99,12 +99,12 @@ export default function HoujinZaimuClient() {
       <div className="bg-white border border-gray-200 rounded-xl p-5 space-y-3">
         <label className="block text-sm font-medium text-gray-700">法人番号（13桌）</label>
         <div className="flex gap-2">
-          <input type="text" value={corpNum} onChange={(e) => setCorpNum(e.target.value)} onKeyDown={handleKeyDown} placeholder="例: 1180301018771" maxLength={13} className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <button type="button" onClick={handleSearch} disabled={loading} className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-5 py-2 rounded-lg disabled:opacity-50 transition-colors">
+          <input type="text" value={corpNum} onChange={(e) => setCorpNum(e.target.value)} onKeyDown={handleKeyDown} placeholder="例: 1180301018771" maxLength={13} className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon" />
+          <button type="button" onClick={handleSearch} disabled={loading} className="bg-kon hover:bg-ai text-white text-sm font-medium px-5 py-2 rounded-lg disabled:opacity-50 transition-colors">
             {loading ? "検索中…" : "検索"}
           </button>
         </div>
-        {error && <p className="text-red-600 text-sm">{error}</p>}
+        {error && <p className="text-danger text-sm">{error}</p>}
       </div>
       {hojin && (
         <div className="space-y-6">
@@ -136,10 +136,10 @@ export default function HoujinZaimuClient() {
                   <tr key={i} className="border-b border-gray-100 hover:bg-gray-50">
                     <td className="py-2 pr-4 whitespace-nowrap">{idx.period ?? "—"}</td>
                     <td className="text-right py-2 px-2 whitespace-nowrap">{fmt(idx.net_sales_summary_of_business_results)}</td>
-                    <td className={`text-right py-2 px-2 whitespace-nowrap ${(Number(idx.operating_income_loss_summary_of_business_results)||0)<0?"text-red-600":""}`}>
+                    <td className={`text-right py-2 px-2 whitespace-nowrap ${(Number(idx.operating_income_loss_summary_of_business_results)||0)<0?"text-danger":""}`}>
                       {fmt(idx.operating_income_loss_summary_of_business_results)}
                     </td>
-                    <td className={`text-right py-2 px-2 whitespace-nowrap ${(Number(idx.net_income_loss_summary_of_business_results)||0)<0?"text-red-600":""}`}>
+                    <td className={`text-right py-2 px-2 whitespace-nowrap ${(Number(idx.net_income_loss_summary_of_business_results)||0)<0?"text-danger":""}`}>
                       {fmt(idx.net_income_loss_summary_of_business_results)}
                     </td>
                     <td className="text-right py-2 px-2 whitespace-nowrap">{fmt(idx.total_assets_summary_of_business_results)}</td>
@@ -167,7 +167,7 @@ export default function HoujinZaimuClient() {
           )}
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-sm">
             <p className="font-medium text-gray-700 mb-2">関連ツール（yamada-tools.jp）</p>
-            <ul className="space-y-1 text-blue-700">
+            <ul className="space-y-1 text-kon">
               <li><a href="/business/houjin-search" className="hover:underline">→ 法人検索ツール（会社名から法人番号を調べる）</a></li>
               <li><a href="/business/houjin-nyusatsu" className="hover:underline">→ 入札・調達情報ツール</a></li>
               <li><a href="/business/houjin-nintei" className="hover:underline">→ 認定情報ツール</a></li>
@@ -176,7 +176,7 @@ export default function HoujinZaimuClient() {
           </div>
         </div>
       )}
-      {data && !hojin && <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-sm text-red-700">該当する法人が見つかりませんでした。</div>}
+      {data && !hojin && <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-sm text-danger">該当する法人が見つかりませんでした。</div>}
       <div className="print:hidden"><FAQSection faq={faqItems} /></div>
     </div>
   );

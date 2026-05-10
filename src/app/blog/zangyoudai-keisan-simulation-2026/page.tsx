@@ -46,9 +46,9 @@ export default function ZangyoudaiKeisanSimulation2026Blog() {
         }}
       />
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-pink-500">ホーム</Link>
+        <Link href="/" className="hover:text-sakura">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-pink-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-sakura">ブログ</Link>
         <span className="mx-2">/</span>
         <span>残業代計算2026</span>
       </nav>
@@ -60,7 +60,7 @@ export default function ZangyoudaiKeisanSimulation2026Blog() {
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】残業代の計算方法｜時給換算・割増率・未払い請求まで完全解説</h1>
       <p className="text-gray-500 text-sm mb-8">最終更新: 2026年4月</p>
 
-      <div className="bg-amber-50 border-l-4 border-amber-400 p-4 mb-8">
+      <div className="bg-gray-50 border-l-4 border-gray-200 p-4 mb-8">
         <p className="font-bold text-gray-800 mb-2">この記事でわかること</p>
         <ul className="text-gray-700 space-y-1">
           <li>✓ 残業代の基本的な計算方法</li>
@@ -79,14 +79,14 @@ export default function ZangyoudaiKeisanSimulation2026Blog() {
           残業代は以下の計算式で求められます。
         </p>
         
-        <div className="bg-white border-2 border-amber-200 rounded-lg p-6 mb-6">
-          <div className="bg-amber-50 rounded p-4 text-center">
-            <p className="text-2xl font-bold text-amber-800 mb-2">残業代 = 1時間あたりの賃金 × 割増率 × 残業時間</p>
+        <div className="bg-white border-2 border-gray-200 rounded-lg p-6 mb-6">
+          <div className="bg-gray-50 rounded p-4 text-center">
+            <p className="text-2xl font-bold text-kon mb-2">残業代 = 1時間あたりの賃金 × 割増率 × 残業時間</p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          <div className="bg-blue-50 rounded-lg p-4 text-center">
+          <div className="bg-gray-50 rounded-lg p-4 text-center">
             <p className="text-sm text-gray-600 mb-1">1時間あたりの賃金</p>
             <p className="text-lg font-bold">月給 ÷ 月平均所定労働時間</p>
           </div>
@@ -94,7 +94,7 @@ export default function ZangyoudaiKeisanSimulation2026Blog() {
             <p className="text-sm text-gray-600 mb-1">割増率</p>
             <p className="text-lg font-bold">1.25〜1.60</p>
           </div>
-          <div className="bg-purple-50 rounded-lg p-4 text-center">
+          <div className="bg-gray-50 rounded-lg p-4 text-center">
             <p className="text-sm text-gray-600 mb-1">残業時間</p>
             <p className="text-lg font-bold">法定労働時間超の時間</p>
           </div>
@@ -128,14 +128,14 @@ export default function ZangyoudaiKeisanSimulation2026Blog() {
               <span>月平均所定労働時間（250日×8時間÷12ヶ月）</span>
               <span className="font-bold">166.7時間</span>
             </div>
-            <div className="flex justify-between items-center bg-amber-50 p-3 rounded">
+            <div className="flex justify-between items-center bg-gray-50 p-3 rounded">
               <span className="font-bold">1時間あたりの賃金</span>
-              <span className="font-bold text-amber-600 text-xl">約1,500円</span>
+              <span className="font-bold text-kon text-xl">約1,500円</span>
             </div>
           </div>
         </div>
 
-        <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+        <div className="bg-gray-50 border-l-4 border-danger p-4 mb-6">
           <p className="font-bold text-gray-800 mb-2">⚠️ 除外される手当</p>
           <p className="text-gray-700">
             以下の手当は残業代の計算基礎に含めません：<br />
@@ -148,7 +148,7 @@ export default function ZangyoudaiKeisanSimulation2026Blog() {
         <h2 className="text-2xl font-bold text-gray-800 mb-4">割増率一覧</h2>
         
         <table className="min-w-full border border-gray-200 mb-6">
-          <thead className="bg-amber-50">
+          <thead className="bg-gray-50">
             <tr>
               <th className="px-4 py-3 text-left border-b font-semibold">残業の種類</th>
               <th className="px-4 py-3 text-center border-b font-semibold">割増率</th>
@@ -156,19 +156,19 @@ export default function ZangyoudaiKeisanSimulation2026Blog() {
             </tr>
           </thead>
           <tbody>
-            <tr><td className="px-4 py-3 border-b font-bold">時間外労働</td><td className="px-4 py-3 border-b text-center font-bold text-amber-600">25%以上</td><td className="px-4 py-3 border-b">法定労働時間（1日8時間・週40時間）を超えた場合</td></tr>
-            <tr className="bg-yellow-50"><td className="px-4 py-3 border-b font-bold">時間外労働（月60時間超）</td><td className="px-4 py-3 border-b text-center font-bold text-red-600">50%以上</td><td className="px-4 py-3 border-b">月60時間を超える時間外労働（中小企業も2023年4月〜適用）</td></tr>
-            <tr><td className="px-4 py-3 border-b font-bold">深夜労働</td><td className="px-4 py-3 border-b text-center font-bold text-amber-600">25%以上</td><td className="px-4 py-3 border-b">22時〜翌5時の労働</td></tr>
-            <tr><td className="px-4 py-3 border-b font-bold">休日労働</td><td className="px-4 py-3 border-b text-center font-bold text-amber-600">35%以上</td><td className="px-4 py-3 border-b">法定休日（週1日）の労働</td></tr>
-            <tr className="bg-red-50"><td className="px-4 py-3 border-b font-bold">時間外＋深夜</td><td className="px-4 py-3 border-b text-center font-bold text-red-600">50%以上</td><td className="px-4 py-3 border-b">法定時間外労働が深夜に及んだ場合</td></tr>
-            <tr className="bg-red-50"><td className="px-4 py-3 border-b font-bold">休日＋深夜</td><td className="px-4 py-3 border-b text-center font-bold text-red-600">60%以上</td><td className="px-4 py-3 border-b">法定休日の深夜労働</td></tr>
+            <tr><td className="px-4 py-3 border-b font-bold">時間外労働</td><td className="px-4 py-3 border-b text-center font-bold text-kon">25%以上</td><td className="px-4 py-3 border-b">法定労働時間（1日8時間・週40時間）を超えた場合</td></tr>
+            <tr className="bg-yellow-50"><td className="px-4 py-3 border-b font-bold">時間外労働（月60時間超）</td><td className="px-4 py-3 border-b text-center font-bold text-danger">50%以上</td><td className="px-4 py-3 border-b">月60時間を超える時間外労働（中小企業も2023年4月〜適用）</td></tr>
+            <tr><td className="px-4 py-3 border-b font-bold">深夜労働</td><td className="px-4 py-3 border-b text-center font-bold text-kon">25%以上</td><td className="px-4 py-3 border-b">22時〜翌5時の労働</td></tr>
+            <tr><td className="px-4 py-3 border-b font-bold">休日労働</td><td className="px-4 py-3 border-b text-center font-bold text-kon">35%以上</td><td className="px-4 py-3 border-b">法定休日（週1日）の労働</td></tr>
+            <tr className="bg-gray-50"><td className="px-4 py-3 border-b font-bold">時間外＋深夜</td><td className="px-4 py-3 border-b text-center font-bold text-danger">50%以上</td><td className="px-4 py-3 border-b">法定時間外労働が深夜に及んだ場合</td></tr>
+            <tr className="bg-gray-50"><td className="px-4 py-3 border-b font-bold">休日＋深夜</td><td className="px-4 py-3 border-b text-center font-bold text-danger">60%以上</td><td className="px-4 py-3 border-b">法定休日の深夜労働</td></tr>
           </tbody>
         </table>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-          <p className="text-lg font-bold text-blue-800 mb-2">🔧 あなたの残業代を計算！</p>
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+          <p className="text-lg font-bold text-kon mb-2">🔧 あなたの残業代を計算！</p>
           <p className="text-gray-700 mb-4">月給と残業時間を入力して、正確な残業代をシミュレーションしましょう。</p>
-          <Link href="/career/overtime-calculator" className="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-6 rounded-lg transition">
+          <Link href="/career/overtime-calculator" className="inline-block bg-kon hover:bg-kon text-white font-bold py-3 px-6 rounded-lg transition">
             → 残業代計算機を使う
           </Link>
         </div>
@@ -186,7 +186,7 @@ export default function ZangyoudaiKeisanSimulation2026Blog() {
           </div>
           <div className="space-y-2">
             <p>1時間あたりの賃金：250,000円 ÷ 166.7時間 = <strong>1,500円</strong></p>
-            <p>残業代：1,500円 × 1.25 × 20時間 = <strong className="text-amber-600 text-xl">37,500円</strong></p>
+            <p>残業代：1,500円 × 1.25 × 20時間 = <strong className="text-kon text-xl">37,500円</strong></p>
           </div>
         </div>
 
@@ -198,7 +198,7 @@ export default function ZangyoudaiKeisanSimulation2026Blog() {
           <div className="space-y-2">
             <p>通常残業：1,500円 × 1.25 × 15時間 = 28,125円</p>
             <p>深夜残業：1,500円 × 1.50 × 10時間 = 22,500円</p>
-            <p>合計：<strong className="text-amber-600 text-xl">50,625円</strong></p>
+            <p>合計：<strong className="text-kon text-xl">50,625円</strong></p>
           </div>
         </div>
 
@@ -210,7 +210,7 @@ export default function ZangyoudaiKeisanSimulation2026Blog() {
           <div className="space-y-2">
             <p>60時間まで：1,500円 × 1.25 × 60時間 = 112,500円</p>
             <p>60時間超：1,500円 × 1.50 × 10時間 = 22,500円</p>
-            <p>合計：<strong className="text-red-600 text-xl">135,000円</strong></p>
+            <p>合計：<strong className="text-danger text-xl">135,000円</strong></p>
           </div>
         </div>
       </section>
@@ -218,13 +218,13 @@ export default function ZangyoudaiKeisanSimulation2026Blog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">未払い残業代の請求方法</h2>
         <p className="text-gray-700 mb-4">
-          残業代が正しく支払われていない場合、<strong className="text-amber-600">過去3年分まで遡って請求</strong>できます（2020年4月以降の賃金）。
+          残業代が正しく支払われていない場合、<strong className="text-kon">過去3年分まで遡って請求</strong>できます（2020年4月以降の賃金）。
         </p>
         
         <div className="space-y-4 mb-6">
           <div className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
             <h3 className="font-bold text-gray-800 mb-2 flex items-center">
-              <span className="bg-amber-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">1</span>
+              <span className="bg-kon text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">1</span>
               証拠を集める
             </h3>
             <ul className="text-gray-700 text-sm space-y-1">
@@ -236,14 +236,14 @@ export default function ZangyoudaiKeisanSimulation2026Blog() {
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
             <h3 className="font-bold text-gray-800 mb-2 flex items-center">
-              <span className="bg-amber-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">2</span>
+              <span className="bg-kon text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">2</span>
               会社に請求
             </h3>
             <p className="text-gray-700 text-sm">内容証明郵便で未払い残業代を請求。金額と根拠を明記。</p>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
             <h3 className="font-bold text-gray-800 mb-2 flex items-center">
-              <span className="bg-amber-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">3</span>
+              <span className="bg-kon text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">3</span>
               労働基準監督署・弁護士に相談
             </h3>
             <p className="text-gray-700 text-sm">会社が応じない場合は労基署への申告や、弁護士への相談を検討。</p>
@@ -288,9 +288,9 @@ export default function ZangyoudaiKeisanSimulation2026Blog() {
           未払いがある場合は、証拠を集めて早めに請求することが大切です。
         </p>
         
-        <div className="bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-lg p-6 text-center">
+        <div className="bg-gradient-to-r from-slate-900 to-kon text-white rounded-lg p-6 text-center">
           <p className="text-lg font-bold mb-4">あなたの残業代をシミュレーション</p>
-          <Link href="/career/overtime-calculator" className="inline-block bg-white text-amber-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition">
+          <Link href="/career/overtime-calculator" className="inline-block bg-white text-kon font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition">
             → 残業代計算機を使う
           </Link>
         </div>
@@ -299,19 +299,19 @@ export default function ZangyoudaiKeisanSimulation2026Blog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">関連ツール</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Link href="/career/overtime-calculator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-amber-300 transition">
+          <Link href="/career/overtime-calculator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-gray-200 transition">
             <span className="font-bold text-gray-800">残業代計算機</span>
             <p className="text-sm text-gray-600">残業代を簡単計算</p>
           </Link>
-          <Link href="/career/unemployment-calculator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-amber-300 transition">
+          <Link href="/career/unemployment-calculator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-gray-200 transition">
             <span className="font-bold text-gray-800">失業保険計算機</span>
             <p className="text-sm text-gray-600">失業手当の見込み額</p>
           </Link>
-          <Link href="/career/job-change-simulator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-amber-300 transition">
+          <Link href="/career/job-change-simulator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-gray-200 transition">
             <span className="font-bold text-gray-800">転職シミュレーター</span>
             <p className="text-sm text-gray-600">転職後の年収を試算</p>
           </Link>
-          <Link href="/career/social-insurance-calculator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-amber-300 transition">
+          <Link href="/career/social-insurance-calculator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-gray-200 transition">
             <span className="font-bold text-gray-800">社会保険計算機</span>
             <p className="text-sm text-gray-600">社会保険料を計算</p>
           </Link>

@@ -192,7 +192,7 @@ export default function KyuyoClient() {
 
   useEffect(() => { saveCurrent(); }, [saveCurrent]);
 
-  const ic = "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400";
+  const ic = "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon";
   const lc = "block text-sm font-medium text-gray-700 mb-1";
 
   const payItems = [
@@ -325,7 +325,7 @@ export default function KyuyoClient() {
                   </div>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-red-700 bg-red-50 px-2 py-1 rounded mb-2">控除項目</p>
+                  <p className="text-xs font-semibold text-danger bg-gray-50 px-2 py-1 rounded mb-2">控除項目</p>
                   <div className="space-y-1.5">
                     {deductItems.map(i => (
                       <div key={i.label} className="flex justify-between text-xs">
@@ -333,12 +333,12 @@ export default function KyuyoClient() {
                       </div>
                     ))}
                     <div className="flex justify-between text-sm font-bold border-t pt-1 mt-1">
-                      <span>控除合計</span><span className="text-red-700">{fmt(r.totalDeductions)}</span>
+                      <span>控除合計</span><span className="text-danger">{fmt(r.totalDeductions)}</span>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="bg-blue-700 text-white rounded-xl px-5 py-4 text-center">
+              <div className="bg-kon text-white rounded-xl px-5 py-4 text-center">
                 <p className="text-xs opacity-80">差引支給額（振込額）</p>
                 <p className="text-3xl font-bold mt-1">{fmt(r.netPay)}</p>
               </div>
@@ -348,7 +348,7 @@ export default function KyuyoClient() {
               </div>
             </div>
           </div>
-          <button onClick={() => window.print()} className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-xl text-sm transition print:hidden">
+          <button onClick={() => window.print()} className="w-full mt-4 bg-kon hover:bg-ai text-white font-medium py-3 rounded-xl text-sm transition print:hidden">
             PDF出力・印刷
           </button>
           <p className="text-xs text-center text-gray-400 mt-2 print:hidden">ブラウザの印刷で「PDFに保存」を選択してください</p>

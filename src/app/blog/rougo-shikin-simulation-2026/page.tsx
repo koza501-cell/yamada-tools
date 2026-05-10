@@ -46,9 +46,9 @@ export default function RougoShikinSimulation2026Blog() {
         }}
       />
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-pink-500">ホーム</Link>
+        <Link href="/" className="hover:text-sakura">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-pink-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-sakura">ブログ</Link>
         <span className="mx-2">/</span>
         <span>老後資金シミュレーション2026</span>
       </nav>
@@ -95,10 +95,10 @@ export default function RougoShikinSimulation2026Blog() {
               </div>
               <div>
                 <p className="text-sm text-gray-600">毎月の赤字</p>
-                <p className="text-xl font-bold text-red-600">約5万円</p>
+                <p className="text-xl font-bold text-danger">約5万円</p>
               </div>
             </div>
-            <p className="text-center mt-4 text-lg font-bold">5万円 × 12ヶ月 × 30年 = <span className="text-red-600">約1,800〜2,000万円</span></p>
+            <p className="text-center mt-4 text-lg font-bold">5万円 × 12ヶ月 × 30年 = <span className="text-danger">約1,800〜2,000万円</span></p>
           </div>
         </div>
 
@@ -127,18 +127,18 @@ export default function RougoShikinSimulation2026Blog() {
             </tr>
           </thead>
           <tbody>
-            <tr><td className="px-4 py-3 border-b font-bold">15万円（単身・節約）</td><td className="px-4 py-3 border-b">5,400万円</td><td className="px-4 py-3 border-b">約4,300万円</td><td className="px-4 py-3 border-b font-bold text-red-600">約1,100万円</td></tr>
-            <tr><td className="px-4 py-3 border-b font-bold">20万円（単身・標準）</td><td className="px-4 py-3 border-b">7,200万円</td><td className="px-4 py-3 border-b">約4,300万円</td><td className="px-4 py-3 border-b font-bold text-red-600">約2,900万円</td></tr>
-            <tr><td className="px-4 py-3 border-b font-bold">25万円（夫婦・節約）</td><td className="px-4 py-3 border-b">9,000万円</td><td className="px-4 py-3 border-b">約7,600万円</td><td className="px-4 py-3 border-b font-bold text-red-600">約1,400万円</td></tr>
-            <tr className="bg-yellow-50"><td className="px-4 py-3 border-b font-bold">30万円（夫婦・標準）</td><td className="px-4 py-3 border-b">10,800万円</td><td className="px-4 py-3 border-b">約7,600万円</td><td className="px-4 py-3 border-b font-bold text-red-600">約3,200万円</td></tr>
-            <tr><td className="px-4 py-3 border-b font-bold">35万円（夫婦・ゆとり）</td><td className="px-4 py-3 border-b">12,600万円</td><td className="px-4 py-3 border-b">約7,600万円</td><td className="px-4 py-3 border-b font-bold text-red-600">約5,000万円</td></tr>
+            <tr><td className="px-4 py-3 border-b font-bold">15万円（単身・節約）</td><td className="px-4 py-3 border-b">5,400万円</td><td className="px-4 py-3 border-b">約4,300万円</td><td className="px-4 py-3 border-b font-bold text-danger">約1,100万円</td></tr>
+            <tr><td className="px-4 py-3 border-b font-bold">20万円（単身・標準）</td><td className="px-4 py-3 border-b">7,200万円</td><td className="px-4 py-3 border-b">約4,300万円</td><td className="px-4 py-3 border-b font-bold text-danger">約2,900万円</td></tr>
+            <tr><td className="px-4 py-3 border-b font-bold">25万円（夫婦・節約）</td><td className="px-4 py-3 border-b">9,000万円</td><td className="px-4 py-3 border-b">約7,600万円</td><td className="px-4 py-3 border-b font-bold text-danger">約1,400万円</td></tr>
+            <tr className="bg-yellow-50"><td className="px-4 py-3 border-b font-bold">30万円（夫婦・標準）</td><td className="px-4 py-3 border-b">10,800万円</td><td className="px-4 py-3 border-b">約7,600万円</td><td className="px-4 py-3 border-b font-bold text-danger">約3,200万円</td></tr>
+            <tr><td className="px-4 py-3 border-b font-bold">35万円（夫婦・ゆとり）</td><td className="px-4 py-3 border-b">12,600万円</td><td className="px-4 py-3 border-b">約7,600万円</td><td className="px-4 py-3 border-b font-bold text-danger">約5,000万円</td></tr>
           </tbody>
         </table>
 
         <p className="text-sm text-gray-600 mb-6">※年金収入は厚生年金40年加入の平均的なケースで試算。国民年金のみの場合は大幅に少なくなります。</p>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-          <p className="text-lg font-bold text-blue-800 mb-2">🔧 あなたの老後資金を計算！</p>
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+          <p className="text-lg font-bold text-kon mb-2">🔧 あなたの老後資金を計算！</p>
           <p className="text-gray-700 mb-4">年齢・収入・生活費を入力して、必要な老後資金をシミュレーションしましょう。</p>
           <Link href="/finance/retirement-simulator" className="inline-block bg-violet-500 hover:bg-violet-600 text-white font-bold py-3 px-6 rounded-lg transition">
             → 老後資金シミュレーターを使う
@@ -206,16 +206,16 @@ export default function RougoShikinSimulation2026Blog() {
               <li>・複利効果を最大化できる年代</li>
             </ul>
           </div>
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-5">
-            <h3 className="font-bold text-blue-800 text-lg mb-2">40代：本格的に貯める時期</h3>
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-5">
+            <h3 className="font-bold text-kon text-lg mb-2">40代：本格的に貯める時期</h3>
             <ul className="space-y-1 text-gray-700">
               <li>・教育費のピークを過ぎたら老後資金にシフト</li>
               <li>・iDeCoの節税効果が大きい年代</li>
               <li>・月5万円以上を目標に</li>
             </ul>
           </div>
-          <div className="bg-orange-50 border border-orange-200 rounded-lg p-5">
-            <h3 className="font-bold text-orange-800 text-lg mb-2">50代：ラストスパート</h3>
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-5">
+            <h3 className="font-bold text-kon text-lg mb-2">50代：ラストスパート</h3>
             <ul className="space-y-1 text-gray-700">
               <li>・退職金の見込み額を確認</li>
               <li>・住宅ローン完済を目指す</li>
@@ -256,7 +256,7 @@ export default function RougoShikinSimulation2026Blog() {
           早く始めるほど複利効果で有利。NISAやiDeCoを活用して、今日から老後資金の準備を始めましょう。
         </p>
         
-        <div className="bg-gradient-to-r from-violet-500 to-purple-500 text-white rounded-lg p-6 text-center">
+        <div className="bg-gradient-to-r from-violet-500 to-kon text-white rounded-lg p-6 text-center">
           <p className="text-lg font-bold mb-4">あなたの老後資金をシミュレーション</p>
           <Link href="/finance/retirement-simulator" className="inline-block bg-white text-violet-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition">
             → 老後資金シミュレーターを使う

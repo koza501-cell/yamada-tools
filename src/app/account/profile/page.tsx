@@ -56,7 +56,7 @@ export default function ProfilePage() {
             <button type="submit" disabled={saving} className="px-5 py-2 bg-[#223A70] text-white text-sm font-medium rounded-lg hover:bg-[#1a2d57] disabled:opacity-50 transition-colors">
               {saving ? "保存中..." : "保存する"}
             </button>
-            {saveMsg && <span className={"text-sm " + (saveMsg.includes("失敗") ? "text-red-600" : "text-green-600")}>{saveMsg}</span>}
+            {saveMsg && <span className={"text-sm " + (saveMsg.includes("失敗") ? "text-danger" : "text-green-600")}>{saveMsg}</span>}
           </div>
         </form>
       </div>

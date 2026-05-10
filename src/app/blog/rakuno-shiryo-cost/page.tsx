@@ -52,9 +52,9 @@ export default function RakunoShiryoCostBlog() {
       />
 
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-blue-500">ホーム</Link>
+        <Link href="/" className="hover:text-ai">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-blue-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-ai">ブログ</Link>
         <span className="mx-2">/</span>
         <span>酪農・畜産 飼料コスト削減ガイド</span>
       </nav>
@@ -66,7 +66,7 @@ export default function RakunoShiryoCostBlog() {
       <h1 className="text-3xl font-bold text-gray-800 mb-4">{title}</h1>
       <p className="text-gray-500 text-sm mb-8">最終更新: 2025年5月 ｜ 読了時間: 約8分</p>
 
-      <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mb-8">
+      <div className="bg-gray-50 border-l-4 border-kon p-4 mb-8">
         <p className="font-bold text-gray-800 mb-2">この記事でわかること</p>
         <ul className="text-gray-700 space-y-1 text-sm">
           <li>✓ 配合飼料価格の現状（2020年比40%高騰）</li>
@@ -82,18 +82,18 @@ export default function RakunoShiryoCostBlog() {
         <StaticAdSlot />
         <h2 className="text-2xl font-bold text-gray-800 mb-4">飼料高騰の現状：2020年から何が変わったか</h2>
         <p className="text-gray-700 mb-4">
-          2022年以降、酪農・畜産農家を直撃しているのが<strong className="text-red-600">配合飼料価格の急騰</strong>です。2020年を基準にすると、2025年時点で約40%上昇しており、経営を圧迫する最大要因となっています。
+          2022年以降、酪農・畜産農家を直撃しているのが<strong className="text-danger">配合飼料価格の急騰</strong>です。2020年を基準にすると、2025年時点で約40%上昇しており、経営を圧迫する最大要因となっています。
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-center">
-            <p className="font-bold text-red-700 mb-2">配合飼料価格上昇</p>
-            <p className="text-3xl font-bold text-red-600">+40%</p>
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center">
+            <p className="font-bold text-danger mb-2">配合飼料価格上昇</p>
+            <p className="text-3xl font-bold text-danger">+40%</p>
             <p className="text-sm text-gray-600 mt-2">2020年比（2025年度）</p>
           </div>
-          <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 text-center">
-            <p className="font-bold text-orange-700 mb-2">酪農家の離農</p>
-            <p className="text-3xl font-bold text-orange-600">-6.4%</p>
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center">
+            <p className="font-bold text-kon mb-2">酪農家の離農</p>
+            <p className="text-3xl font-bold text-kon">-6.4%</p>
             <p className="text-sm text-gray-600 mt-2">2023年・前年比戸数減少</p>
           </div>
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-center">
@@ -125,7 +125,7 @@ export default function RakunoShiryoCostBlog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">畜種別・飼料費の目安（2025年度）</h2>
         <p className="text-gray-700 mb-4">
-          畜種・用途によって必要な飼料の種類と量が異なります。以下は<strong className="text-blue-600">2025年度の飼料価格水準</strong>における1頭（羽）あたりの月間飼料費の目安です。
+          畜種・用途によって必要な飼料の種類と量が異なります。以下は<strong className="text-kon">2025年度の飼料価格水準</strong>における1頭（羽）あたりの月間飼料費の目安です。
         </p>
 
         <div className="overflow-x-auto mb-6">
@@ -153,7 +153,7 @@ export default function RakunoShiryoCostBlog() {
                   <td className="p-3 border border-gray-200 font-medium">{type}</td>
                   <td className="p-3 border border-gray-200 text-gray-600">{feed}</td>
                   <td className="p-3 border border-gray-200 text-center text-xs text-gray-600">{price}</td>
-                  <td className="p-3 border border-gray-200 text-center text-blue-700 font-bold">{cost}</td>
+                  <td className="p-3 border border-gray-200 text-center text-kon font-bold">{cost}</td>
                 </tr>
               ))}
             </tbody>
@@ -170,17 +170,17 @@ export default function RakunoShiryoCostBlog() {
           泌乳牛40頭・乾乳牛10頭の規模を例に、月間飼料費の内訳を計算します。
         </p>
 
-        <div className="bg-white border-2 border-blue-200 rounded-xl p-5 mb-6">
+        <div className="bg-white border-2 border-gray-200 rounded-xl p-5 mb-6">
           <h3 className="font-bold text-gray-800 mb-4">条件：泌乳牛40頭＋乾乳牛10頭（計50頭）</h3>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>
-                <tr className="bg-blue-600 text-white">
-                  <th className="p-2 border border-blue-500 text-left">費目</th>
-                  <th className="p-2 border border-blue-500 text-center">頭数</th>
-                  <th className="p-2 border border-blue-500 text-center">1頭/日</th>
-                  <th className="p-2 border border-blue-500 text-center">単価/t</th>
-                  <th className="p-2 border border-blue-500 text-center">月間費用</th>
+                <tr className="bg-kon text-white">
+                  <th className="p-2 border border-kon text-left">費目</th>
+                  <th className="p-2 border border-kon text-center">頭数</th>
+                  <th className="p-2 border border-kon text-center">1頭/日</th>
+                  <th className="p-2 border border-kon text-center">単価/t</th>
+                  <th className="p-2 border border-kon text-center">月間費用</th>
                 </tr>
               </thead>
               <tbody>
@@ -195,35 +195,35 @@ export default function RakunoShiryoCostBlog() {
                     <td className="p-2 border border-gray-200 text-center">{count}</td>
                     <td className="p-2 border border-gray-200 text-center">{daily}</td>
                     <td className="p-2 border border-gray-200 text-center">{price}</td>
-                    <td className="p-2 border border-gray-200 text-center font-bold text-blue-700">{cost}</td>
+                    <td className="p-2 border border-gray-200 text-center font-bold text-kon">{cost}</td>
                   </tr>
                 ))}
-                <tr className="bg-blue-50 font-bold">
+                <tr className="bg-gray-50 font-bold">
                   <td className="p-2 border border-gray-200" colSpan={4}>月間飼料費合計</td>
-                  <td className="p-2 border border-gray-200 text-center text-xl text-blue-700">約1,822,500円</td>
+                  <td className="p-2 border border-gray-200 text-center text-xl text-kon">約1,822,500円</td>
                 </tr>
               </tbody>
             </table>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-4">
-            <div className="bg-blue-50 rounded p-3 text-center">
+            <div className="bg-gray-50 rounded p-3 text-center">
               <p className="text-sm text-gray-600">月間飼料費</p>
-              <p className="text-xl font-bold text-blue-700">約182万円</p>
+              <p className="text-xl font-bold text-kon">約182万円</p>
             </div>
-            <div className="bg-blue-50 rounded p-3 text-center">
+            <div className="bg-gray-50 rounded p-3 text-center">
               <p className="text-sm text-gray-600">年間飼料費</p>
-              <p className="text-xl font-bold text-blue-700">約2,187万円</p>
+              <p className="text-xl font-bold text-kon">約2,187万円</p>
             </div>
-            <div className="bg-blue-50 rounded p-3 text-center">
+            <div className="bg-gray-50 rounded p-3 text-center">
               <p className="text-sm text-gray-600">1頭あたり月間</p>
-              <p className="text-xl font-bold text-blue-700">約36,450円</p>
+              <p className="text-xl font-bold text-kon">約36,450円</p>
             </div>
           </div>
           <p className="text-gray-500 text-xs mt-3">※ 上記は概算シミュレーションです。実際の飼料費は給与条件により異なります。</p>
         </div>
 
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-          <p className="font-bold text-red-800 mb-2">📊 2020年と比較すると…</p>
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+          <p className="font-bold text-danger mb-2">📊 2020年と比較すると…</p>
           <p className="text-gray-700 text-sm">
             同条件で2020年の飼料価格（配合飼料68,000円/t・乾草47,000円/t）で計算すると月間約1,300万円程度。
             現在は<strong>月間約50万円以上の追加コスト</strong>が発生しており、年間では約600万円以上の負担増となっています。
@@ -320,7 +320,7 @@ export default function RakunoShiryoCostBlog() {
             <div key={i} className="bg-white border border-gray-200 rounded-xl p-5">
               <div className="flex justify-between items-start mb-2">
                 <h3 className="font-bold text-gray-800">{item.name}</h3>
-                <span className="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded">{item.org}</span>
+                <span className="text-xs bg-gray-50 text-kon px-2 py-0.5 rounded">{item.org}</span>
               </div>
               <p className="text-gray-700 text-sm">{item.content}</p>
             </div>
@@ -341,7 +341,7 @@ export default function RakunoShiryoCostBlog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">経営改善のための飼料費管理</h2>
         <p className="text-gray-700 mb-4">
-          飼料費を適切に管理するには、月次での費用把握と<strong className="text-blue-600">飼料費/売上比率</strong>の定期チェックが不可欠です。
+          飼料費を適切に管理するには、月次での費用把握と<strong className="text-kon">飼料費/売上比率</strong>の定期チェックが不可欠です。
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -350,14 +350,14 @@ export default function RakunoShiryoCostBlog() {
             <p className="text-2xl font-bold text-green-600">40%以内</p>
             <p className="text-sm text-gray-600 mt-2">これを超えると経営改善が急務</p>
           </div>
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
-            <p className="font-bold text-blue-700 mb-2">飼料効率（FCR）の目標</p>
-            <p className="text-2xl font-bold text-blue-600">乳牛：1.3以下</p>
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center">
+            <p className="font-bold text-kon mb-2">飼料効率（FCR）の目標</p>
+            <p className="text-2xl font-bold text-kon">乳牛：1.3以下</p>
             <p className="text-sm text-gray-600 mt-2">飼料kg÷乳量kg</p>
           </div>
-          <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 text-center">
-            <p className="font-bold text-orange-700 mb-2">月次チェック頻度</p>
-            <p className="text-2xl font-bold text-orange-600">毎月</p>
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center">
+            <p className="font-bold text-kon mb-2">月次チェック頻度</p>
+            <p className="text-2xl font-bold text-kon">毎月</p>
             <p className="text-sm text-gray-600 mt-2">前月比・前年比で比較</p>
           </div>
         </div>
@@ -365,12 +365,12 @@ export default function RakunoShiryoCostBlog() {
         <div className="bg-white border border-gray-200 rounded-xl p-5">
           <h3 className="font-bold text-gray-800 mb-3">飼料費管理の実践チェックリスト</h3>
           <ul className="space-y-2 text-sm text-gray-700">
-            <li className="flex gap-2"><span className="text-blue-500">□</span> 飼料費の内訳（配合飼料・粗飼料・添加物）を区分して記録しているか</li>
-            <li className="flex gap-2"><span className="text-blue-500">□</span> 畜種・用途別（泌乳牛・乾乳牛等）の飼料費を把握しているか</li>
-            <li className="flex gap-2"><span className="text-blue-500">□</span> 飼料費/売上比率を月次で計算・記録しているか</li>
-            <li className="flex gap-2"><span className="text-blue-500">□</span> 配合飼料価格安定制度に加入しているか</li>
-            <li className="flex gap-2"><span className="text-blue-500">□</span> 自給飼料の生産コストを購入飼料と比較検討しているか</li>
-            <li className="flex gap-2"><span className="text-blue-500">□</span> 補助金申請のスケジュールを把握しているか</li>
+            <li className="flex gap-2"><span className="text-kon">□</span> 飼料費の内訳（配合飼料・粗飼料・添加物）を区分して記録しているか</li>
+            <li className="flex gap-2"><span className="text-kon">□</span> 畜種・用途別（泌乳牛・乾乳牛等）の飼料費を把握しているか</li>
+            <li className="flex gap-2"><span className="text-kon">□</span> 飼料費/売上比率を月次で計算・記録しているか</li>
+            <li className="flex gap-2"><span className="text-kon">□</span> 配合飼料価格安定制度に加入しているか</li>
+            <li className="flex gap-2"><span className="text-kon">□</span> 自給飼料の生産コストを購入飼料と比較検討しているか</li>
+            <li className="flex gap-2"><span className="text-kon">□</span> 補助金申請のスケジュールを把握しているか</li>
           </ul>
         </div>
       </section>
@@ -393,12 +393,12 @@ export default function RakunoShiryoCostBlog() {
           <div className="bg-white border border-gray-200 rounded-lg p-4">
             <p className="font-bold text-gray-800 mb-2">農業所得計算機</p>
             <p className="text-sm text-gray-600 mb-3">農業収入・経費・青色申告特別控除から農業所得・所得税を計算。飼料費の削減効果を所得ベースで確認できます。</p>
-            <Link href="/health/nogyo-income-calculator" className="text-blue-600 text-sm font-medium hover:underline">試してみる →</Link>
+            <Link href="/health/nogyo-income-calculator" className="text-kon text-sm font-medium hover:underline">試してみる →</Link>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-4">
             <p className="font-bold text-gray-800 mb-2">原価率計算機</p>
             <p className="text-sm text-gray-600 mb-3">生乳や食肉の販売価格に対する飼料費などの原価率を計算。適正な販売価格設定に活用できます。</p>
-            <Link href="/food/genka-calculator" className="text-blue-600 text-sm font-medium hover:underline">試してみる →</Link>
+            <Link href="/food/genka-calculator" className="text-kon text-sm font-medium hover:underline">試してみる →</Link>
           </div>
         </div>
       </section>

@@ -344,7 +344,7 @@ export default function IdecoNisaComparisonClient() {
     <div className="min-h-screen bg-gray-50">
         <Mascot state={mascotState} className="mb-6" />
       {/* Header */}
-      <div className="bg-gradient-to-r from-indigo-700 to-purple-600 text-white py-10 px-4">
+      <div className="bg-gradient-to-r from-indigo-700 to-kon text-white py-10 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-3 mb-2">
             <h1 className="text-2xl md:text-3xl font-bold">iDeCo vs NISA 徹底比較ツール</h1>
@@ -566,7 +566,7 @@ export default function IdecoNisaComparisonClient() {
           <>
             <div ref={resultRef}>
               {/* Recommendation Card */}
-              <section className="bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-200 rounded-2xl p-6 mb-6">
+              <section className="bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-gray-200 rounded-2xl p-6 mb-6">
                 <h2 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
                   <span className="text-2xl">💡</span>
                   あなたへのおすすめ
@@ -606,9 +606,9 @@ export default function IdecoNisaComparisonClient() {
                           ¥{fmt(result.idecoAnnualTaxSaving)}
                         </p>
                       </div>
-                      <div className="bg-amber-50 rounded-lg p-2">
+                      <div className="bg-gray-50 rounded-lg p-2">
                         <p className="text-xs text-gray-500">10年節税累計</p>
-                        <p className="font-semibold text-amber-700">
+                        <p className="font-semibold text-kon">
                           ¥{fmt(result.ideco10YearTaxSaving)}
                         </p>
                       </div>
@@ -644,9 +644,9 @@ export default function IdecoNisaComparisonClient() {
                   </div>
 
                   {/* Combined */}
-                  <div className="bg-white rounded-2xl shadow-sm border-t-4 border-purple-500 p-5">
+                  <div className="bg-white rounded-2xl shadow-sm border-t-4 border-kon p-5">
                     <div className="flex items-center gap-2 mb-4">
-                      <div className="w-3 h-3 rounded-full bg-purple-500"></div>
+                      <div className="w-3 h-3 rounded-full bg-kon"></div>
                       <span className="font-bold text-gray-700">併用パターン</span>
                     </div>
                     <div className="space-y-3">
@@ -656,9 +656,9 @@ export default function IdecoNisaComparisonClient() {
                           {fmtMan(result.combinedFinalValue)}
                         </p>
                       </div>
-                      <div className="bg-purple-50 rounded-lg p-2">
+                      <div className="bg-gray-50 rounded-lg p-2">
                         <p className="text-xs text-gray-500">総節税額</p>
-                        <p className="font-semibold text-purple-700">
+                        <p className="font-semibold text-kon">
                           {fmtMan(result.combinedTaxSaved)}
                         </p>
                       </div>
@@ -741,9 +741,9 @@ export default function IdecoNisaComparisonClient() {
                     ¥{fmt(sliderResult.idecoAnnualTaxSaving)}
                   </p>
                 </div>
-                <div className="bg-amber-50 rounded-xl p-4 text-center">
+                <div className="bg-gray-50 rounded-xl p-4 text-center">
                   <p className="text-xs text-gray-500 mb-1">10年後の予想節税累計</p>
-                  <p className="text-xl font-bold text-amber-700">
+                  <p className="text-xl font-bold text-kon">
                     {fmtMan(sliderResult.ideco10YearTaxSaving)}
                   </p>
                 </div>

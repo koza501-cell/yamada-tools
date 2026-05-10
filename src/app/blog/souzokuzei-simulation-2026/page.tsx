@@ -46,9 +46,9 @@ export default function SouzokuzeiSimulation2026Blog() {
         }}
       />
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-pink-500">ホーム</Link>
+        <Link href="/" className="hover:text-sakura">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-pink-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-sakura">ブログ</Link>
         <span className="mx-2">/</span>
         <span>相続税シミュレーション2026</span>
       </nav>
@@ -127,7 +127,7 @@ export default function SouzokuzeiSimulation2026Blog() {
             <tr><td className="px-4 py-3 border-b">2億円以下</td><td className="px-4 py-3 border-b font-bold">40%</td><td className="px-4 py-3 border-b">1,700万円</td></tr>
             <tr><td className="px-4 py-3 border-b">3億円以下</td><td className="px-4 py-3 border-b font-bold">45%</td><td className="px-4 py-3 border-b">2,700万円</td></tr>
             <tr><td className="px-4 py-3 border-b">6億円以下</td><td className="px-4 py-3 border-b font-bold">50%</td><td className="px-4 py-3 border-b">4,200万円</td></tr>
-            <tr><td className="px-4 py-3 border-b">6億円超</td><td className="px-4 py-3 border-b font-bold text-red-600">55%</td><td className="px-4 py-3 border-b">7,200万円</td></tr>
+            <tr><td className="px-4 py-3 border-b">6億円超</td><td className="px-4 py-3 border-b font-bold text-danger">55%</td><td className="px-4 py-3 border-b">7,200万円</td></tr>
           </tbody>
         </table>
       </section>
@@ -163,8 +163,8 @@ export default function SouzokuzeiSimulation2026Blog() {
           </p>
         </div>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-          <p className="text-lg font-bold text-blue-800 mb-2">🔧 あなたのケースで試算！</p>
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+          <p className="text-lg font-bold text-kon mb-2">🔧 あなたのケースで試算！</p>
           <p className="text-gray-700 mb-4">遺産総額・相続人の数を入力して、相続税の概算額を計算しましょう。</p>
           <Link href="/tax/inheritance-tax-calculator" className="inline-block bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg transition">
             → 相続税シミュレーターを使う
@@ -247,7 +247,7 @@ export default function SouzokuzeiSimulation2026Blog() {
           生前贈与や生命保険の活用など、<strong>早めの対策</strong>が節税のカギ。まずはシミュレーターで概算を把握しましょう。
         </p>
         
-        <div className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-lg p-6 text-center">
+        <div className="bg-gradient-to-r from-indigo-500 to-kon text-white rounded-lg p-6 text-center">
           <p className="text-lg font-bold mb-4">遺産総額・相続人の数を入力して、相続税の概算をチェック</p>
           <Link href="/tax/inheritance-tax-calculator" className="inline-block bg-white text-indigo-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition">
             → 相続税シミュレーターを使う

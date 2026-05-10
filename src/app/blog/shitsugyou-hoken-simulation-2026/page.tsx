@@ -46,9 +46,9 @@ export default function ShitsugyouHokenSimulation2026Blog() {
         }}
       />
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-pink-500">ホーム</Link>
+        <Link href="/" className="hover:text-sakura">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-pink-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-sakura">ブログ</Link>
         <span className="mx-2">/</span>
         <span>失業保険シミュレーション2026</span>
       </nav>
@@ -132,8 +132,8 @@ export default function ShitsugyouHokenSimulation2026Blog() {
           </p>
         </div>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-          <p className="text-lg font-bold text-blue-800 mb-2">🔧 あなたの失業保険を計算！</p>
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+          <p className="text-lg font-bold text-kon mb-2">🔧 あなたの失業保険を計算！</p>
           <p className="text-gray-700 mb-4">月給・年齢・勤続年数を入力して、受給額と期間を計算しましょう。</p>
           <Link href="/career/unemployment-calculator" className="inline-block bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-lg transition">
             → 失業保険シミュレーターを使う
@@ -145,10 +145,10 @@ export default function ShitsugyouHokenSimulation2026Blog() {
         <h2 className="text-2xl font-bold text-gray-800 mb-4">自己都合 vs 会社都合：受給期間の違い</h2>
         
         <div className="grid md:grid-cols-2 gap-4 mb-6">
-          <div className="bg-orange-50 border border-orange-200 rounded-lg p-5">
-            <h3 className="font-bold text-orange-800 text-lg mb-3">自己都合退職</h3>
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-5">
+            <h3 className="font-bold text-kon text-lg mb-3">自己都合退職</h3>
             <ul className="space-y-2 text-gray-700">
-              <li>・給付制限：<strong className="text-red-600">2ヶ月</strong>（待機7日後）</li>
+              <li>・給付制限：<strong className="text-danger">2ヶ月</strong>（待機7日後）</li>
               <li>・受給期間：90〜150日</li>
               <li>・すぐにはもらえない</li>
             </ul>
@@ -183,7 +183,7 @@ export default function ShitsugyouHokenSimulation2026Blog() {
           </tbody>
         </table>
 
-        <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+        <div className="bg-gray-50 border-l-4 border-danger p-4 mb-6">
           <p className="font-bold text-gray-800 mb-2">⚠️ 自己都合でも「正当な理由」があれば給付制限なし</p>
           <p className="text-gray-700">
             パワハラ、セクハラ、長時間労働（月80時間以上の残業）、給与未払いなどは「特定理由離職者」として
@@ -268,7 +268,7 @@ export default function ShitsugyouHokenSimulation2026Blog() {
           安心して次のキャリアを考えられます。
         </p>
         
-        <div className="bg-gradient-to-r from-sky-500 to-blue-500 text-white rounded-lg p-6 text-center">
+        <div className="bg-gradient-to-r from-sky-500 to-kon text-white rounded-lg p-6 text-center">
           <p className="text-lg font-bold mb-4">あなたの失業保険をシミュレーション</p>
           <Link href="/career/unemployment-calculator" className="inline-block bg-white text-sky-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition">
             → 失業保険シミュレーターを使う

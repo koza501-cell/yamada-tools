@@ -175,7 +175,7 @@ export default function DocsPage() {
         {/* Contact */}
         <section>
           <h2 className="text-xl font-bold text-kon mb-4">お問い合わせ</h2>
-          <div className="bg-blue-50 rounded-xl p-6 border border-blue-100">
+          <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
             <p className="text-gray-700">APIに関するご質問・ご要望は以下までお問い合わせください。</p>
             <p className="mt-2"><a href="mailto:support@yamada-tools.jp" className="text-kon hover:underline">support@yamada-tools.jp</a></p>
           </div>

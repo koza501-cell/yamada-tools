@@ -128,7 +128,7 @@ export default function NetSalaryClient() {
         <div>
           <label className="block text-sm text-gray-600 mb-1">月給（額面・総支給額）</label>
           <div className="flex items-center gap-2">
-            <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+            <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-kon outline-none"
               value={gross} onChange={e => setGross(e.target.value)} placeholder="300000" />
             <span className="text-gray-500 text-sm whitespace-nowrap">円/月</span>
           </div>
@@ -169,10 +169,10 @@ export default function NetSalaryClient() {
       </div>
 
       <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden mb-6">
-        <div className="bg-blue-600 text-white p-5">
+        <div className="bg-kon text-white p-5">
           <p className="text-sm opacity-80 mb-1">月の手取り額（概算）</p>
           <p className="text-4xl font-bold">{fmt(result.netSalary)}</p>
-          <p className="text-blue-200 text-sm mt-1">
+          <p className="text-gin text-sm mt-1">
             額面の約{result.netRate}% ／ 年収換算 約{fmt(parseFloat(gross) * 12)} → 手取り約{fmt(result.netSalary * 12)}
           </p>
         </div>
@@ -190,23 +190,23 @@ export default function NetSalaryClient() {
                   {row.label}
                   {row.tip && (
                     <span className="relative inline-block ml-1 group">
-                      <span className="text-blue-400 text-xs border border-blue-300 rounded-full w-4 h-4 inline-flex items-center justify-center cursor-pointer">?</span>
+                      <span className="text-kon text-xs border border-kon rounded-full w-4 h-4 inline-flex items-center justify-center cursor-pointer">?</span>
                       <span className="absolute z-50 left-5 top-0 w-64 bg-white border border-gray-200 rounded-lg shadow-xl p-2 text-xs text-gray-600 hidden group-hover:block">
                         {row.tip}
                       </span>
                     </span>
                   )}
                 </span>
-                <span className="text-sm text-red-600">−{fmt(row.amount)}</span>
+                <span className="text-sm text-danger">−{fmt(row.amount)}</span>
               </div>
             ))}
             <div className="flex items-center justify-between py-3 bg-gray-50 -mx-4 px-4">
               <span className="text-sm font-semibold text-gray-700">控除合計</span>
-              <span className="text-sm font-semibold text-red-600">−{fmt(result.totalDeductions)}</span>
+              <span className="text-sm font-semibold text-danger">−{fmt(result.totalDeductions)}</span>
             </div>
             <div className="flex items-center justify-between py-3">
               <span className="text-base font-bold text-gray-900">手取り額</span>
-              <span className="text-base font-bold text-blue-700">{fmt(result.netSalary)}</span>
+              <span className="text-base font-bold text-kon">{fmt(result.netSalary)}</span>
             </div>
           </div>
         </div>

@@ -284,7 +284,7 @@ export default function RevolvingCalculator() {
   }
 
   const inputClass =
-    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-400";
+    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-danger";
   const labelClass = "block text-xs font-medium text-gray-600 mb-1";
 
   const faqs = [
@@ -455,7 +455,7 @@ export default function RevolvingCalculator() {
       <div className="flex gap-3 mb-6">
         <button
           onClick={handleCalculate}
-          className="flex-1 bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl text-base transition-colors"
+          className="flex-1 bg-danger hover:bg-danger text-white font-bold py-3 rounded-xl text-base transition-colors"
         >
           衝撃の現実を計算する
         </button>
@@ -472,7 +472,7 @@ export default function RevolvingCalculator() {
         <div className="space-y-4 mb-8">
           {/* Negative amortization warning */}
           {result.negativeAmortization && (
-            <div className="bg-red-600 rounded-xl p-5 text-white">
+            <div className="bg-danger rounded-xl p-5 text-white">
               <div className="text-lg font-black mb-1">🚨 最大の恐怖</div>
               <div className="text-sm font-bold">
                 毎月返済しても借金が増え続けています！
@@ -485,7 +485,7 @@ export default function RevolvingCalculator() {
           )}
 
           {result.purchaseWarning && !result.negativeAmortization && (
-            <div className="bg-orange-500 rounded-xl p-4 text-white">
+            <div className="bg-kon rounded-xl p-4 text-white">
               <div className="text-sm font-bold">⚠ 新規利用が続く限り借金は永遠に減りません</div>
               <div className="text-xs mt-1 opacity-90">
                 毎月の新規利用額を0円にすることが完済への第一歩です。
@@ -494,30 +494,30 @@ export default function RevolvingCalculator() {
           )}
 
           {/* Section 1: 衝撃の現実 */}
-          <div className="bg-red-50 border-2 border-red-500 rounded-xl p-6">
-            <h2 className="text-base font-black text-red-700 mb-4">💀 衝撃の現実</h2>
+          <div className="bg-gray-50 border-2 border-danger rounded-xl p-6">
+            <h2 className="text-base font-black text-danger mb-4">💀 衝撃の現実</h2>
             <div className="grid grid-cols-3 gap-3 mb-4">
               <div className="text-center">
-                <div className="text-xs text-red-500 font-medium mb-1">完済まで</div>
-                <div className="text-2xl font-black text-red-700 leading-tight">
+                <div className="text-xs text-danger font-medium mb-1">完済まで</div>
+                <div className="text-2xl font-black text-danger leading-tight">
                   {result.base.impossible ? "返済不能" : formatMonths(result.base.completionMonths)}
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-xs text-red-500 font-medium mb-1">総利息</div>
-                <div className="text-2xl font-black text-red-700 leading-tight">
+                <div className="text-xs text-danger font-medium mb-1">総利息</div>
+                <div className="text-2xl font-black text-danger leading-tight">
                   {result.base.impossible ? "∞" : formatYen(result.base.totalInterest)}
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-xs text-red-500 font-medium mb-1">総支払額</div>
-                <div className="text-2xl font-black text-red-700 leading-tight">
+                <div className="text-xs text-danger font-medium mb-1">総支払額</div>
+                <div className="text-2xl font-black text-danger leading-tight">
                   {result.base.impossible ? "∞" : formatYen(result.base.totalPayment)}
                 </div>
               </div>
             </div>
             {!result.base.impossible && (
-              <div className="bg-red-100 rounded-lg p-3 text-sm text-red-800 text-center font-medium">
+              <div className="bg-gray-50 rounded-lg p-3 text-sm text-danger text-center font-medium">
                 元の借金 {formatYen(result.balance)} に対して、利息だけで{" "}
                 <span className="font-black">{formatYen(result.base.totalInterest)}</span>{" "}
                 払うことになります
@@ -532,7 +532,7 @@ export default function RevolvingCalculator() {
               <div className="mb-2">
                 <div className="flex rounded-full overflow-hidden h-6">
                   <div
-                    className="bg-red-500 flex items-center justify-center text-white text-xs font-bold"
+                    className="bg-danger flex items-center justify-center text-white text-xs font-bold"
                     style={{ width: `${result.shockFacts.monthlyInterestPct}%` }}
                   >
                     {result.shockFacts.monthlyInterestPct.toFixed(0)}%
@@ -545,7 +545,7 @@ export default function RevolvingCalculator() {
                   </div>
                 </div>
                 <div className="flex justify-between mt-1 text-xs text-gray-500">
-                  <span className="text-red-600 font-medium">
+                  <span className="text-danger font-medium">
                     利息: {formatYenPrecise(result.monthlyInterest)}（{result.shockFacts.monthlyInterestPct.toFixed(1)}%）
                   </span>
                   <span className="text-green-600 font-medium">
@@ -555,7 +555,7 @@ export default function RevolvingCalculator() {
               </div>
               <p className="text-xs text-gray-600 mt-2">
                 毎月の返済額{formatYenPrecise(parseFloat(monthlyPayment))}のうち、
-                <span className="text-red-600 font-bold">{formatYenPrecise(result.monthlyInterest)}（{result.shockFacts.monthlyInterestPct.toFixed(1)}%）</span>
+                <span className="text-danger font-bold">{formatYenPrecise(result.monthlyInterest)}（{result.shockFacts.monthlyInterestPct.toFixed(1)}%）</span>
                 が利息として消えています
               </p>
             </div>
@@ -571,10 +571,10 @@ export default function RevolvingCalculator() {
                 <thead className="bg-gray-50">
                   <tr>
                     <th className="px-3 py-2 text-left text-gray-600 font-medium text-xs"></th>
-                    <th className="px-3 py-2 text-center text-red-600 font-bold text-xs bg-red-50">
+                    <th className="px-3 py-2 text-center text-danger font-bold text-xs bg-gray-50">
                       現状のまま
                     </th>
-                    <th className="px-3 py-2 text-center text-blue-600 font-medium text-xs">
+                    <th className="px-3 py-2 text-center text-kon font-medium text-xs">
                       月{(parseFloat(extraPayment) || 0).toLocaleString()}円追加
                     </th>
                     <th className="px-3 py-2 text-center text-green-600 font-medium text-xs">
@@ -585,7 +585,7 @@ export default function RevolvingCalculator() {
                 <tbody className="divide-y divide-gray-100">
                   <tr>
                     <td className="px-3 py-2 text-xs text-gray-600 font-medium">完済まで</td>
-                    <td className="px-3 py-2 text-center font-bold text-red-700 bg-red-50 text-sm">
+                    <td className="px-3 py-2 text-center font-bold text-danger bg-gray-50 text-sm">
                       {result.base.impossible ? "返済不能" : formatMonths(result.base.completionMonths)}
                     </td>
                     <td className="px-3 py-2 text-center text-gray-700 text-sm">
@@ -595,7 +595,7 @@ export default function RevolvingCalculator() {
                   </tr>
                   <tr>
                     <td className="px-3 py-2 text-xs text-gray-600 font-medium">総利息</td>
-                    <td className="px-3 py-2 text-center font-bold text-red-700 bg-red-50 text-sm">
+                    <td className="px-3 py-2 text-center font-bold text-danger bg-gray-50 text-sm">
                       {result.base.impossible ? "∞" : formatYen(result.base.totalInterest)}
                     </td>
                     <td className="px-3 py-2 text-center text-gray-700 text-sm">
@@ -605,7 +605,7 @@ export default function RevolvingCalculator() {
                   </tr>
                   <tr>
                     <td className="px-3 py-2 text-xs text-gray-600 font-medium">総支払額</td>
-                    <td className="px-3 py-2 text-center font-bold text-red-700 bg-red-50 text-sm">
+                    <td className="px-3 py-2 text-center font-bold text-danger bg-gray-50 text-sm">
                       {result.base.impossible ? "∞" : formatYen(result.base.totalPayment)}
                     </td>
                     <td className="px-3 py-2 text-center text-gray-700 text-sm">
@@ -617,8 +617,8 @@ export default function RevolvingCalculator() {
                   </tr>
                   <tr>
                     <td className="px-3 py-2 text-xs text-gray-600 font-medium">節約額</td>
-                    <td className="px-3 py-2 text-center text-gray-400 bg-red-50 text-sm">—</td>
-                    <td className="px-3 py-2 text-center text-blue-600 font-medium text-sm">
+                    <td className="px-3 py-2 text-center text-gray-400 bg-gray-50 text-sm">—</td>
+                    <td className="px-3 py-2 text-center text-kon font-medium text-sm">
                       {result.shockFacts.extraSavingsInterest > 0
                         ? `-${formatYen(result.shockFacts.extraSavingsInterest)}`
                         : "—"}
@@ -658,7 +658,7 @@ export default function RevolvingCalculator() {
                         <td className="px-3 py-2 text-right text-gray-700 text-xs">
                           {row.label === "現在" ? "—" : formatYen(row.totalPaid)}
                         </td>
-                        <td className="px-3 py-2 text-right text-red-600 text-xs">
+                        <td className="px-3 py-2 text-right text-danger text-xs">
                           {row.label === "現在" ? "—" : formatYen(row.totalInterest)}
                         </td>
                       </tr>
@@ -671,26 +671,26 @@ export default function RevolvingCalculator() {
 
           {/* Section 5: 衝撃ファクト */}
           {!result.base.impossible && (
-            <div className="bg-orange-50 border border-orange-200 rounded-xl p-5">
-              <h3 className="text-sm font-black text-orange-800 mb-3">😱 衝撃の事実</h3>
-              <ul className="space-y-2 text-sm text-orange-900">
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
+              <h3 className="text-sm font-black text-kon mb-3">😱 衝撃の事実</h3>
+              <ul className="space-y-2 text-sm text-kon">
                 <li>
                   ・あなたが払う総額の
-                  <span className="font-black text-red-700 text-base mx-1">
+                  <span className="font-black text-danger text-base mx-1">
                     {result.shockFacts.interestPct.toFixed(1)}%
                   </span>
                   が利息です
                 </li>
                 <li>
                   ・完済まであと
-                  <span className="font-black text-red-700 text-base mx-1">
+                  <span className="font-black text-danger text-base mx-1">
                     {formatMonths(result.base.completionMonths)}
                   </span>
                   かかります
                 </li>
                 <li>
                   ・毎月の返済額のうち
-                  <span className="font-black text-red-700 text-base mx-1">
+                  <span className="font-black text-danger text-base mx-1">
                     {result.shockFacts.monthlyInterestPct.toFixed(1)}%
                     （{formatYenPrecise(result.monthlyInterest)}）
                   </span>
@@ -698,7 +698,7 @@ export default function RevolvingCalculator() {
                 </li>
                 <li>
                   ・一括で払った場合より合計
-                  <span className="font-black text-red-700 text-base mx-1">
+                  <span className="font-black text-danger text-base mx-1">
                     {formatYen(result.base.totalInterest)}
                   </span>
                   多く払います
@@ -708,9 +708,9 @@ export default function RevolvingCalculator() {
           )}
 
           {/* アドバイスカード */}
-          <div className="bg-blue-50 border border-blue-200 rounded-xl p-5">
-            <h3 className="text-sm font-bold text-blue-800 mb-3">💡 アドバイス</h3>
-            <ul className="space-y-2 text-sm text-blue-800">
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
+            <h3 className="text-sm font-bold text-kon mb-3">💡 アドバイス</h3>
+            <ul className="space-y-2 text-sm text-kon">
               {result.shockFacts.extraShortenMonths > 0 && (
                 <li>
                   ・繰り上げ返済が最も効果的です。月{(parseFloat(extraPayment) || 0).toLocaleString()}円追加するだけで完済が
@@ -720,7 +720,7 @@ export default function RevolvingCalculator() {
               )}
               <li>・他の低金利ローンへの借り換えも検討してください</li>
               {!result.base.impossible && result.base.completionMonths > 60 && (
-                <li className="font-bold text-red-700">
+                <li className="font-bold text-danger">
                   ・返済に5年以上かかる場合、専門家への相談を検討してください
                 </li>
               )}
@@ -758,10 +758,10 @@ export default function RevolvingCalculator() {
                   <tr key={row.balanceLabel}>
                     <td className="px-3 py-2 text-gray-700">{row.balanceLabel}</td>
                     <td className="px-3 py-2 text-right text-gray-700">{row.paymentLabel}</td>
-                    <td className="px-3 py-2 text-right text-red-600 font-medium">
+                    <td className="px-3 py-2 text-right text-danger font-medium">
                       約{formatMonths(row.months)}
                     </td>
-                    <td className="px-3 py-2 text-right text-red-600">
+                    <td className="px-3 py-2 text-right text-danger">
                       約{Math.round(row.totalInterest / 10000)}万円
                     </td>
                     <td className="px-3 py-2 text-right text-gray-700">
@@ -842,7 +842,7 @@ export default function RevolvingCalculator() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <Link
               href="/debt/repayment-simulator"
-              className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors"
+              className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:border-ai hover:bg-gray-50 transition-colors"
             >
               <div>
                 <div className="text-sm font-medium text-gray-800">借金返済シミュレーター</div>
@@ -851,7 +851,7 @@ export default function RevolvingCalculator() {
             </Link>
             <Link
               href="/debt/loan-interest-calculator"
-              className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors"
+              className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:border-ai hover:bg-gray-50 transition-colors"
             >
               <div>
                 <div className="text-sm font-medium text-gray-800">カードローン利息計算機</div>
@@ -860,7 +860,7 @@ export default function RevolvingCalculator() {
             </Link>
             <Link
               href="/debt/debt-restructuring-checker"
-              className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors"
+              className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:border-ai hover:bg-gray-50 transition-colors"
             >
               <div>
                 <div className="text-sm font-medium text-gray-800">任意整理vs自己破産 比較ツール</div>
@@ -869,7 +869,7 @@ export default function RevolvingCalculator() {
             </Link>
             <Link
               href="/finance/jutaku-loan"
-              className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors"
+              className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:border-ai hover:bg-gray-50 transition-colors"
             >
               <div>
                 <div className="text-sm font-medium text-gray-800">住宅ローン計算機</div>

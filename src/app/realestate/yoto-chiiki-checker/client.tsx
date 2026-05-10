@@ -40,7 +40,7 @@ function Tooltip({ text }: { text: string }) {
     <span className="relative inline-block ml-1 print:hidden">
       <button
         type="button"
-        className="text-blue-500 hover:text-blue-700 text-xs font-bold border border-blue-300 rounded-full w-4 h-4 inline-flex items-center justify-center leading-none"
+        className="text-kon hover:text-ai text-xs font-bold border border-kon rounded-full w-4 h-4 inline-flex items-center justify-center leading-none"
         onMouseEnter={() => setShow(true)}
         onMouseLeave={() => setShow(false)}
         onClick={() => setShow(!show)}
@@ -67,10 +67,10 @@ function ResultCard({ result, landSize }: { result: ZoneResult; landSize: string
 
   return (
     <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
-      <div className="bg-blue-600 text-white p-4">
+      <div className="bg-kon text-white p-4">
         <p className="text-xs opacity-75 mb-1">📍 {result.address}</p>
         <p className="text-lg font-bold">{result.zone_name}</p>
-        <p className="text-blue-100 text-sm mt-0.5">
+        <p className="text-gin text-sm mt-0.5">
           {result.zone_friendly}
           <Tooltip text={result.zone_tooltip} />
         </p>
@@ -89,11 +89,11 @@ function ResultCard({ result, landSize }: { result: ZoneResult; landSize: string
             ))}
           </ul>
         </div>
-        <div className="bg-red-50 rounded-lg p-3">
-          <p className="text-xs font-semibold text-red-700 mb-2">❌ 建てられないもの</p>
+        <div className="bg-gray-50 rounded-lg p-3">
+          <p className="text-xs font-semibold text-danger mb-2">❌ 建てられないもの</p>
           <ul className="space-y-0.5">
             {result.disallowed.map((item, i) => (
-              <li key={i} className="text-xs text-gray-700 flex gap-1"><span className="text-red-400">●</span>{item}</li>
+              <li key={i} className="text-xs text-gray-700 flex gap-1"><span className="text-danger">●</span>{item}</li>
             ))}
           </ul>
         </div>
@@ -119,11 +119,11 @@ function ResultCard({ result, landSize }: { result: ZoneResult; landSize: string
           </div>
         </div>
         {maxBuildArea !== null && maxFloorArea !== null && (
-          <div className="bg-blue-50 rounded-lg p-3 text-xs">
-            <p className="font-semibold text-blue-800 mb-1">🏗 {landSize}㎡の土地の場合</p>
-            <p className="text-gray-700">最大建築面積: <strong className="text-blue-700">{maxBuildArea}㎡</strong></p>
-            <p className="text-gray-700">最大延床面積: <strong className="text-blue-700">{maxFloorArea}㎡</strong></p>
-            {floorCount && <p className="text-gray-700">目安階数: <strong className="text-blue-700">約{floorCount}階建て</strong></p>}
+          <div className="bg-gray-50 rounded-lg p-3 text-xs">
+            <p className="font-semibold text-kon mb-1">🏗 {landSize}㎡の土地の場合</p>
+            <p className="text-gray-700">最大建築面積: <strong className="text-kon">{maxBuildArea}㎡</strong></p>
+            <p className="text-gray-700">最大延床面積: <strong className="text-kon">{maxFloorArea}㎡</strong></p>
+            {floorCount && <p className="text-gray-700">目安階数: <strong className="text-kon">約{floorCount}階建て</strong></p>}
           </div>
         )}
         {result.best_for.length > 0 && (
@@ -153,21 +153,21 @@ function ErrorBox({ msg }: { msg: string }) {
   const isNoData = msg.includes("都市計画区域外") || msg.includes("見つかりませんでした");
   if (isNoData) {
     return (
-      <div className="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-4">
-        <p className="font-semibold text-amber-800 mb-2 text-sm">📭 用途地域データが見つかりませんでした</p>
-        <ul className="text-xs text-amber-700 space-y-1 mb-3">
+      <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-4">
+        <p className="font-semibold text-kon mb-2 text-sm">📭 用途地域データが見つかりませんでした</p>
+        <ul className="text-xs text-kon space-y-1 mb-3">
           <li>● <strong>都市計画区域外</strong> — 農村・山間部・一部離島など</li>
           <li>● <strong>データ未整備</strong> — 国土交通省DBに未登録の自治体</li>
           <li>● <strong>住所の粒度</strong> — 番地まで入力するとより正確</li>
         </ul>
         <a href="https://www.reinfolib.mlit.go.jp/" target="_blank" rel="noopener noreferrer"
-          className="text-xs bg-white border border-amber-400 text-amber-800 px-3 py-1.5 rounded-lg hover:bg-amber-50 transition-colors inline-block">
+          className="text-xs bg-white border border-gray-200 text-kon px-3 py-1.5 rounded-lg hover:bg-gray-50 transition-colors inline-block">
           🔗 国土交通省サイトで確認
         </a>
       </div>
     );
   }
-  return <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg p-3 mb-4 text-sm">⚠️ {msg}</div>;
+  return <div className="bg-gray-50 border border-gray-200 text-danger rounded-lg p-3 mb-4 text-sm">⚠️ {msg}</div>;
 }
 
 
@@ -260,14 +260,14 @@ export default function YotoChiikiClient() {
           <button
             type="button"
             onClick={() => { setCompareMode(false); setResultB(null); setErrorB(""); setAddressB(""); }}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${!compareMode ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${!compareMode ? "bg-kon text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}
           >
             🔍 1住所を調べる
           </button>
           <button
             type="button"
             onClick={() => setCompareMode(true)}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${compareMode ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${compareMode ? "bg-kon text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}
           >
             ⚖ 2地点を比較する
           </button>
@@ -297,11 +297,11 @@ export default function YotoChiikiClient() {
         {/* Compare mode search */}
         {compareMode && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 print:hidden">
-            <div className="bg-white border border-blue-200 rounded-xl p-4 shadow-sm">
-              <label className="block text-sm font-semibold text-blue-700 mb-2">📍 土地A</label>
+            <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+              <label className="block text-sm font-semibold text-kon mb-2">📍 土地A</label>
               <input
                 type="text"
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                 placeholder="例: 東京都渋谷区神宮前1-1-1"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
@@ -311,7 +311,7 @@ export default function YotoChiikiClient() {
                 type="button"
                 onClick={handleSearch}
                 disabled={loading || !address.trim()}
-                className="w-full mt-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 text-white text-sm font-semibold py-2 rounded-lg transition-colors"
+                className="w-full mt-2 bg-kon hover:bg-ai disabled:bg-gray-300 text-white text-sm font-semibold py-2 rounded-lg transition-colors"
               >
                 {loading ? "調べています..." : "調べる"}
               </button>
@@ -340,11 +340,11 @@ export default function YotoChiikiClient() {
 
         {/* Land size input — shown when any result exists */}
         {(result || resultB) && (
-          <div className="bg-blue-50 border border-blue-200 rounded-xl px-4 py-3 mb-4 flex items-center gap-3 print:hidden">
-            <span className="text-sm text-blue-800 font-medium whitespace-nowrap">🏗 土地面積で計算:</span>
+          <div className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 mb-4 flex items-center gap-3 print:hidden">
+            <span className="text-sm text-kon font-medium whitespace-nowrap">🏗 土地面積で計算:</span>
             <input
               type="number"
-              className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm w-28 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm w-28 focus:outline-none focus:ring-2 focus:ring-kon"
               placeholder="例: 100"
               value={landSize}
               onChange={(e) => setLandSize(e.target.value)}
@@ -363,7 +363,7 @@ export default function YotoChiikiClient() {
           <div id="yoto-print-area">
             <div className="print-header hidden items-center justify-between px-4 py-3 border-b border-gray-200 mb-3">
               <div>
-                <p className="text-lg font-bold text-blue-700">山田ツール</p>
+                <p className="text-lg font-bold text-kon">山田ツール</p>
                 <p className="text-xs text-gray-500">yamada-tools.jp — 用途地域チェッカー</p>
               </div>
               <div className="text-right">
@@ -378,7 +378,7 @@ export default function YotoChiikiClient() {
               </div>
               <p className="text-xs text-gray-400 mb-3">※ 最終判断は市区町村の都市計画部門にご確認ください。</p>
               <button type="button" onClick={() => window.print()}
-                className="text-sm bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors font-medium">
+                className="text-sm bg-kon hover:bg-ai text-white px-4 py-2 rounded-lg transition-colors font-medium">
                 🖨 印刷・PDF保存
               </button>
             </div>
@@ -415,7 +415,7 @@ export default function YotoChiikiClient() {
                   <thead>
                     <tr>
                       <th className="text-left text-gray-400 font-normal pb-2 w-1/3"></th>
-                      <th className="text-center text-blue-700 font-semibold pb-2">土地A</th>
+                      <th className="text-center text-kon font-semibold pb-2">土地A</th>
                       <th className="text-center text-green-700 font-semibold pb-2">土地B</th>
                     </tr>
                   </thead>

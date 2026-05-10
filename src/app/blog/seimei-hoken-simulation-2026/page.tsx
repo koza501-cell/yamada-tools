@@ -46,9 +46,9 @@ export default function SeimeiHokenSimulation2026Blog() {
         }}
       />
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-pink-500">ホーム</Link>
+        <Link href="/" className="hover:text-sakura">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-pink-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-sakura">ブログ</Link>
         <span className="mx-2">/</span>
         <span>生命保険必要額2026</span>
       </nav>
@@ -87,8 +87,8 @@ export default function SeimeiHokenSimulation2026Blog() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-red-50 p-4 rounded-lg">
-              <p className="font-bold text-red-700 mb-2">遺族の支出（必要なお金）</p>
+            <div className="bg-gray-50 p-4 rounded-lg">
+              <p className="font-bold text-danger mb-2">遺族の支出（必要なお金）</p>
               <ul className="text-sm text-gray-700 space-y-1">
                 <li>・生活費（食費、光熱費など）</li>
                 <li>・住居費（家賃または住宅ローン）</li>
@@ -127,8 +127,8 @@ export default function SeimeiHokenSimulation2026Blog() {
             <tr><td className="px-3 py-3 border-b font-bold">独身</td><td className="px-3 py-3 border-b text-right font-bold text-teal-600">0〜500万円</td><td className="px-3 py-3 border-b text-sm">葬儀費用程度でOK</td></tr>
             <tr><td className="px-3 py-3 border-b font-bold">夫婦のみ（共働き）</td><td className="px-3 py-3 border-b text-right font-bold text-teal-600">500〜1,000万円</td><td className="px-3 py-3 border-b text-sm">配偶者の収入で生活可能</td></tr>
             <tr><td className="px-3 py-3 border-b font-bold">夫婦のみ（片働き）</td><td className="px-3 py-3 border-b text-right font-bold text-teal-600">1,500〜2,500万円</td><td className="px-3 py-3 border-b text-sm">配偶者の就労期間を考慮</td></tr>
-            <tr className="bg-yellow-50"><td className="px-3 py-3 border-b font-bold">子ども1人（0〜6歳）</td><td className="px-3 py-3 border-b text-right font-bold text-orange-600">3,000〜4,000万円</td><td className="px-3 py-3 border-b text-sm">教育費と生活費が長期間必要</td></tr>
-            <tr className="bg-yellow-50"><td className="px-3 py-3 border-b font-bold">子ども2人（0〜10歳）</td><td className="px-3 py-3 border-b text-right font-bold text-orange-600">4,000〜5,500万円</td><td className="px-3 py-3 border-b text-sm">教育費が2人分</td></tr>
+            <tr className="bg-yellow-50"><td className="px-3 py-3 border-b font-bold">子ども1人（0〜6歳）</td><td className="px-3 py-3 border-b text-right font-bold text-kon">3,000〜4,000万円</td><td className="px-3 py-3 border-b text-sm">教育費と生活費が長期間必要</td></tr>
+            <tr className="bg-yellow-50"><td className="px-3 py-3 border-b font-bold">子ども2人（0〜10歳）</td><td className="px-3 py-3 border-b text-right font-bold text-kon">4,000〜5,500万円</td><td className="px-3 py-3 border-b text-sm">教育費が2人分</td></tr>
             <tr><td className="px-3 py-3 border-b font-bold">子ども2人（高校生以上）</td><td className="px-3 py-3 border-b text-right font-bold text-teal-600">2,000〜3,000万円</td><td className="px-3 py-3 border-b text-sm">必要期間が短くなる</td></tr>
           </tbody>
         </table>
@@ -141,8 +141,8 @@ export default function SeimeiHokenSimulation2026Blog() {
           </p>
         </div>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-          <p className="text-lg font-bold text-blue-800 mb-2">🔧 あなたの必要保障額を計算！</p>
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+          <p className="text-lg font-bold text-kon mb-2">🔧 あなたの必要保障額を計算！</p>
           <p className="text-gray-700 mb-4">家族構成と収入を入力して、適切な保険金額をシミュレーションしましょう。</p>
           <Link href="/insurance/life-insurance-calculator" className="inline-block bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-6 rounded-lg transition">
             → 生命保険必要額計算機を使う
@@ -226,7 +226,7 @@ export default function SeimeiHokenSimulation2026Blog() {
           </div>
         </div>
 
-        <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+        <div className="bg-gray-50 border-l-4 border-danger p-4 mb-6">
           <p className="font-bold text-gray-800 mb-2">⚠️ 賃貸住まいの場合</p>
           <p className="text-gray-700">
             賃貸の場合は住居費が継続して発生します。

@@ -83,7 +83,7 @@ export default function PrefJumyoPage({ params }: { params: Promise<{ slug: stri
   if (!data) notFound();
 
   const diffBadge = (diff: number) => (
-    <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${diff >= 0 ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400" : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"}`}>
+    <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${diff >= 0 ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400" : "bg-gray-50 text-danger dark:bg-danger/30 dark:text-danger"}`}>
       {diff >= 0 ? "+" : ""}{diff}年
     </span>
   );
@@ -124,7 +124,7 @@ export default function PrefJumyoPage({ params }: { params: Promise<{ slug: stri
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
 
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-        <div className="bg-gradient-to-br from-rose-600 to-pink-500 text-white py-10">
+        <div className="bg-gradient-to-br from-rose-600 to-kon text-white py-10">
           <div className="max-w-4xl mx-auto px-4">
             <nav className="text-sm text-white/70 mb-2 flex items-center gap-1 flex-wrap">
               <Link href="/health" className="hover:text-white">健康・生活</Link>
@@ -143,9 +143,9 @@ export default function PrefJumyoPage({ params }: { params: Promise<{ slug: stri
           <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-6">
             <h2 className="font-bold text-gray-900 dark:text-white mb-4">{data.pref_name}の平均寿命（{data.year}年）</h2>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 text-center">
-                <div className="text-xs text-blue-600 dark:text-blue-400 font-medium mb-1">男性</div>
-                <div className="text-3xl font-bold text-blue-700 dark:text-blue-300">{data.male}</div>
+              <div className="bg-gray-50 dark:bg-kon/20 rounded-xl p-4 text-center">
+                <div className="text-xs text-kon dark:text-gray-300 font-medium mb-1">男性</div>
+                <div className="text-3xl font-bold text-kon dark:text-gray-300">{data.male}</div>
                 <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">歳</div>
                 <div className="mt-2">{diffBadge(data.male_diff)}</div>
                 <div className="text-xs text-gray-400 mt-1">全国比</div>

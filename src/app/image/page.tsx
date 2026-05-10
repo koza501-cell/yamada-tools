@@ -20,7 +20,7 @@ const useCases = [
     title: "📧 メール・SNS用に軽くしたい",
     description: "画像が大きすぎて送れない？",
     tools: ["compress-image", "resize"],
-    color: "from-blue-500 to-blue-600",
+    color: "from-slate-900 to-kon",
   },
   {
     title: "🔄 形式を変換したい",
@@ -32,13 +32,13 @@ const useCases = [
     title: "📱 QRコードを作りたい",
     description: "URL・テキストをQRコードに",
     tools: ["qr-generator"],
-    color: "from-purple-500 to-purple-600",
+    color: "from-slate-900 to-kon",
   },
   {
     title: "✂️ 背景を消したい",
     description: "人物・商品の背景を削除",
     tools: ["remove-bg"],
-    color: "from-pink-500 to-pink-600",
+    color: "from-slate-900 to-kon",
   },
 ];
 
@@ -111,7 +111,7 @@ export default function ImageToolsPage() {
                   <div className="text-3xl">{tool.icon}</div>
                   <div>
                     <h3 className="font-bold text-kon group-hover:text-ai transition-colors">{tool.nameJa}</h3>
-                    <span className="text-xs text-orange-500 font-medium">人気</span>
+                    <span className="text-xs text-kon font-medium">人気</span>
                   </div>
                 </div>
                 <p className="text-sm text-gray-600">{tool.description}</p>

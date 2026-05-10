@@ -107,14 +107,14 @@ export default function IndustryPage() {
             <div>
               <label className="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1">年齢階級</label>
               <select value={ageClass} onChange={(e) => setAgeClass(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon">
                 {AGE_CLASSES.map((a) => <option key={a.code} value={a.code}>{a.label}</option>)}
               </select>
             </div>
             <div>
               <label className="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1">性別</label>
               <select value={gender} onChange={(e) => setGender(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon">
                 <option value="01">男女計</option>
                 <option value="02">男性</option>
                 <option value="03">女性</option>
@@ -172,7 +172,7 @@ export default function IndustryPage() {
                       <td className="px-5 py-3 text-right font-bold text-gray-900 dark:text-white">
                         ¥{r.annual_man.toFixed(1)}万
                       </td>
-                      <td className={`px-5 py-3 text-right hidden sm:table-cell font-medium ${r.annual_man >= totalAvg ? "text-green-600" : "text-red-500"}`}>
+                      <td className={`px-5 py-3 text-right hidden sm:table-cell font-medium ${r.annual_man >= totalAvg ? "text-green-600" : "text-danger"}`}>
                         {r.annual_man >= totalAvg ? "+" : ""}{(r.annual_man - totalAvg).toFixed(1)}万
                       </td>
                     </tr>

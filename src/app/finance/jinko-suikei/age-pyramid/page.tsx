@@ -98,7 +98,7 @@ export default function AgePyramidPage() {
                 {data.pref_name} {data.year}年 年齢ピラミッド
               </h2>
               <div className="flex gap-4 text-xs text-gray-500 dark:text-gray-400 mb-4">
-                <span className="flex items-center gap-1"><span className="w-3 h-3 rounded bg-blue-500 inline-block" />男性</span>
+                <span className="flex items-center gap-1"><span className="w-3 h-3 rounded bg-kon inline-block" />男性</span>
                 <span className="flex items-center gap-1"><span className="w-3 h-3 rounded bg-rose-400 inline-block" />女性</span>
               </div>
               <ResponsiveContainer width="100%" height={380}>
@@ -139,7 +139,7 @@ export default function AgePyramidPage() {
                     <tr key={row.age_group} className="hover:bg-gray-50 dark:hover:bg-gray-700/50">
                       <td className="px-5 py-2 font-medium text-gray-900 dark:text-white">{row.age_group}</td>
                       <td className="px-5 py-2 text-right text-gray-900 dark:text-white">{row.total.toLocaleString()}</td>
-                      <td className="px-5 py-2 text-right text-blue-600 dark:text-blue-400">{row.male.toLocaleString()}</td>
+                      <td className="px-5 py-2 text-right text-kon dark:text-gray-300">{row.male.toLocaleString()}</td>
                       <td className="px-5 py-2 text-right text-rose-500 dark:text-rose-400">{row.female.toLocaleString()}</td>
                     </tr>
                   ))}

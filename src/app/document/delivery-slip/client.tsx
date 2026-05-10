@@ -160,13 +160,13 @@ export default function DeliverySlipClient() {
               ref={errorBannerRef}
               role="alert"
               aria-live="assertive"
-              className="print:hidden mb-4 p-4 bg-red-50 border border-red-300 rounded-lg"
+              className="print:hidden mb-4 p-4 bg-gray-50 border border-gray-200 rounded-lg"
             >
-              <p className="font-bold text-red-700 mb-2">入力内容を確認してください</p>
+              <p className="font-bold text-danger mb-2">入力内容を確認してください</p>
               <ul className="list-disc list-inside space-y-1">
                 {errorFields.map(({ id, label }) => (
                   <li key={id}>
-                    <a href={`#${id}`} className="text-red-600 underline hover:text-red-800">
+                    <a href={`#${id}`} className="text-danger underline hover:text-danger">
                       {label}
                     </a>
                   </li>
@@ -280,7 +280,7 @@ export default function DeliverySlipClient() {
               {/* Items table */}
               <h3 className="font-bold text-gray-900 mb-3">納品明細</h3>
               {(errors.items as { message?: string } | undefined)?.message && (
-                <p role="alert" className="mb-2 text-xs text-red-600">
+                <p role="alert" className="mb-2 text-xs text-danger">
                   {(errors.items as { message?: string }).message}
                 </p>
               )}
@@ -317,7 +317,7 @@ export default function DeliverySlipClient() {
                               className="w-full px-2 py-1 border border-gray-200 rounded"
                             />
                             {itemErrors?.name && (
-                              <p id={`item-${index}-name-error`} role="alert" className="text-xs text-red-600 mt-0.5">
+                              <p id={`item-${index}-name-error`} role="alert" className="text-xs text-danger mt-0.5">
                                 {itemErrors.name.message}
                               </p>
                             )}
@@ -358,7 +358,7 @@ export default function DeliverySlipClient() {
                               type="button"
                               onClick={() => fields.length > 1 && remove(index)}
                               disabled={fields.length <= 1}
-                              className="text-red-500 hover:text-red-700 disabled:opacity-30 p-1"
+                              className="text-danger hover:text-danger disabled:opacity-30 p-1"
                               aria-label={`明細 ${index + 1} を削除`}
                             >
                               ×
@@ -373,7 +373,7 @@ export default function DeliverySlipClient() {
               <button
                 type="button"
                 onClick={() => append({ name: "", quantity: 1, unit: "個", price: 0 })}
-                className="text-sm text-blue-600 hover:text-blue-800"
+                className="text-sm text-kon hover:text-ai"
               >
                 + 行を追加
               </button>
@@ -418,7 +418,7 @@ export default function DeliverySlipClient() {
             <div className="mt-6 print:hidden">
               <button
                 type="submit"
-                className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-lg"
+                className="w-full py-4 bg-kon hover:bg-ai text-white rounded-xl font-bold text-lg"
               >
                 印刷 / PDF保存
               </button>
@@ -516,7 +516,7 @@ export default function DeliverySlipClient() {
           </div>
 
           <div className="mt-8 text-center print:hidden">
-            <Link href="/document" className="text-blue-600 hover:text-blue-800">
+            <Link href="/document" className="text-kon hover:text-ai">
               ← 書類作成一覧に戻る
             </Link>
           </div>

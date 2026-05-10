@@ -17,9 +17,9 @@ export default function FairUsagePage() {
           <h1 className="text-3xl font-bold text-kon mb-8">適正利用ガイドライン</h1>
 
           <div className="space-y-8 text-gray-700">
-            <section className="bg-blue-50 p-6 rounded-xl border border-blue-200">
-              <h2 className="text-xl font-bold text-blue-900 mb-4">📘 このガイドラインについて</h2>
-              <p className="text-sm leading-relaxed text-blue-800">
+            <section className="bg-gray-50 p-6 rounded-xl border border-gray-200">
+              <h2 className="text-xl font-bold text-kon mb-4">📘 このガイドラインについて</h2>
+              <p className="text-sm leading-relaxed text-kon">
                 山田ツールは、多くの皆様に無料で快適にご利用いただくため、サーバーリソースの公平な配分と安定したサービス提供を目的として、適正利用ガイドラインを設けています。通常の個人利用や業務利用であれば、これらの制限に達することはほとんどありません。
               </p>
             </section>
@@ -87,15 +87,15 @@ export default function FairUsagePage() {
                   </p>
                 </div>
 
-                <div className="bg-red-50 p-5 rounded-lg border-l-4 border-red-500">
-                  <h3 className="font-bold text-red-900 mb-2">❌ 制限を超える可能性のある利用例</h3>
-                  <ul className="space-y-2 text-sm text-red-800">
+                <div className="bg-gray-50 p-5 rounded-lg border-l-4 border-danger">
+                  <h3 className="font-bold text-danger mb-2">❌ 制限を超える可能性のある利用例</h3>
+                  <ul className="space-y-2 text-sm text-danger">
                     <li>• 1時間以内に100ファイル以上を連続処理</li>
                     <li>• 自動化ツールやボットを使った大量アクセス</li>
                     <li>• 業務システムと連携した24時間自動処理</li>
                     <li>• 他社サービスへの転売目的での大量利用</li>
                   </ul>
-                  <p className="text-xs text-red-700 mt-3">
+                  <p className="text-xs text-danger mt-3">
                     → このような利用は制限対象となります。
                   </p>
                 </div>
@@ -105,22 +105,22 @@ export default function FairUsagePage() {
             <section>
               <h2 className="text-2xl font-bold text-kon mb-4">禁止事項</h2>
               
-              <div className="bg-amber-50 p-6 rounded-lg border border-amber-200">
+              <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
                 <ul className="space-y-3 text-sm">
                   <li className="flex items-start gap-2">
-                    <span className="text-amber-600 font-bold flex-shrink-0">•</span>
+                    <span className="text-kon font-bold flex-shrink-0">•</span>
                     <span><strong>自動化ツール・ボット：</strong>自動化ツール、スクレイピングツール、ボットなどを使用した大量アクセス</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-amber-600 font-bold flex-shrink-0">•</span>
+                    <span className="text-kon font-bold flex-shrink-0">•</span>
                     <span><strong>不正アクセス：</strong>当社のシステムに対する不正アクセスやハッキング行為</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-amber-600 font-bold flex-shrink-0">•</span>
+                    <span className="text-kon font-bold flex-shrink-0">•</span>
                     <span><strong>転売・再配布：</strong>本サービスを利用して得た結果物を、営利目的で転売または再配布する行為</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-amber-600 font-bold flex-shrink-0">•</span>
+                    <span className="text-kon font-bold flex-shrink-0">•</span>
                     <span><strong>サーバー負荷攻撃：</strong>意図的にサーバーに過度な負荷をかける行為（DoS攻撃など）</span>
                   </li>
                 </ul>
@@ -173,7 +173,7 @@ export default function FairUsagePage() {
                     </tr>
                     <tr>
                       <td className="p-3 border border-gray-300">Smallpdf</td>
-                      <td className="p-3 border border-gray-300 text-red-600">2ファイル/時</td>
+                      <td className="p-3 border border-gray-300 text-danger">2ファイル/時</td>
                       <td className="p-3 border border-gray-300">-</td>
                     </tr>
                     <tr>

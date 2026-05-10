@@ -69,11 +69,11 @@ export default function KanzeiClient() {
 
       <div className="flex gap-2 mb-6">
         <button onClick={() => setMode("personal")}
-          className={"flex-1 py-2 rounded-lg text-sm font-medium border-2 " + (mode === "personal" ? "bg-blue-600 text-white border-blue-600" : "bg-white text-gray-600 border-gray-200")}>
+          className={"flex-1 py-2 rounded-lg text-sm font-medium border-2 " + (mode === "personal" ? "bg-kon text-white border-kon" : "bg-white text-gray-600 border-gray-200")}>
           個人輸入
         </button>
         <button onClick={() => setMode("commercial")}
-          className={"flex-1 py-2 rounded-lg text-sm font-medium border-2 " + (mode === "commercial" ? "bg-blue-600 text-white border-blue-600" : "bg-white text-gray-600 border-gray-200")}>
+          className={"flex-1 py-2 rounded-lg text-sm font-medium border-2 " + (mode === "commercial" ? "bg-kon text-white border-kon" : "bg-white text-gray-600 border-gray-200")}>
           商業輸入
         </button>
       </div>
@@ -93,7 +93,7 @@ export default function KanzeiClient() {
               className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" />
           </div>
         )}
-        <p className="text-xs text-blue-600 mt-2">適用関税率: {tariffRatePct.toFixed(1)}%</p>
+        <p className="text-xs text-kon mt-2">適用関税率: {tariffRatePct.toFixed(1)}%</p>
       </section>
       <section className="mb-4 bg-white rounded-xl border border-gray-200 p-4">
         <h2 className="font-semibold text-gray-700 mb-3">通貨・為替レート</h2>
@@ -142,7 +142,7 @@ export default function KanzeiClient() {
         )}
       </section>
 
-      <div className={"rounded-xl border-2 p-5 mb-6 " + (r.isFullExempt ? "bg-emerald-50 border-emerald-300" : "bg-amber-50 border-amber-300")}>
+      <div className={"rounded-xl border-2 p-5 mb-6 " + (r.isFullExempt ? "bg-emerald-50 border-emerald-300" : "bg-gray-50 border-gray-200")}>
         {r.isFullExempt ? (
           <div className="text-center">
             <p className="text-emerald-700 font-bold text-lg mb-1">免税（全額）</p>

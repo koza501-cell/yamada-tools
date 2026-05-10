@@ -44,7 +44,7 @@ export default function FoodlossClient() {
 
     const diff = cur - bench;
     const vsLabel = diff > 0.02 ? "業界平均より高い（改善余地あり）" : diff < -0.02 ? "業界平均より低い（良好）" : "業界平均並み";
-    const vsClass = diff > 0.02 ? "text-red-600 dark:text-red-400" : diff < -0.02 ? "text-green-600 dark:text-green-400" : "text-yellow-600 dark:text-yellow-400";
+    const vsClass = diff > 0.02 ? "text-danger dark:text-danger" : diff < -0.02 ? "text-green-600 dark:text-green-400" : "text-yellow-600 dark:text-yellow-400";
 
     return { monthlyLoss, annualLoss, disposalCost, totalLoss, missedRevenue, annualSaving, totalSaving, profitImprove, co2, vsLabel, vsClass };
   }, [industry, monthlyStr, currentRateStr, targetRateStr, costRateStr]);
@@ -121,17 +121,17 @@ export default function FoodlossClient() {
           </div>
 
           <div className="space-y-4">
-            <div className="bg-red-50 dark:bg-red-900/20 rounded-xl p-5 border border-red-200 dark:border-red-700">
-              <h2 className="font-semibold text-red-700 dark:text-red-300 mb-3">現在のフードロス損失</h2>
+            <div className="bg-gray-50 dark:bg-danger/20 rounded-xl p-5 border border-gray-200 dark:border-danger">
+              <h2 className="font-semibold text-danger dark:text-gin mb-3">現在のフードロス損失</h2>
               <div className="space-y-2 text-sm">
-                <div className="flex justify-between"><span className="text-gray-600 dark:text-gray-400">月間廃棄額</span><span className="font-semibold text-red-600 dark:text-red-400">{fmt(calc.monthlyLoss)}万円/月</span></div>
-                <div className="flex justify-between items-center border-t border-red-200 dark:border-red-800 pt-2">
+                <div className="flex justify-between"><span className="text-gray-600 dark:text-gray-400">月間廃棄額</span><span className="font-semibold text-danger dark:text-danger">{fmt(calc.monthlyLoss)}万円/月</span></div>
+                <div className="flex justify-between items-center border-t border-gray-200 dark:border-danger pt-2">
                   <span className="font-semibold text-gray-700 dark:text-gray-300">年間廃棄損失</span>
-                  <span className="font-bold text-2xl text-red-600 dark:text-red-400">{fmt(calc.annualLoss)}万円</span>
+                  <span className="font-bold text-2xl text-danger dark:text-danger">{fmt(calc.annualLoss)}万円</span>
                 </div>
-                <div className="flex justify-between text-xs"><span className="text-gray-500 dark:text-gray-400">廃棄処理コスト（+10%）</span><span className="text-red-500">+{fmt(calc.disposalCost)}万円</span></div>
-                <div className="flex justify-between text-xs font-semibold"><span className="text-gray-600 dark:text-gray-400">年間総損失</span><span className="text-red-600 dark:text-red-400">{fmt(calc.totalLoss)}万円</span></div>
-                <div className="flex justify-between text-xs border-t border-red-200 dark:border-red-800 pt-1"><span className="text-gray-500 dark:text-gray-400">逃した売上機会（原価率{costRateStr}%）</span><span className="text-orange-500">約{fmt(calc.missedRevenue)}万円</span></div>
+                <div className="flex justify-between text-xs"><span className="text-gray-500 dark:text-gray-400">廃棄処理コスト（+10%）</span><span className="text-danger">+{fmt(calc.disposalCost)}万円</span></div>
+                <div className="flex justify-between text-xs font-semibold"><span className="text-gray-600 dark:text-gray-400">年間総損失</span><span className="text-danger dark:text-danger">{fmt(calc.totalLoss)}万円</span></div>
+                <div className="flex justify-between text-xs border-t border-gray-200 dark:border-danger pt-1"><span className="text-gray-500 dark:text-gray-400">逃した売上機会（原価率{costRateStr}%）</span><span className="text-kon">約{fmt(calc.missedRevenue)}万円</span></div>
               </div>
             </div>
 

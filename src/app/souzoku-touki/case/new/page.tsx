@@ -31,7 +31,7 @@ export default function CaseNewPage() {
           <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">書類作成ケースを作るにはアカウントが必要です。</p>
           <Link
             href="/auth/login?redirect=/souzoku-touki/case/new"
-            className="block w-full bg-ai text-white py-3 rounded-xl font-bold text-sm hover:bg-blue-600 transition-colors"
+            className="block w-full bg-ai text-white py-3 rounded-xl font-bold text-sm hover:bg-ai transition-colors"
           >
             ログイン / 新規登録
           </Link>
@@ -84,7 +84,7 @@ export default function CaseNewPage() {
                 onClick={() => setCaseType(ct.id)}
                 className={`text-left p-4 rounded-xl border-2 transition-all ${
                   caseType === ct.id
-                    ? "border-ai bg-blue-50 dark:bg-blue-950/30"
+                    ? "border-ai bg-gray-50 dark:bg-kon/30"
                     : "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600"
                 }`}
               >
@@ -110,7 +110,7 @@ export default function CaseNewPage() {
           </div>
 
           {error && (
-            <div className="bg-red-50 dark:bg-red-950/40 border border-red-200 rounded-xl p-3 mb-4 text-sm text-red-600">
+            <div className="bg-gray-50 dark:bg-red-950/40 border border-gray-200 rounded-xl p-3 mb-4 text-sm text-danger">
               {error}
             </div>
           )}
@@ -118,13 +118,13 @@ export default function CaseNewPage() {
           <button
             onClick={handleSubmit}
             disabled={submitting}
-            className="w-full bg-ai hover:bg-blue-600 text-white py-3 rounded-xl font-bold text-sm transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full bg-ai hover:bg-ai text-white py-3 rounded-xl font-bold text-sm transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {submitting ? "作成中..." : "ケースを作成して情報入力へ →"}
           </button>
         </div>
 
-        <div className="bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 rounded-xl p-4 text-sm text-blue-800 dark:text-blue-300">
+        <div className="bg-gray-50 dark:bg-kon/30 border border-gray-200 dark:border-kon rounded-xl p-4 text-sm text-kon dark:text-gray-300">
           <strong>ご注意：</strong>書類のPDF生成には別途プランの購入が必要です。
           情報の入力・保存は無料で行えます。
           <Link href="/souzoku-touki/pricing" className="underline ml-1">プランを見る →</Link>

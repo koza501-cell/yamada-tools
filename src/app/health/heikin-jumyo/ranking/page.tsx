@@ -33,7 +33,7 @@ export default function JumyoRankingPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <div className="bg-gradient-to-br from-rose-600 to-pink-500 text-white py-10">
+      <div className="bg-gradient-to-br from-rose-600 to-kon text-white py-10">
         <div className="max-w-4xl mx-auto px-4">
           <nav className="text-sm text-white/70 mb-2 flex items-center gap-1 flex-wrap">
             <Link href="/health" className="hover:text-white">健康・生活</Link>
@@ -111,7 +111,7 @@ export default function JumyoRankingPage() {
                     <span className={`text-sm font-bold w-6 shrink-0 ${p.rank <= 3 ? "text-yellow-500" : "text-gray-400"}`}>{p.rank}</span>
                     <span className="w-20 shrink-0 text-sm font-medium text-gray-900 dark:text-white">{p.pref_name}</span>
                     <div className="flex-1 hidden sm:flex gap-4 text-sm">
-                      <span className="text-blue-600 dark:text-blue-400">男 <strong>{p.male}</strong>歳</span>
+                      <span className="text-kon dark:text-gray-300">男 <strong>{p.male}</strong>歳</span>
                       <span className="text-rose-500 dark:text-rose-400">女 <strong>{p.female}</strong>歳</span>
                     </div>
                     <span className="text-xs text-gray-500 dark:text-gray-400 shrink-0">平均 {p.average}歳</span>
@@ -124,7 +124,7 @@ export default function JumyoRankingPage() {
             {data && (
               <div className="bg-gray-100 dark:bg-gray-800 rounded-xl px-5 py-3 text-sm text-gray-600 dark:text-gray-400 flex gap-6">
                 <span>全国平均（2020年）：</span>
-                <span className="text-blue-600 dark:text-blue-400">男性 {data.national_male}歳</span>
+                <span className="text-kon dark:text-gray-300">男性 {data.national_male}歳</span>
                 <span className="text-rose-500 dark:text-rose-400">女性 {data.national_female}歳</span>
               </div>
             )}

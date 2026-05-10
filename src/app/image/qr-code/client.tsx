@@ -194,8 +194,8 @@ export default function QRCodeClient({
           
           <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
             <span className="bg-green-50 text-green-700 px-3 py-1 rounded-full">✓ 完全無料</span>
-            <span className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full">🔒 ブラウザ内処理</span>
-            <span className="bg-purple-50 text-purple-700 px-3 py-1 rounded-full">📥 PNG/SVG</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">🔒 ブラウザ内処理</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">📥 PNG/SVG</span>
           </div>
         </header>
 
@@ -420,7 +420,7 @@ export default function QRCodeClient({
                   </button>
                   <button
                     onClick={downloadSVG}
-                    className="flex-1 py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-colors"
+                    className="flex-1 py-3 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors"
                   >
                     📥 SVG
                   </button>

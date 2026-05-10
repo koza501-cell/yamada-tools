@@ -124,9 +124,9 @@ export default function FudousanJohoLibraryBlog() {
 
       {/* Breadcrumb */}
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-blue-500">ホーム</Link>
+        <Link href="/" className="hover:text-ai">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-blue-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-ai">ブログ</Link>
         <span className="mx-2">/</span>
         <span>住所で不動産情報を一括確認する方法</span>
       </nav>
@@ -139,7 +139,7 @@ export default function FudousanJohoLibraryBlog() {
       <p className="text-gray-500 text-sm mb-8">公開日: 2026年5月5日　｜　山田ツール編集部</p>
 
       {/* 導入ボックス */}
-      <div className="bg-blue-50 border-l-4 border-blue-500 p-5 mb-8 rounded-r-lg">
+      <div className="bg-gray-50 border-l-4 border-kon p-5 mb-8 rounded-r-lg">
         <p className="font-bold text-gray-800 mb-2">この記事でわかること</p>
         <ul className="text-gray-700 space-y-1">
           <li>✓ 国土交通省「不動産情報ライブラリ」が話題になった理由と使い方の課題</li>
@@ -207,7 +207,7 @@ export default function FudousanJohoLibraryBlog() {
         {/* 3-1. 用途地域 */}
         <div className="mb-10">
           <h3 className="text-xl font-bold text-gray-800 mb-3 flex items-center gap-2">
-            <span className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
+            <span className="bg-kon text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
             用途地域チェッカー
           </h3>
           <p className="text-gray-700 mb-3 leading-relaxed">
@@ -219,8 +219,8 @@ export default function FudousanJohoLibraryBlog() {
           <p className="text-gray-700 mb-3 leading-relaxed">
             山田ツールの用途地域チェッカーは「<strong>2地点比較</strong>」機能を備えており、引越し候補先と現在の住所を並べて比較することもできます。検討中の2物件を同時に確認したい場合にも便利です。
           </p>
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
-            <Link href="/realestate/yoto-chiiki-checker" className="inline-flex items-center text-blue-700 font-bold hover:underline">
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-4">
+            <Link href="/realestate/yoto-chiiki-checker" className="inline-flex items-center text-kon font-bold hover:underline">
               → 用途地域チェッカーを使う
               <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -233,7 +233,7 @@ export default function FudousanJohoLibraryBlog() {
         {/* 3-2. ハザードマップ */}
         <div className="mb-10">
           <h3 className="text-xl font-bold text-gray-800 mb-3 flex items-center gap-2">
-            <span className="bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold flex-shrink-0">2</span>
+            <span className="bg-danger text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold flex-shrink-0">2</span>
             ハザードマップチェッカー
           </h3>
           <p className="text-gray-700 mb-3 leading-relaxed">
@@ -245,8 +245,8 @@ export default function FudousanJohoLibraryBlog() {
           <p className="text-gray-700 mb-3 leading-relaxed">
             ハザードマップチェッカーでは、<strong>この5種類を住所一つで一括確認</strong>できます。「洪水危険度：中」「土砂災害警戒区域：外」といった形でリスクレベルが一覧表示されるため、複数物件の安全性を素早く比較できます。
           </p>
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
-            <Link href="/realestate/hazard-checker" className="inline-flex items-center text-red-700 font-bold hover:underline">
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-4">
+            <Link href="/realestate/hazard-checker" className="inline-flex items-center text-danger font-bold hover:underline">
               → ハザードマップチェッカーを使う
               <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -287,7 +287,7 @@ export default function FudousanJohoLibraryBlog() {
         {/* 3-4. 取引価格 */}
         <div className="mb-10">
           <h3 className="text-xl font-bold text-gray-800 mb-3 flex items-center gap-2">
-            <span className="bg-purple-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold flex-shrink-0">4</span>
+            <span className="bg-kon text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold flex-shrink-0">4</span>
             不動産取引価格チェッカー
           </h3>
           <p className="text-gray-700 mb-3 leading-relaxed">
@@ -299,8 +299,8 @@ export default function FudousanJohoLibraryBlog() {
           <p className="text-gray-700 mb-3 leading-relaxed">
             「不動産会社から提示された売値は適正なのか」「この物件は高すぎないか」を判断するための、いわば<strong>一般消費者の強力な情報武装ツール</strong>です。
           </p>
-          <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-4">
-            <Link href="/realestate/transaction-price" className="inline-flex items-center text-purple-700 font-bold hover:underline">
+          <div className="bg-gray-50 border border-kon rounded-lg p-4 mb-4">
+            <Link href="/realestate/transaction-price" className="inline-flex items-center text-kon font-bold hover:underline">
               → 不動産取引価格チェッカーを使う
               <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -374,29 +374,29 @@ export default function FudousanJohoLibraryBlog() {
 
         <div className="space-y-4">
           <div className="flex items-start gap-4 p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
-            <div className="bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0">1</div>
+            <div className="bg-danger text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0">1</div>
             <div>
               <h3 className="font-bold text-gray-800 mb-1">ハザードマップで安全確認（最優先）</h3>
               <p className="text-gray-600 text-sm">水害・土砂・津波リスクが高い物件は、どれほど条件が良くても慎重に。まず安全を確認してから次のステップへ。</p>
-              <Link href="/realestate/hazard-checker" className="text-red-600 text-sm hover:underline mt-1 inline-block">→ ハザードマップチェッカー</Link>
+              <Link href="/realestate/hazard-checker" className="text-danger text-sm hover:underline mt-1 inline-block">→ ハザードマップチェッカー</Link>
             </div>
           </div>
 
           <div className="flex items-start gap-4 p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
-            <div className="bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0">2</div>
+            <div className="bg-kon text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0">2</div>
             <div>
               <h3 className="font-bold text-gray-800 mb-1">用途地域で建て替え・増改築の制限確認</h3>
               <p className="text-gray-600 text-sm">将来の建て替えや増改築を考えているなら必須。店舗・事務所・民泊の併用を検討しているなら、用途地域の制限を先に確認。</p>
-              <Link href="/realestate/yoto-chiiki-checker" className="text-blue-600 text-sm hover:underline mt-1 inline-block">→ 用途地域チェッカー</Link>
+              <Link href="/realestate/yoto-chiiki-checker" className="text-kon text-sm hover:underline mt-1 inline-block">→ 用途地域チェッカー</Link>
             </div>
           </div>
 
           <div className="flex items-start gap-4 p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
-            <div className="bg-purple-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0">3</div>
+            <div className="bg-kon text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0">3</div>
             <div>
               <h3 className="font-bold text-gray-800 mb-1">取引価格で相場把握</h3>
               <p className="text-gray-600 text-sm">近隣の実際の成約価格を確認し、提示価格が相場より高すぎないか判断する。価格交渉の材料にもなる。</p>
-              <Link href="/realestate/transaction-price" className="text-purple-600 text-sm hover:underline mt-1 inline-block">→ 不動産取引価格チェッカー</Link>
+              <Link href="/realestate/transaction-price" className="text-kon text-sm hover:underline mt-1 inline-block">→ 不動産取引価格チェッカー</Link>
             </div>
           </div>
 
@@ -481,12 +481,12 @@ export default function FudousanJohoLibraryBlog() {
           物件選びの初期段階から、契約直前の最終確認まで、ぜひ積極的に活用してください。情報を武器に、後悔のない住まい選びを。
         </p>
 
-        <div className="bg-gradient-to-r from-blue-600 to-teal-500 text-white rounded-xl p-6 text-center">
+        <div className="bg-gradient-to-r from-slate-900 to-teal-500 text-white rounded-xl p-6 text-center">
           <p className="text-lg font-bold mb-2">不動産情報ツールをまとめて使う</p>
-          <p className="text-blue-100 text-sm mb-4">用途地域・ハザードマップ・地価・取引価格・学区・人口推計を住所入力で確認</p>
+          <p className="text-gin text-sm mb-4">用途地域・ハザードマップ・地価・取引価格・学区・人口推計を住所入力で確認</p>
           <Link
             href="/realestate"
-            className="inline-block bg-white text-blue-700 font-bold py-3 px-8 rounded-lg hover:bg-blue-50 transition"
+            className="inline-block bg-white text-kon font-bold py-3 px-8 rounded-lg hover:bg-gray-50 transition"
           >
             → 不動産情報ツール一覧へ
           </Link>
@@ -497,11 +497,11 @@ export default function FudousanJohoLibraryBlog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">関連ツール</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Link href="/realestate/yoto-chiiki-checker" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-blue-300 transition">
+          <Link href="/realestate/yoto-chiiki-checker" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-ai transition">
             <span className="font-bold text-gray-800">🏙 用途地域チェッカー</span>
             <p className="text-sm text-gray-600 mt-1">住所で用途地域・建ぺい率・容積率を確認</p>
           </Link>
-          <Link href="/realestate/hazard-checker" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-red-300 transition">
+          <Link href="/realestate/hazard-checker" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-gray-200 transition">
             <span className="font-bold text-gray-800">🌊 ハザードマップチェッカー</span>
             <p className="text-sm text-gray-600 mt-1">5種類の災害リスクを一括確認</p>
           </Link>
@@ -509,7 +509,7 @@ export default function FudousanJohoLibraryBlog() {
             <span className="font-bold text-gray-800">📈 地価チェッカー</span>
             <p className="text-sm text-gray-600 mt-1">地価公示・調査データを坪単価で確認</p>
           </Link>
-          <Link href="/realestate/transaction-price" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-purple-300 transition">
+          <Link href="/realestate/transaction-price" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-ai transition">
             <span className="font-bold text-gray-800">💴 不動産取引価格チェッカー</span>
             <p className="text-sm text-gray-600 mt-1">直近の実際の成約価格を確認</p>
           </Link>

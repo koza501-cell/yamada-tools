@@ -116,7 +116,7 @@ export default function JukuClient() {
                   type="button"
                   onClick={addActivity}
                   disabled={activities.length >= 8}
-                  className="text-sm bg-blue-500 hover:bg-blue-600 disabled:opacity-40 text-white px-3 py-1 rounded-lg"
+                  className="text-sm bg-kon hover:bg-ai disabled:opacity-40 text-white px-3 py-1 rounded-lg"
                 >
                   ＋ 追加
                 </button>
@@ -130,7 +130,7 @@ export default function JukuClient() {
                         <button
                           type="button"
                           onClick={() => removeActivity(i)}
-                          className="text-xs text-red-400 hover:text-red-600"
+                          className="text-xs text-danger hover:text-danger"
                         >
                           削除
                         </button>
@@ -196,7 +196,7 @@ export default function JukuClient() {
             <button
               type="button"
               onClick={handleCalculate}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl shadow-sm transition"
+              className="w-full bg-kon hover:bg-ai text-white font-semibold py-3 rounded-xl shadow-sm transition"
             >
               計算する
             </button>
@@ -205,8 +205,8 @@ export default function JukuClient() {
           <div className="space-y-4">
             {result ? (
               <>
-                <div className="bg-blue-50 dark:bg-blue-900/30 rounded-xl p-5 shadow-sm">
-                  <h2 className="font-semibold text-blue-800 dark:text-blue-300 mb-3">📊 費用サマリー</h2>
+                <div className="bg-gray-50 dark:bg-kon/30 rounded-xl p-5 shadow-sm">
+                  <h2 className="font-semibold text-kon dark:text-gray-300 mb-3">📊 費用サマリー</h2>
                   <div className="space-y-2">
                     <div className="flex justify-between">
                       <span className="text-sm text-gray-600 dark:text-gray-400">習い事合計（年間）</span>
@@ -223,15 +223,15 @@ export default function JukuClient() {
                       <span className="font-semibold text-gray-800 dark:text-white">¥{fmt(result.monthly)}/月</span>
                     </div>
                     {childCount > 1 && (
-                      <div className="border-t border-blue-200 dark:border-blue-700 pt-2 flex justify-between">
+                      <div className="border-t border-gray-200 dark:border-kon pt-2 flex justify-between">
                         <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">子供{childCount}人合計（年間）</span>
-                        <span className="font-bold text-xl text-blue-700 dark:text-blue-300">¥{fmt(result.withChildren)}</span>
+                        <span className="font-bold text-xl text-kon dark:text-gray-300">¥{fmt(result.withChildren)}</span>
                       </div>
                     )}
                     {result.ratio !== null && (
                       <div className="bg-white dark:bg-gray-800 rounded-lg p-3 mt-2 text-center">
                         <div className="text-xs text-gray-500 dark:text-gray-400 mb-1">年収に対する教育費比率</div>
-                        <div className={`font-bold text-2xl ${result.ratio > 15 ? "text-red-600 dark:text-red-400" : result.ratio > 10 ? "text-yellow-600 dark:text-yellow-400" : "text-green-600 dark:text-green-400"}`}>
+                        <div className={`font-bold text-2xl ${result.ratio > 15 ? "text-danger dark:text-danger" : result.ratio > 10 ? "text-yellow-600 dark:text-yellow-400" : "text-green-600 dark:text-green-400"}`}>
                           {result.ratio.toFixed(1)}%
                         </div>
                         <div className="text-xs text-gray-400 mt-1">目安: 10%以下が家計に余裕あり</div>

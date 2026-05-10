@@ -234,9 +234,9 @@ export default function PregnancyCalculatorPage() {
   }
 
   const trimesterColors = {
-    1: { bg: "bg-blue-50", border: "border-blue-300", text: "text-blue-700", bar: "bg-blue-500" },
+    1: { bg: "bg-gray-50", border: "border-kon", text: "text-kon", bar: "bg-kon" },
     2: { bg: "bg-green-50", border: "border-green-300", text: "text-green-700", bar: "bg-green-500" },
-    3: { bg: "bg-orange-50", border: "border-orange-300", text: "text-orange-700", bar: "bg-orange-500" },
+    3: { bg: "bg-gray-50", border: "border-gray-200", text: "text-kon", bar: "bg-kon" },
   };
   const tc = result ? trimesterColors[result.trimester] : trimesterColors[1];
 
@@ -268,9 +268,9 @@ export default function PregnancyCalculatorPage() {
       <header className="bg-white border-b border-gray-200 py-3 px-4">
         <div className="max-w-3xl mx-auto">
           <nav className="text-xs text-gray-500 mb-1">
-            <Link href="/" className="hover:text-pink-600">ホーム</Link>
+            <Link href="/" className="hover:text-sakura">ホーム</Link>
             <span className="mx-1">/</span>
-            <Link href="/health" className="hover:text-pink-600">健康・ウェルネス</Link>
+            <Link href="/health" className="hover:text-sakura">健康・ウェルネス</Link>
             <span className="mx-1">/</span>
             <span className="text-gray-700">妊娠週数・出産予定日 計算機</span>
           </nav>
@@ -296,7 +296,7 @@ export default function PregnancyCalculatorPage() {
               onClick={() => { setCalcMethod("lmp"); setResult(null); setError(""); }}
               className={`flex-1 py-2.5 text-sm font-medium transition-colors ${
                 calcMethod === "lmp"
-                  ? "bg-pink-500 text-white"
+                  ? "bg-kon text-white"
                   : "bg-white text-gray-700 hover:bg-gray-50"
               }`}
             >
@@ -306,7 +306,7 @@ export default function PregnancyCalculatorPage() {
               onClick={() => { setCalcMethod("ovulation"); setResult(null); setError(""); }}
               className={`flex-1 py-2.5 text-sm font-medium transition-colors border-l border-gray-300 ${
                 calcMethod === "ovulation"
-                  ? "bg-pink-500 text-white"
+                  ? "bg-kon text-white"
                   : "bg-white text-gray-700 hover:bg-gray-50"
               }`}
             >
@@ -323,7 +323,7 @@ export default function PregnancyCalculatorPage() {
               type="date"
               value={dateStr}
               onChange={(e) => setDateStr(e.target.value)}
-              className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sakura focus:border-transparent"
             />
           </div>
 
@@ -336,7 +336,7 @@ export default function PregnancyCalculatorPage() {
               <select
                 value={cycleLength}
                 onChange={(e) => setCycleLength(e.target.value)}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent bg-white"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sakura focus:border-transparent bg-white"
               >
                 <option value="25">25日</option>
                 <option value="28">28日（標準）</option>
@@ -348,12 +348,12 @@ export default function PregnancyCalculatorPage() {
           )}
 
           {error && (
-            <p className="text-sm text-red-600 mb-3">{error}</p>
+            <p className="text-sm text-danger mb-3">{error}</p>
           )}
 
           <button
             onClick={handleCalculate}
-            className="w-full py-3 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-lg transition-colors text-sm"
+            className="w-full py-3 bg-kon hover:bg-ai text-white font-bold rounded-lg transition-colors text-sm"
           >
             計算する
           </button>
@@ -368,10 +368,10 @@ export default function PregnancyCalculatorPage() {
                 <p className="text-sm text-gray-500 mb-1">出産予定日</p>
                 <p className="text-2xl font-bold text-gray-900">{formatDate(result.dueDate)}</p>
                 {result.isPast && result.daysUntilDue > 0 && (
-                  <p className="text-sm text-gray-500 mt-1">あと <span className="font-bold text-pink-600">{result.daysUntilDue}日</span></p>
+                  <p className="text-sm text-gray-500 mt-1">あと <span className="font-bold text-sakura">{result.daysUntilDue}日</span></p>
                 )}
                 {result.isPast && result.daysUntilDue <= 0 && (
-                  <p className="text-sm text-orange-600 font-medium mt-1">出産予定日を過ぎています</p>
+                  <p className="text-sm text-kon font-medium mt-1">出産予定日を過ぎています</p>
                 )}
               </div>
 
@@ -474,11 +474,11 @@ export default function PregnancyCalculatorPage() {
 
             {/* Section 4: Week advice */}
             {result.isPast && (
-              <section className="bg-pink-50 rounded-xl border border-pink-200 p-5">
-                <h2 className="text-base font-bold text-pink-800 mb-2">
+              <section className="bg-sakura/30 rounded-xl border border-sakura p-5">
+                <h2 className="text-base font-bold text-sakura mb-2">
                   妊娠{result.currentWeek}週のアドバイス
                 </h2>
-                <p className="text-sm text-pink-900">{result.weekAdvice}</p>
+                <p className="text-sm text-sakura">{result.weekAdvice}</p>
               </section>
             )}
 
@@ -494,7 +494,7 @@ export default function PregnancyCalculatorPage() {
                   "自己判断での薬の服用",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-2">
-                    <span className="text-red-500 mt-0.5">●</span>
+                    <span className="text-danger mt-0.5">●</span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -551,17 +551,17 @@ export default function PregnancyCalculatorPage() {
           <div>
             <h3 className="text-sm font-bold text-gray-800 mb-2">妊娠の3つの時期（トリメスター）</h3>
             <div className="space-y-2">
-              <div className="bg-blue-50 rounded-lg p-3">
-                <p className="text-sm font-medium text-blue-800">第1三半期（妊娠初期）0〜13週</p>
-                <p className="text-sm text-blue-700 mt-0.5">胎児の主要な臓器が形成される重要な時期。つわりが起きやすく、流産リスクが最も高い時期。</p>
+              <div className="bg-gray-50 rounded-lg p-3">
+                <p className="text-sm font-medium text-kon">第1三半期（妊娠初期）0〜13週</p>
+                <p className="text-sm text-kon mt-0.5">胎児の主要な臓器が形成される重要な時期。つわりが起きやすく、流産リスクが最も高い時期。</p>
               </div>
               <div className="bg-green-50 rounded-lg p-3">
                 <p className="text-sm font-medium text-green-800">第2三半期（妊娠中期）14〜27週</p>
                 <p className="text-sm text-green-700 mt-0.5">安定期とも呼ばれる比較的安定した時期。胎動を感じ始め、お腹が目立ち始めます。</p>
               </div>
-              <div className="bg-orange-50 rounded-lg p-3">
-                <p className="text-sm font-medium text-orange-800">第3三半期（妊娠後期）28〜40週</p>
-                <p className="text-sm text-orange-700 mt-0.5">出産に向けて準備する時期。定期健診の頻度が増え、出産準備を進めましょう。</p>
+              <div className="bg-gray-50 rounded-lg p-3">
+                <p className="text-sm font-medium text-kon">第3三半期（妊娠後期）28〜40週</p>
+                <p className="text-sm text-kon mt-0.5">出産に向けて準備する時期。定期健診の頻度が増え、出産準備を進めましょう。</p>
               </div>
             </div>
           </div>
@@ -600,9 +600,9 @@ export default function PregnancyCalculatorPage() {
               <Link
                 key={tool.href}
                 href={tool.href}
-                className="flex items-center gap-2 p-3 rounded-lg border border-gray-200 hover:border-pink-300 hover:bg-pink-50 transition-colors text-sm text-gray-700 hover:text-pink-700"
+                className="flex items-center gap-2 p-3 rounded-lg border border-gray-200 hover:border-sakura hover:bg-sakura/30 transition-colors text-sm text-gray-700 hover:text-sakura"
               >
-                <span className="text-pink-400">→</span>
+                <span className="text-sakura">→</span>
                 {tool.label}
               </Link>
             ))}

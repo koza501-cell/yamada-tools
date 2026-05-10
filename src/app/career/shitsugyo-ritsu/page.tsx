@@ -39,8 +39,8 @@ function rateColor(rate: number | null): string {
   if (rate <= 3.0) return "text-emerald-600 dark:text-emerald-400";
   if (rate <= 3.5) return "text-green-600 dark:text-green-400";
   if (rate <= 4.0) return "text-yellow-600 dark:text-yellow-400";
-  if (rate <= 4.5) return "text-orange-500 dark:text-orange-400";
-  return "text-red-600 dark:text-red-400";
+  if (rate <= 4.5) return "text-kon dark:text-gray-300";
+  return "text-danger dark:text-danger";
 }
 
 const tool = getToolById("shitsugyo-ritsu");
@@ -62,7 +62,7 @@ export default function ShitsugyoRitsuPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <div className="bg-gradient-to-br from-indigo-700 to-blue-600 text-white py-10">
+      <div className="bg-gradient-to-br from-indigo-700 to-kon text-white py-10">
         <div className="max-w-4xl mx-auto px-4">
           <nav className="text-sm text-white/70 mb-2 flex items-center gap-1 flex-wrap">
             <Link href="/career" className="hover:text-white">キャリア・転職</Link>
@@ -128,9 +128,9 @@ export default function ShitsugyoRitsuPage() {
                   <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">%（国勢調査）</div>
                   <div className="text-xs text-gray-400 mt-1">{data.national_unemployment_annual}%（労調{data.national_annual_year}）</div>
                 </div>
-                <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 text-center">
-                  <div className="text-xs text-blue-600 dark:text-blue-400 font-medium mb-1">有効求人倍率</div>
-                  <div className={`text-3xl font-bold ${(data["kujin_倍率"] ?? 0) >= 1 ? "text-emerald-600 dark:text-emerald-400" : "text-orange-500 dark:text-orange-400"}`}>
+                <div className="bg-gray-50 dark:bg-kon/20 rounded-xl p-4 text-center">
+                  <div className="text-xs text-kon dark:text-gray-300 font-medium mb-1">有効求人倍率</div>
+                  <div className={`text-3xl font-bold ${(data["kujin_倍率"] ?? 0) >= 1 ? "text-emerald-600 dark:text-emerald-400" : "text-kon dark:text-gray-300"}`}>
                     {data["kujin_倍率"] ?? "―"}
                   </div>
                   <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">倍（{data.kujin_year}年）</div>
@@ -153,7 +153,7 @@ export default function ShitsugyoRitsuPage() {
               {data.unemployment_rate !== null && data.national_unemployment !== null && (
                 <div className="mt-4 p-3 rounded-xl bg-gray-50 dark:bg-gray-700/30 text-sm text-gray-700 dark:text-gray-300">
                   全国平均（{data.national_unemployment}%）との差：
-                  <span className={`font-bold ml-1 ${data.unemployment_rate >= data.national_unemployment ? "text-red-500" : "text-emerald-600"}`}>
+                  <span className={`font-bold ml-1 ${data.unemployment_rate >= data.national_unemployment ? "text-danger" : "text-emerald-600"}`}>
                     {data.unemployment_rate >= data.national_unemployment ? "+" : ""}
                     {(data.unemployment_rate - data.national_unemployment).toFixed(1)}ポイント
                   </span>

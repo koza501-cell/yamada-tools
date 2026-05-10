@@ -259,9 +259,9 @@ export default function AgeCalculatorPage() {
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-3xl mx-auto px-4 py-4">
           <nav className="text-sm text-gray-500 mb-2">
-            <Link href="/" className="hover:text-blue-600">ホーム</Link>
+            <Link href="/" className="hover:text-ai">ホーム</Link>
             <span className="mx-1">&gt;</span>
-            <Link href="/utility" className="hover:text-blue-600">日常生活・便利ツール</Link>
+            <Link href="/utility" className="hover:text-ai">日常生活・便利ツール</Link>
             <span className="mx-1">&gt;</span>
             <span className="text-gray-700">年齢計算機</span>
           </nav>
@@ -281,7 +281,7 @@ export default function AgeCalculatorPage() {
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-4">
 
           <h2 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-            <span className="bg-blue-600 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">1</span>
+            <span className="bg-kon text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">1</span>
             生年月日を入力
           </h2>
 
@@ -291,7 +291,7 @@ export default function AgeCalculatorPage() {
               <button
                 onClick={() => setInputMode("western")}
                 className={`px-5 py-2 text-sm font-semibold transition-colors ${
-                  inputMode === "western" ? "bg-blue-600 text-white" : "bg-white text-gray-600 hover:bg-gray-50"
+                  inputMode === "western" ? "bg-kon text-white" : "bg-white text-gray-600 hover:bg-gray-50"
                 }`}
               >
                 西暦で入力
@@ -299,7 +299,7 @@ export default function AgeCalculatorPage() {
               <button
                 onClick={() => setInputMode("japanese")}
                 className={`px-5 py-2 text-sm font-semibold transition-colors ${
-                  inputMode === "japanese" ? "bg-blue-600 text-white" : "bg-white text-gray-600 hover:bg-gray-50"
+                  inputMode === "japanese" ? "bg-kon text-white" : "bg-white text-gray-600 hover:bg-gray-50"
                 }`}
               >
                 和暦で入力
@@ -310,7 +310,7 @@ export default function AgeCalculatorPage() {
           {inputMode === "western" ? (
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                生年月日 <span className="text-red-500">*</span>
+                生年月日 <span className="text-danger">*</span>
               </label>
               <input
                 type="date"
@@ -318,19 +318,19 @@ export default function AgeCalculatorPage() {
                 onChange={(e) => setWesternDate(e.target.value)}
                 min="1868-01-01"
                 max={todayStr()}
-                className="border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900"
+                className="border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-kon text-gray-900"
               />
             </div>
           ) : (
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                生年月日 <span className="text-red-500">*</span>
+                生年月日 <span className="text-danger">*</span>
               </label>
               <div className="flex flex-wrap items-center gap-2">
                 <select
                   value={era}
                   onChange={(e) => { setEra(e.target.value as Era); setEraYear(""); }}
-                  className="border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900"
+                  className="border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-kon text-gray-900"
                 >
                   {ERAS.map((e) => (
                     <option key={e} value={e}>{e}</option>
@@ -345,7 +345,7 @@ export default function AgeCalculatorPage() {
                     placeholder="年"
                     min={1}
                     max={eraMaxYear}
-                    className="w-20 border border-gray-300 rounded-lg px-3 py-2.5 text-right focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900"
+                    className="w-20 border border-gray-300 rounded-lg px-3 py-2.5 text-right focus:outline-none focus:ring-2 focus:ring-kon text-gray-900"
                   />
                   <span className="text-gray-600 text-sm">年</span>
                 </div>
@@ -353,7 +353,7 @@ export default function AgeCalculatorPage() {
                 <select
                   value={birthMonth}
                   onChange={(e) => setBirthMonth(e.target.value)}
-                  className="border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900"
+                  className="border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-kon text-gray-900"
                 >
                   <option value="">月</option>
                   {Array.from({ length: 12 }, (_, i) => i + 1).map((m) => (
@@ -364,7 +364,7 @@ export default function AgeCalculatorPage() {
                 <select
                   value={birthDay}
                   onChange={(e) => setBirthDay(e.target.value)}
-                  className="border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900"
+                  className="border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-kon text-gray-900"
                 >
                   <option value="">日</option>
                   {Array.from({ length: 31 }, (_, i) => i + 1).map((d) => (
@@ -377,7 +377,7 @@ export default function AgeCalculatorPage() {
 
           {/* Section 2: 計算基準日 */}
           <h2 className="font-bold text-gray-900 mb-3 mt-6 flex items-center gap-2">
-            <span className="bg-blue-600 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">2</span>
+            <span className="bg-kon text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">2</span>
             計算基準日
             <span className="text-gray-400 font-normal text-sm">（任意）</span>
           </h2>
@@ -386,7 +386,7 @@ export default function AgeCalculatorPage() {
               type="date"
               value={baseDate}
               onChange={(e) => setBaseDate(e.target.value)}
-              className="border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900"
+              className="border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-kon text-gray-900"
             />
           </div>
           <p className="text-xs text-gray-500 mb-5">
@@ -394,14 +394,14 @@ export default function AgeCalculatorPage() {
           </p>
 
           {error && (
-            <div className="bg-red-50 border border-red-300 text-red-700 rounded-lg px-4 py-2 mb-4 text-sm">
+            <div className="bg-gray-50 border border-gray-200 text-danger rounded-lg px-4 py-2 mb-4 text-sm">
               {error}
             </div>
           )}
 
           <button
             onClick={handleCalc}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl text-lg transition-colors"
+            className="w-full bg-kon hover:bg-ai text-white font-bold py-3.5 rounded-xl text-lg transition-colors"
           >
             年齢を計算する
           </button>
@@ -414,7 +414,7 @@ export default function AgeCalculatorPage() {
             {/* Big age display */}
             <div className="bg-indigo-50 border-2 border-indigo-300 rounded-xl p-6 mb-4">
               {result.isBirthdayToday && (
-                <div className="bg-pink-100 border border-pink-300 rounded-lg px-4 py-2 mb-4 text-center text-pink-700 font-semibold text-sm">
+                <div className="bg-sakura/30 border border-sakura rounded-lg px-4 py-2 mb-4 text-center text-sakura font-semibold text-sm">
                   🎂 お誕生日おめでとうございます！
                 </div>
               )}
@@ -443,7 +443,7 @@ export default function AgeCalculatorPage() {
             {/* 詳細情報 */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-4">
               <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <span className="bg-blue-600 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">1</span>
+                <span className="bg-kon text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">1</span>
                 詳細情報
               </h3>
               <table className="w-full text-sm">
@@ -466,22 +466,22 @@ export default function AgeCalculatorPage() {
             </div>
 
             {/* 次の誕生日 */}
-            <div className="bg-pink-50 border border-pink-200 rounded-xl p-6 mb-4">
+            <div className="bg-sakura/30 border border-sakura rounded-xl p-6 mb-4">
               <h3 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
-                <span className="bg-pink-500 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">2</span>
+                <span className="bg-kon text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">2</span>
                 次の誕生日
               </h3>
               {result.isBirthdayToday ? (
                 <div className="text-center py-2">
-                  <div className="text-2xl font-bold text-pink-600 mb-1">🎂 今日が誕生日です！</div>
-                  <div className="text-sm text-pink-500">{result.years}歳のお誕生日おめでとうございます</div>
+                  <div className="text-2xl font-bold text-sakura mb-1">🎂 今日が誕生日です！</div>
+                  <div className="text-sm text-sakura">{result.years}歳のお誕生日おめでとうございます</div>
                 </div>
               ) : (
                 <div>
                   <div className="flex items-baseline gap-2 mb-2">
-                    <span className="text-4xl font-bold text-pink-600">あと{result.daysUntilBirthday}日</span>
+                    <span className="text-4xl font-bold text-sakura">あと{result.daysUntilBirthday}日</span>
                   </div>
-                  <div className="text-sm text-pink-700">
+                  <div className="text-sm text-sakura">
                     {result.nextBirthday} — {result.nextAge}歳になります
                   </div>
                 </div>
@@ -491,7 +491,7 @@ export default function AgeCalculatorPage() {
             {/* マイルストーン */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-4">
               <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <span className="bg-blue-600 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">3</span>
+                <span className="bg-kon text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">3</span>
                 年齢マイルストーン
               </h3>
               <div className="overflow-x-auto">
@@ -512,7 +512,7 @@ export default function AgeCalculatorPage() {
                           {m.done ? (
                             <span className="text-green-600 font-medium">✓ 済み（{m.year}年）</span>
                           ) : (
-                            <span className="text-blue-600 font-medium">あと{m.yearsLeft}年（{m.year}年）</span>
+                            <span className="text-kon font-medium">あと{m.yearsLeft}年（{m.year}年）</span>
                           )}
                         </td>
                       </tr>
@@ -650,7 +650,7 @@ export default function AgeCalculatorPage() {
               <Link
                 key={l.href}
                 href={l.href}
-                className="flex items-center gap-2 p-3 rounded-lg border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-colors text-blue-600 text-sm font-medium"
+                className="flex items-center gap-2 p-3 rounded-lg border border-gray-200 hover:border-ai hover:bg-gray-50 transition-colors text-kon text-sm font-medium"
               >
                 <span>→</span>
                 {l.label}

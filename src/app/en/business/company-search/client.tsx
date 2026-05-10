@@ -254,13 +254,13 @@ export default function CompanySearchClient() {
         </p>
 
         <div className="flex flex-wrap gap-3 text-sm">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-full">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gray-50 dark:bg-kon/30 text-kon dark:text-gray-300 rounded-full">
             <span aria-hidden>🛡️</span> Official METI source
           </span>
           <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-50 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-full">
             <span aria-hidden>🇯🇵</span> Japan-domestic processing
           </span>
-          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-purple-50 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 rounded-full">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gray-50 dark:bg-kon/30 text-kon dark:text-gray-300 rounded-full">
             <span aria-hidden>⚡</span> Free, instant, no signup
           </span>
         </div>
@@ -285,14 +285,14 @@ export default function CompanySearchClient() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="e.g. Toyota, Sony, トヨタ自動車"
-              className="flex-1 min-w-0 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="flex-1 min-w-0 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-kon"
               aria-describedby="search-hint"
               autoComplete="off"
             />
             <button
               type="submit"
               disabled={loading || !query.trim()}
-              className="px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 dark:disabled:bg-gray-600 text-white font-semibold rounded-lg transition whitespace-nowrap"
+              className="px-6 py-3 bg-kon hover:bg-ai disabled:bg-gray-400 dark:disabled:bg-gray-600 text-white font-semibold rounded-lg transition whitespace-nowrap"
             >
               {loading ? "Searching..." : "Search"}
             </button>
@@ -315,7 +315,7 @@ export default function CompanySearchClient() {
                   key={brand}
                   type="button"
                   onClick={() => handleSampleClick(brand)}
-                  className="px-3 py-1.5 text-sm bg-gray-100 hover:bg-blue-50 dark:bg-gray-700 dark:hover:bg-blue-900/30 text-gray-700 dark:text-gray-200 rounded-full border border-gray-200 dark:border-gray-600 transition"
+                  className="px-3 py-1.5 text-sm bg-gray-100 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-ai/30 text-gray-700 dark:text-gray-200 rounded-full border border-gray-200 dark:border-gray-600 transition"
                 >
                   {brand}
                 </button>
@@ -328,7 +328,7 @@ export default function CompanySearchClient() {
       {/* ─── Error ──────────────────────────────────────────────── */}
       {error && (
         <section className="max-w-5xl mx-auto px-4 mb-6">
-          <div className="bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-700 text-red-800 dark:text-red-200 px-4 py-3 rounded-lg">
+          <div className="bg-gray-50 dark:bg-danger/30 border border-gray-200 dark:border-danger text-danger dark:text-gin px-4 py-3 rounded-lg">
             <strong>Error:</strong> {error}
           </div>
         </section>
@@ -691,11 +691,11 @@ export default function CompanySearchClient() {
 
       {/* ─── Section 5: Red Flags ─────────────────────────────────── */}
       <section className="max-w-5xl mx-auto px-4 mt-8">
-        <div className="bg-red-50 dark:bg-red-900/20 border-2 border-red-200 dark:border-red-800 rounded-xl p-6 md:p-8">
-          <h2 className="text-2xl font-bold text-red-900 dark:text-red-100 mb-4">
+        <div className="bg-gray-50 dark:bg-danger/20 border-2 border-gray-200 dark:border-danger rounded-xl p-6 md:p-8">
+          <h2 className="text-2xl font-bold text-danger dark:text-gin mb-4">
             🚩 Red flags when verifying a Japanese company
           </h2>
-          <p className="text-red-900 dark:text-red-100 mb-6">
+          <p className="text-danger dark:text-gin mb-6">
             These warning signs don't always mean fraud, but each one warrants
             additional verification before you commit money or sign contracts:
           </p>
@@ -790,7 +790,7 @@ export default function CompanySearchClient() {
               href="https://info.gbiz.go.jp/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 dark:text-blue-400 hover:underline"
+              className="text-kon dark:text-gray-300 hover:underline"
             >
               gBizINFO portal
             </a>{" "}
@@ -818,7 +818,7 @@ export default function CompanySearchClient() {
                 className="group border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden"
               >
                 <summary className="cursor-pointer px-4 py-3 bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 font-semibold text-gray-900 dark:text-white flex items-start gap-2">
-                  <span className="text-blue-600 dark:text-blue-400 group-open:rotate-90 transition-transform">
+                  <span className="text-kon dark:text-gray-300 group-open:rotate-90 transition-transform">
                     ▸
                   </span>
                   <span>{faq.q}</span>
@@ -834,16 +834,16 @@ export default function CompanySearchClient() {
 
       {/* ─── Related links ──────────────────────────────────────── */}
       <section className="max-w-5xl mx-auto px-4 mt-8">
-        <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-xl p-5">
-          <h2 className="text-base font-semibold text-blue-900 dark:text-blue-100 mb-2">
+        <div className="bg-gray-50 dark:bg-kon/20 border border-gray-200 dark:border-kon rounded-xl p-5">
+          <h2 className="text-base font-semibold text-kon dark:text-gray-300 mb-2">
             Looking for the Japanese version?
           </h2>
-          <p className="text-sm text-blue-800 dark:text-blue-200 mb-3">
+          <p className="text-sm text-kon dark:text-gray-300 mb-3">
             日本語をお使いの方は、日本語版の法人検索ツールをご利用いただけます。
           </p>
           <Link
             href="/business/houjin-search"
-            className="inline-block px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition"
+            className="inline-block px-4 py-2 bg-kon hover:bg-ai text-white text-sm font-semibold rounded-lg transition"
           >
             日本語版 法人検索ツール →
           </Link>
@@ -910,19 +910,19 @@ function CompanyCard({ corp }: { corp: CorpResult }) {
   const activityToneClass = {
     trust:
       "bg-green-100 dark:bg-green-900/40 text-green-800 dark:text-green-200",
-    ok: "bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-200",
+    ok: "bg-gray-50 dark:bg-kon/40 text-kon dark:text-gray-300",
     neutral: "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200",
     warn: "bg-yellow-100 dark:bg-yellow-900/40 text-yellow-800 dark:text-yellow-200",
   }[activityBadge.tone];
 
   const matchToneClass = {
     strong: "bg-green-600 text-white",
-    ok: "bg-blue-600 text-white",
+    ok: "bg-kon text-white",
     weak: "bg-gray-400 dark:bg-gray-600 text-white",
   }[matchBadge.tone];
 
   return (
-    <article className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-5 hover:border-blue-300 dark:hover:border-blue-600 transition">
+    <article className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-5 hover:border-ai dark:hover:border-ai transition">
       <div className="flex items-start justify-between gap-4 mb-3">
         <div className="min-w-0 flex-1">
           <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1 break-words">
@@ -989,7 +989,7 @@ function CompanyCard({ corp }: { corp: CorpResult }) {
 
       {corp.corp_type_info && (
         <details className="mt-3 text-sm">
-          <summary className="cursor-pointer text-blue-600 dark:text-blue-400 hover:underline">
+          <summary className="cursor-pointer text-kon dark:text-gray-300 hover:underline">
             What is "{corp.corp_type_info.en_full}"?
           </summary>
           <div className="mt-2 p-3 bg-gray-50 dark:bg-gray-900 rounded-lg text-gray-700 dark:text-gray-300">
@@ -1047,7 +1047,7 @@ function Step({
 }) {
   return (
     <li className="flex gap-4">
-      <span className="flex-shrink-0 w-9 h-9 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">
+      <span className="flex-shrink-0 w-9 h-9 bg-kon text-white rounded-full flex items-center justify-center font-bold text-sm">
         {n}
       </span>
       <div className="flex-1">
@@ -1110,11 +1110,11 @@ function Term({
 
 function RedFlag({ title, text }: { title: string; text: string }) {
   return (
-    <div className="border-l-4 border-red-500 pl-4 py-1">
-      <h3 className="font-semibold text-red-900 dark:text-red-100 mb-1">
+    <div className="border-l-4 border-danger pl-4 py-1">
+      <h3 className="font-semibold text-danger dark:text-gin mb-1">
         {title}
       </h3>
-      <p className="text-sm text-red-900/90 dark:text-red-100/90">{text}</p>
+      <p className="text-sm text-danger/90 dark:text-gin/90">{text}</p>
     </div>
   );
 }

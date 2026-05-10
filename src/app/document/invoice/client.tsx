@@ -192,13 +192,13 @@ export default function InvoiceClient({ faq, seoContent }: InvoiceClientProps) {
               ref={errorBannerRef}
               role="alert"
               aria-live="assertive"
-              className="print:hidden mb-6 bg-red-50 border border-red-200 rounded-xl p-4"
+              className="print:hidden mb-6 bg-gray-50 border border-gray-200 rounded-xl p-4"
             >
-              <p className="font-bold text-red-700 mb-2">入力エラーがあります。以下を確認してください：</p>
+              <p className="font-bold text-danger mb-2">入力エラーがあります。以下を確認してください：</p>
               <ul className="list-disc list-inside space-y-1">
                 {topErrors.map(({ label, id }) => (
                   <li key={id}>
-                    <a href={`#${id}`} className="text-red-600 underline hover:text-red-800 text-sm">
+                    <a href={`#${id}`} className="text-danger underline hover:text-danger text-sm">
                       {label}
                     </a>
                   </li>
@@ -283,7 +283,7 @@ export default function InvoiceClient({ faq, seoContent }: InvoiceClientProps) {
                           type="text"
                           className={`w-full px-3 py-2 border rounded-lg ${
                             tNumberError
-                              ? "border-red-400"
+                              ? "border-danger"
                               : watchedTNumber && /^T\d{13}$/.test(watchedTNumber)
                               ? "border-green-400"
                               : "border-gray-200"
@@ -326,7 +326,7 @@ export default function InvoiceClient({ faq, seoContent }: InvoiceClientProps) {
                   <thead>
                     <tr className="bg-gray-50">
                       <th className="px-2 py-2 text-left">
-                        品名 <span className="ml-1 text-[11px] text-white bg-red-500 px-1 rounded-[3px]">必須</span>
+                        品名 <span className="ml-1 text-[11px] text-white bg-danger px-1 rounded-[3px]">必須</span>
                       </th>
                       <th className="px-2 py-2 w-20">数量</th>
                       <th className="px-2 py-2 w-16">単位</th>
@@ -348,7 +348,7 @@ export default function InvoiceClient({ faq, seoContent }: InvoiceClientProps) {
                             {...register(`items.${index}.name`)}
                           />
                           {errors.items?.[index]?.name && (
-                            <p role="alert" className="text-xs text-red-600 mt-0.5">
+                            <p role="alert" className="text-xs text-danger mt-0.5">
                               {errors.items[index]?.name?.message}
                             </p>
                           )}
@@ -392,7 +392,7 @@ export default function InvoiceClient({ faq, seoContent }: InvoiceClientProps) {
                             onClick={() => fields.length > 1 && remove(index)}
                             disabled={fields.length === 1}
                             aria-label={`明細 ${index + 1} を削除`}
-                            className="text-red-500 hover:text-red-700 disabled:opacity-30"
+                            className="text-danger hover:text-danger disabled:opacity-30"
                           >
                             ×
                           </button>
@@ -543,8 +543,8 @@ export default function InvoiceClient({ faq, seoContent }: InvoiceClientProps) {
                 </div>
               )}
               {seoContent.tips && (
-                <div className="bg-blue-50 rounded-lg p-4 mt-4">
-                  <p className="text-sm text-blue-800">
+                <div className="bg-gray-50 rounded-lg p-4 mt-4">
+                  <p className="text-sm text-kon">
                     💡 <strong>ヒント:</strong> {seoContent.tips}
                   </p>
                 </div>

@@ -413,9 +413,9 @@ export default function DateCalculatorPage() {
       <header className="bg-white border-b border-gray-200 px-4 py-4">
         <div className="max-w-3xl mx-auto">
           <nav className="text-sm text-gray-500 mb-2 flex flex-wrap gap-1">
-            <Link href="/" className="hover:text-blue-600">ホーム</Link>
+            <Link href="/" className="hover:text-ai">ホーム</Link>
             <span>/</span>
-            <Link href="/utility" className="hover:text-blue-600">日常生活・便利ツール</Link>
+            <Link href="/utility" className="hover:text-ai">日常生活・便利ツール</Link>
             <span>/</span>
             <span className="text-gray-900">日付・日数計算機</span>
           </nav>
@@ -434,7 +434,7 @@ export default function DateCalculatorPage() {
               <button
                 key={m.key}
                 onClick={() => switchMode(m.key)}
-                className={"flex-1 py-2.5 rounded-lg text-sm font-semibold transition-colors " + (mode === m.key ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200")}
+                className={"flex-1 py-2.5 rounded-lg text-sm font-semibold transition-colors " + (mode === m.key ? "bg-kon text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200")}
               >
                 {m.label}
               </button>
@@ -454,7 +454,7 @@ export default function DateCalculatorPage() {
                     type="date"
                     value={startDate}
                     onChange={(e) => setStartDate(e.target.value)}
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-kon focus:border-transparent"
                   />
                 </div>
                 <div>
@@ -463,7 +463,7 @@ export default function DateCalculatorPage() {
                     type="date"
                     value={endDate}
                     onChange={(e) => setEndDate(e.target.value)}
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-kon focus:border-transparent"
                   />
                 </div>
               </div>
@@ -472,7 +472,7 @@ export default function DateCalculatorPage() {
                   type="checkbox"
                   checked={businessOnlyDiff}
                   onChange={(e) => setBusinessOnlyDiff(e.target.checked)}
-                  className="w-4 h-4 text-blue-600 rounded"
+                  className="w-4 h-4 text-kon rounded"
                 />
                 <span>営業日のみカウント（土日・祝日を除く）</span>
               </label>
@@ -488,7 +488,7 @@ export default function DateCalculatorPage() {
                   type="date"
                   value={baseDate}
                   onChange={(e) => setBaseDate(e.target.value)}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-kon focus:border-transparent"
                 />
               </div>
               <div className="flex gap-3 items-end flex-wrap">
@@ -500,7 +500,7 @@ export default function DateCalculatorPage() {
                     onChange={(e) => setAddAmount(e.target.value)}
                     min="1"
                     max="10000"
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-kon focus:border-transparent"
                   />
                 </div>
                 <div>
@@ -508,7 +508,7 @@ export default function DateCalculatorPage() {
                   <select
                     value={addUnit}
                     onChange={(e) => setAddUnit(e.target.value as AddUnit)}
-                    className="border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-400 focus:border-transparent bg-white"
+                    className="border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-kon focus:border-transparent bg-white"
                   >
                     <option>日</option>
                     <option>週</option>
@@ -523,7 +523,7 @@ export default function DateCalculatorPage() {
                       <button
                         key={d}
                         onClick={() => setAddDirection(d)}
-                        className={"px-5 py-2.5 text-sm font-semibold " + (addDirection === d ? "bg-blue-600 text-white" : "bg-white text-gray-600 hover:bg-gray-50")}
+                        className={"px-5 py-2.5 text-sm font-semibold " + (addDirection === d ? "bg-kon text-white" : "bg-white text-gray-600 hover:bg-gray-50")}
                       >
                         {d}
                       </button>
@@ -537,7 +537,7 @@ export default function DateCalculatorPage() {
                   checked={businessOnlyAdd}
                   onChange={(e) => setBusinessOnlyAdd(e.target.checked)}
                   disabled={addUnit !== "日"}
-                  className="w-4 h-4 text-blue-600 rounded"
+                  className="w-4 h-4 text-kon rounded"
                 />
                 <span>営業日で計算（土日・祝日を除く）※日単位のみ</span>
               </label>
@@ -553,7 +553,7 @@ export default function DateCalculatorPage() {
                   type="date"
                   value={bizStart}
                   onChange={(e) => setBizStart(e.target.value)}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-kon focus:border-transparent"
                 />
               </div>
               <div className="flex gap-3 items-end flex-wrap">
@@ -565,7 +565,7 @@ export default function DateCalculatorPage() {
                     onChange={(e) => setBizDays(e.target.value)}
                     min="1"
                     max="1000"
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-kon focus:border-transparent"
                   />
                 </div>
                 <div>
@@ -575,7 +575,7 @@ export default function DateCalculatorPage() {
                       <button
                         key={d}
                         onClick={() => setBizDirection(d)}
-                        className={"px-5 py-2.5 text-sm font-semibold " + (bizDirection === d ? "bg-blue-600 text-white" : "bg-white text-gray-600 hover:bg-gray-50")}
+                        className={"px-5 py-2.5 text-sm font-semibold " + (bizDirection === d ? "bg-kon text-white" : "bg-white text-gray-600 hover:bg-gray-50")}
                       >
                         {d}
                       </button>
@@ -587,12 +587,12 @@ export default function DateCalculatorPage() {
           )}
 
           {error && (
-            <p className="mt-3 text-sm text-red-600 bg-red-50 rounded-lg px-3 py-2">{error}</p>
+            <p className="mt-3 text-sm text-danger bg-gray-50 rounded-lg px-3 py-2">{error}</p>
           )}
 
           <button
             onClick={handleCalc}
-            className="mt-5 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl text-base transition-colors"
+            className="mt-5 w-full bg-kon hover:bg-ai text-white font-bold py-3.5 rounded-xl text-base transition-colors"
           >
             計算する
           </button>
@@ -645,9 +645,9 @@ export default function DateCalculatorPage() {
                   </div>
                   {businessOnlyDiff && (
                     <div className="mt-5 pt-5 border-t border-indigo-200 text-center">
-                      <p className="text-xs text-blue-500 font-semibold mb-1">営業日数</p>
-                      <div className="text-4xl font-bold text-blue-700">{result.businessDays}</div>
-                      <div className="text-base font-bold text-blue-600 mb-1">営業日</div>
+                      <p className="text-xs text-kon font-semibold mb-1">営業日数</p>
+                      <div className="text-4xl font-bold text-kon">{result.businessDays}</div>
+                      <div className="text-base font-bold text-kon mb-1">営業日</div>
                       <p className="text-xs text-gray-500">うち土日: {result.saturdays + result.sundays}日、祝日（平日）: {result.holidays}日</p>
                     </div>
                   )}
@@ -687,11 +687,11 @@ export default function DateCalculatorPage() {
                   <div className="text-4xl font-bold text-indigo-700 mb-2">{formatDateJP(result.resultDate)}</div>
                   <div className="text-sm text-gray-600 mb-3">{result.wareki}　{result.dayOfWeek}</div>
                   {result.holidayName ? (
-                    <span className="inline-block px-3 py-1 rounded-full text-sm font-semibold bg-red-100 text-red-700">
+                    <span className="inline-block px-3 py-1 rounded-full text-sm font-semibold bg-gray-50 text-danger">
                       祝日「{result.holidayName}」
                     </span>
                   ) : result.isWeekendDay ? (
-                    <span className="inline-block px-3 py-1 rounded-full text-sm font-semibold bg-orange-100 text-orange-700">
+                    <span className="inline-block px-3 py-1 rounded-full text-sm font-semibold bg-gray-50 text-kon">
                       {result.dayOfWeek}（休日）
                     </span>
                   ) : (
@@ -827,9 +827,9 @@ export default function DateCalculatorPage() {
               <Link
                 key={t.href}
                 href={t.href}
-                className="block p-3 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors"
+                className="block p-3 border border-gray-200 rounded-lg hover:border-ai hover:bg-gray-50 transition-colors"
               >
-                <p className="text-sm font-semibold text-blue-700">{t.label}</p>
+                <p className="text-sm font-semibold text-kon">{t.label}</p>
                 <p className="text-xs text-gray-500 mt-0.5">{t.desc}</p>
               </Link>
             ))}

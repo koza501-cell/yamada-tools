@@ -107,10 +107,10 @@ export default function PrefecturePage({ params }: { params: Promise<{ prefectur
                 <span className="text-gray-500 dark:text-gray-400">
                   全国平均: <strong className="text-gray-900 dark:text-white">¥{data.national_avg_man.toFixed(1)}万</strong>
                 </span>
-                <span className={`font-semibold ${data.diff_man >= 0 ? "text-green-600" : "text-red-500"}`}>
+                <span className={`font-semibold ${data.diff_man >= 0 ? "text-green-600" : "text-danger"}`}>
                   {data.diff_man >= 0 ? "+" : ""}{data.diff_man.toFixed(1)}万
                 </span>
-                <span className="bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 px-2 py-0.5 rounded-full text-xs font-bold">
+                <span className="bg-gray-50 dark:bg-kon text-kon dark:text-gray-300 px-2 py-0.5 rounded-full text-xs font-bold">
                   全国{data.rank}位/{data.total_prefs}都道府県
                 </span>
               </div>
@@ -209,7 +209,7 @@ export default function PrefecturePage({ params }: { params: Promise<{ prefectur
                 <Link
                   key={slug}
                   href={`/finance/heikin-nenshu/${slug}`}
-                  className="px-3 py-1.5 bg-blue-50 dark:bg-blue-950/30 text-blue-700 dark:text-blue-300 rounded-lg text-sm hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-colors"
+                  className="px-3 py-1.5 bg-gray-50 dark:bg-kon/30 text-kon dark:text-gray-300 rounded-lg text-sm hover:bg-ai dark:hover:bg-ai/40 transition-colors"
                 >
                   {PREF_NAMES[slug]}
                 </Link>

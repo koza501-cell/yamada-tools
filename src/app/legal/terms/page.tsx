@@ -74,9 +74,9 @@ export default function TermsPage() {
 
             <section>
               <h2 className="text-xl font-bold text-kon mb-4">第4条（プライバシー保護）</h2>
-              <div className="bg-blue-50 p-4 rounded-lg space-y-2 text-sm">
-                <p className="font-bold text-blue-900">ファイルの取り扱い</p>
-                <ul className="space-y-1 text-blue-800">
+              <div className="bg-gray-50 p-4 rounded-lg space-y-2 text-sm">
+                <p className="font-bold text-kon">ファイルの取り扱い</p>
+                <ul className="space-y-1 text-kon">
                   <li>・ アップロードされたファイルは、処理完了後、自動的にサーバーから削除されます</li>
                   <li>・ 当社は、ユーザーのファイルを閲覧、保存、または第三者に共有することは一切ありません</li>
                   <li>・ すべての通信はSSL/TLS暗号化により保護されています</li>
@@ -101,14 +101,14 @@ export default function TermsPage() {
 
             <section>
               <h2 className="text-xl font-bold text-kon mb-4">第6条（免責事項）</h2>
-              <div className="bg-amber-50 border-l-4 border-amber-500 p-4 space-y-2 text-sm">
+              <div className="bg-gray-50 border-l-4 border-gray-200 p-4 space-y-2 text-sm">
                 <p>
                   当社は、本サービスに関して、ユーザーと他のユーザーまたは第三者との間において生じた取引、連絡または紛争等について一切責任を負いません。
                 </p>
                 <p>
                   本サービスの利用により生じた損害について、当社は一切の責任を負いません。ただし、当社に故意または重大な過失がある場合を除きます。
                 </p>
-                <p className="font-bold text-amber-900">
+                <p className="font-bold text-kon">
                   特に、請求書番号検証ツールや税金計算ツールなど、法的・会計的な結果を伴うツールの利用結果については、あくまで参考情報としてご利用ください。正確性を保証するものではありません。
                 </p>
               </div>

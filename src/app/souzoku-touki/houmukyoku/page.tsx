@@ -71,7 +71,7 @@ export default function HoumukyokuPage() {
                 className={`text-xs rounded-lg py-1.5 px-1 font-medium transition-all ${
                   selectedPref === pref
                     ? "bg-ai text-white"
-                    : "bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-950/30 hover:text-ai"
+                    : "bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-ai/30 hover:text-ai"
                 }`}
               >
                 {pref}

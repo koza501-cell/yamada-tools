@@ -121,7 +121,7 @@ export default function PrefecturePage({ params }: { params: Promise<{ slug: str
                 <span className="text-gray-500 dark:text-gray-400">
                   全国計: <strong className="text-gray-900 dark:text-white">{fmtPop(data.national_population)}</strong>
                 </span>
-                <span className={`font-semibold ${data.growth_vs_2020_pct >= 0 ? "text-green-600" : "text-red-500"}`}>
+                <span className={`font-semibold ${data.growth_vs_2020_pct >= 0 ? "text-green-600" : "text-danger"}`}>
                   2020年比 {data.growth_vs_2020_pct >= 0 ? "+" : ""}{data.growth_vs_2020_pct}%
                 </span>
               </div>
@@ -140,7 +140,7 @@ export default function PrefecturePage({ params }: { params: Promise<{ slug: str
                 </div>
                 <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3">
                   <p className="text-xs text-gray-500 dark:text-gray-400">2050年変化</p>
-                  <p className={`font-bold ${data.change_to_2050_pct >= 0 ? "text-green-600" : "text-red-500"}`}>
+                  <p className={`font-bold ${data.change_to_2050_pct >= 0 ? "text-green-600" : "text-danger"}`}>
                     {data.change_to_2050_pct >= 0 ? "+" : ""}{data.change_to_2050_pct}%
                   </p>
                 </div>
@@ -173,7 +173,7 @@ export default function PrefecturePage({ params }: { params: Promise<{ slug: str
               <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-6">
                 <h2 className="font-bold text-gray-900 dark:text-white mb-1">年齢ピラミッド（2024年）</h2>
                 <div className="flex gap-4 text-xs text-gray-500 dark:text-gray-400 mb-4">
-                  <span className="flex items-center gap-1"><span className="w-3 h-3 rounded bg-blue-500 inline-block" />男性</span>
+                  <span className="flex items-center gap-1"><span className="w-3 h-3 rounded bg-kon inline-block" />男性</span>
                   <span className="flex items-center gap-1"><span className="w-3 h-3 rounded bg-rose-400 inline-block" />女性</span>
                 </div>
                 <ResponsiveContainer width="100%" height={340}>

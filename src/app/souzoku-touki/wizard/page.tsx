@@ -168,7 +168,7 @@ export default function WizardPage() {
   const complexityColor = {
     low: "text-green-600 dark:text-green-400",
     medium: "text-yellow-600 dark:text-yellow-400",
-    high: "text-red-600 dark:text-red-400",
+    high: "text-danger dark:text-danger",
   };
   const complexityLabel = { low: "低（DIY向き）", medium: "中（要注意）", high: "高（専門家推奨）" };
 
@@ -209,7 +209,7 @@ export default function WizardPage() {
                 <button
                   key={opt.value}
                   onClick={() => handleAnswer(opt.value)}
-                  className="w-full text-left px-5 py-4 rounded-xl border-2 border-gray-200 dark:border-gray-600 hover:border-ai hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-all text-gray-800 dark:text-gray-200 font-medium"
+                  className="w-full text-left px-5 py-4 rounded-xl border-2 border-gray-200 dark:border-gray-600 hover:border-ai hover:bg-gray-50 dark:hover:bg-ai/30 transition-all text-gray-800 dark:text-gray-200 font-medium"
                 >
                   {opt.label}
                 </button>
@@ -228,7 +228,7 @@ export default function WizardPage() {
         ) : (
           <div className="space-y-5">
             {/* Result card */}
-            <div className={`bg-white dark:bg-gray-800 rounded-2xl shadow-md p-8 border-l-4 ${result.diy ? "border-green-500" : "border-red-500"}`}>
+            <div className={`bg-white dark:bg-gray-800 rounded-2xl shadow-md p-8 border-l-4 ${result.diy ? "border-green-500" : "border-danger"}`}>
               <div className="text-center mb-6">
                 <div className="text-5xl mb-3">{result.diy ? "✅" : "⚠️"}</div>
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{result.caseType}</h2>
@@ -237,8 +237,8 @@ export default function WizardPage() {
                 </p>
               </div>
 
-              <div className={`rounded-xl p-4 mb-6 ${result.diy ? "bg-green-50 dark:bg-green-950/30" : "bg-red-50 dark:bg-red-950/30"}`}>
-                <p className={`font-bold mb-1 ${result.diy ? "text-green-800 dark:text-green-300" : "text-red-800 dark:text-red-300"}`}>
+              <div className={`rounded-xl p-4 mb-6 ${result.diy ? "bg-green-50 dark:bg-green-950/30" : "bg-gray-50 dark:bg-red-950/30"}`}>
+                <p className={`font-bold mb-1 ${result.diy ? "text-green-800 dark:text-green-300" : "text-danger dark:text-gin"}`}>
                   {result.diy ? "DIY申請できる可能性が高いです" : "専門家への依頼をお勧めします"}
                 </p>
                 <p className="text-sm text-gray-700 dark:text-gray-300">{result.reason}</p>
@@ -248,7 +248,7 @@ export default function WizardPage() {
                 <div className="space-y-3">
                   <Link
                     href={result.nextStep}
-                    className="block w-full text-center bg-ai text-white font-bold py-4 px-6 rounded-xl hover:bg-blue-600 transition-colors"
+                    className="block w-full text-center bg-ai text-white font-bold py-4 px-6 rounded-xl hover:bg-ai transition-colors"
                   >
                     📋 必要書類チェックリストを見る
                   </Link>

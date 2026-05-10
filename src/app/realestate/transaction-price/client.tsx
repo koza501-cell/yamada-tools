@@ -132,7 +132,7 @@ export default function TransactionPriceClient() {
         </div>
 
         {error && (
-          <div className={`rounded-xl p-4 mb-6 text-sm ${error.includes("見つかりませんでした") ? "bg-amber-50 border border-amber-300 text-amber-800" : "bg-red-50 border border-red-200 text-red-700"}`}>
+          <div className={`rounded-xl p-4 mb-6 text-sm ${error.includes("見つかりませんでした") ? "bg-gray-50 border border-gray-200 text-kon" : "bg-gray-50 border border-gray-200 text-danger"}`}>
             {error.includes("見つかりませんでした") ? "📭 " : "⚠️ "}{error}
           </div>
         )}
@@ -141,7 +141,7 @@ export default function TransactionPriceClient() {
           <div id="txprice-print-area">
             <div className="print-header hidden items-center justify-between px-4 py-3 border-b border-gray-200 mb-3">
               <div>
-                <p className="text-lg font-bold text-blue-700">山田ツール</p>
+                <p className="text-lg font-bold text-kon">山田ツール</p>
                 <p className="text-xs text-gray-500">yamada-tools.jp — 不動産取引価格チェッカー</p>
               </div>
               <div className="text-right">
@@ -149,7 +149,7 @@ export default function TransactionPriceClient() {
               </div>
             </div>
 
-            <div className="bg-blue-600 text-white rounded-xl p-5 mb-4">
+            <div className="bg-kon text-white rounded-xl p-5 mb-4">
               <p className="text-xs opacity-75 mb-1">📍 {result.address}</p>
               <p className="text-sm opacity-90">対象期間: {result.period}</p>
               <p className="text-sm opacity-80">周辺取引件数: {result.total_transactions}件</p>
@@ -165,14 +165,14 @@ export default function TransactionPriceClient() {
                       <p className="font-bold text-gray-900 text-sm">{result.overall_stats.avg_sqm_formatted ?? "-"}</p>
                       <p className="text-xs text-gray-400">/㎡</p>
                     </div>
-                    <div className="bg-blue-50 rounded-lg p-3">
+                    <div className="bg-gray-50 rounded-lg p-3">
                       <p className="text-xs text-gray-500 mb-1">最安値</p>
-                      <p className="font-bold text-blue-700 text-sm">{result.overall_stats.min_sqm_formatted ?? "-"}</p>
+                      <p className="font-bold text-kon text-sm">{result.overall_stats.min_sqm_formatted ?? "-"}</p>
                       <p className="text-xs text-gray-400">/㎡</p>
                     </div>
-                    <div className="bg-red-50 rounded-lg p-3">
+                    <div className="bg-gray-50 rounded-lg p-3">
                       <p className="text-xs text-gray-500 mb-1">最高値</p>
-                      <p className="font-bold text-red-600 text-sm">{result.overall_stats.max_sqm_formatted ?? "-"}</p>
+                      <p className="font-bold text-danger text-sm">{result.overall_stats.max_sqm_formatted ?? "-"}</p>
                       <p className="text-xs text-gray-400">/㎡</p>
                     </div>
                   </div>
@@ -217,7 +217,7 @@ export default function TransactionPriceClient() {
                     {result.recent_transactions.map((tx, i) => (
                       <div key={i} className="border border-gray-100 rounded-lg p-3 bg-gray-50">
                         <div className="flex items-center justify-between mb-1">
-                          <span className="text-xs font-medium text-blue-700 bg-blue-50 px-2 py-0.5 rounded-full">{tx.land_type}</span>
+                          <span className="text-xs font-medium text-kon bg-gray-50 px-2 py-0.5 rounded-full">{tx.land_type}</span>
                           <span className="text-xs text-gray-400">{tx.period}</span>
                         </div>
                         <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs mt-2">
@@ -269,7 +269,7 @@ export default function TransactionPriceClient() {
                     🔗 不動産情報ライブラリ
                   </a>
                   <button type="button" onClick={() => window.print()}
-                    className="text-sm bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors font-medium">
+                    className="text-sm bg-kon hover:bg-ai text-white px-4 py-2 rounded-lg transition-colors font-medium">
                     🖨 印刷・PDF保存
                   </button>
                 </div>

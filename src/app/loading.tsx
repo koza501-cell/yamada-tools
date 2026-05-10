@@ -12,7 +12,7 @@ export default function Loading() {
             height={96}
           />
         </div>
-        <p className="text-kon dark:text-blue-400 font-bold text-lg">山田ツール</p>
+        <p className="text-kon dark:text-gray-300 font-bold text-lg">山田ツール</p>
         <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">読み込み中...</p>
       </div>
     </div>

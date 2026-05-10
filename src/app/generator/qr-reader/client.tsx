@@ -117,7 +117,7 @@ export default function QrReaderClient() {
             {preview ? (
               <div>
                 <img src={preview} alt="Preview" className="max-h-64 mx-auto rounded-lg mb-4" />
-                <button onClick={clearAll} className="text-sm text-red-500 hover:text-red-700">
+                <button onClick={clearAll} className="text-sm text-danger hover:text-danger">
                   別の画像を選択
                 </button>
               </div>
@@ -151,7 +151,7 @@ export default function QrReaderClient() {
                     href={result}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 text-center"
+                    className="flex-1 py-2 bg-kon text-white rounded-lg hover:bg-ai text-center"
                   >
                     URLを開く
                   </a>

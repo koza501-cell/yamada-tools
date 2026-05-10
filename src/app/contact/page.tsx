@@ -24,7 +24,7 @@ export default function ContactPage() {
 
         {/* Contact Form */}
         <section className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-sm mb-8">
-          <h2 className="text-2xl font-bold text-kon dark:text-blue-400 mb-6 flex items-center gap-2">
+          <h2 className="text-2xl font-bold text-kon dark:text-gray-300 mb-6 flex items-center gap-2">
             <span>✉️</span>
             <span>お問い合わせフォーム</span>
           </h2>
@@ -33,7 +33,7 @@ export default function ContactPage() {
 
         {/* Other Contact Methods */}
         <section className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-sm mb-8">
-          <h2 className="text-2xl font-bold text-kon dark:text-blue-400 mb-6 flex items-center gap-2">
+          <h2 className="text-2xl font-bold text-kon dark:text-gray-300 mb-6 flex items-center gap-2">
             <span>📬</span>
             <span>その他のお問い合わせ方法</span>
           </h2>
@@ -72,7 +72,7 @@ export default function ContactPage() {
 
         {/* Company Info */}
         <section className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-sm mb-8">
-          <h2 className="text-2xl font-bold text-kon dark:text-blue-400 mb-6 flex items-center gap-2">
+          <h2 className="text-2xl font-bold text-kon dark:text-gray-300 mb-6 flex items-center gap-2">
             <span>🏢</span>
             <span>運営会社</span>
           </h2>

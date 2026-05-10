@@ -202,8 +202,8 @@ export default function DateConverterClient({
           
           <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
             <span className="bg-green-50 text-green-700 px-3 py-1 rounded-full">✓ 完全無料</span>
-            <span className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full">🔄 双方向変換</span>
-            <span className="bg-purple-50 text-purple-700 px-3 py-1 rounded-full">🐲 干支表示</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">🔄 双方向変換</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">🐲 干支表示</span>
           </div>
         </header>
 
@@ -361,7 +361,7 @@ export default function DateConverterClient({
 
           {/* Error */}
           {error && (
-            <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700">
+            <div className="mt-4 p-4 bg-gray-50 border border-gray-200 rounded-xl text-danger">
               ⚠️ {error}
             </div>
           )}

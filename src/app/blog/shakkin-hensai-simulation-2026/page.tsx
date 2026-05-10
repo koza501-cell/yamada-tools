@@ -46,9 +46,9 @@ export default function ShakkinHensaiSimulation2026Blog() {
         }}
       />
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-pink-500">ホーム</Link>
+        <Link href="/" className="hover:text-sakura">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-pink-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-sakura">ブログ</Link>
         <span className="mx-2">/</span>
         <span>借金返済シミュレーション2026</span>
       </nav>
@@ -60,7 +60,7 @@ export default function ShakkinHensaiSimulation2026Blog() {
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】借金返済シミュレーション｜完済までの期間と総支払額を計算</h1>
       <p className="text-gray-500 text-sm mb-8">最終更新: 2026年4月</p>
 
-      <div className="bg-orange-50 border-l-4 border-orange-400 p-4 mb-8">
+      <div className="bg-gray-50 border-l-4 border-gray-200 p-4 mb-8">
         <p className="font-bold text-gray-800 mb-2">この記事でわかること</p>
         <ul className="text-gray-700 space-y-1">
           <li>✓ 借金返済の基本的な考え方</li>
@@ -80,10 +80,10 @@ export default function ShakkinHensaiSimulation2026Blog() {
           毎月の返済額のうち、どれだけが元本に充てられ、どれだけが利息なのかを把握しましょう。
         </p>
         
-        <div className="bg-white border-2 border-orange-200 rounded-lg p-6 mb-6">
+        <div className="bg-white border-2 border-gray-200 rounded-lg p-6 mb-6">
           <h3 className="font-bold text-lg text-gray-800 mb-4">返済の内訳イメージ（100万円・金利15%・月3万円返済）</h3>
           <table className="min-w-full border border-gray-200 mb-4">
-            <thead className="bg-orange-50">
+            <thead className="bg-gray-50">
               <tr>
                 <th className="px-3 py-2 text-left border-b font-semibold">回数</th>
                 <th className="px-3 py-2 text-right border-b font-semibold">返済額</th>
@@ -93,16 +93,16 @@ export default function ShakkinHensaiSimulation2026Blog() {
               </tr>
             </thead>
             <tbody>
-              <tr><td className="px-3 py-2 border-b">1回目</td><td className="px-3 py-2 border-b text-right">30,000円</td><td className="px-3 py-2 border-b text-right text-red-600">12,500円</td><td className="px-3 py-2 border-b text-right text-green-600">17,500円</td><td className="px-3 py-2 border-b text-right">982,500円</td></tr>
-              <tr><td className="px-3 py-2 border-b">2回目</td><td className="px-3 py-2 border-b text-right">30,000円</td><td className="px-3 py-2 border-b text-right text-red-600">12,281円</td><td className="px-3 py-2 border-b text-right text-green-600">17,719円</td><td className="px-3 py-2 border-b text-right">964,781円</td></tr>
+              <tr><td className="px-3 py-2 border-b">1回目</td><td className="px-3 py-2 border-b text-right">30,000円</td><td className="px-3 py-2 border-b text-right text-danger">12,500円</td><td className="px-3 py-2 border-b text-right text-green-600">17,500円</td><td className="px-3 py-2 border-b text-right">982,500円</td></tr>
+              <tr><td className="px-3 py-2 border-b">2回目</td><td className="px-3 py-2 border-b text-right">30,000円</td><td className="px-3 py-2 border-b text-right text-danger">12,281円</td><td className="px-3 py-2 border-b text-right text-green-600">17,719円</td><td className="px-3 py-2 border-b text-right">964,781円</td></tr>
               <tr><td className="px-3 py-2 border-b">...</td><td className="px-3 py-2 border-b text-right">...</td><td className="px-3 py-2 border-b text-right">...</td><td className="px-3 py-2 border-b text-right">...</td><td className="px-3 py-2 border-b text-right">...</td></tr>
-              <tr className="bg-yellow-50"><td className="px-3 py-2 border-b font-bold">合計</td><td className="px-3 py-2 border-b text-right font-bold">約144万円</td><td className="px-3 py-2 border-b text-right font-bold text-red-600">約44万円</td><td className="px-3 py-2 border-b text-right font-bold text-green-600">100万円</td><td className="px-3 py-2 border-b text-right">0円</td></tr>
+              <tr className="bg-yellow-50"><td className="px-3 py-2 border-b font-bold">合計</td><td className="px-3 py-2 border-b text-right font-bold">約144万円</td><td className="px-3 py-2 border-b text-right font-bold text-danger">約44万円</td><td className="px-3 py-2 border-b text-right font-bold text-green-600">100万円</td><td className="px-3 py-2 border-b text-right">0円</td></tr>
             </tbody>
           </table>
           <p className="text-sm text-gray-600">※金利15%・月3万円返済で約4年、利息だけで約44万円かかります</p>
         </div>
 
-        <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+        <div className="bg-gray-50 border-l-4 border-danger p-4 mb-6">
           <p className="font-bold text-gray-800 mb-2">⚠️ 最低返済額だけだと危険</p>
           <p className="text-gray-700">
             カードローンやリボ払いの<strong>最低返済額</strong>だけ払っていると、ほとんどが利息に消え、
@@ -118,7 +118,7 @@ export default function ShakkinHensaiSimulation2026Blog() {
         <p className="text-gray-700 mb-4">借入100万円を月3万円で返済した場合の比較</p>
         
         <table className="min-w-full border border-gray-200 mb-6">
-          <thead className="bg-orange-50">
+          <thead className="bg-gray-50">
             <tr>
               <th className="px-3 py-3 text-left border-b font-semibold">金利</th>
               <th className="px-3 py-3 text-left border-b font-semibold">借入先の例</th>
@@ -130,15 +130,15 @@ export default function ShakkinHensaiSimulation2026Blog() {
           <tbody>
             <tr><td className="px-3 py-3 border-b font-bold">3%</td><td className="px-3 py-3 border-b text-sm">銀行カードローン（低金利）</td><td className="px-3 py-3 border-b text-right">2年11ヶ月</td><td className="px-3 py-3 border-b text-right">約105万円</td><td className="px-3 py-3 border-b text-right text-green-600 font-bold">約5万円</td></tr>
             <tr><td className="px-3 py-3 border-b font-bold">8%</td><td className="px-3 py-3 border-b text-sm">銀行カードローン（標準）</td><td className="px-3 py-3 border-b text-right">3年1ヶ月</td><td className="px-3 py-3 border-b text-right">約113万円</td><td className="px-3 py-3 border-b text-right text-yellow-600 font-bold">約13万円</td></tr>
-            <tr><td className="px-3 py-3 border-b font-bold">15%</td><td className="px-3 py-3 border-b text-sm">消費者金融・クレカリボ</td><td className="px-3 py-3 border-b text-right">3年11ヶ月</td><td className="px-3 py-3 border-b text-right">約144万円</td><td className="px-3 py-3 border-b text-right text-red-600 font-bold">約44万円</td></tr>
-            <tr className="bg-red-50"><td className="px-3 py-3 border-b font-bold">18%</td><td className="px-3 py-3 border-b text-sm">消費者金融（上限）</td><td className="px-3 py-3 border-b text-right">4年4ヶ月</td><td className="px-3 py-3 border-b text-right">約156万円</td><td className="px-3 py-3 border-b text-right text-red-600 font-bold">約56万円</td></tr>
+            <tr><td className="px-3 py-3 border-b font-bold">15%</td><td className="px-3 py-3 border-b text-sm">消費者金融・クレカリボ</td><td className="px-3 py-3 border-b text-right">3年11ヶ月</td><td className="px-3 py-3 border-b text-right">約144万円</td><td className="px-3 py-3 border-b text-right text-danger font-bold">約44万円</td></tr>
+            <tr className="bg-gray-50"><td className="px-3 py-3 border-b font-bold">18%</td><td className="px-3 py-3 border-b text-sm">消費者金融（上限）</td><td className="px-3 py-3 border-b text-right">4年4ヶ月</td><td className="px-3 py-3 border-b text-right">約156万円</td><td className="px-3 py-3 border-b text-right text-danger font-bold">約56万円</td></tr>
           </tbody>
         </table>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-          <p className="text-lg font-bold text-blue-800 mb-2">🔧 あなたの返済計画をシミュレーション</p>
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+          <p className="text-lg font-bold text-kon mb-2">🔧 あなたの返済計画をシミュレーション</p>
           <p className="text-gray-700 mb-4">借入額・金利・毎月の返済額を入力して、完済までの期間と総支払額を計算しましょう。</p>
-          <Link href="/debt/repayment-simulator" className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition">
+          <Link href="/debt/repayment-simulator" className="inline-block bg-kon hover:bg-ai text-white font-bold py-3 px-6 rounded-lg transition">
             → 借金返済シミュレーターを使う
           </Link>
         </div>
@@ -152,7 +152,7 @@ export default function ShakkinHensaiSimulation2026Blog() {
         </p>
         
         <div className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm mb-6">
-          <h3 className="font-bold text-orange-600 mb-3">例：100万円（金利15%）を月3万円返済中に10万円繰り上げ</h3>
+          <h3 className="font-bold text-kon mb-3">例：100万円（金利15%）を月3万円返済中に10万円繰り上げ</h3>
           <table className="min-w-full border border-gray-200">
             <thead className="bg-gray-50">
               <tr>
@@ -186,12 +186,12 @@ export default function ShakkinHensaiSimulation2026Blog() {
         
         <div className="grid md:grid-cols-2 gap-4 mb-6">
           <div className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-            <h3 className="font-bold text-orange-600 mb-2">雪だるま式（Avalanche）</h3>
+            <h3 className="font-bold text-kon mb-2">雪だるま式（Avalanche）</h3>
             <p className="text-gray-700 text-sm mb-2"><strong>金利の高い順</strong>に完済</p>
             <p className="text-gray-600 text-sm">数学的には最も利息が少なくなる方法。ただし完済まで時間がかかると感じることも。</p>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-            <h3 className="font-bold text-orange-600 mb-2">雪玉式（Snowball）</h3>
+            <h3 className="font-bold text-kon mb-2">雪玉式（Snowball）</h3>
             <p className="text-gray-700 text-sm mb-2"><strong>残高の少ない順</strong>に完済</p>
             <p className="text-gray-600 text-sm">小さな借金から片付けることで達成感を得やすい。モチベーション維持に効果的。</p>
           </div>
@@ -221,8 +221,8 @@ export default function ShakkinHensaiSimulation2026Blog() {
               <li>・毎月の返済額を下げられる</li>
             </ul>
           </div>
-          <div className="bg-red-50 border border-red-200 rounded-lg p-5">
-            <h3 className="font-bold text-red-600 mb-3">⚠️ デメリット・注意点</h3>
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-5">
+            <h3 className="font-bold text-danger mb-3">⚠️ デメリット・注意点</h3>
             <ul className="text-gray-700 space-y-2 text-sm">
               <li>・返済期間が長くなると総額が増える</li>
               <li>・追加借入の誘惑</li>
@@ -246,24 +246,24 @@ export default function ShakkinHensaiSimulation2026Blog() {
         
         <div className="space-y-4 mb-6">
           <div className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-            <h3 className="font-bold text-orange-600 mb-2">1. 借入先に相談</h3>
+            <h3 className="font-bold text-kon mb-2">1. 借入先に相談</h3>
             <p className="text-gray-700 text-sm">返済が厳しいことを正直に伝えると、返済計画の見直し（リスケジュール）に応じてくれる場合があります。</p>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-            <h3 className="font-bold text-orange-600 mb-2">2. 任意整理</h3>
+            <h3 className="font-bold text-kon mb-2">2. 任意整理</h3>
             <p className="text-gray-700 text-sm">弁護士・司法書士を通じて将来利息のカットや返済計画の見直しを交渉。信用情報に影響あり。</p>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-            <h3 className="font-bold text-orange-600 mb-2">3. 個人再生</h3>
+            <h3 className="font-bold text-kon mb-2">3. 個人再生</h3>
             <p className="text-gray-700 text-sm">裁判所を通じて借金を大幅に減額（最大1/5〜1/10）。住宅ローンは残せる場合も。</p>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-            <h3 className="font-bold text-orange-600 mb-2">4. 自己破産</h3>
+            <h3 className="font-bold text-kon mb-2">4. 自己破産</h3>
             <p className="text-gray-700 text-sm">借金をゼロにできる最終手段。一定の財産は処分されるが、生活再建が可能。</p>
           </div>
         </div>
 
-        <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+        <div className="bg-gray-50 border-l-4 border-danger p-4 mb-6">
           <p className="font-bold text-gray-800 mb-2">⚠️ 絶対にやってはいけないこと</p>
           <ul className="text-gray-700 space-y-1 text-sm">
             <li>・借金を返すために<strong>新たな借金</strong>をする</li>
@@ -303,9 +303,9 @@ export default function ShakkinHensaiSimulation2026Blog() {
           金利を理解し、可能な限り多く返済することで、完済への道が開けます。
         </p>
         
-        <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-lg p-6 text-center">
+        <div className="bg-gradient-to-r from-slate-900 to-red-500 text-white rounded-lg p-6 text-center">
           <p className="text-lg font-bold mb-4">あなたの返済計画をシミュレーション</p>
-          <Link href="/debt/repayment-simulator" className="inline-block bg-white text-orange-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition">
+          <Link href="/debt/repayment-simulator" className="inline-block bg-white text-kon font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition">
             → 借金返済シミュレーターを使う
           </Link>
         </div>
@@ -314,19 +314,19 @@ export default function ShakkinHensaiSimulation2026Blog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">関連ツール</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Link href="/debt/repayment-simulator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-orange-300 transition">
+          <Link href="/debt/repayment-simulator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-ai transition">
             <span className="font-bold text-gray-800">借金返済シミュレーター</span>
             <p className="text-sm text-gray-600">完済期間と総支払額を計算</p>
           </Link>
-          <Link href="/debt/revolving-calculator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-orange-300 transition">
+          <Link href="/debt/revolving-calculator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-ai transition">
             <span className="font-bold text-gray-800">リボ払い計算機</span>
             <p className="text-sm text-gray-600">リボ残高の返済計画</p>
           </Link>
-          <Link href="/debt/loan-interest-calculator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-orange-300 transition">
+          <Link href="/debt/loan-interest-calculator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-ai transition">
             <span className="font-bold text-gray-800">ローン利息計算機</span>
             <p className="text-sm text-gray-600">利息の総額を計算</p>
           </Link>
-          <Link href="/debt/debt-diagnosis" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-orange-300 transition">
+          <Link href="/debt/debt-diagnosis" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-ai transition">
             <span className="font-bold text-gray-800">借金診断</span>
             <p className="text-sm text-gray-600">返済能力をチェック</p>
           </Link>

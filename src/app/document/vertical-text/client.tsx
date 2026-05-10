@@ -755,13 +755,13 @@ export default function VerticalTextClient() {
       <div className="flex lg:hidden border-b border-gray-200 dark:border-gray-700 mb-4">
         <button
           onClick={() => setMobileTab('edit')}
-          className={`flex-1 py-2 text-sm font-medium transition-colors ${mobileTab === 'edit' ? 'text-kon dark:text-blue-400 border-b-2 border-kon dark:border-blue-400' : 'text-gray-500'}`}
+          className={`flex-1 py-2 text-sm font-medium transition-colors ${mobileTab === 'edit' ? 'text-kon dark:text-gray-300 border-b-2 border-kon dark:border-kon' : 'text-gray-500'}`}
         >
           編集
         </button>
         <button
           onClick={() => setMobileTab('preview')}
-          className={`flex-1 py-2 text-sm font-medium transition-colors ${mobileTab === 'preview' ? 'text-kon dark:text-blue-400 border-b-2 border-kon dark:border-blue-400' : 'text-gray-500'}`}
+          className={`flex-1 py-2 text-sm font-medium transition-colors ${mobileTab === 'preview' ? 'text-kon dark:text-gray-300 border-b-2 border-kon dark:border-kon' : 'text-gray-500'}`}
         >
           プレビュー
         </button>
@@ -814,7 +814,7 @@ export default function VerticalTextClient() {
                           </button>
                           <button
                             onClick={() => deleteSavedDoc(saved.id)}
-                            className="text-gray-400 hover:text-red-500 flex-shrink-0 p-1"
+                            className="text-gray-400 hover:text-danger flex-shrink-0 p-1"
                             title="削除"
                           >
                             🗑
@@ -834,7 +834,7 @@ export default function VerticalTextClient() {
                   className={`px-3 py-1.5 text-xs rounded-lg transition-colors font-medium ${
                     activeTemplate === tpl.label
                       ? 'bg-kon text-white shadow-sm'
-                      : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-kon hover:text-white dark:hover:bg-blue-600'
+                      : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-kon hover:text-white dark:hover:bg-ai'
                   }`}
                 >
                   {tpl.label}
@@ -845,7 +845,7 @@ export default function VerticalTextClient() {
                 className={`px-3 py-1.5 text-xs rounded-lg transition-colors font-medium ${
                   doc.genkouyoshi
                     ? 'bg-kon text-white shadow-sm'
-                    : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-kon hover:text-white dark:hover:bg-blue-600'
+                    : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-kon hover:text-white dark:hover:bg-ai'
                 }`}
                 title="原稿用紙モード (20×20マス)"
               >
@@ -1034,9 +1034,9 @@ export default function VerticalTextClient() {
                 <div className="relative mb-1">
                   <div className="h-3 rounded-full overflow-hidden flex">
                     <div className="bg-green-400" style={{ width: '45%' }} title="〜900字 3分" />
-                    <div className="bg-blue-400"  style={{ width: '30%' }} title="〜1500字 5分" />
-                    <div className="bg-amber-400" style={{ width: '10%' }} title="〜1700字 7分" />
-                    <div className="bg-red-400"   style={{ width: '15%' }} title="1700字〜" />
+                    <div className="bg-kon"  style={{ width: '30%' }} title="〜1500字 5分" />
+                    <div className="bg-kon" style={{ width: '10%' }} title="〜1700字 7分" />
+                    <div className="bg-danger"   style={{ width: '15%' }} title="1700字〜" />
                   </div>
                   {/* Triangle marker */}
                   {charCount > 0 && (

@@ -235,25 +235,25 @@ export default function SolarClient() {
             <div key={i} className="flex items-center gap-2">
               <span className="text-xs text-gray-500 w-8">{i + 1}年</span>
               <div className="flex-1 bg-gray-100 rounded-full h-5 overflow-hidden">
-                <div className={"h-full rounded-full transition-all " + (i < 10 ? "bg-yellow-400" : "bg-orange-400")}
+                <div className={"h-full rounded-full transition-all " + (i < 10 ? "bg-yellow-400" : "bg-kon")}
                   style={{ width: (rev / maxRev * 100) + "%" }} />
               </div>
               <span className="text-xs text-gray-600 w-20 text-right">{fmtPrice(Math.round(rev))}</span>
-              {i === 10 && <span className="text-xs text-orange-500 whitespace-nowrap">FIT終了</span>}
+              {i === 10 && <span className="text-xs text-kon whitespace-nowrap">FIT終了</span>}
             </div>
           ))}
         </div>
         <p className="text-xs text-gray-400 mt-2">黄: FIT期間（10年） / オレンジ: FIT終了後</p>
       </div>
 
-      <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6">
+      <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-6">
         <button onClick={() => setShowBattery(s => !s)}
           className="w-full text-left flex items-center justify-between">
-          <span className="text-sm font-semibold text-blue-800">🔋 蓄電池を追加した場合の試算</span>
-          <span className="text-blue-500">{showBattery ? "▲" : "▼"}</span>
+          <span className="text-sm font-semibold text-kon">🔋 蓄電池を追加した場合の試算</span>
+          <span className="text-kon">{showBattery ? "▲" : "▼"}</span>
         </button>
         {showBattery && (
-          <div className="mt-3 space-y-2 text-sm text-blue-700">
+          <div className="mt-3 space-y-2 text-sm text-kon">
             <p>蓄電池費用目安: <strong>{fmtPrice(batteryCost)}</strong>（容量10kWh程度）</p>
             <p>自家消費率: {selfRatio}% → <strong>{Math.min(selfRatio + 40, 90)}%</strong> に向上</p>
             <p>年間合計収益: <strong>{fmtPrice(r.annualRevB)}</strong></p>
@@ -262,9 +262,9 @@ export default function SolarClient() {
         )}
       </div>
 
-      <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6">
-        <p className="text-sm font-semibold text-amber-800 mb-1">⚠️ ご注意</p>
-        <p className="text-xs text-amber-700">本シミュレーターは中立的な目安計算です。実際の発電量は設置条件・天候・パネルメーカーにより異なります。必ず複数の業者から見積もりを取り、独立した第三者の意見を参考にしてください。</p>
+      <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-6">
+        <p className="text-sm font-semibold text-kon mb-1">⚠️ ご注意</p>
+        <p className="text-xs text-kon">本シミュレーターは中立的な目安計算です。実際の発電量は設置条件・天候・パネルメーカーにより異なります。必ず複数の業者から見積もりを取り、独立した第三者の意見を参考にしてください。</p>
       </div>
 
       <p className="text-xs text-gray-400 mb-8">

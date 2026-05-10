@@ -11,7 +11,7 @@ export function PricingBanner({ remainingUses, onClose }: PricingBannerProps) {
   if (remainingUses > 2) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 bg-gradient-to-r from-pink-500 to-rose-500 text-white px-4 py-3 shadow-lg animate-in slide-in-from-bottom duration-300">
+    <div className="fixed bottom-0 left-0 right-0 z-40 bg-gradient-to-r from-slate-900 to-rose-500 text-white px-4 py-3 shadow-lg animate-in slide-in-from-bottom duration-300">
       <div className="max-w-4xl mx-auto flex items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <img 
@@ -28,7 +28,7 @@ export function PricingBanner({ remainingUses, onClose }: PricingBannerProps) {
         <div className="flex items-center gap-2">
           <Link
             href="/pricing"
-            className="bg-white text-pink-500 px-4 py-1.5 rounded-full text-sm font-bold hover:bg-pink-50 transition-colors whitespace-nowrap"
+            className="bg-white text-sakura px-4 py-1.5 rounded-full text-sm font-bold hover:bg-sakura/30 transition-colors whitespace-nowrap"
           >
             PROを見る
           </Link>

@@ -46,9 +46,9 @@ export default function ShakaiHokenSimulation2026Blog() {
         }}
       />
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-pink-500">ホーム</Link>
+        <Link href="/" className="hover:text-sakura">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-pink-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-sakura">ブログ</Link>
         <span className="mx-2">/</span>
         <span>社会保険料計算2026</span>
       </nav>
@@ -93,7 +93,7 @@ export default function ShakaiHokenSimulation2026Blog() {
             <tr><td className="px-3 py-3 border-b font-bold">介護保険（40歳以上）</td><td className="px-3 py-3 border-b text-center font-bold text-sky-600">約0.8%</td><td className="px-3 py-3 border-b text-center">約0.8%</td><td className="px-3 py-3 border-b text-sm">介護サービスの利用</td></tr>
             <tr><td className="px-3 py-3 border-b font-bold">厚生年金</td><td className="px-3 py-3 border-b text-center font-bold text-sky-600">9.15%</td><td className="px-3 py-3 border-b text-center">9.15%</td><td className="px-3 py-3 border-b text-sm">老後の年金</td></tr>
             <tr><td className="px-3 py-3 border-b font-bold">雇用保険</td><td className="px-3 py-3 border-b text-center font-bold text-sky-600">0.6%</td><td className="px-3 py-3 border-b text-center">0.95%</td><td className="px-3 py-3 border-b text-sm">失業時の給付</td></tr>
-            <tr className="bg-yellow-50"><td className="px-3 py-3 border-b font-bold">合計（40歳以上）</td><td className="px-3 py-3 border-b text-center font-bold text-orange-600">約15.5%</td><td className="px-3 py-3 border-b text-center font-bold">約16%</td><td className="px-3 py-3 border-b"></td></tr>
+            <tr className="bg-yellow-50"><td className="px-3 py-3 border-b font-bold">合計（40歳以上）</td><td className="px-3 py-3 border-b text-center font-bold text-kon">約15.5%</td><td className="px-3 py-3 border-b text-center font-bold">約16%</td><td className="px-3 py-3 border-b"></td></tr>
           </tbody>
         </table>
 
@@ -143,7 +143,7 @@ export default function ShakaiHokenSimulation2026Blog() {
           9月から翌年8月まで1年間同じ金額が適用されます。
         </p>
 
-        <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+        <div className="bg-gray-50 border-l-4 border-danger p-4 mb-6">
           <p className="font-bold text-gray-800 mb-2">⚠️ 4〜6月の残業に注意</p>
           <p className="text-gray-700">
             4〜6月に残業が多いと標準報酬月額が上がり、<strong>1年間の社会保険料が高くなる</strong>可能性があります。
@@ -168,15 +168,15 @@ export default function ShakaiHokenSimulation2026Blog() {
             <tr><td className="px-3 py-3 border-b font-bold">300万円</td><td className="px-3 py-3 border-b text-right">25万円</td><td className="px-3 py-3 border-b text-right">約3.9万円</td><td className="px-3 py-3 border-b text-right font-bold text-sky-600">約47万円</td></tr>
             <tr><td className="px-3 py-3 border-b font-bold">400万円</td><td className="px-3 py-3 border-b text-right">33万円</td><td className="px-3 py-3 border-b text-right">約5.1万円</td><td className="px-3 py-3 border-b text-right font-bold text-sky-600">約61万円</td></tr>
             <tr><td className="px-3 py-3 border-b font-bold">500万円</td><td className="px-3 py-3 border-b text-right">42万円</td><td className="px-3 py-3 border-b text-right">約6.5万円</td><td className="px-3 py-3 border-b text-right font-bold text-sky-600">約78万円</td></tr>
-            <tr className="bg-yellow-50"><td className="px-3 py-3 border-b font-bold">600万円</td><td className="px-3 py-3 border-b text-right">50万円</td><td className="px-3 py-3 border-b text-right">約7.8万円</td><td className="px-3 py-3 border-b text-right font-bold text-orange-600">約93万円</td></tr>
+            <tr className="bg-yellow-50"><td className="px-3 py-3 border-b font-bold">600万円</td><td className="px-3 py-3 border-b text-right">50万円</td><td className="px-3 py-3 border-b text-right">約7.8万円</td><td className="px-3 py-3 border-b text-right font-bold text-kon">約93万円</td></tr>
             <tr><td className="px-3 py-3 border-b font-bold">700万円</td><td className="px-3 py-3 border-b text-right">58万円</td><td className="px-3 py-3 border-b text-right">約9万円</td><td className="px-3 py-3 border-b text-right font-bold text-sky-600">約108万円</td></tr>
             <tr><td className="px-3 py-3 border-b font-bold">800万円</td><td className="px-3 py-3 border-b text-right">65万円</td><td className="px-3 py-3 border-b text-right">約10万円</td><td className="px-3 py-3 border-b text-right font-bold text-sky-600">約120万円</td></tr>
             <tr><td className="px-3 py-3 border-b font-bold">1000万円</td><td className="px-3 py-3 border-b text-right">83万円</td><td className="px-3 py-3 border-b text-right">約11.5万円</td><td className="px-3 py-3 border-b text-right font-bold text-sky-600">約138万円</td></tr>
           </tbody>
         </table>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-          <p className="text-lg font-bold text-blue-800 mb-2">🔧 あなたの社会保険料を計算！</p>
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+          <p className="text-lg font-bold text-kon mb-2">🔧 あなたの社会保険料を計算！</p>
           <p className="text-gray-700 mb-4">年収と年齢を入力して、正確な社会保険料をシミュレーションしましょう。</p>
           <Link href="/career/social-insurance-calculator" className="inline-block bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-lg transition">
             → 社会保険料計算機を使う
@@ -293,7 +293,7 @@ export default function ShakaiHokenSimulation2026Blog() {
           <strong>標準報酬月額の仕組みを理解</strong>し、手取り額を正確に把握しましょう。
         </p>
         
-        <div className="bg-gradient-to-r from-sky-500 to-blue-500 text-white rounded-lg p-6 text-center">
+        <div className="bg-gradient-to-r from-sky-500 to-kon text-white rounded-lg p-6 text-center">
           <p className="text-lg font-bold mb-4">あなたの社会保険料をシミュレーション</p>
           <Link href="/career/social-insurance-calculator" className="inline-block bg-white text-sky-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition">
             → 社会保険料計算機を使う

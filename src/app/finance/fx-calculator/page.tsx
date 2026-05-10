@@ -141,7 +141,7 @@ export default function Page() {
               ].map((row, i) => (
                 <tr key={i} className="border-t border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50">
                   <td className="py-2 px-4 font-medium">{row[0]}</td>
-                  <td className="py-2 px-4 text-blue-600 dark:text-blue-400">{row[1]}</td>
+                  <td className="py-2 px-4 text-kon dark:text-gray-300">{row[1]}</td>
                   <td className="py-2 px-4">{row[2]}</td>
                 </tr>
               ))}

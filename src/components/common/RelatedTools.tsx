@@ -212,7 +212,7 @@ export default function RelatedTools({ currentTool, maxItems = 6, tools, title }
   if (tools && tools.length > 0) {
     return (
       <section className="mt-8" aria-labelledby="related-heading">
-        <h2 id="related-heading" className="font-bold text-kon dark:text-blue-300 mb-4 text-lg">
+        <h2 id="related-heading" className="font-bold text-kon dark:text-gray-300 mb-4 text-lg">
           {title || "🔗 あわせて使えるツール"}
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -220,10 +220,10 @@ export default function RelatedTools({ currentTool, maxItems = 6, tools, title }
             <Link
               key={tool.id}
               href={tool.path}
-              className="bg-white dark:bg-gray-800 rounded-xl p-4 border border-gray-100 dark:border-gray-700 hover:border-kon/30 dark:hover:border-blue-500/50 hover:shadow-md transition-all text-center group"
+              className="bg-white dark:bg-gray-800 rounded-xl p-4 border border-gray-100 dark:border-gray-700 hover:border-kon/30 dark:hover:border-ai/50 hover:shadow-md transition-all text-center group"
             >
               <div className="text-2xl mb-2">{tool.icon}</div>
-              <p className="text-sm font-medium text-gray-700 dark:text-gray-200 group-hover:text-kon dark:group-hover:text-blue-300">{tool.nameJa}</p>
+              <p className="text-sm font-medium text-gray-700 dark:text-gray-200 group-hover:text-kon dark:group-hover:text-ai">{tool.nameJa}</p>
             </Link>
           ))}
         </div>
@@ -259,7 +259,7 @@ export default function RelatedTools({ currentTool, maxItems = 6, tools, title }
 
   return (
     <section className="mt-8" aria-labelledby="related-heading">
-      <h2 id="related-heading" className="font-bold text-kon dark:text-blue-300 mb-4 text-lg">
+      <h2 id="related-heading" className="font-bold text-kon dark:text-gray-300 mb-4 text-lg">
         🔗 あわせて使えるツール
       </h2>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -267,10 +267,10 @@ export default function RelatedTools({ currentTool, maxItems = 6, tools, title }
           <Link
             key={tool.id}
             href={tool.path}
-            className="bg-white dark:bg-gray-800 rounded-xl p-4 border border-gray-100 dark:border-gray-700 hover:border-kon/30 dark:hover:border-blue-500/50 hover:shadow-md transition-all text-center group"
+            className="bg-white dark:bg-gray-800 rounded-xl p-4 border border-gray-100 dark:border-gray-700 hover:border-kon/30 dark:hover:border-ai/50 hover:shadow-md transition-all text-center group"
           >
             <div className="text-2xl mb-2">{tool.icon}</div>
-            <p className="text-sm font-medium text-gray-700 dark:text-gray-200 group-hover:text-kon dark:group-hover:text-blue-300">{tool.nameJa}</p>
+            <p className="text-sm font-medium text-gray-700 dark:text-gray-200 group-hover:text-kon dark:group-hover:text-ai">{tool.nameJa}</p>
             <p className="text-xs text-gray-400 dark:text-gray-500 mt-1 line-clamp-1">{tool.description.slice(0, 25)}...</p>
           </Link>
         ))}

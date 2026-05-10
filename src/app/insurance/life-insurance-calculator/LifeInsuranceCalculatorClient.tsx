@@ -46,9 +46,9 @@ function fmt(val: number): string {
 
 function getAdvice(required: number): { text: string; color: string } {
   if (required < 1000) return { text: "比較的保障は少額で済みます", color: "text-green-300" };
-  if (required < 3000) return { text: "一般的な保障額の範囲です", color: "text-blue-200" };
+  if (required < 3000) return { text: "一般的な保障額の範囲です", color: "text-gin" };
   if (required < 5000) return { text: "まとまった保障が必要です", color: "text-yellow-200" };
-  return { text: "手厚い保障を検討してください", color: "text-red-200" };
+  return { text: "手厚い保障を検討してください", color: "text-gin" };
 }
 
 function calculate(form: FormState): CalcResult | null {
@@ -243,7 +243,7 @@ export default function LifeInsuranceCalculatorPage() {
               {/* Age */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  年齢 <span className="text-red-500">*</span>
+                  年齢 <span className="text-danger">*</span>
                 </label>
                 <div className="flex items-center gap-2">
                   <input
@@ -253,7 +253,7 @@ export default function LifeInsuranceCalculatorPage() {
                     value={form.age}
                     onChange={(e) => handleChange("age", e.target.value)}
                     placeholder="例: 35"
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon focus:border-transparent"
                   />
                   <span className="text-sm text-gray-500 whitespace-nowrap">歳</span>
                 </div>
@@ -271,8 +271,8 @@ export default function LifeInsuranceCalculatorPage() {
                       onClick={() => handleChange("hasSpouse", opt.value)}
                       className={`flex-1 py-2 rounded-lg text-sm font-medium border transition-colors ${
                         form.hasSpouse === opt.value
-                          ? "bg-blue-600 text-white border-blue-600"
-                          : "bg-white text-gray-600 border-gray-300 hover:border-blue-400"
+                          ? "bg-kon text-white border-kon"
+                          : "bg-white text-gray-600 border-gray-300 hover:border-ai"
                       }`}
                     >
                       {opt.label}
@@ -294,8 +294,8 @@ export default function LifeInsuranceCalculatorPage() {
                         onClick={() => handleChange("spouseWorking", opt.value)}
                         className={`flex-1 py-2 rounded-lg text-sm font-medium border transition-colors ${
                           form.spouseWorking === opt.value
-                            ? "bg-blue-600 text-white border-blue-600"
-                            : "bg-white text-gray-600 border-gray-300 hover:border-blue-400"
+                            ? "bg-kon text-white border-kon"
+                            : "bg-white text-gray-600 border-gray-300 hover:border-ai"
                         }`}
                       >
                         {opt.label}
@@ -313,7 +313,7 @@ export default function LifeInsuranceCalculatorPage() {
                 <select
                   value={form.numChildren}
                   onChange={(e) => handleChange("numChildren", e.target.value)}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                 >
                   {[0, 1, 2, 3, 4, 5].map((n) => (
                     <option key={n} value={n}>{n}人</option>
@@ -325,7 +325,7 @@ export default function LifeInsuranceCalculatorPage() {
               {numChildren > 0 && (
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    末子の年齢 <span className="text-red-500">*</span>
+                    末子の年齢 <span className="text-danger">*</span>
                   </label>
                   <div className="flex items-center gap-2">
                     <input
@@ -335,7 +335,7 @@ export default function LifeInsuranceCalculatorPage() {
                       value={form.youngestChildAge}
                       onChange={(e) => handleChange("youngestChildAge", e.target.value)}
                       placeholder="例: 5"
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon focus:border-transparent"
                     />
                     <span className="text-sm text-gray-500 whitespace-nowrap">歳</span>
                   </div>
@@ -345,7 +345,7 @@ export default function LifeInsuranceCalculatorPage() {
               {/* Annual Income */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  年収 <span className="text-red-500">*</span>
+                  年収 <span className="text-danger">*</span>
                 </label>
                 <div className="flex items-center gap-2">
                   <input
@@ -354,7 +354,7 @@ export default function LifeInsuranceCalculatorPage() {
                     value={form.annualIncome}
                     onChange={(e) => handleChange("annualIncome", e.target.value)}
                     placeholder="例: 500"
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon focus:border-transparent"
                   />
                   <span className="text-sm text-gray-500 whitespace-nowrap">万円</span>
                 </div>
@@ -363,7 +363,7 @@ export default function LifeInsuranceCalculatorPage() {
               {/* Savings */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  現在の貯蓄額 <span className="text-red-500">*</span>
+                  現在の貯蓄額 <span className="text-danger">*</span>
                 </label>
                 <div className="flex items-center gap-2">
                   <input
@@ -372,7 +372,7 @@ export default function LifeInsuranceCalculatorPage() {
                     value={form.savings}
                     onChange={(e) => handleChange("savings", e.target.value)}
                     placeholder="例: 200"
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon focus:border-transparent"
                   />
                   <span className="text-sm text-gray-500 whitespace-nowrap">万円</span>
                 </div>
@@ -381,7 +381,7 @@ export default function LifeInsuranceCalculatorPage() {
               {/* Mortgage */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  住宅ローン残高 <span className="text-red-500">*</span>
+                  住宅ローン残高 <span className="text-danger">*</span>
                 </label>
                 <div className="flex items-center gap-2">
                   <input
@@ -390,7 +390,7 @@ export default function LifeInsuranceCalculatorPage() {
                     value={form.mortgage}
                     onChange={(e) => handleChange("mortgage", e.target.value)}
                     placeholder="なければ0"
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon focus:border-transparent"
                   />
                   <span className="text-sm text-gray-500 whitespace-nowrap">万円</span>
                 </div>
@@ -398,7 +398,7 @@ export default function LifeInsuranceCalculatorPage() {
 
               {/* Error */}
               {error && (
-                <p className="text-red-500 text-sm bg-red-50 rounded-lg px-3 py-2">{error}</p>
+                <p className="text-danger text-sm bg-gray-50 rounded-lg px-3 py-2">{error}</p>
               )}
 
               {/* Buttons */}
@@ -411,7 +411,7 @@ export default function LifeInsuranceCalculatorPage() {
                 </button>
                 <button
                   onClick={handleCalculate}
-                  className="flex-1 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition-colors shadow-sm"
+                  className="flex-1 py-2.5 rounded-lg bg-kon text-white text-sm font-semibold hover:bg-ai transition-colors shadow-sm"
                 >
                   計算する
                 </button>
@@ -424,7 +424,7 @@ export default function LifeInsuranceCalculatorPage() {
             {result ? (
               <>
                 {/* Big result */}
-                <div className="bg-blue-600 rounded-xl p-6 text-white shadow-sm">
+                <div className="bg-kon rounded-xl p-6 text-white shadow-sm">
                   <p className="text-sm font-medium opacity-80 mb-1">必要保障額</p>
                   <p className="text-4xl font-bold mb-3">
                     {fmt(result.required)}<span className="text-2xl ml-1">万円</span>
@@ -469,9 +469,9 @@ export default function LifeInsuranceCalculatorPage() {
                           {fmt(result.mortgage)} 万円
                         </td>
                       </tr>
-                      <tr className="bg-blue-50">
-                        <td className="py-2 px-2 text-blue-700 font-medium">必要額 合計</td>
-                        <td className="py-2 px-2 text-right font-bold text-blue-700">
+                      <tr className="bg-gray-50">
+                        <td className="py-2 px-2 text-kon font-medium">必要額 合計</td>
+                        <td className="py-2 px-2 text-right font-bold text-kon">
                           {fmt(result.totalNeeds)} 万円
                         </td>
                       </tr>
@@ -507,7 +507,7 @@ export default function LifeInsuranceCalculatorPage() {
                   <div className="mt-3 pt-3 border-t-2 border-gray-200">
                     <div className="flex justify-between items-center">
                       <span className="font-semibold text-gray-800">必要保障額</span>
-                      <span className="text-xl font-bold text-blue-600">
+                      <span className="text-xl font-bold text-kon">
                         {fmt(result.required)} 万円
                       </span>
                     </div>
@@ -520,8 +520,8 @@ export default function LifeInsuranceCalculatorPage() {
               </>
             ) : (
               <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 flex flex-col items-center justify-center text-center h-full min-h-64">
-                <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4">
-                  <svg className="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mb-4">
+                  <svg className="w-8 h-8 text-kon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                 </div>
@@ -538,7 +538,7 @@ export default function LifeInsuranceCalculatorPage() {
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="bg-blue-600 text-white">
+                  <tr className="bg-kon text-white">
                     <th className="px-4 py-3 text-left font-semibold">年収</th>
                     <th className="px-4 py-3 text-left font-semibold">家族構成</th>
                     <th className="px-4 py-3 text-left font-semibold">貯蓄</th>
@@ -550,31 +550,31 @@ export default function LifeInsuranceCalculatorPage() {
                     <td className="px-4 py-3 text-gray-800">400万円</td>
                     <td className="px-4 py-3 text-gray-800">配偶者+子1人(5歳)</td>
                     <td className="px-4 py-3 text-gray-800">200万円</td>
-                    <td className="px-4 py-3 font-semibold text-blue-700">約2,800万円</td>
+                    <td className="px-4 py-3 font-semibold text-kon">約2,800万円</td>
                   </tr>
                   <tr className="hover:bg-gray-50">
                     <td className="px-4 py-3 text-gray-800">500万円</td>
                     <td className="px-4 py-3 text-gray-800">配偶者+子2人(5歳・8歳)</td>
                     <td className="px-4 py-3 text-gray-800">300万円</td>
-                    <td className="px-4 py-3 font-semibold text-blue-700">約3,500万円</td>
+                    <td className="px-4 py-3 font-semibold text-kon">約3,500万円</td>
                   </tr>
                   <tr className="hover:bg-gray-50">
                     <td className="px-4 py-3 text-gray-800">600万円</td>
                     <td className="px-4 py-3 text-gray-800">配偶者のみ</td>
                     <td className="px-4 py-3 text-gray-800">500万円</td>
-                    <td className="px-4 py-3 font-semibold text-blue-700">約1,200万円</td>
+                    <td className="px-4 py-3 font-semibold text-kon">約1,200万円</td>
                   </tr>
                   <tr className="hover:bg-gray-50">
                     <td className="px-4 py-3 text-gray-800">700万円</td>
                     <td className="px-4 py-3 text-gray-800">配偶者+子1人(10歳)</td>
                     <td className="px-4 py-3 text-gray-800">800万円</td>
-                    <td className="px-4 py-3 font-semibold text-blue-700">約2,100万円</td>
+                    <td className="px-4 py-3 font-semibold text-kon">約2,100万円</td>
                   </tr>
                   <tr className="hover:bg-gray-50">
                     <td className="px-4 py-3 text-gray-800">800万円</td>
                     <td className="px-4 py-3 text-gray-800">配偶者+子3人</td>
                     <td className="px-4 py-3 text-gray-800">1,000万円</td>
-                    <td className="px-4 py-3 font-semibold text-blue-700">約4,200万円</td>
+                    <td className="px-4 py-3 font-semibold text-kon">約4,200万円</td>
                   </tr>
                 </tbody>
               </table>
@@ -593,19 +593,19 @@ export default function LifeInsuranceCalculatorPage() {
             <div>
               <p className="font-semibold text-gray-800 mb-2">主な構成要素：</p>
               <ul className="space-y-1.5 ml-4">
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span><span className="font-medium">遺族生活費：</span>配偶者・子供が生活するために必要な費用</span></li>
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span><span className="font-medium">教育費：</span>子供一人あたり大学卒業まで約500万円</span></li>
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span><span className="font-medium">住宅ローン残高：</span>団体信用生命保険で相殺される場合もあります</span></li>
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span><span className="font-medium">葬儀費用：</span>平均約200万円</span></li>
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span><span className="font-medium">遺族年金：</span>国の公的保障として受け取れる年金</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span><span className="font-medium">遺族生活費：</span>配偶者・子供が生活するために必要な費用</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span><span className="font-medium">教育費：</span>子供一人あたり大学卒業まで約500万円</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span><span className="font-medium">住宅ローン残高：</span>団体信用生命保険で相殺される場合もあります</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span><span className="font-medium">葬儀費用：</span>平均約200万円</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span><span className="font-medium">遺族年金：</span>国の公的保障として受け取れる年金</span></li>
               </ul>
             </div>
             <div>
               <p className="font-semibold text-gray-800 mb-2">一般的な目安：</p>
               <ul className="space-y-1.5 ml-4">
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span>子供が小さいほど必要保障額は大きくなります</span></li>
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span>共働き家庭は専業主婦(夫)家庭より少額で済む傾向があります</span></li>
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span>貯蓄が多いほど必要保障額は少なくなります</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span>子供が小さいほど必要保障額は大きくなります</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span>共働き家庭は専業主婦(夫)家庭より少額で済む傾向があります</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span>貯蓄が多いほど必要保障額は少なくなります</span></li>
               </ul>
             </div>
           </div>
@@ -639,7 +639,7 @@ export default function LifeInsuranceCalculatorPage() {
             ].map((item, i) => (
               <div key={i} className="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
                 <p className="font-semibold text-gray-800 mb-2 flex gap-2">
-                  <span className="text-blue-600 font-bold shrink-0">Q{i + 1}.</span>
+                  <span className="text-kon font-bold shrink-0">Q{i + 1}.</span>
                   {item.q}
                 </p>
                 <p className="text-sm text-gray-600 leading-relaxed flex gap-2">
@@ -664,15 +664,15 @@ export default function LifeInsuranceCalculatorPage() {
               <Link
                 key={tool.href}
                 href={tool.href}
-                className="flex items-start gap-3 bg-white rounded-xl border border-blue-100 hover:border-blue-400 hover:shadow-md transition-all p-4 group"
+                className="flex items-start gap-3 bg-white rounded-xl border border-gray-200 hover:border-ai hover:shadow-md transition-all p-4 group"
               >
-                <div className="w-9 h-9 rounded-lg bg-blue-50 group-hover:bg-blue-100 flex items-center justify-center shrink-0 transition-colors">
-                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-9 h-9 rounded-lg bg-gray-50 group-hover:bg-ai flex items-center justify-center shrink-0 transition-colors">
+                  <svg className="w-5 h-5 text-kon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 11h.01M12 11h.01M15 11h.01M4 19h16a2 2 0 002-2V7a2 2 0 00-2-2H4a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-blue-700 group-hover:text-blue-800">{tool.label}</p>
+                  <p className="text-sm font-semibold text-kon group-hover:text-ai">{tool.label}</p>
                   <p className="text-xs text-gray-500 mt-0.5">{tool.desc}</p>
                 </div>
               </Link>

@@ -167,7 +167,7 @@ export default function MinpakuClient() {
                   <option>通年365日</option>
                 </select>
                 {operatingDays === "180日以内" && (
-                  <p className="text-xs text-amber-600 dark:text-amber-400 mt-1">
+                  <p className="text-xs text-kon dark:text-kon mt-1">
                     ⚠️ 住宅宿泊事業法により、届出住宅は年間180日が上限です
                   </p>
                 )}
@@ -181,7 +181,7 @@ export default function MinpakuClient() {
                 <input type="number" value={nightly} onChange={e => setNightly(e.target.value)} className={inp} />
               </div>
               <div>
-                <label className={label}>想定稼働率: <span className="font-semibold text-blue-600 dark:text-blue-400">{occupancyRate}%</span></label>
+                <label className={label}>想定稼働率: <span className="font-semibold text-kon dark:text-gray-300">{occupancyRate}%</span></label>
                 <input type="range" min={40} max={90} value={occupancyRate} onChange={e => setOccupancyRate(Number(e.target.value))} className="w-full" />
                 <div className="flex justify-between text-xs text-gray-400 mt-1"><span>40%</span><span>65%（目安）</span><span>90%</span></div>
               </div>
@@ -213,7 +213,7 @@ export default function MinpakuClient() {
                         key={t}
                         type="button"
                         onClick={() => setMgmtType(t)}
-                        className={`flex-1 py-1 rounded text-sm ${mgmtType === t ? "bg-blue-500 text-white" : "bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300"}`}
+                        className={`flex-1 py-1 rounded text-sm ${mgmtType === t ? "bg-kon text-white" : "bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300"}`}
                       >
                         {t}
                       </button>
@@ -249,7 +249,7 @@ export default function MinpakuClient() {
             <button
               type="button"
               onClick={handleCalculate}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl shadow-sm transition"
+              className="w-full bg-kon hover:bg-ai text-white font-semibold py-3 rounded-xl shadow-sm transition"
             >
               収益を計算する
             </button>
@@ -259,23 +259,23 @@ export default function MinpakuClient() {
           <div className="space-y-4">
             {result ? (
               <>
-                <div className="bg-blue-50 dark:bg-blue-900/30 rounded-xl p-5 shadow-sm">
-                  <h2 className="font-semibold text-blue-800 dark:text-blue-300 mb-3">📊 試算結果（{operatingDays}）</h2>
+                <div className="bg-gray-50 dark:bg-kon/30 rounded-xl p-5 shadow-sm">
+                  <h2 className="font-semibold text-kon dark:text-gray-300 mb-3">📊 試算結果（{operatingDays}）</h2>
                   <div className="space-y-2">
                     <div className="flex justify-between"><span className="text-sm text-gray-600 dark:text-gray-400">年間売上</span><span className="font-bold text-gray-800 dark:text-white">¥{fmt(result.main.annualRevenue)}</span></div>
-                    <div className="flex justify-between"><span className="text-sm text-gray-600 dark:text-gray-400">年間経費合計</span><span className="font-semibold text-red-600 dark:text-red-400">▲¥{fmt(result.main.totalExpenses)}</span></div>
-                    <div className="border-t border-blue-200 dark:border-blue-700 pt-2 flex justify-between items-center">
+                    <div className="flex justify-between"><span className="text-sm text-gray-600 dark:text-gray-400">年間経費合計</span><span className="font-semibold text-danger dark:text-danger">▲¥{fmt(result.main.totalExpenses)}</span></div>
+                    <div className="border-t border-gray-200 dark:border-kon pt-2 flex justify-between items-center">
                       <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">年間純利益</span>
-                      <span className={`font-bold text-xl ${result.main.netProfit >= 0 ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}`}>¥{fmt(result.main.netProfit)}</span>
+                      <span className={`font-bold text-xl ${result.main.netProfit >= 0 ? "text-green-600 dark:text-green-400" : "text-danger dark:text-danger"}`}>¥{fmt(result.main.netProfit)}</span>
                     </div>
                     <div className="grid grid-cols-2 gap-2 mt-1">
                       <div className="bg-white dark:bg-gray-800 rounded-lg p-3 text-center">
                         <div className="text-xs text-gray-500 dark:text-gray-400">表面利回り</div>
-                        <div className="font-bold text-lg text-blue-600 dark:text-blue-400">{fmtPct(result.roi)}</div>
+                        <div className="font-bold text-lg text-kon dark:text-gray-300">{fmtPct(result.roi)}</div>
                       </div>
                       <div className="bg-white dark:bg-gray-800 rounded-lg p-3 text-center">
                         <div className="text-xs text-gray-500 dark:text-gray-400">投資回収年数</div>
-                        <div className="font-bold text-lg text-purple-600 dark:text-purple-400">{result.payback > 0 ? result.payback.toFixed(1) + "年" : "−"}</div>
+                        <div className="font-bold text-lg text-kon dark:text-gray-300">{result.payback > 0 ? result.payback.toFixed(1) + "年" : "−"}</div>
                       </div>
                     </div>
                   </div>
@@ -306,7 +306,7 @@ export default function MinpakuClient() {
                   <div className="flex items-end gap-1 h-28">
                     {result.main.monthlyRevenue.map((v, i) => (
                       <div key={i} className="flex-1 flex flex-col items-center gap-1">
-                        <div className="w-full bg-blue-400 dark:bg-blue-500 rounded-t" style={{ height: `${(v / maxBar) * 100}%` }} />
+                        <div className="w-full bg-kon dark:bg-kon rounded-t" style={{ height: `${(v / maxBar) * 100}%` }} />
                         <span className="text-xs text-gray-400">{i + 1}</span>
                       </div>
                     ))}
@@ -340,7 +340,7 @@ export default function MinpakuClient() {
                         ))}
                       </tbody>
                     </table>
-                    <p className="text-xs text-amber-700 dark:text-amber-400 mt-2">
+                    <p className="text-xs text-kon dark:text-kon mt-2">
                       ※ 通年営業は旅館業法の許可が必要です。無許可営業は行政処分の対象となります。
                     </p>
                   </div>
@@ -352,9 +352,9 @@ export default function MinpakuClient() {
               </div>
             )}
 
-            <div className="bg-red-50 dark:bg-red-900/20 rounded-xl p-4 text-sm space-y-1">
-              <p className="font-semibold text-red-700 dark:text-red-300">⚠️ ご注意ください</p>
-              <ul className="list-disc list-inside text-xs text-red-700 dark:text-red-300 space-y-1">
+            <div className="bg-gray-50 dark:bg-danger/20 rounded-xl p-4 text-sm space-y-1">
+              <p className="font-semibold text-danger dark:text-gin">⚠️ ご注意ください</p>
+              <ul className="list-disc list-inside text-xs text-danger dark:text-gin space-y-1">
                 <li>ご近所トラブル・騒音苦情のリスクがあります</li>
                 <li>マンションの場合、管理組合の許可が必要なことがあります</li>
                 <li>住宅宿泊事業法の届出が必要です（都道府県等への届出）</li>

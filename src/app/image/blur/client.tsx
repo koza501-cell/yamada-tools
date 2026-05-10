@@ -94,8 +94,8 @@ export default function BlurClient({
           <p className="text-gray-600 dark:text-gray-300 text-lg">画像をぼかす・背景ぼかし処理</p>
           <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
             <span className="bg-green-50 text-green-700 px-3 py-1 rounded-full">✓ 完全無料</span>
-            <span className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full">🔒 ブラウザ内処理</span>
-            <span className="bg-purple-50 text-purple-700 px-3 py-1 rounded-full">📱 スマホ対応</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">🔒 ブラウザ内処理</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">📱 スマホ対応</span>
           </div>
         </header>
 
@@ -127,10 +127,10 @@ export default function BlurClient({
                   <span className="text-2xl">🖼️</span>
                   <p className="font-bold text-sm truncate max-w-[200px] sm:max-w-none">{fileName}</p>
                 </div>
-                <button onClick={reset} className="text-sm text-red-500 hover:text-red-700 font-bold py-2 px-3 rounded hover:bg-red-50">✕ 閉じる</button>
+                <button onClick={reset} className="text-sm text-danger hover:text-danger font-bold py-2 px-3 rounded hover:bg-gray-50">✕ 閉じる</button>
               </div>
 
-              <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 mb-4">
+              <div className="bg-gray-50 dark:bg-kon/20 rounded-xl p-4 mb-4">
                 <div className="flex items-center justify-between mb-2">
                   <label className="font-bold text-sm text-gray-700 dark:text-gray-200">ぼかしの強さ</label>
                   <span className="text-lg font-bold text-gray-700 dark:text-gray-300">{intensity}</span>

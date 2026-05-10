@@ -148,19 +148,19 @@ const stateAnimClass: Record<InternalState, string> = {
 
 // Each style adds dark: variants for backgrounds (white → gray-800, gradient lights → darker tones)
 const bubbleStyle: Record<InternalState, string> = {
-  idle:              "border-kon dark:border-blue-500 bg-white dark:bg-gray-800",
-  working:           "border-ai dark:border-blue-400 shadow-blue-100 dark:shadow-blue-900/30 bg-gradient-to-br from-white to-blue-50 dark:from-gray-800 dark:to-blue-900/30",
-  welcome:           "border-kon dark:border-blue-500 bg-white dark:bg-gray-800",
+  idle:              "border-kon dark:border-kon bg-white dark:bg-gray-800",
+  working:           "border-ai dark:border-kon shadow-blue-100 dark:shadow-blue-900/30 bg-gradient-to-br from-white to-blue-50 dark:from-gray-800 dark:to-blue-900/30",
+  welcome:           "border-kon dark:border-kon bg-white dark:bg-gray-800",
   welcome_night:     "border-indigo-400 dark:border-indigo-500 shadow-indigo-100 dark:shadow-indigo-900/30 bg-gradient-to-br from-white to-indigo-50 dark:from-gray-800 dark:to-indigo-900/30",
   welcome_milestone: "border-yellow-400 dark:border-yellow-500 shadow-yellow-100 dark:shadow-yellow-900/30 bg-gradient-to-br from-white to-yellow-50 dark:from-gray-800 dark:to-yellow-900/30",
-  processing:        "border-ai dark:border-blue-400 shadow-blue-100 dark:shadow-blue-900/30 bg-gradient-to-br from-white to-blue-50 dark:from-gray-800 dark:to-blue-900/30",
+  processing:        "border-ai dark:border-kon shadow-blue-100 dark:shadow-blue-900/30 bg-gradient-to-br from-white to-blue-50 dark:from-gray-800 dark:to-blue-900/30",
   success:           "border-green-500 dark:border-green-400 shadow-green-100 dark:shadow-green-900/30 bg-gradient-to-br from-white to-green-50 dark:from-gray-800 dark:to-green-900/30",
   success_milestone: "border-yellow-400 dark:border-yellow-500 shadow-yellow-100 dark:shadow-yellow-900/30 bg-gradient-to-br from-white to-yellow-50 dark:from-gray-800 dark:to-yellow-900/30",
-  error:             "border-red-400 dark:border-red-500 shadow-red-100 dark:shadow-red-900/30 bg-gradient-to-br from-white to-red-50 dark:from-gray-800 dark:to-red-900/30",
+  error:             "border-danger dark:border-danger shadow-red-100 dark:shadow-red-900/30 bg-gradient-to-br from-white to-red-50 dark:from-gray-800 dark:to-red-900/30",
   limit_warning:     "border-yellow-400 dark:border-yellow-500 shadow-yellow-100 dark:shadow-yellow-900/30 bg-gradient-to-br from-white to-yellow-50 dark:from-gray-800 dark:to-yellow-900/30",
-  limit_reached:     "border-red-400 dark:border-red-500 shadow-red-100 dark:shadow-red-900/30 bg-gradient-to-br from-white to-red-50 dark:from-gray-800 dark:to-red-900/30",
-  tip:               "border-kon dark:border-blue-500 bg-white dark:bg-gray-800",
-  upgrade_hint:      "border-pink-400 dark:border-pink-500 shadow-pink-100 dark:shadow-pink-900/30 bg-gradient-to-br from-white to-pink-50 dark:from-gray-800 dark:to-pink-900/30",
+  limit_reached:     "border-danger dark:border-danger shadow-red-100 dark:shadow-red-900/30 bg-gradient-to-br from-white to-red-50 dark:from-gray-800 dark:to-red-900/30",
+  tip:               "border-kon dark:border-kon bg-white dark:bg-gray-800",
+  upgrade_hint:      "border-sakura dark:border-sakura shadow-pink-100 dark:shadow-pink-900/30 bg-gradient-to-br from-white to-pink-50 dark:from-gray-800 dark:to-pink-900/30",
 };
 
 const tailColor: Record<InternalState, string> = {
@@ -181,34 +181,34 @@ const tailColor: Record<InternalState, string> = {
 
 const nameColor: Record<InternalState, string> = {
   idle:              "text-gray-400 dark:text-gray-500",
-  working:           "text-ai dark:text-blue-400",
+  working:           "text-ai dark:text-gray-300",
   welcome:           "text-gray-400 dark:text-gray-500",
   welcome_night:     "text-indigo-400 dark:text-indigo-300",
   welcome_milestone: "text-yellow-500 dark:text-yellow-400",
-  processing:        "text-ai dark:text-blue-400",
+  processing:        "text-ai dark:text-gray-300",
   success:           "text-green-500 dark:text-green-400",
   success_milestone: "text-yellow-500 dark:text-yellow-400",
-  error:             "text-red-400 dark:text-red-300",
+  error:             "text-danger dark:text-gin",
   limit_warning:     "text-yellow-500 dark:text-yellow-400",
-  limit_reached:     "text-red-400 dark:text-red-300",
+  limit_reached:     "text-danger dark:text-gin",
   tip:               "text-gray-400 dark:text-gray-500",
-  upgrade_hint:      "text-pink-400 dark:text-pink-300",
+  upgrade_hint:      "text-sakura dark:text-sakura",
 };
 
 const glowColor: Record<InternalState, string> = {
-  idle:              "bg-sakura/30 dark:bg-pink-500/20",
-  working:           "bg-blue-400/30 dark:bg-blue-400/20",
-  welcome:           "bg-sakura/30 dark:bg-pink-500/20",
+  idle:              "bg-sakura/30 dark:bg-kon/20",
+  working:           "bg-kon/30 dark:bg-kon/20",
+  welcome:           "bg-sakura/30 dark:bg-kon/20",
   welcome_night:     "bg-indigo-400/20 dark:bg-indigo-400/15",
   welcome_milestone: "bg-yellow-400/30 dark:bg-yellow-400/20",
-  processing:        "bg-blue-400/30 dark:bg-blue-400/20",
+  processing:        "bg-kon/30 dark:bg-kon/20",
   success:           "bg-green-400/40 dark:bg-green-400/25",
   success_milestone: "bg-yellow-400/40 dark:bg-yellow-400/25",
-  error:             "bg-red-400/30 dark:bg-red-400/20",
+  error:             "bg-danger/30 dark:bg-danger/20",
   limit_warning:     "bg-yellow-400/30 dark:bg-yellow-400/20",
-  limit_reached:     "bg-red-400/30 dark:bg-red-400/20",
-  tip:               "bg-sakura/30 dark:bg-pink-500/20",
-  upgrade_hint:      "bg-pink-400/30 dark:bg-pink-400/20",
+  limit_reached:     "bg-danger/30 dark:bg-danger/20",
+  tip:               "bg-sakura/30 dark:bg-kon/20",
+  upgrade_hint:      "bg-kon/30 dark:bg-kon/20",
 };
 
 function SuccessParticles() {
@@ -263,7 +263,7 @@ function WorkingDots() {
       {[0, 1, 2].map((i) => (
         <div
           key={i}
-          className="w-1.5 h-1.5 bg-kon dark:bg-blue-400 rounded-full animate-typing-dot"
+          className="w-1.5 h-1.5 bg-kon dark:bg-kon rounded-full animate-typing-dot"
           style={{ animationDelay: `${i * 0.2}s` }}
         />
       ))}
@@ -274,9 +274,9 @@ function WorkingDots() {
 function TypingIndicator() {
   return (
     <span className="inline-flex items-center ml-1">
-      <span className="w-1.5 h-1.5 bg-kon dark:bg-blue-400 rounded-full animate-typing-dot" style={{ animationDelay: "0ms" }}></span>
-      <span className="w-1.5 h-1.5 bg-kon dark:bg-blue-400 rounded-full animate-typing-dot mx-1" style={{ animationDelay: "150ms" }}></span>
-      <span className="w-1.5 h-1.5 bg-kon dark:bg-blue-400 rounded-full animate-typing-dot" style={{ animationDelay: "300ms" }}></span>
+      <span className="w-1.5 h-1.5 bg-kon dark:bg-kon rounded-full animate-typing-dot" style={{ animationDelay: "0ms" }}></span>
+      <span className="w-1.5 h-1.5 bg-kon dark:bg-kon rounded-full animate-typing-dot mx-1" style={{ animationDelay: "150ms" }}></span>
+      <span className="w-1.5 h-1.5 bg-kon dark:bg-kon rounded-full animate-typing-dot" style={{ animationDelay: "300ms" }}></span>
     </span>
   );
 }
@@ -403,7 +403,7 @@ export default function Mascot({
         {isError        && <ErrorSweat />}
         {isProcessing   && (
           <>
-            <div className="absolute inset-0 border-2 border-kon/20 dark:border-blue-400/20 border-t-kon dark:border-t-blue-400 rounded-full animate-spin-slow" />
+            <div className="absolute inset-0 border-2 border-kon/20 dark:border-kon/20 border-t-kon dark:border-t-blue-400 rounded-full animate-spin-slow" />
             <WorkingDots />
           </>
         )}
@@ -442,13 +442,13 @@ export default function Mascot({
             </span>
           )}
           {isError && (
-            <span className="block w-6 h-6 bg-red-500 dark:bg-red-600 rounded-full text-white text-xs flex items-center justify-center shadow-md">!</span>
+            <span className="block w-6 h-6 bg-danger dark:bg-danger rounded-full text-white text-xs flex items-center justify-center shadow-md">!</span>
           )}
           {isProcessing && (
-            <span className="block w-6 h-6 bg-ai dark:bg-blue-600 rounded-full text-white text-xs flex items-center justify-center shadow-md animate-spin-slow">⟳</span>
+            <span className="block w-6 h-6 bg-ai dark:bg-kon rounded-full text-white text-xs flex items-center justify-center shadow-md animate-spin-slow">⟳</span>
           )}
           {(effectiveState === "upgrade_hint" || effectiveState === "limit_warning") && (
-            <span className="block w-6 h-6 bg-pink-400 dark:bg-pink-500 rounded-full text-white text-xs flex items-center justify-center shadow-md">★</span>
+            <span className="block w-6 h-6 bg-kon dark:bg-kon rounded-full text-white text-xs flex items-center justify-center shadow-md">★</span>
           )}
         </div>
 
@@ -460,7 +460,7 @@ export default function Mascot({
         {showProLink && (
           <a
             href="/pro"
-            className="mt-1.5 inline-block text-xs font-semibold text-pink-500 hover:text-pink-600 dark:text-pink-400 dark:hover:text-pink-300 underline underline-offset-2"
+            className="mt-1.5 inline-block text-xs font-semibold text-sakura hover:text-sakura dark:text-sakura dark:hover:text-sakura underline underline-offset-2"
           >
             PRO プランを見る →
           </a>

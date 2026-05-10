@@ -46,9 +46,9 @@ export default function KyouikuhiSimulation2026Blog() {
         }}
       />
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-pink-500">ホーム</Link>
+        <Link href="/" className="hover:text-sakura">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-pink-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-sakura">ブログ</Link>
         <span className="mx-2">/</span>
         <span>教育費シミュレーション2026</span>
       </nav>
@@ -91,8 +91,8 @@ export default function KyouikuhiSimulation2026Blog() {
             <tr><td className="px-3 py-3 border-b font-bold">小学校のみ私立</td><td className="px-3 py-3 border-b text-right">約1,100万円</td></tr>
             <tr><td className="px-3 py-3 border-b font-bold">中学から私立</td><td className="px-3 py-3 border-b text-right">約1,400万円</td></tr>
             <tr><td className="px-3 py-3 border-b font-bold">高校から私立</td><td className="px-3 py-3 border-b text-right">約1,000万円</td></tr>
-            <tr className="bg-yellow-50"><td className="px-3 py-3 border-b font-bold">オール私立（幼〜大学文系）</td><td className="px-3 py-3 border-b text-right font-bold text-orange-600">約2,200万円</td></tr>
-            <tr className="bg-yellow-50"><td className="px-3 py-3 border-b font-bold">オール私立（幼〜大学理系）</td><td className="px-3 py-3 border-b text-right font-bold text-red-600">約2,500万円</td></tr>
+            <tr className="bg-yellow-50"><td className="px-3 py-3 border-b font-bold">オール私立（幼〜大学文系）</td><td className="px-3 py-3 border-b text-right font-bold text-kon">約2,200万円</td></tr>
+            <tr className="bg-yellow-50"><td className="px-3 py-3 border-b font-bold">オール私立（幼〜大学理系）</td><td className="px-3 py-3 border-b text-right font-bold text-danger">約2,500万円</td></tr>
           </tbody>
         </table>
 
@@ -121,7 +121,7 @@ export default function KyouikuhiSimulation2026Blog() {
           </thead>
           <tbody>
             <tr><td className="px-4 py-3 border-b font-bold">公立</td><td className="px-4 py-3 border-b text-right">約17万円</td><td className="px-4 py-3 border-b text-right font-bold text-emerald-600">約50万円</td></tr>
-            <tr><td className="px-4 py-3 border-b font-bold">私立</td><td className="px-4 py-3 border-b text-right">約31万円</td><td className="px-4 py-3 border-b text-right font-bold text-orange-600">約93万円</td></tr>
+            <tr><td className="px-4 py-3 border-b font-bold">私立</td><td className="px-4 py-3 border-b text-right">約31万円</td><td className="px-4 py-3 border-b text-right font-bold text-kon">約93万円</td></tr>
           </tbody>
         </table>
 
@@ -136,7 +136,7 @@ export default function KyouikuhiSimulation2026Blog() {
           </thead>
           <tbody>
             <tr><td className="px-4 py-3 border-b font-bold">公立</td><td className="px-4 py-3 border-b text-right">約35万円</td><td className="px-4 py-3 border-b text-right font-bold text-emerald-600">約210万円</td></tr>
-            <tr><td className="px-4 py-3 border-b font-bold">私立</td><td className="px-4 py-3 border-b text-right">約167万円</td><td className="px-4 py-3 border-b text-right font-bold text-orange-600">約1,000万円</td></tr>
+            <tr><td className="px-4 py-3 border-b font-bold">私立</td><td className="px-4 py-3 border-b text-right">約167万円</td><td className="px-4 py-3 border-b text-right font-bold text-kon">約1,000万円</td></tr>
           </tbody>
         </table>
 
@@ -151,7 +151,7 @@ export default function KyouikuhiSimulation2026Blog() {
           </thead>
           <tbody>
             <tr><td className="px-4 py-3 border-b font-bold">公立</td><td className="px-4 py-3 border-b text-right">約54万円</td><td className="px-4 py-3 border-b text-right font-bold text-emerald-600">約162万円</td></tr>
-            <tr><td className="px-4 py-3 border-b font-bold">私立</td><td className="px-4 py-3 border-b text-right">約144万円</td><td className="px-4 py-3 border-b text-right font-bold text-orange-600">約430万円</td></tr>
+            <tr><td className="px-4 py-3 border-b font-bold">私立</td><td className="px-4 py-3 border-b text-right">約144万円</td><td className="px-4 py-3 border-b text-right font-bold text-kon">約430万円</td></tr>
           </tbody>
         </table>
 
@@ -166,7 +166,7 @@ export default function KyouikuhiSimulation2026Blog() {
           </thead>
           <tbody>
             <tr><td className="px-4 py-3 border-b font-bold">公立</td><td className="px-4 py-3 border-b text-right">約51万円</td><td className="px-4 py-3 border-b text-right font-bold text-emerald-600">約154万円</td></tr>
-            <tr><td className="px-4 py-3 border-b font-bold">私立</td><td className="px-4 py-3 border-b text-right">約105万円</td><td className="px-4 py-3 border-b text-right font-bold text-orange-600">約315万円</td></tr>
+            <tr><td className="px-4 py-3 border-b font-bold">私立</td><td className="px-4 py-3 border-b text-right">約105万円</td><td className="px-4 py-3 border-b text-right font-bold text-kon">約315万円</td></tr>
           </tbody>
         </table>
 
@@ -182,14 +182,14 @@ export default function KyouikuhiSimulation2026Blog() {
           </thead>
           <tbody>
             <tr><td className="px-4 py-3 border-b font-bold">国公立</td><td className="px-4 py-3 border-b text-right">約28万円</td><td className="px-4 py-3 border-b text-right">約54万円</td><td className="px-4 py-3 border-b text-right font-bold text-emerald-600">約250万円</td></tr>
-            <tr><td className="px-4 py-3 border-b font-bold">私立文系</td><td className="px-4 py-3 border-b text-right">約23万円</td><td className="px-4 py-3 border-b text-right">約82万円</td><td className="px-4 py-3 border-b text-right font-bold text-orange-600">約400万円</td></tr>
-            <tr><td className="px-4 py-3 border-b font-bold">私立理系</td><td className="px-4 py-3 border-b text-right">約25万円</td><td className="px-4 py-3 border-b text-right">約114万円</td><td className="px-4 py-3 border-b text-right font-bold text-red-600">約550万円</td></tr>
-            <tr><td className="px-4 py-3 border-b font-bold">私立医歯薬系</td><td className="px-4 py-3 border-b text-right">約100万円</td><td className="px-4 py-3 border-b text-right">約300万円</td><td className="px-4 py-3 border-b text-right font-bold text-red-600">約2,000万円</td></tr>
+            <tr><td className="px-4 py-3 border-b font-bold">私立文系</td><td className="px-4 py-3 border-b text-right">約23万円</td><td className="px-4 py-3 border-b text-right">約82万円</td><td className="px-4 py-3 border-b text-right font-bold text-kon">約400万円</td></tr>
+            <tr><td className="px-4 py-3 border-b font-bold">私立理系</td><td className="px-4 py-3 border-b text-right">約25万円</td><td className="px-4 py-3 border-b text-right">約114万円</td><td className="px-4 py-3 border-b text-right font-bold text-danger">約550万円</td></tr>
+            <tr><td className="px-4 py-3 border-b font-bold">私立医歯薬系</td><td className="px-4 py-3 border-b text-right">約100万円</td><td className="px-4 py-3 border-b text-right">約300万円</td><td className="px-4 py-3 border-b text-right font-bold text-danger">約2,000万円</td></tr>
           </tbody>
         </table>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-          <p className="text-lg font-bold text-blue-800 mb-2">🔧 あなたの教育費を計算！</p>
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+          <p className="text-lg font-bold text-kon mb-2">🔧 あなたの教育費を計算！</p>
           <p className="text-gray-700 mb-4">子どもの人数と進路を選んで、必要な教育費をシミュレーションしましょう。</p>
           <Link href="/education/education-cost-simulator" className="inline-block bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-lg transition">
             → 教育費シミュレーターを使う

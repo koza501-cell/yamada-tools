@@ -233,7 +233,7 @@ export default function GaikokujinVisaClient() {
                         <td className="px-3 py-2 text-right font-mono text-gray-800 dark:text-white">
                           {fmt(row.r.max)}円
                         </td>
-                        <td className="px-3 py-2 text-right font-mono text-blue-700 dark:text-blue-300">
+                        <td className="px-3 py-2 text-right font-mono text-kon dark:text-gray-300">
                           {fmt(mid(row.r))}円
                         </td>
                       </tr>
@@ -242,7 +242,7 @@ export default function GaikokujinVisaClient() {
                       <td className="px-3 py-2 text-gray-700 dark:text-gray-200">初期費用合計（{calc.n}人）</td>
                       <td className="px-3 py-2 text-right font-mono">{fmt(calc.initialTotal.min)}円</td>
                       <td className="px-3 py-2 text-right font-mono">{fmt(calc.initialTotal.max)}円</td>
-                      <td className="px-3 py-2 text-right font-mono text-blue-700 dark:text-blue-300">
+                      <td className="px-3 py-2 text-right font-mono text-kon dark:text-gray-300">
                         {fmt(mid(calc.initialTotal))}円
                       </td>
                     </tr>
@@ -252,17 +252,17 @@ export default function GaikokujinVisaClient() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="bg-blue-600 rounded-xl shadow p-5 text-white text-center">
+              <div className="bg-kon rounded-xl shadow p-5 text-white text-center">
                 <p className="text-xs opacity-80 mb-1">初期費用合計（目安）</p>
                 <p className="text-2xl font-bold">{fmt(mid(calc.initialTotal))}</p>
                 <p className="text-xs opacity-70">円</p>
               </div>
-              <div className="bg-blue-700 rounded-xl shadow p-5 text-white text-center">
+              <div className="bg-kon rounded-xl shadow p-5 text-white text-center">
                 <p className="text-xs opacity-80 mb-1">年間更新費用（目安）</p>
                 <p className="text-2xl font-bold">{fmt(mid(calc.renewalTotal))}</p>
                 <p className="text-xs opacity-70">円/年</p>
               </div>
-              <div className="bg-blue-800 rounded-xl shadow p-5 text-white text-center">
+              <div className="bg-kon rounded-xl shadow p-5 text-white text-center">
                 <p className="text-xs opacity-80 mb-1">{calc.yr}年間 総費用（目安）</p>
                 <p className="text-2xl font-bold">{fmt(mid(calc.grandTotal))}</p>
                 <p className="text-xs opacity-70">円</p>
@@ -272,7 +272,7 @@ export default function GaikokujinVisaClient() {
             <div className="text-center">
               <button
                 onClick={() => window.print()}
-                className="text-xs text-blue-600 hover:underline print:hidden"
+                className="text-xs text-kon hover:underline print:hidden"
               >
                 🖨️ 印刷 / PDFとして保存
               </button>
@@ -280,13 +280,13 @@ export default function GaikokujinVisaClient() {
           </div>
         </div>
 
-        <div className="mt-8 bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700 rounded-xl p-6">
-          <h2 className="font-semibold text-blue-800 dark:text-blue-200 mb-3">
+        <div className="mt-8 bg-gray-50 dark:bg-kon/30 border border-gray-200 dark:border-kon rounded-xl p-6">
+          <h2 className="font-semibold text-kon dark:text-gray-300 mb-3">
             ✅ 技術・人文知識・国際業務ビザのメリット
           </h2>
           <ul className="space-y-2">
             {MERITS.map((m, i) => (
-              <li key={i} className="flex gap-2 text-sm text-blue-800 dark:text-blue-200">
+              <li key={i} className="flex gap-2 text-sm text-kon dark:text-gray-300">
                 <span className="shrink-0">•</span>
                 <span>{m}</span>
               </li>

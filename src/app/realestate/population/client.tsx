@@ -43,9 +43,9 @@ interface PopResult {
 }
 
 const TREND_STYLE = {
-  declining:     { bg: "bg-red-50",    border: "border-red-300",   text: "text-red-700",   icon: "📉", badge: "bg-red-600 text-white" },
-  slight_decline:{ bg: "bg-amber-50",  border: "border-amber-300", text: "text-amber-700", icon: "📊", badge: "bg-amber-500 text-white" },
-  stable:        { bg: "bg-blue-50",   border: "border-blue-300",  text: "text-blue-700",  icon: "➡️", badge: "bg-blue-600 text-white" },
+  declining:     { bg: "bg-gray-50",    border: "border-gray-200",   text: "text-danger",   icon: "📉", badge: "bg-danger text-white" },
+  slight_decline:{ bg: "bg-gray-50",  border: "border-gray-200", text: "text-kon", icon: "📊", badge: "bg-kon text-white" },
+  stable:        { bg: "bg-gray-50",   border: "border-kon",  text: "text-kon",  icon: "➡️", badge: "bg-kon text-white" },
   growing:       { bg: "bg-green-50",  border: "border-green-300", text: "text-green-700", icon: "📈", badge: "bg-green-600 text-white" },
   unknown:       { bg: "bg-gray-50",   border: "border-gray-200",  text: "text-gray-600",  icon: "❓", badge: "bg-gray-400 text-white" },
 };
@@ -137,7 +137,7 @@ export default function PopulationClient() {
         </div>
 
         {error && (
-          <div className={`rounded-xl p-4 mb-6 text-sm ${error.includes("見つかりませんでした") ? "bg-amber-50 border border-amber-300 text-amber-800" : "bg-red-50 border border-red-200 text-red-700"}`}>
+          <div className={`rounded-xl p-4 mb-6 text-sm ${error.includes("見つかりませんでした") ? "bg-gray-50 border border-gray-200 text-kon" : "bg-gray-50 border border-gray-200 text-danger"}`}>
             {error.includes("見つかりませんでした") ? "📭 " : "⚠️ "}{error}
           </div>
         )}
@@ -146,7 +146,7 @@ export default function PopulationClient() {
           <div id="pop-print-area">
             <div className="print-header hidden items-center justify-between px-4 py-3 border-b border-gray-200 mb-3">
               <div>
-                <p className="text-lg font-bold text-blue-700">山田ツール</p>
+                <p className="text-lg font-bold text-kon">山田ツール</p>
                 <p className="text-xs text-gray-500">yamada-tools.jp — 人口推計チェッカー</p>
               </div>
               <div className="text-right">
@@ -154,7 +154,7 @@ export default function PopulationClient() {
               </div>
             </div>
 
-            <div className="bg-blue-600 text-white rounded-xl p-4 mb-4">
+            <div className="bg-kon text-white rounded-xl p-4 mb-4">
               <p className="text-xs opacity-75 mb-1">📍 {result.address}</p>
               <p className="text-sm opacity-90">500mメッシュ単位の将来推計人口</p>
             </div>
@@ -198,11 +198,11 @@ export default function PopulationClient() {
                     const barWidth = maxPop > 0 ? Math.round((point.population / maxPop) * 100) : 0;
                     const isBase = point.year === 2020;
                     const change = point.change_from_2020;
-                    const barColor = change === null ? "bg-blue-500" :
-                                     change >= 0 ? "bg-green-500" : "bg-red-400";
+                    const barColor = change === null ? "bg-kon" :
+                                     change >= 0 ? "bg-green-500" : "bg-danger";
                     return (
                       <div key={point.year} className="flex items-center gap-2">
-                        <span className={`text-xs w-10 text-right font-medium ${isBase ? "text-blue-700" : "text-gray-500"}`}>
+                        <span className={`text-xs w-10 text-right font-medium ${isBase ? "text-kon" : "text-gray-500"}`}>
                           {point.year}
                         </span>
                         <div className="flex-1 bg-gray-100 rounded-full h-5 relative overflow-hidden">
@@ -215,12 +215,12 @@ export default function PopulationClient() {
                           {point.population_formatted}
                         </span>
                         {change !== null && point.year !== 2020 && (
-                          <span className={`text-xs w-14 text-right ${change >= 0 ? "text-green-600" : "text-red-500"}`}>
+                          <span className={`text-xs w-14 text-right ${change >= 0 ? "text-green-600" : "text-danger"}`}>
                             {change > 0 ? "+" : ""}{change}%
                           </span>
                         )}
                         {point.year === 2020 && (
-                          <span className="text-xs w-14 text-right text-blue-500">基準年</span>
+                          <span className="text-xs w-14 text-right text-kon">基準年</span>
                         )}
                       </div>
                     );
@@ -229,11 +229,11 @@ export default function PopulationClient() {
                 <p className="text-xs text-gray-400 mt-3">※ 500m×500mメッシュ単位の推計値です</p>
               </div>
 
-              <div className={`rounded-xl p-4 border ${result.did.in_did ? "bg-blue-50 border-blue-200" : "bg-gray-50 border-gray-200"}`}>
+              <div className={`rounded-xl p-4 border ${result.did.in_did ? "bg-gray-50 border-gray-200" : "bg-gray-50 border-gray-200"}`}>
                 <h3 className="font-semibold text-gray-800 mb-2 text-sm">🏙 人口集中地区（DID）</h3>
                 {result.did.in_did && result.did.info ? (
                   <div className="text-sm space-y-1">
-                    <p className="text-blue-700 font-medium">✅ 人口集中地区に含まれています</p>
+                    <p className="text-kon font-medium">✅ 人口集中地区に含まれています</p>
                     <div className="grid grid-cols-2 gap-2 mt-2 text-xs text-gray-600">
                       {result.did.info.city && <div><span className="text-gray-400">地区:</span> {result.did.info.city}</div>}
                       {result.did.info.density && <div><span className="text-gray-400">人口密度:</span> {result.did.info.density.toLocaleString()}人/km²</div>}
@@ -257,7 +257,7 @@ export default function PopulationClient() {
                     🗺 Googleマップで確認
                   </a>
                   <button type="button" onClick={() => window.print()}
-                    className="text-sm bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors font-medium">
+                    className="text-sm bg-kon hover:bg-ai text-white px-4 py-2 rounded-lg transition-colors font-medium">
                     🖨 印刷・PDF保存
                   </button>
                 </div>

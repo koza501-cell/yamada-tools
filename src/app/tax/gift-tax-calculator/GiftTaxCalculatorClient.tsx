@@ -195,11 +195,11 @@ export default function GiftTaxCalculatorPage() {
   const [result, setResult] = useState<CalcResult | null>(null);
 
   const inputClass =
-    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500";
+    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon";
   const labelClass = "block text-sm font-medium text-gray-700 mb-1";
   const toggleClass = (active: boolean) =>
     `flex-1 py-2 text-sm font-medium rounded-md transition-colors ${
-      active ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+      active ? "bg-kon text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
     }`;
 
   function handleCalculate() {
@@ -243,10 +243,10 @@ export default function GiftTaxCalculatorPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      <div className="bg-gradient-to-r from-blue-700 to-blue-500 text-white py-10 px-4">
+      <div className="bg-gradient-to-r from-blue-700 to-kon text-white py-10 px-4">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-2xl md:text-3xl font-bold mb-2">贈与税 計算機</h1>
-          <p className="text-blue-100 text-sm md:text-base">
+          <p className="text-gin text-sm md:text-base">
             贈与金額と関係性を入力するだけで贈与税を自動計算。暦年課税・相続時精算課税・住宅取得資金贈与の特例に対応。2024年度改正対応。
           </p>
         </div>
@@ -340,7 +340,7 @@ export default function GiftTaxCalculatorPage() {
               </button>
               <button
                 onClick={handleCalculate}
-                className="flex-1 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-bold hover:bg-blue-700 transition-colors"
+                className="flex-1 py-2.5 rounded-lg bg-kon text-white text-sm font-bold hover:bg-ai transition-colors"
               >
                 計算する
               </button>
@@ -363,7 +363,7 @@ export default function GiftTaxCalculatorPage() {
                     )}
                   </div>
                   {result.isUnified && (
-                    <p className="text-xs text-orange-600 mt-3 bg-orange-50 rounded-lg p-2">
+                    <p className="text-xs text-kon mt-3 bg-gray-50 rounded-lg p-2">
                       ※相続時に贈与財産が相続税の課税対象となります
                     </p>
                   )}
@@ -391,7 +391,7 @@ export default function GiftTaxCalculatorPage() {
                       )}
                       <div className="flex justify-between py-1.5 border-b">
                         <span className="text-gray-600">課税価格</span>
-                        <span className="font-medium text-orange-600">{fmt(result.taxableAmount)}</span>
+                        <span className="font-medium text-kon">{fmt(result.taxableAmount)}</span>
                       </div>
                       {result.taxRate !== null && (
                         <div className="flex justify-between py-1.5 border-b">
@@ -405,9 +405,9 @@ export default function GiftTaxCalculatorPage() {
                           <span className="font-medium">{fmt(result.taxDeduction)}</span>
                         </div>
                       )}
-                      <div className="flex justify-between items-center py-3 bg-blue-50 rounded-lg px-3 mt-1">
-                        <span className="text-sm font-bold text-blue-800">贈与税額</span>
-                        <span className="text-2xl font-bold text-blue-800">{fmt(result.giftTax)}</span>
+                      <div className="flex justify-between items-center py-3 bg-gray-50 rounded-lg px-3 mt-1">
+                        <span className="text-sm font-bold text-kon">贈与税額</span>
+                        <span className="text-2xl font-bold text-kon">{fmt(result.giftTax)}</span>
                       </div>
                       <div className="flex justify-between py-1.5 px-1">
                         <span className="text-gray-500 text-xs">実効税率</span>
@@ -419,14 +419,14 @@ export default function GiftTaxCalculatorPage() {
                   </div>
 
                   {result.isUnified && (
-                    <div className="bg-orange-50 rounded-xl border border-orange-200 p-4 text-xs text-orange-700 leading-relaxed">
+                    <div className="bg-gray-50 rounded-xl border border-gray-200 p-4 text-xs text-kon leading-relaxed">
                       <p className="font-bold mb-1">相続時精算課税について</p>
                       <p>贈与時に支払った贈与税は、将来の相続時に相続税と精算されます。贈与財産は相続税の課税対象に加算されます。</p>
                     </div>
                   )}
 
                   {!result.isUnified && (
-                    <div className="bg-blue-50 rounded-xl border border-blue-100 p-4 text-xs text-blue-700 leading-relaxed">
+                    <div className="bg-gray-50 rounded-xl border border-gray-200 p-4 text-xs text-kon leading-relaxed">
                       <p className="font-bold mb-1">暦年課税 vs 相続時精算課税</p>
                       <p>毎年少額の贈与を続ける場合は暦年課税、まとまった金額を贈与する場合は相続時精算課税が有利なケースがあります。詳しくは税理士にご相談ください。</p>
                     </div>
@@ -450,11 +450,11 @@ export default function GiftTaxCalculatorPage() {
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
           <h2 className="text-lg font-bold text-gray-800 mb-4">よくある計算例</h2>
 
-          <p className="text-sm font-semibold text-blue-700 mb-2">暦年課税（特例税率）：直系尊属から18歳以上への贈与</p>
+          <p className="text-sm font-semibold text-kon mb-2">暦年課税（特例税率）：直系尊属から18歳以上への贈与</p>
           <div className="overflow-x-auto mb-5">
             <table className="w-full text-sm border-collapse">
               <thead>
-                <tr className="bg-blue-600 text-white">
+                <tr className="bg-kon text-white">
                   <th className="text-left px-3 py-2 rounded-tl-lg">贈与金額</th>
                   <th className="text-right px-3 py-2">課税価格</th>
                   <th className="text-right px-3 py-2">税率</th>
@@ -471,9 +471,9 @@ export default function GiftTaxCalculatorPage() {
                 ].map((row, i) => (
                   <tr key={i} className={i % 2 === 0 ? "bg-gray-50" : "bg-white"}>
                     <td className="px-3 py-2 font-medium text-gray-800">{row.gift}</td>
-                    <td className="px-3 py-2 text-right text-orange-600">{row.taxable}</td>
+                    <td className="px-3 py-2 text-right text-kon">{row.taxable}</td>
                     <td className="px-3 py-2 text-right">{row.rate}</td>
-                    <td className="px-3 py-2 text-right font-bold text-blue-700">{row.tax}</td>
+                    <td className="px-3 py-2 text-right font-bold text-kon">{row.tax}</td>
                   </tr>
                 ))}
               </tbody>
@@ -501,7 +501,7 @@ export default function GiftTaxCalculatorPage() {
                 ].map((row, i) => (
                   <tr key={i} className={i % 2 === 0 ? "bg-gray-50" : "bg-white"}>
                     <td className="px-3 py-2 font-medium text-gray-800">{row.gift}</td>
-                    <td className="px-3 py-2 text-right text-orange-600">{row.taxable}</td>
+                    <td className="px-3 py-2 text-right text-kon">{row.taxable}</td>
                     <td className="px-3 py-2 text-right">{row.rate}</td>
                     <td className="px-3 py-2 text-right font-bold text-indigo-700">{row.tax}</td>
                   </tr>
@@ -520,23 +520,23 @@ export default function GiftTaxCalculatorPage() {
           </p>
           <ul className="space-y-3 text-sm text-gray-700">
             <li className="flex gap-2">
-              <span className="text-blue-500 font-bold shrink-0">▶</span>
+              <span className="text-kon font-bold shrink-0">▶</span>
               <span><strong>暦年課税</strong>：年間110万円の基礎控除あり。超えた分に税率適用。受贈者の年齢・贈与者との関係により特例税率が適用。</span>
             </li>
             <li className="flex gap-2">
-              <span className="text-blue-500 font-bold shrink-0">▶</span>
+              <span className="text-kon font-bold shrink-0">▶</span>
               <span><strong>相続時精算課税</strong>：累計2,500万円まで非課税（2024年改正で毎年110万円の基礎控除も新設）。将来の相続税で精算。</span>
             </li>
             <li className="flex gap-2">
-              <span className="text-blue-500 font-bold shrink-0">▶</span>
+              <span className="text-kon font-bold shrink-0">▶</span>
               <span><strong>住宅取得資金贈与の特例</strong>：省エネ等住宅は1,000万円、一般住宅は500万円が非課税（2026年12月末まで）。</span>
             </li>
             <li className="flex gap-2">
-              <span className="text-blue-500 font-bold shrink-0">▶</span>
+              <span className="text-kon font-bold shrink-0">▶</span>
               <span><strong>申告期限</strong>：贈与を受けた年の翌年2月1日〜3月15日。期限内に税務署へ申告・納税が必要。</span>
             </li>
             <li className="flex gap-2">
-              <span className="text-blue-500 font-bold shrink-0">▶</span>
+              <span className="text-kon font-bold shrink-0">▶</span>
               <span><strong>生前贈与加算</strong>：2024年改正により、死亡前7年以内（改正前は3年以内）の贈与は相続財産に加算されます。</span>
             </li>
           </ul>
@@ -570,7 +570,7 @@ export default function GiftTaxCalculatorPage() {
             ].map((item, i) => (
               <div key={i} className="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
                 <p className="font-semibold text-gray-800 mb-2 flex gap-2">
-                  <span className="text-blue-600 font-bold shrink-0">Q{i + 1}.</span>{item.q}
+                  <span className="text-kon font-bold shrink-0">Q{i + 1}.</span>{item.q}
                 </p>
                 <p className="text-sm text-gray-600 leading-relaxed flex gap-2">
                   <span className="text-green-600 font-bold shrink-0">A.</span>{item.a}
@@ -609,15 +609,15 @@ export default function GiftTaxCalculatorPage() {
               <Link
                 key={tool.href}
                 href={tool.href}
-                className="flex items-start gap-3 bg-white rounded-xl border border-blue-100 hover:border-blue-400 hover:shadow-md transition-all p-4 group"
+                className="flex items-start gap-3 bg-white rounded-xl border border-gray-200 hover:border-ai hover:shadow-md transition-all p-4 group"
               >
-                <div className="w-9 h-9 rounded-lg bg-blue-50 group-hover:bg-blue-100 flex items-center justify-center shrink-0 transition-colors">
-                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-9 h-9 rounded-lg bg-gray-50 group-hover:bg-ai flex items-center justify-center shrink-0 transition-colors">
+                  <svg className="w-5 h-5 text-kon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 11h.01M12 11h.01M15 11h.01M4 19h16a2 2 0 002-2V7a2 2 0 00-2-2H4a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-blue-700 group-hover:text-blue-800">{tool.label}</p>
+                  <p className="text-sm font-semibold text-kon group-hover:text-ai">{tool.label}</p>
                   <p className="text-xs text-gray-500 mt-0.5">{tool.desc}</p>
                 </div>
               </Link>

@@ -290,14 +290,14 @@ export default function DebtRestructuringChecker() {
   };
 
   const colorMap: Record<string, string> = {
-    blue: "border-blue-500 bg-blue-50",
-    purple: "border-purple-500 bg-purple-50",
-    red: "border-red-500 bg-red-50",
+    blue: "border-kon bg-gray-50",
+    purple: "border-kon bg-gray-50",
+    red: "border-danger bg-gray-50",
   };
   const badgeColorMap: Record<string, string> = {
-    blue: "bg-blue-100 text-blue-800",
-    purple: "bg-purple-100 text-purple-800",
-    red: "bg-red-100 text-red-800",
+    blue: "bg-gray-50 text-kon",
+    purple: "bg-gray-50 text-kon",
+    red: "bg-gray-50 text-danger",
   };
 
   return (
@@ -306,9 +306,9 @@ export default function DebtRestructuringChecker() {
         {/* Header */}
         <div className="mb-6">
           <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
-            <Link href="/" className="hover:text-blue-600">ホーム</Link>
+            <Link href="/" className="hover:text-ai">ホーム</Link>
             <span>›</span>
-            <Link href="/debt" className="hover:text-blue-600">借金・債務整理</Link>
+            <Link href="/debt" className="hover:text-ai">借金・債務整理</Link>
             <span>›</span>
             <span>任意整理 vs 自己破産 比較ツール</span>
           </div>
@@ -328,7 +328,7 @@ export default function DebtRestructuringChecker() {
         <AdUnit slot="debt-restructuring-top" className="mb-6" />
 
         {/* Empathy banner */}
-        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 text-sm text-amber-800">
+        <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-6 text-sm text-kon">
           <p className="font-semibold mb-1">💛 まず、あなたの状況を正直に入力してください</p>
           <p>借金の問題は一人で抱え込まないでください。このツールは情報提供のみを目的としており、
           法律的なアドバイスではありません。結果は必ず弁護士・司法書士にご相談ください。</p>
@@ -337,14 +337,14 @@ export default function DebtRestructuringChecker() {
         {/* Section 1 */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-4">
           <h2 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
-            <span className="bg-blue-600 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">1</span>
+            <span className="bg-kon text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">1</span>
             借金の状況
           </h2>
 
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                借金の総額 <span className="text-red-500">*</span>
+                借金の総額 <span className="text-danger">*</span>
               </label>
               <div className="flex items-center gap-2">
                 <input
@@ -353,7 +353,7 @@ export default function DebtRestructuringChecker() {
                   placeholder="例：150"
                   value={form.totalDebt}
                   onChange={(e) => set("totalDebt", e.target.value)}
-                  className="border border-gray-300 rounded-lg px-3 py-2 w-40 text-right focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className="border border-gray-300 rounded-lg px-3 py-2 w-40 text-right focus:outline-none focus:ring-2 focus:ring-kon"
                 />
                 <span className="text-gray-600">万円</span>
               </div>
@@ -361,7 +361,7 @@ export default function DebtRestructuringChecker() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                月収（手取り） <span className="text-red-500">*</span>
+                月収（手取り） <span className="text-danger">*</span>
               </label>
               <div className="flex items-center gap-2">
                 <input
@@ -370,7 +370,7 @@ export default function DebtRestructuringChecker() {
                   placeholder="例：25"
                   value={form.monthlyIncome}
                   onChange={(e) => set("monthlyIncome", e.target.value)}
-                  className="border border-gray-300 rounded-lg px-3 py-2 w-40 text-right focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className="border border-gray-300 rounded-lg px-3 py-2 w-40 text-right focus:outline-none focus:ring-2 focus:ring-kon"
                 />
                 <span className="text-gray-600">万円/月</span>
               </div>
@@ -378,7 +378,7 @@ export default function DebtRestructuringChecker() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                毎月返済できる金額 <span className="text-red-500">*</span>
+                毎月返済できる金額 <span className="text-danger">*</span>
               </label>
               <div className="flex items-center gap-2">
                 <input
@@ -387,7 +387,7 @@ export default function DebtRestructuringChecker() {
                   placeholder="例：3"
                   value={form.monthlyRepayable}
                   onChange={(e) => set("monthlyRepayable", e.target.value)}
-                  className="border border-gray-300 rounded-lg px-3 py-2 w-40 text-right focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className="border border-gray-300 rounded-lg px-3 py-2 w-40 text-right focus:outline-none focus:ring-2 focus:ring-kon"
                 />
                 <span className="text-gray-600">万円/月</span>
               </div>
@@ -395,7 +395,7 @@ export default function DebtRestructuringChecker() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                借入先の数 <span className="text-red-500">*</span>
+                借入先の数 <span className="text-danger">*</span>
               </label>
               <div className="flex flex-wrap gap-2">
                 {LENDER_OPTIONS.map((opt) => (
@@ -404,8 +404,8 @@ export default function DebtRestructuringChecker() {
                     onClick={() => set("lenders", opt.value)}
                     className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${
                       form.lenders === opt.value
-                        ? "bg-blue-600 text-white border-blue-600"
-                        : "bg-white text-gray-700 border-gray-300 hover:border-blue-400"
+                        ? "bg-kon text-white border-kon"
+                        : "bg-white text-gray-700 border-gray-300 hover:border-ai"
                     }`}
                   >
                     {opt.label}
@@ -428,7 +428,7 @@ export default function DebtRestructuringChecker() {
                       type="checkbox"
                       checked={form.debtTypes.includes(type.id)}
                       onChange={() => toggleDebtType(type.id)}
-                      className="rounded text-blue-600 focus:ring-blue-400"
+                      className="rounded text-kon focus:ring-kon"
                     />
                     {type.label}
                   </label>
@@ -441,14 +441,14 @@ export default function DebtRestructuringChecker() {
         {/* Section 2 */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-4">
           <h2 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
-            <span className="bg-blue-600 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">2</span>
+            <span className="bg-kon text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">2</span>
             資産・生活状況
           </h2>
 
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                持ち家はありますか？ <span className="text-red-500">*</span>
+                持ち家はありますか？ <span className="text-danger">*</span>
               </label>
               <div className="flex gap-3">
                 {[{ v: "yes", l: "はい" }, { v: "no", l: "いいえ" }].map((opt) => (
@@ -457,8 +457,8 @@ export default function DebtRestructuringChecker() {
                     onClick={() => set("hasHouse", opt.v)}
                     className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${
                       form.hasHouse === opt.v
-                        ? "bg-blue-600 text-white border-blue-600"
-                        : "bg-white text-gray-700 border-gray-300 hover:border-blue-400"
+                        ? "bg-kon text-white border-kon"
+                        : "bg-white text-gray-700 border-gray-300 hover:border-ai"
                     }`}
                   >
                     {opt.l}
@@ -477,8 +477,8 @@ export default function DebtRestructuringChecker() {
                         onClick={() => set("hasHousingLoan", opt.v)}
                         className={`px-3 py-1.5 rounded-lg border text-sm transition-colors ${
                           form.hasHousingLoan === opt.v
-                            ? "bg-blue-600 text-white border-blue-600"
-                            : "bg-white text-gray-600 border-gray-300 hover:border-blue-400"
+                            ? "bg-kon text-white border-kon"
+                            : "bg-white text-gray-600 border-gray-300 hover:border-ai"
                         }`}
                       >
                         {opt.l}
@@ -491,7 +491,7 @@ export default function DebtRestructuringChecker() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                自動車を所有していますか？ <span className="text-red-500">*</span>
+                自動車を所有していますか？ <span className="text-danger">*</span>
               </label>
               <div className="flex flex-wrap gap-2">
                 {CAR_OPTIONS.map((opt) => (
@@ -500,8 +500,8 @@ export default function DebtRestructuringChecker() {
                     onClick={() => set("car", opt.value)}
                     className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${
                       form.car === opt.value
-                        ? "bg-blue-600 text-white border-blue-600"
-                        : "bg-white text-gray-700 border-gray-300 hover:border-blue-400"
+                        ? "bg-kon text-white border-kon"
+                        : "bg-white text-gray-700 border-gray-300 hover:border-ai"
                     }`}
                   >
                     {opt.label}
@@ -512,7 +512,7 @@ export default function DebtRestructuringChecker() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                預貯金・株などの金融資産 <span className="text-red-500">*</span>
+                預貯金・株などの金融資産 <span className="text-danger">*</span>
               </label>
               <div className="flex flex-wrap gap-2">
                 {ASSET_OPTIONS.map((opt) => (
@@ -521,8 +521,8 @@ export default function DebtRestructuringChecker() {
                     onClick={() => set("assets", opt.value)}
                     className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${
                       form.assets === opt.value
-                        ? "bg-blue-600 text-white border-blue-600"
-                        : "bg-white text-gray-700 border-gray-300 hover:border-blue-400"
+                        ? "bg-kon text-white border-kon"
+                        : "bg-white text-gray-700 border-gray-300 hover:border-ai"
                     }`}
                   >
                     {opt.label}
@@ -533,7 +533,7 @@ export default function DebtRestructuringChecker() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                職業 <span className="text-red-500">*</span>
+                職業 <span className="text-danger">*</span>
               </label>
               <div className="flex flex-wrap gap-2">
                 {JOB_OPTIONS.map((opt) => (
@@ -542,8 +542,8 @@ export default function DebtRestructuringChecker() {
                     onClick={() => set("job", opt.value)}
                     className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${
                       form.job === opt.value
-                        ? "bg-blue-600 text-white border-blue-600"
-                        : "bg-white text-gray-700 border-gray-300 hover:border-blue-400"
+                        ? "bg-kon text-white border-kon"
+                        : "bg-white text-gray-700 border-gray-300 hover:border-ai"
                     }`}
                   >
                     {opt.label}
@@ -554,7 +554,7 @@ export default function DebtRestructuringChecker() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                保証人になっている借金がありますか？ <span className="text-red-500">*</span>
+                保証人になっている借金がありますか？ <span className="text-danger">*</span>
               </label>
               <div className="flex gap-3">
                 {[{ v: "yes", l: "はい" }, { v: "no", l: "いいえ" }].map((opt) => (
@@ -563,8 +563,8 @@ export default function DebtRestructuringChecker() {
                     onClick={() => set("hasGuarantor", opt.v)}
                     className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${
                       form.hasGuarantor === opt.v
-                        ? "bg-blue-600 text-white border-blue-600"
-                        : "bg-white text-gray-700 border-gray-300 hover:border-blue-400"
+                        ? "bg-kon text-white border-kon"
+                        : "bg-white text-gray-700 border-gray-300 hover:border-ai"
                     }`}
                   >
                     {opt.l}
@@ -575,7 +575,7 @@ export default function DebtRestructuringChecker() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                家族（配偶者・子）に借金を知られたくない <span className="text-red-500">*</span>
+                家族（配偶者・子）に借金を知られたくない <span className="text-danger">*</span>
               </label>
               <div className="flex gap-3">
                 {[{ v: "yes", l: "はい" }, { v: "no", l: "いいえ" }].map((opt) => (
@@ -584,8 +584,8 @@ export default function DebtRestructuringChecker() {
                     onClick={() => set("wantPrivacy", opt.v)}
                     className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${
                       form.wantPrivacy === opt.v
-                        ? "bg-blue-600 text-white border-blue-600"
-                        : "bg-white text-gray-700 border-gray-300 hover:border-blue-400"
+                        ? "bg-kon text-white border-kon"
+                        : "bg-white text-gray-700 border-gray-300 hover:border-ai"
                     }`}
                   >
                     {opt.l}
@@ -622,7 +622,7 @@ export default function DebtRestructuringChecker() {
 
         {/* Error */}
         {error && (
-          <div className="bg-red-50 border border-red-300 text-red-700 rounded-lg px-4 py-3 mb-4 text-sm">
+          <div className="bg-gray-50 border border-gray-200 text-danger rounded-lg px-4 py-3 mb-4 text-sm">
             {error}
           </div>
         )}
@@ -630,7 +630,7 @@ export default function DebtRestructuringChecker() {
         {/* Submit */}
         <button
           onClick={handleSubmit}
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl text-lg transition-colors shadow-md mb-8"
+          className="w-full bg-kon hover:bg-ai text-white font-bold py-4 rounded-xl text-lg transition-colors shadow-md mb-8"
         >
           判定する →
         </button>
@@ -662,7 +662,7 @@ export default function DebtRestructuringChecker() {
                   次善策：<strong>{METHOD_NAMES[result.second]}</strong>（状況によっては検討価値あり）
                 </p>
               )}
-              <div className="mt-4 bg-amber-50 border border-amber-200 rounded-lg p-3 text-sm text-amber-800">
+              <div className="mt-4 bg-gray-50 border border-gray-200 rounded-lg p-3 text-sm text-kon">
                 ⚠️ このツールはあくまで参考情報です。必ず弁護士・司法書士にご相談ください。
               </div>
             </div>
@@ -679,12 +679,12 @@ export default function DebtRestructuringChecker() {
                         <th
                           key={m}
                           className={`text-center px-3 py-2 border border-gray-200 font-bold ${
-                            m === result.recommended ? "bg-blue-50 text-blue-700" : "text-gray-700"
+                            m === result.recommended ? "bg-gray-50 text-kon" : "text-gray-700"
                           }`}
                         >
                           {METHOD_NAMES[m]}
                           {m === result.recommended && (
-                            <span className="ml-1 text-xs bg-blue-600 text-white rounded-full px-1">推奨</span>
+                            <span className="ml-1 text-xs bg-kon text-white rounded-full px-1">推奨</span>
                           )}
                         </th>
                       ))}
@@ -711,7 +711,7 @@ export default function DebtRestructuringChecker() {
                           <td
                             key={m}
                             className={`px-3 py-2 border border-gray-200 text-center ${
-                              m === result.recommended ? "bg-blue-50" : ""
+                              m === result.recommended ? "bg-gray-50" : ""
                             }`}
                           >
                             {methodDetails[m][row.key as keyof typeof methodDetails.ninni]}
@@ -722,7 +722,7 @@ export default function DebtRestructuringChecker() {
                     <tr className="bg-gray-50">
                       <td className="px-3 py-2 border border-gray-200 font-medium text-gray-600">適合度</td>
                       {(["ninni", "kojin", "hasan"] as const).map((m) => (
-                        <td key={m} className={`px-3 py-2 border border-gray-200 text-center ${m === result.recommended ? "bg-blue-50" : ""}`}>
+                        <td key={m} className={`px-3 py-2 border border-gray-200 text-center ${m === result.recommended ? "bg-gray-50" : ""}`}>
                           <StarRating
                             score={m === "ninni" ? result.scores.ninni : m === "kojin" ? result.scores.kojin : result.scores.hasan}
                             max={maxScore}
@@ -741,16 +741,16 @@ export default function DebtRestructuringChecker() {
                 <h3 className="text-lg font-bold text-gray-800 mb-3">あなたの状況への影響</h3>
                 <ul className="space-y-2">
                   {result.hasBankruptcyPenalty && (
-                    <li className="flex items-start gap-2 text-sm bg-red-100 border border-red-200 rounded-lg p-3">
-                      <span className="text-red-500 mt-0.5 flex-shrink-0">⚠️</span>
-                      <span className="text-red-800 font-medium">
+                    <li className="flex items-start gap-2 text-sm bg-gray-50 border border-gray-200 rounded-lg p-3">
+                      <span className="text-danger mt-0.5 flex-shrink-0">⚠️</span>
+                      <span className="text-danger font-medium">
                         自己破産すると、弁護士・司法書士・警備員・保険外交員など一部の職業に就けない期間（免責確定まで）があります。職業への影響は必ず専門家にご確認ください。
                       </span>
                     </li>
                   )}
                   {result.warnings.map((w, i) => (
                     <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
-                      <span className="text-orange-500 mt-0.5 flex-shrink-0">⚠️</span>
+                      <span className="text-kon mt-0.5 flex-shrink-0">⚠️</span>
                       <span>{w}</span>
                     </li>
                   ))}
@@ -766,9 +766,9 @@ export default function DebtRestructuringChecker() {
             {result.monthlyAfter > 0 && (
               <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                 <h3 className="text-lg font-bold text-gray-800 mb-3">月々の返済額目安（任意整理の場合）</h3>
-                <div className="bg-blue-50 rounded-lg p-4">
+                <div className="bg-gray-50 rounded-lg p-4">
                   <p className="text-sm text-gray-600 mb-2">任意整理後の月々の返済額目安</p>
-                  <p className="text-2xl font-bold text-blue-700 mb-1">
+                  <p className="text-2xl font-bold text-kon mb-1">
                     {parseFloat(form.totalDebt).toFixed(0)}万円 ÷ 60ヶ月 ={" "}
                     <span className="text-3xl">
                       {result.monthlyAfter.toLocaleString()}円/月
@@ -779,7 +779,7 @@ export default function DebtRestructuringChecker() {
                     <p className="mt-2 text-sm text-gray-700">
                       現在の返済可能額（{result.currentMonthly}万円/月 ={" "}
                       {(result.currentMonthly * 10000).toLocaleString()}円）との比較：
-                      <span className={result.currentMonthly * 10000 >= result.monthlyAfter ? "text-green-600 font-bold" : "text-red-600 font-bold"}>
+                      <span className={result.currentMonthly * 10000 >= result.monthlyAfter ? "text-green-600 font-bold" : "text-danger font-bold"}>
                         {result.currentMonthly * 10000 >= result.monthlyAfter
                           ? `月${((result.currentMonthly * 10000) - result.monthlyAfter).toLocaleString()}円の余裕が生まれます`
                           : `月${(result.monthlyAfter - result.currentMonthly * 10000).toLocaleString()}円不足する可能性があります`}
@@ -795,21 +795,21 @@ export default function DebtRestructuringChecker() {
               <h3 className="text-lg font-bold text-gray-800 mb-4">次のステップ</h3>
               <ol className="space-y-3">
                 <li className="flex items-start gap-3">
-                  <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">1</span>
+                  <span className="bg-kon text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">1</span>
                   <div>
                     <p className="font-medium text-gray-800">弁護士または司法書士に無料相談する</p>
                     <p className="text-sm text-gray-500">多くの事務所が初回無料相談を実施。費用・手続き・期間を確認しましょう。</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">2</span>
+                  <span className="bg-kon text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">2</span>
                   <div>
                     <p className="font-medium text-gray-800">法テラスを利用する</p>
                     <p className="text-sm text-gray-500">収入が少ない場合は弁護士費用の立替制度あり。電話：0570-078374</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">3</span>
+                  <span className="bg-kon text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">3</span>
                   <div>
                     <p className="font-medium text-gray-800">このツールの判定結果を相談時に見せる</p>
                     <p className="text-sm text-gray-500">スクリーンショットを撮って、専門家との相談の参考にしてください。</p>
@@ -831,9 +831,9 @@ export default function DebtRestructuringChecker() {
                 <thead>
                   <tr className="bg-gray-50">
                     <th className="text-left px-3 py-2 border border-gray-200 font-medium text-gray-600">項目</th>
-                    <th className="text-center px-3 py-2 border border-gray-200 font-bold text-blue-700">任意整理</th>
-                    <th className="text-center px-3 py-2 border border-gray-200 font-bold text-purple-700">個人再生</th>
-                    <th className="text-center px-3 py-2 border border-gray-200 font-bold text-red-700">自己破産</th>
+                    <th className="text-center px-3 py-2 border border-gray-200 font-bold text-kon">任意整理</th>
+                    <th className="text-center px-3 py-2 border border-gray-200 font-bold text-kon">個人再生</th>
+                    <th className="text-center px-3 py-2 border border-gray-200 font-bold text-danger">自己破産</th>
                   </tr>
                 </thead>
                 <tbody className="text-gray-700">
@@ -933,9 +933,9 @@ export default function DebtRestructuringChecker() {
                 <Link
                   key={tool.href}
                   href={tool.href}
-                  className="flex items-center gap-2 p-3 border border-gray-200 rounded-lg hover:border-blue-400 hover:bg-blue-50 transition-colors text-sm text-gray-700"
+                  className="flex items-center gap-2 p-3 border border-gray-200 rounded-lg hover:border-ai hover:bg-gray-50 transition-colors text-sm text-gray-700"
                 >
-                  <span className="text-blue-500">→</span>
+                  <span className="text-kon">→</span>
                   {tool.label}
                 </Link>
               ))}

@@ -68,7 +68,7 @@ export default function Footer() {
               {/* Finance Tools - Highlighted */}
               <div>
                 <Link href="/finance" className="inline-flex items-center gap-1 text-sakura font-medium hover:underline transition-colors">
-                  💰 金融・資産運用ツール
+                  金融・資産運用ツール
                 </Link>
               </div>
               {/* Corporate Link - Highlighted */}
@@ -90,7 +90,7 @@ export default function Footer() {
               </div>
               <div>
                 <Link href="/finance/heikin-nenshu" className="inline-flex items-center gap-1 text-sakura font-medium hover:underline transition-colors">
-                  📊 統計・データツール
+                  統計・データツール
                 </Link>
               </div>
               <div>

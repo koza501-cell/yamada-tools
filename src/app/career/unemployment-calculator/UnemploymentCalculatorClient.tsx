@@ -159,10 +159,10 @@ export default function UnemploymentCalculatorPage() {
   const [error, setError] = useState("");
 
   const inputClass =
-    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent";
+    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon focus:border-transparent";
   const labelClass = "block text-sm font-medium text-gray-700 mb-1";
   const selectClass =
-    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white";
+    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon focus:border-transparent bg-white";
 
   function handleChange(key: keyof FormState, value: string | boolean) {
     setForm((p) => ({ ...p, [key]: value }));
@@ -194,9 +194,9 @@ export default function UnemploymentCalculatorPage() {
 
   const advisoryContent: Record<SeparationReason, { color: string; bg: string; border: string; text: string }> = {
     voluntary: {
-      color: "text-orange-800",
-      bg: "bg-orange-50",
-      border: "border-orange-200",
+      color: "text-kon",
+      bg: "bg-gray-50",
+      border: "border-gray-200",
       text: "給付制限期間中も求職活動を積極的に行いましょう。ハローワークでの求職活動実績が2回以上あれば給付制限が2ヶ月→1ヶ月に短縮されます（2023年改正）。認定日には必ず出席してください。",
     },
     company: {
@@ -212,15 +212,15 @@ export default function UnemploymentCalculatorPage() {
       text: "倒産・大量解雇などによる特定受給資格者として、給付制限なし・優遇された給付日数が適用されます。ハローワークで特定受給資格者として認定してもらいましょう。",
     },
     tokutei_riyuu: {
-      color: "text-blue-800",
-      bg: "bg-blue-50",
-      border: "border-blue-200",
+      color: "text-kon",
+      bg: "bg-gray-50",
+      border: "border-gray-200",
       text: "特定理由離職者として給付制限なしで受給できます。契約期間満了・健康上の理由・家族の介護などが該当します。ハローワークで確認してください。",
     },
     shougaisha: {
-      color: "text-purple-800",
-      bg: "bg-purple-50",
-      border: "border-purple-200",
+      color: "text-kon",
+      bg: "bg-gray-50",
+      border: "border-kon",
       text: "就職困難者として最大360日の手厚い給付が受けられます。障害者就業・生活支援センターや、ハローワークの専門援助部門も積極的に活用しましょう。",
     },
   };
@@ -249,9 +249,9 @@ export default function UnemploymentCalculatorPage() {
         {/* Breadcrumb & Header */}
         <div className="mb-6">
           <nav className="text-sm text-gray-500 mb-3">
-            <Link href="/" className="hover:text-blue-600">ホーム</Link>
+            <Link href="/" className="hover:text-ai">ホーム</Link>
             <span className="mx-2">/</span>
-            <Link href="/career" className="hover:text-blue-600">転職・年収</Link>
+            <Link href="/career" className="hover:text-ai">転職・年収</Link>
             <span className="mx-2">/</span>
             <span className="text-gray-800">失業給付金計算機</span>
           </nav>
@@ -261,9 +261,9 @@ export default function UnemploymentCalculatorPage() {
           </p>
           <div className="flex flex-wrap gap-2 mt-3">
             <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-medium">登録不要</span>
-            <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full font-medium">2026年最新</span>
-            <span className="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded-full font-medium">全離職理由対応</span>
-            <span className="text-xs bg-orange-100 text-orange-700 px-2 py-1 rounded-full font-medium">給付スケジュール表示</span>
+            <span className="text-xs bg-gray-50 text-kon px-2 py-1 rounded-full font-medium">2026年最新</span>
+            <span className="text-xs bg-gray-50 text-kon px-2 py-1 rounded-full font-medium">全離職理由対応</span>
+            <span className="text-xs bg-gray-50 text-kon px-2 py-1 rounded-full font-medium">給付スケジュール表示</span>
           </div>
         </div>
 
@@ -271,13 +271,13 @@ export default function UnemploymentCalculatorPage() {
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
           {/* Section 1 */}
           <div className="mb-6">
-            <div className="flex items-center gap-3 mb-4 pb-3 border-b-2 border-blue-100">
-              <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold flex-shrink-0">1</div>
+            <div className="flex items-center gap-3 mb-4 pb-3 border-b-2 border-gray-200">
+              <div className="bg-kon text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold flex-shrink-0">1</div>
               <h2 className="font-bold text-gray-800">基本情報</h2>
             </div>
             <div className="space-y-4">
               <div>
-                <label className={labelClass}>離職時の年齢 <span className="text-red-500">*</span></label>
+                <label className={labelClass}>離職時の年齢 <span className="text-danger">*</span></label>
                 <div className="flex items-center gap-2">
                   <input
                     type="number" min={15} max={70}
@@ -290,7 +290,7 @@ export default function UnemploymentCalculatorPage() {
                 </div>
               </div>
               <div>
-                <label className={labelClass}>離職理由 <span className="text-red-500">*</span></label>
+                <label className={labelClass}>離職理由 <span className="text-danger">*</span></label>
                 <select
                   value={form.separationReason}
                   onChange={(e) => handleChange("separationReason", e.target.value as SeparationReason)}
@@ -304,7 +304,7 @@ export default function UnemploymentCalculatorPage() {
                 </select>
               </div>
               <div>
-                <label className={labelClass}>雇用保険 被保険者期間 <span className="text-red-500">*</span></label>
+                <label className={labelClass}>雇用保険 被保険者期間 <span className="text-danger">*</span></label>
                 <select
                   value={form.insuredPeriod}
                   onChange={(e) => handleChange("insuredPeriod", e.target.value as InsuredPeriod)}
@@ -322,27 +322,27 @@ export default function UnemploymentCalculatorPage() {
 
           {/* Section 2 */}
           <div className="mb-6">
-            <div className="flex items-center gap-3 mb-4 pb-3 border-b-2 border-blue-100">
-              <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold flex-shrink-0">2</div>
+            <div className="flex items-center gap-3 mb-4 pb-3 border-b-2 border-gray-200">
+              <div className="bg-kon text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold flex-shrink-0">2</div>
               <h2 className="font-bold text-gray-800">賃金情報</h2>
             </div>
             <div className="flex gap-2 mb-4">
               <button
                 onClick={() => handleChange("salaryInputMode", "auto")}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  form.salaryInputMode === "auto" ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                  form.salaryInputMode === "auto" ? "bg-kon text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                 }`}
               >自動計算</button>
               <button
                 onClick={() => handleChange("salaryInputMode", "manual")}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  form.salaryInputMode === "manual" ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                  form.salaryInputMode === "manual" ? "bg-kon text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                 }`}
               >手動入力</button>
             </div>
             {form.salaryInputMode === "auto" ? (
               <div>
-                <label className={labelClass}>直近6ヶ月の総支給額（ボーナス除く） <span className="text-red-500">*</span></label>
+                <label className={labelClass}>直近6ヶ月の総支給額（ボーナス除く） <span className="text-danger">*</span></label>
                 <div className="flex items-center gap-2">
                   <input
                     type="number" min={0}
@@ -357,7 +357,7 @@ export default function UnemploymentCalculatorPage() {
               </div>
             ) : (
               <div>
-                <label className={labelClass}>賃金日額 <span className="text-red-500">*</span></label>
+                <label className={labelClass}>賃金日額 <span className="text-danger">*</span></label>
                 <div className="flex items-center gap-2">
                   <input
                     type="number" min={0}
@@ -374,8 +374,8 @@ export default function UnemploymentCalculatorPage() {
 
           {/* Section 3 */}
           <div className="mb-6">
-            <div className="flex items-center gap-3 mb-4 pb-3 border-b-2 border-blue-100">
-              <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold flex-shrink-0">3</div>
+            <div className="flex items-center gap-3 mb-4 pb-3 border-b-2 border-gray-200">
+              <div className="bg-kon text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold flex-shrink-0">3</div>
               <h2 className="font-bold text-gray-800">追加情報</h2>
             </div>
             <div className="space-y-3">
@@ -386,7 +386,7 @@ export default function UnemploymentCalculatorPage() {
                 </div>
                 <button
                   onClick={() => handleChange("isHardToEmploy", !form.isHardToEmploy)}
-                  className={`w-12 h-6 rounded-full transition-colors flex items-center px-0.5 ${form.isHardToEmploy ? "bg-blue-600" : "bg-gray-300"}`}
+                  className={`w-12 h-6 rounded-full transition-colors flex items-center px-0.5 ${form.isHardToEmploy ? "bg-kon" : "bg-gray-300"}`}
                 >
                   <div className={`w-5 h-5 bg-white rounded-full shadow transition-transform ${form.isHardToEmploy ? "translate-x-6" : "translate-x-0"}`} />
                 </button>
@@ -397,7 +397,7 @@ export default function UnemploymentCalculatorPage() {
                 </div>
                 <button
                   onClick={() => handleChange("hadShortWorkHours", !form.hadShortWorkHours)}
-                  className={`w-12 h-6 rounded-full transition-colors flex items-center px-0.5 ${form.hadShortWorkHours ? "bg-blue-600" : "bg-gray-300"}`}
+                  className={`w-12 h-6 rounded-full transition-colors flex items-center px-0.5 ${form.hadShortWorkHours ? "bg-kon" : "bg-gray-300"}`}
                 >
                   <div className={`w-5 h-5 bg-white rounded-full shadow transition-transform ${form.hadShortWorkHours ? "translate-x-6" : "translate-x-0"}`} />
                 </button>
@@ -406,14 +406,14 @@ export default function UnemploymentCalculatorPage() {
           </div>
 
           {error && (
-            <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">{error}</div>
+            <div className="mb-4 p-3 bg-gray-50 border border-gray-200 rounded-lg text-danger text-sm">{error}</div>
           )}
 
           <div className="flex gap-3">
             <button onClick={handleReset} className="px-5 py-2.5 rounded-lg text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
               リセット
             </button>
-            <button onClick={handleCalculate} className="flex-1 py-2.5 rounded-lg text-sm font-semibold bg-blue-600 text-white hover:bg-blue-700 transition-colors">
+            <button onClick={handleCalculate} className="flex-1 py-2.5 rounded-lg text-sm font-semibold bg-kon text-white hover:bg-ai transition-colors">
               計算する
             </button>
           </div>
@@ -423,9 +423,9 @@ export default function UnemploymentCalculatorPage() {
         {result && (
           <div className="mb-8">
             {!result.hasEntitlement ? (
-              <div className="bg-red-50 border border-red-200 rounded-xl p-6 text-center">
-                <p className="text-red-700 font-bold text-lg mb-2">受給資格なし</p>
-                <p className="text-red-600 text-sm">
+              <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 text-center">
+                <p className="text-danger font-bold text-lg mb-2">受給資格なし</p>
+                <p className="text-danger text-sm">
                   自己都合退職の場合、被保険者期間が1年未満だと失業給付金は受け取れません。<br />
                   受給には離職前2年間で12ヶ月以上の被保険者期間が必要です。
                 </p>
@@ -441,7 +441,7 @@ export default function UnemploymentCalculatorPage() {
                   <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4">
                     <p className="text-xs text-gray-500 mb-1">基本手当日額</p>
                     <p className="text-xl font-bold text-gray-900">{fmt(result.benefitDailyAmount)}<span className="text-sm font-normal text-gray-500">円/日</span></p>
-                    <p className="text-xs text-blue-600 mt-0.5">給付率 {Math.round(result.benefitRate * 100)}%</p>
+                    <p className="text-xs text-kon mt-0.5">給付率 {Math.round(result.benefitRate * 100)}%</p>
                   </div>
                   <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4">
                     <p className="text-xs text-gray-500 mb-1">所定給付日数</p>
@@ -450,17 +450,17 @@ export default function UnemploymentCalculatorPage() {
                   <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4">
                     <p className="text-xs text-gray-500 mb-1">給付制限期間</p>
                     <p className="text-xl font-bold text-gray-900">{result.restrictionDays > 0 ? `${result.restrictionDays}日` : "なし"}</p>
-                    {result.restrictionDays > 0 && <p className="text-xs text-orange-500 mt-0.5">※求職活動で1ヶ月短縮可</p>}
+                    {result.restrictionDays > 0 && <p className="text-xs text-kon mt-0.5">※求職活動で1ヶ月短縮可</p>}
                   </div>
                   <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4">
                     <p className="text-xs text-gray-500 mb-1">受給開始目安</p>
                     <p className="text-xl font-bold text-gray-900">約{result.daysUntilStart}<span className="text-sm font-normal text-gray-500">日後</span></p>
                     <p className="text-xs text-gray-400 mt-0.5">待期7日 + 制限{result.restrictionDays}日</p>
                   </div>
-                  <div className="bg-blue-600 rounded-xl shadow-sm p-4">
-                    <p className="text-xs text-blue-100 mb-1">総受給可能額</p>
+                  <div className="bg-kon rounded-xl shadow-sm p-4">
+                    <p className="text-xs text-gin mb-1">総受給可能額</p>
                     <p className="text-2xl font-bold text-white">約{fmtMan(result.totalBenefit)}万円</p>
-                    <p className="text-xs text-blue-200 mt-0.5">約{fmt(result.monthlyEstimate)}円/月 × {result.months.toFixed(1)}ヶ月</p>
+                    <p className="text-xs text-gin mt-0.5">約{fmt(result.monthlyEstimate)}円/月 × {result.months.toFixed(1)}ヶ月</p>
                   </div>
                 </div>
 
@@ -481,14 +481,14 @@ export default function UnemploymentCalculatorPage() {
                     {result.restrictionDays > 0 && (
                       <>
                         <div className="flex flex-col items-center flex-shrink-0">
-                          <div className="w-3 h-3 rounded-full bg-orange-400 flex-shrink-0" />
-                          <span className="text-orange-600 font-medium mt-1 whitespace-nowrap">制限開始</span>
+                          <div className="w-3 h-3 rounded-full bg-kon flex-shrink-0" />
+                          <span className="text-kon font-medium mt-1 whitespace-nowrap">制限開始</span>
                         </div>
                         <div className="flex-shrink-0 min-w-[72px] flex flex-col">
-                          <div className="h-3 bg-orange-200 flex items-center justify-center">
-                            <span className="text-orange-600 whitespace-nowrap text-xs leading-none px-1">{result.restrictionDays}日</span>
+                          <div className="h-3 bg-gray-50 flex items-center justify-center">
+                            <span className="text-kon whitespace-nowrap text-xs leading-none px-1">{result.restrictionDays}日</span>
                           </div>
-                          <span className="text-orange-400 text-center text-xs mt-0.5">給付制限</span>
+                          <span className="text-kon text-center text-xs mt-0.5">給付制限</span>
                         </div>
                       </>
                     )}
@@ -503,8 +503,8 @@ export default function UnemploymentCalculatorPage() {
                       <span className="text-green-500 text-center text-xs mt-0.5">受給期間</span>
                     </div>
                     <div className="flex flex-col items-center flex-shrink-0">
-                      <div className="w-3 h-3 rounded-full bg-red-400 flex-shrink-0" />
-                      <span className="text-red-600 font-medium mt-1 whitespace-nowrap">終了</span>
+                      <div className="w-3 h-3 rounded-full bg-danger flex-shrink-0" />
+                      <span className="text-danger font-medium mt-1 whitespace-nowrap">終了</span>
                     </div>
                   </div>
                 </div>
@@ -551,7 +551,7 @@ export default function UnemploymentCalculatorPage() {
                   ].map((row, i) => (
                     <tr key={i} className={i % 2 === 1 ? "bg-gray-50" : ""}>
                       {row.map((cell, j) => (
-                        <td key={j} className={`py-2 px-3 ${j === 5 ? "text-blue-700 font-bold" : ""} ${j === 4 ? "font-medium" : ""}`}>{cell}</td>
+                        <td key={j} className={`py-2 px-3 ${j === 5 ? "text-kon font-bold" : ""} ${j === 4 ? "font-medium" : ""}`}>{cell}</td>
                       ))}
                     </tr>
                   ))}
@@ -626,7 +626,7 @@ export default function UnemploymentCalculatorPage() {
               ].map((item, i) => (
                 <div key={i} className="border border-gray-100 rounded-lg p-4">
                   <p className="text-sm font-semibold text-gray-900 mb-2">
-                    <span className="text-blue-600 mr-2">Q.</span>{item.q}
+                    <span className="text-kon mr-2">Q.</span>{item.q}
                   </p>
                   <p className="text-sm text-gray-700">
                     <span className="text-green-600 font-semibold mr-2">A.</span>{item.a}
@@ -649,15 +649,15 @@ export default function UnemploymentCalculatorPage() {
                 <Link
                   key={tool.href}
                   href={tool.href}
-                  className="flex items-start gap-3 p-3 rounded-lg border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-colors group"
+                  className="flex items-start gap-3 p-3 rounded-lg border border-gray-200 hover:border-ai hover:bg-gray-50 transition-colors group"
                 >
-                  <div className="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
-                    <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-8 h-8 rounded-lg bg-gray-50 flex items-center justify-center flex-shrink-0">
+                    <svg className="w-4 h-4 text-kon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 11h.01M12 11h.01M15 11h.01M4 19h16a2 2 0 002-2V7a2 2 0 00-2-2H4a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-gray-800 group-hover:text-blue-700">{tool.label}</p>
+                    <p className="text-sm font-semibold text-gray-800 group-hover:text-ai">{tool.label}</p>
                     <p className="text-xs text-gray-500">{tool.desc}</p>
                   </div>
                 </Link>

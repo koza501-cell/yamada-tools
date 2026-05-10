@@ -104,7 +104,7 @@ export default function RetailMarkupClient() {
         <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-1">小売・販売 値入率・粗利率 計算機</h1>
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">原価から売価を決める・粗利率を正確に把握する</p>
 
-        <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 text-xs text-blue-700 dark:text-blue-300 space-y-1 mb-5">
+        <div className="bg-gray-50 dark:bg-kon/20 rounded-xl p-4 text-xs text-kon dark:text-gray-300 space-y-1 mb-5">
           <p className="font-semibold">値入率 vs 粗利率（マージン率）の違い</p>
           <p>・<strong>値入率（マークアップ率）</strong> = 利益 ÷ 原価 × 100　例: 原価100円→売価150円 → 50÷100 = 50%</p>
           <p>・<strong>粗利率（マージン率）</strong> = 利益 ÷ 売価 × 100　例: 原価100円→売価150円 → 50÷150 = 33.3%</p>
@@ -113,7 +113,7 @@ export default function RetailMarkupClient() {
         <div className="flex gap-2 mb-4 overflow-x-auto pb-1">
           {TABS.map(t => (
             <button key={t.key} onClick={() => setMode(t.key)}
-              className={"px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-colors " + (mode === t.key ? "bg-blue-500 text-white" : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700")}>
+              className={"px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-colors " + (mode === t.key ? "bg-kon text-white" : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700")}>
               {t.label}
             </button>
           ))}
@@ -137,7 +137,7 @@ export default function RetailMarkupClient() {
                 <div className="flex gap-2 mb-2">
                   {([["markup", "値入率で指定"], ["margin", "粗利率で指定"]] as [PriceMode, string][]).map(([k, l]) => (
                     <button key={k} onClick={() => setPriceMode(k)}
-                      className={"flex-1 py-2 rounded-lg text-xs border transition-colors " + (priceMode === k ? "bg-blue-500 text-white border-blue-500" : "bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600")}>
+                      className={"flex-1 py-2 rounded-lg text-xs border transition-colors " + (priceMode === k ? "bg-kon text-white border-kon" : "bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600")}>
                       {l}
                     </button>
                   ))}
@@ -156,9 +156,9 @@ export default function RetailMarkupClient() {
               <div className="grid grid-cols-2 gap-3">
                 <ResultCard label="利益額" value={fmt(calc.m1Profit) + "円"} />
                 <ResultCard label="値入率（マークアップ）" value={fmtR(calc.m1Markup) + "%"} />
-                <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
-                  <div className="text-xs text-blue-400">粗利率（マージン）</div>
-                  <div className="font-bold text-blue-700 dark:text-blue-300">{fmtR(calc.m1Margin)}%</div>
+                <div className="bg-gray-50 dark:bg-kon/20 rounded-lg p-3">
+                  <div className="text-xs text-kon">粗利率（マージン）</div>
+                  <div className="font-bold text-kon dark:text-gray-300">{fmtR(calc.m1Margin)}%</div>
                 </div>
               </div>
             </div>
@@ -182,13 +182,13 @@ export default function RetailMarkupClient() {
               <h2 className="font-semibold text-gray-700 dark:text-gray-300 mb-4">計算結果</h2>
               <div className="text-center mb-4">
                 <div className="text-xs text-gray-500 dark:text-gray-400">利益額</div>
-                <div className={"text-3xl font-bold " + (calc.m2Profit >= 0 ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400")}>{fmt(calc.m2Profit)}円</div>
+                <div className={"text-3xl font-bold " + (calc.m2Profit >= 0 ? "text-green-600 dark:text-green-400" : "text-danger dark:text-danger")}>{fmt(calc.m2Profit)}円</div>
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <ResultCard label="値入率（マークアップ）" value={fmtR(calc.m2Markup) + "%"} />
-                <div className={"rounded-lg p-3 " + (calc.m2Margin >= 30 ? "bg-green-50 dark:bg-green-900/10" : "bg-blue-50 dark:bg-blue-900/20")}>
+                <div className={"rounded-lg p-3 " + (calc.m2Margin >= 30 ? "bg-green-50 dark:bg-green-900/10" : "bg-gray-50 dark:bg-kon/20")}>
                   <div className="text-xs text-gray-400">粗利率（マージン）</div>
-                  <div className={"font-bold " + (calc.m2Margin >= 30 ? "text-green-600 dark:text-green-400" : "text-blue-700 dark:text-blue-300")}>{fmtR(calc.m2Margin)}%</div>
+                  <div className={"font-bold " + (calc.m2Margin >= 30 ? "text-green-600 dark:text-green-400" : "text-kon dark:text-gray-300")}>{fmtR(calc.m2Margin)}%</div>
                 </div>
               </div>
             </div>
@@ -217,9 +217,9 @@ export default function RetailMarkupClient() {
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <ResultCard label="値入率（マークアップ）" value={fmtR(calc.m3Markup) + "%"} />
-                <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
-                  <div className="text-xs text-blue-400">粗利率（マージン）</div>
-                  <div className="font-bold text-blue-700 dark:text-blue-300">{fmtR(calc.m3Margin)}%</div>
+                <div className="bg-gray-50 dark:bg-kon/20 rounded-lg p-3">
+                  <div className="text-xs text-kon">粗利率（マージン）</div>
+                  <div className="font-bold text-kon dark:text-gray-300">{fmtR(calc.m3Margin)}%</div>
                 </div>
               </div>
             </div>
@@ -256,11 +256,11 @@ export default function RetailMarkupClient() {
                         <input type="number" value={row.price} onChange={e => updateRow(row.id, { price: e.target.value })}
                           className="w-24 border border-gray-300 dark:border-gray-600 rounded px-2 py-1 text-xs bg-white dark:bg-gray-700 dark:text-white text-right" />
                       </td>
-                      <td className={"py-2 pr-2 text-right font-medium " + (row.profit >= 0 ? "text-green-600 dark:text-green-400" : "text-red-500")}>{fmt(row.profit)}</td>
+                      <td className={"py-2 pr-2 text-right font-medium " + (row.profit >= 0 ? "text-green-600 dark:text-green-400" : "text-danger")}>{fmt(row.profit)}</td>
                       <td className="py-2 pr-1 text-right text-gray-600 dark:text-gray-300">{fmtR(row.margin)}%</td>
                       <td className="py-2">
                         {bulkRows.length > 1 && (
-                          <button onClick={() => removeRow(row.id)} className="text-red-400 hover:text-red-600 font-bold">×</button>
+                          <button onClick={() => removeRow(row.id)} className="text-danger hover:text-danger font-bold">×</button>
                         )}
                       </td>
                     </tr>
@@ -271,14 +271,14 @@ export default function RetailMarkupClient() {
                     <td className="pt-2 pr-2 text-gray-700 dark:text-gray-300">合計</td>
                     <td /><td />
                     <td className="pt-2 pr-2 text-right text-green-600 dark:text-green-400">{fmt(calc.totalProfit)}</td>
-                    <td className="pt-2 pr-1 text-right text-blue-600 dark:text-blue-400">{fmtR(calc.avgMargin)}%</td>
+                    <td className="pt-2 pr-1 text-right text-kon dark:text-gray-300">{fmtR(calc.avgMargin)}%</td>
                     <td />
                   </tr>
                 </tfoot>
               </table>
             </div>
             <button onClick={addRow}
-              className="mt-3 w-full py-2 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600 text-sm text-gray-500 dark:text-gray-400 hover:border-blue-400 hover:text-blue-500 transition-colors">
+              className="mt-3 w-full py-2 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600 text-sm text-gray-500 dark:text-gray-400 hover:border-ai hover:text-ai transition-colors">
               ＋ 商品を追加
             </button>
           </div>

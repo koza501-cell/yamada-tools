@@ -58,20 +58,20 @@ export default function TransparencyPage() {
             </section>
 
             {/* Critical Disclaimers */}
-            <section className="bg-amber-50 p-6 rounded-xl border-l-4 border-amber-500">
-              <h2 className="text-xl font-bold text-amber-900 mb-4 flex items-center gap-2">
+            <section className="bg-gray-50 p-6 rounded-xl border-l-4 border-gray-200">
+              <h2 className="text-xl font-bold text-kon mb-4 flex items-center gap-2">
                 <span>⚠️</span>
                 <span>重要な免責事項</span>
               </h2>
 
               <div className="space-y-6">
-                <div className="bg-white p-4 rounded-lg border border-amber-200">
-                  <h3 className="font-bold text-amber-900 mb-2 flex items-center gap-2">
+                <div className="bg-white p-4 rounded-lg border border-gray-200">
+                  <h3 className="font-bold text-kon mb-2 flex items-center gap-2">
                     <span>📝</span>
                     <span>適格請求書発行事業者登録番号検証ツールについて</span>
                   </h3>
-                  <div className="space-y-2 text-sm text-amber-800">
-                    <p><strong className="text-red-600">このツールは情報提供のみを目的としています。</strong></p>
+                  <div className="space-y-2 text-sm text-kon">
+                    <p><strong className="text-danger">このツールは情報提供のみを目的としています。</strong></p>
                     <ul className="space-y-1 list-disc list-inside ml-2">
                       <li>適格請求書発行事業者の登録番号の検証結果について、当社は一切の責任を負いません</li>
                       <li>正式な確認は必ず<strong>国税庁の公式サイト</strong>で行ってください</li>
@@ -84,12 +84,12 @@ export default function TransparencyPage() {
                   </div>
                 </div>
 
-                <div className="bg-white p-4 rounded-lg border border-amber-200">
-                  <h3 className="font-bold text-amber-900 mb-2 flex items-center gap-2">
+                <div className="bg-white p-4 rounded-lg border border-gray-200">
+                  <h3 className="font-bold text-kon mb-2 flex items-center gap-2">
                     <span>💰</span>
                     <span>税金計算・給与計算ツールについて</span>
                   </h3>
-                  <div className="space-y-2 text-sm text-amber-800">
+                  <div className="space-y-2 text-sm text-kon">
                     <p><strong>これらのツールは参考情報としてご利用ください。</strong></p>
                     <ul className="space-y-1 list-disc list-inside ml-2">
                       <li>計算結果の正確性を保証するものではありません</li>
@@ -101,12 +101,12 @@ export default function TransparencyPage() {
                   </div>
                 </div>
 
-                <div className="bg-white p-4 rounded-lg border border-amber-200">
-                  <h3 className="font-bold text-amber-900 mb-2 flex items-center gap-2">
+                <div className="bg-white p-4 rounded-lg border border-gray-200">
+                  <h3 className="font-bold text-kon mb-2 flex items-center gap-2">
                     <span>📄</span>
                     <span>書類作成ツール（請求書・履歴書等）について</span>
                   </h3>
-                  <div className="space-y-2 text-sm text-amber-800">
+                  <div className="space-y-2 text-sm text-kon">
                     <p><strong>生成されるテンプレートは一般的な形式に基づいています。</strong></p>
                     <ul className="space-y-1 list-disc list-inside ml-2">
                       <li>業種、用途、取引先の要求に応じて、<strong>必ず内容を確認・修正してからご利用ください</strong></li>
@@ -118,12 +118,12 @@ export default function TransparencyPage() {
                   </div>
                 </div>
 
-                <div className="bg-white p-4 rounded-lg border border-amber-200">
-                  <h3 className="font-bold text-amber-900 mb-2 flex items-center gap-2">
+                <div className="bg-white p-4 rounded-lg border border-gray-200">
+                  <h3 className="font-bold text-kon mb-2 flex items-center gap-2">
                     <span>📅</span>
                     <span>和暦・西暦変換、住所・電話番号変換について</span>
                   </h3>
-                  <div className="space-y-2 text-sm text-amber-800">
+                  <div className="space-y-2 text-sm text-kon">
                     <p><strong>変換結果は一般的なルールに基づいていますが、例外があります。</strong></p>
                     <ul className="space-y-1 list-disc list-inside ml-2">
                       <li>公的書類への記載には、必ず公式な情報源で確認してください</li>
@@ -145,15 +145,15 @@ export default function TransparencyPage() {
             <section>
               <h2 className="text-xl font-bold text-kon mb-4">サービス品質について</h2>
               <div className="space-y-3 text-sm">
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <p className="font-bold text-blue-900 mb-2">🏗️ 現在ベータ版公開中</p>
-                  <p className="text-blue-800">
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <p className="font-bold text-kon mb-2">🏗️ 現在ベータ版公開中</p>
+                  <p className="text-kon">
                     本サービスは現在ベータ版として公開しており、継続的な改善を行っています。予告なく仕様変更や一時的なサービス停止を行う場合があります。
                   </p>
                 </div>
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <p className="font-bold text-blue-900 mb-2">💬 フィードバック歓迎</p>
-                  <p className="text-blue-800">
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <p className="font-bold text-kon mb-2">💬 フィードバック歓迎</p>
+                  <p className="text-kon">
                     バグ報告や改善提案は大歓迎です。画面右下のフィードバックボタンからお気軽にご連絡ください。みなさまのご意見をもとに、より使いやすいサービスを目指します。
                   </p>
                 </div>

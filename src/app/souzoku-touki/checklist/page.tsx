@@ -61,7 +61,7 @@ export default function ChecklistPage() {
                 onClick={() => setSelectedCase(opt.value)}
                 className={`rounded-xl border-2 py-3 px-2 text-sm font-medium transition-all ${
                   selectedCase === opt.value
-                    ? "border-ai bg-blue-50 dark:bg-blue-950/30 text-ai"
+                    ? "border-ai bg-gray-50 dark:bg-kon/30 text-ai"
                     : "border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300 hover:border-ai"
                 }`}
               >

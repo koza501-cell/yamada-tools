@@ -203,8 +203,8 @@ export default function ImageFormatClient({
           
           <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
             <span className="bg-green-50 text-green-700 px-3 py-1 rounded-full">✓ 完全無料</span>
-            <span className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full">📁 複数ファイル対応</span>
-            <span className="bg-purple-50 text-purple-700 px-3 py-1 rounded-full">🔒 ブラウザ内処理</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">📁 複数ファイル対応</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">🔒 ブラウザ内処理</span>
           </div>
         </header>
 
@@ -248,7 +248,7 @@ export default function ImageFormatClient({
                 <label className="text-sm font-medium text-gray-700">
                   選択中（{files.length}ファイル）
                 </label>
-                <button onClick={clearAll} className="text-xs text-red-500 hover:text-red-700">
+                <button onClick={clearAll} className="text-xs text-danger hover:text-danger">
                   すべて削除
                 </button>
               </div>
@@ -262,7 +262,7 @@ export default function ImageFormatClient({
                     </div>
                     <button
                       onClick={() => removeFile(index)}
-                      className="text-gray-400 hover:text-red-500 px-2"
+                      className="text-gray-400 hover:text-danger px-2"
                     >
                       ×
                     </button>

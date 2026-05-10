@@ -52,9 +52,9 @@ export default function NenkinIryouhiKakeiboBlog() {
       />
 
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-blue-500">ホーム</Link>
+        <Link href="/" className="hover:text-ai">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-blue-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-ai">ブログ</Link>
         <span className="mx-2">/</span>
         <span>年金・医療費控除・家計貯蓄ガイド</span>
       </nav>
@@ -66,7 +66,7 @@ export default function NenkinIryouhiKakeiboBlog() {
       <h1 className="text-3xl font-bold text-gray-800 mb-4">{title}</h1>
       <p className="text-gray-500 text-sm mb-8">最終更新: 2025年5月 ｜ 読了時間: 約9分</p>
 
-      <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mb-8">
+      <div className="bg-gray-50 border-l-4 border-kon p-4 mb-8">
         <p className="font-bold text-gray-800 mb-2">この記事でわかること</p>
         <ul className="text-gray-700 space-y-1 text-sm">
           <li>✓ 老齢年金（基礎年金＋厚生年金）の計算方法と具体例</li>
@@ -82,12 +82,12 @@ export default function NenkinIryouhiKakeiboBlog() {
         <StaticAdSlot />
         <h2 className="text-2xl font-bold text-gray-800 mb-4">老齢年金はいくらもらえる？計算方法を解説</h2>
         <p className="text-gray-700 mb-4">
-          老齢年金は<strong className="text-blue-600">老齢基礎年金（国民年金）</strong>と<strong className="text-blue-600">老齢厚生年金</strong>の2階建て構造です。それぞれの計算方法を確認しましょう。
+          老齢年金は<strong className="text-kon">老齢基礎年金（国民年金）</strong>と<strong className="text-kon">老齢厚生年金</strong>の2階建て構造です。それぞれの計算方法を確認しましょう。
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-          <div className="bg-blue-50 rounded-xl p-5">
-            <h3 className="font-bold text-blue-800 mb-3">1階：老齢基礎年金（国民年金）</h3>
+          <div className="bg-gray-50 rounded-xl p-5">
+            <h3 className="font-bold text-kon mb-3">1階：老齢基礎年金（国民年金）</h3>
             <div className="bg-white rounded p-3 mb-3 text-sm">
               <p className="font-semibold mb-1">満額 = 816,000円/年（2024年度）</p>
               <p className="text-gray-600">実際の受給額 = 満額 × 保険料納付月数 ÷ 480か月</p>
@@ -109,15 +109,15 @@ export default function NenkinIryouhiKakeiboBlog() {
           <div className="space-y-3 text-sm">
             <div className="flex justify-between items-center border-b border-gray-100 pb-2">
               <span className="text-gray-600">老齢基礎年金</span>
-              <span className="font-bold">816,000円 × 360 ÷ 480 = <span className="text-blue-600">612,000円/年</span></span>
+              <span className="font-bold">816,000円 × 360 ÷ 480 = <span className="text-kon">612,000円/年</span></span>
             </div>
             <div className="flex justify-between items-center border-b border-gray-100 pb-2">
               <span className="text-gray-600">老齢厚生年金</span>
               <span className="font-bold">350,000 × 5.481 ÷ 1,000 × 360 = <span className="text-green-600">690,606円/年</span></span>
             </div>
-            <div className="flex justify-between items-center bg-blue-50 rounded p-2">
+            <div className="flex justify-between items-center bg-gray-50 rounded p-2">
               <span className="font-bold text-gray-800">合計受給額</span>
-              <span className="text-xl font-bold text-blue-700">約1,302,606円/年（約108,000円/月）</span>
+              <span className="text-xl font-bold text-kon">約1,302,606円/年（約108,000円/月）</span>
             </div>
           </div>
           <p className="text-gray-500 text-xs mt-3">※ 上記は概算です。実際の受給額はねんきん定期便またはねんきんネットで確認できます。</p>
@@ -126,7 +126,7 @@ export default function NenkinIryouhiKakeiboBlog() {
         <div className="bg-yellow-50 border border-yellow-300 rounded-lg p-4 mb-4">
           <p className="font-bold text-yellow-800 mb-2">📋 ねんきん定期便の見方</p>
           <p className="text-gray-700 text-sm">
-            毎年誕生日月に届く「ねんきん定期便」に記載の「老齢年金の見込み額」を確認してください。35歳・45歳・59歳の節目には直近の加入実績に基づく詳細版が届きます。オンラインでは「ねんきんネット」（<span className="text-blue-600">nenkin.go.jp</span>）で最新の見込み額を確認できます。
+            毎年誕生日月に届く「ねんきん定期便」に記載の「老齢年金の見込み額」を確認してください。35歳・45歳・59歳の節目には直近の加入実績に基づく詳細版が届きます。オンラインでは「ねんきんネット」（<span className="text-kon">nenkin.go.jp</span>）で最新の見込み額を確認できます。
           </p>
         </div>
       </section>
@@ -134,7 +134,7 @@ export default function NenkinIryouhiKakeiboBlog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">繰上げ・繰下げ受給どちらが得？損益分岐点を計算</h2>
         <p className="text-gray-700 mb-4">
-          年金は通常65歳から受給しますが、<strong className="text-blue-600">受給開始時期を変えることで毎月の受給額が変わります</strong>。繰下げると増額、繰上げると減額になります。
+          年金は通常65歳から受給しますが、<strong className="text-kon">受給開始時期を変えることで毎月の受給額が変わります</strong>。繰下げると増額、繰上げると減額になります。
         </p>
 
         <div className="overflow-x-auto mb-6">
@@ -157,13 +157,13 @@ export default function NenkinIryouhiKakeiboBlog() {
                 ["75歳（繰下げ最大）", "+84%", "184,000円/月", "約87歳"],
               ].map(([age, rate, amt, breakeven], i) => (
                 <tr key={i} className={
-                  i === 2 ? "bg-blue-50 font-semibold" :
-                  i < 2 ? "bg-red-50" :
+                  i === 2 ? "bg-gray-50 font-semibold" :
+                  i < 2 ? "bg-gray-50" :
                   i === 4 ? "bg-green-50" :
                   i % 2 === 0 ? "bg-white" : "bg-gray-50"
                 }>
                   <td className="p-3 border border-gray-200">{age}</td>
-                  <td className={`p-3 border border-gray-200 text-center font-bold ${i < 2 ? "text-red-600" : i > 2 ? "text-green-600" : ""}`}>{rate}</td>
+                  <td className={`p-3 border border-gray-200 text-center font-bold ${i < 2 ? "text-danger" : i > 2 ? "text-green-600" : ""}`}>{rate}</td>
                   <td className="p-3 border border-gray-200 text-center">{amt}</td>
                   <td className="p-3 border border-gray-200 text-center text-gray-600">{breakeven}</td>
                 </tr>
@@ -182,8 +182,8 @@ export default function NenkinIryouhiKakeiboBlog() {
               <li>・家族に長寿が多い</li>
             </ul>
           </div>
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-            <h3 className="font-bold text-red-800 mb-2">繰上げが有利な人（or繰下げに注意）</h3>
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+            <h3 className="font-bold text-danger mb-2">繰上げが有利な人（or繰下げに注意）</h3>
             <ul className="text-sm text-gray-700 space-y-1">
               <li>・持病があり平均寿命より短命が見込まれる</li>
               <li>・65〜70歳の生活費がひっ迫している</li>
@@ -203,13 +203,13 @@ export default function NenkinIryouhiKakeiboBlog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">医療費控除でいくら節税できる？計算方法</h2>
         <p className="text-gray-700 mb-4">
-          年間の医療費が一定額を超えると、確定申告で<strong className="text-blue-600">医療費控除</strong>を受けられます。意外と見落とされがちな節税手段です。
+          年間の医療費が一定額を超えると、確定申告で<strong className="text-kon">医療費控除</strong>を受けられます。意外と見落とされがちな節税手段です。
         </p>
 
-        <div className="bg-blue-50 rounded-xl p-5 mb-6">
-          <h3 className="font-bold text-blue-800 mb-3">医療費控除の計算式</h3>
+        <div className="bg-gray-50 rounded-xl p-5 mb-6">
+          <h3 className="font-bold text-kon mb-3">医療費控除の計算式</h3>
           <div className="bg-white rounded-lg p-4 text-sm">
-            <p className="font-bold text-lg text-blue-700 mb-2">控除額 = 医療費合計 − 保険金補填 − 10万円（または所得の5%の低い方）</p>
+            <p className="font-bold text-lg text-kon mb-2">控除額 = 医療費合計 − 保険金補填 − 10万円（または所得の5%の低い方）</p>
             <p className="text-gray-600">※ 控除額の上限は200万円</p>
           </div>
         </div>
@@ -227,8 +227,8 @@ export default function NenkinIryouhiKakeiboBlog() {
               <li>・歯科矯正（機能的な問題がある場合）</li>
             </ul>
           </div>
-          <div className="bg-white border border-red-200 rounded-lg p-4">
-            <h3 className="font-bold text-red-700 mb-2">❌ 対象外の医療費</h3>
+          <div className="bg-white border border-gray-200 rounded-lg p-4">
+            <h3 className="font-bold text-danger mb-2">❌ 対象外の医療費</h3>
             <ul className="text-sm text-gray-700 space-y-1">
               <li>・健康食品・サプリメント</li>
               <li>・美容目的の手術・医療（美容整形など）</li>
@@ -240,7 +240,7 @@ export default function NenkinIryouhiKakeiboBlog() {
           </div>
         </div>
 
-        <div className="bg-white border-2 border-blue-200 rounded-xl p-5 mb-6">
+        <div className="bg-white border-2 border-gray-200 rounded-xl p-5 mb-6">
           <h3 className="font-bold text-gray-800 mb-4">具体例：医療費控除の節税額計算</h3>
           <p className="text-gray-600 text-sm mb-4">条件：年間医療費30万円・保険金補填5万円・課税所得400万円（所得税20%・住民税10%）</p>
           <div className="space-y-2 text-sm">
@@ -250,15 +250,15 @@ export default function NenkinIryouhiKakeiboBlog() {
             </div>
             <div className="flex justify-between border-b border-gray-100 pb-2">
               <span>所得税節税 = 15万円 × 20%</span>
-              <span className="font-bold text-blue-600">= 30,000円</span>
+              <span className="font-bold text-kon">= 30,000円</span>
             </div>
             <div className="flex justify-between border-b border-gray-100 pb-2">
               <span>住民税節税 = 15万円 × 10%</span>
-              <span className="font-bold text-blue-600">= 15,000円</span>
+              <span className="font-bold text-kon">= 15,000円</span>
             </div>
-            <div className="flex justify-between bg-blue-50 rounded p-2 mt-2">
+            <div className="flex justify-between bg-gray-50 rounded p-2 mt-2">
               <span className="font-bold">合計節税額</span>
-              <span className="font-bold text-blue-700 text-lg">45,000円</span>
+              <span className="font-bold text-kon text-lg">45,000円</span>
             </div>
           </div>
         </div>
@@ -267,7 +267,7 @@ export default function NenkinIryouhiKakeiboBlog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">セルフメディケーション税制とどちらが得？</h2>
         <p className="text-gray-700 mb-4">
-          2017年に始まった<strong className="text-blue-600">セルフメディケーション税制</strong>は、医療費控除の特例として、市販薬（特定OTC医薬品）の購入費用を控除できる制度です。
+          2017年に始まった<strong className="text-kon">セルフメディケーション税制</strong>は、医療費控除の特例として、市販薬（特定OTC医薬品）の購入費用を控除できる制度です。
         </p>
 
         <div className="overflow-x-auto mb-6">
@@ -312,7 +312,7 @@ export default function NenkinIryouhiKakeiboBlog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">老後資金2000万円問題と毎月の貯蓄目標</h2>
         <p className="text-gray-700 mb-4">
-          2019年に話題になった「老後2000万円問題」。実際に必要な金額と、今から積み立てる場合の<strong className="text-blue-600">月々の目標額</strong>を試算します。
+          2019年に話題になった「老後2000万円問題」。実際に必要な金額と、今から積み立てる場合の<strong className="text-kon">月々の目標額</strong>を試算します。
         </p>
 
         <div className="bg-yellow-50 border border-yellow-300 rounded-lg p-4 mb-6">
@@ -327,12 +327,12 @@ export default function NenkinIryouhiKakeiboBlog() {
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>
-                <tr className="bg-blue-600 text-white">
-                  <th className="p-2 border border-blue-500 text-left">現在の年齢</th>
-                  <th className="p-2 border border-blue-500 text-center">65歳まで</th>
-                  <th className="p-2 border border-blue-500 text-center">貯蓄のみ（0%）</th>
-                  <th className="p-2 border border-blue-500 text-center">年利3%運用</th>
-                  <th className="p-2 border border-blue-500 text-center">年利5%運用</th>
+                <tr className="bg-kon text-white">
+                  <th className="p-2 border border-kon text-left">現在の年齢</th>
+                  <th className="p-2 border border-kon text-center">65歳まで</th>
+                  <th className="p-2 border border-kon text-center">貯蓄のみ（0%）</th>
+                  <th className="p-2 border border-kon text-center">年利3%運用</th>
+                  <th className="p-2 border border-kon text-center">年利5%運用</th>
                 </tr>
               </thead>
               <tbody>
@@ -348,7 +348,7 @@ export default function NenkinIryouhiKakeiboBlog() {
                     <td className="p-2 border border-gray-200 font-medium">{age}</td>
                     <td className="p-2 border border-gray-200 text-center text-gray-500">{years}</td>
                     <td className="p-2 border border-gray-200 text-center">{a}</td>
-                    <td className="p-2 border border-gray-200 text-center text-blue-600 font-semibold">{b}</td>
+                    <td className="p-2 border border-gray-200 text-center text-kon font-semibold">{b}</td>
                     <td className="p-2 border border-gray-200 text-center text-green-600 font-semibold">{c}</td>
                   </tr>
                 ))}
@@ -358,8 +358,8 @@ export default function NenkinIryouhiKakeiboBlog() {
           <p className="text-gray-500 text-xs mt-2">※ 複利計算。NISAやiDeCoを活用した場合の実質税引後利回りを想定。</p>
         </div>
 
-        <div className="bg-blue-50 rounded-lg p-4 mb-4">
-          <p className="font-bold text-blue-800 mb-2">貯蓄率の目安</p>
+        <div className="bg-gray-50 rounded-lg p-4 mb-4">
+          <p className="font-bold text-kon mb-2">貯蓄率の目安</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
             <div className="bg-white rounded p-3 text-center">
               <p className="font-bold text-gray-700">手取りの20%以上</p>
@@ -368,12 +368,12 @@ export default function NenkinIryouhiKakeiboBlog() {
             </div>
             <div className="bg-white rounded p-3 text-center">
               <p className="font-bold text-gray-700">手取りの10〜20%</p>
-              <p className="text-blue-600 font-bold">標準的</p>
+              <p className="text-kon font-bold">標準的</p>
               <p className="text-gray-500 text-xs">老後資金の積立は可能</p>
             </div>
             <div className="bg-white rounded p-3 text-center">
               <p className="font-bold text-gray-700">手取りの10%未満</p>
-              <p className="text-red-600 font-bold">要改善</p>
+              <p className="text-danger font-bold">要改善</p>
               <p className="text-gray-500 text-xs">固定費の見直しが急務</p>
             </div>
           </div>
@@ -383,7 +383,7 @@ export default function NenkinIryouhiKakeiboBlog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">家計の貯蓄ができているか診断</h2>
         <p className="text-gray-700 mb-4">
-          貯蓄ができない原因は多くの場合、<strong className="text-blue-600">支出の構造的な問題</strong>にあります。以下のチェックポイントで自分の家計を診断してみてください。
+          貯蓄ができない原因は多くの場合、<strong className="text-kon">支出の構造的な問題</strong>にあります。以下のチェックポイントで自分の家計を診断してみてください。
         </p>
 
         <div className="space-y-3 mb-6">
@@ -410,8 +410,8 @@ export default function NenkinIryouhiKakeiboBlog() {
                 <div className="bg-green-50 rounded p-2">
                   <span className="text-green-600 font-bold">✅ </span>{item.ok}
                 </div>
-                <div className="bg-red-50 rounded p-2">
-                  <span className="text-red-600 font-bold">❌ </span>{item.ng}
+                <div className="bg-gray-50 rounded p-2">
+                  <span className="text-danger font-bold">❌ </span>{item.ng}
                 </div>
               </div>
             </div>
@@ -425,10 +425,10 @@ export default function NenkinIryouhiKakeiboBlog() {
           年金・医療費控除・家計貯蓄はすべて自分の数字を入れてシミュレーションするのが最も正確です。以下の無料ツールで今すぐ確認できます。
         </p>
 
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl p-6 mb-6 text-center">
+        <div className="bg-gradient-to-r from-slate-900 to-kon text-white rounded-xl p-6 mb-6 text-center">
           <p className="text-lg font-bold mb-2">年金受給額シミュレーター</p>
           <p className="text-sm opacity-90 mb-4">生年月日・職業・平均収入を入力すると老齢年金の概算受給額を計算。繰上げ・繰下げ別の損益分岐点も表示。</p>
-          <Link href="/finance/nenkin-simulator" className="inline-block bg-white text-blue-700 font-bold px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors">
+          <Link href="/finance/nenkin-simulator" className="inline-block bg-white text-kon font-bold px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors">
             年金額を試算する →
           </Link>
         </div>
@@ -437,31 +437,31 @@ export default function NenkinIryouhiKakeiboBlog() {
           <div className="bg-white border border-gray-200 rounded-lg p-4">
             <p className="font-bold text-gray-800 mb-2">医療費控除計算機</p>
             <p className="text-sm text-gray-600 mb-3">年間医療費・保険補填・所得を入力して控除額と節税額を即計算。セルフメディケーション税制との比較も。</p>
-            <Link href="/finance/iryouhi-koujo-calculator" className="text-blue-600 text-sm font-medium hover:underline">試してみる →</Link>
+            <Link href="/finance/iryouhi-koujo-calculator" className="text-kon text-sm font-medium hover:underline">試してみる →</Link>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-4">
             <p className="font-bold text-gray-800 mb-2">家計貯蓄シミュレーター</p>
             <p className="text-sm text-gray-600 mb-3">収入・支出・目標金額を入力して、何年で目標達成できるか計算。毎月の積立目標額も算出。</p>
-            <Link href="/life/kakeibo-simulator" className="text-blue-600 text-sm font-medium hover:underline">試してみる →</Link>
+            <Link href="/life/kakeibo-simulator" className="text-kon text-sm font-medium hover:underline">試してみる →</Link>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-4">
             <p className="font-bold text-gray-800 mb-2">iDeCo・NISA節税計算機</p>
             <p className="text-sm text-gray-600 mb-3">老後資金を効率的に積み立てるiDeCo・NISAの節税効果と運用シミュレーション。</p>
-            <Link href="/finance/ideco-nisa-calculator" className="text-blue-600 text-sm font-medium hover:underline">試してみる →</Link>
+            <Link href="/finance/ideco-nisa-calculator" className="text-kon text-sm font-medium hover:underline">試してみる →</Link>
           </div>
         </div>
       </section>
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">まとめ：年金・医療費控除・家計管理の重要ポイント</h2>
-        <div className="bg-blue-50 rounded-xl p-6">
+        <div className="bg-gray-50 rounded-xl p-6">
           <ul className="space-y-3 text-gray-700">
-            <li className="flex gap-2"><span className="text-blue-600 font-bold">①</span> 年金は「基礎年金＋厚生年金」の2階建て。加入期間と平均収入で受給額が決まる</li>
-            <li className="flex gap-2"><span className="text-blue-600 font-bold">②</span> 70歳まで繰下げると42%増額。損益分岐点は82歳（健康なら繰下げが有利）</li>
-            <li className="flex gap-2"><span className="text-blue-600 font-bold">③</span> 医療費控除は年間10万円超から申告可能。30万円の医療費で約4.5万円の節税効果</li>
-            <li className="flex gap-2"><span className="text-blue-600 font-bold">④</span> セルフメディケーション税制は医療費が少ない人向け。1.2万円超のOTC薬購入で適用可</li>
-            <li className="flex gap-2"><span className="text-blue-600 font-bold">⑤</span> 老後2000万円は35歳からなら月3.7万円（年利3%）の積立で達成可能</li>
-            <li className="flex gap-2"><span className="text-blue-600 font-bold">⑥</span> 貯蓄率20%以上を目標に。固定費削減が最も効果的な節約手段</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">①</span> 年金は「基礎年金＋厚生年金」の2階建て。加入期間と平均収入で受給額が決まる</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">②</span> 70歳まで繰下げると42%増額。損益分岐点は82歳（健康なら繰下げが有利）</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">③</span> 医療費控除は年間10万円超から申告可能。30万円の医療費で約4.5万円の節税効果</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">④</span> セルフメディケーション税制は医療費が少ない人向け。1.2万円超のOTC薬購入で適用可</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">⑤</span> 老後2000万円は35歳からなら月3.7万円（年利3%）の積立で達成可能</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">⑥</span> 貯蓄率20%以上を目標に。固定費削減が最も効果的な節約手段</li>
           </ul>
         </div>
       </section>

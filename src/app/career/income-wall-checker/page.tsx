@@ -411,7 +411,7 @@ export default function IncomeWallCheckerPage() {
     setError("");
   }
 
-  const inputClass = "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent";
+  const inputClass = "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon focus:border-transparent";
   const labelClass = "block text-sm font-medium text-gray-700 mb-1";
 
   const isSupporter = form.role === "supporter";
@@ -434,10 +434,10 @@ export default function IncomeWallCheckerPage() {
 
   function statusLabel(status: WallStatusType): { label: string; cls: string } {
     if (status === "not_applicable") return { label: "適用外", cls: "bg-gray-100 text-gray-500" };
-    if (status === "approaching") return { label: "接近中", cls: "bg-amber-100 text-amber-700" };
+    if (status === "approaching") return { label: "接近中", cls: "bg-gray-50 text-kon" };
     if (status === "safe") return { label: "安全圏", cls: "bg-green-100 text-green-700" };
     if (status === "warning") return { label: "要注意", cls: "bg-yellow-100 text-yellow-700" };
-    return { label: "超過済み", cls: "bg-red-100 text-red-700" };
+    return { label: "超過済み", cls: "bg-gray-50 text-danger" };
   }
 
   const faqs = [
@@ -494,8 +494,8 @@ export default function IncomeWallCheckerPage() {
         {/* Header */}
         <div className="mb-6">
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-medium bg-blue-100 text-blue-700 px-2 py-0.5 rounded">2026年改正対応</span>
-            <span className="text-xs font-medium bg-red-100 text-red-700 px-2 py-0.5 rounded">178万円の壁 NEW</span>
+            <span className="text-xs font-medium bg-gray-50 text-kon px-2 py-0.5 rounded">2026年改正対応</span>
+            <span className="text-xs font-medium bg-gray-50 text-danger px-2 py-0.5 rounded">178万円の壁 NEW</span>
           </div>
           <h1 className="text-2xl font-bold text-gray-900 mb-2">
             年収の壁 診断ツール
@@ -506,12 +506,12 @@ export default function IncomeWallCheckerPage() {
         </div>
 
         {/* 2026 Reform Box */}
-        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6">
+        <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-6">
           <div className="flex items-start gap-3">
-            <span className="text-blue-600 text-lg shrink-0">📢</span>
+            <span className="text-kon text-lg shrink-0">📢</span>
             <div>
-              <p className="text-sm font-semibold text-blue-800 mb-1">2026年税制改正：103万円の壁が178万円に引き上げ予定</p>
-              <p className="text-xs text-blue-700">この改正により、パート・アルバイトの方は最大178万円まで所得税・配偶者控除の影響を受けずに働けるようになります（段階的実施）。ただし100万円（住民税）・106万円（社会保険）・130万円（扶養）の壁は別制度のため引き続き注意が必要です。</p>
+              <p className="text-sm font-semibold text-kon mb-1">2026年税制改正：103万円の壁が178万円に引き上げ予定</p>
+              <p className="text-xs text-kon">この改正により、パート・アルバイトの方は最大178万円まで所得税・配偶者控除の影響を受けずに働けるようになります（段階的実施）。ただし100万円（住民税）・106万円（社会保険）・130万円（扶養）の壁は別制度のため引き続き注意が必要です。</p>
             </div>
           </div>
         </div>
@@ -523,15 +523,15 @@ export default function IncomeWallCheckerPage() {
 
             {/* Section 1 */}
             <div>
-              <h2 className="text-base font-semibold text-blue-700 mb-4 pb-2 border-b-2 border-blue-100 flex items-center gap-2">
-                <span className="w-6 h-6 bg-blue-600 text-white rounded-full text-xs flex items-center justify-center font-bold">1</span>
+              <h2 className="text-base font-semibold text-kon mb-4 pb-2 border-b-2 border-gray-200 flex items-center gap-2">
+                <span className="w-6 h-6 bg-kon text-white rounded-full text-xs flex items-center justify-center font-bold">1</span>
                 あなたの状況
               </h2>
               <div className="space-y-4">
 
                 {/* 立場 */}
                 <div>
-                  <label className={labelClass}>立場を選択 <span className="text-red-500">*</span></label>
+                  <label className={labelClass}>立場を選択 <span className="text-danger">*</span></label>
                   <div className="space-y-2">
                     {([
                       ["dependent", "パート・アルバイトで働いている（扶養されている側）"],
@@ -575,7 +575,7 @@ export default function IncomeWallCheckerPage() {
 
                     {/* Field B: 配偶者の年収（壁の診断対象） */}
                     <div>
-                      <label className={labelClass}>配偶者の年収（見込み） <span className="text-red-500">*</span></label>
+                      <label className={labelClass}>配偶者の年収（見込み） <span className="text-danger">*</span></label>
                       <div className="flex items-center gap-2">
                         <input
                           type="number"
@@ -607,8 +607,8 @@ export default function IncomeWallCheckerPage() {
                             ))}
                             <div
                               className={`absolute top-0 bottom-0 rounded-full transition-all ${
-                                incomeNum >= 178 ? "bg-red-500" :
-                                incomeNum >= 130 ? "bg-orange-500" :
+                                incomeNum >= 178 ? "bg-danger" :
+                                incomeNum >= 130 ? "bg-kon" :
                                 incomeNum >= 106 ? "bg-yellow-500" :
                                 incomeNum >= 103 ? "bg-yellow-400" :
                                 "bg-green-500"
@@ -616,11 +616,11 @@ export default function IncomeWallCheckerPage() {
                               style={{ width: `${Math.min(100, meterPercent(incomeNum))}%` }}
                             />
                             <div
-                              className="absolute top-0 bottom-0 w-1 bg-blue-700 rounded"
+                              className="absolute top-0 bottom-0 w-1 bg-kon rounded"
                               style={{ left: `${Math.min(98, meterPercent(incomeNum))}%` }}
                             />
                           </div>
-                          <div className="text-xs text-center text-blue-700 mt-1 font-medium">配偶者の年収: {incomeNum}万円</div>
+                          <div className="text-xs text-center text-kon mt-1 font-medium">配偶者の年収: {incomeNum}万円</div>
                         </div>
                       )}
                     </div>
@@ -629,7 +629,7 @@ export default function IncomeWallCheckerPage() {
                   /* === 扶養されている側 / 両方モード: 単一の年収フィールド + 配偶者年収 === */
                   <>
                     <div>
-                      <label className={labelClass}>現在の年収（見込み） <span className="text-red-500">*</span></label>
+                      <label className={labelClass}>現在の年収（見込み） <span className="text-danger">*</span></label>
                       <div className="flex items-center gap-2">
                         <input
                           type="number"
@@ -660,8 +660,8 @@ export default function IncomeWallCheckerPage() {
                             ))}
                             <div
                               className={`absolute top-0 bottom-0 rounded-full transition-all ${
-                                incomeNum >= 178 ? "bg-red-500" :
-                                incomeNum >= 130 ? "bg-orange-500" :
+                                incomeNum >= 178 ? "bg-danger" :
+                                incomeNum >= 130 ? "bg-kon" :
                                 incomeNum >= 106 ? "bg-yellow-500" :
                                 incomeNum >= 103 ? "bg-yellow-400" :
                                 "bg-green-500"
@@ -669,11 +669,11 @@ export default function IncomeWallCheckerPage() {
                               style={{ width: `${Math.min(100, meterPercent(incomeNum))}%` }}
                             />
                             <div
-                              className="absolute top-0 bottom-0 w-1 bg-blue-700 rounded"
+                              className="absolute top-0 bottom-0 w-1 bg-kon rounded"
                               style={{ left: `${Math.min(98, meterPercent(incomeNum))}%` }}
                             />
                           </div>
-                          <div className="text-xs text-center text-blue-700 mt-1 font-medium">現在: {incomeNum}万円</div>
+                          <div className="text-xs text-center text-kon mt-1 font-medium">現在: {incomeNum}万円</div>
                         </div>
                       )}
                     </div>
@@ -729,8 +729,8 @@ export default function IncomeWallCheckerPage() {
 
             {/* Section 2 */}
             <div>
-              <h2 className="text-base font-semibold text-blue-700 mb-4 pb-2 border-b-2 border-blue-100 flex items-center gap-2">
-                <span className="w-6 h-6 bg-blue-600 text-white rounded-full text-xs flex items-center justify-center font-bold">2</span>
+              <h2 className="text-base font-semibold text-kon mb-4 pb-2 border-b-2 border-gray-200 flex items-center gap-2">
+                <span className="w-6 h-6 bg-kon text-white rounded-full text-xs flex items-center justify-center font-bold">2</span>
                 現在の状況確認
               </h2>
               <div className="space-y-3">
@@ -744,8 +744,8 @@ export default function IncomeWallCheckerPage() {
                         onClick={() => handleChange("inDependency", i === 0)}
                         className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
                           form.inDependency === (i === 0)
-                            ? "bg-blue-600 text-white border-blue-600"
-                            : "bg-white text-gray-600 border-gray-300 hover:border-blue-400"
+                            ? "bg-kon text-white border-kon"
+                            : "bg-white text-gray-600 border-gray-300 hover:border-ai"
                         }`}
                       >
                         {lbl}
@@ -763,8 +763,8 @@ export default function IncomeWallCheckerPage() {
                         onClick={() => handleChange("healthInsuranceBySpouse", i === 0)}
                         className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
                           form.healthInsuranceBySpouse === (i === 0)
-                            ? "bg-blue-600 text-white border-blue-600"
-                            : "bg-white text-gray-600 border-gray-300 hover:border-blue-400"
+                            ? "bg-kon text-white border-kon"
+                            : "bg-white text-gray-600 border-gray-300 hover:border-ai"
                         }`}
                       >
                         {lbl}
@@ -782,8 +782,8 @@ export default function IncomeWallCheckerPage() {
                         onClick={() => handleChange("enrolledInSocialInsurance", i === 0)}
                         className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
                           form.enrolledInSocialInsurance === (i === 0)
-                            ? "bg-blue-600 text-white border-blue-600"
-                            : "bg-white text-gray-600 border-gray-300 hover:border-blue-400"
+                            ? "bg-kon text-white border-kon"
+                            : "bg-white text-gray-600 border-gray-300 hover:border-ai"
                         }`}
                       >
                         {lbl}
@@ -801,7 +801,7 @@ export default function IncomeWallCheckerPage() {
                       max={75}
                       value={form.age}
                       onChange={(e) => handleChange("age", e.target.value)}
-                      className="w-24 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-24 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                     />
                     <span className="text-sm text-gray-500">歳</span>
                     <span className="text-xs text-gray-400">（40歳以上は介護保険料加算）</span>
@@ -812,7 +812,7 @@ export default function IncomeWallCheckerPage() {
 
             {/* Error */}
             {error && (
-              <div className="bg-red-50 border border-red-200 rounded-lg px-4 py-3 text-sm text-red-700">
+              <div className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-sm text-danger">
                 {error}
               </div>
             )}
@@ -821,7 +821,7 @@ export default function IncomeWallCheckerPage() {
             <div className="flex gap-3">
               <button
                 onClick={handleDiagnose}
-                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-bold text-sm transition-colors shadow-sm"
+                className="flex-1 bg-kon hover:bg-ai text-white py-3 rounded-lg font-bold text-sm transition-colors shadow-sm"
               >
                 診断する
               </button>
@@ -849,8 +849,8 @@ export default function IncomeWallCheckerPage() {
                 {/* 現在地 */}
                 <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
                   <h2 className="text-base font-semibold text-gray-900 mb-3">あなたの現在地</h2>
-                  <div className="bg-blue-50 rounded-lg px-4 py-3 mb-3">
-                    <p className="text-sm text-blue-800">
+                  <div className="bg-gray-50 rounded-lg px-4 py-3 mb-3">
+                    <p className="text-sm text-kon">
                       {isSupporter ? "配偶者の年収" : "現在の年収"}{" "}
                       <span className="font-bold text-lg">{incomeNum}万円</span> は
                       <span className="font-semibold"> {result.currentZone}</span> にいます
@@ -859,7 +859,7 @@ export default function IncomeWallCheckerPage() {
                   {result.nextWall && (
                     <p className="text-sm text-gray-600">
                       次の壁（<span className="font-medium">{result.nextWall.amountLabel}</span>）まで
-                      <span className="font-bold text-blue-700"> あと{result.nextWall.distanceMan.toFixed(1)}万円</span>
+                      <span className="font-bold text-kon"> あと{result.nextWall.distanceMan.toFixed(1)}万円</span>
                     </p>
                   )}
                   <div className="mt-3 text-xs text-gray-500 bg-gray-50 rounded-lg p-3">
@@ -869,13 +869,13 @@ export default function IncomeWallCheckerPage() {
 
                 {/* Fix 2: 2026年改正 callout when income >= 150 */}
                 {incomeNum >= 150 && (
-                  <div className="bg-blue-50 border-l-4 border-blue-500 rounded-lg p-4">
-                    <div className="flex items-center gap-2 font-bold text-blue-800 mb-1">
+                  <div className="bg-gray-50 border-l-4 border-kon rounded-lg p-4">
+                    <div className="flex items-center gap-2 font-bold text-kon mb-1">
                       <span>📢</span>
                       <span>2026年税制改正 — あなたへの影響</span>
-                      <span className="text-xs bg-blue-500 text-white px-2 py-0.5 rounded-full ml-1">NEW</span>
+                      <span className="text-xs bg-kon text-white px-2 py-0.5 rounded-full ml-1">NEW</span>
                     </div>
-                    <p className="text-sm text-blue-700">
+                    <p className="text-sm text-kon">
                       2026年改正後は所得税の非課税ラインが<strong>178万円</strong>に引き上げ予定です。
                       現在の年収 <strong>{incomeNum}万円</strong> は改正後の新ラインに
                       {incomeNum >= 178 ? (
@@ -899,8 +899,8 @@ export default function IncomeWallCheckerPage() {
                           className={`rounded-lg border p-3 ${
                             wall.status === "not_applicable" ? "border-gray-100 bg-gray-50 opacity-60" :
                             !wall.applicable ? "border-gray-100 bg-gray-50 opacity-60" :
-                            wall.status === "over" ? "border-red-200 bg-red-50" :
-                            wall.status === "approaching" ? "border-amber-200 bg-amber-50" :
+                            wall.status === "over" ? "border-gray-200 bg-gray-50" :
+                            wall.status === "approaching" ? "border-gray-200 bg-gray-50" :
                             wall.status === "warning" ? "border-yellow-200 bg-yellow-50" :
                             "border-green-100 bg-green-50"
                           }`}
@@ -911,7 +911,7 @@ export default function IncomeWallCheckerPage() {
                                 <span className="text-sm">{statusIcon(wall.status)}</span>
                                 <span className="text-sm font-semibold text-gray-800">{wall.amountLabel}の壁</span>
                                 {wall.is2026New && (
-                                  <span className="text-xs bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded font-medium">2026年新設</span>
+                                  <span className="text-xs bg-gray-50 text-kon px-1.5 py-0.5 rounded font-medium">2026年新設</span>
                                 )}
                               </div>
                               <p className="text-xs text-gray-600 mb-1">{wall.description}</p>
@@ -940,13 +940,13 @@ export default function IncomeWallCheckerPage() {
                 </div>
 
                 {/* 総合診断 */}
-                <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-5 text-white">
+                <div className="bg-gradient-to-r from-slate-900 to-kon rounded-xl p-5 text-white">
                   <h3 className="text-sm font-semibold mb-3">総合診断・推奨アクション</h3>
                   <div className="bg-white/10 rounded-lg p-3 mb-3">
-                    <p className="text-xs text-blue-100 mb-1">手取り概算（年間）</p>
+                    <p className="text-xs text-gin mb-1">手取り概算（年間）</p>
                     <p className="text-2xl font-bold">約{Math.round(result.estimatedTakeHome / 10000)}万円</p>
                   </div>
-                  <p className="text-xs text-blue-100 leading-relaxed">{result.optimalIncomeAdvice}</p>
+                  <p className="text-xs text-gin leading-relaxed">{result.optimalIncomeAdvice}</p>
                 </div>
               </div>
             )}
@@ -977,10 +977,10 @@ export default function IncomeWallCheckerPage() {
                   { name: "配偶者特別控除の壁", amount: "150万円", impact: "配偶者特別控除が減少し始める", target: "配偶者側", highlight: false },
                   { name: "新・所得税の壁", amount: "178万円", impact: "2026年改正後の所得税発生ライン", target: "本人", highlight: true },
                 ].map((row, i) => (
-                  <tr key={i} className={row.highlight ? "bg-blue-50" : ""}>
+                  <tr key={i} className={row.highlight ? "bg-gray-50" : ""}>
                     <td className="py-2 font-medium text-gray-800">
                       {row.name}
-                      {row.highlight && <span className="ml-2 text-xs bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded">2026年新設</span>}
+                      {row.highlight && <span className="ml-2 text-xs bg-gray-50 text-kon px-1.5 py-0.5 rounded">2026年新設</span>}
                     </td>
                     <td className="py-2 text-gray-700">{row.amount}</td>
                     <td className="py-2 text-gray-600">{row.impact}</td>
@@ -1000,9 +1000,9 @@ export default function IncomeWallCheckerPage() {
               <h3 className="font-semibold text-gray-900 mb-2">「年収の壁」とは</h3>
               <p>「年収の壁」とは、年収がある金額を超えると税金・社会保険料の負担が急激に増え、手取り収入が逆に減ってしまう現象のことです。パート・アルバイトで働く方が扶養の範囲内に収入を抑えようとする主な理由でもあります。</p>
             </div>
-            <div className="bg-blue-50 border-l-4 border-blue-500 rounded-r-xl p-4">
-              <h3 className="font-semibold text-blue-900 mb-2">2026年税制改正のポイント</h3>
-              <p className="text-blue-800">2026年度税制改正により、所得税の非課税ライン（103万円の壁）が178万円に引き上げられる方向で議論が進んでいます。この改正が実施されれば、パート・アルバイトで働く方の手取りが大幅に増加します。ただし段階的な実施が予定されており、詳細は今後の政府発表をご確認ください。</p>
+            <div className="bg-gray-50 border-l-4 border-kon rounded-r-xl p-4">
+              <h3 className="font-semibold text-kon mb-2">2026年税制改正のポイント</h3>
+              <p className="text-kon">2026年度税制改正により、所得税の非課税ライン（103万円の壁）が178万円に引き上げられる方向で議論が進んでいます。この改正が実施されれば、パート・アルバイトで働く方の手取りが大幅に増加します。ただし段階的な実施が予定されており、詳細は今後の政府発表をご確認ください。</p>
             </div>
             <div>
               <h3 className="font-semibold text-gray-900 mb-2">106万円の壁の注意点（2024年10月改正）</h3>
@@ -1055,9 +1055,9 @@ export default function IncomeWallCheckerPage() {
               <Link
                 key={tool.href}
                 href={tool.href}
-                className="flex flex-col gap-1 p-3 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors"
+                className="flex flex-col gap-1 p-3 border border-gray-200 rounded-lg hover:border-ai hover:bg-gray-50 transition-colors"
               >
-                <span className="text-sm font-medium text-blue-700">{tool.label}</span>
+                <span className="text-sm font-medium text-kon">{tool.label}</span>
                 <span className="text-xs text-gray-500">{tool.desc}</span>
               </Link>
             ))}
@@ -1067,15 +1067,15 @@ export default function IncomeWallCheckerPage() {
           <h2 className="text-xl font-bold text-gray-900 mb-4">📝 関連ブログ記事</h2>
           <Link
             href="/blog/nenshu-kabe-simulation-2026"
-            className="flex items-center gap-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl border border-purple-200 hover:border-purple-400 hover:shadow-md transition-all p-5 group"
+            className="flex items-center gap-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl border border-kon hover:border-ai hover:shadow-md transition-all p-5 group"
           >
-            <div className="w-12 h-12 rounded-lg bg-purple-100 group-hover:bg-purple-200 flex items-center justify-center shrink-0 transition-colors">
-              <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-12 h-12 rounded-lg bg-gray-50 group-hover:bg-ai flex items-center justify-center shrink-0 transition-colors">
+              <svg className="w-6 h-6 text-kon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
               </svg>
             </div>
             <div>
-              <p className="text-sm font-semibold text-purple-700 group-hover:text-purple-800">【2026年最新】年収の壁とは？103万・106万・130万・150万の壁を完全解説</p>
+              <p className="text-sm font-semibold text-kon group-hover:text-ai">【2026年最新】年収の壁とは？103万・106万・130万・150万の壁を完全解説</p>
               <p className="text-xs text-gray-500 mt-1">詳しい解説・計算例・注意点はこちら →</p>
             </div>
           </Link>

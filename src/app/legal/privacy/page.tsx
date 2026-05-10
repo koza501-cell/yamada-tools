@@ -33,17 +33,17 @@ export default function PrivacyPage() {
             <section>
               <h2 className="text-xl font-bold text-kon mb-4">第2条（個人情報の収集方法）</h2>
               <div className="space-y-4 text-sm">
-                <div className="bg-blue-50 p-4 rounded-lg space-y-3">
+                <div className="bg-gray-50 p-4 rounded-lg space-y-3">
                   <div>
-                    <p className="font-bold text-blue-900 mb-1">アカウント情報</p>
-                    <p className="text-blue-800">
+                    <p className="font-bold text-kon mb-1">アカウント情報</p>
+                    <p className="text-kon">
                       本サービスへのアカウント登録（メールアドレスによる登録またはGoogleアカウント連携）を行った場合、メールアドレスおよびプロフィール情報を収集します。ゲストとしてツールを利用する場合、アカウント登録は不要です。
                     </p>
                   </div>
 
                   <div>
-                    <p className="font-bold text-blue-900 mb-1">アップロードされたファイルについて</p>
-                    <ul className="space-y-1 text-blue-800">
+                    <p className="font-bold text-kon mb-1">アップロードされたファイルについて</p>
+                    <ul className="space-y-1 text-kon">
                       <li>・ ファイルは処理完了後60分以内に、サーバーから完全に削除されます</li>
                       <li>・ ファイルの内容を当社が閲覧、保存することは一切ありません</li>
                       <li>・ 第三者にファイルを共有することは一切ありません</li>

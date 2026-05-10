@@ -18,7 +18,7 @@ const CATEGORIES = [
   { key: 'life', label: '生活' },
 ];
 
-const GRADIENT = 'from-blue-600 to-purple-600';
+const GRADIENT = 'from-slate-900 to-kon';
 
 export default function RecipeGrid({ posts }: { posts: any[] }) {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -40,8 +40,8 @@ export default function RecipeGrid({ posts }: { posts: any[] }) {
               onClick={() => setActiveCategory(cat.key)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${
                 activeCategory === cat.key
-                  ? 'bg-blue-600 dark:bg-blue-500 text-white shadow-md'
-                  : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400'
+                  ? 'bg-kon dark:bg-kon text-white shadow-md'
+                  : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-ai dark:hover:border-ai hover:text-ai dark:hover:text-ai'
               }`}
             >
               {cat.label}
@@ -67,7 +67,7 @@ export default function RecipeGrid({ posts }: { posts: any[] }) {
               <div className={"h-3 bg-gradient-to-r " + GRADIENT} />
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3 flex-wrap">
-                  <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-200 rounded-full text-xs font-medium">
+                  <span className="px-3 py-1 bg-gray-50 dark:bg-kon/40 text-kon dark:text-gray-300 rounded-full text-xs font-medium">
                     {post.type || 'レシピ'}
                   </span>
                   {post.difficulty && (
@@ -76,14 +76,14 @@ export default function RecipeGrid({ posts }: { posts: any[] }) {
                         ? 'bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300'
                         : post.difficulty === '中級者向け'
                         ? 'bg-yellow-100 dark:bg-yellow-900/40 text-yellow-700 dark:text-yellow-300'
-                        : 'bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300'
+                        : 'bg-gray-50 dark:bg-danger/40 text-danger dark:text-gin'
                     }`}>
                       {post.difficulty}
                     </span>
                   )}
                   <span className="text-xs text-gray-400 dark:text-gray-500">{post.readTime || '5分'}</span>
                 </div>
-                <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-ai dark:group-hover:text-ai transition-colors line-clamp-2">
                   {post.title}
                 </h2>
                 <p className="text-gray-600 dark:text-gray-300 text-sm line-clamp-3 mb-4">{post.description || post.excerpt}</p>
@@ -94,7 +94,7 @@ export default function RecipeGrid({ posts }: { posts: any[] }) {
                 )}
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-gray-400 dark:text-gray-500">{post.publishDate || (post.publishedAt || '').slice(0, 10)}</span>
-                  <span className="text-blue-600 dark:text-blue-400 group-hover:translate-x-2 transition-transform font-medium">レシピを見る →</span>
+                  <span className="text-kon dark:text-gray-300 group-hover:translate-x-2 transition-transform font-medium">レシピを見る →</span>
                 </div>
               </div>
             </Link>

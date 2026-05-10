@@ -57,7 +57,7 @@ export default function Page() {
       {/* Educational Content Section */}
       <section className="max-w-4xl mx-auto px-4 py-12">
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-8">
-          <h2 className="text-2xl font-bold text-kon dark:text-blue-300 mb-6">画像DPIをブラウザで瞬時にチェック</h2>
+          <h2 className="text-2xl font-bold text-kon dark:text-gray-300 mb-6">画像DPIをブラウザで瞬時にチェック</h2>
 
           <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
             「印刷したら画像がぼやけた」「PNGのDPIを確認したい」「デザインの素材データが印刷に耐えられるかチェックしたい」——そんな時に便利なのが本ツールです。画像をドラッグ＆ドロップするだけで、DPI（dots per inch）・ピクセルサイズ・推奨印刷サイズを瞬時に確認できます。<strong>すべてブラウザ内で処理</strong>されるため、機密性の高いデザインデータや個人写真も外部に送信されることなく安全にチェックできます。
@@ -72,17 +72,17 @@ export default function Page() {
 
           <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mt-6 mb-3">用途別のDPI目安</h3>
           <ul className="text-gray-700 dark:text-gray-300 space-y-2 mb-4">
-            <li className="flex items-start gap-2"><span className="text-kon dark:text-blue-300 font-bold">・</span><strong>Web表示</strong>：72〜96DPI（モニター表示が前提）</li>
-            <li className="flex items-start gap-2"><span className="text-kon dark:text-blue-300 font-bold">・</span><strong>一般カラー印刷</strong>：300DPI（雑誌・パンフレット・チラシ）</li>
-            <li className="flex items-start gap-2"><span className="text-kon dark:text-blue-300 font-bold">・</span><strong>名刺・カード類</strong>：350DPI以上（細かい文字を鮮明に）</li>
-            <li className="flex items-start gap-2"><span className="text-kon dark:text-blue-300 font-bold">・</span><strong>ポスター・大判印刷</strong>：150〜200DPI（離れて見るため低めでOK）</li>
-            <li className="flex items-start gap-2"><span className="text-kon dark:text-blue-300 font-bold">・</span><strong>新聞・冊子印刷</strong>：150〜200DPI</li>
-            <li className="flex items-start gap-2"><span className="text-kon dark:text-blue-300 font-bold">・</span><strong>写真集・高品質印刷</strong>：600DPI以上</li>
+            <li className="flex items-start gap-2"><span className="text-kon dark:text-gray-300 font-bold">・</span><strong>Web表示</strong>：72〜96DPI（モニター表示が前提）</li>
+            <li className="flex items-start gap-2"><span className="text-kon dark:text-gray-300 font-bold">・</span><strong>一般カラー印刷</strong>：300DPI（雑誌・パンフレット・チラシ）</li>
+            <li className="flex items-start gap-2"><span className="text-kon dark:text-gray-300 font-bold">・</span><strong>名刺・カード類</strong>：350DPI以上（細かい文字を鮮明に）</li>
+            <li className="flex items-start gap-2"><span className="text-kon dark:text-gray-300 font-bold">・</span><strong>ポスター・大判印刷</strong>：150〜200DPI（離れて見るため低めでOK）</li>
+            <li className="flex items-start gap-2"><span className="text-kon dark:text-gray-300 font-bold">・</span><strong>新聞・冊子印刷</strong>：150〜200DPI</li>
+            <li className="flex items-start gap-2"><span className="text-kon dark:text-gray-300 font-bold">・</span><strong>写真集・高品質印刷</strong>：600DPI以上</li>
           </ul>
 
           <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mt-6 mb-3">PNG・JPGそれぞれのDPI確認のポイント</h3>
           <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-            <strong>PNG</strong>はpHYsチャンクと呼ばれるメタデータにDPI情報を保持しています。Webからダウンロードした画像は72DPIで保存されていることが多く、印刷用途には<a href="/image/compress" className="text-kon dark:text-blue-300 hover:text-ai underline">画像圧縮</a>や<a href="/image/resize" className="text-kon dark:text-blue-300 hover:text-ai underline">画像サイズ変更</a>と組み合わせて確認するのが便利です。
+            <strong>PNG</strong>はpHYsチャンクと呼ばれるメタデータにDPI情報を保持しています。Webからダウンロードした画像は72DPIで保存されていることが多く、印刷用途には<a href="/image/compress" className="text-kon dark:text-gray-300 hover:text-ai underline">画像圧縮</a>や<a href="/image/resize" className="text-kon dark:text-gray-300 hover:text-ai underline">画像サイズ変更</a>と組み合わせて確認するのが便利です。
             <strong>JPG</strong>はEXIF情報にDPIを保持しており、デジタルカメラやスマホで撮影した写真は通常72DPIで記録されますが、ピクセル数が多ければ印刷時に300DPI相当の品質が出せます。本ツールでは推奨印刷サイズも同時に表示するため、ピクセル数とDPIの関係を直感的に理解できます。
           </p>
 

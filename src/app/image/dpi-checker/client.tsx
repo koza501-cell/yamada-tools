@@ -44,7 +44,7 @@ export default function DpiCheckerClient({
         let quality = ""; let qualityColor = "";
         if (img.naturalWidth >= 3000 || img.naturalHeight >= 3000) { quality = "高品質（印刷に最適）"; qualityColor = "text-green-600"; }
         else if (img.naturalWidth >= 1500 || img.naturalHeight >= 1500) { quality = "中品質（一般印刷OK）"; qualityColor = "text-yellow-600"; }
-        else { quality = "低解像度（Web向け）"; qualityColor = "text-red-600"; }
+        else { quality = "低解像度（Web向け）"; qualityColor = "text-danger"; }
         setInfo({ width: img.naturalWidth, height: img.naturalHeight, dpi, fileSize, format, printWidthCm: printW, printHeightCm: printH, quality, qualityColor });
         setImage(e.target.result);
         setMascotState("success")
@@ -78,7 +78,7 @@ export default function DpiCheckerClient({
           <p className="text-gray-600 text-lg">印刷前にDPIと推奨印刷サイズを確認</p>
           <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
             <span className="bg-green-50 text-green-700 px-3 py-1 rounded-full">✓ 完全無料</span>
-            <span className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full">🔒 ブラウザ内処理</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">🔒 ブラウザ内処理</span>
           </div>
         </header>
 
@@ -99,7 +99,7 @@ export default function DpiCheckerClient({
             <div>
               <div className="flex items-center justify-between bg-gray-50 rounded-xl p-3 mb-4">
                 <p className="font-bold text-sm truncate">{fileName}</p>
-                <button onClick={reset} className="text-sm text-red-500 font-bold">✕ 閉じる</button>
+                <button onClick={reset} className="text-sm text-danger font-bold">✕ 閉じる</button>
               </div>
 
               <div className="grid md:grid-cols-2 gap-4 mb-4">
@@ -108,8 +108,8 @@ export default function DpiCheckerClient({
                 </div>
                 {info && (
                   <div className="space-y-3">
-                    <div className="bg-blue-50 rounded-xl p-4">
-                      <h3 className="font-bold text-sm text-blue-800 mb-3">📊 画像情報</h3>
+                    <div className="bg-gray-50 rounded-xl p-4">
+                      <h3 className="font-bold text-sm text-kon mb-3">📊 画像情報</h3>
                       <div className="space-y-2 text-sm">
                         <div className="flex justify-between"><span className="text-gray-600">ピクセルサイズ</span><span className="font-bold">{info.width} × {info.height} px</span></div>
                         <div className="flex justify-between"><span className="text-gray-600">ファイルサイズ</span><span className="font-bold">{info.fileSize}</span></div>
@@ -131,7 +131,7 @@ export default function DpiCheckerClient({
                         ))}
                       </div>
                     </div>
-                    <div className="bg-amber-50 rounded-xl p-3 text-xs text-amber-700">
+                    <div className="bg-gray-50 rounded-xl p-3 text-xs text-kon">
                       <p><strong>💡 目安:</strong> 300DPI=高品質印刷、150DPI=ポスター、72DPI=Web表示</p>
                     </div>
                   </div>

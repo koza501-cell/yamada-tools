@@ -256,8 +256,8 @@ export default function UnitConverterClient({
           
           <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
             <span className="bg-green-50 text-green-700 px-3 py-1 rounded-full">✓ 完全無料</span>
-            <span className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full">🇯🇵 日本の単位対応</span>
-            <span className="bg-purple-50 text-purple-700 px-3 py-1 rounded-full">⚡ リアルタイム</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">🇯🇵 日本の単位対応</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">⚡ リアルタイム</span>
           </div>
         </header>
 

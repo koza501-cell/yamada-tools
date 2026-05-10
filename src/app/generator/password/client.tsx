@@ -99,9 +99,9 @@ export default function PasswordClient({
     if (useNumbers) score++;
     if (useSymbols) score++;
 
-    if (score <= 2) return { level: "弱い", color: "bg-red-500", width: "25%" };
+    if (score <= 2) return { level: "弱い", color: "bg-danger", width: "25%" };
     if (score <= 3) return { level: "普通", color: "bg-yellow-500", width: "50%" };
-    if (score <= 4) return { level: "強い", color: "bg-blue-500", width: "75%" };
+    if (score <= 4) return { level: "強い", color: "bg-kon", width: "75%" };
     return { level: "とても強い", color: "bg-green-500", width: "100%" };
   };
 
@@ -118,8 +118,8 @@ export default function PasswordClient({
           
           <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
             <span className="bg-green-50 text-green-700 px-3 py-1 rounded-full">✓ 完全無料</span>
-            <span className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full">🔒 ブラウザ内処理</span>
-            <span className="bg-purple-50 text-purple-700 px-3 py-1 rounded-full">🎲 暗号学的乱数</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">🔒 ブラウザ内処理</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">🎲 暗号学的乱数</span>
           </div>
         </header>
 
@@ -162,9 +162,9 @@ export default function PasswordClient({
             <div className="flex justify-between text-sm mb-1">
               <span className="text-gray-600">パスワード強度</span>
               <span className={`font-medium ${
-                strength.level === "弱い" ? "text-red-500" :
+                strength.level === "弱い" ? "text-danger" :
                 strength.level === "普通" ? "text-yellow-600" :
-                strength.level === "強い" ? "text-blue-500" : "text-green-500"
+                strength.level === "強い" ? "text-kon" : "text-green-500"
               }`}>{strength.level}</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2">
@@ -284,7 +284,7 @@ export default function PasswordClient({
           {/* Additional Options */}
           <div className="mb-6">
             <label className={`flex items-center gap-3 p-3 rounded-xl cursor-pointer transition-all ${
-              excludeAmbiguous ? "bg-orange-50 border-2 border-orange-300" : "bg-gray-50 border-2 border-transparent"
+              excludeAmbiguous ? "bg-gray-50 border-2 border-gray-200" : "bg-gray-50 border-2 border-transparent"
             }`}>
               <input
                 type="checkbox"
@@ -293,7 +293,7 @@ export default function PasswordClient({
                 className="sr-only"
               />
               <span className={`w-5 h-5 rounded flex items-center justify-center text-xs ${
-                excludeAmbiguous ? "bg-orange-500 text-white" : "bg-gray-200"
+                excludeAmbiguous ? "bg-kon text-white" : "bg-gray-200"
               }`}>
                 {excludeAmbiguous && "✓"}
               </span>
@@ -355,7 +355,7 @@ export default function PasswordClient({
               <span>パスワードマネージャーで管理する</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-red-500">✗</span>
+              <span className="text-danger">✗</span>
               <span>個人情報（誕生日、名前など）を含めない</span>
             </li>
           </ul>

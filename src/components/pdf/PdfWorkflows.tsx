@@ -27,7 +27,7 @@ const WORKFLOWS = [
 
 const BTN_COLORS: Record<string, string> = {
   indigo: "bg-indigo-600 hover:bg-indigo-700",
-  orange: "bg-orange-500 hover:bg-orange-600",
+  orange: "bg-kon hover:bg-ai",
   green:  "bg-green-600 hover:bg-green-700",
 };
 

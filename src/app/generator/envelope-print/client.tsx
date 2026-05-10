@@ -1625,7 +1625,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
     } else { setMascotState("error"); setMascotMessage("ポップアップブロック"); }
   };
 
-  if (!mounted) return <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div></div>;
+  if (!mounted) return <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-kon"></div></div>;
 
   const envelope = ENVELOPE_SIZES[envelopeSize];
   const curr = bulkMode && bulkAddresses.length > 0 ? bulkAddresses[currentBulkIndex] : getValues("recipient");
@@ -1637,7 +1637,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
       <header className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50 shadow-sm">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2 text-xl font-bold text-gray-800 hover:text-blue-600 transition-colors">
+            <Link href="/" className="flex items-center gap-2 text-xl font-bold text-gray-800 hover:text-ai transition-colors">
               <span className="text-2xl">🔧</span><span>山田ツール</span>
             </Link>
             <Link href="/generator" className="text-sm text-gray-600 hover:text-gray-900">生成ツール一覧</Link>
@@ -1687,7 +1687,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                           setEnvelopeSize(entry.envelopeSize as EnvelopeSize);
                           showToast("🕒 履歴から読み込みました");
                         }}
-                        className="mt-2 text-xs text-blue-600 hover:underline font-medium">再利用</button>
+                        className="mt-2 text-xs text-kon hover:underline font-medium">再利用</button>
                     </div>
                   );
                 })}
@@ -1707,8 +1707,8 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
 
           <div className="flex justify-center mb-6">
             <div className="bg-white rounded-lg p-1 shadow border border-gray-200 inline-flex">
-              <button onClick={() => setActiveTab("simple")} className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${activeTab === "simple" ? "bg-blue-600 text-white" : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"}`}>🎯 かんたんモード</button>
-              <button onClick={() => setActiveTab("advanced")} className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${activeTab === "advanced" ? "bg-blue-600 text-white" : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"}`}>⚙️ 詳細設定</button>
+              <button onClick={() => setActiveTab("simple")} className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${activeTab === "simple" ? "bg-kon text-white" : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"}`}>🎯 かんたんモード</button>
+              <button onClick={() => setActiveTab("advanced")} className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${activeTab === "advanced" ? "bg-kon text-white" : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"}`}>⚙️ 詳細設定</button>
             </div>
           </div>
 
@@ -1720,21 +1720,21 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                 setShowSender(true);
                 setTimeout(() => document.getElementById('sender-section')?.scrollIntoView({ behavior: 'smooth' }), 50);
               }}
-              className="flex-1 border border-gray-200 rounded-xl p-3 text-sm text-center hover:shadow-md hover:border-blue-300 cursor-pointer transition-all text-gray-600"
+              className="flex-1 border border-gray-200 rounded-xl p-3 text-sm text-center hover:shadow-md hover:border-ai cursor-pointer transition-all text-gray-600"
             >
               📝 差出人を設定
             </button>
             <button
               type="button"
               onClick={() => setBulkMode(true)}
-              className="flex-1 border border-gray-200 rounded-xl p-3 text-sm text-center hover:shadow-md hover:border-blue-300 cursor-pointer transition-all text-gray-600"
+              className="flex-1 border border-gray-200 rounded-xl p-3 text-sm text-center hover:shadow-md hover:border-ai cursor-pointer transition-all text-gray-600"
             >
               📋 CSVで一括印刷
             </button>
             <button
               type="button"
               onClick={() => setActiveTab('advanced')}
-              className="flex-1 border border-gray-200 rounded-xl p-3 text-sm text-center hover:shadow-md hover:border-blue-300 cursor-pointer transition-all text-gray-600"
+              className="flex-1 border border-gray-200 rounded-xl p-3 text-sm text-center hover:shadow-md hover:border-ai cursor-pointer transition-all text-gray-600"
             >
               ⚙️ 詳細レイアウト
             </button>
@@ -1763,7 +1763,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                       return (
                         <button key={key} type="button"
                           onClick={() => setEnvelopeSize(key as EnvelopeSize)}
-                          className={`flex-shrink-0 flex flex-col items-center gap-1 p-2 rounded-lg border-2 transition-all ${selected ? "border-blue-500 bg-blue-50" : "border-gray-200 hover:border-blue-300 bg-white"}`}>
+                          className={`flex-shrink-0 flex flex-col items-center gap-1 p-2 rounded-lg border-2 transition-all ${selected ? "border-kon bg-gray-50" : "border-gray-200 hover:border-ai bg-white"}`}>
                           <svg width={maxW} height={maxH} viewBox={`0 0 ${maxW} ${maxH}`}>
                             <rect
                               x={(maxW - dw) / 2} y={(maxH - dh) / 2}
@@ -1773,7 +1773,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                               strokeWidth="1.5" rx="1"
                             />
                           </svg>
-                          <span className={`text-xs font-medium whitespace-nowrap ${selected ? "text-blue-700" : "text-gray-700"}`}>{label}</span>
+                          <span className={`text-xs font-medium whitespace-nowrap ${selected ? "text-kon" : "text-gray-700"}`}>{label}</span>
                           <span className="text-xs text-gray-400 whitespace-nowrap">{desc}</span>
                         </button>
                       );
@@ -1814,8 +1814,8 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                   <label className="flex items-center gap-2 cursor-pointer"><input type="checkbox" checked={showSender} onChange={(e) => setShowSender(e.target.checked)} className="w-4 h-4 rounded"/><span className="text-sm text-gray-700">差出人</span></label>
                   <label className="flex items-center gap-2 cursor-pointer"><input type="checkbox" checked={bulkMode} onChange={(e) => setBulkMode(e.target.checked)} className="w-4 h-4 rounded"/><span className="text-sm text-gray-700">CSV一括 <span title="CSVファイルで複数の宛先を一度に印刷できます" className="text-gray-400 hover:text-gray-600 cursor-help text-xs">❓</span></span></label>
                 </div>
-                <div className="mt-4 p-3 bg-blue-50 rounded-lg text-sm flex items-center justify-between flex-wrap gap-2">
-                  <span><span className="text-blue-700 font-medium">📮 {envelope.postal === "teikei" ? "定形" : "定形外"}</span><span className="text-gray-600 ml-2">({envelope.width}×{envelope.height}mm)</span></span>
+                <div className="mt-4 p-3 bg-gray-50 rounded-lg text-sm flex items-center justify-between flex-wrap gap-2">
+                  <span><span className="text-kon font-medium">📮 {envelope.postal === "teikei" ? "定形" : "定形外"}</span><span className="text-gray-600 ml-2">({envelope.width}×{envelope.height}mm)</span></span>
                   {activeTab === "simple" && (
                     <span className="text-xs text-gray-500 dark:text-gray-400">
                       自動フォント: 住所{autoFonts.addrFs}pt / 会社{autoFonts.companyFs}pt / 氏名{autoFonts.nameFs}pt
@@ -1824,11 +1824,11 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                 </div>
                 {/* Recommended size badge */}
                 {overflowWarning && overflowSuggestions.length > 0 && (
-                  <div className="mt-3 p-2 bg-amber-50 border border-amber-200 rounded-lg text-xs text-amber-800 flex items-center gap-2 flex-wrap">
+                  <div className="mt-3 p-2 bg-gray-50 border border-gray-200 rounded-lg text-xs text-kon flex items-center gap-2 flex-wrap">
                     <span>⭐ おすすめ封筒:</span>
                     {overflowSuggestions.map(k => (
                       <button key={k} onClick={() => setEnvelopeSize(k)}
-                        className="px-2 py-0.5 bg-amber-200 hover:bg-amber-300 rounded font-medium transition-colors">
+                        className="px-2 py-0.5 bg-gray-50 hover:bg-gray-50 rounded font-medium transition-colors">
                         {ENVELOPE_SIZES[k].name}
                       </button>
                     ))}
@@ -1866,10 +1866,10 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                   {addressBookOpen && (
                     <div className="px-6 pb-5 border-t border-gray-100">
                       {abMigratePrompt && (
-                        <div className="mt-3 mb-3 bg-blue-50 border border-blue-200 rounded-lg p-3 text-sm text-blue-800">
+                        <div className="mt-3 mb-3 bg-gray-50 border border-gray-200 rounded-lg p-3 text-sm text-kon">
                           <p className="font-medium">📦 ブラウザに保存された住所があります。クラウドに移行しますか？</p>
                           <div className="flex gap-2 mt-2">
-                            <button onClick={bulkMigrateToServer} className="px-3 py-1.5 bg-blue-600 text-white rounded text-xs hover:bg-blue-700">移行する</button>
+                            <button onClick={bulkMigrateToServer} className="px-3 py-1.5 bg-kon text-white rounded text-xs hover:bg-ai">移行する</button>
                             <button onClick={() => setAbMigratePrompt(false)} className="px-3 py-1.5 bg-gray-100 text-gray-600 rounded text-xs hover:bg-gray-200">このままにする</button>
                           </div>
                         </div>
@@ -1918,9 +1918,9 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                                         {a.tags.length > 0 && (
                                           <div className="flex flex-wrap gap-1 mt-1">
                                             {a.tags.map(tag => (
-                                              <span key={tag} className="inline-flex items-center gap-0.5 px-1.5 py-0.5 bg-blue-100 text-blue-700 rounded text-xs">
+                                              <span key={tag} className="inline-flex items-center gap-0.5 px-1.5 py-0.5 bg-gray-50 text-kon rounded text-xs">
                                                 {tag}
-                                                <button onClick={() => removeTagFromServerAddress(a.id, tag)} className="hover:text-red-500 ml-0.5">×</button>
+                                                <button onClick={() => removeTagFromServerAddress(a.id, tag)} className="hover:text-danger ml-0.5">×</button>
                                               </span>
                                             ))}
                                           </div>
@@ -1942,13 +1942,13 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                                             <button onClick={() => { setAbTagInputId(null); setAbTagInputValue(""); }} className="text-xs text-gray-400 hover:text-gray-600">✕</button>
                                           </div>
                                         ) : (
-                                          <button onClick={() => { setAbTagInputId(a.id); setAbTagInputValue(""); }} className="text-xs text-gray-400 hover:text-blue-600 mt-0.5">+ タグ</button>
+                                          <button onClick={() => { setAbTagInputId(a.id); setAbTagInputValue(""); }} className="text-xs text-gray-400 hover:text-ai mt-0.5">+ タグ</button>
                                         )}
                                       </div>
                                     </div>
                                     <div className="flex gap-3 mt-2">
-                                      <button onClick={() => loadFromServerAddress(a)} className="text-xs text-blue-600 hover:underline font-medium">読み込む</button>
-                                      <button onClick={() => deleteFromServerAddressBook(a.id)} className="text-xs text-red-500 hover:underline">削除</button>
+                                      <button onClick={() => loadFromServerAddress(a)} className="text-xs text-kon hover:underline font-medium">読み込む</button>
+                                      <button onClick={() => deleteFromServerAddressBook(a.id)} className="text-xs text-danger hover:underline">削除</button>
                                     </div>
                                   </div>
                                 ))}
@@ -1956,7 +1956,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                             );
                           })()}
                           {serverAddresses.length >= getPlanLimits(userPlan).addressBook && serverAddresses.length > 0 && (
-                            <p className="mt-3 text-xs text-amber-700 text-center">保存上限に達しました。古い住所を削除してください。</p>
+                            <p className="mt-3 text-xs text-kon text-center">保存上限に達しました。古い住所を削除してください。</p>
                           )}
                         </>
                       ) : (
@@ -1985,8 +1985,8 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                                       <span className="text-xs text-gray-400 flex-shrink-0 mt-0.5">最終使用: {dateStr}</span>
                                     </div>
                                     <div className="flex gap-3 mt-2">
-                                      <button onClick={() => loadFromAddressBook(saved)} className="text-xs text-blue-600 hover:underline font-medium">読み込む</button>
-                                      <button onClick={() => deleteFromAddressBook(saved.id)} className="text-xs text-red-500 hover:underline">削除</button>
+                                      <button onClick={() => loadFromAddressBook(saved)} className="text-xs text-kon hover:underline font-medium">読み込む</button>
+                                      <button onClick={() => deleteFromAddressBook(saved.id)} className="text-xs text-danger hover:underline">削除</button>
                                     </div>
                                   </div>
                                 );
@@ -1994,15 +1994,15 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                             </div>
                           )}
                           {savedAddresses.length >= getPlanLimits(userPlan).addresses && (
-                            <div className="mt-3 bg-amber-50 border border-amber-200 rounded-lg p-3 text-sm text-amber-800">
+                            <div className="mt-3 bg-gray-50 border border-gray-200 rounded-lg p-3 text-sm text-kon">
                               <p>無料プランでは3件まで保存できます。</p>
                               <p className="mt-1">PROプランで<strong>500件</strong>までクラウド保存可能！
-                                <Link href="/pricing" className="ml-1 text-amber-700 font-medium hover:underline">PROプランを見る →</Link>
+                                <Link href="/pricing" className="ml-1 text-kon font-medium hover:underline">PROプランを見る →</Link>
                               </p>
                             </div>
                           )}
                           {!user && (
-                            <div className="mt-3 bg-blue-50 border border-blue-100 rounded-lg p-3 text-xs text-blue-700 text-center">
+                            <div className="mt-3 bg-gray-50 border border-gray-200 rounded-lg p-3 text-xs text-kon text-center">
                               <Link href="/pricing" className="font-medium hover:underline">ログインするとクラウドで住所を管理できます →</Link>
                             </div>
                           )}
@@ -2018,15 +2018,15 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                   <h2 className="text-lg font-bold mb-4 text-gray-900 dark:text-white"><span>📬</span> 宛先</h2>
                   <div className="space-y-3">
                     <div>
-                      <label className="block text-xs text-gray-500 mb-1">郵便番号 <span className="text-red-500">*</span></label>
+                      <label className="block text-xs text-gray-500 mb-1">郵便番号 <span className="text-danger">*</span></label>
                       <div className="flex gap-2">
-                        <input type="text" {...register("recipient.postalCode")} placeholder="1000001" maxLength={8} className={`flex-1 bg-gray-50 border rounded-lg px-3 py-2 ${errors.recipient?.postalCode ? "border-red-400" : "border-gray-300"}`} aria-invalid={!!errors.recipient?.postalCode} onChange={(e) => { setValue("recipient.postalCode", e.target.value, { shouldValidate: true }); setPostalError(""); }}/>
-                        <button onClick={handlePostalLookup} disabled={postalLoading} className="px-3 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 disabled:opacity-50 whitespace-nowrap">
+                        <input type="text" {...register("recipient.postalCode")} placeholder="1000001" maxLength={8} className={`flex-1 bg-gray-50 border rounded-lg px-3 py-2 ${errors.recipient?.postalCode ? "border-danger" : "border-gray-300"}`} aria-invalid={!!errors.recipient?.postalCode} onChange={(e) => { setValue("recipient.postalCode", e.target.value, { shouldValidate: true }); setPostalError(""); }}/>
+                        <button onClick={handlePostalLookup} disabled={postalLoading} className="px-3 py-2 bg-kon text-white rounded-lg text-sm hover:bg-ai disabled:opacity-50 whitespace-nowrap">
                           {postalLoading ? "..." : "住所検索"}
                         </button>
                       </div>
-                      {errors.recipient?.postalCode && <p className="text-xs text-red-500 mt-1" role="alert">{errors.recipient.postalCode.message}</p>}
-                      {postalError && <p className="text-xs text-red-500 mt-1">{postalError}</p>}
+                      {errors.recipient?.postalCode && <p className="text-xs text-danger mt-1" role="alert">{errors.recipient.postalCode.message}</p>}
+                      {postalError && <p className="text-xs text-danger mt-1">{postalError}</p>}
                       {postalConfirm && <p className="text-xs text-green-600 mt-1 bg-green-50 px-2 py-1 rounded">✅ {postalConfirm}</p>}
                     </div>
                     <div className="grid grid-cols-2 gap-3">
@@ -2038,19 +2038,19 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                     <input type="text" {...register("recipient.companyName")} placeholder="会社名" onChange={(e) => { const v=e.target.value; setValue("recipient.companyName", v, {shouldDirty:true}); if(!honorificManual){const h=detectHonorific(getValues("recipient.name"),v);setValue("recipient.honorific",h,{shouldDirty:true});setHonorificHint(h==="御中"?"会社宛なので「御中」が推奨":"");} }} className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
                     <input type="text" {...register("recipient.department")} placeholder="部署名" className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
                     <div>
-                      <label className="block text-xs text-gray-500 mb-1">氏名 <span className="text-red-500">*</span></label>
+                      <label className="block text-xs text-gray-500 mb-1">氏名 <span className="text-danger">*</span></label>
                       <div className="grid grid-cols-3 gap-3">
-                        <input type="text" {...register("recipient.name")} placeholder="氏名" className={`col-span-2 bg-gray-50 border rounded-lg px-3 py-2 ${errors.recipient?.name ? "border-red-400" : "border-gray-300"}`} aria-invalid={!!errors.recipient?.name} onChange={(e) => { const v=e.target.value; setValue("recipient.name", v, {shouldDirty:true, shouldValidate:true}); if(!honorificManual){const h=detectHonorific(v,getValues("recipient.companyName"));setValue("recipient.honorific",h,{shouldDirty:true});setHonorificHint(h==="御中"?"会社宛なので「御中」が推奨":"");} }}/>
+                        <input type="text" {...register("recipient.name")} placeholder="氏名" className={`col-span-2 bg-gray-50 border rounded-lg px-3 py-2 ${errors.recipient?.name ? "border-danger" : "border-gray-300"}`} aria-invalid={!!errors.recipient?.name} onChange={(e) => { const v=e.target.value; setValue("recipient.name", v, {shouldDirty:true, shouldValidate:true}); if(!honorificManual){const h=detectHonorific(v,getValues("recipient.companyName"));setValue("recipient.honorific",h,{shouldDirty:true});setHonorificHint(h==="御中"?"会社宛なので「御中」が推奨":"");} }}/>
                         <select {...register("recipient.honorific")} onChange={(e) => { setHonorificManual(true); setHonorificHint(""); setValue("recipient.honorific", e.target.value, {shouldDirty:true}); }} className="bg-gray-50 border border-gray-300 rounded-lg px-3 py-2">
                           <option value="様">様</option><option value="御中">御中</option><option value="殿">殿</option><option value="先生">先生</option><option value="">なし</option>
                         </select>
                       </div>
-                      {errors.recipient?.name && <p className="text-xs text-red-500 mt-1" role="alert">{errors.recipient.name.message}</p>}
-                      {honorificHint && <p className="text-xs text-blue-500 mt-1">💡 {honorificHint}</p>}
+                      {errors.recipient?.name && <p className="text-xs text-danger mt-1" role="alert">{errors.recipient.name.message}</p>}
+                      {honorificHint && <p className="text-xs text-kon mt-1">💡 {honorificHint}</p>}
                     </div>
                     <div className="pt-2 border-t border-gray-100">
                       {savedAddresses.length >= getPlanLimits(userPlan).addresses ? (
-                        <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 text-sm text-amber-800">
+                        <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 text-sm text-kon">
                           {userPlan === 'free' ? `無料プランの保存上限(3件)に達しています。` : `プランの保存上限に達しています。`}
                           {userPlan === 'free' && <Link href="/pricing" className="ml-1 font-medium hover:underline">PROプランで100件まで →</Link>}
                         </div>
@@ -2068,7 +2068,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                               setDayPassOpen(true);
                             }
                           }}
-                          className="w-full py-2 min-h-[44px] bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors">
+                          className="w-full py-2 min-h-[44px] bg-kon hover:bg-ai text-white rounded-lg text-sm font-medium transition-colors">
                           💾 住所を保存（アドレス帳に追加）
                         </button>
                       )}
@@ -2083,14 +2083,14 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                   {isFeatureEnabled("BULK_MAIL_MERGE") ? (
                     <>
                       {csvSoftWarn !== null && (
-                        <div className="mb-4 bg-amber-50 border border-amber-300 rounded-xl p-4 text-amber-800 text-sm">
+                        <div className="mb-4 bg-gray-50 border border-gray-200 rounded-xl p-4 text-kon text-sm">
                           <p className="font-semibold mb-1">⚠️ CSV件数が上限を超えています</p>
                           <p className="mb-3">無料プランでは{getPlanLimits(userPlan).csvRows}件まで処理できます。今のCSVには<strong>{csvSoftWarn.total}件</strong>あります。</p>
                           <div className="flex flex-col sm:flex-row gap-2">
-                            <button onClick={handleCsvContinueFree} className="flex-1 px-4 py-2 bg-white border border-amber-400 text-amber-800 rounded-lg text-sm font-medium hover:bg-amber-50 transition-colors">
+                            <button onClick={handleCsvContinueFree} className="flex-1 px-4 py-2 bg-white border border-gray-200 text-kon rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors">
                               {getPlanLimits(userPlan).csvRows}件で続ける
                             </button>
-                            <button onClick={handleCsvUpgrade} className="flex-1 px-4 py-2 bg-amber-600 text-white rounded-lg text-sm font-medium hover:bg-amber-700 transition-colors">
+                            <button onClick={handleCsvUpgrade} className="flex-1 px-4 py-2 bg-kon text-white rounded-lg text-sm font-medium hover:bg-kon transition-colors">
                               全件印刷するにはアップグレード
                             </button>
                           </div>
@@ -2117,27 +2117,27 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                   ) : (
                     <>
                       {csvSoftWarn !== null && (
-                        <div className="mb-4 bg-amber-50 border border-amber-300 rounded-xl p-4 text-amber-800 text-sm">
+                        <div className="mb-4 bg-gray-50 border border-gray-200 rounded-xl p-4 text-kon text-sm">
                           <p className="font-semibold mb-1">⚠️ CSV件数が上限を超えています</p>
                           <p className="mb-3">無料プランでは5件まで処理できます。今のCSVには<strong>{csvSoftWarn.total}件</strong>あります。</p>
                           <div className="flex flex-col sm:flex-row gap-2">
-                            <button onClick={handleCsvContinueFree} className="flex-1 px-4 py-2 bg-white border border-amber-400 text-amber-800 rounded-lg text-sm font-medium hover:bg-amber-50 transition-colors">
+                            <button onClick={handleCsvContinueFree} className="flex-1 px-4 py-2 bg-white border border-gray-200 text-kon rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors">
                               5件で続ける
                             </button>
-                            <button onClick={handleCsvUpgrade} className="flex-1 px-4 py-2 bg-amber-600 text-white rounded-lg text-sm font-medium hover:bg-amber-700 transition-colors">
+                            <button onClick={handleCsvUpgrade} className="flex-1 px-4 py-2 bg-kon text-white rounded-lg text-sm font-medium hover:bg-kon transition-colors">
                               全件印刷するにはアップグレード
                             </button>
                           </div>
                         </div>
                       )}
                       {csvLimitBanner !== null && (
-                        <div className="mb-4 bg-amber-50 border border-amber-300 rounded-lg p-4 text-amber-800 text-sm">
+                        <div className="mb-4 bg-gray-50 border border-gray-200 rounded-lg p-4 text-kon text-sm">
                           {(() => { const lim = getPlanLimits(userPlan).csvRows; return (
                             <>
                               <p className="font-medium">⚠️ 現在のプランでは{lim}件まで一括処理できます（{csvLimitBanner}件中{lim}件を読み込みました）</p>
                               {userPlan === 'free' && <p className="mt-1 text-xs">PROプランで５０件まで、TEAMプランで５００件まで一括処理可能！</p>}
                               {userPlan === 'pro' && <p className="mt-1 text-xs">TEAMプランで５００件まで一括処理可能！</p>}
-                              {userPlan !== 'enterprise' && <Link href="/pricing" className="mt-1 inline-block text-xs font-medium text-amber-700 hover:underline">プランを見る →</Link>}
+                              {userPlan !== 'enterprise' && <Link href="/pricing" className="mt-1 inline-block text-xs font-medium text-kon hover:underline">プランを見る →</Link>}
                             </>
                           ); })()}
                         </div>
@@ -2161,7 +2161,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                             reader.readAsText(file, "UTF-8");
                           }
                         }}
-                        className={`mb-3 border-2 border-dashed rounded-lg p-5 text-center cursor-pointer transition-colors ${csvDragOver ? "border-blue-400 bg-blue-50" : "border-gray-300 hover:border-gray-400 bg-gray-50"}`}>
+                        className={`mb-3 border-2 border-dashed rounded-lg p-5 text-center cursor-pointer transition-colors ${csvDragOver ? "border-kon bg-gray-50" : "border-gray-300 hover:border-gray-400 bg-gray-50"}`}>
                         <p className="text-sm text-gray-600 dark:text-gray-300">📁 ファイルを選択またはドラッグ＆ドロップ</p>
                         <p className="text-xs text-gray-400 mt-1">.csv / .xlsx / .txt 対応</p>
                         <input type="file" accept=".csv,.txt" className="hidden" id="csv-file-input"
@@ -2187,14 +2187,14 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                         const lim = getPlanLimits(userPlan).csvRows;
                         const planLabel = userPlan === 'free' ? '無料プラン' : userPlan.toUpperCase();
                         return (
-                          <p className={`text-xs mt-1 ${n > lim ? "text-amber-600 font-medium" : "text-gray-500"}`}>
+                          <p className={`text-xs mt-1 ${n > lim ? "text-kon font-medium" : "text-gray-500"}`}>
                             入力件数: {n}件{n > lim ? ` ⚠️ ${planLabel}では${lim}件まで処理されます` : ` / 最大${lim}件（${planLabel}）`}
                           </p>
                         );
                       })()}
                       <div className="flex items-center gap-3 mt-2 flex-wrap">
-                        <button onClick={() => handleCSVImport()} className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm">読み込む</button>
-                        <button onClick={downloadSampleCSV} className="text-xs text-blue-600 hover:underline">📥 サンプルCSVをダウンロード</button>
+                        <button onClick={() => handleCSVImport()} className="px-4 py-2 bg-kon text-white rounded-lg text-sm">読み込む</button>
+                        <button onClick={downloadSampleCSV} className="text-xs text-kon hover:underline">📥 サンプルCSVをダウンロード</button>
                       </div>
                       {bulkAddresses.length > 0 && (
                         <div className="mt-4 flex items-center gap-2">
@@ -2232,7 +2232,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                           {!templateSaveOpen ? (
                             <button
                               onClick={() => { setTemplateSaveName(getValues('sender').companyName || getValues('sender').name || 'テンプレート'); setTemplateSaveOpen(true); }}
-                              className="w-full py-2 min-h-[44px] bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-sm font-medium transition-colors border border-blue-200">
+                              className="w-full py-2 min-h-[44px] bg-gray-50 hover:bg-ai text-kon rounded-lg text-sm font-medium transition-colors border border-gray-200">
                               ☁️ テンプレートとして保存
                             </button>
                           ) : (
@@ -2249,7 +2249,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                               <button
                                 onClick={saveTemplateToServer}
                                 disabled={templateSaving}
-                                className="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors disabled:opacity-50">
+                                className="px-3 py-2 bg-kon hover:bg-ai text-white rounded-lg text-sm font-medium transition-colors disabled:opacity-50">
                                 {templateSaving ? '...' : '保存'}
                               </button>
                               <button
@@ -2273,12 +2273,12 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                                     <div key={t.id} className="flex items-center justify-between px-3 py-2 hover:bg-gray-50 border-b border-gray-100 last:border-0">
                                       <button
                                         onClick={() => applyServerTemplate(t)}
-                                        className="flex-1 text-left text-sm text-gray-700 hover:text-blue-600 truncate">
+                                        className="flex-1 text-left text-sm text-gray-700 hover:text-ai truncate">
                                         {t.name}
                                       </button>
                                       <button
                                         onClick={() => deleteServerTemplate(t.id)}
-                                        className="ml-2 text-xs text-red-400 hover:text-red-600 shrink-0">
+                                        className="ml-2 text-xs text-danger hover:text-danger shrink-0">
                                         削除
                                       </button>
                                     </div>
@@ -2294,7 +2294,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                       ) : (
                         <button
                           onClick={() => { showToast('テンプレート保存はPRO機能です。1日パスでも利用できます 🌟'); setDayPassOpen(true); }}
-                          className="w-full py-2 min-h-[44px] bg-amber-50 hover:bg-amber-100 text-amber-700 rounded-lg text-sm font-medium transition-colors border border-amber-200">
+                          className="w-full py-2 min-h-[44px] bg-gray-50 hover:bg-gray-50 text-kon rounded-lg text-sm font-medium transition-colors border border-gray-200">
                           ☁️ テンプレートとして保存
                         </button>
                       )}
@@ -2310,7 +2310,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                   <span className="flex items-center gap-2 font-bold text-[#1e3a5f]">
                     <span>🏢</span> 会社ロゴ
                     {getPlanLimits(userPlan).logos === 0 && (
-                      <span className="ml-1 text-xs font-bold bg-amber-400 text-white px-2 py-0.5 rounded-full">PRO</span>
+                      <span className="ml-1 text-xs font-bold bg-kon text-white px-2 py-0.5 rounded-full">PRO</span>
                     )}
                     {getPlanLimits(userPlan).logos > 0 && logos.length > 0 && (
                       <span className="text-sm font-normal text-gray-500 ml-1">({logos.length}/{getPlanLimits(userPlan).logos}件)</span>
@@ -2327,7 +2327,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                         </div>
                         <div className="mt-3">
                           <p className="text-sm text-gray-600 font-medium">会社のロゴを封筒に印刷できます</p>
-                          <Link href="/pricing" className="mt-2 inline-block px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg text-sm font-bold transition-colors">
+                          <Link href="/pricing" className="mt-2 inline-block px-4 py-2 bg-kon hover:bg-kon text-white rounded-lg text-sm font-bold transition-colors">
                             PROプランにアップグレード →
                           </Link>
                         </div>
@@ -2338,18 +2338,18 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                           <div className="flex flex-wrap gap-2">
                             {logos.map((logo, i) => (
                               <div key={i} onClick={() => setActiveLogoIdx(i)}
-                                className={`relative cursor-pointer rounded-lg border-2 p-1 transition-colors ${activeLogoIdx === i ? 'border-blue-400 bg-blue-50' : 'border-gray-200 hover:border-gray-300'}`}>
+                                className={`relative cursor-pointer rounded-lg border-2 p-1 transition-colors ${activeLogoIdx === i ? 'border-kon bg-gray-50' : 'border-gray-200 hover:border-gray-300'}`}>
                                 <img src={logo} alt={`ロゴ${i+1}`} className="w-14 h-14 object-contain rounded"/>
                                 <button
                                   onClick={(e) => { e.stopPropagation(); const nl = logos.filter((_,idx) => idx !== i); setLogos(nl); if (activeLogoIdx >= nl.length) setActiveLogoIdx(Math.max(0, nl.length-1)); try { localStorage.setItem(LOGO_KEY, JSON.stringify(nl)); } catch {} }}
-                                  className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white rounded-full text-xs flex items-center justify-center hover:bg-red-600">×</button>
-                                {activeLogoIdx === i && <span className="absolute bottom-0 left-0 right-0 text-center text-xs bg-blue-400 text-white rounded-b leading-4">使用中</span>}
+                                  className="absolute -top-1 -right-1 w-5 h-5 bg-danger text-white rounded-full text-xs flex items-center justify-center hover:bg-danger">×</button>
+                                {activeLogoIdx === i && <span className="absolute bottom-0 left-0 right-0 text-center text-xs bg-kon text-white rounded-b leading-4">使用中</span>}
                               </div>
                             ))}
                           </div>
                         )}
                         {logos.length < getPlanLimits(userPlan).logos ? (
-                          <div className="border-2 border-dashed rounded-lg p-4 text-center transition-colors border-gray-300 hover:border-blue-400">
+                          <div className="border-2 border-dashed rounded-lg p-4 text-center transition-colors border-gray-300 hover:border-ai">
                             <p className="text-sm text-gray-500">📁 画像をドラッグ＆ドロップ</p>
                             <p className="text-xs text-gray-400 mt-1">PNG / JPG / SVG 対応（500KB以下推奨）</p>
                             <input type="file" accept="image/png,image/jpeg,image/svg+xml" className="hidden" id="logo-file-input"
@@ -2380,7 +2380,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                               <label className="block text-xs text-gray-500 mb-2">配置位置</label>
                               <div className="grid grid-cols-2 gap-2">
                                 {([["top-left","左上（横書き）"],["top-right","右上"],["above-sender","差出人の上"],["left-sender","差出人の左（縦書き）"]] as const).map(([v, label]) => (
-                                  <label key={v} className={`flex items-center gap-2 text-xs cursor-pointer p-2 rounded-lg border transition-colors ${logoPosition === v ? 'border-blue-400 bg-blue-50' : 'border-gray-200 hover:bg-gray-50'}`}>
+                                  <label key={v} className={`flex items-center gap-2 text-xs cursor-pointer p-2 rounded-lg border transition-colors ${logoPosition === v ? 'border-kon bg-gray-50' : 'border-gray-200 hover:bg-gray-50'}`}>
                                     <input type="radio" name="logoPos" value={v} checked={logoPosition === v} onChange={() => setLogoPosition(v)} className="sr-only"/>
                                     {label}
                                   </label>
@@ -2410,7 +2410,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                   <span className="flex items-center gap-2 font-bold text-[#1e3a5f]">
                     <span>📱</span> QRコード
                     {!getPlanLimits(userPlan).qr && (
-                      <span className="ml-1 text-xs font-bold bg-amber-400 text-white px-2 py-0.5 rounded-full">PRO</span>
+                      <span className="ml-1 text-xs font-bold bg-kon text-white px-2 py-0.5 rounded-full">PRO</span>
                     )}
                   </span>
                   <span className={`text-gray-400 transition-transform duration-200 ${qrSectionOpen ? "rotate-180" : ""}`}>▼</span>
@@ -2421,7 +2421,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                       <div className="mt-4 text-center py-5 bg-gray-50 rounded-lg">
                         <p className="text-sm text-gray-600 font-medium">封筒にQRコードを印刷できます</p>
                         <p className="text-xs text-gray-400 mt-1">URL・決済リンク・会社サイトなど</p>
-                        <Link href="/pricing" className="mt-3 inline-block px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg text-sm font-bold transition-colors">
+                        <Link href="/pricing" className="mt-3 inline-block px-4 py-2 bg-kon hover:bg-kon text-white rounded-lg text-sm font-bold transition-colors">
                           PROプランにアップグレード →
                         </Link>
                       </div>
@@ -2442,7 +2442,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                           <label className="block text-xs text-gray-500 mb-2">配置位置</label>
                           <div className="grid grid-cols-2 gap-2">
                             {([["top-left","左上"],["top-right","右上"],["bottom-left","左下"],["bottom-right","右下"]] as const).map(([v, label]) => (
-                              <label key={v} className={`flex items-center gap-2 text-xs cursor-pointer p-2 rounded-lg border transition-colors ${qrPosition === v ? 'border-blue-400 bg-blue-50' : 'border-gray-200 hover:bg-gray-50'}`}>
+                              <label key={v} className={`flex items-center gap-2 text-xs cursor-pointer p-2 rounded-lg border transition-colors ${qrPosition === v ? 'border-kon bg-gray-50' : 'border-gray-200 hover:bg-gray-50'}`}>
                                 <input type="radio" name="qrPos" value={v} checked={qrPosition === v} onChange={() => setQrPosition(v)} className="sr-only"/>
                                 {label}
                               </label>
@@ -2478,7 +2478,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                     <div className="grid grid-cols-3 gap-1 w-24">
                       {[0,1,2,3,4,5,6,7,8].map(pos => (
                         <button key={pos} onClick={() => setStampPosition(pos)}
-                          className={`w-7 h-7 rounded text-xs transition-colors ${stampPosition === pos ? "bg-blue-600" : "bg-gray-200 hover:bg-gray-300"}`}/>
+                          className={`w-7 h-7 rounded text-xs transition-colors ${stampPosition === pos ? "bg-kon" : "bg-gray-200 hover:bg-gray-300"}`}/>
                       ))}
                     </div>
                   </div>
@@ -2524,11 +2524,11 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                             onChange={e => setShowBarcode(e.target.checked)} className="w-4 h-4 rounded"/>
                           <span className="text-sm text-gray-700">📊 カスタマーバーコード</span>
                           {!getPlanLimits(userPlan).barcode && (
-                            <span className="text-xs font-bold bg-amber-400 text-white px-2 py-0.5 rounded-full">PRO</span>
+                            <span className="text-xs font-bold bg-kon text-white px-2 py-0.5 rounded-full">PRO</span>
                           )}
                         </label>
                         {!getPlanLimits(userPlan).barcode && (
-                          <Link href="/pricing" className="text-xs text-blue-600 hover:underline">アップグレード</Link>
+                          <Link href="/pricing" className="text-xs text-kon hover:underline">アップグレード</Link>
                         )}
                       </div>
                       {showBarcode && getPlanLimits(userPlan).barcode && (
@@ -2536,7 +2536,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                       )}
                     </div>
                     <div className="flex gap-2 pt-2">
-                      <button onClick={saveSettings} className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm">💾 設定を保存</button>
+                      <button onClick={saveSettings} className="flex-1 px-4 py-2 bg-kon text-white rounded-lg text-sm">💾 設定を保存</button>
                       <button onClick={resetSettings} className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg text-sm dark:bg-gray-700 dark:text-gray-200">リセット</button>
                     </div>
                   </div>
@@ -2550,7 +2550,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
 
               {/* Overflow warning banner */}
               {overflowWarning && (
-                <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-300 dark:border-amber-700 rounded-xl px-4 py-3 text-sm text-amber-800 dark:text-amber-300 flex items-start gap-2">
+                <div className="bg-gray-50 dark:bg-kon/20 border border-gray-200 dark:border-gray-200 rounded-xl px-4 py-3 text-sm text-kon dark:text-amber-300 flex items-start gap-2">
                   <span className="text-lg leading-none">⚠️</span>
                   <div>
                     <p className="font-medium">テキストが封筒サイズを超えています</p>
@@ -2565,9 +2565,9 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
               <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
                 <h2 className="text-lg font-bold mb-4 text-gray-900 dark:text-white"><span>👁️</span> プレビュー<span className="ml-2 text-xs text-gray-500">(画面用: 低解像度)</span></h2>
                 <div className="flex justify-center bg-gray-100 dark:bg-gray-700 rounded-lg p-4 w-full overflow-hidden relative">
-                  <canvas ref={canvasRef} className={`border shadow-lg max-w-full ${overflowWarning ? "border-amber-400" : "border-gray-300"}`} style={{background:"white", height:"auto"}} />
+                  <canvas ref={canvasRef} className={`border shadow-lg max-w-full ${overflowWarning ? "border-gray-200" : "border-gray-300"}`} style={{background:"white", height:"auto"}} />
                   {csvLimitBanner !== null && bulkAddresses.length > 0 && (
-                    <div className="absolute top-2 left-2 right-2 bg-amber-500/90 text-white text-xs text-center py-1 px-2 rounded">
+                    <div className="absolute top-2 left-2 right-2 bg-kon/90 text-white text-xs text-center py-1 px-2 rounded">
                       無料プランでは{getPlanLimits(userPlan).csvRows}件まで表示（残り{csvLimitBanner - getPlanLimits(userPlan).csvRows}件）
                     </div>
                   )}
@@ -2577,17 +2577,17 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
 
 
               {(errors.recipient?.name || errors.recipient?.postalCode) && (
-                <div ref={errorBannerRef} role="alert" aria-live="assertive" className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-300 dark:border-red-700 rounded-xl">
-                  <p className="font-bold text-red-700 dark:text-red-400 mb-2">入力内容を確認してください</p>
+                <div ref={errorBannerRef} role="alert" aria-live="assertive" className="p-4 bg-gray-50 dark:bg-danger/20 border border-gray-200 dark:border-danger rounded-xl">
+                  <p className="font-bold text-danger dark:text-danger mb-2">入力内容を確認してください</p>
                   <ul className="list-disc list-inside space-y-1 text-sm">
-                    {errors.recipient?.name && <li><a href="#recipient-name" className="text-red-600 underline hover:text-red-800">{errors.recipient.name.message}</a></li>}
-                    {errors.recipient?.postalCode && <li><a href="#recipient-postalCode" className="text-red-600 underline hover:text-red-800">{errors.recipient.postalCode.message}</a></li>}
+                    {errors.recipient?.name && <li><a href="#recipient-name" className="text-danger underline hover:text-danger">{errors.recipient.name.message}</a></li>}
+                    {errors.recipient?.postalCode && <li><a href="#recipient-postalCode" className="text-danger underline hover:text-danger">{errors.recipient.postalCode.message}</a></li>}
                   </ul>
                 </div>
               )}
 
               <div className="grid grid-cols-2 gap-4">
-                <button onClick={() => validateAndPrint("pdf")} className="flex items-center justify-center gap-1 px-3 sm:px-6 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold shadow-md min-w-0">
+                <button onClick={() => validateAndPrint("pdf")} className="flex items-center justify-center gap-1 px-3 sm:px-6 py-4 bg-kon hover:bg-ai text-white rounded-xl font-bold shadow-md min-w-0">
                   <span className="shrink-0">📄</span>
                   <div className="text-left min-w-0"><div className="whitespace-nowrap">PDF / 印刷</div><div className="text-xs opacity-80 whitespace-nowrap">300 DPI</div></div>
                 </button>
@@ -2597,14 +2597,14 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                 </button>
               </div>
               {showUpgradeBanner && userPlan === 'free' && (
-                <div className="bg-gradient-to-r from-amber-50 dark:from-amber-900/30 to-yellow-50 dark:to-yellow-900/20 border border-amber-300 dark:border-amber-700 rounded-xl p-4 flex items-start gap-3">
+                <div className="bg-gradient-to-r from-amber-50 dark:from-amber-900/30 to-yellow-50 dark:to-yellow-900/20 border border-gray-200 dark:border-gray-200 rounded-xl p-4 flex items-start gap-3">
                   <span className="text-xl shrink-0">💡</span>
-                  <div className="flex-1 text-sm text-amber-800 dark:text-amber-300">
+                  <div className="flex-1 text-sm text-kon dark:text-amber-300">
                     <p className="font-medium">PROプランなら<strong>会社ロゴ・バーコード・QRコード</strong>も印刷できます</p>
-                    <Link href="/pricing" className="font-medium underline mt-1 inline-block text-amber-700">アップグレード →</Link>
+                    <Link href="/pricing" className="font-medium underline mt-1 inline-block text-kon">アップグレード →</Link>
                   </div>
                   <button onClick={() => { setShowUpgradeBanner(false); try { localStorage.setItem(UPGRADE_DISMISS_KEY, String(Date.now())); } catch {} }}
-                    className="text-amber-400 hover:text-amber-600 text-xl leading-none shrink-0">×</button>
+                    className="text-kon hover:text-kon text-xl leading-none shrink-0">×</button>
                 </div>
               )}
 
@@ -2634,8 +2634,8 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                 </div>
               )}
               {seoContent.tips && (
-                <div className="bg-blue-50 rounded-lg p-4 mt-4">
-                  <p className="text-sm text-blue-800">💡 <strong>ヒント:</strong> {seoContent.tips}</p>
+                <div className="bg-gray-50 rounded-lg p-4 mt-4">
+                  <p className="text-sm text-kon">💡 <strong>ヒント:</strong> {seoContent.tips}</p>
                 </div>
               )}
             </div>
@@ -2674,7 +2674,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
           <span className="flex-1 text-gray-700">この住所をアドレス帳に保存しますか？</span>
           <button
             onClick={async () => { if (getPlanLimits(userPlan).addressBook > 0) { await saveToServerAddress(autoSaveAddr); } else { saveToAddressBook(autoSaveAddr); } setAutoSaveToast(false); }}
-            className="px-3 py-1.5 bg-blue-600 text-white rounded-lg text-xs font-medium hover:bg-blue-700">保存する</button>
+            className="px-3 py-1.5 bg-kon text-white rounded-lg text-xs font-medium hover:bg-ai">保存する</button>
           <button onClick={() => setAutoSaveToast(false)}
             className="px-3 py-1.5 bg-gray-100 text-gray-600 rounded-lg text-xs hover:bg-gray-200">しない</button>
         </div>

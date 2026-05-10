@@ -193,9 +193,9 @@ function TimelineBar({ result }: { result: CalcResult }) {
       <div className="relative h-8 rounded-full overflow-hidden bg-gray-100 flex">
         <div className="bg-yellow-400" style={{ width: `${Math.min(peakPct, 100)}%` }} />
         {result.driveOkTime && (
-          <div className="bg-red-400" style={{ width: `${Math.min(driveOkPct - peakPct, 100 - peakPct)}%` }} />
+          <div className="bg-danger" style={{ width: `${Math.min(driveOkPct - peakPct, 100 - peakPct)}%` }} />
         )}
-        <div className="bg-orange-300 flex-1" />
+        <div className="bg-gray-50 flex-1" />
       </div>
       <div className="flex justify-between text-xs text-gray-500 mt-1">
         <span>{result.drinkStartTime} 飲酒開始</span>
@@ -207,8 +207,8 @@ function TimelineBar({ result }: { result: CalcResult }) {
       </div>
       <div className="flex gap-3 mt-2 text-xs">
         <span className="flex items-center gap-1"><span className="inline-block w-3 h-3 rounded bg-yellow-400" />吸収中</span>
-        {result.driveOkTime && <span className="flex items-center gap-1"><span className="inline-block w-3 h-3 rounded bg-red-400" />危険ゾーン</span>}
-        <span className="flex items-center gap-1"><span className="inline-block w-3 h-3 rounded bg-orange-300" />分解中</span>
+        {result.driveOkTime && <span className="flex items-center gap-1"><span className="inline-block w-3 h-3 rounded bg-danger" />危険ゾーン</span>}
+        <span className="flex items-center gap-1"><span className="inline-block w-3 h-3 rounded bg-gray-50" />分解中</span>
       </div>
     </div>
   );
@@ -314,9 +314,9 @@ export default function AlcoholCalculatorPage() {
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-3xl mx-auto px-4 py-4">
           <nav className="text-sm text-gray-500 mb-2">
-            <Link href="/" className="hover:text-blue-600">ホーム</Link>
+            <Link href="/" className="hover:text-ai">ホーム</Link>
             <span className="mx-1">/</span>
-            <Link href="/health" className="hover:text-blue-600">健康・ウェルネス</Link>
+            <Link href="/health" className="hover:text-ai">健康・ウェルネス</Link>
             <span className="mx-1">/</span>
             <span className="text-gray-800">アルコール分解時間計算機</span>
           </nav>
@@ -325,7 +325,7 @@ export default function AlcoholCalculatorPage() {
             飲んだお酒の量から血中アルコール濃度と完全分解時刻を計算。翌朝の残存確認・飲酒運転判定付き。
           </p>
           {/* Safety notice */}
-          <div className="mt-3 flex items-start gap-2 p-3 bg-amber-50 border border-amber-200 rounded-lg text-xs text-amber-800">
+          <div className="mt-3 flex items-start gap-2 p-3 bg-gray-50 border border-gray-200 rounded-lg text-xs text-kon">
             <span className="flex-shrink-0 font-bold">⚠️</span>
             <span>このツールは安全意識のための参考情報です。個人差が大きく正確な値は保証できません。<strong>少しでも飲んだら運転しないこと。</strong></span>
           </div>
@@ -350,13 +350,13 @@ export default function AlcoholCalculatorPage() {
                 <div className="flex rounded-xl overflow-hidden border border-gray-200 w-fit">
                   <button
                     onClick={() => setGender("male")}
-                    className={`px-6 py-2.5 text-sm font-medium transition-colors ${gender === "male" ? "bg-blue-600 text-white" : "bg-white text-gray-600 hover:bg-gray-50"}`}
+                    className={`px-6 py-2.5 text-sm font-medium transition-colors ${gender === "male" ? "bg-kon text-white" : "bg-white text-gray-600 hover:bg-gray-50"}`}
                   >
                     男性
                   </button>
                   <button
                     onClick={() => setGender("female")}
-                    className={`px-6 py-2.5 text-sm font-medium transition-colors border-l border-gray-200 ${gender === "female" ? "bg-pink-500 text-white" : "bg-white text-gray-600 hover:bg-gray-50"}`}
+                    className={`px-6 py-2.5 text-sm font-medium transition-colors border-l border-gray-200 ${gender === "female" ? "bg-kon text-white" : "bg-white text-gray-600 hover:bg-gray-50"}`}
                   >
                     女性
                   </button>
@@ -375,7 +375,7 @@ export default function AlcoholCalculatorPage() {
                       placeholder="例: 65"
                       min="20"
                       max="300"
-                      className="w-28 border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                      className="w-28 border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-kon"
                     />
                     <span className="text-gray-600 text-sm">kg</span>
                   </div>
@@ -387,7 +387,7 @@ export default function AlcoholCalculatorPage() {
                     type="time"
                     value={startTime}
                     onChange={(e) => setStartTime(e.target.value)}
-                    className="border border-gray-300 rounded-lg px-3 py-2.5 font-mono focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="border border-gray-300 rounded-lg px-3 py-2.5 font-mono focus:outline-none focus:ring-2 focus:ring-kon"
                   />
                 </div>
               </div>
@@ -405,7 +405,7 @@ export default function AlcoholCalculatorPage() {
                     {drinks.length > 1 && (
                       <button
                         onClick={() => removeDrink(d.id)}
-                        className="text-xs text-red-400 hover:text-red-600"
+                        className="text-xs text-danger hover:text-danger"
                       >
                         削除
                       </button>
@@ -417,7 +417,7 @@ export default function AlcoholCalculatorPage() {
                       <select
                         value={d.drinkKey}
                         onChange={(e) => updateDrink(d.id, "drinkKey", e.target.value)}
-                        className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white"
+                        className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon bg-white"
                       >
                         {Object.entries(DRINK_PRESETS).map(([key, preset]) => (
                           <option key={key} value={key}>{preset.label}</option>
@@ -432,7 +432,7 @@ export default function AlcoholCalculatorPage() {
                         onChange={(e) => updateDrink(d.id, "count", e.target.value)}
                         min="0.5"
                         step="0.5"
-                        className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                       />
                     </div>
                   </div>
@@ -446,7 +446,7 @@ export default function AlcoholCalculatorPage() {
                           onChange={(e) => updateDrink(d.id, "customMl", e.target.value)}
                           placeholder="例: 350"
                           min="1"
-                          className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+                          className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                         />
                       </div>
                       <div>
@@ -459,7 +459,7 @@ export default function AlcoholCalculatorPage() {
                           min="0.1"
                           max="100"
                           step="0.1"
-                          className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+                          className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                         />
                       </div>
                     </div>
@@ -470,7 +470,7 @@ export default function AlcoholCalculatorPage() {
               {drinks.length < 6 && (
                 <button
                   onClick={addDrink}
-                  className="w-full py-2.5 border-2 border-dashed border-gray-300 rounded-xl text-sm text-gray-500 hover:border-blue-400 hover:text-blue-600 transition-colors"
+                  className="w-full py-2.5 border-2 border-dashed border-gray-300 rounded-xl text-sm text-gray-500 hover:border-ai hover:text-ai transition-colors"
                 >
                   ＋ お酒を追加（{drinks.length}/6）
                 </button>
@@ -478,12 +478,12 @@ export default function AlcoholCalculatorPage() {
             </div>
           </div>
 
-          {error && <p className="text-red-500 text-sm">{error}</p>}
+          {error && <p className="text-danger text-sm">{error}</p>}
 
           <div className="flex gap-3">
             <button
               onClick={handleCalculate}
-              className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-base transition-colors"
+              className="flex-1 bg-kon hover:bg-ai text-white font-bold py-3 rounded-xl text-base transition-colors"
             >
               計算する
             </button>
@@ -503,13 +503,13 @@ export default function AlcoholCalculatorPage() {
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
               <h2 className="text-lg font-bold text-gray-900 mb-4">飲酒量サマリー</h2>
               <div className="grid grid-cols-2 gap-4 mb-4">
-                <div className="bg-blue-50 rounded-xl p-4 text-center">
-                  <p className="text-xs text-blue-600 mb-1">合計純アルコール量</p>
-                  <p className="text-3xl font-bold text-blue-700">{result.totalAlcoholG.toFixed(1)}<span className="text-base font-normal">g</span></p>
+                <div className="bg-gray-50 rounded-xl p-4 text-center">
+                  <p className="text-xs text-kon mb-1">合計純アルコール量</p>
+                  <p className="text-3xl font-bold text-kon">{result.totalAlcoholG.toFixed(1)}<span className="text-base font-normal">g</span></p>
                 </div>
-                <div className="bg-red-50 rounded-xl p-4 text-center">
-                  <p className="text-xs text-red-600 mb-1">推定最大血中アルコール濃度</p>
-                  <p className="text-3xl font-bold text-red-700">{result.bac.toFixed(2)}<span className="text-base font-normal">‰</span></p>
+                <div className="bg-gray-50 rounded-xl p-4 text-center">
+                  <p className="text-xs text-danger mb-1">推定最大血中アルコール濃度</p>
+                  <p className="text-3xl font-bold text-danger">{result.bac.toFixed(2)}<span className="text-base font-normal">‰</span></p>
                 </div>
               </div>
               <p className="text-sm text-gray-600 text-center">
@@ -533,12 +533,12 @@ export default function AlcoholCalculatorPage() {
                     <p className="text-xs text-yellow-600">アルコール最高値</p>
                     <p className="text-2xl font-mono font-bold text-yellow-700">{result.peakTime}<span className="text-sm font-normal">頃</span></p>
                   </div>
-                  <div className={`rounded-xl p-3 ${result.driveOkTime ? "bg-orange-50" : "bg-green-50"}`}>
-                    <p className={`text-xs ${result.driveOkTime ? "text-orange-600" : "text-green-600"}`}>運転可能になる目安</p>
+                  <div className={`rounded-xl p-3 ${result.driveOkTime ? "bg-gray-50" : "bg-green-50"}`}>
+                    <p className={`text-xs ${result.driveOkTime ? "text-kon" : "text-green-600"}`}>運転可能になる目安</p>
                     {result.driveOkTime ? (
-                      <p className="text-2xl font-mono font-bold text-orange-700">
+                      <p className="text-2xl font-mono font-bold text-kon">
                         {result.driveOkTime}
-                        {result.driveOkNextDay && <span className="text-sm font-normal text-orange-500"> 翌日</span>}
+                        {result.driveOkNextDay && <span className="text-sm font-normal text-kon"> 翌日</span>}
                       </p>
                     ) : (
                       <p className="text-sm font-semibold text-green-700 mt-1">飲酒直後から基準未満</p>
@@ -559,29 +559,29 @@ export default function AlcoholCalculatorPage() {
             {/* Section 3: Driving warning */}
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
               <h2 className="text-lg font-bold text-gray-900 mb-3">飲酒運転危険度</h2>
-              <div className="flex items-start gap-3 p-4 bg-red-50 border border-red-200 rounded-xl">
+              <div className="flex items-start gap-3 p-4 bg-gray-50 border border-gray-200 rounded-xl">
                 <span className="text-2xl flex-shrink-0">🔴</span>
                 <div>
                   {result.driveOkTime ? (
                     <>
-                      <p className="font-bold text-red-700 text-base">
+                      <p className="font-bold text-danger text-base">
                         {result.driveOkTime}{result.driveOkNextDay ? "（翌日）" : ""}まで絶対に運転しないでください
                       </p>
-                      <p className="text-sm text-red-600 mt-1">
+                      <p className="text-sm text-danger mt-1">
                         日本では呼気1L中0.15mg以上のアルコールで酒気帯び運転（3年以下の懲役または50万円以下の罰金）になります。
                       </p>
                     </>
                   ) : (
                     <>
-                      <p className="font-bold text-red-700 text-base">
+                      <p className="font-bold text-danger text-base">
                         飲酒直後でも計算上は基準値未満ですが、絶対に運転しないでください
                       </p>
-                      <p className="text-sm text-red-600 mt-1">
+                      <p className="text-sm text-danger mt-1">
                         少量でもアルコールは判断力・反応速度を低下させます。飲んだら乗るな。
                       </p>
                     </>
                   )}
-                  <p className="text-xs text-red-500 mt-2 font-semibold">
+                  <p className="text-xs text-danger mt-2 font-semibold">
                     ※この計算は平均値に基づく目安です。個人差が大きく、少しでも飲んだら運転しないことが絶対的なルールです。
                   </p>
                 </div>
@@ -593,21 +593,21 @@ export default function AlcoholCalculatorPage() {
               <h2 className="text-lg font-bold text-gray-900 mb-3">翌朝チェック（翌朝8:00時点）</h2>
               {result.morningAlcRemaining ? (
                 <div className="space-y-3">
-                  <div className="flex items-start gap-3 p-4 bg-orange-50 border border-orange-100 rounded-xl">
+                  <div className="flex items-start gap-3 p-4 bg-gray-50 border border-gray-200 rounded-xl">
                     <span className="text-2xl flex-shrink-0">🟠</span>
                     <div>
-                      <p className="font-semibold text-orange-700">翌朝8:00時点でもアルコールが残っている可能性があります</p>
-                      <p className="text-sm text-orange-600 mt-0.5">
+                      <p className="font-semibold text-kon">翌朝8:00時点でもアルコールが残っている可能性があります</p>
+                      <p className="text-sm text-kon mt-0.5">
                         推定残存BAC: {result.morningBac.toFixed(2)}‰ — 朝の通勤・運転には注意してください
                       </p>
                     </div>
                   </div>
                   {result.morningDriveWarning && (
-                    <div className="flex items-start gap-3 p-4 bg-red-50 border border-red-100 rounded-xl">
+                    <div className="flex items-start gap-3 p-4 bg-gray-50 border border-gray-200 rounded-xl">
                       <span className="text-2xl flex-shrink-0">🔴</span>
                       <div>
-                        <p className="font-bold text-red-700">翌朝の運転も危険です！</p>
-                        <p className="text-sm text-red-600 mt-0.5">
+                        <p className="font-bold text-danger">翌朝の運転も危険です！</p>
+                        <p className="text-sm text-danger mt-0.5">
                           翌朝8:00時点でも酒気帯び運転の基準（0.3‰）を超えている計算です。
                         </p>
                       </div>
@@ -636,7 +636,7 @@ export default function AlcoholCalculatorPage() {
                   "少しでも飲んだら運転しない。これが鉄則です。",
                 ].map((tip, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
-                    <span className="text-blue-500 mt-0.5 flex-shrink-0">✓</span>
+                    <span className="text-kon mt-0.5 flex-shrink-0">✓</span>
                     {tip}
                   </li>
                 ))}
@@ -673,7 +673,7 @@ export default function AlcoholCalculatorPage() {
                     <td className="py-2.5 px-3 font-medium text-gray-800">{row.name}</td>
                     <td className="py-2.5 px-3 text-center text-gray-600">{row.amount}</td>
                     <td className="py-2.5 px-3 text-center text-gray-600">{row.pct}</td>
-                    <td className="py-2.5 px-3 text-center font-semibold text-red-600">{row.g}</td>
+                    <td className="py-2.5 px-3 text-center font-semibold text-danger">{row.g}</td>
                   </tr>
                 ))}
               </tbody>
@@ -705,7 +705,7 @@ export default function AlcoholCalculatorPage() {
                   { bac: "3.0‰以上", effect: "意識障害・生命の危険" },
                 ].map((item, i) => (
                   <div key={i} className="flex gap-3 py-1 border-b border-gray-100 last:border-0">
-                    <span className="font-mono text-blue-700 font-semibold w-24 flex-shrink-0">{item.bac}</span>
+                    <span className="font-mono text-kon font-semibold w-24 flex-shrink-0">{item.bac}</span>
                     <span className="text-gray-700">{item.effect}</span>
                   </div>
                 ))}
@@ -714,13 +714,13 @@ export default function AlcoholCalculatorPage() {
             <div>
               <h3 className="font-semibold text-gray-900 mb-1">飲酒運転の法律（日本）</h3>
               <div className="space-y-2">
-                <div className="p-3 bg-red-50 rounded-lg">
-                  <p className="font-semibold text-red-700">酒気帯び運転（呼気0.15mg/L以上）</p>
-                  <p className="text-red-600 text-xs mt-0.5">3年以下の懲役または50万円以下の罰金</p>
+                <div className="p-3 bg-gray-50 rounded-lg">
+                  <p className="font-semibold text-danger">酒気帯び運転（呼気0.15mg/L以上）</p>
+                  <p className="text-danger text-xs mt-0.5">3年以下の懲役または50万円以下の罰金</p>
                 </div>
-                <div className="p-3 bg-red-100 rounded-lg">
-                  <p className="font-semibold text-red-800">酒酔い運転（正常運転ができない状態）</p>
-                  <p className="text-red-700 text-xs mt-0.5">5年以下の懲役または100万円以下の罰金</p>
+                <div className="p-3 bg-gray-50 rounded-lg">
+                  <p className="font-semibold text-danger">酒酔い運転（正常運転ができない状態）</p>
+                  <p className="text-danger text-xs mt-0.5">5年以下の懲役または100万円以下の罰金</p>
                 </div>
               </div>
             </div>
@@ -785,11 +785,11 @@ export default function AlcoholCalculatorPage() {
               <Link
                 key={tool.href}
                 href={tool.href}
-                className="flex items-start gap-3 p-3.5 border border-gray-100 rounded-xl hover:border-blue-200 hover:bg-blue-50 transition-colors group"
+                className="flex items-start gap-3 p-3.5 border border-gray-100 rounded-xl hover:border-ai hover:bg-gray-50 transition-colors group"
               >
-                <span className="text-blue-500 mt-0.5 flex-shrink-0 group-hover:text-blue-600">→</span>
+                <span className="text-kon mt-0.5 flex-shrink-0 group-hover:text-ai">→</span>
                 <div>
-                  <p className="font-semibold text-gray-800 text-sm group-hover:text-blue-700">{tool.label}</p>
+                  <p className="font-semibold text-gray-800 text-sm group-hover:text-ai">{tool.label}</p>
                   <p className="text-xs text-gray-400 mt-0.5">{tool.desc}</p>
                 </div>
               </Link>

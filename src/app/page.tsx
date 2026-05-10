@@ -103,19 +103,19 @@ export default function Home() {
 
           {/* Trust Badges - above fold */}
           <div className="flex flex-wrap justify-center gap-2 mb-5">
-            <span className="bg-blue-50 dark:bg-gray-700 text-blue-700 dark:text-gray-200 px-3 py-1.5 rounded-full text-xs font-medium border border-blue-100 dark:border-gray-600">
+            <span className="bg-gray-50 dark:bg-gray-700 text-kon dark:text-gray-200 px-3 py-1.5 rounded-full text-xs font-medium border border-gray-200 dark:border-gray-600">
               🇯🇵 日本国内サーバー
             </span>
-            <span className="bg-blue-50 dark:bg-gray-700 text-blue-700 dark:text-gray-200 px-3 py-1.5 rounded-full text-xs font-medium border border-blue-100 dark:border-gray-600">
+            <span className="bg-gray-50 dark:bg-gray-700 text-kon dark:text-gray-200 px-3 py-1.5 rounded-full text-xs font-medium border border-gray-200 dark:border-gray-600">
               🔒 SSL暗号化
             </span>
-            <span className="bg-blue-50 dark:bg-gray-700 text-blue-700 dark:text-gray-200 px-3 py-1.5 rounded-full text-xs font-medium border border-blue-100 dark:border-gray-600">
+            <span className="bg-gray-50 dark:bg-gray-700 text-kon dark:text-gray-200 px-3 py-1.5 rounded-full text-xs font-medium border border-gray-200 dark:border-gray-600">
               🗑️ 60分で自動削除
             </span>
-            <span className="bg-blue-50 dark:bg-gray-700 text-blue-700 dark:text-gray-200 px-3 py-1.5 rounded-full text-xs font-medium border border-blue-100 dark:border-gray-600">
+            <span className="bg-gray-50 dark:bg-gray-700 text-kon dark:text-gray-200 px-3 py-1.5 rounded-full text-xs font-medium border border-gray-200 dark:border-gray-600">
               登録不要・完全無料
             </span>
-            <span className="bg-blue-50 dark:bg-gray-700 text-blue-700 dark:text-gray-200 px-3 py-1.5 rounded-full text-xs font-medium border border-blue-100 dark:border-gray-600">
+            <span className="bg-gray-50 dark:bg-gray-700 text-kon dark:text-gray-200 px-3 py-1.5 rounded-full text-xs font-medium border border-gray-200 dark:border-gray-600">
               📱 スマホ対応
             </span>
           </div>
@@ -131,7 +131,7 @@ export default function Home() {
               <Link
                 key={chip.href}
                 href={chip.href}
-                className="rounded-full px-3 py-1 text-sm bg-white border border-gray-200 hover:border-blue-400 hover:bg-blue-50 transition-colors cursor-pointer dark:bg-slate-700 dark:text-gray-200 dark:border-slate-600 dark:hover:border-blue-400 min-h-[44px] flex items-center"
+                className="rounded-full px-3 py-1 text-sm bg-white border border-gray-200 hover:border-ai hover:bg-gray-50 transition-colors cursor-pointer dark:bg-slate-700 dark:text-gray-200 dark:border-slate-600 dark:hover:border-ai min-h-[44px] flex items-center"
               >
                 {chip.label}
               </Link>
@@ -174,7 +174,7 @@ export default function Home() {
               <Link
                 key={tool.id}
                 href={tool.path}
-                className="relative bg-white dark:bg-gray-800 shadow-md hover:shadow-lg text-kon dark:text-blue-300 px-3 py-3 rounded-xl font-medium transition-all hover:-translate-y-0.5 text-center text-sm min-h-[44px] flex items-center justify-center"
+                className="relative bg-white dark:bg-gray-800 shadow-md hover:shadow-lg text-kon dark:text-gray-200 px-3 py-3 rounded-xl font-medium transition-all hover:-translate-y-0.5 text-center text-sm min-h-[44px] flex items-center justify-center"
               >
                 
                 <span>{tool.icon} {tool.nameJa}</span>
@@ -187,12 +187,12 @@ export default function Home() {
       {/* ============================================================ */}
       {/* SECTION 6: New Tools + Finance Tools (merged)                */}
       {/* ============================================================ */}
-      <section className="py-16 bg-gradient-to-r from-orange-50 to-amber-50 dark:from-gray-800 dark:to-gray-900">
+      <section className="py-16 bg-gradient-to-r from-slate-50 to-gray-50 dark:from-gray-800 dark:to-gray-900">
         <div className="max-w-7xl mx-auto px-4">
           {getNewTools().filter(t => t.category !== "finance").slice(0, 8).length > 0 && (
             <div className="mb-12">
               <div className="flex items-center gap-3 mb-6">
-                <span className="inline-block px-3 py-1 bg-orange-500 text-white text-sm font-bold rounded-full">新ツール</span>
+                <span className="inline-block px-3 py-1 bg-kon text-white text-sm font-bold rounded-full">新ツール</span>
                 <h2 className="text-xl font-bold text-gray-900 dark:text-white">新しいツールが登場！</h2>
               </div>
               <div className="grid md:grid-cols-2 gap-4 max-w-4xl">
@@ -200,18 +200,18 @@ export default function Home() {
                   <Link
                     key={tool.id}
                     href={tool.path}
-                    className="group bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden border border-orange-200 dark:border-orange-800 hover:border-orange-400 p-5"
+                    className="group bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden border border-gray-200 dark:border-gray-200 hover:border-ai p-5"
                   >
                     <div className="flex items-start gap-4">
                       <div className="text-3xl flex-shrink-0">{tool.icon}</div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-1">
-                          <h3 className="text-base font-bold text-gray-900 dark:text-white group-hover:text-orange-600 transition-colors">{tool.nameJa}</h3>
-                          {tool.isNew && <span className="px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full">NEW</span>}
+                          <h3 className="text-base font-bold text-gray-900 dark:text-white group-hover:text-ai transition-colors">{tool.nameJa}</h3>
+                          {tool.isNew && <span className="px-2 py-0.5 bg-kon text-white text-xs font-bold rounded-full">NEW</span>}
                         </div>
                         <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{tool.description}</p>
                       </div>
-                      <span className="text-orange-400 group-hover:translate-x-1 transition-transform text-lg flex-shrink-0">→</span>
+                      <span className="text-ai group-hover:translate-x-1 transition-transform text-lg flex-shrink-0">→</span>
                     </div>
                   </Link>
                 ))}
@@ -222,10 +222,10 @@ export default function Home() {
           <div>
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
-                <span className="inline-block px-3 py-1 bg-amber-500 text-white text-sm font-bold rounded-full">💰 金融</span>
+                <span className="inline-block px-3 py-1 bg-kon text-white text-sm font-bold rounded-full">金融</span>
                 <h2 className="text-xl font-bold text-gray-900 dark:text-white">金融・資産運用ツール</h2>
               </div>
-              <Link href="/finance" className="text-sm text-blue-600 dark:text-blue-400 hover:underline">すべて見る →</Link>
+              <Link href="/finance" className="text-sm text-kon dark:text-gray-300 hover:underline">すべて見る →</Link>
             </div>
             <p className="text-sm text-gray-600 dark:text-gray-300 mb-6">NISA・住宅ローン・老後資金まで、無料で高精度シミュレーション。登録不要。</p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -233,7 +233,7 @@ export default function Home() {
                 <Link
                   key={tool.id}
                   href={tool.path}
-                  className="group bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 overflow-hidden border border-amber-100 dark:border-gray-700 p-5"
+                  className="group bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 overflow-hidden border border-gray-200 dark:border-gray-700 p-5"
                 >
                   <div className="flex items-start gap-4">
                     <span className="text-3xl flex-shrink-0">{tool.icon}</span>
@@ -241,7 +241,7 @@ export default function Home() {
                       <h3 className="text-base font-bold text-kon dark:text-white leading-tight mb-1">{tool.nameJa}</h3>
                       <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{tool.description}</p>
                     </div>
-                    <span className="text-amber-400 group-hover:translate-x-1 transition-transform text-lg flex-shrink-0">→</span>
+                    <span className="text-kon group-hover:translate-x-1 transition-transform text-lg flex-shrink-0">→</span>
                   </div>
                 </Link>
               ))}
@@ -298,12 +298,12 @@ export default function Home() {
                     href={`/blog/${post.slug}`}
                     className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group"
                   >
-                    <div className="relative h-48 bg-gradient-to-br from-blue-500 to-purple-600">
+                    <div className="relative h-48 bg-gradient-to-br from-slate-900 to-kon">
                       {post.featuredImage && (
                         <Image src={post.featuredImage} alt={post.title} className="w-full h-48 object-cover" width={400} height={192} />
                       )}
                       {isNewBlog(post.publishDate) && (
-                        <span className="absolute top-4 right-4 px-3 py-1 bg-red-500 text-white text-sm font-bold rounded-full">
+                        <span className="absolute top-4 right-4 px-3 py-1 bg-kon text-white text-sm font-bold rounded-full">
                           NEW
                         </span>
                       )}
@@ -311,13 +311,13 @@ export default function Home() {
 
                     <div className="p-6">
                       <div className="flex items-center gap-2 mb-3">
-                        <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">
+                        <span className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-kon dark:text-gray-200 rounded-full text-sm font-medium">
                           {post.category}
                         </span>
                         <span className="text-sm text-gray-500 dark:text-gray-400">{post.readTime}</span>
                       </div>
 
-                      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-ai transition-colors line-clamp-2">
                         {post.title}
                       </h3>
 
@@ -327,7 +327,7 @@ export default function Home() {
 
                       <div className="flex items-center justify-between">
                         <span className="text-sm text-gray-500 dark:text-gray-400">{post.publishDate}</span>
-                        <span className="text-blue-600 group-hover:translate-x-2 transition-transform">
+                        <span className="text-kon group-hover:translate-x-2 transition-transform">
                           →
                         </span>
                       </div>
@@ -339,7 +339,7 @@ export default function Home() {
               <div className="text-center">
                 <Link
                   href="/blog"
-                  className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                  className="inline-flex items-center px-6 py-3 bg-kon text-white rounded-lg hover:bg-kon transition-colors"
                 >
                   すべてのブログを見る
                   <span className="ml-2">→</span>
@@ -376,11 +376,11 @@ export default function Home() {
           </a>
           <div className="mt-6 flex flex-wrap justify-center gap-4">
             <div className="bg-white dark:bg-gray-800 rounded-xl px-6 py-3 shadow-sm border border-gray-200 dark:border-gray-700">
-              <span className="font-bold text-kon dark:text-blue-400">🏢 法人利用実績</span>
+              <span className="font-bold text-kon dark:text-gray-300">🏢 法人利用実績</span>
               <span className="text-gray-600 dark:text-gray-300 ml-2">500社以上</span>
             </div>
             <div className="bg-white dark:bg-gray-800 rounded-xl px-6 py-3 shadow-sm border border-gray-200 dark:border-gray-700">
-              <span className="font-bold text-kon dark:text-blue-400">📅 窓の杜掲載</span>
+              <span className="font-bold text-kon dark:text-gray-300">📅 窓の杜掲載</span>
               <span className="text-gray-600 dark:text-gray-300 ml-2">2026年1月13日</span>
             </div>
           </div>

@@ -205,16 +205,16 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
         {/* Header with H1 */}
         <header className="text-center mb-8">
           <div className="text-5xl mb-4" role="img" aria-label={tool.nameJa}>{tool.icon}</div>
-          <h1 className="text-3xl font-bold text-kon dark:text-blue-300 mb-2">{tool.nameJa}</h1>
+          <h1 className="text-3xl font-bold text-kon dark:text-gray-300 mb-2">{tool.nameJa}</h1>
           <p className="text-gray-600 dark:text-gray-300 text-lg">{tool.description}</p>
 
           {/* Trust badges */}
           <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
             <span className="bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300 px-3 py-1 rounded-full">✓ 完全無料</span>
-            <span className="bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-full">🇯🇵 日本国内サーバー</span>
-            <span className="bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 px-3 py-1 rounded-full">🔒 安全・安心</span>
+            <span className="bg-gray-50 dark:bg-kon/30 text-kon dark:text-gray-300 px-3 py-1 rounded-full">🇯🇵 日本国内サーバー</span>
+            <span className="bg-gray-50 dark:bg-kon/30 text-kon dark:text-gray-300 px-3 py-1 rounded-full">🔒 安全・安心</span>
             {tool.maxFiles > 1 && (
-              <span className="bg-orange-50 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 px-3 py-1 rounded-full">📦 一括処理対応（最大{tool.maxFiles}ファイル）</span>
+              <span className="bg-gray-50 dark:bg-kon/30 text-kon dark:text-gray-300 px-3 py-1 rounded-full">📦 一括処理対応（最大{tool.maxFiles}ファイル）</span>
             )}
           </div>
           <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-3">📅 最終更新: 2025年1月1日</p>
@@ -237,7 +237,7 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
             <div
               onDrop={handleDrop}
               onDragOver={(e) => e.preventDefault()}
-              className="border-2 border-dashed border-kon/30 dark:border-blue-400/40 bg-blue-50/50 dark:bg-blue-900/20 rounded-xl p-10 text-center hover:border-kon dark:hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 hover:shadow-lg transition-all duration-200 cursor-pointer min-h-[240px] flex flex-col items-center justify-center"
+              className="border-2 border-dashed border-kon/30 dark:border-kon/40 bg-gray-50/50 dark:bg-kon/20 rounded-xl p-10 text-center hover:border-kon dark:hover:border-ai hover:bg-gray-50 dark:hover:bg-ai/30 hover:shadow-lg transition-all duration-200 cursor-pointer min-h-[240px] flex flex-col items-center justify-center"
             >
               <input
                 type="file"
@@ -249,12 +249,12 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
                 aria-label="ファイルを選択"
               />
               <label htmlFor="file-input" className="cursor-pointer block w-full">
-                <div className="w-16 h-16 mx-auto mb-4 bg-kon dark:bg-blue-600 rounded-2xl flex items-center justify-center text-3xl shadow-lg">📁</div>
+                <div className="w-16 h-16 mx-auto mb-4 bg-kon dark:bg-kon rounded-2xl flex items-center justify-center text-3xl shadow-lg">📁</div>
                 <p className="font-bold text-gray-800 dark:text-gray-100 mb-2 text-lg">
                   ファイルをドラッグ＆ドロップ
                 </p>
                 <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
-                  または <span className="text-kon dark:text-blue-400 font-medium">クリックして選択</span>
+                  または <span className="text-kon dark:text-gray-300 font-medium">クリックして選択</span>
                 </p>
                 <span className="inline-block bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs px-3 py-1.5 rounded-full border border-gray-200 dark:border-gray-600">
                   対応形式: {tool.acceptedTypes} • 最大: {tool.category === 'pdf' ? '50MB' : '20MB'} • {tool.maxFiles}ファイルまで
@@ -280,7 +280,7 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
                       </div>
                       <button
                         onClick={() => removeFile(index)}
-                        className="text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
+                        className="text-danger hover:text-danger dark:text-danger dark:hover:text-gin p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
                         aria-label={`${file.name}を削除`}
                       >
                         ✕
@@ -296,7 +296,7 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
 
             {/* Error */}
             {error && (
-              <div className="mt-4 p-4 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 rounded-lg text-red-600 dark:text-red-300" role="alert">
+              <div className="mt-4 p-4 bg-gray-50 dark:bg-danger/30 border border-gray-200 dark:border-danger rounded-lg text-danger dark:text-gin" role="alert">
                 {error}
               </div>
             )}
@@ -306,7 +306,7 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
               <button
                 onClick={handleSubmit}
                 disabled={isProcessing}
-                className={`w-full mt-6 py-4 rounded-xl font-bold text-white transition-all duration-200 ${isProcessing ? "bg-gray-400 dark:bg-gray-600 cursor-not-allowed" : "bg-kon hover:bg-ai dark:bg-blue-600 dark:hover:bg-blue-500"}`}
+                className={`w-full mt-6 py-4 rounded-xl font-bold text-white transition-all duration-200 ${isProcessing ? "bg-gray-400 dark:bg-gray-600 cursor-not-allowed" : "bg-kon hover:bg-ai dark:bg-kon dark:hover:bg-ai"}`}
                 aria-busy={isProcessing}
               >
                 {isProcessing ? (
@@ -332,18 +332,18 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
             <div className="flex justify-center mb-4 min-h-[88px]">
               <Mascot state="success" message="処理が完了しました。ダウンロードしてご利用ください。" />
             </div>
-            <h2 className="text-2xl font-bold text-kon dark:text-blue-300 mb-2">完了しました！</h2>
+            <h2 className="text-2xl font-bold text-kon dark:text-gray-300 mb-2">完了しました！</h2>
             <p className="text-gray-600 dark:text-gray-300 mb-6">ファイルのダウンロードが開始されました！</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href={pdfUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-4 bg-kon hover:bg-ai dark:bg-blue-600 dark:hover:bg-blue-500 text-white rounded-xl font-bold transition-colors"
+                className="px-8 py-4 bg-kon hover:bg-ai dark:bg-kon dark:hover:bg-ai text-white rounded-xl font-bold transition-colors"
               >
                 ファイルを開く
               </a>
-              <button onClick={reset} className="px-8 py-4 border-2 border-kon dark:border-blue-400 text-kon dark:text-blue-300 rounded-xl font-bold hover:bg-kon/5 dark:hover:bg-blue-900/20 transition-colors" aria-label="別のファイルを処理">
+              <button onClick={reset} className="px-8 py-4 border-2 border-kon dark:border-kon text-kon dark:text-gray-300 rounded-xl font-bold hover:bg-kon/5 dark:hover:bg-ai/20 transition-colors" aria-label="別のファイルを処理">
                 別のファイルを処理
               </button>
             </div>
@@ -362,8 +362,8 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
 {/* Ad: after tool section */}
         <AdUnit slot="5612038947" format="rectangle" />
         {/* How-to Section */}
-        <section className="mt-8 bg-sakura/20 dark:bg-pink-900/20 rounded-xl p-6" aria-labelledby="howto-heading">
-          <h2 id="howto-heading" className="font-bold text-kon dark:text-blue-300 mb-3 text-lg">
+        <section className="mt-8 bg-sakura/20 dark:bg-kon/20 rounded-xl p-6" aria-labelledby="howto-heading">
+          <h2 id="howto-heading" className="font-bold text-kon dark:text-gray-300 mb-3 text-lg">
             {tool.nameJa}の使い方
           </h2>
           <ol className="list-decimal list-inside space-y-2 text-gray-600 dark:text-gray-300">
@@ -377,7 +377,7 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
         {/* Dynamic SEO Content from Admin */}
         {(dynamicContent || seoContent) && (
           <section className="mt-8 bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-100 dark:border-gray-700" aria-labelledby="about-heading">
-            <h2 id="about-heading" className="font-bold text-kon dark:text-blue-300 mb-4 text-lg">
+            <h2 id="about-heading" className="font-bold text-kon dark:text-gray-300 mb-4 text-lg">
               {tool.nameJa}について
             </h2>
             <div className="prose prose-gray dark:prose-invert max-w-none text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -399,8 +399,8 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
                     </div>
                   )}
                   {seoContent.tips && (
-                    <div className="bg-blue-50 dark:bg-blue-900/30 rounded-lg p-4 mt-4">
-                      <p className="text-sm text-blue-800 dark:text-blue-200">💡 <strong>ヒント:</strong> {seoContent.tips}</p>
+                    <div className="bg-gray-50 dark:bg-kon/30 rounded-lg p-4 mt-4">
+                      <p className="text-sm text-kon dark:text-gray-300">💡 <strong>ヒント:</strong> {seoContent.tips}</p>
                     </div>
                   )}
                 </>
@@ -412,8 +412,8 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
         )}
 
         {/* Visual How-To Demo */}
-        <section className="mt-8 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 rounded-xl p-6 border border-blue-100 dark:border-blue-800/50" aria-labelledby="demo-heading">
-          <h2 id="demo-heading" className="font-bold text-kon dark:text-blue-300 mb-6 text-lg text-center">
+        <section className="mt-8 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 rounded-xl p-6 border border-gray-200 dark:border-kon/50" aria-labelledby="demo-heading">
+          <h2 id="demo-heading" className="font-bold text-kon dark:text-gray-300 mb-6 text-lg text-center">
             📖 かんたん3ステップ
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
@@ -421,21 +421,21 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
               <div className="w-16 h-16 bg-white dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-3 shadow-sm text-3xl">
                 📁
               </div>
-              <h3 className="font-bold text-kon dark:text-blue-300 mb-1">Step 1</h3>
+              <h3 className="font-bold text-kon dark:text-gray-300 mb-1">Step 1</h3>
               <p className="text-sm text-gray-600 dark:text-gray-300">ファイルを選択</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-white dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-3 shadow-sm text-3xl">
                 ⚡
               </div>
-              <h3 className="font-bold text-kon dark:text-blue-300 mb-1">Step 2</h3>
+              <h3 className="font-bold text-kon dark:text-gray-300 mb-1">Step 2</h3>
               <p className="text-sm text-gray-600 dark:text-gray-300">ボタンをクリック</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-white dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-3 shadow-sm text-3xl">
                 ✅
               </div>
-              <h3 className="font-bold text-kon dark:text-blue-300 mb-1">Step 3</h3>
+              <h3 className="font-bold text-kon dark:text-gray-300 mb-1">Step 3</h3>
               <p className="text-sm text-gray-600 dark:text-gray-300">ダウンロード完了</p>
             </div>
           </div>
@@ -444,7 +444,7 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
         {/* FAQ Section */}
         {faq && faq.length > 0 && (
           <section className="mt-8" aria-labelledby="faq-heading">
-            <h2 id="faq-heading" className="font-bold text-kon dark:text-blue-300 mb-4 text-lg">
+            <h2 id="faq-heading" className="font-bold text-kon dark:text-gray-300 mb-4 text-lg">
               よくある質問（FAQ）
             </h2>
             <div className="space-y-4">
@@ -455,13 +455,13 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
                 >
                   <summary className="p-4 font-medium cursor-pointer text-gray-800 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 list-none flex items-center justify-between">
                     <span className="flex items-center gap-2">
-                      <span className="text-kon dark:text-blue-400">Q.</span>
+                      <span className="text-kon dark:text-gray-300">Q.</span>
                       {item.question}
                     </span>
                     <span className="text-gray-400 dark:text-gray-500 group-open:rotate-180 transition-transform">▼</span>
                   </summary>
                   <div className="p-4 pt-0 text-gray-600 dark:text-gray-300 border-t border-gray-100 dark:border-gray-700">
-                    <span className="text-kon dark:text-blue-400 font-medium">A.</span> {item.answer}
+                    <span className="text-kon dark:text-gray-300 font-medium">A.</span> {item.answer}
                   </div>
                 </details>
               ))}

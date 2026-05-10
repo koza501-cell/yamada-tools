@@ -648,9 +648,9 @@ export default function DirectorSalaryOptimizerPage() {
                     </div>
                   </div>
                 ) : (
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
-                    <div className="text-xs text-blue-600 font-medium mb-1">入力した役員報酬</div>
-                    <div className="text-2xl font-bold text-blue-700">
+                  <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center">
+                    <div className="text-xs text-kon font-medium mb-1">入力した役員報酬</div>
+                    <div className="text-2xl font-bold text-kon">
                       月額 {form.manualSalary}万円
                     </div>
                     <div className="text-sm text-gray-600 mt-1">
@@ -690,13 +690,13 @@ export default function DirectorSalaryOptimizerPage() {
                   <div
                     key={i}
                     className={`flex justify-between items-center px-5 py-2.5 text-sm ${
-                      row.highlight ? "bg-red-50" : row.positive ? "bg-green-50" : ""
+                      row.highlight ? "bg-gray-50" : row.positive ? "bg-green-50" : ""
                     }`}
                   >
                     <span className={`${row.indent ? "pl-4 text-gray-500" : ""} ${row.bold ? "font-bold text-gray-800" : "text-gray-600"}`}>
                       {row.label}
                     </span>
-                    <span className={`font-medium ${row.highlight ? "text-red-700 font-bold" : row.positive ? "text-green-700 font-bold" : "text-gray-800"}`}>
+                    <span className={`font-medium ${row.highlight ? "text-danger font-bold" : row.positive ? "text-green-700 font-bold" : "text-gray-800"}`}>
                       {fmtMan(row.value)}
                     </span>
                   </div>
@@ -755,12 +755,12 @@ export default function DirectorSalaryOptimizerPage() {
                 役員報酬を月額<strong> {Math.round(result.minBurden.monthlySalary)}万円（年額 {fmtMan(result.minBurden.directorSalary)}）</strong>に設定することで総税負担を最小化できます。
               </div>
               {form.spouseIsOfficer && parseFloat(form.spouseSalary) > 0 && (
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-blue-800">
+                <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-sm text-kon">
                   配偶者への役員報酬<strong> {fmtMan(parseFloat(form.spouseSalary) || 0)}</strong>により、所得分散効果が働いています。夫婦の合計税負担を削減できています。
                 </div>
               )}
               {Math.abs(result.minBurden.directorSalary - result.maxTakeHome.directorSalary) > 50 && (
-                <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 text-sm text-amber-800">
+                <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-sm text-kon">
                   税負担最小（月額{Math.round(result.minBurden.monthlySalary)}万円）と手取り最大（月額{Math.round(result.maxTakeHome.monthlySalary)}万円）の最適報酬が異なります。生活費や将来の資金計画に合わせてバランスを調整してください。
                 </div>
               )}

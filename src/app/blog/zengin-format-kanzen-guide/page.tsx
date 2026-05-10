@@ -224,9 +224,9 @@ export default function ZenginFormatKanzenGuideBlog() {
 
       {/* Breadcrumb */}
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-blue-500">ホーム</Link>
+        <Link href="/" className="hover:text-ai">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-blue-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-ai">ブログ</Link>
         <span className="mx-2">/</span>
         <span>全銀フォーマット完全ガイド</span>
       </nav>
@@ -239,7 +239,7 @@ export default function ZenginFormatKanzenGuideBlog() {
       <p className="text-gray-500 text-sm mb-8">公開日: 2026年5月6日　｜　山田ツール編集部</p>
 
       {/* この記事でわかること */}
-      <div className="bg-blue-50 border-l-4 border-blue-500 p-5 mb-8 rounded-r-lg">
+      <div className="bg-gray-50 border-l-4 border-kon p-5 mb-8 rounded-r-lg">
         <p className="font-bold text-gray-800 mb-2">この記事でわかること</p>
         <ul className="text-gray-700 space-y-1">
           <li>✓ 全銀フォーマット（FBフォーマット）の仕組みと4つのレコード構造</li>
@@ -291,7 +291,7 @@ export default function ZenginFormatKanzenGuideBlog() {
 
         <div className="space-y-3 mb-6">
           <div className="flex items-start gap-3 p-4 bg-white border border-gray-200 rounded-lg">
-            <div className="bg-blue-600 text-white rounded px-2 py-1 text-xs font-bold flex-shrink-0 mt-0.5">1</div>
+            <div className="bg-kon text-white rounded px-2 py-1 text-xs font-bold flex-shrink-0 mt-0.5">1</div>
             <div>
               <p className="font-bold text-gray-800">ヘッダーレコード（種別コード：1）</p>
               <p className="text-sm text-gray-600 mt-1">ファイル全体の先頭行。振込元の銀行・支店・口座情報、業務コード（給与振込・総合振込など）、振込指定日などを記録します。</p>
@@ -321,7 +321,7 @@ export default function ZenginFormatKanzenGuideBlog() {
         </div>
 
         <p className="text-gray-700 mb-4 leading-relaxed">
-          この構造を手作業で作るのは大変ですが、<Link href="/convert/bank-format" className="text-blue-600 hover:underline font-semibold">山田ツールの全銀フォーマット変換ツール</Link>を使えば、CSVをアップロードするだけで4種類のレコードを自動生成してくれます。
+          この構造を手作業で作るのは大変ですが、<Link href="/convert/bank-format" className="text-kon hover:underline font-semibold">山田ツールの全銀フォーマット変換ツール</Link>を使えば、CSVをアップロードするだけで4種類のレコードを自動生成してくれます。
         </p>
       </section>
 
@@ -347,22 +347,22 @@ export default function ZenginFormatKanzenGuideBlog() {
               </thead>
               <tbody className="text-gray-600">
                 <tr className="border-b border-gray-100">
-                  <td className="py-2 pr-4 font-mono font-bold text-blue-700">11</td>
+                  <td className="py-2 pr-4 font-mono font-bold text-kon">11</td>
                   <td className="py-2 pr-4">給与振込</td>
                   <td className="py-2">給与担当者</td>
                 </tr>
                 <tr className="border-b border-gray-100">
-                  <td className="py-2 pr-4 font-mono font-bold text-blue-700">12</td>
+                  <td className="py-2 pr-4 font-mono font-bold text-kon">12</td>
                   <td className="py-2 pr-4">賞与振込</td>
                   <td className="py-2">給与担当者</td>
                 </tr>
                 <tr className="border-b border-gray-100">
-                  <td className="py-2 pr-4 font-mono font-bold text-blue-700">21</td>
+                  <td className="py-2 pr-4 font-mono font-bold text-kon">21</td>
                   <td className="py-2 pr-4">総合振込（取引先への支払いなど）</td>
                   <td className="py-2">経理・財務担当者</td>
                 </tr>
                 <tr>
-                  <td className="py-2 pr-4 font-mono font-bold text-blue-700">91</td>
+                  <td className="py-2 pr-4 font-mono font-bold text-kon">91</td>
                   <td className="py-2 pr-4">口座振替（代金回収）</td>
                   <td className="py-2">サブスク・定期課金事業者</td>
                 </tr>
@@ -394,9 +394,9 @@ export default function ZenginFormatKanzenGuideBlog() {
               <li>✓ ゆうちょBizダイレクト</li>
             </ul>
           </div>
-          <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
-            <p className="font-bold text-orange-800 mb-2">有料・条件付きの大手銀行</p>
-            <ul className="text-sm text-orange-700 space-y-1">
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+            <p className="font-bold text-kon mb-2">有料・条件付きの大手銀行</p>
+            <ul className="text-sm text-kon space-y-1">
               <li>△ みずほ銀行（総合振込サービス：初期55,000円+月額22,000円程度）</li>
               <li>△ 三菱UFJ銀行（法人向けサービスに月額費用あり）</li>
               <li>△ 三井住友銀行（BizSTATION：月額費用あり）</li>
@@ -423,24 +423,24 @@ export default function ZenginFormatKanzenGuideBlog() {
         {/* 方法1：無料ブラウザツール */}
         <div className="mb-8">
           <h3 className="text-xl font-bold text-gray-800 mb-3 flex items-center gap-2">
-            <span className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
+            <span className="bg-kon text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
             無料ブラウザツールを使う（最速・推奨）
           </h3>
           <p className="text-gray-700 mb-3 leading-relaxed">
-            最もかんたんで即効性のある方法です。山田ツールの<Link href="/convert/bank-format" className="text-blue-600 hover:underline font-semibold">全銀フォーマット変換ツール</Link>は、CSVファイルをアップロードするだけで全銀フォーマットに変換できます。VBAもExcelも、プログラミングの知識も一切不要です。
+            最もかんたんで即効性のある方法です。山田ツールの<Link href="/convert/bank-format" className="text-kon hover:underline font-semibold">全銀フォーマット変換ツール</Link>は、CSVファイルをアップロードするだけで全銀フォーマットに変換できます。VBAもExcelも、プログラミングの知識も一切不要です。
           </p>
           <div className="bg-gray-50 rounded-lg p-4 mb-4">
             <p className="font-bold text-gray-700 mb-2">変換手順（5分でできる）</p>
             <ol className="text-sm text-gray-600 space-y-2">
-              <li className="flex gap-2"><span className="bg-blue-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">1</span>振込先情報を記載したCSVを準備する</li>
-              <li className="flex gap-2"><span className="bg-blue-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">2</span>ツールにCSVをアップロードし、業務コード・振込日を設定する</li>
-              <li className="flex gap-2"><span className="bg-blue-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">3</span>全角カナが自動的に半角カナへ変換されることを確認する</li>
-              <li className="flex gap-2"><span className="bg-blue-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">4</span>変換結果をプレビューして内容を確認する</li>
-              <li className="flex gap-2"><span className="bg-blue-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">5</span>全銀フォーマット（.txt）をダウンロードしてネットバンキングにアップロードする</li>
+              <li className="flex gap-2"><span className="bg-kon text-white rounded-full w-5 h-5 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">1</span>振込先情報を記載したCSVを準備する</li>
+              <li className="flex gap-2"><span className="bg-kon text-white rounded-full w-5 h-5 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">2</span>ツールにCSVをアップロードし、業務コード・振込日を設定する</li>
+              <li className="flex gap-2"><span className="bg-kon text-white rounded-full w-5 h-5 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">3</span>全角カナが自動的に半角カナへ変換されることを確認する</li>
+              <li className="flex gap-2"><span className="bg-kon text-white rounded-full w-5 h-5 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">4</span>変換結果をプレビューして内容を確認する</li>
+              <li className="flex gap-2"><span className="bg-kon text-white rounded-full w-5 h-5 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">5</span>全銀フォーマット（.txt）をダウンロードしてネットバンキングにアップロードする</li>
             </ol>
           </div>
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-            <Link href="/convert/bank-format" className="inline-flex items-center text-blue-700 font-bold hover:underline">
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+            <Link href="/convert/bank-format" className="inline-flex items-center text-kon font-bold hover:underline">
               → 全銀フォーマット変換ツールを使う（無料・登録不要）
               <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -477,7 +477,7 @@ export default function ZenginFormatKanzenGuideBlog() {
             Excelのマクロ（VBA）を使って全銀フォーマットを生成するスクリプトを自作する方法です。一度作ってしまえば自社の独自フォーマットにも完全対応できますが、初期設定に相応の時間がかかり、プログラミング知識が必要です。
           </p>
           <p className="text-gray-700 mb-3 leading-relaxed">
-            検索すると「全銀フォーマット VBA 無料」で作成例がいくつか見つかりますが、銀行の仕様変更があった場合の保守が必要になるのが難点です。月に数回程度の利用なら、<Link href="/convert/bank-format" className="text-blue-600 hover:underline">無料の変換ツール</Link>を使う方がはるかに効率的です。
+            検索すると「全銀フォーマット VBA 無料」で作成例がいくつか見つかりますが、銀行の仕様変更があった場合の保守が必要になるのが難点です。月に数回程度の利用なら、<Link href="/convert/bank-format" className="text-kon hover:underline">無料の変換ツール</Link>を使う方がはるかに効率的です。
           </p>
         </div>
 
@@ -495,7 +495,7 @@ export default function ZenginFormatKanzenGuideBlog() {
             </thead>
             <tbody className="text-gray-600">
               <tr className="border-b border-gray-100">
-                <td className="py-2 pr-3 font-semibold text-blue-700">ブラウザツール</td>
+                <td className="py-2 pr-3 font-semibold text-kon">ブラウザツール</td>
                 <td className="py-2 pr-3">無料</td>
                 <td className="py-2 pr-3">かんたん</td>
                 <td className="py-2">月数回程度・今すぐ使いたい</td>
@@ -528,30 +528,30 @@ export default function ZenginFormatKanzenGuideBlog() {
 
         <div className="space-y-5">
           {/* エラー1 */}
-          <div className="border border-red-100 rounded-lg overflow-hidden">
-            <div className="bg-red-50 px-4 py-3 border-b border-red-100">
-              <p className="font-bold text-red-800">エラー1：全角文字が含まれているためエラーになる</p>
+          <div className="border border-gray-200 rounded-lg overflow-hidden">
+            <div className="bg-gray-50 px-4 py-3 border-b border-gray-200">
+              <p className="font-bold text-danger">エラー1：全角文字が含まれているためエラーになる</p>
             </div>
             <div className="px-4 py-3">
               <p className="text-sm text-gray-600 mb-2"><strong>原因：</strong>口座名義に漢字・全角カタカナが含まれている</p>
               <p className="text-sm text-gray-600 mb-2"><strong>対処：</strong>全角カナを半角カナに変換してください。山田ツールは自動変換に対応しています。</p>
               <div className="bg-gray-50 rounded p-2 text-xs font-mono text-gray-600">
-                <span className="text-red-600">✗ ヤマダ商事株式会社</span>（全角）<br />
+                <span className="text-danger">✗ ヤマダ商事株式会社</span>（全角）<br />
                 <span className="text-green-600">✓ ﾔﾏﾀﾞｼｮｳｼﾞ（ｶ）</span>（半角カナ）
               </div>
             </div>
           </div>
 
           {/* エラー2 */}
-          <div className="border border-orange-100 rounded-lg overflow-hidden">
-            <div className="bg-orange-50 px-4 py-3 border-b border-orange-100">
-              <p className="font-bold text-orange-800">エラー2：口座番号の桁数が合わない</p>
+          <div className="border border-gray-200 rounded-lg overflow-hidden">
+            <div className="bg-gray-50 px-4 py-3 border-b border-gray-200">
+              <p className="font-bold text-kon">エラー2：口座番号の桁数が合わない</p>
             </div>
             <div className="px-4 py-3">
               <p className="text-sm text-gray-600 mb-2"><strong>原因：</strong>口座番号が7桁未満で前ゼロ補完が行われていない</p>
               <p className="text-sm text-gray-600 mb-2"><strong>対処：</strong>口座番号の先頭にゼロを追加して7桁にしてください。</p>
               <div className="bg-gray-50 rounded p-2 text-xs font-mono text-gray-600">
-                <span className="text-red-600">✗ 123456</span>（6桁）<br />
+                <span className="text-danger">✗ 123456</span>（6桁）<br />
                 <span className="text-green-600">✓ 0123456</span>（7桁・前ゼロ補完済み）
               </div>
             </div>
@@ -569,9 +569,9 @@ export default function ZenginFormatKanzenGuideBlog() {
           </div>
 
           {/* エラー4 */}
-          <div className="border border-blue-100 rounded-lg overflow-hidden">
-            <div className="bg-blue-50 px-4 py-3 border-b border-blue-100">
-              <p className="font-bold text-blue-800">エラー4：文字コードエラーが発生する</p>
+          <div className="border border-gray-200 rounded-lg overflow-hidden">
+            <div className="bg-gray-50 px-4 py-3 border-b border-gray-200">
+              <p className="font-bold text-kon">エラー4：文字コードエラーが発生する</p>
             </div>
             <div className="px-4 py-3">
               <p className="text-sm text-gray-600 mb-2"><strong>原因：</strong>ファイルの文字コードがShift-JIS以外（UTF-8等）で保存されている</p>
@@ -580,9 +580,9 @@ export default function ZenginFormatKanzenGuideBlog() {
           </div>
 
           {/* エラー5 */}
-          <div className="border border-purple-100 rounded-lg overflow-hidden">
-            <div className="bg-purple-50 px-4 py-3 border-b border-purple-100">
-              <p className="font-bold text-purple-800">エラー5：受取人名が長すぎてエラーになる</p>
+          <div className="border border-kon rounded-lg overflow-hidden">
+            <div className="bg-gray-50 px-4 py-3 border-b border-kon">
+              <p className="font-bold text-kon">エラー5：受取人名が長すぎてエラーになる</p>
             </div>
             <div className="px-4 py-3">
               <p className="text-sm text-gray-600 mb-2"><strong>原因：</strong>受取人名（カナ）が30文字（半角）を超えている</p>
@@ -613,7 +613,7 @@ export default function ZenginFormatKanzenGuideBlog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">山田ツールの全銀フォーマット変換ツール：機能詳細</h2>
         <p className="text-gray-700 mb-4 leading-relaxed">
-          <Link href="/convert/bank-format" className="text-blue-600 hover:underline font-semibold">山田ツールの全銀フォーマット変換ツール</Link>は、専門知識なしでも即日使い始めることができます。主な機能を紹介します。
+          <Link href="/convert/bank-format" className="text-kon hover:underline font-semibold">山田ツールの全銀フォーマット変換ツール</Link>は、専門知識なしでも即日使い始めることができます。主な機能を紹介します。
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
@@ -643,12 +643,12 @@ export default function ZenginFormatKanzenGuideBlog() {
           </div>
         </div>
 
-        <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl p-6 text-center">
+        <div className="bg-gradient-to-r from-slate-900 to-kon text-white rounded-xl p-6 text-center">
           <p className="text-lg font-bold mb-2">全銀フォーマット変換ツールを今すぐ使う</p>
-          <p className="text-blue-100 text-sm mb-4">無料・登録不要・CSVをアップロードするだけ</p>
+          <p className="text-gin text-sm mb-4">無料・登録不要・CSVをアップロードするだけ</p>
           <Link
             href="/convert/bank-format"
-            className="inline-block bg-white text-blue-700 font-bold py-3 px-8 rounded-lg hover:bg-blue-50 transition"
+            className="inline-block bg-white text-kon font-bold py-3 px-8 rounded-lg hover:bg-gray-50 transition"
           >
             → 全銀フォーマット変換ツールへ
           </Link>
@@ -709,9 +709,9 @@ export default function ZenginFormatKanzenGuideBlog() {
           </table>
         </div>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-          <p className="font-bold text-blue-800 mb-2">サンプルCSVのイメージ</p>
-          <div className="text-xs font-mono bg-white border border-blue-100 rounded p-3 overflow-x-auto text-gray-600">
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+          <p className="font-bold text-kon mb-2">サンプルCSVのイメージ</p>
+          <div className="text-xs font-mono bg-white border border-gray-200 rounded p-3 overflow-x-auto text-gray-600">
             銀行コード,支店コード,預金種目,口座番号,受取人名,振込金額<br />
             0036,120,1,0123456,ヤマダ タロウ,250000<br />
             0009,001,1,0234567,サトウ ハナコ,200000<br />
@@ -757,7 +757,7 @@ export default function ZenginFormatKanzenGuideBlog() {
           <details className="bg-gray-50 rounded-lg p-4">
             <summary className="font-bold text-gray-800 cursor-pointer">Q. freeeや弥生で全銀フォーマットを出力できますか？</summary>
             <p className="mt-3 text-gray-700 border-t pt-3 leading-relaxed">
-              はい、freee・マネーフォワードクラウド・弥生給与などの主要な会計・給与ソフトは全銀フォーマットの出力に対応しています。ただし月額費用がかかります。月数回程度の利用であれば、山田ツールの<Link href="/convert/bank-format" className="text-blue-600 hover:underline">無料変換ツール</Link>の方がコスパよく使えます。
+              はい、freee・マネーフォワードクラウド・弥生給与などの主要な会計・給与ソフトは全銀フォーマットの出力に対応しています。ただし月額費用がかかります。月数回程度の利用であれば、山田ツールの<Link href="/convert/bank-format" className="text-kon hover:underline">無料変換ツール</Link>の方がコスパよく使えます。
             </p>
           </details>
           <details className="bg-gray-50 rounded-lg p-4">
@@ -787,15 +787,15 @@ export default function ZenginFormatKanzenGuideBlog() {
           かつてはVBAを書いたり、高額な会計ソフトを導入したりしなければ作れませんでしたが、今は無料のブラウザツールで誰でも即日使い始めることができます。
         </p>
         <p className="text-gray-700 mb-6 leading-relaxed">
-          月に数回程度の振込作業であれば、<Link href="/convert/bank-format" className="text-blue-600 hover:underline font-semibold">山田ツールの全銀フォーマット変換ツール</Link>が最もコスパよく使えます。登録不要・完全無料で、CSVをアップロードするだけで変換できます。ぜひ次回の給与振込・取引先への支払いにお役立てください。
+          月に数回程度の振込作業であれば、<Link href="/convert/bank-format" className="text-kon hover:underline font-semibold">山田ツールの全銀フォーマット変換ツール</Link>が最もコスパよく使えます。登録不要・完全無料で、CSVをアップロードするだけで変換できます。ぜひ次回の給与振込・取引先への支払いにお役立てください。
         </p>
 
-        <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl p-6 text-center">
+        <div className="bg-gradient-to-r from-slate-900 to-kon text-white rounded-xl p-6 text-center">
           <p className="text-lg font-bold mb-2">全銀フォーマット変換ツールを無料で使う</p>
-          <p className="text-blue-100 text-sm mb-4">登録不要・CSVアップロードで即変換・半角カナ自動変換対応</p>
+          <p className="text-gin text-sm mb-4">登録不要・CSVアップロードで即変換・半角カナ自動変換対応</p>
           <Link
             href="/convert/bank-format"
-            className="inline-block bg-white text-blue-700 font-bold py-3 px-8 rounded-lg hover:bg-blue-50 transition"
+            className="inline-block bg-white text-kon font-bold py-3 px-8 rounded-lg hover:bg-gray-50 transition"
           >
             → 全銀フォーマット変換ツールへ
           </Link>

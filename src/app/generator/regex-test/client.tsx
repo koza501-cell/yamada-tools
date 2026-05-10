@@ -136,7 +136,7 @@ export default function RegexTestClient() {
           </div>
 
           {error && (
-            <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm">
+            <div className="mb-4 p-3 bg-gray-50 border border-gray-200 rounded-xl text-danger text-sm">
               {error}
             </div>
           )}
@@ -169,7 +169,7 @@ export default function RegexTestClient() {
                     <span className="text-kon">"{m.match}"</span>{" "}
                     <span className="text-gray-400">at index {m.index}</span>
                     {m.groups && m.groups.length > 0 && (
-                      <span className="text-purple-600 ml-2">groups: [{m.groups.join(", ")}]</span>
+                      <span className="text-kon ml-2">groups: [{m.groups.join(", ")}]</span>
                     )}
                   </div>
                 ))}

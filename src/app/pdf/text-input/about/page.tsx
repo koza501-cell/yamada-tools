@@ -40,13 +40,13 @@ export default function AboutPdfTextPage() {
       <div className="max-w-3xl mx-auto px-4 py-12">
         <nav className="mb-8 text-sm text-gray-500">
           <ol className="flex items-center gap-2 flex-wrap">
-            <li><Link href="/" className="hover:text-orange-600">ホーム</Link></li>
+            <li><Link href="/" className="hover:text-ai">ホーム</Link></li>
             <li>/</li>
-            <li><Link href="/pdf" className="hover:text-orange-600">PDFツール</Link></li>
+            <li><Link href="/pdf" className="hover:text-ai">PDFツール</Link></li>
             <li>/</li>
-            <li><Link href="/pdf/text-input" className="hover:text-orange-600">PDFに文字入力</Link></li>
+            <li><Link href="/pdf/text-input" className="hover:text-ai">PDFに文字入力</Link></li>
             <li>/</li>
-            <li className="text-orange-600">ツールについて</li>
+            <li className="text-kon">ツールについて</li>
           </ol>
         </nav>
         <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-8">PDFに文字入力ツールについて</h1>
@@ -94,14 +94,14 @@ export default function AboutPdfTextPage() {
             <dl className="space-y-2 text-gray-600 dark:text-gray-400">
               <div className="flex gap-4"><dt className="font-medium w-32 flex-shrink-0">法人名</dt><dd>合同会社山田トレード</dd></div>
               <div className="flex gap-4"><dt className="font-medium w-32 flex-shrink-0">サービス名</dt><dd>山田ツール（Yamada Tools）</dd></div>
-              <div className="flex gap-4"><dt className="font-medium w-32 flex-shrink-0">URL</dt><dd><a href="https://yamada-tools.jp" className="text-orange-600 hover:underline">https://yamada-tools.jp</a></dd></div>
-              <div className="flex gap-4"><dt className="font-medium w-32 flex-shrink-0">ツールURL</dt><dd><a href="https://yamada-tools.jp/pdf/text-input" className="text-orange-600 hover:underline">https://yamada-tools.jp/pdf/text-input</a></dd></div>
+              <div className="flex gap-4"><dt className="font-medium w-32 flex-shrink-0">URL</dt><dd><a href="https://yamada-tools.jp" className="text-kon hover:underline">https://yamada-tools.jp</a></dd></div>
+              <div className="flex gap-4"><dt className="font-medium w-32 flex-shrink-0">ツールURL</dt><dd><a href="https://yamada-tools.jp/pdf/text-input" className="text-kon hover:underline">https://yamada-tools.jp/pdf/text-input</a></dd></div>
               <div className="flex gap-4"><dt className="font-medium w-32 flex-shrink-0">カテゴリ</dt><dd>Webアプリケーション / PDFツール</dd></div>
               <div className="flex gap-4"><dt className="font-medium w-32 flex-shrink-0">料金</dt><dd>無料（完全無料・ユーザー登録不要）</dd></div>
             </dl>
           </section>
           <div className="mt-10 text-center">
-            <Link href="/pdf/text-input" className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-3 rounded-xl transition-colors">
+            <Link href="/pdf/text-input" className="inline-block bg-kon hover:bg-ai text-white font-bold px-8 py-3 rounded-xl transition-colors">
               ← ツールに戻る
             </Link>
           </div>

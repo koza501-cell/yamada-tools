@@ -51,8 +51,8 @@ interface HazardResult {
 }
 
 const RISK_STYLE = {
-  high:   { bg: "bg-red-100",    border: "border-red-300",    text: "text-red-800",    badge: "bg-red-600 text-white",    label: "高リスク" },
-  medium: { bg: "bg-amber-50",   border: "border-amber-300",  text: "text-amber-800",  badge: "bg-amber-500 text-white",  label: "中リスク" },
+  high:   { bg: "bg-gray-50",    border: "border-gray-200",    text: "text-danger",    badge: "bg-danger text-white",    label: "高リスク" },
+  medium: { bg: "bg-gray-50",   border: "border-gray-200",  text: "text-kon",  badge: "bg-kon text-white",  label: "中リスク" },
   low:    { bg: "bg-green-50",   border: "border-green-300",  text: "text-green-800",  badge: "bg-green-600 text-white",  label: "低リスク" },
   none:   { bg: "bg-gray-50",    border: "border-gray-200",   text: "text-gray-500",   badge: "bg-gray-300 text-gray-700", label: "該当なし" },
 };
@@ -173,7 +173,7 @@ export default function HazardClient() {
 
         {/* Error */}
         {error && (
-          <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg p-4 mb-6 text-sm">
+          <div className="bg-gray-50 border border-gray-200 text-danger rounded-lg p-4 mb-6 text-sm">
             ⚠️ {error}
           </div>
         )}
@@ -184,7 +184,7 @@ export default function HazardClient() {
             {/* Print header */}
             <div className="print-header hidden items-center justify-between px-4 py-3 border-b border-gray-200 mb-3">
               <div>
-                <p className="text-lg font-bold text-blue-700">山田ツール</p>
+                <p className="text-lg font-bold text-kon">山田ツール</p>
                 <p className="text-xs text-gray-500">yamada-tools.jp — ハザードマップチェッカー</p>
               </div>
               <div className="text-right">
@@ -212,7 +212,7 @@ export default function HazardClient() {
               <HazardCard icon="🌊" title="洪水浸水想定区域" result={result.flood}>
                 {result.flood.detected ? (
                   <div className="text-sm space-y-1">
-                    <p className="text-red-700 font-medium">浸水深: {result.flood.depth_label}</p>
+                    <p className="text-danger font-medium">浸水深: {result.flood.depth_label}</p>
                     {result.flood.river && <p className="text-gray-600 text-xs">対象河川: {result.flood.river}</p>}
                     <p className="text-gray-700 text-xs">{result.flood.desc}</p>
                   </div>
@@ -230,7 +230,7 @@ export default function HazardClient() {
                         <div className="flex items-center gap-1 mb-0.5">
                           <span>{item.icon}</span>
                           <span className="font-semibold text-gray-800">{item.type}</span>
-                          <span className={`ml-auto text-xs px-1.5 py-0.5 rounded-full ${item.risk === "high" ? "bg-red-200 text-red-800" : "bg-amber-200 text-amber-800"}`}>
+                          <span className={`ml-auto text-xs px-1.5 py-0.5 rounded-full ${item.risk === "high" ? "bg-gray-50 text-danger" : "bg-gray-50 text-kon"}`}>
                             {item.level}
                           </span>
                         </div>
@@ -260,7 +260,7 @@ export default function HazardClient() {
               {/* Tsunami */}
               <HazardCard icon="🌏" title="津波浸水想定" result={result.tsunami}>
                 {result.tsunami.detected ? (
-                  <p className="text-sm text-red-700 font-medium">津波浸水想定区域に含まれています。海抜の高い場所への避難計画を確認してください。</p>
+                  <p className="text-sm text-danger font-medium">津波浸水想定区域に含まれています。海抜の高い場所への避難計画を確認してください。</p>
                 ) : (
                   <p className="text-xs text-gray-500">津波浸水想定区域の指定はありません。</p>
                 )}
@@ -269,7 +269,7 @@ export default function HazardClient() {
               {/* Storm surge */}
               <HazardCard icon="🌀" title="高潮浸水想定区域" result={result.storm_surge}>
                 {result.storm_surge.detected ? (
-                  <p className="text-sm text-red-700 font-medium">高潮浸水想定区域に含まれています。台風・大雨時の浸水リスクがあります。</p>
+                  <p className="text-sm text-danger font-medium">高潮浸水想定区域に含まれています。台風・大雨時の浸水リスクがあります。</p>
                 ) : (
                   <p className="text-xs text-gray-500">高潮浸水想定区域の指定はありません。</p>
                 )}
@@ -300,7 +300,7 @@ export default function HazardClient() {
                 <button
                   type="button"
                   onClick={() => window.print()}
-                  className="text-sm bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors font-medium"
+                  className="text-sm bg-kon hover:bg-ai text-white px-4 py-2 rounded-lg transition-colors font-medium"
                 >
                   🖨 印刷・PDF保存
                 </button>

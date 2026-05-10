@@ -179,7 +179,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         {blog.tags && blog.tags.length > 0 && (
           <div className="flex flex-wrap gap-2 justify-center">
             {blog.tags.map((tag: string, i: number) => (
-              <span key={i} className="px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-medium hover:bg-blue-100 transition-colors">
+              <span key={i} className="px-4 py-2 bg-gray-50 text-kon rounded-full text-sm font-medium hover:bg-ai transition-colors">
                 #{tag}
               </span>
             ))}
@@ -230,7 +230,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           </p>
           <a 
             href={blog.toolLink || '/pdf'} 
-            className="inline-flex items-center px-8 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium shadow-lg hover:shadow-xl"
+            className="inline-flex items-center px-8 py-4 bg-kon text-white rounded-lg hover:bg-ai transition-colors font-medium shadow-lg hover:shadow-xl"
           >
             ツールを使ってみる
             <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

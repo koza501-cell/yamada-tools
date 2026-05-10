@@ -356,14 +356,14 @@ export default function NenmatsuCalcClient({ faq, seoContent }: NenmatsuClientPr
               className={`rounded-2xl p-6 mb-6 ${
                 result.isRefund
                   ? "bg-green-50 border-2 border-green-200"
-                  : "bg-red-50 border-2 border-red-200"
+                  : "bg-gray-50 border-2 border-gray-200"
               }`}
             >
               <div className="text-center mb-6">
                 <p className="text-sm text-gray-500 mb-1">
                   {result.isRefund ? "還付金額" : "追加徴収額"}
                 </p>
-                <p className={`text-4xl font-bold ${result.isRefund ? "text-green-600" : "text-red-600"}`}>
+                <p className={`text-4xl font-bold ${result.isRefund ? "text-green-600" : "text-danger"}`}>
                   {result.isRefund ? "+" : "-"}{result.difference.toLocaleString()}円
                 </p>
               </div>
@@ -423,8 +423,8 @@ export default function NenmatsuCalcClient({ faq, seoContent }: NenmatsuClientPr
                 </div>
               )}
               {seoContent.tips && (
-                <div className="bg-blue-50 rounded-lg p-4 mt-4">
-                  <p className="text-sm text-blue-800">💡 <strong>ヒント:</strong> {seoContent.tips}</p>
+                <div className="bg-gray-50 rounded-lg p-4 mt-4">
+                  <p className="text-sm text-kon">💡 <strong>ヒント:</strong> {seoContent.tips}</p>
                 </div>
               )}
             </section>

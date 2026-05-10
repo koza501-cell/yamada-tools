@@ -52,9 +52,9 @@ export default function NennshuKabeHaigushaFuyouBlog() {
       />
 
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-blue-500">ホーム</Link>
+        <Link href="/" className="hover:text-ai">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-blue-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-ai">ブログ</Link>
         <span className="mx-2">/</span>
         <span>年収の壁・配偶者控除・扶養控除解説</span>
       </nav>
@@ -103,9 +103,9 @@ export default function NennshuKabeHaigushaFuyouBlog() {
                 ].map(([name, before, after, diff], i) => (
                   <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
                     <td className="p-2 border border-gray-200 font-medium">{name}</td>
-                    <td className="p-2 border border-gray-200 text-center text-red-600">{before}</td>
+                    <td className="p-2 border border-gray-200 text-center text-danger">{before}</td>
                     <td className="p-2 border border-gray-200 text-center text-green-700 font-bold">{after}</td>
-                    <td className="p-2 border border-gray-200 text-center text-blue-600 font-bold">{diff}</td>
+                    <td className="p-2 border border-gray-200 text-center text-kon font-bold">{diff}</td>
                   </tr>
                 ))}
               </tbody>
@@ -132,10 +132,10 @@ export default function NennshuKabeHaigushaFuyouBlog() {
         <div className="space-y-3 mb-6">
           {[
             { wall: "98〜110万円の壁", type: "住民税", color: "bg-gray-100 border-gray-300", desc: "住民税の非課税限度額を超えると住民税がかかり始める。自治体によって基準が異なる（東京都は100万円超）。" },
-            { wall: "106万円の壁", type: "社会保険（大企業限定）", color: "bg-orange-50 border-orange-300", desc: "従業員101人以上の企業で週20時間以上勤務する場合の社会保険加入義務が発生する基準（2024年10月から51人以上に拡大）。年間14〜15万円の保険料負担が発生。" },
+            { wall: "106万円の壁", type: "社会保険（大企業限定）", color: "bg-gray-50 border-gray-200", desc: "従業員101人以上の企業で週20時間以上勤務する場合の社会保険加入義務が発生する基準（2024年10月から51人以上に拡大）。年間14〜15万円の保険料負担が発生。" },
             { wall: "123万円の壁（2025年〜）", type: "所得税", color: "bg-green-50 border-green-300", desc: "この金額を超えると所得税がかかり始める。2024年まで103万円だったが2025年から引き上げ。配偶者控除の対象になるかどうかにも影響。" },
-            { wall: "130万円の壁", type: "社会保険（全員）", color: "bg-red-50 border-red-300", desc: "年収130万円（月収約10.8万円）を超えると配偶者の扶養から外れ、自分で社会保険に加入。年収140〜150万円程度まで手取りが減るケースも。" },
-            { wall: "160万円の壁", type: "配偶者特別控除", color: "bg-blue-50 border-blue-300", desc: "配偶者特別控除は年収160万円未満まで段階的に受けられる。160万円を超えると控除がゼロになり、世帯全体の税負担が急増する。" },
+            { wall: "130万円の壁", type: "社会保険（全員）", color: "bg-gray-50 border-gray-200", desc: "年収130万円（月収約10.8万円）を超えると配偶者の扶養から外れ、自分で社会保険に加入。年収140〜150万円程度まで手取りが減るケースも。" },
+            { wall: "160万円の壁", type: "配偶者特別控除", color: "bg-gray-50 border-kon", desc: "配偶者特別控除は年収160万円未満まで段階的に受けられる。160万円を超えると控除がゼロになり、世帯全体の税負担が急増する。" },
           ].map((item, i) => (
             <div key={i} className={`border rounded-lg p-4 ${item.color}`}>
               <div className="flex flex-wrap items-start gap-2 mb-2">
@@ -161,7 +161,7 @@ export default function NennshuKabeHaigushaFuyouBlog() {
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>
-                <tr className="bg-blue-600 text-white">
+                <tr className="bg-kon text-white">
                   <th className="p-2 text-left">配偶者の年収</th>
                   <th className="p-2 text-center">所得税控除</th>
                   <th className="p-2 text-center">住民税控除</th>
@@ -204,7 +204,7 @@ export default function NennshuKabeHaigushaFuyouBlog() {
         <div className="overflow-x-auto mb-6">
           <table className="w-full text-sm border-collapse">
             <thead>
-              <tr className="bg-purple-600 text-white">
+              <tr className="bg-kon text-white">
                 <th className="p-2 text-left">区分</th>
                 <th className="p-2 text-left">対象</th>
                 <th className="p-2 text-center">所得税控除</th>
@@ -229,8 +229,8 @@ export default function NennshuKabeHaigushaFuyouBlog() {
           </table>
         </div>
 
-        <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-4">
-          <p className="font-bold text-purple-800 mb-2">📌 2026年新設予定「特定親族特別控除」（大学生バイト向け）</p>
+        <div className="bg-gray-50 border border-kon rounded-lg p-4 mb-4">
+          <p className="font-bold text-kon mb-2">📌 2026年新設予定「特定親族特別控除」（大学生バイト向け）</p>
           <p className="text-sm text-gray-700">
             現行の制度では、19〜22歳の子どもがアルバイトで年収123万円を超えると、親の扶養控除（63万円）が消えて世帯の税負担が急増します（「特定扶養の壁」）。これを緩和するため、2026年から「特定親族特別控除」の新設が検討されています。子どもの年収が123〜188万円の範囲で段階的に控除額が減少する仕組みとなる予定です。
           </p>
@@ -248,16 +248,16 @@ export default function NennshuKabeHaigushaFuyouBlog() {
         <div className="space-y-4 mb-6">
           <div className="bg-white border border-gray-200 rounded-lg p-4">
             <h3 className="font-bold text-gray-800 mb-3">106万円の壁を超えた場合の試算</h3>
-            <div className="bg-orange-50 rounded p-3 text-sm mb-3">
-              <p>社会保険料の負担：<strong className="text-orange-700">約13〜15万円/年（勤務先によって異なる）</strong></p>
+            <div className="bg-gray-50 rounded p-3 text-sm mb-3">
+              <p>社会保険料の負担：<strong className="text-kon">約13〜15万円/年（勤務先によって異なる）</strong></p>
             </div>
             <p className="text-sm text-gray-700">手取りが超える前と同水準に戻るには、年収<strong>約120〜125万円</strong>以上が目安。ただし社会保険に加入すると将来の年金が増える点も考慮が必要です。</p>
           </div>
 
           <div className="bg-white border border-gray-200 rounded-lg p-4">
             <h3 className="font-bold text-gray-800 mb-3">130万円の壁を超えた場合の試算</h3>
-            <div className="bg-red-50 rounded p-3 text-sm mb-3">
-              <p>社会保険料の負担：<strong className="text-red-700">約18〜22万円/年（年収130万円の場合）</strong></p>
+            <div className="bg-gray-50 rounded p-3 text-sm mb-3">
+              <p>社会保険料の負担：<strong className="text-danger">約18〜22万円/年（年収130万円の場合）</strong></p>
             </div>
             <p className="text-sm text-gray-700">手取りが超える前と同水準に戻るには、年収<strong>約150〜160万円</strong>以上が目安。配偶者特別控除もこの年収帯で段階的に減少します。</p>
           </div>

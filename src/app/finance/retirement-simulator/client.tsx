@@ -888,7 +888,7 @@ export default function RetirementSimulatorClient() {
                     <div>
                       <label className="text-sm text-gray-600 block mb-1">
                         インフレ率: <span className="font-bold text-emerald-600">{m1InflationRate}%</span>
-                        <span className="ml-2 text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded">他社未対応機能</span>
+                        <span className="ml-2 text-xs bg-gray-50 text-kon px-2 py-0.5 rounded">他社未対応機能</span>
                       </label>
                       <input type="range" min={0} max={3} step={0.5} value={m1InflationRate}
                         onChange={e => setM1InflationRate(Number(e.target.value))}
@@ -915,7 +915,7 @@ export default function RetirementSimulatorClient() {
                   </div>
                   <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
                     <p className="text-xs text-gray-500 mb-1">老後に必要な総資金</p>
-                    <p className="text-2xl font-bold text-orange-700">{fmtManR(mode1Result.requiredFunds * MAN)}<span className="text-sm font-normal">万円</span></p>
+                    <p className="text-2xl font-bold text-kon">{fmtManR(mode1Result.requiredFunds * MAN)}<span className="text-sm font-normal">万円</span></p>
                     <p className="text-xs text-gray-400 mt-1">インフレ{m1InflationRate}%考慮</p>
                   </div>
                 </div>
@@ -930,16 +930,16 @@ export default function RetirementSimulatorClient() {
                     </div>
                   </div>
                 ) : (
-                  <div className="bg-red-50 border border-red-200 rounded-xl p-4">
+                  <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
                     <div className="flex items-center gap-3 mb-2">
                       <span className="text-2xl">❌</span>
-                      <p className="font-bold text-red-800">老後資金が不足します</p>
+                      <p className="font-bold text-danger">老後資金が不足します</p>
                     </div>
-                    <p className="text-sm text-red-700 mb-2">不足額: {fmtManR(-mode1Result.surplus * MAN)}万円</p>
+                    <p className="text-sm text-danger mb-2">不足額: {fmtManR(-mode1Result.surplus * MAN)}万円</p>
                     {mode1Result.additionalMonthlyNeeded > 0 && (
                       <div className="bg-white rounded-lg p-3 mt-2">
                         <p className="text-sm text-gray-700">
-                          不足を補うには、今から毎月<span className="font-bold text-red-600 text-lg">{fmtManR(mode1Result.additionalMonthlyNeeded * MAN)}万円</span>追加積立が必要です
+                          不足を補うには、今から毎月<span className="font-bold text-danger text-lg">{fmtManR(mode1Result.additionalMonthlyNeeded * MAN)}万円</span>追加積立が必要です
                         </p>
                       </div>
                     )}
@@ -948,11 +948,11 @@ export default function RetirementSimulatorClient() {
 
                 {/* Asset Depletion Warning */}
                 {mode1Result.assetDepletionAge && (
-                  <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 flex items-center gap-3">
+                  <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 flex items-center gap-3">
                     <span className="text-2xl">⚠️</span>
                     <div>
-                      <p className="font-bold text-amber-800">資産が尽きる年齢: {mode1Result.assetDepletionAge}歳</p>
-                      <p className="text-sm text-amber-700">その後は年金のみでの生活になります</p>
+                      <p className="font-bold text-kon">資産が尽きる年齢: {mode1Result.assetDepletionAge}歳</p>
+                      <p className="text-sm text-kon">その後は年金のみでの生活になります</p>
                     </div>
                   </div>
                 )}
@@ -1014,7 +1014,7 @@ export default function RetirementSimulatorClient() {
                               <td className="py-1.5 px-2 text-right">{fmtManR(row.pensionIncome * MAN)}万</td>
                               <td className="py-1.5 px-2 text-right">{fmtManR(row.otherIncome * MAN)}万</td>
                               <td className="py-1.5 px-2 text-right">{fmtManR(row.expenses * MAN)}万</td>
-                              <td className={"py-1.5 px-2 text-right " + (row.balance >= 0 ? "text-green-600" : "text-red-600")}>
+                              <td className={"py-1.5 px-2 text-right " + (row.balance >= 0 ? "text-green-600" : "text-danger")}>
                                 {row.balance >= 0 ? "+" : ""}{fmtManR(row.balance * MAN)}万
                               </td>
                               <td className="py-1.5 px-2 text-right font-medium">{fmtManR(row.assets * MAN)}万</td>
@@ -1119,11 +1119,11 @@ export default function RetirementSimulatorClient() {
                 </div>
                 <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
                   <p className="text-xs text-gray-500 mb-1">資産尽きる年齢</p>
-                  <p className="text-2xl font-bold text-orange-700">{mode2Result.depletionAge}<span className="text-sm font-normal">歳</span></p>
+                  <p className="text-2xl font-bold text-kon">{mode2Result.depletionAge}<span className="text-sm font-normal">歳</span></p>
                 </div>
                 <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
                   <p className="text-xs text-gray-500 mb-1">月間不足額</p>
-                  <p className="text-2xl font-bold text-blue-700">
+                  <p className="text-2xl font-bold text-kon">
                     {Math.max(0, m2MonthlyExpenses - m2MonthlyPension - (m2WithdrawalMethod === "fixed" ? m2FixedAmount : Math.round(m2InitialAssets * m2PercentageRate / 100 / 12)))}
                     <span className="text-sm font-normal">万円</span>
                   </p>
@@ -1152,9 +1152,9 @@ export default function RetirementSimulatorClient() {
               </div>
 
               {/* Explanation */}
-              <div className="bg-blue-50 rounded-xl p-4">
-                <h4 className="font-semibold text-blue-800 mb-2">取り崩し方法の比較</h4>
-                <div className="space-y-2 text-sm text-blue-700">
+              <div className="bg-gray-50 rounded-xl p-4">
+                <h4 className="font-semibold text-kon mb-2">取り崩し方法の比較</h4>
+                <div className="space-y-2 text-sm text-kon">
                   <p><strong>定額取り崩し：</strong>毎月決まった額を取り崩す。予算管理がしやすいが、インフレに弱い。</p>
                   <p><strong>定率取り崩し（4%ルール）：</strong>資産の一定率を取り崩す。資産に応じて調整されるが、収入が変動する。</p>
                   <p><strong>取り崩しなし：</strong>年金と運用収入のみで生活。資産を残せるが、生活水準が制限される。</p>
@@ -1168,8 +1168,8 @@ export default function RetirementSimulatorClient() {
         {mode === 3 && (
           <div className="space-y-6">
             {/* 10年ルール Info Box */}
-            <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
-              <p className="text-sm text-amber-800">
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
+              <p className="text-sm text-kon">
                 <span className="font-bold">📢 2025年改正 10年ルール対応</span><br />
                 2026年1月より、iDeCoの一時金受取から10年以内に退職金を受け取ると、退職所得控除が制限されます。受取タイミングを工夫することで節税効果が大きく変わります。
               </p>
@@ -1245,13 +1245,13 @@ export default function RetirementSimulatorClient() {
                 </div>
 
                 {/* 退職所得控除説明 */}
-                <div className="bg-blue-50 rounded-xl p-4">
-                  <h4 className="font-semibold text-blue-800 mb-2">退職所得控除の計算</h4>
-                  <p className="text-sm text-blue-700 mb-2">
+                <div className="bg-gray-50 rounded-xl p-4">
+                  <h4 className="font-semibold text-kon mb-2">退職所得控除の計算</h4>
+                  <p className="text-sm text-kon mb-2">
                     勤続20年以下: 40万円 × 年数<br />
                     勤続20年超: 800万円 + 70万円 × (年数 - 20)
                   </p>
-                  <p className="text-sm text-blue-700">
+                  <p className="text-sm text-kon">
                     退職所得 = (一時金 - 退職所得控除) × 1/2
                   </p>
                 </div>
@@ -1298,8 +1298,8 @@ export default function RetirementSimulatorClient() {
 
                 {/* 10年ルール警告 */}
                 {Math.abs(m3RetirementAge - m3ReceiveAge) < 10 && (
-                  <div className="bg-red-50 border border-red-200 rounded-xl p-4">
-                    <p className="text-sm text-red-800">
+                  <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
+                    <p className="text-sm text-danger">
                       <span className="font-bold">⚠️ 10年ルールが適用されます</span><br />
                       iDeCo一時金受取から10年以内に退職金を受け取るため、退職所得控除からiDeCo積立年数分を控除して計算されます。
                     </p>
@@ -1359,13 +1359,13 @@ export default function RetirementSimulatorClient() {
               {/* Expense Inputs */}
               <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
                 <h2 className="font-bold text-gray-800 mb-4 flex items-center gap-2">
-                  <span className="w-6 h-6 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-xs">出</span>
+                  <span className="w-6 h-6 rounded-full bg-gray-50 text-danger flex items-center justify-center text-xs">出</span>
                   月支出
                 </h2>
                 <div className="space-y-4">
                   <div>
                     <label className="text-sm text-gray-600 block mb-1">
-                      生活費: <span className="font-bold text-red-600">{m4LivingExpenses}万円</span>
+                      生活費: <span className="font-bold text-danger">{m4LivingExpenses}万円</span>
                     </label>
                     <input type="range" min={10} max={100} step={1} value={m4LivingExpenses}
                       onChange={e => setM4LivingExpenses(Number(e.target.value))}
@@ -1373,7 +1373,7 @@ export default function RetirementSimulatorClient() {
                   </div>
                   <div>
                     <label className="text-sm text-gray-600 block mb-1">
-                      医療費: <span className="font-bold text-red-600">{m4MedicalExpenses}万円</span>
+                      医療費: <span className="font-bold text-danger">{m4MedicalExpenses}万円</span>
                     </label>
                     <input type="range" min={0} max={20} step={0.5} value={m4MedicalExpenses}
                       onChange={e => setM4MedicalExpenses(Number(e.target.value))}
@@ -1381,7 +1381,7 @@ export default function RetirementSimulatorClient() {
                   </div>
                   <div>
                     <label className="text-sm text-gray-600 block mb-1">
-                      趣味・旅行: <span className="font-bold text-red-600">{m4HobbyExpenses}万円</span>
+                      趣味・旅行: <span className="font-bold text-danger">{m4HobbyExpenses}万円</span>
                     </label>
                     <input type="range" min={0} max={30} step={0.5} value={m4HobbyExpenses}
                       onChange={e => setM4HobbyExpenses(Number(e.target.value))}
@@ -1389,7 +1389,7 @@ export default function RetirementSimulatorClient() {
                   </div>
                   <div>
                     <label className="text-sm text-gray-600 block mb-1">
-                      その他支出: <span className="font-bold text-red-600">{m4OtherExpenses}万円</span>
+                      その他支出: <span className="font-bold text-danger">{m4OtherExpenses}万円</span>
                     </label>
                     <input type="range" min={0} max={20} step={0.5} value={m4OtherExpenses}
                       onChange={e => setM4OtherExpenses(Number(e.target.value))}
@@ -1401,19 +1401,19 @@ export default function RetirementSimulatorClient() {
 
             <div className="space-y-4">
               {/* Balance Summary */}
-              <div className={`rounded-xl shadow-sm border p-5 ${mode4Result.monthlyBalance >= 0 ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`}>
+              <div className={`rounded-xl shadow-sm border p-5 ${mode4Result.monthlyBalance >= 0 ? 'bg-green-50 border-green-200' : 'bg-gray-50 border-gray-200'}`}>
                 <h3 className="font-semibold text-gray-800 mb-4">収支サマリー</h3>
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <div className="bg-white rounded-lg p-3">
                     <p className="text-xs text-gray-500 mb-1">月次収支</p>
-                    <p className={`text-2xl font-bold ${mode4Result.monthlyBalance >= 0 ? 'text-green-700' : 'text-red-700'}`}>
+                    <p className={`text-2xl font-bold ${mode4Result.monthlyBalance >= 0 ? 'text-green-700' : 'text-danger'}`}>
                       {mode4Result.monthlyBalance >= 0 ? '+' : ''}{fmtManR(mode4Result.monthlyBalance * MAN)}<span className="text-sm font-normal">万円</span>
                     </p>
                     <p className="text-xs text-gray-400">{mode4Result.monthlyBalance >= 0 ? '黒字' : '赤字'}</p>
                   </div>
                   <div className="bg-white rounded-lg p-3">
                     <p className="text-xs text-gray-500 mb-1">年間収支</p>
-                    <p className={`text-2xl font-bold ${mode4Result.yearlyBalance >= 0 ? 'text-green-700' : 'text-red-700'}`}>
+                    <p className={`text-2xl font-bold ${mode4Result.yearlyBalance >= 0 ? 'text-green-700' : 'text-danger'}`}>
                       {mode4Result.yearlyBalance >= 0 ? '+' : ''}{fmtManR(mode4Result.yearlyBalance * MAN)}<span className="text-sm font-normal">万円</span>
                     </p>
                     <p className="text-xs text-gray-400">年間</p>
@@ -1422,7 +1422,7 @@ export default function RetirementSimulatorClient() {
                 {mode4Result.requiredWithdrawal > 0 && (
                   <div className="bg-white rounded-lg p-3">
                     <p className="text-sm text-gray-700">
-                      資産からの補填が必要: <span className="font-bold text-red-600">月{fmtManR(mode4Result.requiredWithdrawal * MAN)}万円</span>
+                      資産からの補填が必要: <span className="font-bold text-danger">月{fmtManR(mode4Result.requiredWithdrawal * MAN)}万円</span>
                     </p>
                   </div>
                 )}
@@ -1475,7 +1475,7 @@ export default function RetirementSimulatorClient() {
             <span>📋</span> 結果をコピー
           </button>
           <button onClick={handleSaveImage}
-            className="px-6 py-3 bg-blue-600 text-white rounded-xl font-medium hover:bg-blue-700 transition-colors flex items-center gap-2">
+            className="px-6 py-3 bg-kon text-white rounded-xl font-medium hover:bg-ai transition-colors flex items-center gap-2">
             <span>💾</span> 画像として保存
           </button>
         </div>

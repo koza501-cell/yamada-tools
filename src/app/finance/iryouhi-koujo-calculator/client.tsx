@@ -130,7 +130,7 @@ export default function IryouhiKoujoClient() {
                       </select>
                     </div>
                     {rows.length > 1 && (
-                      <button onClick={() => removeRow(row.id)} className="ml-2 text-red-400 hover:text-red-600 text-xl font-bold leading-none">×</button>
+                      <button onClick={() => removeRow(row.id)} className="ml-2 text-danger hover:text-danger text-xl font-bold leading-none">×</button>
                     )}
                   </div>
                   <div className="grid grid-cols-2 gap-2">
@@ -149,7 +149,7 @@ export default function IryouhiKoujoClient() {
                   </div>
                 </div>
               ))}
-              <button onClick={addRow} className="w-full py-2 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600 text-sm text-gray-500 dark:text-gray-400 hover:border-blue-400 hover:text-blue-500 transition-colors">
+              <button onClick={addRow} className="w-full py-2 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600 text-sm text-gray-500 dark:text-gray-400 hover:border-ai hover:text-ai transition-colors">
                 ＋ 医療費を追加
               </button>
             </div>
@@ -172,7 +172,7 @@ export default function IryouhiKoujoClient() {
           <div className="space-y-4">
             {/* Verdict */}
             {(result.deduction1 > 0 || result.deduction2 > 0) && (
-              <div className={`rounded-xl p-5 border-2 ${result.useIryouhi ? "bg-green-50 dark:bg-green-900/20 border-green-400" : "bg-purple-50 dark:bg-purple-900/20 border-purple-400"}`}>
+              <div className={`rounded-xl p-5 border-2 ${result.useIryouhi ? "bg-green-50 dark:bg-green-900/20 border-green-400" : "bg-gray-50 dark:bg-kon/20 border-kon"}`}>
                 <p className="text-lg font-bold mb-1">
                   {result.useIryouhi ? "💊 医療費控除の方が有利" : "🏥 セルフメディケーション税制の方が有利"}
                 </p>
@@ -225,7 +225,7 @@ export default function IryouhiKoujoClient() {
               <h2 className="font-semibold text-gray-700 dark:text-gray-300 mb-3">セルフメディケーション税制</h2>
               <div className="space-y-2 text-sm">
                 {!hasCheckup && (
-                  <p className="text-xs text-orange-500">※健康診断等の受診がない場合は利用できません</p>
+                  <p className="text-xs text-kon">※健康診断等の受診がない場合は利用できません</p>
                 )}
                 <div className="flex justify-between text-gray-600 dark:text-gray-400">
                   <span>OTC薬購入額</span><span>¥{fmt(result.otc)}</span>
@@ -262,7 +262,7 @@ export default function IryouhiKoujoClient() {
                     </ul>
                   </div>
                   <div>
-                    <p className="text-xs font-semibold text-red-500 dark:text-red-400 mb-1">✗ 非対象</p>
+                    <p className="text-xs font-semibold text-danger dark:text-danger mb-1">✗ 非対象</p>
                     <ul className="space-y-1">
                       {INELIGIBLE.map(e => <li key={e} className="text-xs text-gray-600 dark:text-gray-400">・{e}</li>)}
                     </ul>

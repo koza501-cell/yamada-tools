@@ -37,7 +37,7 @@ export default function ClinicHubPage() {
               <div className="flex items-start justify-between mb-3">
                 <h2 className="text-xl font-semibold">{tool.nameJa}</h2>
                 {tool.isNew && (
-                  <span className="bg-red-100 text-red-700 text-xs font-bold px-2 py-1 rounded">NEW</span>
+                  <span className="bg-gray-50 text-danger text-xs font-bold px-2 py-1 rounded">NEW</span>
                 )}
               </div>
               <p className="text-gray-600 text-sm">{tool.description}</p>
@@ -46,7 +46,7 @@ export default function ClinicHubPage() {
         </div>
       )}
 
-      <section className="mt-12 bg-blue-50 rounded-lg p-6">
+      <section className="mt-12 bg-gray-50 rounded-lg p-6">
         <h2 className="text-xl font-bold mb-3">クリニック経営の3大課題</h2>
         <ul className="space-y-2 text-gray-700">
           <li>📊 <strong>数字管理</strong>：損益分岐点、必要患者数、人件費率の把握</li>

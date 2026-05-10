@@ -56,7 +56,7 @@ export default function FeedbackButton() {
             {/* Content */}
             <div className="p-6 space-y-5">
               {/* Amazing Description */}
-              <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-5 border border-blue-100">
+              <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-5 border border-gray-200">
                 <p className="text-sm leading-relaxed text-gray-700 mb-3">
                   みなさまと一緒に、より良いツールを作っていきたいと考えています。
                 </p>

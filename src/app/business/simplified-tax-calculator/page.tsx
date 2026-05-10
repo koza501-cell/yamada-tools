@@ -193,9 +193,9 @@ export default function SimplifiedTaxCalculatorPage() {
         {/* Breadcrumb */}
         <nav className="text-sm mb-6">
           <ol className="flex items-center space-x-2 text-gray-500">
-            <li><Link href="/" className="hover:text-blue-600">ホーム</Link></li>
+            <li><Link href="/" className="hover:text-ai">ホーム</Link></li>
             <li>/</li>
-            <li><Link href="/business" className="hover:text-blue-600">ビジネス・法人</Link></li>
+            <li><Link href="/business" className="hover:text-ai">ビジネス・法人</Link></li>
             <li>/</li>
             <li className="text-gray-900 font-medium">消費税 簡易課税 判定</li>
           </ol>
@@ -204,8 +204,8 @@ export default function SimplifiedTaxCalculatorPage() {
         {/* Header */}
         <div className="bg-white rounded-xl shadow-sm p-6 mb-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="p-3 bg-orange-100 rounded-xl">
-              <div className="w-8 h-8 text-orange-600"><Icons.Receipt /></div>
+            <div className="p-3 bg-gray-50 rounded-xl">
+              <div className="w-8 h-8 text-kon"><Icons.Receipt /></div>
             </div>
             <div>
               <h1 className="text-2xl font-bold text-gray-900">消費税 簡易課税 判定・比較ツール</h1>
@@ -223,7 +223,7 @@ export default function SimplifiedTaxCalculatorPage() {
           {/* Section 1: Revenue */}
           <div className="mb-8">
             <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-              <span className="text-blue-600"><Icons.TrendingUp /></span>
+              <span className="text-kon"><Icons.TrendingUp /></span>
               売上・仕入情報
             </h2>
             <div className="grid md:grid-cols-2 gap-4">
@@ -236,7 +236,7 @@ export default function SimplifiedTaxCalculatorPage() {
                     type="number"
                     value={inputs.annualRevenue}
                     onChange={(e) => setInputs({ ...inputs, annualRevenue: Number(e.target.value) || 0 })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-kon focus:border-kon"
                   />
                   <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500">万円</span>
                 </div>
@@ -251,7 +251,7 @@ export default function SimplifiedTaxCalculatorPage() {
                     type="number"
                     value={inputs.taxablePurchases}
                     onChange={(e) => setInputs({ ...inputs, taxablePurchases: Number(e.target.value) || 0 })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-kon focus:border-kon"
                   />
                   <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500">万円</span>
                 </div>
@@ -265,7 +265,7 @@ export default function SimplifiedTaxCalculatorPage() {
           {/* Section 2: Industry & Invoice Status */}
           <div className="mb-8">
             <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-              <span className="text-purple-600"><Icons.Calculator /></span>
+              <span className="text-kon"><Icons.Calculator /></span>
               業種・インボイス状況
             </h2>
             <div className="grid md:grid-cols-2 gap-4">
@@ -276,7 +276,7 @@ export default function SimplifiedTaxCalculatorPage() {
                 <select
                   value={inputs.industryType}
                   onChange={(e) => setInputs({ ...inputs, industryType: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-kon focus:border-kon"
                 >
                   {INDUSTRY_TYPES.map((industry) => (
                     <option key={industry.id} value={industry.id}>
@@ -293,7 +293,7 @@ export default function SimplifiedTaxCalculatorPage() {
                 <select
                   value={inputs.invoiceStatus}
                   onChange={(e) => setInputs({ ...inputs, invoiceStatus: e.target.value as CalculationInputs["invoiceStatus"] })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-kon focus:border-kon"
                 >
                   <option value="exempt">未登録（免税事業者）</option>
                   <option value="registered">登録済み（通常課税）</option>
@@ -307,12 +307,12 @@ export default function SimplifiedTaxCalculatorPage() {
           </div>
 
           {/* Info Card: Deemed Purchase Rate */}
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
             <div className="flex items-start gap-3">
-              <span className="text-blue-600 flex-shrink-0 mt-0.5"><Icons.Info /></span>
+              <span className="text-kon flex-shrink-0 mt-0.5"><Icons.Info /></span>
               <div className="text-sm">
-                <p className="font-medium text-blue-800 mb-1">みなし仕入率について</p>
-                <p className="text-blue-700">
+                <p className="font-medium text-kon mb-1">みなし仕入率について</p>
+                <p className="text-kon">
                   簡易課税では、業種ごとに定められた「みなし仕入率」を使って消費税を計算します。
                   現在選択中: <span className="font-bold">{selectedIndustry.name}</span> = みなし仕入率 <span className="font-bold">{selectedIndustry.rate}%</span>
                 </p>
@@ -325,7 +325,7 @@ export default function SimplifiedTaxCalculatorPage() {
             <button
               type="button"
               onClick={handleCalculate}
-              className="flex-1 bg-orange-600 hover:bg-orange-700 text-white font-bold py-4 px-6 rounded-xl transition-colors flex items-center justify-center gap-2"
+              className="flex-1 bg-kon hover:bg-ai text-white font-bold py-4 px-6 rounded-xl transition-colors flex items-center justify-center gap-2"
             >
               <Icons.Calculator /> 比較する
             </button>
@@ -411,7 +411,7 @@ export default function SimplifiedTaxCalculatorPage() {
                       みなし仕入率: {results.deemedPurchaseRate}%
                     </p>
                     {inputs.annualRevenue * 10000 > 50000000 && (
-                      <p className="text-xs text-red-500 mt-1">※売上5,000万円超は適用不可</p>
+                      <p className="text-xs text-danger mt-1">※売上5,000万円超は適用不可</p>
                     )}
                   </div>
 
@@ -431,7 +431,7 @@ export default function SimplifiedTaxCalculatorPage() {
                       一律20%納付
                     </p>
                     {inputs.invoiceStatus !== "special20eligible" && (
-                      <p className="text-xs text-amber-600 mt-1">※適用要件を確認</p>
+                      <p className="text-xs text-kon mt-1">※適用要件を確認</p>
                     )}
                   </div>
                 </div>
@@ -468,12 +468,12 @@ export default function SimplifiedTaxCalculatorPage() {
             )}
 
             {/* Advice Cards */}
-            <div className="bg-amber-50 border border-amber-200 rounded-xl p-6">
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
               <div className="flex items-start gap-3">
-                <span className="text-amber-600 flex-shrink-0"><Icons.AlertCircle /></span>
+                <span className="text-kon flex-shrink-0"><Icons.AlertCircle /></span>
                 <div>
-                  <h3 className="font-bold text-amber-800 mb-2">選択時の注意点</h3>
-                  <ul className="text-amber-700 text-sm space-y-2">
+                  <h3 className="font-bold text-kon mb-2">選択時の注意点</h3>
+                  <ul className="text-kon text-sm space-y-2">
                     <li>• <strong>簡易課税</strong>: 適用開始年度の前日までに届出が必要。一度選択すると2年間は変更不可。</li>
                     <li>• <strong>2割特例</strong>: 届出不要。確定申告時に選択可能。2026年9月30日を含む課税期間まで。</li>
                     <li>• <strong>本則課税</strong>: 設備投資が多い年は還付を受けられる場合あり。</li>
@@ -485,8 +485,8 @@ export default function SimplifiedTaxCalculatorPage() {
 
             {/* Invoice Registration Impact */}
             {inputs.invoiceStatus === "exempt" && (
-              <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
-                <h3 className="font-bold text-blue-800 mb-3">インボイス登録した場合の影響</h3>
+              <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
+                <h3 className="font-bold text-kon mb-3">インボイス登録した場合の影響</h3>
                 <div className="grid md:grid-cols-3 gap-4 text-sm">
                   <div className="bg-white rounded-lg p-4">
                     <p className="text-gray-600 mb-1">本則課税を選択</p>
@@ -553,16 +553,16 @@ export default function SimplifiedTaxCalculatorPage() {
             <section>
               <h3 className="text-lg font-bold text-gray-900 mb-3">3つの課税方式の違い</h3>
               <div className="grid md:grid-cols-3 gap-4">
-                <div className="bg-blue-50 rounded-lg p-4">
-                  <h4 className="font-medium text-blue-900 mb-2">本則課税</h4>
-                  <p className="text-sm text-blue-700">
+                <div className="bg-gray-50 rounded-lg p-4">
+                  <h4 className="font-medium text-kon mb-2">本則課税</h4>
+                  <p className="text-sm text-kon">
                     売上にかかる消費税から、実際に支払った仕入消費税を差し引いて納付額を計算。
                     設備投資が多い年は還付の可能性も。
                   </p>
                 </div>
-                <div className="bg-purple-50 rounded-lg p-4">
-                  <h4 className="font-medium text-purple-900 mb-2">簡易課税</h4>
-                  <p className="text-sm text-purple-700">
+                <div className="bg-gray-50 rounded-lg p-4">
+                  <h4 className="font-medium text-kon mb-2">簡易課税</h4>
+                  <p className="text-sm text-kon">
                     業種ごとの「みなし仕入率」で計算。経理が簡単で、仕入が少ない業種ほど有利。
                     売上5,000万円以下が条件。
                   </p>
@@ -593,7 +593,7 @@ export default function SimplifiedTaxCalculatorPage() {
                       <tr key={industry.id}>
                         <td className="py-2 px-3 font-medium">{industry.name.split("（")[0]}</td>
                         <td className="py-2 px-3">{industry.description}</td>
-                        <td className="text-center py-2 px-3 font-bold text-blue-600">{industry.rate}%</td>
+                        <td className="text-center py-2 px-3 font-bold text-kon">{industry.rate}%</td>
                       </tr>
                     ))}
                   </tbody>
@@ -646,7 +646,7 @@ export default function SimplifiedTaxCalculatorPage() {
           <div className="grid md:grid-cols-2 gap-4">
             <Link
               href="/business/freelance-tax-calculator"
-              className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors"
+              className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg hover:border-ai hover:bg-gray-50 transition-colors"
             >
               <span className="text-emerald-600"><Icons.Users /></span>
               <div>
@@ -657,9 +657,9 @@ export default function SimplifiedTaxCalculatorPage() {
             </Link>
             <Link
               href="/business/incorporation-simulator"
-              className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors"
+              className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg hover:border-ai hover:bg-gray-50 transition-colors"
             >
-              <span className="text-blue-600"><Icons.Building /></span>
+              <span className="text-kon"><Icons.Building /></span>
               <div>
                 <h3 className="font-medium text-gray-900">個人事業主 vs 法人化</h3>
                 <p className="text-sm text-gray-500">どちらがお得か比較</p>

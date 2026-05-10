@@ -417,7 +417,7 @@ export default function IncorporationSimulatorPage() {
             <h2 className="text-base font-bold text-gray-800 border-b pb-2 mb-4">Section 1：事業情報</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className={labelClass}>年間売上（税抜）（万円）<span className="text-red-500 ml-1">*</span></label>
+                <label className={labelClass}>年間売上（税抜）（万円）<span className="text-danger ml-1">*</span></label>
                 <input type="number" className={inputClass} placeholder="例：1000"
                   value={form.revenue} onChange={(e) => setForm((p) => ({ ...p, revenue: e.target.value }))} min="0" />
               </div>
@@ -459,7 +459,7 @@ export default function IncorporationSimulatorPage() {
             <h2 className="text-base font-bold text-gray-800 border-b pb-2 mb-4">Section 2：個人情報</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className={labelClass}>年齢（歳）<span className="text-red-500 ml-1">*</span></label>
+                <label className={labelClass}>年齢（歳）<span className="text-danger ml-1">*</span></label>
                 <input type="number" className={inputClass} placeholder="例：38"
                   value={form.age} onChange={(e) => setForm((p) => ({ ...p, age: e.target.value }))} min="18" max="80" />
                 <p className="text-xs text-gray-500 mt-1">40〜64歳は介護保険料が加算されます</p>
@@ -484,7 +484,7 @@ export default function IncorporationSimulatorPage() {
                 </select>
               </div>
               <div>
-                <label className={labelClass}>希望する手取り年収（万円）<span className="text-red-500 ml-1">*</span></label>
+                <label className={labelClass}>希望する手取り年収（万円）<span className="text-danger ml-1">*</span></label>
                 <input type="number" className={inputClass} placeholder="例：500"
                   value={form.desiredTakeHome} onChange={(e) => setForm((p) => ({ ...p, desiredTakeHome: e.target.value }))} min="0" />
                 <p className="text-xs text-gray-500 mt-1">法人化した場合の役員報酬の目安として使用します。役員報酬額が高いほど社会保険料（厚生年金・健康保険）が増加し、法人化のメリットが小さくなる場合があります。</p>
@@ -571,14 +571,14 @@ export default function IncorporationSimulatorPage() {
             <div className={
               verdict?.type === "green" ? "rounded-xl shadow-sm border p-6 bg-green-50 border-green-200"
               : verdict?.type === "yellow" ? "rounded-xl shadow-sm border p-6 bg-yellow-50 border-yellow-200"
-              : "rounded-xl shadow-sm border p-6 bg-blue-50 border-blue-200"
+              : "rounded-xl shadow-sm border p-6 bg-gray-50 border-gray-200"
             }>
               <div className="flex items-center gap-3 mb-2">
                 <span className="text-4xl">{verdict?.icon}</span>
                 <p className={
                   verdict?.type === "green" ? "text-xl font-bold text-green-800"
                   : verdict?.type === "yellow" ? "text-xl font-bold text-yellow-800"
-                  : "text-xl font-bold text-blue-800"
+                  : "text-xl font-bold text-kon"
                 }>{verdict?.message}</p>
               </div>
               <p className="text-sm text-gray-600">
@@ -633,7 +633,7 @@ export default function IncorporationSimulatorPage() {
                           <td className="py-3 px-3 text-gray-700 font-medium">{row.label}</td>
                           <td className="text-right py-3 px-3">{fmtMan(row.solo)}</td>
                           <td className="text-right py-3 px-3">{fmtMan(row.corp)}</td>
-                          <td className={"text-right py-3 px-3 font-bold " + (diff < 0 ? "text-green-600" : diff > 0 ? "text-red-600" : "text-gray-500")}>
+                          <td className={"text-right py-3 px-3 font-bold " + (diff < 0 ? "text-green-600" : diff > 0 ? "text-danger" : "text-gray-500")}>
                             {fmtManSigned(diff)}
                           </td>
                         </tr>
@@ -643,7 +643,7 @@ export default function IncorporationSimulatorPage() {
                       <td className="py-3 px-3 text-gray-900">総負担合計</td>
                       <td className="text-right py-3 px-3 text-gray-900">{fmtMan(result.solo.totalBurden)}</td>
                       <td className="text-right py-3 px-3 text-gray-900">{fmtMan(result.corp.totalBurden)}</td>
-                      <td className={"text-right py-3 px-3 " + (result.savings > 0 ? "text-green-600" : "text-red-600")}>
+                      <td className={"text-right py-3 px-3 " + (result.savings > 0 ? "text-green-600" : "text-danger")}>
                         {fmtManSigned(-result.savings)}
                       </td>
                     </tr>
@@ -651,7 +651,7 @@ export default function IncorporationSimulatorPage() {
                       <td className="py-3 px-3 text-gray-700 font-medium">手取り</td>
                       <td className="text-right py-3 px-3 font-bold text-emerald-700">{fmtMan(result.solo.takeHome)}</td>
                       <td className="text-right py-3 px-3 font-bold text-emerald-700">{fmtMan(result.corp.takeHome)}</td>
-                      <td className={"text-right py-3 px-3 font-bold " + (result.corp.takeHome - result.solo.takeHome >= 0 ? "text-green-600" : "text-red-600")}>
+                      <td className={"text-right py-3 px-3 font-bold " + (result.corp.takeHome - result.solo.takeHome >= 0 ? "text-green-600" : "text-danger")}>
                         {fmtManSigned(result.corp.takeHome - result.solo.takeHome)}
                       </td>
                     </tr>
@@ -659,7 +659,7 @@ export default function IncorporationSimulatorPage() {
                       <td className="py-3 px-3 text-gray-700 font-medium">実効税率</td>
                       <td className="text-right py-3 px-3">{fmtPct(result.solo.effectiveRate)}</td>
                       <td className="text-right py-3 px-3">{fmtPct(result.corp.effectiveRate)}</td>
-                      <td className={"text-right py-3 px-3 font-bold " + (result.corp.effectiveRate - result.solo.effectiveRate < 0 ? "text-green-600" : "text-red-600")}>
+                      <td className={"text-right py-3 px-3 font-bold " + (result.corp.effectiveRate - result.solo.effectiveRate < 0 ? "text-green-600" : "text-danger")}>
                         {fmtPctSigned(result.corp.effectiveRate - result.solo.effectiveRate)}
                       </td>
                     </tr>
@@ -709,7 +709,7 @@ export default function IncorporationSimulatorPage() {
                           <p className="text-xs font-semibold text-gray-800">{fmtMan(row.corp)}</p>
                         </div>
                         <div className="rounded p-1.5">
-                          <p className={"text-xs font-bold " + (diff < 0 ? "text-green-600" : diff > 0 ? "text-red-600" : "text-gray-500")}>{fmtManSigned(diff)}</p>
+                          <p className={"text-xs font-bold " + (diff < 0 ? "text-green-600" : diff > 0 ? "text-danger" : "text-gray-500")}>{fmtManSigned(diff)}</p>
                         </div>
                       </div>
                     </div>
@@ -726,7 +726,7 @@ export default function IncorporationSimulatorPage() {
                       <p className="text-xs font-bold text-gray-900">{fmtMan(result.corp.totalBurden)}</p>
                     </div>
                     <div className="rounded p-1.5">
-                      <p className={"text-xs font-bold " + (result.savings > 0 ? "text-green-600" : "text-red-600")}>{fmtManSigned(-result.savings)}</p>
+                      <p className={"text-xs font-bold " + (result.savings > 0 ? "text-green-600" : "text-danger")}>{fmtManSigned(-result.savings)}</p>
                     </div>
                   </div>
                 </div>
@@ -741,7 +741,7 @@ export default function IncorporationSimulatorPage() {
                       <p className="text-xs font-bold text-emerald-700">{fmtMan(result.corp.takeHome)}</p>
                     </div>
                     <div className="rounded p-1.5">
-                      <p className={"text-xs font-bold " + (result.corp.takeHome - result.solo.takeHome >= 0 ? "text-green-600" : "text-red-600")}>{fmtManSigned(result.corp.takeHome - result.solo.takeHome)}</p>
+                      <p className={"text-xs font-bold " + (result.corp.takeHome - result.solo.takeHome >= 0 ? "text-green-600" : "text-danger")}>{fmtManSigned(result.corp.takeHome - result.solo.takeHome)}</p>
                     </div>
                   </div>
                 </div>
@@ -756,7 +756,7 @@ export default function IncorporationSimulatorPage() {
                       <p className="text-xs font-semibold text-gray-800">{fmtPct(result.corp.effectiveRate)}</p>
                     </div>
                     <div className="rounded p-1.5">
-                      <p className={"text-xs font-bold " + (result.corp.effectiveRate - result.solo.effectiveRate < 0 ? "text-green-600" : "text-red-600")}>{fmtPctSigned(result.corp.effectiveRate - result.solo.effectiveRate)}</p>
+                      <p className={"text-xs font-bold " + (result.corp.effectiveRate - result.solo.effectiveRate < 0 ? "text-green-600" : "text-danger")}>{fmtPctSigned(result.corp.effectiveRate - result.solo.effectiveRate)}</p>
                     </div>
                   </div>
                 </div>
@@ -785,12 +785,12 @@ export default function IncorporationSimulatorPage() {
                     const y = Math.floor(months / 12);
                     const m = Math.round(months % 12);
                     return (
-                      <div className={`text-center rounded-lg p-4 border ${isLong ? "bg-amber-50 border-amber-200" : "bg-emerald-50 border-emerald-200"}`}>
+                      <div className={`text-center rounded-lg p-4 border ${isLong ? "bg-gray-50 border-gray-200" : "bg-emerald-50 border-emerald-200"}`}>
                         <p className="text-xs text-gray-500 mb-1">回収期間</p>
-                        <p className={`text-xl font-bold ${isLong ? "text-amber-700" : "text-emerald-700"}`}>
+                        <p className={`text-xl font-bold ${isLong ? "text-kon" : "text-emerald-700"}`}>
                           {y > 0 ? `約${y}年${m}ヶ月` : `約${m}ヶ月`}
                         </p>
-                        {isLong && <p className="text-xs text-amber-600 mt-1">回収に時間がかかります</p>}
+                        {isLong && <p className="text-xs text-kon mt-1">回収に時間がかかります</p>}
                       </div>
                     );
                   })()}
@@ -807,11 +807,11 @@ export default function IncorporationSimulatorPage() {
               <h2 className="text-base font-bold text-gray-800 mb-3">法人化が有利になる売上ライン</h2>
               {result.breakEvenRevenue ? (
                 result.savings > 0 ? (
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                    <p className="text-lg font-bold text-blue-800">
+                  <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                    <p className="text-lg font-bold text-kon">
                       売上 <span className="text-2xl">{result.breakEvenRevenue.toLocaleString("ja-JP")}</span>万円以上で法人化が有利になります
                     </p>
-                    <p className="text-sm text-blue-600 mt-1">※入力した経費率・家族構成での試算値です</p>
+                    <p className="text-sm text-kon mt-1">※入力した経費率・家族構成での試算値です</p>
                   </div>
                 ) : (
                   <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
@@ -820,7 +820,7 @@ export default function IncorporationSimulatorPage() {
                     </p>
                     <p className="text-sm text-gray-500 mt-1">（現在の売上：{(parseFloat(form.revenue) || 0).toLocaleString("ja-JP")}万円）</p>
                     {(parseFloat(form.revenue) || 0) >= result.breakEvenRevenue && (
-                      <p className="text-xs text-amber-700 bg-amber-50 rounded p-2 mt-2 border border-amber-200">
+                      <p className="text-xs text-kon bg-gray-50 rounded p-2 mt-2 border border-gray-200">
                         ※ 社会保険料の影響により、売上がこのラインを超えても個人事業主が有利な場合があります
                       </p>
                     )}
@@ -867,9 +867,9 @@ export default function IncorporationSimulatorPage() {
                     body: "法人化すると役員社宅（家賃の一部を法人経費に）や出張日当（非課税）など、個人では難しい経費計上が可能になります。これらは計算に含めていないため実際の節税額はさらに大きくなる可能性があります。",
                   });
                   return advices.map((adv, i) => (
-                    <div key={i} className="bg-blue-50 rounded-lg p-4 border border-blue-100">
-                      <p className="text-sm font-bold text-blue-800 mb-1">{adv.title}</p>
-                      <p className="text-sm text-blue-700 leading-relaxed">{adv.body}</p>
+                    <div key={i} className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                      <p className="text-sm font-bold text-kon mb-1">{adv.title}</p>
+                      <p className="text-sm text-kon leading-relaxed">{adv.body}</p>
                     </div>
                   ));
                 })()}
@@ -879,9 +879,9 @@ export default function IncorporationSimulatorPage() {
                   const totalBurdenDiff = result.corp.totalBurden - result.solo.totalBurden;
                   if (result.savings <= 0 && healthInsDiff > 0 && healthInsDiff >= totalBurdenDiff) {
                     return (
-                      <div className="bg-amber-50 rounded-lg p-4 border border-amber-200">
-                        <p className="text-sm font-bold text-amber-800 mb-1">社会保険料が法人化コストの主な要因です</p>
-                        <p className="text-sm text-amber-700 leading-relaxed mb-2">法人化の税負担（法人税等）は有利ですが、社会保険料の増加により総負担では個人事業主が有利です。役員報酬を下げることで社会保険料を抑えられる場合があります。</p>
+                      <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                        <p className="text-sm font-bold text-kon mb-1">社会保険料が法人化コストの主な要因です</p>
+                        <p className="text-sm text-kon leading-relaxed mb-2">法人化の税負担（法人税等）は有利ですが、社会保険料の増加により総負担では個人事業主が有利です。役員報酬を下げることで社会保険料を抑えられる場合があります。</p>
                         <Link href="/business/director-salary-optimizer" className="text-sm font-medium text-emerald-700 underline">役員報酬 最適化シミュレーターで最適額を確認 →</Link>
                       </div>
                     );
@@ -927,7 +927,7 @@ export default function IncorporationSimulatorPage() {
                           "px-3 py-2 border border-gray-200 " +
                           (j === 0 ? "font-medium text-gray-800" : "text-gray-700") +
                           (j === 3 && cell.startsWith("約") ? " font-bold text-green-700" : "") +
-                          (j === 3 && cell.startsWith("-") ? " text-red-600" : "")
+                          (j === 3 && cell.startsWith("-") ? " text-danger" : "")
                         }>{cell}</td>
                       ))}
                     </tr>
@@ -1050,15 +1050,15 @@ export default function IncorporationSimulatorPage() {
           <h2 className="text-xl font-bold text-gray-900 mb-4">📝 関連ブログ記事</h2>
           <Link
             href="/blog/houjinka-simulation-2026"
-            className="flex items-center gap-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl border border-purple-200 hover:border-purple-400 hover:shadow-md transition-all p-5 group"
+            className="flex items-center gap-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl border border-kon hover:border-ai hover:shadow-md transition-all p-5 group"
           >
-            <div className="w-12 h-12 rounded-lg bg-purple-100 group-hover:bg-purple-200 flex items-center justify-center shrink-0 transition-colors">
-              <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-12 h-12 rounded-lg bg-gray-50 group-hover:bg-ai flex items-center justify-center shrink-0 transition-colors">
+              <svg className="w-6 h-6 text-kon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
               </svg>
             </div>
             <div>
-              <p className="text-sm font-semibold text-purple-700 group-hover:text-purple-800">【2026年最新】法人化シミュレーション｜個人事業主が会社設立すべき年収</p>
+              <p className="text-sm font-semibold text-kon group-hover:text-ai">【2026年最新】法人化シミュレーション｜個人事業主が会社設立すべき年収</p>
               <p className="text-xs text-gray-500 mt-1">詳しい解説・計算例・注意点はこちら →</p>
             </div>
           </Link>

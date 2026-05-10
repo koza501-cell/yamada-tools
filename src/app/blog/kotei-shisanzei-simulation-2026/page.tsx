@@ -46,9 +46,9 @@ export default function KoteiShisanzeiSimulation2026Blog() {
         }}
       />
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-pink-500">ホーム</Link>
+        <Link href="/" className="hover:text-sakura">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-pink-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-sakura">ブログ</Link>
         <span className="mx-2">/</span>
         <span>固定資産税計算2026</span>
       </nav>
@@ -87,8 +87,8 @@ export default function KoteiShisanzeiSimulation2026Blog() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-          <div className="bg-blue-50 rounded-lg p-4">
-            <p className="font-bold text-blue-800 mb-2">課税標準額とは？</p>
+          <div className="bg-gray-50 rounded-lg p-4">
+            <p className="font-bold text-kon mb-2">課税標準額とは？</p>
             <p className="text-gray-700 text-sm">固定資産税評価額に各種特例を適用した後の金額。評価額そのままではなく、特例で減額されることが多い。</p>
           </div>
           <div className="bg-green-50 rounded-lg p-4">
@@ -152,8 +152,8 @@ export default function KoteiShisanzeiSimulation2026Blog() {
           </tbody>
         </table>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-          <p className="text-lg font-bold text-blue-800 mb-2">🔧 あなたの固定資産税を計算！</p>
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+          <p className="text-lg font-bold text-kon mb-2">🔧 あなたの固定資産税を計算！</p>
           <p className="text-gray-700 mb-4">評価額と条件を入力して、正確な固定資産税をシミュレーションしましょう。</p>
           <Link href="/realestate/property-tax-calculator" className="inline-block bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-6 rounded-lg transition">
             → 固定資産税計算機を使う

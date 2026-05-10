@@ -242,9 +242,9 @@ export default function SleepCalculatorPage() {
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-3xl mx-auto px-4 py-4">
           <nav className="text-sm text-gray-500 mb-2">
-            <Link href="/" className="hover:text-blue-600">ホーム</Link>
+            <Link href="/" className="hover:text-ai">ホーム</Link>
             <span className="mx-1">/</span>
-            <Link href="/health" className="hover:text-blue-600">健康・ウェルネス</Link>
+            <Link href="/health" className="hover:text-ai">健康・ウェルネス</Link>
             <span className="mx-1">/</span>
             <span className="text-gray-800">睡眠時間 最適化ツール</span>
           </nav>
@@ -268,7 +268,7 @@ export default function SleepCalculatorPage() {
                 onClick={() => { setMode("wake"); setResult(null); }}
                 className={`flex-1 py-3 text-sm font-medium transition-colors ${
                   mode === "wake"
-                    ? "bg-blue-600 text-white"
+                    ? "bg-kon text-white"
                     : "bg-white text-gray-600 hover:bg-gray-50"
                 }`}
               >
@@ -278,7 +278,7 @@ export default function SleepCalculatorPage() {
                 onClick={() => { setMode("sleep"); setResult(null); }}
                 className={`flex-1 py-3 text-sm font-medium transition-colors border-l border-gray-200 ${
                   mode === "sleep"
-                    ? "bg-blue-600 text-white"
+                    ? "bg-kon text-white"
                     : "bg-white text-gray-600 hover:bg-gray-50"
                 }`}
               >
@@ -298,14 +298,14 @@ export default function SleepCalculatorPage() {
                   type="time"
                   value={wakeTime}
                   onChange={(e) => setWakeTime(e.target.value)}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-lg font-mono focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-lg font-mono focus:outline-none focus:ring-2 focus:ring-kon"
                 />
               ) : (
                 <input
                   type="time"
                   value={sleepTime}
                   onChange={(e) => setSleepTime(e.target.value)}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-lg font-mono focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-lg font-mono focus:outline-none focus:ring-2 focus:ring-kon"
                 />
               )}
             </div>
@@ -317,7 +317,7 @@ export default function SleepCalculatorPage() {
               <select
                 value={fallAsleepMin}
                 onChange={(e) => setFallAsleepMin(Number(e.target.value))}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-kon bg-white"
               >
                 {FALL_ASLEEP_OPTIONS.map((o) => (
                   <option key={o.value} value={o.value}>{o.label}</option>
@@ -336,7 +336,7 @@ export default function SleepCalculatorPage() {
                 <select
                   value={ageGroup}
                   onChange={(e) => setAgeGroup(e.target.value)}
-                  className="w-full sm:w-64 border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white"
+                  className="w-full sm:w-64 border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-kon bg-white"
                 >
                   <option value="teen">10代（推奨8〜10時間）</option>
                   <option value="twenties">20〜30代（推奨7〜9時間）</option>
@@ -356,7 +356,7 @@ export default function SleepCalculatorPage() {
                       min="0"
                       max="24"
                       step="0.5"
-                      className="w-28 border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                      className="w-28 border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-kon"
                     />
                     <span className="text-gray-600 text-sm">時間</span>
                   </div>
@@ -372,7 +372,7 @@ export default function SleepCalculatorPage() {
                       min="0"
                       max="24"
                       step="0.5"
-                      className="w-28 border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                      className="w-28 border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-kon"
                     />
                     <span className="text-gray-600 text-sm">時間</span>
                   </div>
@@ -381,12 +381,12 @@ export default function SleepCalculatorPage() {
             </div>
           </div>
 
-          {error && <p className="text-red-500 text-sm">{error}</p>}
+          {error && <p className="text-danger text-sm">{error}</p>}
 
           <div className="flex gap-3">
             <button
               onClick={handleCalculate}
-              className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-base transition-colors"
+              className="flex-1 bg-kon hover:bg-ai text-white font-bold py-3 rounded-xl text-base transition-colors"
             >
               計算する
             </button>
@@ -449,10 +449,10 @@ export default function SleepCalculatorPage() {
                             row.isRecommended
                               ? "bg-green-100 text-green-700"
                               : row.cycles === 3
-                              ? "bg-red-50 text-red-600"
+                              ? "bg-gray-50 text-danger"
                               : row.cycles === 4
-                              ? "bg-blue-50 text-blue-600"
-                              : "bg-purple-50 text-purple-600"
+                              ? "bg-gray-50 text-kon"
+                              : "bg-gray-50 text-kon"
                           }`}>
                             {row.emoji} {row.label}
                           </span>
@@ -470,11 +470,11 @@ export default function SleepCalculatorPage() {
                 <h2 className="text-lg font-bold text-gray-900 mb-4">睡眠負債チェック</h2>
                 <div className="space-y-3">
                   {result.weeklyDebt > 0 ? (
-                    <div className="flex items-start gap-3 p-4 bg-red-50 border border-red-100 rounded-xl">
+                    <div className="flex items-start gap-3 p-4 bg-gray-50 border border-gray-200 rounded-xl">
                       <span className="text-2xl flex-shrink-0">🔴</span>
                       <div>
-                        <p className="font-semibold text-red-700">週に約{result.weeklyDebt.toFixed(1)}時間の睡眠負債があります</p>
-                        <p className="text-sm text-red-600 mt-0.5">
+                        <p className="font-semibold text-danger">週に約{result.weeklyDebt.toFixed(1)}時間の睡眠負債があります</p>
+                        <p className="text-sm text-danger mt-0.5">
                           毎日約{result.dailyShortageMin}分の睡眠不足が積み重なっています
                         </p>
                       </div>
@@ -488,11 +488,11 @@ export default function SleepCalculatorPage() {
                     </div>
                   )}
                   {result.socialJetlag > 2 && (
-                    <div className="flex items-start gap-3 p-4 bg-orange-50 border border-orange-100 rounded-xl">
+                    <div className="flex items-start gap-3 p-4 bg-gray-50 border border-gray-200 rounded-xl">
                       <span className="text-2xl flex-shrink-0">🟠</span>
                       <div>
-                        <p className="font-semibold text-orange-700">「社会的時差ぼけ」の状態です</p>
-                        <p className="text-sm text-orange-600 mt-0.5">
+                        <p className="font-semibold text-kon">「社会的時差ぼけ」の状態です</p>
+                        <p className="text-sm text-kon mt-0.5">
                           休日に平日より{result.socialJetlag.toFixed(1)}時間多く寝ているため、週明けに頭が重い・だるい原因かもしれません。
                         </p>
                       </div>
@@ -530,17 +530,17 @@ export default function SleepCalculatorPage() {
                         } else if (result.weekdaySleepHours >= rec.min) {
                           judgment = "△"; judgmentColor = "text-yellow-500";
                         } else {
-                          judgment = "×"; judgmentColor = "text-red-500";
+                          judgment = "×"; judgmentColor = "text-danger";
                         }
                       }
                       return (
                         <tr
                           key={key}
-                          className={`border-b last:border-0 ${isSelected ? "bg-blue-50" : "hover:bg-gray-50"}`}
+                          className={`border-b last:border-0 ${isSelected ? "bg-gray-50" : "hover:bg-gray-50"}`}
                         >
                           <td className="py-2.5 px-2 font-medium text-gray-700">
                             {rec.label}
-                            {isSelected && <span className="ml-1 text-xs text-blue-600">（あなた）</span>}
+                            {isSelected && <span className="ml-1 text-xs text-kon">（あなた）</span>}
                           </td>
                           <td className="py-2.5 px-2 text-center text-gray-600">{rec.range}</td>
                           {result.hasSleepData && (
@@ -575,7 +575,7 @@ export default function SleepCalculatorPage() {
                     : []),
                 ].map((tip, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
-                    <span className="text-blue-500 mt-0.5 flex-shrink-0">✓</span>
+                    <span className="text-kon mt-0.5 flex-shrink-0">✓</span>
                     {tip}
                   </li>
                 ))}
@@ -598,8 +598,8 @@ export default function SleepCalculatorPage() {
                   <th className="text-center py-2.5 px-3 text-gray-600 font-semibold">
                     6時間後<br /><span className="text-xs font-normal text-gray-400">（4サイクル）</span>
                   </th>
-                  <th className="text-center py-2.5 px-3 text-blue-700 font-semibold">
-                    7.5時間後<br /><span className="text-xs font-normal text-blue-400">（5サイクル）推奨</span>
+                  <th className="text-center py-2.5 px-3 text-kon font-semibold">
+                    7.5時間後<br /><span className="text-xs font-normal text-kon">（5サイクル）推奨</span>
                   </th>
                   <th className="text-center py-2.5 px-3 text-gray-600 font-semibold">
                     9時間後<br /><span className="text-xs font-normal text-gray-400">（6サイクル）</span>
@@ -611,7 +611,7 @@ export default function SleepCalculatorPage() {
                   <tr key={i} className="border-b last:border-0 hover:bg-gray-50">
                     <td className="py-2.5 px-3 font-semibold text-gray-800">{r.wake}</td>
                     <td className="py-2.5 px-3 text-center text-gray-600">{r.c4}就寝</td>
-                    <td className="py-2.5 px-3 text-center text-blue-700 font-medium">{r.c5}就寝</td>
+                    <td className="py-2.5 px-3 text-center text-kon font-medium">{r.c5}就寝</td>
                     <td className="py-2.5 px-3 text-center text-gray-600">{r.c6}就寝</td>
                   </tr>
                 ))}
@@ -703,11 +703,11 @@ export default function SleepCalculatorPage() {
               <Link
                 key={tool.href}
                 href={tool.href}
-                className="flex items-start gap-3 p-3.5 border border-gray-100 rounded-xl hover:border-blue-200 hover:bg-blue-50 transition-colors group"
+                className="flex items-start gap-3 p-3.5 border border-gray-100 rounded-xl hover:border-ai hover:bg-gray-50 transition-colors group"
               >
-                <span className="text-blue-500 mt-0.5 flex-shrink-0 group-hover:text-blue-600">→</span>
+                <span className="text-kon mt-0.5 flex-shrink-0 group-hover:text-ai">→</span>
                 <div>
-                  <p className="font-semibold text-gray-800 text-sm group-hover:text-blue-700">{tool.label}</p>
+                  <p className="font-semibold text-gray-800 text-sm group-hover:text-ai">{tool.label}</p>
                   <p className="text-xs text-gray-400 mt-0.5">{tool.desc}</p>
                 </div>
               </Link>

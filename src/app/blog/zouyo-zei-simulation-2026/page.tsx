@@ -46,9 +46,9 @@ export default function ZouyoZeiSimulation2026Blog() {
         }}
       />
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-pink-500">ホーム</Link>
+        <Link href="/" className="hover:text-sakura">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-pink-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-sakura">ブログ</Link>
         <span className="mx-2">/</span>
         <span>贈与税シミュレーション2026</span>
       </nav>
@@ -115,19 +115,19 @@ export default function ZouyoZeiSimulation2026Blog() {
           </thead>
           <tbody>
             <tr className="bg-green-50"><td className="px-4 py-3 border-b font-bold">110万円</td><td className="px-4 py-3 border-b">0円</td><td className="px-4 py-3 border-b">-</td><td className="px-4 py-3 border-b font-bold text-green-600">0円</td></tr>
-            <tr><td className="px-4 py-3 border-b font-bold">200万円</td><td className="px-4 py-3 border-b">90万円</td><td className="px-4 py-3 border-b">10%</td><td className="px-4 py-3 border-b font-bold text-red-600">9万円</td></tr>
-            <tr><td className="px-4 py-3 border-b font-bold">300万円</td><td className="px-4 py-3 border-b">190万円</td><td className="px-4 py-3 border-b">10%</td><td className="px-4 py-3 border-b font-bold text-red-600">19万円</td></tr>
-            <tr><td className="px-4 py-3 border-b font-bold">500万円</td><td className="px-4 py-3 border-b">390万円</td><td className="px-4 py-3 border-b">15%</td><td className="px-4 py-3 border-b font-bold text-red-600">48.5万円</td></tr>
-            <tr className="bg-yellow-50"><td className="px-4 py-3 border-b font-bold">1,000万円</td><td className="px-4 py-3 border-b">890万円</td><td className="px-4 py-3 border-b">30%</td><td className="px-4 py-3 border-b font-bold text-red-600">177万円</td></tr>
-            <tr><td className="px-4 py-3 border-b font-bold">2,000万円</td><td className="px-4 py-3 border-b">1,890万円</td><td className="px-4 py-3 border-b">45%</td><td className="px-4 py-3 border-b font-bold text-red-600">585.5万円</td></tr>
-            <tr><td className="px-4 py-3 border-b font-bold">3,000万円</td><td className="px-4 py-3 border-b">2,890万円</td><td className="px-4 py-3 border-b">50%</td><td className="px-4 py-3 border-b font-bold text-red-600">1,035.5万円</td></tr>
+            <tr><td className="px-4 py-3 border-b font-bold">200万円</td><td className="px-4 py-3 border-b">90万円</td><td className="px-4 py-3 border-b">10%</td><td className="px-4 py-3 border-b font-bold text-danger">9万円</td></tr>
+            <tr><td className="px-4 py-3 border-b font-bold">300万円</td><td className="px-4 py-3 border-b">190万円</td><td className="px-4 py-3 border-b">10%</td><td className="px-4 py-3 border-b font-bold text-danger">19万円</td></tr>
+            <tr><td className="px-4 py-3 border-b font-bold">500万円</td><td className="px-4 py-3 border-b">390万円</td><td className="px-4 py-3 border-b">15%</td><td className="px-4 py-3 border-b font-bold text-danger">48.5万円</td></tr>
+            <tr className="bg-yellow-50"><td className="px-4 py-3 border-b font-bold">1,000万円</td><td className="px-4 py-3 border-b">890万円</td><td className="px-4 py-3 border-b">30%</td><td className="px-4 py-3 border-b font-bold text-danger">177万円</td></tr>
+            <tr><td className="px-4 py-3 border-b font-bold">2,000万円</td><td className="px-4 py-3 border-b">1,890万円</td><td className="px-4 py-3 border-b">45%</td><td className="px-4 py-3 border-b font-bold text-danger">585.5万円</td></tr>
+            <tr><td className="px-4 py-3 border-b font-bold">3,000万円</td><td className="px-4 py-3 border-b">2,890万円</td><td className="px-4 py-3 border-b">50%</td><td className="px-4 py-3 border-b font-bold text-danger">1,035.5万円</td></tr>
           </tbody>
         </table>
 
         <p className="text-sm text-gray-600 mb-6">※親・祖父母から20歳以上の子・孫への贈与（特例税率）で計算。兄弟間など一般贈与はさらに税率が高くなります。</p>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-          <p className="text-lg font-bold text-blue-800 mb-2">🔧 あなたの贈与税を計算！</p>
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+          <p className="text-lg font-bold text-kon mb-2">🔧 あなたの贈与税を計算！</p>
           <p className="text-gray-700 mb-4">贈与額と関係性を入力して、正確な贈与税をシミュレーションしましょう。</p>
           <Link href="/tax/gift-tax-calculator" className="inline-block bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-lg transition">
             → 贈与税計算機を使う
@@ -193,8 +193,8 @@ export default function ZouyoZeiSimulation2026Blog() {
               <li>✓ 一度に大きな金額を贈与可能</li>
             </ul>
           </div>
-          <div className="bg-red-50 border border-red-200 rounded-lg p-5">
-            <h3 className="font-bold text-red-800 text-lg mb-3">デメリット</h3>
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-5">
+            <h3 className="font-bold text-danger text-lg mb-3">デメリット</h3>
             <ul className="space-y-2 text-gray-700">
               <li>✗ 一度選択すると暦年課税に戻れない</li>
               <li>✗ 相続時に贈与額が相続財産に加算</li>

@@ -256,7 +256,7 @@ function PropertyForm({
   onChange: (key: keyof PropertyInputs, val: string) => void;
 }) {
   const inputCls =
-    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent";
+    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon focus:border-transparent";
   const selectCls = inputCls;
 
   return (
@@ -280,7 +280,7 @@ function PropertyForm({
         {/* 月額家賃 */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            月額家賃 <span className="text-red-500">*</span>
+            月額家賃 <span className="text-danger">*</span>
           </label>
           <div className="flex items-center gap-2">
             <input
@@ -393,7 +393,7 @@ function PropertyForm({
             {prop.kagiKokan === "other" && (
               <input
                 type="number"
-                className="w-28 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-28 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                 value={prop.kagiKokanOther}
                 onChange={(e) => onChange("kagiKokanOther", e.target.value)}
                 placeholder="円"
@@ -422,7 +422,7 @@ function PropertyForm({
             {prop.kasaiHoken === "other" && (
               <input
                 type="number"
-                className="w-28 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-28 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                 value={prop.kasaiHokenOther}
                 onChange={(e) => onChange("kasaiHokenOther", e.target.value)}
                 placeholder="円"
@@ -451,7 +451,7 @@ function PropertyForm({
             {prop.hosho === "other" && (
               <input
                 type="number"
-                className="w-28 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-28 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                 value={prop.hoshoOther}
                 onChange={(e) => onChange("hoshoOther", e.target.value)}
                 placeholder="円"
@@ -506,7 +506,7 @@ function ResultBreakdown({
         <div className="overflow-x-auto rounded-lg border border-gray-200">
           <table className="w-full text-sm">
             <thead>
-              <tr className="bg-blue-600 text-white">
+              <tr className="bg-kon text-white">
                 <th className={thCls}>項目</th>
                 <th className="px-4 py-2 text-right font-semibold">金額</th>
               </tr>
@@ -527,9 +527,9 @@ function ResultBreakdown({
                   <td className={tdRCls}>{fmtYen(row.val)}</td>
                 </tr>
               ))}
-              <tr className="bg-blue-50 font-bold">
-                <td className="px-4 py-2 text-blue-800">初期費用合計</td>
-                <td className="px-4 py-2 text-right text-blue-800">
+              <tr className="bg-gray-50 font-bold">
+                <td className="px-4 py-2 text-kon">初期費用合計</td>
+                <td className="px-4 py-2 text-right text-kon">
                   {fmtMan(result.shokiHiyo)}
                 </td>
               </tr>
@@ -640,9 +640,9 @@ function ResultBreakdown({
                   −{fmtYen(result.shikikinReturnAmount)}
                 </td>
               </tr>
-              <tr className="bg-orange-50 font-semibold">
-                <td className="px-4 py-2 text-orange-800">退去時実質負担</td>
-                <td className="px-4 py-2 text-right text-orange-800">
+              <tr className="bg-gray-50 font-semibold">
+                <td className="px-4 py-2 text-kon">退去時実質負担</td>
+                <td className="px-4 py-2 text-right text-kon">
                   {fmtYen(result.departureNet)}
                 </td>
               </tr>
@@ -740,11 +740,11 @@ export default function RentalCostCalculatorPage() {
         {/* Header */}
         <div className="mb-6">
           <nav className="text-xs text-gray-400 mb-2">
-            <Link href="/" className="hover:text-blue-600">
+            <Link href="/" className="hover:text-ai">
               ホーム
             </Link>{" "}
             &gt;{" "}
-            <Link href="/realestate" className="hover:text-blue-600">
+            <Link href="/realestate" className="hover:text-ai">
               不動産・住まい
             </Link>{" "}
             &gt; <span>賃貸 敷金礼金 トータルコスト計算機</span>
@@ -778,7 +778,7 @@ export default function RentalCostCalculatorPage() {
                   }}
                   className={`px-4 py-2 rounded-lg text-sm font-medium border transition-colors ${
                     mode === m
-                      ? "bg-blue-600 text-white border-blue-600"
+                      ? "bg-kon text-white border-kon"
                       : "bg-white text-gray-600 border-gray-300 hover:bg-gray-50"
                   }`}
                 >
@@ -829,7 +829,7 @@ export default function RentalCostCalculatorPage() {
                   居住予定年数
                 </label>
                 <select
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                   value={residence.years}
                   onChange={(e) => updateResidence("years", e.target.value)}
                 >
@@ -845,7 +845,7 @@ export default function RentalCostCalculatorPage() {
                   更新料（2年ごと）
                 </label>
                 <select
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                   value={residence.koushinRyo}
                   onChange={(e) =>
                     updateResidence("koushinRyo", e.target.value)
@@ -861,7 +861,7 @@ export default function RentalCostCalculatorPage() {
                   火災保険の更新
                 </label>
                 <select
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                   value={residence.kasaiRenewal}
                   onChange={(e) =>
                     updateResidence("kasaiRenewal", e.target.value)
@@ -876,7 +876,7 @@ export default function RentalCostCalculatorPage() {
                   家賃の値上がり
                 </label>
                 <select
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                   value={residence.yachinUp}
                   onChange={(e) => updateResidence("yachinUp", e.target.value)}
                 >
@@ -900,7 +900,7 @@ export default function RentalCostCalculatorPage() {
                   退去時クリーニング費用
                 </label>
                 <select
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                   value={departure.cleaning}
                   onChange={(e) => updateDeparture("cleaning", e.target.value)}
                 >
@@ -914,7 +914,7 @@ export default function RentalCostCalculatorPage() {
                     間取り
                   </label>
                   <select
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                     value={departure.madori}
                     onChange={(e) =>
                       updateDeparture("madori", e.target.value)
@@ -936,7 +936,7 @@ export default function RentalCostCalculatorPage() {
                   <div className="flex items-center gap-2">
                     <input
                       type="number"
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                       value={departure.customCleaning}
                       onChange={(e) =>
                         updateDeparture("customCleaning", e.target.value)
@@ -955,7 +955,7 @@ export default function RentalCostCalculatorPage() {
                   敷金からの返還
                 </label>
                 <select
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                   value={departure.shikikinReturn}
                   onChange={(e) =>
                     updateDeparture("shikikinReturn", e.target.value)
@@ -973,7 +973,7 @@ export default function RentalCostCalculatorPage() {
                 <div className="flex items-center gap-2">
                   <input
                     type="number"
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                     value={departure.genjoCost}
                     onChange={(e) =>
                       updateDeparture("genjoCost", e.target.value)
@@ -991,7 +991,7 @@ export default function RentalCostCalculatorPage() {
 
           {/* Error */}
           {error && (
-            <div className="mb-4 bg-red-50 border border-red-200 rounded-lg px-4 py-3 text-sm text-red-700">
+            <div className="mb-4 bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-sm text-danger">
               {error}
             </div>
           )}
@@ -1000,7 +1000,7 @@ export default function RentalCostCalculatorPage() {
           <div className="flex gap-3">
             <button
               onClick={handleCalculate}
-              className="flex-1 py-3 px-6 rounded-lg bg-blue-600 text-white font-semibold text-sm hover:bg-blue-700 transition-colors shadow-sm"
+              className="flex-1 py-3 px-6 rounded-lg bg-kon text-white font-semibold text-sm hover:bg-ai transition-colors shadow-sm"
             >
               計算する
             </button>
@@ -1084,7 +1084,7 @@ export default function RentalCostCalculatorPage() {
                 <div className="overflow-x-auto">
                   <table className="w-full text-sm">
                     <thead>
-                      <tr className="bg-purple-600 text-white">
+                      <tr className="bg-kon text-white">
                         <th className="px-4 py-3 text-left font-semibold">
                           項目
                         </th>
@@ -1144,23 +1144,23 @@ export default function RentalCostCalculatorPage() {
                         return (
                           <tr
                             key={row.label}
-                            className={`hover:bg-gray-50 ${isHighlight ? "font-semibold bg-purple-50" : ""}`}
+                            className={`hover:bg-gray-50 ${isHighlight ? "font-semibold bg-gray-50" : ""}`}
                           >
                             <td className="px-4 py-2 text-gray-700">
                               {row.label}
                             </td>
                             <td
-                              className={`px-4 py-2 text-right ${diff > 0 ? "text-red-600" : diff < 0 ? "text-green-600" : ""}`}
+                              className={`px-4 py-2 text-right ${diff > 0 ? "text-danger" : diff < 0 ? "text-green-600" : ""}`}
                             >
                               {fmtMan(row.a)}
                             </td>
                             <td
-                              className={`px-4 py-2 text-right ${diff < 0 ? "text-red-600" : diff > 0 ? "text-green-600" : ""}`}
+                              className={`px-4 py-2 text-right ${diff < 0 ? "text-danger" : diff > 0 ? "text-green-600" : ""}`}
                             >
                               {fmtMan(row.b)}
                             </td>
                             <td
-                              className={`px-4 py-2 text-right ${diff > 0 ? "text-red-600" : diff < 0 ? "text-green-600" : "text-gray-500"}`}
+                              className={`px-4 py-2 text-right ${diff > 0 ? "text-danger" : diff < 0 ? "text-green-600" : "text-gray-500"}`}
                             >
                               {diff === 0
                                 ? "同じ"
@@ -1172,8 +1172,8 @@ export default function RentalCostCalculatorPage() {
                     </tbody>
                   </table>
                 </div>
-                <div className="mt-4 p-4 rounded-lg bg-gradient-to-r from-purple-50 to-blue-50 border border-purple-200">
-                  <p className="text-sm font-semibold text-purple-900">
+                <div className="mt-4 p-4 rounded-lg bg-gradient-to-r from-purple-50 to-blue-50 border border-kon">
+                  <p className="text-sm font-semibold text-kon">
                     {(() => {
                       const diff = resultA.grandTotal - resultB.grandTotal;
                       if (diff === 0)
@@ -1229,7 +1229,7 @@ export default function RentalCostCalculatorPage() {
                 ].map((row) => (
                   <tr
                     key={row.item}
-                    className={`hover:bg-gray-50 ${row.item === "合計" ? "font-bold bg-blue-50" : ""}`}
+                    className={`hover:bg-gray-50 ${row.item === "合計" ? "font-bold bg-gray-50" : ""}`}
                   >
                     <td className="px-4 py-2 text-gray-700">{row.item}</td>
                     <td className="px-4 py-2 text-right text-gray-500">
@@ -1333,7 +1333,7 @@ export default function RentalCostCalculatorPage() {
                 className="border border-gray-200 rounded-lg overflow-hidden"
               >
                 <summary className="px-4 py-3 cursor-pointer font-medium text-gray-800 hover:bg-gray-50 text-sm list-none flex items-start gap-2">
-                  <span className="text-blue-600 font-bold shrink-0">
+                  <span className="text-kon font-bold shrink-0">
                     Q{i + 1}.
                   </span>
                   {item.q}
@@ -1377,9 +1377,9 @@ export default function RentalCostCalculatorPage() {
               <Link
                 key={tool.href}
                 href={tool.href}
-                className="bg-white border border-gray-200 rounded-xl p-4 hover:shadow-md hover:border-blue-300 transition-all group"
+                className="bg-white border border-gray-200 rounded-xl p-4 hover:shadow-md hover:border-ai transition-all group"
               >
-                <p className="font-semibold text-gray-900 group-hover:text-blue-600 text-sm mb-1">
+                <p className="font-semibold text-gray-900 group-hover:text-ai text-sm mb-1">
                   {tool.label}
                 </p>
                 <p className="text-xs text-gray-500">{tool.desc}</p>

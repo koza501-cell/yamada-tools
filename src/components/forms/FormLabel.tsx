@@ -16,7 +16,7 @@ export function FormLabel({ htmlFor, required, optional, children }: FormLabelPr
     <label htmlFor={htmlFor} className="block text-sm font-medium text-gray-700 mb-1">
       {children}
       {required && (
-        <span className="ml-1.5 inline-block text-[11px] font-medium text-white bg-red-500 px-1.5 py-0.5 rounded-[3px] leading-none align-middle">
+        <span className="ml-1.5 inline-block text-[11px] font-medium text-white bg-danger px-1.5 py-0.5 rounded-[3px] leading-none align-middle">
           必須
         </span>
       )}

@@ -97,7 +97,7 @@ export default function KensetsuMitsumoriClient() {
                   </div>
                   <div className="w-32">
                     <label className="block text-xs text-gray-500 dark:text-gray-400 mb-1">
-                      面積（{r.wt.unit}）{r.wt.note ? <span className="text-blue-500"> {r.wt.note}</span> : ""}
+                      面積（{r.wt.unit}）{r.wt.note ? <span className="text-kon"> {r.wt.note}</span> : ""}
                     </label>
                     <input type="number" value={item.area} onChange={e => updateItem(item.id, "area", e.target.value)} placeholder="0" className={`${inp} w-full`} />
                   </div>
@@ -108,7 +108,7 @@ export default function KensetsuMitsumoriClient() {
                     </div>
                   )}
                   {items.length > 1 && (
-                    <button onClick={() => removeItem(item.id)} className="text-red-400 hover:text-red-600 text-xs px-2 py-1 rounded border border-red-200 dark:border-red-800">削除</button>
+                    <button onClick={() => removeItem(item.id)} className="text-danger hover:text-danger text-xs px-2 py-1 rounded border border-gray-200 dark:border-danger">削除</button>
                   )}
                 </div>
               </div>
@@ -116,7 +116,7 @@ export default function KensetsuMitsumoriClient() {
           })}
         </div>
 
-        <button onClick={addItem} className="w-full py-2 border-2 border-dashed border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 rounded-xl hover:border-blue-400 hover:text-blue-500 text-sm transition-colors mb-6">
+        <button onClick={addItem} className="w-full py-2 border-2 border-dashed border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 rounded-xl hover:border-ai hover:text-ai text-sm transition-colors mb-6">
           ＋ 工事項目を追加
         </button>
 
@@ -144,11 +144,11 @@ export default function KensetsuMitsumoriClient() {
               </div>
             </div>
 
-            <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3 text-sm">
-              <p className="text-blue-700 dark:text-blue-300 text-xs mb-1">⚠️ 職人工賃は含まれていません。工賃は材料費の1〜3倍が目安です。</p>
+            <div className="bg-gray-50 dark:bg-kon/20 rounded-lg p-3 text-sm">
+              <p className="text-kon dark:text-gray-300 text-xs mb-1">⚠️ 職人工賃は含まれていません。工賃は材料費の1〜3倍が目安です。</p>
               <div className="flex justify-between items-center">
-                <span className="text-blue-800 dark:text-blue-300 font-semibold">工賃込み概算（材料費×2.5倍）</span>
-                <span className="font-bold text-lg text-blue-700 dark:text-blue-300">¥{fmt(laborEstimate)}</span>
+                <span className="text-kon dark:text-gray-300 font-semibold">工賃込み概算（材料費×2.5倍）</span>
+                <span className="font-bold text-lg text-kon dark:text-gray-300">¥{fmt(laborEstimate)}</span>
               </div>
             </div>
 

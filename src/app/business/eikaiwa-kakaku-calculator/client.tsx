@@ -136,7 +136,7 @@ export default function EikaiwaKakakuClient() {
             <div className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm">
               <h2 className="font-semibold text-gray-700 dark:text-gray-300 mb-3">必要レッスン単価</h2>
               <div className="text-center py-3">
-                <div className="text-4xl font-bold text-blue-600 dark:text-blue-400">¥{fmt(result.requiredLessonRate)}</div>
+                <div className="text-4xl font-bold text-kon dark:text-gray-300">¥{fmt(result.requiredLessonRate)}</div>
                 <div className="text-sm text-gray-500 dark:text-gray-400 mt-1">{duration}分 / 1レッスン</div>
                 <div className="text-lg font-semibold text-gray-700 dark:text-gray-300 mt-2">時間単価: ¥{fmt(result.hourlyRate)}</div>
               </div>
@@ -166,7 +166,7 @@ export default function EikaiwaKakakuClient() {
                     <span className="dark:text-white">{r.range}</span>
                   </div>
                 ))}
-                <div className={`mt-2 p-2 rounded text-xs ${isAboveMarket ? "bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-300" : "bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300"}`}>
+                <div className={`mt-2 p-2 rounded text-xs ${isAboveMarket ? "bg-gray-50 dark:bg-kon/20 text-kon dark:text-gray-300" : "bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300"}`}>
                   {isAboveMarket
                     ? "⚠️ 算出単価が相場上限を超えています。稼働数・経費削減を検討しましょう。"
                     : "✅ 算出単価は市場相場の範囲内です。"}
@@ -174,9 +174,9 @@ export default function EikaiwaKakakuClient() {
               </div>
             </div>
 
-            <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 text-sm">
-              <p className="font-semibold text-blue-800 dark:text-blue-300 mb-1">📊 損益分岐点</p>
-              <p className="text-blue-700 dark:text-blue-300 text-xs">
+            <div className="bg-gray-50 dark:bg-kon/20 rounded-xl p-4 text-sm">
+              <p className="font-semibold text-kon dark:text-gray-300 mb-1">📊 損益分岐点</p>
+              <p className="text-kon dark:text-gray-300 text-xs">
                 経費をカバーするには月に<span className="font-bold mx-1 text-base">{result.breakEvenMonthly}コマ</span>以上必要です。
                 （年間 {result.breakEvenLessons}コマ）
               </p>

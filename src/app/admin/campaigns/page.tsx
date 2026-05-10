@@ -112,7 +112,7 @@ export default function CampaignsManagement() {
       return <span className="px-2 py-1 bg-gray-100 text-gray-500 rounded-full text-xs">無効</span>;
     }
     if (now < start) {
-      return <span className="px-2 py-1 bg-blue-100 text-blue-700 rounded-full text-xs">予定</span>;
+      return <span className="px-2 py-1 bg-gray-50 text-kon rounded-full text-xs">予定</span>;
     }
     if (now > end) {
       return <span className="px-2 py-1 bg-gray-100 text-gray-500 rounded-full text-xs">終了</span>;
@@ -157,7 +157,7 @@ export default function CampaignsManagement() {
                   <div className="flex items-center gap-4 text-sm text-gray-500">
                     <span>📅 {campaign.start_date} 〜 {campaign.end_date}</span>
                     {campaign.discount_percent && (
-                      <span className="text-red-500 font-bold">
+                      <span className="text-danger font-bold">
                         {campaign.discount_percent}% OFF
                       </span>
                     )}
@@ -175,7 +175,7 @@ export default function CampaignsManagement() {
                   </button>
                   <button
                     onClick={() => handleDelete(campaign.id!)}
-                    className="px-4 py-2 bg-red-100 text-red-600 rounded-lg hover:bg-red-200"
+                    className="px-4 py-2 bg-gray-50 text-danger rounded-lg hover:bg-gray-50"
                   >
                     削除
                   </button>

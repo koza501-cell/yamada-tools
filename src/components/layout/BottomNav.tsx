@@ -29,7 +29,7 @@ export default function BottomNav() {
             className={`flex flex-col items-center justify-center w-full h-full min-h-[44px] min-w-[44px] transition-colors ${
               isActive(item.href)
                 ? "text-sakura"
-                : "text-gray-500 dark:text-gray-400 hover:text-kon dark:hover:text-blue-400"
+                : "text-gray-500 dark:text-gray-400 hover:text-kon dark:hover:text-ai"
             }`}
           >
             <span className="text-xl mb-0.5">{item.icon}</span>

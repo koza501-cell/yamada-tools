@@ -189,9 +189,9 @@ function formatPayback(years: number): string {
 function getRoiBadge(roi: number): { label: string; bg: string; text: string } {
   if (roi > 500) return { label: "🌟 超高リターン", bg: "bg-yellow-400", text: "text-yellow-900" };
   if (roi > 200) return { label: "✅ 高リターン", bg: "bg-green-500", text: "text-white" };
-  if (roi > 100) return { label: "👍 良好", bg: "bg-blue-500", text: "text-white" };
-  if (roi > 50) return { label: "🤔 検討余地あり", bg: "bg-orange-400", text: "text-white" };
-  return { label: "⚠️ 慎重に検討を", bg: "bg-red-500", text: "text-white" };
+  if (roi > 100) return { label: "👍 良好", bg: "bg-kon", text: "text-white" };
+  if (roi > 50) return { label: "🤔 検討余地あり", bg: "bg-kon", text: "text-white" };
+  return { label: "⚠️ 慎重に検討を", bg: "bg-danger", text: "text-white" };
 }
 
 // ---- Main Component ----
@@ -455,7 +455,7 @@ export default function CertificationRoiPage() {
 
         {/* Error */}
         {error && (
-          <div className="bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-sm text-red-700">{error}</div>
+          <div className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-danger">{error}</div>
         )}
 
         {/* Calculate Button */}
@@ -478,7 +478,7 @@ export default function CertificationRoiPage() {
               </div>
               <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 text-center">
                 <p className="text-xs text-gray-500 mb-1">ROI</p>
-                <p className={`text-2xl font-extrabold ${result.roi > 200 ? "text-green-700" : result.roi > 100 ? "text-blue-600" : result.roi > 50 ? "text-orange-500" : "text-red-600"}`}>
+                <p className={`text-2xl font-extrabold ${result.roi > 200 ? "text-green-700" : result.roi > 100 ? "text-kon" : result.roi > 50 ? "text-kon" : "text-danger"}`}>
                   {result.roi >= 0 ? "+" : ""}{Math.round(result.roi)}%
                 </p>
               </div>
@@ -554,9 +554,9 @@ export default function CertificationRoiPage() {
             </div>
 
             {/* Advice */}
-            <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 space-y-2">
-              <p className="font-semibold text-blue-800 text-sm">アドバイス</p>
-              <p className="text-sm text-blue-700">
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 space-y-2">
+              <p className="font-semibold text-kon text-sm">アドバイス</p>
+              <p className="text-sm text-kon">
                 {result.paybackYears < 2
                   ? "コスパ最高！積極的に取得を検討しましょう。短期間で元が取れます。"
                   : result.paybackYears <= 5
@@ -564,7 +564,7 @@ export default function CertificationRoiPage() {
                   : "長期的な計画が必要です。転職・独立との組み合わせが効果的です。"}
               </p>
               {result.timeCost > result.moneyCost && (
-                <p className="text-sm text-blue-700">
+                <p className="text-sm text-kon">
                   ⏱ 時間コストが金銭コストより大きいです。効率的な学習法（スクール・オンライン講座）を選びましょう。
                 </p>
               )}
@@ -706,20 +706,20 @@ export default function CertificationRoiPage() {
 
       
         {/* 関連ブログ記事 */}
-        <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl border border-purple-200 p-5 mt-4">
+        <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl border border-kon p-5 mt-4">
           <h2 className="font-bold text-gray-800 mb-3 text-sm">📝 関連ブログ記事</h2>
           
             <a
             href="/blog/shikaku-toshi-simulation-2026"
             className="flex items-center gap-3 group"
           >
-            <div className="w-10 h-10 rounded-lg bg-purple-100 group-hover:bg-purple-200 flex items-center justify-center shrink-0 transition-colors">
-              <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-10 h-10 rounded-lg bg-gray-50 group-hover:bg-ai flex items-center justify-center shrink-0 transition-colors">
+              <svg className="w-5 h-5 text-kon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
               </svg>
             </div>
             <div>
-              <p className="text-sm font-semibold text-purple-700 group-hover:text-purple-800">【2026年最新】資格取得は投資になる？費用対効果（ROI）をシミュレーション</p>
+              <p className="text-sm font-semibold text-kon group-hover:text-ai">【2026年最新】資格取得は投資になる？費用対効果（ROI）をシミュレーション</p>
               <p className="text-xs text-gray-500 mt-0.5">詳しい解説・計算例 →</p>
             </div>
           </a>

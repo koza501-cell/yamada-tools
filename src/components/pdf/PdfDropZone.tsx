@@ -41,10 +41,10 @@ export default function PdfDropZone() {
         onClick={() => !file && inputRef.current?.click()}
         className={`border-2 border-dashed rounded-2xl p-10 text-center transition-all ${
           isDragging
-            ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20 cursor-copy"
+            ? "border-kon bg-gray-50 dark:bg-kon/20 cursor-copy"
             : file
             ? "border-green-400 bg-green-50 dark:bg-green-900/10"
-            : "border-gray-300 dark:border-gray-600 hover:border-blue-400 hover:bg-blue-50/50 dark:hover:bg-blue-900/10 cursor-pointer"
+            : "border-gray-300 dark:border-gray-600 hover:border-ai hover:bg-gray-50/50 dark:hover:bg-ai/10 cursor-pointer"
         }`}
       >
         <input
@@ -72,9 +72,9 @@ export default function PdfDropZone() {
       {file && (
         <div className="mt-4">
           {isLarge && (
-            <div className="mb-3 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700 rounded-xl p-3 flex items-center gap-2">
+            <div className="mb-3 bg-gray-50 dark:bg-kon/20 border border-gray-200 dark:border-gray-200 rounded-xl p-3 flex items-center gap-2">
               <span className="text-lg">⚠️</span>
-              <p className="text-sm text-amber-800 dark:text-amber-300">
+              <p className="text-sm text-kon dark:text-amber-300">
                 ファイルが大きめです（{(file.size / 1024 / 1024).toFixed(1)} MB）。<strong>圧縮</strong>をおすすめします。
               </p>
             </div>
@@ -87,13 +87,13 @@ export default function PdfDropZone() {
                 onClick={() => router.push(a.href)}
                 className={`flex items-center gap-1.5 px-4 py-2 rounded-xl font-bold text-sm transition-all ${
                   isLarge && a.href === "/pdf/compress"
-                    ? "bg-amber-500 hover:bg-amber-600 text-white shadow-md scale-105"
-                    : "bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:border-blue-400 hover:text-blue-600 dark:hover:border-blue-400"
+                    ? "bg-kon hover:bg-kon text-white shadow-md scale-105"
+                    : "bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:border-ai hover:text-ai dark:hover:border-ai"
                 }`}
               >
                 {a.icon} {a.label}
                 {isLarge && a.href === "/pdf/compress" && (
-                  <span className="bg-white text-amber-600 text-xs px-1 rounded font-bold">おすすめ</span>
+                  <span className="bg-white text-kon text-xs px-1 rounded font-bold">おすすめ</span>
                 )}
               </button>
             ))}

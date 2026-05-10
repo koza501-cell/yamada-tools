@@ -75,7 +75,7 @@ export default function InvoiceSonekiClient() {
                 <div className="flex gap-2">
                   {(["B2B", "B2C", "混合"] as BizType[]).map(t => (
                     <button key={t} onClick={() => setBizType(t)}
-                      className={"flex-1 py-2 rounded-lg text-sm border transition-colors " + (bizType === t ? "bg-blue-500 text-white border-blue-500" : "bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600")}>
+                      className={"flex-1 py-2 rounded-lg text-sm border transition-colors " + (bizType === t ? "bg-kon text-white border-kon" : "bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600")}>
                       {t}
                     </button>
                   ))}
@@ -98,7 +98,7 @@ export default function InvoiceSonekiClient() {
                 <label htmlFor="twoRate" className="text-sm text-gray-600 dark:text-gray-400">2割特例 適用可能（〜2026年9月）</label>
               </div>
             </div>
-            <div className="bg-orange-50 dark:bg-orange-900/20 rounded-xl p-4 text-xs text-orange-700 dark:text-orange-300">
+            <div className="bg-gray-50 dark:bg-kon/20 rounded-xl p-4 text-xs text-kon dark:text-gray-300">
               <p className="font-semibold mb-1">⚠️ 2割特例は2026年9月末で終了</p>
               <p>インボイス制度開始を機に課税事業者になった方のみ適用可。2026年10月以降は経過措置も終了し、取引先は仕入税額控除が受けられなくなります。</p>
             </div>
@@ -122,10 +122,10 @@ export default function InvoiceSonekiClient() {
                         <tr key={i} className={"border-b border-gray-100 dark:border-gray-700/50 " + (isBest ? "bg-green-50 dark:bg-green-900/10" : "")}>
                           <td className="py-2 text-gray-700 dark:text-gray-300">
                             {row.label}
-                            {row.note && <span className={"ml-1 text-xs " + (i === 0 && bizType === "B2B" ? "text-red-500" : "text-gray-400")}>{row.note}</span>}
+                            {row.note && <span className={"ml-1 text-xs " + (i === 0 && bizType === "B2B" ? "text-danger" : "text-gray-400")}>{row.note}</span>}
                             {isBest && <span className="ml-1 text-xs text-green-600 dark:text-green-400">★最安</span>}
                           </td>
-                          <td className="py-2 text-right font-medium text-red-600 dark:text-red-400">
+                          <td className="py-2 text-right font-medium text-danger dark:text-danger">
                             {i === 0 ? "0円" : fmt(row.tax) + "円"}
                           </td>
                           <td className="py-2 text-right text-gray-600 dark:text-gray-400">
@@ -143,8 +143,8 @@ export default function InvoiceSonekiClient() {
               <div className="space-y-2 text-xs">
                 {[
                   { label: "〜2026年9月（80%控除）", val: calc.clientNow, color: "text-gray-700 dark:text-gray-300" },
-                  { label: "2026年10月〜2029年9月（50%控除）", val: calc.client2026, color: "text-orange-600 dark:text-orange-400" },
-                  { label: "2029年10月〜（控除なし）", val: calc.clientFull, color: "text-red-600 dark:text-red-400" },
+                  { label: "2026年10月〜2029年9月（50%控除）", val: calc.client2026, color: "text-kon dark:text-gray-300" },
+                  { label: "2029年10月〜（控除なし）", val: calc.clientFull, color: "text-danger dark:text-danger" },
                 ].map(r => (
                   <div key={r.label} className="flex justify-between">
                     <span className="text-gray-600 dark:text-gray-400">{r.label}</span>
@@ -154,9 +154,9 @@ export default function InvoiceSonekiClient() {
                 <p className="text-gray-400 mt-1">※取引先が負担する追加コスト（仕入税額控除できない分）</p>
               </div>
             </div>
-            <div className={"rounded-xl p-4 border " + (bizType === "B2B" ? "bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-700" : "bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-700")}>
+            <div className={"rounded-xl p-4 border " + (bizType === "B2B" ? "bg-gray-50 dark:bg-danger/20 border-gray-200 dark:border-danger" : "bg-gray-50 dark:bg-kon/20 border-gray-200 dark:border-kon")}>
               <p className="font-semibold text-sm text-gray-700 dark:text-gray-300 mb-1">あなたへの推奨</p>
-              <p className={"text-xs " + (bizType === "B2B" ? "text-red-700 dark:text-red-300" : "text-blue-700 dark:text-blue-300")}>{calc.rec}</p>
+              <p className={"text-xs " + (bizType === "B2B" ? "text-danger dark:text-gin" : "text-kon dark:text-gray-300")}>{calc.rec}</p>
             </div>
             <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-xl p-4 text-xs text-yellow-700 dark:text-yellow-300">
               <p className="font-semibold mb-1">⚠️ ご注意</p>

@@ -173,7 +173,7 @@ export default function BannersManagement() {
                   </button>
                   <button
                     onClick={() => handleDelete(banner.id!)}
-                    className="px-4 py-2 bg-red-100 text-red-600 rounded-lg hover:bg-red-200"
+                    className="px-4 py-2 bg-gray-50 text-danger rounded-lg hover:bg-gray-50"
                   >
                     削除
                   </button>

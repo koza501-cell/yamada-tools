@@ -176,11 +176,11 @@ export default function InheritanceTaxPage() {
   const [result, setResult] = useState<CalcResult | null>(null);
 
   const inputClass =
-    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500";
+    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon";
   const labelClass = "block text-sm font-medium text-gray-700 mb-1";
   const toggleClass = (active: boolean) =>
     `flex-1 py-2 text-sm font-medium rounded-md transition-colors ${
-      active ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+      active ? "bg-kon text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
     }`;
 
   function handleCalculate() {
@@ -227,10 +227,10 @@ export default function InheritanceTaxPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      <div className="bg-gradient-to-r from-blue-700 to-blue-500 text-white py-10 px-4">
+      <div className="bg-gradient-to-r from-blue-700 to-kon text-white py-10 px-4">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-2xl md:text-3xl font-bold mb-2">相続税 簡易計算機</h1>
-          <p className="text-blue-100 text-sm md:text-base">
+          <p className="text-gin text-sm md:text-base">
             遺産総額と相続人を入力するだけ。基礎控除・配偶者控除・法定相続分を自動計算。2024年度対応。
           </p>
         </div>
@@ -313,7 +313,7 @@ export default function InheritanceTaxPage() {
               </button>
               <button
                 onClick={handleCalculate}
-                className="flex-1 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-bold hover:bg-blue-700 transition-colors"
+                className="flex-1 py-2.5 rounded-lg bg-kon text-white text-sm font-bold hover:bg-ai transition-colors"
               >
                 計算する
               </button>
@@ -341,7 +341,7 @@ export default function InheritanceTaxPage() {
                       </div>
                       <div className="flex justify-between py-1.5 border-b">
                         <span className="text-gray-600">課税遺産総額</span>
-                        <span className="font-medium text-orange-600">{fmtMan(result.taxableEstate)}</span>
+                        <span className="font-medium text-kon">{fmtMan(result.taxableEstate)}</span>
                       </div>
                       <div className="flex justify-between py-1.5 border-b">
                         <span className="text-gray-600">相続税総額（控除前）</span>
@@ -353,9 +353,9 @@ export default function InheritanceTaxPage() {
                           <span className="font-medium text-green-600">－{fmtMan(result.spouseDeduction)}</span>
                         </div>
                       )}
-                      <div className="flex justify-between items-center py-3 bg-blue-50 rounded-lg px-3 mt-1">
-                        <span className="text-sm font-bold text-blue-800">最終相続税額</span>
-                        <span className="text-2xl font-bold text-blue-800">{fmtMan(result.totalTaxAfter)}</span>
+                      <div className="flex justify-between items-center py-3 bg-gray-50 rounded-lg px-3 mt-1">
+                        <span className="text-sm font-bold text-kon">最終相続税額</span>
+                        <span className="text-2xl font-bold text-kon">{fmtMan(result.totalTaxAfter)}</span>
                       </div>
                     </div>
                   </div>
@@ -379,7 +379,7 @@ export default function InheritanceTaxPage() {
                                 <td className="py-2 px-2 text-gray-700 font-medium">{heir.label}</td>
                                 <td className="py-2 px-2 text-right text-gray-500">{(heir.share * 100).toFixed(1)}%</td>
                                 <td className="py-2 px-2 text-right">{fmtMan(heir.amount)}</td>
-                                <td className="py-2 px-2 text-right font-medium text-blue-700">
+                                <td className="py-2 px-2 text-right font-medium text-kon">
                                   {heir.taxAfter === 0 && heir.taxBefore > 0 ? (
                                     <span className="text-green-600">
                                       0万円<span className="text-xs text-gray-400 ml-1">(控除済)</span>
@@ -417,7 +417,7 @@ export default function InheritanceTaxPage() {
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="bg-blue-600 text-white">
+                  <tr className="bg-kon text-white">
                     <th className="px-4 py-3 text-left font-semibold">遺産総額</th>
                     <th className="px-4 py-3 text-left font-semibold">相続人</th>
                     <th className="px-4 py-3 text-left font-semibold">基礎控除</th>
@@ -436,7 +436,7 @@ export default function InheritanceTaxPage() {
                       <td className="px-4 py-3 text-gray-800">{estate}</td>
                       <td className="px-4 py-3 text-gray-800">{heirs}</td>
                       <td className="px-4 py-3 text-gray-800">{deduction}</td>
-                      <td className={`px-4 py-3 font-semibold ${isZero ? "text-green-600" : "text-blue-700"}`}>{tax}</td>
+                      <td className={`px-4 py-3 font-semibold ${isZero ? "text-green-600" : "text-kon"}`}>{tax}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -453,25 +453,25 @@ export default function InheritanceTaxPage() {
               相続税は、亡くなった方（被相続人）から財産を受け継いだ際に課税される税金です。
               すべての相続に課税されるわけではなく、基礎控除額を超えた場合のみ申告・納税が必要です。
             </p>
-            <div className="bg-blue-50 rounded-lg p-4">
-              <p className="font-semibold text-blue-800 mb-2">基礎控除の計算式：</p>
-              <p className="text-blue-700 font-mono text-base">3,000万円 + （600万円 × 法定相続人の人数）</p>
-              <p className="text-xs text-blue-600 mt-2">例：配偶者と子供2人の場合<br />3,000万円 + 600万円 × 3人 = 4,800万円<br />→ 遺産総額が4,800万円以下なら相続税はかかりません</p>
+            <div className="bg-gray-50 rounded-lg p-4">
+              <p className="font-semibold text-kon mb-2">基礎控除の計算式：</p>
+              <p className="text-kon font-mono text-base">3,000万円 + （600万円 × 法定相続人の人数）</p>
+              <p className="text-xs text-kon mt-2">例：配偶者と子供2人の場合<br />3,000万円 + 600万円 × 3人 = 4,800万円<br />→ 遺産総額が4,800万円以下なら相続税はかかりません</p>
             </div>
             <div>
               <p className="font-semibold text-gray-800 mb-2">法定相続人と法定相続分：</p>
               <ul className="space-y-1.5 ml-4">
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span>配偶者と子供がいる場合：配偶者1/2、子供で残り1/2を均等分割</span></li>
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span>配偶者のみの場合：配偶者が全額取得</span></li>
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span>子供のみの場合：子供で均等分割</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span>配偶者と子供がいる場合：配偶者1/2、子供で残り1/2を均等分割</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span>配偶者のみの場合：配偶者が全額取得</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span>子供のみの場合：子供で均等分割</span></li>
               </ul>
             </div>
             <div>
               <p className="font-semibold text-gray-800 mb-2">主な相続税の控除：</p>
               <ul className="space-y-1.5 ml-4">
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span><span className="font-medium">配偶者控除：</span>配偶者が取得した財産が1億6,000万円以下なら相続税ゼロ</span></li>
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span><span className="font-medium">未成年者控除：</span>18歳までの年数×10万円</span></li>
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span><span className="font-medium">障害者控除：</span>85歳までの年数×10万円（特別障害者は20万円）</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span><span className="font-medium">配偶者控除：</span>配偶者が取得した財産が1億6,000万円以下なら相続税ゼロ</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span><span className="font-medium">未成年者控除：</span>18歳までの年数×10万円</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span><span className="font-medium">障害者控除：</span>85歳までの年数×10万円（特別障害者は20万円）</span></li>
               </ul>
             </div>
             <div>
@@ -509,7 +509,7 @@ export default function InheritanceTaxPage() {
             ].map((item, i) => (
               <div key={i} className="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
                 <p className="font-semibold text-gray-800 mb-2 flex gap-2">
-                  <span className="text-blue-600 font-bold shrink-0">Q{i + 1}.</span>
+                  <span className="text-kon font-bold shrink-0">Q{i + 1}.</span>
                   {item.q}
                 </p>
                 <p className="text-sm text-gray-600 leading-relaxed flex gap-2">
@@ -534,15 +534,15 @@ export default function InheritanceTaxPage() {
               <Link
                 key={tool.href}
                 href={tool.href}
-                className="flex items-start gap-3 bg-white rounded-xl border border-blue-100 hover:border-blue-400 hover:shadow-md transition-all p-4 group"
+                className="flex items-start gap-3 bg-white rounded-xl border border-gray-200 hover:border-ai hover:shadow-md transition-all p-4 group"
               >
-                <div className="w-9 h-9 rounded-lg bg-blue-50 group-hover:bg-blue-100 flex items-center justify-center shrink-0 transition-colors">
-                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-9 h-9 rounded-lg bg-gray-50 group-hover:bg-ai flex items-center justify-center shrink-0 transition-colors">
+                  <svg className="w-5 h-5 text-kon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 11h.01M12 11h.01M15 11h.01M4 19h16a2 2 0 002-2V7a2 2 0 00-2-2H4a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-blue-700 group-hover:text-blue-800">{tool.label}</p>
+                  <p className="text-sm font-semibold text-kon group-hover:text-ai">{tool.label}</p>
                   <p className="text-xs text-gray-500 mt-0.5">{tool.desc}</p>
                 </div>
               </Link>
@@ -553,15 +553,15 @@ export default function InheritanceTaxPage() {
           <h2 className="text-xl font-bold text-gray-900 mb-4">📝 関連ブログ記事</h2>
           <Link
             href="/blog/souzokuzei-simulation-2026"
-            className="flex items-center gap-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl border border-purple-200 hover:border-purple-400 hover:shadow-md transition-all p-5 group"
+            className="flex items-center gap-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl border border-kon hover:border-ai hover:shadow-md transition-all p-5 group"
           >
-            <div className="w-12 h-12 rounded-lg bg-purple-100 group-hover:bg-purple-200 flex items-center justify-center shrink-0 transition-colors">
-              <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-12 h-12 rounded-lg bg-gray-50 group-hover:bg-ai flex items-center justify-center shrink-0 transition-colors">
+              <svg className="w-6 h-6 text-kon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
               </svg>
             </div>
             <div>
-              <p className="text-sm font-semibold text-purple-700 group-hover:text-purple-800">【2026年最新】相続税シミュレーション完全ガイド｜基礎控除・税率・計算方法</p>
+              <p className="text-sm font-semibold text-kon group-hover:text-ai">【2026年最新】相続税シミュレーション完全ガイド｜基礎控除・税率・計算方法</p>
               <p className="text-xs text-gray-500 mt-1">詳しい解説・計算例・注意点はこちら →</p>
             </div>
           </Link>

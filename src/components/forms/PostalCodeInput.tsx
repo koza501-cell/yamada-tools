@@ -89,7 +89,7 @@ export const PostalCodeInput = forwardRef<HTMLInputElement, PostalCodeInputProps
           {...rest}
         />
         {hint && (
-          <p className="mt-1 text-xs text-amber-600" role="status">
+          <p className="mt-1 text-xs text-kon" role="status">
             {hint}
           </p>
         )}

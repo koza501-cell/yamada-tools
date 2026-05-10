@@ -204,13 +204,13 @@ export default function NenkinSimulatorClient() {
               <div className="grid grid-cols-4 gap-1.5">
                 {RECEIVE_AGES.map(age => (
                   <button key={age} onClick={() => setReceiveAge(age)}
-                    className={`py-2 text-xs rounded-lg font-medium transition-colors ${receiveAge === age ? "bg-blue-600 text-white" : age < 65 ? "bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-700 hover:bg-red-100" : age > 65 ? "bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 border border-green-200 dark:border-green-700 hover:bg-green-100" : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600"}`}>
+                    className={`py-2 text-xs rounded-lg font-medium transition-colors ${receiveAge === age ? "bg-kon text-white" : age < 65 ? "bg-gray-50 dark:bg-danger/20 text-danger dark:text-danger border border-gray-200 dark:border-danger hover:bg-gray-50" : age > 65 ? "bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 border border-green-200 dark:border-green-700 hover:bg-green-100" : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600"}`}>
                     {age}歳{age < 65 ? "↓" : age > 65 ? "↑" : ""}
                   </button>
                 ))}
               </div>
               <div className="flex gap-4 mt-2 text-xs text-gray-400">
-                <span className="text-red-400">↓ 繰上げ（減額）</span>
+                <span className="text-danger">↓ 繰上げ（減額）</span>
                 <span>標準: 65歳</span>
                 <span className="text-green-400">↑ 繰下げ（増額）</span>
               </div>
@@ -238,15 +238,15 @@ export default function NenkinSimulatorClient() {
                   <span>¥{fmt(result.baseTotal)} / 年（¥{fmt(result.age65Monthly)}/月）</span>
                 </div>
                 {receiveAge !== 65 && result.selected && (
-                  <div className={`flex justify-between border-t pt-2 font-semibold ${receiveAge < 65 ? "text-red-600 dark:text-red-400" : "text-green-600 dark:text-green-400"}`}>
+                  <div className={`flex justify-between border-t pt-2 font-semibold ${receiveAge < 65 ? "text-danger dark:text-danger" : "text-green-600 dark:text-green-400"}`}>
                     <span>{receiveAge < 65 ? "繰上げ" : "繰下げ"}後（{result.selected.pct > 0 ? "+" : ""}{result.selected.pct}%）</span>
                     <span>¥{fmt(result.annualAmount)} / 年</span>
                   </div>
                 )}
-                <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3 mt-2">
+                <div className="bg-gray-50 dark:bg-kon/20 rounded-lg p-3 mt-2">
                   <div className="flex justify-between items-center">
                     <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">月額受取見込み</span>
-                    <span className="text-3xl font-bold text-blue-600 dark:text-blue-400">¥{fmt(result.monthlyAmount)}</span>
+                    <span className="text-3xl font-bold text-kon dark:text-gray-300">¥{fmt(result.monthlyAmount)}</span>
                   </div>
                 </div>
                 {result.selected && result.selected.breakEvenAge && (
@@ -273,12 +273,12 @@ export default function NenkinSimulatorClient() {
                   <tbody>
                     {result.comparison.filter(c => [60, 62, 65, 67, 70, 72, 75].includes(c.age)).map(c => (
                       <tr key={c.age}
-                        className={`border-b border-gray-100 dark:border-gray-700/50 ${receiveAge === c.age ? "bg-blue-50 dark:bg-blue-900/20 font-semibold" : ""}`}>
-                        <td className={`py-1.5 pr-2 ${c.age < 65 ? "text-red-600 dark:text-red-400" : c.age > 65 ? "text-green-600 dark:text-green-400" : "text-gray-700 dark:text-gray-300"}`}>
+                        className={`border-b border-gray-100 dark:border-gray-700/50 ${receiveAge === c.age ? "bg-gray-50 dark:bg-kon/20 font-semibold" : ""}`}>
+                        <td className={`py-1.5 pr-2 ${c.age < 65 ? "text-danger dark:text-danger" : c.age > 65 ? "text-green-600 dark:text-green-400" : "text-gray-700 dark:text-gray-300"}`}>
                           {c.age}歳{c.age === 65 ? "★" : ""}
                         </td>
                         <td className="text-right py-1.5 pr-2 text-gray-700 dark:text-gray-300">¥{fmt(c.monthly)}</td>
-                        <td className={`text-right py-1.5 pr-2 ${c.pct < 0 ? "text-red-500" : c.pct > 0 ? "text-green-500" : "text-gray-500"}`}>
+                        <td className={`text-right py-1.5 pr-2 ${c.pct < 0 ? "text-danger" : c.pct > 0 ? "text-green-500" : "text-gray-500"}`}>
                           {c.pct === 0 ? "±0%" : c.pct > 0 ? `+${c.pct}%` : `${c.pct}%`}
                         </td>
                         <td className="text-right py-1.5 text-gray-500 dark:text-gray-400">

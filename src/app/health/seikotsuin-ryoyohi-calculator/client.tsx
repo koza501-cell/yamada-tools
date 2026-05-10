@@ -73,9 +73,9 @@ export default function SeikotsuinRyoyohiClient() {
         <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-1">整骨院・接骨院 療養費目安計算機</h1>
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">施術部位・回数から保険適用時の自己負担額を計算</p>
 
-        <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 mb-6 text-sm">
-          <p className="font-semibold text-blue-800 dark:text-blue-300 mb-1">ℹ️ 保険適用の条件</p>
-          <ul className="text-xs text-blue-700 dark:text-blue-300 space-y-1 list-disc list-inside">
+        <div className="bg-gray-50 dark:bg-kon/20 rounded-xl p-4 mb-6 text-sm">
+          <p className="font-semibold text-kon dark:text-gray-300 mb-1">ℹ️ 保険適用の条件</p>
+          <ul className="text-xs text-kon dark:text-gray-300 space-y-1 list-disc list-inside">
             <li>骨折・脱臼・打撲・捻挫・挫傷の<span className="font-bold">急性の外傷のみ</span>が対象</li>
             <li>慢性的な肩こり・腰痛・疲労は<span className="font-bold">保険適用外</span></li>
             <li>骨折・脱臼は医師の同意が必要（応急処置は不要）</li>
@@ -156,7 +156,7 @@ export default function SeikotsuinRyoyohiClient() {
                   </div>
                   <div className="flex justify-between items-center mt-1">
                     <span className="font-semibold text-gray-700 dark:text-gray-300">自己負担額合計</span>
-                    <span className="font-bold text-2xl text-blue-600 dark:text-blue-400">¥{fmt(result.selfPayMid)}</span>
+                    <span className="font-bold text-2xl text-kon dark:text-gray-300">¥{fmt(result.selfPayMid)}</span>
                   </div>
                 </div>
               </div>

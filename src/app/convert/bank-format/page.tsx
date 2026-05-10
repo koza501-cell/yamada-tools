@@ -116,7 +116,7 @@ export default function Page() {
       {/* Educational Content Section */}
       <section className="max-w-4xl mx-auto px-4 py-12">
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-8">
-          <h2 className="text-2xl font-bold text-kon dark:text-blue-300 mb-6">全銀フォーマットについて</h2>
+          <h2 className="text-2xl font-bold text-kon dark:text-gray-300 mb-6">全銀フォーマットについて</h2>
 
           <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mt-6 mb-3">全銀フォーマットとは？</h3>
           <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
@@ -145,7 +145,7 @@ export default function Page() {
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
-                  <tr className="bg-blue-50 dark:bg-blue-900/20">
+                  <tr className="bg-gray-50 dark:bg-kon/20">
                     <th className="px-4 py-2 text-left border border-gray-200 dark:border-gray-600">レコード種別</th>
                     <th className="px-4 py-2 text-left border border-gray-200 dark:border-gray-600">レコード長</th>
                     <th className="px-4 py-2 text-left border border-gray-200 dark:border-gray-600">内容</th>
@@ -186,8 +186,8 @@ export default function Page() {
                 { title: "金額フォーマットエラー", desc: "金額は半角数字のみ。「,」や「¥」記号は不可。数字のみ入力してください。" },
                 { title: "銀行コード不正", desc: "4桁の正しい銀行コードが必要。銀行名ではなくコード番号で入力してください。" },
               ].map((item, i) => (
-                <div key={i} className="border-l-4 border-amber-400 bg-amber-50 dark:bg-amber-900/20 rounded-r-lg p-4">
-                  <p className="font-bold text-amber-800 dark:text-amber-300 mb-1">{item.title}</p>
+                <div key={i} className="border-l-4 border-gray-200 bg-gray-50 dark:bg-kon/20 rounded-r-lg p-4">
+                  <p className="font-bold text-kon dark:text-amber-300 mb-1">{item.title}</p>
                   <p className="text-sm text-gray-700 dark:text-gray-300">{item.desc}</p>
                 </div>
               ))}
@@ -197,13 +197,13 @@ export default function Page() {
       </section>
       {/* Cornerstone Blog Callout */}
       <section className="max-w-4xl mx-auto px-4 pb-6">
-        <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-xl p-5">
+        <div className="bg-gray-50 dark:bg-kon/20 border border-gray-200 dark:border-kon rounded-xl p-5">
           <div className="flex items-start gap-3">
             <span className="text-2xl flex-shrink-0">📖</span>
             <div className="flex-1">
-              <h3 className="font-bold text-kon dark:text-blue-300 mb-1">全銀フォーマットの作り方を体験談で詳しく</h3>
+              <h3 className="font-bold text-kon dark:text-gray-300 mb-1">全銀フォーマットの作り方を体験談で詳しく</h3>
               <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">経理1年目で初めて全銀データ作成を任された担当者の実体験。専門用語ゼロで、つまずきやすいポイントを30分で解決した方法を解説しています。</p>
-              <a href="/blog/zengin-format-how-to-create" className="inline-flex items-center gap-1 text-sm font-medium text-kon dark:text-blue-300 hover:text-ai">
+              <a href="/blog/zengin-format-how-to-create" className="inline-flex items-center gap-1 text-sm font-medium text-kon dark:text-gray-300 hover:text-ai">
                 記事を読む →
               </a>
             </div>
@@ -213,10 +213,10 @@ export default function Page() {
 
       <section className="max-w-4xl mx-auto px-4 pb-12">
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-8">
-          <h2 className="text-2xl font-bold text-kon dark:text-blue-300 mb-4">対応銀行の例</h2>
+          <h2 className="text-2xl font-bold text-kon dark:text-gray-300 mb-4">対応銀行の例</h2>
           <div className="flex flex-wrap gap-2">
             {["三菱UFJ銀行", "三井住友銀行", "みずほ銀行", "りそな銀行", "ゆうちょ銀行", "楽天銀行", "PayPay銀行", "住信SBIネット銀行", "auじぶん銀行", "GMOあおぞらネット銀行", "UI銀行", "信用金庫・地方銀行"].map((bank, i) => (
-              <span key={i} className="px-3 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 rounded-full text-sm border border-blue-200 dark:border-blue-700">{bank}</span>
+              <span key={i} className="px-3 py-1 bg-gray-50 dark:bg-kon/20 text-kon dark:text-gray-300 rounded-full text-sm border border-gray-200 dark:border-kon">{bank}</span>
             ))}
           </div>
         </div>

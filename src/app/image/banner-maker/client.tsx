@@ -91,7 +91,7 @@ export default function BannerMakerClient({ faq, seoContent }: Props) {
           <p className="text-gray-600 text-lg">SNS・YouTube・ブログ用バナーを簡単作成</p>
           <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
             <span className="bg-green-50 text-green-700 px-3 py-1 rounded-full">✓ 完全無料</span>
-            <span className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full">🔒 ブラウザ内処理</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">🔒 ブラウザ内処理</span>
           </div>
         </header>
 

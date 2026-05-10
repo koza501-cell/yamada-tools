@@ -84,8 +84,8 @@ export default function BankCodesPage() {
           <h1 className="text-3xl font-bold text-kon mb-4">銀行コード一覧</h1>
           <p className="text-gray-600">日本の主要金融機関コード（全銀コード）</p>
         </header>
-        <div className="bg-blue-50 rounded-xl p-4 mb-8">
-          <p className="text-blue-800 text-sm">
+        <div className="bg-gray-50 rounded-xl p-4 mb-8">
+          <p className="text-kon text-sm">
             銀行コードは全銀フォーマットや振込手続きで使用する4桁のコードです。
             <Link href="/document/bank-format" className="underline ml-1">全銀フォーマット作成ツール</Link>
           </p>

@@ -112,7 +112,7 @@ export default function BiyoshitsuClient() {
 
   const laborColor = r.laborRatio < 0.4
     ? "text-emerald-600" : r.laborRatio < 0.5
-    ? "text-yellow-600" : "text-red-600";
+    ? "text-yellow-600" : "text-danger";
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
@@ -132,7 +132,7 @@ export default function BiyoshitsuClient() {
       <div className="flex items-center gap-2 mb-4">
         {staffList.map((staff, i) => (
           <button key={i} onClick={() => setActiveTab(i)}
-            className={"px-3 py-1.5 rounded-lg text-sm font-medium transition-colors " + (activeTab === i ? "bg-pink-500 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200")}>
+            className={"px-3 py-1.5 rounded-lg text-sm font-medium transition-colors " + (activeTab === i ? "bg-kon text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200")}>
             {staff.name}
           </button>
         ))}
@@ -140,7 +140,7 @@ export default function BiyoshitsuClient() {
           <button onClick={addStaff} className="px-3 py-1.5 rounded-lg text-sm bg-gray-100 text-gray-500 hover:bg-gray-200">＋追加</button>
         )}
         {staffList.length > 1 && (
-          <button onClick={() => removeStaff(activeTab)} className="text-xs text-red-400 hover:text-red-600 ml-auto">削除</button>
+          <button onClick={() => removeStaff(activeTab)} className="text-xs text-danger hover:text-danger ml-auto">削除</button>
         )}
       </div>
 
@@ -148,12 +148,12 @@ export default function BiyoshitsuClient() {
         <div className="grid grid-cols-2 gap-3">
           <div>
             <label className="block text-sm text-gray-600 mb-1">スタッフ名</label>
-            <input type="text" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-pink-500 outline-none"
+            <input type="text" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-sakura outline-none"
               value={s.name} onChange={e => updateStaff("name", e.target.value)} />
           </div>
           <div>
             <label className="block text-sm text-gray-600 mb-1">雇用形態</label>
-            <select className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-pink-500 outline-none"
+            <select className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-sakura outline-none"
               value={s.employmentType} onChange={e => updateStaff("employmentType", e.target.value as EmploymentType)}>
               <option value="正社員">正社員</option>
               <option value="業務委託">業務委託</option>
@@ -171,7 +171,7 @@ export default function BiyoshitsuClient() {
           ].map(([label, field, ph]) => (
             <div key={field}>
               <label className="block text-xs text-gray-600 mb-1">{label}（円）</label>
-              <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-pink-500 outline-none"
+              <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-sakura outline-none"
                 value={s[field as keyof StaffData] as string}
                 onChange={e => updateStaff(field as keyof StaffData, e.target.value)}
                 placeholder={ph} />
@@ -183,27 +183,27 @@ export default function BiyoshitsuClient() {
         <div className="grid grid-cols-2 gap-3">
           <div>
             <label className="block text-xs text-gray-600 mb-1">保証給（基本給）（円）</label>
-            <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-pink-500 outline-none"
+            <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-sakura outline-none"
               value={s.baseSalary} onChange={e => updateStaff("baseSalary", e.target.value)} placeholder="200000" />
           </div>
           <div>
             <label className="block text-xs text-gray-600 mb-1">交通費（円）</label>
-            <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-pink-500 outline-none"
+            <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-sakura outline-none"
               value={s.transportation} onChange={e => updateStaff("transportation", e.target.value)} placeholder="10000" />
           </div>
           <div>
             <label className="block text-xs text-gray-600 mb-1">売上歩合率（%）</label>
-            <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-pink-500 outline-none"
+            <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-sakura outline-none"
               value={s.salesRatio} onChange={e => updateStaff("salesRatio", e.target.value)} placeholder="35" />
           </div>
           <div>
             <label className="block text-xs text-gray-600 mb-1">指名歩合率（%）</label>
-            <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-pink-500 outline-none"
+            <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-sakura outline-none"
               value={s.nominationRatio} onChange={e => updateStaff("nominationRatio", e.target.value)} placeholder="5" />
           </div>
           <div>
             <label className="block text-xs text-gray-600 mb-1">店販歩合率（%）</label>
-            <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-pink-500 outline-none"
+            <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-sakura outline-none"
               value={s.shopRatio} onChange={e => updateStaff("shopRatio", e.target.value)} placeholder="10" />
           </div>
         </div>
@@ -223,10 +223,10 @@ export default function BiyoshitsuClient() {
       </div>
 
       <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden mb-6">
-        <div className="bg-pink-500 text-white p-4">
+        <div className="bg-kon text-white p-4">
           <p className="text-sm opacity-80 mb-1">概算手取り</p>
           <p className="text-3xl font-bold">{fmtPrice(Math.round(r.takeHome))}</p>
-          <p className="text-pink-100 text-sm mt-1">総支給額: {fmtPrice(Math.round(r.grossPay))}</p>
+          <p className="text-gin text-sm mt-1">総支給額: {fmtPrice(Math.round(r.grossPay))}</p>
         </div>
         <div className="p-4">
           {[
@@ -243,23 +243,23 @@ export default function BiyoshitsuClient() {
           ].map(([label, val, bold], i) => (
             <div key={i} className="flex justify-between py-2 border-b border-gray-100 last:border-0">
               <span className="text-sm text-gray-600">{label}</span>
-              <span className={"text-sm " + (bold ? "font-bold text-pink-700" : "font-medium")}>{val}</span>
+              <span className={"text-sm " + (bold ? "font-bold text-sakura" : "font-medium")}>{val}</span>
             </div>
           ))}
         </div>
         {r.baseActivated && (
-          <div className="bg-amber-50 border-t border-amber-200 px-4 py-3 text-xs text-amber-700">
+          <div className="bg-gray-50 border-t border-gray-200 px-4 py-3 text-xs text-kon">
             ℹ️ 保証給が発動しています（歩合合計 {fmtPrice(Math.round(r.totalFee))} ＜ 保証給）
           </div>
         )}
         {s.employmentType === "業務委託" && (
-          <div className="bg-blue-50 border-t border-blue-200 px-4 py-3 text-xs text-blue-700">
+          <div className="bg-gray-50 border-t border-gray-200 px-4 py-3 text-xs text-kon">
             📋 業務委託の場合の請求額（消費税10%込み）: <strong>{fmtPrice(Math.round(r.invoiceAmount))}</strong>
           </div>
         )}
       </div>
 
-      <div className={"border rounded-xl p-4 mb-6 " + (r.laborRatio < 0.4 ? "bg-emerald-50 border-emerald-200" : r.laborRatio < 0.5 ? "bg-yellow-50 border-yellow-200" : "bg-red-50 border-red-200")}>
+      <div className={"border rounded-xl p-4 mb-6 " + (r.laborRatio < 0.4 ? "bg-emerald-50 border-emerald-200" : r.laborRatio < 0.5 ? "bg-yellow-50 border-yellow-200" : "bg-gray-50 border-gray-200")}>
         <p className="text-sm font-semibold mb-1">オーナー側の人件費率</p>
         <p className={"text-2xl font-bold " + laborColor}>{(r.laborRatio * 100).toFixed(1)}%</p>
         <p className="text-xs text-gray-600 mt-1">
@@ -283,11 +283,11 @@ export default function BiyoshitsuClient() {
               </thead>
               <tbody>
                 {staffList.map((staff, i) => (
-                  <tr key={i} className={"border-b border-gray-50 " + (i === activeTab ? "bg-pink-50" : "hover:bg-gray-50")}>
+                  <tr key={i} className={"border-b border-gray-50 " + (i === activeTab ? "bg-sakura/30" : "hover:bg-gray-50")}>
                     <td className="py-2 font-medium">{staff.name}</td>
                     <td className="py-2 text-right">{fmtPrice(Math.round(allResults[i].grossPay))}</td>
                     <td className="py-2 text-right">{fmtPrice(Math.round(allResults[i].takeHome))}</td>
-                    <td className={"py-2 text-right font-medium " + (allResults[i].laborRatio < 0.4 ? "text-emerald-600" : allResults[i].laborRatio < 0.5 ? "text-yellow-600" : "text-red-600")}>
+                    <td className={"py-2 text-right font-medium " + (allResults[i].laborRatio < 0.4 ? "text-emerald-600" : allResults[i].laborRatio < 0.5 ? "text-yellow-600" : "text-danger")}>
                       {(allResults[i].laborRatio * 100).toFixed(1)}%
                     </td>
                   </tr>

@@ -60,22 +60,22 @@ export default function AdminLoginPage() {
                 id="token"
                 value={token}
                 onChange={(e) => setToken(e.target.value)}
-                className="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-kon focus:border-transparent"
                 placeholder="••••••••••••••••"
                 required
               />
             </div>
 
             {error && (
-              <div className="bg-red-900/30 border border-red-700 rounded-lg p-3">
-                <p className="text-red-400 text-sm text-center">{error}</p>
+              <div className="bg-danger/30 border border-danger rounded-lg p-3">
+                <p className="text-danger text-sm text-center">{error}</p>
               </div>
             )}
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-800 disabled:cursor-not-allowed text-white font-medium rounded-lg transition-colors"
+              className="w-full py-3 px-4 bg-kon hover:bg-ai disabled:bg-kon disabled:cursor-not-allowed text-white font-medium rounded-lg transition-colors"
             >
               {loading ? "認証中..." : "ログイン"}
             </button>

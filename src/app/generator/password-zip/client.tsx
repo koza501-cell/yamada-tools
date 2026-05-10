@@ -212,7 +212,7 @@ export default function PasswordZipClient() {
                   </div>
                   <button
                     onClick={() => removeFile(file.id)}
-                    className="ml-2 text-red-500 hover:text-red-700"
+                    className="ml-2 text-danger hover:text-danger"
                   >
                     ✕
                   </button>
@@ -245,7 +245,7 @@ export default function PasswordZipClient() {
 
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              パスワード <span className="text-red-500">*</span>
+              パスワード <span className="text-danger">*</span>
             </label>
             <div className="flex gap-2">
               <div className="relative flex-1">
@@ -284,12 +284,12 @@ export default function PasswordZipClient() {
               placeholder="もう一度入力"
               className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-kon/20 focus:border-kon ${
                 confirmPassword && password !== confirmPassword
-                  ? "border-red-300 bg-red-50"
+                  ? "border-gray-200 bg-gray-50"
                   : "border-gray-200"
               }`}
             />
             {confirmPassword && password !== confirmPassword && (
-              <p className="text-sm text-red-500 mt-1">パスワードが一致しません</p>
+              <p className="text-sm text-danger mt-1">パスワードが一致しません</p>
             )}
           </div>
 

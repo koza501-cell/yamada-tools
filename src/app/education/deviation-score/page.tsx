@@ -53,19 +53,19 @@ function getSubjectRating(h: number): string {
 }
 
 function getGaugeColor(h: number): string {
-  if (h < 40) return "bg-red-500";
-  if (h < 50) return "bg-orange-400";
+  if (h < 40) return "bg-danger";
+  if (h < 50) return "bg-kon";
   if (h < 60) return "bg-yellow-400";
   if (h < 70) return "bg-sky-400";
-  return "bg-blue-600";
+  return "bg-kon";
 }
 
 function getHensachiTextColor(h: number): string {
-  if (h < 40) return "text-red-600";
-  if (h < 50) return "text-orange-500";
+  if (h < 40) return "text-danger";
+  if (h < 50) return "text-kon";
   if (h < 60) return "text-yellow-600";
   if (h < 70) return "text-sky-500";
-  return "text-blue-700";
+  return "text-kon";
 }
 
 const FAQ_LIST = [
@@ -111,13 +111,13 @@ const RELATED_TOOLS = [
 ];
 
 const UNIVERSITY_ROWS = [
-  { range: "偏差値75以上", label: "東京大学・京都大学レベル", color: "bg-blue-700" },
-  { range: "偏差値70〜75", label: "一橋・東工大・医学部レベル", color: "bg-blue-500" },
+  { range: "偏差値75以上", label: "東京大学・京都大学レベル", color: "bg-kon" },
+  { range: "偏差値70〜75", label: "一橋・東工大・医学部レベル", color: "bg-kon" },
   { range: "偏差値65〜70", label: "早慶・旧帝大レベル", color: "bg-sky-500" },
   { range: "偏差値60〜65", label: "MARCH・関関同立レベル", color: "bg-sky-400" },
   { range: "偏差値55〜60", label: "日東駒専・産近甲龍レベル", color: "bg-yellow-400" },
-  { range: "偏差値50〜55", label: "中堅私立大学レベル", color: "bg-orange-400" },
-  { range: "偏差値50以下", label: "基礎固めが必要なレベル", color: "bg-red-400" },
+  { range: "偏差値50〜55", label: "中堅私立大学レベル", color: "bg-kon" },
+  { range: "偏差値50以下", label: "基礎固めが必要なレベル", color: "bg-danger" },
 ];
 
 interface SubjectRow {
@@ -237,11 +237,11 @@ export default function DeviationScorePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-10 px-4">
+      <div className="bg-gradient-to-br from-slate-900 to-blue-800 text-white py-10 px-4">
         <div className="max-w-3xl mx-auto">
-          <p className="text-blue-200 text-sm mb-1">教育・学習</p>
+          <p className="text-gin text-sm mb-1">教育・学習</p>
           <h1 className="text-2xl md:text-3xl font-bold mb-2">偏差値 計算機</h1>
-          <p className="text-blue-100 text-sm">
+          <p className="text-gin text-sm">
             点数から偏差値を瞬時に計算。上位%・クラス順位・大学合格難易度も表示。偏差値から必要点数の逆算・複数科目比較も対応。
           </p>
         </div>
@@ -252,7 +252,7 @@ export default function DeviationScorePage() {
         <div className="flex bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
           <button
             className={`flex-1 py-3 text-sm font-semibold transition-colors ${
-              mode === "score" ? "bg-blue-600 text-white" : "text-gray-600 hover:bg-gray-50"
+              mode === "score" ? "bg-kon text-white" : "text-gray-600 hover:bg-gray-50"
             }`}
             onClick={() => { setMode("score"); setResult(null); setError(""); }}
           >
@@ -260,7 +260,7 @@ export default function DeviationScorePage() {
           </button>
           <button
             className={`flex-1 py-3 text-sm font-semibold transition-colors ${
-              mode === "reverse" ? "bg-blue-600 text-white" : "text-gray-600 hover:bg-gray-50"
+              mode === "reverse" ? "bg-kon text-white" : "text-gray-600 hover:bg-gray-50"
             }`}
             onClick={() => { setMode("reverse"); setResult(null); setError(""); }}
           >
@@ -276,7 +276,7 @@ export default function DeviationScorePage() {
                 <button
                   onClick={() => setInputMode(inputMode === "manual" ? "auto" : "manual")}
                   className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                    inputMode === "auto" ? "bg-blue-600" : "bg-gray-300"
+                    inputMode === "auto" ? "bg-kon" : "bg-gray-300"
                   }`}
                 >
                   <span
@@ -295,7 +295,7 @@ export default function DeviationScorePage() {
                   value={score}
                   onChange={(e) => setScore(e.target.value)}
                   placeholder="例: 72"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                 />
               </div>
 
@@ -309,7 +309,7 @@ export default function DeviationScorePage() {
                     onChange={(e) => setScoreList(e.target.value)}
                     placeholder="例: 85, 72, 63, 91, 55, 78..."
                     rows={4}
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon resize-none"
                   />
                 </div>
               ) : (
@@ -321,7 +321,7 @@ export default function DeviationScorePage() {
                       value={mean}
                       onChange={(e) => setMean(e.target.value)}
                       placeholder="例: 60"
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                     />
                   </div>
                   <div>
@@ -331,7 +331,7 @@ export default function DeviationScorePage() {
                       value={sd}
                       onChange={(e) => setSd(e.target.value)}
                       placeholder="例: 15"
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                     />
                   </div>
                 </div>
@@ -346,7 +346,7 @@ export default function DeviationScorePage() {
                   value={targetH}
                   onChange={(e) => setTargetH(e.target.value)}
                   placeholder="例: 65"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                 />
               </div>
               <div className="grid grid-cols-2 gap-3">
@@ -357,7 +357,7 @@ export default function DeviationScorePage() {
                     value={mean2}
                     onChange={(e) => setMean2(e.target.value)}
                     placeholder="例: 60"
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                   />
                 </div>
                 <div>
@@ -367,7 +367,7 @@ export default function DeviationScorePage() {
                     value={sd2}
                     onChange={(e) => setSd2(e.target.value)}
                     placeholder="例: 15"
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                   />
                 </div>
               </div>
@@ -378,7 +378,7 @@ export default function DeviationScorePage() {
                   value={currentScore2}
                   onChange={(e) => setCurrentScore2(e.target.value)}
                   placeholder="例: 55"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                 />
               </div>
             </>
@@ -391,7 +391,7 @@ export default function DeviationScorePage() {
               value={classSize}
               onChange={(e) => setClassSize(e.target.value)}
               placeholder="40"
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
             />
           </div>
         </div>
@@ -412,13 +412,13 @@ export default function DeviationScorePage() {
                 {subjects.map((s, i) => (
                   <div key={i} className="grid grid-cols-4 gap-2">
                     <input type="text" value={s.name} onChange={(e) => updateSubject(i, "name", e.target.value)}
-                      placeholder="科目名" className="border border-gray-300 rounded-lg px-2 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-blue-500" />
+                      placeholder="科目名" className="border border-gray-300 rounded-lg px-2 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-kon" />
                     <input type="number" value={s.score} onChange={(e) => updateSubject(i, "score", e.target.value)}
-                      placeholder="点数" className="border border-gray-300 rounded-lg px-2 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-blue-500" />
+                      placeholder="点数" className="border border-gray-300 rounded-lg px-2 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-kon" />
                     <input type="number" value={s.mean} onChange={(e) => updateSubject(i, "mean", e.target.value)}
-                      placeholder="平均点" className="border border-gray-300 rounded-lg px-2 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-blue-500" />
+                      placeholder="平均点" className="border border-gray-300 rounded-lg px-2 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-kon" />
                     <input type="number" value={s.sd} onChange={(e) => updateSubject(i, "sd", e.target.value)}
-                      placeholder="標準偏差" className="border border-gray-300 rounded-lg px-2 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-blue-500" />
+                      placeholder="標準偏差" className="border border-gray-300 rounded-lg px-2 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-kon" />
                   </div>
                 ))}
               </div>
@@ -427,12 +427,12 @@ export default function DeviationScorePage() {
         )}
 
         {error && (
-          <div className="bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-sm text-red-700">{error}</div>
+          <div className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-danger">{error}</div>
         )}
 
         <button
           onClick={calculate}
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl transition-colors text-base"
+          className="w-full bg-kon hover:bg-ai text-white font-bold py-3.5 rounded-xl transition-colors text-base"
         >
           計算する
         </button>
@@ -449,7 +449,7 @@ export default function DeviationScorePage() {
                 {result.hensachi.toFixed(1)}
               </p>
               <div className="mb-2">
-                <div className="relative h-6 rounded-full bg-gradient-to-r from-red-400 via-yellow-300 to-blue-600 overflow-hidden">
+                <div className="relative h-6 rounded-full bg-gradient-to-r from-red-400 via-yellow-300 to-kon overflow-hidden">
                   <div
                     className="absolute top-0 bottom-0 w-1 bg-gray-900 rounded"
                     style={{ left: `calc(${gaugePercent}% - 2px)` }}
@@ -502,15 +502,15 @@ export default function DeviationScorePage() {
 
             {/* Mode 2: reverse result */}
             {mode === "reverse" && result.reverseScore !== undefined && (
-              <div className="bg-blue-50 border border-blue-200 rounded-xl p-5">
-                <p className="text-sm text-blue-700 font-semibold mb-2">
+              <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
+                <p className="text-sm text-kon font-semibold mb-2">
                   目標偏差値 {result.hensachi.toFixed(1)} を達成するには
                 </p>
-                <p className="text-3xl font-extrabold text-blue-800 mb-1">
+                <p className="text-3xl font-extrabold text-kon mb-1">
                   {result.reverseScore.toFixed(1)}点 が必要
                 </p>
                 {result.currentScore !== undefined && result.currentScore > 0 && (
-                  <p className="text-sm text-blue-600">
+                  <p className="text-sm text-kon">
                     現在の {result.currentScore}点 から{" "}
                     <span className="font-bold">
                       {(result.reverseScore - result.currentScore) >= 0
@@ -570,12 +570,12 @@ export default function DeviationScorePage() {
                   return (
                     <div
                       key={row.label}
-                      className={`flex items-center gap-2 rounded-lg px-3 py-1.5 ${active ? "bg-blue-50 border border-blue-200" : ""}`}
+                      className={`flex items-center gap-2 rounded-lg px-3 py-1.5 ${active ? "bg-gray-50 border border-gray-200" : ""}`}
                     >
                       <span className={`inline-block w-2.5 h-2.5 rounded-full ${row.color}`} />
                       <span className="text-gray-500 w-28 shrink-0">{row.range}</span>
-                      <span className={`font-medium ${active ? "text-blue-700" : "text-gray-700"}`}>{row.label}</span>
-                      {active && <span className="ml-auto text-blue-600 font-bold">← あなた</span>}
+                      <span className={`font-medium ${active ? "text-kon" : "text-gray-700"}`}>{row.label}</span>
+                      {active && <span className="ml-auto text-kon font-bold">← あなた</span>}
                     </div>
                   );
                 })}
@@ -655,7 +655,7 @@ export default function DeviationScorePage() {
           <h2 className="font-bold text-gray-800 mb-3 text-sm">あわせて使えるツール</h2>
           <div className="grid grid-cols-2 gap-2">
             {RELATED_TOOLS.map((t) => (
-              <a key={t.href} href={t.href} className="text-blue-600 hover:text-blue-800 text-sm hover:underline">
+              <a key={t.href} href={t.href} className="text-kon hover:text-ai text-sm hover:underline">
                 {t.label}
               </a>
             ))}

@@ -65,7 +65,7 @@ export default function ManageBlogsPage() {
     return (
       <div className="min-h-screen bg-gray-50 p-8">
         <div className="max-w-7xl mx-auto text-center">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-kon"></div>
           <p className="mt-4 text-gray-600">読み込み中...</p>
         </div>
       </div>
@@ -84,7 +84,7 @@ export default function ManageBlogsPage() {
           <h2 className="text-lg font-semibold text-gray-900 mb-4">カテゴリーでフィルター</h2>
           <div className="flex flex-wrap gap-2">
             {categories.map((category) => (
-              <button key={category} onClick={() => setFilter(category)} className={`px-4 py-2 rounded-lg font-medium transition-colors ${filter === category ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>
+              <button key={category} onClick={() => setFilter(category)} className={`px-4 py-2 rounded-lg font-medium transition-colors ${filter === category ? 'bg-kon text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>
                 {category === 'all' ? 'すべて' : category} ({getCategoryCount(category)})
               </button>
             ))}
@@ -112,7 +112,7 @@ export default function ManageBlogsPage() {
                       <div className="text-sm text-gray-500">{blog.slug}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">{blog.category}</span>
+                      <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-50 text-kon">{blog.category}</span>
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex flex-wrap gap-1">
@@ -125,9 +125,9 @@ export default function ManageBlogsPage() {
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{blog.publishDate}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{blog.readTime}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-3">
-                      <a href={`/blog/${blog.slug}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-900">表示</a>
+                      <a href={`/blog/${blog.slug}`} target="_blank" rel="noopener noreferrer" className="text-kon hover:text-ai">表示</a>
                       <Link href={`/admin/blog/edit/${blog.slug}`} className="text-green-600 hover:text-green-900">編集</Link>
-                      <button onClick={() => setDeleteConfirm(blog.slug)} className="text-red-600 hover:text-red-900">削除</button>
+                      <button onClick={() => setDeleteConfirm(blog.slug)} className="text-danger hover:text-danger">削除</button>
                     </td>
                   </tr>
                 ))}
@@ -148,7 +148,7 @@ export default function ManageBlogsPage() {
               <p className="text-gray-600 mb-6">このブログを削除すると、元に戻せません。本当に削除しますか？</p>
               <div className="flex justify-end space-x-3">
                 <button onClick={() => setDeleteConfirm(null)} className="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300">キャンセル</button>
-                <button onClick={() => handleDelete(deleteConfirm)} className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">削除する</button>
+                <button onClick={() => handleDelete(deleteConfirm)} className="px-4 py-2 bg-danger text-white rounded-lg hover:bg-danger">削除する</button>
               </div>
             </div>
           </div>

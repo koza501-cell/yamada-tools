@@ -130,7 +130,7 @@ export default function RegisterPage() {
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                メールアドレス <span className="text-red-500">*</span>
+                メールアドレス <span className="text-danger">*</span>
               </label>
               <input
                 type="email"
@@ -144,7 +144,7 @@ export default function RegisterPage() {
 
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                パスワード <span className="text-red-500">*</span>
+                パスワード <span className="text-danger">*</span>
               </label>
               <input
                 type="password"
@@ -160,7 +160,7 @@ export default function RegisterPage() {
 
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                パスワード（確認） <span className="text-red-500">*</span>
+                パスワード（確認） <span className="text-danger">*</span>
               </label>
               <input
                 type="password"
@@ -207,8 +207,8 @@ export default function RegisterPage() {
             </div>
 
             {error && (
-              <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
-                <p className="text-red-600 text-sm">{error}</p>
+              <div className="mb-4 p-3 bg-gray-50 border border-gray-200 rounded-lg">
+                <p className="text-danger text-sm">{error}</p>
               </div>
             )}
 

@@ -112,9 +112,9 @@ function fmt1(val: number): string {
 
 function getOtokuMessage(limit: number): { text: string; color: string } {
   if (limit < 1) return { text: "控除額は少額です。ワンストップ特例が便利です。", color: "text-gray-600" };
-  if (limit < 5) return { text: "ふるさと納税を活用するとお得です！", color: "text-blue-600" };
+  if (limit < 5) return { text: "ふるさと納税を活用するとお得です！", color: "text-kon" };
   if (limit < 10) return { text: "積極的に活用できる金額です！", color: "text-green-600" };
-  return { text: "かなりの控除が見込めます！複数自治体への寄附を検討しましょう。", color: "text-orange-600" };
+  return { text: "かなりの控除が見込めます！複数自治体への寄附を検討しましょう。", color: "text-kon" };
 }
 
 const schema = {
@@ -216,11 +216,11 @@ export default function FurusatoNozeiCalculatorPage() {
   }
 
   const inputClass =
-    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500";
+    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon";
   const labelClass = "block text-sm font-medium text-gray-700 mb-1";
   const toggleClass = (active: boolean) =>
     `flex-1 py-2 text-sm font-medium rounded-md transition-colors ${
-      active ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+      active ? "bg-kon text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
     }`;
 
   const faqItems = [
@@ -244,10 +244,10 @@ export default function FurusatoNozeiCalculatorPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      <div className="bg-gradient-to-r from-blue-700 to-blue-500 text-white py-10 px-4">
+      <div className="bg-gradient-to-r from-blue-700 to-kon text-white py-10 px-4">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-2xl md:text-3xl font-bold mb-2">ふるさと納税 控除上限額計算機</h1>
-          <p className="text-blue-100 text-sm md:text-base">
+          <p className="text-gin text-sm md:text-base">
             年収・家族構成から控除上限額を自動計算。所得税還付・住民税控除の内訳も表示（2024年度税制）
           </p>
         </div>
@@ -372,7 +372,7 @@ export default function FurusatoNozeiCalculatorPage() {
               </button>
               <button
                 onClick={handleCalculate}
-                className="flex-1 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-bold hover:bg-blue-700 transition-colors"
+                className="flex-1 py-2.5 rounded-lg bg-kon text-white text-sm font-bold hover:bg-ai transition-colors"
               >
                 計算する
               </button>
@@ -382,13 +382,13 @@ export default function FurusatoNozeiCalculatorPage() {
           <div className="space-y-4">
             {result ? (
               <>
-                <div className="bg-blue-50 rounded-xl border border-blue-200 p-6 text-center">
-                  <p className="text-sm text-blue-600 font-medium mb-1">ふるさと納税の上限目安</p>
-                  <p className="text-4xl font-bold text-blue-800 mb-1">
+                <div className="bg-gray-50 rounded-xl border border-gray-200 p-6 text-center">
+                  <p className="text-sm text-kon font-medium mb-1">ふるさと納税の上限目安</p>
+                  <p className="text-4xl font-bold text-kon mb-1">
                     {fmt1(result.limitAmount)}
                     <span className="text-lg font-normal ml-1">万円</span>
                   </p>
-                  <p className="text-sm text-blue-600">
+                  <p className="text-sm text-kon">
                     実質自己負担：<span className="font-bold">2,000円</span>
                   </p>
                 </div>
@@ -408,7 +408,7 @@ export default function FurusatoNozeiCalculatorPage() {
                     <tbody>
                       <tr className="border-b">
                         <td className="py-2 text-gray-600">所得税還付額</td>
-                        <td className="py-2 text-right font-medium text-blue-700">
+                        <td className="py-2 text-right font-medium text-kon">
                           {fmt1(result.incomeTaxRefund)} 万円
                         </td>
                       </tr>
@@ -424,9 +424,9 @@ export default function FurusatoNozeiCalculatorPage() {
                           {fmt1(result.residentTaxSpecial)} 万円
                         </td>
                       </tr>
-                      <tr className="bg-blue-50">
-                        <td className="py-2 font-bold text-blue-800 pl-2">合計控除額</td>
-                        <td className="py-2 text-right font-bold text-blue-800">
+                      <tr className="bg-gray-50">
+                        <td className="py-2 font-bold text-kon pl-2">合計控除額</td>
+                        <td className="py-2 text-right font-bold text-kon">
                           {fmt1(result.totalDeductionAmount)} 万円
                         </td>
                       </tr>
@@ -446,7 +446,7 @@ export default function FurusatoNozeiCalculatorPage() {
                       </tr>
                       <tr className="border-b bg-gray-50">
                         <td className="py-1.5 text-gray-600">給与所得控除</td>
-                        <td className="py-1.5 text-right text-red-600">
+                        <td className="py-1.5 text-right text-danger">
                           − {fmt1(result.salaryCut)} 万円
                         </td>
                       </tr>
@@ -456,7 +456,7 @@ export default function FurusatoNozeiCalculatorPage() {
                       </tr>
                       <tr className="border-b bg-gray-50">
                         <td className="py-1.5 text-gray-600 pl-3">所得控除合計</td>
-                        <td className="py-1.5 text-right text-red-600">
+                        <td className="py-1.5 text-right text-danger">
                           − {fmt1(result.totalDeductions)} 万円
                         </td>
                       </tr>
@@ -501,7 +501,7 @@ export default function FurusatoNozeiCalculatorPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>
-                <tr className="bg-blue-600 text-white">
+                <tr className="bg-kon text-white">
                   <th className="text-left px-3 py-2 rounded-tl-lg">年収</th>
                   <th className="text-left px-3 py-2">家族構成</th>
                   <th className="text-right px-3 py-2">寄附上限目安</th>
@@ -520,7 +520,7 @@ export default function FurusatoNozeiCalculatorPage() {
                   <tr key={i} className={i % 2 === 0 ? "bg-gray-50" : "bg-white"}>
                     <td className="px-3 py-2 font-medium text-gray-800">{row.income}</td>
                     <td className="px-3 py-2 text-gray-600">{row.family}</td>
-                    <td className="px-3 py-2 text-right font-bold text-blue-700">{row.limit}</td>
+                    <td className="px-3 py-2 text-right font-bold text-kon">{row.limit}</td>
                     <td className="px-3 py-2 text-right text-green-600 font-medium">{row.burden}</td>
                   </tr>
                 ))}
@@ -541,11 +541,11 @@ export default function FurusatoNozeiCalculatorPage() {
             <div>
               <p className="font-semibold text-gray-800 mb-2">控除の仕組み：</p>
               <ul className="space-y-1.5 pl-2">
-                <li className="flex gap-2"><span className="text-blue-500 shrink-0">・</span><span><strong>所得税還付</strong>：寄附金額（-2,000円）×所得税率分が還付</span></li>
-                <li className="flex gap-2"><span className="text-blue-500 shrink-0">・</span><span><strong>住民税控除（基本分）</strong>：寄附金額（-2,000円）×10%が翌年の住民税から控除</span></li>
-                <li className="flex gap-2"><span className="text-blue-500 shrink-0">・</span><span><strong>住民税控除（特例分）</strong>：残りの全額が住民税から控除</span></li>
+                <li className="flex gap-2"><span className="text-kon shrink-0">・</span><span><strong>所得税還付</strong>：寄附金額（-2,000円）×所得税率分が還付</span></li>
+                <li className="flex gap-2"><span className="text-kon shrink-0">・</span><span><strong>住民税控除（基本分）</strong>：寄附金額（-2,000円）×10%が翌年の住民税から控除</span></li>
+                <li className="flex gap-2"><span className="text-kon shrink-0">・</span><span><strong>住民税控除（特例分）</strong>：残りの全額が住民税から控除</span></li>
               </ul>
-              <div className="mt-2 bg-blue-50 rounded-lg p-3 text-blue-700 text-xs">
+              <div className="mt-2 bg-gray-50 rounded-lg p-3 text-kon text-xs">
                 → 合計で寄附金額-2,000円がほぼ全額戻ってきます
               </div>
             </div>
@@ -562,9 +562,9 @@ export default function FurusatoNozeiCalculatorPage() {
                   <p className="font-semibold text-green-800 mb-1">【ワンストップ特例】</p>
                   <p className="text-xs text-green-700 leading-relaxed">確定申告不要。寄附先が5自治体以内で給与所得者のみ利用可。寄附した自治体に申請書を郵送するだけで手続き完了。</p>
                 </div>
-                <div className="bg-orange-50 rounded-lg p-3 border border-orange-100">
-                  <p className="font-semibold text-orange-800 mb-1">【確定申告】</p>
-                  <p className="text-xs text-orange-700 leading-relaxed">寄附先が6自治体以上の場合や、自営業者・医療費控除を受ける方は確定申告が必要。控除効果は同じですが所得税還付と住民税控除に分かれて戻ってきます。</p>
+                <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
+                  <p className="font-semibold text-kon mb-1">【確定申告】</p>
+                  <p className="text-xs text-kon leading-relaxed">寄附先が6自治体以上の場合や、自営業者・医療費控除を受ける方は確定申告が必要。控除効果は同じですが所得税還付と住民税控除に分かれて戻ってきます。</p>
                 </div>
               </div>
             </div>
@@ -604,7 +604,7 @@ export default function FurusatoNozeiCalculatorPage() {
             ].map((item, i) => (
               <div key={i} className="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
                 <p className="font-semibold text-gray-800 mb-2 flex gap-2">
-                  <span className="text-blue-600 font-bold shrink-0">Q{i + 1}.</span>{item.q}
+                  <span className="text-kon font-bold shrink-0">Q{i + 1}.</span>{item.q}
                 </p>
                 <p className="text-sm text-gray-600 leading-relaxed flex gap-2">
                   <span className="text-green-600 font-bold shrink-0">A.</span>{item.a}
@@ -643,15 +643,15 @@ export default function FurusatoNozeiCalculatorPage() {
               <Link
                 key={tool.href}
                 href={tool.href}
-                className="flex items-start gap-3 bg-white rounded-xl border border-blue-100 hover:border-blue-400 hover:shadow-md transition-all p-4 group"
+                className="flex items-start gap-3 bg-white rounded-xl border border-gray-200 hover:border-ai hover:shadow-md transition-all p-4 group"
               >
-                <div className="w-9 h-9 rounded-lg bg-blue-50 group-hover:bg-blue-100 flex items-center justify-center shrink-0 transition-colors">
-                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-9 h-9 rounded-lg bg-gray-50 group-hover:bg-ai flex items-center justify-center shrink-0 transition-colors">
+                  <svg className="w-5 h-5 text-kon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 11h.01M12 11h.01M15 11h.01M4 19h16a2 2 0 002-2V7a2 2 0 00-2-2H4a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-blue-700 group-hover:text-blue-800">{tool.label}</p>
+                  <p className="text-sm font-semibold text-kon group-hover:text-ai">{tool.label}</p>
                   <p className="text-xs text-gray-500 mt-0.5">{tool.desc}</p>
                 </div>
               </Link>

@@ -201,7 +201,7 @@ export default function UnchinClient() {
                       <input type="checkbox" checked={val} onChange={e => set(e.target.checked)} className="w-4 h-4 rounded" />
                       <label className="text-sm text-gray-600 dark:text-gray-400">{lbl}</label>
                     </div>
-                    <span className="text-xs text-orange-600 dark:text-orange-400 font-medium">{pct}</span>
+                    <span className="text-xs text-kon dark:text-gray-300 font-medium">{pct}</span>
                   </div>
                 ))}
               </div>
@@ -224,7 +224,7 @@ export default function UnchinClient() {
             <button
               type="button"
               onClick={handleCalculate}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl shadow-sm transition"
+              className="w-full bg-kon hover:bg-ai text-white font-semibold py-3 rounded-xl shadow-sm transition"
             >
               運賃を計算する
             </button>
@@ -233,13 +233,13 @@ export default function UnchinClient() {
           <div className="space-y-4">
             {result ? (
               <>
-                <div className="bg-blue-50 dark:bg-blue-900/30 rounded-xl p-5 shadow-sm">
-                  <h2 className="font-semibold text-blue-800 dark:text-blue-300 mb-3">📊 運賃見積もり</h2>
+                <div className="bg-gray-50 dark:bg-kon/30 rounded-xl p-5 shadow-sm">
+                  <h2 className="font-semibold text-kon dark:text-gray-300 mb-3">📊 運賃見積もり</h2>
                   <div className="text-center mb-4">
-                    <div className="text-4xl font-bold text-blue-700 dark:text-blue-300">¥{fmt(result.total)}</div>
+                    <div className="text-4xl font-bold text-kon dark:text-gray-300">¥{fmt(result.total)}</div>
                     <div className="text-sm text-gray-500 dark:text-gray-400 mt-1">合計見積運賃</div>
                     <div className={`inline-block mt-2 px-3 py-1 rounded-full text-sm font-medium ${
-                      result.market === "安め" ? "bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300" :
+                      result.market === "安め" ? "bg-gray-50 text-danger dark:bg-danger/40 dark:text-gin" :
                       result.market === "高め" ? "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-300" :
                       "bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300"
                     }`}>
@@ -249,7 +249,7 @@ export default function UnchinClient() {
                   <table className="w-full text-sm">
                     <tbody>
                       {BREAKDOWNS.map(([l, v]) => (
-                        <tr key={l} className="border-b border-blue-100 dark:border-blue-800">
+                        <tr key={l} className="border-b border-gray-200 dark:border-kon">
                           <td className="py-1.5 text-gray-600 dark:text-gray-400">{l}</td>
                           <td className="py-1.5 text-right font-medium dark:text-white">¥{fmt(v)}</td>
                         </tr>
@@ -268,14 +268,14 @@ export default function UnchinClient() {
                     ].map(([l, v]) => (
                       <div key={String(l)} className="flex justify-between">
                         <span className="text-gray-600 dark:text-gray-400">{String(l)}</span>
-                        <span className={`font-medium ${Number(v) < 0 ? "text-red-600 dark:text-red-400" : "dark:text-white"}`}>
+                        <span className={`font-medium ${Number(v) < 0 ? "text-danger dark:text-danger" : "dark:text-white"}`}>
                           {Number(v) < 0 ? "▲" : ""}¥{fmt(Math.abs(Number(v)))}
                         </span>
                       </div>
                     ))}
                     <div className="border-t border-gray-200 dark:border-gray-700 pt-2 flex justify-between">
                       <span className="font-semibold text-gray-700 dark:text-gray-300">1配送あたり手取り目安</span>
-                      <span className={`font-bold text-lg ${result.netIncome >= 0 ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}`}>
+                      <span className={`font-bold text-lg ${result.netIncome >= 0 ? "text-green-600 dark:text-green-400" : "text-danger dark:text-danger"}`}>
                         ¥{fmt(result.netIncome)}
                       </span>
                     </div>

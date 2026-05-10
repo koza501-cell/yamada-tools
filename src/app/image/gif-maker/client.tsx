@@ -109,7 +109,7 @@ export default function GifMakerClient({
           <p className="text-gray-600 text-lg">複数の画像からGIFアニメーションを作成</p>
           <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
             <span className="bg-green-50 text-green-700 px-3 py-1 rounded-full">✓ 完全無料</span>
-            <span className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full">🔒 ブラウザ内処理</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">🔒 ブラウザ内処理</span>
           </div>
         </header>
 
@@ -130,13 +130,13 @@ export default function GifMakerClient({
                   <div key={i} className="relative group">
                     <img src={src} alt={`Frame ${i+1}`} className="w-full aspect-square object-cover rounded-lg border" />
                     <button onClick={() => removeFrame(i)}
-                      className="absolute -top-1 -right-1 bg-red-500 text-white w-5 h-5 rounded-full text-xs opacity-0 group-hover:opacity-100 transition">×</button>
+                      className="absolute -top-1 -right-1 bg-danger text-white w-5 h-5 rounded-full text-xs opacity-0 group-hover:opacity-100 transition">×</button>
                     <span className="absolute bottom-0 left-0 bg-black/50 text-white text-xs px-1 rounded-br-lg">{i+1}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="bg-blue-50 rounded-xl p-4 mb-4">
+              <div className="bg-gray-50 rounded-xl p-4 mb-4">
                 <div className="flex items-center justify-between mb-2">
                   <label className="font-bold text-sm">フレーム間隔</label>
                   <span className="font-bold">{delay}ms ({(delay/1000).toFixed(1)}秒)</span>
@@ -165,9 +165,9 @@ export default function GifMakerClient({
             </div>
           )}
 
-          {error && <div className="bg-red-50 border border-red-200 text-red-600 rounded-xl p-3 mt-4 text-sm">⚠️ {error}</div>}
+          {error && <div className="bg-gray-50 border border-gray-200 text-danger rounded-xl p-3 mt-4 text-sm">⚠️ {error}</div>}
 
-          <button onClick={reset} className="w-full mt-4 py-2 text-gray-500 hover:text-red-500 text-sm">🗑 リセット</button>
+          <button onClick={reset} className="w-full mt-4 py-2 text-gray-500 hover:text-danger text-sm">🗑 リセット</button>
         </section>
 
         {seoContent && (

@@ -161,8 +161,8 @@ export default function HojinkaClient() {
                   </tr>
                   <tr className="border-b border-gray-200 dark:border-gray-700 font-semibold">
                     <td className="py-2 text-gray-700 dark:text-gray-300">税負担合計</td>
-                    <td className="py-2 text-right text-red-600 dark:text-red-400">{fmtM(calc.soloTax)}</td>
-                    <td className="py-2 text-right text-blue-600 dark:text-blue-400">{fmtM(calc.corpTotalBurden)}</td>
+                    <td className="py-2 text-right text-danger dark:text-danger">{fmtM(calc.soloTax)}</td>
+                    <td className="py-2 text-right text-kon dark:text-gray-300">{fmtM(calc.corpTotalBurden)}</td>
                   </tr>
                   <tr>
                     <td className="py-2 text-gray-700 dark:text-gray-300 font-semibold">手取り（概算）</td>
@@ -192,7 +192,7 @@ export default function HojinkaClient() {
                 <p>・所得分散（配偶者・家族への役員報酬）で節税</p>
                 <p>・法人税率（〜34%実効）は個人最高税率（55%）より低い</p>
                 <p>・経費の範囲が広がる（法人カード・出張費等）</p>
-                <p className="font-semibold text-red-500 mt-2">デメリット・注意点</p>
+                <p className="font-semibold text-danger mt-2">デメリット・注意点</p>
                 <p>・設立コスト: 合同会社約6万円〜 / 株式会社約20万円〜</p>
                 <p>・役員報酬は原則年1回しか変更不可</p>
                 <p>・社会保険強制加入（コスト増加）</p>

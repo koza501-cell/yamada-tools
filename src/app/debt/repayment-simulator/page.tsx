@@ -372,7 +372,7 @@ export default function DebtRepaymentSimulator() {
   const completionYears = result ? result.completionMonths / 12 : 0;
 
   const inputClass =
-    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500";
+    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon";
   const labelClass = "block text-xs font-medium text-gray-600 mb-1";
 
   const faqs = [
@@ -431,7 +431,7 @@ export default function DebtRepaymentSimulator() {
                 {debts.length > 1 && (
                   <button
                     onClick={() => removeDebt(debt.id)}
-                    className="text-xs text-red-500 hover:text-red-700"
+                    className="text-xs text-danger hover:text-danger"
                   >
                     削除
                   </button>
@@ -496,7 +496,7 @@ export default function DebtRepaymentSimulator() {
         {debts.length < 5 && (
           <button
             onClick={addDebt}
-            className="mt-4 w-full py-2 border-2 border-dashed border-gray-300 rounded-lg text-sm text-gray-500 hover:border-blue-400 hover:text-blue-600 transition-colors"
+            className="mt-4 w-full py-2 border-2 border-dashed border-gray-300 rounded-lg text-sm text-gray-500 hover:border-ai hover:text-ai transition-colors"
           >
             ＋ 借金を追加（最大5件）
           </button>
@@ -542,7 +542,7 @@ export default function DebtRepaymentSimulator() {
                 onClick={() => setPriority("avalanche")}
                 className={`flex-1 py-2 text-xs font-medium rounded-md transition-colors ${
                   priority === "avalanche"
-                    ? "bg-blue-600 text-white"
+                    ? "bg-kon text-white"
                     : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                 }`}
               >
@@ -554,7 +554,7 @@ export default function DebtRepaymentSimulator() {
                 onClick={() => setPriority("snowball")}
                 className={`flex-1 py-2 text-xs font-medium rounded-md transition-colors ${
                   priority === "snowball"
-                    ? "bg-blue-600 text-white"
+                    ? "bg-kon text-white"
                     : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                 }`}
               >
@@ -571,7 +571,7 @@ export default function DebtRepaymentSimulator() {
       <div className="flex gap-3 mb-6">
         <button
           onClick={handleCalculate}
-          className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-base transition-colors"
+          className="flex-1 bg-kon hover:bg-ai text-white font-bold py-3 rounded-xl text-base transition-colors"
         >
           計算する
         </button>
@@ -605,7 +605,7 @@ export default function DebtRepaymentSimulator() {
             </div>
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 text-center">
               <div className="text-xs text-gray-500 mb-1">総利息支払額</div>
-              <div className="text-xl font-bold text-red-600">
+              <div className="text-xl font-bold text-danger">
                 {result.completionMonths > 600 ? "計算不能" : formatYen(result.totalInterest)}
               </div>
             </div>
@@ -621,11 +621,11 @@ export default function DebtRepaymentSimulator() {
 
           {/* Danger assessment */}
           {hasNegativeAmortization ? (
-            <div className="bg-red-50 border-2 border-red-400 rounded-xl p-4">
-              <div className="font-bold text-red-700 text-sm mb-1">
+            <div className="bg-gray-50 border-2 border-danger rounded-xl p-4">
+              <div className="font-bold text-danger text-sm mb-1">
                 【危険】返済額が利息以下の借金があります！
               </div>
-              <div className="text-xs text-red-600">
+              <div className="text-xs text-danger">
                 {result.debts
                   .filter((d) => d.negativeAmortization)
                   .map((d) => d.type)
@@ -634,11 +634,11 @@ export default function DebtRepaymentSimulator() {
               </div>
             </div>
           ) : completionYears > 10 ? (
-            <div className="bg-orange-50 border border-orange-300 rounded-xl p-4">
-              <div className="font-bold text-orange-700 text-sm mb-1">
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
+              <div className="font-bold text-kon text-sm mb-1">
                 返済完了まで10年以上かかります
               </div>
-              <div className="text-xs text-orange-600">
+              <div className="text-xs text-kon">
                 繰り上げ返済や借り換えを検討しましょう。
               </div>
             </div>
@@ -667,11 +667,11 @@ export default function DebtRepaymentSimulator() {
                 </thead>
                 <tbody className="divide-y divide-gray-100">
                   {result.debts.map((d) => (
-                    <tr key={d.id} className={d.negativeAmortization ? "bg-red-50" : ""}>
+                    <tr key={d.id} className={d.negativeAmortization ? "bg-gray-50" : ""}>
                       <td className="px-3 py-2 text-gray-700">
                         {d.type.replace("（アコム・プロミス等）", "")}
                         {d.negativeAmortization && (
-                          <span className="ml-1 text-red-600 font-bold">⚠</span>
+                          <span className="ml-1 text-danger font-bold">⚠</span>
                         )}
                       </td>
                       <td className="px-3 py-2 text-right text-gray-700">
@@ -683,12 +683,12 @@ export default function DebtRepaymentSimulator() {
                       </td>
                       <td className="px-3 py-2 text-right text-gray-700">
                         {d.impossible ? (
-                          <span className="text-red-600 font-bold">返済不能</span>
+                          <span className="text-danger font-bold">返済不能</span>
                         ) : (
                           completionDate(d.completionMonths)
                         )}
                       </td>
-                      <td className="px-3 py-2 text-right text-red-600">
+                      <td className="px-3 py-2 text-right text-danger">
                         {d.impossible ? "∞" : formatYen(d.totalInterest)}
                       </td>
                     </tr>
@@ -700,15 +700,15 @@ export default function DebtRepaymentSimulator() {
 
           {/* Extra payment effect */}
           {result.withExtra && (
-            <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
-              <h3 className="text-sm font-bold text-blue-800 mb-2">繰り上げ返済効果</h3>
-              <p className="text-sm text-blue-700">
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
+              <h3 className="text-sm font-bold text-kon mb-2">繰り上げ返済効果</h3>
+              <p className="text-sm text-kon">
                 月<strong>{parseInt(extraPayment).toLocaleString()}円</strong>を追加返済すると：
               </p>
               <div className="mt-2 grid grid-cols-2 gap-3">
                 <div className="bg-white rounded-lg p-3 text-center">
                   <div className="text-xs text-gray-500 mb-1">完済が早くなる</div>
-                  <div className="text-lg font-bold text-blue-700">
+                  <div className="text-lg font-bold text-kon">
                     {formatMonths(result.completionMonths - result.withExtra.completionMonths)}
                   </div>
                 </div>
@@ -752,7 +752,7 @@ export default function DebtRepaymentSimulator() {
                         <td className="px-3 py-2 text-right text-gray-700">
                           {formatYen(row.yearlyPayment)}
                         </td>
-                        <td className="px-3 py-2 text-right text-red-600">
+                        <td className="px-3 py-2 text-right text-danger">
                           {formatYen(row.yearlyInterest)}
                         </td>
                       </tr>
@@ -787,28 +787,28 @@ export default function DebtRepaymentSimulator() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
-                <tr className="bg-red-50">
+                <tr className="bg-gray-50">
                   <td className="px-3 py-2 text-gray-700">10,000円</td>
-                  <td className="px-3 py-2 text-right text-red-600 font-bold">返済不能</td>
-                  <td className="px-3 py-2 text-right text-red-600">∞</td>
-                  <td className="px-3 py-2 text-right text-red-600">∞</td>
+                  <td className="px-3 py-2 text-right text-danger font-bold">返済不能</td>
+                  <td className="px-3 py-2 text-right text-danger">∞</td>
+                  <td className="px-3 py-2 text-right text-danger">∞</td>
                 </tr>
                 <tr>
                   <td className="px-3 py-2 text-gray-700">20,000円</td>
                   <td className="px-3 py-2 text-right text-gray-700">約8年2ヶ月</td>
-                  <td className="px-3 py-2 text-right text-red-600">約96万円</td>
+                  <td className="px-3 py-2 text-right text-danger">約96万円</td>
                   <td className="px-3 py-2 text-right text-gray-700">約196万円</td>
                 </tr>
                 <tr>
                   <td className="px-3 py-2 text-gray-700">30,000円</td>
                   <td className="px-3 py-2 text-right text-gray-700">約4年4ヶ月</td>
-                  <td className="px-3 py-2 text-right text-red-600">約56万円</td>
+                  <td className="px-3 py-2 text-right text-danger">約56万円</td>
                   <td className="px-3 py-2 text-right text-gray-700">約156万円</td>
                 </tr>
                 <tr>
                   <td className="px-3 py-2 text-gray-700">50,000円</td>
                   <td className="px-3 py-2 text-right text-gray-700">約2年4ヶ月</td>
-                  <td className="px-3 py-2 text-right text-red-600">約39万円</td>
+                  <td className="px-3 py-2 text-right text-danger">約39万円</td>
                   <td className="px-3 py-2 text-right text-gray-700">約139万円</td>
                 </tr>
               </tbody>
@@ -891,7 +891,7 @@ export default function DebtRepaymentSimulator() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <Link
               href="/debt/revolving-calculator"
-              className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors"
+              className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:border-ai hover:bg-gray-50 transition-colors"
             >
               <div>
                 <div className="text-sm font-medium text-gray-800">リボ払い恐怖計算機</div>
@@ -900,7 +900,7 @@ export default function DebtRepaymentSimulator() {
             </Link>
             <Link
               href="/debt/loan-interest-calculator"
-              className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors"
+              className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:border-ai hover:bg-gray-50 transition-colors"
             >
               <div>
                 <div className="text-sm font-medium text-gray-800">カードローン利息計算機</div>
@@ -909,7 +909,7 @@ export default function DebtRepaymentSimulator() {
             </Link>
             <Link
               href="/debt/debt-restructuring-checker"
-              className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors"
+              className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:border-ai hover:bg-gray-50 transition-colors"
             >
               <div>
                 <div className="text-sm font-medium text-gray-800">任意整理vs自己破産 比較ツール</div>
@@ -918,7 +918,7 @@ export default function DebtRepaymentSimulator() {
             </Link>
             <Link
               href="/finance/jutaku-loan"
-              className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors"
+              className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:border-ai hover:bg-gray-50 transition-colors"
             >
               <div>
                 <div className="text-sm font-medium text-gray-800">住宅ローン計算機</div>
@@ -929,20 +929,20 @@ export default function DebtRepaymentSimulator() {
         </div>
       
         {/* 関連ブログ記事 */}
-        <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl border border-purple-200 p-5 mt-4">
+        <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl border border-kon p-5 mt-4">
           <h2 className="font-bold text-gray-800 mb-3 text-sm">📝 関連ブログ記事</h2>
           
             <a
             href="/blog/shakkin-hensai-simulation-2026"
             className="flex items-center gap-3 group"
           >
-            <div className="w-10 h-10 rounded-lg bg-purple-100 group-hover:bg-purple-200 flex items-center justify-center shrink-0 transition-colors">
-              <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-10 h-10 rounded-lg bg-gray-50 group-hover:bg-ai flex items-center justify-center shrink-0 transition-colors">
+              <svg className="w-5 h-5 text-kon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
               </svg>
             </div>
             <div>
-              <p className="text-sm font-semibold text-purple-700 group-hover:text-purple-800">【2026年最新】借金返済シミュレーション｜完済までの期間と総支払額を計算</p>
+              <p className="text-sm font-semibold text-kon group-hover:text-ai">【2026年最新】借金返済シミュレーション｜完済までの期間と総支払額を計算</p>
               <p className="text-xs text-gray-500 mt-0.5">詳しい解説・計算例 →</p>
             </div>
           </a>

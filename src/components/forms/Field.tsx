@@ -40,7 +40,7 @@ export function Field({ id, label, required, optional, helper, error, children }
         </p>
       )}
       {error && (
-        <p id={`${id}-error`} role="alert" className="mt-1 text-xs text-red-600">
+        <p id={`${id}-error`} role="alert" className="mt-1 text-xs text-danger">
           {error}
         </p>
       )}

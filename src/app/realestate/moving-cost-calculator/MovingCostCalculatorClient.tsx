@@ -284,7 +284,7 @@ export default function MovingCostCalculatorPage() {
   }
 
   const selectCls =
-    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent";
+    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon focus:border-transparent";
   const labelCls = "block text-sm font-medium text-gray-700 mb-1";
 
   return (
@@ -295,9 +295,9 @@ export default function MovingCostCalculatorPage() {
         {/* Header */}
         <div className="mb-6">
           <nav className="text-xs text-gray-400 mb-2">
-            <Link href="/" className="hover:text-blue-600">ホーム</Link>{" "}
+            <Link href="/" className="hover:text-ai">ホーム</Link>{" "}
             &gt;{" "}
-            <Link href="/realestate" className="hover:text-blue-600">不動産・住まい</Link>{" "}
+            <Link href="/realestate" className="hover:text-ai">不動産・住まい</Link>{" "}
             &gt; <span>引越し費用 見積もり計算機</span>
           </nav>
           <h1 className="text-2xl font-bold text-gray-900 mb-2">
@@ -316,13 +316,13 @@ export default function MovingCostCalculatorPage() {
           <h2 className="text-base font-semibold text-gray-800 mb-4">基本情報</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
             <div>
-              <label className={labelCls}>引越し元の都道府県 <span className="text-red-500">*</span></label>
+              <label className={labelCls}>引越し元の都道府県 <span className="text-danger">*</span></label>
               <select className={selectCls} value={inputs.fromPref} onChange={(e) => update("fromPref", e.target.value)}>
                 {PREFS.map((p) => <option key={p} value={p}>{p}</option>)}
               </select>
             </div>
             <div>
-              <label className={labelCls}>引越し先の都道府県 <span className="text-red-500">*</span></label>
+              <label className={labelCls}>引越し先の都道府県 <span className="text-danger">*</span></label>
               <select className={selectCls} value={inputs.toPref} onChange={(e) => update("toPref", e.target.value)}>
                 {PREFS.map((p) => <option key={p} value={p}>{p}</option>)}
               </select>
@@ -483,7 +483,7 @@ export default function MovingCostCalculatorPage() {
 
           {/* Error */}
           {error && (
-            <div className="mb-4 bg-red-50 border border-red-200 rounded-lg px-4 py-3 text-sm text-red-700">
+            <div className="mb-4 bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-sm text-danger">
               {error}
             </div>
           )}
@@ -492,7 +492,7 @@ export default function MovingCostCalculatorPage() {
           <div className="flex gap-3">
             <button
               onClick={handleCalculate}
-              className="flex-1 py-3 px-6 rounded-lg bg-blue-600 text-white font-semibold text-sm hover:bg-blue-700 transition-colors shadow-sm"
+              className="flex-1 py-3 px-6 rounded-lg bg-kon text-white font-semibold text-sm hover:bg-ai transition-colors shadow-sm"
             >
               計算する
             </button>
@@ -514,12 +514,12 @@ export default function MovingCostCalculatorPage() {
               <p className="text-xs text-gray-500 mb-4">
                 {inputs.fromPref} → {inputs.toPref}（{result.distanceLabel}）
               </p>
-              <div className="text-center bg-blue-50 rounded-xl p-6 mb-4">
-                <p className="text-sm text-blue-700 mb-2">引越し業者費用の目安</p>
-                <p className="text-4xl font-bold text-blue-900">
+              <div className="text-center bg-gray-50 rounded-xl p-6 mb-4">
+                <p className="text-sm text-kon mb-2">引越し業者費用の目安</p>
+                <p className="text-4xl font-bold text-kon">
                   {fmtMan(result.minTotal)}〜{fmtMan(result.maxTotal)}
                 </p>
-                <p className="text-sm text-blue-600 mt-2">
+                <p className="text-sm text-kon mt-2">
                   中央値: 約{fmtMan(result.total)}
                 </p>
               </div>
@@ -534,7 +534,7 @@ export default function MovingCostCalculatorPage() {
               <div className="overflow-x-auto rounded-lg border border-gray-200">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="bg-blue-600 text-white">
+                    <tr className="bg-kon text-white">
                       <th className="px-4 py-2 text-left font-semibold">項目</th>
                       <th className="px-4 py-2 text-right font-semibold">金額</th>
                     </tr>
@@ -548,7 +548,7 @@ export default function MovingCostCalculatorPage() {
                       <td className="px-4 py-2 text-gray-700">
                         季節調整
                         {inputs.season === "peak" && (
-                          <span className="ml-1 text-xs text-red-600">（繁忙期×1.5）</span>
+                          <span className="ml-1 text-xs text-danger">（繁忙期×1.5）</span>
                         )}
                         {inputs.season === "off" && (
                           <span className="ml-1 text-xs text-green-600">（閑散期×0.8）</span>
@@ -557,7 +557,7 @@ export default function MovingCostCalculatorPage() {
                       <td
                         className={`px-4 py-2 text-right ${
                           result.seasonAdj > 0
-                            ? "text-red-600"
+                            ? "text-danger"
                             : result.seasonAdj < 0
                             ? "text-green-600"
                             : "text-gray-500"
@@ -570,7 +570,7 @@ export default function MovingCostCalculatorPage() {
                     {result.weekdayAdj !== 0 && (
                       <tr className="hover:bg-gray-50">
                         <td className="px-4 py-2 text-gray-700">曜日割増（土日祝）</td>
-                        <td className="px-4 py-2 text-right text-red-600">
+                        <td className="px-4 py-2 text-right text-danger">
                           +{fmtYen(result.weekdayAdj)}
                         </td>
                       </tr>
@@ -583,7 +583,7 @@ export default function MovingCostCalculatorPage() {
                         </td>
                         <td
                           className={`px-4 py-2 text-right ${
-                            result.timeAdj > 0 ? "text-red-600" : "text-green-600"
+                            result.timeAdj > 0 ? "text-danger" : "text-green-600"
                           }`}
                         >
                           {result.timeAdj >= 0 ? "+" : ""}
@@ -598,7 +598,7 @@ export default function MovingCostCalculatorPage() {
                         </td>
                         <td
                           className={`px-4 py-2 text-right ${
-                            result.volumeAdj > 0 ? "text-red-600" : "text-green-600"
+                            result.volumeAdj > 0 ? "text-danger" : "text-green-600"
                           }`}
                         >
                           {result.volumeAdj >= 0 ? "+" : ""}
@@ -609,7 +609,7 @@ export default function MovingCostCalculatorPage() {
                     {result.bigItemsAdj !== 0 && (
                       <tr className="hover:bg-gray-50">
                         <td className="px-4 py-2 text-gray-700">大型家具・家電割増</td>
-                        <td className="px-4 py-2 text-right text-red-600">
+                        <td className="px-4 py-2 text-right text-danger">
                           +{fmtYen(result.bigItemsAdj)}
                         </td>
                       </tr>
@@ -617,7 +617,7 @@ export default function MovingCostCalculatorPage() {
                     {result.stairsAdj !== 0 && (
                       <tr className="hover:bg-gray-50">
                         <td className="px-4 py-2 text-gray-700">階段・高層階割増</td>
-                        <td className="px-4 py-2 text-right text-red-600">
+                        <td className="px-4 py-2 text-right text-danger">
                           +{fmtYen(result.stairsAdj)}
                         </td>
                       </tr>
@@ -658,9 +658,9 @@ export default function MovingCostCalculatorPage() {
                         <td className="px-4 py-2 text-right">+{fmtYen(result.cleaningCost)}</td>
                       </tr>
                     )}
-                    <tr className="bg-blue-50 font-bold">
-                      <td className="px-4 py-2 text-blue-800">合計（中央値）</td>
-                      <td className="px-4 py-2 text-right text-blue-800 text-lg">
+                    <tr className="bg-gray-50 font-bold">
+                      <td className="px-4 py-2 text-kon">合計（中央値）</td>
+                      <td className="px-4 py-2 text-right text-kon text-lg">
                         {fmtMan(result.total)}
                       </td>
                     </tr>
@@ -672,9 +672,9 @@ export default function MovingCostCalculatorPage() {
                         {fmtMan(result.minTotal)}
                       </td>
                     </tr>
-                    <tr className="bg-orange-50">
-                      <td className="px-4 py-2 text-orange-700 text-xs">最高値目安</td>
-                      <td className="px-4 py-2 text-right text-orange-700 text-xs">
+                    <tr className="bg-gray-50">
+                      <td className="px-4 py-2 text-kon text-xs">最高値目安</td>
+                      <td className="px-4 py-2 text-right text-kon text-xs">
                         {fmtMan(result.maxTotal)}
                       </td>
                     </tr>
@@ -688,9 +688,9 @@ export default function MovingCostCalculatorPage() {
               <h2 className="text-lg font-bold text-gray-900 mb-4">節約アドバイス</h2>
               <div className="space-y-3">
                 {inputs.season === "peak" && (
-                  <div className="flex gap-3 bg-red-50 border border-red-200 rounded-lg p-3">
-                    <span className="text-red-500 text-lg shrink-0">⚠️</span>
-                    <p className="text-sm text-red-800">
+                  <div className="flex gap-3 bg-gray-50 border border-gray-200 rounded-lg p-3">
+                    <span className="text-danger text-lg shrink-0">⚠️</span>
+                    <p className="text-sm text-danger">
                       <strong>繁忙期のため料金が1.5倍になっています。</strong>
                       5〜8月への変更で最大
                       {fmtMan(Math.round(result.total * 0.33))}節約できます。
@@ -841,7 +841,7 @@ export default function MovingCostCalculatorPage() {
                     <td className="px-3 py-2 text-center text-gray-700">{row.near}</td>
                     <td className="px-3 py-2 text-center text-gray-700">{row.mid}</td>
                     <td className="px-3 py-2 text-center text-gray-700">{row.far}</td>
-                    <td className="px-3 py-2 text-center text-red-600 font-medium">×1.5倍</td>
+                    <td className="px-3 py-2 text-center text-danger font-medium">×1.5倍</td>
                   </tr>
                 ))}
               </tbody>
@@ -924,7 +924,7 @@ export default function MovingCostCalculatorPage() {
                 className="border border-gray-200 rounded-lg overflow-hidden"
               >
                 <summary className="px-4 py-3 cursor-pointer font-medium text-gray-800 hover:bg-gray-50 text-sm list-none flex items-start gap-2">
-                  <span className="text-blue-600 font-bold shrink-0">Q{i + 1}.</span>
+                  <span className="text-kon font-bold shrink-0">Q{i + 1}.</span>
                   {item.q}
                 </summary>
                 <div className="px-4 pb-4 pt-2 text-sm text-gray-600 leading-relaxed border-t border-gray-100">
@@ -964,9 +964,9 @@ export default function MovingCostCalculatorPage() {
               <Link
                 key={tool.href}
                 href={tool.href}
-                className="bg-white border border-gray-200 rounded-xl p-4 hover:shadow-md hover:border-blue-300 transition-all group"
+                className="bg-white border border-gray-200 rounded-xl p-4 hover:shadow-md hover:border-ai transition-all group"
               >
-                <p className="font-semibold text-gray-900 group-hover:text-blue-600 text-sm mb-1">
+                <p className="font-semibold text-gray-900 group-hover:text-ai text-sm mb-1">
                   {tool.label}
                 </p>
                 <p className="text-xs text-gray-500">{tool.desc}</p>

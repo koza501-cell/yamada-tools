@@ -77,7 +77,7 @@ export default function HofukuClient() {
           <div className="flex items-center gap-2">
             <input
               type="number"
-              className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+              className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-kon outline-none"
               value={roumuhi}
               onChange={e => setRoumuhi(e.target.value)}
               placeholder="1000000"
@@ -121,10 +121,10 @@ export default function HofukuClient() {
       </div>
 
       <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden mb-6">
-        <div className="bg-blue-600 text-white p-4">
+        <div className="bg-kon text-white p-4">
           <p className="text-sm opacity-80 mb-1">法定福利費合計 / 見積書記載額</p>
           <p className="text-3xl font-bold">{fmt(total)}</p>
-          <p className="text-blue-200 text-sm mt-1">労務費の {fmtRate(totalRate)} 相当</p>
+          <p className="text-gin text-sm mt-1">労務費の {fmtRate(totalRate)} 相当</p>
         </div>
         <div className="p-4">
           <table className="w-full text-sm">
@@ -143,10 +143,10 @@ export default function HofukuClient() {
                   <td className="py-2 text-right font-medium text-gray-800">{fmt(item.amount)}</td>
                 </tr>
               ))}
-              <tr className="bg-blue-50">
-                <td className="py-2 font-bold text-blue-800">合計</td>
-                <td className="py-2 text-right font-bold text-blue-800">{fmtRate(totalRate)}</td>
-                <td className="py-2 text-right font-bold text-blue-800">{fmt(total)}</td>
+              <tr className="bg-gray-50">
+                <td className="py-2 font-bold text-kon">合計</td>
+                <td className="py-2 text-right font-bold text-kon">{fmtRate(totalRate)}</td>
+                <td className="py-2 text-right font-bold text-kon">{fmt(total)}</td>
               </tr>
             </tbody>
           </table>
@@ -161,9 +161,9 @@ export default function HofukuClient() {
         </div>
       </div>
 
-      <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6 text-sm">
-        <p className="font-semibold text-blue-800 mb-2">📋 根拠・参考資料</p>
-        <ul className="text-blue-700 space-y-1 text-xs">
+      <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-6 text-sm">
+        <p className="font-semibold text-kon mb-2">📋 根拠・参考資料</p>
+        <ul className="text-kon space-y-1 text-xs">
           <li>・ 2024年度適用保険料率（協会けんぽ・日本年金機構・厚生労働省）</li>
           <li>・ 国土交通省通達「社会保険の加入に関する下請指導ガイドライン」</li>
           <li>・ 建設業の見積書への法定福利費明示は国交省通達（H24年）以降の業界標準</li>

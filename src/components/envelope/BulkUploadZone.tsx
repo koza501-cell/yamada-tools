@@ -115,12 +115,12 @@ export default function BulkUploadZone({ onDataLoaded, onError }: BulkUploadZone
         onDragLeave={() => setDragOver(false)}
         onDrop={handleDrop}
         className={`border-2 border-dashed rounded-xl p-6 text-center transition-all cursor-pointer
-          ${dragOver ? "border-blue-400 bg-blue-50 scale-[1.01]" : "border-gray-300 hover:border-gray-400 bg-gray-50"}`}
+          ${dragOver ? "border-kon bg-gray-50 scale-[1.01]" : "border-gray-300 hover:border-gray-400 bg-gray-50"}`}
         onClick={() => csvInputRef.current?.click()}
       >
         {processing ? (
           <div className="flex flex-col items-center gap-2">
-            <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500" />
+            <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-kon" />
             <p className="text-sm text-gray-600">ファイルを処理中...</p>
           </div>
         ) : (

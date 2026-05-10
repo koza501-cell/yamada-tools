@@ -140,7 +140,7 @@ export default function DoubutsuIryoClient() {
                     {rows.length > 1 && (
                       <button
                         onClick={() => removeRow(row.id)}
-                        className="mt-1 text-red-400 hover:text-red-600 text-xl font-bold leading-none"
+                        className="mt-1 text-danger hover:text-danger text-xl font-bold leading-none"
                         aria-label="削除"
                       >×</button>
                     )}
@@ -149,7 +149,7 @@ export default function DoubutsuIryoClient() {
               })}
               <button
                 onClick={addRow}
-                className="w-full py-2 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600 text-sm text-gray-500 dark:text-gray-400 hover:border-blue-400 hover:text-blue-500 transition-colors"
+                className="w-full py-2 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600 text-sm text-gray-500 dark:text-gray-400 hover:border-ai hover:text-ai transition-colors"
               >
                 ＋ 診療項目を追加
               </button>
@@ -223,7 +223,7 @@ export default function DoubutsuIryoClient() {
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600 dark:text-gray-400">保険による軽減額</span>
-                      <span className="text-blue-600 dark:text-blue-400">▲¥{fmt(result.saving)}</span>
+                      <span className="text-kon dark:text-gray-300">▲¥{fmt(result.saving)}</span>
                     </div>
                   </>
                 )}

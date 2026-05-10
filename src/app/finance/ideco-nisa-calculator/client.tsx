@@ -155,7 +155,7 @@ export default function IDeCoNisaClient() {
                   <div className="border-t border-gray-100 dark:border-gray-700 pt-2 space-y-1">
                     <div className="flex justify-between"><span className="text-gray-600 dark:text-gray-400">積立元本</span><span className="dark:text-white">{fmtM(calc.idecoPrincipal)}</span></div>
                     <div className="flex justify-between"><span className="text-gray-600 dark:text-gray-400">運用後残高（概算）</span><span className="font-bold text-lg text-gray-800 dark:text-white">{fmtM(calc.idecoFV)}</span></div>
-                    <div className="flex justify-between text-xs text-blue-600 dark:text-blue-400"><span>うち運用益</span><span>+{fmtM(calc.idecoGain)}</span></div>
+                    <div className="flex justify-between text-xs text-kon dark:text-gray-300"><span>うち運用益</span><span>+{fmtM(calc.idecoGain)}</span></div>
                   </div>
                 </div>
               </div>
@@ -169,21 +169,21 @@ export default function IDeCoNisaClient() {
                   <div className="border-t border-gray-100 dark:border-gray-700 pt-2 space-y-1">
                     <div className="flex justify-between"><span className="text-gray-600 dark:text-gray-400">積立元本</span><span className="dark:text-white">{fmtM(calc.nisaPrincipal)}</span></div>
                     <div className="flex justify-between"><span className="text-gray-600 dark:text-gray-400">運用後残高（概算）</span><span className="font-bold text-lg text-gray-800 dark:text-white">{fmtM(calc.nisaFV)}</span></div>
-                    <div className="flex justify-between text-xs text-blue-600 dark:text-blue-400"><span>うち運用益</span><span>+{fmtM(calc.nisaGain)}</span></div>
+                    <div className="flex justify-between text-xs text-kon dark:text-gray-300"><span>うち運用益</span><span>+{fmtM(calc.nisaGain)}</span></div>
                   </div>
                 </div>
               </div>
             )}
 
             {(useIdeco || useNisa) && (
-              <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-5 border border-blue-200 dark:border-blue-700">
-                <h2 className="font-semibold text-blue-800 dark:text-blue-300 mb-3">iDeCo + NISA 合計効果</h2>
+              <div className="bg-gray-50 dark:bg-kon/20 rounded-xl p-5 border border-gray-200 dark:border-kon">
+                <h2 className="font-semibold text-kon dark:text-gray-300 mb-3">iDeCo + NISA 合計効果</h2>
                 <div className="space-y-2 text-sm">
-                  <div className="flex justify-between"><span className="text-blue-700 dark:text-blue-400">積立元本合計</span><span className="font-semibold dark:text-white">{fmtM(calc.totalPrincipal)}</span></div>
-                  <div className="flex justify-between items-center"><span className="text-blue-700 dark:text-blue-400">運用後総資産（概算）</span><span className="font-bold text-xl text-blue-800 dark:text-blue-300">{fmtM(calc.totalFV)}</span></div>
-                  <div className="flex justify-between border-t border-blue-200 dark:border-blue-800 pt-2"><span className="font-semibold text-blue-700 dark:text-blue-400">節税・非課税メリット合計</span><span className="font-bold text-green-600 dark:text-green-400">+{fmtM(calc.totalBenefit)}</span></div>
+                  <div className="flex justify-between"><span className="text-kon dark:text-gray-300">積立元本合計</span><span className="font-semibold dark:text-white">{fmtM(calc.totalPrincipal)}</span></div>
+                  <div className="flex justify-between items-center"><span className="text-kon dark:text-gray-300">運用後総資産（概算）</span><span className="font-bold text-xl text-kon dark:text-gray-300">{fmtM(calc.totalFV)}</span></div>
+                  <div className="flex justify-between border-t border-gray-200 dark:border-kon pt-2"><span className="font-semibold text-kon dark:text-gray-300">節税・非課税メリット合計</span><span className="font-bold text-green-600 dark:text-green-400">+{fmtM(calc.totalBenefit)}</span></div>
                 </div>
-                <p className="text-xs text-blue-600 dark:text-blue-400 mt-2">通常の課税口座と比べて約{fmtM(calc.totalBenefit)}多く手元に残ります</p>
+                <p className="text-xs text-kon dark:text-gray-300 mt-2">通常の課税口座と比べて約{fmtM(calc.totalBenefit)}多く手元に残ります</p>
               </div>
             )}
           </div>

@@ -46,9 +46,9 @@ export default function NenshuKabeSimulation2026Blog() {
         }}
       />
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-pink-500">ホーム</Link>
+        <Link href="/" className="hover:text-sakura">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-pink-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-sakura">ブログ</Link>
         <span className="mx-2">/</span>
         <span>年収の壁シミュレーション2026</span>
       </nav>
@@ -86,16 +86,16 @@ export default function NenshuKabeSimulation2026Blog() {
               <span className="font-bold text-yellow-700 text-xl">103万円</span>
               <span className="text-gray-700">所得税がかかり始める・配偶者の扶養控除に影響</span>
             </div>
-            <div className="flex items-center gap-3 p-3 bg-orange-50 rounded-lg">
-              <span className="font-bold text-orange-700 text-xl">106万円</span>
+            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+              <span className="font-bold text-kon text-xl">106万円</span>
               <span className="text-gray-700">社会保険加入（大企業の場合）</span>
             </div>
-            <div className="flex items-center gap-3 p-3 bg-red-50 rounded-lg">
-              <span className="font-bold text-red-700 text-xl">130万円</span>
+            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+              <span className="font-bold text-danger text-xl">130万円</span>
               <span className="text-gray-700">社会保険の扶養から外れる（全員対象）</span>
             </div>
-            <div className="flex items-center gap-3 p-3 bg-purple-50 rounded-lg">
-              <span className="font-bold text-purple-700 text-xl">150万円</span>
+            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+              <span className="font-bold text-kon text-xl">150万円</span>
               <span className="text-gray-700">配偶者特別控除が減り始める</span>
             </div>
           </div>
@@ -123,14 +123,14 @@ export default function NenshuKabeSimulation2026Blog() {
             <tr><td className="px-4 py-3 border-b font-bold">103万円</td><td className="px-4 py-3 border-b text-green-600">0円</td><td className="px-4 py-3 border-b">約5千円</td><td className="px-4 py-3 border-b text-green-600">0円</td><td className="px-4 py-3 border-b font-bold">約102.5万円</td></tr>
             <tr><td className="px-4 py-3 border-b font-bold">110万円</td><td className="px-4 py-3 border-b">約3千円</td><td className="px-4 py-3 border-b">約1万円</td><td className="px-4 py-3 border-b text-green-600">0円</td><td className="px-4 py-3 border-b font-bold">約108.7万円</td></tr>
             <tr className="bg-yellow-50"><td className="px-4 py-3 border-b font-bold">130万円</td><td className="px-4 py-3 border-b">約1.4万円</td><td className="px-4 py-3 border-b">約2万円</td><td className="px-4 py-3 border-b text-green-600">0円</td><td className="px-4 py-3 border-b font-bold">約126.6万円</td></tr>
-            <tr className="bg-red-50"><td className="px-4 py-3 border-b font-bold">131万円</td><td className="px-4 py-3 border-b">約1.4万円</td><td className="px-4 py-3 border-b">約2万円</td><td className="px-4 py-3 border-b text-red-600 font-bold">約20万円</td><td className="px-4 py-3 border-b font-bold text-red-600">約107.6万円</td></tr>
+            <tr className="bg-gray-50"><td className="px-4 py-3 border-b font-bold">131万円</td><td className="px-4 py-3 border-b">約1.4万円</td><td className="px-4 py-3 border-b">約2万円</td><td className="px-4 py-3 border-b text-danger font-bold">約20万円</td><td className="px-4 py-3 border-b font-bold text-danger">約107.6万円</td></tr>
             <tr><td className="px-4 py-3 border-b font-bold">150万円</td><td className="px-4 py-3 border-b">約2.4万円</td><td className="px-4 py-3 border-b">約3万円</td><td className="px-4 py-3 border-b">約22万円</td><td className="px-4 py-3 border-b font-bold">約122.6万円</td></tr>
             <tr><td className="px-4 py-3 border-b font-bold">180万円</td><td className="px-4 py-3 border-b">約3.9万円</td><td className="px-4 py-3 border-b">約5万円</td><td className="px-4 py-3 border-b">約27万円</td><td className="px-4 py-3 border-b font-bold">約144.1万円</td></tr>
             <tr className="bg-green-50"><td className="px-4 py-3 border-b font-bold">200万円</td><td className="px-4 py-3 border-b">約5万円</td><td className="px-4 py-3 border-b">約6万円</td><td className="px-4 py-3 border-b">約30万円</td><td className="px-4 py-3 border-b font-bold text-green-600">約159万円</td></tr>
           </tbody>
         </table>
 
-        <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+        <div className="bg-gray-50 border-l-4 border-danger p-4 mb-6">
           <p className="font-bold text-gray-800 mb-2">⚠️ 130万円の壁が最も影響大！</p>
           <p className="text-gray-700">
             130万円を1万円超えただけで社会保険料が約20万円かかり、<strong>手取りが約19万円も減る</strong>ことに。
@@ -138,8 +138,8 @@ export default function NenshuKabeSimulation2026Blog() {
           </p>
         </div>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-          <p className="text-lg font-bold text-blue-800 mb-2">🔧 あなたの手取りを計算！</p>
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+          <p className="text-lg font-bold text-kon mb-2">🔧 あなたの手取りを計算！</p>
           <p className="text-gray-700 mb-4">年収を入力して、税金・社会保険料・手取り額をシミュレーションしましょう。</p>
           <Link href="/career/income-wall-checker" className="inline-block bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-6 rounded-lg transition">
             → 年収の壁シミュレーターを使う
@@ -164,9 +164,9 @@ export default function NenshuKabeSimulation2026Blog() {
             </ul>
           </div>
 
-          <div className="bg-white border border-orange-200 rounded-lg p-5 shadow-sm">
-            <h3 className="font-bold text-orange-800 text-lg mb-3 flex items-center gap-2">
-              <span className="bg-orange-500 text-white rounded px-2 py-1 text-sm">106万円</span>
+          <div className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+            <h3 className="font-bold text-kon text-lg mb-3 flex items-center gap-2">
+              <span className="bg-kon text-white rounded px-2 py-1 text-sm">106万円</span>
               社会保険の壁（大企業）
             </h3>
             <ul className="space-y-2 text-gray-700">
@@ -177,9 +177,9 @@ export default function NenshuKabeSimulation2026Blog() {
             </ul>
           </div>
 
-          <div className="bg-white border border-red-200 rounded-lg p-5 shadow-sm">
-            <h3 className="font-bold text-red-800 text-lg mb-3 flex items-center gap-2">
-              <span className="bg-red-500 text-white rounded px-2 py-1 text-sm">130万円</span>
+          <div className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+            <h3 className="font-bold text-danger text-lg mb-3 flex items-center gap-2">
+              <span className="bg-danger text-white rounded px-2 py-1 text-sm">130万円</span>
               社会保険の扶養の壁
             </h3>
             <ul className="space-y-2 text-gray-700">
@@ -190,9 +190,9 @@ export default function NenshuKabeSimulation2026Blog() {
             </ul>
           </div>
 
-          <div className="bg-white border border-purple-200 rounded-lg p-5 shadow-sm">
-            <h3 className="font-bold text-purple-800 text-lg mb-3 flex items-center gap-2">
-              <span className="bg-purple-500 text-white rounded px-2 py-1 text-sm">150万円</span>
+          <div className="bg-white border border-kon rounded-lg p-5 shadow-sm">
+            <h3 className="font-bold text-kon text-lg mb-3 flex items-center gap-2">
+              <span className="bg-kon text-white rounded px-2 py-1 text-sm">150万円</span>
               配偶者特別控除の壁
             </h3>
             <ul className="space-y-2 text-gray-700">
@@ -220,8 +220,8 @@ export default function NenshuKabeSimulation2026Blog() {
               <li><strong>200万円以上</strong>：しっかり稼ぐなら目指したい</li>
             </ul>
           </div>
-          <div className="bg-red-50 border border-red-200 rounded-lg p-5">
-            <h3 className="font-bold text-red-800 mb-3">❌ 避けたい年収ライン</h3>
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-5">
+            <h3 className="font-bold text-danger mb-3">❌ 避けたい年収ライン</h3>
             <ul className="space-y-2 text-gray-700">
               <li><strong>131〜155万円</strong>：社会保険料で手取り減</li>
               <li><strong>ギリギリ130万円</strong>：超えるリスクあり</li>
@@ -272,7 +272,7 @@ export default function NenshuKabeSimulation2026Blog() {
           シミュレーターで自分の場合の手取りを計算し、最適な働き方を見つけてください。
         </p>
         
-        <div className="bg-gradient-to-r from-rose-500 to-pink-500 text-white rounded-lg p-6 text-center">
+        <div className="bg-gradient-to-r from-rose-500 to-kon text-white rounded-lg p-6 text-center">
           <p className="text-lg font-bold mb-4">あなたの年収の壁をチェック</p>
           <Link href="/career/income-wall-checker" className="inline-block bg-white text-rose-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition">
             → 年収の壁シミュレーターを使う

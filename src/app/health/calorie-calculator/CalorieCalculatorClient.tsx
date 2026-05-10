@@ -204,8 +204,8 @@ export default function CalorieCalculatorPage() {
   const paceOptions = goal === "gain" ? PACE_OPTIONS_GAIN : PACE_OPTIONS_LOSS;
 
   const goalColor = result
-    ? result.goal === "減量" ? "text-blue-600"
-    : result.goal === "増量" ? "text-orange-600"
+    ? result.goal === "減量" ? "text-kon"
+    : result.goal === "増量" ? "text-kon"
     : "text-green-600"
     : "";
 
@@ -237,9 +237,9 @@ export default function CalorieCalculatorPage() {
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-3xl mx-auto px-4 py-4">
           <nav className="text-sm text-gray-500 mb-2">
-            <Link href="/" className="hover:text-blue-600">ホーム</Link>
+            <Link href="/" className="hover:text-ai">ホーム</Link>
             <span className="mx-1">&gt;</span>
-            <Link href="/health" className="hover:text-blue-600">健康・ウェルネス</Link>
+            <Link href="/health" className="hover:text-ai">健康・ウェルネス</Link>
             <span className="mx-1">&gt;</span>
             <span className="text-gray-700">基礎代謝・カロリー計算機</span>
           </nav>
@@ -258,7 +258,7 @@ export default function CalorieCalculatorPage() {
         {/* ── Input Form ── */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-4">
           <h2 className="font-bold text-gray-900 mb-5 flex items-center gap-2">
-            <span className="bg-blue-600 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">1</span>
+            <span className="bg-kon text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">1</span>
             基本情報を入力
           </h2>
 
@@ -269,7 +269,7 @@ export default function CalorieCalculatorPage() {
               <button
                 onClick={() => setGender("male")}
                 className={`px-6 py-2 text-sm font-semibold transition-colors ${
-                  gender === "male" ? "bg-blue-600 text-white" : "bg-white text-gray-600 hover:bg-gray-50"
+                  gender === "male" ? "bg-kon text-white" : "bg-white text-gray-600 hover:bg-gray-50"
                 }`}
               >
                 男性
@@ -277,7 +277,7 @@ export default function CalorieCalculatorPage() {
               <button
                 onClick={() => setGender("female")}
                 className={`px-6 py-2 text-sm font-semibold transition-colors ${
-                  gender === "female" ? "bg-pink-500 text-white" : "bg-white text-gray-600 hover:bg-gray-50"
+                  gender === "female" ? "bg-kon text-white" : "bg-white text-gray-600 hover:bg-gray-50"
                 }`}
               >
                 女性
@@ -294,7 +294,7 @@ export default function CalorieCalculatorPage() {
             ].map((f) => (
               <div key={f.label}>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  {f.label} <span className="text-red-500">*</span>
+                  {f.label} <span className="text-danger">*</span>
                 </label>
                 <div className="flex items-center gap-1.5">
                   <input
@@ -305,7 +305,7 @@ export default function CalorieCalculatorPage() {
                     min={f.min}
                     max={f.max}
                     step={f.unit === "歳" ? 1 : 0.1}
-                    className="w-full border border-gray-300 rounded-lg px-2 py-2.5 text-right focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full border border-gray-300 rounded-lg px-2 py-2.5 text-right focus:outline-none focus:ring-2 focus:ring-kon"
                   />
                   <span className="text-gray-500 text-sm whitespace-nowrap">{f.unit}</span>
                 </div>
@@ -316,12 +316,12 @@ export default function CalorieCalculatorPage() {
           {/* Activity */}
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              活動レベル <span className="text-red-500">*</span>
+              活動レベル <span className="text-danger">*</span>
             </label>
             <select
               value={activity}
               onChange={(e) => setActivity(e.target.value)}
-              className="w-full border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-kon bg-white"
             >
               {ACTIVITY_LEVELS.map((l) => (
                 <option key={l.value} value={l.value}>{l.label}（×{l.value}）</option>
@@ -334,9 +334,9 @@ export default function CalorieCalculatorPage() {
             <label className="block text-sm font-medium text-gray-700 mb-2">目標</label>
             <div className="grid grid-cols-3 gap-2">
               {[
-                { val: "lose", label: "体重を減らしたい", color: "bg-blue-600" },
+                { val: "lose", label: "体重を減らしたい", color: "bg-kon" },
                 { val: "maintain", label: "体重を維持したい", color: "bg-green-600" },
-                { val: "gain", label: "体重を増やしたい", color: "bg-orange-500" },
+                { val: "gain", label: "体重を増やしたい", color: "bg-kon" },
               ].map((g) => (
                 <button
                   key={g.val}
@@ -369,7 +369,7 @@ export default function CalorieCalculatorPage() {
                     min={10}
                     max={300}
                     step={0.1}
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-right focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-right focus:outline-none focus:ring-2 focus:ring-kon"
                   />
                   <span className="text-gray-500 text-sm">kg</span>
                 </div>
@@ -381,7 +381,7 @@ export default function CalorieCalculatorPage() {
                 <select
                   value={pace}
                   onChange={(e) => setPace(e.target.value)}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white text-sm"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-kon bg-white text-sm"
                 >
                   {paceOptions.map((p) => (
                     <option key={p.value} value={p.value}>{p.label}</option>
@@ -392,14 +392,14 @@ export default function CalorieCalculatorPage() {
           )}
 
           {error && (
-            <div className="bg-red-50 border border-red-300 text-red-700 rounded-lg px-4 py-2 mb-4 text-sm">
+            <div className="bg-gray-50 border border-gray-200 text-danger rounded-lg px-4 py-2 mb-4 text-sm">
               {error}
             </div>
           )}
 
           <button
             onClick={handleCalc}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl text-lg transition-colors"
+            className="w-full bg-kon hover:bg-ai text-white font-bold py-3.5 rounded-xl text-lg transition-colors"
           >
             カロリーを計算する
           </button>
@@ -432,22 +432,22 @@ export default function CalorieCalculatorPage() {
                   label: "消費カロリー（TDEE）",
                   value: fmtKcal(result.tdee),
                   sub: "活動込みの1日の消費カロリー",
-                  bg: "bg-blue-50",
-                  textColor: "text-blue-800",
+                  bg: "bg-gray-50",
+                  textColor: "text-kon",
                 },
                 {
                   label: "目標カロリー",
                   value: fmtKcal(result.targetCal),
                   sub: `目標達成のための摂取カロリー`,
-                  bg: result.goal === "減量" ? "bg-green-50" : result.goal === "増量" ? "bg-orange-50" : "bg-green-50",
-                  textColor: result.goal === "減量" ? "text-green-800" : result.goal === "増量" ? "text-orange-800" : "text-green-800",
+                  bg: result.goal === "減量" ? "bg-green-50" : result.goal === "増量" ? "bg-gray-50" : "bg-green-50",
+                  textColor: result.goal === "減量" ? "text-green-800" : result.goal === "増量" ? "text-kon" : "text-green-800",
                 },
                 {
                   label: "カロリー差",
                   value: `${result.calDiff >= 0 ? "+" : ""}${fmtKcal(result.calDiff)}`,
                   sub: "TDEEとの差（1日あたり）",
-                  bg: result.calDiff < 0 ? "bg-blue-50" : result.calDiff > 0 ? "bg-orange-50" : "bg-green-50",
-                  textColor: result.calDiff < 0 ? "text-blue-700" : result.calDiff > 0 ? "text-orange-700" : "text-green-700",
+                  bg: result.calDiff < 0 ? "bg-gray-50" : result.calDiff > 0 ? "bg-gray-50" : "bg-green-50",
+                  textColor: result.calDiff < 0 ? "text-kon" : result.calDiff > 0 ? "text-kon" : "text-green-700",
                 },
               ].map((card) => (
                 <div key={card.label} className={`${card.bg} rounded-xl p-4 border border-gray-200`}>
@@ -464,7 +464,7 @@ export default function CalorieCalculatorPage() {
             {result.goalDays !== null && result.goalDate !== null && result.goalKgDiff !== null && (
               <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-4">
                 <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <span className="bg-blue-600 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">1</span>
+                  <span className="bg-kon text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">1</span>
                   目標達成シミュレーション
                 </h3>
                 <div className="grid grid-cols-3 gap-3">
@@ -492,21 +492,21 @@ export default function CalorieCalculatorPage() {
             {/* Section 3: PFC table */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-4">
               <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <span className="bg-blue-600 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">
+                <span className="bg-kon text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">
                   {result.goalDays !== null ? "2" : "1"}
                 </span>
                 PFCバランス（1日の目標栄養素）
               </h3>
               {/* PFC visual bars */}
               <div className="flex rounded-full overflow-hidden h-4 mb-3">
-                <div className="bg-red-400" style={{ width: "25%" }} title="タンパク質 25%" />
+                <div className="bg-danger" style={{ width: "25%" }} title="タンパク質 25%" />
                 <div className="bg-yellow-400" style={{ width: "25%" }} title="脂質 25%" />
-                <div className="bg-blue-400" style={{ width: "50%" }} title="炭水化物 50%" />
+                <div className="bg-kon" style={{ width: "50%" }} title="炭水化物 50%" />
               </div>
               <div className="flex gap-4 text-xs text-gray-500 mb-4">
-                <span className="flex items-center gap-1"><span className="w-3 h-3 rounded-sm bg-red-400 inline-block" />タンパク質 25%</span>
+                <span className="flex items-center gap-1"><span className="w-3 h-3 rounded-sm bg-danger inline-block" />タンパク質 25%</span>
                 <span className="flex items-center gap-1"><span className="w-3 h-3 rounded-sm bg-yellow-400 inline-block" />脂質 25%</span>
-                <span className="flex items-center gap-1"><span className="w-3 h-3 rounded-sm bg-blue-400 inline-block" />炭水化物 50%</span>
+                <span className="flex items-center gap-1"><span className="w-3 h-3 rounded-sm bg-kon inline-block" />炭水化物 50%</span>
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
@@ -520,7 +520,7 @@ export default function CalorieCalculatorPage() {
                   </thead>
                   <tbody>
                     <tr className="border-b border-gray-100">
-                      <td className="py-2.5 px-3 text-red-600 font-medium">タンパク質</td>
+                      <td className="py-2.5 px-3 text-danger font-medium">タンパク質</td>
                       <td className="py-2.5 px-3 text-right font-semibold text-gray-900">{fmt(result.proteinG, 0)}g</td>
                       <td className="py-2.5 px-3 text-right text-gray-600">{fmtKcal(result.proteinKcal)}kcal</td>
                       <td className="py-2.5 px-3 text-right text-gray-500">25%</td>
@@ -532,7 +532,7 @@ export default function CalorieCalculatorPage() {
                       <td className="py-2.5 px-3 text-right text-gray-500">25%</td>
                     </tr>
                     <tr className="border-b border-gray-100">
-                      <td className="py-2.5 px-3 text-blue-600 font-medium">炭水化物</td>
+                      <td className="py-2.5 px-3 text-kon font-medium">炭水化物</td>
                       <td className="py-2.5 px-3 text-right font-semibold text-gray-900">{fmt(result.carbG, 0)}g</td>
                       <td className="py-2.5 px-3 text-right text-gray-600">{fmtKcal(result.carbKcal)}kcal</td>
                       <td className="py-2.5 px-3 text-right text-gray-500">50%</td>
@@ -551,19 +551,19 @@ export default function CalorieCalculatorPage() {
             {/* Section 4: 食事アドバイス */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-4">
               <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <span className="bg-blue-600 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">
+                <span className="bg-kon text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">
                   {result.goalDays !== null ? "3" : "2"}
                 </span>
                 食事アドバイス
               </h3>
               <div className={`rounded-lg p-4 mb-4 ${
-                result.goal === "減量" ? "bg-blue-50 border border-blue-200" :
-                result.goal === "増量" ? "bg-orange-50 border border-orange-200" :
+                result.goal === "減量" ? "bg-gray-50 border border-gray-200" :
+                result.goal === "増量" ? "bg-gray-50 border border-gray-200" :
                 "bg-green-50 border border-green-200"
               }`}>
                 <p className={`text-sm leading-relaxed ${
-                  result.goal === "減量" ? "text-blue-800" :
-                  result.goal === "増量" ? "text-orange-800" :
+                  result.goal === "減量" ? "text-kon" :
+                  result.goal === "増量" ? "text-kon" :
                   "text-green-800"
                 }`}>
                   {result.goal === "減量" && (
@@ -582,7 +582,7 @@ export default function CalorieCalculatorPage() {
             {/* Section 5: 運動カロリー目安 */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-4">
               <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <span className="bg-blue-600 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">
+                <span className="bg-kon text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">
                   {result.goalDays !== null ? "4" : "3"}
                 </span>
                 目標達成をサポートする運動例
@@ -637,10 +637,10 @@ export default function CalorieCalculatorPage() {
               <thead>
                 <tr className="bg-gray-50 border-b border-gray-200">
                   <th className="py-2 px-3 text-left text-gray-600">年齢</th>
-                  <th className="py-2 px-3 text-right text-blue-700">男性BMR</th>
-                  <th className="py-2 px-3 text-right text-pink-600">女性BMR</th>
-                  <th className="py-2 px-3 text-right text-blue-500">男性TDEE</th>
-                  <th className="py-2 px-3 text-right text-pink-400">女性TDEE</th>
+                  <th className="py-2 px-3 text-right text-kon">男性BMR</th>
+                  <th className="py-2 px-3 text-right text-sakura">女性BMR</th>
+                  <th className="py-2 px-3 text-right text-kon">男性TDEE</th>
+                  <th className="py-2 px-3 text-right text-sakura">女性TDEE</th>
                 </tr>
               </thead>
               <tbody>
@@ -652,10 +652,10 @@ export default function CalorieCalculatorPage() {
                 ].map((row) => (
                   <tr key={row.age} className="border-b border-gray-100 last:border-0 hover:bg-gray-50">
                     <td className="py-2.5 px-3 font-medium text-gray-900">{row.age}</td>
-                    <td className="py-2.5 px-3 text-right text-blue-700">{row.mBmr}kcal</td>
-                    <td className="py-2.5 px-3 text-right text-pink-600">{row.fBmr}kcal</td>
-                    <td className="py-2.5 px-3 text-right text-blue-500">{row.mTdee}kcal</td>
-                    <td className="py-2.5 px-3 text-right text-pink-400">{row.fTdee}kcal</td>
+                    <td className="py-2.5 px-3 text-right text-kon">{row.mBmr}kcal</td>
+                    <td className="py-2.5 px-3 text-right text-sakura">{row.fBmr}kcal</td>
+                    <td className="py-2.5 px-3 text-right text-kon">{row.mTdee}kcal</td>
+                    <td className="py-2.5 px-3 text-right text-sakura">{row.fTdee}kcal</td>
                   </tr>
                 ))}
               </tbody>
@@ -733,7 +733,7 @@ export default function CalorieCalculatorPage() {
               <Link
                 key={l.href}
                 href={l.href}
-                className="flex items-center gap-2 p-3 rounded-lg border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-colors text-blue-600 text-sm font-medium"
+                className="flex items-center gap-2 p-3 rounded-lg border border-gray-200 hover:border-ai hover:bg-gray-50 transition-colors text-kon text-sm font-medium"
               >
                 <span>→</span>
                 {l.label}

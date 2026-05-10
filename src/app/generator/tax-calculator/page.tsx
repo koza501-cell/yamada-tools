@@ -65,9 +65,9 @@ export default function Page() {
               ].map(([ex, t10, inc10, t8, inc8]) => (
                 <tr key={ex} className="border-t border-gray-100 hover:bg-gray-50">
                   <td className="py-2 px-4">{ex.toLocaleString()}円</td>
-                  <td className="py-2 px-4 text-red-600">+{t10.toLocaleString()}円</td>
+                  <td className="py-2 px-4 text-danger">+{t10.toLocaleString()}円</td>
                   <td className="py-2 px-4 font-bold">{inc10.toLocaleString()}円</td>
-                  <td className="py-2 px-4 text-orange-600">+{t8.toLocaleString()}円</td>
+                  <td className="py-2 px-4 text-kon">+{t8.toLocaleString()}円</td>
                   <td className="py-2 px-4 font-bold">{inc8.toLocaleString()}円</td>
                 </tr>
               ))}

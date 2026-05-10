@@ -234,7 +234,7 @@ export default function ShiryoCostClient() {
                         {rows.length > 1 && (
                           <button
                             onClick={() => removeRow(row.id)}
-                            className="text-red-400 hover:text-red-600 text-xs"
+                            className="text-danger hover:text-danger text-xs"
                           >
                             削除
                           </button>
@@ -248,7 +248,7 @@ export default function ShiryoCostClient() {
           </div>
           <button
             onClick={addRow}
-            className="mt-3 text-sm text-blue-600 hover:underline dark:text-blue-400"
+            className="mt-3 text-sm text-kon hover:underline dark:text-gray-300"
           >
             ＋ 行を追加
           </button>
@@ -344,7 +344,7 @@ export default function ShiryoCostClient() {
             <div className="text-center mb-6">
               <button
                 onClick={() => window.print()}
-                className="text-xs text-blue-600 hover:underline print:hidden"
+                className="text-xs text-kon hover:underline print:hidden"
               >
                 🖨️ 印刷 / PDFとして保存
               </button>
@@ -404,8 +404,8 @@ export default function ShiryoCostClient() {
           )}
         </div>
 
-        <div className="bg-amber-50 dark:bg-amber-900/30 border border-amber-200 dark:border-amber-700 rounded-lg p-4 mb-4">
-          <p className="text-xs text-amber-800 dark:text-amber-200">
+        <div className="bg-gray-50 dark:bg-kon/30 border border-gray-200 dark:border-gray-200 rounded-lg p-4 mb-4">
+          <p className="text-xs text-kon dark:text-amber-200">
             📊 参考: 飼料価格の推移 — 2020年比で配合飼料は約40%上昇（2024年度時点）
           </p>
         </div>

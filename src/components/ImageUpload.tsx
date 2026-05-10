@@ -87,7 +87,7 @@ export default function ImageUpload({ onImageUploaded, currentImage }: ImageUplo
               accept="image/*"
               onChange={handleFileChange}
               disabled={uploading}
-              className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 disabled:opacity-50"
+              className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-gray-50 file:text-kon hover:file:bg-gray-50 disabled:opacity-50"
             />
           </label>
           <p className="mt-1 text-sm text-gray-500">
@@ -97,8 +97,8 @@ export default function ImageUpload({ onImageUploaded, currentImage }: ImageUplo
       </div>
 
       {uploading && (
-        <div className="mt-2 flex items-center gap-2 text-sm text-blue-600">
-          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600"></div>
+        <div className="mt-2 flex items-center gap-2 text-sm text-kon">
+          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-kon"></div>
           アップロード中...
         </div>
       )}

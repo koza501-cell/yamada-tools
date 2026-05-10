@@ -45,13 +45,13 @@ export default function ColumnMappingUI({ headers, columnMap, onMapChange }: Col
           <div key={key} className="flex flex-col gap-0.5">
             <label className="text-xs font-medium text-gray-600 flex items-center gap-1">
               {label}
-              {required && <span className="text-red-400">*</span>}
+              {required && <span className="text-danger">*</span>}
             </label>
             <select
               value={currentValue(columnMap?.[key])}
               onChange={(e) => handleChange(key, Number(e.target.value))}
               className={`text-xs bg-gray-50 border rounded px-2 py-1.5 w-full
-                ${required && columnMap?.[key] === -1 ? "border-red-300 bg-red-50" : "border-gray-300"}`}
+                ${required && columnMap?.[key] === -1 ? "border-gray-200 bg-gray-50" : "border-gray-300"}`}
             >
               {allHeaders.map((h, i) => (
                 <option key={i} value={i}>{i === 0 ? h : `${h} (列${i})`}</option>

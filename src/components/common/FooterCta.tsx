@@ -14,7 +14,7 @@ export default function FooterCta() {
   if (!show) return null;
 
   return (
-    <section className="py-12 bg-gradient-to-r from-amber-50 to-amber-100 dark:from-amber-900/20 dark:to-amber-800/20 border-t border-amber-200 dark:border-amber-800">
+    <section className="py-12 bg-gradient-to-r from-amber-50 to-amber-100 dark:from-amber-900/20 dark:to-amber-800/20 border-t border-gray-200 dark:border-gray-200">
       <div className="max-w-3xl mx-auto px-4 text-center">
         <p className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
           🚀 もっと便利に使いたい？
@@ -25,13 +25,13 @@ export default function FooterCta() {
         <div className="flex flex-wrap gap-3 justify-center">
           <Link
             href="/pricing"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-amber-500 text-white rounded-xl font-bold hover:bg-amber-600 transition-colors shadow-md"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-kon text-white rounded-xl font-bold hover:bg-kon transition-colors shadow-md"
           >
             料金プランを見る →
           </Link>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="inline-flex items-center gap-2 px-6 py-3 border-2 border-amber-500 text-amber-700 dark:text-amber-400 rounded-xl font-bold hover:bg-amber-50 dark:hover:bg-amber-900/30 transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 border-2 border-gray-200 text-kon dark:text-kon rounded-xl font-bold hover:bg-gray-50 dark:hover:bg-kon/30 transition-colors"
           >
             無料で始める
           </button>

@@ -115,12 +115,12 @@ export default function SouzokuPricingPage() {
 
       <div className="max-w-4xl mx-auto px-4 py-10">
         {/* Disclaimer */}
-        <div className="bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 rounded-xl p-4 mb-8 text-sm text-amber-800 dark:text-amber-300">
+        <div className="bg-gray-50 dark:bg-amber-950/40 border border-gray-200 dark:border-gray-200 rounded-xl p-4 mb-8 text-sm text-kon dark:text-amber-300">
           ⚠️ 本ツールは法務局公式書式に準拠した書類作成補助です。法律相談・代理申請は行いません。書類の最終確認は必ずご自身で行ってください。
         </div>
 
         {error && (
-          <div className="bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800 rounded-xl p-4 mb-6 text-sm text-red-700 dark:text-red-300">
+          <div className="bg-gray-50 dark:bg-red-950/40 border border-gray-200 dark:border-danger rounded-xl p-4 mb-6 text-sm text-danger dark:text-gin">
             {error}
           </div>
         )}
@@ -163,7 +163,7 @@ export default function SouzokuPricingPage() {
                   disabled={loading !== null}
                   className={`w-full py-3 rounded-xl font-bold text-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed
                     ${tier.id === "standard"
-                      ? "bg-ai hover:bg-blue-600 text-white shadow-md hover:shadow-lg"
+                      ? "bg-ai hover:bg-ai text-white shadow-md hover:shadow-lg"
                       : "bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white"}`}
                 >
                   {loading === tier.id ? "処理中..." : (user ? `${tier.name}を購入する` : "ログインして購入")}

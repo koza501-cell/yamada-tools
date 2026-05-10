@@ -191,7 +191,7 @@ export default function ToolsPage() {
                       className="group relative bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:border-sakura dark:hover:border-sakura hover:shadow-md transition-all"
                     >
                       {tool.isNew && (
-                        <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                        <span className="absolute -top-2 -right-2 bg-danger text-white text-xs font-bold px-2 py-0.5 rounded-full">
                           NEW
                         </span>
                       )}

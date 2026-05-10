@@ -160,13 +160,13 @@ export default function QuotationClient() {
               ref={errorBannerRef}
               role="alert"
               aria-live="assertive"
-              className="print:hidden mb-4 p-4 bg-red-50 border border-red-300 rounded-lg"
+              className="print:hidden mb-4 p-4 bg-gray-50 border border-gray-200 rounded-lg"
             >
-              <p className="font-bold text-red-700 mb-2">入力内容を確認してください</p>
+              <p className="font-bold text-danger mb-2">入力内容を確認してください</p>
               <ul className="list-disc list-inside space-y-1">
                 {errorFields.map(({ id, label }) => (
                   <li key={id}>
-                    <a href={`#${id}`} className="text-red-600 underline hover:text-red-800">
+                    <a href={`#${id}`} className="text-danger underline hover:text-danger">
                       {label}
                     </a>
                   </li>
@@ -287,7 +287,7 @@ export default function QuotationClient() {
               {/* Items table */}
               <h3 className="font-bold text-kon mb-3">明細</h3>
               {(errors.items as { message?: string } | undefined)?.message && (
-                <p role="alert" className="mb-2 text-xs text-red-600">
+                <p role="alert" className="mb-2 text-xs text-danger">
                   {(errors.items as { message?: string }).message}
                 </p>
               )}
@@ -322,7 +322,7 @@ export default function QuotationClient() {
                             className="w-full px-2 py-1 border rounded"
                           />
                           {itemErrors?.name && (
-                            <p id={`item-${index}-name-error`} role="alert" className="text-xs text-red-600 mt-0.5">
+                            <p id={`item-${index}-name-error`} role="alert" className="text-xs text-danger mt-0.5">
                               {itemErrors.name.message}
                             </p>
                           )}
@@ -359,7 +359,7 @@ export default function QuotationClient() {
                             type="button"
                             onClick={() => fields.length > 1 && remove(index)}
                             disabled={fields.length <= 1}
-                            className="text-red-500 p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded hover:bg-red-50 disabled:opacity-30"
+                            className="text-danger p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded hover:bg-gray-50 disabled:opacity-30"
                             aria-label={`明細 ${index + 1} を削除`}
                           >
                             ×

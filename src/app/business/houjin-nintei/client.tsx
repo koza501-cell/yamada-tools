@@ -35,8 +35,8 @@ const faqItems = [
 
 const CATEGORY_COLORS: Record<string, string> = {
   認定: "bg-green-100 text-green-800",
-  認証: "bg-blue-100 text-blue-800",
-  承認: "bg-purple-100 text-purple-800",
+  認証: "bg-gray-50 text-kon",
+  承認: "bg-gray-50 text-kon",
 };
 
 function categoryBadge(cat?: string) {
@@ -77,12 +77,12 @@ export default function HoujinNinteiClient() {
       <div className="bg-white border border-gray-200 rounded-xl p-5 space-y-3">
         <label className="block text-sm font-medium text-gray-700">法人番号（13桁）</label>
         <div className="flex gap-2">
-          <input type="text" value={corpNum} onChange={(e) => setCorpNum(e.target.value)} onKeyDown={handleKeyDown} placeholder="例: 1180301018771" maxLength={13} className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <button type="button" onClick={handleSearch} disabled={loading} className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-5 py-2 rounded-lg disabled:opacity-50 transition-colors">
+          <input type="text" value={corpNum} onChange={(e) => setCorpNum(e.target.value)} onKeyDown={handleKeyDown} placeholder="例: 1180301018771" maxLength={13} className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon" />
+          <button type="button" onClick={handleSearch} disabled={loading} className="bg-kon hover:bg-ai text-white text-sm font-medium px-5 py-2 rounded-lg disabled:opacity-50 transition-colors">
             {loading ? "検索中…" : "検索"}
           </button>
         </div>
-        {error && <p className="text-red-600 text-sm">{error}</p>}
+        {error && <p className="text-danger text-sm">{error}</p>}
       </div>
       {hojin && (
         <div className="space-y-6">
@@ -91,9 +91,9 @@ export default function HoujinNinteiClient() {
             {hojin.name_en && <p className="text-sm text-gray-500">{hojin.name_en}</p>}
             <div className="mt-2 text-sm text-gray-600">法人番号: <span className="font-mono">{hojin.corporate_number ?? "—"}</span></div>
           </div>
-          <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 text-center">
-            <p className="text-3xl font-bold text-blue-700">{certifications.length}</p>
-            <p className="text-sm text-blue-600 mt-1">認定・認証件数</p>
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center">
+            <p className="text-3xl font-bold text-kon">{certifications.length}</p>
+            <p className="text-sm text-kon mt-1">認定・認証件数</p>
           </div>
           {certifications.length > 0 ? (
             <div className="space-y-3">
@@ -122,7 +122,7 @@ export default function HoujinNinteiClient() {
           )}
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-sm">
             <p className="font-medium text-gray-700 mb-2">関連ツール（yamada-tools.jp）</p>
-            <ul className="space-y-1 text-blue-700">
+            <ul className="space-y-1 text-kon">
               <li><a href="/business/houjin-search" className="hover:underline">→ 法人検索ツール（会社名から法人番号を調べる）</a></li>
               <li><a href="/business/houjin-zaimu" className="hover:underline">→ 法人財務情報ツール（売上高・利益・株主）</a></li>
               <li><a href="/business/houjin-nyusatsu" className="hover:underline">→ 入札・調達情報ツール（政府調達履歴）</a></li>
@@ -131,7 +131,7 @@ export default function HoujinNinteiClient() {
           </div>
         </div>
       )}
-      {data && !hojin && <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-sm text-red-700">該当する法人が見つかりませんでした。</div>}
+      {data && !hojin && <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-sm text-danger">該当する法人が見つかりませんでした。</div>}
       <div className="print:hidden"><FAQSection faq={faqItems} /></div>
     </div>
   );

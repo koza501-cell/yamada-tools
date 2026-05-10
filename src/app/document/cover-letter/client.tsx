@@ -142,13 +142,13 @@ export default function CoverLetterClient() {
               ref={errorBannerRef}
               role="alert"
               aria-live="assertive"
-              className="print:hidden mb-4 p-4 bg-red-50 border border-red-300 rounded-lg"
+              className="print:hidden mb-4 p-4 bg-gray-50 border border-gray-200 rounded-lg"
             >
-              <p className="font-bold text-red-700 mb-2">入力内容を確認してください</p>
+              <p className="font-bold text-danger mb-2">入力内容を確認してください</p>
               <ul className="list-disc list-inside space-y-1">
                 {errorFields.map(({ id, label }) => (
                   <li key={id}>
-                    <a href={`#${id}`} className="text-red-600 underline hover:text-red-800">
+                    <a href={`#${id}`} className="text-danger underline hover:text-danger">
                       {label}
                     </a>
                   </li>
@@ -309,7 +309,7 @@ export default function CoverLetterClient() {
                       type="button"
                       onClick={() => fields.length > 1 && remove(index)}
                       disabled={fields.length <= 1}
-                      className="text-red-500 p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded hover:bg-red-50 disabled:opacity-30"
+                      className="text-danger p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded hover:bg-gray-50 disabled:opacity-30"
                       aria-label={`書類 ${index + 1} を削除`}
                     >
                       ×

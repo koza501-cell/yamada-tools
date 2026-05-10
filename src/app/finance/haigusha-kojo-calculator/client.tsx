@@ -159,7 +159,7 @@ export default function HaigushaKojoClient() {
                 <div className="flex gap-2">
                   {(["2025", "2026"] as Year[]).map(y => (
                     <button key={y} onClick={() => setYear(y)}
-                      className={"flex-1 py-2 rounded-lg text-sm font-medium border transition-colors " + (year === y ? "bg-blue-500 text-white border-blue-500" : "bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600")}>
+                      className={"flex-1 py-2 rounded-lg text-sm font-medium border transition-colors " + (year === y ? "bg-kon text-white border-kon" : "bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600")}>
                       {y}年
                     </button>
                   ))}
@@ -175,7 +175,7 @@ export default function HaigushaKojoClient() {
                 <div className="flex flex-wrap gap-2 mt-2">
                   {[1000000, 1230000, 1360000, 1500000, 1700000, 2020000].map(v => (
                     <button key={v} onClick={() => setSpouseAnnual(v)}
-                      className="px-2 py-1 text-xs rounded border border-gray-300 dark:border-gray-600 hover:border-blue-400 hover:text-blue-500 dark:text-gray-400">
+                      className="px-2 py-1 text-xs rounded border border-gray-300 dark:border-gray-600 hover:border-ai hover:text-ai dark:text-gray-400">
                       {Math.round(v / 10000)}万
                     </button>
                   ))}
@@ -192,7 +192,7 @@ export default function HaigushaKojoClient() {
                 <label htmlFor="elderly" className="text-sm text-gray-600 dark:text-gray-400">配偶者が70歳以上（老人控除対象配偶者）</label>
               </div>
             </div>
-            <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 text-xs text-blue-700 dark:text-blue-300 space-y-1">
+            <div className="bg-gray-50 dark:bg-kon/20 rounded-xl p-4 text-xs text-kon dark:text-gray-300 space-y-1">
               <p className="font-semibold">2025年と2026年の主な違い</p>
               <p>・配偶者控除の上限: 2025年 123万円 → 2026年 136万円</p>
               <p>・所得税の非課税ライン: 2025年 103万円 → 2026年 178万円</p>
@@ -220,7 +220,7 @@ export default function HaigushaKojoClient() {
                 </div>
                 <div className="bg-white/60 dark:bg-gray-800/40 rounded-lg p-3">
                   <div className="text-xs text-gray-500 dark:text-gray-400">年間節税額（目安）</div>
-                  <div className="font-bold text-blue-600 dark:text-blue-400">{fmt(result.saving)}円</div>
+                  <div className="font-bold text-kon dark:text-gray-300">{fmt(result.saving)}円</div>
                 </div>
               </div>
             </div>
@@ -244,7 +244,7 @@ export default function HaigushaKojoClient() {
                           {row.it.type.startsWith("対象外") ? "対象外" : row.it.type}
                         </td>
                         <td className="py-1 pr-2 text-right font-medium">{fmtMan(row.it.amount)}万円</td>
-                        <td className="py-1 text-right text-blue-600 dark:text-blue-400">{fmt(row.saving)}円</td>
+                        <td className="py-1 text-right text-kon dark:text-gray-300">{fmt(row.saving)}円</td>
                       </tr>
                     ))}
                   </tbody>

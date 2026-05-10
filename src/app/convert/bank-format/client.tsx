@@ -1364,19 +1364,19 @@ export default function BankFormatClient({
             {zenginErrors.length > 0 && (
               <div className="mb-4">
                 <button type="button" onClick={() => setZenginErrorsOpen(o => !o)}
-                  className="w-full flex items-center justify-between px-4 py-3 bg-red-50 border border-red-200 rounded-xl text-sm text-red-700">
+                  className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-danger">
                   <span>⚠️ {zenginErrors.length}件のエラーが見つかりました</span>
                   <span className={`transition-transform ${zenginErrorsOpen ? "rotate-180" : ""}`}>▼</span>
                 </button>
                 {zenginErrorsOpen && (
                   <div className="mt-2 space-y-1.5 max-h-64 overflow-y-auto">
                     {zenginErrors.map((err, i) => (
-                      <div key={i} className="flex items-start gap-2 px-3 py-2 bg-red-50 border border-red-100 rounded-lg text-xs">
-                        <span className="bg-red-500 text-white rounded px-1.5 py-0.5 font-mono flex-shrink-0">
+                      <div key={i} className="flex items-start gap-2 px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-xs">
+                        <span className="bg-danger text-white rounded px-1.5 py-0.5 font-mono flex-shrink-0">
                           {err.line === 0 ? "全体" : `L${err.line}`}
                         </span>
-                        <span className="text-red-700 font-medium flex-shrink-0">{err.field}</span>
-                        <span className="text-red-600">{err.message}</span>
+                        <span className="text-danger font-medium flex-shrink-0">{err.field}</span>
+                        <span className="text-danger">{err.message}</span>
                       </div>
                     ))}
                   </div>
@@ -1388,11 +1388,11 @@ export default function BankFormatClient({
               <div>
                 <div className="flex flex-wrap gap-2 mb-4 text-xs">
                   {zenginParseResult.header && (
-                    <span className="bg-blue-100 text-blue-700 px-2 py-1 rounded-full">委託者: {zenginParseResult.header.clientName || "—"}</span>
+                    <span className="bg-gray-50 text-kon px-2 py-1 rounded-full">委託者: {zenginParseResult.header.clientName || "—"}</span>
                   )}
                   <span className="bg-green-100 text-green-700 px-2 py-1 rounded-full">データ {zenginParseResult.records.length}件</span>
                   {zenginParseResult.trailer && (
-                    <span className="bg-amber-100 text-amber-700 px-2 py-1 rounded-full">
+                    <span className="bg-gray-50 text-kon px-2 py-1 rounded-full">
                       合計 ¥{parseInt(zenginParseResult.trailer.totalAmount || "0").toLocaleString("ja-JP")}
                     </span>
                   )}
@@ -1476,7 +1476,7 @@ export default function BankFormatClient({
                       <button type="button" onClick={() => { setHeaderData(tmpl.headerData); setTransfers(tmpl.transfers); setTemplatesOpen(false); setMascotState("success"); setMascotMessage("テンプレートを復元しました"); }}
                         className="text-xs text-kon hover:underline">復元</button>
                       <button type="button" onClick={() => deleteTemplate(tmpl.id)}
-                        className="text-xs text-red-400 hover:text-red-600 hover:underline">削除</button>
+                        className="text-xs text-danger hover:text-danger hover:underline">削除</button>
                     </div>
                   </div>
                 ))}
@@ -1604,7 +1604,7 @@ export default function BankFormatClient({
               <label className="block text-sm font-medium text-gray-700 mb-1 flex items-center gap-1">
                 委託者コード
                 {headerTouched['clientCode'] && (headerFieldError('clientCode')
-                  ? <span className="text-red-500 text-xs ml-1">✗ {headerFieldError('clientCode')}</span>
+                  ? <span className="text-danger text-xs ml-1">✗ {headerFieldError('clientCode')}</span>
                   : <span className="text-green-500 text-xs ml-1">✓</span>
                 )}
               </label>
@@ -1620,7 +1620,7 @@ export default function BankFormatClient({
                 maxLength={10}
                 className={`w-full px-3 py-2 border rounded-lg ${
                   headerTouched['clientCode'] && headerFieldError('clientCode')
-                    ? 'border-red-400 bg-red-50'
+                    ? 'border-danger bg-gray-50'
                     : headerTouched['clientCode'] && !headerFieldError('clientCode')
                     ? 'border-green-400 bg-green-50'
                     : 'border-gray-200'
@@ -1632,7 +1632,7 @@ export default function BankFormatClient({
               <label className="block text-sm font-medium text-gray-700 mb-1 flex items-center gap-1">
                 委託者名（カナ）
                 {headerTouched['clientName'] && (headerFieldError('clientName')
-                  ? <span className="text-red-500 text-xs ml-1">✗ {headerFieldError('clientName')}</span>
+                  ? <span className="text-danger text-xs ml-1">✗ {headerFieldError('clientName')}</span>
                   : <span className="text-green-500 text-xs ml-1">✓</span>
                 )}
               </label>
@@ -1647,7 +1647,7 @@ export default function BankFormatClient({
                 placeholder="カブシキガイシャ ヤマダ"
                 className={`w-full px-3 py-2 border rounded-lg ${
                   headerTouched['clientName'] && headerFieldError('clientName')
-                    ? 'border-red-400 bg-red-50'
+                    ? 'border-danger bg-gray-50'
                     : headerTouched['clientName'] && !headerFieldError('clientName')
                     ? 'border-green-400 bg-green-50'
                     : 'border-gray-200'
@@ -1659,7 +1659,7 @@ export default function BankFormatClient({
               <label className="block text-sm font-medium text-gray-700 mb-1 flex items-center gap-1">
                 振込指定日（MMDD）
                 {headerTouched['transferDate'] && (headerFieldError('transferDate')
-                  ? <span className="text-red-500 text-xs ml-1">✗ {headerFieldError('transferDate')}</span>
+                  ? <span className="text-danger text-xs ml-1">✗ {headerFieldError('transferDate')}</span>
                   : <span className="text-green-500 text-xs ml-1">✓ {transferDateDisplay}</span>
                 )}
               </label>
@@ -1675,7 +1675,7 @@ export default function BankFormatClient({
                 maxLength={4}
                 className={`w-full px-3 py-2 border rounded-lg ${
                   headerTouched['transferDate'] && headerFieldError('transferDate')
-                    ? 'border-red-400 bg-red-50'
+                    ? 'border-danger bg-gray-50'
                     : headerTouched['transferDate'] && !headerFieldError('transferDate')
                     ? 'border-green-400 bg-green-50'
                     : 'border-gray-200'
@@ -1687,7 +1687,7 @@ export default function BankFormatClient({
               <label className="block text-sm font-medium text-gray-700 mb-1 flex items-center gap-1">
                 仕向銀行
                 {headerTouched['bankCode'] && (headerFieldError('bankCode')
-                  ? <span className="text-red-500 text-xs ml-1">✗ {headerFieldError('bankCode')}</span>
+                  ? <span className="text-danger text-xs ml-1">✗ {headerFieldError('bankCode')}</span>
                   : <span className="text-green-500 text-xs ml-1">✓ {MAJOR_BANKS.find(b => b.code === headerData.bankCode)?.name || ''}</span>
                 )}
               </label>
@@ -1716,7 +1716,7 @@ export default function BankFormatClient({
                     placeholder="銀行名・コードで検索"
                     className={`flex-1 px-3 py-2 border rounded-lg text-sm ${
                       headerTouched['bankCode'] && headerFieldError('bankCode')
-                        ? 'border-red-400 bg-red-50'
+                        ? 'border-danger bg-gray-50'
                         : headerTouched['bankCode'] && !headerFieldError('bankCode')
                         ? 'border-green-400 bg-green-50'
                         : 'border-gray-200'
@@ -1738,7 +1738,7 @@ export default function BankFormatClient({
                           setBankDropOpen(false);
                           touchHeader('bankCode');
                         }}
-                        className="w-full flex items-center gap-3 px-3 py-2 text-left hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors"
+                        className="w-full flex items-center gap-3 px-3 py-2 text-left hover:bg-gray-50 dark:hover:bg-ai/30 transition-colors"
                       >
                         <span className="font-mono text-xs text-gray-500 dark:text-gray-400 w-10 flex-shrink-0">{b.code}</span>
                         <span className="text-sm font-medium text-gray-800 dark:text-gray-200">{b.name}</span>
@@ -1757,7 +1757,7 @@ export default function BankFormatClient({
               <label className="block text-sm font-medium text-gray-700 mb-1 flex items-center gap-1">
                 仕向支店
                 {headerTouched['branchCode'] && (headerFieldError('branchCode')
-                  ? <span className="text-red-500 text-xs ml-1">✗ {headerFieldError('branchCode')}</span>
+                  ? <span className="text-danger text-xs ml-1">✗ {headerFieldError('branchCode')}</span>
                   : <span className="text-green-500 text-xs ml-1">✓ {COMMON_BRANCHES.find(b => b.code === headerData.branchCode)?.name || ''}</span>
                 )}
               </label>
@@ -1786,7 +1786,7 @@ export default function BankFormatClient({
                     placeholder="支店名・コードで検索"
                     className={`flex-1 px-3 py-2 border rounded-lg text-sm ${
                       headerTouched['branchCode'] && headerFieldError('branchCode')
-                        ? 'border-red-400 bg-red-50'
+                        ? 'border-danger bg-gray-50'
                         : headerTouched['branchCode'] && !headerFieldError('branchCode')
                         ? 'border-green-400 bg-green-50'
                         : 'border-gray-200'
@@ -1808,7 +1808,7 @@ export default function BankFormatClient({
                           setBranchDropOpen(false);
                           touchHeader('branchCode');
                         }}
-                        className="w-full flex items-center gap-3 px-3 py-2 text-left hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors"
+                        className="w-full flex items-center gap-3 px-3 py-2 text-left hover:bg-gray-50 dark:hover:bg-ai/30 transition-colors"
                       >
                         <span className="font-mono text-xs text-gray-500 dark:text-gray-400 w-10 flex-shrink-0">{b.code}</span>
                         <span className="text-sm font-medium text-gray-800 dark:text-gray-200">{b.name}</span>
@@ -1844,7 +1844,7 @@ export default function BankFormatClient({
               <label className="block text-sm font-medium text-gray-700 mb-1 flex items-center gap-1">
                 口座番号
                 {headerTouched['accountNumber'] && (headerFieldError('accountNumber')
-                  ? <span className="text-red-500 text-xs ml-1">✗ {headerFieldError('accountNumber')}</span>
+                  ? <span className="text-danger text-xs ml-1">✗ {headerFieldError('accountNumber')}</span>
                   : <span className="text-green-500 text-xs ml-1">✓</span>
                 )}
               </label>
@@ -1860,7 +1860,7 @@ export default function BankFormatClient({
                 maxLength={7}
                 className={`w-full px-3 py-2 border rounded-lg ${
                   headerTouched['accountNumber'] && headerFieldError('accountNumber')
-                    ? 'border-red-400 bg-red-50'
+                    ? 'border-danger bg-gray-50'
                     : headerTouched['accountNumber'] && !headerFieldError('accountNumber')
                     ? 'border-green-400 bg-green-50'
                     : 'border-gray-200'
@@ -1920,7 +1920,7 @@ export default function BankFormatClient({
               onClick={() => fileInputRef.current?.click()}
               className={`border-2 border-dashed rounded-xl p-6 text-center cursor-pointer transition-all mb-4 ${
                 isDragging
-                  ? "border-blue-400 bg-blue-50 scale-[1.01]"
+                  ? "border-kon bg-gray-50 scale-[1.01]"
                   : "border-gray-300 hover:border-kon hover:bg-gray-50"
               }`}
             >
@@ -1930,7 +1930,7 @@ export default function BankFormatClient({
                   <span className="inline-flex items-center gap-1 px-3 py-1 bg-kon/10 text-kon rounded-full text-sm font-medium">
                     📄 {csvFileName}
                     <button type="button" onClick={(e) => { e.stopPropagation(); setCsvFileName(''); setCsvInput(''); setParsedPreviewRows([]); }}
-                      className="ml-1 text-gray-400 hover:text-red-500 text-xs">✕</button>
+                      className="ml-1 text-gray-400 hover:text-danger text-xs">✕</button>
                   </span>
                 </div>
               ) : (
@@ -2011,7 +2011,7 @@ export default function BankFormatClient({
                   <span className="inline-flex items-center gap-1 px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-sm font-medium">
                     📄 {xlsFile.name}
                     <button type="button" onClick={e => { e.stopPropagation(); setXlsFile(null); setXlsSheets([]); setXlsShowPreview(false); setXlsError(''); }}
-                      className="ml-1 text-gray-400 hover:text-red-500 text-xs">✕</button>
+                      className="ml-1 text-gray-400 hover:text-danger text-xs">✕</button>
                   </span>
                 ) : (
                   <>
@@ -2022,7 +2022,7 @@ export default function BankFormatClient({
                 <input ref={xlsFileInputRef} type="file" accept=".xlsx,.xls" className="hidden"
                   onChange={e => { const f = e.target.files?.[0]; if (f) handleExcelFile(f); }} />
               </div>
-              {xlsError && <p className="text-red-500 text-xs mt-2">⚠️ {xlsError}</p>}
+              {xlsError && <p className="text-danger text-xs mt-2">⚠️ {xlsError}</p>}
               {xlsSheets.length > 1 && (
                 <div className="mt-3 flex items-center gap-2 flex-wrap">
                   <span className="text-xs text-gray-500 dark:text-gray-400">シートを選択:</span>
@@ -2166,7 +2166,7 @@ export default function BankFormatClient({
                   const rNameErr = rowFieldError(index, 'recipientName');
                   const anyRealTimeErr = rBankErr || rBranchErr || rAccErr || rAmtErr || rNameErr;
                   return (
-                    <tr key={index} className={`border-b ${anyRealTimeErr ? "bg-red-50" : ""}`}>
+                    <tr key={index} className={`border-b ${anyRealTimeErr ? "bg-gray-50" : ""}`}>
                       {/* Bank code — autocomplete */}
                       <td className="px-1 py-2 relative">
                         <div className="relative">
@@ -2196,7 +2196,7 @@ export default function BankFormatClient({
                             onBlur={() => setTimeout(() => setRowBankDropOpen((prev) => ({ ...prev, [index]: false })), 150)}
                             placeholder="銀行"
                             className={`w-24 px-2 py-1 border rounded text-xs ${
-                              rBankErr ? 'border-red-400 bg-red-50' :
+                              rBankErr ? 'border-danger bg-gray-50' :
                               rowTouched[`${index}_bankCode`] && !rBankErr && transfer.bankCode ? 'border-green-400' : ''
                             }`}
                           />
@@ -2212,7 +2212,7 @@ export default function BankFormatClient({
                                     setRowBankQuery((prev) => ({ ...prev, [index]: '' }));
                                     setRowBankDropOpen((prev) => ({ ...prev, [index]: false }));
                                   }}
-                                  className="w-full flex items-center gap-2 px-2 py-1.5 text-left hover:bg-blue-50 dark:hover:bg-blue-900/30 dark:text-gray-200"
+                                  className="w-full flex items-center gap-2 px-2 py-1.5 text-left hover:bg-gray-50 dark:hover:bg-ai/30 dark:text-gray-200"
                                 >
                                   <span className="font-mono text-xs text-gray-400 w-9 flex-shrink-0">{b.code}</span>
                                   <span className="text-xs text-gray-800 truncate">{b.name}</span>
@@ -2221,7 +2221,7 @@ export default function BankFormatClient({
                             </div>
                           )}
                         </div>
-                        {rBankErr && <p className="text-red-500 text-xs mt-0.5">{rBankErr}</p>}
+                        {rBankErr && <p className="text-danger text-xs mt-0.5">{rBankErr}</p>}
                       </td>
                       {/* Bank name (auto-filled, editable) */}
                       <td className="px-1 py-2">
@@ -2262,7 +2262,7 @@ export default function BankFormatClient({
                             onBlur={() => setTimeout(() => setRowBranchDropOpen((prev) => ({ ...prev, [index]: false })), 150)}
                             placeholder="支店"
                             className={`w-20 px-2 py-1 border rounded text-xs ${
-                              rBranchErr ? 'border-red-400 bg-red-50' :
+                              rBranchErr ? 'border-danger bg-gray-50' :
                               rowTouched[`${index}_branchCode`] && !rBranchErr && transfer.branchCode ? 'border-green-400' : ''
                             }`}
                           />
@@ -2278,7 +2278,7 @@ export default function BankFormatClient({
                                     setRowBranchQuery((prev) => ({ ...prev, [index]: '' }));
                                     setRowBranchDropOpen((prev) => ({ ...prev, [index]: false }));
                                   }}
-                                  className="w-full flex items-center gap-2 px-2 py-1.5 text-left hover:bg-blue-50 dark:hover:bg-blue-900/30 dark:text-gray-200"
+                                  className="w-full flex items-center gap-2 px-2 py-1.5 text-left hover:bg-gray-50 dark:hover:bg-ai/30 dark:text-gray-200"
                                 >
                                   <span className="font-mono text-xs text-gray-400 w-7 flex-shrink-0">{b.code}</span>
                                   <span className="text-xs text-gray-800 truncate">{b.name}</span>
@@ -2287,7 +2287,7 @@ export default function BankFormatClient({
                             </div>
                           )}
                         </div>
-                        {rBranchErr && <p className="text-red-500 text-xs mt-0.5">{rBranchErr}</p>}
+                        {rBranchErr && <p className="text-danger text-xs mt-0.5">{rBranchErr}</p>}
                       </td>
                       {/* Branch name (auto-filled, editable) */}
                       <td className="px-1 py-2">
@@ -2318,11 +2318,11 @@ export default function BankFormatClient({
                           maxLength={7}
                           placeholder="1234567"
                           className={`w-20 px-2 py-1 border rounded text-xs ${
-                            rAccErr ? 'border-red-400 bg-red-50' :
+                            rAccErr ? 'border-danger bg-gray-50' :
                             rowTouched[`${index}_accountNumber`] && !rAccErr && transfer.accountNumber ? 'border-green-400' : ''
                           }`}
                         />
-                        {rAccErr && <p className="text-red-500 text-xs mt-0.5">{rAccErr}</p>}
+                        {rAccErr && <p className="text-danger text-xs mt-0.5">{rAccErr}</p>}
                       </td>
                       <td className="px-1 py-2">
                         <input
@@ -2332,11 +2332,11 @@ export default function BankFormatClient({
                           onBlur={() => touchRow(index, 'recipientName')}
                           placeholder="カナ"
                           className={`w-28 px-2 py-1 border rounded text-xs ${
-                            rNameErr ? 'border-red-400 bg-red-50' :
+                            rNameErr ? 'border-danger bg-gray-50' :
                             rowTouched[`${index}_recipientName`] && !rNameErr && transfer.recipientName ? 'border-green-400' : ''
                           }`}
                         />
-                        {rNameErr && <p className="text-red-500 text-xs mt-0.5">{rNameErr}</p>}
+                        {rNameErr && <p className="text-danger text-xs mt-0.5">{rNameErr}</p>}
                       </td>
                       {headerData.transferType !== '21' && (
                         <td className="px-1 py-2">
@@ -2354,16 +2354,16 @@ export default function BankFormatClient({
                           onBlur={() => touchRow(index, 'amount')}
                           placeholder="100000"
                           className={`w-24 px-2 py-1 border rounded text-xs ${
-                            rAmtErr ? 'border-red-400 bg-red-50' :
+                            rAmtErr ? 'border-danger bg-gray-50' :
                             rowTouched[`${index}_amount`] && !rAmtErr && transfer.amount ? 'border-green-400' : ''
                           }`}
                         />
-                        {rAmtErr && <p className="text-red-500 text-xs mt-0.5">{rAmtErr}</p>}
+                        {rAmtErr && <p className="text-danger text-xs mt-0.5">{rAmtErr}</p>}
                       </td>
                       <td className="px-1 py-2">
                         <button
                           onClick={() => removeTransferRow(index)}
-                          className="text-red-500 hover:text-red-700 text-xs"
+                          className="text-danger hover:text-danger text-xs"
                           disabled={transfers.length === 1}
                         >
                           ✕
@@ -2385,7 +2385,7 @@ export default function BankFormatClient({
           const errCount = countAllErrors();
           if (!hasAttemptedConvert || errCount === 0) return null;
           return (
-            <div role="alert" aria-live="assertive" className="flex items-center gap-3 px-4 py-3 bg-red-50 border border-red-200 rounded-xl mb-4 text-sm text-red-700">
+            <div role="alert" aria-live="assertive" className="flex items-center gap-3 px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl mb-4 text-sm text-danger">
               <span className="text-lg">⚠️</span>
               <span>{errCount}件の入力エラーがあります。修正してから変換してください。</span>
             </div>
@@ -2409,7 +2409,7 @@ export default function BankFormatClient({
             >
               全銀フォーマットに変換
               {disabled && (
-                <span className="ml-2 bg-red-500 text-white text-xs rounded-full px-2 py-0.5">
+                <span className="ml-2 bg-danger text-white text-xs rounded-full px-2 py-0.5">
                   {errCount}エラー
                 </span>
               )}
@@ -2439,11 +2439,11 @@ export default function BankFormatClient({
               const endCount = lines.filter(l => l[0] === '9').length;
               return (
                 <div className="flex flex-wrap items-center gap-1.5 mb-4 text-xs">
-                  <span className="bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 px-2 py-1 rounded-full font-medium">ヘッダー {headerCount}件</span>
+                  <span className="bg-gray-50 text-kon dark:bg-kon/40 dark:text-gray-300 px-2 py-1 rounded-full font-medium">ヘッダー {headerCount}件</span>
                   <span className="text-gray-400">+</span>
                   <span className="bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300 px-2 py-1 rounded-full font-medium">データ {dataCount}件</span>
                   <span className="text-gray-400">+</span>
-                  <span className="bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300 px-2 py-1 rounded-full font-medium">トレーラー {trailerCount}件</span>
+                  <span className="bg-gray-50 text-kon dark:bg-kon/40 dark:text-amber-300 px-2 py-1 rounded-full font-medium">トレーラー {trailerCount}件</span>
                   <span className="text-gray-400">+</span>
                   <span className="bg-gray-200 text-gray-600 dark:bg-gray-700 dark:text-gray-300 px-2 py-1 rounded-full font-medium">エンド {endCount}件</span>
                   <span className="text-gray-400">=</span>
@@ -2478,15 +2478,15 @@ export default function BankFormatClient({
                 })();
                 return (
                   <div key={i} className={`flex items-start gap-2 px-3 py-1.5 border-b dark:border-gray-700 last:border-0 border-l-4 ${
-                    color === 'blue'   ? 'bg-blue-50 dark:bg-blue-900/30 border-l-blue-500' :
+                    color === 'blue'   ? 'bg-gray-50 dark:bg-kon/30 border-l-blue-500' :
                     color === 'green'  ? (dataIndex % 2 === 1 ? 'bg-white dark:bg-gray-800 border-l-green-500' : 'bg-gray-50 dark:bg-gray-700 border-l-green-500') :
-                    color === 'orange' ? 'bg-amber-50 dark:bg-amber-900/30 border-l-amber-500' :
+                    color === 'orange' ? 'bg-gray-50 dark:bg-kon/30 border-l-amber-500' :
                                          'bg-gray-100 dark:bg-gray-600 border-l-gray-500'
                   }`}>
                     <span className={`flex-shrink-0 w-24 text-center text-white text-xs px-1.5 py-0.5 rounded font-sans ${
-                      color === 'blue'   ? 'bg-blue-500' :
+                      color === 'blue'   ? 'bg-kon' :
                       color === 'green'  ? 'bg-green-500' :
-                      color === 'orange' ? 'bg-amber-500' :
+                      color === 'orange' ? 'bg-kon' :
                                            'bg-gray-400'
                     }`}>
                       {color === 'blue'   ? 'ヘッダー' :
@@ -2496,9 +2496,9 @@ export default function BankFormatClient({
                     {color === 'blue' ? (
                       <span className="font-mono text-xs text-gray-700 dark:text-gray-300 overflow-x-auto whitespace-nowrap">
                         <span>{line.slice(0, 1)}</span>
-                        <span className="bg-blue-200 dark:bg-blue-800 text-blue-800 dark:text-blue-200 px-0.5 rounded">{line.slice(1, 3)}</span>
+                        <span className="bg-gray-50 dark:bg-kon text-kon dark:text-gray-300 px-0.5 rounded">{line.slice(1, 3)}</span>
                         <span>{line.slice(3, 103)}</span>
-                        <span className="bg-amber-200 dark:bg-amber-800 text-amber-800 dark:text-amber-200 px-0.5 rounded">{line.slice(103, 105)}</span>
+                        <span className="bg-gray-50 dark:bg-kon text-kon dark:text-amber-200 px-0.5 rounded">{line.slice(103, 105)}</span>
                         <span>{line.slice(105)}</span>
                       </span>
                     ) : (
@@ -2579,8 +2579,8 @@ export default function BankFormatClient({
               </div>
             )}
             {seoContent.tips && (
-              <div className="bg-blue-50 rounded-lg p-4 mt-4">
-                <p className="text-sm text-blue-800">💡 <strong>ヒント:</strong> {seoContent.tips}</p>
+              <div className="bg-gray-50 rounded-lg p-4 mt-4">
+                <p className="text-sm text-kon">💡 <strong>ヒント:</strong> {seoContent.tips}</p>
               </div>
             )}
           </section>

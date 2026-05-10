@@ -88,7 +88,7 @@ export default function PasswordGenClient({
   };
 
   const strengthLabels = ["非常に弱い", "弱い", "普通", "強い", "非常に強い", "最強"];
-  const strengthColors = ["bg-red-500", "bg-orange-500", "bg-yellow-500", "bg-lime-500", "bg-green-500", "bg-emerald-500"];
+  const strengthColors = ["bg-danger", "bg-kon", "bg-yellow-500", "bg-lime-500", "bg-green-500", "bg-emerald-500"];
 
   if (!mounted) {
     return <div className="min-h-screen py-12"><div className="max-w-4xl mx-auto px-4 text-center">読み込み中...</div></div>;

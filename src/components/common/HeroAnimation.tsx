@@ -26,7 +26,7 @@ export default function HeroAnimation() {
             <p className="text-xs text-gray-400">{s.sub}</p>
           </div>
           {i < 2 && (
-            <div className={"text-2xl transition-all duration-500 " + (step === i ? "text-pink-400 animate-pulse" : "text-gray-300")}>→</div>
+            <div className={"text-2xl transition-all duration-500 " + (step === i ? "text-sakura animate-pulse" : "text-gray-300")}>→</div>
           )}
         </div>
       ))}

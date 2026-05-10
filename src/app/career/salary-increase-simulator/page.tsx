@@ -124,8 +124,8 @@ function ToggleSwitch({
       aria-checked={checked}
       id={id}
       onClick={() => onChange(!checked)}
-      className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-        checked ? "bg-blue-600" : "bg-gray-200"
+      className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-kon focus:ring-offset-2 ${
+        checked ? "bg-kon" : "bg-gray-200"
       }`}
     >
       <span
@@ -362,7 +362,7 @@ export default function SalaryIncreaseSimulatorPage() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                現在の年収 <span className="text-red-500">*</span>
+                現在の年収 <span className="text-danger">*</span>
               </label>
               <div className="flex items-center gap-2">
                 <input
@@ -372,14 +372,14 @@ export default function SalaryIncreaseSimulatorPage() {
                   value={base.currentAnnual}
                   onChange={(e) => { setBase((p) => ({ ...p, currentAnnual: e.target.value })); setResult(null); setError(""); }}
                   placeholder="例: 400"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon focus:border-transparent"
                 />
                 <span className="text-sm text-gray-500 whitespace-nowrap">万円</span>
               </div>
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                目標年収 <span className="text-red-500">*</span>
+                目標年収 <span className="text-danger">*</span>
               </label>
               <div className="flex items-center gap-2">
                 <input
@@ -389,14 +389,14 @@ export default function SalaryIncreaseSimulatorPage() {
                   value={base.targetAnnual}
                   onChange={(e) => { setBase((p) => ({ ...p, targetAnnual: e.target.value })); setResult(null); setError(""); }}
                   placeholder="例: 600"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon focus:border-transparent"
                 />
                 <span className="text-sm text-gray-500 whitespace-nowrap">万円</span>
               </div>
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                現在の年齢 <span className="text-red-500">*</span>
+                現在の年齢 <span className="text-danger">*</span>
               </label>
               <div className="flex items-center gap-2">
                 <input
@@ -406,7 +406,7 @@ export default function SalaryIncreaseSimulatorPage() {
                   value={base.age}
                   onChange={(e) => { setBase((p) => ({ ...p, age: e.target.value })); setResult(null); setError(""); }}
                   placeholder="例: 30"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon focus:border-transparent"
                 />
                 <span className="text-sm text-gray-500 whitespace-nowrap">歳</span>
               </div>
@@ -433,7 +433,7 @@ export default function SalaryIncreaseSimulatorPage() {
               <div className="px-5 pb-5 border-t border-gray-100 pt-4 space-y-3">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    転職後の想定年収 <span className="text-red-500">*</span>
+                    転職後の想定年収 <span className="text-danger">*</span>
                   </label>
                   <div className="flex items-center gap-2">
                     <input
@@ -443,7 +443,7 @@ export default function SalaryIncreaseSimulatorPage() {
                       value={transfer.expectedAnnual}
                       onChange={(e) => { setTransfer((p) => ({ ...p, expectedAnnual: e.target.value })); setResult(null); }}
                       placeholder="例: 550"
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                     />
                     <span className="text-sm text-gray-500 whitespace-nowrap">万円</span>
                   </div>
@@ -453,7 +453,7 @@ export default function SalaryIncreaseSimulatorPage() {
                     type="checkbox"
                     checked={transfer.isForeign}
                     onChange={(e) => setTransfer((p) => ({ ...p, isForeign: e.target.checked }))}
-                    className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    className="w-4 h-4 rounded border-gray-300 text-kon focus:ring-kon"
                   />
                   <span className="text-sm text-gray-700">外資系への転職（高年収帯・インセンティブ含む）</span>
                 </label>
@@ -484,7 +484,7 @@ export default function SalaryIncreaseSimulatorPage() {
                     step={0.1}
                     value={raise.raiseRate}
                     onChange={(e) => { setRaise({ raiseRate: e.target.value }); setResult(null); }}
-                    className="w-32 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-32 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                   />
                   <span className="text-sm text-gray-500">%　（日本平均：2〜3%）</span>
                 </div>
@@ -507,7 +507,7 @@ export default function SalaryIncreaseSimulatorPage() {
             {toggles.side && (
               <div className="px-5 pb-5 border-t border-gray-100 pt-4">
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  副業月収 <span className="text-red-500">*</span>
+                  副業月収 <span className="text-danger">*</span>
                 </label>
                 <div className="flex items-center gap-2">
                   <input
@@ -517,7 +517,7 @@ export default function SalaryIncreaseSimulatorPage() {
                     value={side.monthlyIncome}
                     onChange={(e) => { setSide({ monthlyIncome: e.target.value }); setResult(null); }}
                     placeholder="例: 10"
-                    className="w-32 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-32 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                   />
                   <span className="text-sm text-gray-500">万円 / 月</span>
                 </div>
@@ -546,13 +546,13 @@ export default function SalaryIncreaseSimulatorPage() {
                     value={skill.skillName}
                     onChange={(e) => { setSkill((p) => ({ ...p, skillName: e.target.value })); setResult(null); }}
                     placeholder="例: AWS認定"
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      取得費用 <span className="text-red-500">*</span>
+                      取得費用 <span className="text-danger">*</span>
                     </label>
                     <div className="flex items-center gap-2">
                       <input
@@ -562,14 +562,14 @@ export default function SalaryIncreaseSimulatorPage() {
                         value={skill.cost}
                         onChange={(e) => { setSkill((p) => ({ ...p, cost: e.target.value })); setResult(null); }}
                         placeholder="例: 20"
-                        className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                       />
                       <span className="text-sm text-gray-500 whitespace-nowrap">万円</span>
                     </div>
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      期待年収増加額 <span className="text-red-500">*</span>
+                      期待年収増加額 <span className="text-danger">*</span>
                     </label>
                     <div className="flex items-center gap-2">
                       <input
@@ -579,7 +579,7 @@ export default function SalaryIncreaseSimulatorPage() {
                         value={skill.expectedIncrease}
                         onChange={(e) => { setSkill((p) => ({ ...p, expectedIncrease: e.target.value })); setResult(null); }}
                         placeholder="例: 100"
-                        className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                       />
                       <span className="text-sm text-gray-500 whitespace-nowrap">万円</span>
                     </div>
@@ -592,7 +592,7 @@ export default function SalaryIncreaseSimulatorPage() {
 
         {/* Error */}
         {error && (
-          <p className="mb-4 text-red-500 text-sm bg-red-50 rounded-lg px-4 py-3">{error}</p>
+          <p className="mb-4 text-danger text-sm bg-gray-50 rounded-lg px-4 py-3">{error}</p>
         )}
 
         {/* Buttons */}
@@ -605,7 +605,7 @@ export default function SalaryIncreaseSimulatorPage() {
           </button>
           <button
             onClick={handleCalculate}
-            className="flex-1 py-3 rounded-lg bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition-colors shadow-sm"
+            className="flex-1 py-3 rounded-lg bg-kon text-white text-sm font-semibold hover:bg-ai transition-colors shadow-sm"
           >
             計算する
           </button>
@@ -619,13 +619,13 @@ export default function SalaryIncreaseSimulatorPage() {
             {result.transfer && (
               <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
                 <h3 className="text-base font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                  <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-700 text-xs flex items-center justify-center font-bold">①</span>
+                  <span className="w-6 h-6 rounded-full bg-gray-50 text-kon text-xs flex items-center justify-center font-bold">①</span>
                   転職{transfer.isForeign ? "（外資系）" : ""}の試算結果
                 </h3>
                 <div className="grid grid-cols-2 gap-3">
-                  <div className="bg-blue-50 rounded-lg p-3">
-                    <p className="text-xs text-blue-600 font-medium mb-1">転職後の年収</p>
-                    <p className="text-2xl font-bold text-blue-700">{fmtMan(result.transfer.annual)}</p>
+                  <div className="bg-gray-50 rounded-lg p-3">
+                    <p className="text-xs text-kon font-medium mb-1">転職後の年収</p>
+                    <p className="text-2xl font-bold text-kon">{fmtMan(result.transfer.annual)}</p>
                   </div>
                   <div className="bg-gray-50 rounded-lg p-3">
                     <p className="text-xs text-gray-500 font-medium mb-1">推定手取り（年間）</p>
@@ -648,18 +648,18 @@ export default function SalaryIncreaseSimulatorPage() {
             {result.raise && (
               <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
                 <h3 className="text-base font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                  <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-700 text-xs flex items-center justify-center font-bold">②</span>
+                  <span className="w-6 h-6 rounded-full bg-gray-50 text-kon text-xs flex items-center justify-center font-bold">②</span>
                   昇給の試算結果
                 </h3>
-                <div className="bg-blue-50 rounded-lg p-4">
-                  <p className="text-sm text-blue-700 mb-1">
+                <div className="bg-gray-50 rounded-lg p-4">
+                  <p className="text-sm text-kon mb-1">
                     {raise.raiseRate}%昇給を続けると、目標{base.targetAnnual}万円まで
                   </p>
-                  <p className="text-3xl font-bold text-blue-700">
+                  <p className="text-3xl font-bold text-kon">
                     {result.raise.years}年
                     <span className="text-base font-normal ml-1">かかります</span>
                   </p>
-                  <p className="text-xs text-blue-500 mt-1">
+                  <p className="text-xs text-kon mt-1">
                     （{base.currentAnnual}万円 → {base.targetAnnual}万円、年率{raise.raiseRate}%で複利計算）
                   </p>
                 </div>
@@ -670,7 +670,7 @@ export default function SalaryIncreaseSimulatorPage() {
             {result.side && (
               <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
                 <h3 className="text-base font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                  <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-700 text-xs flex items-center justify-center font-bold">③</span>
+                  <span className="w-6 h-6 rounded-full bg-gray-50 text-kon text-xs flex items-center justify-center font-bold">③</span>
                   副業の試算結果
                 </h3>
                 <div className="grid grid-cols-2 gap-3">
@@ -678,9 +678,9 @@ export default function SalaryIncreaseSimulatorPage() {
                     <p className="text-xs text-gray-500 font-medium mb-1">年間副業収入（税前）</p>
                     <p className="text-2xl font-bold text-gray-800">{fmtMan(parseFloat(side.monthlyIncome) * 10000 * 12)}</p>
                   </div>
-                  <div className="bg-blue-50 rounded-lg p-3">
-                    <p className="text-xs text-blue-600 font-medium mb-1">年間手取り増加額（概算）</p>
-                    <p className="text-2xl font-bold text-blue-700">{fmtMan(result.side.annualNet)}</p>
+                  <div className="bg-gray-50 rounded-lg p-3">
+                    <p className="text-xs text-kon font-medium mb-1">年間手取り増加額（概算）</p>
+                    <p className="text-2xl font-bold text-kon">{fmtMan(result.side.annualNet)}</p>
                   </div>
                 </div>
                 <p className="mt-2 text-xs text-gray-400">※ 副業収入に対し20%課税を想定した概算値です</p>
@@ -691,13 +691,13 @@ export default function SalaryIncreaseSimulatorPage() {
             {result.skill && (
               <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
                 <h3 className="text-base font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                  <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-700 text-xs flex items-center justify-center font-bold">④</span>
+                  <span className="w-6 h-6 rounded-full bg-gray-50 text-kon text-xs flex items-center justify-center font-bold">④</span>
                   スキルアップ{skill.skillName ? `（${skill.skillName}）` : ""}の試算結果
                 </h3>
                 <div className="grid grid-cols-2 gap-3">
-                  <div className="bg-blue-50 rounded-lg p-3">
-                    <p className="text-xs text-blue-600 font-medium mb-1">投資対効果（ROI）</p>
-                    <p className="text-2xl font-bold text-blue-700">{Math.round(result.skill.roi)}%</p>
+                  <div className="bg-gray-50 rounded-lg p-3">
+                    <p className="text-xs text-kon font-medium mb-1">投資対効果（ROI）</p>
+                    <p className="text-2xl font-bold text-kon">{Math.round(result.skill.roi)}%</p>
                     {result.skill.roi > 300 && (
                       <span className="inline-block mt-1 text-xs bg-green-500 text-white px-2 py-0.5 rounded-full font-semibold">高ROI</span>
                     )}
@@ -726,19 +726,19 @@ export default function SalaryIncreaseSimulatorPage() {
                   <h3 className="text-white font-bold text-lg mb-1">
                     目標{base.targetAnnual}万円 最短達成ルート
                   </h3>
-                  <p className="text-blue-100 text-xs mb-4">4戦略を速度順にランキング</p>
+                  <p className="text-gin text-xs mb-4">4戦略を速度順にランキング</p>
                   <div className="space-y-2">
                     {result.ranking.map((s, i) => (
                       <div key={s.key} className="flex items-center gap-3 bg-white/15 rounded-lg px-4 py-3">
                         <span className="text-xl shrink-0">{rankEmoji[i]}</span>
                         <div className="flex-1 min-w-0">
                           <p className="text-white font-semibold text-sm truncate">{s.label}</p>
-                          <p className="text-blue-100 text-xs">{s.summary}</p>
+                          <p className="text-gin text-xs">{s.summary}</p>
                         </div>
                         {s.yearsToReach !== null && (
                           <div className="shrink-0 text-right">
                             <p className="text-white font-bold text-base leading-none">{s.yearsToReach}年</p>
-                            <p className="text-blue-200 text-xs">で達成</p>
+                            <p className="text-gin text-xs">で達成</p>
                           </div>
                         )}
                       </div>
@@ -754,7 +754,7 @@ export default function SalaryIncreaseSimulatorPage() {
                       const second = result.ranking[1];
                       const minYears = fastest.yearsToReach ?? 99;
                       return (
-                        <p className="text-blue-100 text-xs mt-1">
+                        <p className="text-gin text-xs mt-1">
                           {fastest.label}＋{second.label}の組み合わせで最短
                           <span className="text-white font-bold mx-1">{minYears === 0 ? "即" : `${minYears}年`}</span>
                           で目標達成が見込めます。
@@ -768,8 +768,8 @@ export default function SalaryIncreaseSimulatorPage() {
 
             {/* If not all 4 ON but result exists — smaller hint */}
             {!allOn && result.ranking.length > 0 && (
-              <div className="bg-blue-50 rounded-xl border border-blue-200 px-5 py-4">
-                <p className="text-blue-700 text-sm font-semibold mb-2">戦略ランキング</p>
+              <div className="bg-gray-50 rounded-xl border border-gray-200 px-5 py-4">
+                <p className="text-kon text-sm font-semibold mb-2">戦略ランキング</p>
                 <div className="space-y-1.5">
                   {result.ranking.map((s, i) => (
                     <div key={s.key} className="flex items-center gap-2 text-sm text-gray-700">
@@ -779,7 +779,7 @@ export default function SalaryIncreaseSimulatorPage() {
                     </div>
                   ))}
                 </div>
-                <p className="mt-3 text-xs text-blue-500">
+                <p className="mt-3 text-xs text-kon">
                   ✦ 4つの戦略をすべてONにすると「最短達成ルート」アドバイスが表示されます
                 </p>
               </div>
@@ -796,7 +796,7 @@ export default function SalaryIncreaseSimulatorPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>
-                <tr className="bg-blue-50">
+                <tr className="bg-gray-50">
                   <th className="border border-gray-200 px-3 py-2 text-left">現在の年収</th>
                   <th className="border border-gray-200 px-3 py-2 text-left">目標年収</th>
                   <th className="border border-gray-200 px-3 py-2 text-left">現在の手取り</th>
@@ -816,7 +816,7 @@ export default function SalaryIncreaseSimulatorPage() {
                 ].map((row, i) => (
                   <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
                     <td className="border border-gray-200 px-3 py-2">{row.cur}</td>
-                    <td className="border border-gray-200 px-3 py-2 font-medium text-blue-700">{row.tgt}</td>
+                    <td className="border border-gray-200 px-3 py-2 font-medium text-kon">{row.tgt}</td>
                     <td className="border border-gray-200 px-3 py-2">{row.curTH}</td>
                     <td className="border border-gray-200 px-3 py-2">{row.tgtTH}</td>
                     <td className="border border-gray-200 px-3 py-2 font-medium text-green-600">{row.diff}</td>
@@ -844,15 +844,15 @@ export default function SalaryIncreaseSimulatorPage() {
               <Link
                 key={tool.href}
                 href={tool.href}
-                className="flex items-start gap-3 bg-white rounded-xl border border-blue-100 hover:border-blue-400 hover:shadow-md transition-all p-4 group"
+                className="flex items-start gap-3 bg-white rounded-xl border border-gray-200 hover:border-ai hover:shadow-md transition-all p-4 group"
               >
-                <div className="w-9 h-9 rounded-lg bg-blue-50 group-hover:bg-blue-100 flex items-center justify-center shrink-0 transition-colors">
-                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-9 h-9 rounded-lg bg-gray-50 group-hover:bg-ai flex items-center justify-center shrink-0 transition-colors">
+                  <svg className="w-5 h-5 text-kon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 11h.01M12 11h.01M15 11h.01M4 19h16a2 2 0 002-2V7a2 2 0 00-2-2H4a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-blue-700 group-hover:text-blue-800">{tool.label}</p>
+                  <p className="text-sm font-semibold text-kon group-hover:text-ai">{tool.label}</p>
                   <p className="text-xs text-gray-500 mt-0.5">{tool.desc}</p>
                 </div>
               </Link>

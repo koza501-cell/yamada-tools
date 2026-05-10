@@ -154,24 +154,24 @@ export default function TaxHubPage() {
           日本の税制に完全対応した無料ツールです。確定申告・節税対策・相続対策など、日常的な税務計算をシンプルにサポートします。
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="bg-amber-50 dark:bg-gray-700 rounded-xl p-4">
-            <h3 className="font-bold text-amber-900 dark:text-amber-200 mb-2 text-sm">
+          <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
+            <h3 className="font-bold text-kon dark:text-gray-200 mb-2 text-sm">
               確定申告を控えた方
             </h3>
             <p className="text-xs text-stone-600 dark:text-gray-300">
               所得税・ふるさと納税の控除計算を事前に把握したい方。
             </p>
           </div>
-          <div className="bg-amber-50 dark:bg-gray-700 rounded-xl p-4">
-            <h3 className="font-bold text-amber-900 dark:text-amber-200 mb-2 text-sm">
+          <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
+            <h3 className="font-bold text-kon dark:text-gray-200 mb-2 text-sm">
               相続・贈与を検討中の方
             </h3>
             <p className="text-xs text-stone-600 dark:text-gray-300">
               相続税・贈与税の目安を事前に把握したい方。
             </p>
           </div>
-          <div className="bg-amber-50 dark:bg-gray-700 rounded-xl p-4">
-            <h3 className="font-bold text-amber-900 dark:text-amber-200 mb-2 text-sm">
+          <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
+            <h3 className="font-bold text-kon dark:text-gray-200 mb-2 text-sm">
               ふるさと納税をお考えの方
             </h3>
             <p className="text-xs text-stone-600 dark:text-gray-300">

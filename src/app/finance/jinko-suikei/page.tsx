@@ -101,7 +101,7 @@ export default function JinkoPage() {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
                 <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 text-center">
                   <p className="text-xs text-gray-500 dark:text-gray-400">2020年比</p>
-                  <p className={`font-bold text-lg ${data.growth_vs_2020_pct >= 0 ? "text-green-600" : "text-red-500"}`}>
+                  <p className={`font-bold text-lg ${data.growth_vs_2020_pct >= 0 ? "text-green-600" : "text-danger"}`}>
                     {data.growth_vs_2020_pct >= 0 ? "+" : ""}{data.growth_vs_2020_pct}%
                   </p>
                 </div>
@@ -115,7 +115,7 @@ export default function JinkoPage() {
                 </div>
                 <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 text-center">
                   <p className="text-xs text-gray-500 dark:text-gray-400">2050年変化予測</p>
-                  <p className={`font-bold text-lg ${data.change_to_2050_pct >= 0 ? "text-green-600" : "text-red-500"}`}>
+                  <p className={`font-bold text-lg ${data.change_to_2050_pct >= 0 ? "text-green-600" : "text-danger"}`}>
                     {data.change_to_2050_pct >= 0 ? "+" : ""}{data.change_to_2050_pct}%
                   </p>
                 </div>

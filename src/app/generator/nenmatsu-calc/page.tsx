@@ -80,7 +80,7 @@ export default function NenmatsuPage() {
         <div className="overflow-x-auto">
           <table className="w-full text-sm border-collapse bg-white rounded-xl overflow-hidden shadow-sm">
             <thead>
-              <tr className="bg-blue-600 text-white">
+              <tr className="bg-kon text-white">
                 <th className="py-3 px-4 text-left">控除の種類</th>
                 <th className="py-3 px-4 text-left">控除額（上限）</th>
                 <th className="py-3 px-4 text-left">年収400万の節税額目安</th>
@@ -100,8 +100,8 @@ export default function NenmatsuPage() {
                 <tr key={name} className="border-t border-gray-100 hover:bg-gray-50">
                   <td className="py-2 px-4 font-medium">{name}</td>
                   <td className="py-2 px-4">{limit}</td>
-                  <td className="py-2 px-4 text-blue-600">{tax400}</td>
-                  <td className="py-2 px-4 text-blue-700">{tax600}</td>
+                  <td className="py-2 px-4 text-kon">{tax400}</td>
+                  <td className="py-2 px-4 text-kon">{tax600}</td>
                 </tr>
               ))}
             </tbody>

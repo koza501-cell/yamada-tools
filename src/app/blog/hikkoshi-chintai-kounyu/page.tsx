@@ -52,9 +52,9 @@ export default function HikkoshiChintaiKounyuBlog() {
       />
 
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-blue-500">ホーム</Link>
+        <Link href="/" className="hover:text-ai">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-blue-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-ai">ブログ</Link>
         <span className="mx-2">/</span>
         <span>引越し費用相場・賃貸vs購入</span>
       </nav>
@@ -66,7 +66,7 @@ export default function HikkoshiChintaiKounyuBlog() {
       <h1 className="text-3xl font-bold text-gray-800 mb-4">{title}</h1>
       <p className="text-gray-500 text-sm mb-8">最終更新: 2025年5月 ｜ 読了時間: 約8分</p>
 
-      <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mb-8">
+      <div className="bg-gray-50 border-l-4 border-kon p-4 mb-8">
         <p className="font-bold text-gray-800 mb-2">この記事でわかること</p>
         <ul className="text-gray-700 space-y-1 text-sm">
           <li>✓ 引越し費用の人数・距離・時期別の相場早見表</li>
@@ -81,13 +81,13 @@ export default function HikkoshiChintaiKounyuBlog() {
         <StaticAdSlot />
         <h2 className="text-2xl font-bold text-gray-800 mb-4">引越し費用の相場はいくら？人数・距離別に解説</h2>
         <p className="text-gray-700 mb-4">
-          引越し費用は<strong className="text-blue-600">荷物量（家族人数）と移動距離</strong>で大きく変わります。以下の早見表を参考にしてください。金額は繁忙期（3〜4月）を除く通常期（閑散期）の目安です。
+          引越し費用は<strong className="text-kon">荷物量（家族人数）と移動距離</strong>で大きく変わります。以下の早見表を参考にしてください。金額は繁忙期（3〜4月）を除く通常期（閑散期）の目安です。
         </p>
 
         <div className="overflow-x-auto mb-6">
           <table className="w-full border-collapse text-sm">
             <thead>
-              <tr className="bg-blue-600 text-white">
+              <tr className="bg-kon text-white">
                 <th className="p-3 text-left">家族構成</th>
                 <th className="p-3 text-left">同市区内（〜15km）</th>
                 <th className="p-3 text-left">近距離（15〜50km）</th>
@@ -119,7 +119,7 @@ export default function HikkoshiChintaiKounyuBlog() {
         <div className="bg-yellow-50 border border-yellow-300 rounded-lg p-4 mb-4">
           <p className="font-bold text-yellow-800 mb-2">💡 引越し初期費用の総額目安</p>
           <p className="text-gray-700 text-sm">
-            引越し費用だけでなく、新居の<strong>敷金・礼金・仲介手数料・前払い家賃</strong>（家賃4〜6か月分）も必要です。家賃10万円なら初期費用だけで40〜60万円。引越し業者費用も合わせると一人暮らしでも<strong className="text-red-600">総額60〜80万円</strong>の用意が必要です。
+            引越し費用だけでなく、新居の<strong>敷金・礼金・仲介手数料・前払い家賃</strong>（家賃4〜6か月分）も必要です。家賃10万円なら初期費用だけで40〜60万円。引越し業者費用も合わせると一人暮らしでも<strong className="text-danger">総額60〜80万円</strong>の用意が必要です。
           </p>
         </div>
       </section>
@@ -127,7 +127,7 @@ export default function HikkoshiChintaiKounyuBlog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">引越し費用が最も高い・安い時期はいつ？</h2>
         <p className="text-gray-700 mb-4">
-          引越し費用は同じ条件でも<strong className="text-blue-600">時期によって2倍近く変わる</strong>ことがあります。繁忙期を避けるだけで数万円の節約が可能です。
+          引越し費用は同じ条件でも<strong className="text-kon">時期によって2倍近く変わる</strong>ことがあります。繁忙期を避けるだけで数万円の節約が可能です。
         </p>
 
         <div className="overflow-x-auto mb-6">
@@ -148,7 +148,7 @@ export default function HikkoshiChintaiKounyuBlog() {
               ].map(([month, rate, reason], i) => (
                 <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
                   <td className="p-3 border border-gray-200 font-medium">{month}</td>
-                  <td className={`p-3 border border-gray-200 font-bold ${i < 2 ? "text-red-600" : "text-green-600"}`}>{rate}</td>
+                  <td className={`p-3 border border-gray-200 font-bold ${i < 2 ? "text-danger" : "text-green-600"}`}>{rate}</td>
                   <td className="p-3 border border-gray-200">{reason}</td>
                 </tr>
               ))}
@@ -157,8 +157,8 @@ export default function HikkoshiChintaiKounyuBlog() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-            <h3 className="font-bold text-red-700 mb-2">3月・4月に引越す場合の実例</h3>
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+            <h3 className="font-bold text-danger mb-2">3月・4月に引越す場合の実例</h3>
             <p className="text-sm text-gray-700">単身・近距離の引越しが繁忙期は<strong>10〜15万円</strong>になるケースも。閑散期なら同じ条件で<strong>5〜8万円</strong>に抑えられることもあります。差額は5〜7万円以上。</p>
           </div>
           <div className="bg-green-50 border border-green-200 rounded-lg p-4">
@@ -173,7 +173,7 @@ export default function HikkoshiChintaiKounyuBlog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">引越し費用を安くする7つの方法</h2>
         <p className="text-gray-700 mb-4">
-          知っているだけで数万円節約できるテクニックを7つ紹介します。全部実践すれば<strong className="text-blue-600">繁忙期でも30〜40%のコスト削減</strong>が可能です。
+          知っているだけで数万円節約できるテクニックを7つ紹介します。全部実践すれば<strong className="text-kon">繁忙期でも30〜40%のコスト削減</strong>が可能です。
         </p>
 
         <div className="space-y-4 mb-6">
@@ -237,12 +237,12 @@ export default function HikkoshiChintaiKounyuBlog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">賃貸 vs 購入、生涯コストを中立的に比較</h2>
         <p className="text-gray-700 mb-4">
-          「賃貸か購入か」は多くの人が直面する大きな決断です。ここでは<strong className="text-blue-600">中立的な視点で35年間の生涯コスト</strong>を比較します。
+          「賃貸か購入か」は多くの人が直面する大きな決断です。ここでは<strong className="text-kon">中立的な視点で35年間の生涯コスト</strong>を比較します。
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-          <div className="bg-blue-50 rounded-xl p-5">
-            <h3 className="font-bold text-blue-800 mb-3 text-lg">🏠 賃貸のメリット・デメリット</h3>
+          <div className="bg-gray-50 rounded-xl p-5">
+            <h3 className="font-bold text-kon mb-3 text-lg">🏠 賃貸のメリット・デメリット</h3>
             <div className="mb-3">
               <p className="font-semibold text-green-700 mb-1">✅ メリット</p>
               <ul className="text-sm text-gray-700 space-y-1">
@@ -253,7 +253,7 @@ export default function HikkoshiChintaiKounyuBlog() {
               </ul>
             </div>
             <div>
-              <p className="font-semibold text-red-700 mb-1">❌ デメリット</p>
+              <p className="font-semibold text-danger mb-1">❌ デメリット</p>
               <ul className="text-sm text-gray-700 space-y-1">
                 <li>・老後も家賃を払い続ける</li>
                 <li>・資産が残らない</li>
@@ -261,8 +261,8 @@ export default function HikkoshiChintaiKounyuBlog() {
               </ul>
             </div>
           </div>
-          <div className="bg-orange-50 rounded-xl p-5">
-            <h3 className="font-bold text-orange-800 mb-3 text-lg">🏡 購入のメリット・デメリット</h3>
+          <div className="bg-gray-50 rounded-xl p-5">
+            <h3 className="font-bold text-kon mb-3 text-lg">🏡 購入のメリット・デメリット</h3>
             <div className="mb-3">
               <p className="font-semibold text-green-700 mb-1">✅ メリット</p>
               <ul className="text-sm text-gray-700 space-y-1">
@@ -273,7 +273,7 @@ export default function HikkoshiChintaiKounyuBlog() {
               </ul>
             </div>
             <div>
-              <p className="font-semibold text-red-700 mb-1">❌ デメリット</p>
+              <p className="font-semibold text-danger mb-1">❌ デメリット</p>
               <ul className="text-sm text-gray-700 space-y-1">
                 <li>・固定資産税・修繕費・管理費が継続発生</li>
                 <li>・住み替えに手間と費用がかかる</li>
@@ -322,7 +322,7 @@ export default function HikkoshiChintaiKounyuBlog() {
           <h3 className="font-bold text-green-800 mb-3">どちらが向いているかチェックリスト</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
             <div>
-              <p className="font-semibold text-blue-700 mb-2">賃貸が向いている人</p>
+              <p className="font-semibold text-kon mb-2">賃貸が向いている人</p>
               <ul className="text-gray-700 space-y-1">
                 <li>□ 転勤や転職の可能性がある</li>
                 <li>□ 独身またはライフスタイルが変わりやすい</li>
@@ -331,7 +331,7 @@ export default function HikkoshiChintaiKounyuBlog() {
               </ul>
             </div>
             <div>
-              <p className="font-semibold text-orange-700 mb-2">購入が向いている人</p>
+              <p className="font-semibold text-kon mb-2">購入が向いている人</p>
               <ul className="text-gray-700 space-y-1">
                 <li>□ 同じ場所に10年以上住む見込みがある</li>
                 <li>□ 家族が固まっており将来の生活が見通せる</li>
@@ -361,26 +361,26 @@ export default function HikkoshiChintaiKounyuBlog() {
           <div className="bg-white border border-gray-200 rounded-lg p-4">
             <p className="font-bold text-gray-800 mb-2">賃貸vs購入 比較シミュレーター</p>
             <p className="text-sm text-gray-600 mb-3">物件価格・家賃・ローン条件を入力して35年間の生涯コストを中立的に比較。損益分岐点（何年で購入が得になるか）も算出。</p>
-            <Link href="/realestate/chintai-vs-kounyu" className="text-blue-600 text-sm font-medium hover:underline">試してみる →</Link>
+            <Link href="/realestate/chintai-vs-kounyu" className="text-kon text-sm font-medium hover:underline">試してみる →</Link>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-4">
             <p className="font-bold text-gray-800 mb-2">仲介手数料計算機</p>
             <p className="text-sm text-gray-600 mb-3">賃貸・売買の仲介手数料の上限額を自動計算。法定上限と実際の請求額を比較できます。</p>
-            <Link href="/realestate/chukaishusuryocalculator" className="text-blue-600 text-sm font-medium hover:underline">試してみる →</Link>
+            <Link href="/realestate/chukaishusuryocalculator" className="text-kon text-sm font-medium hover:underline">試してみる →</Link>
           </div>
         </div>
       </section>
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">まとめ：引越し費用と賃貸vs購入の判断基準</h2>
-        <div className="bg-blue-50 rounded-xl p-6">
+        <div className="bg-gray-50 rounded-xl p-6">
           <ul className="space-y-3 text-gray-700">
-            <li className="flex gap-2"><span className="text-blue-600 font-bold">①</span> 引越し費用は繁忙期（3〜4月）を避けるだけで30〜50%削減可能</li>
-            <li className="flex gap-2"><span className="text-blue-600 font-bold">②</span> 複数社への相見積もりで競合させると20〜40%の値下がりが期待できる</li>
-            <li className="flex gap-2"><span className="text-blue-600 font-bold">③</span> 平日午後便＋自分で梱包でさらに1〜3万円節約</li>
-            <li className="flex gap-2"><span className="text-blue-600 font-bold">④</span> 賃貸vs購入は35年生涯コストだけでなく「流動性」と「安心感」も考慮する</li>
-            <li className="flex gap-2"><span className="text-blue-600 font-bold">⑤</span> 10年以上同じ場所に住む見込みがあれば購入の方が有利になるケースが多い</li>
-            <li className="flex gap-2"><span className="text-blue-600 font-bold">⑥</span> 無料ツールで自分の条件を入力してシミュレーションするのが最も正確</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">①</span> 引越し費用は繁忙期（3〜4月）を避けるだけで30〜50%削減可能</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">②</span> 複数社への相見積もりで競合させると20〜40%の値下がりが期待できる</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">③</span> 平日午後便＋自分で梱包でさらに1〜3万円節約</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">④</span> 賃貸vs購入は35年生涯コストだけでなく「流動性」と「安心感」も考慮する</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">⑤</span> 10年以上同じ場所に住む見込みがあれば購入の方が有利になるケースが多い</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">⑥</span> 無料ツールで自分の条件を入力してシミュレーションするのが最も正確</li>
           </ul>
         </div>
       </section>

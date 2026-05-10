@@ -43,7 +43,7 @@ export default function AdminDashboard() {
       label: "コンテンツ完成",
       value: stats ? `${stats.tools_with_content}/${stats.total_tools}` : "-",
       icon: "📝",
-      color: "bg-blue-500",
+      color: "bg-kon",
       href: "/admin/content",
     },
     {
@@ -57,14 +57,14 @@ export default function AdminDashboard() {
       label: "有効キャンペーン",
       value: stats ? `${stats.active_campaigns}` : "-",
       icon: "🎯",
-      color: "bg-purple-500",
+      color: "bg-kon",
       href: "/admin/campaigns",
     },
     {
       label: "総ツール数",
       value: stats ? `${stats.total_tools}` : "-",
       icon: "🛠️",
-      color: "bg-orange-500",
+      color: "bg-kon",
       href: "/admin/content",
     },
   ];

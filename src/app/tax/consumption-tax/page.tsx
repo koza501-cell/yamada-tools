@@ -146,11 +146,11 @@ export default function ConsumptionTaxPage() {
 
   const toggleClass = (active: boolean) =>
     `flex-1 py-2 text-sm font-medium rounded-md transition-colors ${
-      active ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+      active ? "bg-kon text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
     }`;
 
   const inputClass =
-    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500";
+    "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon";
   const labelClass = "block text-sm font-medium text-gray-700 mb-1";
 
   function handleCalculate() {
@@ -223,10 +223,10 @@ export default function ConsumptionTaxPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      <div className="bg-gradient-to-r from-blue-700 to-blue-500 text-white py-10 px-4">
+      <div className="bg-gradient-to-r from-blue-700 to-kon text-white py-10 px-4">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-2xl md:text-3xl font-bold mb-2">消費税計算機</h1>
-          <p className="text-blue-100 text-sm md:text-base">
+          <p className="text-gin text-sm md:text-base">
             税抜・税込・軽減税率8%対応。複数明細の一括計算・端数処理選択・インボイス制度対応。
           </p>
         </div>
@@ -317,7 +317,7 @@ export default function ConsumptionTaxPage() {
                         {items.length > 1 && (
                           <button
                             onClick={() => removeItem(idx)}
-                            className="text-xs text-red-500 hover:text-red-700"
+                            className="text-xs text-danger hover:text-danger"
                           >
                             削除
                           </button>
@@ -358,7 +358,7 @@ export default function ConsumptionTaxPage() {
                 {items.length < 10 && (
                   <button
                     onClick={addItem}
-                    className="w-full py-2 border-2 border-dashed border-blue-300 text-blue-500 text-sm rounded-lg hover:border-blue-400 hover:text-blue-600 transition-colors"
+                    className="w-full py-2 border-2 border-dashed border-kon text-kon text-sm rounded-lg hover:border-ai hover:text-ai transition-colors"
                   >
                     ＋ 行を追加（{items.length}/10）
                   </button>
@@ -375,7 +375,7 @@ export default function ConsumptionTaxPage() {
               </button>
               <button
                 onClick={handleCalculate}
-                className="flex-1 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-bold hover:bg-blue-700 transition-colors"
+                className="flex-1 py-2.5 rounded-lg bg-kon text-white text-sm font-bold hover:bg-ai transition-colors"
               >
                 計算する
               </button>
@@ -387,7 +387,7 @@ export default function ConsumptionTaxPage() {
               <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-sm font-bold text-gray-700">計算結果</h3>
-                  <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full font-medium">
+                  <span className="text-xs bg-gray-50 text-kon px-2 py-1 rounded-full font-medium">
                     {singleResult.rate === 0.1 ? "10%（標準）" : "8%（軽減税率）"}
                   </span>
                 </div>
@@ -402,21 +402,21 @@ export default function ConsumptionTaxPage() {
                   )}
                   <div className="flex justify-between items-center py-2 border-b">
                     <span className="text-sm text-gray-600">消費税額</span>
-                    <span className="text-lg font-semibold text-orange-600">
+                    <span className="text-lg font-semibold text-kon">
                       {fmtJPY(singleResult.tax)}
                     </span>
                   </div>
                   {mode !== "taxonly" ? (
-                    <div className="flex justify-between items-center py-3 bg-blue-50 rounded-lg px-3">
-                      <span className="text-sm font-bold text-blue-800">税込金額</span>
-                      <span className="text-2xl font-bold text-blue-800">
+                    <div className="flex justify-between items-center py-3 bg-gray-50 rounded-lg px-3">
+                      <span className="text-sm font-bold text-kon">税込金額</span>
+                      <span className="text-2xl font-bold text-kon">
                         {fmtJPY(singleResult.include)}
                       </span>
                     </div>
                   ) : (
-                    <div className="flex justify-between items-center py-3 bg-orange-50 rounded-lg px-3">
-                      <span className="text-sm font-bold text-orange-800">消費税額</span>
-                      <span className="text-2xl font-bold text-orange-800">
+                    <div className="flex justify-between items-center py-3 bg-gray-50 rounded-lg px-3">
+                      <span className="text-sm font-bold text-kon">消費税額</span>
+                      <span className="text-2xl font-bold text-kon">
                         {fmtJPY(singleResult.tax)}
                       </span>
                     </div>
@@ -449,7 +449,7 @@ export default function ConsumptionTaxPage() {
                           <td className="py-2 px-2 text-right text-xs text-gray-500">
                             {r.rate === 0.1 ? "10%" : "8%"}
                           </td>
-                          <td className="py-2 px-2 text-right text-orange-600">
+                          <td className="py-2 px-2 text-right text-kon">
                             {r.tax.toLocaleString()}
                           </td>
                           <td className="py-2 px-2 text-right font-medium">
@@ -459,11 +459,11 @@ export default function ConsumptionTaxPage() {
                       ))}
                     </tbody>
                     <tfoot>
-                      <tr className="bg-blue-50 border-t-2 border-blue-200 font-bold text-blue-800">
+                      <tr className="bg-gray-50 border-t-2 border-gray-200 font-bold text-kon">
                         <td className="py-3 px-2">合計</td>
                         <td className="py-3 px-2 text-right">{grandTotals.exclude.toLocaleString()}</td>
                         <td className="py-3 px-2"></td>
-                        <td className="py-3 px-2 text-right text-orange-700">
+                        <td className="py-3 px-2 text-right text-kon">
                           {grandTotals.tax.toLocaleString()}
                         </td>
                         <td className="py-3 px-2 text-right text-lg">
@@ -496,7 +496,7 @@ export default function ConsumptionTaxPage() {
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="bg-blue-600 text-white">
+                  <tr className="bg-kon text-white">
                     <th className="px-4 py-3 text-left font-semibold">税抜金額</th>
                     <th className="px-4 py-3 text-left font-semibold">税率</th>
                     <th className="px-4 py-3 text-left font-semibold">消費税額</th>
@@ -514,8 +514,8 @@ export default function ConsumptionTaxPage() {
                     <tr key={i} className="hover:bg-gray-50">
                       <td className="px-4 py-3 text-gray-800">{excl}</td>
                       <td className="px-4 py-3 text-gray-800">{rate}</td>
-                      <td className="px-4 py-3 text-orange-600 font-medium">{tax}</td>
-                      <td className="px-4 py-3 font-semibold text-blue-700">{incl}</td>
+                      <td className="px-4 py-3 text-kon font-medium">{tax}</td>
+                      <td className="px-4 py-3 font-semibold text-kon">{incl}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -546,7 +546,7 @@ export default function ConsumptionTaxPage() {
                       <td className="px-4 py-3 font-semibold text-indigo-700">{incl}</td>
                       <td className="px-4 py-3 text-gray-800">{rate}</td>
                       <td className="px-4 py-3 text-gray-800">{excl}</td>
-                      <td className="px-4 py-3 text-orange-600 font-medium">{tax}</td>
+                      <td className="px-4 py-3 text-kon font-medium">{tax}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -566,17 +566,17 @@ export default function ConsumptionTaxPage() {
             <div>
               <p className="font-semibold text-gray-800 mb-2">標準税率（10%）が適用されるもの：</p>
               <ul className="space-y-1.5 ml-4">
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span>一般的な商品・サービス全般</span></li>
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span>外食（レストラン・カフェでの飲食）</span></li>
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span>アルコール飲料</span></li>
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span>テイクアウト以外の飲食サービス</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span>一般的な商品・サービス全般</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span>外食（レストラン・カフェでの飲食）</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span>アルコール飲料</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span>テイクアウト以外の飲食サービス</span></li>
               </ul>
             </div>
             <div>
               <p className="font-semibold text-gray-800 mb-2">軽減税率（8%）が適用されるもの：</p>
               <ul className="space-y-1.5 ml-4">
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span>食料品（酒類を除く）</span></li>
-                <li className="flex gap-2"><span className="text-blue-500 mt-0.5">•</span><span>定期購読の新聞</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span>食料品（酒類を除く）</span></li>
+                <li className="flex gap-2"><span className="text-kon mt-0.5">•</span><span>定期購読の新聞</span></li>
               </ul>
             </div>
             <div>
@@ -620,7 +620,7 @@ export default function ConsumptionTaxPage() {
             ].map((item, i) => (
               <div key={i} className="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
                 <p className="font-semibold text-gray-800 mb-2 flex gap-2">
-                  <span className="text-blue-600 font-bold shrink-0">Q{i + 1}.</span>
+                  <span className="text-kon font-bold shrink-0">Q{i + 1}.</span>
                   {item.q}
                 </p>
                 <p className="text-sm text-gray-600 leading-relaxed flex gap-2">
@@ -645,15 +645,15 @@ export default function ConsumptionTaxPage() {
               <Link
                 key={tool.href}
                 href={tool.href}
-                className="flex items-start gap-3 bg-white rounded-xl border border-blue-100 hover:border-blue-400 hover:shadow-md transition-all p-4 group"
+                className="flex items-start gap-3 bg-white rounded-xl border border-gray-200 hover:border-ai hover:shadow-md transition-all p-4 group"
               >
-                <div className="w-9 h-9 rounded-lg bg-blue-50 group-hover:bg-blue-100 flex items-center justify-center shrink-0 transition-colors">
-                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-9 h-9 rounded-lg bg-gray-50 group-hover:bg-ai flex items-center justify-center shrink-0 transition-colors">
+                  <svg className="w-5 h-5 text-kon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 11h.01M12 11h.01M15 11h.01M4 19h16a2 2 0 002-2V7a2 2 0 00-2-2H4a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-blue-700 group-hover:text-blue-800">{tool.label}</p>
+                  <p className="text-sm font-semibold text-kon group-hover:text-ai">{tool.label}</p>
                   <p className="text-xs text-gray-500 mt-0.5">{tool.desc}</p>
                 </div>
               </Link>

@@ -356,7 +356,7 @@ export default function CorporateTaxCalculatorPage() {
                   ✅ <strong>中小法人（資本金1億円以下）</strong> — 軽減税率15%適用（課税所得800万円以下の部分）
                 </p>
               ) : (
-                <p className="text-sm font-medium text-amber-700">
+                <p className="text-sm font-medium text-kon">
                   ⚠️ <strong>大法人（資本金1億円超）</strong> — 一律23.2% ／ 外形標準課税適用
                 </p>
               )}
@@ -448,23 +448,23 @@ export default function CorporateTaxCalculatorPage() {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl border border-amber-200 shadow-sm p-5">
-              <h3 className="text-sm font-bold text-amber-800 mb-3">💡 節税アドバイス</h3>
+            <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-5">
+              <h3 className="text-sm font-bold text-kon mb-3">💡 節税アドバイス</h3>
               <ul className="space-y-2 text-sm text-gray-700">
                 {result.adjustedIncome > 800 && result.isSmall && (
                   <li className="flex items-start gap-2">
-                    <span className="text-amber-500 mt-0.5">▶</span>
+                    <span className="text-kon mt-0.5">▶</span>
                     <span>役員報酬の増額で課税所得を800万円以下に抑えると税率が15%になります（節税額の目安: 約<strong>{fmt(Math.round((result.adjustedIncome - 800) * (0.232 - 0.15)))}</strong>）</span>
                   </li>
                 )}
                 {!form.hasWageIncrease && (
                   <li className="flex items-start gap-2">
-                    <span className="text-amber-500 mt-0.5">▶</span>
+                    <span className="text-kon mt-0.5">▶</span>
                     <span>賃上げ促進税制を活用すると最大{result.isUnder3000 ? "35" : "25"}%の税額控除が受けられます（2026年度）</span>
                   </li>
                 )}
                 <li className="flex items-start gap-2">
-                  <span className="text-amber-500 mt-0.5">▶</span>
+                  <span className="text-kon mt-0.5">▶</span>
                   <span>繰越欠損金がある場合は最大{result.isSmall ? "100%" : "50%"}（{result.isSmall ? "中小" : "大"}法人）控除できます（10年間繰越可能）</span>
                 </li>
               </ul>

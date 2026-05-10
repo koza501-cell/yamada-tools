@@ -186,7 +186,7 @@ export default function FreelanceTankaClient() {
               <h2 className="font-semibold text-gray-700 dark:text-gray-300 mb-3">推奨単価レンジ</h2>
               <div className="text-center py-2">
                 <div className="text-xs text-gray-500 dark:text-gray-400 mb-1">月額単価</div>
-                <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">
+                <div className="text-3xl font-bold text-kon dark:text-gray-300">
                   {result.adjMonthMin}〜{result.adjMonthMax}万円/月
                 </div>
                 <div className="text-xs text-gray-500 dark:text-gray-400 mt-2 mb-1">時間単価</div>
@@ -197,13 +197,13 @@ export default function FreelanceTankaClient() {
                   推定年収レンジ: {result.annualMin}〜{result.annualMax}万円
                 </div>
               </div>
-              <div className="mt-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg p-2 text-xs text-center text-blue-700 dark:text-blue-300">
+              <div className="mt-3 bg-gray-50 dark:bg-kon/20 rounded-lg p-2 text-xs text-center text-kon dark:text-gray-300">
                 あなたのスキルは市場の上位 {result.percentile}% に相当します
               </div>
             </div>
 
             {parseFloat(targetIncome) > 0 && (
-              <div className={`rounded-xl p-4 border ${result.aboveTarget ? "bg-orange-50 dark:bg-orange-900/20 border-orange-200 dark:border-orange-700" : result.withinRange ? "bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-700" : "bg-gray-50 dark:bg-gray-700/40 border-gray-200 dark:border-gray-700"}`}>
+              <div className={`rounded-xl p-4 border ${result.aboveTarget ? "bg-gray-50 dark:bg-kon/20 border-gray-200 dark:border-gray-200" : result.withinRange ? "bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-700" : "bg-gray-50 dark:bg-gray-700/40 border-gray-200 dark:border-gray-700"}`}>
                 <p className="font-semibold text-sm text-gray-700 dark:text-gray-300 mb-2">目標年収からの逆算</p>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
                   年収 <span className="font-bold text-gray-800 dark:text-white">¥{fmt(parseFloat(targetIncome))}</span> 達成には

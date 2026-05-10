@@ -46,9 +46,9 @@ export default function ShikakuToshiSimulation2026Blog() {
         }}
       />
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-pink-500">ホーム</Link>
+        <Link href="/" className="hover:text-sakura">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-pink-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-sakura">ブログ</Link>
         <span className="mx-2">/</span>
         <span>資格取得ROI計算2026</span>
       </nav>
@@ -60,7 +60,7 @@ export default function ShikakuToshiSimulation2026Blog() {
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】資格取得は投資になる？費用対効果（ROI）をシミュレーション</h1>
       <p className="text-gray-500 text-sm mb-8">最終更新: 2026年4月</p>
 
-      <div className="bg-purple-50 border-l-4 border-purple-400 p-4 mb-8">
+      <div className="bg-gray-50 border-l-4 border-kon p-4 mb-8">
         <p className="font-bold text-gray-800 mb-2">この記事でわかること</p>
         <ul className="text-gray-700 space-y-1">
           <li>✓ 資格取得の費用対効果（ROI）の考え方</li>
@@ -80,10 +80,10 @@ export default function ShikakuToshiSimulation2026Blog() {
           資格取得にかけた費用・時間に対して、どれだけのリターン（年収アップ・キャリアアップ）が得られるかを示す指標です。
         </p>
         
-        <div className="bg-white border-2 border-purple-200 rounded-lg p-6 mb-6">
+        <div className="bg-white border-2 border-kon rounded-lg p-6 mb-6">
           <h3 className="font-bold text-lg text-gray-800 mb-4">ROI計算式</h3>
-          <div className="bg-purple-50 p-4 rounded-lg text-center mb-4">
-            <p className="text-lg font-bold text-purple-700">
+          <div className="bg-gray-50 p-4 rounded-lg text-center mb-4">
+            <p className="text-lg font-bold text-kon">
               ROI（%）＝（年収増加額 × 働く年数 − 取得コスト）÷ 取得コスト × 100
             </p>
           </div>
@@ -91,7 +91,7 @@ export default function ShikakuToshiSimulation2026Blog() {
             <p className="text-sm text-gray-700 mb-2"><strong>例：宅建取得の場合</strong></p>
             <p className="text-sm text-gray-600">取得コスト：10万円（教材＋受験料）</p>
             <p className="text-sm text-gray-600">年収アップ：月2万円 × 12ヶ月 = 年24万円</p>
-            <p className="text-sm text-gray-600">20年間働く場合：(24万 × 20年 − 10万) ÷ 10万 × 100 = <strong className="text-purple-600">4,700%</strong></p>
+            <p className="text-sm text-gray-600">20年間働く場合：(24万 × 20年 − 10万) ÷ 10万 × 100 = <strong className="text-kon">4,700%</strong></p>
           </div>
         </div>
 
@@ -130,9 +130,9 @@ export default function ShikakuToshiSimulation2026Blog() {
           </tbody>
         </table>
 
-        <h3 className="font-bold text-lg text-red-600 mb-3">⚠️ ROIに注意が必要な資格</h3>
+        <h3 className="font-bold text-lg text-danger mb-3">⚠️ ROIに注意が必要な資格</h3>
         <table className="min-w-full border border-gray-200 mb-6">
-          <thead className="bg-red-50">
+          <thead className="bg-gray-50">
             <tr>
               <th className="px-3 py-3 text-left border-b font-semibold">資格</th>
               <th className="px-3 py-3 text-right border-b font-semibold">取得コスト</th>
@@ -147,10 +147,10 @@ export default function ShikakuToshiSimulation2026Blog() {
           </tbody>
         </table>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-          <p className="text-lg font-bold text-blue-800 mb-2">🔧 あなたの資格ROIを計算！</p>
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+          <p className="text-lg font-bold text-kon mb-2">🔧 あなたの資格ROIを計算！</p>
           <p className="text-gray-700 mb-4">取得を検討している資格の費用対効果をシミュレーションしましょう。</p>
-          <Link href="/education/certification-roi" className="inline-block bg-purple-500 hover:bg-purple-600 text-white font-bold py-3 px-6 rounded-lg transition">
+          <Link href="/education/certification-roi" className="inline-block bg-kon hover:bg-ai text-white font-bold py-3 px-6 rounded-lg transition">
             → 資格ROI計算機を使う
           </Link>
         </div>
@@ -164,7 +164,7 @@ export default function ShikakuToshiSimulation2026Blog() {
         
         <div className="grid md:grid-cols-2 gap-4 mb-6">
           <div className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-            <h3 className="font-bold text-purple-600 mb-3">💰 目に見えるコスト</h3>
+            <h3 className="font-bold text-kon mb-3">💰 目に見えるコスト</h3>
             <ul className="text-gray-700 space-y-2 text-sm">
               <li>・教材費（テキスト、問題集）：5,000〜30,000円</li>
               <li>・通信講座・スクール：30,000〜500,000円</li>
@@ -173,7 +173,7 @@ export default function ShikakuToshiSimulation2026Blog() {
             </ul>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-            <h3 className="font-bold text-purple-600 mb-3">⏰ 隠れたコスト（機会費用）</h3>
+            <h3 className="font-bold text-kon mb-3">⏰ 隠れたコスト（機会費用）</h3>
             <ul className="text-gray-700 space-y-2 text-sm">
               <li>・勉強時間 × 時給換算</li>
               <li>例：300時間 × 2,000円 = <strong>60万円</strong></li>
@@ -199,19 +199,19 @@ export default function ShikakuToshiSimulation2026Blog() {
         
         <div className="space-y-4 mb-6">
           <div className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-            <h3 className="font-bold text-purple-600 mb-2">20代：積極的に投資すべき</h3>
+            <h3 className="font-bold text-kon mb-2">20代：積極的に投資すべき</h3>
             <p className="text-gray-700 text-sm">働く年数が長いため、ROIが最大化。難関資格への挑戦も視野に。取得後の転職で年収大幅アップも可能。</p>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-            <h3 className="font-bold text-purple-600 mb-2">30代：費用対効果を重視</h3>
+            <h3 className="font-bold text-kon mb-2">30代：費用対効果を重視</h3>
             <p className="text-gray-700 text-sm">現職でのキャリアアップに直結する資格を選ぶ。回収期間が短いものを優先。家庭との両立も考慮。</p>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-            <h3 className="font-bold text-purple-600 mb-2">40代：即戦力資格を選択</h3>
+            <h3 className="font-bold text-kon mb-2">40代：即戦力資格を選択</h3>
             <p className="text-gray-700 text-sm">管理職・専門職として必要な資格に絞る。長期間の勉強が必要な資格は慎重に。定年後の独立も視野に。</p>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-            <h3 className="font-bold text-purple-600 mb-2">50代以降：セカンドキャリア視点</h3>
+            <h3 className="font-bold text-kon mb-2">50代以降：セカンドキャリア視点</h3>
             <p className="text-gray-700 text-sm">定年後の再就職・独立に役立つ資格。社会保険労務士、行政書士など相談業務系が人気。</p>
           </div>
         </div>
@@ -221,7 +221,7 @@ export default function ShikakuToshiSimulation2026Blog() {
         <h2 className="text-2xl font-bold text-gray-800 mb-4">業界別：おすすめ資格</h2>
         
         <table className="min-w-full border border-gray-200 mb-6">
-          <thead className="bg-purple-50">
+          <thead className="bg-gray-50">
             <tr>
               <th className="px-4 py-3 text-left border-b font-semibold">業界</th>
               <th className="px-4 py-3 text-left border-b font-semibold">おすすめ資格</th>
@@ -241,19 +241,19 @@ export default function ShikakuToshiSimulation2026Blog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">資格取得を判断するチェックリスト</h2>
         
-        <div className="bg-white border-2 border-purple-200 rounded-lg p-6 mb-6">
+        <div className="bg-white border-2 border-kon rounded-lg p-6 mb-6">
           <p className="font-bold text-gray-800 mb-4">以下に3つ以上当てはまれば、その資格は取得する価値が高い</p>
           <ul className="space-y-3">
-            <li className="flex items-start"><span className="text-purple-500 mr-2">☑</span><span>現職または転職先で<strong>必須または優遇</strong>される</span></li>
-            <li className="flex items-start"><span className="text-purple-500 mr-2">☑</span><span><strong>資格手当</strong>や昇進条件として明記されている</span></li>
-            <li className="flex items-start"><span className="text-purple-500 mr-2">☑</span><span>取得後<strong>3年以内</strong>に投資回収できる見込み</span></li>
-            <li className="flex items-start"><span className="text-purple-500 mr-2">☑</span><span><strong>独占業務</strong>がある（士業など）</span></li>
-            <li className="flex items-start"><span className="text-purple-500 mr-2">☑</span><span>業界で<strong>知名度・信頼性</strong>が高い</span></li>
-            <li className="flex items-start"><span className="text-purple-500 mr-2">☑</span><span>勉強内容が<strong>実務に直結</strong>する</span></li>
+            <li className="flex items-start"><span className="text-kon mr-2">☑</span><span>現職または転職先で<strong>必須または優遇</strong>される</span></li>
+            <li className="flex items-start"><span className="text-kon mr-2">☑</span><span><strong>資格手当</strong>や昇進条件として明記されている</span></li>
+            <li className="flex items-start"><span className="text-kon mr-2">☑</span><span>取得後<strong>3年以内</strong>に投資回収できる見込み</span></li>
+            <li className="flex items-start"><span className="text-kon mr-2">☑</span><span><strong>独占業務</strong>がある（士業など）</span></li>
+            <li className="flex items-start"><span className="text-kon mr-2">☑</span><span>業界で<strong>知名度・信頼性</strong>が高い</span></li>
+            <li className="flex items-start"><span className="text-kon mr-2">☑</span><span>勉強内容が<strong>実務に直結</strong>する</span></li>
           </ul>
         </div>
 
-        <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+        <div className="bg-gray-50 border-l-4 border-danger p-4 mb-6">
           <p className="font-bold text-gray-800 mb-2">⚠️ こんな動機は要注意</p>
           <ul className="text-gray-700 space-y-1 text-sm">
             <li>・「なんとなく役立ちそう」</li>
@@ -294,9 +294,9 @@ export default function ShikakuToshiSimulation2026Blog() {
           費用・時間・効果を冷静に計算し、ROIの高い資格を選びましょう。
         </p>
         
-        <div className="bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-lg p-6 text-center">
+        <div className="bg-gradient-to-r from-slate-900 to-indigo-500 text-white rounded-lg p-6 text-center">
           <p className="text-lg font-bold mb-4">あなたの資格ROIをシミュレーション</p>
-          <Link href="/education/certification-roi" className="inline-block bg-white text-purple-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition">
+          <Link href="/education/certification-roi" className="inline-block bg-white text-kon font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition">
             → 資格ROI計算機を使う
           </Link>
         </div>
@@ -305,19 +305,19 @@ export default function ShikakuToshiSimulation2026Blog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">関連ツール</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Link href="/education/certification-roi" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-purple-300 transition">
+          <Link href="/education/certification-roi" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-ai transition">
             <span className="font-bold text-gray-800">資格ROI計算機</span>
             <p className="text-sm text-gray-600">資格取得の費用対効果を計算</p>
           </Link>
-          <Link href="/career/job-change-simulator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-purple-300 transition">
+          <Link href="/career/job-change-simulator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-ai transition">
             <span className="font-bold text-gray-800">転職シミュレーター</span>
             <p className="text-sm text-gray-600">転職による年収変化を計算</p>
           </Link>
-          <Link href="/career/salary-increase-simulator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-purple-300 transition">
+          <Link href="/career/salary-increase-simulator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-ai transition">
             <span className="font-bold text-gray-800">昇給シミュレーター</span>
             <p className="text-sm text-gray-600">昇給・昇進の効果を計算</p>
           </Link>
-          <Link href="/education/education-cost-simulator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-purple-300 transition">
+          <Link href="/education/education-cost-simulator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-ai transition">
             <span className="font-bold text-gray-800">教育費シミュレーター</span>
             <p className="text-sm text-gray-600">教育費の総額を計算</p>
           </Link>

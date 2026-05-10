@@ -153,7 +153,7 @@ ${displayUnit}
             <div className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm">
               <div className="flex justify-between items-center mb-3">
                 <h2 className="font-semibold text-gray-700 dark:text-gray-300">原材料リスト</h2>
-                <button onClick={addRow} className="text-sm bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-lg">＋ 追加</button>
+                <button onClick={addRow} className="text-sm bg-kon hover:bg-ai text-white px-3 py-1 rounded-lg">＋ 追加</button>
               </div>
               <div className="space-y-3">
                 {rows.map(row => (
@@ -164,7 +164,7 @@ ${displayUnit}
                         {DB_KEYS.map(k => <option key={k}>{k}</option>)}
                       </select>
                       {rows.length > 1 && (
-                        <button onClick={() => removeRow(row.id)} className="text-xs text-red-400 hover:text-red-600 flex-shrink-0">削除</button>
+                        <button onClick={() => removeRow(row.id)} className="text-xs text-danger hover:text-danger flex-shrink-0">削除</button>
                       )}
                     </div>
                     <div>
@@ -199,7 +199,7 @@ ${displayUnit}
             <div className="flex gap-2">
               {(["100g","serving"] as const).map(m => (
                 <button key={m} onClick={() => setViewMode(m)}
-                  className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${viewMode === m ? "bg-blue-500 text-white" : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-300 dark:border-gray-600"}`}>
+                  className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${viewMode === m ? "bg-kon text-white" : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-300 dark:border-gray-600"}`}>
                   {m === "100g" ? "100gあたり" : `1食（${servingSize}g）あたり`}
                 </button>
               ))}

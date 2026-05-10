@@ -144,7 +144,7 @@ export default function TeamPage() {
                   <td className="py-3">
                     <button
                       onClick={() => handleRemove(m.id)}
-                      className="text-xs px-2 py-1 border border-gray-200 rounded hover:bg-red-50 hover:text-red-600 hover:border-red-200 text-gray-600 transition-colors"
+                      className="text-xs px-2 py-1 border border-gray-200 rounded hover:bg-gray-50 hover:text-danger hover:border-gray-200 text-gray-600 transition-colors"
                     >
                       削除
                     </button>
@@ -169,7 +169,7 @@ export default function TeamPage() {
               className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#223A70] mb-3"
               onKeyDown={(e) => e.key === "Enter" && handleInvite()}
             />
-            {error && <p className="text-red-600 text-sm mb-3">{error}</p>}
+            {error && <p className="text-danger text-sm mb-3">{error}</p>}
             <div className="flex gap-2 justify-end">
               <button
                 onClick={() => { setShowModal(false); setInviteEmail(""); setError(""); }}

@@ -86,7 +86,7 @@ export default function SupportChatbot() {
       {/* Floating Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 w-14 h-14 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 flex items-center justify-center z-50"
+        className="fixed bottom-6 right-6 w-14 h-14 bg-kon text-white rounded-full shadow-lg hover:bg-ai flex items-center justify-center z-50"
         aria-label="サポートチャット"
       >
         {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
@@ -96,7 +96,7 @@ export default function SupportChatbot() {
       {isOpen && (
         <div className="fixed bottom-24 right-6 w-96 h-[500px] bg-white dark:bg-gray-800 rounded-lg shadow-2xl flex flex-col z-50 border border-gray-200 dark:border-gray-700">
           {/* Header */}
-          <div className="p-4 bg-blue-600 text-white rounded-t-lg flex-shrink-0">
+          <div className="p-4 bg-kon text-white rounded-t-lg flex-shrink-0">
             <h3 className="font-bold">
               {plan === 'team' || plan === 'enterprise' ? '専任サポート (AI)' : 'サポートチャット'}
             </h3>
@@ -122,7 +122,7 @@ export default function SupportChatbot() {
                 <div
                   className={`max-w-[80%] p-3 rounded-lg text-sm whitespace-pre-wrap ${
                     msg.role === 'user'
-                      ? 'bg-blue-600 text-white'
+                      ? 'bg-kon text-white'
                       : 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200'
                   }`}
                 >
@@ -151,12 +151,12 @@ export default function SupportChatbot() {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && sendMessage()}
                 placeholder="メッセージを入力..."
-                className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 text-sm"
+                className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-kon bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 text-sm"
               />
               <button
                 onClick={sendMessage}
                 disabled={loading || !input.trim()}
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-4 py-2 bg-kon text-white rounded-lg hover:bg-ai disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Send size={20} />
               </button>

@@ -61,7 +61,7 @@ export default function ContactPage() {
         {/* Name */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="name">
-            お名前 <span className="text-red-500">*</span>
+            お名前 <span className="text-danger">*</span>
           </label>
           <input
             id="name"
@@ -78,7 +78,7 @@ export default function ContactPage() {
         {/* Email */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="email">
-            メールアドレス <span className="text-red-500">*</span>
+            メールアドレス <span className="text-danger">*</span>
           </label>
           <input
             id="email"
@@ -95,7 +95,7 @@ export default function ContactPage() {
         {/* Subject */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="subject">
-            件名 <span className="text-red-500">*</span>
+            件名 <span className="text-danger">*</span>
           </label>
           <select
             id="subject"
@@ -114,7 +114,7 @@ export default function ContactPage() {
         {/* Message */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="message">
-            お問い合わせ内容 <span className="text-red-500">*</span>
+            お問い合わせ内容 <span className="text-danger">*</span>
           </label>
           <textarea
             id="message"
@@ -130,7 +130,7 @@ export default function ContactPage() {
         </div>
 
         {error && (
-          <div role="alert" className="bg-red-50 border border-red-200 rounded-lg px-4 py-3 text-sm text-red-700">
+          <div role="alert" className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-sm text-danger">
             {error}
           </div>
         )}

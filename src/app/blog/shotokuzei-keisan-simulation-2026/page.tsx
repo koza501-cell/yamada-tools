@@ -46,9 +46,9 @@ export default function ShotokuzeiKeisanSimulation2026Blog() {
         }}
       />
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-pink-500">ホーム</Link>
+        <Link href="/" className="hover:text-sakura">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-pink-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-sakura">ブログ</Link>
         <span className="mx-2">/</span>
         <span>所得税計算2026</span>
       </nav>
@@ -115,9 +115,9 @@ export default function ShotokuzeiKeisanSimulation2026Blog() {
             <tr><td className="px-4 py-3 border-b">195万円超〜330万円以下</td><td className="px-4 py-3 border-b text-center font-bold text-rose-600">10%</td><td className="px-4 py-3 border-b text-center">97,500円</td></tr>
             <tr><td className="px-4 py-3 border-b">330万円超〜695万円以下</td><td className="px-4 py-3 border-b text-center font-bold text-rose-600">20%</td><td className="px-4 py-3 border-b text-center">427,500円</td></tr>
             <tr><td className="px-4 py-3 border-b">695万円超〜900万円以下</td><td className="px-4 py-3 border-b text-center font-bold text-rose-600">23%</td><td className="px-4 py-3 border-b text-center">636,000円</td></tr>
-            <tr className="bg-yellow-50"><td className="px-4 py-3 border-b">900万円超〜1,800万円以下</td><td className="px-4 py-3 border-b text-center font-bold text-orange-600">33%</td><td className="px-4 py-3 border-b text-center">1,536,000円</td></tr>
-            <tr><td className="px-4 py-3 border-b">1,800万円超〜4,000万円以下</td><td className="px-4 py-3 border-b text-center font-bold text-red-600">40%</td><td className="px-4 py-3 border-b text-center">2,796,000円</td></tr>
-            <tr><td className="px-4 py-3 border-b">4,000万円超</td><td className="px-4 py-3 border-b text-center font-bold text-red-600">45%</td><td className="px-4 py-3 border-b text-center">4,796,000円</td></tr>
+            <tr className="bg-yellow-50"><td className="px-4 py-3 border-b">900万円超〜1,800万円以下</td><td className="px-4 py-3 border-b text-center font-bold text-kon">33%</td><td className="px-4 py-3 border-b text-center">1,536,000円</td></tr>
+            <tr><td className="px-4 py-3 border-b">1,800万円超〜4,000万円以下</td><td className="px-4 py-3 border-b text-center font-bold text-danger">40%</td><td className="px-4 py-3 border-b text-center">2,796,000円</td></tr>
+            <tr><td className="px-4 py-3 border-b">4,000万円超</td><td className="px-4 py-3 border-b text-center font-bold text-danger">45%</td><td className="px-4 py-3 border-b text-center">4,796,000円</td></tr>
           </tbody>
         </table>
 
@@ -156,8 +156,8 @@ export default function ShotokuzeiKeisanSimulation2026Blog() {
           </tbody>
         </table>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-          <p className="text-lg font-bold text-blue-800 mb-2">🔧 あなたの所得税を計算！</p>
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+          <p className="text-lg font-bold text-kon mb-2">🔧 あなたの所得税を計算！</p>
           <p className="text-gray-700 mb-4">年収と控除を入力して、正確な所得税と手取り額をシミュレーションしましょう。</p>
           <Link href="/tax/income-tax-calculator" className="inline-block bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-6 rounded-lg transition">
             → 所得税計算機を使う
@@ -256,7 +256,7 @@ export default function ShotokuzeiKeisanSimulation2026Blog() {
           <strong>控除を最大限活用</strong>して課税所得を減らすことが節税の基本です。
         </p>
         
-        <div className="bg-gradient-to-r from-rose-500 to-pink-500 text-white rounded-lg p-6 text-center">
+        <div className="bg-gradient-to-r from-rose-500 to-kon text-white rounded-lg p-6 text-center">
           <p className="text-lg font-bold mb-4">あなたの所得税をシミュレーション</p>
           <Link href="/tax/income-tax-calculator" className="inline-block bg-white text-rose-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition">
             → 所得税計算機を使う

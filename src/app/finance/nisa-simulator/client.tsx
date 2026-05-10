@@ -130,12 +130,12 @@ export default function NisaSimulatorClient() {
   return (
     <div className="min-h-screen bg-gray-50">
         <Mascot state={mascotState} className="mb-6" />
-      <div className="bg-gradient-to-r from-blue-700 to-blue-500 text-white py-10 px-4">
+      <div className="bg-gradient-to-r from-blue-700 to-kon text-white py-10 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-3 mb-2">
             <h1 className="text-2xl md:text-3xl font-bold">新NISAシミュレーター</h1>
           </div>
-          <p className="text-blue-100 text-sm md:text-base">積立・一括・複数シナリオ対応｜1800万円非課税枠の活用をシミュレーション</p>
+          <p className="text-gin text-sm md:text-base">積立・一括・複数シナリオ対応｜1800万円非課税枠の活用をシミュレーション</p>
         </div>
       </div>
 
@@ -145,7 +145,7 @@ export default function NisaSimulatorClient() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                現在の年齢: <span className="text-blue-600 font-bold">{currentAge}歳</span>
+                現在の年齢: <span className="text-kon font-bold">{currentAge}歳</span>
               </label>
               <input type="range" min={18} max={65} value={currentAge}
                 onChange={e => setCurrentAge(Math.min(Number(e.target.value), targetAge - 1))}
@@ -154,7 +154,7 @@ export default function NisaSimulatorClient() {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                運用終了年齢: <span className="text-blue-600 font-bold">{targetAge}歳</span>
+                運用終了年齢: <span className="text-kon font-bold">{targetAge}歳</span>
               </label>
               <input type="range" min={currentAge + 1} max={99} value={targetAge}
                 onChange={e => setTargetAge(Number(e.target.value))}
@@ -167,7 +167,7 @@ export default function NisaSimulatorClient() {
                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">¥</span>
                 <input type="number" min={0} step={10000} value={initialHolding}
                   onChange={e => setInitialHolding(Math.max(0, Number(e.target.value)))}
-                  className="w-full border border-gray-300 rounded-lg pl-7 pr-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+                  className="w-full border border-gray-300 rounded-lg pl-7 pr-3 py-2 text-sm focus:ring-2 focus:ring-kon focus:border-transparent" />
               </div>
               <p className="text-xs text-gray-400 mt-1">{fmtMan(initialHolding)}</p>
             </div>
@@ -176,7 +176,7 @@ export default function NisaSimulatorClient() {
               <div className="flex flex-wrap gap-2">
                 {(["tsumitate", "growth", "both"] as const).map((t) => (
                   <button key={t} onClick={() => setNisaType(t)}
-                    className={"px-3 py-1.5 rounded-full text-sm border transition-all " + (nisaType === t ? "bg-blue-600 text-white border-blue-600" : "bg-white text-gray-700 border-gray-300 hover:border-blue-400")}>
+                    className={"px-3 py-1.5 rounded-full text-sm border transition-all " + (nisaType === t ? "bg-kon text-white border-kon" : "bg-white text-gray-700 border-gray-300 hover:border-ai")}>
                     {t === "tsumitate" ? "つみたて枠のみ" : t === "growth" ? "成長投資枠のみ" : "両方同時"}
                   </button>
                 ))}
@@ -192,7 +192,7 @@ export default function NisaSimulatorClient() {
             <div className="flex rounded-lg border border-gray-200 overflow-hidden w-fit">
               {(["monthly", "lump", "both"] as const).map((t) => (
                 <button key={t} onClick={() => setInvestType(t)}
-                  className={"px-4 py-2 text-sm transition-all " + (investType === t ? "bg-blue-600 text-white" : "bg-white text-gray-600 hover:bg-gray-50")}>
+                  className={"px-4 py-2 text-sm transition-all " + (investType === t ? "bg-kon text-white" : "bg-white text-gray-600 hover:bg-gray-50")}>
                   {t === "monthly" ? "毎月積立" : t === "lump" ? "一括投資" : "両方"}
                 </button>
               ))}
@@ -209,7 +209,7 @@ export default function NisaSimulatorClient() {
                   <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">¥</span>
                   <input type="number" min={0} max={100000} step={1000} value={monthlyAmount}
                     onChange={e => setMonthlyAmount(Math.min(100000, Math.max(0, Number(e.target.value))))}
-                    className="w-full border border-gray-300 rounded-lg pl-7 pr-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+                    className="w-full border border-gray-300 rounded-lg pl-7 pr-3 py-2 text-sm focus:ring-2 focus:ring-kon focus:border-transparent" />
                 </div>
                 <input type="range" min={0} max={100000} step={1000} value={monthlyAmount}
                   onChange={e => setMonthlyAmount(Number(e.target.value))}
@@ -224,7 +224,7 @@ export default function NisaSimulatorClient() {
                   <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">¥</span>
                   <input type="number" min={0} step={100000} value={lumpAmount}
                     onChange={e => setLumpAmount(Math.max(0, Number(e.target.value)))}
-                    className="w-full border border-gray-300 rounded-lg pl-7 pr-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+                    className="w-full border border-gray-300 rounded-lg pl-7 pr-3 py-2 text-sm focus:ring-2 focus:ring-kon focus:border-transparent" />
                 </div>
                 <p className="text-xs text-gray-400 mt-1">{fmtMan(lumpAmount)}</p>
               </div>
@@ -247,7 +247,7 @@ export default function NisaSimulatorClient() {
                         newRates[i] = Math.max(0.1, Math.min(30, Number(e.target.value)));
                         setRates(newRates);
                       }}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon focus:border-transparent" />
                     <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">%</span>
                   </div>
                 </div>
@@ -284,13 +284,13 @@ export default function NisaSimulatorClient() {
                         <p className="text-xs text-gray-500">運用益</p>
                         <p className="font-semibold text-green-700">+{fmt(s.profit)}万円</p>
                       </div>
-                      <div className="bg-blue-50 rounded-lg p-2">
+                      <div className="bg-gray-50 rounded-lg p-2">
                         <p className="text-xs text-gray-500">節税額</p>
-                        <p className="font-semibold text-blue-700">{fmt(s.taxSaved)}万円</p>
+                        <p className="font-semibold text-kon">{fmt(s.taxSaved)}万円</p>
                       </div>
-                      <div className="bg-purple-50 rounded-lg p-2">
+                      <div className="bg-gray-50 rounded-lg p-2">
                         <p className="text-xs text-gray-500">非課税枠使用</p>
-                        <p className="font-semibold text-purple-700">{fmt(s.nisaUsage)}万円</p>
+                        <p className="font-semibold text-kon">{fmt(s.nisaUsage)}万円</p>
                       </div>
                     </div>
                     <div>
@@ -314,7 +314,7 @@ export default function NisaSimulatorClient() {
               <div>
                 <p className="font-bold text-gray-800 mb-1">NISAの節税効果（{rates[1]}%シナリオ）</p>
                 <p className="text-gray-700">
-                  もし課税口座で運用していた場合、<span className="font-bold text-red-600 text-lg">{fmtMan(scenarios[1].taxSaved)}</span>の税金がかかっていました。<br />
+                  もし課税口座で運用していた場合、<span className="font-bold text-danger text-lg">{fmtMan(scenarios[1].taxSaved)}</span>の税金がかかっていました。<br />
                   <span className="font-bold text-green-700">NISAなら全額非課税！</span>運用益をまるまる受け取れます。
                 </p>
               </div>
@@ -385,7 +385,7 @@ export default function NisaSimulatorClient() {
                         <td className="px-3 py-2 text-right">{fmt(row.principal)}万</td>
                         <td className="px-3 py-2 text-right font-semibold">{fmt(row.value)}万</td>
                         <td className="px-3 py-2 text-right text-green-700">+{fmt(row.profit)}万</td>
-                        <td className="px-3 py-2 text-right text-blue-600">{fmt(row.remainingNisa)}万</td>
+                        <td className="px-3 py-2 text-right text-kon">{fmt(row.remainingNisa)}万</td>
                       </tr>
                     ))}
                   </tbody>
@@ -398,7 +398,7 @@ export default function NisaSimulatorClient() {
         {/* Share buttons */}
         <div className="flex flex-wrap gap-3 mb-8">
           <button onClick={handleCopy}
-            className="flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-sm font-medium transition-colors">
+            className="flex items-center gap-2 px-5 py-2.5 bg-kon hover:bg-ai text-white rounded-xl text-sm font-medium transition-colors">
             結果をコピー
           </button>
           <button onClick={handleSaveImage}
@@ -418,8 +418,8 @@ export default function NisaSimulatorClient() {
             </p>
             <h3 className="font-bold text-gray-800">新NISAの2つの投資枠</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-blue-50 rounded-xl p-4">
-                <h4 className="font-bold text-blue-700 mb-2">つみたて投資枠</h4>
+              <div className="bg-gray-50 rounded-xl p-4">
+                <h4 className="font-bold text-kon mb-2">つみたて投資枠</h4>
                 <ul className="text-sm space-y-1">
                   <li>年間上限: <strong>120万円</strong></li>
                   <li>対象: 長期積立・分散投資に適した投資信託</li>

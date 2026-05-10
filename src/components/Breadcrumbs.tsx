@@ -179,7 +179,7 @@ export default function Breadcrumbs() {
               {crumb.href ? (
                 <Link
                   href={crumb.href}
-                  className="text-kon dark:text-blue-400 hover:text-sakura transition-colors hover:underline"
+                  className="text-kon dark:text-gray-300 hover:text-sakura transition-colors hover:underline"
                 >
                   {crumb.name}
                 </Link>

@@ -46,9 +46,9 @@ export default function ChintaiVsKoubaiSimulation2026Blog() {
         }}
       />
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-pink-500">ホーム</Link>
+        <Link href="/" className="hover:text-sakura">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-pink-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-sakura">ブログ</Link>
         <span className="mx-2">/</span>
         <span>賃貸vs購入シミュレーション2026</span>
       </nav>
@@ -60,7 +60,7 @@ export default function ChintaiVsKoubaiSimulation2026Blog() {
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】賃貸と購入どっちが得？50年シミュレーションで徹底比較</h1>
       <p className="text-gray-500 text-sm mb-8">最終更新: 2026年4月</p>
 
-      <div className="bg-orange-50 border-l-4 border-orange-400 p-4 mb-8">
+      <div className="bg-gray-50 border-l-4 border-gray-200 p-4 mb-8">
         <p className="font-bold text-gray-800 mb-2">この記事でわかること</p>
         <ul className="text-gray-700 space-y-1">
           <li>✓ 賃貸と購入の50年間総コスト比較</li>
@@ -76,15 +76,15 @@ export default function ChintaiVsKoubaiSimulation2026Blog() {
 
         <h2 className="text-2xl font-bold text-gray-800 mb-4">結論：単純な損得では決められない</h2>
         <p className="text-gray-700 mb-4">
-          「賃貸と購入、どっちが得？」という質問に<strong className="text-orange-600">正解はありません</strong>。
+          「賃貸と購入、どっちが得？」という質問に<strong className="text-kon">正解はありません</strong>。
           なぜなら、総コストだけでなく<strong>ライフスタイル、リスク許容度、将来の不確実性</strong>を考慮する必要があるからです。
         </p>
         
-        <div className="bg-white border-2 border-orange-200 rounded-lg p-6 mb-6">
-          <h3 className="font-bold text-orange-800 text-xl mb-3">一般的な傾向</h3>
+        <div className="bg-white border-2 border-gray-200 rounded-lg p-6 mb-6">
+          <h3 className="font-bold text-kon text-xl mb-3">一般的な傾向</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-blue-50 rounded-lg p-4">
-              <p className="font-bold text-blue-800 mb-2">購入が有利になりやすい</p>
+            <div className="bg-gray-50 rounded-lg p-4">
+              <p className="font-bold text-kon mb-2">購入が有利になりやすい</p>
               <ul className="text-gray-700 text-sm space-y-1">
                 <li>・同じ場所に15年以上住む予定</li>
                 <li>・頭金を20%以上用意できる</li>
@@ -130,7 +130,7 @@ export default function ChintaiVsKoubaiSimulation2026Blog() {
         </div>
 
         <table className="min-w-full border border-gray-200 mb-6">
-          <thead className="bg-orange-50">
+          <thead className="bg-gray-50">
             <tr>
               <th className="px-4 py-3 text-left border-b font-semibold">費用項目</th>
               <th className="px-4 py-3 text-right border-b font-semibold">賃貸（50年）</th>
@@ -143,15 +143,15 @@ export default function ChintaiVsKoubaiSimulation2026Blog() {
             <tr><td className="px-4 py-3 border-b">更新料/管理費・修繕積立金</td><td className="px-4 py-3 border-b text-right">約300万円</td><td className="px-4 py-3 border-b text-right">約1,200万円</td></tr>
             <tr><td className="px-4 py-3 border-b">固定資産税</td><td className="px-4 py-3 border-b text-right">0円</td><td className="px-4 py-3 border-b text-right">約500万円</td></tr>
             <tr><td className="px-4 py-3 border-b">大規模修繕・リフォーム</td><td className="px-4 py-3 border-b text-right">0円</td><td className="px-4 py-3 border-b text-right">約600万円</td></tr>
-            <tr className="bg-yellow-50 font-bold"><td className="px-4 py-3 border-b">総コスト合計</td><td className="px-4 py-3 border-b text-right text-red-600">約7,250万円</td><td className="px-4 py-3 border-b text-right text-red-600">約6,860万円</td></tr>
-            <tr className="bg-blue-50"><td className="px-4 py-3 border-b">残る資産価値</td><td className="px-4 py-3 border-b text-right">0円</td><td className="px-4 py-3 border-b text-right text-blue-600">約1,000〜2,000万円</td></tr>
+            <tr className="bg-yellow-50 font-bold"><td className="px-4 py-3 border-b">総コスト合計</td><td className="px-4 py-3 border-b text-right text-danger">約7,250万円</td><td className="px-4 py-3 border-b text-right text-danger">約6,860万円</td></tr>
+            <tr className="bg-gray-50"><td className="px-4 py-3 border-b">残る資産価値</td><td className="px-4 py-3 border-b text-right">0円</td><td className="px-4 py-3 border-b text-right text-kon">約1,000〜2,000万円</td></tr>
           </tbody>
         </table>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-          <p className="text-lg font-bold text-blue-800 mb-2">🔧 あなたの条件でシミュレーション！</p>
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+          <p className="text-lg font-bold text-kon mb-2">🔧 あなたの条件でシミュレーション！</p>
           <p className="text-gray-700 mb-4">家賃・物件価格・金利を入力して、あなたの場合の比較結果を確認しましょう。</p>
-          <Link href="/realestate/rent-vs-buy" className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition">
+          <Link href="/realestate/rent-vs-buy" className="inline-block bg-kon hover:bg-ai text-white font-bold py-3 px-6 rounded-lg transition">
             → 賃貸vs購入シミュレーターを使う
           </Link>
         </div>
@@ -171,8 +171,8 @@ export default function ChintaiVsKoubaiSimulation2026Blog() {
               <li>・家賃は一生支払い続ける</li>
             </ul>
           </div>
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-5">
-            <h3 className="font-bold text-blue-800 text-lg mb-3">購入の隠れコスト</h3>
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-5">
+            <h3 className="font-bold text-kon text-lg mb-3">購入の隠れコスト</h3>
             <ul className="space-y-2 text-gray-700">
               <li>・固定資産税（年10〜20万円）</li>
               <li>・管理費・修繕積立金（月2〜4万円）</li>
@@ -199,28 +199,28 @@ export default function ChintaiVsKoubaiSimulation2026Blog() {
         <div className="space-y-4">
           <div className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
             <h3 className="font-bold text-gray-800 mb-2 flex items-center">
-              <span className="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">1</span>
+              <span className="bg-kon text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">1</span>
               転勤族・転職を考えている人 → 賃貸
             </h3>
             <p className="text-gray-700">住宅ローンを組んでも売却・賃貸に出す手間とリスクが大きい。身軽さを優先。</p>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
             <h3 className="font-bold text-gray-800 mb-2 flex items-center">
-              <span className="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">2</span>
+              <span className="bg-kon text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">2</span>
               子育て世帯（同じ場所に長く住む予定） → 購入
             </h3>
             <p className="text-gray-700">学区や環境を固定したい場合は購入が有利。資産として子供に残せる。</p>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
             <h3 className="font-bold text-gray-800 mb-2 flex items-center">
-              <span className="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">3</span>
+              <span className="bg-kon text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">3</span>
               独身・DINKs → ケースバイケース
             </h3>
             <p className="text-gray-700">ライフスタイルの変化が大きい時期。10年以内に結婚・転職の可能性があるなら賃貸。</p>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
             <h3 className="font-bold text-gray-800 mb-2 flex items-center">
-              <span className="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">4</span>
+              <span className="bg-kon text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">4</span>
               老後を見据えて安定したい人 → 購入（中古も検討）
             </h3>
             <p className="text-gray-700">高齢になると賃貸契約が難しくなる。住居費を固定できる安心感。</p>
@@ -289,9 +289,9 @@ export default function ChintaiVsKoubaiSimulation2026Blog() {
           まずはシミュレーターで、あなたの場合の総コストを比較してみてください。
         </p>
         
-        <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-lg p-6 text-center">
+        <div className="bg-gradient-to-r from-slate-900 to-red-500 text-white rounded-lg p-6 text-center">
           <p className="text-lg font-bold mb-4">あなたの条件で賃貸vs購入を比較</p>
-          <Link href="/realestate/rent-vs-buy" className="inline-block bg-white text-orange-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition">
+          <Link href="/realestate/rent-vs-buy" className="inline-block bg-white text-kon font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition">
             → 賃貸vs購入シミュレーターを使う
           </Link>
         </div>
@@ -300,19 +300,19 @@ export default function ChintaiVsKoubaiSimulation2026Blog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">関連ツール</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Link href="/realestate/rent-vs-buy" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-orange-300 transition">
+          <Link href="/realestate/rent-vs-buy" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-ai transition">
             <span className="font-bold text-gray-800">賃貸vs購入シミュレーター</span>
             <p className="text-sm text-gray-600">総コストを比較</p>
           </Link>
-          <Link href="/finance/jutaku-loan" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-orange-300 transition">
+          <Link href="/finance/jutaku-loan" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-ai transition">
             <span className="font-bold text-gray-800">住宅ローン計算機</span>
             <p className="text-sm text-gray-600">毎月の返済額を計算</p>
           </Link>
-          <Link href="/realestate/property-tax-calculator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-orange-300 transition">
+          <Link href="/realestate/property-tax-calculator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-ai transition">
             <span className="font-bold text-gray-800">固定資産税計算機</span>
             <p className="text-sm text-gray-600">年間の税額を試算</p>
           </Link>
-          <Link href="/realestate/moving-cost-calculator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-orange-300 transition">
+          <Link href="/realestate/moving-cost-calculator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-ai transition">
             <span className="font-bold text-gray-800">引越し費用計算機</span>
             <p className="text-sm text-gray-600">引越し費用の目安</p>
           </Link>

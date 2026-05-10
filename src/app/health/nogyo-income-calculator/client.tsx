@@ -78,12 +78,12 @@ export default function NogyoClient() {
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label className="block text-sm text-gray-600 mb-1">農業収入（円/年）</label>
-            <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+            <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-kon outline-none"
               value={revenue} onChange={e => setRevenue(e.target.value)} placeholder="3000000" min="0" />
           </div>
           <div>
             <label className="block text-sm text-gray-600 mb-1">農業共済金（円）</label>
-            <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+            <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-kon outline-none"
               value={kyosai} onChange={e => setKyosai(e.target.value)} placeholder="0" min="0" />
           </div>
         </div>
@@ -102,7 +102,7 @@ export default function NogyoClient() {
                   <label className="block text-xs text-gray-500 mb-1">{item.label}</label>
                   <div className="flex items-center gap-1">
                     <input type="number"
-                      className="border border-gray-300 rounded-lg px-2 py-1.5 w-full text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                      className="border border-gray-300 rounded-lg px-2 py-1.5 w-full text-sm focus:ring-2 focus:ring-kon outline-none"
                       value={expenses[item.key]}
                       onChange={e => setExpenses(prev => ({ ...prev, [item.key]: e.target.value }))}
                       placeholder="0" min="0" />
@@ -156,7 +156,7 @@ export default function NogyoClient() {
           </div>
           <div className="flex justify-between py-2 text-sm font-bold">
             <span className="text-gray-900">課税所得の目安</span>
-            <span className="text-blue-700">{fmt(taxableIncome)}</span>
+            <span className="text-kon">{fmt(taxableIncome)}</span>
           </div>
           <div className="flex justify-between py-2 text-sm">
             <span className="text-gray-600">所得税の目安</span>
@@ -168,12 +168,12 @@ export default function NogyoClient() {
           </div>
           <div className="flex justify-between py-2 text-sm font-bold border-t-2 border-gray-200 mt-1">
             <span className="text-gray-900">納税額合計の目安</span>
-            <span className="text-blue-700 text-base">{fmt(totalTax)}</span>
+            <span className="text-kon text-base">{fmt(totalTax)}</span>
           </div>
         </div>
       </div>
 
-      <div className={needsFiling ? "bg-red-50 border border-red-200 rounded-xl p-4 mb-6" : "bg-green-50 border border-green-200 rounded-xl p-4 mb-6"}>
+      <div className={needsFiling ? "bg-gray-50 border border-gray-200 rounded-xl p-4 mb-6" : "bg-green-50 border border-green-200 rounded-xl p-4 mb-6"}>
         <p className="font-semibold text-sm mb-1">{needsFiling ? "⚠️ 確定申告が必要です" : "✅ 確定申告は不要な可能性があります"}</p>
         <p className="text-xs text-gray-600">
           {needsFiling
@@ -192,7 +192,7 @@ export default function NogyoClient() {
           <dt className="text-gray-500">課税所得（目安）</dt><dd className="text-gray-800">{fmt(taxableIncome)}</dd>
           <dt className="text-gray-500">所得税（目安）</dt><dd className="text-gray-800">{fmt(incomeTax)}</dd>
         </dl>
-        <button onClick={() => window.print()} className="mt-3 text-xs text-blue-600 hover:underline print:hidden">
+        <button onClick={() => window.print()} className="mt-3 text-xs text-kon hover:underline print:hidden">
           🖨️ 印刷 / PDFとして保存
         </button>
         <div className="hidden print:block mt-6 pt-4 border-t border-gray-200 text-center">

@@ -215,8 +215,8 @@ export default function ImageCompressClient({
           
           <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
             <span className="bg-green-50 text-green-700 px-3 py-1 rounded-full">✓ 完全無料</span>
-            <span className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full">🔒 ブラウザ内処理</span>
-            <span className="bg-purple-50 text-purple-700 px-3 py-1 rounded-full">📁 複数ファイル対応</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">🔒 ブラウザ内処理</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">📁 複数ファイル対応</span>
           </div>
         </header>
 
@@ -281,7 +281,7 @@ export default function ImageCompressClient({
             className={`border-2 border-dashed rounded-xl p-10 text-center cursor-pointer transition-all duration-200 mb-6 ${
               isDragging
                 ? "border-kon bg-kon/10 scale-[1.02]"
-                : "border-kon/30 bg-blue-50/50 hover:border-kon hover:bg-blue-50 hover:shadow-lg"
+                : "border-kon/30 bg-gray-50/50 hover:border-kon hover:bg-gray-50 hover:shadow-lg"
             }`}
           >
             <div className="w-16 h-16 mx-auto mb-4 bg-kon rounded-2xl flex items-center justify-center text-3xl shadow-lg">📁</div>
@@ -345,7 +345,7 @@ export default function ImageCompressClient({
                       <p className="font-medium text-gray-800 truncate">{image.originalFile.name}</p>
                       <p className="text-sm text-gray-500">
                         {formatFileSize(image.originalSize)} → {formatFileSize(image.compressedSize)}
-                        <span className={`ml-2 font-medium ${image.reduction > 0 ? "text-green-600" : "text-red-500"}`}>
+                        <span className={`ml-2 font-medium ${image.reduction > 0 ? "text-green-600" : "text-danger"}`}>
                           {image.reduction > 0 ? `−${image.reduction}%` : `+${Math.abs(image.reduction)}%`}
                         </span>
                       </p>
@@ -359,7 +359,7 @@ export default function ImageCompressClient({
                       </button>
                       <button
                         onClick={() => removeImage(index)}
-                        className="px-2 py-1 text-gray-400 hover:text-red-500 transition-colors"
+                        className="px-2 py-1 text-gray-400 hover:text-danger transition-colors"
                       >
                         ✕
                       </button>
@@ -398,7 +398,7 @@ export default function ImageCompressClient({
         <RelatedTools tools={relatedToolSets.imageCompress} title="あわせて使えるツール" />
         {/* SEO Content - Intro */}
         {seoContent && (
-          <section className="mt-8 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6 border border-blue-100">
+          <section className="mt-8 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6 border border-gray-200">
             <p className="text-gray-700 leading-relaxed">{seoContent.intro}</p>
           </section>
         )}

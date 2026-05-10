@@ -59,7 +59,7 @@ const SEG = {
 function getBmiCategory(bmi: number) {
   if (bmi < 18.5) return {
     label: "低体重（やせ）", labelShort: "低体重", degree: "やせ",
-    colorClass: "text-blue-600", colorBg: "bg-blue-50", colorBorder: "border-blue-400", colorText: "text-blue-700",
+    colorClass: "text-kon", colorBg: "bg-gray-50", colorBorder: "border-kon", colorText: "text-kon",
     riskLevel: "注意", advice: "体重がやや低めです。栄養バランスの良い食事を心がけ、タンパク質・カルシウムをしっかり摂りましょう。急激な体重増加は避け、必要に応じて医療機関にご相談ください。",
     risks: ["栄養不足・貧血のリスク", "骨粗しょう症のリスク", "免疫機能低下のリスク", "若い女性の場合は生殖機能への影響も"],
   };
@@ -77,19 +77,19 @@ function getBmiCategory(bmi: number) {
   };
   if (bmi < 35.0) return {
     label: "肥満（2度）", labelShort: "肥満2度", degree: "肥満2度",
-    colorClass: "text-orange-600", colorBg: "bg-orange-50", colorBorder: "border-orange-400", colorText: "text-orange-700",
+    colorClass: "text-kon", colorBg: "bg-gray-50", colorBorder: "border-gray-200", colorText: "text-kon",
     riskLevel: "要注意", advice: "肥満2度の判定です。重大な健康リスクがあります。医師や管理栄養士の指導のもとで、計画的な体重管理を行うことをお勧めします。",
     risks: ["重大な生活習慣病リスク（糖尿病・高血圧）", "心臓・血管疾患のリスク大", "関節への負担が大きい", "医療機関への相談を強くお勧めします"],
   };
   if (bmi < 40.0) return {
     label: "肥満（3度）", labelShort: "肥満3度", degree: "肥満3度",
-    colorClass: "text-red-600", colorBg: "bg-red-50", colorBorder: "border-red-400", colorText: "text-red-700",
+    colorClass: "text-danger", colorBg: "bg-gray-50", colorBorder: "border-danger", colorText: "text-danger",
     riskLevel: "要医療相談", advice: "肥満3度の判定です。重大な健康リスクがあります。速やかに医療機関を受診し、専門家の指導のもとで体重管理を開始することを強くお勧めします。",
     risks: ["高度肥満による深刻な健康リスク", "心肺機能への負担が大きい", "日常生活への支障", "専門的な医療的サポートが必要です"],
   };
   return {
     label: "肥満（4度）", labelShort: "肥満4度", degree: "肥満4度",
-    colorClass: "text-red-800", colorBg: "bg-red-100", colorBorder: "border-red-600", colorText: "text-red-800",
+    colorClass: "text-danger", colorBg: "bg-gray-50", colorBorder: "border-danger", colorText: "text-danger",
     riskLevel: "要医療相談", advice: "肥満4度の判定です。一刻も早く医療機関を受診してください。専門家チームのサポートのもとで体重管理を行うことが不可欠です。",
     risks: ["生命に関わる重大な健康リスク", "早急な医療的介入が必要", "心臓・腎臓・肝臓への深刻な影響", "速やかに医療機関をご受診ください"],
   };
@@ -155,12 +155,12 @@ function BmiGauge({ bmi, position }: { bmi: number; position: number }) {
     <div className="w-full">
       {/* Color bar */}
       <div className="relative h-8 rounded-full overflow-hidden flex mb-1">
-        <div style={{ width: `${SEG.lean}%` }} className="bg-blue-400 flex items-center justify-center" />
+        <div style={{ width: `${SEG.lean}%` }} className="bg-kon flex items-center justify-center" />
         <div style={{ width: `${SEG.normal}%` }} className="bg-green-400 flex items-center justify-center" />
         <div style={{ width: `${SEG.ob1}%` }} className="bg-yellow-400 flex items-center justify-center" />
-        <div style={{ width: `${SEG.ob2}%` }} className="bg-orange-400 flex items-center justify-center" />
-        <div style={{ width: `${SEG.ob3}%` }} className="bg-red-400 flex items-center justify-center" />
-        <div style={{ width: `${SEG.ob4}%` }} className="bg-red-700 flex items-center justify-center" />
+        <div style={{ width: `${SEG.ob2}%` }} className="bg-kon flex items-center justify-center" />
+        <div style={{ width: `${SEG.ob3}%` }} className="bg-danger flex items-center justify-center" />
+        <div style={{ width: `${SEG.ob4}%` }} className="bg-danger flex items-center justify-center" />
         {/* Marker */}
         <div
           className="absolute top-0 bottom-0 w-1 bg-gray-900 rounded-full shadow-lg"
@@ -186,12 +186,12 @@ function BmiGauge({ bmi, position }: { bmi: number; position: number }) {
       {/* Legend */}
       <div className="flex flex-wrap gap-2 mt-3 text-xs">
         {[
-          { color: "bg-blue-400", label: "低体重" },
+          { color: "bg-kon", label: "低体重" },
           { color: "bg-green-400", label: "普通体重" },
           { color: "bg-yellow-400", label: "肥満1度" },
-          { color: "bg-orange-400", label: "肥満2度" },
-          { color: "bg-red-400", label: "肥満3度" },
-          { color: "bg-red-700", label: "肥満4度" },
+          { color: "bg-kon", label: "肥満2度" },
+          { color: "bg-danger", label: "肥満3度" },
+          { color: "bg-danger", label: "肥満4度" },
         ].map((s) => (
           <span key={s.label} className="flex items-center gap-1 text-gray-600">
             <span className={`inline-block w-3 h-3 rounded-sm ${s.color}`} />
@@ -279,9 +279,9 @@ export default function BmiCalculatorPage() {
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-3xl mx-auto px-4 py-4">
           <nav className="text-sm text-gray-500 mb-2">
-            <Link href="/" className="hover:text-blue-600">ホーム</Link>
+            <Link href="/" className="hover:text-ai">ホーム</Link>
             <span className="mx-1">&gt;</span>
-            <Link href="/health" className="hover:text-blue-600">健康・ウェルネス</Link>
+            <Link href="/health" className="hover:text-ai">健康・ウェルネス</Link>
             <span className="mx-1">&gt;</span>
             <span className="text-gray-700">BMI・適正体重 計算機</span>
           </nav>
@@ -300,7 +300,7 @@ export default function BmiCalculatorPage() {
         {/* ── Input Form ── */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-4">
           <h2 className="font-bold text-gray-900 mb-5 flex items-center gap-2">
-            <span className="bg-blue-600 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">1</span>
+            <span className="bg-kon text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">1</span>
             基本情報を入力
           </h2>
 
@@ -311,7 +311,7 @@ export default function BmiCalculatorPage() {
               <button
                 onClick={() => setGender("male")}
                 className={`px-6 py-2 text-sm font-semibold transition-colors ${
-                  gender === "male" ? "bg-blue-600 text-white" : "bg-white text-gray-600 hover:bg-gray-50"
+                  gender === "male" ? "bg-kon text-white" : "bg-white text-gray-600 hover:bg-gray-50"
                 }`}
               >
                 男性
@@ -319,7 +319,7 @@ export default function BmiCalculatorPage() {
               <button
                 onClick={() => setGender("female")}
                 className={`px-6 py-2 text-sm font-semibold transition-colors ${
-                  gender === "female" ? "bg-pink-500 text-white" : "bg-white text-gray-600 hover:bg-gray-50"
+                  gender === "female" ? "bg-kon text-white" : "bg-white text-gray-600 hover:bg-gray-50"
                 }`}
               >
                 女性
@@ -341,7 +341,7 @@ export default function BmiCalculatorPage() {
                   placeholder="例: 35"
                   min={10}
                   max={100}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-right focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-right focus:outline-none focus:ring-2 focus:ring-kon"
                 />
                 <span className="text-gray-600 text-sm whitespace-nowrap">歳</span>
               </div>
@@ -350,7 +350,7 @@ export default function BmiCalculatorPage() {
             {/* Height */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                身長 <span className="text-red-500">*</span>
+                身長 <span className="text-danger">*</span>
               </label>
               <div className="flex items-center gap-2">
                 <input
@@ -361,7 +361,7 @@ export default function BmiCalculatorPage() {
                   min={50}
                   max={250}
                   step={0.1}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-right focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-right focus:outline-none focus:ring-2 focus:ring-kon"
                 />
                 <span className="text-gray-600 text-sm">cm</span>
               </div>
@@ -370,7 +370,7 @@ export default function BmiCalculatorPage() {
             {/* Weight */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                体重 <span className="text-red-500">*</span>
+                体重 <span className="text-danger">*</span>
               </label>
               <div className="flex items-center gap-2">
                 <input
@@ -381,7 +381,7 @@ export default function BmiCalculatorPage() {
                   min={10}
                   max={300}
                   step={0.1}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-right focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-right focus:outline-none focus:ring-2 focus:ring-kon"
                 />
                 <span className="text-gray-600 text-sm">kg</span>
               </div>
@@ -401,7 +401,7 @@ export default function BmiCalculatorPage() {
                   min={10}
                   max={300}
                   step={0.1}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-right focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-right focus:outline-none focus:ring-2 focus:ring-kon"
                 />
                 <span className="text-gray-600 text-sm">kg</span>
               </div>
@@ -409,14 +409,14 @@ export default function BmiCalculatorPage() {
           </div>
 
           {error && (
-            <div className="bg-red-50 border border-red-300 text-red-700 rounded-lg px-4 py-2 mb-4 text-sm">
+            <div className="bg-gray-50 border border-gray-200 text-danger rounded-lg px-4 py-2 mb-4 text-sm">
               {error}
             </div>
           )}
 
           <button
             onClick={handleCalc}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl text-lg transition-colors"
+            className="w-full bg-kon hover:bg-ai text-white font-bold py-3.5 rounded-xl text-lg transition-colors"
           >
             BMIを計算する
           </button>
@@ -449,7 +449,7 @@ export default function BmiCalculatorPage() {
             {/* Section 2: Weight summary */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-4">
               <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <span className="bg-blue-600 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">1</span>
+                <span className="bg-kon text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">1</span>
                 体重サマリー
               </h3>
               <div className="overflow-x-auto">
@@ -468,7 +468,7 @@ export default function BmiCalculatorPage() {
                         <td className="py-2.5 text-gray-600 w-1/2">{row.label}</td>
                         <td className={`py-2.5 text-right font-semibold ${
                           row.colored ? result.colorText :
-                          row.diff ? (result.diffFromIdeal > 0 ? "text-red-600" : result.diffFromIdeal < 0 ? "text-blue-600" : "text-green-600") :
+                          row.diff ? (result.diffFromIdeal > 0 ? "text-danger" : result.diffFromIdeal < 0 ? "text-kon" : "text-green-600") :
                           row.highlight ? result.colorClass :
                           "text-gray-900"
                         }`}>
@@ -485,7 +485,7 @@ export default function BmiCalculatorPage() {
             {result.goalBmi !== null && result.goalDiff !== null && result.goalLabel !== null && (
               <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-4">
                 <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <span className="bg-blue-600 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">2</span>
+                  <span className="bg-kon text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">2</span>
                   目標体重の分析
                 </h3>
                 <div className="grid grid-cols-3 gap-3">
@@ -507,14 +507,14 @@ export default function BmiCalculatorPage() {
                   </div>
                 </div>
                 <div className={`mt-3 rounded-lg p-3 text-center ${
-                  result.goalDiff < 0 ? "bg-blue-50 border border-blue-200" :
-                  result.goalDiff > 0 ? "bg-orange-50 border border-orange-200" :
+                  result.goalDiff < 0 ? "bg-gray-50 border border-gray-200" :
+                  result.goalDiff > 0 ? "bg-gray-50 border border-gray-200" :
                   "bg-green-50 border border-green-200"
                 }`}>
                   <span className="text-sm font-medium text-gray-700">現在との差: </span>
                   <span className={`text-lg font-bold ${
-                    result.goalDiff < 0 ? "text-blue-700" :
-                    result.goalDiff > 0 ? "text-orange-700" : "text-green-700"
+                    result.goalDiff < 0 ? "text-kon" :
+                    result.goalDiff > 0 ? "text-kon" : "text-green-700"
                   }`}>
                     {goalSign}{fmt(result.goalDiff)} kg
                   </span>
@@ -528,7 +528,7 @@ export default function BmiCalculatorPage() {
             {/* Section 4: Health advice */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-4">
               <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <span className="bg-blue-600 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">{result.goalBmi !== null ? "3" : "2"}</span>
+                <span className="bg-kon text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold">{result.goalBmi !== null ? "3" : "2"}</span>
                 健康アドバイス
               </h3>
 
@@ -624,12 +624,12 @@ export default function BmiCalculatorPage() {
               </thead>
               <tbody>
                 {[
-                  { range: "18.5未満", label: "低体重（やせ）", color: "text-blue-600" },
+                  { range: "18.5未満", label: "低体重（やせ）", color: "text-kon" },
                   { range: "18.5〜25未満", label: "普通体重", color: "text-green-600" },
                   { range: "25〜30未満", label: "肥満（1度）", color: "text-yellow-600" },
-                  { range: "30〜35未満", label: "肥満（2度）", color: "text-orange-600" },
-                  { range: "35〜40未満", label: "肥満（3度）", color: "text-red-500" },
-                  { range: "40以上", label: "肥満（4度）", color: "text-red-800" },
+                  { range: "30〜35未満", label: "肥満（2度）", color: "text-kon" },
+                  { range: "35〜40未満", label: "肥満（3度）", color: "text-danger" },
+                  { range: "40以上", label: "肥満（4度）", color: "text-danger" },
                 ].map((row) => (
                   <tr key={row.range} className="border-b border-gray-100 last:border-0">
                     <td className="py-2 px-3 font-mono text-gray-700">{row.range}</td>
@@ -703,7 +703,7 @@ export default function BmiCalculatorPage() {
               <Link
                 key={l.href}
                 href={l.href}
-                className="flex items-center gap-2 p-3 rounded-lg border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-colors text-blue-600 text-sm font-medium"
+                className="flex items-center gap-2 p-3 rounded-lg border border-gray-200 hover:border-ai hover:bg-gray-50 transition-colors text-kon text-sm font-medium"
               >
                 <span>→</span>
                 {l.label}

@@ -334,27 +334,27 @@ export default function LoanInterestCalculator() {
                 type="text"
                 value={loan.name}
                 onChange={e => updateLoan(loan.id, "name", e.target.value)}
-                className="font-semibold text-gray-700 bg-transparent border-b border-gray-300 focus:outline-none focus:border-blue-500 w-32 text-sm"
+                className="font-semibold text-gray-700 bg-transparent border-b border-gray-300 focus:outline-none focus:border-kon w-32 text-sm"
               />
               {loans.length > 1 && (
-                <button onClick={() => removeLoan(loan.id)} className="text-gray-400 hover:text-red-500 text-sm">削除</button>
+                <button onClick={() => removeLoan(loan.id)} className="text-gray-400 hover:text-danger text-sm">削除</button>
               )}
             </div>
             <div className="grid grid-cols-3 gap-3">
               <div>
                 <label className="block text-xs text-gray-500 mb-1">借入残高（万円）</label>
                 <input type="number" value={loan.balanceMan} onChange={e => updateLoan(loan.id, "balanceMan", e.target.value)}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500" placeholder="50" />
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon" placeholder="50" />
               </div>
               <div>
                 <label className="block text-xs text-gray-500 mb-1">年利（%）</label>
                 <input type="number" value={loan.rate} onChange={e => updateLoan(loan.id, "rate", e.target.value)}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500" placeholder="15.0" step="0.1" />
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon" placeholder="15.0" step="0.1" />
               </div>
               <div>
                 <label className="block text-xs text-gray-500 mb-1">月返済額（円）</label>
                 <input type="number" value={loan.monthlyPayment} onChange={e => updateLoan(loan.id, "monthlyPayment", e.target.value)}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500" placeholder="15000" />
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon" placeholder="15000" />
               </div>
             </div>
           </div>
@@ -362,7 +362,7 @@ export default function LoanInterestCalculator() {
       </div>
 
       {loans.length < MAX_LOANS && (
-        <button onClick={addLoan} className="w-full mb-4 py-3 border-2 border-dashed border-blue-300 rounded-xl text-blue-500 text-sm hover:border-blue-400 hover:bg-blue-50 transition">
+        <button onClick={addLoan} className="w-full mb-4 py-3 border-2 border-dashed border-kon rounded-xl text-kon text-sm hover:border-ai hover:bg-gray-50 transition">
           + ローンを追加（最大{MAX_LOANS}件）
         </button>
       )}
@@ -378,12 +378,12 @@ export default function LoanInterestCalculator() {
             <div>
               <label className="block text-xs text-gray-500 mb-1">借り換え後の年利（%）</label>
               <input type="number" value={refinanceRate} onChange={e => setRefinanceRate(e.target.value)}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500" placeholder="10.0" step="0.1" />
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon" placeholder="10.0" step="0.1" />
             </div>
             <div>
               <label className="block text-xs text-gray-500 mb-1">借り換え手数料（円）</label>
               <input type="number" value={refinanceFee} onChange={e => setRefinanceFee(e.target.value)}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500" placeholder="0" />
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon" placeholder="0" />
             </div>
           </div>
         )}
@@ -400,24 +400,24 @@ export default function LoanInterestCalculator() {
             <div>
               <label className="block text-xs text-gray-500 mb-1">追加借入額（万円）</label>
               <input type="number" value={additionalBalanceMan} onChange={e => setAdditionalBalanceMan(e.target.value)}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500" placeholder="10" />
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon" placeholder="10" />
             </div>
             <div>
               <label className="block text-xs text-gray-500 mb-1">年利（%）</label>
               <input type="number" value={additionalRate} onChange={e => setAdditionalRate(e.target.value)}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500" placeholder="18.0" step="0.1" />
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon" placeholder="18.0" step="0.1" />
             </div>
             <div>
               <label className="block text-xs text-gray-500 mb-1">月返済額（円）<span className="text-gray-400">任意</span></label>
               <input type="number" value={additionalMonthly} onChange={e => setAdditionalMonthly(e.target.value)}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500" placeholder="未入力で自動計算" />
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon" placeholder="未入力で自動計算" />
             </div>
           </div>
         )}
       </div>
 
       <div className="flex gap-3 mb-8">
-        <button onClick={handleCalculate} className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl transition text-sm">
+        <button onClick={handleCalculate} className="flex-1 bg-kon hover:bg-ai text-white font-semibold py-3 rounded-xl transition text-sm">
           計算する
         </button>
         <button onClick={handleReset} className="px-6 bg-gray-100 hover:bg-gray-200 text-gray-600 font-medium py-3 rounded-xl transition text-sm">
@@ -434,8 +434,8 @@ export default function LoanInterestCalculator() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {result.loans.map(loan => {
                   const lvl = dangerLevel(loan);
-                  const borderColor = lvl === "red" ? "border-red-400" : lvl === "orange" ? "border-orange-400" : "border-green-400";
-                  const badge = lvl === "red" ? "bg-red-100 text-red-700" : lvl === "orange" ? "bg-orange-100 text-orange-700" : "bg-green-100 text-green-700";
+                  const borderColor = lvl === "red" ? "border-danger" : lvl === "orange" ? "border-gray-200" : "border-green-400";
+                  const badge = lvl === "red" ? "bg-gray-50 text-danger" : lvl === "orange" ? "bg-gray-50 text-kon" : "bg-green-100 text-green-700";
                   const icon = lvl === "red" ? "⚠️" : lvl === "orange" ? "⚠️" : "✓";
                   return (
                     <div key={loan.id} className={"bg-white rounded-xl p-4 border-2 " + borderColor}>
@@ -446,10 +446,10 @@ export default function LoanInterestCalculator() {
                       <div className="text-xs text-gray-500 space-y-1">
                         <div className="flex justify-between"><span>残高</span><span className="font-medium text-gray-700">{fmtMan(loan.balance)}</span></div>
                         <div className="flex justify-between"><span>年利</span><span className="font-medium text-gray-700">{loan.rate}%</span></div>
-                        <div className="flex justify-between"><span>月利息</span><span className="font-medium text-red-600">{fmt(loan.monthlyInterest)}円</span></div>
-                        <div className="flex justify-between"><span>月元金</span><span className="font-medium text-blue-600">{loan.danger ? "減らない" : fmt(loan.principalPayment) + "円"}</span></div>
+                        <div className="flex justify-between"><span>月利息</span><span className="font-medium text-danger">{fmt(loan.monthlyInterest)}円</span></div>
+                        <div className="flex justify-between"><span>月元金</span><span className="font-medium text-kon">{loan.danger ? "減らない" : fmt(loan.principalPayment) + "円"}</span></div>
                         <div className="flex justify-between"><span>完済予定</span><span className="font-medium text-gray-700">{loan.danger ? "完済不能" : completionDate(loan.completionMonths) + "(" + formatMonths(loan.completionMonths) + ")"}</span></div>
-                        <div className="flex justify-between"><span>総利息</span><span className="font-medium text-red-600">{loan.danger ? "∞" : fmt(loan.totalInterest) + "円"}</span></div>
+                        <div className="flex justify-between"><span>総利息</span><span className="font-medium text-danger">{loan.danger ? "∞" : fmt(loan.totalInterest) + "円"}</span></div>
                       </div>
                     </div>
                   );
@@ -464,29 +464,29 @@ export default function LoanInterestCalculator() {
               <tbody className="divide-y divide-gray-100">
                 <tr><td className="py-2 text-gray-500">総残高</td><td className="py-2 text-right font-semibold text-gray-800">{fmtMan(result.totalBalance)}</td></tr>
                 <tr><td className="py-2 text-gray-500">月返済合計</td><td className="py-2 text-right font-semibold text-gray-800">{fmt(result.totalMonthlyPayment)}円</td></tr>
-                <tr><td className="py-2 text-gray-500">月利息合計</td><td className="py-2 text-right font-semibold text-red-600">{fmt(result.totalMonthlyInterest)}円</td></tr>
-                <tr><td className="py-2 text-gray-500">月元金返済</td><td className="py-2 text-right font-semibold text-blue-600">{fmt(result.totalMonthlyPayment - result.totalMonthlyInterest)}円</td></tr>
+                <tr><td className="py-2 text-gray-500">月利息合計</td><td className="py-2 text-right font-semibold text-danger">{fmt(result.totalMonthlyInterest)}円</td></tr>
+                <tr><td className="py-2 text-gray-500">月元金返済</td><td className="py-2 text-right font-semibold text-kon">{fmt(result.totalMonthlyPayment - result.totalMonthlyInterest)}円</td></tr>
                 <tr><td className="py-2 text-gray-500">完済予定</td><td className="py-2 text-right font-semibold text-gray-800">{result.completionMonths > 600 ? "完済不能" : completionDate(result.completionMonths) + "(" + formatMonths(result.completionMonths) + ")"}</td></tr>
-                <tr><td className="py-2 text-gray-500">総利息</td><td className="py-2 text-right font-semibold text-red-600">{result.completionMonths > 600 ? "試算不能" : fmt(result.totalInterest) + "円"}</td></tr>
-                <tr className="bg-red-50"><td className="py-2 text-gray-700 font-medium">総支払額</td><td className="py-2 text-right font-bold text-red-700 text-base">{result.completionMonths > 600 ? "試算不能" : fmt(result.totalPayment) + "円"}</td></tr>
+                <tr><td className="py-2 text-gray-500">総利息</td><td className="py-2 text-right font-semibold text-danger">{result.completionMonths > 600 ? "試算不能" : fmt(result.totalInterest) + "円"}</td></tr>
+                <tr className="bg-gray-50"><td className="py-2 text-gray-700 font-medium">総支払額</td><td className="py-2 text-right font-bold text-danger text-base">{result.completionMonths > 600 ? "試算不能" : fmt(result.totalPayment) + "円"}</td></tr>
               </tbody>
             </table>
           </div>
 
-          <div className="bg-blue-50 border border-blue-200 rounded-xl p-5">
-            <h2 className="text-base font-bold text-blue-800 mb-3">あなたの借金の利息は…</h2>
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
+            <h2 className="text-base font-bold text-kon mb-3">あなたの借金の利息は…</h2>
             <div className="grid grid-cols-3 gap-3 text-center">
               <div className="bg-white rounded-lg p-3">
                 <div className="text-xs text-gray-500 mb-1">1日あたり</div>
-                <div className="text-lg font-bold text-red-600">{fmt(result.totalMonthlyInterest * 12 / 365)}円</div>
+                <div className="text-lg font-bold text-danger">{fmt(result.totalMonthlyInterest * 12 / 365)}円</div>
               </div>
               <div className="bg-white rounded-lg p-3">
                 <div className="text-xs text-gray-500 mb-1">1ヶ月あたり</div>
-                <div className="text-lg font-bold text-red-600">{fmt(result.totalMonthlyInterest)}円</div>
+                <div className="text-lg font-bold text-danger">{fmt(result.totalMonthlyInterest)}円</div>
               </div>
               <div className="bg-white rounded-lg p-3">
                 <div className="text-xs text-gray-500 mb-1">1年あたり</div>
-                <div className="text-lg font-bold text-red-600">{fmt(result.totalMonthlyInterest * 12)}円</div>
+                <div className="text-lg font-bold text-danger">{fmt(result.totalMonthlyInterest * 12)}円</div>
               </div>
             </div>
           </div>
@@ -498,12 +498,12 @@ export default function LoanInterestCalculator() {
               <ol className="space-y-2">
                 {sortedByRate.map((loan, i) => (
                   <li key={loan.id} className="flex items-center gap-3 text-sm">
-                    <span className={"w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0 " + (i === 0 ? "bg-red-500" : i === 1 ? "bg-orange-400" : "bg-yellow-400")}>
+                    <span className={"w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0 " + (i === 0 ? "bg-danger" : i === 1 ? "bg-kon" : "bg-yellow-400")}>
                       {i + 1}
                     </span>
                     <span className="font-medium text-gray-700">{loan.name}</span>
                     <span className="text-gray-400">年利 {loan.rate}%</span>
-                    <span className="ml-auto text-red-600 font-medium">月利息 {fmt(loan.monthlyInterest)}円</span>
+                    <span className="ml-auto text-danger font-medium">月利息 {fmt(loan.monthlyInterest)}円</span>
                   </li>
                 ))}
               </ol>
@@ -517,7 +517,7 @@ export default function LoanInterestCalculator() {
                 <div>
                   <div className="text-xs text-gray-500 mb-1">現在</div>
                   <div className="font-semibold text-gray-700">{result.completionMonths > 600 ? "試算不能" : formatMonths(result.completionMonths)}</div>
-                  <div className="text-red-600 font-medium">{result.completionMonths > 600 ? "試算不能" : fmt(result.totalInterest) + "円"}</div>
+                  <div className="text-danger font-medium">{result.completionMonths > 600 ? "試算不能" : fmt(result.totalInterest) + "円"}</div>
                 </div>
                 <div className="flex items-center justify-center text-gray-400 text-2xl">&rarr;</div>
                 <div>
@@ -541,17 +541,17 @@ export default function LoanInterestCalculator() {
           )}
 
           {result.additional && (
-            <div className={"border-2 rounded-xl p-6 " + (result.additional.negativeAmortization ? "bg-red-50 border-red-400" : result.additional.nearZeroAmortization ? "bg-red-50 border-orange-400" : "bg-orange-50 border-orange-300")}>
-              <h2 className="text-lg font-bold text-red-800 mb-3">
+            <div className={"border-2 rounded-xl p-6 " + (result.additional.negativeAmortization ? "bg-gray-50 border-danger" : result.additional.nearZeroAmortization ? "bg-gray-50 border-gray-200" : "bg-gray-50 border-gray-200")}>
+              <h2 className="text-lg font-bold text-danger mb-3">
                 ⚠️ 追加で{fmtMan(parseFloat(additionalBalanceMan) * MAN)}借りると：
               </h2>
               {result.additional.negativeAmortization && (
-                <div className="mb-3 p-3 bg-red-100 border border-red-400 rounded-lg text-sm font-bold text-red-700">
+                <div className="mb-3 p-3 bg-gray-50 border border-danger rounded-lg text-sm font-bold text-danger">
                   【警告】返済額が利息を下回っています。このままでは完済できません
                 </div>
               )}
               {result.additional.nearZeroAmortization && !result.additional.negativeAmortization && (
-                <div className="mb-3 p-3 bg-orange-100 border border-orange-400 rounded-lg text-sm font-bold text-orange-700">
+                <div className="mb-3 p-3 bg-gray-50 border border-gray-200 rounded-lg text-sm font-bold text-kon">
                   ⚠️ 返済額が利息をほぼカバーしていないため、完済まで非常に長くかかります
                 </div>
               )}
@@ -571,11 +571,11 @@ export default function LoanInterestCalculator() {
                 </div>
                 <div className="flex justify-between border-t pt-2">
                   <span className="text-gray-700 font-medium">追加利息負担</span>
-                  <span className="font-bold text-red-600">{result.additional.negativeAmortization ? "試算不能" : "+" + fmt(result.additional.extraInterest) + "円"}</span>
+                  <span className="font-bold text-danger">{result.additional.negativeAmortization ? "試算不能" : "+" + fmt(result.additional.extraInterest) + "円"}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-700 font-medium">完済延長</span>
-                  <span className="font-bold text-red-600">{result.additional.negativeAmortization ? "完済不能" : "+" + formatMonths(result.additional.extraMonths)}</span>
+                  <span className="font-bold text-danger">{result.additional.negativeAmortization ? "完済不能" : "+" + formatMonths(result.additional.extraMonths)}</span>
                 </div>
               </div>
             </div>
@@ -654,19 +654,19 @@ export default function LoanInterestCalculator() {
         <section>
           <h2 className="text-lg font-bold text-gray-800 mb-3">あわせて使えるツール</h2>
           <div className="grid grid-cols-2 gap-3">
-            <Link href="/debt/repayment-simulator" className="block p-4 bg-white border border-gray-200 rounded-xl hover:border-blue-300 hover:shadow-sm transition">
+            <Link href="/debt/repayment-simulator" className="block p-4 bg-white border border-gray-200 rounded-xl hover:border-ai hover:shadow-sm transition">
               <div className="font-medium text-gray-700 text-sm mb-1">借金返済シミュレーター</div>
               <div className="text-xs text-gray-400">完済日・総利息を詳細計算</div>
             </Link>
-            <Link href="/debt/debt-free-calculator" className="block p-4 bg-white border border-gray-200 rounded-xl hover:border-blue-300 hover:shadow-sm transition">
+            <Link href="/debt/debt-free-calculator" className="block p-4 bg-white border border-gray-200 rounded-xl hover:border-ai hover:shadow-sm transition">
               <div className="font-medium text-gray-700 text-sm mb-1">借金完済計算機</div>
               <div className="text-xs text-gray-400">目標期間から必要返済額を逆算</div>
             </Link>
-            <Link href="/loan/mortgage-calculator" className="block p-4 bg-white border border-gray-200 rounded-xl hover:border-blue-300 hover:shadow-sm transition">
+            <Link href="/loan/mortgage-calculator" className="block p-4 bg-white border border-gray-200 rounded-xl hover:border-ai hover:shadow-sm transition">
               <div className="font-medium text-gray-700 text-sm mb-1">住宅ローン計算機</div>
               <div className="text-xs text-gray-400">月々返済額・総返済額を計算</div>
             </Link>
-            <Link href="/savings/interest-calculator" className="block p-4 bg-white border border-gray-200 rounded-xl hover:border-blue-300 hover:shadow-sm transition">
+            <Link href="/savings/interest-calculator" className="block p-4 bg-white border border-gray-200 rounded-xl hover:border-ai hover:shadow-sm transition">
               <div className="font-medium text-gray-700 text-sm mb-1">預金利息計算機</div>
               <div className="text-xs text-gray-400">預金の利息を複利・単利で計算</div>
             </Link>

@@ -53,7 +53,7 @@ export default function ShareButtons({
         href={facebookUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className={btnClass + " bg-blue-600 hover:bg-blue-700 text-white"}
+        className={btnClass + " bg-kon hover:bg-ai text-white"}
       >
         <span>📘</span>
         {showLabel && <span>シェア</span>}

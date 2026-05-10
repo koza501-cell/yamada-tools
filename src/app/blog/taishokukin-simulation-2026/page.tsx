@@ -46,9 +46,9 @@ export default function TaishokukinSimulation2026Blog() {
         }}
       />
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-pink-500">ホーム</Link>
+        <Link href="/" className="hover:text-sakura">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-pink-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-sakura">ブログ</Link>
         <span className="mx-2">/</span>
         <span>退職金シミュレーション2026</span>
       </nav>
@@ -60,7 +60,7 @@ export default function TaishokukinSimulation2026Blog() {
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】退職金の計算方法と相場｜勤続年数別シミュレーション完全ガイド</h1>
       <p className="text-gray-500 text-sm mb-8">最終更新: 2026年4月</p>
 
-      <div className="bg-amber-50 border-l-4 border-amber-400 p-4 mb-8">
+      <div className="bg-gray-50 border-l-4 border-gray-200 p-4 mb-8">
         <p className="font-bold text-gray-800 mb-2">この記事でわかること</p>
         <ul className="text-gray-700 space-y-1">
           <li>✓ 退職金の計算方法（基本給連動型・ポイント制）</li>
@@ -76,7 +76,7 @@ export default function TaishokukinSimulation2026Blog() {
 
         <h2 className="text-2xl font-bold text-gray-800 mb-4">退職金とは？もらえる人・もらえない人</h2>
         <p className="text-gray-700 mb-4">
-          退職金は、会社を退職する際に支払われるお金です。<strong className="text-amber-600">法律で支給が義務付けられているわけではなく</strong>、
+          退職金は、会社を退職する際に支払われるお金です。<strong className="text-kon">法律で支給が義務付けられているわけではなく</strong>、
           会社の就業規則や退職金規程で定められている場合にのみ支払われます。
         </p>
         
@@ -89,8 +89,8 @@ export default function TaishokukinSimulation2026Blog() {
               <li>✓ 小企業（30〜99人）：約75%</li>
             </ul>
           </div>
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-            <h3 className="font-bold text-red-800 mb-2">退職金がない場合が多い</h3>
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+            <h3 className="font-bold text-danger mb-2">退職金がない場合が多い</h3>
             <ul className="text-gray-700 space-y-1">
               <li>✗ スタートアップ・ベンチャー</li>
               <li>✗ 外資系企業（年俸に含む）</li>
@@ -107,7 +107,7 @@ export default function TaishokukinSimulation2026Blog() {
         <p className="text-gray-700 mb-4">大学卒・総合職の場合の退職金相場です（自己都合退職）。</p>
         
         <table className="min-w-full border border-gray-200 mb-6">
-          <thead className="bg-amber-50">
+          <thead className="bg-gray-50">
             <tr>
               <th className="px-4 py-3 text-left border-b font-semibold">勤続年数</th>
               <th className="px-4 py-3 text-left border-b font-semibold">退職金相場（自己都合）</th>
@@ -119,10 +119,10 @@ export default function TaishokukinSimulation2026Blog() {
             <tr><td className="px-4 py-3 border-b">5年</td><td className="px-4 py-3 border-b font-bold">約80〜150万円</td><td className="px-4 py-3 border-b">約120〜200万円</td></tr>
             <tr><td className="px-4 py-3 border-b">10年</td><td className="px-4 py-3 border-b font-bold">約250〜400万円</td><td className="px-4 py-3 border-b">約350〜500万円</td></tr>
             <tr><td className="px-4 py-3 border-b">15年</td><td className="px-4 py-3 border-b font-bold">約500〜700万円</td><td className="px-4 py-3 border-b">約650〜900万円</td></tr>
-            <tr><td className="px-4 py-3 border-b">20年</td><td className="px-4 py-3 border-b font-bold text-amber-600">約800〜1,100万円</td><td className="px-4 py-3 border-b">約1,000〜1,400万円</td></tr>
-            <tr><td className="px-4 py-3 border-b">25年</td><td className="px-4 py-3 border-b font-bold text-amber-600">約1,200〜1,600万円</td><td className="px-4 py-3 border-b">約1,500〜2,000万円</td></tr>
-            <tr><td className="px-4 py-3 border-b">30年</td><td className="px-4 py-3 border-b font-bold text-amber-600">約1,500〜2,000万円</td><td className="px-4 py-3 border-b">約1,800〜2,500万円</td></tr>
-            <tr><td className="px-4 py-3 border-b">定年（35年〜）</td><td className="px-4 py-3 border-b font-bold text-amber-600">約2,000〜2,500万円</td><td className="px-4 py-3 border-b">-</td></tr>
+            <tr><td className="px-4 py-3 border-b">20年</td><td className="px-4 py-3 border-b font-bold text-kon">約800〜1,100万円</td><td className="px-4 py-3 border-b">約1,000〜1,400万円</td></tr>
+            <tr><td className="px-4 py-3 border-b">25年</td><td className="px-4 py-3 border-b font-bold text-kon">約1,200〜1,600万円</td><td className="px-4 py-3 border-b">約1,500〜2,000万円</td></tr>
+            <tr><td className="px-4 py-3 border-b">30年</td><td className="px-4 py-3 border-b font-bold text-kon">約1,500〜2,000万円</td><td className="px-4 py-3 border-b">約1,800〜2,500万円</td></tr>
+            <tr><td className="px-4 py-3 border-b">定年（35年〜）</td><td className="px-4 py-3 border-b font-bold text-kon">約2,000〜2,500万円</td><td className="px-4 py-3 border-b">-</td></tr>
           </tbody>
         </table>
 
@@ -134,10 +134,10 @@ export default function TaishokukinSimulation2026Blog() {
           </p>
         </div>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-          <p className="text-lg font-bold text-blue-800 mb-2">🔧 あなたの退職金を試算！</p>
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+          <p className="text-lg font-bold text-kon mb-2">🔧 あなたの退職金を試算！</p>
           <p className="text-gray-700 mb-4">勤続年数・基本給・退職事由を入力して、退職金の概算額を計算しましょう。</p>
-          <Link href="/career/retirement-bonus-calculator" className="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-6 rounded-lg transition">
+          <Link href="/career/retirement-bonus-calculator" className="inline-block bg-kon hover:bg-kon text-white font-bold py-3 px-6 rounded-lg transition">
             → 退職金シミュレーターを使う
           </Link>
         </div>
@@ -153,7 +153,7 @@ export default function TaishokukinSimulation2026Blog() {
               <p className="font-mono text-center text-lg">退職金 = 退職時の基本給 × 勤続年数係数 × 退職事由係数</p>
             </div>
             <p className="text-gray-700">例：基本給30万円、勤続20年（係数20）、自己都合（係数0.8）の場合</p>
-            <p className="text-amber-600 font-bold">→ 30万円 × 20 × 0.8 = 480万円</p>
+            <p className="text-kon font-bold">→ 30万円 × 20 × 0.8 = 480万円</p>
           </div>
 
           <div className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
@@ -176,13 +176,13 @@ export default function TaishokukinSimulation2026Blog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">退職金の税金と退職所得控除</h2>
         <p className="text-gray-700 mb-4">
-          退職金には<strong className="text-amber-600">退職所得控除</strong>という大きな非課税枠があり、税金面で優遇されています。
+          退職金には<strong className="text-kon">退職所得控除</strong>という大きな非課税枠があり、税金面で優遇されています。
         </p>
         
-        <div className="bg-white border-2 border-amber-200 rounded-lg p-6 mb-6">
-          <h3 className="font-bold text-amber-800 text-xl mb-3">退職所得控除額の計算</h3>
+        <div className="bg-white border-2 border-gray-200 rounded-lg p-6 mb-6">
+          <h3 className="font-bold text-kon text-xl mb-3">退職所得控除額の計算</h3>
           <table className="min-w-full mb-4">
-            <thead className="bg-amber-50">
+            <thead className="bg-gray-50">
               <tr>
                 <th className="px-4 py-2 text-left border-b font-semibold">勤続年数</th>
                 <th className="px-4 py-2 text-left border-b font-semibold">控除額</th>
@@ -193,9 +193,9 @@ export default function TaishokukinSimulation2026Blog() {
               <tr><td className="px-4 py-2 border-b">20年超</td><td className="px-4 py-2 border-b font-bold">800万円 + 70万円 ×（勤続年数 − 20年）</td></tr>
             </tbody>
           </table>
-          <div className="bg-amber-50 rounded p-4">
+          <div className="bg-gray-50 rounded p-4">
             <p className="font-bold mb-2">具体例：勤続25年の場合</p>
-            <p className="text-gray-700">800万円 + 70万円 ×（25年 − 20年）= <strong className="text-amber-600">1,150万円</strong>が非課税</p>
+            <p className="text-gray-700">800万円 + 70万円 ×（25年 − 20年）= <strong className="text-kon">1,150万円</strong>が非課税</p>
           </div>
         </div>
 
@@ -277,9 +277,9 @@ export default function TaishokukinSimulation2026Blog() {
           シミュレーターで概算を確認し、ライフプランに組み込みましょう。
         </p>
         
-        <div className="bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-lg p-6 text-center">
+        <div className="bg-gradient-to-r from-slate-900 to-kon text-white rounded-lg p-6 text-center">
           <p className="text-lg font-bold mb-4">あなたの退職金をシミュレーション</p>
-          <Link href="/career/retirement-bonus-calculator" className="inline-block bg-white text-amber-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition">
+          <Link href="/career/retirement-bonus-calculator" className="inline-block bg-white text-kon font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition">
             → 退職金シミュレーターを使う
           </Link>
         </div>
@@ -288,19 +288,19 @@ export default function TaishokukinSimulation2026Blog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">関連ツール</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Link href="/career/retirement-bonus-calculator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-amber-300 transition">
+          <Link href="/career/retirement-bonus-calculator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-gray-200 transition">
             <span className="font-bold text-gray-800">退職金シミュレーター</span>
             <p className="text-sm text-gray-600">勤続年数から退職金を計算</p>
           </Link>
-          <Link href="/career/unemployment-calculator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-amber-300 transition">
+          <Link href="/career/unemployment-calculator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-gray-200 transition">
             <span className="font-bold text-gray-800">失業保険計算機</span>
             <p className="text-sm text-gray-600">退職後の失業手当を計算</p>
           </Link>
-          <Link href="/career/job-change-simulator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-amber-300 transition">
+          <Link href="/career/job-change-simulator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-gray-200 transition">
             <span className="font-bold text-gray-800">転職年収シミュレーター</span>
             <p className="text-sm text-gray-600">転職後の年収を試算</p>
           </Link>
-          <Link href="/finance/retirement-simulator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-amber-300 transition">
+          <Link href="/finance/retirement-simulator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-gray-200 transition">
             <span className="font-bold text-gray-800">老後資金シミュレーター</span>
             <p className="text-sm text-gray-600">退職金を含めた老後資金を計算</p>
           </Link>

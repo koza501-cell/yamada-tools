@@ -260,8 +260,8 @@ export default function ResumeClient({ faq, seoContent }: ResumeClientProps) {
               </div>
             )}
             {seoContent.tips && (
-              <div className="bg-blue-50 rounded-lg p-4 mt-4">
-                <p className="text-sm text-blue-800">💡 <strong>ヒント:</strong> {seoContent.tips}</p>
+              <div className="bg-gray-50 rounded-lg p-4 mt-4">
+                <p className="text-sm text-kon">💡 <strong>ヒント:</strong> {seoContent.tips}</p>
               </div>
             )}
           </section>

@@ -159,13 +159,13 @@ export default function CramSchoolCalculator() {
     return advices;
   }
 
-  const inputClass = "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500";
+  const inputClass = "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon";
   const labelClass = "block text-xs font-medium text-gray-600 mb-1";
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-10">
       <div className="text-center mb-8">
-        <div className="inline-flex items-center justify-center w-14 h-14 bg-blue-100 rounded-2xl mb-4">
+        <div className="inline-flex items-center justify-center w-14 h-14 bg-gray-50 rounded-2xl mb-4">
           <span className="text-3xl">🏫</span>
         </div>
         <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">塾・予備校費用 比較計算機</h1>
@@ -173,15 +173,15 @@ export default function CramSchoolCalculator() {
           月謝だけじゃわからない！入会金・教材費・季節講習・交通費まで含めた<strong>通塾期間の総費用</strong>を最大3校で比較。
         </p>
         <div className="flex flex-wrap justify-center gap-2 mt-3">
-          <span className="bg-blue-50 text-blue-700 text-xs font-medium px-3 py-1 rounded-full">最大3校同時比較</span>
+          <span className="bg-gray-50 text-kon text-xs font-medium px-3 py-1 rounded-full">最大3校同時比較</span>
           <span className="bg-green-50 text-green-700 text-xs font-medium px-3 py-1 rounded-full">1時間単価計算</span>
-          <span className="bg-orange-50 text-orange-700 text-xs font-medium px-3 py-1 rounded-full">コスト削減アドバイス</span>
+          <span className="bg-gray-50 text-kon text-xs font-medium px-3 py-1 rounded-full">コスト削減アドバイス</span>
         </div>
       </div>
 
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 mb-6">
         <h2 className="text-base font-bold text-gray-700 mb-4 flex items-center gap-2">
-          <span className="bg-blue-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">1</span>
+          <span className="bg-kon text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">1</span>
           お子様 / 本人の情報
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -215,13 +215,13 @@ export default function CramSchoolCalculator() {
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 mb-6">
         <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
           <h2 className="text-base font-bold text-gray-700 flex items-center gap-2">
-            <span className="bg-blue-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">2</span>
+            <span className="bg-kon text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">2</span>
             塾・予備校の情報（最大3校）
           </h2>
           <div className="flex gap-2">
             {[1, 2, 3].map((n) => (
               <button key={n} onClick={() => { setActiveCount(n); setShowResult(false); }}
-                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${activeCount >= n ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-500"}`}>
+                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${activeCount >= n ? "bg-kon text-white" : "bg-gray-100 text-gray-500"}`}>
                 {n}校
               </button>
             ))}
@@ -229,8 +229,8 @@ export default function CramSchoolCalculator() {
         </div>
         <div className={`grid gap-4 ${activeCount === 1 ? "grid-cols-1 max-w-md" : activeCount === 2 ? "grid-cols-1 md:grid-cols-2" : "grid-cols-1 md:grid-cols-3"}`}>
           {schools.slice(0, activeCount).map((s, i) => {
-            const colorClass = i === 0 ? "border-blue-200 bg-blue-50/30" : i === 1 ? "border-green-200 bg-green-50/30" : "border-purple-200 bg-purple-50/30";
-            const headerColor = i === 0 ? "text-blue-700 bg-blue-100" : i === 1 ? "text-green-700 bg-green-100" : "text-purple-700 bg-purple-100";
+            const colorClass = i === 0 ? "border-gray-200 bg-gray-50/30" : i === 1 ? "border-green-200 bg-green-50/30" : "border-kon bg-gray-50/30";
+            const headerColor = i === 0 ? "text-kon bg-gray-50" : i === 1 ? "text-green-700 bg-green-100" : "text-kon bg-gray-50";
             const letter = String.fromCharCode(65 + i);
             return (
               <div key={i} className={`border-2 rounded-xl p-4 ${colorClass}`}>
@@ -290,7 +290,7 @@ export default function CramSchoolCalculator() {
       </div>
 
       <button onClick={handleCalculate}
-        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl transition-colors text-lg mb-8 shadow-sm">
+        className="w-full bg-kon hover:bg-ai text-white font-bold py-4 rounded-xl transition-colors text-lg mb-8 shadow-sm">
         費用を計算・比較する
       </button>
 
@@ -314,7 +314,7 @@ export default function CramSchoolCalculator() {
                     <div className="flex justify-between"><span className="text-gray-500">年間総費用</span><span className="font-medium">{man(r.annualTotal)}</span></div>
                     <div className="flex justify-between border-t border-gray-100 pt-2 mt-2">
                       <span className="text-gray-700 font-semibold">{period}総費用</span>
-                      <span className="text-xl font-bold text-blue-700">{man(r.grandTotal)}</span>
+                      <span className="text-xl font-bold text-kon">{man(r.grandTotal)}</span>
                     </div>
                     <div className="flex justify-between"><span className="text-gray-500">1コマ費用</span><span className="font-medium">{yen(Math.round(r.costPerLesson))}</span></div>
                     <div className="flex justify-between"><span className="text-gray-500">1時間あたり</span><span className="font-medium">{yen(Math.round(r.costPerHour))}</span></div>
@@ -349,7 +349,7 @@ export default function CramSchoolCalculator() {
                     ].map(({ label, values, highlight }) => {
                       const minVal = Math.min(...values);
                       return (
-                        <tr key={label} className={`border-t border-gray-50 ${highlight ? "bg-blue-50/40 font-semibold" : ""}`}>
+                        <tr key={label} className={`border-t border-gray-50 ${highlight ? "bg-gray-50/40 font-semibold" : ""}`}>
                           <td className="px-4 py-3 text-gray-600">{label}</td>
                           {values.map((v, i) => (
                             <td key={i} className={`text-right px-4 py-3 ${v === minVal && activeCount > 1 ? "text-green-600 font-bold" : "text-gray-700"}`}>
@@ -390,7 +390,7 @@ export default function CramSchoolCalculator() {
                             <div className="flex justify-between text-xs text-gray-500 mb-0.5">
                               <span>{name}</span><span>{pct}% / {yen(value)}</span>
                             </div>
-                            <div className="text-blue-500 text-xs font-mono leading-none">{bar(ratio)}</div>
+                            <div className="text-kon text-xs font-mono leading-none">{bar(ratio)}</div>
                           </div>
                         );
                       })}
@@ -401,11 +401,11 @@ export default function CramSchoolCalculator() {
             </div>
           </div>
 
-          <div className="bg-amber-50 border border-amber-200 rounded-xl p-5">
-            <h3 className="font-bold text-amber-800 mb-3 flex items-center gap-2"><span>💡</span> コスト削減アドバイス</h3>
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
+            <h3 className="font-bold text-kon mb-3 flex items-center gap-2"><span>💡</span> コスト削減アドバイス</h3>
             <ul className="space-y-2">
               {getAdvices().map((a, i) => (
-                <li key={i} className="text-sm text-amber-900 flex gap-2">
+                <li key={i} className="text-sm text-kon flex gap-2">
                   <span className="mt-0.5 shrink-0">•</span><span>{a}</span>
                 </li>
               ))}
@@ -438,7 +438,7 @@ export default function CramSchoolCalculator() {
                 <tr key={type} className="border-t border-gray-50">
                   <td className="px-3 py-3 text-gray-700 font-medium">{type}</td>
                   <td className="px-3 py-3 text-right text-gray-600">{monthly}</td>
-                  <td className="px-3 py-3 text-right text-blue-700 font-semibold">{annual}</td>
+                  <td className="px-3 py-3 text-right text-kon font-semibold">{annual}</td>
                   <td className="px-3 py-3 text-gray-500 text-xs hidden md:table-cell">{note}</td>
                 </tr>
               ))}
@@ -491,7 +491,7 @@ export default function CramSchoolCalculator() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           {RELATED_TOOLS.map(({ href, label }) => (
             <a key={href} href={href}
-              className="bg-white border border-gray-100 rounded-xl p-4 text-sm font-medium text-blue-700 hover:bg-blue-50 hover:border-blue-200 transition-colors text-center shadow-sm">
+              className="bg-white border border-gray-100 rounded-xl p-4 text-sm font-medium text-kon hover:bg-gray-50 hover:border-ai transition-colors text-center shadow-sm">
               {label}
             </a>
           ))}

@@ -97,11 +97,11 @@ export default function GenkaClient() {
 
   const costColor = r.costRatio < 0.3
     ? "text-emerald-600" : r.costRatio < 0.35
-    ? "text-yellow-600" : "text-red-600";
+    ? "text-yellow-600" : "text-danger";
 
   const costBg = r.costRatio < 0.3
     ? "bg-emerald-50 border-emerald-200" : r.costRatio < 0.35
-    ? "bg-yellow-50 border-yellow-200" : "bg-red-50 border-red-200";
+    ? "bg-yellow-50 border-yellow-200" : "bg-gray-50 border-gray-200";
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
@@ -158,7 +158,7 @@ export default function GenkaClient() {
         <div className="flex items-center justify-between mb-4">
           <h2 className="font-semibold text-gray-800 text-sm">🛒 食材リスト</h2>
           <button onClick={addIngredient}
-            className="text-xs px-3 py-1.5 bg-orange-500 hover:bg-orange-600 text-white rounded-lg">
+            className="text-xs px-3 py-1.5 bg-kon hover:bg-ai text-white rounded-lg">
             ＋ 食材を追加
           </button>
         </div>
@@ -175,19 +175,19 @@ export default function GenkaClient() {
         <div className="space-y-2">
           {ingredients.map((ing, i) => (
             <div key={i} className="grid grid-cols-12 gap-1 items-center">
-              <input className="col-span-3 border border-gray-200 rounded px-2 py-1.5 text-xs outline-none focus:border-orange-400"
+              <input className="col-span-3 border border-gray-200 rounded px-2 py-1.5 text-xs outline-none focus:border-gray-200"
                 placeholder="食材名" value={ing.name} onChange={e => updateIngredient(i, "name", e.target.value)} />
-              <input type="number" className="col-span-2 border border-gray-200 rounded px-2 py-1.5 text-xs outline-none focus:border-orange-400"
+              <input type="number" className="col-span-2 border border-gray-200 rounded px-2 py-1.5 text-xs outline-none focus:border-gray-200"
                 placeholder="1000" value={ing.purchaseQty} onChange={e => updateIngredient(i, "purchaseQty", e.target.value)} />
-              <input type="number" className="col-span-2 border border-gray-200 rounded px-2 py-1.5 text-xs outline-none focus:border-orange-400"
+              <input type="number" className="col-span-2 border border-gray-200 rounded px-2 py-1.5 text-xs outline-none focus:border-gray-200"
                 placeholder="300" value={ing.purchasePrice} onChange={e => updateIngredient(i, "purchasePrice", e.target.value)} />
-              <input type="number" className="col-span-2 border border-gray-200 rounded px-2 py-1.5 text-xs outline-none focus:border-orange-400"
+              <input type="number" className="col-span-2 border border-gray-200 rounded px-2 py-1.5 text-xs outline-none focus:border-gray-200"
                 placeholder="150" value={ing.usedQty} onChange={e => updateIngredient(i, "usedQty", e.target.value)} />
               <div className="col-span-2 text-xs font-medium text-center text-gray-700">
                 {fmtPrice(Math.round(r.itemCosts[i] ?? 0))}
               </div>
               <button onClick={() => removeIngredient(i)} disabled={ingredients.length <= 1}
-                className="col-span-1 text-red-400 hover:text-red-600 text-center disabled:opacity-30">✕</button>
+                className="col-span-1 text-danger hover:text-danger text-center disabled:opacity-30">✕</button>
             </div>
           ))}
         </div>
@@ -209,12 +209,12 @@ export default function GenkaClient() {
           </div>
           <div>
             <p className="text-xs text-gray-500 mb-1">適正売価（目標{targetCostRatio}%）</p>
-            <p className="text-3xl font-bold text-blue-700">{fmtPrice(Math.round(r.properPrice))}</p>
+            <p className="text-3xl font-bold text-kon">{fmtPrice(Math.round(r.properPrice))}</p>
             <p className="text-xs text-gray-500 mt-1">FL比率: {(r.flRatio * 100).toFixed(1)}%（目安60%以下）</p>
           </div>
         </div>
         {r.costRatio >= 0.35 && (
-          <p className="text-xs text-red-700 mt-3 font-medium">
+          <p className="text-xs text-danger mt-3 font-medium">
             ⚠️ 原価率が高すぎます。売価を {fmtPrice(Math.round(r.properPrice))} 以上に設定するか、食材コストを見直してください。
           </p>
         )}
@@ -240,7 +240,7 @@ export default function GenkaClient() {
                   <td className="py-2 text-right">{fmtPrice(Math.round(s.revenue))}</td>
                   <td className="py-2 text-right">{fmtPrice(Math.round(s.food))}</td>
                   <td className="py-2 text-right">{fmtPrice(Math.round(s.labor))}</td>
-                  <td className={"py-2 text-right font-bold " + (s.profit >= 0 ? "text-green-600" : "text-red-600")}>
+                  <td className={"py-2 text-right font-bold " + (s.profit >= 0 ? "text-green-600" : "text-danger")}>
                     {s.profit >= 0 ? "+" : ""}{fmtPrice(Math.round(s.profit))}
                   </td>
                 </tr>
@@ -271,7 +271,7 @@ export default function GenkaClient() {
                 {COST_REFS.map(r => (
                   <tr key={r.type} className="border-t border-gray-100">
                     <td className="py-2 px-4 font-medium">{r.type}</td>
-                    <td className="py-2 px-4 text-center text-blue-700 font-medium">{r.range}</td>
+                    <td className="py-2 px-4 text-center text-kon font-medium">{r.range}</td>
                     <td className="py-2 px-4 text-gray-500 text-xs">{r.note}</td>
                   </tr>
                 ))}

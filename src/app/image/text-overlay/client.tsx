@@ -103,7 +103,7 @@ export default function TextOverlayClient({
           <p className="text-gray-600 text-lg">写真にテキストを追加・カスタマイズ</p>
           <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
             <span className="bg-green-50 text-green-700 px-3 py-1 rounded-full">✓ 完全無料</span>
-            <span className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full">🔒 ブラウザ内処理</span>
+            <span className="bg-gray-50 text-kon px-3 py-1 rounded-full">🔒 ブラウザ内処理</span>
           </div>
         </header>
 
@@ -124,10 +124,10 @@ export default function TextOverlayClient({
             <div>
               <div className="flex items-center justify-between bg-gray-50 rounded-xl p-3 mb-4">
                 <p className="font-bold text-sm truncate">{fileName}</p>
-                <button onClick={reset} className="text-sm text-red-500 font-bold py-2 px-3 rounded hover:bg-red-50">✕ 閉じる</button>
+                <button onClick={reset} className="text-sm text-danger font-bold py-2 px-3 rounded hover:bg-gray-50">✕ 閉じる</button>
               </div>
 
-              <div className="bg-blue-50 rounded-xl p-4 mb-4 space-y-3">
+              <div className="bg-gray-50 rounded-xl p-4 mb-4 space-y-3">
                 <textarea value={text} onChange={(e) => setText(e.target.value)} rows={2}
                   className="w-full border rounded-lg px-3 py-2 text-sm resize-y" placeholder="テキストを入力..." />
                 <div className="flex flex-wrap gap-2 items-center">

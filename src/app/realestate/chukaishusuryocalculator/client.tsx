@@ -70,7 +70,7 @@ export default function ChukaiClient() {
           <div className="flex gap-3">
             {(["売買", "賃貸"] as const).map(t => (
               <button key={t} onClick={() => setTxType(t)}
-                className={"px-6 py-2 rounded-lg border text-sm font-medium transition-colors " + (txType === t ? "bg-blue-600 text-white border-blue-600" : "border-gray-300 text-gray-600 hover:border-blue-400")}>
+                className={"px-6 py-2 rounded-lg border text-sm font-medium transition-colors " + (txType === t ? "bg-kon text-white border-kon" : "border-gray-300 text-gray-600 hover:border-ai")}>
                 {t}
               </button>
             ))}
@@ -81,7 +81,7 @@ export default function ChukaiClient() {
           <>
             <div>
               <label className="block text-sm text-gray-600 mb-1">物件価格（円）</label>
-              <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+              <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-kon outline-none"
                 value={price} onChange={e => setPrice(e.target.value)} placeholder="30000000" />
             </div>
             <label className="flex items-center gap-2 cursor-pointer">
@@ -90,7 +90,7 @@ export default function ChukaiClient() {
             </label>
             <div>
               <label className="block text-sm text-gray-600 mb-1">自分の立場</label>
-              <select className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+              <select className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-kon outline-none"
                 value={role} onChange={e => setRole(e.target.value as "買主" | "売主" | "両方")}>
                 <option value="買主">買主</option>
                 <option value="売主">売主</option>
@@ -102,12 +102,12 @@ export default function ChukaiClient() {
           <>
             <div>
               <label className="block text-sm text-gray-600 mb-1">月額賃料（円）</label>
-              <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+              <input type="number" className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-kon outline-none"
                 value={rent} onChange={e => setRent(e.target.value)} placeholder="80000" />
             </div>
             <div>
               <label className="block text-sm text-gray-600 mb-1">自分の立場</label>
-              <select className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+              <select className="border border-gray-300 rounded-lg px-3 py-2 w-full text-sm focus:ring-2 focus:ring-kon outline-none"
                 value={tenantRole} onChange={e => setTenantRole(e.target.value as "借主" | "貸主")}>
                 <option value="借主">借主（入居者）</option>
                 <option value="貸主">貸主（オーナー）</option>
@@ -124,10 +124,10 @@ export default function ChukaiClient() {
       </div>
 
       <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden mb-6">
-        <div className="bg-blue-600 text-white p-4">
+        <div className="bg-kon text-white p-4">
           <p className="text-sm opacity-80 mb-1">法定上限{txType === "売買" ? "（一方当事者分）" : ""}</p>
           <p className="text-3xl font-bold">{fmtPrice(result.total)}</p>
-          {includeTax && <p className="text-blue-200 text-sm mt-1">（消費税 {fmtPrice(result.tax)} 含む）</p>}
+          {includeTax && <p className="text-gin text-sm mt-1">（消費税 {fmtPrice(result.tax)} 含む）</p>}
         </div>
         <div className="p-4">
           <div className="flex justify-between py-2 border-b border-gray-100">
@@ -140,12 +140,12 @@ export default function ChukaiClient() {
           </div>
           <div className="flex justify-between py-2 border-b border-gray-100">
             <span className="text-sm text-gray-600">合計（税込）</span>
-            <span className="text-sm font-bold text-blue-700">{fmtPrice(result.total)}</span>
+            <span className="text-sm font-bold text-kon">{fmtPrice(result.total)}</span>
           </div>
           {txType === "売買" && role === "両方" && (
             <div className="flex justify-between py-2">
               <span className="text-sm text-gray-600">両手仲介 合計（税込）</span>
-              <span className="text-sm font-medium text-orange-600">{fmtPrice(result.bothTotal)}</span>
+              <span className="text-sm font-medium text-kon">{fmtPrice(result.bothTotal)}</span>
             </div>
           )}
           {txType === "賃貸" && (
@@ -156,7 +156,7 @@ export default function ChukaiClient() {
           )}
         </div>
         {result.note && (
-          <div className="bg-amber-50 border-t border-amber-200 px-4 py-3 text-xs text-amber-700">
+          <div className="bg-gray-50 border-t border-gray-200 px-4 py-3 text-xs text-kon">
             ℹ️ {result.note}
           </div>
         )}

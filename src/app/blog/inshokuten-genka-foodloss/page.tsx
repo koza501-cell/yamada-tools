@@ -52,9 +52,9 @@ export default function InshokuteiGenkaFoodlossBlog() {
       />
 
       <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-blue-500">ホーム</Link>
+        <Link href="/" className="hover:text-ai">ホーム</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-blue-500">ブログ</Link>
+        <Link href="/blog" className="hover:text-ai">ブログ</Link>
         <span className="mx-2">/</span>
         <span>飲食店の原価率とフードロス削減</span>
       </nav>
@@ -66,7 +66,7 @@ export default function InshokuteiGenkaFoodlossBlog() {
       <h1 className="text-3xl font-bold text-gray-800 mb-4">{title}</h1>
       <p className="text-gray-500 text-sm mb-8">最終更新: 2025年5月 ｜ 読了時間: 約8分</p>
 
-      <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mb-8">
+      <div className="bg-gray-50 border-l-4 border-kon p-4 mb-8">
         <p className="font-bold text-gray-800 mb-2">この記事でわかること</p>
         <ul className="text-gray-700 space-y-1 text-sm">
           <li>✓ 飲食店の原価率の正しい計算方法</li>
@@ -82,13 +82,13 @@ export default function InshokuteiGenkaFoodlossBlog() {
         <StaticAdSlot />
         <h2 className="text-2xl font-bold text-gray-800 mb-4">飲食店の原価率とは？基本の計算式</h2>
         <p className="text-gray-700 mb-4">
-          原価率とは<strong className="text-blue-600">売上に対する食材費（仕入れコスト）の割合</strong>です。飲食店経営の最重要指標のひとつで、これが高すぎると利益が出ません。
+          原価率とは<strong className="text-kon">売上に対する食材費（仕入れコスト）の割合</strong>です。飲食店経営の最重要指標のひとつで、これが高すぎると利益が出ません。
         </p>
 
-        <div className="bg-blue-50 rounded-xl p-6 mb-6">
-          <h3 className="font-bold text-blue-800 mb-3 text-lg">原価率の計算式</h3>
+        <div className="bg-gray-50 rounded-xl p-6 mb-6">
+          <h3 className="font-bold text-kon mb-3 text-lg">原価率の計算式</h3>
           <div className="text-center">
-            <p className="text-2xl font-bold text-blue-700 mb-2">原価率（%）＝ 食材費 ÷ 売上 × 100</p>
+            <p className="text-2xl font-bold text-kon mb-2">原価率（%）＝ 食材費 ÷ 売上 × 100</p>
             <p className="text-gray-600 text-sm">例：食材費30万円・売上100万円 → 原価率30%</p>
           </div>
         </div>
@@ -126,10 +126,10 @@ export default function InshokuteiGenkaFoodlossBlog() {
                   ["食材費の差", "—", "▲20万円"],
                   ["年間の差", "—", "▲240万円"],
                 ].map(([item, a, b], i) => (
-                  <tr key={i} className={i === 3 ? "bg-red-50 font-bold" : i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                  <tr key={i} className={i === 3 ? "bg-gray-50 font-bold" : i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
                     <td className="p-2 border border-gray-200">{item}</td>
                     <td className="p-2 border border-gray-200 text-center">{a}</td>
-                    <td className="p-2 border border-gray-200 text-center text-red-600">{b}</td>
+                    <td className="p-2 border border-gray-200 text-center text-danger">{b}</td>
                   </tr>
                 ))}
               </tbody>
@@ -148,7 +148,7 @@ export default function InshokuteiGenkaFoodlossBlog() {
         <div className="overflow-x-auto mb-6">
           <table className="w-full border-collapse text-sm">
             <thead>
-              <tr className="bg-orange-600 text-white">
+              <tr className="bg-kon text-white">
                 <th className="p-3 text-left">業態</th>
                 <th className="p-3 text-left">原価率の目安</th>
                 <th className="p-3 text-left">ポイント</th>
@@ -167,7 +167,7 @@ export default function InshokuteiGenkaFoodlossBlog() {
               ].map(([type, rate, point], i) => (
                 <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
                   <td className="p-3 border border-gray-200 font-medium">{type}</td>
-                  <td className="p-3 border border-gray-200 font-bold text-orange-600">{rate}</td>
+                  <td className="p-3 border border-gray-200 font-bold text-kon">{rate}</td>
                   <td className="p-3 border border-gray-200 text-gray-600">{point}</td>
                 </tr>
               ))}
@@ -184,31 +184,31 @@ export default function InshokuteiGenkaFoodlossBlog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">FL比率とは？飲食店経営で最重要の指標</h2>
         <p className="text-gray-700 mb-4">
-          原価率と同様に重要なのが<strong className="text-blue-600">FL比率</strong>です。FはFood（食材費）、LはLabor（人件費）の頭文字で、経営の健全性を測る指標です。
+          原価率と同様に重要なのが<strong className="text-kon">FL比率</strong>です。FはFood（食材費）、LはLabor（人件費）の頭文字で、経営の健全性を測る指標です。
         </p>
 
-        <div className="bg-blue-50 rounded-xl p-6 mb-6">
+        <div className="bg-gray-50 rounded-xl p-6 mb-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <p className="font-bold text-blue-800 mb-2">FLコスト = 食材費(F) + 人件費(L)</p>
-              <p className="text-2xl font-bold text-blue-700">FL比率（%）= FLコスト ÷ 売上 × 100</p>
+              <p className="font-bold text-kon mb-2">FLコスト = 食材費(F) + 人件費(L)</p>
+              <p className="text-2xl font-bold text-kon">FL比率（%）= FLコスト ÷ 売上 × 100</p>
             </div>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between items-center bg-green-100 rounded p-2">
                 <span className="font-semibold">50%以下</span>
                 <span className="text-green-700 font-bold">優良</span>
               </div>
-              <div className="flex justify-between items-center bg-blue-100 rounded p-2">
+              <div className="flex justify-between items-center bg-gray-50 rounded p-2">
                 <span className="font-semibold">50〜55%</span>
-                <span className="text-blue-700 font-bold">良好</span>
+                <span className="text-kon font-bold">良好</span>
               </div>
               <div className="flex justify-between items-center bg-yellow-100 rounded p-2">
                 <span className="font-semibold">55〜60%</span>
                 <span className="text-yellow-700 font-bold">注意が必要</span>
               </div>
-              <div className="flex justify-between items-center bg-red-100 rounded p-2">
+              <div className="flex justify-between items-center bg-gray-50 rounded p-2">
                 <span className="font-semibold">60%超</span>
-                <span className="text-red-700 font-bold">危険信号</span>
+                <span className="text-danger font-bold">危険信号</span>
               </div>
             </div>
           </div>
@@ -233,7 +233,7 @@ export default function InshokuteiGenkaFoodlossBlog() {
                   ["FLコスト合計", "57万円", "57%（FL比率）"],
                   ["残り（家賃・光熱費・利益）", "43万円", "43%"],
                 ].map(([item, amt, ratio], i) => (
-                  <tr key={i} className={i === 3 ? "bg-blue-50 font-bold" : i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                  <tr key={i} className={i === 3 ? "bg-gray-50 font-bold" : i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
                     <td className="p-2 border border-gray-200">{item}</td>
                     <td className="p-2 border border-gray-200 text-center">{amt}</td>
                     <td className="p-2 border border-gray-200 text-center">{ratio}</td>
@@ -249,19 +249,19 @@ export default function InshokuteiGenkaFoodlossBlog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">フードロスが飲食店の利益を蝕む</h2>
         <p className="text-gray-700 mb-4">
-          多くの飲食店経営者が見落としがちなのが<strong className="text-red-600">フードロスの経済的インパクト</strong>です。食材の腐敗・売れ残り・調理ミスによるロスは、積み重なると年間数百万円にのぼることもあります。
+          多くの飲食店経営者が見落としがちなのが<strong className="text-danger">フードロスの経済的インパクト</strong>です。食材の腐敗・売れ残り・調理ミスによるロスは、積み重なると年間数百万円にのぼることもあります。
         </p>
 
-        <div className="bg-red-50 border border-red-200 rounded-xl p-6 mb-6">
-          <h3 className="font-bold text-red-800 mb-4">フードロスの年間コスト試算</h3>
+        <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 mb-6">
+          <h3 className="font-bold text-danger mb-4">フードロスの年間コスト試算</h3>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>
-                <tr className="bg-red-100">
-                  <th className="p-2 border border-red-200 text-left">月仕入れ額</th>
-                  <th className="p-2 border border-red-200 text-center">ロス率10%</th>
-                  <th className="p-2 border border-red-200 text-center">ロス率15%</th>
-                  <th className="p-2 border border-red-200 text-center">ロスを5%に改善</th>
+                <tr className="bg-gray-50">
+                  <th className="p-2 border border-gray-200 text-left">月仕入れ額</th>
+                  <th className="p-2 border border-gray-200 text-center">ロス率10%</th>
+                  <th className="p-2 border border-gray-200 text-center">ロス率15%</th>
+                  <th className="p-2 border border-gray-200 text-center">ロスを5%に改善</th>
                 </tr>
               </thead>
               <tbody>
@@ -270,11 +270,11 @@ export default function InshokuteiGenkaFoodlossBlog() {
                   ["100万円", "年間120万円のロス", "年間180万円のロス", "年間60万円削減効果"],
                   ["200万円", "年間240万円のロス", "年間360万円のロス", "年間120万円削減効果"],
                 ].map(([qty, a, b, c], i) => (
-                  <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-red-50"}>
-                    <td className="p-2 border border-red-200 font-medium">{qty}</td>
-                    <td className="p-2 border border-red-200 text-center text-red-600">{a}</td>
-                    <td className="p-2 border border-red-200 text-center text-red-700 font-bold">{b}</td>
-                    <td className="p-2 border border-red-200 text-center text-green-600 font-bold">{c}</td>
+                  <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                    <td className="p-2 border border-gray-200 font-medium">{qty}</td>
+                    <td className="p-2 border border-gray-200 text-center text-danger">{a}</td>
+                    <td className="p-2 border border-gray-200 text-center text-danger font-bold">{b}</td>
+                    <td className="p-2 border border-gray-200 text-center text-green-600 font-bold">{c}</td>
                   </tr>
                 ))}
               </tbody>
@@ -338,7 +338,7 @@ export default function InshokuteiGenkaFoodlossBlog() {
             },
           ].map((item) => (
             <div key={item.num} className="flex gap-4 bg-white border border-gray-200 rounded-lg p-4">
-              <div className="bg-orange-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0 text-sm">{item.num}</div>
+              <div className="bg-kon text-white rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0 text-sm">{item.num}</div>
               <div>
                 <p className="font-bold text-gray-800 mb-1">{item.title}</p>
                 <p className="text-gray-700 text-sm">{item.desc}</p>
@@ -351,15 +351,15 @@ export default function InshokuteiGenkaFoodlossBlog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">適正売価の決め方と値上げのタイミング</h2>
         <p className="text-gray-700 mb-4">
-          原価率を管理するもう一つのアプローチが<strong className="text-blue-600">売価の最適化</strong>です。仕入れコストが上がった時の値上げ判断も含めて解説します。
+          原価率を管理するもう一つのアプローチが<strong className="text-kon">売価の最適化</strong>です。仕入れコストが上がった時の値上げ判断も含めて解説します。
         </p>
 
-        <div className="bg-blue-50 rounded-xl p-5 mb-6">
-          <h3 className="font-bold text-blue-800 mb-3">目標原価率から逆算する売価の計算方法</h3>
+        <div className="bg-gray-50 rounded-xl p-5 mb-6">
+          <h3 className="font-bold text-kon mb-3">目標原価率から逆算する売価の計算方法</h3>
           <div className="bg-white rounded-lg p-4 text-sm space-y-2">
             <p className="font-semibold">売価 = 食材費 ÷ 目標原価率</p>
             <p className="text-gray-600">例：食材費300円・目標原価率30%の場合</p>
-            <p className="text-blue-700 font-bold text-lg">売価 = 300円 ÷ 0.30 = 1,000円（税抜）</p>
+            <p className="text-kon font-bold text-lg">売価 = 300円 ÷ 0.30 = 1,000円（税抜）</p>
           </div>
         </div>
 
@@ -391,10 +391,10 @@ export default function InshokuteiGenkaFoodlossBlog() {
           自店の原価率・FL比率・フードロスコストを数値で把握するために、以下の無料ツールをお使いください。毎月の経営チェックに活用できます。
         </p>
 
-        <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-xl p-6 mb-6 text-center">
+        <div className="bg-gradient-to-r from-slate-900 to-red-500 text-white rounded-xl p-6 mb-6 text-center">
           <p className="text-lg font-bold mb-2">飲食店原価率計算機</p>
           <p className="text-sm opacity-90 mb-4">食材費・売上・業態を入力するだけでFL比率・適正原価率を即計算。改善余地も自動診断。</p>
-          <Link href="/food/genka-calculator" className="inline-block bg-white text-orange-600 font-bold px-6 py-3 rounded-lg hover:bg-orange-50 transition-colors">
+          <Link href="/food/genka-calculator" className="inline-block bg-white text-kon font-bold px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors">
             原価率を計算する →
           </Link>
         </div>
@@ -403,26 +403,26 @@ export default function InshokuteiGenkaFoodlossBlog() {
           <div className="bg-white border border-gray-200 rounded-lg p-4">
             <p className="font-bold text-gray-800 mb-2">フードロスコスト計算機</p>
             <p className="text-sm text-gray-600 mb-3">月仕入れ額とロス率を入力すると年間損失額が計算できます。ロス改善目標を設定すると削減効果も試算。</p>
-            <Link href="/food/foodloss-calculator" className="text-blue-600 text-sm font-medium hover:underline">試してみる →</Link>
+            <Link href="/food/foodloss-calculator" className="text-kon text-sm font-medium hover:underline">試してみる →</Link>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-4">
             <p className="font-bold text-gray-800 mb-2">栄養成分表示計算機</p>
             <p className="text-sm text-gray-600 mb-3">食材の配合比率から栄養成分（カロリー・たんぱく質・脂質・炭水化物）を計算。食品表示対応に。</p>
-            <Link href="/food/nutrition-label-calculator" className="text-blue-600 text-sm font-medium hover:underline">試してみる →</Link>
+            <Link href="/food/nutrition-label-calculator" className="text-kon text-sm font-medium hover:underline">試してみる →</Link>
           </div>
         </div>
       </section>
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">まとめ：飲食店の利益を最大化するポイント</h2>
-        <div className="bg-orange-50 rounded-xl p-6">
+        <div className="bg-gray-50 rounded-xl p-6">
           <ul className="space-y-3 text-gray-700">
-            <li className="flex gap-2"><span className="text-orange-600 font-bold">①</span> 適正原価率は業態で異なるが、目安は25〜35%（寿司・高級食材は例外）</li>
-            <li className="flex gap-2"><span className="text-orange-600 font-bold">②</span> FL比率（食材費＋人件費）は60%以内が健全経営の目安</li>
-            <li className="flex gap-2"><span className="text-orange-600 font-bold">③</span> フードロス10%→5%の改善で月商100万円の店は年間60万円の利益改善</li>
-            <li className="flex gap-2"><span className="text-orange-600 font-bold">④</span> FIFO徹底・POSデータ活用・食材の共通化がフードロス削減の三本柱</li>
-            <li className="flex gap-2"><span className="text-orange-600 font-bold">⑤</span> 売価は「食材費 ÷ 目標原価率」で逆算して設定する</li>
-            <li className="flex gap-2"><span className="text-orange-600 font-bold">⑥</span> 無料ツールで毎月の原価率・FL比率をモニタリングして改善サイクルを回す</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">①</span> 適正原価率は業態で異なるが、目安は25〜35%（寿司・高級食材は例外）</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">②</span> FL比率（食材費＋人件費）は60%以内が健全経営の目安</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">③</span> フードロス10%→5%の改善で月商100万円の店は年間60万円の利益改善</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">④</span> FIFO徹底・POSデータ活用・食材の共通化がフードロス削減の三本柱</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">⑤</span> 売価は「食材費 ÷ 目標原価率」で逆算して設定する</li>
+            <li className="flex gap-2"><span className="text-kon font-bold">⑥</span> 無料ツールで毎月の原価率・FL比率をモニタリングして改善サイクルを回す</li>
           </ul>
         </div>
       </section>

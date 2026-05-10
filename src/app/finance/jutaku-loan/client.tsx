@@ -465,10 +465,10 @@ export default function JutakuLoanClient() {
     <div className="min-h-screen bg-gray-50">
         <Mascot state={mascotState} className="mb-6" />
       {/* Header */}
-      <div className="bg-gradient-to-r from-blue-800 to-blue-600 text-white py-8 px-4">
+      <div className="bg-gradient-to-r from-blue-800 to-kon text-white py-8 px-4">
         <div className="max-w-5xl mx-auto">
           <h1 className="text-2xl md:text-3xl font-bold mb-1">住宅ローン計算機</h1>
-          <p className="text-blue-100 text-sm">固定・変動・繰上返済・控除・借り換え 完全対応 | 変動金利将来シナリオ・5年ルール対応</p>
+          <p className="text-gin text-sm">固定・変動・繰上返済・控除・借り換え 完全対応 | 変動金利将来シナリオ・5年ルール対応</p>
         </div>
       </div>
 
@@ -483,7 +483,7 @@ export default function JutakuLoanClient() {
               [4, "控除計算"],
             ] as const).map(([m, label]) => (
               <button key={m} onClick={() => setMode(m as 1|2|3|4)}
-                className={"whitespace-nowrap px-5 py-4 text-sm font-medium border-b-2 transition-all " + (mode === m ? "border-blue-600 text-blue-600" : "border-transparent text-gray-500 hover:text-gray-700")}>
+                className={"whitespace-nowrap px-5 py-4 text-sm font-medium border-b-2 transition-all " + (mode === m ? "border-kon text-kon" : "border-transparent text-gray-500 hover:text-gray-700")}>
                 {label}
               </button>
             ))}
@@ -506,7 +506,7 @@ export default function JutakuLoanClient() {
                   <div className="space-y-4">
                     <div>
                       <label className="text-sm text-gray-600 block mb-1">
-                        借入金額: <span className="font-bold text-blue-600">{loanAmt}万円</span>
+                        借入金額: <span className="font-bold text-kon">{loanAmt}万円</span>
                       </label>
                       <input type="range" min={500} max={10000} step={100} value={loanAmt}
                         onChange={e => setLoanAmt(Number(e.target.value))}
@@ -515,7 +515,7 @@ export default function JutakuLoanClient() {
                     </div>
                     <div>
                       <label className="text-sm text-gray-600 block mb-1">
-                        借入期間: <span className="font-bold text-blue-600">{loanYears}年</span>
+                        借入期間: <span className="font-bold text-kon">{loanYears}年</span>
                       </label>
                       <input type="range" min={5} max={35} step={1} value={loanYears}
                         onChange={e => setLoanYears(Number(e.target.value))}
@@ -527,7 +527,7 @@ export default function JutakuLoanClient() {
                       <div className="flex rounded-lg border border-gray-200 overflow-hidden">
                         {(["equal", "principal"] as const).map(t => (
                           <button key={t} onClick={() => setRepayType(t)}
-                            className={"flex-1 py-1.5 text-xs transition-all " + (repayType === t ? "bg-blue-600 text-white" : "bg-white text-gray-600 hover:bg-gray-50")}>
+                            className={"flex-1 py-1.5 text-xs transition-all " + (repayType === t ? "bg-kon text-white" : "bg-white text-gray-600 hover:bg-gray-50")}>
                             {t === "equal" ? "元利均等" : "元金均等"}
                           </button>
                         ))}
@@ -538,7 +538,7 @@ export default function JutakuLoanClient() {
                       <div className="flex rounded-lg border border-gray-200 overflow-hidden">
                         {([["variable", "変動"], ["fixed", "固定"], ["compare", "比較"]] as const).map(([t, l]) => (
                           <button key={t} onClick={() => setRateType(t)}
-                            className={"flex-1 py-1.5 text-xs transition-all " + (rateType === t ? "bg-blue-600 text-white" : "bg-white text-gray-600 hover:bg-gray-50")}>
+                            className={"flex-1 py-1.5 text-xs transition-all " + (rateType === t ? "bg-kon text-white" : "bg-white text-gray-600 hover:bg-gray-50")}>
                             {l}
                           </button>
                         ))}
@@ -574,7 +574,7 @@ export default function JutakuLoanClient() {
                     <div className="flex gap-2 flex-wrap mb-3">
                       {([["現状維持", "hold"], ["緩やか上昇", "slow"], ["急激上昇", "fast"], ["カスタム", "custom"]] as const).map(([label, val]) => (
                         <button key={val} onClick={() => setRateScenario(val as any)}
-                          className={"px-3 py-1.5 rounded-lg text-xs font-medium transition-all " + (rateScenario === val ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200")}>
+                          className={"px-3 py-1.5 rounded-lg text-xs font-medium transition-all " + (rateScenario === val ? "bg-kon text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200")}>
                           {label}
                         </button>
                       ))}
@@ -609,7 +609,7 @@ export default function JutakuLoanClient() {
                     <div className="flex items-center justify-between mb-2">
                       <label className="text-sm font-medium text-gray-700">5年ルール</label>
                       <button onClick={() => setApply5nen(!apply5nen)}
-                        className={"relative inline-flex h-5 w-10 rounded-full transition-colors " + (apply5nen ? "bg-blue-500" : "bg-gray-300")}>
+                        className={"relative inline-flex h-5 w-10 rounded-full transition-colors " + (apply5nen ? "bg-kon" : "bg-gray-300")}>
                         <span className={"inline-block h-4 w-4 rounded-full bg-white shadow transform transition-transform mt-0.5 " + (apply5nen ? "translate-x-5" : "translate-x-1")} />
                       </button>
                     </div>
@@ -622,7 +622,7 @@ export default function JutakuLoanClient() {
                   <div className="flex items-center justify-between mb-2">
                     <label className="text-sm font-medium text-gray-700">ボーナス返済</label>
                     <button onClick={() => setBonusOn(!bonusOn)}
-                      className={"relative inline-flex h-5 w-10 rounded-full transition-colors " + (bonusOn ? "bg-blue-500" : "bg-gray-300")}>
+                      className={"relative inline-flex h-5 w-10 rounded-full transition-colors " + (bonusOn ? "bg-kon" : "bg-gray-300")}>
                       <span className={"inline-block h-4 w-4 rounded-full bg-white shadow transform transition-transform mt-0.5 " + (bonusOn ? "translate-x-5" : "translate-x-1")} />
                     </button>
                   </div>
@@ -642,7 +642,7 @@ export default function JutakuLoanClient() {
                   <div className="flex items-center justify-between mb-2">
                     <label className="text-sm font-medium text-gray-700">諸費用を含める</label>
                     <button onClick={() => setFeesOn(!feesOn)}
-                      className={"relative inline-flex h-5 w-10 rounded-full transition-colors " + (feesOn ? "bg-blue-500" : "bg-gray-300")}>
+                      className={"relative inline-flex h-5 w-10 rounded-full transition-colors " + (feesOn ? "bg-kon" : "bg-gray-300")}>
                       <span className={"inline-block h-4 w-4 rounded-full bg-white shadow transform transition-transform mt-0.5 " + (feesOn ? "translate-x-5" : "translate-x-1")} />
                     </button>
                   </div>
@@ -684,17 +684,17 @@ export default function JutakuLoanClient() {
                     <div key={idx} className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
                       <h3 className="text-sm font-semibold text-gray-700 mb-3">{sc.label}</h3>
                       <div className="grid grid-cols-2 gap-3">
-                        <div className="bg-blue-50 rounded-lg p-3">
+                        <div className="bg-gray-50 rounded-lg p-3">
                           <p className="text-xs text-gray-500 mb-1">月々の返済額</p>
-                          <p className="text-xl font-bold text-blue-700">{fmt(r.monthlyPayment)}<span className="text-xs font-normal">円</span></p>
+                          <p className="text-xl font-bold text-kon">{fmt(r.monthlyPayment)}<span className="text-xs font-normal">円</span></p>
                         </div>
-                        <div className="bg-orange-50 rounded-lg p-3">
+                        <div className="bg-gray-50 rounded-lg p-3">
                           <p className="text-xs text-gray-500 mb-1">総返済額</p>
-                          <p className="text-xl font-bold text-orange-700">{fmtManR(r.totalPayment)}<span className="text-xs font-normal">万円</span></p>
+                          <p className="text-xl font-bold text-kon">{fmtManR(r.totalPayment)}<span className="text-xs font-normal">万円</span></p>
                         </div>
-                        <div className="bg-red-50 rounded-lg p-3">
+                        <div className="bg-gray-50 rounded-lg p-3">
                           <p className="text-xs text-gray-500 mb-1">総利息</p>
-                          <p className="text-xl font-bold text-red-700">{fmtManR(r.totalInterest)}<span className="text-xs font-normal">万円</span></p>
+                          <p className="text-xl font-bold text-danger">{fmtManR(r.totalInterest)}<span className="text-xs font-normal">万円</span></p>
                         </div>
                         <div className="bg-green-50 rounded-lg p-3">
                           <p className="text-xs text-gray-500 mb-1">返済期間</p>
@@ -832,33 +832,33 @@ export default function JutakuLoanClient() {
                       <p className="text-xs text-gray-500">現在の月返</p>
                       <p className="text-lg font-bold text-gray-700">{fmt(refi.pmt1)}円</p>
                     </div>
-                    <div className="bg-blue-50 rounded-lg p-3">
+                    <div className="bg-gray-50 rounded-lg p-3">
                       <p className="text-xs text-gray-500">新月返</p>
-                      <p className="text-lg font-bold text-blue-700">{fmt(refi.pmt2)}円</p>
+                      <p className="text-lg font-bold text-kon">{fmt(refi.pmt2)}円</p>
                     </div>
                     <div className="bg-green-50 rounded-lg p-3">
                       <p className="text-xs text-gray-500">月刀削減額</p>
                       <p className="text-lg font-bold text-green-700">{fmt(refi.monthlyDiff)}円</p>
                     </div>
-                    <div className="bg-orange-50 rounded-lg p-3">
+                    <div className="bg-gray-50 rounded-lg p-3">
                       <p className="text-xs text-gray-500">総節約額</p>
-                      <p className={"text-lg font-bold " + (refi.totalDiff > 0 ? "text-orange-700" : "text-red-700")}>{fmtManR(refi.totalDiff)}万円</p>
+                      <p className={"text-lg font-bold " + (refi.totalDiff > 0 ? "text-kon" : "text-danger")}>{fmtManR(refi.totalDiff)}万円</p>
                     </div>
-                    <div className={"rounded-lg p-3 col-span-2 " + (refi.isWorthIt ? "bg-green-50" : "bg-red-50")}>
+                    <div className={"rounded-lg p-3 col-span-2 " + (refi.isWorthIt ? "bg-green-50" : "bg-gray-50")}>
                       <p className="text-xs text-gray-500">損益分岐点</p>
-                      <p className={"text-lg font-bold " + (refi.isWorthIt ? "text-green-700" : "text-red-700")}>
+                      <p className={"text-lg font-bold " + (refi.isWorthIt ? "text-green-700" : "text-danger")}>
                         {refi.isWorthIt ? refi.breakEven + "か月後（" + Math.ceil(refi.breakEven / 12) + "年）" : "未回収"}
                       </p>
                     </div>
                   </div>
                   {refi.isWorthIt && (
-                    <div className="bg-blue-50 rounded-lg p-3">
-                      <p className="text-xs text-blue-800">{refi.breakEven}か月後に損益分岐点を迈えます。残り返済期間が十分にある場合に借り換えが有利です。</p>
+                    <div className="bg-gray-50 rounded-lg p-3">
+                      <p className="text-xs text-kon">{refi.breakEven}か月後に損益分岐点を迈えます。残り返済期間が十分にある場合に借り換えが有利です。</p>
                     </div>
                   )}
                   {!refi.isWorthIt && (
-                    <div className="bg-red-50 rounded-lg p-3">
-                      <p className="text-xs text-red-800">借り換え諸費用が大きすぎて、返済完了までに回収できません。</p>
+                    <div className="bg-gray-50 rounded-lg p-3">
+                      <p className="text-xs text-danger">借り換え諸費用が大きすぎて、返済完了までに回収できません。</p>
                     </div>
                   )}
                 </div>
@@ -897,7 +897,7 @@ export default function JutakuLoanClient() {
                     <div className="flex gap-2">
                       {([["shorten", "期間短縮型"], ["reduce", "返済額軽減型"]] as const).map(([val, label]) => (
                         <button key={val} onClick={() => setM3type(val)}
-                          className={"flex-1 py-2 rounded-lg text-xs font-medium transition-all " + (m3type === val ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-600")}>
+                          className={"flex-1 py-2 rounded-lg text-xs font-medium transition-all " + (m3type === val ? "bg-kon text-white" : "bg-gray-100 text-gray-600")}>
                           {label}
                         </button>
                       ))}
@@ -922,11 +922,11 @@ export default function JutakuLoanClient() {
                         className="w-full accent-blue-600" />
                     </div>
                     <button onClick={() => setM3events(m3events.filter((_, j) => j !== i))}
-                      className="text-red-400 hover:text-red-600 text-lg leading-none">x</button>
+                      className="text-danger hover:text-danger text-lg leading-none">x</button>
                   </div>
                 ))}
                 <button onClick={() => setM3events([...m3events, { yearOffset: 5, amount: 100 * MAN }])}
-                  className="mt-1 w-full py-2 border border-dashed border-blue-300 text-blue-600 text-sm rounded-lg hover:bg-blue-50">
+                  className="mt-1 w-full py-2 border border-dashed border-kon text-kon text-sm rounded-lg hover:bg-gray-50">
                   + イベント追加
                 </button>
               </div>
@@ -943,7 +943,7 @@ export default function JutakuLoanClient() {
                     <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
                       <h4 className="text-xs text-gray-500 mb-2">繰上げあり</h4>
                       <p className="text-xs text-gray-600">新返済期間</p>
-                      <p className="text-xl font-bold text-blue-700">{Math.ceil(prepay.newMonths / 12)}年</p>
+                      <p className="text-xl font-bold text-kon">{Math.ceil(prepay.newMonths / 12)}年</p>
                     </div>
                   </div>
                   <div className="bg-green-50 rounded-xl border border-green-200 p-5">
@@ -1038,9 +1038,9 @@ export default function JutakuLoanClient() {
               {deduction && deduction.yearlyData.length > 0 && (
                 <>
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-blue-50 rounded-xl p-5">
-                      <p className="text-xs text-blue-600 mb-1">総控除額 (減税期間合計)</p>
-                      <p className="text-2xl font-bold text-blue-800">{fmtManR(deduction.totalCredit)}万円</p>
+                    <div className="bg-gray-50 rounded-xl p-5">
+                      <p className="text-xs text-kon mb-1">総控除額 (減税期間合計)</p>
+                      <p className="text-2xl font-bold text-kon">{fmtManR(deduction.totalCredit)}万円</p>
                     </div>
                     <div className="bg-green-50 rounded-xl p-5">
                       <p className="text-xs text-green-600 mb-1">控除期間</p>
@@ -1071,7 +1071,7 @@ export default function JutakuLoanClient() {
                               <td className="py-2 px-3 text-right">0.7%</td>
                               <td className="py-2 px-3 text-right">{fmt(y.incomeTaxCredit)}円</td>
                               <td className="py-2 px-3 text-right">{fmt(y.residentCredit)}円</td>
-                              <td className="py-2 px-3 text-right font-semibold text-blue-700">{fmt(y.total)}円</td>
+                              <td className="py-2 px-3 text-right font-semibold text-kon">{fmt(y.total)}円</td>
                             </tr>
                           ))}
                         </tbody>
@@ -1091,7 +1091,7 @@ export default function JutakuLoanClient() {
             コピー
           </button>
           <button onClick={handleSaveImage}
-            className="flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-sm">
+            className="flex items-center gap-2 px-5 py-2.5 bg-kon text-white rounded-lg hover:bg-ai text-sm">
             画像保存
           </button>
         </div>
@@ -1115,7 +1115,7 @@ export default function JutakuLoanClient() {
                 <thead>
                   <tr className="bg-gray-50">
                     <th className="px-4 py-3 text-left font-semibold text-gray-700">比較項目</th>
-                    <th className="px-4 py-3 text-center font-semibold text-blue-700">固定金利</th>
+                    <th className="px-4 py-3 text-center font-semibold text-kon">固定金利</th>
                     <th className="px-4 py-3 text-center font-semibold text-green-700">変動金利</th>
                   </tr>
                 </thead>
@@ -1151,8 +1151,8 @@ export default function JutakuLoanClient() {
 
             <h3 className="text-lg font-bold text-gray-800">日本の住宅ローンの典型的な条件</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-blue-50 rounded-xl p-4">
-                <h4 className="font-bold text-blue-700 mb-2">一般的な借入条件</h4>
+              <div className="bg-gray-50 rounded-xl p-4">
+                <h4 className="font-bold text-kon mb-2">一般的な借入条件</h4>
                 <ul className="text-sm space-y-1">
                   <li>• 借入期間：最長35年（完済時年齢80歳まで）</li>
                   <li>• 頭金：物件価格の10%～20%が目安</li>
@@ -1221,8 +1221,8 @@ export default function JutakuLoanClient() {
                   <li>⚠️ 総利息が元金均等より多い</li>
                 </ul>
               </div>
-              <div className="bg-purple-50 rounded-xl p-4">
-                <h4 className="font-bold text-purple-700 mb-2">元金均等返済</h4>
+              <div className="bg-gray-50 rounded-xl p-4">
+                <h4 className="font-bold text-kon mb-2">元金均等返済</h4>
                 <p className="text-sm mb-2">
                   毎月の元金返済額が一定。返済額は毎月減少していく。
                 </p>

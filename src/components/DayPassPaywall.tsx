@@ -81,7 +81,7 @@ export default function DayPassPaywall({ open, onClose, apiBase, rowCount, onCon
               key={p.type}
               className={`relative flex flex-col items-center rounded-xl border-2 p-4 ${
                 p.badge === "おすすめ"
-                  ? "border-blue-500 bg-blue-50 dark:bg-blue-950"
+                  ? "border-kon bg-gray-50 dark:bg-kon"
                   : p.badge === "最もお得"
                   ? "border-green-500 bg-green-50 dark:bg-green-950"
                   : "border-gray-200 bg-gray-50 dark:bg-gray-800"
@@ -90,7 +90,7 @@ export default function DayPassPaywall({ open, onClose, apiBase, rowCount, onCon
               {p.badge && (
                 <span
                   className={`absolute -top-2.5 left-1/2 -translate-x-1/2 text-xs font-bold px-2 py-0.5 rounded-full whitespace-nowrap ${
-                    p.badge === "おすすめ" ? "bg-blue-500 text-white" : "bg-green-500 text-white"
+                    p.badge === "おすすめ" ? "bg-kon text-white" : "bg-green-500 text-white"
                   }`}
                 >
                   {p.badge}
@@ -106,7 +106,7 @@ export default function DayPassPaywall({ open, onClose, apiBase, rowCount, onCon
                   loading === p.type
                     ? "bg-gray-300 text-gray-500 cursor-wait"
                     : p.badge === "おすすめ"
-                    ? "bg-blue-600 hover:bg-blue-700 text-white"
+                    ? "bg-kon hover:bg-ai text-white"
                     : p.badge === "最もお得"
                     ? "bg-green-600 hover:bg-green-700 text-white"
                     : "bg-gray-700 hover:bg-gray-800 text-white"
@@ -130,7 +130,7 @@ export default function DayPassPaywall({ open, onClose, apiBase, rowCount, onCon
         <div className="border-t border-gray-100 dark:border-gray-700 pt-4 space-y-1.5">
           <p className="text-xs text-center text-gray-400">
             サブスクリプションをご希望ですか？
-            <Link href="/pricing" className="text-blue-500 hover:underline ml-1">プランを見る →</Link>
+            <Link href="/pricing" className="text-kon hover:underline ml-1">プランを見る →</Link>
           </p>
           <p className="text-xs text-center text-gray-400">コンビニ払い・PayPayは近日対応予定</p>
         </div>
