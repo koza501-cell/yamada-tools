@@ -168,7 +168,10 @@ const relatedToolsMap: Record<string, string[]> = {
   "houjin-cross-verify": ["houjin-bangou-lookup", "houjin-search", "invoice-validator", "invoice", "corporate-tax-calculator", "incorporation-simulator"],
   "houjin-bangou-lookup": ["houjin-cross-verify", "houjin-search", "invoice-validator", "invoice", "corporate-tax-calculator", "incorporation-simulator"],
   
-  "houjin-search": ["houjin-cross-verify", "houjin-bangou-lookup", "hojokin-active", "hojokin-history", "incorporation-simulator", "corporate-tax-calculator"],
+  "houjin-search": ["houjin-cross-verify", "houjin-bangou-lookup", "houjin-zaimu", "houjin-nyusatsu", "houjin-nintei", "hojokin-active"],
+  "houjin-zaimu": ["houjin-search", "houjin-nyusatsu", "houjin-nintei", "houjin-bangou-lookup", "hojokin-active", "incorporation-simulator"],
+  "houjin-nyusatsu": ["houjin-search", "houjin-zaimu", "houjin-nintei", "houjin-bangou-lookup", "hojokin-active", "hojokin-history"],
+  "houjin-nintei": ["houjin-search", "houjin-zaimu", "houjin-nyusatsu", "houjin-bangou-lookup", "hojokin-active", "incorporation-simulator"],
   "hojokin-active": ["houjin-search", "hojokin-history", "incorporation-simulator", "freelance-tax-calculator"],
   "hojokin-history": ["houjin-search", "hojokin-active", "incorporation-simulator", "corporate-tax-calculator"],
 
