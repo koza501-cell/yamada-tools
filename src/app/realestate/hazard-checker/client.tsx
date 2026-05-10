@@ -4,6 +4,7 @@ import RelatedTools from "@/components/common/RelatedTools";
 import { getToolById } from "@/config/tools";
 
 import { useState } from "react";
+import { FAQSection } from "@/components/FAQSection";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "/api-backend";
 
@@ -84,6 +85,16 @@ function HazardCard({ icon, title, result, children }: {
     </div>
   );
 }
+
+
+const faqItems = [
+  { question: "ハザードマップとは？", answer: "自然災害（洪水・土砂災害・津波など）が発生した際に被害が想定される区域を示した地図です。不動産購入や賃貸の際に必ず確認すべき情報です。" },
+  { question: "液状化とは何ですか？", answer: "地震の振動により地盤が液体のようになる現象です。砂地盤や埋立地で起きやすく、建物の傾きや沈下の原因になります。" },
+  { question: "土砂災害警戒区域と特別警戒区域の違いは？", answer: "警戒区域（イエローゾーン）は住民への情報伝達・避難が必要な区域。特別警戒区域（レッドゾーン）はさらに危険で、建築制限があります。" },
+  { question: "リスクなしでも安全ですか？", answer: "データが存在しない場合もリスクなしと表示されます。国土交通省のデータは全地域を網羅していない場合があります。必ず市区町村の公式ハザードマップもご確認ください。" },
+  { question: "このツールのデータはどこから来ていますか？", answer: "国土交通省「不動産情報ライブラリ」のAPI（XKT026〜XKT029、XKT025）を使用しています。参考情報としてご活用ください。" },
+  { question: "スマートフォンでも使えますか？", answer: "はい、山田ツール（yamada-tools.jp）のハザードマップチェッカーはスマートフォン・タブレット・PCのすべてに対応しています。内見・現地確認の際にその場でリスクを確認できます。" },
+];
 
 export default function HazardClient() {
   const tool = getToolById("hazard-checker");
@@ -304,23 +315,8 @@ export default function HazardClient() {
           </div>
         )}
 
-        {/* FAQ */}
-        <div className="mt-10 print:hidden">
-          <h2 className="text-lg font-bold text-gray-800 mb-4">よくある質問</h2>
-          <div className="space-y-3">
-            {[
-              { q: "ハザードマップとは？", a: "自然災害（洪水・土砂災害・津波など）が発生した際に被害が想定される区域を示した地図です。不動産購入や賃貸の際に必ず確認すべき情報です。" },
-              { q: "液状化とは何ですか？", a: "地震の振動により地盤が液体のようになる現象です。砂地盤や埋立地で起きやすく、建物の傾きや沈下の原因になります。" },
-              { q: "土砂災害警戒区域と特別警戒区域の違いは？", a: "警戒区域（イエローゾーン）は住民への情報伝達・避難が必要な区域。特別警戒区域（レッドゾーン）はさらに危険で、建築制限があります。" },
-              { q: "リスクなしでも安全ですか？", a: "データが存在しない場合もリスクなしと表示されます。国土交通省のデータは全地域を網羅していない場合があります。必ず市区町村の公式ハザードマップもご確認ください。" },
-              { q: "このツールのデータはどこから来ていますか？", a: "国土交通省「不動産情報ライブラリ」のAPI（XKT026〜XKT029、XKT025）を使用しています。参考情報としてご活用ください。" },
-            ].map(({ q, a }, i) => (
-              <details key={i} className="border border-gray-200 rounded-lg">
-                <summary className="px-4 py-3 font-medium text-gray-800 cursor-pointer hover:bg-gray-50 text-sm">Q. {q}</summary>
-                <p className="px-4 pb-4 text-sm text-gray-600 leading-relaxed">{a}</p>
-              </details>
-            ))}
-          </div>
+        <div className="print:hidden">
+          <FAQSection faq={faqItems} />
         </div>
 
         {tool && <RelatedTools currentTool={tool} maxItems={4} />}

@@ -4,6 +4,7 @@ import RelatedTools from "@/components/common/RelatedTools";
 import { getToolById } from "@/config/tools";
 
 import { useState } from "react";
+import { FAQSection } from "@/components/FAQSection";
 
 const API_BASE =
   process.env.NEXT_PUBLIC_API_URL || "/api-backend";
@@ -168,6 +169,16 @@ function ErrorBox({ msg }: { msg: string }) {
   }
   return <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg p-3 mb-4 text-sm">⚠️ {msg}</div>;
 }
+
+
+const faqItems = [
+  { question: "用途地域とは何ですか？", answer: "都市計画法に基づき、土地の使い方を13種類に分類したものです。住宅専用エリアから商業・工業エリアまで、建てられる建物の種類や規模が制限されています。" },
+  { question: "建ぺい率とは何ですか？", answer: "土地面積に対して、建物の1階部分（建築面積）が占める割合の上限です。例えば建ぺい率60%・土地100㎡なら、1階の建物は最大60㎡まで建てられます。" },
+  { question: "容積率とは何ですか？", answer: "土地面積に対する、全ての階の床面積の合計（延床面積）の割合の上限です。容積率200%・土地100㎡なら、全階合計200㎡まで建てられます（約3階建ての目安）。" },
+  { question: "クリニック開業に向く用途地域は？", answer: "第一種中高層住居専用地域・第二種中高層住居専用地域・第一種住居地域などが診療所・病院を許可しています。第一種低層住居専用地域では床面積に制限があります。" },
+  { question: "このツールのデータはどこから来ていますか？", answer: "国土交通省の「不動産情報ライブラリ API（XKT002）」と国土地理院のジオコーディングAPIを使用しています。山田ツール（yamada-tools.jp）では無料で用途地域情報を提供しています。" },
+  { question: "用途地域が見つからない場合は？", answer: "都市計画区域外（農村・山間部など）の住所は用途地域が設定されていない場合があります。市区町村の都市計画部門にお問い合わせください。" },
+];
 
 export default function YotoChiikiClient() {
   const tool = getToolById("yoto-chiiki-checker");
@@ -433,24 +444,8 @@ export default function YotoChiikiClient() {
           </div>
         )}
 
-        {/* FAQ */}
-        <div className="mt-10 print:hidden">
-          <h2 className="text-lg font-bold text-gray-800 mb-4">よくある質問</h2>
-          <div className="space-y-3">
-            {[
-              { q: "用途地域とは何ですか？", a: "都市計画法に基づき、土地の使い方を13種類に分類したものです。住宅専用エリアから商業・工業エリアまで、建てられる建物の種類や規模が制限されています。" },
-              { q: "建ぺい率とは何ですか？", a: "土地面積に対して、建物の1階部分（建築面積）が占める割合の上限です。例えば建ぺい率60%・土地100㎡なら、1階の建物は最大60㎡まで建てられます。" },
-              { q: "容積率とは何ですか？", a: "土地面積に対する、全ての階の床面積の合計（延床面積）の割合の上限です。容積率200%・土地100㎡なら、全階合計200㎡まで建てられます（約3階建ての目安）。" },
-              { q: "クリニック開業に向く用途地域は？", a: "第一種中高層住居専用地域・第二種中高層住居専用地域・第一種住居地域などが診療所・病院を許可しています。第一種低層住居専用地域では床面積に制限があります。" },
-              { q: "このツールのデータはどこから来ていますか？", a: "国土交通省の「不動産情報ライブラリ API（XKT002）」と国土地理院のジオコーディングAPIを使用しています。参考情報としてご活用ください。" },
-              { q: "用途地域が見つからない場合は？", a: "都市計画区域外（農村・山間部など）の住所は用途地域が設定されていない場合があります。市区町村の都市計画部門にお問い合わせください。" },
-            ].map(({ q, a }, i) => (
-              <details key={i} className="border border-gray-200 rounded-lg">
-                <summary className="px-4 py-3 font-medium text-gray-800 cursor-pointer hover:bg-gray-50 text-sm">Q. {q}</summary>
-                <p className="px-4 pb-4 text-sm text-gray-600 leading-relaxed">{a}</p>
-              </details>
-            ))}
-          </div>
+        <div className="print:hidden">
+          <FAQSection faq={faqItems} />
         </div>
 
         {tool && <RelatedTools currentTool={tool} maxItems={4} />}

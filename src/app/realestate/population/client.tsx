@@ -4,6 +4,7 @@ import RelatedTools from "@/components/common/RelatedTools";
 import { getToolById } from "@/config/tools";
 
 import { useState } from "react";
+import { FAQSection } from "@/components/FAQSection";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "/api-backend";
 
@@ -48,6 +49,16 @@ const TREND_STYLE = {
   growing:       { bg: "bg-green-50",  border: "border-green-300", text: "text-green-700", icon: "📈", badge: "bg-green-600 text-white" },
   unknown:       { bg: "bg-gray-50",   border: "border-gray-200",  text: "text-gray-600",  icon: "❓", badge: "bg-gray-400 text-white" },
 };
+
+
+const faqItems = [
+  { question: "人口推計データとは何ですか？", answer: "国土交通省が提供する500mメッシュ単位の将来推計人口データです。2020年から2070年まで5年ごとの人口推計が含まれ、不動産・まちづくり・事業立地の参考として活用できます。" },
+  { question: "人口集中地区（DID）とは何ですか？", answer: "人口密度が1km²あたり4,000人以上の地区が隣接し、合計人口が5,000人以上となる地区のことです。都市的な土地利用がなされているエリアの目安となります。" },
+  { question: "データはどの単位で表示されますか？", answer: "500m×500mのメッシュ（約0.25km²）単位のデータです。住所が含まれるメッシュの推計人口を表示しています。" },
+  { question: "人口が減少していると不動産価値は下がりますか？", answer: "一般的に人口減少エリアでは不動産需要が低下する傾向がありますが、立地条件や交通利便性など個別の条件によって異なります。参考情報としてご活用ください。" },
+  { question: "このツールのデータはどこから来ていますか？", answer: "国土交通省「不動産情報ライブラリ API（XKT013・XKT031）」の将来推計人口・人口集中地区データを使用しています。参考情報としてご活用ください。" },
+  { question: "無料で使えますか？", answer: "はい、山田ツール（yamada-tools.jp）の人口推計チェッカーは完全無料・登録不要でご利用いただけます。不動産投資・移住・事業立地の検討にお役立てください。" },
+];
 
 export default function PopulationClient() {
   const tool = getToolById("population");
@@ -260,22 +271,8 @@ export default function PopulationClient() {
           </div>
         )}
 
-        <div className="mt-10 print:hidden">
-          <h2 className="text-lg font-bold text-gray-800 mb-4">よくある質問</h2>
-          <div className="space-y-3">
-            {[
-              { q: "人口推計データとは何ですか？", a: "国土交通省が提供する500mメッシュ単位の将来推計人口データです。2020年から2070年まで5年ごとの人口推計が含まれ、不動産・まちづくり・事業立地の参考として活用できます。" },
-              { q: "人口集中地区（DID）とは何ですか？", a: "人口密度が1km²あたり4,000人以上の地区が隣接し、合計人口が5,000人以上となる地区のことです。都市的な土地利用がなされているエリアの目安となります。" },
-              { q: "データはどの単位で表示されますか？", a: "500m×500mのメッシュ（約0.25km²）単位のデータです。住所が含まれるメッシュの推計人口を表示しています。" },
-              { q: "人口が減少していると不動産価値は下がりますか？", a: "一般的に人口減少エリアでは不動産需要が低下する傾向がありますが、立地条件や交通利便性など個別の条件によって異なります。参考情報としてご活用ください。" },
-              { q: "このツールのデータはどこから来ていますか？", a: "国土交通省「不動産情報ライブラリ API（XKT013・XKT031）」の将来推計人口・人口集中地区データを使用しています。参考情報としてご活用ください。" },
-            ].map(({ q, a }, i) => (
-              <details key={i} className="border border-gray-200 rounded-lg">
-                <summary className="px-4 py-3 font-medium text-gray-800 cursor-pointer hover:bg-gray-50 text-sm">Q. {q}</summary>
-                <p className="px-4 pb-4 text-sm text-gray-600 leading-relaxed">{a}</p>
-              </details>
-            ))}
-          </div>
+        <div className="print:hidden">
+          <FAQSection faq={faqItems} />
         </div>
 
         {tool && <RelatedTools currentTool={tool} maxItems={4} />}
