@@ -240,7 +240,7 @@ export default function HubLayout({
             <span>🇯🇵 日本国内サーバー</span>
             <span>🔒 SSL暗号化通信</span>
             <span>🗑️ 60分で自動削除</span>
-            <span>✨ 完全無料・登録不要</span>
+            <span>完全無料・登録不要</span>
             <span>📱 スマホ対応</span>
           </div>
         </div>

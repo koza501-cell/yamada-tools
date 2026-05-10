@@ -1370,7 +1370,7 @@ export default function RentalCostCalculatorPage() {
               },
               {
                 href: "/finance/jutaku-loan",
-                label: "住宅ローン計算機 Pro",
+                label: "住宅ローン計算機",
                 desc: "月々の返済額・総返済額をシミュレーション",
               },
             ].map((tool) => (

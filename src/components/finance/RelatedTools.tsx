@@ -9,10 +9,10 @@ interface Tool {
 }
 
 const allFinanceTools: Tool[] = [
-  { name: "新NISAシミュレーター Pro", url: "/finance/nisa-simulator", icon: "📈" },
-  { name: "住宅ローン計算機 Pro", url: "/finance/jutaku-loan", icon: "🏠" },
-  { name: "FX損益計算機 Pro", url: "/finance/fx-calculator", icon: "💹" },
-  { name: "老後資金シミュレーター Pro", url: "/finance/retirement-simulator", icon: "🏦" },
+  { name: "新NISAシミュレーター", url: "/finance/nisa-simulator", icon: "📈" },
+  { name: "住宅ローン計算機", url: "/finance/jutaku-loan", icon: "🏠" },
+  { name: "FX損益計算機", url: "/finance/fx-calculator", icon: "💹" },
+  { name: "老後資金シミュレーター", url: "/finance/retirement-simulator", icon: "🏦" },
   { name: "iDeCo vs NISA 比較ツール", url: "/finance/ideco-nisa-comparison", icon: "⚖️" },
 ];
 

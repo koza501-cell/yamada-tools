@@ -212,7 +212,7 @@ export default function SougiClient() {
           ))}
         </div>
 
-        <h2 className="font-semibold text-gray-800 text-sm pt-2">✨ オプション・その他</h2>
+        <h2 className="font-semibold text-gray-800 text-sm pt-2">オプション・その他</h2>
         <div className="grid grid-cols-2 gap-2">
           {[
             ["生花・供花（10万円〜）", flowers, setFlowers],

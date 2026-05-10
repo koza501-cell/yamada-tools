@@ -14,8 +14,8 @@ const config: Config = {
     extend: {
       colors: {
         kon: '#223A70',
-        ai: '#1E90FF',
-        sakura: '#D4AF37',
+        ai: '#264348',
+        sakura: '#FEDFE1',
       },
       fontSize: {
         'jp-h1': ['clamp(1.75rem, 4vw, 2.5rem)', { lineHeight: '1.4' }],

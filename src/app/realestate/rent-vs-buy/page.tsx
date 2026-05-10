@@ -1140,7 +1140,7 @@ export default function RentVsBuyPage() {
                   icon: "🏛️",
                 },
                 {
-                  name: "住宅ローン計算機 Pro",
+                  name: "住宅ローン計算機",
                   url: "/finance/jutaku-loan",
                   icon: "💰",
                 },

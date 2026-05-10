@@ -751,7 +751,7 @@ export default function IncomeTaxCalculatorPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {[
               { href: "/tax/furusato-nozei-calculator", label: "ふるさと納税 控除額計算機", desc: "年収・家族構成から控除上限額を計算" },
-              { href: "/tax/consumption-tax", label: "消費税 計算機 Pro", desc: "税込・税抜の一括変換と明細計算" },
+              { href: "/tax/consumption-tax", label: "消費税計算機", desc: "税込・税抜の一括変換と明細計算" },
               { href: "/finance/retirement-simulator", label: "老後資金シミュレーター", desc: "老後に必要な資金と不足額を計算" },
               { href: "/insurance/life-insurance-calculator", label: "生命保険 必要保障額計算機", desc: "年収・家族構成から必要な保険金額を診断" },
             ].map((tool) => (

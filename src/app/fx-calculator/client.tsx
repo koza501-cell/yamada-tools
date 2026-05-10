@@ -302,7 +302,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
       {/* Header */}
       <div className="bg-gradient-to-r from-blue-700 to-blue-500 text-white py-10 px-4">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-2xl md:text-3xl font-bold">FX損益計算機 Pro</h1>
+          <h1 className="text-2xl md:text-3xl font-bold">FX損益計算機</h1>
           <p className="text-blue-100 text-sm md:text-base mt-2">損益・証拠金・ロスカット・スワップ・確定申告 完全対応</p>
         </div>
       </div>

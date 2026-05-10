@@ -59,25 +59,25 @@ function generateFinanceSectionSchema(siteUrl: string) {
       {
         "@type": "ListItem",
         "position": 1,
-        "name": "新NISAシミュレーター Pro",
+        "name": "新NISAシミュレーター",
         "url": `${siteUrl}/finance/nisa-simulator`,
       },
       {
         "@type": "ListItem",
         "position": 2,
-        "name": "住宅ローン計算機 Pro",
+        "name": "住宅ローン計算機",
         "url": `${siteUrl}/finance/jutaku-loan`,
       },
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "FX損益計算機 Pro",
+        "name": "FX損益計算機",
         "url": `${siteUrl}/finance/fx-calculator`,
       },
       {
         "@type": "ListItem",
         "position": 4,
-        "name": "老後資金シミュレーター Pro",
+        "name": "老後資金シミュレーター",
         "url": `${siteUrl}/finance/retirement-simulator`,
       },
       {

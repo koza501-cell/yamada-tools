@@ -74,7 +74,7 @@ const schema = {
   "@graph": [
     {
       "@type": "SoftwareApplication",
-      "name": "消費税 計算機 Pro",
+      "name": "消費税計算機",
       "applicationCategory": "FinanceApplication",
       "operatingSystem": "Web",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
@@ -87,7 +87,7 @@ const schema = {
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://yamada-tools.jp" },
         { "@type": "ListItem", "position": 2, "name": "税金計算", "item": "https://yamada-tools.jp/tax" },
-        { "@type": "ListItem", "position": 3, "name": "消費税 計算機 Pro", "item": "https://yamada-tools.jp/tax/consumption-tax" }
+        { "@type": "ListItem", "position": 3, "name": "消費税計算機", "item": "https://yamada-tools.jp/tax/consumption-tax" }
       ]
     },
     {
@@ -225,7 +225,7 @@ export default function ConsumptionTaxPage() {
       />
       <div className="bg-gradient-to-r from-blue-700 to-blue-500 text-white py-10 px-4">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-2xl md:text-3xl font-bold mb-2">消費税 計算機 Pro</h1>
+          <h1 className="text-2xl md:text-3xl font-bold mb-2">消費税計算機</h1>
           <p className="text-blue-100 text-sm md:text-base">
             税抜・税込・軽減税率8%対応。複数明細の一括計算・端数処理選択・インボイス制度対応。
           </p>

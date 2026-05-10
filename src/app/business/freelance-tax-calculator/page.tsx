@@ -360,7 +360,7 @@ export default function FreelanceTaxCalculatorPage() {
   const useCases = [
     { icon: "💻", persona: "フリーランス・個人事業主の方", title: "年間の税金・社会保険料の合計を把握したい", benefit: "売上・経費から手取り額と全税負担を一括計算" },
     { icon: "📝", persona: "青色申告の効果を知りたい方", title: "青色申告特別控除で実際にいくら節税できるか", benefit: "白色申告との比較で青色の節税額を可視化" },
-    { icon: "🆕", persona: "会社員からフリーランスへ転身検討中", title: "独立後の手取りを会社員時代と比較したい", benefit: "社会保険料の増加分を含めた実質手取りを計算" },
+    { icon: "", persona: "会社員からフリーランスへ転身検討中", title: "独立後の手取りを会社員時代と比較したい", benefit: "社会保険料の増加分を含めた実質手取りを計算" },
   ];
 
 

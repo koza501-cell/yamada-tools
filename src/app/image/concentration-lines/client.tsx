@@ -23,7 +23,7 @@ const PRESETS: { label: string; icon: string; settings: Partial<LineSettings> }[
   { label: "漫画風", icon: "💥", settings: { lineCount: 80, thickness: 3, innerRadius: 25, color: "#000000", opacity: 85, style: "tapered" } },
   { label: "少年漫画", icon: "⚡", settings: { lineCount: 120, thickness: 2, innerRadius: 20, color: "#000000", opacity: 90, style: "tapered" } },
   { label: "インパクト", icon: "💢", settings: { lineCount: 60, thickness: 5, innerRadius: 15, color: "#000000", opacity: 95, style: "straight" } },
-  { label: "やわらか", icon: "✨", settings: { lineCount: 40, thickness: 2, innerRadius: 35, color: "#000000", opacity: 50, style: "tapered" } },
+  { label: "やわらか", icon: "", settings: { lineCount: 40, thickness: 2, innerRadius: 35, color: "#000000", opacity: 50, style: "tapered" } },
   { label: "赤集中線", icon: "🔴", settings: { lineCount: 80, thickness: 3, innerRadius: 25, color: "#cc0000", opacity: 80, style: "tapered" } },
   { label: "白集中線", icon: "⚪", settings: { lineCount: 80, thickness: 3, innerRadius: 25, color: "#ffffff", opacity: 85, style: "tapered" } },
 ];

@@ -121,7 +121,7 @@ function FeaturedCard({ niche, className = "" }: { niche: Niche; className?: str
             className="text-[11px] md:text-xs font-bold px-3 py-1 rounded-full shadow-md"
             style={{ background: "#DC2626", color: "white" }}
           >
-            🔥 {niche.popularBadge}
+            {niche.popularBadge}
           </span>
         )}
       </div>

@@ -15,7 +15,7 @@ const faq = [
 const seoContent = {
   intro: "シンプルで美しい名刺を無料作成。会社名、名前、連絡先を入力するだけ。QRコード付きの名刺も作れます。",
   useCases: [
-    { title: "🆕 新規作成", desc: "起業・独立時の名刺作成" },
+    { title: "新規作成", desc: "起業・独立時の名刺作成" },
     { title: "🔄 デザイン変更", desc: "名刺デザインのリニューアル" },
     { title: "📱 QRコード付き", desc: "WebサイトへのQRコード入り" },
     { title: "🖨️ 印刷用", desc: "印刷して即使える品質" },

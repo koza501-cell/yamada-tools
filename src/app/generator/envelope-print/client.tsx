@@ -2609,7 +2609,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
               )}
 
               <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-xl p-4">
-                <h3 className="font-bold text-green-800 mb-2 dark:text-green-300">✨ 高画質印刷対応</h3>
+                <h3 className="font-bold text-green-800 mb-2 dark:text-green-300">高画質印刷対応</h3>
                 <ul className="text-sm text-green-900 space-y-1 dark:text-green-300">
                   <li>• <strong>300 DPI</strong>で印刷 - プロ品質の仕上がり</li>
                   <li>• 縦中横（数字の自動組み版）対応</li>

@@ -738,7 +738,7 @@ export default function PropertyTaxCalculatorPage() {
               {[
                 { href: "/realestate/rent-vs-buy", label: "家賃 vs 購入 比較計算機", desc: "賃貸と購入どちらがお得かを計算" },
                 { href: "/realestate/acquisition-tax", label: "不動産取得税 計算機", desc: "購入時にかかる取得税を軽減措置込みで計算" },
-                { href: "/finance/jutaku-loan", label: "住宅ローン計算機 Pro", desc: "月返済額・総返済額・繰り上げ返済を計算" },
+                { href: "/finance/jutaku-loan", label: "住宅ローン計算機", desc: "月返済額・総返済額・繰り上げ返済を計算" },
                 { href: "/tax/inheritance-tax-calculator", label: "相続税 簡易計算機", desc: "不動産相続時の相続税目安を計算" },
               ].map((tool) => (
                 <Link key={tool.href} href={tool.href}

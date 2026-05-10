@@ -872,7 +872,7 @@ export default function RevolvingCalculator() {
               className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors"
             >
               <div>
-                <div className="text-sm font-medium text-gray-800">住宅ローン計算機 Pro</div>
+                <div className="text-sm font-medium text-gray-800">住宅ローン計算機</div>
                 <div className="text-xs text-gray-500">住宅ローンを徹底シミュレーション</div>
               </div>
             </Link>

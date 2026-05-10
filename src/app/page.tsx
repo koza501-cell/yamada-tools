@@ -16,19 +16,6 @@ import NicheBentoSection from "@/components/home/NicheBentoSection";
 import { pdfTools, documentTools, convertTools, imageTools, generatorTools, financeTools, careerTools, taxTools, realestateTools, businessTools, healthTools, foodTools, lifeTools, clinicTools, getToolCount, allTools, getNewTools} from "@/config/tools";
 const popularTools = allTools.filter(t => t.isPopular && t.available);
 
-// High-traffic tool paths that get 🔥 badge
-const HOT_PATHS = new Set([
-  '/generator/envelope-print',  // #1 GA
-  '/convert/bank-format',       // #2 GA
-  '/generator/random-picker',   // #4 GA
-  '/image/flip',                // #5 GA
-  '/document/vertical-text',    // #6 GA
-  '/pdf/text-input',            // #7 GA
-  '/convert/furigana',          // #8 GA
-  '/generator/hanko',           // #11 GA
-  '/image/compress',            // #12 GA
-  '/pdf/compress',              // #13 GA
-]);
 
 // Feature H: Search suggestion chips
 const SEARCH_CHIPS = [
@@ -126,7 +113,7 @@ export default function Home() {
               🗑️ 60分で自動削除
             </span>
             <span className="bg-blue-50 dark:bg-gray-700 text-blue-700 dark:text-gray-200 px-3 py-1.5 rounded-full text-xs font-medium border border-blue-100 dark:border-gray-600">
-              ✨ 登録不要・完全無料
+              登録不要・完全無料
             </span>
             <span className="bg-blue-50 dark:bg-gray-700 text-blue-700 dark:text-gray-200 px-3 py-1.5 rounded-full text-xs font-medium border border-blue-100 dark:border-gray-600">
               📱 スマホ対応
@@ -179,8 +166,8 @@ export default function Home() {
       <section id="popular-tools" className="py-16 bg-gray-50 dark:bg-gray-900" style={{scrollMarginTop: "120px"}}>
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-6">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">🔥 人気ツール - 今すぐ使う</h2>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">先月100万件以上の処理実績 · 法人500社以上が利用</p>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">人気ツール - 今すぐ使う</h2>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">多くの方にご利用いただいています</p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-2">
             {popularTools.map((tool) => (
@@ -189,9 +176,7 @@ export default function Home() {
                 href={tool.path}
                 className="relative bg-white dark:bg-gray-800 shadow-md hover:shadow-lg text-kon dark:text-blue-300 px-3 py-3 rounded-xl font-medium transition-all hover:-translate-y-0.5 text-center text-sm min-h-[44px] flex items-center justify-center"
               >
-                {HOT_PATHS.has(tool.path) && (
-                  <span className="absolute -top-1.5 -right-1.5 text-xs bg-red-500 text-white px-1 py-0.5 rounded-full leading-none font-bold">🔥</span>
-                )}
+                
                 <span>{tool.icon} {tool.nameJa}</span>
               </Link>
             ))}
@@ -207,7 +192,7 @@ export default function Home() {
           {getNewTools().filter(t => t.category !== "finance").slice(0, 8).length > 0 && (
             <div className="mb-12">
               <div className="flex items-center gap-3 mb-6">
-                <span className="inline-block px-3 py-1 bg-orange-500 text-white text-sm font-bold rounded-full">🆕 新ツール</span>
+                <span className="inline-block px-3 py-1 bg-orange-500 text-white text-sm font-bold rounded-full">新ツール</span>
                 <h2 className="text-xl font-bold text-gray-900 dark:text-white">新しいツールが登場！</h2>
               </div>
               <div className="grid md:grid-cols-2 gap-4 max-w-4xl">

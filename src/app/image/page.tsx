@@ -98,7 +98,7 @@ export default function ImageToolsPage() {
         {/* Popular Tools */}
         <section className="mb-12">
           <h2 className="text-xl font-bold text-kon mb-4 flex items-center gap-2">
-            <span>🔥</span> 人気ツール
+             人気ツール
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {popularTools.map((tool) => (

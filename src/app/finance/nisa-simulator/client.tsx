@@ -133,7 +133,7 @@ export default function NisaSimulatorClient() {
       <div className="bg-gradient-to-r from-blue-700 to-blue-500 text-white py-10 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-3 mb-2">
-            <h1 className="text-2xl md:text-3xl font-bold">新NISAシミュレーター Pro</h1>
+            <h1 className="text-2xl md:text-3xl font-bold">新NISAシミュレーター</h1>
           </div>
           <p className="text-blue-100 text-sm md:text-base">積立・一括・複数シナリオ対応｜1800万円非課税枠の活用をシミュレーション</p>
         </div>

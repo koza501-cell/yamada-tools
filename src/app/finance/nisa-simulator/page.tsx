@@ -41,14 +41,14 @@ const breadcrumbJsonLd = {
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://yamada-tools.jp"},
     {"@type": "ListItem", "position": 2, "name": "金融・資産運用ツール", "item": "https://yamada-tools.jp/finance"},
-    {"@type": "ListItem", "position": 3, "name": "新NISAシミュレーター Pro", "item": "https://yamada-tools.jp/finance/nisa-simulator"}
+    {"@type": "ListItem", "position": 3, "name": "新NISAシミュレーター", "item": "https://yamada-tools.jp/finance/nisa-simulator"}
   ]
 };
 
 const softwareApplicationJsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "新NISAシミュレーター Pro",
+  "name": "新NISAシミュレーター",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Web",
   "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"},

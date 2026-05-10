@@ -617,7 +617,7 @@ export default function RetirementSimulatorClient() {
       {/* Header */}
       <div className="bg-gradient-to-r from-emerald-700 to-teal-600 text-white py-8 px-4">
         <div className="max-w-5xl mx-auto">
-          <h1 className="text-2xl md:text-3xl font-bold mb-1">老後資金シミュレーター Pro</h1>
+          <h1 className="text-2xl md:text-3xl font-bold mb-1">老後資金シミュレーター</h1>
           <p className="text-emerald-100 text-sm">年金・iDeCo・NISA・退職金・取り崩し完全対応 | インフレ対応・2026年10年ルール対応</p>
         </div>
       </div>

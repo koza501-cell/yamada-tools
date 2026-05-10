@@ -238,7 +238,7 @@ export default function NoiseReductionClient({
       ctx.font = `bold ${fontSize}px sans-serif`;
       ctx.shadowColor = "rgba(0,0,0,0.7)"; ctx.shadowBlur = 4;
       ctx.fillStyle = "#fff"; ctx.textAlign = "center";
-      ctx.fillText("✨ 除去後", splitX / 2, fontSize + 10);
+      ctx.fillText("除去後", splitX / 2, fontSize + 10);
       ctx.fillText("📷 元画像", splitX + (original.width - splitX) / 2, fontSize + 10);
       ctx.shadowBlur = 0; ctx.shadowColor = "transparent";
     } else {

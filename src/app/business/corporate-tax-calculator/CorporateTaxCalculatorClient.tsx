@@ -557,7 +557,7 @@ export default function CorporateTaxCalculatorPage() {
               { href: "/business/incorporation-simulator", title: "個人事業主 vs 法人化 比較ツール", desc: "法人化すべきかシミュレーション" },
               { href: "/business/director-salary-optimizer", title: "役員報酬 最適化シミュレーター", desc: "総税負担を最小化する役員報酬を計算" },
               { href: "/business/freelance-tax-calculator", title: "フリーランス税金計算機", desc: "個人事業の税金・社会保険料を計算" },
-              { href: "/tax/consumption-tax", title: "消費税 計算機 Pro", desc: "消費税額・税込/税抜を瞬時に計算" },
+              { href: "/tax/consumption-tax", title: "消費税計算機", desc: "消費税額・税込/税抜を瞬時に計算" },
             ].map((tool) => (
               <Link key={tool.href} href={tool.href} className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 hover:border-emerald-300 hover:shadow-md transition-all">
                 <p className="font-medium text-gray-800 text-sm">{tool.title}</p>

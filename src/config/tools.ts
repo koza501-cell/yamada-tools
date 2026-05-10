@@ -1223,7 +1223,7 @@ export const generatorTools: Tool[] = [
 export const financeTools: Tool[] = [
   {
     id: "nisa-simulator",
-    nameJa: "新NISAシミュレーター Pro",
+    nameJa: "新NISAシミュレーター",
     nameEn: "NISA Simulator Pro",
     description: "積立・一括・複数シナリオ対応。1800万円非課税枠の使用状況と節税額を計算",
     icon: "📈",
@@ -1237,7 +1237,7 @@ export const financeTools: Tool[] = [
   },
   {
     id: "jutaku-loan",
-    nameJa: "住宅ローン計算機 Pro",
+    nameJa: "住宅ローン計算機",
     nameEn: "Home Loan Calculator Pro",
     description: "固定・変動・繰上返済・控除・借り換えを1つで計算。5年ルール対応",
     icon: "🏠",
@@ -1251,7 +1251,7 @@ export const financeTools: Tool[] = [
   },
   {
     id: "fx-calculator-finance",
-    nameJa: "FX損益計算機 Pro",
+    nameJa: "FX損益計算機",
     nameEn: "FX Calculator Pro",
     description: "損益・証拠金・スワップ・確定申告を完全対応。複数取引の一括計算も",
     icon: "💹",
@@ -1265,7 +1265,7 @@ export const financeTools: Tool[] = [
   },
   {
     id: "retirement-simulator",
-    nameJa: "老後資金シミュレーター Pro",
+    nameJa: "老後資金シミュレーター",
     nameEn: "Retirement Simulator Pro",
     description: "年金・iDeCo・NISA・退職金・取り崩しを総合シミュレーション",
     icon: "🏦",
@@ -2220,7 +2220,7 @@ export const healthTools: Tool[] = [
     nameJa: "カロリー計算機",
     nameEn: "Calorie Calculator",
     description: "基礎代謝・1日の消費カロリーを計算",
-    icon: "🔥",
+    icon: "",
     path: "/health/calorie-calculator",
     apiEndpoint: "",
     acceptedTypes: "",

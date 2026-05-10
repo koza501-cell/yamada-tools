@@ -40,14 +40,14 @@ const breadcrumbJsonLd = {
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://yamada-tools.jp"},
     {"@type": "ListItem", "position": 2, "name": "金融・資産運用ツール", "item": "https://yamada-tools.jp/finance"},
-    {"@type": "ListItem", "position": 3, "name": "老後資金シミュレーター Pro", "item": "https://yamada-tools.jp/finance/retirement-simulator"}
+    {"@type": "ListItem", "position": 3, "name": "老後資金シミュレーター", "item": "https://yamada-tools.jp/finance/retirement-simulator"}
   ]
 };
 
 const softwareApplicationJsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "老後資金シミュレーター Pro",
+  "name": "老後資金シミュレーター",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Web",
   "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"},

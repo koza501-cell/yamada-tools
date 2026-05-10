@@ -467,7 +467,7 @@ export default function JutakuLoanClient() {
       {/* Header */}
       <div className="bg-gradient-to-r from-blue-800 to-blue-600 text-white py-8 px-4">
         <div className="max-w-5xl mx-auto">
-          <h1 className="text-2xl md:text-3xl font-bold mb-1">住宅ローン計算機 Pro</h1>
+          <h1 className="text-2xl md:text-3xl font-bold mb-1">住宅ローン計算機</h1>
           <p className="text-blue-100 text-sm">固定・変動・繰上返済・控除・借り換え 完全対応 | 変動金利将来シナリオ・5年ルール対応</p>
         </div>
       </div>

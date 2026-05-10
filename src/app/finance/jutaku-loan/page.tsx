@@ -40,14 +40,14 @@ const breadcrumbJsonLd = {
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://yamada-tools.jp"},
     {"@type": "ListItem", "position": 2, "name": "金融・資産運用ツール", "item": "https://yamada-tools.jp/finance"},
-    {"@type": "ListItem", "position": 3, "name": "住宅ローン計算機 Pro", "item": "https://yamada-tools.jp/finance/jutaku-loan"}
+    {"@type": "ListItem", "position": 3, "name": "住宅ローン計算機", "item": "https://yamada-tools.jp/finance/jutaku-loan"}
   ]
 };
 
 const softwareApplicationJsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "住宅ローン計算機 Pro",
+  "name": "住宅ローン計算機",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Web",
   "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"},

@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 
 const CATEGORIES = [
   { id: "all", label: "すべて", href: "#top", icon: "🏠", ariaLabel: "すべてのツール", tabId: null },
-  { id: "popular", label: "人気", href: "#popular-tools", icon: "🔥", ariaLabel: "人気ツール", tabId: null },
+  { id: "popular", label: "人気", href: "#popular-tools", icon: "", ariaLabel: "人気ツール", tabId: null },
   { id: "pdf", label: "PDF", href: "#tools-tabs", icon: "📄", ariaLabel: "PDFツール", tabId: "pdf" },
   { id: "document", label: "書類", href: "#tools-tabs", icon: "📝", ariaLabel: "書類作成ツール", tabId: "document" },
   { id: "convert", label: "変換", href: "#tools-tabs", icon: "🔄", ariaLabel: "変換ツール", tabId: "convert" },
