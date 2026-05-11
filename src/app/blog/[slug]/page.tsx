@@ -44,6 +44,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       authors: [blog.author || '合同会社山田トレード'],
       images: blog.featuredImage ? [{ url: blog.featuredImage, width: 1200, height: 630, alt: blog.title }] : [],
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: blog.title,
+      description: blog.excerpt || blog.title,
+      images: blog.featuredImage ? [blog.featuredImage] : ['https://yamada-tools.jp/og-image.png'],
+    },
   };
 }
 
