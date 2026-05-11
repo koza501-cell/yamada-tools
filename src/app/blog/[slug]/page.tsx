@@ -8,6 +8,7 @@ import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import { marked } from 'marked';
 import '@/app/blog.css';
+import RelatedTools from '@/components/common/RelatedTools';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -239,6 +240,9 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           </a>
         </div>
       </footer>
+      {blog.relatedTools?.length > 0 && (
+        <RelatedTools tools={blog.relatedTools} />
+      )}
     </article>
   );
 }

@@ -305,7 +305,7 @@ export default function HikkoshiHiyouSimulation2026Blog() {
       </section>
 
       <section className="mb-10">
-        <h2 className="text-2xl font-bold text-gray-800 mb-4">関連ツール</h2>
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">🔗 あわせて使えるツール</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <Link href="/realestate/moving-cost-calculator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-ai transition">
             <span className="font-bold text-gray-800">引越し費用計算機</span>
