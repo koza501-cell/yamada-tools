@@ -26,6 +26,7 @@ export function middleware(request: NextRequest) {
   }
 
   const response = NextResponse.next();
+  response.headers.set('x-pathname', request.nextUrl.pathname);
 
   // Noindex for staging and local dev (broader check intentional — covers localhost:3003 etc.)
   if (host.includes('staging') || host.includes('localhost')) {
