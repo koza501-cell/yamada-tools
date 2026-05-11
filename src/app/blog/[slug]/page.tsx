@@ -111,10 +111,10 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   const faqSchema = blog.faq && Array.isArray(blog.faq) ? {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: (blog.faq as Array<{ q: string; a: string }>).map((item) => ({
+    mainEntity: (blog.faq as Array<{ question: string; answer: string }>).map((item) => ({
       "@type": "Question",
-      name: item.q,
-      acceptedAnswer: { "@type": "Answer", text: item.a },
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
     })),
   } : null;
 
@@ -240,7 +240,20 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           </a>
         </div>
       </footer>
-      {blog.relatedTools?.length > 0 && (
+              {blog.faq?.length > 0 && (
+          <section className="mt-10 mb-8">
+            <h2 className="text-2xl font-bold text-kon mb-6">よくあるご質問</h2>
+            <div className="space-y-3">
+              {blog.faq.map((f: any, i: number) => (
+                <details key={i} className="bg-white border border-gray-200 rounded-lg p-4 group">
+                  <summary className="font-semibold text-kon cursor-pointer">{f.question}</summary>
+                  <p className="mt-3 text-sm text-sumi leading-relaxed whitespace-pre-line">{f.answer}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+        )}
+        {blog.relatedTools?.length > 0 && (
         <RelatedTools tools={blog.relatedTools} />
       )}
     </article>
