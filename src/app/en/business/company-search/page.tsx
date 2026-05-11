@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CompanySearchClient from "./client";
+import { FAQS } from "./faqs";
 
 export const metadata: Metadata = {
   title: "Japanese Company Search [Free] | Verify any Japan Corporation by Name | Yamada Tools",
@@ -41,5 +42,23 @@ export const metadata: Metadata = {
 };
 
 export default function CompanySearchPage() {
-  return <CompanySearchClient />;
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQS.map((f: { q: string; a: string }) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <CompanySearchClient />
+    </>
+  );
 }
