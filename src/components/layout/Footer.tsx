@@ -167,7 +167,7 @@ export default function Footer() {
                 </Link>
               </div>
               <div>
-                <Link href="/legal/terms" className="text-gray-300 hover:text-sakura transition-colors">
+                <Link href="/terms" className="text-gray-300 hover:text-sakura transition-colors">
                   利用規約
                 </Link>
               </div>

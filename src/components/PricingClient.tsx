@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     q: 'プランの変更やキャンセルはいつでもできますか？',
-    a: 'はい、いつでもプランの変更・キャンセルが可能です。年払いの場合、残りの期間に応じて日割り計算で返金いたします。',
+    a: 'はい、いつでもプランの変更・キャンセルが可能です。解約後は当該請求期間の末日までご利用いただけます。デジタルサービスの性質上、お支払い後の返金は原則として承っておりません。',
   },
   {
     q: '請求書払いは可能ですか？',
@@ -198,7 +198,7 @@ export default function PricingClient() {
           年払い
           {billing === 'annual' && (
             <span className="bg-sakura text-white text-xs font-bold px-2.5 py-0.5 rounded-full">
-              2ヶ月分お得！
+              17%お得！
             </span>
           )}
         </span>
@@ -269,13 +269,13 @@ export default function PricingClient() {
               ) : (
                 <>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-4xl font-bold text-sakura">¥665</span>
+                    <span className="text-4xl font-bold text-sakura">¥817</span>
                     <span className="text-gray-500 text-sm">/月</span>
                   </div>
                   <p className="text-gray-400 text-xs mt-0.5">
-                    <span className="line-through mr-1">¥980</span>年額 ¥7,980（税込）
+                    <span className="line-through mr-1">¥980</span>年額 ¥9,800（税込）
                   </p>
-                  <span className="inline-block mt-1 text-xs font-bold text-white bg-danger px-2 py-0.5 rounded-full">33%お得</span>
+                  <span className="inline-block mt-1 text-xs font-bold text-white bg-danger px-2 py-0.5 rounded-full">17%お得</span>
                 </>
               )}
             </div>

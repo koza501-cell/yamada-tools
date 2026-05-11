@@ -102,7 +102,7 @@ export function PricingPopup({ type, onClose, remainingUses = 0 }: PricingPopupP
         <div className="text-center mb-4">
           <span className="text-3xl font-bold text-sakura">¥980</span>
           <span className="text-gray-500">/月</span>
-          <p className="text-xs text-gray-400 mt-1">年払いなら¥7,980/年（2ヶ月分お得！）</p>
+          <p className="text-xs text-gray-400 mt-1">年払いなら¥9,800/年（17%お得！）</p>
         </div>
 
         {/* CTA */}

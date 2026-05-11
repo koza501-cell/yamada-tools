@@ -61,9 +61,12 @@ export default function LegalPage() {
               <tr>
                 <td className="py-4 pr-4 font-bold text-kon align-top">サービス料金</td>
                 <td className="py-4">
-                  無料プラン：無料<br />
-                  PROプラン：月額980円（税込）または年額9,800円（税込）<br />
-                  <span className="text-sm text-gray-500">※ 10日間の無料体験あり</span>
+                  <strong>FREEプラン：</strong>無料<br />
+                  <strong>PROプラン：</strong>月額980円（税込）または年額9,800円（税込）<br />
+                  <strong>TEAMプラン：</strong>月額1,480円/ユーザー（税込）または年額11,760円/ユーザー（税込）<br />
+                  <strong>ENTERPRISEプラン：</strong>個別お見積もり（お問い合わせください）<br />
+                  <strong>デイパス：</strong>1日パス120円、3日パス290円、7日パス490円（すべて税込）<br />
+                  <span className="text-sm text-gray-500">※ PRO・TEAMプランには10日間の無料体験あり</span>
                 </td>
               </tr>
               <tr>
@@ -76,8 +79,10 @@ export default function LegalPage() {
               <tr>
                 <td className="py-4 pr-4 font-bold text-kon align-top">支払方法</td>
                 <td className="py-4">
-                  クレジットカード（Visa、Mastercard、JCB、American Express）<br />
-                  <span className="text-sm text-gray-500">KOMOJU決済システムを利用</span>
+                  <strong>クレジットカード：</strong>Visa、Mastercard、JCB、American Express<br />
+                  <span className="text-sm text-gray-500">└ Stripe決済システムを利用</span><br /><br />
+                  <strong>その他の決済方法：</strong>コンビニ払い、PayPay、銀行振込、atone（後払い）<br />
+                  <span className="text-sm text-gray-500">└ KOMOJU決済システムを利用</span>
                 </td>
               </tr>
               <tr>
