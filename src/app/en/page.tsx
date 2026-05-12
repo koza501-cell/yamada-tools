@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://yamada-tools.jp"),
   title: "Yamada Tools (English) — Free Japan Business Verification Tools",
   description:
-    "Free English tools for foreign businesses interacting with Japan. Verify Japanese companies, sign PDF contracts, and access Japan-domestic services in English. No signup required.",
+    "Free English tools for foreign businesses dealing with Japan. Verify Japanese companies, check property addresses for hazard/zoning/price data, and more. Official MLIT government data. No signup.",
   keywords: [
     "japan business tools english",
     "yamada tools english",
@@ -33,6 +33,8 @@ export const metadata: Metadata = {
     "japan business directory english",
     "japan online tools english",
     "foreign business japan",
+    "japan property check english",
+    "japan address due diligence",
   ],
   authors: [{ name: "Yamada Tools" }],
   alternates: {
@@ -190,6 +192,12 @@ export default function EnglishHomePage() {
               icon="🏢"
               title="Japan Company Search"
               description="Verify any Japanese company in English. Free METI gBizINFO data, 5M+ companies, no signup. Perfect for KYB, due diligence, and supplier verification."
+            />
+            <ToolCard
+              href="/en/realestate/property-report"
+              icon="🏠"
+              title="Japan Property Due Diligence Report"
+              description="Check any Japanese address: hazard map, zoning, land prices, school district, and 50-year population projection in one English report. Free, no signup. Official MLIT government data."
             />
             <ToolCard
               href="/en/pdf-text-input"
