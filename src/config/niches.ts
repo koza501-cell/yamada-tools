@@ -152,7 +152,7 @@ export const niches: Niche[] = [
   },
   {
     id: 'care',
-    iconName: 'heart',
+    iconName: 'care',
     name: '介護・保育 事業者向け',
     shortName: '介護・保育',
     description: '介護施設・保育園の事務作業を効率化するツール',
@@ -162,7 +162,7 @@ export const niches: Niche[] = [
     featuredLinks: [
       { name: '介護報酬 単位計算機', url: '/business/kaigo-hoshu-calc' },
     ],
-    url: '/business',
+    url: '/care',
   },
   // Future niches (coming soon)
   {

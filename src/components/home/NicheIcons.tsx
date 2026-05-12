@@ -132,6 +132,18 @@ export function CarIcon(props: IconProps) {
   );
 }
 
+export function CareIcon(props: IconProps) {
+  return (
+    <IconWrapper {...props}>
+      {/* Caregiver person */}
+      <circle cx="9" cy="7" r="2.5" />
+      <path d="M3 20v-2a5.5 5.5 0 0 1 11 0v2" />
+      {/* Care heart symbol */}
+      <path d="M17.5 11a2 2 0 0 0-2 2c0 2 2 3 2 3s2-1 2-3a2 2 0 0 0-2-2z" />
+    </IconWrapper>
+  );
+}
+
 // ============================================================
 // ICON RESOLVER
 // ============================================================
@@ -159,6 +171,7 @@ export const iconMap: Record<string, (props: IconProps) => React.ReactElement> =
   users: UsersIcon,
   car: CarIcon,
   building: BuildingIcon,
+  care: CareIcon,
 };
 
 export function NicheIcon({ name, ...props }: IconProps & { name: string }) {
