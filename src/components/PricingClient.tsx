@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     q: 'プランの変更やキャンセルはいつでもできますか？',
-    a: 'はい、いつでもプランの変更・キャンセルが可能です。年払いの場合、残りの期間に応じて日割り計算で返金いたします。',
+    a: 'はい、いつでもプランの変更・キャンセルが可能です。解約後は当該請求期間の末日までご利用いただけます。デジタルサービスの性質上、お支払い後の返金は原則として承っておりません。',
   },
   {
     q: '請求書払いは可能ですか？',
@@ -65,6 +65,7 @@ const envelopeRows = [
   { feature: 'アドレス帳共有',           free: '—',                pro: '—',                 team: '✓',               enterprise: '✓' },
 ];
 
+// BRAND-COLOR-FIX-v1: sakura → kon for professional B2B aesthetic
 export default function PricingClient() {
   const [billing, setBilling] = useState<BillingPeriod>('monthly');
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
@@ -197,8 +198,8 @@ export default function PricingClient() {
         <span className={`text-sm font-medium transition-colors flex items-center gap-2 ${billing === 'annual' ? 'text-kon dark:text-white' : 'text-gray-400'}`}>
           年払い
           {billing === 'annual' && (
-            <span className="bg-sakura text-white text-xs font-bold px-2.5 py-0.5 rounded-full">
-              2ヶ月分お得！
+            <span className="bg-kon text-white text-xs font-bold px-2.5 py-0.5 rounded-full">
+              17%お得！
             </span>
           )}
         </span>
@@ -242,14 +243,14 @@ export default function PricingClient() {
           </div>
 
           {/* PRO */}
-          <div className="bg-white dark:bg-gray-800 rounded-2xl border-2 border-sakura p-6 flex flex-col shadow-lg relative hover:shadow-xl transition-shadow lg:scale-[1.03]">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl border-2 border-kon p-6 flex flex-col shadow-lg relative hover:shadow-xl transition-shadow lg:scale-[1.03]">
             <div className="absolute -top-4 left-1/2 -translate-x-1/2">
               {isProPlan ? (
                 <span className="bg-green-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow whitespace-nowrap">
                   契約中
                 </span>
               ) : (
-                <span className="bg-sakura text-white text-xs font-bold px-4 py-1.5 rounded-full shadow whitespace-nowrap">
+                <span className="bg-kon text-white text-xs font-bold px-4 py-1.5 rounded-full shadow whitespace-nowrap">
                   おすすめ
                 </span>
               )}
@@ -261,7 +262,7 @@ export default function PricingClient() {
               {billing === 'monthly' ? (
                 <>
                   <div>
-                    <span className="text-4xl font-bold text-sakura">¥980</span>
+                    <span className="text-4xl font-bold text-kon">¥980</span>
                     <span className="text-gray-500 text-sm ml-1">/月</span>
                   </div>
                   <p className="text-gray-400 text-xs mt-1">（税込）</p>
@@ -269,13 +270,13 @@ export default function PricingClient() {
               ) : (
                 <>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-4xl font-bold text-sakura">¥665</span>
+                    <span className="text-4xl font-bold text-kon">¥817</span>
                     <span className="text-gray-500 text-sm">/月</span>
                   </div>
-                  <p className="text-gray-400 text-xs mt-0.5">
-                    <span className="line-through mr-1">¥980</span>年額 ¥7,980（税込）
+                  <p className="text-gray-600 dark:text-gray-300 text-xs mt-0.5">
+                    <span className="line-through mr-1 text-gray-500">¥980</span>年額 <strong>¥9,800</strong>（税込）
                   </p>
-                  <span className="inline-block mt-1 text-xs font-bold text-white bg-danger px-2 py-0.5 rounded-full">33%お得</span>
+                  <span className="inline-block mt-1 text-xs font-bold text-white bg-kon px-2 py-0.5 rounded-full">17%お得</span>
                 </>
               )}
             </div>
@@ -304,7 +305,7 @@ export default function PricingClient() {
               <button
                 onClick={() => handleUpgrade(proKey)}
                 disabled={loadingPlan === proKey}
-                className="w-full py-3 bg-sakura hover:bg-yellow-600 text-white rounded-xl font-bold transition-colors text-sm disabled:opacity-60 disabled:cursor-not-allowed"
+                className="w-full py-3 bg-kon hover:bg-kon/90 text-white rounded-xl font-bold transition-colors text-sm disabled:opacity-60 disabled:cursor-not-allowed shadow-md"
               >
                 {loadingPlan === proKey ? '処理中...' : 'PROプランを始める'}
               </button>
@@ -341,10 +342,10 @@ export default function PricingClient() {
                     <span className="text-4xl font-bold text-kon dark:text-gray-300">¥980</span>
                     <span className="text-gray-500 text-sm">/ユーザー/月</span>
                   </div>
-                  <p className="text-gray-400 text-xs mt-0.5">
-                    <span className="line-through mr-1">¥1,480</span>年額 ¥11,760/ユーザー（税込）
+                  <p className="text-gray-600 dark:text-gray-300 text-xs mt-0.5">
+                    <span className="line-through mr-1 text-gray-500">¥1,480</span>年額 <strong>¥11,760</strong>/ユーザー（税込）
                   </p>
-                  <span className="inline-block mt-1 text-xs font-bold text-white bg-danger px-2 py-0.5 rounded-full">33%お得</span>
+                  <span className="inline-block mt-1 text-xs font-bold text-white bg-kon px-2 py-0.5 rounded-full">33%お得</span>
                 </>
               )}
             </div>
@@ -414,7 +415,7 @@ export default function PricingClient() {
             <div className="relative flex flex-col items-center rounded-xl border-2 border-kon bg-gray-50 dark:bg-kon p-4"><span className="absolute -top-2.5 left-1/2 -translate-x-1/2 text-xs font-bold px-2 py-0.5 rounded-full whitespace-nowrap bg-kon text-white">おすすめ</span><div className="text-sm font-semibold text-gray-700 dark:text-gray-200 mt-1">3日パス</div><div className="text-2xl font-bold text-gray-900 dark:text-white mt-1">¥290</div><div className="text-xs text-gray-400 mb-2">税込</div></div>
             <div className="relative flex flex-col items-center rounded-xl border-2 border-green-500 bg-green-50 dark:bg-green-950 p-4"><span className="absolute -top-2.5 left-1/2 -translate-x-1/2 text-xs font-bold px-2 py-0.5 rounded-full whitespace-nowrap bg-green-500 text-white">最もお得</span><div className="text-sm font-semibold text-gray-700 dark:text-gray-200 mt-1">7日パス</div><div className="text-2xl font-bold text-gray-900 dark:text-white mt-1">¥490</div><div className="text-xs text-gray-400 mb-2">税込</div></div>
           </div>
-          <p className="text-center text-xs text-gray-400 mt-3">デイパスはツール利用時に購入できます（Stripe決済）</p>
+          <p className="text-center text-xs text-gray-400 mt-3">デイパスはツール利用時に購入できます（Stripe・KOMOJU決済対応）</p>
         </div>
 
         {/* Comparison Table */}
@@ -510,7 +511,7 @@ export default function PricingClient() {
           </p>
           <Link
             href="/"
-            className="inline-block bg-sakura hover:bg-yellow-600 text-white font-bold px-10 py-4 rounded-xl transition-colors text-lg"
+            className="inline-block bg-kon hover:bg-kon/90 text-white font-bold px-10 py-4 rounded-xl transition-colors text-lg shadow-md"
           >
             無料で始める →
           </Link>

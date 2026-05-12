@@ -162,7 +162,12 @@ export default function Footer() {
                 </Link>
               </div>
               <div>
-                <Link href="/legal/terms" className="text-gray-300 hover:text-sakura transition-colors">
+                <Link href="/contact" className="text-gray-300 hover:text-sakura transition-colors">
+                  お問い合わせ
+                </Link>
+              </div>
+              <div>
+                <Link href="/terms" className="text-gray-300 hover:text-sakura transition-colors">
                   利用規約
                 </Link>
               </div>

@@ -2,6 +2,22 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { FAQS } from "./faqs";
+
+/**
+ * SAVE THIS FILE AS (REPLACE EXISTING):
+ *   ~/projects/3websitepassive_income/yamada-tools/frontend-staging/src/app/en/business/company-search/client.tsx
+ *
+ * Changes vs. old file:
+ *   - Added direct-answer block at top (huge GEO win — first 200 words)
+ *   - Updated H1 with secondary keyword ("Free English Verification")
+ *   - Added intro paragraph with extractable answer text
+ *   - Added id="step1"..."step5" anchors to match HowTo schema URLs
+ *   - REMOVED duplicate FAQPage JSON-LD (already in page.tsx — was duplicated)
+ *   - REMOVED inline WebApplication JSON-LD (now in page.tsx — was duplicated)
+ *   - Added className="direct-answer-block" + .faq-answer (matches speakable schema)
+ *   - All existing functionality preserved (search, results, sample brands, etc.)
+ */
 
 const API_URL =
   process.env.NEXT_PUBLIC_API_URL || "https://api-staging.yamada-tools.jp";
@@ -52,8 +68,6 @@ const SAMPLE_BRANDS = [
   "Uniqlo",
   "Takeda",
 ];
-
-import { FAQS } from './faqs';
 
 // ─── Activity badge logic ───────────────────────────────────────────────────
 function getActivityBadge(activity: string | number | undefined) {
@@ -182,9 +196,9 @@ export default function CompanySearchClient() {
       </nav>
 
       {/* ─── Header ──────────────────────────────────────────────── */}
-      <header className="max-w-5xl mx-auto px-4 mt-6 mb-8">
+      <header className="max-w-5xl mx-auto px-4 mt-6 mb-6">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
-          Japanese Company Search
+          Japan Company Search — Free English Verification
         </h1>
         <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">
           Verify any Japanese corporation instantly using official government
@@ -203,6 +217,32 @@ export default function CompanySearchClient() {
           </span>
         </div>
       </header>
+
+      {/* ─── Direct-answer block (GEO: first 200 words = AI citation gold) ── */}
+      <section className="max-w-5xl mx-auto px-4 mb-6">
+        <div
+          className="direct-answer-block bg-blue-50 dark:bg-blue-950/40 border-l-4 border-blue-600 dark:border-blue-400 p-4 md:p-5 rounded-r-lg"
+        >
+          <p className="text-gray-800 dark:text-gray-100 text-sm md:text-base leading-relaxed">
+            <strong>
+              How to verify a Japanese company in English (free):
+            </strong>{" "}
+            Enter the company name below in English, romaji, or Japanese. Each
+            result returns the official{" "}
+            <strong>13-digit corporate number (法人番号)</strong>, registered
+            address, registration date, and government activity records. Data
+            comes from{" "}
+            <strong>
+              METI gBizINFO — Japan&apos;s official government corporate
+              database
+            </strong>{" "}
+            covering 5+ million registered businesses. This is the same data
+            Japanese banks, lawyers, and accountants reference. Use it to
+            verify suppliers, partners, or any Japanese 株式会社 before doing
+            business. No signup, no credit card, results in under 2 seconds.
+          </p>
+        </div>
+      </section>
 
       {/* ─── Search box ──────────────────────────────────────────── */}
       <section className="max-w-5xl mx-auto px-4 mb-6">
@@ -280,7 +320,7 @@ export default function CompanySearchClient() {
               <strong>{data.results.length}</strong> result
               {data.results.length !== 1 ? "s" : ""} for{" "}
               <strong className="text-gray-900 dark:text-white">
-                "{data.query}"
+                &quot;{data.query}&quot;
               </strong>
               {data.queries_tried.length > 1 && (
                 <span className="ml-2 text-xs">
@@ -309,8 +349,8 @@ export default function CompanySearchClient() {
                 No companies found.
               </p>
               <p className="text-sm text-gray-500 dark:text-gray-400">
-                Try searching with the Japanese name (e.g. "ソニー" instead of
-                "Sony"), or use a more common spelling.
+                Try searching with the Japanese name (e.g. &quot;ソニー&quot; instead of
+                &quot;Sony&quot;), or use a more common spelling.
               </p>
             </div>
           )}
@@ -356,10 +396,10 @@ export default function CompanySearchClient() {
             When you need to verify a Japanese company
           </h2>
           <p className="text-gray-700 dark:text-gray-300 mb-6">
-            Whether you're a foreign investor, an importer, a recruiter, or an
-            international supplier, you'll often need to confirm that a Japanese
-            counterparty is real, registered, and reputable. Here are the most
-            common situations where this tool helps:
+            Whether you&apos;re a foreign investor, an importer, a recruiter, or an
+            international supplier, you&apos;ll often need to confirm that a
+            Japanese counterparty is real, registered, and reputable. Here are
+            the most common situations where this tool helps:
           </p>
           <div className="grid md:grid-cols-2 gap-4">
             <UseCase
@@ -409,26 +449,31 @@ export default function CompanySearchClient() {
           </p>
           <ol className="space-y-5">
             <Step
+              id="step1"
               n={1}
               title="Search the company name"
               text="Type the company name above. If you only know the English/romaji version, type that — our tool auto-translates famous brands. For less-known companies, ask your Japanese contact for the official name in Japanese (it should be on their business card or invoices)."
             />
             <Step
+              id="step2"
               n={2}
               title="Match the corporate number (法人番号)"
               text="The 13-digit corporate number is the unique identifier. Your contact should provide this number on invoices, contracts, or official correspondence. If they can't or won't provide it, that's a red flag. Match the number from your records to the search result exactly."
             />
             <Step
+              id="step3"
               n={3}
               title="Verify the registered address"
               text="The address shown should match the address on their letterhead, invoices, or website. If addresses differ, ask why — many legitimate companies have multiple offices (head office vs. operations), but discrepancies should be explained. Watch out for addresses in buildings known to host hundreds of small companies (potential virtual offices)."
             />
             <Step
+              id="step4"
               n={4}
               title="Check for an established track record"
               text="Look at the 'government records' count in the result. Companies with 100+ records have a substantial public footprint — patents, government contracts, certifications, etc. Companies with fewer than 5 records that claim to be major operations deserve extra scrutiny."
             />
             <Step
+              id="step5"
               n={5}
               title="For high-stakes deals: get certified documents"
               text="If the deal is significant (six figures or more), request a 履歴事項全部証明書 (Certificate of All Historical Matters) from Japan's Legal Affairs Bureau (法務局). This shows full history including all directors, capital changes, and registered addresses. It costs about ¥600 and can be requested by anyone, including foreigners. A licensed Japanese accountant or lawyer can obtain it for you."
@@ -546,7 +591,7 @@ export default function CompanySearchClient() {
           </div>
           <p className="mt-4 text-sm text-gray-600 dark:text-gray-400 italic">
             Tip: When verifying a major Japanese corporation, expect to see KK
-            (株式会社). If a company claims to be a "Japanese mega-corporation"
+            (株式会社). If a company claims to be a &quot;Japanese mega-corporation&quot;
             but is registered as GK or YK, dig deeper.
           </p>
         </div>
@@ -556,7 +601,7 @@ export default function CompanySearchClient() {
       <section className="max-w-5xl mx-auto px-4 mt-8">
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6 md:p-8">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            Glossary: Japanese business terms you'll encounter
+            Glossary: Japanese business terms you&apos;ll encounter
           </h2>
           <p className="text-gray-700 dark:text-gray-300 mb-6">
             Learning these terms will dramatically improve your effectiveness
@@ -634,7 +679,7 @@ export default function CompanySearchClient() {
             🚩 Red flags when verifying a Japanese company
           </h2>
           <p className="text-danger dark:text-gin mb-6">
-            These warning signs don't always mean fraud, but each one warrants
+            These warning signs don&apos;t always mean fraud, but each one warrants
             additional verification before you commit money or sign contracts:
           </p>
           <div className="space-y-4">
@@ -683,7 +728,7 @@ export default function CompanySearchClient() {
             <strong>
               METI — the Ministry of Economy, Trade and Industry
             </strong>{" "}
-            of Japan. METI is one of Japan's most powerful and respected
+            of Japan. METI is one of Japan&apos;s most powerful and respected
             government ministries, responsible for industrial policy, trade
             regulation, and corporate oversight.
           </p>
@@ -761,7 +806,7 @@ export default function CompanySearchClient() {
                   </span>
                   <span>{faq.q}</span>
                 </summary>
-                <div className="px-4 py-3 text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800">
+                <div className="faq-answer px-4 py-3 text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800">
                   {faq.a}
                 </div>
               </details>
@@ -787,51 +832,6 @@ export default function CompanySearchClient() {
           </Link>
         </div>
       </section>
-
-      {/* ─── JSON-LD: WebApplication ─────────────────────────────── */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebApplication",
-            name: "Japanese Company Search",
-            description:
-              "Free English search of all 5+ million registered Japanese companies using official METI government data.",
-            url: "https://yamada-tools.jp/en/business/company-search",
-            applicationCategory: "BusinessApplication",
-            operatingSystem: "Any",
-            offers: {
-              "@type": "Offer",
-              price: "0",
-              priceCurrency: "JPY",
-            },
-            inLanguage: "en",
-            isAccessibleForFree: true,
-            provider: {
-              "@type": "Organization",
-              name: "Yamada Tools",
-              url: "https://yamada-tools.jp",
-            },
-          }),
-        }}
-      /><script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: FAQS.map((f) => ({
-              "@type": "Question",
-              name: f.q,
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: f.a,
-              },
-            })),
-          }),
-        }}
-      />
     </div>
   );
 }
@@ -925,7 +925,7 @@ function CompanyCard({ corp }: { corp: CorpResult }) {
       {corp.corp_type_info && (
         <details className="mt-3 text-sm">
           <summary className="cursor-pointer text-kon dark:text-gray-300 hover:underline">
-            What is "{corp.corp_type_info.en_full}"?
+            What is &quot;{corp.corp_type_info.en_full}&quot;?
           </summary>
           <div className="mt-2 p-3 bg-gray-50 dark:bg-gray-900 rounded-lg text-gray-700 dark:text-gray-300">
             <p>
@@ -972,16 +972,18 @@ function UseCase({
 }
 
 function Step({
+  id,
   n,
   title,
   text,
 }: {
+  id?: string;
   n: number;
   title: string;
   text: string;
 }) {
   return (
-    <li className="flex gap-4">
+    <li id={id} className="flex gap-4 scroll-mt-20">
       <span className="flex-shrink-0 w-9 h-9 bg-kon text-white rounded-full flex items-center justify-center font-bold text-sm">
         {n}
       </span>

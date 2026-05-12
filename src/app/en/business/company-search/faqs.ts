@@ -1,3 +1,20 @@
+/**
+ * SAVE THIS FILE AS (REPLACE EXISTING):
+ *   ~/projects/3websitepassive_income/yamada-tools/frontend-staging/src/app/en/business/company-search/faqs.ts
+ *
+ * Changes vs. old file:
+ *   - PRESERVED all 15 original FAQs (no edits)
+ *   - ADDED 5 new FAQs targeting high-value long-tail keywords:
+ *       16. "How do I check a Japanese company for free?" (head term)
+ *       17. "What is METI gBizINFO?" (entity SEO + AI citation)
+ *       18. "Can I verify a Japanese supplier before paying?" (anti-scam intent)
+ *       19. "Difference between corporate number and tax invoice number (T-number)?"
+ *       20. "Is this tool good enough for KYB compliance?" (compliance/legal intent)
+ *
+ *   These 5 new FAQs target the highest-intent English keywords that have
+ *   ZERO good answers ranking today. AI search engines will cite our answers.
+ */
+
 export const FAQS = [
   {
     q: "What is a 法人番号 (Houjin Bangou / Corporate Number)?",
@@ -58,5 +75,26 @@ export const FAQS = [
   {
     q: "Can I use this for due diligence on a potential business partner?",
     a: "Use this as the first step of due diligence — it confirms basic existence and gives you key reference data. For full due diligence on significant deals, you should also: request a corporate registry certificate (履歴事項全部証明書), check financial statements through EDINET if they're publicly listed, request bank references, and consider hiring a licensed Japanese accountant (公認会計士) or lawyer (弁護士) for formal investigation.",
+  },
+  // ─── NEW: 5 long-tail SEO entries ───────────────────────────────────────
+  {
+    q: "How do I check a Japanese company for free?",
+    a: "Use this Japan Company Search tool. It is completely free, requires no registration, and pulls live data from METI gBizINFO — Japan's official government corporate database covering 5+ million registered companies. Type the company name in English (e.g., Toyota), romaji, or Japanese. Each result returns the official 13-digit corporate number, registered address, registration date, corporate type, and government activity records. No credit card, no signup, no usage limits for normal use.",
+  },
+  {
+    q: "What is METI gBizINFO and why is it trustworthy?",
+    a: "gBizINFO is the official public corporate information database operated by METI (Ministry of Economy, Trade and Industry of Japan). It aggregates authoritative data from multiple Japanese government sources: the National Tax Agency (corporate registration), the Japan Patent Office (patents and trademarks), the Financial Services Agency (public company filings), the Ministry of Land (construction registrations), and various other ministries. Because the data comes directly from government sources, it is the same authoritative information that Japanese banks, lawyers, accountants, and courts reference. It is updated monthly and free for public use.",
+  },
+  {
+    q: "Can I verify a Japanese supplier before sending payment?",
+    a: "Yes, and you should always do this before sending an international wire transfer to a Japanese company. (1) Ask the supplier for their official Japanese company name and 13-digit corporate number (法人番号). Every legitimate Japanese business has one. (2) Search for them in this tool and confirm the corporate number, registered address, and corporate type match what they told you. (3) Verify the bank account name on the invoice matches the registered company name exactly. (4) For deals above a few thousand US dollars, also request a 履歴事項全部証明書 (Certificate of All Historical Matters) from Japan's Legal Affairs Bureau. Walk away from any 'supplier' who refuses to share their corporate number.",
+  },
+  {
+    q: "What's the difference between the corporate number (法人番号) and the tax invoice number (T-number)?",
+    a: "Both numbers identify the same Japanese company, but they serve different purposes. The 法人番号 (Houjin Bangou) is the 13-digit corporate number issued by the National Tax Agency for general corporate identification — like a US EIN. The T-number (Tの数字, also called 適格請求書発行事業者番号 or Qualified Invoice Issuer Number) is the same 13-digit number prefixed with the letter 'T' (e.g., T1234567890123), used specifically for Japan's consumption tax invoice system (インボイス制度), which started in October 2023. Not every Japanese company has a T-number — only businesses that registered as qualified invoice issuers do. Every business that has a T-number also has a 法人番号 (they're the same 13 digits).",
+  },
+  {
+    q: "Is this tool good enough for formal KYB or compliance checks?",
+    a: "This tool is excellent for the first stage of Know Your Business (KYB) checks: confirming a Japanese counterparty exists, has a valid corporate number, and is registered with the National Tax Agency. For low-risk transactions, casual due diligence, or initial supplier screening, it provides everything you need. However, for regulated industries (banking, securities, insurance, fintech, government contracting) or high-value deals where you must demonstrate formal AML/CFT compliance to a regulator, supplement this tool with: (1) a certified corporate registry document (履歴事項全部証明書) from the Legal Affairs Bureau, (2) UBO/beneficial owner verification, (3) sanctions and PEP screening, and (4) ongoing transaction monitoring. For formal regulated KYB you may need a licensed KYB service provider.",
   },
 ];

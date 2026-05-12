@@ -55,14 +55,28 @@ export default function PrivacyPage() {
 
             <section>
               <h2 className="text-xl font-bold text-kon mb-4">第3条（決済情報の取り扱い）</h2>
-              <div className="bg-green-50 p-4 rounded-lg space-y-2 text-sm">
-                <p className="font-bold text-green-900">Stripeによる決済処理</p>
-                <ul className="space-y-1 text-green-800">
-                  <li>・ 本サービスの有料プランの決済は、Stripe, Inc.が提供する決済システムを利用しています</li>
-                  <li>・ クレジットカード番号などの決済情報は、当社のサーバーには一切保存されません</li>
-                  <li>・ 決済情報はStripeのシステム上で安全に管理されます</li>
-                  <li>・ Stripeのプライバシーポリシーについては、<a href="https://stripe.com/jp/privacy" target="_blank" rel="noopener noreferrer" className="text-kon hover:underline">Stripe プライバシーポリシー</a>をご確認ください</li>
-                </ul>
+              <div className="bg-green-50 p-4 rounded-lg space-y-3 text-sm">
+                <p className="font-bold text-green-900">複数の決済システムによる処理</p>
+                <p className="text-green-800">当社では、お客様のお支払い方法に応じて、以下の2つの決済システムを利用しています。</p>
+
+                <div className="bg-white rounded p-3 space-y-2">
+                  <p className="font-bold text-green-900">1. Stripe（クレジットカード決済）</p>
+                  <ul className="space-y-1 text-green-800">
+                    <li>・ クレジットカード（Visa、Mastercard、JCB、American Express）の決済は、Stripe, Inc.が提供する決済システムを利用しています</li>
+                    <li>・ クレジットカード番号などの決済情報は、当社のサーバーには一切保存されません</li>
+                    <li>・ 決済情報はStripeのシステム上で安全に管理されます</li>
+                    <li>・ Stripeのプライバシーポリシーについては、<a href="https://stripe.com/jp/privacy" target="_blank" rel="noopener noreferrer" className="text-kon hover:underline">Stripe プライバシーポリシー</a>をご確認ください</li>
+                  </ul>
+                </div>
+
+                <div className="bg-white rounded p-3 space-y-2">
+                  <p className="font-bold text-green-900">2. KOMOJU（コンビニ・PayPay・銀行振込等）</p>
+                  <ul className="space-y-1 text-green-800">
+                    <li>・ コンビニ払い、PayPay、銀行振込、atone等の日本国内向け決済方法は、株式会社DEGICAが提供するKOMOJU決済システムを利用しています</li>
+                    <li>・ 決済情報は当社のサーバーには保存されず、KOMOJUのシステム上で安全に管理されます</li>
+                    <li>・ KOMOJUのプライバシーポリシーについては、<a href="https://www.degica.com/privacy" target="_blank" rel="noopener noreferrer" className="text-kon hover:underline">KOMOJU プライバシーポリシー</a>をご確認ください</li>
+                  </ul>
+                </div>
               </div>
             </section>
 

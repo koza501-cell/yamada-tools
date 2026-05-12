@@ -49,7 +49,8 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      { source: '/legal', destination: '/legal/terms', permanent: true },
+      { source: '/legal', destination: '/terms', permanent: true },
+      { source: '/legal/terms', destination: '/terms', permanent: true },
       { source: '/api/pdf/pdf-to-excel', destination: '/pdf/pdf-to-excel', permanent: true },
       { source: '/api/pdf/pdf-to-word', destination: '/pdf/pdf-to-word', permanent: true },
       { source: '/api/convert/furigana', destination: '/convert/furigana', permanent: true },
