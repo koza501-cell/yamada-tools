@@ -192,9 +192,11 @@ export default async function RootLayout({
   const isProduction = !host.includes('staging');
   const pathname = headersList.get('x-pathname') ?? '/';
   const isHomepage = pathname === '/';
+  const isEnglish = pathname.startsWith('/en');
+  const htmlLang = isEnglish ? 'en' : 'ja';
 
   return (
-    <html lang="ja" suppressHydrationWarning>
+    <html lang={htmlLang} suppressHydrationWarning>
       <script dangerouslySetInnerHTML={{__html: `(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.classList.add("dark")}}catch(e){}})();`}} />
       <script dangerouslySetInnerHTML={{__html: `if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js')});}`}} />
       <head>
