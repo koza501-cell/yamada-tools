@@ -97,6 +97,31 @@ export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
         },
       },
       {
+        url: baseUrl + "/en/realestate/property-report",
+        lastModified: currentDate,
+        changeFrequency: "monthly" as const,
+        priority: 0.9,
+        alternates: {
+          languages: {
+            "en-US": baseUrl + "/en/realestate/property-report",
+            "ja-JP": baseUrl + "/realestate/yoto-chiiki-checker",
+            "x-default": baseUrl + "/en/realestate/property-report",
+          },
+        },
+      },
+      {
+        url: baseUrl + "/en/utility/postal-code-lookup",
+        lastModified: currentDate,
+        changeFrequency: "monthly" as const,
+        priority: 0.8,
+        alternates: {
+          languages: {
+            "en-US": baseUrl + "/en/utility/postal-code-lookup",
+            "x-default": baseUrl + "/en/utility/postal-code-lookup",
+          },
+        },
+      },
+      {
         url: baseUrl + "/en",
         lastModified: currentDate,
         changeFrequency: "weekly" as const,
@@ -138,6 +163,12 @@ export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
   const englishAlternates: Record<string, string> = {
     "/business/houjin-search": "/en/business/company-search",
     "/pdf-text-input": "/en/pdf-text-input",
+    "/realestate/yoto-chiiki-checker": "/en/realestate/property-report",
+    "/realestate/hazard-checker": "/en/realestate/property-report",
+    "/realestate/land-price": "/en/realestate/property-report",
+    "/realestate/transaction-price": "/en/realestate/property-report",
+    "/realestate/school-district": "/en/realestate/property-report",
+    "/realestate/population": "/en/realestate/property-report",
   };
 
   return allTools.map(tool => {

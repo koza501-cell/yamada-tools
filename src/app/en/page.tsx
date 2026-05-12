@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://yamada-tools.jp"),
   title: "Yamada Tools (English) — Free Japan Business Verification Tools",
   description:
-    "Free English tools for foreign businesses dealing with Japan. Verify Japanese companies, check property addresses for hazard/zoning/price data, and more. Official MLIT government data. No signup.",
+    "Free English tools for foreign businesses dealing with Japan. Verify Japanese companies, check property addresses for hazard/zoning data, look up postal codes, and more. Official government data. No signup.",
   keywords: [
     "japan business tools english",
     "yamada tools english",
@@ -35,6 +35,8 @@ export const metadata: Metadata = {
     "foreign business japan",
     "japan property check english",
     "japan address due diligence",
+    "japan postal code lookup english",
+    "japan zip code english",
   ],
   authors: [{ name: "Yamada Tools" }],
   alternates: {
@@ -204,6 +206,12 @@ export default function EnglishHomePage() {
               icon="📝"
               title="PDF Text Input & Signature"
               description="Add text, signatures, and stamps to PDF files. All processing is local — files never leave your browser. Free, no signup."
+            />
+            <ToolCard
+              href="/en/utility/postal-code-lookup"
+              icon="📮"
+              title="Japan Postal Code Lookup"
+              description="Two-way lookup of any Japanese postal code in English. Enter a zip code to get the romaji address, or use dropdowns to find the postal code for any address. Covers all 120,000+ Japan postal codes."
             />
           </div>
         </section>

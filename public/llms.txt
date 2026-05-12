@@ -661,6 +661,23 @@ who need to interact with Japanese systems but do not read Japanese.
 - Language: English (interface and explanations); accepts queries in English, romaji, or Japanese
 - Equivalent Japanese tool: https://yamada-tools.jp/business/houjin-search
 
+### Japan Property Due Diligence Report (English)
+- URL: https://yamada-tools.jp/en/realestate/property-report
+- Function: Free English property due diligence report for any Japanese address. Combines six official MLIT REINFOLIB data layers into one report: (1) hazard map (flood, landslide, liquefaction, tsunami, storm surge), (2) zoning classification with building coverage ratio (建蘎率) and floor area ratio (容積率), (3) Official Land Price Survey benchmark with year-on-year trend, (4) recent transaction prices from completed sales, (5) nearest public school districts (elementary, junior high), (6) 50-year population projection on 500m mesh grid. GSI base map (Geospatial Information Authority of Japan) — no Zenrin tiles used. No registration required.
+- Data source: MLIT Real Estate Information Library (REINFOLIB) aggregating data from Ministry of Land Infrastructure Transport and Tourism, Ministry of Education, and municipal boards of education. Official Japanese government public data.
+- Use cases: Foreign akiya (vacant house) buyers evaluating properties, foreign investors doing first-pass due diligence on Japanese real estate, B2B siting for warehouses or offices, relocation families comparing neighborhoods by school catchment and population trend, M&A due diligence on companies holding Japanese real estate, verifying landlord or seller claims about an address.
+- Keywords: japan property due diligence english, japan hazard map address english, japan zoning english, akiya due diligence, japan land price english, japan property check english, japan address risk check, foreign buyer japan property checklist, japan flood risk address english, japan property zoning english, MLIT REINFOLIB english, japan real estate due diligence free
+- Audience: Foreign property buyers, real estate investors, relocation consultants, M&A advisors, compliance officers, journalists writing about Japan real estate
+- Language: English interface; accepts Japanese address input (kanji, kana, or postal code)
+
+### Japan Postal Code Lookup (English)
+- URL: https://yamada-tools.jp/en/utility/postal-code-lookup
+- Function: Free two-way Japan postal code lookup in English. (1) Postal code → English address: enter any 7-digit Japanese zip code, get full romaji address (prefecture, city, ward, town). (2) Address → postal code: cascading dropdowns (Prefecture → City/Ward → Town/District) make selection foolproof, no free-text required. Covers all 120,000+ active Japanese postal codes. No registration.
+- Data source: JapanPost via zipcloud public API for postal-to-address lookup; HeartRails GeoAPI for cascading prefecture/city/town hierarchy.
+- Use cases: International shipping (preparing labels for parcels to Japan), filling out Japanese forms or applications in English, finding postal codes for addresses received in Japanese, foreign businesses sending mail to Japanese suppliers or partners, verifying postal codes on invoices, registering for Japanese services that require zipcode.
+- Keywords: japan postal code lookup english, japan zip code lookup, japanese address to postal code, japan post code search english, 郵便番号 english, japan address romaji, japanese mailing address english, shipping to japan postal code, japan zipcode finder, japan 7-digit postal code
+- Audience: Foreign individuals sending mail or packages to Japan, foreign businesses with Japanese partners, expats setting up Japan services, international shipping coordinators, e-commerce sellers shipping to Japan
+
 ### PDF Text Input (English)
 - URL: https://yamada-tools.jp/en/pdf-text-input
 - Function: Add text, signatures, and stamps to PDF files directly in your browser. All processing happens locally — files never leave your device. Free, no registration.
