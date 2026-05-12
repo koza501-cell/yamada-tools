@@ -8,7 +8,7 @@ export interface Tool {
   apiEndpoint: string;
   acceptedTypes: string;
   maxFiles: number;
-  category: "pdf" | "document" | "convert" | "image" | "generator" | "finance" | "stat" | "realestate" | "clinic";
+  category: "pdf" | "document" | "convert" | "image" | "generator" | "finance" | "stat" | "realestate" | "clinic" | "care";
   available: boolean;
   isNew?: boolean;
   isPopular?: boolean;
@@ -2838,6 +2838,24 @@ export const clinicTools: Tool[] = [
     isNew: true,
   },
 ];
+
+export const careTools: Tool[] = [
+  {
+    id: 'kaigo-hoshu-calc',
+    nameJa: '介護報酬 単位計算機',
+    nameEn: 'Kaigo Hoshu Calculator',
+    description: '訪問介護・デイサービス・居宅介護支援の介護報酬を自動計算。地域区分・加算減算対応。令和6年改定対応。',
+    icon: '🏥',
+    path: '/business/kaigo-hoshu-calc',
+    apiEndpoint: '',
+    acceptedTypes: '',
+    maxFiles: 0,
+    category: 'care',
+    available: true,
+    isNew: true,
+  },
+];
+
 export const allTools: Tool[] = [
   ...pdfTools,
   ...documentTools,
@@ -2858,6 +2876,7 @@ export const allTools: Tool[] = [
   ...foodTools,
   ...lifeTools,
   ...clinicTools,
+  ...careTools,
 ];
 
 
@@ -2918,6 +2937,7 @@ export const getToolCount = () => ({
   food: foodTools.length,
   life: lifeTools.length,
   clinic: clinicTools.length,
+  care: careTools.length,
   total: allTools.length,
 });
 
