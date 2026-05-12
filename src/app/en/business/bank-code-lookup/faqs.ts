@@ -9,7 +9,7 @@ export const FAQS = [
   },
   {
     q: "What is the difference between a Zengin code and a SWIFT/BIC code?",
-    a: "Zengin codes are used for domestic transfers within Japan only. SWIFT/BIC codes (e.g., MHCBJPJT for Mizuho) are used for international wire transfers. If you are sending money TO Japan from overseas, your bank will ask for the recipient's SWIFT/BIC code, IBAN equivalent (not used in Japan — use account number instead), and sometimes the Zengin branch code for internal routing. This tool shows Zengin codes; for SWIFT codes contact the recipient bank directly.",
+    a: "Zengin codes are used for domestic transfers within Japan only. SWIFT/BIC codes (e.g., MHCBJPJT for Mizuho) are used for international wire transfers. If you are sending money TO Japan from overseas, your bank will ask for the recipient's SWIFT/BIC code, IBAN equivalent (not used in Japan — use account number instead), and sometimes the Zengin branch code for internal routing. This tool shows both Zengin codes and SWIFT codes for major Japanese banks.",
   },
   {
     q: "What is the MUFG bank code?",
@@ -25,7 +25,7 @@ export const FAQS = [
   },
   {
     q: "What is the Japan Post Bank code?",
-    a: "Japan Post Bank (ゆうちょ銀行, Yuucho Ginko) has bank code 9900. However, Japan Post Bank uses a different account numbering system internally: accounts are identified by a 5-digit 'store code' (店番) and 8-digit account number format unique to ゆうちょ. When transferring FROM another bank TO Japan Post Bank, use bank code 9900. When transferring FROM Japan Post Bank, the process is different — see the Japan Post Bank website for details.",
+    a: "Japan Post Bank (ゆうちょ銀行, Yuucho Ginko) has bank code 9900 and SWIFT code JPPYJPJT. However, Japan Post Bank uses a different account numbering system internally: accounts are identified by a 5-digit 'store code' (店番) and 8-digit account number format unique to ゆうちょ. When transferring FROM another bank TO Japan Post Bank, use bank code 9900. When transferring FROM Japan Post Bank, the process is different — see the Japan Post Bank website for details.",
   },
   {
     q: "How do I find a Japan bank code by name in English?",
@@ -45,6 +45,18 @@ export const FAQS = [
   },
   {
     q: "Is this tool free? Where does the data come from?",
-    a: "Yes, completely free with no registration required. Bank and branch data comes from the ZenginCode project (MIT license), which maintains a regularly updated dataset of all Japanese financial institution codes based on the official Zengin format published by the Japanese Bankers Association. For time-sensitive transfers, always confirm the recipient's exact bank code, branch code, account type, and account number with them directly before sending.",
+    a: "Yes, completely free with no registration required. Bank and branch data comes from the ZenginCode project (MIT license), which maintains a regularly updated dataset of all Japanese financial institution codes based on the official Zengin format published by the Japanese Bankers Association. SWIFT/BIC codes are sourced from public BIC directories and cover major Japanese banks. For time-sensitive transfers, always confirm the recipient's exact bank code, branch code, account type, and account number with them directly before sending.",
+  },
+  {
+    q: "What is a SWIFT/BIC code and do I need one for transfers to Japan?",
+    a: "A SWIFT code (also called a BIC — Bank Identifier Code) is an internationally standardized 8 or 11 character code that identifies a specific bank for international wire transfers. It follows the format: 4-letter bank code + 2-letter country code (JP for Japan) + 2-letter location code + optional 3-letter branch code. You need a SWIFT/BIC code when sending money TO Japan from another country. Your overseas bank will ask for the recipient's bank SWIFT code plus the account number. You do NOT need a SWIFT code for domestic transfers within Japan — those use the Zengin bank code (4 digits) and branch code (3 digits) instead.",
+  },
+  {
+    q: "What is Mizuho Bank's SWIFT code?",
+    a: "Mizuho Bank's SWIFT/BIC code is MHCBJPJT. The full 11-character version is MHCBJPJTXXX (XXX denotes the head office). This code is used when sending international wire transfers to any Mizuho Bank account in Japan. When filling out an international wire form, provide: SWIFT code MHCBJPJT, bank name 'Mizuho Bank, Ltd.', and the recipient's branch code plus 7-digit account number. Mizuho's trust bank subsidiary (みずほ信託銀行) has a different SWIFT code — confirm with the recipient which entity holds their account.",
+  },
+  {
+    q: "Do all Japanese banks have a SWIFT code for international transfers?",
+    a: "No — only banks that are active members of the SWIFT network have a SWIFT/BIC code. Japan's three megabanks (Mizuho: MHCBJPJT, MUFG: BOTKJPJT, SMBC: SMBCJPJT), major regional banks, and trust banks typically do. However, many smaller regional banks, shinkin banks (信用金庫), and credit cooperatives (信用組合) are not SWIFT members and cannot directly receive international wires. In those cases, the recipient may need to use an intermediary/correspondent bank, or the sender may need to wire to a major Japanese bank first. Always ask the recipient how to receive international transfers before sending.",
   },
 ];

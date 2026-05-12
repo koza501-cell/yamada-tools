@@ -5,9 +5,9 @@ import { FAQS } from "./faqs";
 export const metadata: Metadata = {
   metadataBase: new URL("https://yamada-tools.jp"),
   title:
-    "Japan Bank & Branch Code Lookup (English) — Free Zengin Code Search | Yamada Tools",
+    "Japan Bank, Branch & SWIFT Code Lookup (English) — Free Zengin + BIC Search | Yamada Tools",
   description:
-    "Free English lookup of all Japanese bank and branch codes. Find SWIFT-equivalent Zengin codes for international wire transfers to any Japanese account. No signup.",
+    "Free English lookup of all Japanese bank codes, branch codes, and SWIFT/BIC codes for international wire transfers. Find MUFG, Mizuho, SMBC, Japan Post Bank codes instantly. No signup.",
   keywords: [
     "japan bank code english",
     "zengin code lookup",
@@ -16,6 +16,11 @@ export const metadata: Metadata = {
     "SMBC bank code",
     "mizuho bank code english",
     "japan SWIFT code english",
+    "japan BIC code lookup",
+    "mizuho SWIFT code",
+    "MUFG SWIFT code",
+    "SMBC BIC code",
+    "wire transfer to japan SWIFT",
     "japan branch code lookup",
     "japan financial institution code",
     "金融機関コード english",
@@ -53,9 +58,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Japan Bank & Branch Code Lookup (English) — Free Zengin Code Search",
+    title: "Japan Bank, Branch & SWIFT Code Lookup (English) — Free Zengin + BIC Search",
     description:
-      "Free English lookup for all Japanese bank and branch codes. Zengin codes for wire transfers. No signup.",
+      "Free English lookup for all Japanese bank codes, branch codes, and SWIFT/BIC codes. Zengin + international wire transfer codes. No signup.",
     url: "https://yamada-tools.jp/en/business/bank-code-lookup",
     siteName: "Yamada Tools",
     locale: "en_US",
@@ -73,9 +78,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@YamadaToolsJP",
     creator: "@YamadaToolsJP",
-    title: "Japan Bank & Branch Code Lookup (English) — Free",
+    title: "Japan Bank, Branch & SWIFT Code Lookup (English) — Free",
     description:
-      "Free English lookup for all Japanese bank and branch codes. Zengin codes for wire transfers. No signup.",
+      "Free English lookup for all Japanese bank codes, branch codes, and SWIFT/BIC codes. No signup.",
     images: ["https://yamada-tools.jp/og-image.png"],
   },
 };

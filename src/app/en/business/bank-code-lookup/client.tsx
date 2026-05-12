@@ -9,7 +9,7 @@ const API_URL =
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
-type BankItem = { code: string; name_jp: string; name_en: string; kana: string };
+type BankItem = { code: string; name_jp: string; name_en: string; kana: string; swift_code?: string | null };
 type BranchItem = { code: string; name_jp: string; name_en: string; kana: string };
 type LookupResult = {
   bank: BankItem;
@@ -94,14 +94,37 @@ function LookupResultCard({ result }: { result: LookupResult }) {
         </div>
       </div>
 
-      <div className="flex items-center gap-2 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg mb-3">
+      <div className="flex items-center gap-2 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg mb-4">
         <span className="text-sm text-blue-800 dark:text-blue-200 flex-1">{result.full_label_en}</span>
         <CopyButton text={result.full_label_en} />
       </div>
 
-      <p className="text-xs text-gray-500 dark:text-gray-400 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700 rounded-lg p-3">
-        <strong>Note:</strong> For international wires from outside Japan, your sender&apos;s bank will also need the SWIFT/BIC code — provided by the recipient&apos;s bank, not this tool.
-      </p>
+      <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
+        <h4 className="text-sm font-bold text-gray-700 dark:text-gray-200 mb-3">
+          🌐 International Transfer (from outside Japan)
+        </h4>
+        {result.bank.swift_code ? (
+          <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-lg p-3 mb-3">
+            <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1.5">SWIFT / BIC Code</p>
+            <div className="flex items-center gap-2">
+              <span className="font-mono text-xl font-bold text-green-800 dark:text-green-300">{result.bank.swift_code}</span>
+              <CopyButton text={result.bank.swift_code} />
+            </div>
+            <p className="text-xs text-green-700 dark:text-green-400 mt-1.5">
+              Provide this to the sender&apos;s bank for international wire transfers to Japan
+            </p>
+          </div>
+        ) : (
+          <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700 rounded-lg p-3 mb-3">
+            <p className="text-sm text-amber-800 dark:text-amber-200">
+              SWIFT code not available for this bank in our dataset. Contact the recipient&apos;s bank directly for their SWIFT/BIC code.
+            </p>
+          </div>
+        )}
+        <p className="text-xs text-gray-400 dark:text-gray-500">
+          SWIFT/BIC data covers major Japanese banks only. For smaller or regional banks, verify directly with the recipient&apos;s bank. SWIFT codes can vary by branch for some banks.
+        </p>
+      </div>
     </div>
   );
 }
@@ -223,6 +246,13 @@ function SearchTab() {
                 {selectedBank.name_en}
                 <span className="text-gray-500 dark:text-gray-400 font-normal ml-2">{selectedBank.name_jp}</span>
               </p>
+              {selectedBank.swift_code && (
+                <div className="flex items-center gap-2 mt-1">
+                  <span className="text-xs font-semibold text-green-700 dark:text-green-400">SWIFT:</span>
+                  <span className="font-mono text-sm font-bold text-green-700 dark:text-green-400">{selectedBank.swift_code}</span>
+                  <CopyButton text={selectedBank.swift_code} />
+                </div>
+              )}
             </div>
             <button
               onClick={() => { setSelectedBank(null); setBranches([]); }}
@@ -507,7 +537,7 @@ export default function BankCodeClient() {
                     ["Mizuho example", "Bank 0001, Branch 001", "MHCBJPJT"],
                     ["MUFG example", "Bank 0005", "BOTKJPJT"],
                     ["SMBC example", "Bank 0009", "SMBCJPJT"],
-                    ["Who provides it", "This tool / recipient's bank", "Recipient's bank only"],
+                    ["Who provides it", "This tool (all banks)", "This tool (major banks) / recipient's bank"],
                   ].map(([feature, zengin, swift]) => (
                     <tr key={feature}>
                       <td className="py-2 font-medium text-gray-700 dark:text-gray-300 pr-4">{feature}</td>
