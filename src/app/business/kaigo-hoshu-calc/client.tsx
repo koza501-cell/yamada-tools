@@ -391,7 +391,7 @@ export default function KaigoHoshuClient() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-8 space-y-8">
       {/* Breadcrumb */}
-      <nav className="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-1 flex-wrap">
+      <nav className="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-1 flex-wrap print-hide">
         <a href="/" className="hover:text-sky-500 transition-colors">ホーム</a>
         <span>/</span>
         <span>介護・保育</span>
@@ -400,7 +400,7 @@ export default function KaigoHoshuClient() {
       </nav>
 
       {/* Header */}
-      <div>
+      <div className="print-hide">
         <div className="flex items-center gap-2 mb-1">
           <span className="text-xs font-medium bg-sky-100 dark:bg-sky-900/40 text-sky-700 dark:text-sky-300 px-2 py-0.5 rounded-full">令和6年改定対応</span>
           <span className="text-xs font-medium bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300 px-2 py-0.5 rounded-full">無料</span>
@@ -414,7 +414,7 @@ export default function KaigoHoshuClient() {
       </div>
 
       {/* Service tabs */}
-      <div className="flex border-b border-gray-200 dark:border-gray-700 gap-0">
+      <div className="flex border-b border-gray-200 dark:border-gray-700 gap-0 print-hide">
         {(Object.keys(SERVICE_META) as KaigoService[]).map((svc) => (
           <button
             key={svc}
@@ -432,7 +432,7 @@ export default function KaigoHoshuClient() {
       </div>
 
       {/* ── Input section ── */}
-      <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-5 space-y-5">
+      <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-5 space-y-5 print-hide">
 
         {/* 訪問介護 inputs */}
         {activeService === 'houmon' && (
@@ -726,10 +726,10 @@ export default function KaigoHoshuClient() {
       )}
 
       {/* ── SEO Tables ── */}
-      <SeoTables active={activeService} />
+      <div className="print-hide"><SeoTables active={activeService} /></div>
 
       {/* ── 使い方 ── */}
-      <section className="space-y-4">
+      <section className="space-y-4 print-hide">
         <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100">使い方</h2>
         <ol className="space-y-3">
           {[
@@ -749,7 +749,7 @@ export default function KaigoHoshuClient() {
       </section>
 
       {/* ── 介護報酬とは ── */}
-      <section className="space-y-3">
+      <section className="space-y-3 print-hide">
         <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100">介護報酬とは</h2>
         <div className="text-sm text-gray-700 dark:text-gray-300 space-y-2 leading-relaxed">
           <p>介護報酬とは、介護保険サービスを提供した事業所に対して支払われる対価のことです。厚生労働大臣が定める公定価格で、原則として3年ごとに改定されます。</p>
@@ -759,7 +759,7 @@ export default function KaigoHoshuClient() {
       </section>
 
       {/* ── FAQ ── */}
-      <FAQSection faq={faqItems} title="よくある質問" />
+      <div className="print-hide"><FAQSection faq={faqItems} title="よくある質問" /></div>
     </div>
   );
 }

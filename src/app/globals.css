@@ -227,6 +227,16 @@ body {
     padding: 20px;
     margin: 20px 0;
   }
+
+  /* Selective hide for print */
+  .print-hide {
+    display: none !important;
+  }
+}
+
+@page {
+  margin: 1.5cm;
+  size: A4 portrait;
 }
 
 /* Fix code block styling for AI articles */

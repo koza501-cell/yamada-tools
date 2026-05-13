@@ -111,7 +111,7 @@ export default function YoukaigodoClient() {
   return (
     <main className="max-w-4xl mx-auto px-4 py-6">
       {/* Breadcrumb */}
-      <nav className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+      <nav className="text-sm text-gray-500 dark:text-gray-400 mb-4 print-hide">
         <a href="/" className="hover:underline">ホーム</a>
         <span className="mx-2">›</span>
         <a href="/care" className="hover:underline">介護・保育</a>
@@ -120,23 +120,23 @@ export default function YoukaigodoClient() {
       </nav>
 
       {/* H1 + lead */}
-      <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-3">
+      <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-3 print-hide">
         要介護度 早見表<br className="sm:hidden" />
         <span className="text-lg sm:text-xl font-normal text-gray-600 dark:text-gray-400 ml-2 sm:ml-0 sm:block">
           【7段階の違い・限度額・利用可能サービス】
         </span>
       </h1>
-      <p className="text-gray-600 dark:text-gray-400 mb-8 text-sm sm:text-base">
+      <p className="text-gray-600 dark:text-gray-400 mb-8 text-sm sm:text-base print-hide">
         要支援1から要介護5まで、状態の目安・支給限度額・自己負担・利用できるサービスを一覧で比較。
         令和6年度介護保険制度に基づく最新版です。
       </p>
 
       {/* ── Section 1: 区分選択 + 詳細カード ── */}
       <section className="mb-10">
-        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">区分を選んで詳細を確認</h2>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3 print-hide">区分を選んで詳細を確認</h2>
 
         {/* Chip selector */}
-        <div className="flex flex-wrap gap-2 mb-6">
+        <div className="flex flex-wrap gap-2 mb-6 print-hide">
           {levelOptions.map((opt) => (
             <button
               key={opt.value}
@@ -226,7 +226,7 @@ export default function YoukaigodoClient() {
       </section>
 
       {/* ── Section 2: 2区分比較 ── */}
-      <section className="mb-10">
+      <section className="mb-10 print-hide">
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">2つの区分を比較</h2>
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-5">
           <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-end mb-4">
@@ -328,7 +328,7 @@ export default function YoukaigodoClient() {
       </section>
 
       {/* ── Section 3: 全区分一覧表 ── */}
-      <section className="mb-10">
+      <section className="mb-10 print-hide">
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">全区分 一覧表</h2>
         <div className="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
           <table className="w-full text-sm">
@@ -370,7 +370,7 @@ export default function YoukaigodoClient() {
       </section>
 
       {/* ── Section 4: 状態判定の目安 ── */}
-      <section className="mb-10">
+      <section className="mb-10 print-hide">
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-1">あなたのご家族はどの区分？</h2>
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">状態別の目安チェックリストです（実際の認定は審査会が決定します）。</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -394,7 +394,7 @@ export default function YoukaigodoClient() {
       </section>
 
       {/* ── Section 5: 認定の流れ ── */}
-      <section className="mb-10">
+      <section className="mb-10 print-hide">
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4">認定の流れ</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
@@ -415,7 +415,7 @@ export default function YoukaigodoClient() {
       </section>
 
       {/* ── 関連ツール ── */}
-      <section className="mb-10 bg-sky-50 dark:bg-gray-800 rounded-lg p-5">
+      <section className="mb-10 bg-sky-50 dark:bg-gray-800 rounded-lg p-5 print-hide">
         <h2 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">関連ツール</h2>
         <div className="flex flex-wrap gap-3">
           <a
@@ -428,7 +428,7 @@ export default function YoukaigodoClient() {
       </section>
 
       {/* ── FAQ ── */}
-      <FAQSection faq={FAQ} title="よくある質問" />
+      <div className="print-hide"><FAQSection faq={FAQ} title="よくある質問" /></div>
     </main>
   );
 }

@@ -146,7 +146,7 @@ export default function KaigoKirokuClient() {
       <div className="max-w-4xl mx-auto px-4 py-8">
 
         {/* Breadcrumb */}
-        <nav className="text-xs text-gray-500 dark:text-gray-400 mb-4">
+        <nav className="text-xs text-gray-500 dark:text-gray-400 mb-4 print-hide">
           <a href="/" className="hover:underline">ホーム</a>
           <span className="mx-1">&gt;</span>
           <a href="/care" className="hover:underline">介護・保育</a>
@@ -155,15 +155,15 @@ export default function KaigoKirokuClient() {
         </nav>
 
         {/* Header */}
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 print-hide">
           介護記録 テンプレート ジェネレーター【SOAP・5W1H対応】
         </h1>
-        <p className="text-sm text-gray-600 dark:text-gray-400 mb-8">
+        <p className="text-sm text-gray-600 dark:text-gray-400 mb-8 print-hide">
           場面を選ぶだけで、適切な介護記録の文例を即生成。SOAP形式・5W1H・シンプル形式に対応。禁止用語チェッカー付き。
         </p>
 
         {/* ── Section 1: Settings ─────────────────────────────────────────── */}
-        <section className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-5 mb-6">
+        <section className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-5 mb-6 print-hide">
           <h2 className="text-base font-semibold text-gray-800 dark:text-gray-200 mb-4">設定</h2>
 
           {/* Service */}
@@ -326,7 +326,7 @@ export default function KaigoKirokuClient() {
         )}
 
         {/* ── Section 3: Forbidden Word Checker ───────────────────────────── */}
-        <section className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-5 mb-6">
+        <section className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-5 mb-6 print-hide">
           <h2 className="text-base font-semibold text-gray-800 dark:text-gray-200 mb-1">禁止用語チェック</h2>
           <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">
             あなたの記録に侮蔑的・命令的・医学的断定・主観的表現が含まれていないかチェックします。
@@ -370,7 +370,7 @@ export default function KaigoKirokuClient() {
         </section>
 
         {/* ── Section 4: Writing Guide ─────────────────────────────────────── */}
-        <section className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-5 mb-6">
+        <section className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-5 mb-6 print-hide">
           <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">介護記録の書き方ガイド</h2>
 
           <h3 className="text-base font-semibold text-gray-700 dark:text-gray-300 mb-2">SOAP形式とは</h3>
@@ -459,7 +459,7 @@ export default function KaigoKirokuClient() {
         </section>
 
         {/* ── Section 5: Sample Records ────────────────────────────────────── */}
-        <section className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-5 mb-6">
+        <section className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-5 mb-6 print-hide">
           <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">よくある場面別 文例</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
@@ -482,7 +482,7 @@ export default function KaigoKirokuClient() {
         </section>
 
         {/* FAQ */}
-        <FAQSection faq={FAQ} title="よくある質問" />
+        <div className="print-hide"><FAQSection faq={FAQ} title="よくある質問" /></div>
 
       </div>
     </main>
