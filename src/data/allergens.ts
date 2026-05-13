@@ -1,5 +1,7 @@
 // 食物アレルギー 28品目 + 代替表記辞書
-// 令和6年3月 改正対応
+// 義務9品目 + 推奨20品目
+// 令和8年4月1日 改正対応 (カシューナッツ義務化・ピスタチオ追加)
+// Source: 消費者庁「アレルゲンを含む食品に関する表示について」
 
 export type AllergenSeverity = 'gimu' | 'suishou'; // 義務 / 推奨
 
@@ -13,7 +15,7 @@ export interface Allergen {
 }
 
 export const ALLERGENS: Allergen[] = [
-  // ───── 義務表示 8品目 ─────
+  // ───── 義務表示 9品目 ─────
   {
     id: 'shrimp',
     mainLabel: 'えび',
@@ -35,6 +37,14 @@ export const ALLERGENS: Allergen[] = [
     aliases: ['くるみ', 'クルミ', '胡桃', 'walnut', 'ウォルナット'],
     hiddenIn: 'パン、お菓子、サラダドレッシング',
     note: '令和5年3月 義務化',
+  },
+  {
+    id: 'cashew',
+    mainLabel: 'カシューナッツ',
+    severity: 'gimu',
+    aliases: ['カシューナッツ', 'カシュー', 'cashew'],
+    hiddenIn: 'ペスト、グラノーラ、エスニック料理、ナッツミックス',
+    note: '令和8年4月1日 義務化',
   },
   {
     id: 'wheat',
@@ -106,12 +116,6 @@ export const ALLERGENS: Allergen[] = [
     hiddenIn: 'ジュース、マーマレード、お菓子',
   },
   {
-    id: 'cashew',
-    mainLabel: 'カシューナッツ',
-    severity: 'suishou',
-    aliases: ['カシューナッツ', 'カシュー', 'cashew'],
-  },
-  {
     id: 'kiwi',
     mainLabel: 'キウイフルーツ',
     severity: 'suishou',
@@ -178,6 +182,14 @@ export const ALLERGENS: Allergen[] = [
     note: '令和6年3月 追加',
   },
   {
+    id: 'pistachio',
+    mainLabel: 'ピスタチオ',
+    severity: 'suishou',
+    aliases: ['ピスタチオ', 'pistachio'],
+    hiddenIn: 'お菓子、アイスクリーム、ヌガー、トルコ料理',
+    note: '令和8年4月1日 追加',
+  },
+  {
     id: 'peach',
     mainLabel: 'もも',
     severity: 'suishou',
@@ -235,7 +247,7 @@ export function checkAllergens(text: string): AllergenHit[] {
 }
 
 // ───── Nut group for cross-contamination warning ─────
-export const NUT_IDS = ['walnut', 'peanut', 'almond', 'cashew', 'macadamia'];
+export const NUT_IDS = ['walnut', 'peanut', 'almond', 'cashew', 'macadamia', 'pistachio'];
 
 export function hasNuts(hits: AllergenHit[]): boolean {
   return hits.some(h => NUT_IDS.includes(h.allergen.id));

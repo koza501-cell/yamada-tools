@@ -40,8 +40,8 @@ const Icons = {
 
 // ─── Static data ──────────────────────────────────────────────────────────────
 const FAQ = [
-  { question: "義務表示の8品目は何ですか?", answer: "えび・かに・くるみ・小麦・そば・卵・乳・落花生の8品目です。これらは食品表示法で必ず表示が義務付けられています(令和5年3月にくるみが追加されました)。" },
-  { question: "推奨表示の20品目は?", answer: "アーモンド、あわび、いか、いくら、オレンジ、カシューナッツ、キウイ、牛肉、ごま、さけ、さば、大豆、鶏肉、バナナ、豚肉、マカダミアナッツ、もも、やまいも、りんご、ゼラチンです(令和6年3月にマカダミアナッツが追加、まつたけが削除されました)。" },
+  { question: "義務表示の9品目は何ですか?", answer: "えび・かに・くるみ・カシューナッツ・小麦・そば・卵・乳・落花生の9品目です(令和8年4月1日改正でカシューナッツが追加)。これらは食品表示法で必ず表示が義務付けられています。" },
+  { question: "推奨表示の20品目は?", answer: "アーモンド、あわび、いか、いくら、オレンジ、キウイ、牛肉、ごま、さけ、さば、大豆、鶏肉、バナナ、ピスタチオ、豚肉、マカダミアナッツ、もも、やまいも、りんご、ゼラチンです(令和8年4月1日改正でピスタチオが追加、カシューナッツが義務に格上げされました)。" },
   { question: "このツールで命の安全は保証できますか?", answer: "いいえ。本ツールは原材料表示の概要チェック用です。実際の食品提供は必ず医師の生活管理指導表と現物の食品ラベルを確認してください。" },
   { question: "コンタミネーション(交差汚染)は検出できますか?", answer: "できません。原材料に直接記載のないコンタミネーションリスクは、製造元への問い合わせや「同じ製造ラインで○○を使用」の表記を確認してください。" },
   { question: "入力した情報はサーバーに送信されますか?", answer: "いいえ。本ツールはブラウザ上でのみ動作し、入力内容はサーバーへ送信されません。" },
@@ -125,12 +125,12 @@ export default function AllergyCheckerClient() {
 
       {/* H1 */}
       <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 print-hide">
-        食物アレルギー チェッカー【28品目対応・無料】
+        食物アレルギー チェッカー【29品目対応・無料】
       </h1>
 
       {/* Lead */}
       <p className="text-sm text-gray-600 dark:text-gray-400 mb-8 print-hide">
-        原材料を貼り付けるだけで28品目のアレルゲンを自動チェック。義務8品目・推奨20品目に対応、令和6年3月改正対応。
+        原材料を貼り付けるだけで義務9品目・推奨20品目(計29品目)を自動チェック。令和8年4月1日改正対応(カシューナッツ義務化・ピスタチオ追加)。
       </p>
 
       {/* Disclaimer banner */}
@@ -140,7 +140,7 @@ export default function AllergyCheckerClient() {
           <div className="text-sm">
             <p className="font-semibold text-amber-800 dark:text-amber-300 mb-1">重要な免責事項</p>
             <p className="text-amber-700 dark:text-amber-400">本ツールは原材料表示の概要チェック用です。食物アレルギーをお持ちの方への食品提供は、必ず医師の生活管理指導表と現物の食品ラベルを確認してください。生命に関わる判断には使用しないでください。</p>
-            <p className="text-amber-600 dark:text-amber-500 mt-1 text-xs">※令和6年3月改正対応（マカダミアナッツ追加・まつたけ削除） ※ブラウザ上のみで動作、入力内容はサーバーへ送信されません。</p>
+            <p className="text-amber-600 dark:text-amber-500 mt-1 text-xs">※令和8年4月1日改正対応（カシューナッツ義務化・ピスタチオ追加） ※ブラウザ上のみで動作、入力内容はサーバーへ送信されません。</p>
           </div>
         </div>
       </div>
@@ -268,16 +268,16 @@ export default function AllergyCheckerClient() {
         </section>
       )}
 
-      {/* Section 3: 28品目一覧 */}
+      {/* Section 3: 29品目一覧 */}
       <section className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-5 mb-6 print-hide">
-        <h2 className="text-base font-semibold text-gray-800 dark:text-gray-200 mb-4">28品目 一覧</h2>
+        <h2 className="text-base font-semibold text-gray-800 dark:text-gray-200 mb-4">29品目 一覧</h2>
         <div className="flex gap-2 mb-4">
           <button
             type="button"
             onClick={() => setAllergenTab('gimu')}
             className={`text-sm font-semibold px-4 py-2 rounded-lg transition-colors ${allergenTab === 'gimu' ? 'bg-red-500 text-white' : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'}`}
           >
-            義務 8品目
+            義務 9品目
           </button>
           <button
             type="button"
@@ -304,11 +304,12 @@ export default function AllergyCheckerClient() {
         <div className="space-y-4 text-sm text-gray-700 dark:text-gray-300">
           <div>
             <h3 className="font-semibold text-gray-900 dark:text-white mb-1">義務表示と推奨表示の違い</h3>
-            <p>食品表示法では、特にアレルギー症状が重篤になりやすい8品目を「義務表示」として必ず食品ラベルへの記載を義務付けています。推奨表示の20品目は、可能な限り表示することが推奨されていますが法律上の義務ではありません。</p>
+            <p>食品表示法では、特にアレルギー症状が重篤になりやすい9品目を「義務表示」として必ず食品ラベルへの記載を義務付けています。推奨表示の20品目は、可能な限り表示することが推奨されていますが法律上の義務ではありません。</p>
           </div>
           <div>
             <h3 className="font-semibold text-gray-900 dark:text-white mb-1">改正履歴</h3>
             <ul className="list-disc list-inside space-y-1">
+              <li>令和8年4月1日：カシューナッツが推奨から義務に格上げ、ピスタチオが推奨に追加</li>
               <li>令和5年3月：くるみが推奨から義務に格上げ</li>
               <li>令和6年3月：マカダミアナッツが推奨に追加、まつたけが推奨から削除</li>
             </ul>
@@ -352,10 +353,10 @@ export default function AllergyCheckerClient() {
         <div className="rounded-2xl border border-sky-200 bg-sky-50 p-6 dark:border-sky-800 dark:bg-sky-950/50">
           <p className="text-sm font-semibold text-sky-700 dark:text-sky-300">📖 もっと詳しく</p>
           <h3 className="mt-2 text-lg font-bold text-gray-900 dark:text-gray-100">
-            食物アレルギー28品目の完全ガイド【令和6年改正対応】
+            食物アレルギー表示の完全ガイド【令和8年4月1日改正対応】
           </h3>
           <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">
-            義務8品目・推奨20品目の隠れた成分、改正履歴、コンタミネーション対策まで完全解説。
+            義務9品目・推奨20品目の隠れた成分、改正履歴、コンタミネーション対策まで完全解説。
           </p>
           <a
             href="/blog/shokumotsu-allergy-28hinmoku"

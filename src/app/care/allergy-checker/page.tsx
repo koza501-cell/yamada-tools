@@ -4,12 +4,12 @@ import { getToolById } from "@/config/tools";
 import AllergyCheckerClient from "./client";
 
 export const metadata: Metadata = {
-  title: "食物アレルギー チェッカー｜28品目自動検出【令和6年3月改正対応・無料】",
-  description: "原材料を貼り付けるだけで28品目のアレルゲンを自動チェック。義務8品目(えび・かに・くるみ・小麦・そば・卵・乳・落花生)+推奨20品目に対応。代替表記・隠れた成分も検出。給食室・保育園・介護施設向け。",
-  keywords: ["食物アレルギー", "アレルゲン", "28品目", "チェッカー", "給食", "保育園", "令和6年"],
+  title: "食物アレルギー チェッカー｜29品目自動検出【令和8年4月1日改正対応・無料】",
+  description: "原材料を貼り付けるだけで義務9品目・推奨20品目の合計29アレルゲンを自動チェック。令和8年4月1日改正対応(カシューナッツ義務化・ピスタチオ追加)。代替表記・隠れた成分も検出。給食室・保育園・介護施設向け。",
+  keywords: ["食物アレルギー", "アレルゲン", "29品目", "チェッカー", "給食", "保育園", "令和8年", "カシューナッツ", "ピスタチオ"],
   openGraph: {
-    title: "食物アレルギー チェッカー【28品目対応】",
-    description: "原材料を貼り付けるだけで28品目のアレルゲンを自動チェック。義務8品目+推奨20品目対応。",
+    title: "食物アレルギー チェッカー【29品目対応】",
+    description: "原材料を貼り付けるだけで義務9品目・推奨20品目(計29品目)のアレルゲンを自動チェック。令和8年4月1日改正対応。",
     type: "website",
   },
   alternates: { canonical: "https://yamada-tools.jp/care/allergy-checker" },
@@ -22,7 +22,7 @@ const jsonLd = {
       "@type": "SoftwareApplication",
       name: "食物アレルギー チェッカー",
       url: "https://yamada-tools.jp/care/allergy-checker",
-      description: "原材料を貼り付けるだけで28品目のアレルゲンを自動検出。義務8品目+推奨20品目、令和6年3月改正対応。",
+      description: "原材料を貼り付けるだけで義務9品目+推奨20品目(計29品目)のアレルゲンを自動検出。令和8年4月1日改正対応(カシューナッツ義務化・ピスタチオ追加)。",
       applicationCategory: "UtilityApplication",
       operatingSystem: "Web",
       offers: { "@type": "Offer", price: "0", priceCurrency: "JPY" },
@@ -40,13 +40,13 @@ const jsonLd = {
       mainEntity: [
         {
           "@type": "Question",
-          name: "義務表示の8品目は何ですか?",
-          acceptedAnswer: { "@type": "Answer", text: "えび・かに・くるみ・小麦・そば・卵・乳・落花生の8品目です。これらは食品表示法で必ず表示が義務付けられています(令和5年3月にくるみが追加されました)。" },
+          name: "義務表示の9品目は何ですか?",
+          acceptedAnswer: { "@type": "Answer", text: "えび・かに・くるみ・カシューナッツ・小麦・そば・卵・乳・落花生の9品目です(令和8年4月1日改正でカシューナッツが追加)。これらは食品表示法で必ず表示が義務付けられています。" },
         },
         {
           "@type": "Question",
           name: "推奨表示の20品目は?",
-          acceptedAnswer: { "@type": "Answer", text: "アーモンド、あわび、いか、いくら、オレンジ、カシューナッツ、キウイ、牛肉、ごま、さけ、さば、大豆、鶏肉、バナナ、豚肉、マカダミアナッツ、もも、やまいも、りんご、ゼラチンです(令和6年3月にマカダミアナッツが追加、まつたけが削除されました)。" },
+          acceptedAnswer: { "@type": "Answer", text: "アーモンド、あわび、いか、いくら、オレンジ、キウイ、牛肉、ごま、さけ、さば、大豆、鶏肉、バナナ、ピスタチオ、豚肉、マカダミアナッツ、もも、やまいも、りんご、ゼラチンの20品目です(令和8年4月1日改正でピスタチオが追加、カシューナッツが義務に格上げされました)。" },
         },
         {
           "@type": "Question",
