@@ -481,6 +481,25 @@ export default function KaigoKirokuClient() {
           </div>
         </section>
 
+        {/* Blog callout */}
+        <section className="mt-12 print-hide">
+          <div className="rounded-2xl border border-sky-200 bg-sky-50 p-6 dark:border-sky-800 dark:bg-sky-950/50">
+            <p className="text-sm font-semibold text-sky-700 dark:text-sky-300">📖 もっと詳しく</p>
+            <h3 className="mt-2 text-lg font-bold text-gray-900 dark:text-gray-100">
+              介護記録の書き方 — SOAP形式と避けたい表現の完全ガイド
+            </h3>
+            <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">
+              SOAP・5W1Hの違いから、絶対NG用語の代替表現、法的保存期間まで完全解説。
+            </p>
+            <a
+              href="/blog/kaigo-kiroku-kakikata-soap"
+              className="mt-4 inline-flex items-center gap-1 rounded-lg bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-700"
+            >
+              解説記事を読む →
+            </a>
+          </div>
+        </section>
+
         {/* FAQ */}
         <div className="print-hide"><FAQSection faq={FAQ} title="よくある質問" /></div>
 
