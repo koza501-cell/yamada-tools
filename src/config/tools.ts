@@ -2896,6 +2896,20 @@ export const careTools: Tool[] = [
     available: true,
     isNew: true,
   },
+  {
+    id: 'allergy-checker',
+    nameJa: '食物アレルギー チェッカー',
+    nameEn: 'Food Allergy Checker',
+    description: '原材料を貼り付けるだけで28品目のアレルゲンを自動チェック。義務8品目+推奨20品目、令和6年3月改正対応。代替表記も検出。',
+    icon: '🚨',
+    path: '/care/allergy-checker',
+    apiEndpoint: '',
+    acceptedTypes: '',
+    maxFiles: 0,
+    category: 'care',
+    available: true,
+    isNew: true,
+  },
 ];
 
 export const allTools: Tool[] = [
