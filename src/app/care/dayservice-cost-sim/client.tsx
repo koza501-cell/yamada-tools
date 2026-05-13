@@ -428,6 +428,25 @@ export default function DayserviceCostSimClient() {
         </div>
       </section>
 
+      {/* Blog callout */}
+      <section className="mt-12 print-hide">
+        <div className="rounded-2xl border border-sky-200 bg-sky-50 p-6 dark:border-sky-800 dark:bg-sky-950/50">
+          <p className="text-sm font-semibold text-sky-700 dark:text-sky-300">📖 もっと詳しく</p>
+          <h3 className="mt-2 text-lg font-bold text-gray-900 dark:text-gray-100">
+            デイサービスの料金はいくら？要介護度別・月額の目安完全ガイド
+          </h3>
+          <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">
+            1回1,500〜2,500円の内訳、食費・実費、限度額超過、令和8年6月処遇改善加算拡充の影響まで完全解説。
+          </p>
+          <a
+            href="/blog/dayservice-ryoukin-guide"
+            className="mt-4 inline-flex items-center gap-1 rounded-lg bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-700"
+          >
+            解説記事を読む →
+          </a>
+        </div>
+      </section>
+
       <div className="print-hide">
         <FAQSection faq={FAQ} title="よくある質問" />
       </div>
