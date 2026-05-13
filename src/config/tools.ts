@@ -2882,6 +2882,20 @@ export const careTools: Tool[] = [
     available: true,
     isNew: true,
   },
+  {
+    id: 'renrakucho-bunrei',
+    nameJa: '連絡帳 文例ジェネレーター',
+    nameEn: 'Renrakucho Bunrei Generator',
+    description: '保育園・こども園の連絡帳に使える文例を年齢・シーン別に即生成。0歳〜5歳、10シーン対応。NG表現チェッカー付き。',
+    icon: '📒',
+    path: '/care/renrakucho-bunrei',
+    apiEndpoint: '',
+    acceptedTypes: '',
+    maxFiles: 0,
+    category: 'care',
+    available: true,
+    isNew: true,
+  },
 ];
 
 export const allTools: Tool[] = [
