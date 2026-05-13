@@ -2854,6 +2854,20 @@ export const careTools: Tool[] = [
     available: true,
     isNew: true,
   },
+  {
+    id: 'youkaigodo-hayami',
+    nameJa: '要介護度 早見表',
+    nameEn: 'Youkaigodo Reference',
+    description: '要支援1〜要介護5の違い・支給限度額・自己負担・利用できるサービスを一覧で比較。',
+    icon: '📋',
+    path: '/care/youkaigodo-hayami',
+    apiEndpoint: '',
+    acceptedTypes: '',
+    maxFiles: 0,
+    category: 'care',
+    available: true,
+    isNew: true,
+  },
 ];
 
 export const allTools: Tool[] = [
