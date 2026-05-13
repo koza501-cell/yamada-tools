@@ -2910,6 +2910,20 @@ export const careTools: Tool[] = [
     available: true,
     isNew: true,
   },
+  {
+    id: 'dayservice-cost-sim',
+    nameJa: 'デイサービス 利用料 試算',
+    nameEn: 'Day Service Cost Simulator',
+    description: '要介護度・利用時間・回数を選ぶだけでデイサービスの月額費用を試算。食費込み、限度額チェック付き。介護家族向けシンプルシミュレーター。',
+    icon: '💴',
+    path: '/care/dayservice-cost-sim',
+    apiEndpoint: '',
+    acceptedTypes: '',
+    maxFiles: 0,
+    category: 'care',
+    available: true,
+    isNew: true,
+  },
 ];
 
 export const allTools: Tool[] = [
