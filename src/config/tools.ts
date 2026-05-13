@@ -2868,6 +2868,20 @@ export const careTools: Tool[] = [
     available: true,
     isNew: true,
   },
+  {
+    id: 'kaigo-kiroku-template',
+    nameJa: '介護記録 テンプレート',
+    nameEn: 'Kaigo Kiroku Template',
+    description: '場面を選ぶだけで介護記録の文例を即生成。SOAP・5W1H・シンプル形式対応。禁止用語チェッカー付き。',
+    icon: '📝',
+    path: '/care/kaigo-kiroku-template',
+    apiEndpoint: '',
+    acceptedTypes: '',
+    maxFiles: 0,
+    category: 'care',
+    available: true,
+    isNew: true,
+  },
 ];
 
 export const allTools: Tool[] = [
