@@ -211,7 +211,7 @@ const faqItems = [
   },
   {
     question: "令和6年改定に対応していますか?",
-    answer: "はい。2024年4月・6月施行の最新介護報酬改定に対応しています。次回改定は令和9年度予定です。",
+    answer: "はい。令和6年度改定(2024年4月・6月施行)および令和8年6月期中改定(処遇改善加算拡充)に対応しています。次回の通常改定は令和9年度予定です。",
   },
   {
     question: "加算や減算も計算できますか?",
@@ -402,7 +402,7 @@ export default function KaigoHoshuClient() {
       {/* Header */}
       <div className="print-hide">
         <div className="flex items-center gap-2 mb-1">
-          <span className="text-xs font-medium bg-sky-100 dark:bg-sky-900/40 text-sky-700 dark:text-sky-300 px-2 py-0.5 rounded-full">令和6年改定対応</span>
+          <span className="text-xs font-medium bg-sky-100 dark:bg-sky-900/40 text-sky-700 dark:text-sky-300 px-2 py-0.5 rounded-full">令和6年+令和8年6月改定対応</span>
           <span className="text-xs font-medium bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300 px-2 py-0.5 rounded-full">無料</span>
         </div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
@@ -616,6 +616,11 @@ export default function KaigoHoshuClient() {
                         </label>
                       ))}
                     </div>
+                    {kasanList.filter((k) => k.id === 'shogu_ia' || k.id === 'shogu_ib').length >= 2 && (
+                      <p className="text-xs text-amber-600 dark:text-amber-400 mt-2">
+                        ※処遇改善加算ⅠイとⅠロは併用できません。生産性向上要件を満たす事業所はⅠロを、それ以外はⅠイを選択してください。
+                      </p>
+                    )}
                   </div>
                 )}
                 {gensanList.length > 0 && (
@@ -720,7 +725,8 @@ export default function KaigoHoshuClient() {
           {/* Disclaimer */}
           <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg p-3 text-xs text-amber-800 dark:text-amber-300 space-y-1">
             <p>※本計算は概算です。実際の介護報酬は加算・減算、利用者の状況、事業所形態により変動します。正式な金額は所属事業所または市町村にご確認ください。</p>
-            <p>※令和6年度介護報酬改定 (2024年4月・6月施行) に基づきます。</p>
+            <p>※令和6年度介護報酬改定 (2024年4月・6月施行) + 令和8年度期中改定 (2026年6月施行) に基づきます。</p>
+            <p>※処遇改善加算は令和8年6月の期中改定で大幅拡充されました(訪問介護Ⅰイ:24.5%→27.0% / 通所介護Ⅰイ:9.2%→10.4% など)。</p>
           </div>
         </div>
       )}
@@ -763,7 +769,7 @@ export default function KaigoHoshuClient() {
         <div className="rounded-2xl border border-sky-200 bg-sky-50 p-6 dark:border-sky-800 dark:bg-sky-950/50">
           <p className="text-sm font-semibold text-sky-700 dark:text-sky-300">📖 もっと詳しく</p>
           <h3 className="mt-2 text-lg font-bold text-gray-900 dark:text-gray-100">
-            介護報酬の計算方法をわかりやすく解説【令和6年改定対応】
+            介護報酬の計算方法をわかりやすく解説【令和6年+令和8年6月期中改定対応】
           </h3>
           <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">
             単位・地域区分・加算減算の仕組みを、専門用語なしで初心者向けに完全解説。

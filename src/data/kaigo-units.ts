@@ -55,22 +55,27 @@ export const KYOTAKU_UNITS = {
   heavy: { label: '要介護3〜5', units: 1411 },
 };
 
-// 加算 (common ones, V1)
+// 加算 (令和8年6月期中改定対応)
+// ※処遇改善加算ⅠイとⅠロは併用不可。Ⅰロは生産性向上要件を満たす事業所向け上乗せ区分。
 export const KASAN: Record<KaigoService, { id: string; label: string; type: 'percent' | 'flat'; value: number }[]> = {
   houmon: [
-    { id: 'shogu',   label: '処遇改善加算(Ⅰ)',     type: 'percent', value: 24.5 },
-    { id: 'tokutei', label: '特定事業所加算(Ⅰ)',   type: 'percent', value: 20 },
-    { id: 'shoki',   label: '初回加算',             type: 'flat',    value: 200 },
+    { id: 'shogu_ia', label: '処遇改善加算(Ⅰイ) ※令和8年6月改定', type: 'percent', value: 27.0 },
+    { id: 'shogu_ib', label: '処遇改善加算(Ⅰロ) ※生産性向上要件',  type: 'percent', value: 28.7 },
+    { id: 'tokutei',  label: '特定事業所加算(Ⅰ)',                  type: 'percent', value: 20 },
+    { id: 'shoki',    label: '初回加算',                            type: 'flat',    value: 200 },
   ],
   tsusho: [
-    { id: 'shogu',   label: '処遇改善加算(Ⅰ)',     type: 'percent', value: 9.2 },
-    { id: 'nyuyoku', label: '入浴介助加算(Ⅰ)',     type: 'flat',    value: 40 },
-    { id: 'kobetsu', label: '個別機能訓練加算(Ⅰ)イ', type: 'flat',  value: 56 },
-    { id: 'kuchi',   label: '口腔機能向上加算(Ⅰ)',  type: 'flat',   value: 150 },
+    { id: 'shogu_ia', label: '処遇改善加算(Ⅰイ) ※令和8年6月改定', type: 'percent', value: 10.4 },
+    { id: 'shogu_ib', label: '処遇改善加算(Ⅰロ) ※生産性向上要件',  type: 'percent', value: 12.0 },
+    { id: 'nyuyoku1', label: '入浴介助加算(Ⅰ)',                    type: 'flat',    value: 40 },
+    { id: 'kobetsu',  label: '個別機能訓練加算(Ⅰ)イ',              type: 'flat',    value: 56 },
+    { id: 'kuchi',    label: '口腔機能向上加算(Ⅰ)',                type: 'flat',    value: 150 },
   ],
   kyotaku: [
-    { id: 'shokai',  label: '初回加算',             type: 'flat',    value: 300 },
-    { id: 'tokutei', label: '特定事業所加算(Ⅰ)',   type: 'flat',    value: 519 },
+    // 令和8年6月新設: 居宅介護支援が処遇改善加算の対象に
+    { id: 'shogu',    label: '処遇改善加算 ※令和8年6月新設',        type: 'percent', value: 2.1 },
+    { id: 'shokai',   label: '初回加算',                            type: 'flat',    value: 300 },
+    { id: 'tokutei',  label: '特定事業所加算(Ⅰ)',                  type: 'flat',    value: 519 },
   ],
 };
 
