@@ -5,7 +5,7 @@ import { careTools } from '@/config/tools';
 export const metadata: Metadata = {
   title: '介護・保育 事業者向けツール&ガイド完全集【令和8年度対応・無料】',
   description:
-    '介護施設・保育園の業務効率化ツール6種類と完全解説ガイドを無料提供。介護報酬計算・要介護度早見表・介護記録・連絡帳・食物アレルギーチェッカー・デイサービス料金試算など、令和8年度最新対応。登録不要・完全無料・事業者から介護家族まで利用可能。',
+    '介護施設・保育園の業務効率化ツール7種類と完全解説ガイドを無料提供。介護報酬計算・要介護度早見表・介護記録・連絡帳・食物アレルギーチェッカー・デイサービス料金試算など、令和8年度最新対応。登録不要・完全無料・事業者から介護家族まで利用可能。',
   keywords: [
     '介護報酬計算',
     '業務効率化',
@@ -68,6 +68,13 @@ const careEnrichments: Record<
       '要介護度・利用時間・月利用回数を選ぶだけで月額費用を試算。食費込み・自己負担1〜3割・限度額警告付き。介護家族が施設選びや月の予算を立てるためのシンプルシミュレーター。',
     blogPath: '/blog/dayservice-ryoukin-guide',
   },
+  'hoikushi-haichi-keisan': {
+    audience: '保育園 経営者',
+    audienceColor: 'amber',
+    richDescription:
+      '年齢別園児数を入力するだけで必要保育士数を即算出。令和6年4月改正(3-5歳児15:1/25:1)・令和7年度新設1歳児配置改善加算(5:1)・3歳児経過措置(令和9年度末終了)に対応。7施設種別選択可。',
+    blogPath: '/blog/hoikushi-haichi-kijun-guide',
+  },
 };
 
 const audienceBadgeClass: Record<string, string> = {
@@ -127,6 +134,14 @@ const blogPosts = [
     summary:
       '通所介護の基本報酬・加算・食費・自己負担額の計算方法と、月額費用の目安を要介護度別に解説。',
   },
+  {
+    path: '/blog/hoikushi-haichi-kijun-guide',
+    title: '保育士配置基準の完全ガイド【令和8年度版】',
+    audience: '保育園 経営者',
+    audienceColor: 'amber',
+    summary:
+      '3層構造・全7施設種別・令和6年改正・1歳児加算4条件・令和9年度末経過措置終了・違反ペナルティのタイムラインまで網羅。',
+  },
 ];
 
 const faqItems = [
@@ -156,7 +171,7 @@ const collectionPageSchema = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
   name: '介護・保育 事業者向けツール&ガイド完全集',
-  description: '介護施設・保育園の業務効率化ツール6種類と解説ガイド。令和8年度対応・無料。',
+  description: '介護施設・保育園の業務効率化ツール7種類と解説ガイド。令和8年度対応・無料。',
   inLanguage: 'ja-JP',
   publisher: {
     '@type': 'Organization',
@@ -172,6 +187,7 @@ const collectionPageSchema = {
       { '@type': 'ListItem', position: 4, name: '連絡帳 文例ジェネレーター', url: 'https://yamada-tools.jp/care/renrakucho-bunrei' },
       { '@type': 'ListItem', position: 5, name: '食物アレルギー チェッカー', url: 'https://yamada-tools.jp/care/allergy-checker' },
       { '@type': 'ListItem', position: 6, name: 'デイサービス 利用料 試算', url: 'https://yamada-tools.jp/care/dayservice-cost-sim' },
+      { '@type': 'ListItem', position: 7, name: '保育士配置基準 計算機', url: 'https://yamada-tools.jp/care/hoikushi-haichi-keisan' },
     ],
   },
 };
@@ -229,10 +245,10 @@ export default function CareHubPage() {
           介護・保育 事業者向けツール&amp;ガイド完全集
         </h1>
         <p className="mt-2 text-lg text-sky-700 dark:text-sky-300 font-semibold">
-          令和8年度対応 / 6ツール + 6解説ガイド / 完全無料・登録不要
+          令和8年度対応 / 7ツール + 7解説ガイド / 完全無料・登録不要
         </p>
         <p className="mt-6 text-base text-gray-700 dark:text-gray-300 leading-relaxed">
-          介護施設・保育園・デイサービス・ケアマネ事務所・給食室の業務効率化を支援する、6つの無料ツールと6つの解説ガイドを公開しています。
+          介護施設・保育園・デイサービス・ケアマネ事務所・給食室の業務効率化を支援する、7つの無料ツールと7つの解説ガイドを公開しています。
           介護報酬の計算、要介護度の早見、介護記録テンプレート、保育園連絡帳の文例、食物アレルギーチェック、デイサービス料金試算 —
           業務でよく使う計算・記録・確認作業をワンクリックで完結。全ツールは令和8年6月期中改定および令和8年4月1日
           食物アレルギー改正に対応しています。事業所職員から介護家族まで、誰でも無料でご利用いただけます。
@@ -264,7 +280,7 @@ export default function CareHubPage() {
       {/* Tools Grid */}
       <section className="mb-12">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
-          🛠️ 介護・保育 無料ツール 全6種類
+          🛠️ 介護・保育 無料ツール 全7種類
         </h2>
         <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
           すべて令和8年度対応・登録不要・完全無料。業務に合わせてお使いください。
@@ -318,7 +334,7 @@ export default function CareHubPage() {
       {/* Blog Posts Section */}
       <section className="mb-12">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
-          📖 詳しい解説記事（全6本）
+          📖 詳しい解説記事（全7本）
         </h2>
         <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
           各ツールに対応した完全ガイドを公開しています。ツール利用の前後にお読みください。

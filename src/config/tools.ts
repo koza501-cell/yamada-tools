@@ -2924,6 +2924,20 @@ export const careTools: Tool[] = [
     available: true,
     isNew: true,
   },
+  {
+    id: 'hoikushi-haichi-keisan',
+    nameJa: '保育士配置基準 計算機',
+    nameEn: 'Hoikushi Haichi Calculator',
+    description: '園児数を入れるだけで令和8年度の必要保育士数を即算出。施設種別7形態・経過措置・1歳児加算対応',
+    icon: '👶',
+    path: '/care/hoikushi-haichi-keisan',
+    apiEndpoint: '',
+    acceptedTypes: '',
+    maxFiles: 0,
+    category: 'care',
+    available: true,
+    isNew: true,
+  },
 ];
 
 export const allTools: Tool[] = [
