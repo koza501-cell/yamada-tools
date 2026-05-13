@@ -211,7 +211,7 @@ export default function RelatedTools({ currentTool, maxItems = 6, tools, title }
   // Legacy mode: tools array passed directly
   if (tools && tools.length > 0) {
     return (
-      <section className="mt-8" aria-labelledby="related-heading">
+      <section className="mt-8 print-hide" aria-labelledby="related-heading">
         <h2 id="related-heading" className="font-bold text-kon dark:text-gray-300 mb-4 text-lg">
           {title || "🔗 あわせて使えるツール"}
         </h2>
@@ -258,7 +258,7 @@ export default function RelatedTools({ currentTool, maxItems = 6, tools, title }
   if (relatedTools.length === 0) return null;
 
   return (
-    <section className="mt-8" aria-labelledby="related-heading">
+    <section className="mt-8 print-hide" aria-labelledby="related-heading">
       <h2 id="related-heading" className="font-bold text-kon dark:text-gray-300 mb-4 text-lg">
         🔗 あわせて使えるツール
       </h2>
