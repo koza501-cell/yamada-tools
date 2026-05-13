@@ -2938,6 +2938,20 @@ export const careTools: Tool[] = [
     available: true,
     isNew: true,
   },
+  {
+    id: 'kaigo-shokuin-haichi-keisan',
+    nameJa: '介護職員配置基準 計算機',
+    nameEn: 'Kaigo Shokuin Haichi Calculator',
+    description: '利用者数を入れるだけで令和8年度の必要介護職員数を即算出。8施設種別・テクノロジー緩和(3:0.9)・夜勤1.6人緩和・処遇改善加算Ⅰロ対応',
+    icon: '🏥',
+    path: '/care/kaigo-shokuin-haichi-keisan',
+    apiEndpoint: '',
+    acceptedTypes: '',
+    maxFiles: 0,
+    category: 'care',
+    available: true,
+    isNew: true,
+  },
 ];
 
 export const allTools: Tool[] = [
