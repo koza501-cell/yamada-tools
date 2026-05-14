@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import RelatedTools, { relatedToolSets } from "@/components/common/RelatedTools";
@@ -29,15 +29,36 @@ export default function FuriganaClient() {
   const [mascotState, setMascotState] = useState<MascotState>("idle");
   const [mascotMessage, setMascotMessage] = useState("漢字を入力してね！");
 
-  const [inputText, setInputText] = useState("");
+  const [inputText, setInputText] = useState("山田太郎");
   const [outputType, setOutputType] = useState<"hiragana" | "katakana" | "romaji">("hiragana");
   const [result, setResult] = useState<ConversionResult | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [copied, setCopied] = useState(false);
+  const didAutoConvert = useRef(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (!mounted || didAutoConvert.current) return;
+    didAutoConvert.current = true;
+    setIsLoading(true);
+    fetch("https://api.yamada-tools.jp/api/convert/furigana", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text: "山田太郎", output_type: "hiragana" }),
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        setResult(data);
+        setMascotState("success");
+        setMascotMessage("変換完了！サンプルです");
+      })
+      .catch(() => { /* silent fail on initial auto-convert */ })
+      .finally(() => setIsLoading(false));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mounted]);
 
   const handleConvert = async () => {
     if (!inputText.trim()) {
@@ -116,6 +137,27 @@ export default function FuriganaClient() {
         <div className="mb-6">
           <Mascot state={mascotState} message={mascotMessage} />
         </div>
+
+        {/* 3-Step Visual Guide */}
+        <section className="mb-6">
+          <div className="rounded-2xl border border-blue-200 bg-blue-50 p-6 dark:border-blue-800 dark:bg-blue-950/30">
+            <h2 className="text-lg font-bold mb-4 text-gray-900 dark:text-gray-100">使い方は簡単3ステップ</h2>
+            <div className="grid gap-4 md:grid-cols-3">
+              <div className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">1</span>
+                <p className="text-sm text-gray-700 dark:text-gray-300">下の入力欄に漢字を貼り付け</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">2</span>
+                <p className="text-sm text-gray-700 dark:text-gray-300">変換ボタンをクリック</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">3</span>
+                <p className="text-sm text-gray-700 dark:text-gray-300">ひらがな・カタカナ・ローマ字をコピー</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
           {/* Output Type Selection */}
