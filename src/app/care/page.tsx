@@ -5,7 +5,7 @@ import { careTools } from '@/config/tools';
 export const metadata: Metadata = {
   title: '介護・保育 事業者向けツール&ガイド完全集【令和8年度対応・無料】',
   description:
-    '介護施設・保育園の業務効率化ツール9種類と完全解説ガイドを無料提供。介護報酬計算・要介護度早見表・介護記録・連絡帳・食物アレルギーチェッカー・デイサービス料金試算など、令和8年度最新対応。登録不要・完全無料・事業者から介護家族まで利用可能。',
+    '介護施設・保育園の業務効率化ツール10種類と完全解説ガイドを無料提供。介護報酬計算・要介護度早見表・介護記録・連絡帳・食物アレルギーチェッカー・デイサービス料金試算など、令和8年度最新対応。登録不要・完全無料・事業者から介護家族まで利用可能。',
   keywords: [
     '介護報酬計算',
     '業務効率化',
@@ -88,6 +88,13 @@ const careEnrichments: Record<
     richDescription:
       '月額の介護保険自己負担額を入れるだけで還付見込み額を即算出。令和3年8月改正以降の6段階所得区分(生活保護〜課税所得690万以上)・個人上限/世帯上限・複数利用者の按分計算・高額医療高額介護合算(年間)も追加試算可能。2年以内の申請期限も確認できます。',
     blogPath: '/blog/kogaku-kaigo-service-guide',
+  },
+  'kaigo-kyugyo-kyufukin': {
+    audience: '働く家族',
+    audienceColor: 'purple',
+    richDescription:
+      '月給を入れるだけで介護休業中の雇用保険給付金額を即算出。賃金日額×67%・上限¥532,200/月・賃金支払い時の80%調整・93日3回分割パターン・非課税の額面手取り対応。令和7年4月改正・令和7年8月上限改定反映済み。',
+    blogPath: '/blog/kaigo-kyugyo-kyufukin-guide',
   },
 };
 
@@ -172,6 +179,14 @@ const blogPosts = [
     summary:
       '令和3年8月改正以降の6段階所得区分・月額計算・複数人世帯の按分計算・対象外費用・高額医療高額介護合算(年間)・申請手順・医療費控除との連動まで完全網羅。',
   },
+  {
+    path: '/blog/kaigo-kyugyo-kyufukin-guide',
+    title: '介護休業給付金の完全ガイド【令和8年度版】',
+    audience: '働く家族',
+    audienceColor: 'purple',
+    summary:
+      '賃金日額×67%の計算式・上限¥532,200・93日3回分割活用法・賃金支払い時の80%調整・非課税メリット・失業給付との競合・令和7年4月改正の雇用環境整備義務まで完全網羅。',
+  },
 ];
 
 const faqItems = [
@@ -201,7 +216,7 @@ const collectionPageSchema = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
   name: '介護・保育 事業者向けツール&ガイド完全集',
-  description: '介護施設・保育園の業務効率化ツール9種類と解説ガイド。令和8年度対応・無料。',
+  description: '介護施設・保育園の業務効率化ツール10種類と解説ガイド。令和8年度対応・無料。',
   inLanguage: 'ja-JP',
   publisher: {
     '@type': 'Organization',
@@ -220,6 +235,7 @@ const collectionPageSchema = {
       { '@type': 'ListItem', position: 7, name: '保育士配置基準 計算機', url: 'https://yamada-tools.jp/care/hoikushi-haichi-keisan' },
       { '@type': 'ListItem', position: 8, name: '介護職員配置基準 計算機', url: 'https://yamada-tools.jp/care/kaigo-shokuin-haichi-keisan' },
       { '@type': 'ListItem', position: 9, name: '高額介護サービス費 計算機', url: 'https://yamada-tools.jp/care/kogaku-kaigo-service' },
+      { '@type': 'ListItem', position: 10, name: '介護休業給付金 計算機', url: 'https://yamada-tools.jp/care/kaigo-kyugyo-kyufukin' },
     ],
   },
 };
@@ -277,10 +293,10 @@ export default function CareHubPage() {
           介護・保育 事業者向けツール&amp;ガイド完全集
         </h1>
         <p className="mt-2 text-lg text-sky-700 dark:text-sky-300 font-semibold">
-          令和8年度対応 / 9ツール + 9解説ガイド / 完全無料・登録不要
+          令和8年度対応 / 10ツール + 10解説ガイド / 完全無料・登録不要
         </p>
         <p className="mt-6 text-base text-gray-700 dark:text-gray-300 leading-relaxed">
-          介護施設・保育園・デイサービス・ケアマネ事務所・給食室の業務効率化を支援する、9つの無料ツールと9つの解説ガイドを公開しています。
+          介護施設・保育園・デイサービス・ケアマネ事務所・給食室の業務効率化を支援する、10の無料ツールと10の解説ガイドを公開しています。
           介護報酬の計算、要介護度の早見、介護記録テンプレート、保育園連絡帳の文例、食物アレルギーチェック、デイサービス料金試算 —
           業務でよく使う計算・記録・確認作業をワンクリックで完結。全ツールは令和8年6月期中改定および令和8年4月1日
           食物アレルギー改正に対応しています。事業所職員から介護家族まで、誰でも無料でご利用いただけます。
@@ -312,7 +328,7 @@ export default function CareHubPage() {
       {/* Tools Grid */}
       <section className="mb-12">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
-          🛠️ 介護・保育 無料ツール 全9種類
+          🛠️ 介護・保育 無料ツール 全10種類
         </h2>
         <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
           すべて令和8年度対応・登録不要・完全無料。業務に合わせてお使いください。
@@ -366,7 +382,7 @@ export default function CareHubPage() {
       {/* Blog Posts Section */}
       <section className="mb-12">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
-          📖 詳しい解説記事（全9本）
+          📖 詳しい解説記事（全10本）
         </h2>
         <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
           各ツールに対応した完全ガイドを公開しています。ツール利用の前後にお読みください。

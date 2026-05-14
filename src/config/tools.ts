@@ -2966,6 +2966,20 @@ export const careTools: Tool[] = [
     available: true,
     isNew: true,
   },
+  {
+    id: 'kaigo-kyugyo-kyufukin',
+    nameJa: '介護休業給付金 計算機',
+    nameEn: 'Kaigo Kyugyo Kyufukin Calculator',
+    description: '月給から介護休業給付金を即算出。雇用保険・67%支給率・93日3回分割・¥532,200上限・賃金支払い時の80%調整・非課税メリット対応',
+    icon: '💼',
+    path: '/care/kaigo-kyugyo-kyufukin',
+    apiEndpoint: '',
+    acceptedTypes: '',
+    maxFiles: 0,
+    category: 'care',
+    available: true,
+    isNew: true,
+  },
 ];
 
 export const allTools: Tool[] = [
