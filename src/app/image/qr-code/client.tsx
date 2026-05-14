@@ -189,7 +189,7 @@ export default function QRCodeClient({
         {/* Header */}
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">📱</div>
-          <h1 className="text-3xl font-bold text-kon mb-2">QRコード作成</h1>
+          <h1 className="text-3xl font-bold text-kon mb-2">QRコードを作成する無料ツール — URL・vCard・WiFi対応・商用利用OK</h1>
           <p className="text-gray-600 text-lg">URL・テキスト・WiFiなどからQRコードを生成</p>
           
           <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
@@ -439,33 +439,26 @@ export default function QRCodeClient({
         {/* Use Cases */}
         <section className="mt-8 bg-sakura/20 rounded-xl p-6">
           <h2 className="font-bold text-kon mb-4 text-lg">活用シーン</h2>
-          <div className="grid md:grid-cols-2 gap-4 text-sm">
+          <div className="grid md:grid-cols-3 gap-4 text-sm">
             <div className="bg-white rounded-lg p-4 flex items-start gap-3">
-              <span className="text-2xl">💼</span>
+              <span className="text-2xl">📇</span>
               <div>
-                <p className="font-medium text-gray-700">名刺</p>
-                <p className="text-gray-500">WebサイトやSNSへのリンク</p>
+                <p className="font-medium text-gray-700">名刺・SNSプロフィール</p>
+                <p className="text-gray-500">vCard対応。連絡先を一括取り込み</p>
               </div>
             </div>
             <div className="bg-white rounded-lg p-4 flex items-start gap-3">
-              <span className="text-2xl">📄</span>
+              <span className="text-2xl">🍽️</span>
               <div>
-                <p className="font-medium text-gray-700">チラシ・ポスター</p>
-                <p className="text-gray-500">詳細ページへの誘導</p>
+                <p className="font-medium text-gray-700">メニュー・店舗POP</p>
+                <p className="text-gray-500">色付き・ロゴ入りQRにも対応</p>
               </div>
             </div>
             <div className="bg-white rounded-lg p-4 flex items-start gap-3">
-              <span className="text-2xl">🏪</span>
+              <span className="text-2xl">📡</span>
               <div>
-                <p className="font-medium text-gray-700">店舗</p>
-                <p className="text-gray-500">WiFi接続情報の共有</p>
-              </div>
-            </div>
-            <div className="bg-white rounded-lg p-4 flex items-start gap-3">
-              <span className="text-2xl">📧</span>
-              <div>
-                <p className="font-medium text-gray-700">お問い合わせ</p>
-                <p className="text-gray-500">メール送信の簡略化</p>
+                <p className="font-medium text-gray-700">WiFi接続QR</p>
+                <p className="text-gray-500">SSID・パスワードを自動設定</p>
               </div>
             </div>
           </div>
@@ -527,6 +520,29 @@ export default function QRCodeClient({
             <p className="text-xs text-gray-500">色・サイズを自由に設定</p>
           </div>
         </section>
+
+
+        {/* Blog Callout */}
+        <section className="mt-8 bg-sky-50 dark:bg-sky-900/20 border border-sky-200 dark:border-sky-800 rounded-xl p-6">
+          <p className="text-sm font-semibold text-sky-800 dark:text-sky-300 mb-1">📖 もっと深く知りたい方へ</p>
+          <h3 className="mt-2 text-lg font-bold text-gray-900 dark:text-gray-100">
+            QRコードの作り方完全ガイド【2026年版】
+          </h3>
+          <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">
+            登録商標の正確な表記方法・可変QR vs 静的QRの使い分け・誤り訂正レベルL/M/Q/H・読取エラー5原因・UTMパラメータでGA分析・用途別ベストプラクティス(名刺・メニュー・看板)まで完全解説。
+          </p>
+          <a
+            href="/blog/qrcode-tsukurikata-guide-2026"
+            className="mt-4 inline-flex items-center gap-1 rounded-lg bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-700 transition-colors"
+          >
+            解説記事を読む →
+          </a>
+        </section>
+
+        {/* 登録商標 Disclaimer */}
+        <p className="mt-6 text-xs text-gray-400 text-center">
+          ※QRコードは株式会社デンソーウェーブの登録商標です。
+        </p>
 
         {/* Back Link */}
         <div className="mt-8 text-center">
