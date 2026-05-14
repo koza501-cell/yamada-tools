@@ -36,7 +36,7 @@ export default function Page() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <ToolPage tool={tool} faq={faq} seoContent={seoContent} />
+      <ToolPage tool={tool} customH1="PDFに電子署名・印鑑を追加する無料ツール — 契約書・申請書類に対応" faq={faq} seoContent={seoContent} />
       <div className="max-w-4xl mx-auto px-4 pb-8"><p className="text-sm text-gray-600 bg-gray-50 rounded-xl px-4 py-3">💡 PDFへのテキスト入力も必要な場合は <a href="/pdf/text-input" className="text-kon hover:underline font-medium">PDF書き込みツール（PDFに文字入力）</a> もご利用ください。</p></div>
       <div className="max-w-4xl mx-auto px-4">
         <RelatedTools currentTool={tool} maxItems={6} />

@@ -91,7 +91,7 @@ export default function CompressPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <CompressClient faq={faq} seoContent={seoContent} />
+      <CompressClient customH1="PDFを圧縮する無料ツール — ファイルサイズ縮小でメール添付・アップロード対応" faq={faq} seoContent={seoContent} />
       <div className="max-w-4xl mx-auto px-4">
         <RelatedTools currentTool={tool} maxItems={6} />
       </div>

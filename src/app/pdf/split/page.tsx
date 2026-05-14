@@ -78,7 +78,7 @@ export default function SplitPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <SplitClient faq={faq} seoContent={seoContent} />
+      <SplitClient customH1="PDFを分割する無料ツール — 1ページずつ切り離し・必要部分だけ抽出" faq={faq} seoContent={seoContent} />
       <div className="max-w-4xl mx-auto px-4">
         <RelatedTools currentTool={tool} maxItems={6} />
       </div>

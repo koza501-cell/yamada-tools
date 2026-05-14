@@ -856,7 +856,7 @@ export default function PdfTextClient({
 
       <header className="text-center mb-8">
         <div className="text-5xl mb-3">✏️</div>
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">PDFに文字入力</h1>
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">PDFに文字を書き込む無料ツール — 申請書・契約書のフォーム入力に対応</h1>
         <p className="text-gray-600 dark:text-gray-300 text-lg">申請書・契約書・履歴書に直接テキスト＆ハンコを追加</p>
         <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
           <span className="bg-green-50 text-green-700 px-3 py-1 rounded-full">✓ 完全無料・登録不要</span>

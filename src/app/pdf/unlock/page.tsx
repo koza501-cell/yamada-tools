@@ -36,7 +36,7 @@ export default function Page() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <ToolPage tool={tool} faq={faq} seoContent={seoContent} />
+      <ToolPage tool={tool} customH1="PDFパスワード解除の無料ツール — ロック・暗号化を外す" faq={faq} seoContent={seoContent} />
       <div className="max-w-4xl mx-auto px-4">
         <RelatedTools currentTool={tool} maxItems={6} />
       </div>

@@ -16,11 +16,12 @@ interface SeoContent {
 }
 
 interface CompressClientProps {
+  customH1?: string;
   faq?: FAQ[];
   seoContent?: SeoContent;
 }
 
-export default function CompressClient({ faq, seoContent }: CompressClientProps) {
+export default function CompressClient({ customH1, faq, seoContent }: CompressClientProps) {
   const tool = pdfTools.find(t => t.id === "compress")!;
   const [quality, setQuality] = useState("medium");
 
@@ -56,7 +57,7 @@ export default function CompressClient({ faq, seoContent }: CompressClientProps)
   return (
     <ToolPage 
       tool={tool} 
-      faq={faq} seoContent={seoContent} 
+      customH1={customH1} faq={faq} seoContent={seoContent} 
       extraFields={extraFields}
       extraFormData={{ quality }}
     />

@@ -525,7 +525,7 @@ export default function PdfStampClient({
 
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">🔏</div>
-          <h1 className="text-3xl font-bold text-kon mb-2">PDF押印ツール</h1>
+          <h1 className="text-3xl font-bold text-kon mb-2">PDFに電子印鑑を押す無料ツール — 認印・角印・社判の挿入に対応</h1>
           <p className="text-gray-600 dark:text-gray-300 text-lg">PDFに電子印鑑（ハンコ）をかんたん押印</p>
           <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
             <span className="bg-green-50 text-green-700 px-3 py-1 rounded-full">✓ 完全無料</span>

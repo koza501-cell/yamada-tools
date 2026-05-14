@@ -15,11 +15,12 @@ interface SeoContent {
 }
 
 interface SplitClientProps {
+  customH1?: string;
   faq?: FAQ[];
   seoContent?: SeoContent;
 }
 
-export default function SplitClient({ faq, seoContent }: SplitClientProps) {
+export default function SplitClient({ customH1, faq, seoContent }: SplitClientProps) {
   const tool = pdfTools.find(t => t.id === "split")!;
-  return <ToolPage tool={tool} faq={faq} seoContent={seoContent} />;
+  return <ToolPage tool={tool} customH1={customH1} faq={faq} seoContent={seoContent} />;
 }
