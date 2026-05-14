@@ -17,9 +17,10 @@ interface SeoContent {
 interface MergeClientProps {
   faq?: FAQ[];
   seoContent?: SeoContent;
+  customH1?: string;
 }
 
-export default function MergeClient({ faq, seoContent }: MergeClientProps) {
+export default function MergeClient({ faq, seoContent, customH1 }: MergeClientProps) {
   const tool = pdfTools.find(t => t.id === "merge")!;
-  return <ToolPage tool={tool} faq={faq} seoContent={seoContent} />;
+  return <ToolPage tool={tool} customH1={customH1} faq={faq} seoContent={seoContent} />;
 }

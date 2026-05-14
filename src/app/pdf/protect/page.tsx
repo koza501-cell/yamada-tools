@@ -10,6 +10,8 @@ const faq = [
   { question: "どんな暗号化方式ですか？", answer: "AES 256bitの強力な暗号化を使用しています。" },
   { question: "パスワードを忘れたら？", answer: "セキュリティ上、パスワードの復元はできません。元ファイルを保管しておくことをおすすめします。" },
   { question: "開封と編集で別のパスワードを設定できますか？", answer: "はい、閲覧用と編集用で異なるパスワードを設定できます。" },
+  { question: "パスワード強度はどのくらいですか？", answer: "AES-256暗号化を採用しています。一般的なPDFリーダーで開く際は十分な強度です。総当たり攻撃で破ることは現実的に不可能です。" },
+  { question: "設定後のファイルはオフラインで使えますか？", answer: "はい、ダウンロード後はインターネット接続なしで使用可能です。当サイトの処理サーバーには一切残りません。" },
 ];
 
 const seoContent = {
@@ -36,7 +38,7 @@ export default function Page() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <ToolPage tool={tool} faq={faq} seoContent={seoContent} />
+      <ToolPage tool={tool} customH1="PDFにパスワードを設定する無料ツール — 機密文書を暗号化保護" faq={faq} seoContent={seoContent} />
       <div className="max-w-4xl mx-auto px-4">
         <RelatedTools currentTool={tool} maxItems={6} />
       </div>

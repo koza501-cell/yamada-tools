@@ -90,7 +90,7 @@ export default function MergePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <MergeClient faq={faq} seoContent={seoContent} />
+      <MergeClient faq={faq} seoContent={seoContent} customH1="PDFを結合する無料ツール — 複数ファイルを1つにまとめる方法" />
       <div className="max-w-4xl mx-auto px-4">
         <RelatedTools currentTool={tool} maxItems={6} />
       </div>

@@ -35,6 +35,7 @@ interface FAQ {
 
 interface ToolPageProps {
   tool: Tool;
+  customH1?: string;
   extraFields?: React.ReactNode;
   extraFormData?: Record<string, string>;
   faq?: FAQ[];
@@ -47,7 +48,7 @@ interface ToolPageProps {
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://api.yamada-tools.jp";
 
-export default function ToolPage({ tool, extraFields, extraFormData, faq, seoContent }: ToolPageProps) {
+export default function ToolPage({ tool, customH1, extraFields, extraFormData, faq, seoContent }: ToolPageProps) {
   const { triggerSuccess } = usePricingContext();
 
   const [files, setFiles] = useState<File[]>([]);
@@ -205,7 +206,7 @@ export default function ToolPage({ tool, extraFields, extraFormData, faq, seoCon
         {/* Header with H1 */}
         <header className="text-center mb-8">
           <div className="text-5xl mb-4" role="img" aria-label={tool.nameJa}>{tool.icon}</div>
-          <h1 className="text-3xl font-bold text-kon dark:text-gray-300 mb-2">{tool.nameJa}</h1>
+          <h1 className="text-3xl font-bold text-kon dark:text-gray-300 mb-2">{customH1 || tool.nameJa}</h1>
           <p className="text-gray-600 dark:text-gray-300 text-lg">{tool.description}</p>
 
           {/* Trust badges */}

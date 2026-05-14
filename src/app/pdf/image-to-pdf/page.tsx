@@ -10,6 +10,9 @@ const faq = [
   { question: "何枚まで変換できますか？", answer: "最大50枚まで一度に変換できます。" },
   { question: "画像の順番は変えられますか？", answer: "はい、ドラッグ&ドロップで自由に並び替えできます。" },
   { question: "画像サイズは自動調整されますか？", answer: "はい、A4サイズに収まるよう自動調整されます。" },
+  { question: "画像の解像度は維持されますか？", answer: "はい、アップロードした画像と同じ解像度でPDF化されます。ただし、画像が小さすぎる場合は印刷時に粗く見える可能性があります。" },
+  { question: "WebP形式の画像も対応していますか？", answer: "はい、JPG・PNG・WebP・GIF・BMPなど主要な画像形式すべてに対応しています。" },
+  { question: "変換後のPDFは安全ですか？", answer: "はい、ファイルは日本国内のサーバーのみで処理され、海外に送信されることはありません。処理後60分で自動削除されます。" },
 ];
 
 const seoContent = {
@@ -36,7 +39,7 @@ export default function Page() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <ToolPage tool={tool} faq={faq} seoContent={seoContent} />
+      <ToolPage tool={tool} customH1="画像をPDFに変換する無料ツール — JPG・PNG・WebP対応・複数枚一括" faq={faq} seoContent={seoContent} />
       <div className="max-w-4xl mx-auto px-4">
         <RelatedTools currentTool={tool} maxItems={6} />
       </div>
