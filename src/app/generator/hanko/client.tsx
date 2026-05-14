@@ -165,7 +165,7 @@ export default function HankoClient() {
 
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">🔴</div>
-          <h1 className="text-3xl font-bold text-kon mb-2">電子印鑑作成【無料】｜認印・角印・日付印を10秒で作成</h1>
+          <h1 className="text-3xl font-bold text-kon mb-2">電子印鑑を作成する無料ツール — 認印・角印・社判をブラウザで作成 PDF対応</h1>
           <p className="text-gray-600 text-lg">デジタルハンコを簡単作成・無料ダウンロード</p>
         </header>
 

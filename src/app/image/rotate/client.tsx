@@ -165,7 +165,7 @@ export default function ImageRotateClient({
 
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">🔄</div>
-          <h1 className="text-3xl font-bold text-kon mb-2">画像回転</h1>
+          <h1 className="text-3xl font-bold text-kon mb-2">画像を回転する無料ツール — 90度・180度・任意角度・反転対応</h1>
           <p className="text-gray-600 text-lg">画像を回転・反転</p>
           <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
             <span className="bg-green-50 text-green-700 px-3 py-1 rounded-full">完全無料</span>

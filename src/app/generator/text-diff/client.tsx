@@ -170,7 +170,7 @@ export default function TextDiffClient({
         {/* Header */}
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">📝</div>
-          <h1 className="text-3xl font-bold text-kon mb-2">テキスト差分比較</h1>
+          <h1 className="text-3xl font-bold text-kon mb-2">テキスト差分を比較する無料ツール — 2つの文章・コードの違いをハイライト表示</h1>
           <p className="text-gray-600 text-lg">2つのテキストの違いを見つける</p>
           
           <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">

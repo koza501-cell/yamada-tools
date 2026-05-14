@@ -179,7 +179,7 @@ export default function ImageCropClient({
 
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">✂️</div>
-          <h1 className="text-3xl font-bold text-kon mb-2">画像切り抜き</h1>
+          <h1 className="text-3xl font-bold text-kon mb-2">画像を切り抜く無料ツール — トリミング・範囲指定で写真編集</h1>
           <p className="text-gray-600 text-lg">好きなサイズにトリミング</p>
           <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
             <span className="bg-green-50 text-green-700 px-3 py-1 rounded-full">完全無料</span>

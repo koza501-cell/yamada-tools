@@ -148,7 +148,7 @@ export default function CharacterCountClient({
         {/* Header */}
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">📝</div>
-          <h1 className="text-3xl font-bold text-kon mb-2">文字数カウント</h1>
+          <h1 className="text-3xl font-bold text-kon mb-2">文字数をカウントする無料ツール — 空白除外・原稿用紙・Twitter文字数対応</h1>
           <p className="text-gray-600 text-lg">文字数・単語数・行数を瞬時にカウント</p>
           
           <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
