@@ -2952,6 +2952,20 @@ export const careTools: Tool[] = [
     available: true,
     isNew: true,
   },
+  {
+    id: 'kogaku-kaigo-service',
+    nameJa: '高額介護サービス費 計算機',
+    nameEn: 'Kogaku Kaigo Service Calculator',
+    description: '月額介護保険自己負担額から還付見込み額を即算出。令和3年8月改正後の6段階所得区分・個人/世帯計算・複数利用者の按分・高額医療高額介護合算(年間)対応',
+    icon: '💰',
+    path: '/care/kogaku-kaigo-service',
+    apiEndpoint: '',
+    acceptedTypes: '',
+    maxFiles: 0,
+    category: 'care',
+    available: true,
+    isNew: true,
+  },
 ];
 
 export const allTools: Tool[] = [
