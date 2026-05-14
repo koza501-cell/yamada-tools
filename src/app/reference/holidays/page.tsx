@@ -8,6 +8,19 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://yamada-tools.jp/reference/holidays',
   },
+  openGraph: {
+    title: "日本の祝日一覧（2024年〜2026年）",
+    description: "2024年・2025年・2026年の日本の国民の祝日一覧。振替休日・連休情報も網羅。登録不要・完全無料。",
+    url: "https://yamada-tools.jp/reference/holidays",
+    siteName: "山田ツール",
+    locale: "ja_JP",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "日本の祝日一覧（2024年〜2026年）",
+    description: "2024年・2025年・2026年の国民の祝日カレンダー。振替休日も含めた完全版。",
+  },
 };
 
 const holidays2024 = [
