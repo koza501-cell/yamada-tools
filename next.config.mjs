@@ -118,7 +118,8 @@ const nextConfig = {
       { source: '/career/shitsugyo-ritsu/oita', destination: '/career/shitsugyo-ritsu', statusCode: 301 },
       { source: '/career/shitsugyo-ritsu/miyazaki', destination: '/career/shitsugyo-ritsu', statusCode: 301 },
       { source: '/career/shitsugyo-ritsu/kagoshima', destination: '/career/shitsugyo-ritsu', statusCode: 301 },
-      { source: '/career/shitsugyo-ritsu/okinawa', destination: '/career/shitsugyo-ritsu', statusCode: 301 }
+      { source: '/career/shitsugyo-ritsu/okinawa', destination: '/career/shitsugyo-ritsu', statusCode: 301 },
+      { source: '/blog/zengin-format-kanzen-guide', destination: '/blog/zengin-format-complete-guide-2026', statusCode: 301 }
     ]
   }
 }
