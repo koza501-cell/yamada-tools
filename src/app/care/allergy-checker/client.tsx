@@ -348,6 +348,28 @@ export default function AllergyCheckerClient() {
         </div>
       </section>
 
+      {/* Use case section */}
+      <section className="mt-12 print-hide">
+        <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100">こんな現場で活用 — 業種別ベストプラクティス</h2>
+        <div className="grid gap-6 md:grid-cols-3">
+          <article className="rounded-2xl border border-gray-200 dark:border-gray-700 p-6 bg-white dark:bg-gray-800">
+            <div className="text-3xl mb-3">🍴</div>
+            <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100">給食室・社員食堂</h3>
+            <p className="text-sm text-gray-700 dark:text-gray-300">納品される加工品の原材料表示を素早くチェック。隠れた成分(マヨネーズ→卵、バター→乳)まで自動判定。週次の献立確認に最適。</p>
+          </article>
+          <article className="rounded-2xl border border-gray-200 dark:border-gray-700 p-6 bg-white dark:bg-gray-800">
+            <div className="text-3xl mb-3">🧒</div>
+            <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100">保育園・幼稚園</h3>
+            <p className="text-sm text-gray-700 dark:text-gray-300">園児のアレルギー対応に必須。保護者から提出された原材料を一括チェックし、安全な食事提供を実現。アレルゲン表示書類の作成効率化にも。</p>
+          </article>
+          <article className="rounded-2xl border border-gray-200 dark:border-gray-700 p-6 bg-white dark:bg-gray-800">
+            <div className="text-3xl mb-3">🏥</div>
+            <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100">介護施設・病院食</h3>
+            <p className="text-sm text-gray-700 dark:text-gray-300">入所者ごとの食事制限管理に。29品目すべてを自動検出し、給食ミスのリスクを大幅に低減。食事提供記録としても活用可能。</p>
+          </article>
+        </div>
+      </section>
+
       {/* Blog callout */}
       <section className="mt-12 print-hide">
         <div className="rounded-2xl border border-sky-200 bg-sky-50 p-6 dark:border-sky-800 dark:bg-sky-950/50">
