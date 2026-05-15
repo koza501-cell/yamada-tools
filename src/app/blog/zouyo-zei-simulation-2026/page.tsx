@@ -4,8 +4,8 @@ import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
 
-const title = "【2026年最新】贈与税はいくら？親からの援助・生前贈与の税金シミュレーション";
-const description = "贈与税の計算方法と税率を徹底解説。110万円の基礎控除、住宅取得資金の非課税特例、相続時精算課税制度の活用法。親からの援助で損しない方法を紹介。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
+const title = "贈与税はいくら？親からの援助で損しない計算法＋無料シミュレーター";
+const description = "年110万円の基礎控除、住宅取得資金の最大1,000万円非課税、相続時精算課税2,500万円までの活用法を整理。「親から500万円もらったら税金いくら？」を即計算できる無料ツール付き。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("贈与税はいくら？")}&type=blog&category=${encodeURIComponent("税金・贈与")}`;
 
 export const metadata: Metadata = {

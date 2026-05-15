@@ -4,8 +4,8 @@ import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
 
-const title = "【2026年最新】生命保険の必要額シミュレーション｜家族構成別の目安と計算方法";
-const description = "生命保険の必要保障額を徹底解説。家族構成・年収・住宅ローン別の目安、遺族年金との関係、保険料の相場。必要額シミュレーターで今すぐ計算。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
+const title = "生命保険の必要保障額シミュレーター｜家族構成別の目安をすぐ計算";
+const description = "子1人なら3,000万、住宅ローン残あり共働きなら5,000万が目安。年収・家族・遺族年金から本当に必要な保障額を無料シミュレーターで算出。保険会社の言い値で契約しないために。";
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("生命保険の必要額")}&type=blog&category=${encodeURIComponent("保険・ライフプラン")}`;
 
 export const metadata: Metadata = {
