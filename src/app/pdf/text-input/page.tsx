@@ -208,6 +208,19 @@ export default function PdfTextPage() {
         <PdfTextClient faq={faq} seoContent={seoContent} />
       </AdFreeZone>
       <div className="max-w-5xl mx-auto px-4 pb-16 space-y-16">
+        <section className="mt-0 print-hide">
+          <div className="rounded-2xl border border-sky-200 bg-sky-50 dark:border-sky-800 dark:bg-sky-950/30 p-6">
+            <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100">
+              📖 PDFに文字入力するすべてを完全解説
+            </h3>
+            <p className="text-sm text-gray-700 dark:text-gray-300 mb-3">
+              履歴書・契約書・婚姻届の書類タイプ別ガイド、書き込めないPDFの対処法、改ざん防止まで完全網羅。
+            </p>
+            <a href="/blog/pdf-moji-nyuryoku-kanzen-guide" className="inline-flex items-center gap-1 font-semibold text-sky-700 dark:text-sky-300 hover:underline">
+              ガイドを読む →
+            </a>
+          </div>
+        </section>
         <section>
           <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">PDFテキスト入力ツール比較：山田ツールが選ばれる理由</h2>
           <div className="overflow-x-auto rounded-xl shadow-sm">
