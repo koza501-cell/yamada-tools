@@ -302,6 +302,22 @@ export default function HankoClient() {
           </div>
         </section>
 
+
+        {/* Blog callout */}
+        <section className="mt-8">
+          <div className="rounded-2xl border border-sky-200 bg-sky-50 p-6">
+            <h3 className="text-lg font-bold mb-2 text-gray-900">
+              📖 電子印鑑の完全ガイド
+            </h3>
+            <p className="text-sm text-gray-700 mb-3">
+              法的効力・実印タイプとの違い・シャチハタの扱い・PDF/Word/Excelでの押印・電子帳簿保存法対応まで完全解説。
+            </p>
+            <a href="/blog/denshi-inkan-kanzen-guide-2026" className="inline-flex items-center gap-1 font-semibold text-sky-700 hover:underline">
+              ガイドを読む →
+            </a>
+          </div>
+        </section>
+
         {/* Related Tools */}
         <RelatedTools tools={relatedToolSets.hanko} title="あわせて使えるツール" />
 
