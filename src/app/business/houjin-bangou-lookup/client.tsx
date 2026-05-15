@@ -1174,6 +1174,21 @@ export default function HoujinBangouLookupClient() {
           </div>
         )}
 
+        {/* Blog callout — invoice guide */}
+        <section className="mt-8 print-hide">
+          <div className="rounded-2xl border border-sky-200 bg-sky-50 dark:border-sky-800 dark:bg-sky-950/30 p-6">
+            <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100">
+              📖 インボイス番号確認の完全ガイド
+            </h3>
+            <p className="text-sm text-gray-700 dark:text-gray-300 mb-3">
+              経過措置(2026-2029)、月次チェック手順、フリーランス向けT番号管理まで完全解説。経理担当者・個人事業主必読。
+            </p>
+            <a href="/blog/invoice-tnumber-kakunin-guide" className="inline-flex items-center gap-1 font-semibold text-sky-700 dark:text-sky-300 hover:underline">
+              ガイドを読む →
+            </a>
+          </div>
+        </section>
+
         {/* Legal notice — always visible */}
         <p className="text-xs text-gray-400 italic leading-relaxed pt-4 border-t border-gray-100 mt-6">
           このサービスは、国税庁法人番号システムのWeb-API機能を利用して取得した情報をもとに作成しているが、サービスの内容は国税庁によって保証されたものではない。
