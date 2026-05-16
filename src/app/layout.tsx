@@ -24,7 +24,8 @@ const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
   display: "swap",
-  preload: false,
+  preload: true,
+  adjustFontFallback: true,
 });
 
 // Base URL for the site
@@ -231,7 +232,13 @@ export default async function RootLayout({
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:px-4 focus:py-2 focus:bg-kon focus:text-white focus:rounded-md focus:top-2 focus:left-2">メインコンテンツへスキップ</a>
         <Header />
         <Breadcrumbs />
-        <main id="main-content" className="flex-grow pb-20 md:pb-0">{children}</main>
+        <main
+          id="main-content"
+          className="flex-grow pb-20 md:pb-0"
+          style={{ minHeight: 'calc(100vh - 200px)' }}
+        >
+          {children}
+        </main>
         <Footer />
         <BottomNav />
         <FloatingActions />

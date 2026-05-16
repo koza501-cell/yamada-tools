@@ -3,10 +3,10 @@
 
 export default function StaticAdSlot({ className = '' }: { className?: string }) {
   return (
-    <div className={`ad-container my-6 ${className}`}>
+    <div className={`ad-container my-6 ${className}`} style={{ minHeight: '280px' }}>
       <ins
         className="adsbygoogle"
-        style={{ display: 'block' }}
+        style={{ display: 'block', minHeight: '280px' }}
         data-ad-client="ca-pub-2272972805493752"
         data-ad-slot="5612038947"
         data-ad-format="auto"

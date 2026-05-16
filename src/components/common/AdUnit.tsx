@@ -61,11 +61,11 @@ export function AdUnit({ slot, format = 'auto', className = '' }: AdUnitProps) {
   if (isExcluded || isPro) return null;
 
   return (
-    <div className={`ad-container my-6 ${className}`}>
+    <div className={`ad-container my-6 ${className}`} style={{ minHeight: '280px' }}>
       <ins
         ref={adRef}
         className="adsbygoogle"
-        style={{ display: 'block' }}
+        style={{ display: 'block', minHeight: '280px' }}
         data-ad-client="ca-pub-2272972805493752"
         data-ad-slot={slot}
         data-ad-format={format}

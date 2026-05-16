@@ -483,7 +483,7 @@ export default function Mascot({
   customMessage,
   showUpgradeLink = false,
   className = "",
-  priority = false,
+  priority = true,
   category,
 }: MascotProps) {
   const [resolved, setResolved] = useState<{
