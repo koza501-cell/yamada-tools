@@ -552,9 +552,10 @@ export default function Mascot({
           src={mascotImages[pose]}
           alt="あいちゃん"
           width={80}
-          height={80}
+          height={102}
           className="rounded-full"
           priority={priority}
+          style={{ width: '80px', height: 'auto' }}
         />
       </Link>
       <div
