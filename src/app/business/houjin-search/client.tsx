@@ -611,6 +611,7 @@ export default function HoujinSearchClient() {
                           </div>
                         </div>
                       )}
+                      <a href={`/business/houjin/${corp.corporate_number}`} onClick={(e) => e.stopPropagation()} className="text-xs text-blue-600 dark:text-blue-400 px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors">詳細ページ →</a>
                       <div className="text-xs text-gray-400 dark:text-gray-500 px-2 py-1 bg-gray-50 dark:bg-gray-700 rounded">
                         詳細 →
                       </div>
