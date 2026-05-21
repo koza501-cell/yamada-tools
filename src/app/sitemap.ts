@@ -7,7 +7,7 @@ const baseUrl = "https://yamada-tools.jp";
 
 // Sitemap IDs: 0 = static pages, 1 = tool pages
 export function generateSitemaps() {
-  return [{ id: 0 }, { id: 1 }];
+  return [{ id: 0 }, { id: 1 }, { id: 2 }];
 }
 
 export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
@@ -135,6 +135,20 @@ export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
         },
       },
     ];
+  }
+
+
+  // numId === 2: Houjin company pages sitemap
+  if (numId === 2) {
+    const seedPath = path.join(process.cwd(), "src/data/houjin_seed.json");
+    if (!fs.existsSync(seedPath)) return [];
+    const seeds: string[] = JSON.parse(fs.readFileSync(seedPath, "utf-8"));
+    return seeds.map(cn => ({
+      url: `${baseUrl}/business/houjin/${cn}`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    }));
   }
 
   // numId === 1: Tool pages sitemap
