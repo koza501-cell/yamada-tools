@@ -47,7 +47,7 @@ function RoleDropdown() {
     <>
       <div className="self-stretch flex items-center" onMouseEnter={show} onMouseLeave={hide}>
         <button className="flex items-center gap-1 px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px]">
-          <span>役割別</span>
+          <span>業種別</span>
           <svg className={`w-4 h-4 transition-transform duration-200 ${open ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
           </svg>
@@ -137,9 +137,12 @@ export default function Header() {
   const searchInputRef = useRef<HTMLInputElement>(null);
   const userBtnRef = useRef<HTMLButtonElement>(null);
   const [dropdownPos, setDropdownPos] = useState({ top: 0, right: 0 });
+  const [inlineQuery, setInlineQuery] = useState("");
+  const inlineSearchRef = useRef<HTMLDivElement>(null);
 
   const allToolsForSearch = [...pdfTools, ...documentTools, ...convertTools, ...imageTools, ...generatorTools, ...financeTools, ...insuranceTools, ...taxTools, ...careerTools, ...realestateTools, ...businessTools, ...healthTools, ...educationTools, ...debtTools, ...utilityTools].filter(t => t.available);
   const searchResults = searchTools(searchQuery, allToolsForSearch);
+  const inlineResults = inlineQuery.trim().length >= 2 ? searchTools(inlineQuery, allToolsForSearch) : [];
 
   useEffect(() => { setMounted(true); }, []);
 
@@ -163,6 +166,17 @@ export default function Header() {
     if (showUserMenu) { document.addEventListener("click", close); return () => document.removeEventListener("click", close); }
   }, [showUserMenu]);
 
+  // Close inline search dropdown on outside click
+  useEffect(() => {
+    const close = (e: MouseEvent) => {
+      if (inlineSearchRef.current && !inlineSearchRef.current.contains(e.target as Node)) {
+        setInlineQuery("");
+      }
+    };
+    document.addEventListener("mousedown", close);
+    return () => document.removeEventListener("mousedown", close);
+  }, []);
+
   const openUserMenu = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (!showUserMenu && userBtnRef.current) {
@@ -184,11 +198,46 @@ export default function Header() {
 
             <nav className="hidden lg:flex items-center gap-1">
               <RoleDropdown />
-              <NavDropdown label="ツール" menu={toolsMenu} />
+              <NavDropdown label="機能別" menu={toolsMenu} />
               <NavDropdown label="計算・シミュレーター" menu={calcMenu} />
               <Link href="/blog" className="px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px] flex items-center">ブログ</Link>
               <Link href="/ai" className="px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px] flex items-center">AI活用</Link>
               <Link href="/pricing" className="px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px] flex items-center">料金</Link>
+              {/* Inline search — desktop only; ⌘K modal still works for keyboard users */}
+              <div className="relative ml-1" ref={inlineSearchRef}>
+                <input
+                  type="text"
+                  value={inlineQuery}
+                  onChange={(e) => setInlineQuery(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && inlineResults.length > 0) {
+                      window.location.href = inlineResults[0].path;
+                      setInlineQuery("");
+                    }
+                    if (e.key === "Escape") setInlineQuery("");
+                  }}
+                  placeholder="ツールを検索..."
+                  className="w-40 bg-white/10 text-white rounded-lg px-3 py-1.5 text-sm placeholder:text-white/60 focus:ring-2 focus:ring-white/30 focus:bg-white/20 focus:outline-none transition-colors"
+                />
+                {inlineResults.length > 0 && (
+                  <div className="absolute top-full right-0 mt-1 w-72 bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden z-[1001] max-h-80 overflow-y-auto">
+                    {inlineResults.map((tool) => (
+                      <Link
+                        key={tool.id}
+                        href={tool.path}
+                        onClick={() => setInlineQuery("")}
+                        className="flex items-center gap-3 px-3 py-2.5 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors border-b border-gray-100 dark:border-gray-700 last:border-0"
+                      >
+                        <span className="text-xl">{tool.icon}</span>
+                        <div className="flex-1 min-w-0">
+                          <p className="font-medium text-gray-900 dark:text-gray-100 text-sm truncate">{tool.nameJa}</p>
+                          <p className="text-xs text-gray-500 dark:text-gray-400 truncate">{tool.description}</p>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             </nav>
 
             <div className="flex items-center gap-2">
@@ -258,7 +307,7 @@ export default function Header() {
             </div>
             <nav className="flex-1 py-4">
               <div className="mb-4">
-                <div className="px-4 py-2 text-xs text-white/60 uppercase tracking-wide">役割別</div>
+                <div className="px-4 py-2 text-xs text-white/60 uppercase tracking-wide">業種別</div>
                 {[
                   { slug: "keieisha", name: "中小企業の経営者向け", icon: "🏢" },
                   { slug: "freelance", name: "フリーランス向け", icon: "💼" },
@@ -273,7 +322,7 @@ export default function Header() {
                 ))}
               </div>
               <div className="mb-4">
-                <div className="px-4 py-2 text-xs text-white/60 uppercase tracking-wide">ツール</div>
+                <div className="px-4 py-2 text-xs text-white/60 uppercase tracking-wide">機能別</div>
                 {toolsMenu.sections.map((s) => (
                   <Link key={s.href} href={s.href} onClick={() => setIsMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 transition-colors">
                     <span className="text-xl">{s.icon}</span><span className="font-medium">{s.name}</span>

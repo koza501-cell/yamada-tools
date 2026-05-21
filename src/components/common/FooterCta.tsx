@@ -23,18 +23,18 @@ export default function FooterCta() {
           PROプランで無制限に利用、広告なし、優先サポート
         </p>
         <div className="flex flex-wrap gap-3 justify-center">
-          <Link
-            href="/pricing"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-kon text-white rounded-xl font-bold hover:bg-kon transition-colors shadow-md"
-          >
-            料金プランを見る →
-          </Link>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="inline-flex items-center gap-2 px-6 py-3 border-2 border-gray-200 text-kon dark:text-kon rounded-xl font-bold hover:bg-gray-50 dark:hover:bg-kon/30 transition-colors"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-[#1E3A8A] hover:bg-[#1E40AF] text-white rounded-xl font-semibold transition-colors duration-200 shadow-md"
           >
             無料で始める
           </button>
+          <Link
+            href="/pricing"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-white border-2 border-[#1E3A8A] text-[#1E3A8A] hover:bg-[#1E3A8A] hover:text-white rounded-xl font-semibold transition-colors duration-200"
+          >
+            料金プランを見る →
+          </Link>
         </div>
       </div>
     </section>

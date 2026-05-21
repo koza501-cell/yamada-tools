@@ -97,9 +97,19 @@ export default function Home() {
             ビジネス・税金・金融・暮らしまで。日本人のための無料ツール{availableTools.length}種
           </h1>
 
-          <p className="text-lg md:text-xl mb-8 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl mb-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             日本国内サーバーで安全に処理。登録不要・完全無料。
           </p>
+
+          <div className="flex justify-center mb-6">
+            <a
+              href="#tools"
+              className="inline-flex items-center gap-2 bg-[#1E3A8A] hover:bg-[#1E40AF] text-white font-semibold py-3 px-8 rounded-xl transition-colors duration-200 text-lg w-full sm:w-auto justify-center"
+            >
+              無料でツールを使う
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
 
           {/* Trust Badges - above fold */}
           <div className="flex flex-wrap justify-center gap-2 mb-5">
@@ -157,7 +167,7 @@ export default function Home() {
       {/* ============================================================ */}
       {/* IDENTITY TIER: 役割別ナビゲーション                          */}
       {/* ============================================================ */}
-      <section className="py-12 bg-white dark:bg-gray-900">
+      <section id="tools" className="py-12 bg-white dark:bg-gray-900" style={{scrollMarginTop: "80px"}}>
         <div className="max-w-6xl mx-auto px-4">
           <div className="mb-8">
             <h2 className="text-2xl md:text-3xl font-bold text-kon dark:text-white mb-2">役割別に探す</h2>
