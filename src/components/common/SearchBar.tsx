@@ -84,7 +84,7 @@ export default function SearchBar() {
           onKeyDown={handleKeyDown}
           placeholder={PLACEHOLDERS[placeholderIndex]}
           style={{ transition: "opacity 0.3s ease", opacity: query ? 1 : fade ? 1 : 0.3 }}
-          className="w-full px-4 py-3 pl-12 pr-4 rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 text-sumi dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-kon dark:focus:border-kon focus:outline-none"
+          className="w-full px-4 py-3 pl-12 pr-4 rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 text-sumi dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-500 focus:border-kon dark:focus:border-kon focus:outline-none"
         />
         <span className="absolute left-4 top-1/2 -translate-y-1/2 text-2xl">🔍</span>
       </div>

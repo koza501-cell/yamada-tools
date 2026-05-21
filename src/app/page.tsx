@@ -93,7 +93,7 @@ export default function Home() {
       {/* ============================================================ */}
       <section className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 py-10 md:py-14">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-kon">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-kon" style={{ wordBreak: 'keep-all', lineBreak: 'strict', overflowWrap: 'break-word' }}>
             ビジネス・税金・金融・暮らしまで。日本人のための無料ツール{availableTools.length}種
           </h1>
 
@@ -241,7 +241,7 @@ export default function Home() {
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-1">
                           <h3 className="text-base font-bold text-gray-900 dark:text-white group-hover:text-ai transition-colors">{tool.nameJa}</h3>
-                          {tool.isNew && <span className="px-2 py-0.5 bg-kon text-white text-xs font-bold rounded-full">NEW</span>}
+                          {tool.isNew && <span className="px-2 py-0.5 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-full">NEW</span>}
                         </div>
                         <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{tool.description}</p>
                       </div>
@@ -337,7 +337,7 @@ export default function Home() {
                         <Image src={post.featuredImage} alt={post.title} className="w-full h-48 object-cover" width={400} height={192} />
                       )}
                       {isNewBlog(post.publishDate) && (
-                        <span className="absolute top-4 right-4 px-3 py-1 bg-kon text-white text-sm font-bold rounded-full">
+                        <span className="absolute top-4 right-4 px-3 py-1 bg-emerald-100 text-emerald-700 text-sm font-medium rounded-full">
                           NEW
                         </span>
                       )}

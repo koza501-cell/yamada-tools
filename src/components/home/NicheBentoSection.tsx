@@ -101,7 +101,7 @@ function FeaturedCard({ niche, className = "" }: { niche: Niche; className?: str
   return (
     <Link
       href={niche.url}
-      className={`group relative block rounded-2xl p-6 md:p-7 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 overflow-hidden ${className}`}
+      className={`group relative block rounded-2xl p-6 md:p-7 transition-all duration-200 hover:shadow-xl hover:-translate-y-1 overflow-hidden ${className}`}
       style={{
         background: colors.bg,
         border: `1px solid ${colors.border}`,
@@ -118,8 +118,7 @@ function FeaturedCard({ niche, className = "" }: { niche: Niche; className?: str
         </div>
         {niche.popularBadge && (
           <span
-            className="text-[11px] md:text-xs font-bold px-3 py-1 rounded-full shadow-md"
-            style={{ background: "#DC2626", color: "white" }}
+            className="text-[11px] md:text-xs font-bold px-3 py-1 rounded-full bg-red-100 text-red-700"
           >
             {niche.popularBadge}
           </span>
@@ -176,7 +175,7 @@ function DarkCard({ niche }: { niche: Niche }) {
   return (
     <Link
       href={niche.url}
-      className="group relative block rounded-2xl p-5 md:p-6 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 overflow-hidden"
+      className="group relative block rounded-2xl p-5 md:p-6 transition-all duration-200 hover:shadow-xl hover:-translate-y-1 overflow-hidden"
       style={{
         background: colors.bgDark,
         color: colors.textDark,
@@ -186,8 +185,7 @@ function DarkCard({ niche }: { niche: Niche }) {
       {/* New badge */}
       {niche.isNew && (
         <span
-          className="absolute top-3 right-3 text-[10px] font-medium px-2 py-0.5 rounded-full"
-          style={{ background: "rgba(251, 191, 36, 0.9)", color: "#1E1B4B" }}
+          className="absolute top-3 right-3 text-[10px] font-medium px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700"
         >
           NEW
         </span>
@@ -210,7 +208,7 @@ function DarkCard({ niche }: { niche: Niche }) {
       </p>
 
       {/* Tool count at bottom */}
-      <div className="absolute bottom-4 right-4 md:bottom-5 md:right-5 text-xs font-medium opacity-60">
+      <div className="absolute bottom-4 right-4 md:bottom-5 md:right-5 text-sm font-semibold opacity-90">
         {niche.toolCount} ツール
       </div>
     </Link>
@@ -223,7 +221,7 @@ function StandardCard({ niche }: { niche: Niche }) {
   return (
     <Link
       href={niche.url}
-      className="group relative block rounded-2xl p-5 md:p-6 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 bg-white dark:bg-gray-800 overflow-hidden"
+      className="group relative block rounded-2xl p-5 md:p-6 transition-all duration-200 hover:shadow-xl hover:-translate-y-1 bg-white dark:bg-gray-800 overflow-hidden"
       style={{
         border: `1px solid ${colors.border}`,
         minHeight: "180px",
@@ -254,10 +252,7 @@ function StandardCard({ niche }: { niche: Niche }) {
       </p>
 
       {/* Tool count at bottom */}
-      <div
-        className="absolute bottom-4 right-4 md:bottom-5 md:right-5 text-xs font-medium"
-        style={{ color: colors.textMuted, opacity: 0.7 }}
-      >
+      <div className="absolute bottom-4 right-4 md:bottom-5 md:right-5 text-sm font-semibold text-gray-700 dark:text-gray-300">
         {niche.toolCount} ツール
       </div>
     </Link>
