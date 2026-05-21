@@ -118,7 +118,7 @@ function FeaturedCard({ niche, className = "" }: { niche: Niche; className?: str
         </div>
         {niche.popularBadge && (
           <span
-            className="text-[11px] md:text-xs font-bold px-3 py-1 rounded-full bg-red-100 text-red-700"
+            className="text-xs font-semibold px-3 py-1 rounded-full bg-red-100 text-red-700"
           >
             {niche.popularBadge}
           </span>
@@ -185,7 +185,7 @@ function DarkCard({ niche }: { niche: Niche }) {
       {/* New badge */}
       {niche.isNew && (
         <span
-          className="absolute top-3 right-3 text-[10px] font-medium px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700"
+          className="absolute top-3 right-3 text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700"
         >
           NEW
         </span>

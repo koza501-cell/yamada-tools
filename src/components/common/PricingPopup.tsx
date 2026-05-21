@@ -38,9 +38,10 @@ export function PricingPopup({ type, onClose, remainingUses = 0 }: PricingPopupP
         {!isLimitReached && (
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+            aria-label="閉じる"
+            className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 transition-colors"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
@@ -100,7 +101,7 @@ export function PricingPopup({ type, onClose, remainingUses = 0 }: PricingPopupP
 
         {/* Price */}
         <div className="text-center mb-4">
-          <span className="text-3xl font-bold text-sakura">¥980</span>
+          <span className="text-3xl font-bold text-[#1E3A8A]">¥980</span>
           <span className="text-gray-500">/月</span>
           <p className="text-xs text-gray-400 mt-1">年払いなら¥9,800/年（17%お得！）</p>
         </div>
@@ -109,7 +110,7 @@ export function PricingPopup({ type, onClose, remainingUses = 0 }: PricingPopupP
         <Link
           href="/pricing"
           onClick={onClose}
-          className="block w-full bg-gradient-to-r from-slate-900 to-rose-500 text-white text-center py-3 rounded-xl font-bold hover:from-slate-900 hover:to-rose-600 transition-all shadow-lg hover:shadow-xl"
+          className="block w-full bg-[#1E3A8A] hover:bg-[#1E40AF] text-white text-center py-3 rounded-xl font-semibold px-6 transition-all shadow-lg hover:shadow-xl"
         >
           PROプランを見る
         </Link>
@@ -118,7 +119,7 @@ export function PricingPopup({ type, onClose, remainingUses = 0 }: PricingPopupP
         {!isLimitReached && (
           <button
             onClick={onClose}
-            className="block w-full text-center text-gray-400 text-sm mt-3 hover:text-gray-600"
+            className="block w-full text-center text-gray-600 text-base mt-3 underline hover:text-gray-800 hover:underline py-2 px-4"
           >
             あとで見る
           </button>
