@@ -200,8 +200,8 @@ export default function Header() {
               <RoleDropdown />
               <NavDropdown label="機能別" menu={toolsMenu} />
               <NavDropdown label="計算・シミュレーター" menu={calcMenu} />
-              <Link href="/blog" className="px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px] flex items-center">ブログ</Link>
-              <Link href="/ai" className="px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px] flex items-center">AI活用</Link>
+              <Link href="/blog" className="hidden xl:flex px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px] items-center">ブログ</Link>
+              <Link href="/ai" className="hidden xl:flex px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px] items-center">AI活用</Link>
               <Link href="/pricing" className="px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px] flex items-center">料金</Link>
               {/* Inline search — desktop only; ⌘K modal still works for keyboard users */}
               <div className="relative ml-1" ref={inlineSearchRef}>
@@ -217,7 +217,7 @@ export default function Header() {
                     if (e.key === "Escape") setInlineQuery("");
                   }}
                   placeholder="ツールを検索..."
-                  className="w-40 bg-white/10 text-white rounded-lg px-3 py-1.5 text-sm placeholder:text-white/60 focus:ring-2 focus:ring-white/30 focus:bg-white/20 focus:outline-none transition-colors"
+                  className="w-32 bg-white/10 text-white rounded-lg px-3 py-1.5 text-sm placeholder:text-white/60 focus:ring-2 focus:ring-white/30 focus:bg-white/20 focus:outline-none transition-colors"
                 />
                 {inlineResults.length > 0 && (
                   <div className="absolute top-full right-0 mt-1 w-72 bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden z-[1001] max-h-80 overflow-y-auto">
@@ -240,7 +240,7 @@ export default function Header() {
               </div>
             </nav>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 ml-3">
               <ThemeToggle />
               <button onClick={() => setIsSearchOpen(true)} className="flex items-center gap-2 px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-lg transition-colors min-w-[44px] min-h-[44px]" aria-label="検索">
                 <span>🔍</span>
