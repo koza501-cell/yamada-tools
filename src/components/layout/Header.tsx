@@ -249,13 +249,13 @@ export default function Header() {
               </button>
               {!loading && (user ? (
                 <div className="relative">
-                  <button ref={userBtnRef} onClick={openUserMenu} className="flex items-center gap-2 px-3 py-1.5 bg-sakura hover:bg-sakura/80 rounded-lg transition-colors min-w-[44px] min-h-[44px]">
+                  <button ref={userBtnRef} onClick={openUserMenu} className="flex items-center gap-2 px-3 py-1.5 bg-sakura hover:bg-sakura/80 rounded-lg transition-colors min-w-[44px] min-h-[44px] text-[#223A70]">
                     <span>👤</span>
                     <span className="text-sm max-w-[80px] truncate hidden sm:inline">{user.email.split("@")[0]}</span>
                   </button>
                 </div>
               ) : (
-                <Link href="/auth/login" className="flex items-center gap-2 px-3 py-1.5 bg-sakura hover:bg-sakura/80 rounded-lg transition-colors text-sm font-medium min-w-[44px] min-h-[44px]">
+                <Link href="/auth/login" className="flex items-center gap-2 px-3 py-1.5 bg-sakura hover:bg-sakura/80 rounded-lg transition-colors text-sm font-medium min-w-[44px] min-h-[44px] text-[#223A70]">
                   <span className="hidden sm:inline">ログイン</span>
                   <span className="sm:hidden">👤</span>
                 </Link>
