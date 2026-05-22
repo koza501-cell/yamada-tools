@@ -23,10 +23,10 @@ export default function HeroAnimation() {
               {s.icon}
             </div>
             <p className="mt-2 text-sm font-medium text-gray-700 dark:text-gray-300">{s.label}</p>
-            <p className="text-xs text-gray-400">{s.sub}</p>
+            <p className="text-xs text-gray-500">{s.sub}</p>
           </div>
           {i < 2 && (
-            <div className={"text-2xl transition-all duration-500 " + (step === i ? "text-sakura animate-pulse" : "text-gray-300")}>→</div>
+            <div className={"text-2xl transition-all duration-500 " + (step === i ? "text-[#E91E63] animate-pulse" : "text-gray-300")}>→</div>
           )}
         </div>
       ))}

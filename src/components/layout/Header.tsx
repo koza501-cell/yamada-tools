@@ -278,7 +278,7 @@ export default function Header() {
           onClick={(e) => e.stopPropagation()}
         >
           <div className="px-4 py-2 border-b dark:border-gray-700 text-sm text-gray-500 dark:text-gray-400 truncate">{user.email}</div>
-          <div className="px-4 py-2 text-sm"><span className="inline-block px-2 py-0.5 bg-gray-100 rounded text-xs">{user.effective_plan === "team" ? "TEAM" : user.effective_plan === "pro" ? "PRO" : user.effective_plan === "pro_trial" ? "PRO (試用)" : "FREE"}</span></div>
+          <div className="px-4 py-2 text-sm"><span className="inline-block px-2 py-0.5 bg-gray-100 dark:bg-gray-700 dark:text-gray-200 rounded text-xs">{user.effective_plan === "team" ? "TEAM" : user.effective_plan === "pro" ? "PRO" : user.effective_plan === "pro_trial" ? "PRO (試用)" : "FREE"}</span></div>
           <Link href="/account" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-sm" onClick={() => setShowUserMenu(false)}>⚙️ アカウント管理</Link>
           {user.effective_plan === "team" ? null : user.effective_plan === "pro" ? (
             <Link href="/pricing" className="block px-4 py-2 hover:bg-gray-100 text-sm" onClick={() => setShowUserMenu(false)}>⭐ TEAMにアップグレード</Link>

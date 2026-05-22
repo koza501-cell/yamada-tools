@@ -506,7 +506,7 @@ export default function PricingClient() {
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
             まずは無料でお試しください
           </h2>
-          <p className="text-gin mb-8 text-base">
+          <p className="text-white/80 mb-8 text-base">
             クレジットカード不要。今すぐすべてのツールをお使いいただけます。
           </p>
           <Link
@@ -515,7 +515,7 @@ export default function PricingClient() {
           >
             無料で始める →
           </Link>
-          <p className="text-gin text-sm mt-4">有料プランへのアップグレードはいつでも可能です</p>
+          <p className="text-white/80 text-sm mt-4">有料プランへのアップグレードはいつでも可能です</p>
         </div>
       </div>
 

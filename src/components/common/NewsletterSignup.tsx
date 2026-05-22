@@ -47,7 +47,7 @@ export default function NewsletterSignup() {
           <button
             type="submit"
             disabled={status === "loading"}
-            className="px-4 py-2 bg-sakura hover:bg-sakura/80 dark:bg-kon dark:hover:bg-ai dark:text-white rounded-lg font-bold text-sm transition-colors disabled:opacity-50"
+            className="px-4 py-2 bg-sakura hover:bg-sakura/80 dark:bg-kon dark:hover:bg-ai text-[#223A70] dark:text-white rounded-lg font-bold text-sm transition-colors disabled:opacity-50"
           >
             {status === "loading" ? "..." : "登録"}
           </button>

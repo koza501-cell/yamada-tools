@@ -93,7 +93,7 @@ export default function Home() {
       {/* ============================================================ */}
       <section className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 py-10 md:py-14">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-kon" style={{ wordBreak: 'keep-all', lineBreak: 'strict', overflowWrap: 'break-word' }}>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-kon dark:text-white" style={{ wordBreak: 'keep-all', lineBreak: 'strict', overflowWrap: 'break-word' }}>
             ビジネス・税金・金融・暮らしまで。日本人のための無料ツール{availableTools.length}種
           </h1>
 
@@ -131,7 +131,7 @@ export default function Home() {
           </div>
 
           <div className="mb-3 text-center">
-            <Link href="/about/numbers" className="text-xs text-kon hover:text-ai underline underline-offset-2">
+            <Link href="/about/numbers" className="text-xs text-kon dark:text-blue-300 hover:text-ai underline underline-offset-2">
               数字で見るyamada-tools.jp →
             </Link>
           </div>
@@ -285,7 +285,7 @@ export default function Home() {
                       <h3 className="text-base font-bold text-kon dark:text-white leading-tight mb-1">{tool.nameJa}</h3>
                       <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{tool.description}</p>
                     </div>
-                    <span className="text-kon group-hover:translate-x-1 transition-transform text-lg flex-shrink-0">→</span>
+                    <span className="text-kon dark:text-gray-300 group-hover:translate-x-1 transition-transform text-lg flex-shrink-0">→</span>
                   </div>
                 </Link>
               ))}
@@ -371,7 +371,7 @@ export default function Home() {
 
                       <div className="flex items-center justify-between">
                         <span className="text-sm text-gray-500 dark:text-gray-400">{post.publishDate}</span>
-                        <span className="text-kon group-hover:translate-x-2 transition-transform">
+                        <span className="text-kon dark:text-gray-300 group-hover:translate-x-2 transition-transform">
                           →
                         </span>
                       </div>
