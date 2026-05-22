@@ -5609,26 +5609,26 @@
       {
         "id": "souzoku-touki-wizard",
         "path": "/souzoku-touki/wizard",
-        "name": "相続登記DIY診断ウィザード",
-        "description": "10問の質問でDIY可否を自動判定"
+        "nameJa": "相続登記DIY診断",
+        "icon": "🧭"
       },
       {
         "id": "souzoku-touki-shinseisho",
         "path": "/souzoku-touki/shinseisho",
-        "name": "登記申請書PDF自動作成",
-        "description": "法務局公式書式の申請書PDFを無料生成"
+        "nameJa": "登記申請書PDF作成",
+        "icon": "📄"
       },
       {
         "id": "souzoku-touki-houmukyoku",
         "path": "/souzoku-touki/houmukyoku",
-        "name": "管轄法務局検索",
-        "description": "不動産所在地から提出先を検索"
+        "nameJa": "管轄法務局検索",
+        "icon": "🏛️"
       },
       {
         "id": "souzoku-touki-tax",
         "path": "/souzoku-touki/tax",
-        "name": "登録免許税計算",
-        "description": "本登記の登録免許税を自動計算"
+        "nameJa": "登録免許税計算",
+        "icon": "🧮"
       }
     ]
   }
