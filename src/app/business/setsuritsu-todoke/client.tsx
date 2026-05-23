@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import ExpertSupervision from '@/components/ExpertSupervision';
 
 // ============================================================
 // Inline SVG Icons
@@ -621,6 +622,15 @@ export default function SetsuritsuTodokeClient() {
         {/* FAQ */}
         {/* ============================================================ */}
         <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 md:p-8 mb-8 shadow-sm">
+        {/* 監修・出典 */}
+        <div className="max-w-4xl mx-auto px-4 mb-8" style={{maxWidth: '100%'}}>
+          <ExpertSupervision
+            sources={[{ name: '国税庁 法人設立届出書', url: 'https://www.nta.go.jp/taxes/tetsuzuki/shinsei/annai/hojin/annai/1554_2.htm' }, { name: '日本年金機構 新規適用届', url: 'https://www.nenkin.go.jp/service/kounen/tekiyo/jigyosho/20150518.html' }, { name: 'ハローワーク 雇用保険手続', url: 'https://www.hellowork.mhlw.go.jp/' }]}
+            lastUpdated="2026年5月"
+            nextReview="2026年度税制改正反映後"
+            trustNote="本ツールの計算結果は概算です。正確な金額は税理士・社労士等の専門家にご確認ください。"
+          />
+        </div>
           <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-6">よくある質問</h2>
           <div className="space-y-6">
             {[

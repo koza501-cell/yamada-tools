@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import ExpertSupervision from '@/components/ExpertSupervision';
 
 const Icons = {
   Calculator: () => (<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>),
@@ -260,6 +261,14 @@ export default function FormationCostClient() {
         )}
 
         <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 md:p-8 mb-8 shadow-sm">
+        {/* Trust signals */}
+        <div className="max-w-4xl mx-auto px-4 mb-8" style={{maxWidth: '100%'}}>
+          <ExpertSupervision
+            sources={[{ name: 'Ministry of Justice — Registration Procedures', url: 'https://houmukyoku.moj.go.jp/homu/touki2.html' }, { name: 'Japan Notary Association', url: 'https://www.koshonin.gr.jp/' }]}
+            lastUpdated="May 2026"
+            trustNote="This tool provides estimates only. Consult a licensed tax accountant (税理士) or judicial scrivener (司法書士) for definitive guidance."
+          />
+        </div>
           <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-6">FAQ</h2>
           <div className="space-y-6">
             {[

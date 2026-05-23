@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import ExpertSupervision from '@/components/ExpertSupervision';
 
 const Icons = {
   Check: () => (<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>),
@@ -253,6 +254,14 @@ export default function VisaCheckerClient() {
         )}
 
         <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 md:p-8 mb-8 shadow-sm">
+        {/* Trust signals */}
+        <div className="max-w-4xl mx-auto px-4 mb-8" style={{maxWidth: '100%'}}>
+          <ExpertSupervision
+            sources={[{ name: 'Immigration Services Agency of Japan', url: 'https://www.moj.go.jp/isa/' }, { name: 'JETRO — Starting a Business in Japan', url: 'https://www.jetro.go.jp/en/invest/setting_up/' }]}
+            lastUpdated="May 2026"
+            trustNote="This tool provides estimates only. Consult a licensed tax accountant (税理士) or judicial scrivener (司法書士) for definitive guidance."
+          />
+        </div>
           <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-6">FAQ</h2>
           <div className="space-y-6">
             {[

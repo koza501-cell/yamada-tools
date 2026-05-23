@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import ExpertSupervision from '@/components/ExpertSupervision';
 
 const Icons = {
   Check: () => (<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>),
@@ -191,6 +192,15 @@ export default function KyoninkaCheckerClient() {
 
         {/* FAQ */}
         <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 md:p-8 mb-8 shadow-sm">
+        {/* 監修・出典 */}
+        <div className="max-w-4xl mx-auto px-4 mb-8" style={{maxWidth: '100%'}}>
+          <ExpertSupervision
+            sources={[{ name: '各許認可の根拠法令' }, { name: '国土交通省 建設業許可', url: 'https://www.mlit.go.jp/totikensangyo/const/1_6_bt_000080.html' }, { name: '厚生労働省 労働者派遣事業', url: 'https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/haken-shoukai/' }]}
+            lastUpdated="2026年5月"
+            nextReview="2026年度税制改正反映後"
+            trustNote="本ツールの計算結果は概算です。正確な金額は税理士・社労士等の専門家にご確認ください。"
+          />
+        </div>
           <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-6">よくある質問</h2>
           <div className="space-y-6">
             {[

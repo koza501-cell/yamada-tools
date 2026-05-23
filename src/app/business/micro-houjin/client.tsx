@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import ExpertSupervision from '@/components/ExpertSupervision';
 
 // ============================================================
 // Inline SVG Icons
@@ -545,6 +546,15 @@ export default function MicroHoujinClient() {
         {/* FAQ */}
         {/* ============================================================ */}
         <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 md:p-8 mb-8 shadow-sm">
+        {/* 監修・出典 */}
+        <div className="max-w-4xl mx-auto px-4 mb-8" style={{maxWidth: '100%'}}>
+          <ExpertSupervision
+            sources={[{ name: '協会けんぽ 保険料率表', url: 'https://www.kyoukaikenpo.or.jp/g7/cat330/sb3150/r06/r6ryougakuhyou3gatukara/' }, { name: '日本年金機構 厚生年金保険料', url: 'https://www.nenkin.go.jp/service/kounen/hokenryo/hoshu/20150515-01.html' }, { name: '国民健康保険 保険料の計算方法（東京都）' }]}
+            lastUpdated="2026年5月"
+            nextReview="2026年度税制改正反映後"
+            trustNote="本ツールの計算結果は概算です。正確な金額は税理士・社労士等の専門家にご確認ください。"
+          />
+        </div>
           <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-6">よくある質問</h2>
           <div className="space-y-6">
             {[
