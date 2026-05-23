@@ -60,6 +60,23 @@ export const niches: Niche[] = [
     url: "/document",
   },
   {
+    id: "company-formation",
+    iconName: "building",
+    name: "会社設立・法人化",
+    shortName: "会社設立",
+    description: "設立費用・届出・許認可・資本金を無料シミュレーション",
+    toolCount: 12,
+    theme: "purple",
+    isNew: true,
+    featuredLinks: [
+      { name: "設立費用シミュレーター", url: "/business/setsuritsu-hiyo" },
+      { name: "会社形態診断", url: "/business/kaisha-shindan" },
+      { name: "届出ナビゲーター", url: "/business/setsuritsu-todoke" },
+      { name: "許認可チェッカー", url: "/business/kyoninka-checker" },
+    ],
+    url: "/business",
+  },
+  {
     id: "pdf",
     iconName: "document",
     name: "PDF・ファイル",

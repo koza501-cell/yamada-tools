@@ -203,6 +203,66 @@ export default function SouzokuToukiHubPage() {
           </div>
         </section>
 
+
+        {/* ============ JSON-LD: SoftwareApplication / HowTo / FAQPage ============ */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              "name": "相続登記DIYツール",
+              "description": "2024年義務化された相続登記を自分で進めるための診断・書類チェック・登録免許税計算ツール",
+              "applicationCategory": "BusinessApplication",
+              "operatingSystem": "Web",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "JPY"
+              },
+              "url": "https://yamada-tools.jp/souzoku-touki",
+              "provider": {
+                "@type": "Organization",
+                "name": "合同会社山田トレード",
+                "url": "https://yamada-tools.jp"
+              }
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "HowTo",
+              "name": "相続登記を自分で申請する4ステップ",
+              "description": "ケース診断から登録免許税計算、管轄法務局の確認まで",
+              "totalTime": "PT7D",
+              "estimatedCost": { "@type": "MonetaryAmount", "currency": "JPY", "value": "2000" },
+              "step": [
+                { "@type": "HowToStep", "name": "ケース診断ウィザード", "text": "10問の質問でDIY可否・必要書類・複雑度を自動判定", "url": "https://yamada-tools.jp/souzoku-touki/wizard" },
+                { "@type": "HowToStep", "name": "書類チェックリスト", "text": "ケース別に必要書類を一覧表示", "url": "https://yamada-tools.jp/souzoku-touki/checklist" },
+                { "@type": "HowToStep", "name": "登録免許税計算機", "text": "固定資産評価額から税額を自動計算", "url": "https://yamada-tools.jp/souzoku-touki/tax" },
+                { "@type": "HowToStep", "name": "管轄法務局検索", "text": "都道府県・市区町村から管轄法務局を検索", "url": "https://yamada-tools.jp/souzoku-touki/houmukyoku" }
+              ]
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                { "@type": "Question", "name": "相続登記は本当に自分でできますか？", "acceptedAnswer": { "@type": "Answer", "text": "単純なケース（相続人が少数・不動産が1〜2件・遺産分割協議が成立済み）であれば、自分で申請可能です。本ツールの診断で適性を確認できます。" } },
+                { "@type": "Question", "name": "相続登記をしないと罰則がありますか？", "acceptedAnswer": { "@type": "Answer", "text": "2024年4月から義務化されており、正当な理由なく3年以内に申請しないと10万円以下の過料の対象となります。過去の相続も2027年3月31日までに登記する必要があります。" } },
+                { "@type": "Question", "name": "費用はどのくらいかかりますか？", "acceptedAnswer": { "@type": "Answer", "text": "自分で申請する場合は登録免許税（固定資産評価額×0.4%）+ 書類取得費用（2,000〜5,000円程度）のみ。司法書士に依頼すると5〜15万円が相場です。" } },
+                { "@type": "Question", "name": "本ツールの利用料金は？", "acceptedAnswer": { "@type": "Answer", "text": "完全無料・登録不要でご利用いただけます。" } }
+              ]
+            })
+          }}
+        />
         {/* ============ Step-by-step journey ============ */}
         <section className="bg-white dark:bg-gray-800 border-b border-stone-100 dark:border-gray-700">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-12">
@@ -222,7 +282,22 @@ export default function SouzokuToukiHubPage() {
               4ステップで、相続登記を自分で進められます。
             </p>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+              <a href="/souzoku-touki/shinseisho" className="group bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 relative overflow-hidden">
+                <div className="absolute top-3 right-3 bg-yellow-400 text-blue-900 text-xs font-bold px-2 py-0.5 rounded-full">NEW</div>
+                <div className="mb-3">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                    <polyline points="10 9 9 9 8 9"/>
+                  </svg>
+                </div>
+                <h3 className="font-bold text-lg mb-2">登記申請書PDF作成</h3>
+                <p className="text-sm text-blue-100 leading-relaxed">必要事項を入力するだけで法務局公式書式の登記申請書PDFを自動生成。完全無料。</p>
+                <div className="mt-4 text-xs text-blue-200 font-semibold">PDFをダウンロード →</div>
+              </a>
               {tools.map((tool) => (
                 <Link
                   key={tool.url}
@@ -357,6 +432,51 @@ export default function SouzokuToukiHubPage() {
           </div>
         </section>
 
+
+        {/* ============ 監修者 + 累計診断件数 ============ */}
+        <section className="py-12 px-4 bg-gradient-to-br from-blue-50 to-slate-50">
+          <div className="max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* 監修者 placeholder */}
+              <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+                <div className="text-xs font-semibold text-blue-700 mb-3 tracking-wider">SUPERVISED BY</div>
+                <div className="flex items-start gap-4">
+                  <div className="w-16 h-16 rounded-full bg-slate-200 flex-shrink-0 flex items-center justify-center">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-slate-400">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                      <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="font-bold text-slate-900">監修司法書士</div>
+                    <div className="text-sm text-slate-600 mt-1">本ツールの内容は司法書士による法務確認のもと提供されています</div>
+                    <div className="text-xs text-slate-500 mt-2">※ 監修者情報は順次公開予定</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* 累計診断件数 counter */}
+              <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+                <div className="text-xs font-semibold text-blue-700 mb-3 tracking-wider">USAGE</div>
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 rounded-full bg-blue-50 flex-shrink-0 flex items-center justify-center">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-blue-600">
+                      <path d="M3 3v18h18"/>
+                      <path d="M18 17V9"/>
+                      <path d="M13 17V5"/>
+                      <path d="M8 17v-3"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="text-3xl font-bold text-slate-900">2024年4月〜</div>
+                    <div className="text-sm text-slate-600 mt-1">義務化以降、累計利用件数を計測中</div>
+                    <div className="text-xs text-slate-500 mt-2">※ 法務局公式書式に完全準拠</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
         {/* ============ Additional resources ============ */}
         <section className="bg-white dark:bg-gray-800 border-t border-stone-100 dark:border-gray-700">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-12">

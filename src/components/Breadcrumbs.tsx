@@ -33,6 +33,7 @@ export default function Breadcrumbs() {
     'insurance': '保険',
     'education': '学習・教育',
     'business': 'ビジネス・法人',
+    'en': 'English',
     'debt': '借金・返済',
     'utility': 'ユーティリティ',
     'auto': '自動車',
@@ -128,7 +129,7 @@ export default function Breadcrumbs() {
     'fair-usage': '適正利用ガイドライン',
     'transparency': '運営方針',
     'company': '会社概要',
-    'business': '法人向け',
+    'business': 'Business',
     'story': '開発者ストーリー',
 
     // Additional PDF slugs
@@ -138,6 +139,22 @@ export default function Breadcrumbs() {
     // Additional image slugs
     'compress-img': '画像圧縮',
     'mosaic': '画像モザイク',
+
+    // Company Formation Tools (会社設立ツール)
+    'setsuritsu-hiyo': '会社設立費用シミュレーター',
+    'kaisha-shindan': '会社形態診断ツール',
+    'kesanki-sim': '決算期シミュレーター',
+    'houjin-iji-hiyo': '法人維持費シミュレーター',
+    'micro-houjin': 'マイクロ法人シミュレーター',
+    'setsuritsu-todoke': '設立後届出ナビゲーター',
+    'jigyou-mokuteki': '事業目的ジェネレーター',
+    'shihonkin-guide': '資本金決定ガイド',
+    'setsuritsu-schedule': '設立スケジュールシミュレーター',
+    'kyoninka-checker': '許認可チェッカー',
+    // EN tools
+    'formation-cost': 'Formation Cost Calculator',
+    'visa-checker': 'Business Manager Visa Checker',
+    'company-search': 'Company Search',
   };
 
   // Build breadcrumb path
