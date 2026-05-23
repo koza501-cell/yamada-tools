@@ -191,7 +191,7 @@ export default async function RootLayout({
   const headersList = await headers();
   const host = headersList.get('host') ?? '';
   const isProduction = !host.includes('staging');
-  const pathname = headersList.get('x-pathname') ?? '/';
+  const pathname = decodeURIComponent(headersList.get('x-pathname') ?? '/');
   const isHomepage = pathname === '/';
   const isEnglish = pathname.startsWith('/en');
   const htmlLang = isEnglish ? 'en' : 'ja';
