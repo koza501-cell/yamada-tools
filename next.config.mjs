@@ -119,6 +119,23 @@ const nextConfig = {
       { source: '/career/shitsugyo-ritsu/miyazaki', destination: '/career/shitsugyo-ritsu', statusCode: 301 },
       { source: '/career/shitsugyo-ritsu/kagoshima', destination: '/career/shitsugyo-ritsu', statusCode: 301 },
       { source: '/career/shitsugyo-ritsu/okinawa', destination: '/career/shitsugyo-ritsu', statusCode: 301 },
+      { source: '/use-cases', destination: '/', permanent: true },
+      { source: '/pdf-text-input', destination: '/pdf/text-input', permanent: true },
+      { source: '/pdf/fill', destination: '/pdf/text-input', permanent: true },
+      { source: '/image/convert', destination: '/image', permanent: true },
+      { source: '/generator/charcount', destination: '/generator/text-counter', permanent: true },
+      { source: '/generator/zangyou-tegata', destination: '/generator', permanent: true },
+      { source: '/generator/password-gen', destination: '/generator/password', permanent: true },
+      { source: '/finance/houjinka-setsuzei-calculator', destination: '/finance', permanent: true },
+      { source: '/finance/retirement-simulator', destination: '/blog/rougo-shikin-simulation-2026', permanent: true },
+      { source: '/savings/interest-calculator', destination: '/finance', permanent: true },
+      { source: '/utility/hourly-to-annual', destination: '/career', permanent: true },
+      { source: '/business/jinkenhi-shiyuki', destination: '/business', permanent: true },
+      { source: '/document/quote', destination: '/document', permanent: true },
+      { source: '/care/kaigo-hoshu-calc', destination: '/', permanent: true },
+      { source: '/en/utility', destination: '/en/business/company-search', permanent: true },
+      { source: '/en/realestate', destination: '/en/business/company-search', permanent: true },
+      { source: '/en/business', destination: '/en/business/company-search', permanent: true },
       { source: '/blog/zengin-format-kanzen-guide', destination: '/blog/zengin-format-complete-guide-2026', statusCode: 301 }
     ]
   }
