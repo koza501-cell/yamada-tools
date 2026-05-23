@@ -26,10 +26,10 @@ export function middleware(request: NextRequest) {
   }
 
   const response = NextResponse.next();
-  response.headers.set('x-pathname', request.nextUrl.pathname);
+  response.headers.set('x-pathname', encodeURIComponent(request.nextUrl.pathname));
 
-  // Noindex for staging and local dev (broader check intentional — covers localhost:3003 etc.)
-  if (host.includes('staging') || host.includes('localhost')) {
+  // Noindex for staging and local dev — production guard ensures yamada-tools.jp is never blocked
+  if (!host.includes('yamada-tools.jp') && (host.includes('staging') || host.includes('localhost'))) {
     response.headers.set('X-Robots-Tag', 'noindex, nofollow');
   }
 
