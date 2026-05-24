@@ -53,15 +53,27 @@ export default async function NicheArticlePage({ params }: { params: Promise<{ s
 
   const htmlContent = String(await marked(post.content));
   const relatedPosts = posts.filter((p: any) => p.slug !== slug).slice(0, 3);
+  function normalizeDate(d: string | undefined): string {
+    if (!d) return new Date().toISOString();
+    if (d.includes('T')) return d;
+    return d + 'T09:00:00+09:00';
+  }
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": post.title,
     "description": post.metaDescription || post.seoDescription || post.description || post.excerpt || '',
-    "author": { "@type": "Organization", "name": "Yamada Tools" },
+    "image": {
+      "@type": "ImageObject",
+      "url": post.thumbnail || post.ogImage || "https://yamada-tools.jp/og-default.png",
+      "width": 1200,
+      "height": 630
+    },
+    "author": { "@type": "Organization", "name": "Yamada Tools", "url": "https://yamada-tools.jp" },
     "publisher": { "@type": "Organization", "name": "Yamada Tools", "url": "https://yamada-tools.jp" },
-    "datePublished": post.publishDate || post.publishedAt,
-    "dateModified": post.publishDate || post.publishedAt,
+    "datePublished": normalizeDate(post.publishDate || post.publishedAt),
+    "dateModified": normalizeDate(post.lastUpdated || post.publishDate || post.publishedAt),
     "mainEntityOfPage": { "@type": "WebPage", "@id": "https://yamada-tools.jp/ai/" + slug }
   };
 
