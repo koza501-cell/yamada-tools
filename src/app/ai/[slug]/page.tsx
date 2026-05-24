@@ -69,6 +69,7 @@ export default async function NicheArticlePage({ params }: { params: Promise<{ s
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <Script id="article-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      {post.faq && <Script id="faq-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(post.faq) }} />}
       <div className={"bg-gradient-to-r " + NICHE.gradient + " " + NICHE.gradientDark + " text-white py-3"}>
         <div className="max-w-4xl mx-auto px-4">
           <Link href={'/' + NICHE.slug} className="text-white/80 hover:text-white text-sm transition-colors">
