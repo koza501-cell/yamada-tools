@@ -111,8 +111,8 @@ export default function PropertyReportPage() {
       {
         "@type": "ListItem",
         position: 2,
-        name: "Business Tools",
-        item: "https://yamada-tools.jp/en/business",
+        name: "Company Search",
+        item: "https://yamada-tools.jp/en/business/company-search",
       },
       {
         "@type": "ListItem",
