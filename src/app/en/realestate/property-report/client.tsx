@@ -472,6 +472,11 @@ function SchoolSection({ section }: { section: SectionOf<SchoolEnglish> }) {
       <p className="mt-3 text-xs text-yellow-800 dark:text-yellow-300 bg-yellow-50 dark:bg-yellow-900/30 rounded px-3 py-2">
         {en.note}
       </p>
+      {en.commercial_use_warning && (
+        <p className="mt-2 text-xs text-yellow-800 dark:text-yellow-300 bg-yellow-50 dark:bg-yellow-900/30 rounded px-3 py-2">
+          {en.commercial_use_warning}
+        </p>
+      )}
       <RawJpToggle data={section.raw_jp} />
     </SectionCard>
   );
