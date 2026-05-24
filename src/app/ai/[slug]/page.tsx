@@ -34,6 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: post.title + ' | ' + NICHE.name,
     description,
     keywords,
+    robots: post.noindex ? { index: false, follow: true } : { index: true, follow: true },
     alternates: { canonical: `${siteUrl}/ai/${slug}` },
     openGraph: {
       title: post.title,

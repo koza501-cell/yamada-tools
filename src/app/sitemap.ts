@@ -30,7 +30,7 @@ export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
         const aiPostsPath = path.join(process.cwd(), "src/data/aiPosts.json");
         if (!fs.existsSync(aiPostsPath)) return [];
         const aiPosts: any[] = JSON.parse(fs.readFileSync(aiPostsPath, "utf-8"));
-        return aiPosts.map(p => ({
+        return aiPosts.filter((p: any) => !p.noindex).map(p => ({
           url: baseUrl + "/ai/" + p.slug,
           lastModified: currentDate,
           changeFrequency: "monthly" as const,
