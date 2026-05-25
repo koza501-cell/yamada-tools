@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 
 interface Blog {
@@ -51,10 +52,24 @@ function gradClass(cat: string) { return CAT_GRAD[cat] ?? "from-slate-900 to-ind
 const PER_PAGE = 12;
 
 export default function BlogIndexClient({ blogs }: { blogs: Blog[] }) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [search, setSearch] = useState("");
-  const [activeCategory, setActiveCategory] = useState("すべて");
-  const [sort, setSort] = useState<"new" | "old" | "read">("new");
-  const [page, setPage] = useState(1);
+  const [activeCategory, setActiveCategory] = useState(() => searchParams.get("category") ?? "すべて");
+  const [sort, setSort] = useState<"new" | "old" | "read">(() => (searchParams.get("sort") as "new" | "old" | "read") ?? "new");
+  const [page, setPage] = useState(() => {
+    const p = searchParams.get("page");
+    return p ? Math.max(1, parseInt(p)) : 1;
+  });
+  // Sync page, category, sort to URL
+  useEffect(() => {
+    const params = new URLSearchParams();
+    if (activeCategory !== "すべて") params.set("category", activeCategory);
+    if (sort !== "new") params.set("sort", sort);
+    if (page > 1) params.set("page", String(page));
+    const newUrl = params.toString() ? `/blog?${params.toString()}` : "/blog";
+    router.replace(newUrl, { scroll: false });
+  }, [page, activeCategory, sort]);
 
   const categories = useMemo(() => {
     const counts: Record<string, number> = {};
