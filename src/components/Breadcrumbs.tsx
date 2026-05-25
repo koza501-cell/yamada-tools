@@ -2,16 +2,25 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useState, useEffect } from 'react';
 
 export default function Breadcrumbs() {
   const pathname = usePathname();
-  
+  // FIX 6: track page title to show article title instead of raw slug
+  const [pageTitle, setPageTitle] = useState<string>('');
+
+  useEffect(() => {
+    // document.title format: "記事タイトル | 山田ツール" → strip the suffix
+    const title = document.title.replace(/ \| 山田ツール$/, '').trim();
+    setPageTitle(title);
+  }, [pathname]);
+
   // Don't show breadcrumbs on homepage
   if (pathname === '/') return null;
 
   // Parse pathname into breadcrumb segments
   const segments = pathname.split('/').filter(Boolean);
-  
+
   // Category name mapping
   const categoryNames: { [key: string]: string } = {
     'pdf': 'PDF・ファイル',
@@ -64,13 +73,13 @@ export default function Breadcrumbs() {
     'reorder': 'PDFページ並替',
     'delete-pages': 'PDFページ削除',
     'sign': 'PDF電子署名',
-    
+
     // Image Tools
     'resize': '画像リサイズ',
     'crop': '画像切り抜き',
     'format-convert': '画像形式変換',
     'qr-code': 'QRコード生成',
-    
+
     // Document Tools
     'invoice': '請求書作成',
     'quotation': '見積書作成',
@@ -82,7 +91,7 @@ export default function Breadcrumbs() {
     'fax-cover': 'FAX送付状',
     'business-email': 'ビジネスメール',
     'vertical-text': '縦書き文書',
-    
+
     // Conversion Tools
     'wareki-seireki': '和暦西暦変換',
     'zenkaku-hankaku': '全角半角変換',
@@ -94,7 +103,7 @@ export default function Breadcrumbs() {
     'url-encode': 'URLエンコード',
     'furigana': 'ふりがな生成',
     'bank-format': '全銀フォーマット変換',
-    
+
     // Generator Tools
     'password': 'パスワード生成',
     'qr-reader': 'QRコード読取',
@@ -120,7 +129,7 @@ export default function Breadcrumbs() {
     'seat':      '席替えランダム決めツール',
     'password-gen': 'パスワード生成器',
     'password-zip': 'ZIPパスワード生成',
-    
+
     // Legal/About Pages
     'terms': '利用規約',
     'privacy': 'プライバシーポリシー',
@@ -166,21 +175,22 @@ export default function Breadcrumbs() {
   segments.forEach((segment, index) => {
     currentPath += `/${segment}`;
     const isLast = index === segments.length - 1;
-    
+
     let name = segment;
-    
+
     // First level: Category
     if (index === 0) {
       name = categoryNames[segment] || segment;
     }
     // Second level: Tool/Page name
+    // FIX 6: for last segment, fall back to document.title-derived pageTitle
     else {
-      name = toolNames[segment] || segment;
+      name = toolNames[segment] || (isLast && pageTitle) || segment;
     }
 
     breadcrumbs.push({
       name,
-      href: isLast ? '' : currentPath, // Last item not clickable
+      href: isLast ? '' : currentPath,
     });
   });
 
@@ -201,7 +211,7 @@ export default function Breadcrumbs() {
                   {crumb.name}
                 </Link>
               ) : (
-                <span className="text-gray-600 dark:text-gray-300 font-medium">
+                <span className="text-gray-600 dark:text-gray-300 font-medium line-clamp-1">
                   {crumb.name}
                 </span>
               )}
