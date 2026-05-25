@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import fs from 'fs';
@@ -6,10 +7,20 @@ import path from 'path';
 import BlogContent from '@/components/BlogContent';
 import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
-import { marked } from 'marked';
+import { Marked } from 'marked';
 import '@/app/blog.css';
 import RelatedTools from '@/components/common/RelatedTools';
 
+// FIX 1+2: Custom marked instance — demotes h1→h2 in content (prevents duplicate h1)
+// and preserves bold/italic via gfm. walkTokens runs before rendering.
+const blogMarked = new Marked({ gfm: true });
+blogMarked.use({
+  walkTokens(token: any) {
+    if (token.type === 'heading' && token.depth === 1) {
+      token.depth = 2;
+    }
+  },
+});
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -55,9 +66,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  
+
   const blogsPath = path.join(process.cwd(), 'src/data/dynamicBlogs.json');
-  
+
   if (!fs.existsSync(blogsPath)) {
     notFound();
   }
@@ -70,9 +81,11 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     notFound();
   }
 
-  const htmlContent = blog.content ? String(await marked(blog.content)) : '<p>この記事のコンテンツは準備中です。</p>';
+  // FIX 1+2: blogMarked demotes h1→h2 and correctly renders **bold** / *italic*
+  const htmlContent = blog.content
+    ? (blogMarked.parse(blog.content) as string)
+    : '<p>この記事のコンテンツは準備中です。</p>';
 
-  // Article structured data
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -140,11 +153,10 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
       )}
-      {/* Hero Image */}
       {blog.featuredImage && (
         <div className="mb-8 -mx-4 md:mx-0">
-          <Image 
-            src={blog.featuredImage} 
+          <Image
+            src={blog.featuredImage}
             alt={blog.title}
             width={1200}
             height={384}
@@ -156,10 +168,11 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
       <StaticAdSlot className="mb-8" />
       <header className="blog-header mb-12 text-center">
+        {/* FIX 2: single <h1> per page — markdown h1s are demoted to h2 by blogMarked */}
         <h1 className="blog-title text-4xl md:text-5xl font-bold mb-6 leading-tight">
           {blog.title}
         </h1>
-        
+
         <div className="blog-meta flex flex-wrap items-center justify-center gap-4 text-gray-600 mb-6">
           <span className="flex items-center gap-2">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -183,17 +196,22 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           </span>
         </div>
 
+        {/* FIX 4: tags are now proper <Link> elements linking to /blog?tag=X */}
         {blog.tags && blog.tags.length > 0 && (
           <div className="flex flex-wrap gap-2 justify-center">
             {blog.tags.map((tag: string, i: number) => (
-              <span key={i} className="px-4 py-2 bg-gray-50 text-kon rounded-full text-sm font-medium hover:bg-ai transition-colors">
+              <Link
+                key={i}
+                href={`/blog?tag=${encodeURIComponent(tag)}`}
+                className="px-4 py-2 bg-gray-50 text-kon rounded-full text-sm font-medium hover:bg-ai hover:text-white transition-colors"
+              >
                 #{tag}
-              </span>
+              </Link>
             ))}
           </div>
         )}
       </header>
-      
+
       {(() => {
         const parts = htmlContent.split(/(?<=<\/p>)/);
         if (parts.length <= 4) {
@@ -228,15 +246,16 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         );
       })()}
       <footer className="blog-footer mt-16 pt-8 border-t border-gray-200">
-        <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-8 text-center">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">
+        {/* FIX 5: dark mode variants for CTA card gradient and heading */}
+        <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-xl p-8 text-center">
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
             関連ツールを試してみませんか？
           </h3>
-          <p className="text-gray-600 mb-6">
+          <p className="text-gray-600 dark:text-gray-300 mb-6">
             この記事で紹介した機能を、無料でお試しいただけます
           </p>
-          <a 
-            href={blog.toolLink || '/pdf'} 
+          <a
+            href={blog.toolLink || '/pdf'}
             className="inline-flex items-center px-8 py-4 bg-kon text-white rounded-lg hover:bg-ai transition-colors font-medium shadow-lg hover:shadow-xl"
           >
             ツールを使ってみる
@@ -246,20 +265,20 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           </a>
         </div>
       </footer>
-              {blog.faq?.length > 0 && (
-          <section className="mt-10 mb-8">
-            <h2 className="text-2xl font-bold text-kon mb-6">よくあるご質問</h2>
-            <div className="space-y-3">
-              {blog.faq.map((f: any, i: number) => (
-                <details key={i} className="bg-white border border-gray-200 rounded-lg p-4 group">
-                  <summary className="font-semibold text-kon cursor-pointer">{f.question}</summary>
-                  <p className="mt-3 text-sm text-sumi leading-relaxed whitespace-pre-line">{f.answer}</p>
-                </details>
-              ))}
-            </div>
-          </section>
-        )}
-        {blog.relatedTools?.length > 0 && (
+      {blog.faq?.length > 0 && (
+        <section className="mt-10 mb-8">
+          <h2 className="text-2xl font-bold text-kon mb-6">よくあるご質問</h2>
+          <div className="space-y-3">
+            {blog.faq.map((f: any, i: number) => (
+              <details key={i} className="bg-white border border-gray-200 rounded-lg p-4 group">
+                <summary className="font-semibold text-kon cursor-pointer">{f.question}</summary>
+                <p className="mt-3 text-sm text-sumi leading-relaxed whitespace-pre-line">{f.answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+      {blog.relatedTools?.length > 0 && (
         <RelatedTools tools={blog.relatedTools} />
       )}
     </article>
@@ -270,7 +289,7 @@ export const dynamicParams = true;
 
 export async function generateStaticParams() {
   const blogsPath = path.join(process.cwd(), 'src/data/dynamicBlogs.json');
-  
+
   if (!fs.existsSync(blogsPath)) {
     return [];
   }
