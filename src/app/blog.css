@@ -1,9 +1,29 @@
 /* Modern Japanese Blog Styling - 2025 */
 
+/* YakuHanJP — eliminates CJK punctuation whitespace gaps */
+@font-face {
+  font-family: 'YakuHanJP';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/yakuhanjp/YakuHanJP-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'YakuHanJP';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/yakuhanjp/YakuHanJP-Bold.woff2') format('woff2');
+}
+
+.blog-article {
+  font-family: 'YakuHanJP', 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+}
+
 .blog-content {
-  line-height: 2.0;
+  line-height: 1.9;
   color: #333;
-  font-size: 18px;
+  font-size: 17px;
 }
 
 /* Headings - Larger & More Prominent */
@@ -11,13 +31,13 @@
   @apply text-5xl font-bold mb-8 mt-10;
   color: #1a1a1a;
   line-height: 1.3;
-  border-bottom: 4px solid #223A70;
+  border-bottom: 4px solid #1E3A8A;
   padding-bottom: 16px;
 }
 
 .blog-content h2 {
   @apply text-4xl font-bold mb-8 mt-12 pb-4;
-  color: #223A70;
+  color: #1E3A8A;
   line-height: 1.4;
   border-bottom: 3px solid #e0e0e0;
   background: linear-gradient(to right, #f8f9fa 0%, transparent 100%);
@@ -30,7 +50,7 @@
   @apply text-3xl font-bold mb-6 mt-10;
   color: #2c3e50;
   line-height: 1.4;
-  border-left: 6px solid #223A70;
+  border-left: 6px solid #1E3A8A;
   padding-left: 16px;
 }
 
@@ -42,15 +62,15 @@
 /* Paragraphs - Larger with Better Spacing */
 .blog-content p {
   @apply mb-8;
-  font-size: 18px;
-  line-height: 2.0;
+  font-size: 17px;
+  line-height: 1.9;
   color: #444;
 }
 
 /* Strong/Bold - More Prominent */
 .blog-content strong {
   @apply font-bold;
-  color: #223A70;
+  color: #1E3A8A;
   font-size: 1.05em;
 }
 
@@ -76,7 +96,7 @@
 .blog-content ul li:before {
   content: "✓";
   @apply absolute left-0 font-bold text-2xl;
-  color: #223A70;
+  color: #1E3A8A;
   top: -2px;
 }
 
@@ -102,7 +122,7 @@
 }
 
 .blog-content thead {
-  background: linear-gradient(135deg, #223A70 0%, #2c5282 100%);
+  background: linear-gradient(135deg, #1E3A8A 0%, #2c5282 100%);
 }
 
 .blog-content th {
