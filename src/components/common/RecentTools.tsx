@@ -31,9 +31,9 @@ export default function RecentTools() {
   if (recentTools.length === 0) return null;
 
   return (
-    <section className="py-6 bg-gradient-to-r from-sakura/20 to-ai/10 dark:from-sakura/10 dark:to-ai/20">
+    <section className="py-section bg-gradient-to-r from-sakura/20 to-ai/10 dark:from-sakura/10 dark:to-ai/20">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center gap-2 mb-3">
+        <div className="flex items-center gap-2 mb-8">
           <Emoji symbol="🕐" size="lg" label="最近使ったツール" />
           <h2 className="text-base font-bold text-kon dark:text-gray-300">
             最近使ったツール

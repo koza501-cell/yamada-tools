@@ -16,12 +16,12 @@ export default function FooterCta() {
   if (!show) return null;
 
   return (
-    <section className="py-12 bg-gradient-to-r from-amber-50 to-amber-100 dark:from-amber-900/20 dark:to-amber-800/20 border-t border-gray-200 dark:border-gray-200">
+    <section className="py-section bg-gradient-to-r from-amber-50 to-amber-100 dark:from-amber-900/20 dark:to-amber-800/20 border-t border-gray-200 dark:border-gray-200">
       <div className="max-w-3xl mx-auto px-4 text-center">
         <p className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
           <Emoji symbol="🚀" size="lg" label="PRO" /> もっと便利に使いたい？
         </p>
-        <p className="text-gray-600 dark:text-gray-300 mb-6">
+        <p className="text-gray-600 dark:text-gray-300 mb-8">
           PROプランで無制限に利用、広告なし、優先サポート
         </p>
         <div className="flex flex-wrap gap-3 justify-center">

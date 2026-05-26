@@ -16,10 +16,10 @@ export default function NicheBentoSection() {
   const regulars = activeNiches.filter((n) => !n.featured);
 
   return (
-    <section className="py-12 md:py-16 bg-stone-50 dark:bg-gray-900">
+    <section className="py-section bg-stone-50 dark:bg-gray-900">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
-        <div className="flex justify-between items-end mb-6 md:mb-8">
+        <div className="flex justify-between items-end mb-8">
           <div>
             <p className="text-xs text-gray-500 dark:text-gray-400 tracking-widest uppercase mb-1">
               Categories
@@ -31,7 +31,7 @@ export default function NicheBentoSection() {
         </div>
 
         {/* Bento grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {featured && (
             <FeaturedCard niche={featured} className="col-span-2 md:col-span-2" />
           )}
@@ -47,8 +47,8 @@ export default function NicheBentoSection() {
 
         {/* Coming soon row */}
         {comingSoonNiches.length > 0 && (
-          <div className="mt-4 md:mt-5 rounded-2xl border border-dashed border-gray-300 dark:border-gray-700 bg-white/40 dark:bg-gray-800/40 px-4 py-3 md:px-5 md:py-4">
-            <div className="flex items-center gap-3 md:gap-4 flex-wrap">
+          <div className="mt-6 rounded-2xl border border-dashed border-gray-300 dark:border-gray-700 bg-white/40 dark:bg-gray-800/40 px-5 py-4">
+            <div className="flex items-center gap-4 flex-wrap">
               <div className="flex items-center gap-2">
                 <span className="text-xs font-medium text-gray-700 dark:text-gray-300">
                   近日公開予定

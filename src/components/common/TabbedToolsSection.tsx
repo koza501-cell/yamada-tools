@@ -79,9 +79,9 @@ export default function TabbedToolsSection({
   const currentTab = tabs.find((t) => t.id === activeTab) || tabs[0];
 
   return (
-    <section id="tools-tabs" className="py-10 bg-gray-50 dark:bg-gray-900">
+    <section id="tools-tabs" className="py-section bg-gray-50 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-6">
+        <div className="text-center mb-8">
           <h2 className="text-2xl font-bold text-kon dark:text-gray-300">
             <Emoji symbol="🛠️" size="lg" label="ツール" /> カテゴリ別ツール
           </h2>
@@ -128,7 +128,7 @@ export default function TabbedToolsSection({
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-6">
             {currentTab.tools.slice(0, 8).map((tool) => (
               <Link
                 key={tool.id}

@@ -171,13 +171,13 @@ export default function Home() {
       {/* ============================================================ */}
       {/* IDENTITY TIER: 役割別ナビゲーション                          */}
       {/* ============================================================ */}
-      <section id="tools" className="py-12 bg-white dark:bg-gray-900" style={{scrollMarginTop: "80px"}}>
+      <section id="tools" className="py-section bg-white dark:bg-gray-900" style={{scrollMarginTop: "80px"}}>
         <div className="max-w-6xl mx-auto px-4">
           <div className="mb-8">
             <h2 className="text-2xl md:text-3xl font-bold text-kon dark:text-white mb-2">役割別に探す</h2>
             <p className="text-sm text-sumi dark:text-gray-400">お仕事や立場に合わせて、必要なツールをまとめています。</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { slug: 'keieisha', name: '中小企業の経営者', desc: '法人検索・補助金・給与・請求書', href: '/business' },
               { slug: 'freelance', name: '個人事業主・フリーランス', desc: '確定申告・インボイス・節税', href: '/tax/income-tax-calculator' },
@@ -209,13 +209,13 @@ export default function Home() {
       {/* ============================================================ */}
       {/* SECTION 5: Popular Tools                                     */}
       {/* ============================================================ */}
-      <section id="popular-tools" className="py-16 bg-gray-50 dark:bg-gray-900" style={{scrollMarginTop: "120px"}}>
+      <section id="popular-tools" className="py-section bg-gray-50 dark:bg-gray-900" style={{scrollMarginTop: "120px"}}>
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-6">
+          <div className="text-center mb-8">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white">人気ツール - 今すぐ使う</h2>
             <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">多くの方にご利用いただいています</p>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-3">
             {popularTools.map((tool) => (
               <Link
                 key={tool.id}
@@ -233,15 +233,15 @@ export default function Home() {
       {/* ============================================================ */}
       {/* SECTION 6: New Tools + Finance Tools (merged)                */}
       {/* ============================================================ */}
-      <section className="py-16 bg-gradient-to-r from-slate-50 to-gray-50 dark:from-gray-800 dark:to-gray-900">
+      <section className="py-section bg-gradient-to-r from-slate-50 to-gray-50 dark:from-gray-800 dark:to-gray-900">
         <div className="max-w-7xl mx-auto px-4">
           {getNewTools().filter(t => t.category !== "finance").slice(0, 8).length > 0 && (
-            <div className="mb-12">
-              <div className="flex items-center gap-3 mb-6">
+            <div className="mb-8">
+              <div className="flex items-center gap-3 mb-8">
                 <span className="inline-block px-3 py-1 bg-kon text-white text-sm font-bold rounded-full">新ツール</span>
                 <h2 className="text-xl font-bold text-gray-900 dark:text-white">新しいツールが登場！</h2>
               </div>
-              <div className="grid md:grid-cols-2 gap-4 max-w-4xl">
+              <div className="grid md:grid-cols-2 gap-6 max-w-4xl">
                 {getNewTools().filter(t => t.category !== "finance").slice(0, 8).map((tool) => (
                   <Link
                     key={tool.id}
@@ -268,15 +268,15 @@ export default function Home() {
           )}
 
           <div>
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center justify-between mb-8">
               <div className="flex items-center gap-3">
                 <span className="inline-block px-3 py-1 bg-kon text-white text-sm font-bold rounded-full">金融</span>
                 <h2 className="text-xl font-bold text-gray-900 dark:text-white">金融・資産運用ツール</h2>
               </div>
               <Link href="/finance" className="text-sm text-kon dark:text-gray-300 hover:underline">すべて見る →</Link>
             </div>
-            <p className="text-sm text-gray-600 dark:text-gray-300 mb-6">NISA・住宅ローン・老後資金まで、無料で高精度シミュレーション。登録不要。</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <p className="text-sm text-gray-600 dark:text-gray-300 mb-8">NISA・住宅ローン・老後資金まで、無料で高精度シミュレーション。登録不要。</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {availableFinanceTools.map((tool) => (
                 <Link
                   key={tool.id}
@@ -328,10 +328,10 @@ export default function Home() {
         if (recentBlogs.length === 0) return null;
 
         return (
-          <section className="py-16 bg-white dark:bg-gray-900">
+          <section className="py-section bg-white dark:bg-gray-900">
             <div className="max-w-7xl mx-auto px-4">
-              <div className="text-center mb-12">
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+              <div className="text-center mb-8">
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3">
                   <Emoji symbol="📝" size="lg" label="ブログ" /> 最新ブログ
                 </h2>
                 <p className="text-gray-600 dark:text-gray-300">
@@ -339,7 +339,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-3 gap-8 mb-8">
+              <div className="grid md:grid-cols-3 gap-6 mb-8">
                 {recentBlogs.map((post: any) => (
                   <Link
                     key={post.slug}
@@ -394,9 +394,9 @@ export default function Home() {
       {/* ============================================================ */}
       {/* SECTION 9: Trust + Media Coverage                            */}
       {/* ============================================================ */}
-      <section className="py-12 bg-gray-50 dark:bg-gray-900">
+      <section className="py-section bg-gray-50 dark:bg-gray-900">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-8">
             <Emoji symbol="📰" size="lg" label="メディア" /> メディア掲載実績・信頼の数字
           </h2>
           <p className="text-gray-600 dark:text-gray-300 mb-8">
@@ -434,7 +434,7 @@ export default function Home() {
       {/* ============================================================ */}
       {/* SECTION 10: Corporate B2B CTA                                */}
       {/* ============================================================ */}
-      <section className="py-20 bg-gradient-to-r from-slate-800 to-slate-900">
+      <section className="py-section bg-gradient-to-r from-slate-800 to-slate-900">
         <div className="max-w-4xl mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="text-center md:text-left">
