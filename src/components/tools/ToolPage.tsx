@@ -44,11 +44,13 @@ interface ToolPageProps {
     useCases?: { title: string; desc: string }[];
     tips?: string;
   };
+  onSuccess?: () => void;
+  feedbackWidget?: React.ReactNode;
 }
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://api.yamada-tools.jp";
 
-export default function ToolPage({ tool, customH1, extraFields, extraFormData, faq, seoContent }: ToolPageProps) {
+export default function ToolPage({ tool, customH1, extraFields, extraFormData, faq, seoContent, onSuccess, feedbackWidget }: ToolPageProps) {
   const { triggerSuccess } = usePricingContext();
 
   const [files, setFiles] = useState<File[]>([]);
@@ -168,6 +170,7 @@ export default function ToolPage({ tool, customH1, extraFields, extraFormData, f
       setPdfUrl(url);
       await recordUsage();
       setIsComplete(true);
+      onSuccess?.();
       setMascotState("success");
       setMascotMessage("完了しました！ダウンロードしてね！");
       triggerSuccess(tool.id || 'pdf-tool');
@@ -348,6 +351,9 @@ export default function ToolPage({ tool, customH1, extraFields, extraFormData, f
                 別のファイルを処理
               </button>
             </div>
+
+            {/* Feedback Widget slot — rendered by tool-specific clients (e.g. pdf/compress) */}
+            {feedbackWidget}
 
             {/* Share Section */}
             <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">

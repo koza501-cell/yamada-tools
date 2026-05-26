@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import ToolPage from "@/components/tools/ToolPage";
+import ToolFeedbackWidget from "@/components/feedback/ToolFeedbackWidget";
 import { pdfTools } from "@/config/tools";
 
 interface FAQ {
@@ -24,6 +25,7 @@ interface CompressClientProps {
 export default function CompressClient({ customH1, faq, seoContent }: CompressClientProps) {
   const tool = pdfTools.find(t => t.id === "compress")!;
   const [quality, setQuality] = useState("medium");
+  const [feedbackVisible, setFeedbackVisible] = useState(false);
 
   const extraFields = (
     <div className="space-y-3">
@@ -55,11 +57,21 @@ export default function CompressClient({ customH1, faq, seoContent }: CompressCl
   );
 
   return (
-    <ToolPage 
-      tool={tool} 
-      customH1={customH1} faq={faq} seoContent={seoContent} 
+    <ToolPage
+      tool={tool}
+      customH1={customH1}
+      faq={faq}
+      seoContent={seoContent}
       extraFields={extraFields}
       extraFormData={{ quality }}
+      onSuccess={() => setFeedbackVisible(true)}
+      feedbackWidget={
+        <ToolFeedbackWidget
+          toolSlug="pdf/compress"
+          visible={feedbackVisible}
+          lang="ja"
+        />
+      }
     />
   );
 }
