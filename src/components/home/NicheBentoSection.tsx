@@ -1,13 +1,40 @@
 "use client";
 
 import Link from "next/link";
-import {
-  niches,
-  themeColors,
-  Niche,
-} from "@/config/niches";
-import { NicheIcon } from "./NicheIcons";
+import { niches, Niche } from "@/config/niches";
 import Badge from "@/components/ui/Badge";
+import { cardCls } from "@/components/ui/Card";
+import Emoji from "@/components/ui/Emoji";
+
+// Map niche id or SVG iconName → emoji symbol
+const SPECIAL_EMOJI: Record<string, string> = {
+  food:       "🍽️",
+  life:       "🏡",
+  clinic:     "🏥",
+  care:       "🏥",
+  tax:        "💴",
+  realestate: "🏘️",
+  health:     "💪",
+};
+
+const ICON_EMOJI: Record<string, string> = {
+  briefcase: "💼",
+  building:  "🏢",
+  document:  "📄",
+  scroll:    "📜",
+  chart:     "📊",
+  receipt:   "🧾",
+  home:      "🏠",
+  heart:     "💪",
+  care:      "🏥",
+  book:      "📚",
+  users:     "👥",
+  car:       "🚗",
+};
+
+function getEmoji(niche: Niche): string {
+  return SPECIAL_EMOJI[niche.id] ?? ICON_EMOJI[niche.iconName] ?? "🔧";
+}
 
 export default function NicheBentoSection() {
   const activeNiches = niches.filter((n) => !n.comingSoon);
@@ -18,7 +45,7 @@ export default function NicheBentoSection() {
   return (
     <section className="py-section bg-stone-50 dark:bg-gray-900">
       <div className="max-w-6xl mx-auto px-4">
-        {/* Header */}
+
         <div className="flex justify-between items-end mb-8">
           <div>
             <p className="text-xs text-gray-500 dark:text-gray-400 tracking-widest uppercase mb-1">
@@ -30,48 +57,28 @@ export default function NicheBentoSection() {
           </div>
         </div>
 
-        {/* Bento grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {featured && (
             <FeaturedCard niche={featured} className="col-span-2 md:col-span-2" />
           )}
-          {regulars.map((niche) => {
-            const isDark = niche.id === "souzoku" || niche.id === "finance";
-            return isDark ? (
-              <DarkCard key={niche.id} niche={niche} />
-            ) : (
-              <StandardCard key={niche.id} niche={niche} />
-            );
-          })}
+          {regulars.map((niche) => (
+            <DefaultCard key={niche.id} niche={niche} />
+          ))}
         </div>
 
-        {/* Coming soon row */}
         {comingSoonNiches.length > 0 && (
           <div className="mt-6 rounded-2xl border border-dashed border-gray-300 dark:border-gray-700 bg-white/40 dark:bg-gray-800/40 px-5 py-4">
             <div className="flex items-center gap-4 flex-wrap">
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-medium text-gray-700 dark:text-gray-300">
-                  近日公開予定
-                </span>
-              </div>
+              <span className="text-xs font-medium text-gray-700 dark:text-gray-300">
+                近日公開予定
+              </span>
               <div className="flex flex-wrap gap-2">
-                {comingSoonNiches.map((niche) => {
-                  const colors = themeColors[niche.theme];
-                  return (
-                    <Badge
-                      key={niche.id}
-                      variant="neutral"
-                      className="gap-1.5"
-                      style={{
-                        background: colors.iconBg,
-                        color: colors.iconColor,
-                      }}
-                    >
-                      <NicheIcon name={niche.iconName} size={14} />
-                      {niche.shortName}
-                    </Badge>
-                  );
-                })}
+                {comingSoonNiches.map((niche) => (
+                  <Badge key={niche.id} variant="neutral">
+                    <Emoji symbol={getEmoji(niche)} size="sm" label={niche.shortName ?? niche.name} />
+                    {" "}{niche.shortName ?? niche.name}
+                  </Badge>
+                ))}
               </div>
             </div>
           </div>
@@ -82,143 +89,58 @@ export default function NicheBentoSection() {
 }
 
 function FeaturedCard({ niche, className = "" }: { niche: Niche; className?: string }) {
-  const colors = themeColors[niche.theme];
-
   return (
     <Link
       href={niche.url}
-      className={`group relative block rounded-2xl p-6 md:p-7 transition-all duration-200 hover:shadow-xl hover:-translate-y-1 overflow-hidden ${className}`}
-      style={{
-        background: colors.bg,
-        border: `1px solid ${colors.border}`,
-        minHeight: "220px",
-      }}
+      className={`${cardCls("featured")} block p-6 relative ${className}`}
     >
       <div className="flex items-start justify-between mb-4">
-        <div
-          className="w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center"
-          style={{ background: "rgba(255,255,255,0.7)", color: colors.iconColor }}
-        >
-          <NicheIcon name={niche.iconName} size={26} />
-        </div>
+        <Emoji symbol={getEmoji(niche)} size="lg" label={niche.name} />
         {niche.popularBadge && (
           <Badge variant="popular">{niche.popularBadge}</Badge>
         )}
       </div>
 
-      <h3
-        className="text-lg md:text-xl font-bold mb-1.5"
-        style={{ color: colors.text }}
-      >
-        {niche.name}
-      </h3>
+      <div className="flex items-center gap-2 mb-2 flex-wrap">
+        <h3 className="text-xl font-bold text-gray-900 dark:text-white">{niche.name}</h3>
+        <Badge variant="neutral">{niche.toolCount} ツール</Badge>
+      </div>
 
-      <p
-        className="text-xs md:text-sm leading-relaxed mb-4"
-        style={{ color: colors.textMuted }}
-      >
-        {niche.description}
-      </p>
+      <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{niche.description}</p>
 
       {niche.featuredLinks && niche.featuredLinks.length > 0 && (
-        <div className="grid grid-cols-2 gap-1.5 mt-1">
+        <div className="grid grid-cols-2 gap-2">
           {niche.featuredLinks.map((link) => (
             <span
               key={link.url}
-              className="text-[11px] md:text-xs px-2.5 py-1.5 rounded-md font-medium transition-colors"
-              style={{
-                background: colors.iconBg,
-                color: colors.iconColor,
-              }}
+              className="text-xs px-2.5 py-1.5 rounded-md font-medium bg-primary-900/10 text-primary-900 dark:bg-primary-700/20 dark:text-primary-100"
             >
               → {link.name}
             </span>
           ))}
         </div>
       )}
-      <div
-        className="text-[11px] md:text-xs font-bold mt-2"
-        style={{ color: colors.accent }}
-      >
-        +{Math.max(0, niche.toolCount - (niche.featuredLinks?.length || 0))} ツールをすべて見る →
-      </div>
     </Link>
   );
 }
 
-function DarkCard({ niche }: { niche: Niche }) {
-  const colors = themeColors[niche.theme];
-
+function DefaultCard({ niche }: { niche: Niche }) {
   return (
     <Link
       href={niche.url}
-      className="group relative block rounded-2xl p-5 md:p-6 transition-all duration-200 hover:shadow-xl hover:-translate-y-1 overflow-hidden"
-      style={{
-        background: colors.bgDark,
-        color: colors.textDark,
-        minHeight: "180px",
-      }}
+      className={`${cardCls("default")} block p-5 relative`}
     >
-      {niche.isNew && (
-        <Badge variant="new" className="absolute top-3 right-3">NEW</Badge>
-      )}
-
-      <div
-        className="w-11 h-11 md:w-12 md:h-12 rounded-xl flex items-center justify-center mb-4"
-        style={{ background: "rgba(255,255,255,0.15)", color: "white" }}
-      >
-        <NicheIcon name={niche.iconName} size={22} />
+      <div className="flex items-start justify-between mb-3">
+        <Emoji symbol={getEmoji(niche)} size="lg" label={niche.name} />
+        {niche.isNew && <Badge variant="new">NEW</Badge>}
       </div>
 
-      <h3 className="text-base md:text-lg font-bold mb-1.5">{niche.name}</h3>
-
-      <p className="text-xs md:text-sm leading-relaxed opacity-80">
-        {niche.description}
-      </p>
-
-      <div className="absolute bottom-4 right-4 md:bottom-5 md:right-5 text-sm font-semibold opacity-90">
-        {niche.toolCount} ツール
-      </div>
-    </Link>
-  );
-}
-
-function StandardCard({ niche }: { niche: Niche }) {
-  const colors = themeColors[niche.theme];
-
-  return (
-    <Link
-      href={niche.url}
-      className="group relative block rounded-2xl p-5 md:p-6 transition-all duration-200 hover:shadow-xl hover:-translate-y-1 bg-white dark:bg-gray-800 overflow-hidden"
-      style={{
-        border: `1px solid ${colors.border}`,
-        minHeight: "180px",
-      }}
-    >
-      <div
-        className="w-11 h-11 md:w-12 md:h-12 rounded-xl flex items-center justify-center mb-4"
-        style={{ background: colors.iconBg, color: colors.iconColor }}
-      >
-        <NicheIcon name={niche.iconName} size={22} />
+      <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+        <h3 className="text-base font-bold text-gray-900 dark:text-white leading-tight">{niche.name}</h3>
+        <Badge variant="neutral">{niche.toolCount} ツール</Badge>
       </div>
 
-      <h3
-        className="text-base md:text-lg font-bold mb-1.5"
-        style={{ color: colors.text }}
-      >
-        {niche.name}
-      </h3>
-
-      <p
-        className="text-xs md:text-sm leading-relaxed"
-        style={{ color: colors.textMuted }}
-      >
-        {niche.description}
-      </p>
-
-      <div className="absolute bottom-4 right-4 md:bottom-5 md:right-5 text-sm font-semibold text-gray-700 dark:text-gray-300">
-        {niche.toolCount} ツール
-      </div>
+      <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{niche.description}</p>
     </Link>
   );
 }
