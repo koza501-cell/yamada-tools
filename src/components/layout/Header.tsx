@@ -4,8 +4,10 @@ import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import ThemeToggle from "@/components/common/ThemeToggle";
+import { buttonCls } from "@/components/ui/Button";
 import { pdfTools, documentTools, convertTools, imageTools, generatorTools, financeTools, insuranceTools, taxTools, careerTools, realestateTools, businessTools, healthTools, educationTools, debtTools, utilityTools } from "@/config/tools";
 import { searchTools } from "@/lib/searchUtils";
+
 const toolsMenu = {
   title: "ツール",
   sections: [
@@ -16,76 +18,43 @@ const toolsMenu = {
     { name: "計算・生成", icon: "⚡", href: "/generator", tools: [{ name: "パスワード生成", href: "/generator/password" },{ name: "文字数カウント", href: "/generator/character-count" },{ name: "消費税計算", href: "/generator/tax-calculator" },{ name: "電子ハンコ作成", href: "/generator/hanko" },{ name: "QRコード読取", href: "/generator/qr-reader" }], moreLink: "/generator" },
   ],
 };
+
 const calcMenu = {
   title: "計算・シミュレーター",
   sections: [
-    { name: "金融・投資", icon: "💰", href: "/finance", tools: [{ name: "住宅ローン計算", href: "/finance/jutaku-loan" },{ name: "NISA計算機", href: "/finance/nisa-simulator" },{ name: "為替計算", href: "/finance/fx-calculator" },{ name: "平均年収検索", href: "/finance/heikin-nenshu" },{ name: "人口推移", href: "/finance/jinko-suikei" }], moreLink: "/finance" },
-    { name: "税金・保険", icon: "🧾", href: "/tax", tools: [{ name: "所得税計算", href: "/tax/income-tax-calculator" },{ name: "ふるさと納税", href: "/tax/furusato-nozei-calculator" },{ name: "相続税計算", href: "/tax/inheritance-tax-calculator" },{ name: "生命保険必要額", href: "/insurance/life-insurance-calculator" }], moreLink: "/tax" },
-    { name: "キャリア・転職", icon: "💼", href: "/career", tools: [{ name: "転職シミュレーター", href: "/career/job-change-simulator" },{ name: "残業代計算", href: "/career/overtime-calculator" },{ name: "失業保険計算", href: "/career/unemployment-calculator" },{ name: "失業率データ", href: "/career/shitsugyo-ritsu" }], moreLink: "/career" },
-    { name: "不動産・ビジネス", icon: "🏢", href: "/realestate", tools: [{ name: "賃貸vs購入", href: "/realestate/rent-vs-buy" },{ name: "法人化シミュレーター", href: "/business/incorporation-simulator" },{ name: "法人検索", href: "/business/houjin-search" },{ name: "補助金検索", href: "/business/hojokin-active" }], moreLink: "/business" },
-    { name: "健康・生活", icon: "🏥", href: "/health", tools: [{ name: "BMI計算", href: "/health/bmi-calculator" },{ name: "カロリー計算", href: "/health/calorie-calculator" },{ name: "借金返済シミュレーター", href: "/debt/repayment-simulator" },{ name: "平均寿命データ", href: "/health/heikin-jumyo" }], moreLink: "/health" },
-    { name: "教育・子育て", icon: "🎓", href: "/education", tools: [{ name: "教育費シミュレーター", href: "/education/education-cost-simulator" },{ name: "塾代計算機", href: "/education/cram-school-calculator" },{ name: "月謝計算機", href: "/education/juku-ryokin-calculator" },{ name: "保育料計算", href: "/health/hoikuryo-calculator" }], moreLink: "/education" },
+    { name: "金融・投資", icon: "💰", href: "/finance", tools: [{ name: "住宅ローン計算", href: "/finance/jutaku-loan" },{ name: "NISA計算機", href: "/finance/nisa-simulator" },{ name: "為替計算", href: "/finance/fx-calculator" }], moreLink: "/finance" },
+    { name: "税金・保険", icon: "🧾", href: "/tax", tools: [{ name: "所得税計算", href: "/tax/income-tax-calculator" },{ name: "ふるさと納税", href: "/tax/furusato-nozei-calculator" },{ name: "相続税計算", href: "/tax/inheritance-tax-calculator" }], moreLink: "/tax" },
+    { name: "キャリア・転職", icon: "💼", href: "/career", tools: [{ name: "転職シミュレーター", href: "/career/job-change-simulator" },{ name: "残業代計算", href: "/career/overtime-calculator" },{ name: "失業保険計算", href: "/career/unemployment-calculator" }], moreLink: "/career" },
+    { name: "不動産・ビジネス", icon: "🏢", href: "/realestate", tools: [{ name: "賃貸vs購入", href: "/realestate/rent-vs-buy" },{ name: "法人化シミュレーター", href: "/business/incorporation-simulator" },{ name: "法人検索", href: "/business/houjin-search" }], moreLink: "/business" },
+    { name: "健康・生活", icon: "🏥", href: "/health", tools: [{ name: "BMI計算", href: "/health/bmi-calculator" },{ name: "カロリー計算", href: "/health/calorie-calculator" },{ name: "借金返済", href: "/debt/repayment-simulator" }], moreLink: "/health" },
+    { name: "教育・子育て", icon: "🎓", href: "/education", tools: [{ name: "教育費シミュレーター", href: "/education/education-cost-simulator" },{ name: "塾代計算機", href: "/education/cram-school-calculator" },{ name: "保育料計算", href: "/health/hoikuryo-calculator" }], moreLink: "/education" },
   ],
 };
-type MenuSection = { name: string; icon: string; href: string; tools: { name: string; href: string }[]; moreLink: string };
-type MenuConfig = { title: string; sections: MenuSection[] };
 
-function RoleDropdown() {
+const ROLES = [
+  { slug: "keieisha", name: "中小企業の経営者" },
+  { slug: "freelance", name: "個人事業主・フリーランス" },
+  { slug: "clinic", name: "クリニック・士業" },
+  { slug: "fudousan", name: "不動産・建設" },
+  { slug: "inshoku", name: "飲食店経営者" },
+  { slug: "kazoku", name: "家族・将来設計" },
+];
+
+function ToolsDropdown() {
   const [open, setOpen] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const show = () => { if (timer.current) clearTimeout(timer.current); setOpen(true); };
   const hide = () => { timer.current = setTimeout(() => setOpen(false), 300); };
-  const roles = [
-    { slug: "keieisha", name: "中小企業の経営者向け" },
-    { slug: "freelance", name: "個人事業主・フリーランス向け" },
-    { slug: "clinic", name: "クリニック・士業向け" },
-    { slug: "fudousan", name: "不動産・建設関係者向け" },
-    { slug: "inshoku", name: "飲食店経営者向け" },
-    { slug: "kazoku", name: "家族の生活・将来設計向け" },
-  ];
-  return (
-    <>
-      <div className="self-stretch flex items-center" onMouseEnter={show} onMouseLeave={hide}>
-        <button className="flex items-center gap-1 px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px]">
-          <span>業種別</span>
-          <svg className={`w-4 h-4 transition-transform duration-200 ${open ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
-      </div>
-      {open && (
-        <div className="fixed top-14 left-0 w-full bg-white dark:bg-gray-800 shadow-xl border-t border-gray-100 dark:border-gray-700 z-[1000]" onMouseEnter={show} onMouseLeave={hide}>
-          <div className="max-w-7xl mx-auto px-6 py-4">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              {roles.map((r) => (
-                <Link key={r.slug} href={`/for/${r.slug}`} className="block px-4 py-3 rounded-lg border border-gray-100 dark:border-gray-700 hover:border-ai hover:text-ai text-kon dark:text-gray-200 text-sm font-medium transition-colors">
-                  {r.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-    </>
-  );
-}
-function NavDropdown({ label, menu }: { label: string; menu: MenuConfig }) {
-  const [open, setOpen] = useState(false);
-  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const show = () => {
-    if (timer.current) clearTimeout(timer.current);
-    setOpen(true);
-  };
-  const hide = () => {
-    timer.current = setTimeout(() => setOpen(false), 300);
-  };
 
   return (
     <>
       <div className="self-stretch flex items-center" onMouseEnter={show} onMouseLeave={hide}>
-        <button className="flex items-center gap-1 px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px]">
-          <span>{label}</span>
+        <button
+          className="flex items-center gap-1 px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px]"
+          aria-expanded={open}
+          aria-haspopup="true"
+        >
+          <span>ツール</span>
           <svg
             className={`w-4 h-4 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
             fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -94,39 +63,106 @@ function NavDropdown({ label, menu }: { label: string; menu: MenuConfig }) {
           </svg>
         </button>
       </div>
+
       {open && (
         <div
           className="fixed top-14 left-0 w-full bg-white dark:bg-gray-800 shadow-xl border-t border-gray-100 dark:border-gray-700 z-[1000]"
           onMouseEnter={show}
           onMouseLeave={hide}
         >
-          <div className="max-w-7xl mx-auto px-6 py-6">
-            <div className="grid grid-cols-3 lg:grid-cols-5 gap-4">
-              {menu.sections.map((section) => (
-                <div key={section.name}>
-                  <Link href={section.href} className="flex items-center gap-2 text-kon dark:text-gray-200 font-semibold mb-3 hover:text-sakura transition-colors">
-                    <span>{section.icon}</span>
-                    <span>{section.name}</span>
+          <div className="max-w-7xl mx-auto px-6 py-5">
+
+            {/* 業種別 */}
+            <div className="mb-4">
+              <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-2">業種別</p>
+              <div className="flex flex-wrap gap-2">
+                {ROLES.map(r => (
+                  <Link
+                    key={r.slug}
+                    href={`/for/${r.slug}`}
+                    className="px-3 py-1 text-sm border border-gray-200 dark:border-gray-600 rounded-full text-kon dark:text-gray-200 hover:border-ai hover:text-ai dark:hover:border-ai dark:hover:text-ai transition-colors"
+                  >
+                    {r.name}
                   </Link>
-                  <ul className="space-y-2">
-                    {section.tools.map((tool) => (
-                      <li key={tool.href}>
-                        <Link href={tool.href} className="text-sm text-gray-600 dark:text-gray-400 hover:text-sakura transition-colors block py-1">{tool.name}</Link>
-                      </li>
-                    ))}
-                    <li>
-                      <Link href={section.moreLink} className="text-sm text-sakura hover:underline inline-flex items-center gap-1 pt-1">すべて見る →</Link>
-                    </li>
-                  </ul>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
+
+            <div className="border-t border-gray-100 dark:border-gray-700 my-4" />
+
+            {/* 機能別 */}
+            <div className="mb-4">
+              <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-3">機能別</p>
+              <div className="grid grid-cols-5 gap-5">
+                {toolsMenu.sections.map(section => (
+                  <div key={section.name}>
+                    <Link
+                      href={section.href}
+                      className="flex items-center gap-1.5 text-sm font-semibold text-kon dark:text-gray-200 mb-2 hover:text-sakura dark:hover:text-sakura transition-colors"
+                    >
+                      <span>{section.icon}</span>
+                      <span>{section.name}</span>
+                    </Link>
+                    <ul className="space-y-1.5">
+                      {section.tools.slice(0, 4).map(tool => (
+                        <li key={tool.href}>
+                          <Link href={tool.href} className="text-xs text-gray-600 dark:text-gray-400 hover:text-sakura dark:hover:text-sakura transition-colors block">
+                            {tool.name}
+                          </Link>
+                        </li>
+                      ))}
+                      <li>
+                        <Link href={section.moreLink} className="text-xs text-sakura hover:underline inline-flex items-center gap-0.5 pt-0.5">
+                          すべて見る →
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="border-t border-gray-100 dark:border-gray-700 my-4" />
+
+            {/* 計算・シミュレーター */}
+            <div>
+              <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-3">計算・シミュレーター</p>
+              <div className="grid grid-cols-6 gap-4">
+                {calcMenu.sections.map(section => (
+                  <div key={section.name}>
+                    <Link
+                      href={section.href}
+                      className="flex items-center gap-1.5 text-sm font-semibold text-kon dark:text-gray-200 mb-2 hover:text-sakura dark:hover:text-sakura transition-colors"
+                    >
+                      <span>{section.icon}</span>
+                      <span className="text-xs leading-tight">{section.name}</span>
+                    </Link>
+                    <ul className="space-y-1.5">
+                      {section.tools.map(tool => (
+                        <li key={tool.href}>
+                          <Link href={tool.href} className="text-xs text-gray-600 dark:text-gray-400 hover:text-sakura dark:hover:text-sakura transition-colors block">
+                            {tool.name}
+                          </Link>
+                        </li>
+                      ))}
+                      <li>
+                        <Link href={section.moreLink} className="text-xs text-sakura hover:underline inline-flex items-center gap-0.5 pt-0.5">
+                          すべて見る →
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+
           </div>
         </div>
       )}
     </>
   );
 }
+
 export default function Header() {
   const { user, loading, logout } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -137,12 +173,9 @@ export default function Header() {
   const searchInputRef = useRef<HTMLInputElement>(null);
   const userBtnRef = useRef<HTMLButtonElement>(null);
   const [dropdownPos, setDropdownPos] = useState({ top: 0, right: 0 });
-  const [inlineQuery, setInlineQuery] = useState("");
-  const inlineSearchRef = useRef<HTMLDivElement>(null);
 
   const allToolsForSearch = [...pdfTools, ...documentTools, ...convertTools, ...imageTools, ...generatorTools, ...financeTools, ...insuranceTools, ...taxTools, ...careerTools, ...realestateTools, ...businessTools, ...healthTools, ...educationTools, ...debtTools, ...utilityTools].filter(t => t.available);
   const searchResults = searchTools(searchQuery, allToolsForSearch);
-  const inlineResults = inlineQuery.trim().length >= 2 ? searchTools(inlineQuery, allToolsForSearch) : [];
 
   useEffect(() => { setMounted(true); }, []);
 
@@ -166,17 +199,6 @@ export default function Header() {
     if (showUserMenu) { document.addEventListener("click", close); return () => document.removeEventListener("click", close); }
   }, [showUserMenu]);
 
-  // Close inline search dropdown on outside click
-  useEffect(() => {
-    const close = (e: MouseEvent) => {
-      if (inlineSearchRef.current && !inlineSearchRef.current.contains(e.target as Node)) {
-        setInlineQuery("");
-      }
-    };
-    document.addEventListener("mousedown", close);
-    return () => document.removeEventListener("mousedown", close);
-  }, []);
-
   const openUserMenu = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (!showUserMenu && userBtnRef.current) {
@@ -191,77 +213,62 @@ export default function Header() {
       <header className="bg-kon text-white shadow-lg sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between h-14">
+
+            {/* Logo */}
             <Link href="/" className="flex items-center gap-2 shrink-0">
               <img src="/logo-icon.webp" alt="山田ツール" width="32" height="32" className="w-8 h-8" />
               <span className="font-bold text-lg hidden sm:inline">山田ツール</span>
             </Link>
 
+            {/* Desktop nav */}
             <nav className="hidden lg:flex items-center gap-1">
-              <RoleDropdown />
-              <NavDropdown label="機能別" menu={toolsMenu} />
-              <NavDropdown label="計算・シミュレーター" menu={calcMenu} />
+              <ToolsDropdown />
               <Link href="/blog" className="hidden xl:flex px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px] items-center">ブログ</Link>
               <Link href="/ai" className="hidden xl:flex px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px] items-center">AI活用</Link>
               <Link href="/pricing" className="px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px] flex items-center">料金</Link>
-              {/* Inline search — desktop only; ⌘K modal still works for keyboard users */}
-              <div className="relative ml-1" ref={inlineSearchRef}>
-                <input
-                  type="text"
-                  value={inlineQuery}
-                  onChange={(e) => setInlineQuery(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" && inlineResults.length > 0) {
-                      window.location.href = inlineResults[0].path;
-                      setInlineQuery("");
-                    }
-                    if (e.key === "Escape") setInlineQuery("");
-                  }}
-                  placeholder="ツールを検索..."
-                  className="w-32 bg-white/10 text-white rounded-lg px-3 py-1.5 text-sm placeholder:text-white/60 focus:ring-2 focus:ring-white/30 focus:bg-white/20 focus:outline-none transition-colors"
-                />
-                {inlineResults.length > 0 && (
-                  <div className="absolute top-full right-0 mt-1 w-72 bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden z-[1001] max-h-80 overflow-y-auto">
-                    {inlineResults.map((tool) => (
-                      <Link
-                        key={tool.id}
-                        href={tool.path}
-                        onClick={() => setInlineQuery("")}
-                        className="flex items-center gap-3 px-3 py-2.5 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors border-b border-gray-100 dark:border-gray-700 last:border-0"
-                      >
-                        <span className="text-xl">{tool.icon}</span>
-                        <div className="flex-1 min-w-0">
-                          <p className="font-medium text-gray-900 dark:text-gray-100 text-sm truncate">{tool.nameJa}</p>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 truncate">{tool.description}</p>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
             </nav>
 
-            <div className="flex items-center gap-2 ml-3">
-              <ThemeToggle />
-              <button onClick={() => setIsSearchOpen(true)} className="flex items-center gap-2 px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-lg transition-colors min-w-[44px] min-h-[44px]" aria-label="検索">
-                <span>🔍</span>
-                <span className="text-sm hidden md:inline">検索</span>
-                <kbd className="hidden xl:inline-block text-xs bg-white/20 px-1.5 py-0.5 rounded">⌘K</kbd>
+            {/* Right-side actions */}
+            <div className="flex items-center gap-2">
+
+              {/* Search icon button */}
+              <button
+                onClick={() => setIsSearchOpen(true)}
+                className="w-10 h-10 flex items-center justify-center hover:bg-white/10 rounded-full transition-colors"
+                aria-label="ツールを検索 (⌘K)"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
               </button>
+
+              {/* Theme toggle — circular icon button (styled in ThemeToggle) */}
+              <ThemeToggle />
+
+              {/* Login / user menu */}
               {!loading && (user ? (
                 <div className="relative">
-                  <button ref={userBtnRef} onClick={openUserMenu} className="flex items-center gap-2 px-3 py-1.5 bg-sakura hover:bg-sakura/80 rounded-lg transition-colors min-w-[44px] min-h-[44px] text-[#223A70]">
+                  <button
+                    ref={userBtnRef}
+                    onClick={openUserMenu}
+                    className="flex items-center gap-2 px-3 py-1.5 bg-sakura hover:bg-sakura/80 rounded-lg transition-colors min-w-[44px] min-h-[44px] text-[#223A70]"
+                  >
                     <span>👤</span>
                     <span className="text-sm max-w-[80px] truncate hidden sm:inline">{user.email.split("@")[0]}</span>
                   </button>
                 </div>
               ) : (
-                <Link href="/auth/login" className="flex items-center gap-2 px-3 py-1.5 bg-sakura hover:bg-sakura/80 rounded-lg transition-colors text-sm font-medium min-w-[44px] min-h-[44px] text-[#223A70]">
-                  <span className="hidden sm:inline">ログイン</span>
-                  <span className="sm:hidden">👤</span>
+                <Link href="/auth/login" className={buttonCls('primary', 'sm')}>
+                  ログイン
                 </Link>
               ))}
 
-              <button onClick={() => setIsMenuOpen(true)} className="lg:hidden p-2 hover:bg-white/10 rounded-lg min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="メニュー">
+              {/* Hamburger */}
+              <button
+                onClick={() => setIsMenuOpen(true)}
+                className="lg:hidden w-10 h-10 flex items-center justify-center hover:bg-white/10 rounded-full transition-colors"
+                aria-label="メニュー"
+              >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
@@ -271,6 +278,7 @@ export default function Header() {
         </div>
       </header>
 
+      {/* User menu portal */}
       {mounted && showUserMenu && user && createPortal(
         <div
           className="fixed bg-white dark:bg-gray-800 rounded-lg shadow-lg py-2 text-gray-800 dark:text-gray-200 z-[1000] w-48"
@@ -278,7 +286,11 @@ export default function Header() {
           onClick={(e) => e.stopPropagation()}
         >
           <div className="px-4 py-2 border-b dark:border-gray-700 text-sm text-gray-500 dark:text-gray-400 truncate">{user.email}</div>
-          <div className="px-4 py-2 text-sm"><span className="inline-block px-2 py-0.5 bg-gray-100 dark:bg-gray-700 dark:text-gray-200 rounded text-xs">{user.effective_plan === "team" ? "TEAM" : user.effective_plan === "pro" ? "PRO" : user.effective_plan === "pro_trial" ? "PRO (試用)" : "FREE"}</span></div>
+          <div className="px-4 py-2 text-sm">
+            <span className="inline-block px-2 py-0.5 bg-gray-100 dark:bg-gray-700 dark:text-gray-200 rounded text-xs">
+              {user.effective_plan === "team" ? "TEAM" : user.effective_plan === "pro" ? "PRO" : user.effective_plan === "pro_trial" ? "PRO (試用)" : "FREE"}
+            </span>
+          </div>
           <Link href="/account" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-sm" onClick={() => setShowUserMenu(false)}>⚙️ アカウント管理</Link>
           {user.effective_plan === "team" ? null : user.effective_plan === "pro" ? (
             <Link href="/pricing" className="block px-4 py-2 hover:bg-gray-100 text-sm" onClick={() => setShowUserMenu(false)}>⭐ TEAMにアップグレード</Link>
@@ -290,6 +302,7 @@ export default function Header() {
         document.body
       )}
 
+      {/* Mobile drawer */}
       {mounted && isMenuOpen && createPortal(
         <div className="fixed inset-0 z-[900] flex" onClick={() => setIsMenuOpen(false)}>
           <div className="absolute inset-0 bg-black/40" />
@@ -299,7 +312,7 @@ export default function Header() {
           >
             <div className="flex items-center justify-between px-4 py-4 border-b border-white/10">
               <span className="font-bold text-lg">メニュー</span>
-              <button onClick={() => setIsMenuOpen(false)} className="w-10 h-10 flex items-center justify-center hover:bg-white/10 rounded-lg" aria-label="閉じる">
+              <button onClick={() => setIsMenuOpen(false)} className="w-10 h-10 flex items-center justify-center hover:bg-white/10 rounded-full" aria-label="閉じる">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -354,13 +367,23 @@ export default function Header() {
         document.body
       )}
 
+      {/* ⌘K search modal */}
       {isSearchOpen && (
         <div className="fixed inset-0 z-[1000] bg-black/50 flex items-start justify-center pt-20" onClick={() => setIsSearchOpen(false)}>
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl w-full max-w-xl mx-4 p-4" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center gap-3 border-b dark:border-gray-700 pb-4">
-              <span className="text-2xl">🔍</span>
-              <input ref={searchInputRef} type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="ツールを検索..." className="flex-1 text-lg text-gray-900 dark:text-gray-100 dark:bg-transparent outline-none" />
-              <kbd className="text-xs bg-gray-100 px-2 py-1 rounded text-gray-500">ESC</kbd>
+              <svg className="w-5 h-5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              <input
+                ref={searchInputRef}
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="ツールを検索..."
+                className="flex-1 text-lg text-gray-900 dark:text-gray-100 dark:bg-transparent outline-none"
+              />
+              <kbd className="text-xs bg-gray-100 dark:bg-gray-700 dark:text-gray-400 px-2 py-1 rounded text-gray-500">ESC</kbd>
             </div>
             {searchResults.length > 0 ? (
               <div className="pt-4 max-h-80 overflow-y-auto">
@@ -375,7 +398,7 @@ export default function Header() {
             ) : searchQuery.length >= 2 ? (
               <div className="pt-4 text-sm text-gray-500 dark:text-gray-400 text-center">該当するツールが見つかりませんでした</div>
             ) : (
-              <div className="pt-4 text-sm text-gray-500 text-center">キーワードを入力してツールを検索</div>
+              <div className="pt-4 text-sm text-gray-500 dark:text-gray-400 text-center">キーワードを入力してツールを検索</div>
             )}
           </div>
         </div>

@@ -22,12 +22,12 @@ export default function ThemeToggle() {
     document.documentElement.classList.toggle("dark", newTheme === "dark");
   };
 
-  if (!mounted) return <span className="p-2">🌙</span>;
+  if (!mounted) return <span className="w-10 h-10 inline-flex items-center justify-center">🌙</span>;
 
   return (
     <button
       onClick={handleClick}
-      className="p-2 rounded-lg hover:bg-white/10 transition-colors"
+      className="w-10 h-10 flex items-center justify-center hover:bg-white/10 rounded-full transition-colors"
       aria-label="テーマ切替"
       type="button"
     >
