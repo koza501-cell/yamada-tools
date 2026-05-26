@@ -70,6 +70,12 @@ export default function CompressClient({ customH1, faq, seoContent }: CompressCl
           toolSlug="pdf/compress"
           visible={feedbackVisible}
           lang="ja"
+          useCaseOptions={[
+            { value: "メール添付用", label: "メール添付用" },
+            { value: "申請書類", label: "申請書類" },
+            { value: "印刷用", label: "印刷用" },
+            { value: "その他", label: "その他" },
+          ]}
         />
       }
     />
