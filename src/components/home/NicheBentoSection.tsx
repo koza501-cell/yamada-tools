@@ -7,14 +7,7 @@ import {
   Niche,
 } from "@/config/niches";
 import { NicheIcon } from "./NicheIcons";
-
-// ============================================================
-// NICHE BENTO GRID SECTION
-// ============================================================
-// Self-contained section. Drop into homepage with:
-//   import NicheBentoSection from "@/components/home/NicheBentoSection";
-//   <NicheBentoSection />
-// ============================================================
+import Badge from "@/components/ui/Badge";
 
 export default function NicheBentoSection() {
   const activeNiches = niches.filter((n) => !n.comingSoon);
@@ -39,14 +32,10 @@ export default function NicheBentoSection() {
 
         {/* Bento grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-          {/* Featured niche (2x size on desktop) */}
           {featured && (
             <FeaturedCard niche={featured} className="col-span-2 md:col-span-2" />
           )}
-
-          {/* Regular niches */}
           {regulars.map((niche) => {
-            // Pick which niches to render as "dark premium" cards
             const isDark = niche.id === "souzoku" || niche.id === "finance";
             return isDark ? (
               <DarkCard key={niche.id} niche={niche} />
@@ -69,9 +58,10 @@ export default function NicheBentoSection() {
                 {comingSoonNiches.map((niche) => {
                   const colors = themeColors[niche.theme];
                   return (
-                    <span
+                    <Badge
                       key={niche.id}
-                      className="inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-full"
+                      variant="neutral"
+                      className="gap-1.5"
                       style={{
                         background: colors.iconBg,
                         color: colors.iconColor,
@@ -79,7 +69,7 @@ export default function NicheBentoSection() {
                     >
                       <NicheIcon name={niche.iconName} size={14} />
                       {niche.shortName}
-                    </span>
+                    </Badge>
                   );
                 })}
               </div>
@@ -90,10 +80,6 @@ export default function NicheBentoSection() {
     </section>
   );
 }
-
-// ============================================================
-// CARD VARIANTS
-// ============================================================
 
 function FeaturedCard({ niche, className = "" }: { niche: Niche; className?: string }) {
   const colors = themeColors[niche.theme];
@@ -108,7 +94,6 @@ function FeaturedCard({ niche, className = "" }: { niche: Niche; className?: str
         minHeight: "220px",
       }}
     >
-      {/* Top row: icon + badge */}
       <div className="flex items-start justify-between mb-4">
         <div
           className="w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center"
@@ -117,15 +102,10 @@ function FeaturedCard({ niche, className = "" }: { niche: Niche; className?: str
           <NicheIcon name={niche.iconName} size={26} />
         </div>
         {niche.popularBadge && (
-          <span
-            className="text-xs font-semibold px-3 py-1 rounded-full bg-red-100 text-red-700"
-          >
-            {niche.popularBadge}
-          </span>
+          <Badge variant="popular">{niche.popularBadge}</Badge>
         )}
       </div>
 
-      {/* Name */}
       <h3
         className="text-lg md:text-xl font-bold mb-1.5"
         style={{ color: colors.text }}
@@ -133,7 +113,6 @@ function FeaturedCard({ niche, className = "" }: { niche: Niche; className?: str
         {niche.name}
       </h3>
 
-      {/* Description */}
       <p
         className="text-xs md:text-sm leading-relaxed mb-4"
         style={{ color: colors.textMuted }}
@@ -141,8 +120,6 @@ function FeaturedCard({ niche, className = "" }: { niche: Niche; className?: str
         {niche.description}
       </p>
 
-      {/* Featured tool quick-links (fills empty space) */}
-      {/* Pills use iconBg (light tinted) in light mode, semi-transparent dark in dark mode */}
       {niche.featuredLinks && niche.featuredLinks.length > 0 && (
         <div className="grid grid-cols-2 gap-1.5 mt-1">
           {niche.featuredLinks.map((link) => (
@@ -182,16 +159,10 @@ function DarkCard({ niche }: { niche: Niche }) {
         minHeight: "180px",
       }}
     >
-      {/* New badge */}
       {niche.isNew && (
-        <span
-          className="absolute top-3 right-3 text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700"
-        >
-          NEW
-        </span>
+        <Badge variant="new" className="absolute top-3 right-3">NEW</Badge>
       )}
 
-      {/* Icon */}
       <div
         className="w-11 h-11 md:w-12 md:h-12 rounded-xl flex items-center justify-center mb-4"
         style={{ background: "rgba(255,255,255,0.15)", color: "white" }}
@@ -199,15 +170,12 @@ function DarkCard({ niche }: { niche: Niche }) {
         <NicheIcon name={niche.iconName} size={22} />
       </div>
 
-      {/* Name */}
       <h3 className="text-base md:text-lg font-bold mb-1.5">{niche.name}</h3>
 
-      {/* Description */}
       <p className="text-xs md:text-sm leading-relaxed opacity-80">
         {niche.description}
       </p>
 
-      {/* Tool count at bottom */}
       <div className="absolute bottom-4 right-4 md:bottom-5 md:right-5 text-sm font-semibold opacity-90">
         {niche.toolCount} ツール
       </div>
@@ -227,7 +195,6 @@ function StandardCard({ niche }: { niche: Niche }) {
         minHeight: "180px",
       }}
     >
-      {/* Icon */}
       <div
         className="w-11 h-11 md:w-12 md:h-12 rounded-xl flex items-center justify-center mb-4"
         style={{ background: colors.iconBg, color: colors.iconColor }}
@@ -235,7 +202,6 @@ function StandardCard({ niche }: { niche: Niche }) {
         <NicheIcon name={niche.iconName} size={22} />
       </div>
 
-      {/* Name */}
       <h3
         className="text-base md:text-lg font-bold mb-1.5"
         style={{ color: colors.text }}
@@ -243,7 +209,6 @@ function StandardCard({ niche }: { niche: Niche }) {
         {niche.name}
       </h3>
 
-      {/* Description */}
       <p
         className="text-xs md:text-sm leading-relaxed"
         style={{ color: colors.textMuted }}
@@ -251,7 +216,6 @@ function StandardCard({ niche }: { niche: Niche }) {
         {niche.description}
       </p>
 
-      {/* Tool count at bottom */}
       <div className="absolute bottom-4 right-4 md:bottom-5 md:right-5 text-sm font-semibold text-gray-700 dark:text-gray-300">
         {niche.toolCount} ツール
       </div>

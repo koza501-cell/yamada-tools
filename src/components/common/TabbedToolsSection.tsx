@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import Badge from "@/components/ui/Badge";
+import { cardCls } from "@/components/ui/Card";
 
 interface Tool {
   id: string;
@@ -128,13 +130,13 @@ export default function TabbedToolsSection({
               <Link
                 key={tool.id}
                 href={tool.path}
-                className="relative bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-lg hover:border-sakura dark:hover:border-sakura hover:-translate-y-1 transition-all duration-200 text-center"
+                className={`${cardCls('default')} relative p-4 text-center hover:border-sakura dark:hover:border-sakura`}
               >
                 {tool.isNew && (
-                  <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-danger text-white text-xs font-bold rounded-full shadow-sm">NEW</span>
+                  <Badge variant="new" className="absolute -top-2 -right-2">NEW</Badge>
                 )}
                 {tool.isPopular && !tool.isNew && (
-                  <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-gradient-to-r from-slate-900 to-kon text-white text-xs font-bold rounded-full shadow-sm">人気</span>
+                  <Badge variant="popular" className="absolute -top-2 -right-2">人気</Badge>
                 )}
                 <div className="text-2xl mb-2">{tool.icon}</div>
                 <h3 className="font-bold text-base text-kon dark:text-gray-300 leading-tight">{tool.nameJa}</h3>

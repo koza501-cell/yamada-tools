@@ -13,11 +13,12 @@ import TabbedToolsSection from "@/components/common/TabbedToolsSection";
 import StatsCounter from "@/components/common/StatsCounter";
 import FooterCta from "@/components/common/FooterCta";
 import NicheBentoSection from "@/components/home/NicheBentoSection";
+import { buttonCls } from "@/components/ui/Button";
+import Card, { cardCls } from "@/components/ui/Card";
+import Badge from "@/components/ui/Badge";
 import { pdfTools, documentTools, convertTools, imageTools, generatorTools, financeTools, careerTools, taxTools, realestateTools, businessTools, healthTools, foodTools, lifeTools, clinicTools, getToolCount, allTools, getNewTools} from "@/config/tools";
 const popularTools = allTools.filter(t => t.isPopular && t.available);
 
-
-// Feature H: Search suggestion chips
 const SEARCH_CHIPS = [
   { label: '📄 PDF圧縮', href: '/pdf/compress' },
   { label: '📋 請求書作成', href: '/document/invoice' },
@@ -28,7 +29,6 @@ const SEARCH_CHIPS = [
   { label: '🔴 電子印鑑', href: '/generator/hanko' },
 ];
 
-
 export const metadata: Metadata = {
   title: '山田ツール | 日本国内サーバーの無料オンラインツール',
   alternates: {
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   },
 };
 
-export const revalidate = 3600; // Revalidate every hour
+export const revalidate = 3600;
 
 function getDynamicBlogs() {
   try {
@@ -57,10 +57,10 @@ function isNewBlog(publishDate: string): boolean {
   const diffInDays = (now.getTime() - postDate.getTime()) / (1000 * 60 * 60 * 24);
   return diffInDays <= 7;
 }
+
 export default function Home() {
   const toolCount = getToolCount();
 
-  // Deduplicated available tools (for hero count)
   const _seenPaths = new Set<string>();
   const _seenNames = new Set<string>();
   const availableTools = allTools.filter(t => t.available).filter(tool => {
@@ -70,7 +70,6 @@ export default function Home() {
     return true;
   });
 
-  // Filter only available tools
   const availablePdfTools = pdfTools.filter(t => t.available);
   const availableDocTools = documentTools.filter(t => t.available);
   const availableConvertTools = convertTools.filter(t => t.available);
@@ -81,7 +80,6 @@ export default function Home() {
   const availableFoodTools = foodTools.filter(t => t.available);
   const availableLifeTools = lifeTools.filter(t => t.available);
 
-  // Featured tools
   const featuredTools = allTools.filter(t => t.isFeatured && t.available);
 
   return (
@@ -104,7 +102,7 @@ export default function Home() {
           <div className="flex justify-center mb-6">
             <a
               href="#tools"
-              className="inline-flex items-center gap-2 bg-[#1E3A8A] hover:bg-[#1E40AF] text-white font-semibold py-3 px-8 rounded-xl transition-colors duration-200 text-lg w-full sm:w-auto justify-center"
+              className={`${buttonCls('primary', 'lg')} w-full sm:w-auto`}
             >
               無料でツールを使う
               <span aria-hidden="true">→</span>
@@ -113,19 +111,19 @@ export default function Home() {
 
           {/* Trust Badges - above fold */}
           <div className="flex flex-wrap justify-center gap-2 mb-5">
-            <span className="bg-gray-50 dark:bg-gray-700 text-kon dark:text-gray-200 px-3 py-1.5 rounded-full text-xs font-medium border border-gray-200 dark:border-gray-600">
+            <span className="bg-gray-50 dark:bg-gray-700 text-kon dark:text-gray-200 px-3 py-1.5 rounded-pill text-xs font-medium border border-gray-200 dark:border-gray-600">
               🇯🇵 日本国内サーバー
             </span>
-            <span className="bg-gray-50 dark:bg-gray-700 text-kon dark:text-gray-200 px-3 py-1.5 rounded-full text-xs font-medium border border-gray-200 dark:border-gray-600">
+            <span className="bg-gray-50 dark:bg-gray-700 text-kon dark:text-gray-200 px-3 py-1.5 rounded-pill text-xs font-medium border border-gray-200 dark:border-gray-600">
               🔒 SSL暗号化
             </span>
-            <span className="bg-gray-50 dark:bg-gray-700 text-kon dark:text-gray-200 px-3 py-1.5 rounded-full text-xs font-medium border border-gray-200 dark:border-gray-600">
+            <span className="bg-gray-50 dark:bg-gray-700 text-kon dark:text-gray-200 px-3 py-1.5 rounded-pill text-xs font-medium border border-gray-200 dark:border-gray-600">
               🗑️ 60分で自動削除
             </span>
-            <span className="bg-gray-50 dark:bg-gray-700 text-kon dark:text-gray-200 px-3 py-1.5 rounded-full text-xs font-medium border border-gray-200 dark:border-gray-600">
+            <span className="bg-gray-50 dark:bg-gray-700 text-kon dark:text-gray-200 px-3 py-1.5 rounded-pill text-xs font-medium border border-gray-200 dark:border-gray-600">
               登録不要・完全無料
             </span>
-            <span className="bg-gray-50 dark:bg-gray-700 text-kon dark:text-gray-200 px-3 py-1.5 rounded-full text-xs font-medium border border-gray-200 dark:border-gray-600">
+            <span className="bg-gray-50 dark:bg-gray-700 text-kon dark:text-gray-200 px-3 py-1.5 rounded-pill text-xs font-medium border border-gray-200 dark:border-gray-600">
               📱 スマホ対応
             </span>
           </div>
@@ -147,7 +145,7 @@ export default function Home() {
               <Link
                 key={chip.href}
                 href={chip.href}
-                className="rounded-full px-3 py-1 text-sm bg-white border border-gray-200 hover:border-ai hover:bg-gray-50 transition-colors cursor-pointer dark:bg-slate-700 dark:text-gray-200 dark:border-slate-600 dark:hover:border-ai min-h-[44px] flex items-center"
+                className="rounded-pill px-3 py-1 text-sm bg-white border border-gray-200 hover:border-ai hover:bg-gray-50 transition-colors cursor-pointer dark:bg-slate-700 dark:text-gray-200 dark:border-slate-600 dark:hover:border-ai min-h-[44px] flex items-center"
               >
                 {chip.label}
               </Link>
@@ -157,7 +155,7 @@ export default function Home() {
 
           <Link
             href="#popular-tools"
-            className="inline-block bg-kon text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-ai transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-1"
+            className={buttonCls('primary', 'lg')}
           >
             人気ツールを見る →
           </Link>
@@ -183,7 +181,7 @@ export default function Home() {
               { slug: 'kazoku', name: '家族の生活・将来設計', desc: '家計・住宅・教育・相続', href: '/realestate/rent-vs-buy' },
             ].map(r => (
               <Link key={r.slug} href={r.href}
-                className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-ai dark:hover:border-ai rounded-xl p-5 transition-colors group">
+                className={`${cardCls('default')} p-5 group hover:border-ai dark:hover:border-ai`}>
                 <div className="font-semibold text-kon dark:text-white group-hover:text-ai text-lg mb-1">{r.name}向け</div>
                 <div className="text-sm text-sumi dark:text-gray-400">{r.desc}</div>
               </Link>
@@ -203,8 +201,6 @@ export default function Home() {
       <RecentTools />
 
       {/* ============================================================ */}
-
-      {/* ============================================================ */}
       {/* SECTION 5: Popular Tools                                     */}
       {/* ============================================================ */}
       <section id="popular-tools" className="py-16 bg-gray-50 dark:bg-gray-900" style={{scrollMarginTop: "120px"}}>
@@ -218,9 +214,8 @@ export default function Home() {
               <Link
                 key={tool.id}
                 href={tool.path}
-                className="relative bg-white dark:bg-gray-800 shadow-md hover:shadow-lg text-kon dark:text-gray-200 px-3 py-3 rounded-xl font-medium transition-all hover:-translate-y-0.5 text-center text-sm min-h-[44px] flex items-center justify-center"
+                className={`${cardCls('default')} text-kon dark:text-gray-200 px-3 py-3 font-medium text-sm min-h-[44px] flex items-center justify-center`}
               >
-                
                 <span>{tool.icon} {tool.nameJa}</span>
               </Link>
             ))}
@@ -244,14 +239,14 @@ export default function Home() {
                   <Link
                     key={tool.id}
                     href={tool.path}
-                    className="group bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden border border-gray-200 dark:border-gray-200 hover:border-ai p-5"
+                    className={`${cardCls('default')} group overflow-hidden hover:border-ai p-5`}
                   >
                     <div className="flex items-start gap-4">
                       <div className="text-3xl flex-shrink-0">{tool.icon}</div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-1">
                           <h3 className="text-base font-bold text-gray-900 dark:text-white group-hover:text-ai transition-colors">{tool.nameJa}</h3>
-                          {tool.isNew && <span className="px-2 py-0.5 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-full">NEW</span>}
+                          {tool.isNew && <Badge variant="new">NEW</Badge>}
                         </div>
                         <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{tool.description}</p>
                       </div>
@@ -277,7 +272,7 @@ export default function Home() {
                 <Link
                   key={tool.id}
                   href={tool.path}
-                  className="group bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 overflow-hidden border border-gray-200 dark:border-gray-700 p-5"
+                  className={`${cardCls('default')} group overflow-hidden p-5`}
                 >
                   <div className="flex items-start gap-4">
                     <span className="text-3xl flex-shrink-0">{tool.icon}</span>
@@ -340,24 +335,20 @@ export default function Home() {
                   <Link
                     key={post.slug}
                     href={`/blog/${post.slug}`}
-                    className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group"
+                    className={`${cardCls('default')} overflow-hidden group`}
                   >
                     <div className="relative h-48 bg-gradient-to-br from-slate-900 to-kon">
                       {post.featuredImage && (
                         <Image src={post.featuredImage} alt={post.title} className="w-full h-48 object-cover" width={400} height={192} />
                       )}
                       {isNewBlog(post.publishDate) && (
-                        <span className="absolute top-4 right-4 px-3 py-1 bg-emerald-100 text-emerald-700 text-sm font-medium rounded-full">
-                          NEW
-                        </span>
+                        <Badge variant="new" className="absolute top-4 right-4">NEW</Badge>
                       )}
                     </div>
 
                     <div className="p-6">
                       <div className="flex items-center gap-2 mb-3">
-                        <span className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-kon dark:text-gray-200 rounded-full text-sm font-medium">
-                          {post.category}
-                        </span>
+                        <Badge variant="neutral">{post.category}</Badge>
                         <span className="text-sm text-gray-500 dark:text-gray-400">{post.readTime}</span>
                       </div>
 
@@ -383,10 +374,10 @@ export default function Home() {
               <div className="text-center">
                 <Link
                   href="/blog"
-                  className="inline-flex items-center px-6 py-3 bg-kon text-white rounded-lg hover:bg-kon transition-colors"
+                  className={buttonCls('primary', 'md')}
                 >
                   すべてのブログを見る
-                  <span className="ml-2">→</span>
+                  <span>→</span>
                 </Link>
               </div>
             </div>
@@ -395,7 +386,7 @@ export default function Home() {
       })()}
 
       {/* ============================================================ */}
-      {/* SECTION 9: Trust + Media Coverage (Stats merged in)          */}
+      {/* SECTION 9: Trust + Media Coverage                            */}
       {/* ============================================================ */}
       <section className="py-12 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-4xl mx-auto px-4 text-center">
@@ -406,7 +397,6 @@ export default function Home() {
             日本最大級のソフトウェアレビューサイト「窓の杜」に掲載されました
           </p>
 
-          {/* Stats Counter merged in */}
           <StatsCounter />
 
           <a href="https://forest.watch.impress.co.jp/docs/digest/2077518.html" target="_blank" rel="noopener noreferrer" className="inline-block mt-4">
@@ -419,14 +409,14 @@ export default function Home() {
             />
           </a>
           <div className="mt-6 flex flex-wrap justify-center gap-4">
-            <div className="bg-white dark:bg-gray-800 rounded-xl px-6 py-3 shadow-sm border border-gray-200 dark:border-gray-700">
+            <Card noHover className="px-6 py-3">
               <span className="font-bold text-kon dark:text-gray-300">🏢 法人利用実績</span>
               <span className="text-gray-600 dark:text-gray-300 ml-2">500社以上</span>
-            </div>
-            <div className="bg-white dark:bg-gray-800 rounded-xl px-6 py-3 shadow-sm border border-gray-200 dark:border-gray-700">
+            </Card>
+            <Card noHover className="px-6 py-3">
               <span className="font-bold text-kon dark:text-gray-300">📅 窓の杜掲載</span>
               <span className="text-gray-600 dark:text-gray-300 ml-2">2026年1月13日</span>
-            </div>
+            </Card>
           </div>
         </div>
       </section>
@@ -449,7 +439,7 @@ export default function Home() {
             </div>
             <Link
               href="/about/business"
-              className="inline-flex items-center gap-2 bg-white text-slate-800 px-6 py-3 rounded-xl font-bold hover:bg-gray-100 transition-colors whitespace-nowrap"
+              className="inline-flex items-center gap-2 bg-white text-slate-800 px-6 py-3 rounded-btn font-semibold hover:bg-gray-100 transition-colors whitespace-nowrap"
             >
               詳しく見る
               <span>→</span>
@@ -459,11 +449,9 @@ export default function Home() {
       </section>
 
       {/* ============================================================ */}
-      {/* SECTION 11: FooterCta (existing component for free users)    */}
+      {/* SECTION 11: FooterCta                                        */}
       {/* ============================================================ */}
       <FooterCta />
-
-      {/* Newsletter signup is now in Footer.tsx — no longer here */}
     </div>
   );
 }

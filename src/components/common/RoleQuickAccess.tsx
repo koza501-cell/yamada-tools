@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { cardCls } from "@/components/ui/Card";
 
 const STORAGE_KEY = "yamada-user-role";
 
@@ -86,10 +87,10 @@ export default function RoleQuickAccess() {
               <button
                 key={r.id}
                 onClick={() => selectRole(r.id)}
-                className={`px-4 py-2 rounded-full text-sm font-bold transition-all border-2 ${
+                className={`px-4 py-2 rounded-pill text-sm font-bold transition-all border-2 ${
                   role === r.id
-                    ? "bg-kon text-white border-kon shadow-md scale-105"
-                    : "bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 border-gray-200 dark:border-gray-600 hover:border-ai hover:text-ai dark:hover:border-ai"
+                    ? "bg-primary-900 text-white border-primary-900 shadow-md scale-105"
+                    : "bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 border-gray-200 dark:border-gray-600 hover:border-primary-700 hover:text-primary-700 dark:hover:border-primary-700"
                 }`}
               >
                 {r.icon} {r.label}
@@ -104,7 +105,7 @@ export default function RoleQuickAccess() {
               <Link
                 key={t.href}
                 href={t.href}
-                className="flex flex-col items-center gap-1 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl p-3 hover:shadow-md hover:-translate-y-0.5 hover:border-ai dark:hover:border-ai transition-all text-center"
+                className={`${cardCls('default')} flex flex-col items-center gap-1 p-3 text-center hover:border-ai dark:hover:border-ai`}
               >
                 <span className="text-2xl">{t.icon}</span>
                 <span className="text-xs font-medium text-gray-700 dark:text-gray-200 leading-tight">{t.label}</span>
