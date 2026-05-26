@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Button, { buttonCls } from "@/components/ui/Button";
+import Emoji from "@/components/ui/Emoji";
 
 export default function FooterCta() {
   const [show, setShow] = useState(false);
@@ -18,7 +19,7 @@ export default function FooterCta() {
     <section className="py-12 bg-gradient-to-r from-amber-50 to-amber-100 dark:from-amber-900/20 dark:to-amber-800/20 border-t border-gray-200 dark:border-gray-200">
       <div className="max-w-3xl mx-auto px-4 text-center">
         <p className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-          🚀 もっと便利に使いたい？
+          <Emoji symbol="🚀" size="lg" label="PRO" /> もっと便利に使いたい？
         </p>
         <p className="text-gray-600 dark:text-gray-300 mb-6">
           PROプランで無制限に利用、広告なし、優先サポート
@@ -31,10 +32,7 @@ export default function FooterCta() {
           >
             無料で始める
           </Button>
-          <Link
-            href="/pricing"
-            className={buttonCls('secondary', 'lg')}
-          >
+          <Link href="/pricing" className={buttonCls('secondary', 'lg')}>
             料金プランを見る →
           </Link>
         </div>

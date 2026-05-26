@@ -2,15 +2,16 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { cardCls } from "@/components/ui/Card";
+import Emoji from "@/components/ui/Emoji";
 
 const STORAGE_KEY = "yamada-user-role";
 
 const ROLES = [
-  { id: "accounting", label: "経理・会計", icon: "🏦" },
-  { id: "hr",        label: "総務・人事", icon: "👥" },
-  { id: "sales",     label: "営業",       icon: "📊" },
-  { id: "freelance", label: "フリーランス", icon: "💼" },
-  { id: "general",   label: "一般",       icon: "🙋" },
+  { id: "accounting", label: "経理・会計",    icon: "🏦" },
+  { id: "hr",         label: "総務・人事",    icon: "👥" },
+  { id: "sales",      label: "営業",          icon: "📊" },
+  { id: "freelance",  label: "フリーランス",  icon: "💼" },
+  { id: "general",    label: "一般",          icon: "🙋" },
 ] as const;
 
 type RoleId = typeof ROLES[number]["id"];
@@ -49,12 +50,12 @@ const ROLE_TOOLS: Record<RoleId, { href: string; icon: string; label: string }[]
     { href: "/generator/hanko",                    icon: "🔴", label: "電子印鑑" },
   ],
   general: [
-    { href: "/pdf/compress",                    icon: "📦", label: "PDF圧縮" },
-    { href: "/image/compress",                  icon: "🖼️", label: "画像圧縮" },
-    { href: "/realestate/hazard-checker",       icon: "🌊", label: "ハザードマップ" },
-    { href: "/realestate/school-district",      icon: "🏫", label: "学区チェック" },
-    { href: "/convert/furigana",                icon: "あ", label: "ふりがな変換" },
-    { href: "/pdf/merge",                       icon: "🗂️", label: "PDF結合" },
+    { href: "/pdf/compress",               icon: "📦", label: "PDF圧縮" },
+    { href: "/image/compress",             icon: "🖼️", label: "画像圧縮" },
+    { href: "/realestate/hazard-checker",  icon: "🌊", label: "ハザードマップ" },
+    { href: "/realestate/school-district", icon: "🏫", label: "学区チェック" },
+    { href: "/convert/furigana",           icon: "あ",  label: "ふりがな変換" },
+    { href: "/pdf/merge",                  icon: "🗂️", label: "PDF結合" },
   ],
 };
 
@@ -93,7 +94,7 @@ export default function RoleQuickAccess() {
                     : "bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 border-gray-200 dark:border-gray-600 hover:border-primary-700 hover:text-primary-700 dark:hover:border-primary-700"
                 }`}
               >
-                {r.icon} {r.label}
+                {r.label}
               </button>
             ))}
           </div>
@@ -107,7 +108,7 @@ export default function RoleQuickAccess() {
                 href={t.href}
                 className={`${cardCls('default')} flex flex-col items-center gap-1 p-3 text-center hover:border-ai dark:hover:border-ai`}
               >
-                <span className="text-2xl">{t.icon}</span>
+                <Emoji symbol={t.icon} size="lg" label={t.label} />
                 <span className="text-xs font-medium text-gray-700 dark:text-gray-200 leading-tight">{t.label}</span>
               </Link>
             ))}

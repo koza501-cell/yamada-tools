@@ -2,14 +2,14 @@
 import { useState, useEffect, useRef } from "react";
 
 const CATEGORIES = [
-  { id: "all", label: "すべて", href: "#top", icon: "🏠", ariaLabel: "すべてのツール", tabId: null },
-  { id: "popular", label: "人気", href: "#popular-tools", icon: "", ariaLabel: "人気ツール", tabId: null },
-  { id: "pdf", label: "PDF", href: "#tools-tabs", icon: "📄", ariaLabel: "PDFツール", tabId: "pdf" },
-  { id: "document", label: "書類", href: "#tools-tabs", icon: "📝", ariaLabel: "書類作成ツール", tabId: "document" },
-  { id: "convert", label: "変換", href: "#tools-tabs", icon: "🔄", ariaLabel: "変換ツール", tabId: "convert" },
-  { id: "image", label: "画像", href: "#tools-tabs", icon: "🖼️", ariaLabel: "画像ツール", tabId: "image" },
-  { id: "calculator", label: "計算", href: "#tools-tabs", icon: "⚡", ariaLabel: "計算・生成ツール", tabId: "calculator" },
-  { id: "finance", label: "金融", href: "#finance-tools", icon: "💰", ariaLabel: "金融ツール", tabId: null },
+  { id: "all",        label: "すべて", href: "#top",          icon: "🏠", ariaLabel: "すべてのツール", tabId: null },
+  { id: "popular",    label: "人気",   href: "#popular-tools", icon: "",   ariaLabel: "人気ツール",     tabId: null },
+  { id: "pdf",        label: "PDF",    href: "#tools-tabs",    icon: "📄", ariaLabel: "PDFツール",      tabId: "pdf" },
+  { id: "document",   label: "書類",   href: "#tools-tabs",    icon: "📝", ariaLabel: "書類作成ツール", tabId: "document" },
+  { id: "convert",    label: "変換",   href: "#tools-tabs",    icon: "🔄", ariaLabel: "変換ツール",     tabId: "convert" },
+  { id: "image",      label: "画像",   href: "#tools-tabs",    icon: "🖼️", ariaLabel: "画像ツール",     tabId: "image" },
+  { id: "calculator", label: "計算",   href: "#tools-tabs",    icon: "⚡", ariaLabel: "計算・生成ツール", tabId: "calculator" },
+  { id: "finance",    label: "金融",   href: "#finance-tools", icon: "💰", ariaLabel: "金融ツール",     tabId: null },
 ];
 
 export default function StickyTabBar() {
@@ -87,14 +87,11 @@ export default function StickyTabBar() {
 
     const checkAndCorrect = () => {
       const rect = element.getBoundingClientRect();
-      if (Math.abs(rect.top - offset) > 50) {
-        scrollToTarget();
-      }
+      if (Math.abs(rect.top - offset) > 50) scrollToTarget();
     };
 
     setTimeout(checkAndCorrect, 600);
     setTimeout(checkAndCorrect, 1000);
-
     setTimeout(() => { isClickScrolling.current = false; }, 1500);
   };
 
@@ -111,14 +108,13 @@ export default function StickyTabBar() {
               role="tab"
               aria-selected={activeTab === cat.id}
               aria-label={cat.ariaLabel}
-              className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-all ${
+              className={`flex items-center px-3 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-all ${
                 activeTab === cat.id
                   ? "bg-kon text-white shadow-md"
                   : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
               }`}
             >
-              <span className="text-base" aria-hidden="true">{cat.icon}</span>
-              <span>{cat.label}</span>
+              {cat.label}
             </button>
           ))}
         </div>
