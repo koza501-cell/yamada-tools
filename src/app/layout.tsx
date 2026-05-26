@@ -34,32 +34,17 @@ const siteUrl = "https://yamada-tools.jp";
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 5,
   themeColor: "#1E3A8A",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "山田ツール｜インボイス・全銀・電子印鑑など200種の無料業務ツール",
+    default: "山田ツール｜インボイス・全銀・電子印鑑など218種の無料業務ツール",
     template: "%s | 山田ツール",
   },
   description:
-    "日本国内サーバーで安全に使える無料オンラインツール200種。インボイス制度・全銀フォーマット・電子印鑑・PDF編集・書類作成・画像変換・財務計算など、日本の中小企業・フリーランスのビジネスに特化。登録不要・60分自動削除で安心。",
-  keywords: [
-    "インボイス制度",
-    "全銀フォーマット",
-    "電子印鑑",
-    "確定申告",
-    "宛名印刷",
-    "オンラインツール",
-    "無料",
-    "PDF編集",
-    "画像変換",
-    "日本国内サーバー",
-    "安全",
-    "登録不要",
-  ],
+    "日本国内サーバーで安全に使える無料オンラインツール218種。インボイス制度・全銀フォーマット・電子印鑑・PDF編集・書類作成・画像変換・財務計算など、日本の中小企業・フリーランスのビジネスに特化。登録不要・60分自動削除で安心。",
   authors: [{ name: "合同会社山田トレード" }],
   creator: "合同会社山田トレード",
   publisher: "合同会社山田トレード",
@@ -168,7 +153,7 @@ const websiteSchema = {
   name: "山田ツール",
   url: siteUrl,
   description:
-    "日本国内サーバーで安全に使える無料オンラインツール集。PDF編集、画像変換、文書作成など200種類以上のツールを提供。",
+    "日本国内サーバーで安全に使える無料オンラインツール集。PDF編集、画像変換、文書作成など218種類以上のツールを提供。",
   publisher: {
     "@id": `${siteUrl}/#organization`,
   },
@@ -244,7 +229,7 @@ export default async function RootLayout({
         <FloatingActions />
         <FavoritePrompt />
         <PWAInstallPrompt />
-        <AdSenseLoader />
+        {process.env.NEXT_PUBLIC_SHOW_FOOTER_AD === 'true' && <AdSenseLoader />}
         <SupportChatbot />
         <GlobalSearchModal />
         <GlobalToolTracker />

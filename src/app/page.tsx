@@ -331,9 +331,10 @@ export default function Home() {
           <section className="py-section bg-white dark:bg-gray-900">
             <div className="max-w-7xl mx-auto px-4">
               <div className="text-center mb-8">
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3">
-                  <Emoji symbol="📝" size="lg" label="ブログ" /> 最新ブログ
-                </h2>
+                <div className="flex items-center justify-center gap-2 mb-3">
+                  <span><Emoji symbol="📝" size="lg" label="ブログ" /></span>
+                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">最新ブログ</h2>
+                </div>
                 <p className="text-gray-600 dark:text-gray-300">
                   PDFツールの活用方法やビジネス効率化のヒントをお届けします
                 </p>
@@ -396,9 +397,10 @@ export default function Home() {
       {/* ============================================================ */}
       <section className="py-section bg-gray-50 dark:bg-gray-900">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-8">
-            <Emoji symbol="📰" size="lg" label="メディア" /> メディア掲載実績・信頼の数字
-          </h2>
+          <div className="flex items-center justify-center gap-2 mb-8">
+            <span><Emoji symbol="📰" size="lg" label="メディア" /></span>
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">メディア掲載実績・信頼の数字</h2>
+          </div>
           <p className="text-gray-600 dark:text-gray-300 mb-8">
             日本最大級のソフトウェアレビューサイト「窓の杜」に掲載されました
           </p>
