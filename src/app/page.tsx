@@ -461,7 +461,63 @@ export default function Home() {
       </section>
 
       {/* ============================================================ */}
-      {/* SECTION 11: FooterCta                                        */}
+      {/* SECTION 11: FAQ                                              */}
+      {/* ============================================================ */}
+      <section className="py-section bg-white dark:bg-gray-900" id="faq">
+        <div className="max-w-3xl mx-auto px-4">
+          <div className="flex items-center justify-center gap-2 mb-8">
+            <span><Emoji symbol="❓" size="lg" label="よくある質問" /></span>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">よくある質問</h2>
+          </div>
+          <div className="space-y-3">
+            {([
+              {
+                q: "山田ツールは本当に無料ですか？",
+                a: "はい、すべてのツールを完全無料でご利用いただけます。会員登録も不要です。一部の高度な機能はPROプランで提供していますが、基本機能はすべて無料です。",
+              },
+              {
+                q: "何種類のツールが使えますか？",
+                a: "現在218種類の無料ツールを提供しています。PDF編集・変換、書類作成、画像処理、財務計算、税務シミュレーター、インボイス対応など、日本のビジネスシーンに特化したカテゴリを網羅しています。",
+              },
+              {
+                q: "アップロードしたファイルの安全性は？",
+                a: "ファイルは日本国内のサーバーでのみ処理され、SSL暗号化通信で保護されています。多くのツールはブラウザ内で処理されるためサーバーにファイルが送信されません。サーバー処理が必要なツールでも、処理完了後60分以内に自動削除されます。",
+              },
+              {
+                q: "スマホからも使えますか？",
+                a: "はい、iPhone・Androidどちらからもすべてのツールをご利用いただけます。レスポンシブデザインでスマホに最適化されており、アプリのインストールも不要です。",
+              },
+              {
+                q: "会員登録は必要ですか？",
+                a: "いいえ、会員登録なしですべてのツールをご利用いただけます。メールアドレスの入力も不要です。アクセスしてすぐにお使いいただけます。",
+              },
+              {
+                q: "どのブラウザで使えますか？",
+                a: "Chrome・Firefox・Safari・Edgeなどのモダンブラウザに対応しています。Internet Explorer は非対応です。最新バージョンのブラウザでご利用いただくことを推奨します。",
+              },
+              {
+                q: "法人・企業でも利用できますか？",
+                a: "はい、法人・個人事業主を問わずご利用いただけます。請求書作成・全銀フォーマット変換・給与明細作成など、業務で役立つツールを多数揃えています。セキュリティ基準についてはお問い合わせページをご覧ください。",
+              },
+            ] as { q: string; a: string }[]).map(({ q, a }, i) => (
+              <Card key={i} noHover className="overflow-hidden">
+                <details className="group">
+                  <summary className="flex items-center justify-between px-5 py-4 cursor-pointer list-none select-none gap-4">
+                    <span className="font-semibold text-gray-900 dark:text-white text-sm md:text-base">{q}</span>
+                    <span className="flex-shrink-0 text-gray-400 dark:text-gray-500 group-open:rotate-180 transition-transform duration-200" aria-hidden="true">▾</span>
+                  </summary>
+                  <div className="px-5 pb-5 pt-3 text-sm text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-100 dark:border-gray-700">
+                    {a}
+                  </div>
+                </details>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* SECTION 12: FooterCta                                        */}
       {/* ============================================================ */}
       <FooterCta />
     </div>

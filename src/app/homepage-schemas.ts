@@ -87,6 +87,14 @@ export const homepageFaqSchema = {
     },
     {
       "@type": "Question",
+      name: "何種類のツールが使えますか？",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "現在218種類の無料ツールを提供しています。PDF編集・変換、書類作成、画像処理、財務計算、税務シミュレーター、インボイス対応など、日本のビジネスシーンに特化したカテゴリを網羅しています。",
+      },
+    },
+    {
+      "@type": "Question",
       name: "アップロードしたファイルの安全性は？",
       acceptedAnswer: {
         "@type": "Answer",
@@ -107,6 +115,22 @@ export const homepageFaqSchema = {
       acceptedAnswer: {
         "@type": "Answer",
         text: "いいえ、会員登録なしですべてのツールをご利用いただけます。メールアドレスの入力も不要です。アクセスしてすぐにお使いいただけます。",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "どのブラウザで使えますか？",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Chrome・Firefox・Safari・Edgeなどのモダンブラウザに対応しています。Internet Explorer は非対応です。最新バージョンのブラウザでご利用いただくことを推奨します。",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "法人・企業でも利用できますか？",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "はい、法人・個人事業主を問わずご利用いただけます。請求書作成・全銀フォーマット変換・給与明細作成など、業務で役立つツールを多数揃えています。セキュリティ基準についてはお問い合わせページをご覧ください。",
       },
     },
   ],
