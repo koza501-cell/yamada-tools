@@ -3,9 +3,7 @@ import type { Metadata } from 'next';
 import path from 'path';
 import Image from "next/image";
 import Link from "next/link";
-import SearchBar from "@/components/common/SearchBar";
 import HeroAnimation from "@/components/common/HeroAnimation";
-import TypingText from "@/components/common/TypingText";
 import RecentTools from "@/components/common/RecentTools";
 import RoleQuickAccess from "@/components/common/RoleQuickAccess";
 import StickyTabBar from "@/components/common/StickyTabBar";
@@ -18,17 +16,8 @@ import Card, { cardCls } from "@/components/ui/Card";
 import Badge from "@/components/ui/Badge";
 import Emoji from "@/components/ui/Emoji";
 import { pdfTools, documentTools, convertTools, imageTools, generatorTools, financeTools, careerTools, taxTools, realestateTools, businessTools, healthTools, foodTools, lifeTools, clinicTools, getToolCount, allTools, getNewTools} from "@/config/tools";
-const popularTools = allTools.filter(t => t.isPopular && t.available);
 
-const SEARCH_CHIPS = [
-  { emoji: '📄', label: 'PDF圧縮',    href: '/pdf/compress' },
-  { emoji: '📋', label: '請求書作成',  href: '/document/invoice' },
-  { emoji: '🖼️', label: '画像変換',   href: '/image/format-convert' },
-  { emoji: '✉️', label: '封筒印刷',   href: '/generator/envelope-print' },
-  { emoji: '🏦', label: '全銀変換',   href: '/convert/bank-format' },
-  { emoji: '📝', label: '縦書き',     href: '/document/vertical-text' },
-  { emoji: '🔴', label: '電子印鑑',   href: '/generator/hanko' },
-];
+const popularTools = allTools.filter(t => t.isPopular && t.available);
 
 export const metadata: Metadata = {
   title: '山田ツール | 日本国内サーバーの無料オンラインツール',
@@ -82,6 +71,7 @@ export default function Home() {
   const availableLifeTools = lifeTools.filter(t => t.available);
 
   const featuredTools = allTools.filter(t => t.isFeatured && t.available);
+  const topToolPath = popularTools[0]?.path ?? "/pdf/compress";
 
   return (
     <div>
@@ -90,77 +80,91 @@ export default function Home() {
       {/* ============================================================ */}
       {/* SECTION 1: Hero                                              */}
       {/* ============================================================ */}
-      <section className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 py-10 md:py-14">
+      <section className="bg-white dark:bg-gray-900 py-sectionLg">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-kon dark:text-white" style={{ wordBreak: 'keep-all', lineBreak: 'strict', overflowWrap: 'break-word' }}>
-            ビジネス・税金・金融・暮らしまで。日本人のための無料ツール{availableTools.length}種
-          </h1>
 
-          <p className="text-lg md:text-xl mb-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            日本国内サーバーで安全に処理。登録不要・完全無料。
-          </p>
-
-          <div className="flex justify-center mb-6">
+          {/* Media row — grayscale press badge */}
+          <div className="flex justify-center mb-8">
             <a
-              href="#tools"
-              className={`${buttonCls('primary', 'lg')} w-full sm:w-auto`}
+              href="https://forest.watch.impress.co.jp/docs/digest/2077518.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gray-200 dark:border-gray-700 text-sm text-gray-400 dark:text-gray-500 hover:border-gray-300 dark:hover:border-gray-600 transition-colors grayscale hover:grayscale-0"
             >
-              無料でツールを使う
-              <span aria-hidden="true">→</span>
+              <span className="font-semibold">窓の杜</span>
+              <span className="text-gray-300 dark:text-gray-600">|</span>
+              <span>掲載 2026.01.13</span>
             </a>
           </div>
 
-          {/* Trust Badges */}
-          <div className="flex flex-wrap justify-center gap-2 mb-5">
-            <span className="bg-gray-50 dark:bg-gray-700 text-kon dark:text-gray-200 px-3 py-1.5 rounded-pill text-xs font-medium border border-gray-200 dark:border-gray-600">
-              <Emoji symbol="🇯🇵" size="sm" label="日本国内" /> 日本国内サーバー
-            </span>
-            <span className="bg-gray-50 dark:bg-gray-700 text-kon dark:text-gray-200 px-3 py-1.5 rounded-pill text-xs font-medium border border-gray-200 dark:border-gray-600">
-              <Emoji symbol="🔒" size="sm" label="SSL暗号化" /> SSL暗号化
-            </span>
-            <span className="bg-gray-50 dark:bg-gray-700 text-kon dark:text-gray-200 px-3 py-1.5 rounded-pill text-xs font-medium border border-gray-200 dark:border-gray-600">
-              <Emoji symbol="🗑️" size="sm" label="自動削除" /> 60分で自動削除
-            </span>
-            <span className="bg-gray-50 dark:bg-gray-700 text-kon dark:text-gray-200 px-3 py-1.5 rounded-pill text-xs font-medium border border-gray-200 dark:border-gray-600">
-              登録不要・完全無料
-            </span>
-            <span className="bg-gray-50 dark:bg-gray-700 text-kon dark:text-gray-200 px-3 py-1.5 rounded-pill text-xs font-medium border border-gray-200 dark:border-gray-600">
-              <Emoji symbol="📱" size="sm" label="スマホ対応" /> スマホ対応
-            </span>
-          </div>
+          {/* H1 — 2 lines, no emoji */}
+          <h1 className="text-3xl sm:text-4xl md:text-display font-extrabold tracking-tight text-gray-900 dark:text-white text-center mb-4">
+            日本のビジネスを支える、<br />
+            無料オンラインツール{availableTools.length}種
+          </h1>
 
-          <div className="mb-3 text-center">
-            <Link href="/about/numbers" className="text-xs text-kon dark:text-blue-300 hover:text-ai underline underline-offset-2">
-              数字で見るyamada-tools.jp →
+          {/* Subheadline */}
+          <p className="text-lead text-neutral-600 dark:text-gray-400 max-w-[640px] mx-auto mb-8">
+            日本国内サーバーで安全に処理。登録不要・完全無料。
+          </p>
+
+          {/* 2 CTAs */}
+          <div className="flex flex-wrap gap-3 justify-center mb-10">
+            <Link href={topToolPath} className={buttonCls('primary', 'lg')}>
+              人気ツールを試す →
+            </Link>
+            <Link href="#tools-tabs" className={buttonCls('secondary', 'lg')}>
+              すべてのツールを見る
             </Link>
           </div>
 
-          <HeroAnimation />
-
-          <div className="mb-3 flex justify-center">
-            <SearchBar />
+          {/* Trust strip — inline, no pill backgrounds */}
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400 mb-12">
+            <span className="flex items-center gap-1.5">
+              <Emoji symbol="🇯🇵" size="sm" label="日本国内" />
+              日本国内サーバー
+            </span>
+            <span className="text-gray-300 dark:text-gray-600 hidden sm:inline" aria-hidden="true">|</span>
+            <span className="flex items-center gap-1.5">
+              <Emoji symbol="🔒" size="sm" label="SSL暗号化" />
+              SSL暗号化
+            </span>
+            <span className="text-gray-300 dark:text-gray-600 hidden sm:inline" aria-hidden="true">|</span>
+            <span className="flex items-center gap-1.5">
+              <Emoji symbol="🗑️" size="sm" label="自動削除" />
+              60分で自動削除
+            </span>
+            <span className="text-gray-300 dark:text-gray-600 hidden sm:inline" aria-hidden="true">|</span>
+            <span>登録不要・完全無料</span>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-2 mb-4">
-            {SEARCH_CHIPS.map((chip) => (
+          {/* 6-tile popular tools grid */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+            {popularTools.slice(0, 6).map((tool) => (
               <Link
-                key={chip.href}
-                href={chip.href}
-                className="rounded-pill px-3 py-1 text-sm bg-white border border-gray-200 hover:border-ai hover:bg-gray-50 transition-colors cursor-pointer dark:bg-slate-700 dark:text-gray-200 dark:border-slate-600 dark:hover:border-ai min-h-[44px] flex items-center gap-1.5"
+                key={tool.id}
+                href={tool.path}
+                className={`${cardCls('default')} p-5 text-center hover:border-sakura dark:hover:border-sakura`}
               >
-                <Emoji symbol={chip.emoji} size="sm" label={chip.label} />
-                {chip.label}
+                <div className="mb-3">
+                  <Emoji symbol={tool.icon} size="lg" label={tool.nameJa} />
+                </div>
+                <h3 className="font-bold text-base text-kon dark:text-gray-200 mb-1">{tool.nameJa}</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-1">{tool.description}</p>
               </Link>
             ))}
           </div>
-          <TypingText />
 
-          <Link
-            href="#popular-tools"
-            className={buttonCls('primary', 'lg')}
-          >
-            人気ツールを見る →
-          </Link>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* ご利用の流れ (3-step diagram, below fold)                    */}
+      {/* ============================================================ */}
+      <section className="py-section bg-gray-50 dark:bg-gray-800">
+        <div className="max-w-3xl mx-auto px-4 text-center">
+          <h2 className="text-h2 font-bold text-gray-900 dark:text-white mb-8">ご利用の流れ</h2>
+          <HeroAnimation />
         </div>
       </section>
 
