@@ -38,6 +38,41 @@ export const homepageItemListSchema = {
   })),
 };
 
+const siteUrl = "https://yamada-tools.jp";
+
+export const homepageSoftwareApplicationSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "@id": `${siteUrl}/#software`,
+  name: "山田ツール",
+  description: `日本国内サーバーで安全に使える無料オンラインツール${availableTools.length}種。インボイス制度・全銀フォーマット・電子印鑑・PDF編集・書類作成・画像変換・財務計算など、日本の中小企業・フリーランスのビジネスに特化。登録不要・完全無料。`,
+  url: siteUrl,
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  inLanguage: "ja-JP",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "JPY",
+  },
+  publisher: {
+    "@id": `${siteUrl}/#organization`,
+  },
+};
+
+export const homepageBreadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "ホーム",
+      item: siteUrl,
+    },
+  ],
+};
+
 export const homepageFaqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",

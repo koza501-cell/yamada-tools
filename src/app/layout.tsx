@@ -18,7 +18,7 @@ import AdSenseLoader from "@/components/AdSenseLoader";
 import SupportChatbot from "@/components/SupportChatbot";
 import GlobalSearchModal from "@/components/common/GlobalSearchModal";
 import GlobalToolTracker from "@/components/common/GlobalToolTracker";
-import { homepageItemListSchema, homepageFaqSchema } from "./homepage-schemas";
+import { homepageItemListSchema, homepageFaqSchema, homepageSoftwareApplicationSchema, homepageBreadcrumbSchema } from "./homepage-schemas";
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
@@ -197,6 +197,14 @@ export default async function RootLayout({
         <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
         {isHomepage && (
           <>
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageSoftwareApplicationSchema) }}
+            />
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageBreadcrumbSchema) }}
+            />
             <script
               type="application/ld+json"
               dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageItemListSchema) }}
