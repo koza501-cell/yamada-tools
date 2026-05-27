@@ -233,7 +233,7 @@ export default function ToolPage({ tool, customH1, extraFields, extraFormData, f
             {/* Ai-chan Mascot */}
             {/* Fixed height to prevent CLS */}
             <div className="mb-6 min-h-[88px]">
-              <Mascot state={mascotState} message={mascotMessage} />
+              <Mascot state={mascotState === "idle" ? "tip" : mascotState} message={mascotState === "idle" ? undefined : mascotMessage} category={tool.category} />
             </div>
             {/* Usage Limit Banner - Fixed min-height to prevent CLS */}
             <div className="mb-6 min-h-[60px]">
