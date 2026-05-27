@@ -8,7 +8,7 @@ import Link from "next/link";
 import { Tool, getToolsByCategory } from "@/config/tools";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import ShareButtons from "@/components/common/ShareButtons";
-import ToolFeedbackWidget from "@/components/feedback/ToolFeedbackWidget";
+import ToolUsageBadge from "@/components/common/ToolUsageBadge";
 import UsageLimitBanner from "@/components/common/UsageLimitBanner";
 import { usePricingContext } from "@/components/common/PricingTriggerProvider";
 
@@ -213,6 +213,7 @@ export default function ToolPage({ tool, customH1, extraFields, extraFormData, f
           <div className="text-5xl mb-4" role="img" aria-label={tool.nameJa}>{tool.icon}</div>
           <h1 className="text-3xl font-bold text-kon dark:text-gray-300 mb-2">{customH1 || tool.nameJa}</h1>
           <p className="text-gray-600 dark:text-gray-300 text-lg">{tool.description}</p>
+          <div className="mt-2"><ToolUsageBadge toolId={tool.id} /></div>
 
           {/* Trust badges */}
           <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
@@ -355,7 +356,7 @@ export default function ToolPage({ tool, customH1, extraFields, extraFormData, f
             </div>
 
             {/* Feedback Widget slot — rendered by tool-specific clients (e.g. pdf/compress) */}
-            <ToolFeedbackWidget toolSlug={tool.path.replace(/^\//, "")} visible={true} />
+            {feedbackWidget}
 
             {/* Share Section */}
             <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
@@ -365,6 +366,20 @@ export default function ToolPage({ tool, customH1, extraFields, extraFormData, f
                 description={tool.description}
               />
             </div>
+            {/* Related Tools */}
+            {getToolsByCategory(tool.category).filter(t => t.id !== tool.id).slice(0, 3).length > 0 && (
+              <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700 text-left">
+                <p className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">📌 次はこちらのツールもお試しください</p>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  {getToolsByCategory(tool.category).filter(t => t.id !== tool.id).slice(0, 3).map(t => (
+                    <a key={t.id} href={t.path} className="flex items-center gap-2 p-3 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-kon dark:hover:border-ai hover:bg-kon/5 dark:hover:bg-ai/10 transition-all">
+                      <span className="text-2xl">{t.icon}</span>
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300 line-clamp-2">{t.nameJa}</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
           </section>
         )}
 

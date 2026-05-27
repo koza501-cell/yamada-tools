@@ -1,4 +1,6 @@
 "use client";
+import ToolFeedbackWidget from "@/components/feedback/ToolFeedbackWidget";
+import { financeTools } from "@/config/tools";
 
 import { useState, useCallback, useRef, useMemo } from "react";
 import {
@@ -868,6 +870,22 @@ export default function IdecoNisaComparisonClient() {
             本ツールの計算結果はあくまで参考値です。実際の税額・制度内容は税理士または金融機関にご確認ください。
             投資にはリスクがあり、元本割れの可能性もあります。運用成果を保証するものではありません。
           </p>
+        </div>
+        <ToolFeedbackWidget toolSlug="ideco-nisa-comparison" visible={true} />
+        <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
+          <p className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">📌 次はこちらのツールもお試しください</p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {["/finance/net-salary-calculator", "/tax/income-tax-calculator", "/generator/nenmatsu-calc"].map(path => {
+              const t = financeTools.find(x => x.path === path);
+              if (!t) return null;
+              return (
+                <a key={t.id} href={t.path} className="flex items-center gap-2 p-3 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-kon dark:hover:border-ai hover:bg-kon/5 transition-all">
+                  <span className="text-2xl">{t.icon}</span>
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300 line-clamp-2">{t.nameJa}</span>
+                </a>
+              );
+            })}
+          </div>
         </div>
         <AdUnit slot="5612038947" format="horizontal" />
       </div>
