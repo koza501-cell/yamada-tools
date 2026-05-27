@@ -4,8 +4,11 @@ import { generateToolMetadata, generateToolJsonLd } from "@/lib/seo";
 import CompressClient from "./client";
 import { toolSchemas } from "@/data/toolSchemas";
 import RelatedTools from "@/components/common/RelatedTools";
+import ToolFeedbackDisplay from "@/components/feedback/ToolFeedbackDisplay";
+import ToolFeedbackSchema from "@/components/feedback/ToolFeedbackSchema";
 
 const tool = getToolById("compress")!;
+const TOOL_URL = "https://yamada-tools.jp/pdf/compress";
 
 const faq = [
   {
@@ -91,11 +94,22 @@ export default function CompressPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <CompressClient customH1="PDFを圧縮する無料ツール — ファイルサイズ縮小でメール添付・アップロード対応" faq={faq} seoContent={seoContent} />
+      <ToolFeedbackSchema
+        toolSlug="pdf/compress"
+        toolName={tool.nameJa}
+        toolUrl={TOOL_URL}
+      />
+      <CompressClient
+        customH1="PDFを圧縮する無料ツール — ファイルサイズ縮小でメール添付・アップロード対応"
+        faq={faq}
+        seoContent={seoContent}
+        feedbackDisplay={
+          <ToolFeedbackDisplay toolSlug="pdf/compress" lang="ja" />
+        }
+      />
       <div className="max-w-4xl mx-auto px-4">
         <RelatedTools currentTool={tool} maxItems={6} />
       </div>
-
     </>
   );
 }

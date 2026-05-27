@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import ToolPage from "@/components/tools/ToolPage";
 import ToolFeedbackWidget from "@/components/feedback/ToolFeedbackWidget";
 import { pdfTools } from "@/config/tools";
@@ -20,9 +20,10 @@ interface CompressClientProps {
   customH1?: string;
   faq?: FAQ[];
   seoContent?: SeoContent;
+  feedbackDisplay?: React.ReactNode;
 }
 
-export default function CompressClient({ customH1, faq, seoContent }: CompressClientProps) {
+export default function CompressClient({ customH1, faq, seoContent, feedbackDisplay }: CompressClientProps) {
   const tool = pdfTools.find(t => t.id === "compress")!;
   const [quality, setQuality] = useState("medium");
   const [feedbackVisible, setFeedbackVisible] = useState(false);
@@ -65,6 +66,7 @@ export default function CompressClient({ customH1, faq, seoContent }: CompressCl
       extraFields={extraFields}
       extraFormData={{ quality }}
       onSuccess={() => setFeedbackVisible(true)}
+      feedbackDisplay={feedbackDisplay}
       feedbackWidget={
         <ToolFeedbackWidget
           toolSlug="pdf/compress"

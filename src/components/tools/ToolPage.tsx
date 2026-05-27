@@ -46,11 +46,12 @@ interface ToolPageProps {
   };
   onSuccess?: () => void;
   feedbackWidget?: React.ReactNode;
+  feedbackDisplay?: React.ReactNode;
 }
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://api.yamada-tools.jp";
 
-export default function ToolPage({ tool, customH1, extraFields, extraFormData, faq, seoContent, onSuccess, feedbackWidget }: ToolPageProps) {
+export default function ToolPage({ tool, customH1, extraFields, extraFormData, faq, seoContent, onSuccess, feedbackWidget, feedbackDisplay }: ToolPageProps) {
   const { triggerSuccess } = usePricingContext();
 
   const [files, setFiles] = useState<File[]>([]);
@@ -447,6 +448,8 @@ export default function ToolPage({ tool, customH1, extraFields, extraFormData, f
             </div>
           </div>
         </section>
+
+        {feedbackDisplay}
 
         {/* FAQ Section */}
         {faq && faq.length > 0 && (
