@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import { trackToolUse, getTotals } from '@/lib/value-tracker';
 
 type PopupType = 'none' | 'soft-modal' | 'banner' | 'limit-modal';
 
@@ -10,6 +11,8 @@ interface PricingTriggerState {
   triggerSuccess: (toolId: string) => void;
   remainingUses: number;
   setRemainingUses: (n: number) => void;
+  showAccountPrompt: boolean;
+  dismissAccountPrompt: () => void;
 }
 
 const HIGH_VALUE_TOOLS = [
@@ -25,6 +28,7 @@ export function usePricingTrigger(): PricingTriggerState {
   const [showPopup, setShowPopup] = useState<PopupType>('none');
   const [sessionSuccessCount, setSessionSuccessCount] = useState(0);
   const [remainingUses, setRemainingUses] = useState(5);
+  const [showAccountPrompt, setShowAccountPrompt] = useState(false);
 
   // Soft-modal: show after 15s or 30% scroll depth, whichever comes first
   useEffect(() => {
@@ -58,8 +62,21 @@ export function usePricingTrigger(): PricingTriggerState {
 
   // Track success and trigger popups
   const triggerSuccess = useCallback((toolId: string) => {
+    trackToolUse(toolId);
     const newCount = sessionSuccessCount + 1;
     setSessionSuccessCount(newCount);
+
+    // Account migration — fires in afterglow after tool completion
+    if (
+      !localStorage.getItem('yamada_account_prompt_shown') &&
+      !localStorage.getItem('session_token')
+    ) {
+      const t = getTotals();
+      if (t.totalUsages >= 20 || t.totalTimeSavedMinutes >= 300) {
+        localStorage.setItem('yamada_account_prompt_shown', '1');
+        setTimeout(() => setShowAccountPrompt(true), 1500);
+      }
+    }
 
     const popupShownThisSession = sessionStorage.getItem(SS_SHOWN);
     if (popupShownThisSession) return;
@@ -87,6 +104,10 @@ export function usePricingTrigger(): PricingTriggerState {
     }
   }, [remainingUses]);
 
+  const dismissAccountPrompt = useCallback(() => {
+    setShowAccountPrompt(false);
+  }, []);
+
   const dismissPopup = useCallback(() => {
     if (showPopup === 'soft-modal') {
       localStorage.setItem(LS_DISMISSED, '1');
@@ -100,5 +121,7 @@ export function usePricingTrigger(): PricingTriggerState {
     triggerSuccess,
     remainingUses,
     setRemainingUses,
+    showAccountPrompt,
+    dismissAccountPrompt,
   };
 }

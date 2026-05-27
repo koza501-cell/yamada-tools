@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import ToolPage from "@/components/tools/ToolPage";
+import ToolFeedbackWidget from "@/components/feedback/ToolFeedbackWidget";
 import { pdfTools } from "@/config/tools";
 
 interface FAQ {
@@ -19,11 +20,13 @@ interface CompressClientProps {
   customH1?: string;
   faq?: FAQ[];
   seoContent?: SeoContent;
+  feedbackDisplay?: React.ReactNode;
 }
 
-export default function CompressClient({ customH1, faq, seoContent }: CompressClientProps) {
+export default function CompressClient({ customH1, faq, seoContent, feedbackDisplay }: CompressClientProps) {
   const tool = pdfTools.find(t => t.id === "compress")!;
   const [quality, setQuality] = useState("medium");
+  const [feedbackVisible, setFeedbackVisible] = useState(false);
 
   const extraFields = (
     <div className="space-y-3">
@@ -55,11 +58,28 @@ export default function CompressClient({ customH1, faq, seoContent }: CompressCl
   );
 
   return (
-    <ToolPage 
-      tool={tool} 
-      customH1={customH1} faq={faq} seoContent={seoContent} 
+    <ToolPage
+      tool={tool}
+      customH1={customH1}
+      faq={faq}
+      seoContent={seoContent}
       extraFields={extraFields}
       extraFormData={{ quality }}
+      onSuccess={() => setFeedbackVisible(true)}
+      feedbackDisplay={feedbackDisplay}
+      feedbackWidget={
+        <ToolFeedbackWidget
+          toolSlug="pdf/compress"
+          visible={feedbackVisible}
+          lang="ja"
+          useCaseOptions={[
+            { value: "メール添付用", label: "メール添付用" },
+            { value: "申請書類", label: "申請書類" },
+            { value: "印刷用", label: "印刷用" },
+            { value: "その他", label: "その他" },
+          ]}
+        />
+      }
     />
   );
 }

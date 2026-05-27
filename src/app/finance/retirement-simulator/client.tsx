@@ -6,6 +6,8 @@ import {
   ReferenceLine, ResponsiveContainer, AreaChart, Area, BarChart, Bar, Cell
 } from "recharts";
 import RelatedTools from "@/components/finance/RelatedTools";
+import { usePricingContext } from "@/components/common/PricingTriggerProvider";
+import { ValueReminderInline } from "@/components/common/ValueReminder";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import { AdUnit } from "@/components/common/AdUnit";
 
@@ -439,6 +441,7 @@ function calcMode4(
 
 // ---- Main Component ----
 export default function RetirementSimulatorClient() {
+  const { triggerSuccess } = usePricingContext();
   const [mode, setMode] = useState<Mode>(1);
   const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const resultRef = useRef<HTMLDivElement>(null);
@@ -601,6 +604,7 @@ export default function RetirementSimulatorClient() {
       a.download = `retirement-simulator-mode${mode}.png`;
       a.href = canvas.toDataURL();
       a.click();
+      triggerSuccess('retirement-simulator');
     } catch { alert("画像保存に失敗しました。"); }
   }, [mode]);
 
@@ -1479,6 +1483,8 @@ export default function RetirementSimulatorClient() {
             <span>💾</span> 画像として保存
           </button>
         </div>
+
+        <ValueReminderInline />
 
         {/* AdSense slot 3: below withdrawal simulation section */}
         <div className="adsense-slot my-8" data-ad-slot="auto"></div>

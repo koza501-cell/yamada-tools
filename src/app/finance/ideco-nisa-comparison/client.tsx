@@ -5,6 +5,8 @@ import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar
 } from "recharts";
 import RelatedTools from "@/components/finance/RelatedTools";
+import { usePricingContext } from "@/components/common/PricingTriggerProvider";
+import { ValueReminderInline } from "@/components/common/ValueReminder";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import { AdUnit } from "@/components/common/AdUnit";
 
@@ -219,6 +221,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 // ============================================
 export default function IdecoNisaComparisonClient() {
   // Input states
+  const { triggerSuccess } = usePricingContext();
   const [annualIncome, setAnnualIncome] = useState(5000000);
   const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const [occupation, setOccupation] = useState("会社員（企業年金なし）");
@@ -316,6 +319,7 @@ export default function IdecoNisaComparisonClient() {
       link.download = "ideco-nisa-comparison.png";
       link.href = canvas.toDataURL("image/png");
       link.click();
+      triggerSuccess('ideco-nisa-comparison');
     } catch {
       alert("画像の保存に失敗しました。");
     }
@@ -848,6 +852,8 @@ export default function IdecoNisaComparisonClient() {
             </div>
           </>
         )}
+
+        <ValueReminderInline />
 
         {/* SECTION 7: iDeCo vs NISA Educational Content */}
         <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">

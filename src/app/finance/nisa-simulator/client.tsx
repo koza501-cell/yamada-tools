@@ -5,6 +5,8 @@ import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceLine, ResponsiveContainer,
 } from "recharts";
 import RelatedTools from "@/components/finance/RelatedTools";
+import { usePricingContext } from "@/components/common/PricingTriggerProvider";
+import { ValueReminderInline } from "@/components/common/ValueReminder";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import { AdUnit } from "@/components/common/AdUnit";
 
@@ -71,6 +73,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 };
 
 export default function NisaSimulatorClient() {
+  const { triggerSuccess } = usePricingContext();
   const [currentAge, setCurrentAge] = useState(30);
   const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const [targetAge, setTargetAge] = useState(65);
@@ -122,6 +125,7 @@ export default function NisaSimulatorClient() {
       link.download = "nisa-simulation.png";
       link.href = canvas.toDataURL("image/png");
       link.click();
+      triggerSuccess('nisa-simulator');
     } catch { alert("画像の保存に失敗しました。"); }
   }, []);
 
@@ -406,6 +410,8 @@ export default function NisaSimulatorClient() {
             画像として保存
           </button>
         </div>
+
+        <ValueReminderInline />
 
         {/* NISA explanation for AdSense */}
         <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">

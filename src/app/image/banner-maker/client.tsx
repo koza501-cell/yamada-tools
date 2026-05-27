@@ -1,6 +1,8 @@
 // @ts-nocheck
 "use client";
 import { useState, useRef, useCallback, useEffect } from "react";
+import { usePricingContext } from "@/components/common/PricingTriggerProvider";
+import { ValueReminderInline } from "@/components/common/ValueReminder";
 import Link from "next/link";
 import Mascot from "@/components/common/Mascot";
 
@@ -73,12 +75,15 @@ export default function BannerMakerClient({ faq, seoContent }: Props) {
 
   useEffect(() => { render(); }, [render]);
 
+  const { triggerSuccess } = usePricingContext();
+
   const download = () => {
     if (!canvasRef.current) return;
     const a = document.createElement("a");
     a.download = `banner_${PRESETS[preset].w}x${PRESETS[preset].h}_yamada-tools.png`;
     a.href = canvasRef.current.toDataURL("image/png");
     a.click();
+    triggerSuccess('banner-maker');
   };
 
   return (
@@ -147,6 +152,7 @@ export default function BannerMakerClient({ faq, seoContent }: Props) {
           <button onClick={download} className="w-full py-4 bg-gradient-to-r from-kon to-ai text-white rounded-xl font-bold text-lg hover:shadow-lg transition-all">
             💾 バナーをダウンロード
           </button>
+          <ValueReminderInline />
         </section>
 
         {seoContent && (

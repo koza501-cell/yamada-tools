@@ -9,6 +9,7 @@ const navItems = [
   { href: "/admin/blog", label: "ブログ管理", icon: "✍️" },
   { href: "/admin/banners", label: "バナー管理", icon: "🎨" },
   { href: "/admin/campaigns", label: "キャンペーン", icon: "🎯" },
+  { href: "/admin/feedback", label: "フィードバック", icon: "💬" },
   { href: "/admin/settings", label: "サイト設定", icon: "⚙️" },
 ];
 

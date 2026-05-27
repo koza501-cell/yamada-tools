@@ -4,6 +4,8 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line } from "recharts";
 import FinancialDisclaimer from "@/components/common/FinancialDisclaimer";
 import RelatedTools from "@/components/finance/RelatedTools";
+import { usePricingContext } from "@/components/common/PricingTriggerProvider";
+import { ValueReminderInline } from "@/components/common/ValueReminder";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import { AdUnit } from "@/components/common/AdUnit";
 
@@ -37,6 +39,7 @@ const isJpyPair = (pair: string) => pair.includes("/JPY");
 const TAX_RATE = 0.20315;
 
 export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
+  const { triggerSuccess } = usePricingContext();
   const [mode, setMode] = useState<Mode>("profit");
   const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const [stickyTabs, setStickyTabs] = useState(false);
@@ -278,6 +281,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
       link.download = "fx-calculation.png";
       link.href = canvas.toDataURL("image/png");
       link.click();
+      triggerSuccess('fx-calculator');
     } catch { alert("画像の保存に失敗しました。"); }
   }, []);
 
@@ -1095,6 +1099,8 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
             画像として保存
           </button>
         </div>
+
+        <ValueReminderInline />
 
         {/* Ad Slot 3 */}
         <div className="adsense-slot my-6" data-ad-slot="auto"></div>

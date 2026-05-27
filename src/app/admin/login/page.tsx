@@ -23,6 +23,7 @@ export default function AdminLoginPage() {
       });
 
       if (res.ok) {
+        localStorage.setItem("admin_token", token);
         window.location.href = "/admin";
       } else {
         setError("認証に失敗しました");

@@ -4,6 +4,7 @@ import { createContext, useContext, ReactNode } from 'react';
 import { usePricingTrigger } from '@/hooks/usePricingTrigger';
 import { PricingPopup } from './PricingPopup';
 import { PricingBanner } from './PricingBanner';
+import { AccountMigrationModal } from './AccountMigrationModal';
 
 interface PricingContextType {
   triggerSuccess: (toolId: string) => void;
@@ -22,22 +23,27 @@ export function usePricingContext() {
 }
 
 export function PricingTriggerProvider({ children }: { children: ReactNode }) {
-  const { showPopup, dismissPopup, triggerSuccess, remainingUses, setRemainingUses } = usePricingTrigger();
+  const { showPopup, dismissPopup, triggerSuccess, remainingUses, setRemainingUses, showAccountPrompt, dismissAccountPrompt } = usePricingTrigger();
 
   return (
     <PricingContext.Provider value={{ triggerSuccess, setRemainingUses }}>
       {children}
-      
+
       {/* Popups */}
-      <PricingPopup 
-        type={showPopup === 'soft-modal' || showPopup === 'limit-modal' ? showPopup : 'none'} 
+      <PricingPopup
+        type={showPopup === 'soft-modal' || showPopup === 'limit-modal' ? showPopup : 'none'}
         onClose={dismissPopup}
         remainingUses={remainingUses}
       />
-      
+
       {/* Banner */}
       {showPopup === 'banner' && (
         <PricingBanner remainingUses={remainingUses} onClose={dismissPopup} />
+      )}
+
+      {/* Account migration modal */}
+      {showAccountPrompt && (
+        <AccountMigrationModal onClose={dismissAccountPrompt} />
       )}
     </PricingContext.Provider>
   );

@@ -6,6 +6,8 @@ import {
   ReferenceLine, ResponsiveContainer, AreaChart, Area
 } from "recharts";
 import RelatedTools from "@/components/finance/RelatedTools";
+import { usePricingContext } from "@/components/common/PricingTriggerProvider";
+import { ValueReminderInline } from "@/components/common/ValueReminder";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import { AdUnit } from "@/components/common/AdUnit";
 
@@ -341,6 +343,7 @@ const LoanTooltip = ({ active, payload, label }: any) => {
 
 // ---- Main Component ----
 export default function JutakuLoanClient() {
+  const { triggerSuccess } = usePricingContext();
   const [mode, setMode] = useState<1 | 2 | 3 | 4>(1);
   const [mascotState, setMascotState] = useState<MascotState>("welcome");
   const [loanAmt, setLoanAmt] = useState(3000);
@@ -458,6 +461,7 @@ export default function JutakuLoanClient() {
       const canvas = await h2c(resultRef.current, { scale: 2, useCORS: true });
       const a = document.createElement("a");
       a.download = "jutaku-loan.png"; a.href = canvas.toDataURL(); a.click();
+      triggerSuccess('jutaku-loan');
     } catch { alert("画像保存に失敗しました。"); }
   }, []);
 
@@ -1096,6 +1100,8 @@ export default function JutakuLoanClient() {
           </button>
         </div>
       </div>
+      <ValueReminderInline />
+
       {/* Educational Content Section */}
       <div className="max-w-4xl mx-auto mt-12 space-y-8">
         <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">

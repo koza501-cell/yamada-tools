@@ -8,6 +8,7 @@ import Link from "next/link";
 import { Tool, getToolsByCategory } from "@/config/tools";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import ShareButtons from "@/components/common/ShareButtons";
+import ToolFeedbackWidget from "@/components/feedback/ToolFeedbackWidget";
 import UsageLimitBanner from "@/components/common/UsageLimitBanner";
 import { usePricingContext } from "@/components/common/PricingTriggerProvider";
 
@@ -44,11 +45,14 @@ interface ToolPageProps {
     useCases?: { title: string; desc: string }[];
     tips?: string;
   };
+  onSuccess?: () => void;
+  feedbackWidget?: React.ReactNode;
+  feedbackDisplay?: React.ReactNode;
 }
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://api.yamada-tools.jp";
 
-export default function ToolPage({ tool, customH1, extraFields, extraFormData, faq, seoContent }: ToolPageProps) {
+export default function ToolPage({ tool, customH1, extraFields, extraFormData, faq, seoContent, onSuccess, feedbackWidget, feedbackDisplay }: ToolPageProps) {
   const { triggerSuccess } = usePricingContext();
 
   const [files, setFiles] = useState<File[]>([]);
@@ -168,6 +172,7 @@ export default function ToolPage({ tool, customH1, extraFields, extraFormData, f
       setPdfUrl(url);
       await recordUsage();
       setIsComplete(true);
+      onSuccess?.();
       setMascotState("success");
       setMascotMessage("完了しました！ダウンロードしてね！");
       triggerSuccess(tool.id || 'pdf-tool');
@@ -349,6 +354,9 @@ export default function ToolPage({ tool, customH1, extraFields, extraFormData, f
               </button>
             </div>
 
+            {/* Feedback Widget slot — rendered by tool-specific clients (e.g. pdf/compress) */}
+            <ToolFeedbackWidget toolSlug={tool.path.replace(/^\//, "")} visible={true} />
+
             {/* Share Section */}
             <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
               <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">このツールが役に立ちましたら、ぜひシェアしてください。</p>
@@ -441,6 +449,8 @@ export default function ToolPage({ tool, customH1, extraFields, extraFormData, f
             </div>
           </div>
         </section>
+
+        {feedbackDisplay}
 
         {/* FAQ Section */}
         {faq && faq.length > 0 && (

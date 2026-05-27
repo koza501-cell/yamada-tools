@@ -108,7 +108,22 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-kon mb-4">10. 改定</h2>
+            <h2 className="text-xl font-bold text-kon mb-4">10. 利用統計について</h2>
+            <div className="bg-blue-50 rounded-xl p-4 mb-4">
+              <ul className="text-gray-600 space-y-2 text-sm">
+                <li>📊 ツールの利用記録（回数・節約時間・節約金額）は<strong>ご利用のブラウザのlocalStorageにのみ保存</strong>されます</li>
+                <li>🔒 ゲスト利用の場合、この記録は当社サーバーには送信されません</li>
+                <li>👤 アカウント登録・ログインした場合のみ、記録はサーバーに同期されます</li>
+                <li>🗑️ 記録は<a href="/dashboard" className="text-blue-600 hover:underline">ダッシュボード</a>の「クリア」ボタンでいつでも削除できます</li>
+              </ul>
+            </div>
+            <p className="text-gray-600 leading-relaxed text-sm">
+              利用統計は節約効果の目安を提供するためのものであり、外部への提供や広告ターゲティングには使用しません。
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-bold text-kon mb-4">11. 改定</h2>
             <p className="text-gray-600 leading-relaxed">
               本プライバシーポリシーは、必要に応じて改定することがあります。
               重要な変更がある場合は、本サービス上でお知らせいたします。
@@ -118,7 +133,7 @@ export default function PrivacyPage() {
 
         <div className="mt-8 text-center text-sm text-gray-500">
           <p>制定日: 2024年11月</p>
-          <p>最終更新日: 2026年4月</p>
+          <p>最終更新日: 2026年5月</p>
         </div>
       </div>
     </div>

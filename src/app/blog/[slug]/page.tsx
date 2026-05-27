@@ -9,6 +9,7 @@ import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import { Marked } from 'marked';
 import '@/app/blog.css';
+import ToolFeedbackWidget from '@/components/feedback/ToolFeedbackWidget';
 import RelatedTools from '@/components/common/RelatedTools';
 import { getRelatedPosts } from '@/lib/relatedPosts';
 import RelatedPosts from '@/components/blog/RelatedPosts';
@@ -465,6 +466,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       {blog.relatedTools?.length > 0 && (
         <RelatedTools tools={blog.relatedTools} />
       )}
+      <ToolFeedbackWidget toolSlug={`blog/${slug}`} visible={true} />
     </article>
   );
 }
