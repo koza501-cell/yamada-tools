@@ -237,7 +237,7 @@ export default async function RootLayout({
         <FloatingActions />
         <FavoritePrompt />
         <PWAInstallPrompt />
-        {process.env.NEXT_PUBLIC_SHOW_FOOTER_AD === 'true' && <AdSenseLoader />}
+        <AdSenseLoader />
         <SupportChatbot />
         <GlobalSearchModal />
         <GlobalToolTracker />
