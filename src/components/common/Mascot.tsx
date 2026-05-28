@@ -192,6 +192,9 @@ const messagePools: Record<InternalState, string[]> = {
   tip: [
     "ちょっとしたコツがあるんです♪",
     "知ってると便利な使い方があるよ〜",
+    "困ったことがあれば、フィードバックで教えてね！",
+    "このツール、登録不要・完全無料で使えるよ♪",
+    "処理したファイルは自動で削除されるから安心してね🔒",
   ],
   upgrade_hint: [
     "PROプランだと、もっと便利に使えますよ♪",
@@ -203,6 +206,71 @@ const messagePools: Record<InternalState, string[]> = {
     "気になる箇所、教えてください！",
   ],
 };
+
+const categoryTips: Record<string, string[]> = {
+  pdf: [
+    "PDFは圧縮してからメール添付すると容量節約になるよ♪",
+    "複数のPDFは結合ツールで1ファイルにまとめられるよ！",
+    "PDFに文字を入れたいときは「PDFに文字入力」ツールが便利♪",
+    "スキャンしたPDFはOCRで文字起こしできるよ〜",
+    "PDFのページ順を変えたいときは「並び替え」ツールを使ってね！",
+    "大きなPDFは分割して送ると相手も見やすいよ♪",
+  ],
+  document: [
+    "インボイス番号は国税庁サイトで確認できるよ♪",
+    "請求書は毎月同じ形式にすると経理がラクになるよ〜",
+    "全銀フォーマットは銀行振込一括処理に必須だよ！",
+    "電子印鑑を使うと押印のやりとりが不要になるよ♪",
+    "宛名印刷は封筒サイズに合わせて設定してね！",
+  ],
+  image: [
+    "画像はWebP形式に変換すると表示速度が上がるよ♪",
+    "複数画像はまとめてPDFにできるよ〜",
+    "画像を圧縮するとメール添付やSNS投稿が楽になるよ！",
+    "白黒変換でプリント代を節約できることもあるよ♪",
+  ],
+  finance: [
+    "手取り計算は社会保険料と税金を考慮してね♪",
+    "NISAは早めに始めるほど複利効果が大きいよ〜",
+    "iDeCoは節税しながら老後資産を作れる制度だよ！",
+    "FXのレバレッジは小さく始めるのがコツだよ♪",
+    "ふるさと納税の上限額は年収と家族構成で変わるよ〜",
+  ],
+  business: [
+    "法人番号は国税庁のサイトで無料検索できるよ♪",
+    "補助金は締切があるから早めにチェックしてね！",
+    "gBizINFOで取引先の企業情報を確認できるよ〜",
+    "会社設立後は各種届出の期限に注意してね♪",
+  ],
+  realestate: [
+    "不動産取引は登記簿謄本の確認が大切だよ♪",
+    "家賃計算は管理費・修繕積立金も含めてね〜",
+    "土地面積の単位換算ツールも使ってみてね！",
+  ],
+  career: [
+    "給与交渉は市場相場を把握してから臨もう♪",
+    "副業収入が20万円超えたら確定申告が必要だよ〜",
+    "年末調整は12月の給料に大きく影響するよ！",
+  ],
+  blog: [
+    "ブログの内容に関連するツールもぜひ試してね♪",
+    "気になった点はフィードバックで教えてください🙏",
+    "ツール一覧から他の便利ツールも探してみてね〜",
+  ],
+};
+
+function buildTipMessage(category?: string): string {
+  if (category && categoryTips[category]) {
+    return pickRandom(categoryTips[category]);
+  }
+  return pickRandom([
+    "ちょっとしたコツがあるんです♪",
+    "知ってると便利な使い方があるよ〜",
+    "困ったことがあれば、フィードバックで教えてね！",
+    "このツール、登録不要・完全無料で使えるよ♪",
+    "処理したファイルは自動で削除されるから安心してね🔒",
+  ]);
+}
 
 function pickRandom<T>(arr: T[]): T {
   return arr[Math.floor(Math.random() * arr.length)];
@@ -518,6 +586,14 @@ export default function Mascot({
       }
     }
 
+    // Tip state: use category-aware message
+    if (state === "tip") {
+      setResolved({
+        state: "tip",
+        message: customMessage || message || buildTipMessage(category),
+      });
+      return;
+    }
     // Default: use the provided state with pool fallback
     const internalState: InternalState = state;
     const fallback = messagePools[internalState]
