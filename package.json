@@ -34,6 +34,7 @@
     "react-hook-form": "^7.75.0",
     "recharts": "^3.8.1",
     "xlsx": "^0.18.5",
+    "yakuhanjp": "^4.1.1",
     "zod": "^4.4.2"
   },
   "devDependencies": {
