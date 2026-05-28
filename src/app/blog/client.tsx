@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 
 interface Blog {
@@ -51,10 +52,28 @@ function gradClass(cat: string) { return CAT_GRAD[cat] ?? "from-slate-900 to-ind
 const PER_PAGE = 12;
 
 export default function BlogIndexClient({ blogs }: { blogs: Blog[] }) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [search, setSearch] = useState("");
-  const [activeCategory, setActiveCategory] = useState("すべて");
-  const [sort, setSort] = useState<"new" | "old" | "read">("new");
-  const [page, setPage] = useState(1);
+  const [activeCategory, setActiveCategory] = useState(() => searchParams.get("category") ?? "すべて");
+  // FIX 4: tag filtering state, initialized from URL ?tag=
+  const [activeTag, setActiveTag] = useState(() => searchParams.get("tag") ?? "");
+  const [sort, setSort] = useState<"new" | "old" | "read">(() => (searchParams.get("sort") as "new" | "old" | "read") ?? "new");
+  const [page, setPage] = useState(() => {
+    const p = searchParams.get("page");
+    return p ? Math.max(1, parseInt(p)) : 1;
+  });
+
+  // Sync page, category, sort, tag to URL
+  useEffect(() => {
+    const params = new URLSearchParams();
+    if (activeCategory !== "すべて") params.set("category", activeCategory);
+    if (sort !== "new") params.set("sort", sort);
+    if (page > 1) params.set("page", String(page));
+    if (activeTag) params.set("tag", activeTag);
+    const newUrl = params.toString() ? `/blog?${params.toString()}` : "/blog";
+    router.replace(newUrl, { scroll: false });
+  }, [page, activeCategory, sort, activeTag]);
 
   const categories = useMemo(() => {
     const counts: Record<string, number> = {};
@@ -67,21 +86,30 @@ export default function BlogIndexClient({ blogs }: { blogs: Blog[] }) {
       const q = search.toLowerCase();
       const matchSearch = !q || b.title.toLowerCase().includes(q) || b.description.toLowerCase().includes(q) || (b.tags ?? []).some((t) => t.toLowerCase().includes(q));
       const matchCategory = activeCategory === "すべて" || b.category === activeCategory;
-      return matchSearch && matchCategory;
+      // FIX 4: tag filtering
+      const matchTag = !activeTag || (b.tags ?? []).includes(activeTag);
+      return matchSearch && matchCategory && matchTag;
     });
     if (sort === "new") result = [...result].sort((a, b) => b.publishDate.localeCompare(a.publishDate));
     else if (sort === "old") result = [...result].sort((a, b) => a.publishDate.localeCompare(b.publishDate));
     else result = [...result].sort((a, b) => parseInt(b.readTime ?? "0") - parseInt(a.readTime ?? "0"));
     return result;
-  }, [blogs, search, activeCategory, sort]);
+  }, [blogs, search, activeCategory, sort, activeTag]);
 
   const totalPages = Math.ceil(filtered.length / PER_PAGE);
   const paged = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE);
 
-  const handleCategory = (cat: string) => { setActiveCategory(cat); setPage(1); };
+  // FIX 3: client-side redirect when page is out of range after filtering
+  useEffect(() => {
+    if (paged.length === 0 && page > 1) {
+      router.replace("/blog");
+    }
+  }, [paged, page]);
+
+  const handleCategory = (cat: string) => { setActiveCategory(cat); setActiveTag(""); setPage(1); };
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => { setSearch(e.target.value); setPage(1); };
   const handleSort = (e: React.ChangeEvent<HTMLSelectElement>) => { setSort(e.target.value as "new" | "old" | "read"); setPage(1); };
-  const resetFilters = () => { setSearch(""); setActiveCategory("すべて"); setSort("new"); setPage(1); };
+  const resetFilters = () => { setSearch(""); setActiveCategory("すべて"); setActiveTag(""); setSort("new"); setPage(1); };
   const pageNumbers = () => {
     const pages: number[] = [];
     for (let i = Math.max(1, page - 2); i <= Math.min(totalPages, page + 2); i++) pages.push(i);
@@ -104,6 +132,23 @@ export default function BlogIndexClient({ blogs }: { blogs: Blog[] }) {
       </div>
 
       <div className="max-w-5xl mx-auto px-4 py-8">
+        {/* Active tag filter badge */}
+        {activeTag && (
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-sm text-gray-600 dark:text-gray-400">タグ絞り込み中:</span>
+            <span className="inline-flex items-center gap-1 px-3 py-1 bg-kon text-white rounded-full text-sm font-medium">
+              #{activeTag}
+              <button
+                onClick={() => { setActiveTag(""); setPage(1); }}
+                className="ml-1 hover:opacity-75"
+                aria-label="タグフィルターを解除"
+              >
+                ×
+              </button>
+            </span>
+          </div>
+        )}
+
         {/* Search */}
         <div className="relative mb-6">
           <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
@@ -170,10 +215,17 @@ export default function BlogIndexClient({ blogs }: { blogs: Blog[] }) {
                     <span className={`inline-block self-start text-xs font-semibold px-2.5 py-1 rounded-full mb-2 ${badgeClass(blog.category)}`}>{blog.category}</span>
                     <h2 className="font-bold text-gray-900 dark:text-white text-sm leading-snug mb-2 line-clamp-2 group-hover:text-ai dark:group-hover:text-ai transition-colors">{blog.title}</h2>
                     <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-2 mb-3 flex-1">{blog.description}</p>
+                    {/* FIX 4: tags as clickable buttons (stopPropagation prevents card navigation) */}
                     {blog.tags && blog.tags.length > 0 && (
                       <div className="flex flex-wrap gap-1 mb-3">
                         {blog.tags.slice(0, 3).map((tag) => (
-                          <span key={tag} className="text-xs bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 px-2 py-0.5 rounded-full">#{tag}</span>
+                          <span
+                            key={tag}
+                            onClick={(e) => { e.preventDefault(); e.stopPropagation(); setActiveTag(tag); setPage(1); window.scrollTo(0, 0); }}
+                            className="text-xs bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 px-2 py-0.5 rounded-full cursor-pointer hover:bg-kon hover:text-white dark:hover:bg-kon dark:hover:text-white transition-colors"
+                          >
+                            #{tag}
+                          </span>
                         ))}
                       </div>
                     )}
