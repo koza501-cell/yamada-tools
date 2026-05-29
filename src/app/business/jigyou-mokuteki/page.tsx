@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
 import JigyouMokutekiClient from './client';
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: '事業目的ジェネレーター【無料】定款の事業目的を自動作成｜業種別テンプレート付き',
@@ -81,6 +83,8 @@ const breadcrumbJsonLd = {
   ],
 };
 
+const tool = getToolById("jigyou-mokuteki")!;
+
 export default function JigyouMokutekiPage() {
   return (
     <>
@@ -88,6 +92,7 @@ export default function JigyouMokutekiPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <JigyouMokutekiClient />
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }

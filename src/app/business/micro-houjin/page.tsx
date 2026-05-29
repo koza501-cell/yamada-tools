@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
 import MicroHoujinClient from './client';
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: 'マイクロ法人シミュレーター【無料】個人事業主との社会保険料差額を即計算｜二刀流の節約効果',
@@ -90,6 +92,8 @@ const breadcrumbJsonLd = {
   ],
 };
 
+const tool = getToolById("micro-houjin")!;
+
 export default function MicroHoujinPage() {
   return (
     <>
@@ -97,6 +101,7 @@ export default function MicroHoujinPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <MicroHoujinClient />
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }

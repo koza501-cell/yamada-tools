@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
 import KyoninkaCheckerClient from './client';
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: '許認可チェッカー【無料】業種別に必要な免許・届出を即判定｜届出先・費用・期間一覧',
@@ -47,6 +49,8 @@ const breadcrumbJsonLd = {
   ],
 };
 
+const tool = getToolById("kyoninka-checker")!;
+
 export default function KyoninkaCheckerPage() {
   return (
     <>
@@ -54,6 +58,7 @@ export default function KyoninkaCheckerPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <KyoninkaCheckerClient />
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }

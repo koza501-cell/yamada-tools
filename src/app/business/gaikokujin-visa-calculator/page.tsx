@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import GaikokujinVisaClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "外国人採用 ビザ費用計算機【技術・人文・国際業務ビザ対応】| 山田ツール",
@@ -171,6 +173,8 @@ const jsonLd = {
   ],
 };
 
+const tool = getToolById("gaikokujin-visa-calculator")!;
+
 export default function GaikokujinVisaPage() {
   return (
     <>
@@ -179,6 +183,7 @@ export default function GaikokujinVisaPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <GaikokujinVisaClient />
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }

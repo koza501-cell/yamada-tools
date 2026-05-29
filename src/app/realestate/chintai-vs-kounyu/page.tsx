@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import ChintaiVsKounyuClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "賃貸 vs 購入 比較シミュレーター【中立・35年コスト計算】| 山田ツール",
@@ -162,6 +164,8 @@ const jsonLd = {
   ],
 };
 
+const tool = getToolById("chintai-vs-kounyu")!;
+
 export default function Page() {
   return (
     <>
@@ -170,6 +174,7 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <ChintaiVsKounyuClient />
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }

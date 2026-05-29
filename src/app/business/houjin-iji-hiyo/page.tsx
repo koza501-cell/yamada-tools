@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
 import HoujinIjiHiyoClient from './client';
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: '法人維持費シミュレーター【無料】会社の年間ランニングコストを即計算｜赤字でもかかる固定費一覧',
@@ -90,6 +92,8 @@ const breadcrumbJsonLd = {
   ],
 };
 
+const tool = getToolById("houjin-iji-hiyo")!;
+
 export default function HoujinIjiHiyoPage() {
   return (
     <>
@@ -97,6 +101,7 @@ export default function HoujinIjiHiyoPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <HoujinIjiHiyoClient />
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }

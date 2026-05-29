@@ -4,6 +4,8 @@ import { AdUnit } from "@/components/common/AdUnit";
 import { useState } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 const MAN = 10000;
 
@@ -253,6 +255,8 @@ interface CheckItem {
   status: string;   // text shown in badge
   reason?: string;  // extra note when not applied
 }
+
+const tool = getToolById("acquisition-tax")!;
 
 export default function AcquisitionTaxPage() {
   // Land
@@ -1129,7 +1133,11 @@ export default function AcquisitionTaxPage() {
               軽減措置の適用には所定の申告・要件確認が必要な場合があります。最終的な税額については都道府県税事務所または税理士にご確認ください。
             </p>
           </div>
-        </section>
+        
+      <div className="max-w-4xl mx-auto px-4 pb-12">
+        <RelatedTools currentTool={tool} maxItems={6} />
+      </div>
+</section>
       </div>
     </div>
   );

@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
 import KaishaShindanClient from './client';
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: '会社形態診断ツール【無料】株式会社・合同会社・社団法人・個人事業 あなたに最適な形態は？',
@@ -82,6 +84,8 @@ const breadcrumbJsonLd = {
   ],
 };
 
+const tool = getToolById("kaisha-shindan")!;
+
 export default function KaishaShindanPage() {
   return (
     <>
@@ -89,6 +93,7 @@ export default function KaishaShindanPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <KaishaShindanClient />
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }

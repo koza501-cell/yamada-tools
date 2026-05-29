@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import UnchinClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "【無料】軽貨物・運送業 運賃計算機｜距離・荷物・割増対応【標準的運賃 令和6年版】 | yamada-tools.jp",
@@ -82,11 +84,14 @@ const jsonLd = {
   ]
 };
 
+const tool = getToolById("unchin-calculator")!;
+
 export default function UnchinPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <UnchinClient />
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }

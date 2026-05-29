@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
 import KesankiSimClient from './client';
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: '決算期シミュレーター【無料】最適な決算月を即判定｜消費税免税を最大化する設立月の選び方',
@@ -90,6 +92,8 @@ const breadcrumbJsonLd = {
   ],
 };
 
+const tool = getToolById("kesanki-sim")!;
+
 export default function KesankiSimPage() {
   return (
     <>
@@ -97,6 +101,7 @@ export default function KesankiSimPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <KesankiSimClient />
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }

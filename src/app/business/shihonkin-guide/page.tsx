@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
 import ShihonkinGuideClient from './client';
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: '資本金決定ガイド【無料】最適な資本金額を自動計算｜消費税・許認可・融資の観点から',
@@ -81,6 +83,8 @@ const breadcrumbJsonLd = {
   ],
 };
 
+const tool = getToolById("shihonkin-guide")!;
+
 export default function ShihonkinGuidePage() {
   return (
     <>
@@ -88,6 +92,7 @@ export default function ShihonkinGuidePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <ShihonkinGuideClient />
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }

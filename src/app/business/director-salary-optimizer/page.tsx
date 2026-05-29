@@ -7,6 +7,8 @@ import { IntroSection } from "@/components/IntroSection";
 import { UseCasesSection } from "@/components/UseCasesSection";
 import { FAQSection } from "@/components/FAQSection";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -286,6 +288,8 @@ const DEFAULT_FORM: FormState = {
   simulationMode: "auto",
   manualSalary: "",
 };
+
+const tool = getToolById("director-salary-optimizer")!;
 
 export default function DirectorSalaryOptimizerPage() {
   const [form, setForm] = useState<FormState>(DEFAULT_FORM);
@@ -907,6 +911,10 @@ export default function DirectorSalaryOptimizerPage() {
         <AdUnit slot="5612038947" format="horizontal" />
       </div>
 
-  </>
+  
+      <div className="max-w-4xl mx-auto px-4 pb-12">
+        <RelatedTools currentTool={tool} maxItems={6} />
+      </div>
+</>
   );
 }

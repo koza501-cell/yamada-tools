@@ -4,6 +4,8 @@ import { AdUnit } from "@/components/common/AdUnit";
 import { useState } from "react";
 import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 // ---- Constants ----
 const MAN = 10000;
@@ -323,6 +325,8 @@ function fmtMan(man: number): string {
 }
 
 // ---- Component ----
+const tool = getToolById("rent-vs-buy")!;
+
 export default function RentVsBuyPage() {
   const [monthlyRent, setMonthlyRent] = useState(10);
   const [mascotState, setMascotState] = useState<MascotState>("welcome");
@@ -1188,7 +1192,11 @@ export default function RentVsBuyPage() {
               住宅ローン控除の適用には所定の要件があります。最終的な判断はファイナンシャルプランナーや税理士にご相談の上、ご自身でお決めください。
             </p>
           </div>
-        </section>
+        
+      <div className="max-w-4xl mx-auto px-4 pb-12">
+        <RelatedTools currentTool={tool} maxItems={6} />
+      </div>
+</section>
       </div>
     </div>
   );

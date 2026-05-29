@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
 import SetsuritsuHiyoClient from './client';
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: '会社設立費用シミュレーター【2026年最新】株式会社・合同会社・社団法人の総額を即計算｜無料',
@@ -114,6 +116,8 @@ const breadcrumbJsonLd = {
   ],
 };
 
+const tool = getToolById("setsuritsu-hiyo")!;
+
 export default function SetsuritsuHiyoPage() {
   return (
     <>
@@ -130,6 +134,7 @@ export default function SetsuritsuHiyoPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <SetsuritsuHiyoClient />
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }

@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
 import SetsuritsuTodokeClient from './client';
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: '設立後届出ナビゲーター【無料】会社設立後にやることチェックリスト｜届出先・期限・書類一覧',
@@ -90,6 +92,8 @@ const breadcrumbJsonLd = {
   ],
 };
 
+const tool = getToolById("setsuritsu-todoke")!;
+
 export default function SetsuritsuTodokePage() {
   return (
     <>
@@ -97,6 +101,7 @@ export default function SetsuritsuTodokePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <SetsuritsuTodokeClient />
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }

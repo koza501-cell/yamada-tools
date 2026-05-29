@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import FukugyouShinkokuClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "副業 確定申告 必要判定ツール【会社員向け・20万円ルール】| 山田ツール",
@@ -161,6 +163,8 @@ const jsonLd = {
   ],
 };
 
+const tool = getToolById("fukugyou-shinkoku-checker")!;
+
 export default function Page() {
   return (
     <>
@@ -169,6 +173,7 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <FukugyouShinkokuClient />
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }

@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import MinpakuClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "【無料】民泊・Airbnb 収益計算機【180日制限対応・2026年版】｜年間収益・投資回収を即試算 | yamada-tools.jp",
@@ -83,11 +85,14 @@ const jsonLd = {
   ]
 };
 
+const tool = getToolById("minpaku-calculator")!;
+
 export default function MinpakuPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <MinpakuClient />
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }

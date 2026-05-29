@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
 import SetsuritsuScheduleClient from './client';
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: '設立スケジュールシミュレーター【無料】会社設立の逆算カレンダー｜土日祝を考慮した日程表',
@@ -90,6 +92,8 @@ const breadcrumbJsonLd = {
   ],
 };
 
+const tool = getToolById("setsuritsu-schedule")!;
+
 export default function SetsuritsuSchedulePage() {
   return (
     <>
@@ -97,6 +101,7 @@ export default function SetsuritsuSchedulePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <SetsuritsuScheduleClient />
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }

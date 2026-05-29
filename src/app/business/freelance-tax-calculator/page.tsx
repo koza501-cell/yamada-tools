@@ -7,6 +7,8 @@ import { IntroSection } from "@/components/IntroSection";
 import { UseCasesSection } from "@/components/UseCasesSection";
 import { FAQSection } from "@/components/FAQSection";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 // Inline SVG Icons
 const Icons = {
@@ -130,6 +132,8 @@ function calculateIncomeTax(taxableIncome: number): number {
   }
   return Math.max(0, tax);
 }
+
+const tool = getToolById("freelance-tax-calculator")!;
 
 export default function FreelanceTaxCalculatorPage() {
   const [inputs, setInputs] = useState<CalculationInputs>({
@@ -1015,6 +1019,10 @@ export default function FreelanceTaxCalculatorPage() {
         <AdUnit slot="5612038947" format="horizontal" />
       </div>
 
-  </>
+  
+      <div className="max-w-4xl mx-auto px-4 pb-12">
+        <RelatedTools currentTool={tool} maxItems={6} />
+      </div>
+</>
   );
 }

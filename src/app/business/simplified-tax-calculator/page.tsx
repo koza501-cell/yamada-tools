@@ -7,6 +7,8 @@ import { IntroSection } from "@/components/IntroSection";
 import { UseCasesSection } from "@/components/UseCasesSection";
 import { FAQSection } from "@/components/FAQSection";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 // Inline SVG Icons
 const Icons = {
@@ -80,6 +82,8 @@ interface CalculationResults {
   deemedPurchaseRate: number;
   actualPurchaseRate: number;
 }
+
+const tool = getToolById("simplified-tax-calculator")!;
 
 export default function SimplifiedTaxCalculatorPage() {
   const [inputs, setInputs] = useState<CalculationInputs>({
@@ -599,7 +603,11 @@ export default function SimplifiedTaxCalculatorPage() {
                   </tbody>
                 </table>
               </div>
-            </section>
+            
+      <div className="max-w-4xl mx-auto px-4 pb-12">
+        <RelatedTools currentTool={tool} maxItems={6} />
+      </div>
+</section>
           </div>
         </div>
 

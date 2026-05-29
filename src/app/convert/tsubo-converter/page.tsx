@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import TsuboConverterClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 const faq = [
   {
@@ -108,6 +110,8 @@ const jsonLd = [
   }
 ];
 
+const tool = getToolById("tsubo-converter")!;
+
 export default function TsuboConverterPage() {
   return (
     <>
@@ -119,6 +123,7 @@ export default function TsuboConverterPage() {
         />
       ))}
       <TsuboConverterClient faq={faq} />
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }

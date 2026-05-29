@@ -7,6 +7,8 @@ import { IntroSection } from "@/components/IntroSection";
 import { UseCasesSection } from "@/components/UseCasesSection";
 import { FAQSection } from "@/components/FAQSection";
 import Mascot, { MascotState } from "@/components/common/Mascot";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 // ============================================================
 // Types
@@ -333,6 +335,8 @@ const initialForm: FormState = {
 // ============================================================
 // Component
 // ============================================================
+
+const tool = getToolById("incorporation-simulator")!;
 
 export default function IncorporationSimulatorPage() {
   const [form, setForm] = useState<FormState>(initialForm);
@@ -1044,7 +1048,11 @@ export default function IncorporationSimulatorPage() {
                 </Link>
               ))}
             </div>
-          </section>
+          
+      <div className="max-w-4xl mx-auto px-4 pb-12">
+        <RelatedTools currentTool={tool} maxItems={6} />
+      </div>
+</section>
         {/* 関連ブログ記事 */}
         <div className="mt-8 mb-4">
           <h2 className="text-xl font-bold text-gray-900 mb-4">📝 関連ブログ記事</h2>
