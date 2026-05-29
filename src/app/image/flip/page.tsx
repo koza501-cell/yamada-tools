@@ -34,6 +34,50 @@ export default function Page() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <FlipClient faq={faq} seoContent={seoContent} />
+
+      {/* Use Cases Section */}
+      <section className="max-w-4xl mx-auto px-4 py-8">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-8">
+          <h2 className="text-2xl font-bold text-kon dark:text-gray-100 mb-6">こんな場面で使われています</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {[
+              { title: "EC商品撮影", desc: "左右反転した商品写真を正しい向きに修正" },
+              { title: "SNS投稿", desc: "自撮りの鏡像を自然な向きに整えてから投稿" },
+              { title: "デザイン制作", desc: "名刺・チラシのデザイン素材を反転配置" },
+              { title: "証明写真確認", desc: "自撮りをミラーから実際の見え方に変換" },
+              { title: "教育素材", desc: "鏡文字の作成や左右対称の教材作りに" },
+            ].map((item, i) => (
+              <div key={i} className="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
+                <div className="font-bold text-gray-800 dark:text-gray-100 mb-1">{item.title}</div>
+                <div className="text-sm text-gray-600 dark:text-gray-300">{item.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Educational Section */}
+      <section className="max-w-4xl mx-auto px-4 pb-12">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-8">
+          <h2 className="text-2xl font-bold text-kon dark:text-gray-100 mb-6">画像反転についての解説</h2>
+
+          <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mt-4 mb-3">水平反転（左右反転）の使いどころ</h3>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+            スマートフォンのインカメラで撮影した自撮り写真は、カメラの仕様により鏡像（左右反転）で保存されることがあります。名刺のロゴや文字が左右逆になっている場合、水平反転で正しい向きに戻せます。デザイン素材を左右対称に配置したい場合にも活用できます。
+          </p>
+
+          <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mt-6 mb-3">垂直反転（上下反転）の使いどころ</h3>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+            スキャナーで取り込んだ文書が上下逆になっている場合、垂直反転で正しい向きに修正できます。水上写真の映り込み効果や、グラフィックデザインでの反転テクスチャ作成にも利用されます。水平・垂直の両方を同時に適用すると、画像を180度回転させたのと同じ効果になります。
+          </p>
+
+          <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mt-6 mb-3">画質を保ったまま反転する仕組み</h3>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+            本ツールはブラウザ内のCanvas APIを使用してピクセル単位の並べ替えを行うため、再エンコードが発生しません。PNG形式で保存すれば元画像と完全に同じ画質を保てます。透過PNG（アルファチャンネル）にも対応しており、透過情報を保持したまま反転できます。
+          </p>
+        </div>
+      </section>
+
       <div className="max-w-4xl mx-auto px-4">
         <RelatedTools currentTool={tool} maxItems={6} />
       </div>
