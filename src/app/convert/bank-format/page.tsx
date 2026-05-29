@@ -99,6 +99,18 @@ const bankFormatHowToSteps = [
   { name: "ダウンロードしてアップロード", text: "生成された.txtファイルをダウンロードし、銀行のインターネットバンキングの振込データアップロード画面にそのままアップロードします。" },
 ];
 
+const bankFormatSeoContent = {
+  intro: "全銀フォーマットは給与振込・取引先支払い・返金処理など、さまざまな場面で活用されています。",
+  useCases: [
+    { title: "毎月の給与振込（中小企業）", desc: "従業員20〜50名の給与振込で、毎月Excelの一覧から全銀フォーマットを作成。手書きや手入力のミスがなくなり、月末作業が10分で完了。" },
+    { title: "取引先への一括支払い（経理担当）", desc: "月末締めの支払いで、複数取引先への振込データを1つの全銀ファイルに集約。銀行窓口に持ち込まずATMやネットバンキングで一括処理。" },
+    { title: "イベント参加費の返金処理", desc: "セミナーや講演会の中止に伴う参加費返金。参加者100名以上の振込先データを全銀フォーマットで作成し、1日で全件処理。" },
+    { title: "クリニック・士業の顧問料支払い", desc: "毎月発生する顧問税理士・社労士・弁護士への報酬支払いを全銀化。複数の顧問先がある場合の手間を大幅削減。" },
+    { title: "建設業の協力会社支払い", desc: "下請け・協力会社への月次支払いを全銀ファイルで一括処理。請求書チェック後そのままExcelからフォーマット変換可能。" },
+    { title: "副業フリーランスへの報酬振込", desc: "業務委託契約者・副業ワーカーへの月次報酬を全銀ファイルで一括振込。個別振込の手数料・手間を大幅圧縮。" },
+  ],
+};
+
 const jsonLd = generateToolJsonLd(tool, faq, bankFormatHowToSteps);
 
 export default function Page() {
@@ -109,7 +121,7 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <AdFreeZone><BankFormatClient faq={faq} /></AdFreeZone>
+      <AdFreeZone><BankFormatClient faq={faq} seoContent={bankFormatSeoContent} /></AdFreeZone>
       <JsonLdDedup scriptId="bank-format-jsonld" />
       <AdUnit slot="6291847305" format="horizontal" />
 
