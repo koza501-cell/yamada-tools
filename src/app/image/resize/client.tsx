@@ -178,7 +178,9 @@ export default function ImageResizeClient({
     const link = document.createElement("a");
     link.download = fileName;
     link.href = resizedDataUrl;
+    document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
     
     setMascotMessage("ダウンロードしたよ！");
   };
