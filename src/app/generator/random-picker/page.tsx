@@ -91,6 +91,50 @@ export default function Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <AdFreeZone><RandomPickerClient faq={faq} /></AdFreeZone>
       <AdUnit slot="3948572016" format="horizontal" />
+
+      {/* Use Cases Section */}
+      <section className="max-w-4xl mx-auto px-4 py-8">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-8">
+          <h2 className="text-2xl font-bold text-kon dark:text-gray-100 mb-6">こんな場面で使われています</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {[
+              { title: "社内イベント・忘年会", desc: "景品当選者・幹事の公平な抽選に" },
+              { title: "学校・教育機関", desc: "当番決め・発表順・グループ分けに" },
+              { title: "SNSキャンペーン", desc: "フォロワープレゼント企画の当選者選出に" },
+              { title: "ウェビナー・研修", desc: "質問者や発表者の選出に" },
+              { title: "スポーツ大会", desc: "対戦組み合わせ・チーム分けに" },
+            ].map((item, i) => (
+              <div key={i} className="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
+                <div className="font-bold text-gray-800 dark:text-gray-100 mb-1">{item.title}</div>
+                <div className="text-sm text-gray-600 dark:text-gray-300">{item.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Educational Section */}
+      <section className="max-w-4xl mx-auto px-4 pb-12">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-8">
+          <h2 className="text-2xl font-bold text-kon dark:text-gray-100 mb-6">抽選ツールについての解説</h2>
+
+          <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mt-4 mb-3">抽選の公平性：暗号論的乱数生成</h3>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+            本ツールはブラウザ標準の crypto.getRandomValues() を使用した暗号論的に安全な乱数生成を採用しています。Math.random()とは異なり予測不可能なランダム性が保証されているため、景品抽選やキャンペーン当選者の選出など、公平性が求められる場面でも安心してご利用いただけます。
+          </p>
+
+          <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mt-6 mb-3">重複なし抽選とシャッフルの違い</h3>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+            重複なしモードでは一度選ばれた項目は次の抽選に含まれないため、全員を順番に決める場面に最適です。シャッフル機能はリスト全体の順序をランダムに並べ替えるため、発表順や座席の決定に便利です。複数人を同時に当選させる複数当選機能と組み合わせてご活用ください。
+          </p>
+
+          <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mt-6 mb-3">抽選結果の証拠として残す方法</h3>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+            SNSキャンペーンやオンラインイベントでは、抽選の透明性を示すことが重要です。抽選画面のスクリーンショットを撮影し、参加者リストと結果を一緒に公開することで公平性を証明できます。本ツールは全てブラウザ内で処理されるためサーバー側の操作は不可能で、第三者への説明にも使いやすいシンプルな画面設計になっています。
+          </p>
+        </div>
+      </section>
+
       <div className="max-w-4xl mx-auto px-4">
         <RelatedTools currentTool={tool} maxItems={6} />
       </div>
