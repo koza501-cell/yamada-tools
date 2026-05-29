@@ -52,12 +52,51 @@ export const metadata: Metadata = generateToolMetadata({
 
 const jsonLd = generateToolJsonLd(tool, faq);
 
+
+const furiganaUseCases = [
+  {
+    title: "クリニックの問診票・案内文",
+    desc: "高齢患者向けの問診票や院内案内文にふりがなを付けて、読みやすさと安心感を向上。漢字が苦手な方や視力の弱い方への配慮として効果的。"
+  },
+  {
+    title: "学校のお知らせ・配布物",
+    desc: "小学生・低学年向けのプリント、保護者向けの多言語サポート資料、特別支援教育の教材作成にふりがなを一括付与。手作業の数十倍の速さで完成。"
+  },
+  {
+    title: "外国人向けの日本語学習教材",
+    desc: "日本語学校・企業の外国人研修・観光案内のテキストに、漢字の読みを補足。学習者の理解度と継続率を向上させる定番手法。"
+  },
+  {
+    title: "高齢者施設・自治体の広報",
+    desc: "介護施設の入居案内、地域包括支援センターの案内文、自治体の防災マニュアル。読み手の年齢層が幅広い場合に必須の配慮。"
+  },
+  {
+    title: "出版・編集業務の下作業",
+    desc: "児童書、絵本、教科書、振り仮名つき小説の編集前の下書き作成。手動で全文に振る作業を本ツールで自動化し、編集者は読みの確認に集中できる。"
+  },
+  {
+    title: "プレゼン資料・社内研修",
+    desc: "新人研修の専門用語解説、業界用語の多い資料、医療・法律・技術系のドキュメント。読み方の不明な漢字でつまずく時間を削減。"
+  }
+];
 export default function Page() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <FuriganaClient />
       <AdUnit slot="5612038947" format="horizontal" />
+
+      <section className="my-12 px-4 max-w-4xl mx-auto">
+        <h2 className="text-2xl font-bold mb-6">こんな場面で使われています</h2>
+        <div className="grid md:grid-cols-2 gap-4">
+          {furiganaUseCases.map((uc) => (
+            <div key={uc.title} className="border rounded-lg p-4 bg-white dark:bg-gray-800">
+              <h3 className="font-semibold mb-2">{uc.title}</h3>
+              <p className="text-sm text-gray-700 dark:text-gray-300">{uc.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* Educational Content Section */}
       <section className="max-w-4xl mx-auto px-4 py-12">
