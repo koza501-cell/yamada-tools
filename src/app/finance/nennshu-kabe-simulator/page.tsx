@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import NennshuKabeClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "年収の壁シミュレーター【2025年改正・123万円対応】| 山田ツール",
@@ -36,11 +38,14 @@ const jsonLd = {
   ]
 };
 
+const tool = getToolById("nennshu-kabe-simulator")!;
+
 export default function NennshuKabePage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <NennshuKabeClient />
-    </>
+    
+      <RelatedTools currentTool={tool} maxItems={6} /></>
   );
 }

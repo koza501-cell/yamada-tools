@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import KeishinClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "経審点数（P点）簡易計算機【建設業】| yamada-tools",
@@ -16,6 +18,8 @@ const jsonLd = {
   operatingSystem: "Web",
 };
 
+const tool = getToolById("keishin-calculator")!;
+
 export default function KeishinPage() {
   return (
     <>
@@ -24,6 +28,7 @@ export default function KeishinPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <KeishinClient />
-    </>
+    
+      <RelatedTools currentTool={tool} maxItems={6} /></>
   );
 }

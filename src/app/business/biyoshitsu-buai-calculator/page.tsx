@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import BiyoshitsuClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "美容室 スタッフ歩合給計算機【無料】美容師・スタイリスト対応 | 山田ツール",
@@ -37,11 +39,14 @@ const jsonLd = {
   ]
 };
 
+const tool = getToolById("biyoshitsu-buai-calculator")!;
+
 export default function BiyoshitsuPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <BiyoshitsuClient />
-    </>
+    
+      <RelatedTools currentTool={tool} maxItems={6} /></>
   );
 }

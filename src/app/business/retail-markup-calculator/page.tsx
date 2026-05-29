@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import RetailMarkupClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "小売・販売 値入率・粗利率 計算機【原価から売価を決める】| 山田ツール",
   description: "値入率（マークアップ）と粗利率（マージン）の違いを正確に計算。小売店・ECショップの価格設定に。業種別粗利率の目安も掲載。",
 };
+
+const tool = getToolById("retail-markup-calculator")!;
 
 export default function Page() {
   const jsonLd = {
@@ -20,6 +24,7 @@ export default function Page() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <RetailMarkupClient />
-    </>
+    
+      <RelatedTools currentTool={tool} maxItems={6} /></>
   );
 }

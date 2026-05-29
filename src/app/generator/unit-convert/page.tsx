@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import UnitConvertClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "【無料】単位変換｜長さ・重さ・温度を一発変換",
@@ -24,6 +26,13 @@ const seoContent = {
   tips: "1坪 = 約3.306㎡、1畳 = 約1.62㎡です。",
 };
 
+const tool = getToolById("unit-converter")!;
+
 export default function UnitConvertPage() {
-  return <UnitConvertClient faq={faq} seoContent={seoContent} />;
+  return (
+    <>
+      <UnitConvertClient faq={faq} seoContent={seoContent} />
+      <RelatedTools currentTool={tool} maxItems={6} />
+    </>
+  );
 }

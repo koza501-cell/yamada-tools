@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import IDeCoNisaClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "iDeCo・NISA 節税効果計算機【2025年最新】| 山田ツール",
@@ -36,11 +38,14 @@ const jsonLd = {
   ]
 };
 
+const tool = getToolById("ideco-nisa-calculator")!;
+
 export default function IDeCoNisaPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <IDeCoNisaClient />
-    </>
+    
+      <RelatedTools currentTool={tool} maxItems={6} /></>
   );
 }

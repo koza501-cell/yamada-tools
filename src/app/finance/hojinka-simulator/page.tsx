@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import HojinkaClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "個人事業主 法人化 節税シミュレーター | 山田ツール",
@@ -36,11 +38,14 @@ const jsonLd = {
   ]
 };
 
+const tool = getToolById("hojinka-simulator")!;
+
 export default function HojinkaPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <HojinkaClient />
-    </>
+    
+      <RelatedTools currentTool={tool} maxItems={6} /></>
   );
 }

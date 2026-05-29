@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import KensetsuMitsumoriClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "建設・内装工事 材料費見積もり計算機【面積から自動計算】| 山田ツール",
@@ -36,11 +38,14 @@ const jsonLd = {
   ]
 };
 
+const tool = getToolById("kensetsu-mitsumori-calculator")!;
+
 export default function KensetsuMitsumoriPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <KensetsuMitsumoriClient />
-    </>
+    
+      <RelatedTools currentTool={tool} maxItems={6} /></>
   );
 }

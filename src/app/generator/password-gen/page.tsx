@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import PasswordGenClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "【無料】パスワード生成｜安全な強力パスワード作成",
@@ -24,6 +26,13 @@ const seoContent = {
   tips: "12文字以上で、大文字・小文字・数字・記号を含めると安全性が高まります。",
 };
 
+const tool = getToolById("password-generator")!;
+
 export default function PasswordGenPage() {
-  return <PasswordGenClient faq={faq} seoContent={seoContent} />;
+  return (
+    <>
+      <PasswordGenClient faq={faq} seoContent={seoContent} />
+      <RelatedTools currentTool={tool} maxItems={6} />
+    </>
+  );
 }

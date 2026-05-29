@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import EikaiwaSingleClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "英会話・語学教室 レッスン単価計算機【適正料金を逆算】| 山田ツール",
@@ -36,11 +38,14 @@ const jsonLd = {
   ]
 };
 
+const tool = getToolById("eikaiwa-kakaku-calculator")!;
+
 export default function EikaiwaPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <EikaiwaSingleClient />
-    </>
+    
+      <RelatedTools currentTool={tool} maxItems={6} /></>
   );
 }

@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import CharCountClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "【無料】文字数カウント｜リアルタイム文字数チェック",
@@ -24,6 +26,13 @@ const seoContent = {
   tips: "スペースを含む/含まないの切り替えができます。",
 };
 
+const tool = getToolById("char-counter")!;
+
 export default function CharCountPage() {
-  return <CharCountClient faq={faq} seoContent={seoContent} />;
+  return (
+    <>
+      <CharCountClient faq={faq} seoContent={seoContent} />
+      <RelatedTools currentTool={tool} maxItems={6} />
+    </>
+  );
 }

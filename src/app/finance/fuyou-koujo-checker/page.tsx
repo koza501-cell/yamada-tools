@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import FuyouKoujoClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "扶養控除 判定・計算ツール【2026年改正・特定親族特別控除対応】| 山田ツール",
   description: "子供・親の扶養控除額を正確に計算。2026年改正で新設の特定親族特別控除（19〜22歳・年収123万超）にも対応。年末調整に。",
 };
+
+const tool = getToolById("fuyou-koujo-checker")!;
 
 export default function Page() {
   const jsonLd = {
@@ -20,6 +24,7 @@ export default function Page() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <FuyouKoujoClient />
-    </>
+    
+      <RelatedTools currentTool={tool} maxItems={6} /></>
   );
 }
