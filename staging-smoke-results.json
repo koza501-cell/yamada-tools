@@ -1,0 +1,570 @@
+{
+  "config": {
+    "configFile": "/home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/playwright.staging.config.ts",
+    "rootDir": "/home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging",
+        "testIgnore": [],
+        "testMatch": [
+          "tests/staging-health.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "staging-smoke-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.59.1",
+    "workers": 2,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "tests/staging-health.spec.ts",
+      "file": "tests/staging-health.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "staging: unauthenticated request returns 401",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 193,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-05-29T18:00:05.664Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "10c1af0f6fdb031337e0-7f4e7d0a39b0ec84cbdd",
+          "file": "tests/staging-health.spec.ts",
+          "line": 24,
+          "column": 5
+        },
+        {
+          "title": "staging: homepage renders without crash",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 16513,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('h1:has-text(\"日本のビジネスに特化\")').first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('h1:has-text(\"日本のビジネスに特化\")').first()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('h1:has-text(\"日本のビジネスに特化\")').first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('h1:has-text(\"日本のビジネスに特化\")').first()\u001b[22m\n\n    at /home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts:57:7",
+                    "location": {
+                      "file": "/home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts",
+                      "column": 7,
+                      "line": 57
+                    },
+                    "snippet": "  55 |     await expect(\n  56 |       page.locator(`h1:has-text(\"${route.heading}\")`).first()\n> 57 |     ).toBeVisible({ timeout: 15000 });\n     |       ^\n  58 |\n  59 |     const reactErr = errors.find((e) =>\n  60 |       e.includes(\"Objects are not valid as a React child\") ||"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts",
+                        "column": 7,
+                        "line": 57
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('h1:has-text(\"日本のビジネスに特化\")').first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('h1:has-text(\"日本のビジネスに特化\")').first()\u001b[22m\n\n\n  55 |     await expect(\n  56 |       page.locator(`h1:has-text(\"${route.heading}\")`).first()\n> 57 |     ).toBeVisible({ timeout: 15000 });\n     |       ^\n  58 |\n  59 |     const reactErr = errors.find((e) =>\n  60 |       e.includes(\"Objects are not valid as a React child\") ||\n    at /home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts:57:7"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-05-29T18:00:06.016Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/test-results/tests-staging-health-staging-homepage-renders-without-crash/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts",
+                    "column": 7,
+                    "line": 57
+                  }
+                },
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 16954,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('h1:has-text(\"日本のビジネスに特化\")').first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('h1:has-text(\"日本のビジネスに特化\")').first()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('h1:has-text(\"日本のビジネスに特化\")').first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('h1:has-text(\"日本のビジネスに特化\")').first()\u001b[22m\n\n    at /home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts:57:7",
+                    "location": {
+                      "file": "/home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts",
+                      "column": 7,
+                      "line": 57
+                    },
+                    "snippet": "  55 |     await expect(\n  56 |       page.locator(`h1:has-text(\"${route.heading}\")`).first()\n> 57 |     ).toBeVisible({ timeout: 15000 });\n     |       ^\n  58 |\n  59 |     const reactErr = errors.find((e) =>\n  60 |       e.includes(\"Objects are not valid as a React child\") ||"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts",
+                        "column": 7,
+                        "line": 57
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('h1:has-text(\"日本のビジネスに特化\")').first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('h1:has-text(\"日本のビジネスに特化\")').first()\u001b[22m\n\n\n  55 |     await expect(\n  56 |       page.locator(`h1:has-text(\"${route.heading}\")`).first()\n> 57 |     ).toBeVisible({ timeout: 15000 });\n     |       ^\n  58 |\n  59 |     const reactErr = errors.find((e) =>\n  60 |       e.includes(\"Objects are not valid as a React child\") ||\n    at /home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts:57:7"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-05-29T18:00:23.889Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/test-results/tests-staging-health-staging-homepage-renders-without-crash-retry1/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts",
+                    "column": 7,
+                    "line": 57
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "10c1af0f6fdb031337e0-8fb40a693b1db5543c99",
+          "file": "tests/staging-health.spec.ts",
+          "line": 43,
+          "column": 7
+        },
+        {
+          "title": "staging: contact renders without crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 847,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-05-29T18:00:42.284Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "10c1af0f6fdb031337e0-3af17a530a7af83b1ebf",
+          "file": "tests/staging-health.spec.ts",
+          "line": 43,
+          "column": 7
+        },
+        {
+          "title": "staging: transparency renders without crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 908,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-05-29T18:00:43.294Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "10c1af0f6fdb031337e0-d267eb8584bb203ea47f",
+          "file": "tests/staging-health.spec.ts",
+          "line": 43,
+          "column": 7
+        },
+        {
+          "title": "staging: business renders without crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 747,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-05-29T18:00:44.245Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "10c1af0f6fdb031337e0-4665a14579963b84fc9c",
+          "file": "tests/staging-health.spec.ts",
+          "line": 43,
+          "column": 7
+        },
+        {
+          "title": "staging: homepage TrustBar shows updated wording",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 11516,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=多くの法人様にご利用いただいています').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=多くの法人様にご利用いただいています').first()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=多くの法人様にご利用いただいています').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=多くの法人様にご利用いただいています').first()\u001b[22m\n\n    at /home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts:71:65",
+                    "location": {
+                      "file": "/home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts",
+                      "column": 65,
+                      "line": 71
+                    },
+                    "snippet": "  69 | test(\"staging: homepage TrustBar shows updated wording\", async ({ page }) => {\n  70 |   await authorizedGoto(page, \"/\");\n> 71 |   await expect(page.locator(\"text=多くの法人様にご利用いただいています\").first()).toBeVisible({ timeout: 10000 });\n     |                                                                 ^\n  72 | });\n  73 |\n  74 | test(\"staging: contact form inputs are visible\", async ({ page }) => {"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts",
+                        "column": 65,
+                        "line": 71
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=多くの法人様にご利用いただいています').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=多くの法人様にご利用いただいています').first()\u001b[22m\n\n\n  69 | test(\"staging: homepage TrustBar shows updated wording\", async ({ page }) => {\n  70 |   await authorizedGoto(page, \"/\");\n> 71 |   await expect(page.locator(\"text=多くの法人様にご利用いただいています\").first()).toBeVisible({ timeout: 10000 });\n     |                                                                 ^\n  72 | });\n  73 |\n  74 | test(\"staging: contact form inputs are visible\", async ({ page }) => {\n    at /home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts:71:65"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-05-29T18:00:45.022Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/test-results/tests-staging-health-stagi-d84af-stBar-shows-updated-wording/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts",
+                    "column": 65,
+                    "line": 71
+                  }
+                },
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 11514,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=多くの法人様にご利用いただいています').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=多くの法人様にご利用いただいています').first()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=多くの法人様にご利用いただいています').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=多くの法人様にご利用いただいています').first()\u001b[22m\n\n    at /home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts:71:65",
+                    "location": {
+                      "file": "/home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts",
+                      "column": 65,
+                      "line": 71
+                    },
+                    "snippet": "  69 | test(\"staging: homepage TrustBar shows updated wording\", async ({ page }) => {\n  70 |   await authorizedGoto(page, \"/\");\n> 71 |   await expect(page.locator(\"text=多くの法人様にご利用いただいています\").first()).toBeVisible({ timeout: 10000 });\n     |                                                                 ^\n  72 | });\n  73 |\n  74 | test(\"staging: contact form inputs are visible\", async ({ page }) => {"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts",
+                        "column": 65,
+                        "line": 71
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=多くの法人様にご利用いただいています').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=多くの法人様にご利用いただいています').first()\u001b[22m\n\n\n  69 | test(\"staging: homepage TrustBar shows updated wording\", async ({ page }) => {\n  70 |   await authorizedGoto(page, \"/\");\n> 71 |   await expect(page.locator(\"text=多くの法人様にご利用いただいています\").first()).toBeVisible({ timeout: 10000 });\n     |                                                                 ^\n  72 | });\n  73 |\n  74 | test(\"staging: contact form inputs are visible\", async ({ page }) => {\n    at /home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts:71:65"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-05-29T18:00:57.764Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/test-results/tests-staging-health-stagi-d84af-stBar-shows-updated-wording-retry1/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts",
+                    "column": 65,
+                    "line": 71
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "10c1af0f6fdb031337e0-fa51c63a06136647cd0e",
+          "file": "tests/staging-health.spec.ts",
+          "line": 69,
+          "column": 5
+        },
+        {
+          "title": "staging: contact form inputs are visible",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1088,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('button[type=submit]')\nExpected: visible\nError: strict mode violation: locator('button[type=submit]') resolved to 2 elements:\n    1) <button type=\"submit\" class=\"w-full bg-kon text-white font-medium py-2.5 rounded-lg text-sm hover:bg-kon/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed\">送信する</button> aka getByRole('button', { name: '送信する' })\n    2) <button type=\"submit\" class=\"px-4 py-2 bg-sakura hover:bg-sakura/80 dark:bg-kon dark:hover:bg-ai text-[#223A70] dark:text-white rounded-lg font-bold text-sm transition-colors disabled:opacity-50\">登録</button> aka getByRole('button', { name: '登録' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('button[type=submit]')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('button[type=submit]')\nExpected: visible\nError: strict mode violation: locator('button[type=submit]') resolved to 2 elements:\n    1) <button type=\"submit\" class=\"w-full bg-kon text-white font-medium py-2.5 rounded-lg text-sm hover:bg-kon/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed\">送信する</button> aka getByRole('button', { name: '送信する' })\n    2) <button type=\"submit\" class=\"px-4 py-2 bg-sakura hover:bg-sakura/80 dark:bg-kon dark:hover:bg-ai text-[#223A70] dark:text-white rounded-lg font-bold text-sm transition-colors disabled:opacity-50\">登録</button> aka getByRole('button', { name: '登録' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('button[type=submit]')\u001b[22m\n\n    at /home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts:80:53",
+                    "location": {
+                      "file": "/home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts",
+                      "column": 53,
+                      "line": 80
+                    },
+                    "snippet": "  78 |   await expect(page.locator(\"#subject\")).toBeVisible({ timeout: 10000 });\n  79 |   await expect(page.locator(\"#message\")).toBeVisible({ timeout: 10000 });\n> 80 |   await expect(page.locator(\"button[type=submit]\")).toBeVisible({ timeout: 10000 });\n     |                                                     ^\n  81 | });\n  82 |\n  83 | test(\"staging: transparency page has TrustBadges and CompanyLogosWall\", async ({ page }) => {"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts",
+                        "column": 53,
+                        "line": 80
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('button[type=submit]')\nExpected: visible\nError: strict mode violation: locator('button[type=submit]') resolved to 2 elements:\n    1) <button type=\"submit\" class=\"w-full bg-kon text-white font-medium py-2.5 rounded-lg text-sm hover:bg-kon/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed\">送信する</button> aka getByRole('button', { name: '送信する' })\n    2) <button type=\"submit\" class=\"px-4 py-2 bg-sakura hover:bg-sakura/80 dark:bg-kon dark:hover:bg-ai text-[#223A70] dark:text-white rounded-lg font-bold text-sm transition-colors disabled:opacity-50\">登録</button> aka getByRole('button', { name: '登録' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('button[type=submit]')\u001b[22m\n\n\n  78 |   await expect(page.locator(\"#subject\")).toBeVisible({ timeout: 10000 });\n  79 |   await expect(page.locator(\"#message\")).toBeVisible({ timeout: 10000 });\n> 80 |   await expect(page.locator(\"button[type=submit]\")).toBeVisible({ timeout: 10000 });\n     |                                                     ^\n  81 | });\n  82 |\n  83 | test(\"staging: transparency page has TrustBadges and CompanyLogosWall\", async ({ page }) => {\n    at /home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts:80:53"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-05-29T18:01:10.766Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/test-results/tests-staging-health-staging-contact-form-inputs-are-visible/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts",
+                    "column": 53,
+                    "line": 80
+                  }
+                },
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1098,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('button[type=submit]')\nExpected: visible\nError: strict mode violation: locator('button[type=submit]') resolved to 2 elements:\n    1) <button type=\"submit\" class=\"w-full bg-kon text-white font-medium py-2.5 rounded-lg text-sm hover:bg-kon/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed\">送信する</button> aka getByRole('button', { name: '送信する' })\n    2) <button type=\"submit\" class=\"px-4 py-2 bg-sakura hover:bg-sakura/80 dark:bg-kon dark:hover:bg-ai text-[#223A70] dark:text-white rounded-lg font-bold text-sm transition-colors disabled:opacity-50\">登録</button> aka getByRole('button', { name: '登録' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('button[type=submit]')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('button[type=submit]')\nExpected: visible\nError: strict mode violation: locator('button[type=submit]') resolved to 2 elements:\n    1) <button type=\"submit\" class=\"w-full bg-kon text-white font-medium py-2.5 rounded-lg text-sm hover:bg-kon/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed\">送信する</button> aka getByRole('button', { name: '送信する' })\n    2) <button type=\"submit\" class=\"px-4 py-2 bg-sakura hover:bg-sakura/80 dark:bg-kon dark:hover:bg-ai text-[#223A70] dark:text-white rounded-lg font-bold text-sm transition-colors disabled:opacity-50\">登録</button> aka getByRole('button', { name: '登録' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('button[type=submit]')\u001b[22m\n\n    at /home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts:80:53",
+                    "location": {
+                      "file": "/home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts",
+                      "column": 53,
+                      "line": 80
+                    },
+                    "snippet": "  78 |   await expect(page.locator(\"#subject\")).toBeVisible({ timeout: 10000 });\n  79 |   await expect(page.locator(\"#message\")).toBeVisible({ timeout: 10000 });\n> 80 |   await expect(page.locator(\"button[type=submit]\")).toBeVisible({ timeout: 10000 });\n     |                                                     ^\n  81 | });\n  82 |\n  83 | test(\"staging: transparency page has TrustBadges and CompanyLogosWall\", async ({ page }) => {"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts",
+                        "column": 53,
+                        "line": 80
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('button[type=submit]')\nExpected: visible\nError: strict mode violation: locator('button[type=submit]') resolved to 2 elements:\n    1) <button type=\"submit\" class=\"w-full bg-kon text-white font-medium py-2.5 rounded-lg text-sm hover:bg-kon/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed\">送信する</button> aka getByRole('button', { name: '送信する' })\n    2) <button type=\"submit\" class=\"px-4 py-2 bg-sakura hover:bg-sakura/80 dark:bg-kon dark:hover:bg-ai text-[#223A70] dark:text-white rounded-lg font-bold text-sm transition-colors disabled:opacity-50\">登録</button> aka getByRole('button', { name: '登録' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('button[type=submit]')\u001b[22m\n\n\n  78 |   await expect(page.locator(\"#subject\")).toBeVisible({ timeout: 10000 });\n  79 |   await expect(page.locator(\"#message\")).toBeVisible({ timeout: 10000 });\n> 80 |   await expect(page.locator(\"button[type=submit]\")).toBeVisible({ timeout: 10000 });\n     |                                                     ^\n  81 | });\n  82 |\n  83 | test(\"staging: transparency page has TrustBadges and CompanyLogosWall\", async ({ page }) => {\n    at /home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts:80:53"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-05-29T18:01:13.267Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/test-results/tests-staging-health-staging-contact-form-inputs-are-visible-retry1/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts",
+                    "column": 53,
+                    "line": 80
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "10c1af0f6fdb031337e0-993f48320dc3ca8eea11",
+          "file": "tests/staging-health.spec.ts",
+          "line": 74,
+          "column": 5
+        },
+        {
+          "title": "staging: transparency page has TrustBadges and CompanyLogosWall",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1111,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-05-29T18:01:15.780Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "10c1af0f6fdb031337e0-4ba2aff2d8e340379262",
+          "file": "tests/staging-health.spec.ts",
+          "line": 83,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-05-29T18:00:03.597Z",
+    "duration": 73543.954,
+    "expected": 5,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  }
+}
