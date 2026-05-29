@@ -11,12 +11,32 @@ export const metadata: Metadata = {
   },
 };
 
+const collectionJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "変換ツール",
+  description: "全銀フォーマット・ふりがな変換・関税計算など、業務効率化のための変換ツール集",
+  url: "https://yamada-tools.jp/convert",
+  isPartOf: { "@type": "WebSite", url: "https://yamada-tools.jp/", name: "山田ツール" },
+  mainEntity: {
+    "@type": "ItemList",
+    numberOfItems: convertTools.filter((t: any) => t.available).length,
+    itemListElement: convertTools.filter((t: any) => t.available).map((t: any, i: number) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: { "@type": "SoftwareApplication", name: t.nameJa, url: `https://yamada-tools.jp${t.path}`, applicationCategory: "UtilitiesApplication", operatingSystem: "Web", offers: { "@type": "Offer", price: "0", priceCurrency: "JPY" } },
+    })),
+  },
+};
+
 export default function ConvertToolsPage() {
   const availableTools = convertTools.filter(t => t.available);
   const comingSoonTools = convertTools.filter(t => !t.available);
 
   return (
-    <div className="min-h-screen py-12">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([collectionJsonLd]) }} />
+      <div className="min-h-screen py-12">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">
@@ -83,5 +103,6 @@ export default function ConvertToolsPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

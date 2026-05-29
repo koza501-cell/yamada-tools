@@ -93,12 +93,30 @@ const TOOL_GROUPS: { id: string; title: string; description: string; color: stri
   },
 ];
 
+const collectionJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "ビジネス向けツール",
+  description: "法人検索・補助金検索・法人税計算など、中小企業の経営者・経理担当者が日常使うビジネスツール集",
+  url: "https://yamada-tools.jp/business",
+  isPartOf: { "@type": "WebSite", url: "https://yamada-tools.jp/", name: "山田ツール" },
+  mainEntity: {
+    "@type": "ItemList",
+    numberOfItems: businessTools.filter((t: any) => t.available).length,
+    itemListElement: businessTools.filter((t: any) => t.available).map((t: any, i: number) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: { "@type": "SoftwareApplication", name: t.nameJa, url: `https://yamada-tools.jp${t.path}`, applicationCategory: "BusinessApplication", operatingSystem: "Web", offers: { "@type": "Offer", price: "0", priceCurrency: "JPY" } },
+    })),
+  },
+};
+
 export default function BusinessPage() {
   const available = businessTools.filter((t) => t.available);
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbJsonLd]) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbJsonLd, collectionJsonLd]) }} />
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
 
         {/* Hero */}

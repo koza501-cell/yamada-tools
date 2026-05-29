@@ -53,6 +53,24 @@ const CALC_TOOL_IDS = [
   "acquisition-tax",
 ];
 
+const collectionJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "不動産向けツール",
+  description: "住宅ローン・取得税・賃貸 vs 購入・人口推計など、不動産関連の判断ツール集",
+  url: "https://yamada-tools.jp/realestate",
+  isPartOf: { "@type": "WebSite", url: "https://yamada-tools.jp/", name: "山田ツール" },
+  mainEntity: {
+    "@type": "ItemList",
+    numberOfItems: realestateTools.filter((t: any) => t.available).length,
+    itemListElement: realestateTools.filter((t: any) => t.available).map((t: any, i: number) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: { "@type": "SoftwareApplication", name: t.nameJa, url: `https://yamada-tools.jp${t.path}`, applicationCategory: "UtilitiesApplication", operatingSystem: "Web", offers: { "@type": "Offer", price: "0", priceCurrency: "JPY" } },
+    })),
+  },
+};
+
 export default function RealEstatePage() {
   const all = realestateTools.filter((t) => t.available);
 
@@ -94,7 +112,7 @@ export default function RealEstatePage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbJsonLd]) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbJsonLd, collectionJsonLd]) }}
       />
       <HubLayout
         niche={{

@@ -50,6 +50,24 @@ const breadcrumbJsonLd = {
   ],
 };
 
+const collectionJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "ジェネレーターツール",
+  description: "QRコード・パスワード・T番号確認など、登録不要で使える各種ジェネレーター集",
+  url: "https://yamada-tools.jp/generator",
+  isPartOf: { "@type": "WebSite", url: "https://yamada-tools.jp/", name: "山田ツール" },
+  mainEntity: {
+    "@type": "ItemList",
+    numberOfItems: generatorTools.filter((t: any) => t.available).length,
+    itemListElement: generatorTools.filter((t: any) => t.available).map((t: any, i: number) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: { "@type": "SoftwareApplication", name: t.nameJa, url: `https://yamada-tools.jp${t.path}`, applicationCategory: "UtilitiesApplication", operatingSystem: "Web", offers: { "@type": "Offer", price: "0", priceCurrency: "JPY" } },
+    })),
+  },
+};
+
 export default function GeneratorHubPage() {
   const gen = generatorTools.filter((t) => t.available);
 
@@ -233,7 +251,7 @@ export default function GeneratorHubPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbJsonLd, collectionJsonLd]) }}
       />
       <HubLayout
         niche={{
