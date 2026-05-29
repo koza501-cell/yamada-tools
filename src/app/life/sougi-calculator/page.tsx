@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import SougiClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "葬儀費用 見積もり計算機【2025年版】費用相場・補助金対応 | 山田ツール",
@@ -37,11 +39,14 @@ const jsonLd = {
   ]
 };
 
+const tool = getToolById("sougi-calculator")!;
+
 export default function SougiPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <SougiClient />
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }

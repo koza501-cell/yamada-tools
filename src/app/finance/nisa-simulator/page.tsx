@@ -1,5 +1,6 @@
 import Link from "next/link";
 import RelatedTools from "@/components/common/RelatedTools";
+import { getToolById } from "@/config/tools";
 import { Metadata } from "next";
 import NisaSimulatorClient from "./dynamic-client";
 import { IntroSection } from "@/components/IntroSection";
@@ -121,6 +122,8 @@ const useCases = [
   },
 ];
 
+const tool = getToolById("nisa-simulator")!;
+
 export default function Page() {
   const relatedTools = [
     { href: "/finance/ideco-nisa-comparison", icon: "📊", label: "iDeCo vs NISA比較", description: "どちらが得か徹底比較" },
@@ -234,6 +237,7 @@ export default function Page() {
           </div>
         </Link>
       </div>
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }

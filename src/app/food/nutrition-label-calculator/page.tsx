@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import NutritionClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "食品 栄養成分表示 計算機【食品表示法対応】無料 | 山田ツール",
@@ -37,11 +39,14 @@ const jsonLd = {
   ]
 };
 
+const tool = getToolById("nutrition-label-calculator")!;
+
 export default function NutritionPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <NutritionClient />
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }

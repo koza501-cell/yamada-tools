@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import NisaSimulatorClient from "./dynamic-client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "新NISAシミュレーター - 積立・一括・複数シナリオ対応",
@@ -15,6 +17,13 @@ export const metadata: Metadata = {
   },
 };
 
+const tool = getToolById("nisa-simulator")!;
+
 export default function Page() {
-  return <NisaSimulatorClient />;
+  return (
+    <>
+      <NisaSimulatorClient />
+      <RelatedTools currentTool={tool} maxItems={6} />
+    </>
+  );
 }

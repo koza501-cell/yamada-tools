@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import SeikotsuinRyoyohiClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "整骨院・接骨院 療養費目安計算機【保険適用チェック】| 山田ツール",
@@ -36,11 +38,14 @@ const jsonLd = {
   ]
 };
 
+const tool = getToolById("seikotsuin-ryoyohi-calculator")!;
+
 export default function SeikotsuinPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <SeikotsuinRyoyohiClient />
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }

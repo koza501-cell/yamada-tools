@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import HoikuryoClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "【無料】保育料・幼稚園費用 無償化判定計算機【2026年版】｜世帯年収から月額負担を即計算 | yamada-tools.jp",
@@ -81,11 +83,14 @@ const jsonLd = {
   ]
 };
 
+const tool = getToolById("hoikuryo-calculator")!;
+
 export default function HoikuryoPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <HoikuryoClient />
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }

@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import LaborCostRatioClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "クリニック人件費率診断ツール｜厚労省データと比較・改善提案つき | yamada-tools.jp",
@@ -57,11 +59,14 @@ const jsonLd = {
   ],
 };
 
+const tool = getToolById("labor-cost-ratio")!;
+
 export default function LaborCostRatioDiagnosisPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <LaborCostRatioClient />
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }

@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import ShogaiNenkinClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "障害年金 受給額 簡易計算機【等級別・基礎年金・厚生年金対応】| 山田ツール",
@@ -170,6 +172,8 @@ const jsonLd = {
   ],
 };
 
+const tool = getToolById("shogai-nenkin-calculator")!;
+
 export default function ShogaiNenkinPage() {
   return (
     <>
@@ -178,6 +182,7 @@ export default function ShogaiNenkinPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <ShogaiNenkinClient />
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }

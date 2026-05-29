@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import FoodlossClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "フードロス コスト計算機【飲食店・食品スーパー向け】| 山田ツール",
@@ -36,11 +38,14 @@ const jsonLd = {
   ]
 };
 
+const tool = getToolById("foodloss-calculator")!;
+
 export default function FoodlossPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <FoodlossClient />
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }

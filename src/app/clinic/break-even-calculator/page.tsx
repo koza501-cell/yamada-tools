@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import BreakEvenCalculatorClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "クリニック損益分岐点・必要患者数シミュレーター｜診療科別に1日の必要患者数を計算 | yamada-tools.jp",
@@ -48,11 +50,14 @@ const jsonLd = {
   ]
 };
 
+const tool = getToolById("break-even-calculator")!;
+
 export default function BreakEvenCalculatorPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <BreakEvenCalculatorClient />
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }

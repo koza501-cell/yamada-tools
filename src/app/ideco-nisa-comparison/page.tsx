@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import IdecoNisaComparisonClient from "./dynamic-client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "iDeCo vs NISA 徹底比較ツール - 節税額・手取り・最適配分を自動計算",
@@ -15,6 +17,13 @@ export const metadata: Metadata = {
   },
 };
 
+const tool = getToolById("ideco-nisa-comparison")!;
+
 export default function Page() {
-  return <IdecoNisaComparisonClient />;
+  return (
+    <>
+      <IdecoNisaComparisonClient />
+      <RelatedTools currentTool={tool} maxItems={6} />
+    </>
+  );
 }

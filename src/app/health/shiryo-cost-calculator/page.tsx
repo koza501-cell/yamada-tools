@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import ShiryoCostClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "酪農・畜産 飼料コスト計算機【頭数別・月間飼料費計算】| 山田ツール",
@@ -163,6 +165,8 @@ const jsonLd = {
   ],
 };
 
+const tool = getToolById("shiryo-cost-calculator")!;
+
 export default function ShiryoCostPage() {
   return (
     <>
@@ -171,6 +175,7 @@ export default function ShiryoCostPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <ShiryoCostClient />
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }

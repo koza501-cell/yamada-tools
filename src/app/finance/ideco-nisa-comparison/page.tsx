@@ -4,6 +4,8 @@ import IdecoNisaComparisonClient from "./dynamic-client";
 import { IntroSection } from "@/components/IntroSection";
 import { UseCasesSection } from "@/components/UseCasesSection";
 import { FAQSection } from "@/components/FAQSection";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "iDeCo vs NISA 比較ツール【無料】節税額・手取り・最適配分を自動計算",
@@ -120,6 +122,8 @@ const useCases = [
   },
 ];
 
+const tool = getToolById("ideco-nisa-comparison")!;
+
 export default function Page() {
   return (
     <>
@@ -196,6 +200,7 @@ export default function Page() {
           </div>
         </Link>
       </div>
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }

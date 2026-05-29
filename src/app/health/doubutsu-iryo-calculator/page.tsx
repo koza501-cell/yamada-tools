@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import DoubutsuIryoClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "ペット医療費計算機【動物病院 費用相場チェッカー】| 山田ツール",
@@ -36,11 +38,14 @@ const jsonLd = {
   ]
 };
 
+const tool = getToolById("doubutsu-iryo-calculator")!;
+
 export default function DoubutsuIryoPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <DoubutsuIryoClient />
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }

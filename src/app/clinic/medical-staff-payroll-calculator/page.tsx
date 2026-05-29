@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import MedicalStaffPayrollClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "医療スタッフ給与計算機｜看護師・歯科衛生士・医療事務の夜勤手当・深夜割増を自動計算 | yamada-tools.jp",
@@ -57,11 +59,14 @@ const jsonLd = {
   ],
 };
 
+const tool = getToolById("medical-staff-payroll")!;
+
 export default function MedicalStaffPayrollPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <MedicalStaffPayrollClient />
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }

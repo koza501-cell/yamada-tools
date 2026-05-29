@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import JukuClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "【無料】学習塾・習い事 月謝計算機｜年間費用・教育費比率を即計算【2026年版】 | yamada-tools.jp",
@@ -82,11 +84,14 @@ const jsonLd = {
   ]
 };
 
+const tool = getToolById("juku-ryokin-calculator")!;
+
 export default function JukuPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <JukuClient />
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }

@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import GenkaClient from "./client";
+import { getToolById } from "@/config/tools";
+import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "飲食店 メニュー原価率計算機【無料】食材費・FLコスト自動計算 | 山田ツール",
@@ -37,11 +39,14 @@ const jsonLd = {
   ]
 };
 
+const tool = getToolById("genka-calculator")!;
+
 export default function GenkaPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <GenkaClient />
+      <RelatedTools currentTool={tool} maxItems={6} />
     </>
   );
 }
