@@ -6,12 +6,13 @@ import { notFound } from "next/navigation";
 import { Marked } from "marked";
 import BlogContent from "@/components/BlogContent";
 import BlogAdUnit from "@/components/common/BlogAdUnit";
+import StaticAdSlot from "@/components/common/StaticAdSlot";
 import ReadingProgress from "@/components/blog/ReadingProgress";
 import ShareButtons from "@/components/blog/ShareButtons";
 import TableOfContents from "@/components/blog/TableOfContents";
+import ToolFeedbackWidget from "@/components/feedback/ToolFeedbackWidget";
 import "@/app/blog.css";
 
-// Demote h1 → h2 to prevent duplicate h1
 const aiMarked = new Marked({ gfm: true });
 aiMarked.use({
   walkTokens(token: any) {
@@ -26,6 +27,7 @@ const CAT_LABELS: Record<string, string> = {
   "image":     "画像生成",
   "business":  "ビジネス",
   "marketing": "マーケティング",
+  "google":    "Google",
 };
 
 const CAT_GRAD: Record<string, string> = {
@@ -35,16 +37,18 @@ const CAT_GRAD: Record<string, string> = {
   "image":     "from-pink-500 to-rose-600",
   "business":  "from-amber-400 to-orange-500",
   "marketing": "from-cyan-500 to-blue-600",
+  "google":    "from-red-500 to-orange-600",
 };
 
 const TOOL_EMOJI: Record<string, string> = {
   "chatgpt": "🤖", "claude": "🧠", "gemini": "✨",
   "notion": "📝", "copilot": "💡", "midjourney": "🎨",
+  "dall-e": "🎨", "excel": "📊", "gmail": "📧",
+  "google": "🔍", "zapier": "⚡", "make": "🔗",
 };
 
-function toolEmoji(toolName?: string) {
-  if (!toolName) return "🤖";
-  const lc = toolName.toLowerCase();
+function toolEmoji(toolName?: string, category?: string) {
+  const lc = (toolName ?? category ?? "").toLowerCase();
   for (const [k, v] of Object.entries(TOOL_EMOJI)) {
     if (lc.includes(k)) return v;
   }
@@ -59,23 +63,45 @@ function getPosts() {
   return [];
 }
 
+function getRelatedPosts(current: any, all: any[], max = 3): any[] {
+  const currentTags = current.tags ?? [];
+  const others = all.filter((p) => p.slug !== current.slug);
+  const scored = others.map((p) => {
+    let score = 0;
+    if (p.category === current.category) score += 10;
+    score += (p.tags ?? []).filter((t: string) => currentTags.includes(t)).length * 2;
+    return { p, score };
+  });
+  scored.sort((a, b) => b.score - a.score);
+  return scored.filter((s) => s.score > 0).slice(0, max).map((s) => s.p);
+}
+
+function formatDate(iso: string): string {
+  if (!iso) return "";
+  const d = iso.slice(0, 10);
+  const [y, m, day] = d.split("-");
+  return `${y}年${parseInt(m)}月${parseInt(day)}日`;
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const posts = getPosts();
   const post = posts.find((p: any) => p.slug === slug);
   if (!post) return { title: "レシピが見つかりません" };
   const title = post.seoTitle ?? post.title;
-  const desc  = post.seoDescription ?? post.excerpt ?? title;
+  const desc  = post.seoDescription ?? post.metaDescription ?? post.excerpt ?? post.description ?? title;
   const siteUrl = "https://yamada-tools.jp";
   return {
     title,
     description: desc,
+    ...(post.noindex ? { robots: "noindex" } : {}),
     alternates: { canonical: `${siteUrl}/ai-recipe/${slug}` },
     openGraph: {
       title, description: desc,
       url: `${siteUrl}/ai-recipe/${slug}`,
       type: "article",
       publishedTime: post.publishedAt ?? post.publishDate,
+      modifiedTime: post.lastUpdated ?? post.publishedAt ?? post.publishDate,
     },
     twitter: { card: "summary_large_image", title, description: desc },
   };
@@ -93,19 +119,22 @@ export default async function AiRecipePost({ params }: { params: Promise<{ slug:
   const post  = posts.find((p: any) => p.slug === slug);
   if (!post) notFound();
 
+  const allPosts = posts;
   const title    = post.seoTitle ?? post.title;
-  const date     = (post.publishedAt ?? post.publishDate ?? "").slice(0, 10);
+  const desc     = post.excerpt ?? post.description ?? "";
+  const date     = (post.publishDate ?? post.publishedAt ?? "").slice(0, 10);
   const catLabel = CAT_LABELS[post.category] ?? post.category;
   const catGrad  = CAT_GRAD[post.category] ?? "from-violet-500 to-purple-600";
-  const emoji    = toolEmoji(post.toolName);
+  const emoji    = toolEmoji(post.toolName, post.category);
   const siteUrl  = "https://yamada-tools.jp";
+  const related  = getRelatedPosts(post, allPosts);
 
-  // Parse markdown
+  // Parse markdown — demote h1→h2
   let htmlContent = post.content
     ? (aiMarked.parse(post.content) as string)
     : "<p>コンテンツ準備中です。</p>";
 
-  // Inject TOC IDs
+  // Inject TOC ids
   const tocItems: { depth: number; text: string; id: string }[] = [];
   let hIdx = 0;
   htmlContent = htmlContent.replace(
@@ -118,6 +147,19 @@ export default async function AiRecipePost({ params }: { params: Promise<{ slug:
     }
   );
 
+  // FAQ schema — handle both object and array formats
+  let faqItems: { question: string; answer: string }[] = [];
+  if (post.faq) {
+    if (Array.isArray(post.faq)) {
+      faqItems = post.faq;
+    } else if (post.faq.mainEntity) {
+      faqItems = post.faq.mainEntity.map((e: any) => ({
+        question: e.name,
+        answer: e.acceptedAnswer?.text ?? "",
+      }));
+    }
+  }
+
   // JSON-LD
   const articleSchema = {
     "@context": "https://schema.org",
@@ -125,6 +167,7 @@ export default async function AiRecipePost({ params }: { params: Promise<{ slug:
     name: title,
     description: post.seoDescription ?? post.excerpt ?? title,
     datePublished: post.publishedAt ?? post.publishDate,
+    dateModified: post.lastUpdated ?? post.publishedAt ?? post.publishDate,
     author: { "@type": "Organization", name: "合同会社山田トレード", url: siteUrl },
     publisher: { "@type": "Organization", name: "合同会社山田トレード", url: siteUrl },
     inLanguage: "ja",
@@ -140,11 +183,22 @@ export default async function AiRecipePost({ params }: { params: Promise<{ slug:
     ],
   };
 
+  const faqSchema = faqItems.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.answer },
+    })),
+  } : null;
+
   return (
     <article className="blog-article max-w-[1200px] mx-auto px-4 py-12">
       <ReadingProgress />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
 
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-6">
@@ -162,27 +216,24 @@ export default async function AiRecipePost({ params }: { params: Promise<{ slug:
           <div className="absolute inset-0 bg-black/10" />
           {post.toolName && (
             <div className="absolute bottom-4 left-4">
-              <span className="bg-black/40 backdrop-blur-sm text-white text-sm font-semibold px-3 py-1.5 rounded-full">
-                {post.toolName}
-              </span>
+              <span className="bg-black/40 backdrop-blur-sm text-white text-sm font-semibold px-3 py-1.5 rounded-full">{post.toolName}</span>
             </div>
           )}
           {post.difficulty && (
             <div className="absolute top-4 right-4">
-              <span className="bg-black/40 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full">
-                {post.difficulty}
-              </span>
+              <span className="bg-black/40 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full">{post.difficulty}</span>
             </div>
           )}
         </div>
       </div>
 
+      <StaticAdSlot className="mb-8" />
+
       {/* Header */}
       <header className="blog-header mb-10 text-center">
         <div className="flex flex-wrap items-center justify-center gap-2 mb-4">
-          <span className="inline-block bg-violet-100 dark:bg-violet-900/40 text-violet-700 dark:text-violet-300 text-xs font-semibold px-3 py-1.5 rounded-full">
-            {catLabel}
-          </span>
+          <span className="inline-block bg-violet-100 dark:bg-violet-900/40 text-violet-700 dark:text-violet-300 text-xs font-semibold px-3 py-1.5 rounded-full">{catLabel}</span>
+          {post.type && <span className="inline-block bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 text-xs font-semibold px-3 py-1.5 rounded-full">{post.type}</span>}
           {post.timeSaved && (
             <span className="inline-flex items-center gap-1 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 text-xs font-semibold px-3 py-1.5 rounded-full">
               ⚡ {post.timeSaved} に短縮
@@ -192,7 +243,7 @@ export default async function AiRecipePost({ params }: { params: Promise<{ slug:
 
         <h1 className="blog-title text-3xl md:text-4xl font-bold mb-5 leading-tight">{title}</h1>
 
-        <div className="blog-meta flex flex-wrap items-center justify-center gap-4 text-gray-600 dark:text-gray-400 mb-4">
+        <div className="blog-meta flex flex-wrap items-center justify-center gap-4 text-gray-600 dark:text-gray-400 mb-4 text-sm">
           <span className="flex items-center gap-1.5">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -206,7 +257,18 @@ export default async function AiRecipePost({ params }: { params: Promise<{ slug:
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
-                {date}
+                公開日: {formatDate(date)}
+              </span>
+            </>
+          )}
+          {post.lastUpdated && post.lastUpdated > date && (
+            <>
+              <span>•</span>
+              <span className="flex items-center gap-1.5 text-blue-600 dark:text-blue-400">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+                更新日: {formatDate(post.lastUpdated)}
               </span>
             </>
           )}
@@ -222,6 +284,23 @@ export default async function AiRecipePost({ params }: { params: Promise<{ slug:
             </>
           )}
         </div>
+
+        {/* Tool info card */}
+        {(post.toolName || post.toolPrice || post.toolUrl) && (
+          <div className="inline-flex flex-wrap items-center gap-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl px-5 py-3 mb-4 text-sm">
+            {post.toolName && <span className="font-semibold text-gray-900 dark:text-white">🛠 {post.toolName}</span>}
+            {post.toolPrice && <span className="text-gray-500 dark:text-gray-400">💰 {post.toolPrice}</span>}
+            {post.toolUrl && (
+              <a href={post.toolUrl} target="_blank" rel="noopener noreferrer"
+                className="text-violet-700 dark:text-violet-400 font-semibold hover:underline flex items-center gap-1">
+                公式サイト
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            )}
+          </div>
+        )}
 
         {post.tags && post.tags.length > 0 && (
           <div className="flex flex-wrap gap-2 justify-center">
@@ -240,18 +319,15 @@ export default async function AiRecipePost({ params }: { params: Promise<{ slug:
         ? "lg:grid lg:grid-cols-[60px_1fr_240px] lg:gap-4 lg:items-start"
         : "lg:grid lg:grid-cols-[60px_1fr] lg:gap-4 lg:items-start"}>
 
-        {/* Desktop share rail */}
         <div className="hidden lg:block">
           <ShareButtons title={title} url={`${siteUrl}/ai-recipe/${slug}`} layout="desktop" />
         </div>
 
         <div className="min-w-0">
-          {/* Mobile share row */}
           <div className="lg:hidden mb-4">
             <ShareButtons title={title} url={`${siteUrl}/ai-recipe/${slug}`} layout="mobile" />
           </div>
 
-          {/* Mobile TOC */}
           {tocItems.length >= 3 && (
             <details className="lg:hidden mb-6 bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
               <summary className="px-4 py-3 font-semibold text-sm text-gray-900 dark:text-white cursor-pointer flex items-center gap-2 select-none">
@@ -270,40 +346,28 @@ export default async function AiRecipePost({ params }: { params: Promise<{ slug:
             </details>
           )}
 
-          {/* Content with mid-ad injection */}
           {(() => {
             const parts = htmlContent.split(/(?<=<\/p>)/);
-            if (parts.length <= 4) {
-              return (
-                <>
-                  <div className="blog-content prose prose-lg max-w-[680px] mx-auto">
-                    <BlogContent content={htmlContent} />
-                  </div>
-                  <BlogAdUnit />
-                </>
-              );
-            }
-            const midPoint = Math.floor(parts.length * 0.55);
+            if (parts.length <= 4) return (
+              <>
+                <div className="blog-content prose prose-lg max-w-[680px] mx-auto"><BlogContent content={htmlContent} /></div>
+                <BlogAdUnit />
+              </>
+            );
+            const mid = Math.floor(parts.length * 0.55);
             return (
               <>
-                <div className="blog-content prose prose-lg max-w-[680px] mx-auto">
-                  <BlogContent content={parts.slice(0, 2).join("")} />
-                </div>
+                <div className="blog-content prose prose-lg max-w-[680px] mx-auto"><BlogContent content={parts.slice(0, 2).join("")} /></div>
                 <BlogAdUnit />
-                <div className="blog-content prose prose-lg max-w-[680px] mx-auto">
-                  <BlogContent content={parts.slice(2, midPoint).join("")} />
-                </div>
+                <div className="blog-content prose prose-lg max-w-[680px] mx-auto"><BlogContent content={parts.slice(2, mid).join("")} /></div>
                 <BlogAdUnit />
-                <div className="blog-content prose prose-lg max-w-[680px] mx-auto">
-                  <BlogContent content={parts.slice(midPoint).join("")} />
-                </div>
+                <div className="blog-content prose prose-lg max-w-[680px] mx-auto"><BlogContent content={parts.slice(mid).join("")} /></div>
                 <BlogAdUnit />
               </>
             );
           })()}
         </div>
 
-        {/* Desktop TOC */}
         {tocItems.length >= 3 && (
           <aside className="hidden lg:block">
             <TableOfContents items={tocItems} />
@@ -311,17 +375,62 @@ export default async function AiRecipePost({ params }: { params: Promise<{ slug:
         )}
       </div>
 
+      {/* FAQ */}
+      {faqItems.length > 0 && (
+        <section className="mt-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+            <span>❓</span> よくある質問
+          </h2>
+          <div className="space-y-3">
+            {faqItems.map((f, i) => (
+              <details key={i} className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4 group">
+                <summary className="font-semibold text-gray-900 dark:text-white cursor-pointer">{f.question}</summary>
+                <p className="mt-3 text-sm text-gray-600 dark:text-gray-400 leading-relaxed whitespace-pre-line">{f.answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Related recipes */}
+      {related.length > 0 && (
+        <section className="mt-12 mb-8">
+          <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-5 flex items-center gap-2">
+            <span>🤖</span> 関連レシピ
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {related.map((r: any) => {
+              const rGrad = CAT_GRAD[r.category] ?? "from-violet-500 to-purple-600";
+              const rEmoji = toolEmoji(r.toolName, r.category);
+              const rTitle = r.seoTitle ?? r.title;
+              return (
+                <Link key={r.slug} href={`/ai-recipe/${r.slug}`}
+                  className="group flex flex-col bg-white dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all">
+                  <div className={`aspect-video bg-gradient-to-br ${rGrad} flex items-center justify-center`}>
+                    <span className="text-4xl opacity-80 group-hover:scale-110 transition-transform duration-300">{rEmoji}</span>
+                  </div>
+                  <div className="p-4 flex flex-col gap-2 flex-1">
+                    <span className="text-xs font-medium text-violet-700 dark:text-violet-400 bg-violet-50 dark:bg-violet-900/30 px-2 py-0.5 rounded-full w-fit">
+                      {CAT_LABELS[r.category] ?? r.category}
+                    </span>
+                    <h3 className="text-sm font-semibold text-gray-900 dark:text-white leading-snug line-clamp-2 group-hover:text-violet-700 dark:group-hover:text-violet-400 transition-colors">{rTitle}</h3>
+                    {r.timeSaved && <p className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold">⚡ {r.timeSaved} に短縮</p>}
+                    <p className="mt-auto text-xs text-gray-400 pt-1">{(r.publishDate ?? r.publishedAt ?? "").slice(0, 10)}</p>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
       {/* Footer CTA */}
       <footer className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700">
         <div className="bg-gradient-to-r from-violet-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-xl p-8 text-center">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-            他のAIレシピも見る
-          </h3>
-          <p className="text-gray-600 dark:text-gray-300 text-sm mb-5">
-            ChatGPT・Claude・Geminiなど最新AIの実践レシピ集
-          </p>
+          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">他のAIレシピも見る</h3>
+          <p className="text-gray-600 dark:text-gray-300 text-sm mb-5">ChatGPT・Claude・Geminiなど最新AIの実践レシピ集。毎週火曜更新。</p>
           <Link href="/ai-recipe"
-            className="inline-flex items-center px-6 py-3 bg-violet-700 text-white rounded-lg hover:bg-violet-800 transition-colors font-medium shadow-lg hover:shadow-xl">
+            className="inline-flex items-center px-6 py-3 bg-violet-700 text-white rounded-lg hover:bg-violet-800 transition-colors font-medium shadow-lg">
             AIレシピ一覧を見る
             <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -329,6 +438,8 @@ export default async function AiRecipePost({ params }: { params: Promise<{ slug:
           </Link>
         </div>
       </footer>
+
+      <ToolFeedbackWidget toolSlug={`ai-recipe/${slug}`} visible={true} />
     </article>
   );
 }
