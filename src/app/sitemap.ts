@@ -25,7 +25,7 @@ export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
       { url: baseUrl + "/generator", lastModified: currentDate, changeFrequency: "weekly", priority: 0.9 },
       { url: baseUrl + "/finance", lastModified: currentDate, changeFrequency: "weekly", priority: 0.95 },
       { url: baseUrl + "/blog", lastModified: currentDate, changeFrequency: "weekly", priority: 0.8 },
-      { url: baseUrl + "/ai", lastModified: currentDate, changeFrequency: "weekly", priority: 0.85 },
+      { url: baseUrl + "/ai-recipe", lastModified: currentDate, changeFrequency: "weekly", priority: 0.85 },
       ...(() => {
         const aiPostsPath = path.join(process.cwd(), "src/data/aiPosts.json");
         if (!fs.existsSync(aiPostsPath)) return [];

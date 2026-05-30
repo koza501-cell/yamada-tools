@@ -233,7 +233,7 @@ export default function Header() {
               {hasDashboard && (
                 <Link href="/dashboard" className="hidden xl:flex px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px] items-center">ダッシュボード</Link>
               )}
-              <Link href="/ai" className="hidden xl:flex px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px] items-center">AI活用</Link>
+              <Link href="/ai-recipe" className="hidden xl:flex px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px] items-center">AIレシピ</Link>
               <Link href="/pricing" className="px-3 py-2 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium min-h-[44px] flex items-center">料金</Link>
             </nav>
 
@@ -364,7 +364,7 @@ export default function Header() {
                   <Link href="/dashboard" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 transition-colors"><span className="text-xl">📊</span><span className="font-medium">節約ダッシュボード</span></Link>
                 )}
                 <Link href="/blog" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 transition-colors"><span className="text-xl">📝</span><span className="font-medium">ブログ</span></Link>
-                <Link href="/ai" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 transition-colors"><span className="text-xl">🤖</span><span className="font-medium">AI活用</span></Link>
+                <Link href="/ai-recipe" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 transition-colors"><span className="text-xl">🤖</span><span className="font-medium">AIレシピ</span></Link>
                 <Link href="/pricing" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 transition-colors"><span className="text-xl">💳</span><span className="font-medium">料金プラン</span></Link>
               </div>
               {user && (
