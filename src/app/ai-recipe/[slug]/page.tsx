@@ -102,8 +102,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       type: "article",
       publishedTime: post.publishedAt ?? post.publishDate,
       modifiedTime: post.lastUpdated ?? post.publishedAt ?? post.publishDate,
+      images: [{ url: post.featuredImage ?? `${siteUrl}/api/og?title=${encodeURIComponent(title)}&type=ai-recipe&category=${encodeURIComponent(post.category ?? "")}`, width: 1200, height: 630 }],
     },
-    twitter: { card: "summary_large_image", title, description: desc },
+    twitter: { card: "summary_large_image", title, description: desc, images: [post.featuredImage ?? `${siteUrl}/api/og?title=${encodeURIComponent(title)}&type=ai-recipe&category=${encodeURIComponent(post.category ?? "")}`] },
   };
 }
 
