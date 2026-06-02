@@ -433,6 +433,7 @@ export default function EnvelopePrintClient({
   const [qrSizeMm, setQrSizeMm] = useState(15);
   const [qrSectionOpen, setQrSectionOpen] = useState(false);
   const qrImgRef = useRef<HTMLImageElement | null>(null);
+  const lastSearchedCode = useRef("");
   const [qrReady, setQrReady] = useState(0);
   // Upgrade banner
   const [showUpgradeBanner, setShowUpgradeBanner] = useState(false);
@@ -856,10 +857,12 @@ export default function EnvelopePrintClient({
   // Auto-trigger postal lookup when 7 digits entered
   useEffect(() => {
     const code = (postalCodeWatch || "").replace(/[^0-9]/g, "");
-    if (code.length !== 7) return;
+    if (code.length !== 7) { lastSearchedCode.current = ""; return; }
     let cancelled = false;
     const timer = setTimeout(async () => {
       if (cancelled) return;
+      if (code === lastSearchedCode.current) return;
+      lastSearchedCode.current = code;
       setPostalLoading(true);
       setPostalError("");
       setPostalConfirm("");
@@ -886,6 +889,7 @@ export default function EnvelopePrintClient({
   const handlePostalLookup = async () => {
     const code = getValues("recipient.postalCode").replace(/[^0-9]/g, "");
     if (code.length !== 7) { setPostalError("7桁で入力してください"); return; }
+    lastSearchedCode.current = code;
     setPostalLoading(true); setPostalError("");
     try {
       const res = await fetch(`https://zipcloud.ibsnet.co.jp/api/search?zipcode=${code}`);
@@ -2028,6 +2032,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                       {errors.recipient?.postalCode && <p className="text-xs text-danger mt-1" role="alert">{errors.recipient.postalCode.message}</p>}
                       {postalError && <p className="text-xs text-danger mt-1">{postalError}</p>}
                       {postalConfirm && <p className="text-xs text-green-600 mt-1 bg-green-50 px-2 py-1 rounded">✅ {postalConfirm}</p>}
+                      <p className="text-xs text-gray-400 mt-1">※郵便番号検索にはzipcloud（ibsnet社）の外部APIを使用しています。</p>
                     </div>
                     <div className="grid grid-cols-2 gap-3">
                       <input type="text" {...register("recipient.prefecture")} placeholder="都道府県" className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
