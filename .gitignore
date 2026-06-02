@@ -45,3 +45,5 @@ test-results.json
 *.backup
 *.bing-batch*-backup
 *.bak
+.env.production
+.env.staging
