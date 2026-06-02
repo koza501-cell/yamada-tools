@@ -349,6 +349,9 @@ export default function BankFormatClient({
   });
 
   // Validation helpers
+  const hasCJK = (s: string) =>
+    /[一-鿿㐀-䶿豈-﫿]/.test(s);
+
   const validateHeaderField = (field: string, value: string): string | null => {
     switch (field) {
       case 'clientCode':
@@ -377,6 +380,7 @@ export default function BankFormatClient({
         return null;
       case 'clientName':
         if (!value) return '必須';
+        if (hasCJK(value)) return '漢字は使用できません。カタカナで入力してください';
         return null;
       default:
         return null;
@@ -400,6 +404,8 @@ export default function BankFormatClient({
       case 'amount':
         if (!value) return null;
         if (!/^\d[\d,]*$/.test(value)) return '数字のみ';
+        if (parseInt(value.replace(/[^0-9]/g, ''), 10) === 0) return '金額は1円以上を入力してください';
+        if (parseInt(value.replace(/[^0-9]/g, ''), 10) > 9999999999) return '金額は99億円（9,999,999,999円）以内で入力してください';
         return null;
       case 'recipientName':
         if (!value) return null;
@@ -666,6 +672,7 @@ export default function BankFormatClient({
   };
 
   const padLeft = (str: string, len: number, char: string = "0"): string => {
+    if (str.length >= len) return str.slice(-len);
     return str.padStart(len, char);
   };
 
@@ -942,6 +949,13 @@ export default function BankFormatClient({
   const handleConvert = () => {
     setHasAttemptedConvert(true);
     setHeaderTouched({ clientCode: true, clientName: true, transferDate: true, bankCode: true, branchCode: true, accountNumber: true });
+    const allRowTouched: Record<string, boolean> = {};
+    transfers.forEach((_, i) => {
+      ['bankCode','branchCode','accountNumber','recipientName','amount'].forEach(f => {
+        allRowTouched[`${i}_${f}`] = true;
+      });
+    });
+    setRowTouched(prev => ({ ...prev, ...allRowTouched }));
     // Validation
     if (!headerData.clientCode || !headerData.clientName) {
       setMascotState("error");
@@ -969,7 +983,6 @@ export default function BankFormatClient({
 
     // Validate: block CJK/kanji that cannot be represented in Zengin half-kana format.
     // toZenginKana() strips them silently — this gives the user a clear error instead.
-    const hasCJK = (s: string) => /[　-鿿豈-﫿]/.test(s);
     const cjkField =
       hasCJK(headerData.clientName) ? "委託者名" :
       validTransfers.find(t => hasCJK(t.recipientName)) ? "受取人名" :
@@ -1221,6 +1234,15 @@ export default function BankFormatClient({
       else if (type === "9") { label = "エンド"; color = "gray"; }
       return { line, label, color };
     });
+  };
+
+  const getSjisBytes = (str: string): number => {
+    let bytes = 0;
+    for (let i = 0; i < str.length; i++) {
+      const c = str.charCodeAt(i);
+      bytes += (c >= 0xFF61 && c <= 0xFF9F) ? 1 : c > 0x7F ? 2 : 1;
+    }
+    return bytes;
   };
 
   if (!mounted) {
@@ -2224,8 +2246,10 @@ export default function BankFormatClient({
                                   key={b.code}
                                   type="button"
                                   onMouseDown={() => {
-                                    updateTransfer(index, "bankCode", b.code);
-                                    updateTransfer(index, "bankName", b.kana);
+                                    const updated = [...transfers];
+                                    updated[index] = { ...updated[index], bankCode: b.code, bankName: b.kana, branchCode: "", branchName: "" };
+                                    setTransfers(updated);
+                                    touchRow(index, 'bankCode');
                                     setRowBankQuery((prev) => ({ ...prev, [index]: '' }));
                                     setRowBankDropOpen((prev) => ({ ...prev, [index]: false }));
                                   }}
@@ -2324,6 +2348,7 @@ export default function BankFormatClient({
                         >
                           <option value="1">普通</option>
                           <option value="2">当座</option>
+                          <option value="4">貯蓄</option>
                         </select>
                       </td>
                       <td className="px-1 py-2">
@@ -2471,7 +2496,7 @@ export default function BankFormatClient({
 
             {/* File info */}
             <div className="flex flex-wrap gap-3 mb-4 text-xs text-gray-500 dark:text-gray-400">
-              <span className="bg-gray-50 dark:bg-gray-800 px-2 py-1 rounded">📦 {new TextEncoder().encode(result).length}バイト</span>
+              <span className="bg-gray-50 dark:bg-gray-800 px-2 py-1 rounded">📦 {getSjisBytes(result)}バイト</span>
               <span className="bg-gray-50 dark:bg-gray-800 px-2 py-1 rounded">📄 {result.split('\r\n').filter(Boolean).length}レコード</span>
               <span className="bg-gray-50 dark:bg-gray-800 px-2 py-1 rounded">🔤 {outputEncoding === 'shift-jis' ? 'Shift-JIS' : 'UTF-8'}</span>
             </div>
