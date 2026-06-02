@@ -775,13 +775,13 @@ export default function SalaryNegotiationClient() {
             )}
 
             <div className="flex gap-3 mt-6">
-              <button
+              <button type="button"
                 onClick={handleReset}
                 className="flex-1 py-2.5 rounded-lg border border-gray-300 text-gray-600 text-sm font-medium hover:bg-gray-50 transition-colors"
               >
                 リセット
               </button>
-              <button
+              <button type="button"
                 onClick={handleCalculate}
                 className="flex-1 py-2.5 rounded-lg bg-kon text-white text-sm font-semibold hover:bg-ai transition-colors shadow-sm"
               >

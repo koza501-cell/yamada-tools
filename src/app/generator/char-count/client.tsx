@@ -95,7 +95,7 @@ export default function CharCountClient({ faq, seoContent }: Props) {
             </div>
           </div>
 
-          <button onClick={() => setText("")} className="mt-4 px-6 py-2 bg-gray-100 rounded-lg hover:bg-gray-200">
+          <button type="button" onClick={() => setText("")} className="mt-4 px-6 py-2 bg-gray-100 rounded-lg hover:bg-gray-200">
             クリア
           </button>
         </section>

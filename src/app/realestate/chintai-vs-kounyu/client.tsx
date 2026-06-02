@@ -174,7 +174,7 @@ export default function ChintaiVsKounyuClient() {
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">中立・バイアスなし。生涯コストを計算します。</p>
         <div className="flex gap-3 mb-6">
           {PERIODS.map(p => (
-            <button key={p} onClick={() => setPeriod(p)}
+            <button type="button" key={p} onClick={() => setPeriod(p)}
               className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${period === p ? "bg-kon text-white" : "bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 border border-gray-300 dark:border-gray-600"}`}>
               {p}年間
             </button>

@@ -243,13 +243,13 @@ export default function CharacterCountClient({
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-3">
-            <button
+            <button type="button"
               onClick={handleCopy}
               className="flex-1 py-4 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors"
             >
               結果をコピー
             </button>
-            <button
+            <button type="button"
               onClick={handleClear}
               className="py-4 px-6 border-2 border-gray-300 text-gray-600 rounded-xl font-bold hover:bg-gray-50 transition-colors"
             >

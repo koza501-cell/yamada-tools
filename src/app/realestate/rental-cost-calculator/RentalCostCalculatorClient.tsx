@@ -768,7 +768,7 @@ export default function RentalCostCalculatorPage() {
             </label>
             <div className="flex gap-3">
               {(["1", "2"] as const).map((m) => (
-                <button
+                <button type="button"
                   key={m}
                   onClick={() => {
                     setMode(m);
@@ -998,13 +998,13 @@ export default function RentalCostCalculatorPage() {
 
           {/* Buttons */}
           <div className="flex gap-3">
-            <button
+            <button type="button"
               onClick={handleCalculate}
               className="flex-1 py-3 px-6 rounded-lg bg-kon text-white font-semibold text-sm hover:bg-ai transition-colors shadow-sm"
             >
               計算する
             </button>
-            <button
+            <button type="button"
               onClick={handleReset}
               className="py-3 px-6 rounded-lg border border-gray-300 text-gray-600 text-sm font-medium hover:bg-gray-50 transition-colors"
             >

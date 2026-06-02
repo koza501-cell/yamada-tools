@@ -94,7 +94,7 @@ export default function TextCaseClient() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mb-4">
             {caseOptions.map((opt) => (
-              <button
+              <button type="button"
                 key={opt.id}
                 onClick={() => convert(opt.id)}
                 className="p-3 bg-gray-100 hover:bg-kon hover:text-white rounded-xl transition-all text-left"
@@ -109,7 +109,7 @@ export default function TextCaseClient() {
             <div className="mt-4">
               <div className="flex items-center justify-between mb-2">
                 <label className="text-sm font-medium text-gray-700">変換結果</label>
-                <button onClick={copyOutput} className="text-xs text-kon hover:text-ai">コピー</button>
+                <button type="button" onClick={copyOutput} className="text-xs text-kon hover:text-ai">コピー</button>
               </div>
               <textarea
                 value={output}

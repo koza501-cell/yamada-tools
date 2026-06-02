@@ -102,7 +102,7 @@ export default function LoremIpsumClient() {
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">言語</label>
               <div className="flex gap-2">
-                <button
+                <button type="button"
                   onClick={() => setLang("japanese")}
                   className={`flex-1 py-2 rounded-lg font-medium transition-all ${
                     lang === "japanese" ? "bg-kon text-white" : "bg-gray-100 hover:bg-gray-200"
@@ -110,7 +110,7 @@ export default function LoremIpsumClient() {
                 >
                   日本語
                 </button>
-                <button
+                <button type="button"
                   onClick={() => setLang("latin")}
                   className={`flex-1 py-2 rounded-lg font-medium transition-all ${
                     lang === "latin" ? "bg-kon text-white" : "bg-gray-100 hover:bg-gray-200"
@@ -153,7 +153,7 @@ export default function LoremIpsumClient() {
               readOnly
               className="w-full h-64 p-4 bg-gray-50 border border-gray-200 rounded-xl resize-none"
             />
-            <button
+            <button type="button"
               onClick={copyResult}
               className="absolute top-2 right-2 px-3 py-1 bg-kon text-white rounded-lg text-sm hover:bg-ai"
             >
@@ -161,7 +161,7 @@ export default function LoremIpsumClient() {
             </button>
           </div>
 
-          <button
+          <button type="button"
             onClick={generate}
             className="w-full mt-4 py-3 bg-gradient-to-r from-kon to-ai text-white rounded-xl font-bold hover:shadow-lg"
           >

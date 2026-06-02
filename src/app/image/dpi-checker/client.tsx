@@ -91,7 +91,7 @@ export default function DpiCheckerClient({
               onClick={() => document.getElementById("img-upload")?.click()}>
               <div className="text-5xl mb-3">🔍</div>
               <p className="text-gray-600 mb-2 text-lg font-bold">画像をドラッグ＆ドロップ</p>
-              <button className="px-8 py-3 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors text-lg">📁 画像を選択</button>
+              <button type="button" className="px-8 py-3 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors text-lg">📁 画像を選択</button>
               <input id="img-upload" type="file" accept="image/*" className="hidden" onChange={(e) => { const f = e.target.files?.[0]; if (f) loadImage(f); }} />
               <p className="text-sm text-gray-400 mt-4">JPG, PNG, WebP, BMP, GIF対応</p>
             </div>
@@ -99,7 +99,7 @@ export default function DpiCheckerClient({
             <div>
               <div className="flex items-center justify-between bg-gray-50 rounded-xl p-3 mb-4">
                 <p className="font-bold text-sm truncate">{fileName}</p>
-                <button onClick={reset} className="text-sm text-danger font-bold">✕ 閉じる</button>
+                <button type="button" onClick={reset} className="text-sm text-danger font-bold">✕ 閉じる</button>
               </div>
 
               <div className="grid md:grid-cols-2 gap-4 mb-4">
@@ -124,7 +124,7 @@ export default function DpiCheckerClient({
                       </div>
                       <div className="flex gap-2 justify-center">
                         {[72, 150, 200, 300].map(d => (
-                          <button key={d} onClick={() => recalcPrint(d)}
+                          <button type="button" key={d} onClick={() => recalcPrint(d)}
                             className={`px-3 py-1 rounded-lg text-xs font-bold ${targetDpi === d ? "bg-green-600 text-white" : "bg-white text-gray-600 border"}`}>
                             {d}DPI
                           </button>

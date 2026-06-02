@@ -1,8 +1,42 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronLeft, ChevronRight, AlertCircle, CheckCircle2, XCircle, Download } from "lucide-react";
 import { AddressRow, ValidationResult } from "@/lib/envelope/validation";
+
+const Icons = {
+  ChevronLeft: ({ className }: { className?: string }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <path d="m15 18-6-6 6-6"/>
+    </svg>
+  ),
+  ChevronRight: ({ className }: { className?: string }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <path d="m9 18 6-6-6-6"/>
+    </svg>
+  ),
+  AlertCircle: ({ className }: { className?: string }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/>
+    </svg>
+  ),
+  CheckCircle2: ({ className }: { className?: string }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
+    </svg>
+  ),
+  XCircle: ({ className }: { className?: string }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/>
+    </svg>
+  ),
+  Download: ({ className }: { className?: string }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+      <polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/>
+    </svg>
+  ),
+};
+
 
 interface BulkPreviewCarouselProps {
   rows: AddressRow[];
@@ -57,16 +91,16 @@ export default function BulkPreviewCarousel({
         <div className="flex items-center gap-3 text-xs">
           <span className="font-medium text-gray-700">全{totalPages}件</span>
           <span className="text-green-600 flex items-center gap-1">
-            <CheckCircle2 className="w-3 h-3" /> {totalValid}件OK
+            <Icons.CheckCircle2 className="w-3 h-3" /> {totalValid}件OK
           </span>
           {totalErrors > 0 && (
             <span className="text-danger flex items-center gap-1">
-              <XCircle className="w-3 h-3" /> {totalErrors}件エラー
+              <Icons.XCircle className="w-3 h-3" /> {totalErrors}件エラー
             </span>
           )}
           {totalWarnings > 0 && (
             <span className="text-kon flex items-center gap-1">
-              <AlertCircle className="w-3 h-3" /> {totalWarnings}件警告
+              <Icons.AlertCircle className="w-3 h-3" /> {totalWarnings}件警告
             </span>
           )}
           <span className="text-kon font-medium">{selectedCount}件選択中</span>
@@ -112,7 +146,7 @@ export default function BulkPreviewCarousel({
               disabled={currentPage === 0}
               className="flex items-center gap-1 px-3 py-1.5 text-sm bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-40"
             >
-              <ChevronLeft className="w-4 h-4" /> 前へ
+              <Icons.ChevronLeft className="w-4 h-4" /> 前へ
             </button>
             <div className="flex items-center gap-2">
               <span className="text-sm font-medium text-gray-700">
@@ -136,7 +170,7 @@ export default function BulkPreviewCarousel({
               disabled={currentPage >= totalPages - 1}
               className="flex items-center gap-1 px-3 py-1.5 text-sm bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-40"
             >
-              次へ <ChevronRight className="w-4 h-4" />
+              次へ <Icons.ChevronRight className="w-4 h-4" />
             </button>
           </div>
 
@@ -173,7 +207,7 @@ export default function BulkPreviewCarousel({
               <div className="mt-3 space-y-1">
                 {currentValidation.errors.map((err, i) => (
                   <p key={i} className="text-xs text-danger flex items-start gap-1">
-                    <XCircle className="w-3 h-3 mt-0.5 shrink-0" /> {err.message}
+                    <Icons.XCircle className="w-3 h-3 mt-0.5 shrink-0" /> {err.message}
                   </p>
                 ))}
               </div>
@@ -182,7 +216,7 @@ export default function BulkPreviewCarousel({
               <div className="mt-2 space-y-1">
                 {currentValidation.warnings.map((w, i) => (
                   <p key={i} className="text-xs text-kon flex items-start gap-1">
-                    <AlertCircle className="w-3 h-3 mt-0.5 shrink-0" /> {w.message}
+                    <Icons.AlertCircle className="w-3 h-3 mt-0.5 shrink-0" /> {w.message}
                   </p>
                 ))}
               </div>
@@ -239,8 +273,8 @@ export default function BulkPreviewCarousel({
                   <p className="truncate font-medium text-gray-800">
                     {row.name || row.companyName || "(氏名なし)"}
                   </p>
-                  {!v?.valid && <XCircle className="w-3 h-3 text-danger mt-1" />}
-                  {v?.valid && v.warnings.length > 0 && <AlertCircle className="w-3 h-3 text-kon mt-1" />}
+                  {!v?.valid && <Icons.XCircle className="w-3 h-3 text-danger mt-1" />}
+                  {v?.valid && v.warnings.length > 0 && <Icons.AlertCircle className="w-3 h-3 text-kon mt-1" />}
                 </div>
               );
             })}
@@ -255,14 +289,14 @@ export default function BulkPreviewCarousel({
           disabled={selectedCount === 0}
           className="flex items-center gap-1.5 px-4 py-2 bg-kon text-white rounded-lg text-sm font-medium hover:bg-ai disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          <Download className="w-4 h-4" /> PDF一括出力 ({selectedCount}件)
+          <Icons.Download className="w-4 h-4" /> PDF一括出力 ({selectedCount}件)
         </button>
         <button
           onClick={onExportZip}
           disabled={selectedCount === 0}
           className="flex items-center gap-1.5 px-4 py-2 bg-gray-600 text-white rounded-lg text-sm font-medium hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          <Download className="w-4 h-4" /> ZIP出力
+          <Icons.Download className="w-4 h-4" /> ZIP出力
         </button>
       </div>
     </div>

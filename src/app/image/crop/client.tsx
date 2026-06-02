@@ -216,7 +216,7 @@ export default function ImageCropClient({
                 <label className="block text-sm font-medium text-gray-700 mb-2">アスペクト比</label>
                 <div className="flex flex-wrap gap-2">
                   {aspectOptions.map((opt) => (
-                    <button
+                    <button type="button"
                       key={opt.label}
                       onClick={() => setAspect(opt.value)}
                       className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
@@ -262,13 +262,13 @@ export default function ImageCropClient({
 
               {/* Buttons */}
               <div className="flex gap-2">
-                <button
+                <button type="button"
                   onClick={cropImage}
                   className="flex-1 py-3 bg-gradient-to-r from-kon to-ai text-white rounded-xl font-bold hover:shadow-lg transition-all"
                 >
                   切り抜く
                 </button>
-                <button 
+                <button type="button" 
                   onClick={clearAll} 
                   className="px-6 py-3 bg-gray-100 rounded-xl font-bold hover:bg-gray-200 transition-colors"
                 >
@@ -285,7 +285,7 @@ export default function ImageCropClient({
               <div className="bg-white p-2 rounded-lg mb-3">
                 <img src={resultUrl} alt="Result" className="max-h-64 mx-auto rounded" />
               </div>
-              <button
+              <button type="button"
                 onClick={download}
                 className="w-full py-3 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors"
               >

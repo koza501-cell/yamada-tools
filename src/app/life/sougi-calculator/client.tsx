@@ -134,7 +134,7 @@ export default function SougiClient() {
           <label className="block text-sm text-gray-600 mb-2">葬儀形式</label>
           <div className="grid grid-cols-3 gap-2 sm:grid-cols-5">
             {(["一般葬", "家族葬", "一日葬", "直葬", "社葬"] as FuneralType[]).map(t => (
-              <button key={t} onClick={() => setFuneralType(t)}
+              <button type="button" key={t} onClick={() => setFuneralType(t)}
                 className={"py-2 rounded-lg border text-xs font-medium transition-colors " + (funeralType === t ? "bg-gray-700 text-white border-gray-700" : "border-gray-300 text-gray-600 hover:border-gray-400")}>
                 {t}
               </button>
@@ -307,7 +307,7 @@ export default function SougiClient() {
       )}
 
       <div className="mb-6">
-        <button onClick={() => setShowDirectComparison(s => !s)}
+        <button type="button" onClick={() => setShowDirectComparison(s => !s)}
           className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm font-medium text-gray-700 hover:bg-gray-100">
           <span>⚖️ 直葬にした場合の節約額を見る</span>
           <span>{showDirectComparison ? "▲" : "▼"}</span>

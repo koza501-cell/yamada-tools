@@ -270,7 +270,7 @@ export default function GaikokujinVisaClient() {
             </div>
 
             <div className="text-center">
-              <button
+              <button type="button"
                 onClick={() => window.print()}
                 className="text-xs text-kon hover:underline print:hidden"
               >
@@ -295,7 +295,7 @@ export default function GaikokujinVisaClient() {
         </div>
 
         <div className="mt-4 bg-white dark:bg-gray-800 rounded-xl shadow p-6">
-          <button
+          <button type="button"
             onClick={() => setOpenDocs(!openDocs)}
             className="w-full text-left flex justify-between items-center"
           >

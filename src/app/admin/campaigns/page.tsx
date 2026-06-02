@@ -124,7 +124,7 @@ export default function CampaignsManagement() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-2xl font-bold text-kon">🎯 キャンペーン管理</h1>
-        <button
+        <button type="button"
           onClick={() => {
             setEditing(defaultCampaign);
             setIsNew(true);
@@ -164,7 +164,7 @@ export default function CampaignsManagement() {
                   </div>
                 </div>
                 <div className="flex gap-2">
-                  <button
+                  <button type="button"
                     onClick={() => {
                       setEditing(campaign);
                       setIsNew(false);
@@ -173,7 +173,7 @@ export default function CampaignsManagement() {
                   >
                     編集
                   </button>
-                  <button
+                  <button type="button"
                     onClick={() => handleDelete(campaign.id!)}
                     className="px-4 py-2 bg-gray-50 text-danger rounded-lg hover:bg-gray-50"
                   >
@@ -263,7 +263,7 @@ export default function CampaignsManagement() {
             {message && <p className="mt-4 text-center">{message}</p>}
 
             <div className="flex gap-4 mt-6">
-              <button
+              <button type="button"
                 onClick={() => {
                   setEditing(null);
                   setIsNew(false);
@@ -273,7 +273,7 @@ export default function CampaignsManagement() {
               >
                 キャンセル
               </button>
-              <button
+              <button type="button"
                 onClick={handleSave}
                 className="flex-1 px-6 py-3 bg-kon text-white rounded-xl font-bold hover:bg-ai"
               >

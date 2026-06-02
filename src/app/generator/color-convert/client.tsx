@@ -138,7 +138,7 @@ export default function ColorConvertClient() {
                     onChange={(e) => updateFromHex(e.target.value)}
                     className="flex-1 px-4 py-2 border border-gray-200 rounded-xl font-mono"
                   />
-                  <button onClick={() => copyText(hex)} className="px-3 py-2 bg-gray-100 rounded-xl hover:bg-gray-200">
+                  <button type="button" onClick={() => copyText(hex)} className="px-3 py-2 bg-gray-100 rounded-xl hover:bg-gray-200">
                     コピー
                   </button>
                 </div>
@@ -159,7 +159,7 @@ export default function ColorConvertClient() {
                       placeholder={c.toUpperCase()}
                     />
                   ))}
-                  <button onClick={() => copyText(`rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`)} className="px-3 py-2 bg-gray-100 rounded-xl hover:bg-gray-200">
+                  <button type="button" onClick={() => copyText(`rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`)} className="px-3 py-2 bg-gray-100 rounded-xl hover:bg-gray-200">
                     コピー
                   </button>
                 </div>
@@ -195,7 +195,7 @@ export default function ColorConvertClient() {
                     className="w-20 px-2 py-2 border border-gray-200 rounded-xl text-center"
                     placeholder="L"
                   />
-                  <button onClick={() => copyText(`hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`)} className="px-3 py-2 bg-gray-100 rounded-xl hover:bg-gray-200">
+                  <button type="button" onClick={() => copyText(`hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`)} className="px-3 py-2 bg-gray-100 rounded-xl hover:bg-gray-200">
                     コピー
                   </button>
                 </div>

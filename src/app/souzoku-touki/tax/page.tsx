@@ -103,7 +103,7 @@ export default function TaxPage() {
                   <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-400">円</span>
                 </div>
                 {properties.length > 1 && (
-                  <button
+                  <button type="button"
                     onClick={() => removeProperty(prop.id)}
                     className="text-danger hover:text-danger dark:hover:text-gin text-sm flex-shrink-0"
                   >
@@ -113,7 +113,7 @@ export default function TaxPage() {
               </div>
             ))}
           </div>
-          <button
+          <button type="button"
             onClick={addProperty}
             className="mt-4 text-sm text-ai hover:text-ai font-medium flex items-center gap-1"
           >

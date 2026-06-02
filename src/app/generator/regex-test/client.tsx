@@ -96,7 +96,7 @@ export default function RegexTestClient() {
             <label className="block text-sm font-medium text-gray-700 mb-2">プリセット</label>
             <div className="flex flex-wrap gap-2">
               {presets.map((p) => (
-                <button
+                <button type="button"
                   key={p.name}
                   onClick={() => loadPreset(p.pattern)}
                   className="px-3 py-1 bg-sakura/30 text-kon rounded-full text-sm hover:bg-sakura/50"
@@ -121,7 +121,7 @@ export default function RegexTestClient() {
               <span className="text-gray-400">/</span>
               <div className="flex gap-1">
                 {Object.entries(flags).map(([flag, enabled]) => (
-                  <button
+                  <button type="button"
                     key={flag}
                     onClick={() => setFlags({ ...flags, [flag]: !enabled })}
                     className={`w-8 h-8 rounded font-mono text-sm ${

@@ -240,13 +240,13 @@ export default function ConsumptionTaxClient() {
             <div>
               <label className={labelClass}>計算モード</label>
               <div className="flex gap-1">
-                <button className={toggleClass(mode === "exclude")} onClick={() => setMode("exclude")}>
+                <button type="button" className={toggleClass(mode === "exclude")} onClick={() => setMode("exclude")}>
                   税抜→税込
                 </button>
-                <button className={toggleClass(mode === "include")} onClick={() => setMode("include")}>
+                <button type="button" className={toggleClass(mode === "include")} onClick={() => setMode("include")}>
                   税込→税抜
                 </button>
-                <button className={toggleClass(mode === "taxonly")} onClick={() => setMode("taxonly")}>
+                <button type="button" className={toggleClass(mode === "taxonly")} onClick={() => setMode("taxonly")}>
                   税額のみ
                 </button>
               </div>
@@ -272,10 +272,10 @@ export default function ConsumptionTaxClient() {
               <div>
                 <label className={labelClass}>税率</label>
                 <div className="flex gap-2">
-                  <button className={toggleClass(taxRate === 0.1)} onClick={() => setTaxRate(0.1)}>
+                  <button type="button" className={toggleClass(taxRate === 0.1)} onClick={() => setTaxRate(0.1)}>
                     10%（標準）
                   </button>
-                  <button className={toggleClass(taxRate === 0.08)} onClick={() => setTaxRate(0.08)}>
+                  <button type="button" className={toggleClass(taxRate === 0.08)} onClick={() => setTaxRate(0.08)}>
                     8%（軽減税率）
                   </button>
                 </div>
@@ -298,10 +298,10 @@ export default function ConsumptionTaxClient() {
             <div>
               <label className={labelClass}>複数明細モード</label>
               <div className="flex gap-2">
-                <button className={toggleClass(!multiMode)} onClick={() => setMultiMode(false)}>
+                <button type="button" className={toggleClass(!multiMode)} onClick={() => setMultiMode(false)}>
                   なし
                 </button>
-                <button className={toggleClass(multiMode)} onClick={() => setMultiMode(true)}>
+                <button type="button" className={toggleClass(multiMode)} onClick={() => setMultiMode(true)}>
                   あり
                 </button>
               </div>
@@ -315,7 +315,7 @@ export default function ConsumptionTaxClient() {
                       <div className="flex items-center justify-between">
                         <span className="text-xs font-medium text-gray-500">明細 {idx + 1}</span>
                         {items.length > 1 && (
-                          <button
+                          <button type="button"
                             onClick={() => removeItem(idx)}
                             className="text-xs text-danger hover:text-danger"
                           >
@@ -339,13 +339,13 @@ export default function ConsumptionTaxClient() {
                         min="0"
                       />
                       <div className="flex gap-1">
-                        <button
+                        <button type="button"
                           className={toggleClass(item.rate === 0.1)}
                           onClick={() => updateItem(idx, "rate", 0.1 as TaxRate)}
                         >
                           10%
                         </button>
-                        <button
+                        <button type="button"
                           className={toggleClass(item.rate === 0.08)}
                           onClick={() => updateItem(idx, "rate", 0.08 as TaxRate)}
                         >
@@ -356,7 +356,7 @@ export default function ConsumptionTaxClient() {
                   ))}
                 </div>
                 {items.length < 10 && (
-                  <button
+                  <button type="button"
                     onClick={addItem}
                     className="w-full py-2 border-2 border-dashed border-kon text-kon text-sm rounded-lg hover:border-ai hover:text-ai transition-colors"
                   >
@@ -367,13 +367,13 @@ export default function ConsumptionTaxClient() {
             )}
 
             <div className="flex gap-3 pt-2">
-              <button
+              <button type="button"
                 onClick={handleReset}
                 className="flex-1 py-2.5 rounded-lg border border-gray-300 text-gray-600 text-sm font-medium hover:bg-gray-50 transition-colors"
               >
                 リセット
               </button>
-              <button
+              <button type="button"
                 onClick={handleCalculate}
                 className="flex-1 py-2.5 rounded-lg bg-kon text-white text-sm font-bold hover:bg-ai transition-colors"
               >

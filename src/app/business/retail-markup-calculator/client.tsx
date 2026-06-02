@@ -112,7 +112,7 @@ export default function RetailMarkupClient() {
 
         <div className="flex gap-2 mb-4 overflow-x-auto pb-1">
           {TABS.map(t => (
-            <button key={t.key} onClick={() => setMode(t.key)}
+            <button type="button" key={t.key} onClick={() => setMode(t.key)}
               className={"px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-colors " + (mode === t.key ? "bg-kon text-white" : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700")}>
               {t.label}
             </button>
@@ -136,7 +136,7 @@ export default function RetailMarkupClient() {
                 <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">目標設定方法</label>
                 <div className="flex gap-2 mb-2">
                   {([["markup", "値入率で指定"], ["margin", "粗利率で指定"]] as [PriceMode, string][]).map(([k, l]) => (
-                    <button key={k} onClick={() => setPriceMode(k)}
+                    <button type="button" key={k} onClick={() => setPriceMode(k)}
                       className={"flex-1 py-2 rounded-lg text-xs border transition-colors " + (priceMode === k ? "bg-kon text-white border-kon" : "bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600")}>
                       {l}
                     </button>
@@ -260,7 +260,7 @@ export default function RetailMarkupClient() {
                       <td className="py-2 pr-1 text-right text-gray-600 dark:text-gray-300">{fmtR(row.margin)}%</td>
                       <td className="py-2">
                         {bulkRows.length > 1 && (
-                          <button onClick={() => removeRow(row.id)} className="text-danger hover:text-danger font-bold">×</button>
+                          <button type="button" onClick={() => removeRow(row.id)} className="text-danger hover:text-danger font-bold">×</button>
                         )}
                       </td>
                     </tr>
@@ -277,7 +277,7 @@ export default function RetailMarkupClient() {
                 </tfoot>
               </table>
             </div>
-            <button onClick={addRow}
+            <button type="button" onClick={addRow}
               className="mt-3 w-full py-2 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600 text-sm text-gray-500 dark:text-gray-400 hover:border-ai hover:text-ai transition-colors">
               ＋ 商品を追加
             </button>

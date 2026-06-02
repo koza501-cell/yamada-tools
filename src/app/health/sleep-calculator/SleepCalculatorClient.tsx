@@ -264,7 +264,7 @@ export default function SleepCalculatorPage() {
           <div>
             <p className="text-sm font-semibold text-gray-700 mb-2">計算モードを選択</p>
             <div className="flex rounded-xl overflow-hidden border border-gray-200 w-full">
-              <button
+              <button type="button"
                 onClick={() => { setMode("wake"); setResult(null); }}
                 className={`flex-1 py-3 text-sm font-medium transition-colors ${
                   mode === "wake"
@@ -274,7 +274,7 @@ export default function SleepCalculatorPage() {
               >
                 起きる時刻 → 就寝時刻を計算
               </button>
-              <button
+              <button type="button"
                 onClick={() => { setMode("sleep"); setResult(null); }}
                 className={`flex-1 py-3 text-sm font-medium transition-colors border-l border-gray-200 ${
                   mode === "sleep"
@@ -384,13 +384,13 @@ export default function SleepCalculatorPage() {
           {error && <p className="text-danger text-sm">{error}</p>}
 
           <div className="flex gap-3">
-            <button
+            <button type="button"
               onClick={handleCalculate}
               className="flex-1 bg-kon hover:bg-ai text-white font-bold py-3 rounded-xl text-base transition-colors"
             >
               計算する
             </button>
-            <button
+            <button type="button"
               onClick={handleReset}
               className="px-4 py-3 border border-gray-300 text-gray-600 rounded-xl text-sm hover:bg-gray-50 transition-colors"
             >

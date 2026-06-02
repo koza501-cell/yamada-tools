@@ -263,7 +263,7 @@ export default function ZenkakuHankakuClient({
           <div className="mb-6">
             <label className="block text-sm font-medium text-gray-700 mb-2">変換モード</label>
             <div className="flex gap-4">
-              <button
+              <button type="button"
                 onClick={() => setMode("to-hankaku")}
                 className={`flex-1 py-3 px-4 rounded-xl font-medium transition-all ${
                   mode === "to-hankaku"
@@ -273,7 +273,7 @@ export default function ZenkakuHankakuClient({
               >
                 全角 → 半角
               </button>
-              <button
+              <button type="button"
                 onClick={() => setMode("to-zenkaku")}
                 className={`flex-1 py-3 px-4 rounded-xl font-medium transition-all ${
                   mode === "to-zenkaku"
@@ -296,7 +296,7 @@ export default function ZenkakuHankakuClient({
                 { id: "katakana", label: "カタカナ" },
                 { id: "symbol", label: "記号" },
               ].map((item) => (
-                <button
+                <button type="button"
                   key={item.id}
                   onClick={() => handleTargetChange(item.id as TargetType)}
                   className={`py-2 px-4 rounded-lg text-sm font-medium transition-all ${
@@ -344,13 +344,13 @@ export default function ZenkakuHankakuClient({
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-3">
-            <button
+            <button type="button"
               onClick={handleConvert}
               className="flex-1 py-4 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors"
             >
               変換する
             </button>
-            <button
+            <button type="button"
               onClick={handleCopy}
               disabled={!outputText}
               className={`flex-1 py-4 rounded-xl font-bold transition-colors ${
@@ -361,7 +361,7 @@ export default function ZenkakuHankakuClient({
             >
               {copied ? "✓ コピーしました" : "コピー"}
             </button>
-            <button
+            <button type="button"
               onClick={handleClear}
               className="py-4 px-6 border-2 border-gray-300 text-gray-600 rounded-xl font-bold hover:bg-gray-50 transition-colors"
             >

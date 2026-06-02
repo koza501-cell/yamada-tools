@@ -141,7 +141,7 @@ export default function PasswordClient({
                 placeholder="パスワードがここに表示されます"
                 className="w-full p-4 pr-24 text-lg font-mono bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-kon focus:border-transparent"
               />
-              <button
+              <button type="button"
                 onClick={() => copyToClipboard(password)}
                 disabled={!password}
                 className={`absolute right-2 top-1/2 -translate-y-1/2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
@@ -305,7 +305,7 @@ export default function PasswordClient({
           </div>
 
           {/* Generate Button */}
-          <button
+          <button type="button"
             onClick={generatePassword}
             className="w-full py-4 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors text-lg"
           >
@@ -321,7 +321,7 @@ export default function PasswordClient({
               {passwordHistory.map((pw, index) => (
                 <div key={index} className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
                   <span className="flex-1 font-mono text-sm truncate">{pw}</span>
-                  <button
+                  <button type="button"
                     onClick={() => copyToClipboard(pw)}
                     className="px-3 py-1 bg-kon text-white rounded text-xs hover:bg-ai transition-colors"
                   >

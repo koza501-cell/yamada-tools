@@ -152,7 +152,7 @@ export default function HofukuClient() {
           </table>
         </div>
         <div className="px-4 pb-4">
-          <button
+          <button type="button"
             onClick={handleCopy}
             className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2.5 px-4 rounded-lg text-sm transition-colors"
           >

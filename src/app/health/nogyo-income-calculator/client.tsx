@@ -23,7 +23,7 @@ function calcIncomeTax(income: number): number {
     { limit: 9_000_000, rate: 0.23, deduct: 636_000 },
     { limit: 18_000_000, rate: 0.33, deduct: 1_536_000 },
     { limit: 40_000_000, rate: 0.40, deduct: 2_796_000 },
-    { limit: Infinity, rate: 0.45, deduct: 4_796_000 },
+    { limit: 999999999999, rate: 0.45, deduct: 4_796_000 },
   ];
   for (const b of brackets) {
     if (income <= b.limit) {
@@ -192,7 +192,7 @@ export default function NogyoClient() {
           <dt className="text-gray-500">課税所得（目安）</dt><dd className="text-gray-800">{fmt(taxableIncome)}</dd>
           <dt className="text-gray-500">所得税（目安）</dt><dd className="text-gray-800">{fmt(incomeTax)}</dd>
         </dl>
-        <button onClick={() => window.print()} className="mt-3 text-xs text-kon hover:underline print:hidden">
+        <button type="button" onClick={() => window.print()} className="mt-3 text-xs text-kon hover:underline print:hidden">
           🖨️ 印刷 / PDFとして保存
         </button>
         <div className="hidden print:block mt-6 pt-4 border-t border-gray-200 text-center">

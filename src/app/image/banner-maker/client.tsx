@@ -107,7 +107,7 @@ export default function BannerMakerClient({ faq, seoContent }: Props) {
               <label className="font-bold text-sm text-gray-700 mb-2 block">📐 サイズ</label>
               <div className="flex flex-wrap gap-2">
                 {PRESETS.map((p, i) => (
-                  <button key={i} onClick={() => setPreset(i)}
+                  <button type="button" key={i} onClick={() => setPreset(i)}
                     className={`px-3 py-2 rounded-lg text-xs font-bold border-2 transition ${preset === i ? "bg-kon text-white border-kon" : "bg-white text-gray-600 border-gray-200 hover:border-kon"}`}>
                     {p.label}<br /><span className="text-[10px] opacity-70">{p.w}×{p.h}</span>
                   </button>
@@ -118,7 +118,7 @@ export default function BannerMakerClient({ faq, seoContent }: Props) {
               <label className="font-bold text-sm text-gray-700 mb-2 block">🎨 背景</label>
               <div className="flex flex-wrap gap-2">
                 {BG_COLORS.map((bg, i) => (
-                  <button key={i} onClick={() => setBgIndex(i)}
+                  <button type="button" key={i} onClick={() => setBgIndex(i)}
                     className={`w-10 h-10 rounded-lg border-2 transition ${bgIndex === i ? "border-kon scale-110" : "border-gray-200"}`}
                     style={{ background: bg.value }} title={bg.label} />
                 ))}
@@ -149,7 +149,7 @@ export default function BannerMakerClient({ faq, seoContent }: Props) {
           <div className="bg-gray-100 rounded-xl p-3 mt-4 mb-4">
             <canvas ref={canvasRef} className="block mx-auto rounded-lg shadow-md max-w-full" style={{ maxHeight: "400px" }} />
           </div>
-          <button onClick={download} className="w-full py-4 bg-gradient-to-r from-kon to-ai text-white rounded-xl font-bold text-lg hover:shadow-lg transition-all">
+          <button type="button" onClick={download} className="w-full py-4 bg-gradient-to-r from-kon to-ai text-white rounded-xl font-bold text-lg hover:shadow-lg transition-all">
             💾 バナーをダウンロード
           </button>
           <ValueReminderInline />

@@ -297,10 +297,10 @@ export default function IncomeTaxCalculatorPage() {
             <div>
               <label className={labelClass}>配偶者あり？</label>
               <div className="flex gap-2">
-                <button className={toggleClass(!hasSpouse)} onClick={() => setHasSpouse(false)}>
+                <button type="button" className={toggleClass(!hasSpouse)} onClick={() => setHasSpouse(false)}>
                   なし
                 </button>
-                <button className={toggleClass(hasSpouse)} onClick={() => setHasSpouse(true)}>
+                <button type="button" className={toggleClass(hasSpouse)} onClick={() => setHasSpouse(true)}>
                   あり
                 </button>
               </div>
@@ -343,13 +343,13 @@ export default function IncomeTaxCalculatorPage() {
             <div>
               <label className={labelClass}>社会保険料</label>
               <div className="flex gap-2 mb-2">
-                <button
+                <button type="button"
                   className={toggleClass(socialInsAuto)}
                   onClick={() => setSocialInsAuto(true)}
                 >
                   自動計算（14.97%）
                 </button>
-                <button
+                <button type="button"
                   className={toggleClass(!socialInsAuto)}
                   onClick={() => setSocialInsAuto(false)}
                 >
@@ -404,10 +404,10 @@ export default function IncomeTaxCalculatorPage() {
             <div>
               <label className={labelClass}>障害者控除（27万円）</label>
               <div className="flex gap-2">
-                <button className={toggleClass(!disability)} onClick={() => setDisability(false)}>
+                <button type="button" className={toggleClass(!disability)} onClick={() => setDisability(false)}>
                   なし
                 </button>
-                <button className={toggleClass(disability)} onClick={() => setDisability(true)}>
+                <button type="button" className={toggleClass(disability)} onClick={() => setDisability(true)}>
                   あり
                 </button>
               </div>
@@ -417,13 +417,13 @@ export default function IncomeTaxCalculatorPage() {
             <div>
               <label className={labelClass}>寡婦・ひとり親控除（35万円）</label>
               <div className="flex gap-2">
-                <button
+                <button type="button"
                   className={toggleClass(!singleParent)}
                   onClick={() => setSingleParent(false)}
                 >
                   なし
                 </button>
-                <button
+                <button type="button"
                   className={toggleClass(singleParent)}
                   onClick={() => setSingleParent(true)}
                 >
@@ -434,13 +434,13 @@ export default function IncomeTaxCalculatorPage() {
 
             {/* Buttons */}
             <div className="flex gap-3 pt-2">
-              <button
+              <button type="button"
                 onClick={handleReset}
                 className="flex-1 py-2.5 rounded-lg border border-gray-300 text-gray-600 text-sm font-medium hover:bg-gray-50 transition-colors"
               >
                 リセット
               </button>
-              <button
+              <button type="button"
                 onClick={handleCalculate}
                 className="flex-1 py-2.5 rounded-lg bg-kon text-white text-sm font-bold hover:bg-ai transition-colors"
               >

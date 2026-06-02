@@ -158,7 +158,7 @@ export default function KeishinClient() {
       </div>
 
       <div className="mb-4 border border-gray-200 rounded-xl overflow-hidden print:hidden">
-        <button onClick={() => setShowTips(!showTips)}
+        <button type="button" onClick={() => setShowTips(!showTips)}
           className="w-full flex justify-between items-center px-4 py-3 bg-gray-50 text-sm font-medium text-gray-700">
           P点を上げるには
           <span>{showTips ? "▲" : "▼"}</span>
@@ -174,7 +174,7 @@ export default function KeishinClient() {
       </div>
 
       <div className="mb-8 border border-gray-200 rounded-xl overflow-hidden print:hidden">
-        <button onClick={() => setShowRateTable(!showRateTable)}
+        <button type="button" onClick={() => setShowRateTable(!showRateTable)}
           className="w-full flex justify-between items-center px-4 py-3 bg-gray-50 text-sm font-medium text-gray-700">
           P点ランク目安表
           <span>{showRateTable ? "▲" : "▼"}</span>

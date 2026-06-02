@@ -486,7 +486,7 @@ export default function JutakuLoanClient() {
               [3, "繰上返済"],
               [4, "控除計算"],
             ] as const).map(([m, label]) => (
-              <button key={m} onClick={() => setMode(m as 1|2|3|4)}
+              <button type="button" key={m} onClick={() => setMode(m as 1|2|3|4)}
                 className={"whitespace-nowrap px-5 py-4 text-sm font-medium border-b-2 transition-all " + (mode === m ? "border-kon text-kon" : "border-transparent text-gray-500 hover:text-gray-700")}>
                 {label}
               </button>
@@ -530,7 +530,7 @@ export default function JutakuLoanClient() {
                       <label className="text-sm text-gray-600 block mb-1">返済方法</label>
                       <div className="flex rounded-lg border border-gray-200 overflow-hidden">
                         {(["equal", "principal"] as const).map(t => (
-                          <button key={t} onClick={() => setRepayType(t)}
+                          <button type="button" key={t} onClick={() => setRepayType(t)}
                             className={"flex-1 py-1.5 text-xs transition-all " + (repayType === t ? "bg-kon text-white" : "bg-white text-gray-600 hover:bg-gray-50")}>
                             {t === "equal" ? "元利均等" : "元金均等"}
                           </button>
@@ -541,7 +541,7 @@ export default function JutakuLoanClient() {
                       <label className="text-sm text-gray-600 block mb-2">金利タイプ</label>
                       <div className="flex rounded-lg border border-gray-200 overflow-hidden">
                         {([["variable", "変動"], ["fixed", "固定"], ["compare", "比較"]] as const).map(([t, l]) => (
-                          <button key={t} onClick={() => setRateType(t)}
+                          <button type="button" key={t} onClick={() => setRateType(t)}
                             className={"flex-1 py-1.5 text-xs transition-all " + (rateType === t ? "bg-kon text-white" : "bg-white text-gray-600 hover:bg-gray-50")}>
                             {l}
                           </button>
@@ -577,7 +577,7 @@ export default function JutakuLoanClient() {
                     <label className="text-sm font-medium text-gray-700 block mb-2">変動金利シナリオ</label>
                     <div className="flex gap-2 flex-wrap mb-3">
                       {([["現状維持", "hold"], ["緩やか上昇", "slow"], ["急激上昇", "fast"], ["カスタム", "custom"]] as const).map(([label, val]) => (
-                        <button key={val} onClick={() => setRateScenario(val as any)}
+                        <button type="button" key={val} onClick={() => setRateScenario(val as any)}
                           className={"px-3 py-1.5 rounded-lg text-xs font-medium transition-all " + (rateScenario === val ? "bg-kon text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200")}>
                           {label}
                         </button>
@@ -612,7 +612,7 @@ export default function JutakuLoanClient() {
                   <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
                     <div className="flex items-center justify-between mb-2">
                       <label className="text-sm font-medium text-gray-700">5年ルール</label>
-                      <button onClick={() => setApply5nen(!apply5nen)}
+                      <button type="button" onClick={() => setApply5nen(!apply5nen)}
                         className={"relative inline-flex h-5 w-10 rounded-full transition-colors " + (apply5nen ? "bg-kon" : "bg-gray-300")}>
                         <span className={"inline-block h-4 w-4 rounded-full bg-white shadow transform transition-transform mt-0.5 " + (apply5nen ? "translate-x-5" : "translate-x-1")} />
                       </button>
@@ -625,7 +625,7 @@ export default function JutakuLoanClient() {
                 <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
                   <div className="flex items-center justify-between mb-2">
                     <label className="text-sm font-medium text-gray-700">ボーナス返済</label>
-                    <button onClick={() => setBonusOn(!bonusOn)}
+                    <button type="button" onClick={() => setBonusOn(!bonusOn)}
                       className={"relative inline-flex h-5 w-10 rounded-full transition-colors " + (bonusOn ? "bg-kon" : "bg-gray-300")}>
                       <span className={"inline-block h-4 w-4 rounded-full bg-white shadow transform transition-transform mt-0.5 " + (bonusOn ? "translate-x-5" : "translate-x-1")} />
                     </button>
@@ -645,7 +645,7 @@ export default function JutakuLoanClient() {
                 <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
                   <div className="flex items-center justify-between mb-2">
                     <label className="text-sm font-medium text-gray-700">諸費用を含める</label>
-                    <button onClick={() => setFeesOn(!feesOn)}
+                    <button type="button" onClick={() => setFeesOn(!feesOn)}
                       className={"relative inline-flex h-5 w-10 rounded-full transition-colors " + (feesOn ? "bg-kon" : "bg-gray-300")}>
                       <span className={"inline-block h-4 w-4 rounded-full bg-white shadow transform transition-transform mt-0.5 " + (feesOn ? "translate-x-5" : "translate-x-1")} />
                     </button>
@@ -739,7 +739,7 @@ export default function JutakuLoanClient() {
                 </ResponsiveContainer>
               </div>
               <div className="bg-white rounded-xl shadow-sm border border-gray-100">
-                <button onClick={() => setTableOpen1(!tableOpen1)}
+                <button type="button" onClick={() => setTableOpen1(!tableOpen1)}
                   className="w-full flex items-center justify-between p-4 text-sm font-medium text-gray-700">
                   <span>年別返済詳細</span>
                   <span>{tableOpen1 ? "▲" : "▼"}</span>
@@ -900,7 +900,7 @@ export default function JutakuLoanClient() {
                     <label className="text-sm text-gray-600 block mb-1">繰上げ式</label>
                     <div className="flex gap-2">
                       {([["shorten", "期間短縮型"], ["reduce", "返済額軽減型"]] as const).map(([val, label]) => (
-                        <button key={val} onClick={() => setM3type(val)}
+                        <button type="button" key={val} onClick={() => setM3type(val)}
                           className={"flex-1 py-2 rounded-lg text-xs font-medium transition-all " + (m3type === val ? "bg-kon text-white" : "bg-gray-100 text-gray-600")}>
                           {label}
                         </button>
@@ -925,11 +925,11 @@ export default function JutakuLoanClient() {
                         onChange={e => { const n = [...m3events]; n[i] = { ...n[i], amount: Number(e.target.value) }; setM3events(n); }}
                         className="w-full accent-blue-600" />
                     </div>
-                    <button onClick={() => setM3events(m3events.filter((_, j) => j !== i))}
+                    <button type="button" onClick={() => setM3events(m3events.filter((_, j) => j !== i))}
                       className="text-danger hover:text-danger text-lg leading-none">x</button>
                   </div>
                 ))}
-                <button onClick={() => setM3events([...m3events, { yearOffset: 5, amount: 100 * MAN }])}
+                <button type="button" onClick={() => setM3events([...m3events, { yearOffset: 5, amount: 100 * MAN }])}
                   className="mt-1 w-full py-2 border border-dashed border-kon text-kon text-sm rounded-lg hover:bg-gray-50">
                   + イベント追加
                 </button>
@@ -1090,11 +1090,11 @@ export default function JutakuLoanClient() {
         )}
         {/* Share buttons */}
         <div className="flex gap-3 justify-center py-4">
-          <button onClick={handleCopy}
+          <button type="button" onClick={handleCopy}
             className="flex items-center gap-2 px-5 py-2.5 bg-gray-700 text-white rounded-lg hover:bg-gray-800 text-sm">
             コピー
           </button>
-          <button onClick={handleSaveImage}
+          <button type="button" onClick={handleSaveImage}
             className="flex items-center gap-2 px-5 py-2.5 bg-kon text-white rounded-lg hover:bg-ai text-sm">
             画像保存
           </button>

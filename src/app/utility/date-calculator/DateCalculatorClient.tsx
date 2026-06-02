@@ -431,7 +431,7 @@ export default function DateCalculatorPage() {
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-3 mb-4">
           <div className="flex gap-2">
             {modes.map((m) => (
-              <button
+              <button type="button"
                 key={m.key}
                 onClick={() => switchMode(m.key)}
                 className={"flex-1 py-2.5 rounded-lg text-sm font-semibold transition-colors " + (mode === m.key ? "bg-kon text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200")}
@@ -520,7 +520,7 @@ export default function DateCalculatorPage() {
                   <label className="block text-sm font-semibold text-gray-700 mb-1">方向</label>
                   <div className="flex rounded-lg overflow-hidden border border-gray-300">
                     {(["後", "前"] as Direction[]).map((d) => (
-                      <button
+                      <button type="button"
                         key={d}
                         onClick={() => setAddDirection(d)}
                         className={"px-5 py-2.5 text-sm font-semibold " + (addDirection === d ? "bg-kon text-white" : "bg-white text-gray-600 hover:bg-gray-50")}
@@ -572,7 +572,7 @@ export default function DateCalculatorPage() {
                   <label className="block text-sm font-semibold text-gray-700 mb-1">方向</label>
                   <div className="flex rounded-lg overflow-hidden border border-gray-300">
                     {(["後", "前"] as Direction[]).map((d) => (
-                      <button
+                      <button type="button"
                         key={d}
                         onClick={() => setBizDirection(d)}
                         className={"px-5 py-2.5 text-sm font-semibold " + (bizDirection === d ? "bg-kon text-white" : "bg-white text-gray-600 hover:bg-gray-50")}
@@ -590,7 +590,7 @@ export default function DateCalculatorPage() {
             <p className="mt-3 text-sm text-danger bg-gray-50 rounded-lg px-3 py-2">{error}</p>
           )}
 
-          <button
+          <button type="button"
             onClick={handleCalc}
             className="mt-5 w-full bg-kon hover:bg-ai text-white font-bold py-3.5 rounded-xl text-base transition-colors"
           >
@@ -603,7 +603,7 @@ export default function DateCalculatorPage() {
           <p className="text-sm font-semibold text-gray-700 mb-3">よく使う計算例ショートカット</p>
           <div className="flex flex-wrap gap-2">
             {shortcuts.map((s) => (
-              <button
+              <button type="button"
                 key={s.key}
                 onClick={() => applyShortcut(s.key)}
                 className="px-3 py-1.5 text-sm bg-indigo-50 text-indigo-700 border border-indigo-200 rounded-full hover:bg-indigo-100 transition-colors"
@@ -723,7 +723,7 @@ export default function DateCalculatorPage() {
             )}
 
             <div className="text-center">
-              <button
+              <button type="button"
                 onClick={() => setResult(null)}
                 className="text-sm text-gray-500 hover:text-gray-700 underline"
               >

@@ -497,7 +497,7 @@ export default function DecorativeFramesClient({
                 <h3 className="font-bold text-sm text-gray-700 dark:text-gray-200 mb-2">🖼️ フレームスタイル</h3>
                 <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2">
                   {FRAMES.map((f) => (
-                    <button key={f.id} onClick={() => setFrameStyle(f.id)}
+                    <button type="button" key={f.id} onClick={() => setFrameStyle(f.id)}
                       className={`px-2 py-2 rounded-lg text-xs font-medium text-center transition-all border ${frameStyle === f.id ? "bg-kon text-white border-kon shadow-md scale-105" : "bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 border-gray-200 dark:border-gray-600 hover:border-kon"}`}>
                       <span className="block text-lg">{f.icon}</span>
                       <span className="block font-bold">{f.label}</span>
@@ -526,7 +526,7 @@ export default function DecorativeFramesClient({
                     className="w-8 h-8 rounded cursor-pointer border-0" />
                   <div className="flex gap-1">
                     {["#ffffff", "#000000", "#f4e8c1", "#1a1a2e", "#e74c3c", "#2ecc71", "#3498db", "#f39c12"].map((c) => (
-                      <button key={c} onClick={() => setFrameColor(c)}
+                      <button type="button" key={c} onClick={() => setFrameColor(c)}
                         className={`w-6 h-6 rounded-full border-2 transition-all ${frameColor === c ? "border-kon scale-110" : "border-gray-300"}`}
                         style={{ backgroundColor: c }} />
                     ))}
@@ -536,11 +536,11 @@ export default function DecorativeFramesClient({
 
               {/* Download */}
               <div className="flex gap-2">
-                <button onClick={download}
+                <button type="button" onClick={download}
                   className="flex-1 py-3 rounded-xl font-bold bg-gradient-to-r from-kon to-ai text-white hover:shadow-lg transition-all">
                   💾 ダウンロード
                 </button>
-                <button onClick={clearAll} className="px-6 py-3 bg-gray-100 dark:bg-gray-700 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                <button type="button" onClick={clearAll} className="px-6 py-3 bg-gray-100 dark:bg-gray-700 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
                   クリア
                 </button>
               </div>

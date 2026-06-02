@@ -216,7 +216,7 @@ export default function DateConverterClient({
 
           {/* Mode Toggle */}
           <div className="flex gap-2 mb-6">
-            <button
+            <button type="button"
               onClick={() => { setMode("wareki-to-seireki"); setResult(""); setError(""); setMascotState("idle"); }}
               className={`flex-1 py-3 rounded-xl font-bold transition-all ${
                 mode === "wareki-to-seireki"
@@ -226,7 +226,7 @@ export default function DateConverterClient({
             >
               和暦 → 西暦
             </button>
-            <button
+            <button type="button"
               onClick={() => { setMode("seireki-to-wareki"); setResult(""); setError(""); setMascotState("idle"); }}
               className={`flex-1 py-3 rounded-xl font-bold transition-all ${
                 mode === "seireki-to-wareki"
@@ -243,7 +243,7 @@ export default function DateConverterClient({
             <label className="block text-xs text-gray-500 mb-2">クイック入力</label>
             <div className="flex flex-wrap gap-2">
               {quickDates.map((item, index) => (
-                <button
+                <button type="button"
                   key={index}
                   onClick={item.action}
                   className="px-3 py-1 bg-sakura/30 text-kon rounded-full text-sm hover:bg-sakura/50 transition-colors"
@@ -352,7 +352,7 @@ export default function DateConverterClient({
           )}
 
           {/* Convert Button */}
-          <button
+          <button type="button"
             onClick={convert}
             className="w-full py-4 bg-gradient-to-r from-kon to-ai text-white rounded-xl font-bold text-lg hover:shadow-lg hover:scale-[1.02] transition-all"
           >

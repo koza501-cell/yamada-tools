@@ -116,7 +116,7 @@ export default function TextOverlayClient({
               onClick={() => document.getElementById("img-upload")?.click()}>
               <div className="text-5xl mb-3">🖼️</div>
               <p className="text-gray-600 mb-2 text-lg font-bold">画像をドラッグ＆ドロップ</p>
-              <button className="px-8 py-3 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors text-lg">📁 画像を選択</button>
+              <button type="button" className="px-8 py-3 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors text-lg">📁 画像を選択</button>
               <input id="img-upload" type="file" accept="image/*" className="hidden" onChange={(e) => { const f = e.target.files?.[0]; if (f) loadImage(f); }} />
               <p className="text-sm text-gray-400 mt-4">JPG, PNG, WebP, BMP, GIF対応</p>
             </div>
@@ -124,7 +124,7 @@ export default function TextOverlayClient({
             <div>
               <div className="flex items-center justify-between bg-gray-50 rounded-xl p-3 mb-4">
                 <p className="font-bold text-sm truncate">{fileName}</p>
-                <button onClick={reset} className="text-sm text-danger font-bold py-2 px-3 rounded hover:bg-gray-50">✕ 閉じる</button>
+                <button type="button" onClick={reset} className="text-sm text-danger font-bold py-2 px-3 rounded hover:bg-gray-50">✕ 閉じる</button>
               </div>
 
               <div className="bg-gray-50 rounded-xl p-4 mb-4 space-y-3">
@@ -137,12 +137,12 @@ export default function TextOverlayClient({
                   <select value={fontFamily} onChange={(e) => setFontFamily(e.target.value)} className="border rounded-lg px-2 py-1.5 text-sm">
                     {FONTS.map(f => <option key={f.value} value={f.value}>{f.label}</option>)}
                   </select>
-                  <button onClick={() => setBold(!bold)} className={`px-3 py-1.5 rounded-lg text-sm font-bold border-2 ${bold ? "bg-kon text-white border-kon" : "bg-white border-gray-300"}`}>B</button>
-                  <button onClick={() => setShadow(!shadow)} className={`px-3 py-1.5 rounded-lg text-sm font-bold border-2 ${shadow ? "bg-kon text-white border-kon" : "bg-white border-gray-300"}`}>影</button>
+                  <button type="button" onClick={() => setBold(!bold)} className={`px-3 py-1.5 rounded-lg text-sm font-bold border-2 ${bold ? "bg-kon text-white border-kon" : "bg-white border-gray-300"}`}>B</button>
+                  <button type="button" onClick={() => setShadow(!shadow)} className={`px-3 py-1.5 rounded-lg text-sm font-bold border-2 ${shadow ? "bg-kon text-white border-kon" : "bg-white border-gray-300"}`}>影</button>
                 </div>
                 <div className="flex flex-wrap gap-1">
                   {COLORS.map(c => (
-                    <button key={c} onClick={() => setColor(c)}
+                    <button type="button" key={c} onClick={() => setColor(c)}
                       className={`w-7 h-7 rounded-full border-2 ${color === c ? "border-kon scale-110" : "border-gray-300"}`}
                       style={{ backgroundColor: c }} />
                   ))}
@@ -162,7 +162,7 @@ export default function TextOverlayClient({
               <div className="bg-gray-100 rounded-xl p-3 mb-4">
                 <canvas ref={canvasRef} className="block mx-auto rounded-lg shadow-md max-w-full" style={{ maxHeight: "500px" }} />
               </div>
-              <button onClick={download} className="w-full py-4 bg-gradient-to-r from-kon to-ai text-white rounded-xl font-bold text-lg hover:shadow-lg transition-all">
+              <button type="button" onClick={download} className="w-full py-4 bg-gradient-to-r from-kon to-ai text-white rounded-xl font-bold text-lg hover:shadow-lg transition-all">
                 💾 ダウンロード
               </button>
             </div>

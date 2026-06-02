@@ -131,16 +131,16 @@ export default function BiyoshitsuClient() {
 
       <div className="flex items-center gap-2 mb-4">
         {staffList.map((staff, i) => (
-          <button key={i} onClick={() => setActiveTab(i)}
+          <button type="button" key={i} onClick={() => setActiveTab(i)}
             className={"px-3 py-1.5 rounded-lg text-sm font-medium transition-colors " + (activeTab === i ? "bg-kon text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200")}>
             {staff.name}
           </button>
         ))}
         {staffList.length < 5 && (
-          <button onClick={addStaff} className="px-3 py-1.5 rounded-lg text-sm bg-gray-100 text-gray-500 hover:bg-gray-200">＋追加</button>
+          <button type="button" onClick={addStaff} className="px-3 py-1.5 rounded-lg text-sm bg-gray-100 text-gray-500 hover:bg-gray-200">＋追加</button>
         )}
         {staffList.length > 1 && (
-          <button onClick={() => removeStaff(activeTab)} className="text-xs text-danger hover:text-danger ml-auto">削除</button>
+          <button type="button" onClick={() => removeStaff(activeTab)} className="text-xs text-danger hover:text-danger ml-auto">削除</button>
         )}
       </div>
 

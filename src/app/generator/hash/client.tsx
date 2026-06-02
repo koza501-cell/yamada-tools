@@ -294,7 +294,7 @@ export default function HashClient({
 
           {/* Input Type Toggle */}
           <div className="flex gap-2 mb-6">
-            <button
+            <button type="button"
               onClick={() => { setInputType("text"); setResults([]); }}
               className={`flex-1 py-3 rounded-xl font-bold transition-all ${
                 inputType === "text"
@@ -304,7 +304,7 @@ export default function HashClient({
             >
               テキスト入力
             </button>
-            <button
+            <button type="button"
               onClick={() => { setInputType("file"); setResults([]); }}
               className={`flex-1 py-3 rounded-xl font-bold transition-all ${
                 inputType === "file"
@@ -356,7 +356,7 @@ export default function HashClient({
 
           {/* Generate Button */}
           <div className="flex gap-2">
-            <button
+            <button type="button"
               onClick={generateHashes}
               disabled={isProcessing}
               className={`flex-1 py-4 rounded-xl font-bold text-lg transition-all ${
@@ -367,7 +367,7 @@ export default function HashClient({
             >
               {isProcessing ? "計算中..." : "ハッシュを生成"}
             </button>
-            <button
+            <button type="button"
               onClick={clearAll}
               className="px-6 py-4 bg-gray-100 text-gray-600 rounded-xl font-bold hover:bg-gray-200 transition-colors"
             >
@@ -386,7 +386,7 @@ export default function HashClient({
                 >
                   <div className="flex items-center justify-between mb-2">
                     <span className="font-bold text-sm text-kon">{result.algorithm}</span>
-                    <button
+                    <button type="button"
                       onClick={() => copyToClipboard(result.hash)}
                       className="text-xs text-kon hover:text-ai px-2 py-1 bg-white rounded border border-gray-200"
                     >

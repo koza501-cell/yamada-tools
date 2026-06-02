@@ -36,7 +36,7 @@ const HYOJUN = [
   {min:455000,max:485000,amount:470000,grade:29},{min:485000,max:515000,amount:500000,grade:30},
   {min:515000,max:545000,amount:530000,grade:31},{min:545000,max:575000,amount:560000,grade:32},
   {min:575000,max:605000,amount:590000,grade:33},{min:605000,max:635000,amount:620000,grade:34},
-  {min:635000,max:Infinity,amount:650000,grade:35},
+  {min:635000,max:999999999999,amount:650000,grade:35},
 ];
 
 function getHyojun(salary: number) {
@@ -53,7 +53,7 @@ function calcIncomeTax(annualTaxable: number, dependents: number): number {
     {limit:9000000,rate:0.23,deduct:636000},
     {limit:18000000,rate:0.33,deduct:1536000},
     {limit:40000000,rate:0.40,deduct:2796000},
-    {limit:Infinity,rate:0.45,deduct:4796000},
+    {limit:999999999999,rate:0.45,deduct:4796000},
   ];
   const b = brackets.find(br => taxable <= br.limit) ?? brackets[brackets.length - 1];
   const annual = Math.max(0, Math.floor(taxable * b.rate - b.deduct));
@@ -297,7 +297,7 @@ export default function KyuyoClient() {
               </div>
             </div>
           </div>
-          <button onClick={loadPrev} className="w-full border border-gray-300 rounded-lg py-2 text-sm text-gray-600 hover:bg-gray-50 transition print:hidden">前月のデータを読み込む</button>
+          <button type="button" onClick={loadPrev} className="w-full border border-gray-300 rounded-lg py-2 text-sm text-gray-600 hover:bg-gray-50 transition print:hidden">前月のデータを読み込む</button>
         </div>
 
         <div>
@@ -348,7 +348,7 @@ export default function KyuyoClient() {
               </div>
             </div>
           </div>
-          <button onClick={() => window.print()} className="w-full mt-4 bg-kon hover:bg-ai text-white font-medium py-3 rounded-xl text-sm transition print:hidden">
+          <button type="button" onClick={() => window.print()} className="w-full mt-4 bg-kon hover:bg-ai text-white font-medium py-3 rounded-xl text-sm transition print:hidden">
             PDF出力・印刷
           </button>
           <p className="text-xs text-center text-gray-400 mt-2 print:hidden">ブラウザの印刷で「PDFに保存」を選択してください</p>

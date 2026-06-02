@@ -564,11 +564,11 @@ export default function PdfStampClient({
                 <h3 className="font-bold text-sm text-gray-700 dark:text-gray-200 mb-3">🔏 Step 2: 印鑑を用意</h3>
 
                 <div className="flex gap-2 mb-3">
-                  <button onClick={() => setStampMode("generate")}
+                  <button type="button" onClick={() => setStampMode("generate")}
                     className={`px-4 py-2 rounded-lg text-xs font-medium transition-colors ${stampMode === "generate" ? "bg-kon text-white" : "bg-white dark:bg-gray-600 text-gray-700 dark:text-gray-200"}`}>
                     ✏️ かんたん印影メーカー
                   </button>
-                  <button onClick={() => setStampMode("upload")}
+                  <button type="button" onClick={() => setStampMode("upload")}
                     className={`px-4 py-2 rounded-lg text-xs font-medium transition-colors ${stampMode === "upload" ? "bg-kon text-white" : "bg-white dark:bg-gray-600 text-gray-700 dark:text-gray-200"}`}>
                     📁 画像アップロード
                   </button>
@@ -591,7 +591,7 @@ export default function PdfStampClient({
                             { key: "square" as HankoShape, label: "角印" },
                             { key: "date" as HankoShape, label: "日付印" },
                           ]).map((s) => (
-                            <button key={s.key} onClick={() => setHankoShape(s.key)}
+                            <button type="button" key={s.key} onClick={() => setHankoShape(s.key)}
                               className={`px-2 py-2 rounded text-xs font-medium ${hankoShape === s.key ? "bg-kon text-white" : "bg-white dark:bg-gray-500 text-gray-700 dark:text-gray-200"}`}>
                               {s.label}
                             </button>
@@ -613,13 +613,13 @@ export default function PdfStampClient({
                       <input type="color" value={hankoColor} onChange={(e) => setHankoColor(e.target.value)}
                         className="w-8 h-8 rounded cursor-pointer border-0" />
                       {["#e03030", "#cc0000", "#b22222", "#333333"].map((c) => (
-                        <button key={c} onClick={() => setHankoColor(c)}
+                        <button type="button" key={c} onClick={() => setHankoColor(c)}
                           className={`w-6 h-6 rounded-full border-2 ${hankoColor === c ? "border-kon scale-110" : "border-gray-300"}`}
                           style={{ backgroundColor: c }} />
                       ))}
                     </div>
 
-                    <button onClick={generateAndSetHanko} disabled={!hankoName.trim()}
+                    <button type="button" onClick={generateAndSetHanko} disabled={!hankoName.trim()}
                       className={`w-full py-2 rounded-lg text-sm font-bold transition-colors ${hankoName.trim() ? "bg-green-500 text-white hover:bg-green-600" : "bg-gray-300 text-gray-500 cursor-not-allowed"}`}>
                       🔏 印影を生成
                     </button>
@@ -650,10 +650,10 @@ export default function PdfStampClient({
                 {/* Page navigation */}
                 {totalPages > 1 && (
                   <div className="flex items-center justify-center gap-3 mb-2">
-                    <button onClick={() => setCurrentPage(Math.max(1, currentPage - 1))} disabled={currentPage <= 1}
+                    <button type="button" onClick={() => setCurrentPage(Math.max(1, currentPage - 1))} disabled={currentPage <= 1}
                       className="px-3 py-1 bg-gray-200 dark:bg-gray-600 rounded-lg text-sm disabled:opacity-30">◀ 前</button>
                     <span className="text-sm text-gray-600 dark:text-gray-300">{currentPage} / {totalPages}ページ</span>
-                    <button onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))} disabled={currentPage >= totalPages}
+                    <button type="button" onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))} disabled={currentPage >= totalPages}
                       className="px-3 py-1 bg-gray-200 dark:bg-gray-600 rounded-lg text-sm disabled:opacity-30">次 ▶</button>
                   </div>
                 )}
@@ -691,10 +691,10 @@ export default function PdfStampClient({
                   </p>
                   {placements.length > 0 && (
                     <div className="flex gap-2">
-                      <button onClick={removeLastStamp} className="px-4 py-2 bg-gray-50 text-kon border border-gray-200 rounded-lg text-xs font-bold hover:bg-gray-50 transition-colors">
+                      <button type="button" onClick={removeLastStamp} className="px-4 py-2 bg-gray-50 text-kon border border-gray-200 rounded-lg text-xs font-bold hover:bg-gray-50 transition-colors">
                         ↩ 元に戻す（Undo）
                       </button>
-                      <button onClick={resetAllStamps} className="px-4 py-2 bg-gray-50 text-danger border border-gray-200 rounded-lg text-xs font-bold hover:bg-gray-50 transition-colors">
+                      <button type="button" onClick={resetAllStamps} className="px-4 py-2 bg-gray-50 text-danger border border-gray-200 rounded-lg text-xs font-bold hover:bg-gray-50 transition-colors">
                         🗑️ 全押印リセット
                       </button>
                     </div>
@@ -704,11 +704,11 @@ export default function PdfStampClient({
 
               {/* Download */}
               <div className="flex gap-2">
-                <button onClick={downloadStampedPdf} disabled={processing || placements.length === 0}
+                <button type="button" onClick={downloadStampedPdf} disabled={processing || placements.length === 0}
                   className={`flex-1 py-3 rounded-xl font-bold transition-all ${processing || placements.length === 0 ? "bg-gray-300 text-gray-500 cursor-not-allowed" : "bg-gradient-to-r from-kon to-ai text-white hover:shadow-lg"}`}>
                   {processing ? "⏳ PDF作成中..." : `💾 押印済みPDFをダウンロード（${placements.length}箇所）`}
                 </button>
-                <button onClick={clearAll} className="px-6 py-3 bg-gray-100 dark:bg-gray-700 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                <button type="button" onClick={clearAll} className="px-6 py-3 bg-gray-100 dark:bg-gray-700 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
                   クリア
                 </button>
               </div>

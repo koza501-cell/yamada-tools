@@ -95,7 +95,7 @@ function calcIncomeTax(taxable: number): number {
     [900, 0.23, 63.60],
     [1800, 0.33, 153.60],
     [4000, 0.40, 279.60],
-    [Infinity, 0.45, 479.60],
+    [999999999999, 0.45, 479.60],
   ];
   for (const [limit, rate, deduct] of brackets) {
     if (taxable <= limit) {
@@ -608,7 +608,7 @@ export default function DirectorSalaryOptimizerPage() {
         </div>
 
         {/* Calculate Button */}
-        <button
+        <button type="button"
           onClick={handleCalculate}
           className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 rounded-xl text-lg transition-colors shadow-md"
         >

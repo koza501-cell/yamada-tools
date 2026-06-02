@@ -113,7 +113,7 @@ export default function PasswordGenClient({
           <div className="bg-gray-900 rounded-xl p-4 mb-4">
             <div className="flex items-center gap-2">
               <code className="flex-1 text-green-400 font-mono text-lg break-all">{password || "---"}</code>
-              <button onClick={copyPassword} className="px-3 py-1 bg-gray-700 text-white rounded hover:bg-gray-600 text-sm">
+              <button type="button" onClick={copyPassword} className="px-3 py-1 bg-gray-700 text-white rounded hover:bg-gray-600 text-sm">
                 コピー
               </button>
             </div>
@@ -172,7 +172,7 @@ export default function PasswordGenClient({
             </label>
           </div>
 
-          <button
+          <button type="button"
             onClick={generatePassword}
             className="w-full mt-6 py-3 bg-gradient-to-r from-kon to-ai text-white rounded-xl font-bold hover:shadow-lg"
           >

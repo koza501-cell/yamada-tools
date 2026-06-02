@@ -154,7 +154,7 @@ export default function BlogManagementPage() {
 
         <div className="bg-white rounded-lg shadow mb-6">
           <div className="flex border-b">
-            <button
+            <button type="button"
               onClick={() => setActiveTab('manage')}
               className={`flex-1 px-6 py-4 text-center font-medium transition-colors ${
                 activeTab === 'manage' ? 'text-kon border-b-2 border-kon' : 'text-gray-600 hover:text-gray-900'
@@ -162,7 +162,7 @@ export default function BlogManagementPage() {
             >
               📋 管理
             </button>
-            <button
+            <button type="button"
               onClick={() => setActiveTab('create')}
               className={`flex-1 px-6 py-4 text-center font-medium transition-colors ${
                 activeTab === 'create' ? 'text-kon border-b-2 border-kon' : 'text-gray-600 hover:text-gray-900'
@@ -176,13 +176,13 @@ export default function BlogManagementPage() {
         {activeTab === 'manage' && (
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex gap-2 mb-6 flex-wrap">
-              <button onClick={() => filterByCategory('all')} className={`px-4 py-2 rounded-lg font-medium ${selectedCategory === 'all' ? 'bg-kon text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>
+              <button type="button" onClick={() => filterByCategory('all')} className={`px-4 py-2 rounded-lg font-medium ${selectedCategory === 'all' ? 'bg-kon text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>
                 すべて ({getBlogCount('all')})
               </button>
-              <button onClick={() => filterByCategory('PDF')} className={`px-4 py-2 rounded-lg font-medium ${selectedCategory === 'PDF' ? 'bg-kon text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>
+              <button type="button" onClick={() => filterByCategory('PDF')} className={`px-4 py-2 rounded-lg font-medium ${selectedCategory === 'PDF' ? 'bg-kon text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>
                 PDF ({getBlogCount('PDF')})
               </button>
-              <button onClick={() => filterByCategory('業務効率化')} className={`px-4 py-2 rounded-lg font-medium ${selectedCategory === '業務効率化' ? 'bg-kon text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>
+              <button type="button" onClick={() => filterByCategory('業務効率化')} className={`px-4 py-2 rounded-lg font-medium ${selectedCategory === '業務効率化' ? 'bg-kon text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>
                 業務効率化 ({getBlogCount('業務効率化')})
               </button>
             </div>
@@ -223,7 +223,7 @@ export default function BlogManagementPage() {
                         <td className="px-6 py-4">
                           <div className="flex gap-2">
                             <Link href={`/blog/${blog.slug}`} className="text-kon hover:text-ai text-sm" target="_blank">表示</Link>
-                            <button onClick={() => handleDelete(blog.slug)} className="text-danger hover:text-danger text-sm">削除</button>
+                            <button type="button" onClick={() => handleDelete(blog.slug)} className="text-danger hover:text-danger text-sm">削除</button>
                           </div>
                         </td>
                       </tr>
@@ -259,7 +259,7 @@ export default function BlogManagementPage() {
                   </select>
                 </div>
 
-                <button
+                <button type="button"
                   onClick={handleGenerateBlog}
                   disabled={isGenerating || !topic.trim()}
                   className="w-full bg-kon text-white py-3 rounded-lg font-medium hover:bg-ai disabled:bg-gray-300"
@@ -286,10 +286,10 @@ export default function BlogManagementPage() {
                 />
 
                 <div className="flex gap-4">
-                  <button onClick={() => setStep('input')} className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-lg font-medium hover:bg-gray-300">
+                  <button type="button" onClick={() => setStep('input')} className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-lg font-medium hover:bg-gray-300">
                     戻る
                   </button>
-                  <button onClick={handlePublish} className="flex-1 bg-green-600 text-white py-3 rounded-lg font-medium hover:bg-green-700">
+                  <button type="button" onClick={handlePublish} className="flex-1 bg-green-600 text-white py-3 rounded-lg font-medium hover:bg-green-700">
                     公開する
                   </button>
                 </div>

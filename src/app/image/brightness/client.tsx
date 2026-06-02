@@ -119,7 +119,7 @@ export default function BrightnessClient({
               <div className="text-5xl mb-3">🖼️</div>
               <p className="text-gray-600 mb-2 text-lg font-bold">画像をドラッグ＆ドロップ</p>
               <p className="text-gray-400 mb-4">または下のボタンで選択</p>
-              <button className="px-8 py-3 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors text-lg">
+              <button type="button" className="px-8 py-3 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors text-lg">
                 📁 画像を選択する
               </button>
               <input id="img-upload" type="file" accept="image/*" className="hidden" onChange={(e) => { const f = e.target.files?.[0]; if (f) loadImage(f); }} />
@@ -132,7 +132,7 @@ export default function BrightnessClient({
                   <span className="text-2xl">🖼️</span>
                   <p className="font-bold text-sm truncate max-w-[200px] sm:max-w-none">{fileName}</p>
                 </div>
-                <button onClick={reset} className="text-sm text-danger hover:text-danger font-bold py-2 px-3 rounded hover:bg-gray-50">✕ 閉じる</button>
+                <button type="button" onClick={reset} className="text-sm text-danger hover:text-danger font-bold py-2 px-3 rounded hover:bg-gray-50">✕ 閉じる</button>
               </div>
 
               <div className="bg-gray-50 dark:bg-kon/20 rounded-xl p-4 mb-4">
@@ -160,7 +160,7 @@ export default function BrightnessClient({
                 <canvas ref={canvasRef} className="block mx-auto rounded-lg shadow-md max-w-full" style={{ maxHeight: "500px", objectFit: "contain" }} />
               </div>
 
-              <button onClick={download} className="w-full py-4 bg-gradient-to-r from-kon to-ai text-white rounded-xl font-bold text-lg hover:shadow-lg transition-all">
+              <button type="button" onClick={download} className="w-full py-4 bg-gradient-to-r from-kon to-ai text-white rounded-xl font-bold text-lg hover:shadow-lg transition-all">
                 💾 加工した画像をダウンロード
               </button>
             </div>

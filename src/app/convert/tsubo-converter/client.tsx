@@ -232,7 +232,7 @@ export default function TsuboConverterClient({ faq }: Props) {
               <h2 className="text-sm font-medium text-gray-500 dark:text-gray-400">
                 変換結果 / Conversion Results
               </h2>
-              <button
+              <button type="button"
                 onClick={() => setShowAllUnits(!showAllUnits)}
                 className="text-xs text-green-600 hover:text-green-700 dark:text-green-400"
               >
@@ -382,7 +382,7 @@ export default function TsuboConverterClient({ faq }: Props) {
                 key={index}
                 className="border border-gray-200 dark:border-gray-600 rounded-xl overflow-hidden"
               >
-                <button
+                <button type="button"
                   onClick={() => setOpenFaq(openFaq === index ? null : index)}
                   className="w-full text-left px-4 py-3 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
                 >

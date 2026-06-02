@@ -5,7 +5,7 @@ import Link from "next/link";
 import { FAQS } from "./faqs";
 
 const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://api-staging.yamada-tools.jp";
+  process.env.NEXT_PUBLIC_API_URL || "https://api.yamada-tools.jp";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -56,7 +56,7 @@ function CopyButton({ text }: { text: string }) {
     } catch {}
   };
   return (
-    <button
+    <button type="button"
       onClick={copy}
       className="inline-flex items-center gap-1 px-2.5 py-1 text-xs bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 rounded transition-colors"
     >
@@ -263,7 +263,7 @@ export default function PostalCodeClient() {
 
         {/* Tab switcher */}
         <div className="flex gap-1 p-1 bg-gray-200 dark:bg-gray-700 rounded-lg mb-6 w-fit">
-          <button
+          <button type="button"
             onClick={() => setActiveTab("lookup")}
             className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
               activeTab === "lookup"
@@ -273,7 +273,7 @@ export default function PostalCodeClient() {
           >
             〒 Postal code → Address
           </button>
-          <button
+          <button type="button"
             onClick={() => setActiveTab("reverse")}
             className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
               activeTab === "reverse"
@@ -309,7 +309,7 @@ export default function PostalCodeClient() {
             <div className="flex flex-wrap gap-2 mb-6">
               <span className="text-xs text-gray-500 dark:text-gray-400 self-center">Try:</span>
               {SAMPLE_CODES.map(({ code, label }) => (
-                <button
+                <button type="button"
                   key={code}
                   onClick={() => { setPostalInput(code); runLookup(code); }}
                   className="text-xs px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-full hover:border-kon dark:hover:border-sakura hover:text-kon dark:hover:text-sakura transition-colors"

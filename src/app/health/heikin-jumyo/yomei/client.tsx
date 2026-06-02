@@ -89,7 +89,7 @@ export default function YomeiClient() {
               </select>
             </div>
           </div>
-          <button onClick={calculate} disabled={loading}
+          <button type="button" onClick={calculate} disabled={loading}
             className="w-full bg-kon hover:bg-ai disabled:opacity-50 text-white font-bold py-3 rounded-xl transition-colors">
             {loading ? "計算中..." : "余命を計算する"}
           </button>

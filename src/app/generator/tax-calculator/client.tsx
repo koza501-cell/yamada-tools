@@ -43,7 +43,7 @@ export default function TaxCalculatorClient({ faq }: { faq?: FAQ[] }) {
 
           {/* Mode Selection */}
           <div className="flex gap-2 mb-6">
-            <button
+            <button type="button"
               onClick={() => setMode("exclude")}
               className={`flex-1 py-3 rounded-lg font-medium transition-colors ${
                 mode === "exclude"
@@ -53,7 +53,7 @@ export default function TaxCalculatorClient({ faq }: { faq?: FAQ[] }) {
             >
               税抜→税込
             </button>
-            <button
+            <button type="button"
               onClick={() => setMode("include")}
               className={`flex-1 py-3 rounded-lg font-medium transition-colors ${
                 mode === "include"
@@ -67,7 +67,7 @@ export default function TaxCalculatorClient({ faq }: { faq?: FAQ[] }) {
 
           {/* Tax Rate Selection */}
           <div className="flex gap-2 mb-6">
-            <button
+            <button type="button"
               onClick={() => setTaxRate(10)}
               className={`flex-1 py-3 rounded-lg font-medium transition-colors ${
                 taxRate === 10
@@ -77,7 +77,7 @@ export default function TaxCalculatorClient({ faq }: { faq?: FAQ[] }) {
             >
               10%（標準税率）
             </button>
-            <button
+            <button type="button"
               onClick={() => setTaxRate(8)}
               className={`flex-1 py-3 rounded-lg font-medium transition-colors ${
                 taxRate === 8

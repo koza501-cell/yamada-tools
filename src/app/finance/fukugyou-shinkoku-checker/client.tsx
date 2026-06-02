@@ -138,7 +138,7 @@ export default function FukugyouShinkokuClient() {
                   <div className="flex justify-between items-center">
                     <span className="text-sm font-medium text-gray-600 dark:text-gray-400">副業 {idx + 1}</span>
                     {jobs.length > 1 && (
-                      <button onClick={() => removeJob(job.id)} className="text-danger hover:text-danger text-xl leading-none font-bold" aria-label="削除">×</button>
+                      <button type="button" onClick={() => removeJob(job.id)} className="text-danger hover:text-danger text-xl leading-none font-bold" aria-label="削除">×</button>
                     )}
                   </div>
                   <input type="text" placeholder="副業名（任意）" value={job.name}
@@ -168,7 +168,7 @@ export default function FukugyouShinkokuClient() {
                         className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-2 py-2 text-sm bg-white dark:bg-gray-700 dark:text-white" />
                     </div>
                   </div>
-                  <button onClick={() => setOpenExpense(openExpense === job.id ? null : job.id)}
+                  <button type="button" onClick={() => setOpenExpense(openExpense === job.id ? null : job.id)}
                     className="text-xs text-kon hover:text-ai flex items-center gap-1">
                     {openExpense === job.id ? "▲" : "▼"} {JOB_LABELS[job.type]}の経費例
                   </button>
@@ -185,7 +185,7 @@ export default function FukugyouShinkokuClient() {
                 </div>
               ))}
               {jobs.length < 5 && (
-                <button onClick={addJob} className="w-full py-2 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600 text-sm text-gray-500 dark:text-gray-400 hover:border-ai hover:text-ai transition-colors">
+                <button type="button" onClick={addJob} className="w-full py-2 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600 text-sm text-gray-500 dark:text-gray-400 hover:border-ai hover:text-ai transition-colors">
                   ＋ 副業を追加（{5 - jobs.length}件追加可）
                 </button>
               )}
@@ -255,7 +255,7 @@ export default function FukugyouShinkokuClient() {
             )}
 
             <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm">
-              <button onClick={() => setShowTips(!showTips)}
+              <button type="button" onClick={() => setShowTips(!showTips)}
                 className="w-full flex justify-between items-center text-sm font-semibold text-gray-700 dark:text-gray-300">
                 <span>副業を会社に知られたくない場合</span>
                 <span>{showTips ? "▲" : "▼"}</span>

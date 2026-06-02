@@ -69,6 +69,7 @@ export function AdUnit({ slot, format = 'auto', className = '' }: AdUnitProps) {
         maxWidth: '728px',
         margin: '1.5rem auto',
         contain: 'layout style size',
+        minHeight: '280px',
       }}
     >
       <ins

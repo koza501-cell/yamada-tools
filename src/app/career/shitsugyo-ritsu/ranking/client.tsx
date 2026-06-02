@@ -64,7 +64,7 @@ export default function ShitsugyoRitsuRankingClient() {
               { key: "asc", label: "失業率（低い順）" },
               { key: "desc", label: "失業率（高い順）" },
             ].map((opt) => (
-              <button key={opt.key} onClick={() => setSort(opt.key)}
+              <button type="button" key={opt.key} onClick={() => setSort(opt.key)}
                 className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                   sort === opt.key
                     ? "bg-indigo-600 text-white"

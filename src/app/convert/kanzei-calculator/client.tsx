@@ -68,11 +68,11 @@ export default function KanzeiClient() {
       <p className="text-sm text-gray-500 mb-6 print:mb-2">海外通販・eBay・Amazon個人輸入の関税・消費税を自動計算</p>
 
       <div className="flex gap-2 mb-6">
-        <button onClick={() => setMode("personal")}
+        <button type="button" onClick={() => setMode("personal")}
           className={"flex-1 py-2 rounded-lg text-sm font-medium border-2 " + (mode === "personal" ? "bg-kon text-white border-kon" : "bg-white text-gray-600 border-gray-200")}>
           個人輸入
         </button>
-        <button onClick={() => setMode("commercial")}
+        <button type="button" onClick={() => setMode("commercial")}
           className={"flex-1 py-2 rounded-lg text-sm font-medium border-2 " + (mode === "commercial" ? "bg-kon text-white border-kon" : "bg-white text-gray-600 border-gray-200")}>
           商業輸入
         </button>
@@ -173,7 +173,7 @@ export default function KanzeiClient() {
         <p className="text-xs text-gray-500 mt-3">免税ライン: 商品代金 {fmt(r.exemptLine / r.fx)}{currencyCode}（≈{fmt(r.exemptLine)}円）まで</p>
       </div>
       <div className="mb-4 border border-gray-200 rounded-xl overflow-hidden print:hidden">
-        <button onClick={() => setShowComparison(!showComparison)}
+        <button type="button" onClick={() => setShowComparison(!showComparison)}
           className="w-full flex justify-between items-center px-4 py-3 bg-gray-50 text-sm font-medium text-gray-700">
           個人輸入の免税ルールまとめ
           <span>{showComparison ? "▲" : "▼"}</span>
@@ -189,7 +189,7 @@ export default function KanzeiClient() {
       </div>
 
       <div className="mb-8 border border-gray-200 rounded-xl overflow-hidden print:hidden">
-        <button onClick={() => setShowRateTable(!showRateTable)}
+        <button type="button" onClick={() => setShowRateTable(!showRateTable)}
           className="w-full flex justify-between items-center px-4 py-3 bg-gray-50 text-sm font-medium text-gray-700">
           主要品目の関税率一覧
           <span>{showRateTable ? "▲" : "▼"}</span>

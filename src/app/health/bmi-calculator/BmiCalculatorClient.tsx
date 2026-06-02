@@ -308,7 +308,7 @@ export default function BmiCalculatorPage() {
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700 mb-2">性別</label>
             <div className="flex rounded-lg border border-gray-300 overflow-hidden w-fit">
-              <button
+              <button type="button"
                 onClick={() => setGender("male")}
                 className={`px-6 py-2 text-sm font-semibold transition-colors ${
                   gender === "male" ? "bg-kon text-white" : "bg-white text-gray-600 hover:bg-gray-50"
@@ -316,7 +316,7 @@ export default function BmiCalculatorPage() {
               >
                 男性
               </button>
-              <button
+              <button type="button"
                 onClick={() => setGender("female")}
                 className={`px-6 py-2 text-sm font-semibold transition-colors ${
                   gender === "female" ? "bg-kon text-white" : "bg-white text-gray-600 hover:bg-gray-50"
@@ -414,7 +414,7 @@ export default function BmiCalculatorPage() {
             </div>
           )}
 
-          <button
+          <button type="button"
             onClick={handleCalc}
             className="w-full bg-kon hover:bg-ai text-white font-bold py-3.5 rounded-xl text-lg transition-colors"
           >
@@ -556,7 +556,7 @@ export default function BmiCalculatorPage() {
             <AdUnit slot="bmi-calculator-mid" className="mb-4" />
 
             {/* Reset */}
-            <button
+            <button type="button"
               onClick={handleReset}
               className="w-full py-3 rounded-xl border border-gray-300 text-gray-600 hover:bg-gray-100 transition-colors mb-6"
             >

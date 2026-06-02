@@ -64,7 +64,7 @@ export default function JinkoSuikeiRankingClient() {
               { key: "growth_asc", label: "増減率（減少順）" },
               { key: "aging", label: "高齢化率（高い順）" },
             ].map((opt) => (
-              <button key={opt.key} onClick={() => setSort(opt.key)}
+              <button type="button" key={opt.key} onClick={() => setSort(opt.key)}
                 className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                   sort === opt.key
                     ? "bg-teal-600 text-white"

@@ -188,13 +188,13 @@ export default function EditBlogPage() {
             </div>
 
             <div className="flex space-x-4">
-              <button
+              <button type="button"
                 onClick={() => router.push('/admin/blog/manage')}
                 className="flex-1 bg-gray-200 text-gray-800 py-3 px-6 rounded-lg hover:bg-gray-300 font-medium"
               >
                 キャンセル
               </button>
-              <button
+              <button type="button"
                 onClick={handleSave}
                 disabled={saving}
                 className="flex-1 bg-kon text-white py-3 px-6 rounded-lg hover:bg-ai disabled:bg-gray-400 font-medium"

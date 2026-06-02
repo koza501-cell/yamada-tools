@@ -203,7 +203,7 @@ export default function PhoneFormatterClient() {
             />
           </div>
 
-          <button
+          <button type="button"
             onClick={handleFormat}
             className="w-full py-4 bg-gradient-to-r from-kon to-ai text-white rounded-xl font-bold text-lg hover:shadow-lg transition-all"
           >
@@ -219,13 +219,13 @@ export default function PhoneFormatterClient() {
             </div>
             
             <div className="flex gap-3">
-              <button
+              <button type="button"
                 onClick={handleCopy}
                 className="flex-1 py-3 bg-kon text-white rounded-xl font-bold hover:bg-kon/90 transition-all"
               >
                 {copied ? "✓ コピー済み" : "コピー"}
               </button>
-              <button
+              <button type="button"
                 onClick={handleCopyNoHyphen}
                 className="flex-1 py-3 bg-white border-2 border-kon text-kon rounded-xl font-bold hover:bg-gray-50 transition-all"
               >
@@ -250,19 +250,19 @@ export default function PhoneFormatterClient() {
         <section className="bg-gray-50 rounded-xl p-6">
           <h3 className="font-bold text-kon mb-3">サンプル番号</h3>
           <div className="space-y-2">
-            <button
+            <button type="button"
               onClick={() => setInput("09012345678")}
               className="block w-full text-left px-3 py-2 bg-white rounded-lg hover:bg-gray-100 font-mono text-sm"
             >
               09012345678（携帯）
             </button>
-            <button
+            <button type="button"
               onClick={() => setInput("0312345678")}
               className="block w-full text-left px-3 py-2 bg-white rounded-lg hover:bg-gray-100 font-mono text-sm"
             >
               0312345678（東京）
             </button>
-            <button
+            <button type="button"
               onClick={() => setInput("0120123456")}
               className="block w-full text-left px-3 py-2 bg-white rounded-lg hover:bg-gray-100 font-mono text-sm"
             >

@@ -273,7 +273,7 @@ export default function UnitConverterClient({
             <label className="block text-sm font-medium text-gray-700 mb-2">カテゴリ</label>
             <div className="flex flex-wrap gap-2">
               {categories.map((category) => (
-                <button
+                <button type="button"
                   key={category.id}
                   onClick={() => handleCategoryChange(category.id)}
                   className={`px-4 py-2 rounded-xl font-medium transition-all ${
@@ -317,7 +317,7 @@ export default function UnitConverterClient({
 
             {/* Swap Button */}
             <div className="flex justify-center pb-8">
-              <button
+              <button type="button"
                 onClick={swapUnits}
                 className="w-12 h-12 bg-kon text-white rounded-full hover:bg-ai transition-colors flex items-center justify-center text-xl"
                 title="入れ替え"
@@ -355,7 +355,7 @@ export default function UnitConverterClient({
                 <span className="mx-2">=</span>
                 <span className="font-bold text-kon text-xl">{formatNumber(result)} {getUnitSymbol(toUnit)}</span>
               </p>
-              <button
+              <button type="button"
                 onClick={handleCopy}
                 className="mt-3 px-4 py-2 bg-kon text-white rounded-lg text-sm hover:bg-ai transition-colors"
               >

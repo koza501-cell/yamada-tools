@@ -367,7 +367,7 @@ export default function IdecoNisaComparisonClient() {
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Tab Navigation */}
         <div className="flex rounded-lg border border-gray-200 overflow-hidden mb-6">
-          <button
+          <button type="button"
             onClick={() => setActiveTab("input")}
             className={`flex-1 px-4 py-3 text-sm font-medium transition-all ${
               activeTab === "input"
@@ -377,7 +377,7 @@ export default function IdecoNisaComparisonClient() {
           >
             ① 情報入力
           </button>
-          <button
+          <button type="button"
             onClick={() => setActiveTab("result")}
             className={`flex-1 px-4 py-3 text-sm font-medium transition-all ${
               activeTab === "result"
@@ -561,7 +561,7 @@ export default function IdecoNisaComparisonClient() {
               </div>
             </div>
 
-            <button
+            <button type="button"
               onClick={() => setActiveTab("result")}
               className="w-full mt-8 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-xl transition-colors"
             >
@@ -831,19 +831,19 @@ export default function IdecoNisaComparisonClient() {
 
             {/* Share Buttons */}
             <div className="flex flex-wrap gap-3 mb-8">
-              <button
+              <button type="button"
                 onClick={handleCopy}
                 className="flex items-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-sm font-medium transition-colors"
               >
                 結果をコピー
               </button>
-              <button
+              <button type="button"
                 onClick={handleSaveImage}
                 className="flex items-center gap-2 px-5 py-2.5 bg-green-600 hover:bg-green-700 text-white rounded-xl text-sm font-medium transition-colors"
               >
                 画像として保存
               </button>
-              <button
+              <button type="button"
                 onClick={() => setActiveTab("input")}
                 className="flex items-center gap-2 px-5 py-2.5 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-xl text-sm font-medium transition-colors"
               >

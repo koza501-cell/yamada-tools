@@ -597,13 +597,13 @@ export default function SalaryIncreaseSimulatorClient() {
 
         {/* Buttons */}
         <div className="flex gap-3 mb-8">
-          <button
+          <button type="button"
             onClick={handleReset}
             className="py-3 px-6 rounded-lg border border-gray-300 text-gray-600 text-sm font-medium hover:bg-gray-50 transition-colors"
           >
             リセット
           </button>
-          <button
+          <button type="button"
             onClick={handleCalculate}
             className="flex-1 py-3 rounded-lg bg-kon text-white text-sm font-semibold hover:bg-ai transition-colors shadow-sm"
           >

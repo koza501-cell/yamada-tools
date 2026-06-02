@@ -148,9 +148,9 @@ function SignatureModal({ onConfirm, onCancel }: { onConfirm: (url: string) => v
           onPointerLeave={() => { setDrawing(false); last.current = null; }}
         />
         <div className="flex gap-3 mt-4">
-          <button onClick={() => cvs.current!.getContext("2d")!.clearRect(0, 0, 480, 200)} className="flex-1 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg font-bold">クリア</button>
-          <button onClick={onCancel} className="flex-1 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg font-bold">キャンセル</button>
-          <button onClick={() => onConfirm(cvs.current!.toDataURL("image/png"))} className="flex-1 px-4 py-2 bg-kon hover:bg-ai text-white rounded-lg font-bold">確定</button>
+          <button type="button" onClick={() => cvs.current!.getContext("2d")!.clearRect(0, 0, 480, 200)} className="flex-1 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg font-bold">クリア</button>
+          <button type="button" onClick={onCancel} className="flex-1 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg font-bold">キャンセル</button>
+          <button type="button" onClick={() => onConfirm(cvs.current!.toDataURL("image/png"))} className="flex-1 px-4 py-2 bg-kon hover:bg-ai text-white rounded-lg font-bold">確定</button>
         </div>
       </div>
     </div>
@@ -166,8 +166,8 @@ function PasswordDialog({ onSubmit, onCancel }: { onSubmit: (p: string) => void;
         <input type="password" value={pwd} onChange={e => setPwd(e.target.value)} onKeyDown={e => e.key === "Enter" && onSubmit(pwd)}
           className="w-full border-2 border-gray-300 rounded-lg px-3 py-2 mb-4 focus:outline-none focus:border-gray-200" placeholder="パスワードを入力" autoFocus />
         <div className="flex gap-3">
-          <button onClick={onCancel} className="flex-1 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg font-bold">キャンセル</button>
-          <button onClick={() => onSubmit(pwd)} className="flex-1 px-4 py-2 bg-kon hover:bg-ai text-white rounded-lg font-bold">開く</button>
+          <button type="button" onClick={onCancel} className="flex-1 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg font-bold">キャンセル</button>
+          <button type="button" onClick={() => onSubmit(pwd)} className="flex-1 px-4 py-2 bg-kon hover:bg-ai text-white rounded-lg font-bold">開く</button>
         </div>
       </div>
     </div>
@@ -194,7 +194,7 @@ function MinimapSidebar({ pdfDoc, totalPages, currentPage, onSelect }: { pdfDoc:
   return (
     <div className="flex flex-col gap-1.5 overflow-y-auto pr-1" style={{ width: 72, maxHeight: "70vh" }}>
       {thumbs.map((url, i) => (
-        <button key={i} onClick={() => onSelect(i + 1)}
+        <button type="button" key={i} onClick={() => onSelect(i + 1)}
           className={`rounded-lg overflow-hidden border-2 transition-all ${currentPage === i + 1 ? "border-gray-200 shadow-md" : "border-gray-200 hover:border-ai"}`}>
           <img src={url} alt={`p${i + 1}`} className="w-full block" />
           <div className={`text-center text-xs py-0.5 ${currentPage === i + 1 ? "text-kon font-bold" : "text-gray-400"}`}>{i + 1}</div>
@@ -821,8 +821,8 @@ export default function PdfTextClient({
           <p className="font-bold text-gray-800 mb-1">💾 前回の作業を復元しますか？</p>
           <p className="text-xs text-gray-500 mb-3">{draftBanner.filename} — {draftBanner.elements.length}件の要素</p>
           <div className="flex gap-2">
-            <button onClick={() => { pushUndo(); setElements(draftBanner.elements); setDraftBanner(null); }} className="flex-1 bg-kon hover:bg-ai text-white font-bold py-2 rounded-xl text-sm">復元</button>
-            <button onClick={() => { try { localStorage.removeItem('yamada-pdf-text-draft-' + draftBanner.filename); } catch {} setDraftBanner(null); }} className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-2 rounded-xl text-sm">破棄</button>
+            <button type="button" onClick={() => { pushUndo(); setElements(draftBanner.elements); setDraftBanner(null); }} className="flex-1 bg-kon hover:bg-ai text-white font-bold py-2 rounded-xl text-sm">復元</button>
+            <button type="button" onClick={() => { try { localStorage.removeItem('yamada-pdf-text-draft-' + draftBanner.filename); } catch {} setDraftBanner(null); }} className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-2 rounded-xl text-sm">破棄</button>
           </div>
         </div>
       )}
@@ -840,7 +840,7 @@ export default function PdfTextClient({
                 ))}
               </tbody>
             </table>
-            <button className="mt-4 w-full py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700" onClick={() => setShowHelp(false)}>閉じる</button>
+            <button type="button" className="mt-4 w-full py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700" onClick={() => setShowHelp(false)}>閉じる</button>
           </div>
         </div>
       )}
@@ -884,7 +884,7 @@ export default function PdfTextClient({
             <><div className="text-6xl mb-4">📄</div>
             <p className="text-xl font-bold text-gray-700 dark:text-gray-200 mb-2">PDFファイルをここにドロップ</p>
             <p className="text-gray-500 mb-4">または下のボタンで選択</p>
-            <button className="bg-kon hover:bg-ai text-white font-bold py-4 px-10 rounded-xl text-lg shadow-lg transition transform hover:scale-105">📁 PDFを選択する</button>
+            <button type="button" className="bg-kon hover:bg-ai text-white font-bold py-4 px-10 rounded-xl text-lg shadow-lg transition transform hover:scale-105">📁 PDFを選択する</button>
             <input id="pdf-in" type="file" accept=".pdf" className="hidden" onChange={handleFile} />
             <p className="text-sm text-gray-400 mt-4">🔒 ファイルはサーバーに送信されません</p></>
           )}
@@ -895,15 +895,15 @@ export default function PdfTextClient({
         <div>
           <div className="sticky top-0 z-50 bg-white dark:bg-gray-800 border-2 border-gray-200 rounded-xl p-3 mb-4 shadow-lg">
             <div className="flex flex-wrap items-center gap-2">
-              <button onClick={() => { exitAllModes(); setIsTextMode(t => !t); setShowHankoPanel(false); }}
+              <button type="button" onClick={() => { exitAllModes(); setIsTextMode(t => !t); setShowHankoPanel(false); }}
                 className={`px-3 py-2 rounded-lg text-sm font-bold transition whitespace-nowrap ${isTextMode?"bg-kon text-white ring-2 ring-orange-300":"bg-gray-50 text-kon hover:bg-ai"}`}>
                 ➕ テキスト
               </button>
-              <button onClick={() => { exitAllModes(); setShowHankoPanel(p => !p); setIsHankoMode(false); }}
+              <button type="button" onClick={() => { exitAllModes(); setShowHankoPanel(p => !p); setIsHankoMode(false); }}
                 className={`px-3 py-2 rounded-lg text-sm font-bold transition whitespace-nowrap ${showHankoPanel||isHankoMode?"bg-danger text-white ring-2 ring-danger":"bg-gray-50 text-danger hover:bg-gray-50 border border-gray-200"}`}>
                 🔴 ハンコ
               </button>
-              <button onClick={() => { exitAllModes(); setIsSignatureMode(true); }}
+              <button type="button" onClick={() => { exitAllModes(); setIsSignatureMode(true); }}
                 className="px-3 py-2 rounded-lg text-sm font-bold bg-gray-50 text-kon hover:bg-ai border border-kon whitespace-nowrap">
                 ✍️ 署名
               </button>
@@ -911,23 +911,23 @@ export default function PdfTextClient({
                 🖼️ 画像
                 <input type="file" accept="image/*" className="hidden" onChange={e => { const f = e.target.files?.[0]; if (f) handleImageInsert(f); e.target.value=""; }} />
               </label>
-              <button onClick={() => { exitAllModes(); setIsHighlightMode(p => !p); }}
+              <button type="button" onClick={() => { exitAllModes(); setIsHighlightMode(p => !p); }}
                 className={`px-3 py-2 rounded-lg text-sm font-bold transition whitespace-nowrap ${isHighlightMode?"bg-yellow-400 text-yellow-900 ring-2 ring-yellow-200":"bg-yellow-50 text-yellow-700 hover:bg-yellow-100 border border-yellow-200"}`}>
                 🖍️ マーカー
               </button>
               <div className="h-6 border-l border-gray-300 mx-0.5" />
-              <button onClick={undo} disabled={!undoStack.length} className="px-3 py-2 rounded-lg text-sm font-bold bg-gray-100 hover:bg-gray-200 disabled:opacity-30 whitespace-nowrap" title="Ctrl+Z">↩ 戻す</button>
-              <button onClick={redo} disabled={!redoStack.length} className="px-3 py-2 rounded-lg text-sm font-bold bg-gray-100 hover:bg-gray-200 disabled:opacity-30 whitespace-nowrap" title="Ctrl+Shift+Z">↪ やり直す</button>
+              <button type="button" onClick={undo} disabled={!undoStack.length} className="px-3 py-2 rounded-lg text-sm font-bold bg-gray-100 hover:bg-gray-200 disabled:opacity-30 whitespace-nowrap" title="Ctrl+Z">↩ 戻す</button>
+              <button type="button" onClick={redo} disabled={!redoStack.length} className="px-3 py-2 rounded-lg text-sm font-bold bg-gray-100 hover:bg-gray-200 disabled:opacity-30 whitespace-nowrap" title="Ctrl+Shift+Z">↪ やり直す</button>
               <div className="flex-1" />
               <div className="flex items-center gap-1 bg-gray-100 rounded-lg px-2 py-1">
-                <button onClick={() => setZoomLevel(prev => { const i=ZOOM_LEVELS.findIndex(z=>z>=prev-0.01); return ZOOM_LEVELS[Math.max(i-1,0)]; })} className="w-6 h-6 flex items-center justify-center hover:bg-gray-200 rounded font-bold text-lg leading-none">−</button>
+                <button type="button" onClick={() => setZoomLevel(prev => { const i=ZOOM_LEVELS.findIndex(z=>z>=prev-0.01); return ZOOM_LEVELS[Math.max(i-1,0)]; })} className="w-6 h-6 flex items-center justify-center hover:bg-gray-200 rounded font-bold text-lg leading-none">−</button>
                 <span className="text-xs font-bold text-gray-600 w-10 text-center">{Math.round(zoomLevel*100)}%</span>
-                <button onClick={() => setZoomLevel(prev => { const i=ZOOM_LEVELS.findIndex(z=>z>=prev-0.01); return ZOOM_LEVELS[Math.min(i+1,ZOOM_LEVELS.length-1)]; })} className="w-6 h-6 flex items-center justify-center hover:bg-gray-200 rounded font-bold text-lg leading-none">＋</button>
+                <button type="button" onClick={() => setZoomLevel(prev => { const i=ZOOM_LEVELS.findIndex(z=>z>=prev-0.01); return ZOOM_LEVELS[Math.min(i+1,ZOOM_LEVELS.length-1)]; })} className="w-6 h-6 flex items-center justify-center hover:bg-gray-200 rounded font-bold text-lg leading-none">＋</button>
               </div>
-              <button onClick={() => setIsGridSnap(p=>!p)} className={`px-2 py-2 rounded-lg text-xs font-bold transition ${isGridSnap?"bg-green-500 text-white":"bg-gray-100 text-gray-600 hover:bg-gray-200"}`} title="グリッドスナップ">📐</button>
-              <button onClick={() => setShowMinimap(p=>!p)} className={`px-2 py-2 rounded-lg text-xs font-bold transition ${showMinimap?"bg-kon text-white":"bg-gray-100 text-gray-600 hover:bg-gray-200"}`} title="ページマップ">🗺️</button>
-              <button onClick={() => setShowHelp(true)} title="キーボードショートカット" className="px-2 py-2 rounded-lg text-sm bg-gray-100 text-gray-600 hover:bg-gray-200 font-bold">?</button>
-              <button onClick={() => { pushUndo(); setElements([]); setSelectedId(null); }} title="全削除" className="px-2 py-2 rounded-lg text-sm bg-gray-100 hover:bg-gray-200 text-danger font-bold">🗑</button>
+              <button type="button" onClick={() => setIsGridSnap(p=>!p)} className={`px-2 py-2 rounded-lg text-xs font-bold transition ${isGridSnap?"bg-green-500 text-white":"bg-gray-100 text-gray-600 hover:bg-gray-200"}`} title="グリッドスナップ">📐</button>
+              <button type="button" onClick={() => setShowMinimap(p=>!p)} className={`px-2 py-2 rounded-lg text-xs font-bold transition ${showMinimap?"bg-kon text-white":"bg-gray-100 text-gray-600 hover:bg-gray-200"}`} title="ページマップ">🗺️</button>
+              <button type="button" onClick={() => setShowHelp(true)} title="キーボードショートカット" className="px-2 py-2 rounded-lg text-sm bg-gray-100 text-gray-600 hover:bg-gray-200 font-bold">?</button>
+              <button type="button" onClick={() => { pushUndo(); setElements([]); setSelectedId(null); }} title="全削除" className="px-2 py-2 rounded-lg text-sm bg-gray-100 hover:bg-gray-200 text-danger font-bold">🗑</button>
             </div>
 
             {showHankoPanel && (
@@ -945,14 +945,14 @@ export default function PdfTextClient({
                     <select value={hankoShape} onChange={e => setHankoShape(e.target.value as StampShape)} className="border rounded-lg px-2 py-2 text-sm">
                       <option value="circle">⚪ 丸印</option><option value="square">⬜ 角印</option>
                     </select>
-                    <button onClick={() => {
+                    <button type="button" onClick={() => {
                       pushUndo();
                       const _now = new Date();
                       const _ds = String(_now.getMonth()+1) + '.' + String(_now.getDate());
                       const _el: PdfElement = { id: crypto.randomUUID(), page: currentPage, x: 50, y: 40, text: _ds, fontSize: 16, fontFamily: 'serif', color: '#CC0000', bold: true, textAlign: 'left', isStamp: true, stampName: _ds, stampSize: 90, stampShape: 'circle' };
                       setElements(prev => [...prev, _el]); setSelectedId(_el.id);
                     }} className="bg-kon hover:bg-ai text-white font-bold py-2 px-4 rounded-lg text-sm whitespace-nowrap">📅 日付印</button>
-                    <button onClick={() => { if (!hankoName.trim()) return; setIsHankoMode(true); setIsTextMode(false); }} disabled={!hankoName.trim()}
+                    <button type="button" onClick={() => { if (!hankoName.trim()) return; setIsHankoMode(true); setIsTextMode(false); }} disabled={!hankoName.trim()}
                       className="bg-danger hover:bg-danger disabled:opacity-40 text-white font-bold py-2 px-4 rounded-lg text-sm whitespace-nowrap">📍 PDFに配置</button>
                   </div>
                 </div>
@@ -964,7 +964,7 @@ export default function PdfTextClient({
               <div className="mt-2 pt-2 border-t border-gray-100 flex flex-wrap items-center gap-2">
                 <span className="text-xs text-gray-400 font-bold">マーカー色:</span>
                 {HIGHLIGHT_COLORS.map(c => (
-                  <button key={c.value} onClick={() => setHighlightColor(c.value)}
+                  <button type="button" key={c.value} onClick={() => setHighlightColor(c.value)}
                     className={`w-7 h-7 rounded-full border-2 transition ${highlightColor===c.value?"border-gray-200 scale-125":"border-gray-300"}`}
                     style={{backgroundColor:c.solid}} title={c.label} />
                 ))}
@@ -983,22 +983,22 @@ export default function PdfTextClient({
                 </select>
                 <div className="flex border rounded-lg overflow-hidden">
                   {(["left","center","right"] as TAlign[]).map(a => (
-                    <button key={a} onClick={() => setTextAlign(a)} title={a==="left"?"左揃え":a==="center"?"中央":"右揃え"}
+                    <button type="button" key={a} onClick={() => setTextAlign(a)} title={a==="left"?"左揃え":a==="center"?"中央":"右揃え"}
                       className={`px-2 py-1 text-sm ${textAlign===a?"bg-kon text-white":"bg-white text-gray-600 hover:bg-gray-100"}`}>
                       {a==="left"?"⬅":a==="center"?"≡":"➡"}
                     </button>
                   ))}
                 </div>
-                <button onClick={() => setBold(b=>!b)} className={`px-2.5 py-1 rounded-lg text-sm font-bold border-2 ${bold?"bg-kon text-white border-gray-200":"bg-white text-gray-600 border-gray-300"}`}>B</button>
+                <button type="button" onClick={() => setBold(b=>!b)} className={`px-2.5 py-1 rounded-lg text-sm font-bold border-2 ${bold?"bg-kon text-white border-gray-200":"bg-white text-gray-600 border-gray-300"}`}>B</button>
                 <div className="flex gap-1">
-                  {COLORS.map(c => <button key={c.value} onClick={() => setColor(c.value)} className={`w-6 h-6 rounded-full border-2 transition ${color===c.value?"border-gray-200 scale-110":"border-gray-300"}`} style={{backgroundColor:c.value}} title={c.label} />)}
+                  {COLORS.map(c => <button type="button" key={c.value} onClick={() => setColor(c.value)} className={`w-6 h-6 rounded-full border-2 transition ${color===c.value?"border-gray-200 scale-110":"border-gray-300"}`} style={{backgroundColor:c.value}} title={c.label} />)}
                 </div>
                 <div className="h-4 border-l border-gray-300" />
-                <button onClick={() => insertDate("western")} className="px-2 py-1 bg-gray-50 text-kon rounded text-xs font-bold hover:bg-ai border border-gray-200">📅 西暦</button>
-                <button onClick={() => insertDate("japanese")} className="px-2 py-1 bg-gray-50 text-kon rounded text-xs font-bold hover:bg-ai border border-gray-200">📅 令和</button>
+                <button type="button" onClick={() => insertDate("western")} className="px-2 py-1 bg-gray-50 text-kon rounded text-xs font-bold hover:bg-ai border border-gray-200">📅 西暦</button>
+                <button type="button" onClick={() => insertDate("japanese")} className="px-2 py-1 bg-gray-50 text-kon rounded text-xs font-bold hover:bg-ai border border-gray-200">📅 令和</button>
                 <div className="h-4 border-l border-gray-300" />
-                <button onClick={() => duplicateEl(selectedEl.id)} className="px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded text-sm font-bold" title="複製 Ctrl+D">⧉</button>
-                <button onClick={() => deleteEl(selectedEl.id)} className="px-2 py-1 bg-gray-50 hover:bg-gray-50 text-danger rounded text-sm font-bold" title="削除 Del">🗑</button>
+                <button type="button" onClick={() => duplicateEl(selectedEl.id)} className="px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded text-sm font-bold" title="複製 Ctrl+D">⧉</button>
+                <button type="button" onClick={() => deleteEl(selectedEl.id)} className="px-2 py-1 bg-gray-50 hover:bg-gray-50 text-danger rounded text-sm font-bold" title="削除 Del">🗑</button>
               </div>
             )}
 
@@ -1006,8 +1006,8 @@ export default function PdfTextClient({
               <div className="mt-2 pt-2 border-t border-gray-100 flex flex-wrap items-center gap-2">
                 <span className="text-xs text-gray-400 font-bold">ハンコ:</span>
                 <span className="text-sm font-bold text-danger">{selectedEl.stampName}</span>
-                <button onClick={() => duplicateEl(selectedEl.id)} className="px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded text-sm font-bold">⧉</button>
-                <button onClick={() => deleteEl(selectedEl.id)} className="px-2 py-1 bg-gray-50 hover:bg-gray-50 text-danger rounded text-sm font-bold">🗑</button>
+                <button type="button" onClick={() => duplicateEl(selectedEl.id)} className="px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded text-sm font-bold">⧉</button>
+                <button type="button" onClick={() => deleteEl(selectedEl.id)} className="px-2 py-1 bg-gray-50 hover:bg-gray-50 text-danger rounded text-sm font-bold">🗑</button>
               </div>
             )}
           </div>
@@ -1022,7 +1022,7 @@ export default function PdfTextClient({
                   onKeyDown={e => { if (e.key==="Escape") { if (!selectedEl.text.trim()) deleteEl(selectedEl.id); else setSelectedId(null); } }} />
                 <p className="text-xs text-gray-400 mt-1">Escで確定・矢印キーで移動{isGridSnap?" (グリッド5%)":""} ・ <span className="font-mono bg-gray-100 px-1 rounded">X:{Math.round(selectedEl.x)}% Y:{Math.round(selectedEl.y)}%</span></p>
               </div>
-              <button onClick={() => deleteEl(selectedEl.id)} className="text-danger hover:text-danger text-lg">🗑️</button>
+              <button type="button" onClick={() => deleteEl(selectedEl.id)} className="text-danger hover:text-danger text-lg">🗑️</button>
             </div>
           )}
 
@@ -1058,9 +1058,9 @@ export default function PdfTextClient({
 
           {totalPages > 1 && (
             <div className="flex justify-center items-center gap-4 mt-3">
-              <button onClick={() => setCurrentPage(p=>Math.max(1,p-1))} disabled={currentPage<=1} className="bg-gray-200 hover:bg-gray-300 disabled:opacity-40 px-4 py-2 rounded-lg font-bold">← 前</button>
+              <button type="button" onClick={() => setCurrentPage(p=>Math.max(1,p-1))} disabled={currentPage<=1} className="bg-gray-200 hover:bg-gray-300 disabled:opacity-40 px-4 py-2 rounded-lg font-bold">← 前</button>
               <span className="font-bold text-gray-600">{currentPage} / {totalPages} ページ</span>
-              <button onClick={() => setCurrentPage(p=>Math.min(totalPages,p+1))} disabled={currentPage>=totalPages} className="bg-gray-200 hover:bg-gray-300 disabled:opacity-40 px-4 py-2 rounded-lg font-bold">次 →</button>
+              <button type="button" onClick={() => setCurrentPage(p=>Math.min(totalPages,p+1))} disabled={currentPage>=totalPages} className="bg-gray-200 hover:bg-gray-300 disabled:opacity-40 px-4 py-2 rounded-lg font-bold">次 →</button>
             </div>
           )}
 
@@ -1076,8 +1076,8 @@ export default function PdfTextClient({
                       {el.isStamp?`🔴 ${el.stampName}`:el.isSignature?"✍️ 署名":el.isImage?"🖼️ 画像":el.isHighlight?"🖍️ ハイライト":el.text.split("\n")[0]||"（空）"}
                     </span>
                     <span className="text-xs text-gray-400">{el.isStamp?`${el.stampSize}px`:(!el.isSignature&&!el.isImage&&!el.isHighlight)?`${el.fontSize}pt`:""}</span>
-                    <button onClick={ev=>{ev.stopPropagation();duplicateEl(el.id);}} className="text-gray-400 hover:text-ai px-1 text-base" title="複製">⧉</button>
-                    <button onClick={ev=>{ev.stopPropagation();deleteEl(el.id);}} className="text-danger hover:text-danger px-1" title="削除">✕</button>
+                    <button type="button" onClick={ev=>{ev.stopPropagation();duplicateEl(el.id);}} className="text-gray-400 hover:text-ai px-1 text-base" title="複製">⧉</button>
+                    <button type="button" onClick={ev=>{ev.stopPropagation();deleteEl(el.id);}} className="text-danger hover:text-danger px-1" title="削除">✕</button>
                   </div>
                 ))}
               </div>
@@ -1085,7 +1085,7 @@ export default function PdfTextClient({
           )}
 
           <div className="flex justify-center mt-4">
-            <button onClick={downloadPdf} disabled={isDownloading||!validEls.length}
+            <button type="button" onClick={downloadPdf} disabled={isDownloading||!validEls.length}
               className="bg-kon hover:bg-ai disabled:opacity-40 text-white font-bold py-3 px-10 rounded-xl text-lg shadow-lg transition transform hover:scale-105">
               {isDownloading?"⏳ 処理中...":"💾 PDFをダウンロード"}
             </button>
@@ -1099,7 +1099,7 @@ export default function PdfTextClient({
           </div>
 
           <div className="text-center mt-3">
-            <button onClick={() => { setPdfDoc(null);setPdfFile(null);setPdfBytes(null);setElements([]);setSelectedId(null);setStep(1);setError("");exitAllModes();setShowHankoPanel(false);setShowMinimap(false);pdfCacheRef.current=null; }}
+            <button type="button" onClick={() => { setPdfDoc(null);setPdfFile(null);setPdfBytes(null);setElements([]);setSelectedId(null);setStep(1);setError("");exitAllModes();setShowHankoPanel(false);setShowMinimap(false);pdfCacheRef.current=null; }}
               className="text-kon hover:text-ai text-sm underline">別のPDFを読み込む</button>
           </div>
         </div>

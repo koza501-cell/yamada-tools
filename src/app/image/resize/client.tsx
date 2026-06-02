@@ -277,7 +277,7 @@ export default function ImageResizeClient({
                 <label className="block text-sm font-medium text-gray-700 mb-2">SNSプリセット</label>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                   {presets.map((preset) => (
-                    <button
+                    <button type="button"
                       key={preset.name}
                       onClick={() => applyPreset(preset)}
                       className="p-3 bg-gray-50 rounded-lg hover:bg-kon/10 transition-colors text-left"
@@ -340,7 +340,7 @@ export default function ImageResizeClient({
                   <label className="block text-sm font-medium text-gray-700 mb-2">出力形式</label>
                   <div className="flex gap-2">
                     {(["jpeg", "png", "webp"] as OutputFormat[]).map((format) => (
-                      <button
+                      <button type="button"
                         key={format}
                         onClick={() => setOutputFormat(format)}
                         className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-all ${
@@ -379,13 +379,13 @@ export default function ImageResizeClient({
 
               {/* Action Buttons */}
               <div className="flex gap-3 mb-6">
-                <button
+                <button type="button"
                   onClick={resizeImage}
                   className="flex-1 py-4 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors"
                 >
                   🖼️ リサイズする
                 </button>
-                <button
+                <button type="button"
                   onClick={handleClear}
                   className="py-4 px-6 border-2 border-gray-300 text-gray-600 rounded-xl font-bold hover:bg-gray-50 transition-colors"
                 >
@@ -407,7 +407,7 @@ export default function ImageResizeClient({
                   <div className="text-center text-sm text-gray-500 mb-4">
                     {newWidth} × {newHeight} px • {formatFileSize(resizedSize)} • {outputFormat.toUpperCase()}
                   </div>
-                  <button
+                  <button type="button"
                     onClick={downloadImage}
                     className="w-full py-3 bg-green-600 text-white rounded-xl font-bold hover:bg-green-700 transition-colors"
                   >

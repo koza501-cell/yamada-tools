@@ -576,7 +576,7 @@ export default function JobChangeSimulatorClient() {
                 <div>
                   <div className="flex items-center gap-3 mb-2">
                     <label className="text-sm font-medium text-gray-700">試用期間あり？</label>
-                    <button
+                    <button type="button"
                       onClick={() => handleChange("hasProbation", !form.hasProbation)}
                       className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${form.hasProbation ? "bg-kon" : "bg-gray-300"}`}
                     >
@@ -638,7 +638,7 @@ export default function JobChangeSimulatorClient() {
                 <div>
                   <div className="flex items-center gap-3">
                     <label className="text-sm font-medium text-gray-700">配偶者あり？</label>
-                    <button
+                    <button type="button"
                       onClick={() => handleChange("hasSpouse", !form.hasSpouse)}
                       className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${form.hasSpouse ? "bg-kon" : "bg-gray-300"}`}
                     >
@@ -678,13 +678,13 @@ export default function JobChangeSimulatorClient() {
 
             {/* Buttons */}
             <div className="flex gap-3">
-              <button
+              <button type="button"
                 onClick={handleCalculate}
                 className="flex-1 bg-kon hover:bg-ai text-white py-3 rounded-lg font-bold text-sm transition-colors shadow-sm"
               >
                 計算する
               </button>
-              <button
+              <button type="button"
                 onClick={handleReset}
                 className="px-4 py-3 border border-gray-300 text-gray-600 rounded-lg text-sm hover:bg-gray-50 transition-colors"
               >
@@ -934,7 +934,7 @@ export default function JobChangeSimulatorClient() {
           <div className="space-y-2">
             {faqs.map((faq, i) => (
               <div key={i} className="border border-gray-200 rounded-lg overflow-hidden">
-                <button
+                <button type="button"
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   className="w-full text-left px-4 py-3 flex items-center justify-between gap-3 hover:bg-gray-50 transition-colors"
                 >

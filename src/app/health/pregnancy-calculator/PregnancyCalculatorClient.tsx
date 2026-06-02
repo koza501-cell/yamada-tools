@@ -292,7 +292,7 @@ export default function PregnancyCalculatorPage() {
 
           {/* Toggle */}
           <div className="flex rounded-lg border border-gray-300 overflow-hidden mb-5">
-            <button
+            <button type="button"
               onClick={() => { setCalcMethod("lmp"); setResult(null); setError(""); }}
               className={`flex-1 py-2.5 text-sm font-medium transition-colors ${
                 calcMethod === "lmp"
@@ -302,7 +302,7 @@ export default function PregnancyCalculatorPage() {
             >
               最終月経日から計算（一般的）
             </button>
-            <button
+            <button type="button"
               onClick={() => { setCalcMethod("ovulation"); setResult(null); setError(""); }}
               className={`flex-1 py-2.5 text-sm font-medium transition-colors border-l border-gray-300 ${
                 calcMethod === "ovulation"
@@ -351,7 +351,7 @@ export default function PregnancyCalculatorPage() {
             <p className="text-sm text-danger mb-3">{error}</p>
           )}
 
-          <button
+          <button type="button"
             onClick={handleCalculate}
             className="w-full py-3 bg-kon hover:bg-ai text-white font-bold rounded-lg transition-colors text-sm"
           >

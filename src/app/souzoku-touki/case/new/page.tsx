@@ -79,7 +79,7 @@ export default function CaseNewPage() {
           <h2 className="font-bold text-gray-900 dark:text-white mb-4">ケース種別を選択</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
             {CASE_TYPES.map((ct) => (
-              <button
+              <button type="button"
                 key={ct.id}
                 onClick={() => setCaseType(ct.id)}
                 className={`text-left p-4 rounded-xl border-2 transition-all ${
@@ -115,7 +115,7 @@ export default function CaseNewPage() {
             </div>
           )}
 
-          <button
+          <button type="button"
             onClick={handleSubmit}
             disabled={submitting}
             className="w-full bg-ai hover:bg-ai text-white py-3 rounded-xl font-bold text-sm transition-colors disabled:opacity-50 disabled:cursor-not-allowed"

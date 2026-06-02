@@ -65,7 +65,7 @@ export default function HoumukyokuPage() {
 
           <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-1.5">
             {prefs.map((pref) => (
-              <button
+              <button type="button"
                 key={pref}
                 onClick={() => { setSelectedPref(pref); setSearch(""); }}
                 className={`text-xs rounded-lg py-1.5 px-1 font-medium transition-all ${

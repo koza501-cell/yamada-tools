@@ -2,7 +2,25 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
-import { MessageCircle, X, Send } from 'lucide-react';
+
+const Icons = {
+  MessageCircle: ({ size = 24 }: { size?: number }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>
+    </svg>
+  ),
+  X: ({ size = 24 }: { size?: number }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+    </svg>
+  ),
+  Send: ({ size = 24 }: { size?: number }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>
+    </svg>
+  ),
+};
+
 
 interface Message {
   id: string;
@@ -89,7 +107,7 @@ export default function SupportChatbot() {
         className="fixed bottom-6 right-6 w-14 h-14 bg-kon text-white rounded-full shadow-lg hover:bg-ai flex items-center justify-center z-50"
         aria-label="サポートチャット"
       >
-        {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
+        {isOpen ? <Icons.X size={24} /> : <Icons.MessageCircle size={24} />}
       </button>
 
       {/* Chat Window */}
@@ -158,7 +176,7 @@ export default function SupportChatbot() {
                 disabled={loading || !input.trim()}
                 className="px-4 py-2 bg-kon text-white rounded-lg hover:bg-ai disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <Send size={20} />
+                <Icons.Send size={20} />
               </button>
             </div>
           </div>

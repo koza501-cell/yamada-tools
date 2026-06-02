@@ -118,7 +118,7 @@ export default function FuriganaClient() {
   if (!mounted) {
     return (
       <div className="min-h-screen py-12">
-        <div className="max-w-2xl mx-auto px-4 text-center">読み込み中...</div>
+        <div className="max-w-2xl mx-auto px-4 text-center min-h-[500px] flex items-center justify-center">読み込み中...</div>
       </div>
     );
   }
@@ -138,26 +138,6 @@ export default function FuriganaClient() {
           <Mascot state={mascotState} message={mascotMessage} />
         </div>
 
-        {/* 3-Step Visual Guide */}
-        <section className="mb-6">
-          <div className="rounded-2xl border border-blue-200 bg-blue-50 p-6 dark:border-blue-800 dark:bg-blue-950/30">
-            <h2 className="text-lg font-bold mb-4 text-gray-900 dark:text-gray-100">使い方は簡単3ステップ</h2>
-            <div className="grid gap-4 md:grid-cols-3">
-              <div className="flex items-start gap-3">
-                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">1</span>
-                <p className="text-sm text-gray-700 dark:text-gray-300">下の入力欄に漢字を貼り付け</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">2</span>
-                <p className="text-sm text-gray-700 dark:text-gray-300">変換ボタンをクリック</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">3</span>
-                <p className="text-sm text-gray-700 dark:text-gray-300">ひらがな・カタカナ・ローマ字をコピー</p>
-              </div>
-            </div>
-          </div>
-        </section>
 
         <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
           {/* Output Type Selection */}
@@ -166,7 +146,7 @@ export default function FuriganaClient() {
               出力形式
             </label>
             <div className="flex gap-2">
-              <button
+              <button type="button"
                 onClick={() => setOutputType("hiragana")}
                 className={`flex-1 py-2 px-4 rounded-xl font-medium transition-all ${
                   outputType === "hiragana"
@@ -176,7 +156,7 @@ export default function FuriganaClient() {
               >
                 ひらがな
               </button>
-              <button
+              <button type="button"
                 onClick={() => setOutputType("katakana")}
                 className={`flex-1 py-2 px-4 rounded-xl font-medium transition-all ${
                   outputType === "katakana"
@@ -186,7 +166,7 @@ export default function FuriganaClient() {
               >
                 カタカナ
               </button>
-              <button
+              <button type="button"
                 onClick={() => setOutputType("romaji")}
                 className={`flex-1 py-2 px-4 rounded-xl font-medium transition-all ${
                   outputType === "romaji"
@@ -217,7 +197,7 @@ export default function FuriganaClient() {
             </p>
           </div>
 
-          <button
+          <button type="button"
             onClick={handleConvert}
             disabled={isLoading}
             className="w-full py-4 bg-gradient-to-r from-kon to-ai text-white rounded-xl font-bold text-lg hover:shadow-lg transition-all disabled:opacity-50"
@@ -225,13 +205,33 @@ export default function FuriganaClient() {
             {isLoading ? "変換中..." : "ふりがなを付ける"}
           </button>
         </section>
+        {/* 3-Step Visual Guide */}
+        <section className="mb-6">
+          <div className="rounded-2xl border border-blue-200 bg-blue-50 p-6 dark:border-blue-800 dark:bg-blue-950/30">
+            <h2 className="text-lg font-bold mb-4 text-gray-900 dark:text-gray-100">使い方は簡単3ステップ</h2>
+            <div className="grid gap-4 md:grid-cols-3">
+              <div className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">1</span>
+                <p className="text-sm text-gray-700 dark:text-gray-300">下の入力欄に漢字を貼り付け</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">2</span>
+                <p className="text-sm text-gray-700 dark:text-gray-300">変換ボタンをクリック</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">3</span>
+                <p className="text-sm text-gray-700 dark:text-gray-300">ひらがな・カタカナ・ローマ字をコピー</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Result */}
         {result && (
           <section className="bg-green-50 border-2 border-green-200 rounded-2xl p-6 mb-6">
             <div className="flex justify-between items-center mb-3">
               <h3 className="font-bold text-kon">変換結果</h3>
-              <button
+              <button type="button"
                 onClick={handleCopy}
                 className="px-4 py-2 bg-kon text-white rounded-lg text-sm hover:bg-kon/90"
               >
@@ -273,19 +273,19 @@ export default function FuriganaClient() {
         <section className="bg-gray-50 rounded-xl p-6 mb-6">
           <h3 className="font-bold text-kon mb-3">サンプルテキスト</h3>
           <div className="space-y-2">
-            <button
+            <button type="button"
               onClick={() => handleSample("東京都渋谷区で働いています。")}
               className="block w-full text-left px-3 py-2 bg-white rounded-lg hover:bg-gray-100 text-sm"
             >
               東京都渋谷区で働いています。
             </button>
-            <button
+            <button type="button"
               onClick={() => handleSample("私は毎朝六時に起きて朝食を食べます。")}
               className="block w-full text-left px-3 py-2 bg-white rounded-lg hover:bg-gray-100 text-sm"
             >
               私は毎朝六時に起きて朝食を食べます。
             </button>
-            <button
+            <button type="button"
               onClick={() => handleSample("日本の四季は美しいです。春には桜が咲きます。")}
               className="block w-full text-left px-3 py-2 bg-white rounded-lg hover:bg-gray-100 text-sm"
             >

@@ -39,7 +39,7 @@ export default function ParkingClient() {
   const mProfit = mMonthlyRevenue - mExpenses;
   const mYearlyProfit = mProfit * 12;
   const mInitial = (parseInt(paving) || 0) + (parseInt(otherInit) || 0);
-  const mPayback = mYearlyProfit > 0 ? mInitial / mYearlyProfit : Infinity;
+  const mPayback = mYearlyProfit > 0 ? mInitial / mYearlyProfit : 999999999999;
   const mYield = mInitial > 0 ? (mYearlyProfit / mInitial * 100) : 0;
 
   const cHours = 24;
@@ -51,7 +51,7 @@ export default function ParkingClient() {
   const cProfit = cMonthlyRevenue - cExpenses;
   const cYearlyProfit = cProfit * 12;
   const cInitial = (parseInt(paving) || 0) + (parseInt(otherInit) || 0) + (parseInt(cEquip) || 0);
-  const cPayback = cYearlyProfit > 0 ? cInitial / cYearlyProfit : Infinity;
+  const cPayback = cYearlyProfit > 0 ? cInitial / cYearlyProfit : 999999999999;
   const cYield = cInitial > 0 ? (cYearlyProfit / cInitial * 100) : 0;
 
   const mBetter = mProfit >= cProfit;

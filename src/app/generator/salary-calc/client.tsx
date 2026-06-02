@@ -20,7 +20,7 @@ const INCOME_TAX_BRACKETS = [
   { min: 6950001, max: 9000000, rate: 0.23, deduction: 636000 },
   { min: 9000001, max: 18000000, rate: 0.33, deduction: 1536000 },
   { min: 18000001, max: 40000000, rate: 0.40, deduction: 2796000 },
-  { min: 40000001, max: Infinity, rate: 0.45, deduction: 4796000 },
+  { min: 40000001, max: 999999999999, rate: 0.45, deduction: 4796000 },
 ];
 
 export default function SalaryCalcClient() {
@@ -106,10 +106,10 @@ export default function SalaryCalcClient() {
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700 mb-2">入力方法</label>
               <div className="flex gap-2">
-                <button onClick={() => setInputType("monthly")} className={`flex-1 py-2 rounded-lg text-sm font-medium ${inputType === "monthly" ? "bg-kon text-white" : "bg-gray-100 text-gray-700"}`}>
+                <button type="button" onClick={() => setInputType("monthly")} className={`flex-1 py-2 rounded-lg text-sm font-medium ${inputType === "monthly" ? "bg-kon text-white" : "bg-gray-100 text-gray-700"}`}>
                   月給で入力
                 </button>
-                <button onClick={() => setInputType("annual")} className={`flex-1 py-2 rounded-lg text-sm font-medium ${inputType === "annual" ? "bg-kon text-white" : "bg-gray-100 text-gray-700"}`}>
+                <button type="button" onClick={() => setInputType("annual")} className={`flex-1 py-2 rounded-lg text-sm font-medium ${inputType === "annual" ? "bg-kon text-white" : "bg-gray-100 text-gray-700"}`}>
                   年収で入力
                 </button>
               </div>

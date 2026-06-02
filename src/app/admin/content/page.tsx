@@ -110,7 +110,7 @@ export default function ContentManagement() {
               const count = hasContent ? wordCount(content[tool.id].how_to_content!) : 0;
               
               return (
-                <button
+                <button type="button"
                   key={tool.id}
                   onClick={() => handleSelectTool(tool.id)}
                   className={`w-full text-left p-3 rounded-xl transition-colors flex items-center justify-between ${
@@ -151,7 +151,7 @@ export default function ContentManagement() {
                 </h2>
                 <div className="flex items-center gap-4">
                   {message && <span className="text-sm">{message}</span>}
-                  <button
+                  <button type="button"
                     onClick={handleSave}
                     disabled={saving}
                     className="bg-kon text-white px-6 py-2 rounded-xl font-bold hover:bg-ai transition-colors disabled:opacity-50"

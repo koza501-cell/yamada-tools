@@ -206,7 +206,7 @@ export default function WizardPage() {
             <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6">{current.q}</h2>
             <div className="space-y-3">
               {current.options.map((opt) => (
-                <button
+                <button type="button"
                   key={opt.value}
                   onClick={() => handleAnswer(opt.value)}
                   className="w-full text-left px-5 py-4 rounded-xl border-2 border-gray-200 dark:border-gray-600 hover:border-ai hover:bg-gray-50 dark:hover:bg-ai/30 transition-all text-gray-800 dark:text-gray-200 font-medium"
@@ -217,7 +217,7 @@ export default function WizardPage() {
             </div>
 
             {step > 0 && (
-              <button
+              <button type="button"
                 onClick={() => setStep(step - 1)}
                 className="mt-4 text-sm text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
               >
@@ -275,7 +275,7 @@ export default function WizardPage() {
               )}
             </div>
 
-            <button
+            <button type="button"
               onClick={reset}
               className="w-full text-center text-sm text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 py-2"
             >

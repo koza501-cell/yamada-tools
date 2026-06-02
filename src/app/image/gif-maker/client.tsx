@@ -129,7 +129,7 @@ export default function GifMakerClient({
                 {frames.map((src, i) => (
                   <div key={i} className="relative group">
                     <img src={src} alt={`Frame ${i+1}`} className="w-full aspect-square object-cover rounded-lg border" />
-                    <button onClick={() => removeFrame(i)}
+                    <button type="button" onClick={() => removeFrame(i)}
                       className="absolute -top-1 -right-1 bg-danger text-white w-5 h-5 rounded-full text-xs opacity-0 group-hover:opacity-100 transition">×</button>
                     <span className="absolute bottom-0 left-0 bg-black/50 text-white text-xs px-1 rounded-br-lg">{i+1}</span>
                   </div>
@@ -148,7 +148,7 @@ export default function GifMakerClient({
                 </div>
               </div>
 
-              <button onClick={createGif} disabled={isProcessing || frames.length < 2}
+              <button type="button" onClick={createGif} disabled={isProcessing || frames.length < 2}
                 className="w-full py-4 bg-gradient-to-r from-kon to-ai text-white rounded-xl font-bold text-lg hover:shadow-lg transition-all disabled:opacity-50 mb-4">
                 {isProcessing ? "⏳ GIF作成中..." : `🎞️ ${frames.length}枚からGIFを作成`}
               </button>
@@ -159,7 +159,7 @@ export default function GifMakerClient({
             <div className="bg-green-50 rounded-xl p-4 text-center">
               <p className="font-bold text-green-700 mb-3">✅ GIF作成完了！</p>
               <img src={gifUrl} alt="Generated GIF" className="mx-auto rounded-lg shadow-md max-w-full mb-4" style={{ maxHeight: "400px" }} />
-              <button onClick={download} className="px-8 py-3 bg-green-600 text-white rounded-xl font-bold hover:bg-green-700">
+              <button type="button" onClick={download} className="px-8 py-3 bg-green-600 text-white rounded-xl font-bold hover:bg-green-700">
                 💾 GIFをダウンロード
               </button>
             </div>
@@ -167,7 +167,7 @@ export default function GifMakerClient({
 
           {error && <div className="bg-gray-50 border border-gray-200 text-danger rounded-xl p-3 mt-4 text-sm">⚠️ {error}</div>}
 
-          <button onClick={reset} className="w-full mt-4 py-2 text-gray-500 hover:text-danger text-sm">🗑 リセット</button>
+          <button type="button" onClick={reset} className="w-full mt-4 py-2 text-gray-500 hover:text-danger text-sm">🗑 リセット</button>
         </section>
 
         {seoContent && (

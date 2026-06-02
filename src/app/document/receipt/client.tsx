@@ -21,7 +21,7 @@ const STAMP_TAX_INFO = [
   { min: 2000001,  max: 3000000,   label: "600円" },
   { min: 3000001,  max: 5000000,   label: "1,000円" },
   { min: 5000001,  max: 10000000,  label: "2,000円" },
-  { min: 10000001, max: Infinity,  label: "要確認" },
+  { min: 10000001, max: 999999999999,  label: "要確認" },
 ];
 
 const getStampTax = (amt: number) =>

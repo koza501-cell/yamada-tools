@@ -108,7 +108,7 @@ export default function KensetsuMitsumoriClient() {
                     </div>
                   )}
                   {items.length > 1 && (
-                    <button onClick={() => removeItem(item.id)} className="text-danger hover:text-danger text-xs px-2 py-1 rounded border border-gray-200 dark:border-danger">削除</button>
+                    <button type="button" onClick={() => removeItem(item.id)} className="text-danger hover:text-danger text-xs px-2 py-1 rounded border border-gray-200 dark:border-danger">削除</button>
                   )}
                 </div>
               </div>
@@ -116,7 +116,7 @@ export default function KensetsuMitsumoriClient() {
           })}
         </div>
 
-        <button onClick={addItem} className="w-full py-2 border-2 border-dashed border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 rounded-xl hover:border-ai hover:text-ai text-sm transition-colors mb-6">
+        <button type="button" onClick={addItem} className="w-full py-2 border-2 border-dashed border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 rounded-xl hover:border-ai hover:text-ai text-sm transition-colors mb-6">
           ＋ 工事項目を追加
         </button>
 

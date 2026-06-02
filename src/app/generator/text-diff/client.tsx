@@ -189,19 +189,19 @@ export default function TextDiffClient({
 
           {/* Quick Actions */}
           <div className="flex flex-wrap gap-2 mb-4">
-            <button
+            <button type="button"
               onClick={sampleTexts}
               className="px-3 py-1 bg-sakura/30 text-kon rounded-full text-sm hover:bg-sakura/50 transition-colors"
             >
               サンプルを表示
             </button>
-            <button
+            <button type="button"
               onClick={swapTexts}
               className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm hover:bg-gray-200 transition-colors"
             >
               入れ替え
             </button>
-            <button
+            <button type="button"
               onClick={clearAll}
               className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm hover:bg-gray-200 transition-colors"
             >
@@ -242,7 +242,7 @@ export default function TextDiffClient({
           </div>
 
           {/* Compare Button */}
-          <button
+          <button type="button"
             onClick={compare}
             className="w-full py-4 bg-gradient-to-r from-kon to-ai text-white rounded-xl font-bold text-lg hover:shadow-lg hover:scale-[1.02] transition-all"
           >
@@ -265,7 +265,7 @@ export default function TextDiffClient({
                     {stats.unchanged} 変更なし
                   </span>
                 </div>
-                <button
+                <button type="button"
                   onClick={downloadDiff}
                   className="text-sm text-kon hover:text-ai"
                 >

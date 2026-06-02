@@ -280,7 +280,7 @@ export default function DashboardClient() {
         {/* Footer meta */}
         <div className="text-center text-xs text-gray-400 dark:text-gray-600 pb-4 space-y-1">
           <p>累計{totals.totalUsages}回のツール使用を記録 · データはこのブラウザのみに保存されます</p>
-          <button
+          <button type="button"
             onClick={() => {
               if (window.confirm('利用履歴をすべて削除しますか？\nこの操作は取り消せません。')) {
                 trackEvent('usage_cleared');

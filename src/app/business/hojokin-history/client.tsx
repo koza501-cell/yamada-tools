@@ -181,7 +181,7 @@ export default function HojokinHistoryClient() {
           <>
             {/* Mode toggle */}
             <div className="flex gap-2 mb-4">
-              <button
+              <button type="button"
                 onClick={() => { setMode("name"); setError(null); setSearchInput(""); }}
                 className={`flex-1 px-4 py-2 rounded-lg font-semibold transition ${
                   mode === "name"
@@ -191,7 +191,7 @@ export default function HojokinHistoryClient() {
               >
                 法人名で検索
               </button>
-              <button
+              <button type="button"
                 onClick={() => { setMode("number"); setError(null); setSearchInput(""); }}
                 className={`flex-1 px-4 py-2 rounded-lg font-semibold transition ${
                   mode === "number"
@@ -244,7 +244,7 @@ export default function HojokinHistoryClient() {
               <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
                 該当する法人を選択してください（{companies.length}件）
               </h2>
-              <button
+              <button type="button"
                 onClick={handleReset}
                 className="text-sm text-gray-600 dark:text-gray-400 hover:underline"
               >
@@ -253,7 +253,7 @@ export default function HojokinHistoryClient() {
             </div>
             <div className="space-y-2">
               {companies.map((corp) => (
-                <button
+                <button type="button"
                   key={corp.corporate_number}
                   onClick={() => fetchSubsidies(corp)}
                   className="w-full text-left bg-white dark:bg-gray-800 rounded-lg shadow p-4 hover:shadow-md hover:border-sakura dark:hover:border-sakura transition border border-transparent"
@@ -285,7 +285,7 @@ export default function HojokinHistoryClient() {
                     法人番号: <span className="font-mono">{selectedCompany.corporate_number}</span>
                   </p>
                 </div>
-                <button
+                <button type="button"
                   onClick={handleReset}
                   className="text-sm text-gray-600 dark:text-gray-400 hover:underline whitespace-nowrap"
                 >

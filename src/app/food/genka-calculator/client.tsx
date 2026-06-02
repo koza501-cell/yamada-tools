@@ -121,7 +121,7 @@ export default function GenkaClient() {
           <h2 className="font-semibold text-gray-800 text-sm">📋 メニュー情報</h2>
           <div className="flex items-center gap-2">
             {savedMsg && <span className="text-xs text-green-600">{savedMsg}</span>}
-            <button onClick={saveRecipe}
+            <button type="button" onClick={saveRecipe}
               className="text-xs px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg">
               💾 保存
             </button>
@@ -157,7 +157,7 @@ export default function GenkaClient() {
       <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm mb-6">
         <div className="flex items-center justify-between mb-4">
           <h2 className="font-semibold text-gray-800 text-sm">🛒 食材リスト</h2>
-          <button onClick={addIngredient}
+          <button type="button" onClick={addIngredient}
             className="text-xs px-3 py-1.5 bg-kon hover:bg-ai text-white rounded-lg">
             ＋ 食材を追加
           </button>
@@ -186,7 +186,7 @@ export default function GenkaClient() {
               <div className="col-span-2 text-xs font-medium text-center text-gray-700">
                 {fmtPrice(Math.round(r.itemCosts[i] ?? 0))}
               </div>
-              <button onClick={() => removeIngredient(i)} disabled={ingredients.length <= 1}
+              <button type="button" onClick={() => removeIngredient(i)} disabled={ingredients.length <= 1}
                 className="col-span-1 text-danger hover:text-danger text-center disabled:opacity-30">✕</button>
             </div>
           ))}
@@ -252,7 +252,7 @@ export default function GenkaClient() {
       </div>
 
       <div className="mb-6">
-        <button onClick={() => setShowRef(s => !s)}
+        <button type="button" onClick={() => setShowRef(s => !s)}
           className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm font-medium text-gray-700 hover:bg-gray-100">
           <span>📚 業態別 よくある原価率の目安</span>
           <span>{showRef ? "▲" : "▼"}</span>

@@ -117,14 +117,14 @@ export function MethodologyClient() {
         </div>
 
         <div className="flex flex-wrap gap-2 mb-4">
-          <button
+          <button type="button"
             onClick={() => setFilterCat('all')}
             className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${filterCat === 'all' ? 'bg-primary-700 text-white' : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'}`}
           >
             すべて ({TOOL_VALUE_TABLE.length})
           </button>
           {categories.map(cat => (
-            <button
+            <button type="button"
               key={cat}
               onClick={() => setFilterCat(cat)}
               className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${filterCat === cat ? 'bg-primary-700 text-white' : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'}`}

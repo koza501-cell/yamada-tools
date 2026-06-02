@@ -20,7 +20,7 @@ import { FAQS } from "./faqs";
  */
 
 const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://api-staging.yamada-tools.jp";
+  process.env.NEXT_PUBLIC_API_URL || "https://api.yamada-tools.jp";
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 type CorpTypeInfo = {

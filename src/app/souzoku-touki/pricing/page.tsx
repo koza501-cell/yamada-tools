@@ -158,7 +158,7 @@ export default function SouzokuPricingPage() {
                 </ul>
               </div>
               <div className="p-4 pt-0">
-                <button
+                <button type="button"
                   onClick={() => handleBuy(tier.id)}
                   disabled={loading !== null}
                   className={`w-full py-3 rounded-xl font-bold text-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed

@@ -59,7 +59,7 @@ export default function RankingClient() {
               { key: "male_asc", label: "男性（短命順）" },
               { key: "average", label: "平均（長寿順）" },
             ].map((opt) => (
-              <button key={opt.key} onClick={() => setSort(opt.key)}
+              <button type="button" key={opt.key} onClick={() => setSort(opt.key)}
                 className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                   sort === opt.key
                     ? "bg-rose-600 text-white"

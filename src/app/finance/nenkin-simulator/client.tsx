@@ -203,7 +203,7 @@ export default function NenkinSimulatorClient() {
               <h2 className="font-semibold text-gray-700 dark:text-gray-300 mb-3">受給開始年齢を選択</h2>
               <div className="grid grid-cols-4 gap-1.5">
                 {RECEIVE_AGES.map(age => (
-                  <button key={age} onClick={() => setReceiveAge(age)}
+                  <button type="button" key={age} onClick={() => setReceiveAge(age)}
                     className={`py-2 text-xs rounded-lg font-medium transition-colors ${receiveAge === age ? "bg-kon text-white" : age < 65 ? "bg-gray-50 dark:bg-danger/20 text-danger dark:text-danger border border-gray-200 dark:border-danger hover:bg-gray-50" : age > 65 ? "bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 border border-green-200 dark:border-green-700 hover:bg-green-100" : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600"}`}>
                     {age}歳{age < 65 ? "↓" : age > 65 ? "↑" : ""}
                   </button>

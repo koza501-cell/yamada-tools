@@ -53,7 +53,7 @@ export default function FaqPage() {
                 key={globalIndex}
                 className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden"
               >
-                <button
+                <button type="button"
                   onClick={() => setOpen(isOpen ? null : globalIndex)}
                   className="w-full text-left px-5 py-4 flex items-start justify-between gap-3 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
                 >
@@ -81,7 +81,7 @@ export default function FaqPage() {
             <div className="bg-white dark:bg-gray-800 rounded-xl p-8 text-center text-gray-400">
               <div className="text-4xl mb-3">🔍</div>
               <p className="text-sm">該当する質問が見つかりませんでした</p>
-              <button onClick={() => setSearch("")} className="text-ai text-sm mt-2 underline">
+              <button type="button" onClick={() => setSearch("")} className="text-ai text-sm mt-2 underline">
                 すべて表示
               </button>
             </div>

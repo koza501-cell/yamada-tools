@@ -324,7 +324,7 @@ export default function DebtDiagnosisClient() {
                   </div>
                 ))}
               </div>
-              <button
+              <button type="button"
                 onClick={handleStart}
                 className="w-full bg-kon hover:bg-ai text-white font-bold py-4 px-6 rounded-xl text-lg transition-colors"
               >
@@ -372,7 +372,7 @@ export default function DebtDiagnosisClient() {
             {/* Options */}
             <div className="space-y-3 mb-6">
               {currentQuestion.options.map((opt) => (
-                <button
+                <button type="button"
                   key={opt.value}
                   onClick={() => setSelected(opt.value)}
                   className={`w-full text-left px-5 py-4 rounded-xl border-2 transition-all font-medium text-gray-800 ${
@@ -391,7 +391,7 @@ export default function DebtDiagnosisClient() {
 
             {/* Nav buttons */}
             <div className="flex gap-3">
-              <button
+              <button type="button"
                 onClick={() => {
                   if (step === 1) {
                     setStep(0);
@@ -405,7 +405,7 @@ export default function DebtDiagnosisClient() {
               >
                 ← 戻る
               </button>
-              <button
+              <button type="button"
                 onClick={handleNext}
                 disabled={!selected}
                 className={`flex-1 py-3 rounded-xl font-bold text-lg transition-colors ${
@@ -550,7 +550,7 @@ export default function DebtDiagnosisClient() {
             </div>
 
             {/* Retry */}
-            <button
+            <button type="button"
               onClick={handleRetry}
               className="w-full py-3 rounded-xl border border-gray-300 text-gray-600 hover:bg-gray-100 transition-colors mb-6"
             >

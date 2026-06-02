@@ -56,7 +56,7 @@ export default function ChecklistPage() {
           <h2 className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3">相続のケースを選択</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {CASE_OPTIONS.map((opt) => (
-              <button
+              <button type="button"
                 key={opt.value}
                 onClick={() => setSelectedCase(opt.value)}
                 className={`rounded-xl border-2 py-3 px-2 text-sm font-medium transition-all ${
@@ -82,13 +82,13 @@ export default function ChecklistPage() {
               収集済み: <span className="text-ai font-bold">{checkedCount}</span> / {docs.length} 書類
             </span>
             <div className="flex gap-2">
-              <button
+              <button type="button"
                 onClick={handlePrint}
                 className="text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
               >
                 🖨️ 印刷
               </button>
-              <button
+              <button type="button"
                 onClick={() => setChecked({})}
                 className="text-sm text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 px-3 py-1.5"
               >
@@ -115,7 +115,7 @@ export default function ChecklistPage() {
             >
               <div className="p-4">
                 <div className="flex items-start gap-3">
-                  <button
+                  <button type="button"
                     onClick={() => toggleCheck(i)}
                     className={`flex-shrink-0 w-6 h-6 mt-0.5 rounded border-2 flex items-center justify-center transition-colors ${
                       checked[i]

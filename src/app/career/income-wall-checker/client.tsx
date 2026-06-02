@@ -739,7 +739,7 @@ export default function IncomeWallCheckerClient() {
                   <label className="text-sm text-gray-700">現在、配偶者の扶養に入っていますか？</label>
                   <div className="flex gap-2">
                     {(["はい", "いいえ"] as const).map((lbl, i) => (
-                      <button
+                      <button type="button"
                         key={i}
                         onClick={() => handleChange("inDependency", i === 0)}
                         className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
@@ -758,7 +758,7 @@ export default function IncomeWallCheckerClient() {
                   <label className="text-sm text-gray-700">健康保険は配偶者の扶養で加入していますか？</label>
                   <div className="flex gap-2">
                     {(["はい", "いいえ"] as const).map((lbl, i) => (
-                      <button
+                      <button type="button"
                         key={i}
                         onClick={() => handleChange("healthInsuranceBySpouse", i === 0)}
                         className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
@@ -777,7 +777,7 @@ export default function IncomeWallCheckerClient() {
                   <label className="text-sm text-gray-700">勤務先で社会保険に加入していますか？</label>
                   <div className="flex gap-2">
                     {(["はい", "いいえ"] as const).map((lbl, i) => (
-                      <button
+                      <button type="button"
                         key={i}
                         onClick={() => handleChange("enrolledInSocialInsurance", i === 0)}
                         className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
@@ -819,13 +819,13 @@ export default function IncomeWallCheckerClient() {
 
             {/* Buttons */}
             <div className="flex gap-3">
-              <button
+              <button type="button"
                 onClick={handleDiagnose}
                 className="flex-1 bg-kon hover:bg-ai text-white py-3 rounded-lg font-bold text-sm transition-colors shadow-sm"
               >
                 診断する
               </button>
-              <button
+              <button type="button"
                 onClick={handleReset}
                 className="px-4 py-3 border border-gray-300 text-gray-600 rounded-lg text-sm hover:bg-gray-50 transition-colors"
               >
@@ -1025,7 +1025,7 @@ export default function IncomeWallCheckerClient() {
           <div className="space-y-2">
             {faqs.map((faq, i) => (
               <div key={i} className="border border-gray-200 rounded-lg overflow-hidden">
-                <button
+                <button type="button"
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   className="w-full text-left px-4 py-3 flex items-center justify-between gap-3 hover:bg-gray-50 transition-colors"
                 >

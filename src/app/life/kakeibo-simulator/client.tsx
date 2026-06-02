@@ -256,7 +256,7 @@ export default function KakeiboSimulatorClient() {
                         <div className="flex justify-between items-center">
                           <span className="text-xs font-medium text-gray-500 dark:text-gray-400">子供 {idx + 1}</span>
                           {children.length > 1 && (
-                            <button onClick={() => removeChild(c.id)} className="text-danger hover:text-danger text-lg leading-none font-bold">×</button>
+                            <button type="button" onClick={() => removeChild(c.id)} className="text-danger hover:text-danger text-lg leading-none font-bold">×</button>
                           )}
                         </div>
                         <div className="grid grid-cols-2 gap-2">
@@ -280,7 +280,7 @@ export default function KakeiboSimulatorClient() {
                       </div>
                     ))}
                     {children.length < 4 && (
-                      <button onClick={addChild} className="text-sm text-kon hover:text-ai">＋ 子供を追加</button>
+                      <button type="button" onClick={addChild} className="text-sm text-kon hover:text-ai">＋ 子供を追加</button>
                     )}
                   </div>
                 )}
@@ -402,7 +402,7 @@ export default function KakeiboSimulatorClient() {
 
             {/* Tips accordion */}
             <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm">
-              <button onClick={() => setShowTips(!showTips)}
+              <button type="button" onClick={() => setShowTips(!showTips)}
                 className="w-full flex justify-between items-center text-sm font-semibold text-gray-700 dark:text-gray-300">
                 <span>固定費削減のヒント</span>
                 <span>{showTips ? "▲" : "▼"}</span>

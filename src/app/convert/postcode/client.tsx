@@ -191,7 +191,7 @@ export default function PostcodeClient({
             <label className="block text-xs text-gray-500 mb-2">クイック検索</label>
             <div className="flex flex-wrap gap-2">
               {commonPostcodes.map((item, index) => (
-                <button
+                <button type="button"
                   key={index}
                   onClick={() => handleHistoryClick(item.code)}
                   className="px-3 py-1 bg-kon/10 text-kon rounded-full text-sm hover:bg-kon/20 transition-colors"
@@ -208,7 +208,7 @@ export default function PostcodeClient({
               <label className="block text-xs text-gray-500 mb-2">最近の検索</label>
               <div className="flex flex-wrap gap-2">
                 {searchHistory.map((code, index) => (
-                  <button
+                  <button type="button"
                     key={index}
                     onClick={() => handleHistoryClick(code)}
                     className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm hover:bg-gray-200 transition-colors"
@@ -222,7 +222,7 @@ export default function PostcodeClient({
 
           {/* Action Buttons */}
           <div className="flex gap-3 mb-6">
-            <button
+            <button type="button"
               onClick={handleSearch}
               disabled={isLoading}
               className={`flex-1 py-4 rounded-xl font-bold transition-colors ${
@@ -233,7 +233,7 @@ export default function PostcodeClient({
             >
               {isLoading ? "検索中..." : "🔍 検索する"}
             </button>
-            <button
+            <button type="button"
               onClick={handleClear}
               className="py-4 px-6 border-2 border-gray-300 text-gray-600 rounded-xl font-bold hover:bg-gray-50 transition-colors"
             >
@@ -265,13 +265,13 @@ export default function PostcodeClient({
                       </p>
                     </div>
                     <div className="flex flex-col gap-2">
-                      <button
+                      <button type="button"
                         onClick={() => handleCopy(`${result.zipcode.slice(0, 3)}-${result.zipcode.slice(3)}`)}
                         className="px-3 py-1 bg-kon text-white rounded text-xs hover:bg-ai transition-colors"
                       >
                         〒コピー
                       </button>
-                      <button
+                      <button type="button"
                         onClick={() => handleCopy(`${result.address1}${result.address2}${result.address3}`)}
                         className="px-3 py-1 bg-green-600 text-white rounded text-xs hover:bg-green-700 transition-colors"
                       >

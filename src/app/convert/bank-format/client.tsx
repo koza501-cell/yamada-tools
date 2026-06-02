@@ -657,13 +657,12 @@ export default function BankFormatClient({
     return result;
   };
 
-  // Pad string to specific byte length
+  // Pad string to Zengin field width (character count, not UTF-8 bytes).
+  // After toZenginKana() every char is ASCII or half-width katakana —
+  // both are exactly 1 byte in Shift-JIS, so we pad to character count.
   const padRight = (str: string, len: number): string => {
-    const bytes = new TextEncoder().encode(str);
-    if (bytes.length >= len) {
-      return new TextDecoder().decode(bytes.slice(0, len));
-    }
-    return str + " ".repeat(len - bytes.length);
+    if (str.length >= len) return str.slice(0, len);
+    return str + " ".repeat(len - str.length);
   };
 
   const padLeft = (str: string, len: number, char: string = "0"): string => {
@@ -968,6 +967,24 @@ export default function BankFormatClient({
       return;
     }
 
+    // Validate: block CJK/kanji that cannot be represented in Zengin half-kana format.
+    // toZenginKana() strips them silently — this gives the user a clear error instead.
+    const hasCJK = (s: string) => /[　-鿿豈-﫿]/.test(s);
+    const cjkField =
+      hasCJK(headerData.clientName) ? "委託者名" :
+      validTransfers.find(t => hasCJK(t.recipientName)) ? "受取人名" :
+      validTransfers.find(t => hasCJK(t.bankName || "")) ? "銀行名" :
+      validTransfers.find(t => hasCJK(t.branchName || "")) ? "支店名" : null;
+    if (cjkField) {
+      setMascotState("error");
+      setMascotMessage(
+        "全銀フォーマットは半角カナ・英数字のみ使用できます（" +
+        cjkField +
+        "に漢字が含まれています）"
+      );
+      return;
+    }
+
     try {
       setMascotState("working");
       setMascotMessage("変換中...");
@@ -1253,7 +1270,7 @@ export default function BankFormatClient({
             <span className={`font-bold text-lg text-kon transition-transform duration-200 ${totalPulse ? 'scale-110' : 'scale-100'}`}>
               {new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(runningTotal)}
             </span>
-            <button
+            <button type="button"
               onClick={addTransferRow}
               className="ml-auto px-3 py-1.5 bg-kon text-white rounded-lg text-sm hover:bg-kon/90 flex-shrink-0"
             >
@@ -1268,7 +1285,7 @@ export default function BankFormatClient({
         {/* Feature F: Conversion History */}
         {history.length > 0 && (
           <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-4 mb-6">
-            <button
+            <button type="button"
               onClick={() => setHistoryOpen(!historyOpen)}
               className="w-full flex items-center justify-between text-left"
             >
@@ -1289,7 +1306,7 @@ export default function BankFormatClient({
                     </p>
                     <p className="text-xs text-gray-400">{entry.encoding}</p>
                     <div className="flex gap-2 mt-2">
-                      <button
+                      <button type="button"
                         onClick={() => {
                           setHeaderData(entry.headerData);
                           setTransfers(entry.transfers);
@@ -1300,7 +1317,7 @@ export default function BankFormatClient({
                         }}
                         className="text-xs text-kon hover:underline"
                       >再利用</button>
-                      <button
+                      <button type="button"
                         onClick={() => handleDownload(entry.result, entry.encoding)}
                         className="text-xs text-gray-500 hover:text-kon hover:underline"
                       >DL</button>
@@ -1492,7 +1509,7 @@ export default function BankFormatClient({
         {conversionDirection === "to-zengin" && (<>
         {/* Input Mode Toggle */}
         <div className="flex gap-2 mb-6">
-          <button
+          <button type="button"
             onClick={() => setInputMode("manual")}
             className={`flex-1 py-2 px-4 rounded-xl font-medium transition-all ${
               inputMode === "manual"
@@ -1502,7 +1519,7 @@ export default function BankFormatClient({
           >
             手動入力
           </button>
-          <button
+          <button type="button"
             onClick={() => setInputMode("csv")}
             className={`flex-1 py-2 px-4 rounded-xl font-medium transition-all ${
               inputMode === "csv"
@@ -1893,7 +1910,7 @@ export default function BankFormatClient({
           <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-6 mb-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg font-bold text-kon">CSV入力</h2>
-              <button
+              <button type="button"
                 onClick={handleSampleCsvDownload}
                 className="text-xs text-kon hover:underline flex items-center gap-1"
               >
@@ -1967,13 +1984,13 @@ export default function BankFormatClient({
               className="w-full px-4 py-3 border border-gray-200 rounded-xl font-mono text-sm mb-3 focus:border-kon focus:outline-none"
             />
             <div className="flex flex-wrap gap-2">
-              <button
+              <button type="button"
                 onClick={handleCsvParse}
                 className="px-4 py-2 bg-kon text-white rounded-lg hover:bg-kon/90 text-sm"
               >
                 解析して反映
               </button>
-              <button
+              <button type="button"
                 onClick={loadSampleData}
                 className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 text-sm"
               >
@@ -2072,11 +2089,11 @@ export default function BankFormatClient({
                     </table>
                   </div>
                   <div className="flex gap-2 p-3 bg-gray-50 dark:bg-gray-800 border-t border-gray-100 dark:border-gray-700">
-                    <button onClick={confirmExcelImport}
+                    <button type="button" onClick={confirmExcelImport}
                       className="px-4 py-1.5 bg-kon text-white text-sm rounded-lg hover:bg-kon/90">
                       このデータを取り込む
                     </button>
-                    <button onClick={() => { setXlsShowPreview(false); setXlsFile(null); setXlsSheets([]); setXlsError(''); }}
+                    <button type="button" onClick={() => { setXlsShowPreview(false); setXlsFile(null); setXlsSheets([]); setXlsError(''); }}
                       className="px-4 py-1.5 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-sm rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600">
                       キャンセル
                     </button>
@@ -2131,7 +2148,7 @@ export default function BankFormatClient({
             <h2 className="text-lg font-bold text-kon">
               振込先データ（{transfers.length}件）
             </h2>
-            <button
+            <button type="button"
               onClick={addTransferRow}
               className="px-3 py-1 bg-kon text-white rounded-lg text-sm hover:bg-kon/90"
             >
@@ -2361,7 +2378,7 @@ export default function BankFormatClient({
                         {rAmtErr && <p className="text-danger text-xs mt-0.5">{rAmtErr}</p>}
                       </td>
                       <td className="px-1 py-2">
-                        <button
+                        <button type="button"
                           onClick={() => removeTransferRow(index)}
                           className="text-danger hover:text-danger text-xs"
                           disabled={transfers.length === 1}
@@ -2398,7 +2415,7 @@ export default function BankFormatClient({
           const hasRequiredHeader = !!(headerData.clientCode && headerData.clientName);
           const disabled = hasAttemptedConvert && errCount > 0;
           return (
-            <button
+            <button type="button"
               onClick={handleConvert}
               disabled={disabled}
               className={`w-full py-4 rounded-xl font-bold text-lg transition-all mb-6 flex items-center justify-center gap-2 ${
@@ -2528,19 +2545,19 @@ export default function BankFormatClient({
                   <span className="text-sm text-gray-700 dark:text-gray-300">UTF-8</span>
                 </label>
               </div>
-              <button
+              <button type="button"
                 onClick={() => handleDownload()}
                 className="flex items-center gap-2 px-5 py-2.5 bg-kon text-white rounded-xl font-medium text-sm hover:bg-kon/90 transition-colors"
               >
                 📥 ダウンロード
               </button>
-              <button
+              <button type="button"
                 onClick={handleCopy}
                 className="flex items-center gap-2 px-5 py-2.5 border-2 border-kon text-kon dark:text-white dark:border-white rounded-xl font-medium text-sm hover:bg-kon/5 transition-colors"
               >
                 📋 コピー
               </button>
-              <button
+              <button type="button"
                 onClick={() => { setResult(""); document.getElementById('form-section')?.scrollIntoView({ behavior: 'smooth' }); }}
                 className="flex items-center gap-2 px-5 py-2.5 border border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300 rounded-xl font-medium text-sm hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors ml-auto"
               >

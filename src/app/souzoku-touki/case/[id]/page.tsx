@@ -237,7 +237,7 @@ export default function CaseIdPage({ params }: { params: Promise<{ id: string }>
         {/* Section tabs */}
         <div className="flex gap-1 mb-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm p-1 overflow-x-auto">
           {SECTIONS.map((s) => (
-            <button
+            <button type="button"
               key={s}
               onClick={() => setSection(s)}
               className={`flex-1 min-w-0 py-2 px-2 rounded-lg text-xs font-medium transition-all whitespace-nowrap ${
@@ -284,12 +284,12 @@ export default function CaseIdPage({ params }: { params: Promise<{ id: string }>
                   <div className="flex items-center justify-between mb-3">
                     <span className="font-semibold text-sm text-gray-900 dark:text-white">不動産 {i + 1}</span>
                     {form.properties.length > 1 && (
-                      <button onClick={() => removeProp(i)} className="text-xs text-danger hover:text-danger">削除</button>
+                      <button type="button" onClick={() => removeProp(i)} className="text-xs text-danger hover:text-danger">削除</button>
                     )}
                   </div>
                   <div className="grid grid-cols-2 gap-2 mb-3">
                     {(["land", "building"] as const).map((t) => (
-                      <button
+                      <button type="button"
                         key={t}
                         onClick={() => { setForm((f) => { const ps = [...f.properties]; ps[i] = { ...ps[i], type: t, chime: t === "land" ? "宅地" : "居宅" }; return { ...f, properties: ps }; }); }}
                         className={`py-2 rounded-lg text-xs font-medium transition-all ${prop.type === t ? "bg-ai text-white" : "bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300"}`}
@@ -307,7 +307,7 @@ export default function CaseIdPage({ params }: { params: Promise<{ id: string }>
                   {fi("固定資産評価額（円）", prop.assessed_value, (v) => setProp(i, "assessed_value", v), { type: "number", placeholder: "5000000" })}
                 </div>
               ))}
-              <button
+              <button type="button"
                 onClick={addProp}
                 className="w-full py-2 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl text-sm text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-400 transition-colors"
               >
@@ -333,7 +333,7 @@ export default function CaseIdPage({ params }: { params: Promise<{ id: string }>
                   <div className="flex items-center justify-between mb-3">
                     <span className="font-semibold text-sm text-gray-900 dark:text-white">相続人 {i + 1}</span>
                     {form.heirs.length > 1 && (
-                      <button onClick={() => removeHeir(i)} className="text-xs text-danger hover:text-danger">削除</button>
+                      <button type="button" onClick={() => removeHeir(i)} className="text-xs text-danger hover:text-danger">削除</button>
                     )}
                   </div>
                   {fi("氏名", heir.name, (v) => setHeir(i, "name", v), { placeholder: "山田花子" })}
@@ -348,7 +348,7 @@ export default function CaseIdPage({ params }: { params: Promise<{ id: string }>
                   </label>
                 </div>
               ))}
-              <button
+              <button type="button"
                 onClick={addHeir}
                 className="w-full py-2 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl text-sm text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
               >
@@ -405,7 +405,7 @@ export default function CaseIdPage({ params }: { params: Promise<{ id: string }>
               ? `保存済み ${lastSavedAt.toLocaleTimeString("ja-JP", { hour: "2-digit", minute: "2-digit", second: "2-digit" })}`
               : "30秒ごとに自動保存されます")}
           </span>
-          <button
+          <button type="button"
             onClick={() => save(false)}
             disabled={saving}
             className="text-sm px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-xl font-medium transition-colors disabled:opacity-50"
@@ -479,7 +479,7 @@ export default function CaseIdPage({ params }: { params: Promise<{ id: string }>
                   { tier: "standard", label: "Standard", price: "¥3,980", note: "全3書類 90日間" },
                   { tier: "premium", label: "Premium", price: "¥7,980", note: "全3書類 1年間" },
                 ].map((p) => (
-                  <button
+                  <button type="button"
                     key={p.tier}
                     onClick={() => handleBuyPlan(p.tier)}
                     className="border-2 border-ai rounded-xl p-3 text-center hover:bg-ai hover:text-white transition-all group"

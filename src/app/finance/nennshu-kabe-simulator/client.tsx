@@ -95,7 +95,7 @@ export default function NennshuKabeClient() {
                 </div>
                 <div className="flex gap-2 mt-2 flex-wrap">
                   {[98, 106, 123, 130, 150, 180].map(v => (
-                    <button key={v} onClick={() => setSpouseIncome(v)}
+                    <button type="button" key={v} onClick={() => setSpouseIncome(v)}
                       className={`text-xs px-2 py-1 rounded border transition-colors ${spouseIncome === v ? "bg-kon text-white border-kon" : "border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 hover:border-ai"}`}>
                       {v}万
                     </button>

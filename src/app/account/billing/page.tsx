@@ -192,7 +192,7 @@ export default function BillingPage() {
                               className="text-xs border border-gray-200 rounded px-1.5 py-0.5 w-32 focus:outline-none focus:border-ai"
                               placeholder="お客様" />
                           </div>
-                          <button onClick={() => handleDownloadReceipt(r)} disabled={downloadingId === r.id}
+                          <button type="button" onClick={() => handleDownloadReceipt(r)} disabled={downloadingId === r.id}
                             className="text-xs px-2 py-1 border border-gray-200 rounded hover:bg-gray-50 text-gray-600 transition-colors disabled:opacity-50">
                             {downloadingId === r.id ? "処理中..." : "領収書PDF"}
                           </button>
@@ -246,7 +246,7 @@ export default function BillingPage() {
                               className="text-xs border border-gray-200 rounded px-1.5 py-0.5 w-32 focus:outline-none focus:border-ai"
                               placeholder="お客様" />
                           </div>
-                          <button onClick={() => handleDownloadReceipt(r)} disabled={downloadingId === r.id}
+                          <button type="button" onClick={() => handleDownloadReceipt(r)} disabled={downloadingId === r.id}
                             className="text-xs px-2 py-1 border border-gray-200 rounded hover:bg-gray-50 text-gray-600 transition-colors disabled:opacity-50">
                             {downloadingId === r.id ? "処理中..." : "領収書PDF"}
                           </button>

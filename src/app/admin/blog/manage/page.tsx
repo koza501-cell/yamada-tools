@@ -84,7 +84,7 @@ export default function ManageBlogsPage() {
           <h2 className="text-lg font-semibold text-gray-900 mb-4">カテゴリーでフィルター</h2>
           <div className="flex flex-wrap gap-2">
             {categories.map((category) => (
-              <button key={category} onClick={() => setFilter(category)} className={`px-4 py-2 rounded-lg font-medium transition-colors ${filter === category ? 'bg-kon text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>
+              <button type="button" key={category} onClick={() => setFilter(category)} className={`px-4 py-2 rounded-lg font-medium transition-colors ${filter === category ? 'bg-kon text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>
                 {category === 'all' ? 'すべて' : category} ({getCategoryCount(category)})
               </button>
             ))}
@@ -127,7 +127,7 @@ export default function ManageBlogsPage() {
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-3">
                       <a href={`/blog/${blog.slug}`} target="_blank" rel="noopener noreferrer" className="text-kon hover:text-ai">表示</a>
                       <Link href={`/admin/blog/edit/${blog.slug}`} className="text-green-600 hover:text-green-900">編集</Link>
-                      <button onClick={() => setDeleteConfirm(blog.slug)} className="text-danger hover:text-danger">削除</button>
+                      <button type="button" onClick={() => setDeleteConfirm(blog.slug)} className="text-danger hover:text-danger">削除</button>
                     </td>
                   </tr>
                 ))}
@@ -147,8 +147,8 @@ export default function ManageBlogsPage() {
               <h3 className="text-lg font-bold text-gray-900 mb-4">ブログを削除</h3>
               <p className="text-gray-600 mb-6">このブログを削除すると、元に戻せません。本当に削除しますか？</p>
               <div className="flex justify-end space-x-3">
-                <button onClick={() => setDeleteConfirm(null)} className="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300">キャンセル</button>
-                <button onClick={() => handleDelete(deleteConfirm)} className="px-4 py-2 bg-danger text-white rounded-lg hover:bg-danger">削除する</button>
+                <button type="button" onClick={() => setDeleteConfirm(null)} className="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300">キャンセル</button>
+                <button type="button" onClick={() => handleDelete(deleteConfirm)} className="px-4 py-2 bg-danger text-white rounded-lg hover:bg-danger">削除する</button>
               </div>
             </div>
           </div>

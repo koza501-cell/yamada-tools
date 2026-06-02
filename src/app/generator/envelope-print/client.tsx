@@ -483,7 +483,7 @@ export default function EnvelopePrintClient({
     try { const qr = localStorage.getItem(QR_KEY); if (qr) setQrContent(qr); } catch {}
   }, []);
 
-  const API_BASE = 'https://api-staging.yamada-tools.jp';
+  const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'https://api.yamada-tools.jp';
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -1617,7 +1617,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
 @media print{.ctrl{display:none!important}.preview{padding:0;background:none;min-height:auto}.env{box-shadow:none}.env img{width:${env.width}mm;height:${env.height}mm}}</style>
 </head><body><div class="ctrl"><h2>🖨️ 封筒印刷プレビュー<span class="badge">300 DPI</span></h2>
 <p>用紙サイズを「${env.name} (${env.width}×${env.height}mm)」に設定してください</p>
-<button onclick="window.print()">印刷 / PDF保存</button></div>
+<button type="button" onclick="window.print()">印刷 / PDF保存</button></div>
 <div class="preview"><div class="env"><img src="${dataUrl}" alt="封筒プレビュー"/></div></div></body></html>`);
       pw.document.close();
       setMascotState("success")
@@ -1672,7 +1672,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                       <p className="text-xs font-medium text-gray-800 truncate">{label}</p>
                       <p className="text-xs text-gray-500 mt-0.5">{entry.envelopeLabel}</p>
                       <p className="text-xs text-gray-400 mt-0.5">{dateStr}</p>
-                      <button
+                      <button type="button"
                         onClick={() => {
                           setHonorificManual(false); setHonorificHint("");
                           reset({
@@ -1698,7 +1698,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
           {/* Template quick-fill buttons */}
           <div className="flex flex-wrap gap-2 justify-center mb-4">
             {TEMPLATES.map(tpl => (
-              <button key={tpl.label} onClick={() => applyTemplate(tpl)}
+              <button type="button" key={tpl.label} onClick={() => applyTemplate(tpl)}
                 className="px-4 py-2 text-sm bg-white border border-gray-200 rounded-full shadow-sm hover:bg-gray-50 hover:border-gray-300 transition-colors font-medium dark:bg-gray-800 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-700">
                 {tpl.label}
               </button>
@@ -1707,8 +1707,8 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
 
           <div className="flex justify-center mb-6">
             <div className="bg-white rounded-lg p-1 shadow border border-gray-200 inline-flex">
-              <button onClick={() => setActiveTab("simple")} className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${activeTab === "simple" ? "bg-kon text-white" : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"}`}>🎯 かんたんモード</button>
-              <button onClick={() => setActiveTab("advanced")} className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${activeTab === "advanced" ? "bg-kon text-white" : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"}`}>⚙️ 詳細設定</button>
+              <button type="button" onClick={() => setActiveTab("simple")} className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${activeTab === "simple" ? "bg-kon text-white" : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"}`}>🎯 かんたんモード</button>
+              <button type="button" onClick={() => setActiveTab("advanced")} className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${activeTab === "advanced" ? "bg-kon text-white" : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"}`}>⚙️ 詳細設定</button>
             </div>
           </div>
 
@@ -1827,7 +1827,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                   <div className="mt-3 p-2 bg-gray-50 border border-gray-200 rounded-lg text-xs text-kon flex items-center gap-2 flex-wrap">
                     <span>⭐ おすすめ封筒:</span>
                     {overflowSuggestions.map(k => (
-                      <button key={k} onClick={() => setEnvelopeSize(k)}
+                      <button type="button" key={k} onClick={() => setEnvelopeSize(k)}
                         className="px-2 py-0.5 bg-gray-50 hover:bg-gray-50 rounded font-medium transition-colors">
                         {ENVELOPE_SIZES[k].name}
                       </button>
@@ -1839,7 +1839,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
               {/* ── Address Book ── */}
               {!bulkMode && (
                 <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
-                  <button
+                  <button type="button"
                     onClick={() => setAddressBookOpen(o => !o)}
                     className="w-full flex items-center justify-between px-6 py-4 hover:bg-gray-50 transition-colors">
                     <span className="flex items-center gap-2 font-bold text-[#1e3a5f]">
@@ -1853,7 +1853,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                     </span>
                     <div className="flex items-center gap-2">
                       {getPlanLimits(userPlan).addressBook > 0 && (
-                        <button
+                        <button type="button"
                           onClick={e => { e.stopPropagation(); exportServerAddressBook(); }}
                           className="text-xs text-gray-500 hover:text-gray-700 px-2 py-1 rounded hover:bg-gray-100"
                           title="CSVエクスポート">
@@ -1869,8 +1869,8 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                         <div className="mt-3 mb-3 bg-gray-50 border border-gray-200 rounded-lg p-3 text-sm text-kon">
                           <p className="font-medium">📦 ブラウザに保存された住所があります。クラウドに移行しますか？</p>
                           <div className="flex gap-2 mt-2">
-                            <button onClick={bulkMigrateToServer} className="px-3 py-1.5 bg-kon text-white rounded text-xs hover:bg-ai">移行する</button>
-                            <button onClick={() => setAbMigratePrompt(false)} className="px-3 py-1.5 bg-gray-100 text-gray-600 rounded text-xs hover:bg-gray-200">このままにする</button>
+                            <button type="button" onClick={bulkMigrateToServer} className="px-3 py-1.5 bg-kon text-white rounded text-xs hover:bg-ai">移行する</button>
+                            <button type="button" onClick={() => setAbMigratePrompt(false)} className="px-3 py-1.5 bg-gray-100 text-gray-600 rounded text-xs hover:bg-gray-200">このままにする</button>
                           </div>
                         </div>
                       )}
@@ -1920,7 +1920,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                                             {a.tags.map(tag => (
                                               <span key={tag} className="inline-flex items-center gap-0.5 px-1.5 py-0.5 bg-gray-50 text-kon rounded text-xs">
                                                 {tag}
-                                                <button onClick={() => removeTagFromServerAddress(a.id, tag)} className="hover:text-danger ml-0.5">×</button>
+                                                <button type="button" onClick={() => removeTagFromServerAddress(a.id, tag)} className="hover:text-danger ml-0.5">×</button>
                                               </span>
                                             ))}
                                           </div>
@@ -1939,16 +1939,16 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                                               className="text-xs border border-gray-300 rounded px-2 py-0.5 w-24"
                                               autoFocus
                                             />
-                                            <button onClick={() => { setAbTagInputId(null); setAbTagInputValue(""); }} className="text-xs text-gray-400 hover:text-gray-600">✕</button>
+                                            <button type="button" onClick={() => { setAbTagInputId(null); setAbTagInputValue(""); }} className="text-xs text-gray-400 hover:text-gray-600">✕</button>
                                           </div>
                                         ) : (
-                                          <button onClick={() => { setAbTagInputId(a.id); setAbTagInputValue(""); }} className="text-xs text-gray-400 hover:text-ai mt-0.5">+ タグ</button>
+                                          <button type="button" onClick={() => { setAbTagInputId(a.id); setAbTagInputValue(""); }} className="text-xs text-gray-400 hover:text-ai mt-0.5">+ タグ</button>
                                         )}
                                       </div>
                                     </div>
                                     <div className="flex gap-3 mt-2">
-                                      <button onClick={() => loadFromServerAddress(a)} className="text-xs text-kon hover:underline font-medium">読み込む</button>
-                                      <button onClick={() => deleteFromServerAddressBook(a.id)} className="text-xs text-danger hover:underline">削除</button>
+                                      <button type="button" onClick={() => loadFromServerAddress(a)} className="text-xs text-kon hover:underline font-medium">読み込む</button>
+                                      <button type="button" onClick={() => deleteFromServerAddressBook(a.id)} className="text-xs text-danger hover:underline">削除</button>
                                     </div>
                                   </div>
                                 ))}
@@ -1985,8 +1985,8 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                                       <span className="text-xs text-gray-400 flex-shrink-0 mt-0.5">最終使用: {dateStr}</span>
                                     </div>
                                     <div className="flex gap-3 mt-2">
-                                      <button onClick={() => loadFromAddressBook(saved)} className="text-xs text-kon hover:underline font-medium">読み込む</button>
-                                      <button onClick={() => deleteFromAddressBook(saved.id)} className="text-xs text-danger hover:underline">削除</button>
+                                      <button type="button" onClick={() => loadFromAddressBook(saved)} className="text-xs text-kon hover:underline font-medium">読み込む</button>
+                                      <button type="button" onClick={() => deleteFromAddressBook(saved.id)} className="text-xs text-danger hover:underline">削除</button>
                                     </div>
                                   </div>
                                 );
@@ -2021,7 +2021,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                       <label className="block text-xs text-gray-500 mb-1">郵便番号 <span className="text-danger">*</span></label>
                       <div className="flex gap-2">
                         <input type="text" {...register("recipient.postalCode")} placeholder="1000001" maxLength={8} className={`flex-1 bg-gray-50 border rounded-lg px-3 py-2 ${errors.recipient?.postalCode ? "border-danger" : "border-gray-300"}`} aria-invalid={!!errors.recipient?.postalCode} onChange={(e) => { setValue("recipient.postalCode", e.target.value, { shouldValidate: true }); setPostalError(""); }}/>
-                        <button onClick={handlePostalLookup} disabled={postalLoading} className="px-3 py-2 bg-kon text-white rounded-lg text-sm hover:bg-ai disabled:opacity-50 whitespace-nowrap">
+                        <button type="button" onClick={handlePostalLookup} disabled={postalLoading} className="px-3 py-2 bg-kon text-white rounded-lg text-sm hover:bg-ai disabled:opacity-50 whitespace-nowrap">
                           {postalLoading ? "..." : "住所検索"}
                         </button>
                       </div>
@@ -2055,7 +2055,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                           {userPlan === 'free' && <Link href="/pricing" className="ml-1 font-medium hover:underline">PROプランで100件まで →</Link>}
                         </div>
                       ) : (
-                        <button
+                        <button type="button"
                           onClick={async () => {
                             const _r = getValues("recipient"); if (!_r.postalCode && !_r.prefecture && !_r.city) {
                               showToast("⚠️ 郵便番号または住所を入力してください");
@@ -2087,10 +2087,10 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                           <p className="font-semibold mb-1">⚠️ CSV件数が上限を超えています</p>
                           <p className="mb-3">無料プランでは{getPlanLimits(userPlan).csvRows}件まで処理できます。今のCSVには<strong>{csvSoftWarn.total}件</strong>あります。</p>
                           <div className="flex flex-col sm:flex-row gap-2">
-                            <button onClick={handleCsvContinueFree} className="flex-1 px-4 py-2 bg-white border border-gray-200 text-kon rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors">
+                            <button type="button" onClick={handleCsvContinueFree} className="flex-1 px-4 py-2 bg-white border border-gray-200 text-kon rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors">
                               {getPlanLimits(userPlan).csvRows}件で続ける
                             </button>
-                            <button onClick={handleCsvUpgrade} className="flex-1 px-4 py-2 bg-kon text-white rounded-lg text-sm font-medium hover:bg-kon transition-colors">
+                            <button type="button" onClick={handleCsvUpgrade} className="flex-1 px-4 py-2 bg-kon text-white rounded-lg text-sm font-medium hover:bg-kon transition-colors">
                               全件印刷するにはアップグレード
                             </button>
                           </div>
@@ -2121,10 +2121,10 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                           <p className="font-semibold mb-1">⚠️ CSV件数が上限を超えています</p>
                           <p className="mb-3">無料プランでは5件まで処理できます。今のCSVには<strong>{csvSoftWarn.total}件</strong>あります。</p>
                           <div className="flex flex-col sm:flex-row gap-2">
-                            <button onClick={handleCsvContinueFree} className="flex-1 px-4 py-2 bg-white border border-gray-200 text-kon rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors">
+                            <button type="button" onClick={handleCsvContinueFree} className="flex-1 px-4 py-2 bg-white border border-gray-200 text-kon rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors">
                               5件で続ける
                             </button>
-                            <button onClick={handleCsvUpgrade} className="flex-1 px-4 py-2 bg-kon text-white rounded-lg text-sm font-medium hover:bg-kon transition-colors">
+                            <button type="button" onClick={handleCsvUpgrade} className="flex-1 px-4 py-2 bg-kon text-white rounded-lg text-sm font-medium hover:bg-kon transition-colors">
                               全件印刷するにはアップグレード
                             </button>
                           </div>
@@ -2193,14 +2193,14 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                         );
                       })()}
                       <div className="flex items-center gap-3 mt-2 flex-wrap">
-                        <button onClick={() => handleCSVImport()} className="px-4 py-2 bg-kon text-white rounded-lg text-sm">読み込む</button>
-                        <button onClick={downloadSampleCSV} className="text-xs text-kon hover:underline">📥 サンプルCSVをダウンロード</button>
+                        <button type="button" onClick={() => handleCSVImport()} className="px-4 py-2 bg-kon text-white rounded-lg text-sm">読み込む</button>
+                        <button type="button" onClick={downloadSampleCSV} className="text-xs text-kon hover:underline">📥 サンプルCSVをダウンロード</button>
                       </div>
                       {bulkAddresses.length > 0 && (
                         <div className="mt-4 flex items-center gap-2">
-                          <button onClick={() => {const i=Math.max(0,currentBulkIndex-1);setCurrentBulkIndex(i);reset({recipient:bulkAddresses[i],sender:getValues("sender")});}} disabled={currentBulkIndex===0} className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50">←</button>
+                          <button type="button" onClick={() => {const i=Math.max(0,currentBulkIndex-1);setCurrentBulkIndex(i);reset({recipient:bulkAddresses[i],sender:getValues("sender")});}} disabled={currentBulkIndex===0} className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50">←</button>
                           <span className="text-sm text-gray-700">{currentBulkIndex+1}/{bulkAddresses.length}</span>
-                          <button onClick={() => {const i=Math.min(bulkAddresses.length-1,currentBulkIndex+1);setCurrentBulkIndex(i);reset({recipient:bulkAddresses[i],sender:getValues("sender")});}} disabled={currentBulkIndex===bulkAddresses.length-1} className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50">→</button>
+                          <button type="button" onClick={() => {const i=Math.min(bulkAddresses.length-1,currentBulkIndex+1);setCurrentBulkIndex(i);reset({recipient:bulkAddresses[i],sender:getValues("sender")});}} disabled={currentBulkIndex===bulkAddresses.length-1} className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50">→</button>
                         </div>
                       )}
                     </>
@@ -2221,7 +2221,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                     <input type="text" {...register("sender.address")} placeholder="住所" className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
                     <input type="text" {...register("sender.companyName")} placeholder="会社名" className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
                     <input type="text" {...register("sender.name")} placeholder="氏名" className="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"/>
-                    <button onClick={saveSenderData}
+                    <button type="button" onClick={saveSenderData}
                       className="w-full py-2 min-h-[44px] bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-sm font-medium transition-colors border border-gray-200">
                       💾 差出人を保存（次回から自動入力）
                     </button>
@@ -2230,7 +2230,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                       {getPlanLimits(userPlan).templates > 0 ? (
                         <div className="space-y-2">
                           {!templateSaveOpen ? (
-                            <button
+                            <button type="button"
                               onClick={() => { setTemplateSaveName(getValues('sender').companyName || getValues('sender').name || 'テンプレート'); setTemplateSaveOpen(true); }}
                               className="w-full py-2 min-h-[44px] bg-gray-50 hover:bg-ai text-kon rounded-lg text-sm font-medium transition-colors border border-gray-200">
                               ☁️ テンプレートとして保存
@@ -2246,13 +2246,13 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                                 className="flex-1 bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"
                                 autoFocus
                               />
-                              <button
+                              <button type="button"
                                 onClick={saveTemplateToServer}
                                 disabled={templateSaving}
                                 className="px-3 py-2 bg-kon hover:bg-ai text-white rounded-lg text-sm font-medium transition-colors disabled:opacity-50">
                                 {templateSaving ? '...' : '保存'}
                               </button>
-                              <button
+                              <button type="button"
                                 onClick={() => setTemplateSaveOpen(false)}
                                 className="px-3 py-2 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-lg text-sm transition-colors">
                                 ✕
@@ -2261,7 +2261,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                           )}
                           {serverTemplates.length > 0 && (
                             <div>
-                              <button
+                              <button type="button"
                                 onClick={() => setTemplateListOpen(o => !o)}
                                 className="w-full flex items-center justify-between py-1.5 text-sm text-gray-600 hover:text-gray-800">
                                 <span>📋 保存済みテンプレート ({serverTemplates.length}/{getPlanLimits(userPlan).templates}件)</span>
@@ -2271,12 +2271,12 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                                 <div className="mt-1 border border-gray-200 rounded-lg overflow-hidden">
                                   {serverTemplates.map(t => (
                                     <div key={t.id} className="flex items-center justify-between px-3 py-2 hover:bg-gray-50 border-b border-gray-100 last:border-0">
-                                      <button
+                                      <button type="button"
                                         onClick={() => applyServerTemplate(t)}
                                         className="flex-1 text-left text-sm text-gray-700 hover:text-ai truncate">
                                         {t.name}
                                       </button>
-                                      <button
+                                      <button type="button"
                                         onClick={() => deleteServerTemplate(t.id)}
                                         className="ml-2 text-xs text-danger hover:text-danger shrink-0">
                                         削除
@@ -2292,7 +2292,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                           )}
                         </div>
                       ) : (
-                        <button
+                        <button type="button"
                           onClick={() => { showToast('テンプレート保存はPRO機能です。1日パスでも利用できます 🌟'); setDayPassOpen(true); }}
                           className="w-full py-2 min-h-[44px] bg-gray-50 hover:bg-gray-50 text-kon rounded-lg text-sm font-medium transition-colors border border-gray-200">
                           ☁️ テンプレートとして保存
@@ -2305,7 +2305,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
 
                             {/* ── PRO: Company Logo ── */}
               <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
-                <button onClick={() => setLogoSectionOpen(o => !o)}
+                <button type="button" onClick={() => setLogoSectionOpen(o => !o)}
                   className="w-full flex items-center justify-between px-6 py-4 hover:bg-gray-50 transition-colors">
                   <span className="flex items-center gap-2 font-bold text-[#1e3a5f]">
                     <span>🏢</span> 会社ロゴ
@@ -2340,7 +2340,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                               <div key={i} onClick={() => setActiveLogoIdx(i)}
                                 className={`relative cursor-pointer rounded-lg border-2 p-1 transition-colors ${activeLogoIdx === i ? 'border-kon bg-gray-50' : 'border-gray-200 hover:border-gray-300'}`}>
                                 <img src={logo} alt={`ロゴ${i+1}`} className="w-14 h-14 object-contain rounded"/>
-                                <button
+                                <button type="button"
                                   onClick={(e) => { e.stopPropagation(); const nl = logos.filter((_,idx) => idx !== i); setLogos(nl); if (activeLogoIdx >= nl.length) setActiveLogoIdx(Math.max(0, nl.length-1)); try { localStorage.setItem(LOGO_KEY, JSON.stringify(nl)); } catch {} }}
                                   className="absolute -top-1 -right-1 w-5 h-5 bg-danger text-white rounded-full text-xs flex items-center justify-center hover:bg-danger">×</button>
                                 {activeLogoIdx === i && <span className="absolute bottom-0 left-0 right-0 text-center text-xs bg-kon text-white rounded-b leading-4">使用中</span>}
@@ -2405,7 +2405,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
 
               {/* ── PRO: QR Code ── */}
               <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
-                <button onClick={() => setQrSectionOpen(o => !o)}
+                <button type="button" onClick={() => setQrSectionOpen(o => !o)}
                   className="w-full flex items-center justify-between px-6 py-4 hover:bg-gray-50 transition-colors">
                   <span className="flex items-center gap-2 font-bold text-[#1e3a5f]">
                     <span>📱</span> QRコード
@@ -2477,7 +2477,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                     <label className="block text-xs text-gray-500 mb-2">スタンプ位置</label>
                     <div className="grid grid-cols-3 gap-1 w-24">
                       {[0,1,2,3,4,5,6,7,8].map(pos => (
-                        <button key={pos} onClick={() => setStampPosition(pos)}
+                        <button type="button" key={pos} onClick={() => setStampPosition(pos)}
                           className={`w-7 h-7 rounded text-xs transition-colors ${stampPosition === pos ? "bg-kon" : "bg-gray-200 hover:bg-gray-300"}`}/>
                       ))}
                     </div>
@@ -2536,8 +2536,8 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                       )}
                     </div>
                     <div className="flex gap-2 pt-2">
-                      <button onClick={saveSettings} className="flex-1 px-4 py-2 bg-kon text-white rounded-lg text-sm">💾 設定を保存</button>
-                      <button onClick={resetSettings} className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg text-sm dark:bg-gray-700 dark:text-gray-200">リセット</button>
+                      <button type="button" onClick={saveSettings} className="flex-1 px-4 py-2 bg-kon text-white rounded-lg text-sm">💾 設定を保存</button>
+                      <button type="button" onClick={resetSettings} className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg text-sm dark:bg-gray-700 dark:text-gray-200">リセット</button>
                     </div>
                   </div>
                 </div>
@@ -2587,11 +2587,11 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
               )}
 
               <div className="grid grid-cols-2 gap-4">
-                <button onClick={() => validateAndPrint("pdf")} className="flex items-center justify-center gap-1 px-3 sm:px-6 py-4 bg-kon hover:bg-ai text-white rounded-xl font-bold shadow-md min-w-0">
+                <button type="button" onClick={() => validateAndPrint("pdf")} className="flex items-center justify-center gap-1 px-3 sm:px-6 py-4 bg-kon hover:bg-ai text-white rounded-xl font-bold shadow-md min-w-0">
                   <span className="shrink-0">📄</span>
                   <div className="text-left min-w-0"><div className="whitespace-nowrap">PDF / 印刷</div><div className="text-xs opacity-80 whitespace-nowrap">300 DPI</div></div>
                 </button>
-                <button onClick={() => validateAndPrint("print")} className="flex items-center justify-center gap-1 px-3 sm:px-6 py-4 bg-green-600 hover:bg-green-700 text-white rounded-xl font-bold shadow-md min-w-0">
+                <button type="button" onClick={() => validateAndPrint("print")} className="flex items-center justify-center gap-1 px-3 sm:px-6 py-4 bg-green-600 hover:bg-green-700 text-white rounded-xl font-bold shadow-md min-w-0">
                   <span className="shrink-0">🖨️</span>
                   <div className="text-left min-w-0"><div className="whitespace-nowrap">直接印刷</div><div className="text-xs opacity-80 whitespace-nowrap">高画質</div></div>
                 </button>
@@ -2603,7 +2603,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
                     <p className="font-medium">PROプランなら<strong>会社ロゴ・バーコード・QRコード</strong>も印刷できます</p>
                     <Link href="/pricing" className="font-medium underline mt-1 inline-block text-kon">アップグレード →</Link>
                   </div>
-                  <button onClick={() => { setShowUpgradeBanner(false); try { localStorage.setItem(UPGRADE_DISMISS_KEY, String(Date.now())); } catch {} }}
+                  <button type="button" onClick={() => { setShowUpgradeBanner(false); try { localStorage.setItem(UPGRADE_DISMISS_KEY, String(Date.now())); } catch {} }}
                     className="text-kon hover:text-kon text-xl leading-none shrink-0">×</button>
                 </div>
               )}
@@ -2672,10 +2672,10 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
       {autoSaveToast && autoSaveAddr && (
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-white border border-gray-200 shadow-xl rounded-xl px-5 py-4 flex items-center gap-4 text-sm max-w-sm w-full">
           <span className="flex-1 text-gray-700">この住所をアドレス帳に保存しますか？</span>
-          <button
+          <button type="button"
             onClick={async () => { if (getPlanLimits(userPlan).addressBook > 0) { await saveToServerAddress(autoSaveAddr); } else { saveToAddressBook(autoSaveAddr); } setAutoSaveToast(false); }}
             className="px-3 py-1.5 bg-kon text-white rounded-lg text-xs font-medium hover:bg-ai">保存する</button>
-          <button onClick={() => setAutoSaveToast(false)}
+          <button type="button" onClick={() => setAutoSaveToast(false)}
             className="px-3 py-1.5 bg-gray-100 text-gray-600 rounded-lg text-xs hover:bg-gray-200">しない</button>
         </div>
       )}

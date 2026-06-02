@@ -117,7 +117,7 @@ export default function QrReaderClient() {
             {preview ? (
               <div>
                 <img src={preview} alt="Preview" className="max-h-64 mx-auto rounded-lg mb-4" />
-                <button onClick={clearAll} className="text-sm text-danger hover:text-danger">
+                <button type="button" onClick={clearAll} className="text-sm text-danger hover:text-danger">
                   別の画像を選択
                 </button>
               </div>
@@ -140,7 +140,7 @@ export default function QrReaderClient() {
                 {result}
               </div>
               <div className="flex gap-2">
-                <button
+                <button type="button"
                   onClick={copyResult}
                   className="flex-1 py-2 bg-kon text-white rounded-lg hover:bg-ai"
                 >

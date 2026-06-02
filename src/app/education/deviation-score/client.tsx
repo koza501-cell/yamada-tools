@@ -250,7 +250,7 @@ export default function DeviationScoreClient() {
       <div className="max-w-3xl mx-auto px-4 py-6 space-y-5">
         {/* Mode tabs */}
         <div className="flex bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-          <button
+          <button type="button"
             className={`flex-1 py-3 text-sm font-semibold transition-colors ${
               mode === "score" ? "bg-kon text-white" : "text-gray-600 hover:bg-gray-50"
             }`}
@@ -258,7 +258,7 @@ export default function DeviationScoreClient() {
           >
             点数 → 偏差値
           </button>
-          <button
+          <button type="button"
             className={`flex-1 py-3 text-sm font-semibold transition-colors ${
               mode === "reverse" ? "bg-kon text-white" : "text-gray-600 hover:bg-gray-50"
             }`}
@@ -273,7 +273,7 @@ export default function DeviationScoreClient() {
           {mode === "score" ? (
             <>
               <div className="flex items-center gap-3">
-                <button
+                <button type="button"
                   onClick={() => setInputMode(inputMode === "manual" ? "auto" : "manual")}
                   className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
                     inputMode === "auto" ? "bg-kon" : "bg-gray-300"
@@ -399,7 +399,7 @@ export default function DeviationScoreClient() {
         {/* Multi-subject */}
         {mode === "score" && (
           <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-            <button
+            <button type="button"
               className="w-full px-5 py-3 flex items-center justify-between text-sm font-semibold text-gray-700 hover:bg-gray-50"
               onClick={() => setShowSubjects(!showSubjects)}
             >
@@ -430,7 +430,7 @@ export default function DeviationScoreClient() {
           <div className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-danger">{error}</div>
         )}
 
-        <button
+        <button type="button"
           onClick={calculate}
           className="w-full bg-kon hover:bg-ai text-white font-bold py-3.5 rounded-xl transition-colors text-base"
         >
@@ -636,7 +636,7 @@ export default function DeviationScoreClient() {
           <h2 className="px-5 py-4 font-bold text-gray-800 border-b border-gray-100">よくある質問</h2>
           {FAQ_LIST.map((faq, i) => (
             <div key={i} className="border-b border-gray-100 last:border-0">
-              <button
+              <button type="button"
                 className="w-full px-5 py-3.5 flex items-start justify-between text-left text-sm font-medium text-gray-700 hover:bg-gray-50"
                 onClick={() => setOpenFaq(openFaq === i ? null : i)}
               >

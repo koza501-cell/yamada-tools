@@ -217,7 +217,7 @@ export default function QRCodeClient({
                 { id: "phone", label: "電話番号", icon: "📞" },
                 { id: "wifi", label: "WiFi", icon: "📶" },
               ].map((item) => (
-                <button
+                <button type="button"
                   key={item.id}
                   onClick={() => { setContentType(item.id as ContentType); handleClear(); }}
                   className={`py-2 px-4 rounded-lg text-sm font-medium transition-all flex items-center gap-2 ${
@@ -330,7 +330,7 @@ export default function QRCodeClient({
                     { id: "medium", label: "中 (300px)" },
                     { id: "large", label: "大 (400px)" },
                   ].map((item) => (
-                    <button
+                    <button type="button"
                       key={item.id}
                       onClick={() => setQrSize(item.id as QRSize)}
                       className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-all ${
@@ -384,7 +384,7 @@ export default function QRCodeClient({
               </div>
 
               {/* Generate Button */}
-              <button
+              <button type="button"
                 onClick={generateQR}
                 className="w-full py-4 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors"
               >
@@ -412,19 +412,19 @@ export default function QRCodeClient({
               {/* Download Buttons */}
               {qrDataUrl && (
                 <div className="flex gap-3 mt-4">
-                  <button
+                  <button type="button"
                     onClick={downloadPNG}
                     className="flex-1 py-3 bg-green-600 text-white rounded-xl font-bold hover:bg-green-700 transition-colors"
                   >
                     📥 PNG
                   </button>
-                  <button
+                  <button type="button"
                     onClick={downloadSVG}
                     className="flex-1 py-3 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors"
                   >
                     📥 SVG
                   </button>
-                  <button
+                  <button type="button"
                     onClick={handleClear}
                     className="py-3 px-6 border-2 border-gray-300 text-gray-600 rounded-xl font-bold hover:bg-gray-50 transition-colors"
                   >

@@ -194,7 +194,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
     });
     
     const winRate = winCount + lossCount > 0 ? (winCount / (winCount + lossCount)) * 100 : 0;
-    const profitFactor = totalLoss > 0 ? totalWin / totalLoss : totalWin > 0 ? Infinity : 0;
+    const profitFactor = totalLoss > 0 ? totalWin / totalLoss : totalWin > 0 ? 999999999999 : 0;
     
     return { results, totalProfit: Math.round(totalProfit), winCount, lossCount, winRate: Math.round(winRate * 10) / 10, avgWin: winCount > 0 ? Math.round(totalWin / winCount) : 0, avgLoss: lossCount > 0 ? Math.round(totalLoss / lossCount) : 0, profitFactor: Math.round(profitFactor * 100) / 100 };
   };
@@ -317,7 +317,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
         <div className="max-w-4xl mx-auto px-4">
           <div className="flex overflow-x-auto gap-2 py-3 no-scrollbar">
             {(Object.keys(modeLabels) as Mode[]).map((m) => (
-              <button
+              <button type="button"
                 key={m}
                 onClick={() => setMode(m)}
                 className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${
@@ -359,13 +359,13 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">売買区分</label>
                     <div className="flex rounded-lg border border-gray-200 overflow-hidden">
-                      <button
+                      <button type="button"
                         onClick={() => setProfitType("buy")}
                         className={`flex-1 py-2 text-sm transition-all ${profitType === "buy" ? "bg-kon text-white" : "bg-white text-gray-600"}`}
                       >
                         買い（ロング）
                       </button>
-                      <button
+                      <button type="button"
                         onClick={() => setProfitType("sell")}
                         className={`flex-1 py-2 text-sm transition-all ${profitType === "sell" ? "bg-danger text-white" : "bg-white text-gray-600"}`}
                       >
@@ -385,7 +385,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                         onChange={(e) => setProfitQuantity(Number(e.target.value))}
                         className="flex-1 border border-gray-300 rounded-l-lg px-3 py-2 text-sm focus:ring-2 focus:ring-kon"
                       />
-                      <button
+                      <button type="button"
                         onClick={() => setProfitUnit(profitUnit === "currency" ? "lot" : "currency")}
                         className="px-4 py-2 bg-gray-100 border border-l-0 border-gray-300 rounded-r-lg text-sm"
                       >
@@ -642,13 +642,13 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">売買区分</label>
                     <div className="flex rounded-lg border border-gray-200 overflow-hidden">
-                      <button
+                      <button type="button"
                         onClick={() => setSwapType("buy")}
                         className={`flex-1 py-2 text-sm transition-all ${swapType === "buy" ? "bg-kon text-white" : "bg-white text-gray-600"}`}
                       >
                         買い
                       </button>
-                      <button
+                      <button type="button"
                         onClick={() => setSwapType("sell")}
                         className={`flex-1 py-2 text-sm transition-all ${swapType === "sell" ? "bg-danger text-white" : "bg-white text-gray-600"}`}
                       >
@@ -829,7 +829,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                           />
                         </td>
                         <td className="px-2 py-2 text-center">
-                          <button
+                          <button type="button"
                             onClick={() => removeTrade(trade.id)}
                             className="text-danger hover:text-danger"
                             disabled={trades.length <= 1}
@@ -843,7 +843,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                 </table>
               </div>
 
-              <button
+              <button type="button"
                 onClick={addTrade}
                 disabled={trades.length >= 20}
                 className="w-full py-2 bg-gray-50 text-kon rounded-lg text-sm font-medium hover:bg-ai disabled:opacity-50 disabled:cursor-not-allowed mb-6"
@@ -900,7 +900,7 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
                   <label className="block text-sm font-medium text-gray-700 mb-2">雇用形態</label>
                   <div className="flex flex-wrap gap-2">
                     {(["employee", "self", "unemployed"] as EmploymentType[]).map((t) => (
-                      <button
+                      <button type="button"
                         key={t}
                         onClick={() => setEmploymentType(t)}
                         className={`px-4 py-2 rounded-lg text-sm transition-all ${
@@ -1086,13 +1086,13 @@ export default function FXCalculatorClient({ faq }: { faq?: FAQ[] }) {
 
         {/* Share Buttons */}
         <div className="flex flex-wrap gap-3 my-8">
-          <button
+          <button type="button"
             onClick={handleCopy}
             className="flex items-center gap-2 px-5 py-2.5 bg-kon hover:bg-ai text-white rounded-xl text-sm font-medium transition-colors"
           >
             結果をコピー
           </button>
-          <button
+          <button type="button"
             onClick={handleSaveImage}
             className="flex items-center gap-2 px-5 py-2.5 bg-green-600 hover:bg-green-700 text-white rounded-xl text-sm font-medium transition-colors"
           >

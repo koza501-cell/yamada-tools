@@ -335,7 +335,7 @@ export default function RandomPickerClient({ faq }: Props) {
                   el.push(
                     <div key={matchIdx} className="flex flex-col gap-1">
                       {([a, b] as (string | null)[]).map((p, pi) => p && (
-                        <button key={pi}
+                        <button type="button" key={pi}
                           onClick={() => { if (!winner && a && b) advanceBracket(1, matchIdx, p); }}
                           disabled={!!winner || !a || !b}
                           className={`px-3 py-2 rounded-lg text-sm font-medium border text-left min-w-[90px] transition-colors ${winner === p ? "bg-green-500 text-white border-green-500" : winner ? "bg-gray-100 text-gray-400 border-gray-200" : (a && b) ? "bg-white border-kon text-kon hover:bg-kon/10 cursor-pointer" : "bg-gray-50 text-kon border-gray-200"}`}
@@ -383,7 +383,7 @@ export default function RandomPickerClient({ faq }: Props) {
                     return (
                       <div key={matchIdx} className="flex flex-col gap-1">
                         {([a, b] as (string | null)[]).map((p, pi) => (
-                          <button key={pi}
+                          <button type="button" key={pi}
                             onClick={() => { if (p && a && b && !winner) advanceBracket(rIdx + 2, matchIdx, p); }}
                             disabled={!p || !a || !b || !!winner}
                             className={`px-3 py-2 rounded-lg text-sm font-medium border text-left min-w-[90px] transition-colors ${winner === p ? "bg-green-500 text-white border-green-500" : winner ? "bg-gray-100 text-gray-400 border-gray-200" : (a && b) ? "bg-white border-kon text-kon hover:bg-kon/10 cursor-pointer" : "bg-gray-50 text-gray-300 border-gray-100"}`}
@@ -434,7 +434,7 @@ export default function RandomPickerClient({ faq }: Props) {
           {/* Mode Tabs */}
           <div className="flex flex-wrap gap-2 mb-6 border-b border-gray-100 pb-4">
             {([ ["normal","🎲 通常抽選"], ["weighted","⚖️ 重み付き"], ["team","👥 チーム分け"], ["tournament","🏆 トーナメント"] ] as [Mode, string][]).map(([m, label]) => (
-              <button key={m} onClick={() => setMode(m)} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${mode === m ? "bg-kon text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}>{label}</button>
+              <button type="button" key={m} onClick={() => setMode(m)} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${mode === m ? "bg-kon text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}>{label}</button>
             ))}
           </div>
 
@@ -443,7 +443,7 @@ export default function RandomPickerClient({ faq }: Props) {
             <label className="block text-sm font-medium text-gray-700 mb-2">項目を追加（名前、アイテムなど）</label>
             <div className="flex gap-2">
               <input type="text" value={inputValue} onChange={e => setInputValue(e.target.value)} onKeyPress={handleKeyPress} onPaste={handlePaste} placeholder="入力してEnter（複数ペースト可）" className="flex-1 p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-kon focus:border-transparent" />
-              <button onClick={addItem} className="px-6 py-3 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors">追加</button>
+              <button type="button" onClick={addItem} className="px-6 py-3 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors">追加</button>
             </div>
             <div className="flex flex-wrap items-center gap-3 mt-2">
               <p className="text-xs text-gray-400">💡 カンマ区切りや改行でまとめて追加</p>
@@ -452,7 +452,7 @@ export default function RandomPickerClient({ faq }: Props) {
                 <input type="file" accept=".csv,.txt" className="hidden" onChange={handleCsvImport} />
               </label>
               {items.length > 0 && (
-                <button onClick={copyItemsUrl} className="text-xs text-gray-500 hover:text-kon">🔗 リストを共有</button>
+                <button type="button" onClick={copyItemsUrl} className="text-xs text-gray-500 hover:text-kon">🔗 リストを共有</button>
               )}
             </div>
           </div>
@@ -462,7 +462,7 @@ export default function RandomPickerClient({ faq }: Props) {
             <label className="block text-xs text-gray-500 mb-2">クイック追加</label>
             <div className="flex flex-wrap gap-2">
               {presets.map((p, i) => (
-                <button key={i} onClick={() => { setItems(p.items); setWeights({}); setMascotMessage(`「${p.name}」を読み込んだよ！`); }} className="px-3 py-1 bg-sakura/30 text-kon rounded-full text-sm hover:bg-sakura/50 transition-colors">{p.name}</button>
+                <button type="button" key={i} onClick={() => { setItems(p.items); setWeights({}); setMascotMessage(`「${p.name}」を読み込んだよ！`); }} className="px-3 py-1 bg-sakura/30 text-kon rounded-full text-sm hover:bg-sakura/50 transition-colors">{p.name}</button>
               ))}
             </div>
           </div>
@@ -472,14 +472,14 @@ export default function RandomPickerClient({ faq }: Props) {
             <div className="mb-6">
               <div className="flex items-center justify-between mb-2">
                 <label className="text-sm font-medium text-gray-700">登録済み（{items.length}件）</label>
-                <button onClick={clearAll} className="text-xs text-danger hover:text-danger">すべて削除</button>
+                <button type="button" onClick={clearAll} className="text-xs text-danger hover:text-danger">すべて削除</button>
               </div>
               <div className="flex flex-wrap gap-2 p-4 bg-gray-50 rounded-xl max-h-48 overflow-y-auto">
                 {items.map((item, idx) => (
                   <span key={idx} className="inline-flex items-center gap-1 px-3 py-1 bg-white border border-gray-200 rounded-full text-sm">
                     {item}
                     {mode === "weighted" && <span className="text-xs text-gray-400">({getPercentage(item)}%)</span>}
-                    <button onClick={() => removeItem(idx)} className="text-gray-400 hover:text-danger ml-1">×</button>
+                    <button type="button" onClick={() => removeItem(idx)} className="text-gray-400 hover:text-danger ml-1">×</button>
                   </span>
                 ))}
               </div>
@@ -507,7 +507,7 @@ export default function RandomPickerClient({ faq }: Props) {
                 <label className="block text-sm font-medium text-gray-700 mb-2">アニメーション</label>
                 <div className="flex flex-wrap gap-2">
                   {([ ["default","🎯 デフォルト"], ["slot","🎰 スロット"], ["roulette","🎡 ルーレット"] ] as [AnimMode, string][]).map(([a, label]) => (
-                    <button key={a} onClick={() => setAnimMode(a)} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${animMode === a ? "bg-ai text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}>{label}</button>
+                    <button type="button" key={a} onClick={() => setAnimMode(a)} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${animMode === a ? "bg-ai text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}>{label}</button>
                   ))}
                 </div>
               </div>
@@ -520,9 +520,9 @@ export default function RandomPickerClient({ faq }: Props) {
                 <div className="mb-6">
                   <label className="block text-sm font-medium text-gray-700 mb-2">抽選人数</label>
                   <div className="flex items-center gap-4">
-                    <button onClick={() => setPickCount(Math.max(1, pickCount - 1))} className="w-10 h-10 bg-gray-100 rounded-full text-xl font-bold hover:bg-gray-200">-</button>
+                    <button type="button" onClick={() => setPickCount(Math.max(1, pickCount - 1))} className="w-10 h-10 bg-gray-100 rounded-full text-xl font-bold hover:bg-gray-200">-</button>
                     <span className="text-2xl font-bold text-kon w-16 text-center">{pickCount}</span>
-                    <button onClick={() => setPickCount(Math.min(items.length || 10, pickCount + 1))} className="w-10 h-10 bg-gray-100 rounded-full text-xl font-bold hover:bg-gray-200">+</button>
+                    <button type="button" onClick={() => setPickCount(Math.min(items.length || 10, pickCount + 1))} className="w-10 h-10 bg-gray-100 rounded-full text-xl font-bold hover:bg-gray-200">+</button>
                     <span className="text-gray-500 text-sm">人を選ぶ</span>
                   </div>
                 </div>
@@ -534,7 +534,7 @@ export default function RandomPickerClient({ faq }: Props) {
                 </div>
               )}
 
-              <button onClick={pickRandom} disabled={isSpinning || isSpinningWheel || items.length === 0} className={`w-full py-4 rounded-xl font-bold text-lg transition-all ${(isSpinning || isSpinningWheel) ? "bg-gradient-to-r from-kon via-ai to-kon animate-pulse text-white cursor-wait" : items.length === 0 ? "bg-gray-300 text-gray-500 cursor-not-allowed" : "bg-gradient-to-r from-kon to-ai text-white hover:shadow-lg hover:scale-[1.02]"}`}>
+              <button type="button" onClick={pickRandom} disabled={isSpinning || isSpinningWheel || items.length === 0} className={`w-full py-4 rounded-xl font-bold text-lg transition-all ${(isSpinning || isSpinningWheel) ? "bg-gradient-to-r from-kon via-ai to-kon animate-pulse text-white cursor-wait" : items.length === 0 ? "bg-gray-300 text-gray-500 cursor-not-allowed" : "bg-gradient-to-r from-kon to-ai text-white hover:shadow-lg hover:scale-[1.02]"}`}>
                 {(isSpinning || isSpinningWheel) ? "🎲 抽選中..." : "🎲 抽選する！"}
               </button>
 
@@ -547,13 +547,13 @@ export default function RandomPickerClient({ faq }: Props) {
                         <div key={i} className="px-6 py-3 bg-white rounded-xl shadow-md border-2 border-kon text-xl font-bold text-kon animate-bounce" style={{ animationDelay: `${i * 0.1}s` }}>{result}</div>
                       ))}
                     </div>
-                    <button onClick={() => { setResults([]); setShareVisible(false); setMascotState("idle"); setMascotMessage("もう一度抽選してみよう！"); window.history.replaceState({}, "", window.location.pathname); }} className="mt-4 text-sm text-kon hover:text-ai underline">もう一度抽選する</button>
+                    <button type="button" onClick={() => { setResults([]); setShareVisible(false); setMascotState("idle"); setMascotMessage("もう一度抽選してみよう！"); window.history.replaceState({}, "", window.location.pathname); }} className="mt-4 text-sm text-kon hover:text-ai underline">もう一度抽選する</button>
                   </div>
                   {shareVisible && (
                     <div className="mt-4 p-4 bg-gray-50 rounded-xl border border-gray-200">
                       <p className="text-sm text-gray-600 mb-3 font-medium text-center">この結果をシェア</p>
                       <div className="flex flex-wrap gap-2 justify-center">
-                        <button onClick={handleCopyUrl} className="flex items-center gap-2 px-4 py-2 bg-gray-700 text-white rounded-lg text-sm font-medium hover:bg-gray-900">🔗 {copyFeedback ? "コピーしました！" : "URLをコピー"}</button>
+                        <button type="button" onClick={handleCopyUrl} className="flex items-center gap-2 px-4 py-2 bg-gray-700 text-white rounded-lg text-sm font-medium hover:bg-gray-900">🔗 {copyFeedback ? "コピーしました！" : "URLをコピー"}</button>
                         <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(getShareText())}&url=${encodeURIComponent(shareUrl)}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-black text-white rounded-lg text-sm font-medium hover:bg-gray-800">𝕏 ポスト</a>
                         <a href={`https://line.me/R/msg/text/?${encodeURIComponent(getShareText() + " " + shareUrl)}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-green-500 text-white rounded-lg text-sm font-medium hover:bg-green-600">💬 LINE</a>
                       </div>
@@ -584,19 +584,19 @@ export default function RandomPickerClient({ faq }: Props) {
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 mb-2">チーム数（2〜10）</label>
                 <div className="flex items-center gap-4">
-                  <button onClick={() => setTeamCount(Math.max(2, teamCount - 1))} className="w-10 h-10 bg-gray-100 rounded-full text-xl font-bold hover:bg-gray-200">-</button>
+                  <button type="button" onClick={() => setTeamCount(Math.max(2, teamCount - 1))} className="w-10 h-10 bg-gray-100 rounded-full text-xl font-bold hover:bg-gray-200">-</button>
                   <span className="text-2xl font-bold text-kon w-16 text-center">{teamCount}</span>
-                  <button onClick={() => setTeamCount(Math.min(10, teamCount + 1))} className="w-10 h-10 bg-gray-100 rounded-full text-xl font-bold hover:bg-gray-200">+</button>
+                  <button type="button" onClick={() => setTeamCount(Math.min(10, teamCount + 1))} className="w-10 h-10 bg-gray-100 rounded-full text-xl font-bold hover:bg-gray-200">+</button>
                 </div>
               </div>
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 mb-2">分け方</label>
                 <div className="flex gap-2">
-                  <button onClick={() => setTeamDistribution("equal")} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${teamDistribution === "equal" ? "bg-kon text-white" : "bg-gray-100 text-gray-600"}`}>均等分配</button>
-                  <button onClick={() => setTeamDistribution("random")} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${teamDistribution === "random" ? "bg-kon text-white" : "bg-gray-100 text-gray-600"}`}>ランダム</button>
+                  <button type="button" onClick={() => setTeamDistribution("equal")} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${teamDistribution === "equal" ? "bg-kon text-white" : "bg-gray-100 text-gray-600"}`}>均等分配</button>
+                  <button type="button" onClick={() => setTeamDistribution("random")} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${teamDistribution === "random" ? "bg-kon text-white" : "bg-gray-100 text-gray-600"}`}>ランダム</button>
                 </div>
               </div>
-              <button onClick={formTeams} disabled={items.length < 2} className={`w-full py-4 rounded-xl font-bold text-lg transition-all ${items.length < 2 ? "bg-gray-300 text-gray-500 cursor-not-allowed" : "bg-gradient-to-r from-kon to-ai text-white hover:shadow-lg hover:scale-[1.02]"}`}>👥 チーム分けする！</button>
+              <button type="button" onClick={formTeams} disabled={items.length < 2} className={`w-full py-4 rounded-xl font-bold text-lg transition-all ${items.length < 2 ? "bg-gray-300 text-gray-500 cursor-not-allowed" : "bg-gradient-to-r from-kon to-ai text-white hover:shadow-lg hover:scale-[1.02]"}`}>👥 チーム分けする！</button>
               {teamResult.length > 0 && (
                 <div className="mt-6">
                   <p className="text-sm font-medium text-gray-700 mb-3">チーム分け結果</p>
@@ -622,7 +622,7 @@ export default function RandomPickerClient({ faq }: Props) {
           {mode === "tournament" && (
             <div>
               <p className="text-sm text-gray-600 mb-4">登録済みの参加者でトーナメントを開始。勝者をクリックして進めましょう。</p>
-              <button onClick={initBracket} disabled={items.length < 2} className={`w-full py-4 rounded-xl font-bold text-lg transition-all mb-4 ${items.length < 2 ? "bg-gray-300 text-gray-500 cursor-not-allowed" : "bg-gradient-to-r from-kon to-ai text-white hover:shadow-lg hover:scale-[1.02]"}`}>🏆 トーナメント開始！</button>
+              <button type="button" onClick={initBracket} disabled={items.length < 2} className={`w-full py-4 rounded-xl font-bold text-lg transition-all mb-4 ${items.length < 2 ? "bg-gray-300 text-gray-500 cursor-not-allowed" : "bg-gradient-to-r from-kon to-ai text-white hover:shadow-lg hover:scale-[1.02]"}`}>🏆 トーナメント開始！</button>
               {bracketComplete && (
                 <div className="text-center mb-4 p-4 bg-yellow-50 border border-yellow-200 rounded-xl">
                   <p className="text-2xl font-bold text-yellow-700">🏆 優勝！</p>

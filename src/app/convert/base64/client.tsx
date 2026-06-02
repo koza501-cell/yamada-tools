@@ -111,7 +111,7 @@ export default function Base64Client({
           </div>
 
           <div className="flex gap-2 mb-6">
-            <button
+            <button type="button"
               onClick={() => { setMode("encode"); setOutput(""); setError(""); }}
               className={`flex-1 py-3 rounded-xl font-bold transition-all ${
                 mode === "encode" ? "bg-kon text-white" : "bg-gray-100 hover:bg-gray-200"
@@ -119,7 +119,7 @@ export default function Base64Client({
             >
               エンコード
             </button>
-            <button
+            <button type="button"
               onClick={() => { setMode("decode"); setOutput(""); setError(""); }}
               className={`flex-1 py-3 rounded-xl font-bold transition-all ${
                 mode === "decode" ? "bg-kon text-white" : "bg-gray-100 hover:bg-gray-200"
@@ -142,16 +142,16 @@ export default function Base64Client({
           </div>
 
           <div className="flex gap-2 mb-4">
-            <button
+            <button type="button"
               onClick={convert}
               className="flex-1 py-3 bg-gradient-to-r from-kon to-ai text-white rounded-xl font-bold hover:shadow-lg"
             >
               {mode === "encode" ? "エンコード" : "デコード"}
             </button>
-            <button onClick={swap} className="px-4 py-3 bg-gray-100 rounded-xl font-bold hover:bg-gray-200">
+            <button type="button" onClick={swap} className="px-4 py-3 bg-gray-100 rounded-xl font-bold hover:bg-gray-200">
               入れ替え
             </button>
-            <button onClick={clearAll} className="px-4 py-3 bg-gray-100 rounded-xl font-bold hover:bg-gray-200">
+            <button type="button" onClick={clearAll} className="px-4 py-3 bg-gray-100 rounded-xl font-bold hover:bg-gray-200">
               クリア
             </button>
           </div>
@@ -166,7 +166,7 @@ export default function Base64Client({
             <div className="mb-4">
               <div className="flex items-center justify-between mb-2">
                 <label className="text-sm font-medium text-gray-700">結果</label>
-                <button onClick={copyOutput} className="text-xs text-kon hover:text-ai">コピー</button>
+                <button type="button" onClick={copyOutput} className="text-xs text-kon hover:text-ai">コピー</button>
               </div>
               <textarea
                 value={output}

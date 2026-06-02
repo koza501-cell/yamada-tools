@@ -227,6 +227,8 @@ export default function ToolPage({ tool, customH1, extraFields, extraFormData, f
           <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-3">📅 最終更新: 2025年1月1日</p>
         </header>
 
+        {/* Upload Area + Success Area — min-h reserves space before hydration */}
+        <div className="min-h-[400px]">
         {/* Upload Area */}
         {!isComplete && (
           <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-8" aria-label="ファイルアップロード">
@@ -382,6 +384,7 @@ export default function ToolPage({ tool, customH1, extraFields, extraFormData, f
             )}
           </section>
         )}
+        </div>
 
 {/* Ad: after tool section */}
         <AdUnit slot="5612038947" format="rectangle" />

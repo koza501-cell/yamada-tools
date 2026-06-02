@@ -1245,3 +1245,7 @@ body {
 }
 
 /* End of bank-format scoped dark mode */
+
+/* CLS prevention: reserve intrinsic size for images */
+img { width: auto; height: auto; }
+img[width][height] { aspect-ratio: attr(width) / attr(height); }

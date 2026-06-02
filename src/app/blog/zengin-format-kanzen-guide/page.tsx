@@ -264,6 +264,14 @@ export default function ZenginFormatKanzenGuideBlog() {
         </p>
       </section>
 
+      {/* CTA: prominent tool link after intro */}
+      <div className="border-2 border-blue-300 bg-blue-50 rounded-lg p-5 mb-8">
+        <p className="text-blue-800 font-semibold text-base">
+          ▶{" "}<Link href="/convert/bank-format" className="text-blue-700 hover:underline font-bold">全銀フォーマット変換ツールを使う（無料）</Link>
+        </p>
+        <p className="text-blue-600 text-sm mt-1">登録不要・CSVをアップロードするだけで変換できます。</p>
+      </div>
+
       {/* 2. 全銀フォーマットとは */}
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">全銀フォーマットとは？基本知識をわかりやすく解説</h2>
@@ -798,6 +806,25 @@ export default function ZenginFormatKanzenGuideBlog() {
             className="inline-block bg-white text-kon font-bold py-3 px-8 rounded-lg hover:bg-gray-50 transition"
           >
             → 全銀フォーマット変換ツールへ
+          </Link>
+        </div>
+      </section>
+
+      {/* 関連ツール */}
+      <section className="mb-10">
+        <h2 className="text-xl font-bold text-gray-800 mb-4">関連ツール</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <Link href="/convert/bank-format" className="block border border-gray-200 rounded-lg p-4 hover:border-kon transition-colors">
+            <p className="font-bold text-kon text-sm mb-1">全銀フォーマット変換</p>
+            <p className="text-gray-600 text-xs">CSVから全銀フォーマット（全銀ファイル）を無料で作成</p>
+          </Link>
+          <Link href="/business/houjin-search" className="block border border-gray-200 rounded-lg p-4 hover:border-kon transition-colors">
+            <p className="font-bold text-kon text-sm mb-1">法人番号検索</p>
+            <p className="text-gray-600 text-xs">会社名・法人番号から法人情報を無料で検索</p>
+          </Link>
+          <Link href="/document/invoice" className="block border border-gray-200 rounded-lg p-4 hover:border-kon transition-colors">
+            <p className="font-bold text-kon text-sm mb-1">請求書作成</p>
+            <p className="text-gray-600 text-xs">インボイス対応の請求書をブラウザで無料作成</p>
           </Link>
         </div>
       </section>

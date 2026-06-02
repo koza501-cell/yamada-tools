@@ -98,7 +98,7 @@ export default function JsonFormatClient() {
           </div>
 
           <div className="flex flex-wrap gap-2 mb-4">
-            <button onClick={loadSample} className="px-4 py-2 bg-sakura/30 text-kon rounded-lg hover:bg-sakura/50">
+            <button type="button" onClick={loadSample} className="px-4 py-2 bg-sakura/30 text-kon rounded-lg hover:bg-sakura/50">
               サンプル
             </button>
             <div className="flex items-center gap-2 ml-auto">
@@ -134,7 +134,7 @@ export default function JsonFormatClient() {
                   className="w-full h-80 p-4 bg-gray-900 text-green-400 font-mono text-sm rounded-xl resize-none"
                 />
                 {output && (
-                  <button
+                  <button type="button"
                     onClick={copyOutput}
                     className="absolute top-2 right-2 px-3 py-1 bg-gray-700 text-white rounded text-sm hover:bg-gray-600"
                   >
@@ -152,13 +152,13 @@ export default function JsonFormatClient() {
           )}
 
           <div className="flex gap-2">
-            <button
+            <button type="button"
               onClick={format}
               className="flex-1 py-3 bg-gradient-to-r from-kon to-ai text-white rounded-xl font-bold hover:shadow-lg"
             >
               整形（Format）
             </button>
-            <button
+            <button type="button"
               onClick={minify}
               className="flex-1 py-3 bg-gray-100 rounded-xl font-bold hover:bg-gray-200"
             >

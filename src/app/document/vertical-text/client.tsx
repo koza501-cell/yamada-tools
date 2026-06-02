@@ -220,9 +220,9 @@ function GenkouyoshiPreview({
       {/* Page nav */}
       {totalPages > 1 && (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 8, padding: '2px 0', fontSize: `${cellSize * 0.35}px`, color: isDark ? '#9ca3af' : '#666', borderTop: `1px solid ${lineColor}` }}>
-          <button onClick={() => setGenkouPage(p => Math.max(0, p - 1))} disabled={genkouPage === 0} style={{ opacity: genkouPage === 0 ? 0.3 : 1, background: 'none', border: 'none', cursor: 'pointer', color: 'inherit' }}>◀</button>
+          <button type="button" onClick={() => setGenkouPage(p => Math.max(0, p - 1))} disabled={genkouPage === 0} style={{ opacity: genkouPage === 0 ? 0.3 : 1, background: 'none', border: 'none', cursor: 'pointer', color: 'inherit' }}>◀</button>
           <span>{genkouPage + 1} / {totalPages}ページ</span>
-          <button onClick={() => setGenkouPage(p => Math.min(totalPages - 1, p + 1))} disabled={genkouPage >= totalPages - 1} style={{ opacity: genkouPage >= totalPages - 1 ? 0.3 : 1, background: 'none', border: 'none', cursor: 'pointer', color: 'inherit' }}>▶</button>
+          <button type="button" onClick={() => setGenkouPage(p => Math.min(totalPages - 1, p + 1))} disabled={genkouPage >= totalPages - 1} style={{ opacity: genkouPage >= totalPages - 1 ? 0.3 : 1, background: 'none', border: 'none', cursor: 'pointer', color: 'inherit' }}>▶</button>
         </div>
       )}
     </div>
@@ -742,24 +742,26 @@ export default function VerticalTextClient() {
   const paper = PAPER_SIZES[doc.paperSize];
   const previewRatio = paper.height / paper.width; // tate preview: width=height of paper in portrait
 
-  if (!mounted) return null;
+  if (!mounted) return <div className="min-h-[500px]" aria-hidden="true" />;
 
   return (
     <div className="w-full">
-      {/* Mascot */}
+      {/* H1 — primary keyword, above-fold */}
+      <h1 className="text-2xl font-bold text-kon dark:text-gray-200 mb-4">縦書き変換ツール</h1>
+            {/* Mascot */}
       <div className="mb-6">
         <Mascot state={mascotState} message={mascotMessage} />
       </div>
 
       {/* Mobile tab bar */}
       <div className="flex lg:hidden border-b border-gray-200 dark:border-gray-700 mb-4">
-        <button
+        <button type="button"
           onClick={() => setMobileTab('edit')}
           className={`flex-1 py-2 text-sm font-medium transition-colors ${mobileTab === 'edit' ? 'text-kon dark:text-gray-300 border-b-2 border-kon dark:border-kon' : 'text-gray-500'}`}
         >
           編集
         </button>
-        <button
+        <button type="button"
           onClick={() => setMobileTab('preview')}
           className={`flex-1 py-2 text-sm font-medium transition-colors ${mobileTab === 'preview' ? 'text-kon dark:text-gray-300 border-b-2 border-kon dark:border-kon' : 'text-gray-500'}`}
         >
@@ -778,7 +780,7 @@ export default function VerticalTextClient() {
               {/* Feature F: save/load controls */}
               <div className="flex items-center gap-2">
                 <span className="text-xs text-gray-400">保存: {savedDocs.length}/{SAVED_DOCS_MAX}件</span>
-                <button
+                <button type="button"
                   onClick={saveDoc}
                   disabled={savedDocs.length >= SAVED_DOCS_MAX}
                   className="relative px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition-colors disabled:opacity-40"
@@ -793,7 +795,7 @@ export default function VerticalTextClient() {
                 </button>
                 {/* Load dropdown */}
                 <div className="relative">
-                  <button
+                  <button type="button"
                     onClick={() => setLoadDropOpen(o => !o)}
                     disabled={savedDocs.length === 0}
                     className="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition-colors disabled:opacity-40"
@@ -805,14 +807,14 @@ export default function VerticalTextClient() {
                     <div className="absolute right-0 top-full mt-1 z-50 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl shadow-xl w-56 max-w-[min(224px,calc(100vw-2rem))] overflow-hidden">
                       {savedDocs.map(saved => (
                         <div key={saved.id} className="flex items-center gap-1 px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-700 last:border-0">
-                          <button
+                          <button type="button"
                             onClick={() => loadSavedDoc(saved)}
                             className="flex-1 text-left"
                           >
                             <p className="text-xs font-medium text-gray-800 dark:text-gray-200 truncate">{saved.title}</p>
                             <p className="text-xs text-gray-400">{saved.createdAt}</p>
                           </button>
-                          <button
+                          <button type="button"
                             onClick={() => deleteSavedDoc(saved.id)}
                             className="text-gray-400 hover:text-danger flex-shrink-0 p-1"
                             title="削除"
@@ -828,7 +830,7 @@ export default function VerticalTextClient() {
             </div>
             <div className="flex flex-wrap gap-2">
               {TEMPLATES.map(tpl => (
-                <button
+                <button type="button"
                   key={tpl.label}
                   onClick={() => loadTemplate(tpl)}
                   className={`px-3 py-1.5 text-xs rounded-lg transition-colors font-medium ${
@@ -840,7 +842,7 @@ export default function VerticalTextClient() {
                   {tpl.label}
                 </button>
               ))}
-              <button
+              <button type="button"
                 onClick={() => { updateDoc({ genkouyoshi: !doc.genkouyoshi }); setGenkouPage(0); }}
                 className={`px-3 py-1.5 text-xs rounded-lg transition-colors font-medium ${
                   doc.genkouyoshi
@@ -856,7 +858,7 @@ export default function VerticalTextClient() {
 
           {/* Undo/Redo */}
           <div className="flex gap-2 mb-4">
-            <button
+            <button type="button"
               onClick={undo}
               disabled={historyIndex === 0}
               aria-label="元に戻す"
@@ -865,7 +867,7 @@ export default function VerticalTextClient() {
             >
               ↩ 元に戻す
             </button>
-            <button
+            <button type="button"
               onClick={redo}
               disabled={historyIndex >= history.length - 1}
               aria-label="やり直し"
@@ -939,7 +941,7 @@ export default function VerticalTextClient() {
                         placeholder="かんじ"
                         className="w-full px-2 py-1 text-sm border border-gray-200 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 mb-2"
                       />
-                      <button
+                      <button type="button"
                         onClick={() => insertRuby(rubyReading)}
                         className="w-full py-1 text-xs bg-kon text-white rounded hover:bg-kon/90"
                       >
@@ -1108,13 +1110,13 @@ export default function VerticalTextClient() {
             <div className="flex items-center gap-2 bg-gray-50 dark:bg-gray-700/50 rounded-lg px-3 py-2">
               <span className="text-xs text-gray-600 dark:text-gray-300">句読点</span>
               <div className="flex rounded-md overflow-hidden border border-gray-200 dark:border-gray-600">
-                <button
+                <button type="button"
                   onClick={() => updateDoc({ punctuationStyle: 'japanese' })}
                   className={`px-2 py-1 text-xs transition-colors ${doc.punctuationStyle === 'japanese' ? 'bg-kon text-white' : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300'}`}
                 >
                   。、
                 </button>
-                <button
+                <button type="button"
                   onClick={() => updateDoc({ punctuationStyle: 'western' })}
                   className={`px-2 py-1 text-xs transition-colors ${doc.punctuationStyle === 'western' ? 'bg-kon text-white' : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300'}`}
                 >
@@ -1216,7 +1218,7 @@ export default function VerticalTextClient() {
 
             {/* 印刷 button with popover */}
             <div className="relative">
-              <button
+              <button type="button"
                 onClick={() => setPrintPopover(p => !p)}
                 className="px-4 py-2 text-sm bg-kon text-white rounded-xl hover:bg-kon/90 transition-colors min-h-[44px]"
               >
@@ -1277,7 +1279,7 @@ export default function VerticalTextClient() {
                     <span className="text-xs text-gray-600 dark:text-gray-300">ページ番号</span>
                   </label>
 
-                  <button
+                  <button type="button"
                     onClick={handlePrintWithOptions}
                     className="w-full py-2 text-sm bg-kon text-white rounded-lg hover:bg-kon/90 transition-colors"
                   >
@@ -1289,7 +1291,7 @@ export default function VerticalTextClient() {
 
             {/* PNG出力 with resolution selector */}
             <div className="flex rounded-xl overflow-hidden border border-gray-200 dark:border-gray-600">
-              <button
+              <button type="button"
                 onClick={exportPng}
                 className="px-3 py-2 text-sm bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
               >
@@ -1308,7 +1310,7 @@ export default function VerticalTextClient() {
             </div>
 
             {/* PDF出力 */}
-            <button
+            <button type="button"
               onClick={exportPdf}
               className="px-4 py-2 text-sm bg-gray-100 dark:bg-gray-700 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
             >
@@ -1316,7 +1318,7 @@ export default function VerticalTextClient() {
             </button>
 
             {/* SVG出力 */}
-            <button
+            <button type="button"
               onClick={exportSvg}
               className="px-4 py-2 text-sm bg-gray-100 dark:bg-gray-700 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
             >
@@ -1324,7 +1326,7 @@ export default function VerticalTextClient() {
             </button>
 
             {/* テキスト出力 */}
-            <button
+            <button type="button"
               onClick={exportText}
               className="px-4 py-2 text-sm bg-gray-100 dark:bg-gray-700 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
             >
@@ -1332,7 +1334,7 @@ export default function VerticalTextClient() {
             </button>
 
             {/* URLをコピー */}
-            <button
+            <button type="button"
               onClick={generateShareUrl}
               className="px-4 py-2 text-sm bg-gray-100 dark:bg-gray-700 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors relative"
             >
@@ -1351,7 +1353,7 @@ export default function VerticalTextClient() {
           {/* Paper size selector */}
           <div className="flex gap-1 mb-4">
             {(Object.keys(PAPER_SIZES) as DocState['paperSize'][]).map(size => (
-              <button
+              <button type="button"
                 key={size}
                 onClick={() => updateDoc({ paperSize: size })}
                 className={`flex-1 py-1.5 text-xs rounded-lg transition-colors ${doc.paperSize === size ? 'bg-kon text-white' : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'}`}

@@ -94,7 +94,7 @@ export default function SubscriptionPage() {
               封筒印刷に戻る &rarr;
             </a>
           </div>
-          <button onClick={() => setPaymentSuccess(false)} className="text-green-400 hover:text-green-600 text-lg leading-none">&times;</button>
+          <button type="button" onClick={() => setPaymentSuccess(false)} className="text-green-400 hover:text-green-600 text-lg leading-none">&times;</button>
         </div>
       )}
     <PlanStatusCard />
@@ -134,7 +134,7 @@ export default function SubscriptionPage() {
           </div>
         )}
         {!isFree && !isDayPass && (
-          <button onClick={openPortal} disabled={portalLoading} className="mt-6 w-full px-4 py-2.5 bg-[#223A70] text-white text-sm font-medium rounded-lg hover:bg-[#1a2d57] disabled:opacity-50 transition-colors">
+          <button type="button" onClick={openPortal} disabled={portalLoading} className="mt-6 w-full px-4 py-2.5 bg-[#223A70] text-white text-sm font-medium rounded-lg hover:bg-[#1a2d57] disabled:opacity-50 transition-colors">
             {portalLoading ? "読み込み中..." : "支払い方法・解約の管理"}
           </button>
         )}

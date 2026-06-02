@@ -220,7 +220,7 @@ export default function CramSchoolCalculatorClient() {
           </h2>
           <div className="flex gap-2">
             {[1, 2, 3].map((n) => (
-              <button key={n} onClick={() => { setActiveCount(n); setShowResult(false); }}
+              <button type="button" key={n} onClick={() => { setActiveCount(n); setShowResult(false); }}
                 className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${activeCount >= n ? "bg-kon text-white" : "bg-gray-100 text-gray-500"}`}>
                 {n}校
               </button>
@@ -289,7 +289,7 @@ export default function CramSchoolCalculatorClient() {
         </div>
       </div>
 
-      <button onClick={handleCalculate}
+      <button type="button" onClick={handleCalculate}
         className="w-full bg-kon hover:bg-ai text-white font-bold py-4 rounded-xl transition-colors text-lg mb-8 shadow-sm">
         費用を計算・比較する
       </button>
@@ -471,7 +471,7 @@ export default function CramSchoolCalculatorClient() {
         <div className="space-y-3">
           {FAQ_LIST.map((item, i) => (
             <div key={i} className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
-              <button onClick={() => setOpenFaq(openFaq === i ? null : i)}
+              <button type="button" onClick={() => setOpenFaq(openFaq === i ? null : i)}
                 className="w-full flex items-start justify-between p-4 text-left hover:bg-gray-50 transition-colors">
                 <span className="font-semibold text-gray-700 text-sm pr-2">Q. {item.q}</span>
                 <span className="text-gray-400 shrink-0 ml-2 mt-0.5">{openFaq === i ? "▲" : "▼"}</span>

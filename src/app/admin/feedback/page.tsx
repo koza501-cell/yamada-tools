@@ -170,7 +170,7 @@ export default function FeedbackModerationPage() {
           <option value="oldest">古い順</option>
           <option value="newest">新しい順</option>
         </select>
-        <button
+        <button type="button"
           onClick={() => loadData(offset)}
           className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-xl text-sm font-medium transition-colors"
         >
@@ -246,13 +246,13 @@ export default function FeedbackModerationPage() {
                       </td>
                       <td className="px-4 py-3">
                         <div className="flex gap-2 whitespace-nowrap">
-                          <button
+                          <button type="button"
                             onClick={() => handleApprove(item.id)}
                             className="px-3 py-1.5 bg-green-600 hover:bg-green-700 text-white rounded-lg text-xs font-medium transition-colors"
                           >
                             承認
                           </button>
-                          <button
+                          <button type="button"
                             onClick={() => {
                               setRejectModal({ id: item.id });
                               setRejectReason("");
@@ -280,7 +280,7 @@ export default function FeedbackModerationPage() {
           </span>
           <div className="flex gap-2">
             {offset > 0 && (
-              <button
+              <button type="button"
                 onClick={() => loadData(offset - PAGE_SIZE)}
                 className="px-4 py-2 bg-white rounded-xl shadow-sm hover:bg-gray-50"
               >
@@ -288,7 +288,7 @@ export default function FeedbackModerationPage() {
               </button>
             )}
             {offset + PAGE_SIZE < total && (
-              <button
+              <button type="button"
                 onClick={() => loadData(offset + PAGE_SIZE)}
                 className="px-4 py-2 bg-white rounded-xl shadow-sm hover:bg-gray-50"
               >
@@ -315,7 +315,7 @@ export default function FeedbackModerationPage() {
               {rejectReason.length}/100
             </p>
             <div className="flex gap-3 mt-4">
-              <button
+              <button type="button"
                 onClick={() => {
                   setRejectModal(null);
                   setRejectReason("");
@@ -324,7 +324,7 @@ export default function FeedbackModerationPage() {
               >
                 キャンセル
               </button>
-              <button
+              <button type="button"
                 onClick={handleRejectSubmit}
                 disabled={!rejectReason.trim() || rejectLoading}
                 className="flex-1 px-4 py-2.5 bg-red-600 hover:bg-red-700 disabled:bg-gray-200 disabled:text-gray-400 text-white rounded-xl text-sm font-medium transition-colors"

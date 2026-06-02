@@ -210,7 +210,7 @@ export default function PasswordZipClient() {
                     <p className="text-sm font-medium truncate">{file.name}</p>
                     <p className="text-xs text-gray-500">{formatSize(file.size)}</p>
                   </div>
-                  <button
+                  <button type="button"
                     onClick={() => removeFile(file.id)}
                     className="ml-2 text-danger hover:text-danger"
                   >
@@ -264,7 +264,7 @@ export default function PasswordZipClient() {
                   {showPassword ? "🙈" : "👁️"}
                 </button>
               </div>
-              <button
+              <button type="button"
                 onClick={generatePassword}
                 className="px-4 py-3 bg-gray-100 rounded-xl hover:bg-gray-200 transition-all text-sm"
               >
@@ -293,7 +293,7 @@ export default function PasswordZipClient() {
             )}
           </div>
 
-          <button
+          <button type="button"
             onClick={handleCreateZip}
             disabled={isProcessing || files.length === 0}
             className="w-full py-4 bg-gradient-to-r from-kon to-ai text-white rounded-xl font-bold text-lg hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"

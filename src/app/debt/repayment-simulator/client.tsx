@@ -429,7 +429,7 @@ export default function RepaymentSimulatorClient() {
               <div className="flex items-center justify-between mb-3">
                 <span className="text-sm font-semibold text-gray-700">借金 {idx + 1}</span>
                 {debts.length > 1 && (
-                  <button
+                  <button type="button"
                     onClick={() => removeDebt(debt.id)}
                     className="text-xs text-danger hover:text-danger"
                   >
@@ -494,7 +494,7 @@ export default function RepaymentSimulatorClient() {
         </div>
 
         {debts.length < 5 && (
-          <button
+          <button type="button"
             onClick={addDebt}
             className="mt-4 w-full py-2 border-2 border-dashed border-gray-300 rounded-lg text-sm text-gray-500 hover:border-ai hover:text-ai transition-colors"
           >
@@ -538,7 +538,7 @@ export default function RepaymentSimulatorClient() {
               </span>
             </label>
             <div className="flex gap-2">
-              <button
+              <button type="button"
                 onClick={() => setPriority("avalanche")}
                 className={`flex-1 py-2 text-xs font-medium rounded-md transition-colors ${
                   priority === "avalanche"
@@ -550,7 +550,7 @@ export default function RepaymentSimulatorClient() {
                 <br />
                 <span className="text-xs opacity-80">（アバランチ法）</span>
               </button>
-              <button
+              <button type="button"
                 onClick={() => setPriority("snowball")}
                 className={`flex-1 py-2 text-xs font-medium rounded-md transition-colors ${
                   priority === "snowball"
@@ -569,13 +569,13 @@ export default function RepaymentSimulatorClient() {
 
       {/* Buttons */}
       <div className="flex gap-3 mb-6">
-        <button
+        <button type="button"
           onClick={handleCalculate}
           className="flex-1 bg-kon hover:bg-ai text-white font-bold py-3 rounded-xl text-base transition-colors"
         >
           計算する
         </button>
-        <button
+        <button type="button"
           onClick={handleReset}
           className="px-6 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-3 rounded-xl text-sm transition-colors"
         >
@@ -864,7 +864,7 @@ export default function RepaymentSimulatorClient() {
           <div className="space-y-2">
             {faqs.map((faq, i) => (
               <div key={i} className="border border-gray-200 rounded-lg overflow-hidden">
-                <button
+                <button type="button"
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   className="w-full text-left px-4 py-3 text-sm font-medium text-gray-800 flex justify-between items-center hover:bg-gray-50"
                 >

@@ -248,7 +248,7 @@ export default function ImageFormatClient({
                 <label className="text-sm font-medium text-gray-700">
                   選択中（{files.length}ファイル）
                 </label>
-                <button onClick={clearAll} className="text-xs text-danger hover:text-danger">
+                <button type="button" onClick={clearAll} className="text-xs text-danger hover:text-danger">
                   すべて削除
                 </button>
               </div>
@@ -260,7 +260,7 @@ export default function ImageFormatClient({
                       <span className="text-sm truncate">{file.name}</span>
                       <span className="text-xs text-gray-400">{formatBytes(file.size)}</span>
                     </div>
-                    <button
+                    <button type="button"
                       onClick={() => removeFile(index)}
                       className="text-gray-400 hover:text-danger px-2"
                     >
@@ -279,7 +279,7 @@ export default function ImageFormatClient({
             </label>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
               {formats.map(format => (
-                <button
+                <button type="button"
                   key={format.value}
                   onClick={() => setTargetFormat(format.value)}
                   className={`p-3 rounded-xl border-2 transition-all text-center ${
@@ -317,7 +317,7 @@ export default function ImageFormatClient({
           )}
 
           {/* Convert Button */}
-          <button
+          <button type="button"
             onClick={handleConvert}
             disabled={isConverting || files.length === 0}
             className={`w-full mt-6 py-4 rounded-xl font-bold text-lg transition-all ${
@@ -337,7 +337,7 @@ export default function ImageFormatClient({
               <div className="flex items-center justify-between mb-3">
                 <h3 className="font-bold text-kon">変換結果</h3>
                 {convertedImages.length > 1 && (
-                  <button
+                  <button type="button"
                     onClick={downloadAll}
                     className="text-sm text-kon hover:text-ai"
                   >
@@ -368,7 +368,7 @@ export default function ImageFormatClient({
                           </div>
                         </div>
                       </div>
-                      <button
+                      <button type="button"
                         onClick={() => downloadSingle(image)}
                         className="px-4 py-2 bg-kon text-white rounded-lg text-sm hover:bg-ai transition-colors"
                       >

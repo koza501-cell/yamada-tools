@@ -106,7 +106,7 @@ export default function FuyouKoujoClient() {
                 <h2 className="font-semibold text-gray-700 dark:text-gray-300">世帯主情報</h2>
                 <div className="flex gap-2">
                   {(["2025", "2026"] as Year[]).map(y => (
-                    <button key={y} onClick={() => setYear(y)}
+                    <button type="button" key={y} onClick={() => setYear(y)}
                       className={"px-3 py-1 rounded-lg text-xs border transition-colors " + (year === y ? "bg-kon text-white border-kon" : "bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600")}>
                       {y}年
                     </button>
@@ -129,7 +129,7 @@ export default function FuyouKoujoClient() {
                       {RELATIONS.map(r => <option key={r}>{r}</option>)}
                     </select>
                     {deps.length > 1 && (
-                      <button onClick={() => removeDep(dep.id)} className="text-danger hover:text-danger text-lg font-bold leading-none">×</button>
+                      <button type="button" onClick={() => removeDep(dep.id)} className="text-danger hover:text-danger text-lg font-bold leading-none">×</button>
                     )}
                   </div>
                   <div className="grid grid-cols-2 gap-2">
@@ -157,7 +157,7 @@ export default function FuyouKoujoClient() {
                 </div>
               ))}
               {deps.length < 6 && (
-                <button onClick={addDep}
+                <button type="button" onClick={addDep}
                   className="w-full py-2 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600 text-sm text-gray-500 dark:text-gray-400 hover:border-ai hover:text-ai transition-colors">
                   ＋ 扶養親族を追加
                 </button>

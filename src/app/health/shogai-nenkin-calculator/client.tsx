@@ -244,7 +244,7 @@ export default function ShogaiNenkinClient() {
             )}
 
             <div className="text-center">
-              <button
+              <button type="button"
                 onClick={() => window.print()}
                 className="mt-1 text-xs text-kon hover:underline print:hidden"
               >

@@ -435,12 +435,12 @@ export default function NoiseReductionClient({
                   <p className="text-xs text-gray-400">{imgW}×{imgH}px</p>
                   <div className="flex gap-2">
                     {processedDataRef.current && (
-                      <button onClick={() => { setCompareMode(!compareMode); setShowOriginal(false); }}
+                      <button type="button" onClick={() => { setCompareMode(!compareMode); setShowOriginal(false); }}
                         className={`text-xs px-3 py-1 rounded-lg transition-colors ${compareMode ? "bg-kon text-white" : "bg-gray-200 dark:bg-gray-600 hover:bg-gray-300"}`}>
                         ⇔ 比較モード
                       </button>
                     )}
-                    <button
+                    <button type="button"
                       onMouseDown={() => setShowOriginal(true)}
                       onMouseUp={() => setShowOriginal(false)}
                       onMouseLeave={() => setShowOriginal(false)}
@@ -468,7 +468,7 @@ export default function NoiseReductionClient({
                     { key: "strong" as FilterMode, label: "強力", desc: "最大効果", detail: "最大限にノイズを除去（ぼけやすい）" },
                     { key: "median" as FilterMode, label: "メディアン", desc: "点ノイズ", detail: "白黒の点々ノイズに特化" },
                   ]).map((f) => (
-                    <button key={f.key} onClick={() => setFilterMode(f.key)}
+                    <button type="button" key={f.key} onClick={() => setFilterMode(f.key)}
                       className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors ${filterMode === f.key ? "bg-kon text-white" : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200"}`}>
                       {f.label} <span className="opacity-70">({f.desc})</span>
                     </button>
@@ -489,7 +489,7 @@ export default function NoiseReductionClient({
                   <label className="text-sm text-gray-600 dark:text-gray-300 mb-1 block">強度: {strength}</label>
                   <div className="flex flex-wrap gap-2 mb-2">
                     {STRENGTH_PRESETS.map((p) => (
-                      <button key={p.label} onClick={() => setStrength(p.value)}
+                      <button type="button" key={p.label} onClick={() => setStrength(p.value)}
                         className={`px-3 py-1 rounded-lg text-xs font-medium ${strength === p.value ? "bg-kon text-white" : "bg-white dark:bg-gray-600 text-gray-700 dark:text-gray-200 hover:bg-gray-200"}`}>
                         {p.label}
                       </button>
@@ -503,7 +503,7 @@ export default function NoiseReductionClient({
                   <label className="text-sm text-gray-600 dark:text-gray-300 mb-1 block">パス回数: {passes}回</label>
                   <div className="flex gap-2">
                     {[1, 2, 3, 4].map((p) => (
-                      <button key={p} onClick={() => setPasses(p)}
+                      <button type="button" key={p} onClick={() => setPasses(p)}
                         className={`px-3 py-1 rounded-lg text-xs font-medium ${passes === p ? "bg-kon text-white" : "bg-white dark:bg-gray-600 text-gray-700 dark:text-gray-200 hover:bg-gray-200"}`}>
                         {p}回
                       </button>
@@ -521,18 +521,18 @@ export default function NoiseReductionClient({
               </div>
 
               {/* Process button */}
-              <button onClick={processImage} disabled={processing}
+              <button type="button" onClick={processImage} disabled={processing}
                 className={`w-full py-3 rounded-xl font-bold transition-all mb-3 ${processing ? "bg-gray-400 text-white cursor-wait" : "bg-green-500 text-white hover:bg-green-600 hover:shadow-lg"}`}>
                 {processing ? `⏳ ${progressMsg || "処理中..."}` : "🔇 ノイズ除去を実行"}
               </button>
 
               {/* Download */}
               <div className="flex gap-2">
-                <button onClick={download} disabled={!processedDataRef.current}
+                <button type="button" onClick={download} disabled={!processedDataRef.current}
                   className={`flex-1 py-3 rounded-xl font-bold transition-all ${!processedDataRef.current ? "bg-gray-300 text-gray-500 cursor-not-allowed" : "bg-gradient-to-r from-kon to-ai text-white hover:shadow-lg"}`}>
                   💾 ダウンロード
                 </button>
-                <button onClick={clearAll} className="px-6 py-3 bg-gray-100 dark:bg-gray-700 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                <button type="button" onClick={clearAll} className="px-6 py-3 bg-gray-100 dark:bg-gray-700 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
                   クリア
                 </button>
               </div>

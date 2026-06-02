@@ -158,7 +158,7 @@ export default function HaigushaKojoClient() {
                 <label className="block text-sm text-gray-600 dark:text-gray-400 mb-1">適用年</label>
                 <div className="flex gap-2">
                   {(["2025", "2026"] as Year[]).map(y => (
-                    <button key={y} onClick={() => setYear(y)}
+                    <button type="button" key={y} onClick={() => setYear(y)}
                       className={"flex-1 py-2 rounded-lg text-sm font-medium border transition-colors " + (year === y ? "bg-kon text-white border-kon" : "bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600")}>
                       {y}年
                     </button>
@@ -174,7 +174,7 @@ export default function HaigushaKojoClient() {
                 <div className="flex justify-between text-xs text-gray-400 mt-1"><span>0円</span><span>250万円</span></div>
                 <div className="flex flex-wrap gap-2 mt-2">
                   {[1000000, 1230000, 1360000, 1500000, 1700000, 2020000].map(v => (
-                    <button key={v} onClick={() => setSpouseAnnual(v)}
+                    <button type="button" key={v} onClick={() => setSpouseAnnual(v)}
                       className="px-2 py-1 text-xs rounded border border-gray-300 dark:border-gray-600 hover:border-ai hover:text-ai dark:text-gray-400">
                       {Math.round(v / 10000)}万
                     </button>

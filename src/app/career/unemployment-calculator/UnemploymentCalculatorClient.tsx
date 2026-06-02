@@ -327,13 +327,13 @@ export default function UnemploymentCalculatorPage() {
               <h2 className="font-bold text-gray-800">賃金情報</h2>
             </div>
             <div className="flex gap-2 mb-4">
-              <button
+              <button type="button"
                 onClick={() => handleChange("salaryInputMode", "auto")}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                   form.salaryInputMode === "auto" ? "bg-kon text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                 }`}
               >自動計算</button>
-              <button
+              <button type="button"
                 onClick={() => handleChange("salaryInputMode", "manual")}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                   form.salaryInputMode === "manual" ? "bg-kon text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
@@ -384,7 +384,7 @@ export default function UnemploymentCalculatorPage() {
                   <p className="text-sm font-medium text-gray-700">就職困難者に該当しますか？</p>
                   <p className="text-xs text-gray-400">障害者手帳所持者など</p>
                 </div>
-                <button
+                <button type="button"
                   onClick={() => handleChange("isHardToEmploy", !form.isHardToEmploy)}
                   className={`w-12 h-6 rounded-full transition-colors flex items-center px-0.5 ${form.isHardToEmploy ? "bg-kon" : "bg-gray-300"}`}
                 >
@@ -395,7 +395,7 @@ export default function UnemploymentCalculatorPage() {
                 <div>
                   <p className="text-sm font-medium text-gray-700">離職前に育児・介護で時短勤務していましたか？</p>
                 </div>
-                <button
+                <button type="button"
                   onClick={() => handleChange("hadShortWorkHours", !form.hadShortWorkHours)}
                   className={`w-12 h-6 rounded-full transition-colors flex items-center px-0.5 ${form.hadShortWorkHours ? "bg-kon" : "bg-gray-300"}`}
                 >
@@ -410,10 +410,10 @@ export default function UnemploymentCalculatorPage() {
           )}
 
           <div className="flex gap-3">
-            <button onClick={handleReset} className="px-5 py-2.5 rounded-lg text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
+            <button type="button" onClick={handleReset} className="px-5 py-2.5 rounded-lg text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
               リセット
             </button>
-            <button onClick={handleCalculate} className="flex-1 py-2.5 rounded-lg text-sm font-semibold bg-kon text-white hover:bg-ai transition-colors">
+            <button type="button" onClick={handleCalculate} className="flex-1 py-2.5 rounded-lg text-sm font-semibold bg-kon text-white hover:bg-ai transition-colors">
               計算する
             </button>
           </div>

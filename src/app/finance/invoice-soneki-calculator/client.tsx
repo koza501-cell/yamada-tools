@@ -74,7 +74,7 @@ export default function InvoiceSonekiClient() {
                 <label className="block text-sm text-gray-600 dark:text-gray-400 mb-1">主な取引先</label>
                 <div className="flex gap-2">
                   {(["B2B", "B2C", "混合"] as BizType[]).map(t => (
-                    <button key={t} onClick={() => setBizType(t)}
+                    <button type="button" key={t} onClick={() => setBizType(t)}
                       className={"flex-1 py-2 rounded-lg text-sm border transition-colors " + (bizType === t ? "bg-kon text-white border-kon" : "bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600")}>
                       {t}
                     </button>

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { FAQS } from "./faqs";
 
 const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://api-staging.yamada-tools.jp";
+  process.env.NEXT_PUBLIC_API_URL || "https://api.yamada-tools.jp";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -55,7 +55,7 @@ function CopyButton({ text }: { text: string }) {
     } catch {}
   };
   return (
-    <button
+    <button type="button"
       onClick={copy}
       className="inline-flex items-center gap-1 px-2.5 py-1 text-xs bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 rounded transition-colors"
     >
@@ -208,7 +208,7 @@ function SearchTab() {
           {searchResults.length > 0 && (
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden mb-4 divide-y divide-gray-100 dark:divide-gray-700">
               {searchResults.map((b) => (
-                <button
+                <button type="button"
                   key={b.code}
                   onClick={() => selectBank(b)}
                   className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 text-left transition-colors"
@@ -226,7 +226,7 @@ function SearchTab() {
           <div className="flex flex-wrap gap-2 mb-2">
             <span className="text-xs text-gray-500 dark:text-gray-400 self-center">Try:</span>
             {SAMPLE_SEARCHES.map((s) => (
-              <button
+              <button type="button"
                 key={s}
                 onClick={() => { setQuery(s); runSearch(s); }}
                 className="text-xs px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-full hover:border-kon dark:hover:border-sakura hover:text-kon dark:hover:text-sakura transition-colors"
@@ -254,7 +254,7 @@ function SearchTab() {
                 </div>
               )}
             </div>
-            <button
+            <button type="button"
               onClick={() => { setSelectedBank(null); setBranches([]); }}
               className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 underline"
             >
@@ -470,7 +470,7 @@ export default function BankCodeClient() {
 
         {/* Tab switcher */}
         <div className="flex gap-1 p-1 bg-gray-200 dark:bg-gray-700 rounded-lg mb-6 w-fit">
-          <button
+          <button type="button"
             onClick={() => setActiveTab("search")}
             className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
               activeTab === "search"
@@ -480,7 +480,7 @@ export default function BankCodeClient() {
           >
             🔍 Bank search
           </button>
-          <button
+          <button type="button"
             onClick={() => setActiveTab("dropdown")}
             className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
               activeTab === "dropdown"

@@ -453,13 +453,13 @@ export default function RevolvingCalculator() {
 
       {/* Buttons */}
       <div className="flex gap-3 mb-6">
-        <button
+        <button type="button"
           onClick={handleCalculate}
           className="flex-1 bg-danger hover:bg-danger text-white font-bold py-3 rounded-xl text-base transition-colors"
         >
           衝撃の現実を計算する
         </button>
-        <button
+        <button type="button"
           onClick={handleReset}
           className="px-6 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-3 rounded-xl text-sm transition-colors"
         >
@@ -819,7 +819,7 @@ export default function RevolvingCalculator() {
           <div className="space-y-2">
             {faqs.map((faq, i) => (
               <div key={i} className="border border-gray-200 rounded-lg overflow-hidden">
-                <button
+                <button type="button"
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   className="w-full text-left px-4 py-3 text-sm font-medium text-gray-800 flex justify-between items-center hover:bg-gray-50"
                 >

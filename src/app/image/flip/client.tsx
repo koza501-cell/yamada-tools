@@ -564,7 +564,7 @@ export default function FlipClient({
                 className="w-20 px-2 py-1 border border-gray-200 dark:border-gray-600 rounded-lg text-sm text-center bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200" />
               <span className="text-xs text-gray-400">px</span>
             </div>
-            <button onClick={toggleResizeLock}
+            <button type="button" onClick={toggleResizeLock}
               className={`px-2 py-1 rounded-lg text-sm border transition-colors ${resizeLocked ? "bg-kon text-white border-kon" : "bg-white dark:bg-gray-700 text-gray-500 border-gray-300 dark:border-gray-600"}`}
               title={resizeLocked ? "縦横比ロック中" : "縦横比ロック解除"}>
               {resizeLocked ? "🔒" : "🔓"}
@@ -605,7 +605,7 @@ export default function FlipClient({
 
           {/* ── Batch mode toggle (always visible) ── */}
           <div className="flex justify-end mb-4">
-            <button
+            <button type="button"
               onClick={toggleBatchMode}
               disabled={jszipLoading}
               aria-pressed={batchMode}
@@ -634,7 +634,7 @@ export default function FlipClient({
               >
                 <div className="text-5xl mb-3">📦</div>
                 <p className="text-gray-600 dark:text-gray-300 mb-2 text-lg font-bold">複数の画像をドラッグ＆ドロップ</p>
-                <button className="px-8 py-3 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors text-lg">
+                <button type="button" className="px-8 py-3 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors text-lg">
                   📁 画像を選択（複数可）
                 </button>
                 <input
@@ -658,7 +658,7 @@ export default function FlipClient({
                           <p className="text-sm font-medium text-gray-800 dark:text-gray-100 truncate">{name}</p>
                           <p className="text-xs text-gray-400">{formatBytes(size)}</p>
                         </div>
-                        <button
+                        <button type="button"
                           onClick={() => removeBatchFile(id)}
                           className="flex-shrink-0 w-6 h-6 flex items-center justify-center text-gray-400 hover:text-danger hover:bg-gray-50 dark:hover:bg-danger/20 rounded-full transition-colors font-bold text-xs"
                         >✕</button>
@@ -673,17 +673,17 @@ export default function FlipClient({
                 <div className="bg-gray-50 dark:bg-gray-700/30 rounded-xl p-4 mb-4 border border-gray-200 dark:border-gray-600">
                   <p className="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-3">適用する変換設定（全ファイル共通）</p>
                   <div className="flex justify-center gap-4 mb-4">
-                    <button onClick={handleFlipH} aria-pressed={flipH} className={`px-6 py-3 rounded-xl font-bold text-sm transition-all ${flipH ? "bg-kon text-white shadow-md" : "bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600"}`}>
+                    <button type="button" onClick={handleFlipH} aria-pressed={flipH} className={`px-6 py-3 rounded-xl font-bold text-sm transition-all ${flipH ? "bg-kon text-white shadow-md" : "bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600"}`}>
                       ↔️ 水平反転 {flipH ? "ON" : "OFF"}
                     </button>
-                    <button onClick={handleFlipV} aria-pressed={flipV} className={`px-6 py-3 rounded-xl font-bold text-sm transition-all ${flipV ? "bg-kon text-white shadow-md" : "bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600"}`}>
+                    <button type="button" onClick={handleFlipV} aria-pressed={flipV} className={`px-6 py-3 rounded-xl font-bold text-sm transition-all ${flipV ? "bg-kon text-white shadow-md" : "bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600"}`}>
                       ↕️ 垂直反転 {flipV ? "ON" : "OFF"}
                     </button>
                   </div>
                   <div className="flex justify-center gap-3 mb-3">
-                    <button onClick={() => handleRotate(-90)} className={btnNormal}>↩️ 90°左</button>
-                    <button onClick={() => handleRotate(90)}  className={btnNormal}>↪️ 90°右</button>
-                    <button onClick={() => handleRotate(180)} className={btnNormal}>🔄 180°</button>
+                    <button type="button" onClick={() => handleRotate(-90)} className={btnNormal}>↩️ 90°左</button>
+                    <button type="button" onClick={() => handleRotate(90)}  className={btnNormal}>↪️ 90°右</button>
+                    <button type="button" onClick={() => handleRotate(180)} className={btnNormal}>🔄 180°</button>
                   </div>
                   <div className="flex items-center gap-3">
                     <span className="text-xs text-gray-600 dark:text-gray-300 flex-shrink-0">📐 角度:</span>
@@ -734,7 +734,7 @@ export default function FlipClient({
                       <span aria-live="polite">⏳ {batchProgress}</span>
                     </div>
                   )}
-                  <button
+                  <button type="button"
                     onClick={downloadBatchZip}
                     disabled={batchProcessing}
                     className={`w-full py-4 rounded-xl font-bold text-lg transition-all ${
@@ -763,7 +763,7 @@ export default function FlipClient({
             >
               <div className="text-5xl mb-3">🖼️</div>
               <p className="text-gray-600 dark:text-gray-300 mb-2 text-lg font-bold">画像をドラッグ＆ドロップ</p>
-              <button className="px-8 py-3 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors text-lg">📁 画像を選択</button>
+              <button type="button" className="px-8 py-3 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors text-lg">📁 画像を選択</button>
               <input id="img-upload" type="file" accept="image/*" className="hidden" onChange={(e) => { const f = e.target.files?.[0]; if (f) loadImage(f); }} />
               <p className="text-sm text-gray-400 mt-4">JPG, PNG, WebP, BMP, GIF, HEIC対応</p>
               <p className="text-xs text-gray-400 mt-1">📋 Ctrl+Vで貼り付け可</p>
@@ -785,22 +785,22 @@ export default function FlipClient({
                   <p className="text-xs text-gray-500 dark:text-gray-400">{dimensions.w} × {dimensions.h} px</p>
                   <p className="text-xs text-gray-500 dark:text-gray-400">{formatBytes(fileSize)}</p>
                 </div>
-                <button onClick={reset} aria-label="ファイルを削除" className="flex-shrink-0 text-sm text-danger hover:text-danger font-bold transition-colors">✕削除</button>
+                <button type="button" onClick={reset} aria-label="ファイルを削除" className="flex-shrink-0 text-sm text-danger hover:text-danger font-bold transition-colors">✕削除</button>
               </div>
 
               {/* Undo / Redo / Reset */}
               <div className="flex justify-center gap-2 mb-4">
-                <button onClick={undoAction} disabled={!canUndo} aria-label="元に戻す" aria-disabled={!canUndo} className={canUndo ? btnNormal : btnDisabled}>↩ 元に戻す</button>
-                <button onClick={redoAction} disabled={!canRedo} aria-label="やり直し" aria-disabled={!canRedo} className={canRedo ? btnNormal : btnDisabled}>↪ やり直し</button>
-                <button onClick={resetTransforms} className={`${btnBase} bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-50 hover:text-danger dark:hover:bg-danger/20 dark:hover:text-danger`}>🔄 リセット</button>
+                <button type="button" onClick={undoAction} disabled={!canUndo} aria-label="元に戻す" aria-disabled={!canUndo} className={canUndo ? btnNormal : btnDisabled}>↩ 元に戻す</button>
+                <button type="button" onClick={redoAction} disabled={!canRedo} aria-label="やり直し" aria-disabled={!canRedo} className={canRedo ? btnNormal : btnDisabled}>↪ やり直し</button>
+                <button type="button" onClick={resetTransforms} className={`${btnBase} bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-50 hover:text-danger dark:hover:bg-danger/20 dark:hover:text-danger`}>🔄 リセット</button>
               </div>
 
               {/* Flip toggles */}
               <div className="flex justify-center gap-4 mb-4">
-                <button onClick={handleFlipH} className={`px-6 py-3 rounded-xl font-bold text-sm transition-all ${flipH ? "bg-kon text-white shadow-md" : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600"}`}>
+                <button type="button" onClick={handleFlipH} className={`px-6 py-3 rounded-xl font-bold text-sm transition-all ${flipH ? "bg-kon text-white shadow-md" : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600"}`}>
                   ↔️ 水平反転 {flipH ? "ON" : "OFF"}
                 </button>
-                <button onClick={handleFlipV} className={`px-6 py-3 rounded-xl font-bold text-sm transition-all ${flipV ? "bg-kon text-white shadow-md" : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600"}`}>
+                <button type="button" onClick={handleFlipV} className={`px-6 py-3 rounded-xl font-bold text-sm transition-all ${flipV ? "bg-kon text-white shadow-md" : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600"}`}>
                   ↕️ 垂直反転 {flipV ? "ON" : "OFF"}
                 </button>
               </div>
@@ -809,9 +809,9 @@ export default function FlipClient({
               <div className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-4 mb-4 border border-gray-200 dark:border-gray-600">
                 <p className="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-3">回転</p>
                 <div className="flex justify-center gap-3 mb-4">
-                  <button onClick={() => handleRotate(-90)} className={btnNormal}>↩️ 90°左</button>
-                  <button onClick={() => handleRotate(90)}  className={btnNormal}>↪️ 90°右</button>
-                  <button onClick={() => handleRotate(180)} className={btnNormal}>🔄 180°</button>
+                  <button type="button" onClick={() => handleRotate(-90)} className={btnNormal}>↩️ 90°左</button>
+                  <button type="button" onClick={() => handleRotate(90)}  className={btnNormal}>↪️ 90°右</button>
+                  <button type="button" onClick={() => handleRotate(180)} className={btnNormal}>🔄 180°</button>
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="text-xs text-gray-600 dark:text-gray-300 flex-shrink-0">📐 角度:</span>
@@ -828,15 +828,15 @@ export default function FlipClient({
               {/* Crop mode controls */}
               {!cropMode && (
                 <div className="flex justify-center mb-4">
-                  <button onClick={enterCropMode} className={`${btnBase} bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600`}>
+                  <button type="button" onClick={enterCropMode} className={`${btnBase} bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600`}>
                     ✂️ トリミング
                   </button>
                 </div>
               )}
               {cropMode && (
                 <div className="flex justify-center gap-3 mb-4">
-                  <button onClick={applyCrop} className="px-6 py-2 rounded-xl font-bold text-sm bg-kon text-white hover:bg-ai transition-colors">✂️ 適用</button>
-                  <button onClick={cancelCropMode} className={btnNormal}>キャンセル</button>
+                  <button type="button" onClick={applyCrop} className="px-6 py-2 rounded-xl font-bold text-sm bg-kon text-white hover:bg-ai transition-colors">✂️ 適用</button>
+                  <button type="button" onClick={cancelCropMode} className={btnNormal}>キャンセル</button>
                 </div>
               )}
 
@@ -874,7 +874,7 @@ export default function FlipClient({
               {/* Compare mode toggle (single mode only) */}
               <div className="flex items-center justify-between mb-3">
                 <p className="text-xs font-semibold text-gray-500 dark:text-gray-400">プレビュー</p>
-                <button
+                <button type="button"
                   onClick={() => setCompareMode(prev => !prev)}
                   aria-pressed={compareMode}
                   className={`px-3 py-1.5 rounded-lg font-bold text-xs transition-all border ${
@@ -1018,10 +1018,10 @@ export default function FlipClient({
                     コピーしました！
                   </div>
                 )}
-                <button onClick={download} className="flex-1 py-4 bg-gradient-to-r from-kon to-ai text-white rounded-xl font-bold text-lg hover:shadow-lg transition-all">
+                <button type="button" onClick={download} className="flex-1 py-4 bg-gradient-to-r from-kon to-ai text-white rounded-xl font-bold text-lg hover:shadow-lg transition-all">
                   💾 ダウンロード ({outputFormat})
                 </button>
-                <button onClick={copyToClipboard} className="py-4 px-5 border-2 border-kon text-kon dark:text-white dark:border-white rounded-xl font-bold text-sm hover:bg-kon/5 transition-all">
+                <button type="button" onClick={copyToClipboard} className="py-4 px-5 border-2 border-kon text-kon dark:text-white dark:border-white rounded-xl font-bold text-sm hover:bg-kon/5 transition-all">
                   📋 クリップボードにコピー
                 </button>
               </div>

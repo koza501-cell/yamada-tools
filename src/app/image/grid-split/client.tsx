@@ -412,14 +412,14 @@ export default function GridSplitClient({
                 <h3 className="font-bold text-sm text-gray-700 dark:text-gray-200 mb-2">🔲 分割パターン</h3>
                 <div className="grid grid-cols-3 sm:grid-cols-5 gap-2 mb-3">
                   {PRESETS.map((p) => (
-                    <button key={p.label} onClick={() => selectPreset(p)}
+                    <button type="button" key={p.label} onClick={() => selectPreset(p)}
                       className={`px-2 py-2 rounded-lg text-xs font-medium text-center transition-colors border ${cols === p.cols && rows === p.rows && !customMode ? "bg-kon text-white border-kon" : "bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 border-gray-200 dark:border-gray-600 hover:border-kon"}`}>
                       <span className="block text-lg">{p.icon}</span>
                       <span className="block font-bold">{p.label}</span>
                       <span className="block text-[10px] opacity-70">{p.desc}</span>
                     </button>
                   ))}
-                  <button onClick={() => setCustomMode(true)}
+                  <button type="button" onClick={() => setCustomMode(true)}
                     className={`px-2 py-2 rounded-lg text-xs font-medium text-center transition-colors border ${customMode ? "bg-kon text-white border-kon" : "bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 border-gray-200 dark:border-gray-600 hover:border-kon"}`}>
                     <span className="block text-lg">✏️</span>
                     <span className="block font-bold">カスタム</span>
@@ -445,7 +445,7 @@ export default function GridSplitClient({
               </div>
 
               {/* Split button */}
-              <button onClick={splitImage}
+              <button type="button" onClick={splitImage}
                 className="w-full py-3 rounded-xl font-bold bg-green-500 text-white hover:bg-green-600 hover:shadow-lg transition-all mb-3">
                 ✂️ 分割する（{cols}×{rows} = {cols * rows}枚）
               </button>
@@ -455,7 +455,7 @@ export default function GridSplitClient({
                 <div className="mt-4">
                   <div className="flex items-center justify-between mb-3">
                     <h3 className="font-bold text-sm text-gray-700 dark:text-gray-200">📦 分割結果（{splitPieces.length}枚）</h3>
-                    <button onClick={downloadAllZip}
+                    <button type="button" onClick={downloadAllZip}
                       className="px-4 py-2 bg-gradient-to-r from-kon to-ai text-white rounded-lg text-xs font-bold hover:shadow-lg transition-all">
                       📥 ZIPで一括ダウンロード
                     </button>
@@ -468,7 +468,7 @@ export default function GridSplitClient({
                         <img src={piece.dataUrl} alt={`Piece ${i + 1}`}
                           className="w-full rounded-lg border border-gray-200 dark:border-gray-600" />
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors rounded-lg flex items-center justify-center">
-                          <button onClick={() => downloadPiece(piece, i)}
+                          <button type="button" onClick={() => downloadPiece(piece, i)}
                             className="opacity-0 group-hover:opacity-100 px-2 py-1 bg-white rounded-lg text-xs font-bold text-gray-700 shadow transition-opacity">
                             💾 {i + 1}
                           </button>
@@ -504,7 +504,7 @@ export default function GridSplitClient({
               )}
 
               {/* Clear */}
-              <button onClick={clearAll} className="w-full mt-3 px-6 py-2 bg-gray-100 dark:bg-gray-700 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors text-sm">
+              <button type="button" onClick={clearAll} className="w-full mt-3 px-6 py-2 bg-gray-100 dark:bg-gray-700 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors text-sm">
                 🗑️ クリア
               </button>
             </div>

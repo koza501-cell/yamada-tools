@@ -337,7 +337,7 @@ export default function LoanInterestCalculator() {
                 className="font-semibold text-gray-700 bg-transparent border-b border-gray-300 focus:outline-none focus:border-kon w-32 text-sm"
               />
               {loans.length > 1 && (
-                <button onClick={() => removeLoan(loan.id)} className="text-gray-400 hover:text-danger text-sm">削除</button>
+                <button type="button" onClick={() => removeLoan(loan.id)} className="text-gray-400 hover:text-danger text-sm">削除</button>
               )}
             </div>
             <div className="grid grid-cols-3 gap-3">
@@ -362,7 +362,7 @@ export default function LoanInterestCalculator() {
       </div>
 
       {loans.length < MAX_LOANS && (
-        <button onClick={addLoan} className="w-full mb-4 py-3 border-2 border-dashed border-kon rounded-xl text-kon text-sm hover:border-ai hover:bg-gray-50 transition">
+        <button type="button" onClick={addLoan} className="w-full mb-4 py-3 border-2 border-dashed border-kon rounded-xl text-kon text-sm hover:border-ai hover:bg-gray-50 transition">
           + ローンを追加（最大{MAX_LOANS}件）
         </button>
       )}
@@ -417,10 +417,10 @@ export default function LoanInterestCalculator() {
       </div>
 
       <div className="flex gap-3 mb-8">
-        <button onClick={handleCalculate} className="flex-1 bg-kon hover:bg-ai text-white font-semibold py-3 rounded-xl transition text-sm">
+        <button type="button" onClick={handleCalculate} className="flex-1 bg-kon hover:bg-ai text-white font-semibold py-3 rounded-xl transition text-sm">
           計算する
         </button>
-        <button onClick={handleReset} className="px-6 bg-gray-100 hover:bg-gray-200 text-gray-600 font-medium py-3 rounded-xl transition text-sm">
+        <button type="button" onClick={handleReset} className="px-6 bg-gray-100 hover:bg-gray-200 text-gray-600 font-medium py-3 rounded-xl transition text-sm">
           リセット
         </button>
       </div>
@@ -634,7 +634,7 @@ export default function LoanInterestCalculator() {
           <div className="space-y-2">
             {FAQS.map((faq, i) => (
               <div key={i} className="border border-gray-200 rounded-lg overflow-hidden">
-                <button
+                <button type="button"
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   className="w-full flex items-center justify-between px-4 py-3 text-left text-gray-700 font-medium text-sm hover:bg-gray-50"
                 >

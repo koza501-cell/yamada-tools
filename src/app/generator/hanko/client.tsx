@@ -180,7 +180,7 @@ export default function HankoClient() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">印鑑タイプ</label>
                 <div className="grid grid-cols-3 gap-2">
                   {[{ value: "name", label: "認印" }, { value: "date", label: "日付印" }, { value: "approved", label: "済印" }].map((opt) => (
-                    <button key={opt.value} onClick={() => setHankoType(opt.value as HankoType)}
+                    <button type="button" key={opt.value} onClick={() => setHankoType(opt.value as HankoType)}
                       className={"py-2 rounded-lg text-sm font-medium transition-all " + (hankoType === opt.value ? "bg-kon text-white" : "bg-gray-100 hover:bg-gray-200")}>{opt.label}</button>
                   ))}
                 </div>
@@ -197,7 +197,7 @@ export default function HankoClient() {
                   <label className="block text-sm font-medium text-gray-700 mb-2">よく使われる名字</label>
                   <div className="flex flex-wrap gap-2">
                     {POPULAR_NAMES.map((n) => (
-                      <button key={n} onClick={() => setName(n)}
+                      <button type="button" key={n} onClick={() => setName(n)}
                         className={"px-3 py-1 rounded-full text-sm transition-all " + (name === n ? "bg-kon text-white" : "bg-gray-100 hover:bg-gray-200")}>{n}</button>
                     ))}
                   </div>
@@ -208,7 +208,7 @@ export default function HankoClient() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">フォント</label>
                 <div className="grid grid-cols-3 gap-2">
                   {FONT_OPTIONS.map((opt) => (
-                    <button key={opt.value} onClick={() => setFont(opt.value)}
+                    <button type="button" key={opt.value} onClick={() => setFont(opt.value)}
                       className={"py-2 rounded-lg text-sm font-medium transition-all " + (font === opt.value ? "bg-kon text-white" : "bg-gray-100 hover:bg-gray-200")}>{opt.label}</button>
                   ))}
                 </div>
@@ -218,9 +218,9 @@ export default function HankoClient() {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">文字方向</label>
                   <div className="grid grid-cols-2 gap-2">
-                    <button onClick={() => setTextDirection("vertical")}
+                    <button type="button" onClick={() => setTextDirection("vertical")}
                       className={"py-2 rounded-lg text-sm font-medium transition-all " + (textDirection === "vertical" ? "bg-kon text-white" : "bg-gray-100 hover:bg-gray-200")}>縦書き</button>
-                    <button onClick={() => setTextDirection("horizontal")}
+                    <button type="button" onClick={() => setTextDirection("horizontal")}
                       className={"py-2 rounded-lg text-sm font-medium transition-all " + (textDirection === "horizontal" ? "bg-kon text-white" : "bg-gray-100 hover:bg-gray-200")}>横書き</button>
                   </div>
                 </div>
@@ -230,7 +230,7 @@ export default function HankoClient() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">形状</label>
                 <div className="grid grid-cols-3 gap-2">
                   {[{ value: "circle", label: "丸印" }, { value: "square", label: "角印" }, { value: "oval", label: "小判型" }].map((opt) => (
-                    <button key={opt.value} onClick={() => setShape(opt.value as HankoShape)}
+                    <button type="button" key={opt.value} onClick={() => setShape(opt.value as HankoShape)}
                       className={"py-2 rounded-lg text-sm font-medium transition-all " + (shape === opt.value ? "bg-kon text-white" : "bg-gray-100 hover:bg-gray-200")}>{opt.label}</button>
                   ))}
                 </div>
@@ -239,9 +239,9 @@ export default function HankoClient() {
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">枠線</label>
                 <div className="grid grid-cols-2 gap-2">
-                  <button onClick={() => setStyle("single")}
+                  <button type="button" onClick={() => setStyle("single")}
                     className={"py-2 rounded-lg text-sm font-medium transition-all " + (style === "single" ? "bg-kon text-white" : "bg-gray-100 hover:bg-gray-200")}>一重</button>
-                  <button onClick={() => setStyle("double")}
+                  <button type="button" onClick={() => setStyle("double")}
                     className={"py-2 rounded-lg text-sm font-medium transition-all " + (style === "double" ? "bg-kon text-white" : "bg-gray-100 hover:bg-gray-200")}>二重</button>
                 </div>
               </div>
@@ -250,7 +250,7 @@ export default function HankoClient() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">色</label>
                 <div className="flex gap-2">
                   {["#d32f2f", "#c62828", "#b71c1c", "#1976d2", "#388e3c", "#7b1fa2", "#000000"].map((c) => (
-                    <button key={c} onClick={() => setColor(c)}
+                    <button type="button" key={c} onClick={() => setColor(c)}
                       className={"w-10 h-10 rounded-full border-2 transition-all " + (color === c ? "border-kon scale-110" : "border-gray-200")}
                       style={{ backgroundColor: c }} />
                   ))}
@@ -267,7 +267,7 @@ export default function HankoClient() {
               <div className="bg-gray-50 p-8 rounded-xl mb-4 min-h-[200px] flex items-center justify-center">
                 <canvas ref={canvasRef} className="mx-auto" style={{ imageRendering: "crisp-edges" }} />
               </div>
-              <button onClick={download} disabled={!resultUrl}
+              <button type="button" onClick={download} disabled={!resultUrl}
                 className="w-full py-3 bg-gradient-to-r from-kon to-ai text-white rounded-xl font-bold hover:shadow-lg disabled:bg-gray-300 transition-all">
                 📥 ダウンロード（PNG透過）
               </button>

@@ -478,7 +478,7 @@ export default function SideIncomeTaxCalculatorPage() {
                 <label className={labelClass}>配偶者あり？</label>
                 <div className="flex gap-2">
                   {(["なし", "あり"] as const).map((label, i) => (
-                    <button key={label}
+                    <button type="button" key={label}
                       className={`flex-1 py-2 text-sm font-medium rounded-md transition-colors ${form.hasSpouse === (i === 1) ? "bg-emerald-600 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}
                       onClick={() => setForm((p) => ({ ...p, hasSpouse: i === 1 }))}>
                       {label}
@@ -602,11 +602,11 @@ export default function SideIncomeTaxCalculatorPage() {
           </div>
           {/* Buttons */}
           <div className="flex gap-3">
-            <button onClick={handleReset}
+            <button type="button" onClick={handleReset}
               className="flex-none px-6 py-3 rounded-lg border border-gray-300 text-gray-600 text-sm font-medium hover:bg-gray-50 transition-colors">
               リセット
             </button>
-            <button onClick={handleCalculate} disabled={!form.salary || !anyEnabled}
+            <button type="button" onClick={handleCalculate} disabled={!form.salary || !anyEnabled}
               className="flex-1 py-3 rounded-lg bg-emerald-600 text-white text-sm font-bold hover:bg-emerald-700 transition-colors disabled:opacity-40 disabled:cursor-not-allowed">
               計算する
             </button>

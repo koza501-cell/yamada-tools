@@ -113,7 +113,7 @@ export default function HikkoshiHiyouClient() {
                   <label className="block text-sm text-gray-600 dark:text-gray-400 mb-1">曜日</label>
                   <div className="flex gap-2">
                     {[{ label: "平日", val: false }, { label: "土日祝", val: true }].map(b => (
-                      <button key={b.label} onClick={() => setWeekend(b.val)}
+                      <button type="button" key={b.label} onClick={() => setWeekend(b.val)}
                         className={"flex-1 py-2 rounded-lg text-xs border transition-colors " + (weekend === b.val ? "bg-kon text-white border-kon" : "bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600")}>
                         {b.label}
                       </button>

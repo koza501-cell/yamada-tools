@@ -267,7 +267,7 @@ export default function MedicalInsuranceSimClient() {
                 </label>
                 <div className="flex gap-3">
                   {([{ label: "あり", value: true }, { label: "なし", value: false }] as const).map((opt) => (
-                    <button
+                    <button type="button"
                       key={String(opt.value)}
                       onClick={() => handleChange("hasSurgery", opt.value)}
                       className={`flex-1 py-2 rounded-lg text-sm font-medium border transition-colors ${
@@ -289,7 +289,7 @@ export default function MedicalInsuranceSimClient() {
                 </label>
                 <div className="flex gap-3">
                   {([{ label: "あり", value: true }, { label: "なし", value: false }] as const).map((opt) => (
-                    <button
+                    <button type="button"
                       key={String(opt.value)}
                       onClick={() => handleChange("hasAdvancedRider", opt.value)}
                       className={`flex-1 py-2 rounded-lg text-sm font-medium border transition-colors ${
@@ -329,13 +329,13 @@ export default function MedicalInsuranceSimClient() {
               )}
 
               <div className="flex gap-3 pt-2">
-                <button
+                <button type="button"
                   onClick={handleReset}
                   className="flex-1 py-2.5 rounded-lg border border-gray-300 text-gray-600 text-sm font-medium hover:bg-gray-50 transition-colors"
                 >
                   リセット
                 </button>
-                <button
+                <button type="button"
                   onClick={handleCalculate}
                   className="flex-1 py-2.5 rounded-lg bg-kon text-white text-sm font-semibold hover:bg-ai transition-colors shadow-sm"
                 >

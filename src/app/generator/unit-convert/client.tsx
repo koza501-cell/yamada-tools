@@ -119,7 +119,7 @@ export default function UnitConvertClient({ faq, seoContent }: Props) {
 
           <div className="flex flex-wrap gap-2 mb-6">
             {categories.map((cat) => (
-              <button
+              <button type="button"
                 key={cat.id}
                 onClick={() => handleCategoryChange(cat.id)}
                 className={`px-4 py-2 rounded-lg font-medium transition-all ${
@@ -153,7 +153,7 @@ export default function UnitConvertClient({ faq, seoContent }: Props) {
             </div>
 
             <div className="flex justify-center">
-              <button onClick={swap} className="p-3 bg-gray-100 rounded-full hover:bg-gray-200">
+              <button type="button" onClick={swap} className="p-3 bg-gray-100 rounded-full hover:bg-gray-200">
                 ⇄
               </button>
             </div>

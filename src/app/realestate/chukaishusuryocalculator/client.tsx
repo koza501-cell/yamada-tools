@@ -69,7 +69,7 @@ export default function ChukaiClient() {
           <label className="block text-sm font-medium text-gray-700 mb-2">取引種別</label>
           <div className="flex gap-3">
             {(["売買", "賃貸"] as const).map(t => (
-              <button key={t} onClick={() => setTxType(t)}
+              <button type="button" key={t} onClick={() => setTxType(t)}
                 className={"px-6 py-2 rounded-lg border text-sm font-medium transition-colors " + (txType === t ? "bg-kon text-white border-kon" : "border-gray-300 text-gray-600 hover:border-ai")}>
                 {t}
               </button>
@@ -169,7 +169,7 @@ export default function ChukaiClient() {
 
       {txType === "売買" && (
         <div className="mb-4">
-          <button onClick={() => setShowTable(s => !s)}
+          <button type="button" onClick={() => setShowTable(s => !s)}
             className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm font-medium text-gray-700 hover:bg-gray-100">
             <span>📊 主要価格帯の仲介手数料 早見表（税込）</span>
             <span>{showTable ? "▲" : "▼"}</span>
@@ -198,7 +198,7 @@ export default function ChukaiClient() {
       )}
 
       <div className="mb-6">
-        <button onClick={() => setShowTips(s => !s)}
+        <button type="button" onClick={() => setShowTips(s => !s)}
           className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm font-medium text-gray-700 hover:bg-gray-100">
           <span>💰 仲介手数料を節約するコツ</span>
           <span>{showTips ? "▲" : "▼"}</span>

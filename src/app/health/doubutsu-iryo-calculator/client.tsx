@@ -138,7 +138,7 @@ export default function DoubutsuIryoClient() {
                       </div>
                     </div>
                     {rows.length > 1 && (
-                      <button
+                      <button type="button"
                         onClick={() => removeRow(row.id)}
                         className="mt-1 text-danger hover:text-danger text-xl font-bold leading-none"
                         aria-label="削除"
@@ -147,7 +147,7 @@ export default function DoubutsuIryoClient() {
                   </div>
                 );
               })}
-              <button
+              <button type="button"
                 onClick={addRow}
                 className="w-full py-2 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600 text-sm text-gray-500 dark:text-gray-400 hover:border-ai hover:text-ai transition-colors"
               >

@@ -615,13 +615,13 @@ export default function Mascot({
 
   return (
     <div
-      className={`flex items-end gap-3 ${className}`}
+      className={`flex items-end gap-3 min-h-[110px] ${className}`}
       role="status"
       aria-live="polite"
     >
       <Link
         href="/about/ai-chan"
-        className="flex-shrink-0 hover:scale-105 transition-transform"
+        className="flex-shrink-0 hover:scale-105 transition-transform min-h-[102px]"
         title="あいちゃんのプロフィール"
       >
         <Image
@@ -631,7 +631,7 @@ export default function Mascot({
           height={102}
           className="rounded-full"
           priority={priority}
-          style={{ width: '80px', height: 'auto' }}
+          style={{ width: '80px', height: '102px' }}
         />
       </Link>
       <div

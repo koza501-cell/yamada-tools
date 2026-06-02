@@ -151,7 +151,7 @@ export default function HolidayCheckerClient({ faq }: Props) {
             <label className="block text-sm font-medium text-gray-700 mb-2">年を選択</label>
             <div className="flex flex-wrap gap-2">
               {Array.from({ length: 11 }, (_, i) => 2020 + i).map(year => (
-                <button
+                <button type="button"
                   key={year}
                   onClick={() => setSelectedYear(year)}
                   className={`px-4 py-2 rounded-lg font-medium transition-all ${

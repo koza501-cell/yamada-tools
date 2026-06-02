@@ -272,10 +272,10 @@ export default function GiftTaxCalculatorPage() {
             <div>
               <label className={labelClass}>贈与者との関係</label>
               <div className="flex gap-2">
-                <button className={toggleClass(relationship === "lineal")} onClick={() => setRelationship("lineal")}>
+                <button type="button" className={toggleClass(relationship === "lineal")} onClick={() => setRelationship("lineal")}>
                   直系尊属（父母・祖父母）
                 </button>
-                <button className={toggleClass(relationship === "other")} onClick={() => setRelationship("other")}>
+                <button type="button" className={toggleClass(relationship === "other")} onClick={() => setRelationship("other")}>
                   その他
                 </button>
               </div>
@@ -297,10 +297,10 @@ export default function GiftTaxCalculatorPage() {
             <div>
               <label className={labelClass}>贈与の種類</label>
               <div className="flex gap-2">
-                <button className={toggleClass(giftType === "annual")} onClick={() => setGiftType("annual")}>
+                <button type="button" className={toggleClass(giftType === "annual")} onClick={() => setGiftType("annual")}>
                   暦年課税
                 </button>
-                <button className={toggleClass(giftType === "unified")} onClick={() => setGiftType("unified")}>
+                <button type="button" className={toggleClass(giftType === "unified")} onClick={() => setGiftType("unified")}>
                   相続時精算課税
                 </button>
               </div>
@@ -309,10 +309,10 @@ export default function GiftTaxCalculatorPage() {
             <div>
               <label className={labelClass}>住宅取得資金贈与の特例</label>
               <div className="flex gap-2 mb-3">
-                <button className={toggleClass(!housingGift)} onClick={() => setHousingGift(false)}>
+                <button type="button" className={toggleClass(!housingGift)} onClick={() => setHousingGift(false)}>
                   なし
                 </button>
-                <button className={toggleClass(housingGift)} onClick={() => setHousingGift(true)}>
+                <button type="button" className={toggleClass(housingGift)} onClick={() => setHousingGift(true)}>
                   あり
                 </button>
               </div>
@@ -320,10 +320,10 @@ export default function GiftTaxCalculatorPage() {
                 <div>
                   <label className={labelClass}>住宅の種類</label>
                   <div className="flex gap-2">
-                    <button className={toggleClass(housingType === "eco")} onClick={() => setHousingType("eco")}>
+                    <button type="button" className={toggleClass(housingType === "eco")} onClick={() => setHousingType("eco")}>
                       省エネ等住宅
                     </button>
-                    <button className={toggleClass(housingType === "general")} onClick={() => setHousingType("general")}>
+                    <button type="button" className={toggleClass(housingType === "general")} onClick={() => setHousingType("general")}>
                       一般住宅
                     </button>
                   </div>
@@ -332,13 +332,13 @@ export default function GiftTaxCalculatorPage() {
             </div>
 
             <div className="flex gap-3 pt-2">
-              <button
+              <button type="button"
                 onClick={handleReset}
                 className="flex-1 py-2.5 rounded-lg border border-gray-300 text-gray-600 text-sm font-medium hover:bg-gray-50 transition-colors"
               >
                 リセット
               </button>
-              <button
+              <button type="button"
                 onClick={handleCalculate}
                 className="flex-1 py-2.5 rounded-lg bg-kon text-white text-sm font-bold hover:bg-ai transition-colors"
               >

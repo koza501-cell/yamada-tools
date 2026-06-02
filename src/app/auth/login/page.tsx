@@ -186,7 +186,7 @@ export default function LoginPage() {
             </div>
           </div>
 
-          <button
+          <button type="button"
             onClick={() => setShowMagicLink(!showMagicLink)}
             className="w-full py-3 border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium rounded-lg transition-colors"
           >
@@ -198,7 +198,7 @@ export default function LoginPage() {
               <p className="text-sm text-gray-600 mb-3">
                 パスワードなしでログインできます。メールアドレスを入力してください。
               </p>
-              <button
+              <button type="button"
                 onClick={handleMagicLink}
                 disabled={submitting || !email}
                 className="w-full py-2 bg-sakura hover:bg-sakura/90 text-white font-medium rounded-lg transition-colors disabled:opacity-50"

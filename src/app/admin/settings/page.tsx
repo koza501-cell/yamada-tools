@@ -89,7 +89,7 @@ export default function SettingsPage() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-2xl font-bold text-kon">⚙️ サイト設定</h1>
-        <button
+        <button type="button"
           onClick={handleSave}
           disabled={saving}
           className="bg-kon text-white px-6 py-2 rounded-xl font-bold hover:bg-ai transition-colors disabled:opacity-50"
@@ -159,7 +159,7 @@ export default function SettingsPage() {
               </label>
               <div className="grid grid-cols-3 gap-3">
                 {seasonalThemes.map((theme) => (
-                  <button
+                  <button type="button"
                     key={theme.value || "none"}
                     onClick={() => setSettings({ ...settings, seasonal_theme: theme.value })}
                     className={`p-4 rounded-xl border-2 transition-colors ${

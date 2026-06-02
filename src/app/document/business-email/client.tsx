@@ -184,7 +184,7 @@ TEL: 03-xxxx-xxxx
           <h3 className="font-bold text-kon mb-4">テンプレート選択</h3>
           <div className="flex flex-wrap gap-2 mb-6">
             {templates.map((t) => (
-              <button
+              <button type="button"
                 key={t.id}
                 onClick={() => loadTemplate(t.id)}
                 className={`px-4 py-2 rounded-lg transition-all ${
@@ -231,13 +231,13 @@ TEL: 03-xxxx-xxxx
           </div>
 
           <div className="flex gap-2 mt-6">
-            <button
+            <button type="button"
               onClick={copyEmail}
               className="flex-1 py-3 bg-gradient-to-r from-kon to-ai text-white rounded-xl font-bold hover:shadow-lg"
             >
               全体をコピー
             </button>
-            <button
+            <button type="button"
               onClick={copyBody}
               className="flex-1 py-3 bg-gray-100 rounded-xl font-bold hover:bg-gray-200"
             >

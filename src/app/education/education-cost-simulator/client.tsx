@@ -361,13 +361,13 @@ export default function EducationCostSimulatorClient() {
               <div key={row.label} className="flex items-center gap-3">
                 <span className="text-sm text-gray-700 w-36 shrink-0">{row.label}</span>
                 <div className="flex flex-1 rounded-lg overflow-hidden border border-gray-300">
-                  <button
+                  <button type="button"
                     className={`flex-1 py-2 text-xs font-medium transition-colors ${row.value === "public" ? "bg-green-600 text-white" : "text-gray-600 hover:bg-gray-50"}`}
                     onClick={() => row.onChange("public")}
                   >
                     公立
                   </button>
-                  <button
+                  <button type="button"
                     className={`flex-1 py-2 text-xs font-medium transition-colors border-l border-gray-300 ${row.value === "private" ? "bg-green-600 text-white" : "text-gray-600 hover:bg-gray-50"}`}
                     onClick={() => row.onChange("private")}
                   >
@@ -426,7 +426,7 @@ export default function EducationCostSimulatorClient() {
           <div className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-danger">{error}</div>
         )}
 
-        <button
+        <button type="button"
           onClick={calculate}
           className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3.5 rounded-xl transition-colors text-base"
         >
@@ -663,7 +663,7 @@ export default function EducationCostSimulatorClient() {
           <h2 className="px-5 py-4 font-bold text-gray-800 border-b border-gray-100">よくある質問</h2>
           {FAQ_LIST.map((faq, i) => (
             <div key={i} className="border-b border-gray-100 last:border-0">
-              <button
+              <button type="button"
                 className="w-full px-5 py-3.5 flex items-start justify-between text-left text-sm font-medium text-gray-700 hover:bg-gray-50"
                 onClick={() => setOpenFaq(openFaq === i ? null : i)}
               >

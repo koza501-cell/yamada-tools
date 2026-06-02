@@ -109,7 +109,7 @@ export default function BannersManagement() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-2xl font-bold text-kon">🎨 バナー管理</h1>
-        <button
+        <button type="button"
           onClick={() => {
             setEditing(defaultBanner);
             setIsNew(true);
@@ -162,7 +162,7 @@ export default function BannersManagement() {
                   {banner.end_date && <span>終了: {banner.end_date}</span>}
                 </div>
                 <div className="flex gap-2">
-                  <button
+                  <button type="button"
                     onClick={() => {
                       setEditing(banner);
                       setIsNew(false);
@@ -171,7 +171,7 @@ export default function BannersManagement() {
                   >
                     編集
                   </button>
-                  <button
+                  <button type="button"
                     onClick={() => handleDelete(banner.id!)}
                     className="px-4 py-2 bg-gray-50 text-danger rounded-lg hover:bg-gray-50"
                   >
@@ -332,7 +332,7 @@ export default function BannersManagement() {
             {message && <p className="mt-4 text-center">{message}</p>}
 
             <div className="flex gap-4 mt-6">
-              <button
+              <button type="button"
                 onClick={() => {
                   setEditing(null);
                   setIsNew(false);
@@ -342,7 +342,7 @@ export default function BannersManagement() {
               >
                 キャンセル
               </button>
-              <button
+              <button type="button"
                 onClick={handleSave}
                 className="flex-1 px-6 py-3 bg-kon text-white rounded-xl font-bold hover:bg-ai"
               >

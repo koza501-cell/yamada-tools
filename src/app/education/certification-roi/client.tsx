@@ -459,7 +459,7 @@ export default function CertificationRoiClient() {
         )}
 
         {/* Calculate Button */}
-        <button
+        <button type="button"
           onClick={calculate}
           className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3.5 rounded-xl transition-colors text-base"
         >
@@ -678,7 +678,7 @@ export default function CertificationRoiClient() {
           <h2 className="px-5 py-4 font-bold text-gray-800 border-b border-gray-100">よくある質問</h2>
           {FAQ_LIST.map((faq, i) => (
             <div key={i} className="border-b border-gray-100 last:border-0">
-              <button
+              <button type="button"
                 className="w-full px-5 py-3.5 flex items-start justify-between text-left text-sm font-medium text-gray-700 hover:bg-gray-50"
                 onClick={() => setOpenFaq(openFaq === i ? null : i)}
               >

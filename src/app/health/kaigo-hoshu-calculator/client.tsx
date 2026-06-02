@@ -158,7 +158,7 @@ export default function KaigoClient() {
         ))}
       </div>
 
-      <button onClick={() => setExplain(e => !e)} className="text-sm text-kon underline mb-4 print:hidden">
+      <button type="button" onClick={() => setExplain(e => !e)} className="text-sm text-kon underline mb-4 print:hidden">
         {explain ? "▲ 説明を閉じる" : "▼ わかりやすく説明"}
       </button>
       {explain && (
@@ -171,7 +171,7 @@ export default function KaigoClient() {
         </div>
       )}
 
-      <button onClick={() => window.print()} className="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-2 rounded-lg text-sm transition mb-8 print:hidden">
+      <button type="button" onClick={() => window.print()} className="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-2 rounded-lg text-sm transition mb-8 print:hidden">
         印刷・PDF保存
       </button>
 

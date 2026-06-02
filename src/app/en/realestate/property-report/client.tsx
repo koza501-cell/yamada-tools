@@ -14,7 +14,7 @@ import {
 } from "./translations";
 
 const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://api-staging.yamada-tools.jp";
+  process.env.NEXT_PUBLIC_API_URL || "https://api.yamada-tools.jp";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 

@@ -256,7 +256,7 @@ export default function ImageCompressClient({
               <label className="block text-sm font-medium text-gray-700 mb-2">出力形式</label>
               <div className="flex gap-2">
                 {(["jpeg", "png", "webp"] as OutputFormat[]).map((format) => (
-                  <button
+                  <button type="button"
                     key={format}
                     onClick={() => setOutputFormat(format)}
                     className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-all ${
@@ -351,13 +351,13 @@ export default function ImageCompressClient({
                       </p>
                     </div>
                     <div className="flex gap-2">
-                      <button
+                      <button type="button"
                         onClick={() => downloadImage(image)}
                         className="px-3 py-1 bg-kon text-white rounded text-sm hover:bg-ai transition-colors"
                       >
                         保存
                       </button>
-                      <button
+                      <button type="button"
                         onClick={() => removeImage(index)}
                         className="px-2 py-1 text-gray-400 hover:text-danger transition-colors"
                       >
@@ -370,20 +370,20 @@ export default function ImageCompressClient({
 
               {/* Action Buttons */}
               <div className="flex gap-3">
-                <button
+                <button type="button"
                   onClick={downloadAll}
                   className="flex-1 py-3 bg-green-600 text-white rounded-xl font-bold hover:bg-green-700 transition-colors"
                 >
                   📥 すべてダウンロード
                 </button>
-                <button
+                <button type="button"
                   onClick={recompressAll}
                   disabled={isProcessing}
                   className="py-3 px-6 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors disabled:bg-gray-300"
                 >
                   🔄 再圧縮
                 </button>
-                <button
+                <button type="button"
                   onClick={handleClear}
                   className="py-3 px-6 border-2 border-gray-300 text-gray-600 rounded-xl font-bold hover:bg-gray-50 transition-colors"
                 >

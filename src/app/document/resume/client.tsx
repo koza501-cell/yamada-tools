@@ -133,7 +133,7 @@ export default function ResumeClient({ faq, seoContent }: ResumeClientProps) {
                 <input type="text" placeholder="学校名・卒業/入学" value={e.content} onChange={(ev) => updateEducation(e.id, "content", ev.target.value)} className="flex-1 px-2 py-1 border rounded" />
               </div>
             ))}
-            <button onClick={addEducation} className="text-sm text-kon py-2 px-3 rounded hover:bg-gray-50">+ 追加</button>
+            <button type="button" onClick={addEducation} className="text-sm text-kon py-2 px-3 rounded hover:bg-gray-50">+ 追加</button>
           </div>
 
           <div>
@@ -145,7 +145,7 @@ export default function ResumeClient({ faq, seoContent }: ResumeClientProps) {
                 <input type="text" placeholder="会社名・入社/退社" value={w.content} onChange={(ev) => updateWork(w.id, "content", ev.target.value)} className="flex-1 px-2 py-1 border rounded" />
               </div>
             ))}
-            <button onClick={addWork} className="text-sm text-kon">+ 追加</button>
+            <button type="button" onClick={addWork} className="text-sm text-kon">+ 追加</button>
           </div>
 
           <div>
@@ -237,7 +237,7 @@ export default function ResumeClient({ faq, seoContent }: ResumeClientProps) {
         </div>
 
         <div className="mt-6 print:hidden">
-          <button onClick={handlePrint} className="w-full py-4 bg-gradient-to-r from-kon to-ai text-white rounded-xl font-bold text-lg hover:shadow-lg">印刷 / PDF保存</button>
+          <button type="button" onClick={handlePrint} className="w-full py-4 bg-gradient-to-r from-kon to-ai text-white rounded-xl font-bold text-lg hover:shadow-lg">印刷 / PDF保存</button>
         </div>
 
         <div className="mt-8 text-center print:hidden">

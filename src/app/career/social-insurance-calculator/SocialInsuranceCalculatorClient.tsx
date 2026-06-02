@@ -110,7 +110,7 @@ const HYOJUN_TABLE = [
   { grade: 29, amount: 470000, upper: 485000 },
   { grade: 30, amount: 500000, upper: 515000 },
   { grade: 31, amount: 530000, upper: 545000 },
-  { grade: 32, amount: 560000, upper: Infinity },
+  { grade: 32, amount: 560000, upper: 999999999999 },
 ];
 
 const DEFAULT_FORM: FormState = {
@@ -427,13 +427,13 @@ export default function SocialInsuranceCalculatorPage() {
                 <div>
                   <label className={labelClass}>週の所定労働時間</label>
                   <div className="flex gap-1">
-                    <button className={toggleClass(form.workHours === "full")} onClick={() => handleChange("workHours", "full")}>
+                    <button type="button" className={toggleClass(form.workHours === "full")} onClick={() => handleChange("workHours", "full")}>
                       30時間以上
                     </button>
-                    <button className={toggleClass(form.workHours === "part20_30")} onClick={() => handleChange("workHours", "part20_30")}>
+                    <button type="button" className={toggleClass(form.workHours === "part20_30")} onClick={() => handleChange("workHours", "part20_30")}>
                       20〜30時間
                     </button>
-                    <button className={toggleClass(form.workHours === "part_under20")} onClick={() => handleChange("workHours", "part_under20")}>
+                    <button type="button" className={toggleClass(form.workHours === "part_under20")} onClick={() => handleChange("workHours", "part_under20")}>
                       20時間未満
                     </button>
                   </div>
@@ -455,10 +455,10 @@ export default function SocialInsuranceCalculatorPage() {
                 <div>
                   <label className={labelClass}>厚生年金基金への加入</label>
                   <div className="flex gap-2">
-                    <button className={toggleClass(!form.hasPensionFund)} onClick={() => handleChange("hasPensionFund", false)}>
+                    <button type="button" className={toggleClass(!form.hasPensionFund)} onClick={() => handleChange("hasPensionFund", false)}>
                       加入しない
                     </button>
-                    <button className={toggleClass(form.hasPensionFund)} onClick={() => handleChange("hasPensionFund", true)}>
+                    <button type="button" className={toggleClass(form.hasPensionFund)} onClick={() => handleChange("hasPensionFund", true)}>
                       加入する
                     </button>
                   </div>
@@ -475,13 +475,13 @@ export default function SocialInsuranceCalculatorPage() {
 
             {/* Buttons */}
             <div className="flex gap-3 pt-2">
-              <button
+              <button type="button"
                 onClick={handleReset}
                 className="flex-1 py-2.5 rounded-lg border border-gray-300 text-gray-600 text-sm font-medium hover:bg-gray-50 transition-colors"
               >
                 リセット
               </button>
-              <button
+              <button type="button"
                 onClick={handleCalculate}
                 className="flex-1 py-2.5 rounded-lg bg-kon text-white text-sm font-bold hover:bg-ai transition-colors"
               >

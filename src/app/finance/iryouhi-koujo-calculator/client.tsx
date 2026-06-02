@@ -22,7 +22,7 @@ const TAX_BRACKETS = [
   { limit: 9000000, rate: 0.23 },
   { limit: 18000000, rate: 0.33 },
   { limit: 40000000, rate: 0.40 },
-  { limit: Infinity, rate: 0.45 },
+  { limit: 999999999999, rate: 0.45 },
 ];
 
 function getTaxRate(income: number): number {
@@ -130,7 +130,7 @@ export default function IryouhiKoujoClient() {
                       </select>
                     </div>
                     {rows.length > 1 && (
-                      <button onClick={() => removeRow(row.id)} className="ml-2 text-danger hover:text-danger text-xl font-bold leading-none">×</button>
+                      <button type="button" onClick={() => removeRow(row.id)} className="ml-2 text-danger hover:text-danger text-xl font-bold leading-none">×</button>
                     )}
                   </div>
                   <div className="grid grid-cols-2 gap-2">
@@ -149,7 +149,7 @@ export default function IryouhiKoujoClient() {
                   </div>
                 </div>
               ))}
-              <button onClick={addRow} className="w-full py-2 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600 text-sm text-gray-500 dark:text-gray-400 hover:border-ai hover:text-ai transition-colors">
+              <button type="button" onClick={addRow} className="w-full py-2 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600 text-sm text-gray-500 dark:text-gray-400 hover:border-ai hover:text-ai transition-colors">
                 ＋ 医療費を追加
               </button>
             </div>
@@ -248,7 +248,7 @@ export default function IryouhiKoujoClient() {
 
             {/* Eligible list accordion */}
             <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm">
-              <button onClick={() => setShowList(!showList)}
+              <button type="button" onClick={() => setShowList(!showList)}
                 className="w-full flex justify-between items-center text-sm font-semibold text-gray-700 dark:text-gray-300">
                 <span>医療費控除の対象・非対象 早見表</span>
                 <span>{showList ? "▲" : "▼"}</span>

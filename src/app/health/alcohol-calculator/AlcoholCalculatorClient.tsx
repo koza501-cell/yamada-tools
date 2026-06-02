@@ -348,13 +348,13 @@ export default function AlcoholCalculatorPage() {
                   <span className="ml-1 text-xs font-normal text-gray-400 cursor-help" title="女性は同じ量でも血中アルコール濃度が高くなります">(?)</span>
                 </label>
                 <div className="flex rounded-xl overflow-hidden border border-gray-200 w-fit">
-                  <button
+                  <button type="button"
                     onClick={() => setGender("male")}
                     className={`px-6 py-2.5 text-sm font-medium transition-colors ${gender === "male" ? "bg-kon text-white" : "bg-white text-gray-600 hover:bg-gray-50"}`}
                   >
                     男性
                   </button>
-                  <button
+                  <button type="button"
                     onClick={() => setGender("female")}
                     className={`px-6 py-2.5 text-sm font-medium transition-colors border-l border-gray-200 ${gender === "female" ? "bg-kon text-white" : "bg-white text-gray-600 hover:bg-gray-50"}`}
                   >
@@ -403,7 +403,7 @@ export default function AlcoholCalculatorPage() {
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-semibold text-gray-500">お酒 {idx + 1}</span>
                     {drinks.length > 1 && (
-                      <button
+                      <button type="button"
                         onClick={() => removeDrink(d.id)}
                         className="text-xs text-danger hover:text-danger"
                       >
@@ -468,7 +468,7 @@ export default function AlcoholCalculatorPage() {
               ))}
 
               {drinks.length < 6 && (
-                <button
+                <button type="button"
                   onClick={addDrink}
                   className="w-full py-2.5 border-2 border-dashed border-gray-300 rounded-xl text-sm text-gray-500 hover:border-ai hover:text-ai transition-colors"
                 >
@@ -481,13 +481,13 @@ export default function AlcoholCalculatorPage() {
           {error && <p className="text-danger text-sm">{error}</p>}
 
           <div className="flex gap-3">
-            <button
+            <button type="button"
               onClick={handleCalculate}
               className="flex-1 bg-kon hover:bg-ai text-white font-bold py-3 rounded-xl text-base transition-colors"
             >
               計算する
             </button>
-            <button
+            <button type="button"
               onClick={handleReset}
               className="px-4 py-3 border border-gray-300 text-gray-600 rounded-xl text-sm hover:bg-gray-50 transition-colors"
             >

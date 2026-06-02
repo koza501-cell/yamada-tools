@@ -275,7 +275,7 @@ export default function WarekiSeirekiClient({
           <div className="mb-6">
             <label className="block text-sm font-medium text-gray-700 mb-2">変換モード</label>
             <div className="flex gap-4">
-              <button
+              <button type="button"
                 onClick={() => { setMode("seireki-to-wareki"); handleClear(); }}
                 className={`flex-1 py-3 px-4 rounded-xl font-medium transition-all ${
                   mode === "seireki-to-wareki"
@@ -285,7 +285,7 @@ export default function WarekiSeirekiClient({
               >
                 西暦 → 和暦
               </button>
-              <button
+              <button type="button"
                 onClick={() => { setMode("wareki-to-seireki"); handleClear(); }}
                 className={`flex-1 py-3 px-4 rounded-xl font-medium transition-all ${
                   mode === "wareki-to-seireki"
@@ -438,13 +438,13 @@ export default function WarekiSeirekiClient({
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-3">
-            <button
+            <button type="button"
               onClick={handleConvert}
               className="flex-1 py-4 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors"
             >
               変換する
             </button>
-            <button
+            <button type="button"
               onClick={handleCopy}
               disabled={!hasResult}
               className={`flex-1 py-4 rounded-xl font-bold transition-colors ${
@@ -455,7 +455,7 @@ export default function WarekiSeirekiClient({
             >
               結果をコピー
             </button>
-            <button
+            <button type="button"
               onClick={handleClear}
               className="py-4 px-6 border-2 border-gray-300 text-gray-600 rounded-xl font-bold hover:bg-gray-50 transition-colors"
             >

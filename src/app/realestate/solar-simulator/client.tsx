@@ -247,7 +247,7 @@ export default function SolarClient() {
       </div>
 
       <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-6">
-        <button onClick={() => setShowBattery(s => !s)}
+        <button type="button" onClick={() => setShowBattery(s => !s)}
           className="w-full text-left flex items-center justify-between">
           <span className="text-sm font-semibold text-kon">🔋 蓄電池を追加した場合の試算</span>
           <span className="text-kon">{showBattery ? "▲" : "▼"}</span>

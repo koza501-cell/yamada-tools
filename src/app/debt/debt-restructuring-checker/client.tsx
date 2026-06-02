@@ -399,7 +399,7 @@ export default function DebtRestructuringCheckerClient() {
               </label>
               <div className="flex flex-wrap gap-2">
                 {LENDER_OPTIONS.map((opt) => (
-                  <button
+                  <button type="button"
                     key={opt.value}
                     onClick={() => set("lenders", opt.value)}
                     className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${
@@ -452,7 +452,7 @@ export default function DebtRestructuringCheckerClient() {
               </label>
               <div className="flex gap-3">
                 {[{ v: "yes", l: "はい" }, { v: "no", l: "いいえ" }].map((opt) => (
-                  <button
+                  <button type="button"
                     key={opt.v}
                     onClick={() => set("hasHouse", opt.v)}
                     className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${
@@ -472,7 +472,7 @@ export default function DebtRestructuringCheckerClient() {
                   </label>
                   <div className="flex gap-3">
                     {[{ v: "yes", l: "はい" }, { v: "no", l: "いいえ" }].map((opt) => (
-                      <button
+                      <button type="button"
                         key={opt.v}
                         onClick={() => set("hasHousingLoan", opt.v)}
                         className={`px-3 py-1.5 rounded-lg border text-sm transition-colors ${
@@ -495,7 +495,7 @@ export default function DebtRestructuringCheckerClient() {
               </label>
               <div className="flex flex-wrap gap-2">
                 {CAR_OPTIONS.map((opt) => (
-                  <button
+                  <button type="button"
                     key={opt.value}
                     onClick={() => set("car", opt.value)}
                     className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${
@@ -516,7 +516,7 @@ export default function DebtRestructuringCheckerClient() {
               </label>
               <div className="flex flex-wrap gap-2">
                 {ASSET_OPTIONS.map((opt) => (
-                  <button
+                  <button type="button"
                     key={opt.value}
                     onClick={() => set("assets", opt.value)}
                     className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${
@@ -537,7 +537,7 @@ export default function DebtRestructuringCheckerClient() {
               </label>
               <div className="flex flex-wrap gap-2">
                 {JOB_OPTIONS.map((opt) => (
-                  <button
+                  <button type="button"
                     key={opt.value}
                     onClick={() => set("job", opt.value)}
                     className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${
@@ -558,7 +558,7 @@ export default function DebtRestructuringCheckerClient() {
               </label>
               <div className="flex gap-3">
                 {[{ v: "yes", l: "はい" }, { v: "no", l: "いいえ" }].map((opt) => (
-                  <button
+                  <button type="button"
                     key={opt.v}
                     onClick={() => set("hasGuarantor", opt.v)}
                     className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${
@@ -579,7 +579,7 @@ export default function DebtRestructuringCheckerClient() {
               </label>
               <div className="flex gap-3">
                 {[{ v: "yes", l: "はい" }, { v: "no", l: "いいえ" }].map((opt) => (
-                  <button
+                  <button type="button"
                     key={opt.v}
                     onClick={() => set("wantPrivacy", opt.v)}
                     className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${
@@ -605,7 +605,7 @@ export default function DebtRestructuringCheckerClient() {
           </h2>
           <div className="flex flex-wrap gap-2">
             {CAUSE_OPTIONS.map((opt) => (
-              <button
+              <button type="button"
                 key={opt.value}
                 onClick={() => set("cause", opt.value)}
                 className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${
@@ -628,7 +628,7 @@ export default function DebtRestructuringCheckerClient() {
         )}
 
         {/* Submit */}
-        <button
+        <button type="button"
           onClick={handleSubmit}
           className="w-full bg-kon hover:bg-ai text-white font-bold py-4 rounded-xl text-lg transition-colors shadow-md mb-8"
         >

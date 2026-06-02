@@ -30,7 +30,7 @@ const INCOME_TAX_RATES = [
   { limit: 900, rate: 0.23, deduction: 63.6 },
   { limit: 1800, rate: 0.33, deduction: 153.6 },
   { limit: 4000, rate: 0.40, deduction: 279.6 },
-  { limit: Infinity, rate: 0.45, deduction: 479.6 },
+  { limit: 999999999999, rate: 0.45, deduction: 479.6 },
 ];
 
 // ---- Helper Functions ----
@@ -636,7 +636,7 @@ export default function RetirementSimulatorClient() {
               [3, "iDeCo出口戦略"],
               [4, "月次収支チェック"],
             ] as const).map(([m, label]) => (
-              <button key={m} onClick={() => setMode(m as Mode)}
+              <button type="button" key={m} onClick={() => setMode(m as Mode)}
                 className={"whitespace-nowrap px-4 py-4 text-sm font-medium border-b-2 transition-all " + (mode === m ? "border-emerald-600 text-emerald-600" : "border-transparent text-gray-500 hover:text-gray-700")}>
                 {label}
               </button>
@@ -695,7 +695,7 @@ export default function RetirementSimulatorClient() {
                       <label className="text-sm text-gray-600 block mb-2">性別</label>
                       <div className="flex rounded-lg border border-gray-200 overflow-hidden">
                         {([["male", "男性"], ["female", "女性"]] as const).map(([val, label]) => (
-                          <button key={val} onClick={() => setM1Gender(val)}
+                          <button type="button" key={val} onClick={() => setM1Gender(val)}
                             className={"flex-1 py-1.5 text-xs transition-all " + (m1Gender === val ? "bg-emerald-600 text-white" : "bg-white text-gray-600 hover:bg-gray-50")}>
                             {label}
                           </button>
@@ -714,7 +714,7 @@ export default function RetirementSimulatorClient() {
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <label className="text-sm text-gray-600">年金自動見積</label>
-                      <button onClick={() => setM1AutoEstimate(!m1AutoEstimate)}
+                      <button type="button" onClick={() => setM1AutoEstimate(!m1AutoEstimate)}
                         className={"relative inline-flex h-5 w-10 rounded-full transition-colors " + (m1AutoEstimate ? "bg-emerald-500" : "bg-gray-300")}>
                         <span className={"inline-block h-4 w-4 rounded-full bg-white shadow transform transition-transform mt-0.5 " + (m1AutoEstimate ? "translate-x-5" : "translate-x-1")} />
                       </button>
@@ -871,7 +871,7 @@ export default function RetirementSimulatorClient() {
                       </label>
                       <div className="flex gap-2 mb-2">
                         {expensePresets.map(preset => (
-                          <button key={preset.label} onClick={() => setM1MonthlyExpenses(preset.value)}
+                          <button type="button" key={preset.label} onClick={() => setM1MonthlyExpenses(preset.value)}
                             className={"px-3 py-1 rounded-lg text-xs transition-all " + (m1MonthlyExpenses === preset.value ? "bg-emerald-600 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200")}>
                             {preset.label} {preset.value}万
                           </button>
@@ -993,7 +993,7 @@ export default function RetirementSimulatorClient() {
 
                 {/* Yearly Table */}
                 <div className="bg-white rounded-xl shadow-sm border border-gray-100">
-                  <button onClick={() => setM1TableOpen(!m1TableOpen)}
+                  <button type="button" onClick={() => setM1TableOpen(!m1TableOpen)}
                     className="w-full flex items-center justify-between p-4 text-sm font-medium text-gray-700">
                     <span>年別シミュレーション詳細</span>
                     <span>{m1TableOpen ? "▲" : "▼"}</span>
@@ -1085,7 +1085,7 @@ export default function RetirementSimulatorClient() {
                     <label className="text-sm text-gray-600 block mb-2">取り崩し方法</label>
                     <div className="flex rounded-lg border border-gray-200 overflow-hidden">
                       {([["fixed", "定額取崩"], ["percentage", "定率取崩(4%ルール)"]] as const).map(([val, label]) => (
-                        <button key={val} onClick={() => setM2WithdrawalMethod(val)}
+                        <button type="button" key={val} onClick={() => setM2WithdrawalMethod(val)}
                           className={"flex-1 py-1.5 text-xs transition-all " + (m2WithdrawalMethod === val ? "bg-emerald-600 text-white" : "bg-white text-gray-600 hover:bg-gray-50")}>
                           {label}
                         </button>
@@ -1228,7 +1228,7 @@ export default function RetirementSimulatorClient() {
                       <label className="text-sm text-gray-600 block mb-2">受取方法</label>
                       <div className="flex rounded-lg border border-gray-200 overflow-hidden">
                         {([["lump", "一時金"], ["annuity", "年金"], ["both", "併用"]] as const).map(([val, label]) => (
-                          <button key={val} onClick={() => setM3ReceiveMethod(val)}
+                          <button type="button" key={val} onClick={() => setM3ReceiveMethod(val)}
                             className={"flex-1 py-1.5 text-xs transition-all " + (m3ReceiveMethod === val ? "bg-emerald-600 text-white" : "bg-white text-gray-600 hover:bg-gray-50")}>
                             {label}
                           </button>
@@ -1474,11 +1474,11 @@ export default function RetirementSimulatorClient() {
 
         {/* Share/Export Buttons */}
         <div className="mt-8 flex flex-wrap gap-3 justify-center">
-          <button onClick={handleCopy}
+          <button type="button" onClick={handleCopy}
             className="px-6 py-3 bg-emerald-600 text-white rounded-xl font-medium hover:bg-emerald-700 transition-colors flex items-center gap-2">
             <span>📋</span> 結果をコピー
           </button>
-          <button onClick={handleSaveImage}
+          <button type="button" onClick={handleSaveImage}
             className="px-6 py-3 bg-kon text-white rounded-xl font-medium hover:bg-ai transition-colors flex items-center gap-2">
             <span>💾</span> 画像として保存
           </button>
@@ -1526,7 +1526,7 @@ export default function RetirementSimulatorClient() {
             }
           ].map((section) => (
             <div key={section.id} className="bg-white rounded-xl border border-gray-100 overflow-hidden">
-              <button
+              <button type="button"
                 onClick={() => setSeoOpen(seoOpen === section.id ? null : section.id)}
                 className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50 transition-colors"
               >

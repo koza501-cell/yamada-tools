@@ -198,7 +198,7 @@ export default function ImageRotateClient({
             <div className="mt-6">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm font-medium">{files.length}枚選択中</span>
-                <button onClick={clearAll} className="text-xs text-danger">すべて削除</button>
+                <button type="button" onClick={clearAll} className="text-xs text-danger">すべて削除</button>
               </div>
               <div className="grid grid-cols-4 gap-2">
                 {previews.slice(0, 8).map((p, i) => (
@@ -217,7 +217,7 @@ export default function ImageRotateClient({
               <label className="block text-sm font-medium text-gray-700 mb-2">回転角度</label>
               <div className="grid grid-cols-4 gap-2">
                 {[0, 90, 180, 270].map(deg => (
-                  <button
+                  <button type="button"
                     key={deg}
                     onClick={() => setRotation(deg)}
                     className={`py-3 rounded-xl font-bold transition-all ${
@@ -233,7 +233,7 @@ export default function ImageRotateClient({
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">反転</label>
               <div className="grid grid-cols-2 gap-2">
-                <button
+                <button type="button"
                   onClick={() => setFlipH(!flipH)}
                   className={`py-3 rounded-xl font-bold transition-all ${
                     flipH ? "bg-kon text-white" : "bg-gray-100 hover:bg-gray-200"
@@ -241,7 +241,7 @@ export default function ImageRotateClient({
                 >
                   左右反転
                 </button>
-                <button
+                <button type="button"
                   onClick={() => setFlipV(!flipV)}
                   className={`py-3 rounded-xl font-bold transition-all ${
                     flipV ? "bg-kon text-white" : "bg-gray-100 hover:bg-gray-200"
@@ -253,7 +253,7 @@ export default function ImageRotateClient({
             </div>
           </div>
 
-          <button
+          <button type="button"
             onClick={processImages}
             disabled={isProcessing || files.length === 0}
             className={`w-full mt-6 py-4 rounded-xl font-bold text-lg transition-all ${
@@ -269,13 +269,13 @@ export default function ImageRotateClient({
             <div className="mt-6">
               <div className="flex items-center justify-between mb-3">
                 <h3 className="font-bold text-kon">処理結果</h3>
-                <button onClick={downloadAll} className="text-sm text-kon hover:text-ai">すべてダウンロード</button>
+                <button type="button" onClick={downloadAll} className="text-sm text-kon hover:text-ai">すべてダウンロード</button>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                 {processedImages.map((img, i) => (
                   <div key={i} className="bg-gray-50 rounded-xl p-2">
                     <img src={img.url} alt="" className="w-full aspect-square object-contain rounded-lg mb-2" />
-                    <button
+                    <button type="button"
                       onClick={() => downloadSingle(img)}
                       className="w-full py-2 bg-kon text-white rounded-lg text-sm"
                     >

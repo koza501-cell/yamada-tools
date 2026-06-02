@@ -174,7 +174,7 @@ export default function NisaSimulatorClient() {
               <label className="block text-sm font-medium text-gray-700 mb-2">非課税枠の使い方</label>
               <div className="flex flex-wrap gap-2">
                 {(["tsumitate", "growth", "both"] as const).map((t) => (
-                  <button key={t} onClick={() => setNisaType(t)}
+                  <button type="button" key={t} onClick={() => setNisaType(t)}
                     className={"px-3 py-1.5 rounded-full text-sm border transition-all " + (nisaType === t ? "bg-kon text-white border-kon" : "bg-white text-gray-700 border-gray-300 hover:border-ai")}>
                     {t === "tsumitate" ? "つみたて枠のみ" : t === "growth" ? "成長投資枠のみ" : "両方同時"}
                   </button>
@@ -190,7 +190,7 @@ export default function NisaSimulatorClient() {
             <label className="block text-sm font-medium text-gray-700 mb-2">積立方法</label>
             <div className="flex rounded-lg border border-gray-200 overflow-hidden w-fit">
               {(["monthly", "lump", "both"] as const).map((t) => (
-                <button key={t} onClick={() => setInvestType(t)}
+                <button type="button" key={t} onClick={() => setInvestType(t)}
                   className={"px-4 py-2 text-sm transition-all " + (investType === t ? "bg-kon text-white" : "bg-white text-gray-600 hover:bg-gray-50")}>
                   {t === "monthly" ? "毎月積立" : t === "lump" ? "一括投資" : "両方"}
                 </button>
@@ -349,7 +349,7 @@ export default function NisaSimulatorClient() {
 
         {/* Yearly table */}
         <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
-          <button onClick={() => setTableOpen(!tableOpen)} className="w-full flex items-center justify-between text-left">
+          <button type="button" onClick={() => setTableOpen(!tableOpen)} className="w-full flex items-center justify-between text-left">
             <h2 className="text-lg font-bold text-gray-800">年別推移表</h2>
             <span className="text-gray-400 text-lg">{tableOpen ? "▲" : "▼"}</span>
           </button>
@@ -357,7 +357,7 @@ export default function NisaSimulatorClient() {
             <div className="mt-4">
               <div className="flex gap-2 mb-4">
                 {scenarios.map((s, i) => (
-                  <button key={i} onClick={() => setTableScenario(i)}
+                  <button type="button" key={i} onClick={() => setTableScenario(i)}
                     className={"px-3 py-1.5 rounded-full text-sm transition-all " + (tableScenario === i ? "text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200")}
                     style={tableScenario === i ? { backgroundColor: SCENARIO_COLORS[i] } : {}}>
                     {s.rate}%
@@ -396,11 +396,11 @@ export default function NisaSimulatorClient() {
 
         {/* Share buttons */}
         <div className="flex flex-wrap gap-3 mb-8">
-          <button onClick={handleCopy}
+          <button type="button" onClick={handleCopy}
             className="flex items-center gap-2 px-5 py-2.5 bg-kon hover:bg-ai text-white rounded-xl text-sm font-medium transition-colors">
             結果をコピー
           </button>
-          <button onClick={handleSaveImage}
+          <button type="button" onClick={handleSaveImage}
             className="flex items-center gap-2 px-5 py-2.5 bg-green-600 hover:bg-green-700 text-white rounded-xl text-sm font-medium transition-colors">
             画像として保存
           </button>

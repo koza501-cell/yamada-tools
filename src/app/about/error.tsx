@@ -12,7 +12,7 @@ export default function AboutError({ reset }: { error: Error; reset: () => void 
           申し訳ございません。ページの読み込み中に問題が発生しました。もう一度お試しいただくか、ホームページへお戻りください。
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button
+          <button type="button"
             onClick={reset}
             className="px-6 py-3 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors"
           >

@@ -344,7 +344,7 @@ export default function CorporateTaxCalculatorPage() {
           </div>
         </div>
 
-        <button onClick={handleCalculate} className="w-full bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-bold py-4 rounded-xl text-base transition-colors shadow-sm mb-6">
+        <button type="button" onClick={handleCalculate} className="w-full bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-bold py-4 rounded-xl text-base transition-colors shadow-sm mb-6">
           計算する
         </button>
 

@@ -101,7 +101,7 @@ export default function TeamPage() {
           <h2 className="text-base font-semibold text-gray-900">チーム管理</h2>
           <p className="text-sm text-gray-500 mt-0.5">{members.length} / {seatLimit} シート使用中</p>
         </div>
-        <button
+        <button type="button"
           onClick={() => { setShowModal(true); setError(""); setSuccessMsg(""); }}
           disabled={members.length >= seatLimit}
           className="px-4 py-2 bg-[#223A70] text-white text-sm font-medium rounded-lg hover:bg-[#1a2d57] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
@@ -142,7 +142,7 @@ export default function TeamPage() {
                   <td className="py-3 text-gray-500">{m.role === "member" ? "メンバー" : m.role}</td>
                   <td className="py-3 text-gray-500 text-xs">{m.created_at.slice(0, 10)}</td>
                   <td className="py-3">
-                    <button
+                    <button type="button"
                       onClick={() => handleRemove(m.id)}
                       className="text-xs px-2 py-1 border border-gray-200 rounded hover:bg-gray-50 hover:text-danger hover:border-gray-200 text-gray-600 transition-colors"
                     >
@@ -171,13 +171,13 @@ export default function TeamPage() {
             />
             {error && <p className="text-danger text-sm mb-3">{error}</p>}
             <div className="flex gap-2 justify-end">
-              <button
+              <button type="button"
                 onClick={() => { setShowModal(false); setInviteEmail(""); setError(""); }}
                 className="px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg transition-colors"
               >
                 キャンセル
               </button>
-              <button
+              <button type="button"
                 onClick={handleInvite}
                 disabled={inviting}
                 className="px-4 py-2 bg-[#223A70] text-white text-sm font-medium rounded-lg hover:bg-[#1a2d57] transition-colors disabled:opacity-50"

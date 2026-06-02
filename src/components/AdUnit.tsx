@@ -36,8 +36,15 @@ export default function AdUnit({
 
   if (loading || isPro) return null;
 
-  return (
-    <div className={`text-center my-4 ${className ?? ''}`}>
+  const formatMinHeight: Record<string, string> = {
+    auto: '280px',
+    rectangle: '250px',
+    horizontal: '90px',
+    vertical: '600px',
+  };
+
+    return (
+    <div className={`text-center my-4 ${className ?? ''}`} style={{ minHeight: formatMinHeight[format] || '280px' }}>
       <ins
         className="adsbygoogle"
         style={{ display: 'block' }}

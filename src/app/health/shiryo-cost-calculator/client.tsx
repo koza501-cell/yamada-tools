@@ -232,7 +232,7 @@ export default function ShiryoCostClient() {
                       </td>
                       <td className="px-2 py-2">
                         {rows.length > 1 && (
-                          <button
+                          <button type="button"
                             onClick={() => removeRow(row.id)}
                             className="text-danger hover:text-danger text-xs"
                           >
@@ -246,7 +246,7 @@ export default function ShiryoCostClient() {
               </tbody>
             </table>
           </div>
-          <button
+          <button type="button"
             onClick={addRow}
             className="mt-3 text-sm text-kon hover:underline dark:text-gray-300"
           >
@@ -342,7 +342,7 @@ export default function ShiryoCostClient() {
             </div>
 
             <div className="text-center mb-6">
-              <button
+              <button type="button"
                 onClick={() => window.print()}
                 className="text-xs text-kon hover:underline print:hidden"
               >
@@ -353,7 +353,7 @@ export default function ShiryoCostClient() {
         )}
 
         <div className="bg-white dark:bg-gray-800 rounded-xl shadow p-6 mb-6">
-          <button
+          <button type="button"
             onClick={() => setOpenTips(!openTips)}
             className="w-full text-left flex justify-between items-center"
           >

@@ -101,21 +101,21 @@ export default function ImageOverlayClient({
               onClick={() => document.getElementById("base-upload")?.click()}>
               <div className="text-5xl mb-3">🖼️</div>
               <p className="text-gray-600 mb-2 text-lg font-bold">ベース画像を選択</p>
-              <button className="px-8 py-3 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors text-lg">📁 画像を選択</button>
+              <button type="button" className="px-8 py-3 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors text-lg">📁 画像を選択</button>
               <input id="base-upload" type="file" accept="image/*" className="hidden" onChange={(e) => { const f = e.target.files?.[0]; if (f) loadBase(f); }} />
             </div>
           ) : (
             <div>
               <div className="flex items-center justify-between bg-gray-50 rounded-xl p-3 mb-4">
                 <p className="font-bold text-sm truncate">{fileName}</p>
-                <button onClick={reset} className="text-sm text-danger font-bold py-2 px-3 rounded hover:bg-gray-50">✕ リセット</button>
+                <button type="button" onClick={reset} className="text-sm text-danger font-bold py-2 px-3 rounded hover:bg-gray-50">✕ リセット</button>
               </div>
 
               {!overlayImage && (
                 <div className="border-2 border-dashed rounded-xl p-6 text-center cursor-pointer border-gray-200 hover:border-ai bg-gray-50 mb-4"
                   onClick={() => document.getElementById("overlay-upload")?.click()}>
                   <p className="font-bold text-kon mb-2">重ねる画像（ロゴ等）を選択</p>
-                  <button className="px-6 py-2 bg-kon text-white rounded-xl font-bold text-sm">📁 選択</button>
+                  <button type="button" className="px-6 py-2 bg-kon text-white rounded-xl font-bold text-sm">📁 選択</button>
                   <input id="overlay-upload" type="file" accept="image/*" className="hidden" onChange={(e) => { const f = e.target.files?.[0]; if (f) loadOverlay(f); }} />
                   <p className="text-xs text-kon mt-2">PNG透過画像がおすすめ</p>
                 </div>
@@ -141,14 +141,14 @@ export default function ImageOverlayClient({
                       <input type="range" min={0} max={100} value={posY} onChange={(e) => setPosY(Number(e.target.value))} className="w-full accent-kon" />
                     </div>
                   </div>
-                  <button onClick={() => { setOverlayImage(null); overlayRef.current = null; }} className="text-xs text-danger">オーバーレイ画像を変更</button>
+                  <button type="button" onClick={() => { setOverlayImage(null); overlayRef.current = null; }} className="text-xs text-danger">オーバーレイ画像を変更</button>
                 </div>
               )}
 
               <div className="bg-gray-100 rounded-xl p-3 mb-4">
                 <canvas ref={canvasRef} className="block mx-auto rounded-lg shadow-md max-w-full" style={{ maxHeight: "500px" }} />
               </div>
-              <button onClick={download} className="w-full py-4 bg-gradient-to-r from-kon to-ai text-white rounded-xl font-bold text-lg hover:shadow-lg transition-all">
+              <button type="button" onClick={download} className="w-full py-4 bg-gradient-to-r from-kon to-ai text-white rounded-xl font-bold text-lg hover:shadow-lg transition-all">
                 💾 ダウンロード
               </button>
             </div>

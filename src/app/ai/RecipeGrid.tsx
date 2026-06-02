@@ -35,7 +35,7 @@ export default function RecipeGrid({ posts }: { posts: any[] }) {
       <div className="mb-8 overflow-x-auto">
         <div className="flex gap-2 min-w-max pb-2">
           {CATEGORIES.map((cat) => (
-            <button
+            <button type="button"
               key={cat.key}
               onClick={() => setActiveCategory(cat.key)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${

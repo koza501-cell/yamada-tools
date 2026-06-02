@@ -324,7 +324,7 @@ export default function CombiniPrintClient({
               <div className="text-5xl mb-3">📄</div>
               <p className="text-gray-600 dark:text-gray-300 mb-2 text-lg font-bold">PDFファイルをドラッグ＆ドロップ</p>
               <p className="text-gray-400 mb-4">または下のボタンで選択</p>
-              <button className="px-8 py-3 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors text-lg">
+              <button type="button" className="px-8 py-3 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors text-lg">
                 📁 PDFを選択する
               </button>
               <input id="pdf-upload" type="file" accept=".pdf" className="hidden" onChange={handleFileInput} />
@@ -341,7 +341,7 @@ export default function CombiniPrintClient({
                     <p className="text-xs text-gray-500">{pageCount}ページ • {((pdfFile?.size || 0) / 1024).toFixed(0)} KB</p>
                   </div>
                 </div>
-                <button onClick={clearAll} className="text-sm text-danger hover:text-danger font-bold px-3 py-1 rounded-lg hover:bg-gray-50 transition">
+                <button type="button" onClick={clearAll} className="text-sm text-danger hover:text-danger font-bold px-3 py-1 rounded-lg hover:bg-gray-50 transition">
                   ✕ 閉じる
                 </button>
               </div>
@@ -388,7 +388,7 @@ export default function CombiniPrintClient({
                     { label: "95%", value: 95, desc: "おすすめ" },
                     { label: "97%", value: 97, desc: "最小余白" },
                   ].map((p) => (
-                    <button
+                    <button type="button"
                       key={p.value}
                       onClick={() => setScale(p.value)}
                       className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all ${
@@ -406,7 +406,7 @@ export default function CombiniPrintClient({
 
               {/* Preview Toggle */}
               <div className="flex items-center justify-center gap-2 mb-3">
-                <button
+                <button type="button"
                   onClick={() => setPreviewMode("before")}
                   className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${
                     previewMode === "before"
@@ -416,7 +416,7 @@ export default function CombiniPrintClient({
                 >
                   ❌ 処理前
                 </button>
-                <button
+                <button type="button"
                   onClick={() => setPreviewMode("after")}
                   className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${
                     previewMode === "after"
@@ -459,7 +459,7 @@ export default function CombiniPrintClient({
                 {/* Page navigation */}
                 {pageCount > 1 && (
                   <div className="flex items-center justify-center gap-3 mt-3">
-                    <button
+                    <button type="button"
                       onClick={() => setCurrentPreview(Math.max(1, currentPreview - 1))}
                       disabled={currentPreview <= 1}
                       className="px-3 py-1 bg-white dark:bg-gray-700 rounded-lg text-sm font-bold disabled:opacity-30 hover:bg-gray-200 transition"
@@ -467,7 +467,7 @@ export default function CombiniPrintClient({
                       ◀ 前
                     </button>
                     <span className="text-sm text-gray-500 font-bold">{currentPreview} / {pageCount}</span>
-                    <button
+                    <button type="button"
                       onClick={() => setCurrentPreview(Math.min(pageCount, currentPreview + 1))}
                       disabled={currentPreview >= pageCount}
                       className="px-3 py-1 bg-white dark:bg-gray-700 rounded-lg text-sm font-bold disabled:opacity-30 hover:bg-gray-200 transition"
@@ -479,7 +479,7 @@ export default function CombiniPrintClient({
               </div>
 
               {/* Process Button */}
-              <button
+              <button type="button"
                 onClick={processPdf}
                 disabled={isProcessing}
                 className="w-full py-4 bg-gradient-to-r from-kon to-ai text-white rounded-xl font-bold text-lg hover:shadow-lg transition-all disabled:opacity-50"

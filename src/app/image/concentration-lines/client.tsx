@@ -357,7 +357,7 @@ export default function ConcentrationLinesClient({
                 <h3 className="font-bold text-sm text-gray-700 dark:text-gray-200 mb-2">🎨 プリセット</h3>
                 <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
                   {PRESETS.map((p) => (
-                    <button key={p.label} onClick={() => applyPreset(p)}
+                    <button type="button" key={p.label} onClick={() => applyPreset(p)}
                       className="px-2 py-2 rounded-lg text-xs font-medium text-center transition-colors bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 hover:border-kon">
                       <span className="block text-lg">{p.icon}</span>
                       <span className="block">{p.label}</span>
@@ -411,11 +411,11 @@ export default function ConcentrationLinesClient({
                   </div>
                   <div className="flex items-center gap-2">
                     <label className="text-sm text-gray-600 dark:text-gray-300">スタイル:</label>
-                    <button onClick={() => updateSetting("style", "tapered")}
+                    <button type="button" onClick={() => updateSetting("style", "tapered")}
                       className={`px-3 py-1 rounded-lg text-xs font-medium ${settings.style === "tapered" ? "bg-kon text-white" : "bg-white dark:bg-gray-600 text-gray-700 dark:text-gray-200"}`}>
                       先細り
                     </button>
-                    <button onClick={() => updateSetting("style", "straight")}
+                    <button type="button" onClick={() => updateSetting("style", "straight")}
                       className={`px-3 py-1 rounded-lg text-xs font-medium ${settings.style === "straight" ? "bg-kon text-white" : "bg-white dark:bg-gray-600 text-gray-700 dark:text-gray-200"}`}>
                       均一
                     </button>
@@ -425,11 +425,11 @@ export default function ConcentrationLinesClient({
 
               {/* Download */}
               <div className="flex gap-2">
-                <button onClick={download}
+                <button type="button" onClick={download}
                   className="flex-1 py-3 rounded-xl font-bold bg-gradient-to-r from-kon to-ai text-white hover:shadow-lg transition-all">
                   💾 ダウンロード
                 </button>
-                <button onClick={clearAll} className="px-6 py-3 bg-gray-100 dark:bg-gray-700 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                <button type="button" onClick={clearAll} className="px-6 py-3 bg-gray-100 dark:bg-gray-700 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
                   クリア
                 </button>
               </div>

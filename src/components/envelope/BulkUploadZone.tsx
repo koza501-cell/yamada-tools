@@ -1,9 +1,42 @@
 "use client";
 
 import { useState, useRef, useCallback } from "react";
-import { Upload, FileSpreadsheet, FileText, AlertCircle, CheckCircle2 } from "lucide-react";
 import { ColumnMap, autoDetectColumns, parseCSVWithMap, parseExcelToRows, generateSampleCSV } from "@/lib/envelope/csvParser";
 import { AddressRow, validateBatch, ValidationResult } from "@/lib/envelope/validation";
+
+const Icons = {
+  Upload: ({ className }: { className?: string }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+      <polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/>
+    </svg>
+  ),
+  FileSpreadsheet: ({ className }: { className?: string }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
+      <path d="M14 2v4a2 2 0 0 0 2 2h4"/>
+      <path d="M8 13h2"/><path d="M14 13h2"/><path d="M8 17h2"/><path d="M14 17h2"/><path d="M8 9h8"/>
+    </svg>
+  ),
+  FileText: ({ className }: { className?: string }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
+      <path d="M14 2v4a2 2 0 0 0 2 2h4"/>
+      <path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>
+    </svg>
+  ),
+  AlertCircle: ({ className }: { className?: string }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/>
+    </svg>
+  ),
+  CheckCircle2: ({ className }: { className?: string }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
+    </svg>
+  ),
+};
+
 
 interface BulkUploadZoneProps {
   onDataLoaded: (data: {
@@ -125,7 +158,7 @@ export default function BulkUploadZone({ onDataLoaded, onError }: BulkUploadZone
           </div>
         ) : (
           <>
-            <Upload className="mx-auto h-10 w-10 text-gray-400 mb-2" />
+            <Icons.Upload className="mx-auto h-10 w-10 text-gray-400 mb-2" />
             <p className="text-sm font-medium text-gray-700">
               ファイルをドラッグ＆ドロップ、またはクリックして選択
             </p>
@@ -170,14 +203,14 @@ export default function BulkUploadZone({ onDataLoaded, onError }: BulkUploadZone
           onClick={(e) => { e.stopPropagation(); csvInputRef.current?.click(); }}
           className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50"
         >
-          <FileText className="w-3.5 h-3.5" />
+          <Icons.FileText className="w-3.5 h-3.5" />
           CSVを選択
         </button>
         <button
           onClick={(e) => { e.stopPropagation(); excelInputRef.current?.click(); }}
           className="flex items-center gap-1.5 px-3 py-1.5 bg-green-600 text-white rounded-lg text-xs hover:bg-green-700"
         >
-          <FileSpreadsheet className="w-3.5 h-3.5" />
+          <Icons.FileSpreadsheet className="w-3.5 h-3.5" />
           Excelをアップロード
         </button>
         <button
@@ -211,7 +244,7 @@ export default function BulkUploadZone({ onDataLoaded, onError }: BulkUploadZone
       </div>
 
       <div className="flex items-center gap-2 text-xs text-gray-500">
-        <AlertCircle className="w-3 h-3" />
+        <Icons.AlertCircle className="w-3 h-3" />
         <span>データはブラウザ内でのみ処理され、サーバーに送信されることはありません</span>
       </div>
     </div>
