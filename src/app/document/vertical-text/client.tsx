@@ -293,6 +293,9 @@ export default function VerticalTextClient() {
   // Feature G: advanced settings panel
   const [advancedOpen, setAdvancedOpen] = useState(false);
   const [statsOpen, setStatsOpen] = useState(false);
+  const [overflowWarning, setOverflowWarning] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [exportError, setExportError] = useState('');
 
   const historyTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const previewTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -306,6 +309,11 @@ export default function VerticalTextClient() {
       gfLink.rel = 'stylesheet';
       gfLink.href = 'https://fonts.googleapis.com/css2?family=Noto+Serif+JP&family=Noto+Sans+JP&display=swap';
       document.head.appendChild(gfLink);
+      if (typeof FontFace !== 'undefined') {
+        const notoFont = new FontFace('Noto Serif JP', 'url(https://fonts.gstatic.com/s/notoserifjp/v30/xn77YHs72GKoTvER4Gn3b5eMZBaPRkgfU8fEwb0.woff2)');
+        document.fonts.add(notoFont);
+        notoFont.load().then(() => setPreviewKey(k => k + 1));
+      }
     }
     // Defer preview on mobile until container is visible
     if (typeof window !== "undefined" && window.innerWidth >= 768) {
@@ -391,6 +399,11 @@ export default function VerticalTextClient() {
       if (previewTimerRef.current) clearTimeout(previewTimerRef.current);
     };
   }, [doc]);
+
+  useEffect(() => {
+    if (!previewRef.current || previewDoc.genkouyoshi) { setOverflowWarning(false); return; }
+    setOverflowWarning(previewRef.current.scrollHeight > previewRef.current.clientHeight);
+  }, [previewDoc]);
 
   const updateDoc = useCallback((partial: Partial<DocState>) => {
     // If user edits text/title/author manually, deactivate template highlight
@@ -555,7 +568,22 @@ export default function VerticalTextClient() {
     });
   };
 
+  const copyToWord = async () => {
+    const html = `<div style="writing-mode:vertical-rl;font-family:'游明朝','ヒラギノ明朝 ProN',serif;font-size:${doc.fontSize}pt;direction:rtl;line-height:${doc.lineHeight}">${doc.text.replace(/\n/g, '<br>')}</div>`;
+    try {
+      const blob = new Blob([html], { type: 'text/html' });
+      const clipboardItem = new ClipboardItem({ 'text/html': blob });
+      await navigator.clipboard.write([clipboardItem]);
+    } catch {
+      await navigator.clipboard.writeText(doc.text);
+    }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   const exportPng = () => {
+    if (!doc.text.trim()) { setExportError('本文を入力してください'); return; }
+    setExportError('');
     const paper = PAPER_SIZES[doc.paperSize];
     const scale = pngScale;
     const canvas = document.createElement('canvas');
@@ -683,6 +711,8 @@ export default function VerticalTextClient() {
   };
 
   const exportPdf = () => {
+    if (!doc.text.trim()) { setExportError('本文を入力してください'); return; }
+    setExportError('');
     window.print();
   };
 
@@ -1213,8 +1243,16 @@ export default function VerticalTextClient() {
             )}
           </div>
 
+          {overflowWarning && !doc.genkouyoshi && (
+            <div className="bg-yellow-50 border border-yellow-400 rounded p-3 text-sm text-yellow-800 mb-3">
+              ⚠️ テキストが1ページに収まりません。文字サイズを小さくするか、テキストを短くしてください。
+            </div>
+          )}
+          {exportError && (
+            <div className="mb-3 text-sm text-danger">{exportError}</div>
+          )}
           {/* Action buttons */}
-          <div className="flex flex-wrap gap-2">
+          <div className="grid grid-cols-3 gap-2 sm:flex sm:flex-wrap">
 
             {/* 印刷 button with popover */}
             <div className="relative">
@@ -1325,13 +1363,16 @@ export default function VerticalTextClient() {
               🗂 SVG出力
             </button>
 
-            {/* テキスト出力 */}
-            <button type="button"
-              onClick={exportText}
-              className="px-4 py-2 text-sm bg-gray-100 dark:bg-gray-700 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-            >
-              📝 テキスト
-            </button>
+            {/* Wordにコピー */}
+            <div className="relative">
+              <button type="button"
+                onClick={copyToWord}
+                className="px-4 py-2 text-sm bg-gray-100 dark:bg-gray-700 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+              >
+                {copied ? 'コピーしました ✓' : '📝 Wordにコピー'}
+              </button>
+              <p className="text-xs text-gray-400 mt-1">WordやGoogleドキュメントに貼り付けると縦書きになります</p>
+            </div>
 
             {/* URLをコピー */}
             <button type="button"
@@ -1457,7 +1498,11 @@ export default function VerticalTextClient() {
                           </rt>
                         </ruby>
                       ) : (
-                        <span key={i}>{seg.text}</span>
+                        <span key={i}>{seg.text.split(/(\d{1,4})/).map((part, j) =>
+                          /^\d+$/.test(part) ? (
+                            <span key={j} style={{ textCombineUpright: 'all' } as React.CSSProperties}>{part}</span>
+                          ) : part
+                        )}</span>
                       )
                     )}
                   </span>
