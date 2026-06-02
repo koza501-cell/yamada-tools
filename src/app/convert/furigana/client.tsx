@@ -64,6 +64,7 @@ export default function FuriganaClient() {
     if (!inputText.trim()) {
       setMascotState("error");
       setMascotMessage("テキストを入力してね！");
+      setResult(null);
       return;
     }
 
@@ -72,7 +73,7 @@ export default function FuriganaClient() {
     setMascotMessage("変換中...");
 
     try {
-      const response = await fetch("https://api.yamada-tools.jp/api/convert/furigana", {
+      let response = await fetch("https://api.yamada-tools.jp/api/convert/furigana", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -83,14 +84,23 @@ export default function FuriganaClient() {
         }),
       });
 
+      if (response.status === 503) {
+        await new Promise(res => setTimeout(res, 2000));
+        response = await fetch("https://api.yamada-tools.jp/api/convert/furigana", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ text: inputText, output_type: outputType }),
+        });
+      }
+
       if (!response.ok) {
         throw new Error("変換に失敗しました");
       }
 
       const data = await response.json();
       setResult(data);
-      setMascotState("success")
-      triggerSuccess('furigana');;
+      setMascotState("success");
+      try { triggerSuccess('furigana'); } catch { /* ignore analytics failures */ }
       setMascotMessage("変換完了！");
     } catch (error) {
       console.error(error);
@@ -368,7 +378,9 @@ export default function FuriganaClient() {
         <div className="mt-8 text-center">
           <Link href="/convert" className="text-kon hover:text-ai">← 変換ツール一覧に戻る</Link>
         </div>
-        <AdUnit slot="5612038947" format="horizontal" />
+        <div style={{ minHeight: '280px' }}>
+          <AdUnit slot="5612038947" format="horizontal" />
+        </div>
       </div>
     </div>
   );
