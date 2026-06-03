@@ -15,12 +15,12 @@ export async function generateMetadata({
   const isFirstPage = !page || pageNum === 1;
 
   return {
-    title: isFirstPage ? "ブログ | 山田ツール" : `ブログ (${pageNum}ページ目) | 山田ツール`,
+    title: isFirstPage ? "ビジネス効率化・PDF・税務の実践ノウハウ | 山田ツール ブログ" : `ブログ (${pageNum}ページ目) | 山田ツール`,
     description: "ビジネス効率化・PDF活用・不動産情報・税金・金融の実践ノウハウを発信。全銀フォーマット、確定申告、不動産情報ライブラリの使い方など。",
     alternates: { canonical: isFirstPage ? "https://yamada-tools.jp/blog" : `https://yamada-tools.jp/blog?page=${pageNum}` },
     robots: isFirstPage ? "index, follow" : "noindex, follow",
     openGraph: {
-      title: "ブログ | 山田ツール",
+      title: "ビジネス効率化・PDF・税務の実践ノウハウ | 山田ツール ブログ",
       description: "ビジネス効率化・PDF活用・不動産情報の実践ノウハウを発信。",
       url: isFirstPage ? "https://yamada-tools.jp/blog" : `https://yamada-tools.jp/blog?page=${pageNum}`,
       type: "website",
