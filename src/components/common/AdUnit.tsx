@@ -64,12 +64,10 @@ export function AdUnit({ slot, format = 'auto', className = '' }: AdUnitProps) {
     <div
       className={`ad-container my-6 ${className}`}
       style={{
-        aspectRatio: '728 / 280',
+        minHeight: '280px',
         width: '100%',
         maxWidth: '728px',
         margin: '1.5rem auto',
-        contain: 'layout style size',
-        minHeight: '280px',
       }}
     >
       <ins
