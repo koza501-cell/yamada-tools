@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       url: `${siteUrl}/blog/${slug}`,
       type: 'article',
       publishedTime: blog.publishDate,
-      modifiedTime: blog.updatedAt || blog.publishDate,
+      modifiedTime: blog.lastUpdated || blog.updatedAt || blog.publishDate,
       authors: [blog.author || '合同会社山田トレード'],
       images: [{ url: (blog.eyecatch as any)?.src || blog.featuredImage || 'https://yamada-tools.jp/og-image.png', width: 1200, height: 630, alt: blog.title }],
     },
@@ -155,7 +155,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     headline: blog.title,
     description: blog.excerpt || blog.description || blog.title,
     datePublished: blog.publishDate,
-    dateModified: blog.updatedAt || blog.modifiedDate || blog.publishDate,
+    dateModified: blog.lastUpdated || blog.updatedAt || blog.modifiedDate || blog.publishDate,
     author: blog.supervisor ? {
       "@type": "Person",
       name: (blog.supervisor as any).name,
@@ -291,14 +291,14 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             </svg>
             公開日: {formatJaDate(blog.publishDate)}
           </span>
-          {blog.updatedAt && blog.updatedAt > blog.publishDate && (
+          {(blog.lastUpdated || blog.updatedAt) && (blog.lastUpdated || blog.updatedAt) > blog.publishDate && (
             <>
               <span>•</span>
               <span className="flex items-center gap-2 text-blue-600 dark:text-blue-400">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                 </svg>
-                更新日: {formatJaDate(blog.updatedAt)}
+                更新日: {formatJaDate(blog.lastUpdated || blog.updatedAt)}
               </span>
             </>
           )}
