@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
-
 export const metadata: Metadata = {
-  // Inherit from page.tsx but ensure html lang is set in body
+  alternates: {
+    canonical: "https://yamada-tools.jp/en/business/company-search",
+    languages: {
+      "en": "https://yamada-tools.jp/en/business/company-search",
+      "en-US": "https://yamada-tools.jp/en/business/company-search",
+      "ja-JP": "https://yamada-tools.jp/business/houjin-search",
+      "x-default": "https://yamada-tools.jp/en/business/company-search",
+    },
+  },
 };
-
 export default function EnglishLayout({
   children,
 }: {
