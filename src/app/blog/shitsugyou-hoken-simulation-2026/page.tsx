@@ -29,7 +29,7 @@ export default function ShitsugyouHokenSimulation2026Blog() {
             "description": "失業保険（雇用保険）の受給額を徹底解説。月給30万円なら日額約6,000円、総額約100万円が目安。自己都合・会社都合の違い、受給期間、手続き方法まで網羅。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/shitsugyou-hoken-simulation-2026"}
           })

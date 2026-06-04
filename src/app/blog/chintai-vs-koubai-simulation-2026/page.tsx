@@ -29,7 +29,7 @@ export default function ChintaiVsKoubaiSimulation2026Blog() {
             "description": "賃貸と購入の総コストを50年間でシミュレーション。家賃10万円 vs 住宅ローン3,500万円の比較結果。ライフスタイル別のおすすめと判断基準を解説。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/chintai-vs-koubai-simulation-2026"}
           })

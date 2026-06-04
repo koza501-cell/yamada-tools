@@ -29,7 +29,7 @@ export default function ShakkinHensaiSimulation2026Blog() {
             "description": "借金返済の計画を徹底解説。毎月の返済額から完済期間を計算、繰り上げ返済の効果、おまとめローンのメリット・デメリット。シミュレーターで返済計画を立てる。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/shakkin-hensai-simulation-2026"}
           })

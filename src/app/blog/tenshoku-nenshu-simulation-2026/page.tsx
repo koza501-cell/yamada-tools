@@ -29,7 +29,7 @@ export default function TenshokuNenshuSimulation2026Blog() {
             "description": "転職による年収アップの相場を徹底解説。20代は平均+50万円、30代は+80万円が目安。業界別・職種別の年収アップ率と、年収交渉のコツを紹介。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/tenshoku-nenshu-simulation-2026"}
           })

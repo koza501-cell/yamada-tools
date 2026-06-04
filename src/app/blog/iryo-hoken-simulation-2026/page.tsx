@@ -29,7 +29,7 @@ export default function IryoHokenSimulation2026Blog() {
             "description": "医療保険の必要性を徹底解説。高額療養費制度との関係、年齢・家族構成別の判断基準、保険料の相場、選び方のポイント。シミュレーターで必要額を計算。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/iryo-hoken-simulation-2026"}
           })

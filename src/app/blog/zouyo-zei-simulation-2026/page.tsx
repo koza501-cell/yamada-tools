@@ -29,7 +29,7 @@ export default function ZouyoZeiSimulation2026Blog() {
             "description": "贈与税の計算方法と税率を徹底解説。110万円の基礎控除、住宅取得資金の非課税特例、相続時精算課税制度の活用法。親からの援助で損しない方法を紹介。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/zouyo-zei-simulation-2026"}
           })

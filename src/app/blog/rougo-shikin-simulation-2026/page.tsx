@@ -29,7 +29,7 @@ export default function RougoShikinSimulation2026Blog() {
             "description": "老後資金の必要額を徹底シミュレーション。夫婦で月25万円なら65歳から30年で約9,000万円必要。年金・退職金を差し引いた不足額と、今から始める対策を解説。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/rougo-shikin-simulation-2026"}
           })

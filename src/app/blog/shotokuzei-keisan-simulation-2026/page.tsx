@@ -29,7 +29,7 @@ export default function ShotokuzeiKeisanSimulation2026Blog() {
             "description": "所得税の計算方法を徹底解説。年収300万〜1500万円の税額早見表、控除の種類と活用法、確定申告で還付を受ける方法。手取り額シミュレーターで試算。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/shotokuzei-keisan-simulation-2026"}
           })

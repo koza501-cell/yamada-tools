@@ -40,7 +40,7 @@ export default function NisaSimulation2026Blog() {
             "description": "新NISAの積立シミュレーションを無料で計算。毎月1万円で20年後にいくら？つみたて投資枠と成長投資枠の違い、2026年税制改正のポイントを初心者向けにわかりやすく解説。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/nisa-simulation-2026"}
           })

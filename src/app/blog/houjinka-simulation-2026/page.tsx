@@ -29,7 +29,7 @@ export default function HoujinkaSimulation2026Blog() {
             "description": "法人化のメリット・デメリットを徹底解説。個人事業主が法人成りすべき年収の目安、節税効果、社会保険料の変化をシミュレーション。設立費用と手続きも紹介。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/houjinka-simulation-2026"}
           })

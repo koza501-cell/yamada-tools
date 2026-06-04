@@ -29,7 +29,7 @@ export default function HikkoshiHiyouSimulation2026Blog() {
             "description": "引越し費用の相場を徹底解説。単身・2人・家族の距離別料金表、初期費用の内訳、安く抑えるコツ。引越し費用シミュレーターで今すぐ計算。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/hikkoshi-hiyou-simulation-2026"}
           })

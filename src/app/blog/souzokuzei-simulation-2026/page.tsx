@@ -29,7 +29,7 @@ export default function SouzokuzeiSimulation2026Blog() {
             "description": "相続税の計算方法を初心者向けに解説。基礎控除3,000万円+600万円×法定相続人の数で非課税枠を計算。遺産1億円の場合の税額シミュレーションや節税対策も紹介。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/souzokuzei-simulation-2026"}
           })

@@ -29,7 +29,7 @@ export default function ShikakuToshiSimulation2026Blog() {
             "description": "資格取得の費用対効果を徹底解説。取得費用・勉強時間と年収アップ効果、元が取れる資格・取れない資格、ROI計算方法。シミュレーターで投資回収期間を計算。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/shikaku-toshi-simulation-2026"}
           })

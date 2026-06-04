@@ -29,7 +29,7 @@ export default function ZangyoudaiKeisanSimulation2026Blog() {
             "description": "残業代の正しい計算方法を徹底解説。基本給からの時給換算、25%・35%・50%の割増率、深夜・休日の計算例。未払い残業代の請求方法も紹介。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/zangyoudai-keisan-simulation-2026"}
           })

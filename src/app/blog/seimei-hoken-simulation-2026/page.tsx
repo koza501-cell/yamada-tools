@@ -29,7 +29,7 @@ export default function SeimeiHokenSimulation2026Blog() {
             "description": "生命保険の必要保障額を徹底解説。家族構成・年収・住宅ローン別の目安、遺族年金との関係、保険料の相場。必要額シミュレーターで今すぐ計算。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/seimei-hoken-simulation-2026"}
           })

@@ -29,7 +29,7 @@ export default function KoteiShisanzeiSimulation2026Blog() {
             "description": "固定資産税の計算方法を徹底解説。新築住宅の軽減措置、土地の特例、評価額の調べ方。マンション・戸建て別の計算例と節税方法を紹介。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/kotei-shisanzei-simulation-2026"}
           })

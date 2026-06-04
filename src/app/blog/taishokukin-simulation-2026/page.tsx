@@ -29,7 +29,7 @@ export default function TaishokukinSimulation2026Blog() {
             "description": "退職金の計算方法を徹底解説。勤続20年で約800万円、30年で約1,500万円が目安。退職所得控除の計算、税金の仕組み、もらえない場合の対処法まで網羅。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/taishokukin-simulation-2026"}
           })

@@ -29,7 +29,7 @@ export default function FukugyouZeikinSimulation2026Blog() {
             "description": "副業収入20万円以下でも住民税は申告必要？副業バレを防ぐ方法、経費で落とせるもの、確定申告のやり方まで完全解説。副業税金シミュレーターで試算。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/fukugyou-zeikin-simulation-2026"}
           })
