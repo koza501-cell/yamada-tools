@@ -70,5 +70,28 @@ export default async function BlogPage({
     }
   }
 
-  return <BlogIndexClient blogs={allBlogs} />;
+  const itemListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "山田ツール ブログ",
+    "description": "ビジネス効率化・PDF活用・不動産情報・税金・金融の実践ノウハウ",
+    "url": "https://yamada-tools.jp/blog",
+    "numberOfItems": allBlogs.slice(0, 20).length,
+    "itemListElement": allBlogs.slice(0, 20).map((post, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "url": `https://yamada-tools.jp/blog/${post.slug}`,
+      "name": post.title,
+    })),
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
+      <BlogIndexClient blogs={allBlogs} />
+    </>
+  );
 }
