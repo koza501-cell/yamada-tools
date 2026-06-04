@@ -14,7 +14,8 @@ export default function AdSenseLoader() {
     pathname === '/' ||
     pathname === '/pricing' ||
     pathname.startsWith('/about') ||
-    pathname.startsWith('/auth');
+    pathname.startsWith('/auth') ||
+    pathname.startsWith('/admin');
 
   useEffect(() => {
     if (!isProduction || isExcluded || isPro) return;
