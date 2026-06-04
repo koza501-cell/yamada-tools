@@ -30,7 +30,7 @@ export default function FeedbackModerationPage() {
   const didMount = useRef(false);
 
   const redirectToLogin = useCallback(() => {
-    router.replace("/admin/login");
+    router.replace("/admin/login?returnTo=/admin/feedback");
   }, [router]);
 
   useEffect(() => {

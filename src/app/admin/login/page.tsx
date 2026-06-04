@@ -1,14 +1,21 @@
 // src/app/admin/login/page.tsx
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function AdminLoginPage() {
   const [token, setToken] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [returnTo, setReturnTo] = useState("/admin");
   const router = useRouter();
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const rt = params.get("returnTo");
+    if (rt && rt.startsWith("/admin")) setReturnTo(rt);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,7 +31,7 @@ export default function AdminLoginPage() {
 
       if (res.ok) {
         localStorage.setItem("admin_token", token);
-        window.location.href = "/admin";
+        window.location.href = returnTo;
       } else {
         setError("認証に失敗しました");
       }

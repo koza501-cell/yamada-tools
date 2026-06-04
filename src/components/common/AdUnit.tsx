@@ -25,7 +25,8 @@ export function AdUnit({ slot, format = 'auto', className = '' }: AdUnitProps) {
     pathname === '/' ||
     pathname === '/pricing' ||
     pathname.startsWith('/about') ||
-    pathname.startsWith('/auth');
+    pathname.startsWith('/auth') ||
+    pathname.startsWith('/admin');
 
   useEffect(() => {
     if (isExcluded || isPro || pushedRef.current) return;
