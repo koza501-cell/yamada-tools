@@ -26,7 +26,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】電話番号フォーマット｜ハイフン自動挿入",
   tool,
-  longDescription: "電話番号をハイフン付きの正しい形式に自動整形。市外局番と市内局番を正確に区切ります。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。freee・マネーフォワード等の会計ソフトとも連携可能。",
+  longDescription: "電話番号をハイフン付きの正しい形式に自動整形。市外局番と市内局番を正確に区切ります。",
   keywords: ['電話番号 フォーマット', '電話番号 ハイフン', '電話番号 整形', '電話番号 変換'],
 });
 

@@ -15,7 +15,7 @@ const faq = [
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】画像回転｜90度回転・反転",
   tool,
-  longDescription: "画像を90度単位で回転、または左右反転。スマホで撮った写真の向き修正に便利です。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。freee・マネーフォワード等の会計ソフトとも連携可能。",
+  longDescription: "画像を90度単位で回転、または左右反転。スマホで撮った写真の向き修正に便利です。",
   keywords: ['画像 回転', '写真 回転', '画像 反転', '画像 向き'],
 });
 

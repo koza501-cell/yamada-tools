@@ -26,7 +26,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】大文字小文字変換｜英字ケース変換",
   tool,
-  longDescription: "大文字・小文字変換、キャメルケース・スネークケースなど、テキストの形式を変換します。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。freee・マネーフォワード等の会計ソフトとも連携可能。",
+  longDescription: "大文字・小文字変換、キャメルケース・スネークケースなど、テキストの形式を変換します。",
   keywords: ['大文字 小文字 変換', 'キャメルケース', 'スネークケース', 'テキスト変換'],
 });
 

@@ -26,7 +26,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】年齢計算｜生年月日から即計算",
   tool,
-  longDescription: "生年月日から現在の年齢を計算。特定の日付時点での年齢や、数え年も計算できます。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。freee・マネーフォワード等の会計ソフトとも連携可能。",
+  longDescription: "生年月日から現在の年齢を計算。特定の日付時点での年齢や、数え年も計算できます。",
   keywords: ['年齢計算', '生年月日 年齢', '数え年 計算', '年齢 計算機'],
 });
 

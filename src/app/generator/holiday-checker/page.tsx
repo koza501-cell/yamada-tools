@@ -26,7 +26,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】祝日判定｜日本の祝日チェック",
   tool,
-  longDescription: "指定した日付が祝日かどうかを確認。年間の祝日一覧や、営業日計算にも対応しています。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。freee・マネーフォワード等の会計ソフトとも連携可能。",
+  longDescription: "指定した日付が祝日かどうかを確認。年間の祝日一覧や、営業日計算にも対応しています。",
   keywords: ['祝日 確認', '祝日 カレンダー', '営業日 計算', '祝日 一覧'],
 });
 

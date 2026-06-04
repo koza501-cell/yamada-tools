@@ -26,7 +26,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】PDFページ削除｜不要ページを除去",
   tool,
-  longDescription: "PDFから不要なページを削除。表紙や空白ページ、間違って入ったページなど、いらないページだけを簡単に取り除けます。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。freee・マネーフォワード等の会計ソフトとも連携可能。",
+  longDescription: "PDFから不要なページを削除。表紙や空白ページ、間違って入ったページなど、いらないページだけを簡単に取り除けます。",
   keywords: ['PDFページ削除', 'PDF ページ 消す', 'PDF 不要ページ', 'PDF 編集'],
 });
 
