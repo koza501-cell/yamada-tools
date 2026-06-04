@@ -28,9 +28,9 @@ const faq = [
 // Total: ~5,000+ impressions
 
 export const metadata: Metadata = generateToolMetadata({
-  customTitle: "ふりがな変換【無料】漢字→ひらがな・カタカナ・ローマ字を瞬時に変換",
+  customTitle: "ふりがな変換【3形式対応】漢字→ひらがな・カタカナ・ローマ字｜登録不要・無料",
   tool,
-  longDescription: "漢字テキストをひらがな・カタカナ・ローマ字に即変換。登録不要・コピペするだけ。請求書・名簿・Excelデータのふりがな付けに対応。",
+  longDescription: "コピペするだけで漢字をひらがな・カタカナ・ローマ字に即変換。登録不要・完全無料。名簿・請求書・Excel対応。外国人向け文書作成にも。",
   keywords: [
     'ふりがなツール',
     'フリガナツール', 
