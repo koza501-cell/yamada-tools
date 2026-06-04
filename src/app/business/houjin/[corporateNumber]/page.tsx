@@ -77,7 +77,7 @@ interface CompanyProfile {
 }
 
 // ─── Data Fetching (Server-Side) ───────────────────────────────────────────
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://api.yamada-tools.jp";
+const API_BASE = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || "http://localhost:8001";
 
 async function fetchProfile(corporateNumber: string): Promise<CompanyProfile | null> {
   try {
@@ -85,7 +85,23 @@ async function fetchProfile(corporateNumber: string): Promise<CompanyProfile | n
       next: { revalidate: 2592000 }, // 30 days
     });
     if (!res.ok) return null;
-    return await res.json();
+    const data = await res.json();
+    if (data?.detail || !data?.basic) return null;
+    return data as CompanyProfile;
+  } catch {
+    return null;
+  }
+}
+
+async function fetchProfileFresh(corporateNumber: string): Promise<CompanyProfile | null> {
+  try {
+    const res = await fetch(`${API_BASE}/api/gbiz/profile/${corporateNumber}`, {
+      cache: 'no-store',
+    });
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (data?.detail || !data?.basic) return null;
+    return data as CompanyProfile;
   } catch {
     return null;
   }
@@ -331,7 +347,7 @@ function CompanySchema({ profile }: { profile: CompanyProfile }) {
 
 // ─── Page Component ────────────────────────────────────────────────────────
 export const dynamicParams = true;
-export const revalidate = 2592000; // 30 days
+// revalidate handled per-fetch
 
 export default async function HoujinProfilePage({
   params,
