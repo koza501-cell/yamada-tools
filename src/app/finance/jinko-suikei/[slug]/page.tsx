@@ -206,7 +206,7 @@ export default function PrefecturePage({ params }: { params: Promise<{ slug: str
                   "@context": "https://schema.org",
                   "@type": "Dataset",
                   name: `${prefName}の人口推移データ（2024年）`,
-                  description: `${prefName}の人口推移（1980〜2024年）と将来予測。政府統計（社会・人口統計体系）準拠。`,
+                  description: ((`${prefName}の人口推移（1980〜2024年）と将来予測。政府統計（社会・人口統計体系）準拠。`)||"").length>150?((`${prefName}の人口推移（1980〜2024年）と将来予測。政府統計（社会・人口統計体系）準拠。`)||"").slice(0,150)+"…":((`${prefName}の人口推移（1980〜2024年）と将来予測。政府統計（社会・人口統計体系）準拠。`)||""),
                   url: `https://yamada-tools.jp/finance/jinko-suikei/${slug}`,
                   creator: { "@type": "Organization", name: "総務省統計局" },
                   license: "https://www.e-stat.go.jp/terms-of-use",

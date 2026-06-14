@@ -66,13 +66,13 @@ export async function generateMetadata({
 
   return {
     title: `${pref.name}の平均寿命【男女別・2020年最新データ】全国順位は？ | 山田ツール`,
-    description: `${pref.name}の平均寿命を男女別に掲載。全国47都道府県内の順位・全国平均との差・余命計算も。厚生労働省 令和2年都道府県別生命表データ。`,
+    description: ((`${pref.name}の平均寿命を男女別に掲載。全国47都道府県内の順位・全国平均との差・余命計算も。厚生労働省 令和2年都道府県別生命表データ。`)||"").length>150?((`${pref.name}の平均寿命を男女別に掲載。全国47都道府県内の順位・全国平均との差・余命計算も。厚生労働省 令和2年都道府県別生命表データ。`)||"").slice(0,150)+"…":((`${pref.name}の平均寿命を男女別に掲載。全国47都道府県内の順位・全国平均との差・余命計算も。厚生労働省 令和2年都道府県別生命表データ。`)||""),
     alternates: {
       canonical: `https://yamada-tools.jp/health/heikin-jumyo/${slug}`,
     },
     openGraph: {
       title: `${pref.name}の平均寿命【男女別・2020年最新データ】`,
-      description: `${pref.name}の男女別平均寿命・全国ランキング・余命計算。厚生労働省データ準拠。`,
+      description: ((`${pref.name}の男女別平均寿命・全国ランキング・余命計算。厚生労働省データ準拠。`)||"").length>150?((`${pref.name}の男女別平均寿命・全国ランキング・余命計算。厚生労働省データ準拠。`)||"").slice(0,150)+"…":((`${pref.name}の男女別平均寿命・全国ランキング・余命計算。厚生労働省データ準拠。`)||""),
       url: `https://yamada-tools.jp/health/heikin-jumyo/${slug}`,
       siteName: "山田ツール",
       locale: "ja_JP",

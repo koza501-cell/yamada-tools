@@ -122,7 +122,8 @@ export async function generateMetadata({
   const name = profile.basic.name;
   const location = profile.basic.location || "";
   const title = `${name}（法人番号：${corporateNumber}）| 法人情報・補助金・財務データ | 山田ツール`;
-  const description = `${name}の法人情報を無料で閲覧。所在地：${location}。基本情報に加え、補助金・入札・認定・財務データを1ページで確認。出典：経済産業省Gビズインフォ`;
+  const rawDesc = `${name}の法人情報を無料で閲覧。所在地：${location}。基本情報に加え、補助金・入札・認定・財務データを1ページで確認。出典：経済産業省Gビズインフォ`;
+  const description = rawDesc.length > 150 ? rawDesc.slice(0, 150) + "…" : rawDesc;
 
   return {
     title,

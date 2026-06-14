@@ -66,13 +66,13 @@ export async function generateMetadata({
 
   return {
     title: `${pref.name}の人口推移と2050年予測【2024年最新データ】 | 山田ツール`,
-    description: `${pref.name}の人口推移（1980〜2024年）と2050年までの将来予測。高齢化率・少子化率・年齢ピラミッドを政府統計（e-Stat）データで可視化。`,
+    description: ((`${pref.name}の人口推移（1980〜2024年）と2050年までの将来予測。高齢化率・少子化率・年齢ピラミッドを政府統計（e-Stat）データで可視化。`)||"").length>150?((`${pref.name}の人口推移（1980〜2024年）と2050年までの将来予測。高齢化率・少子化率・年齢ピラミッドを政府統計（e-Stat）データで可視化。`)||"").slice(0,150)+"…":((`${pref.name}の人口推移（1980〜2024年）と2050年までの将来予測。高齢化率・少子化率・年齢ピラミッドを政府統計（e-Stat）データで可視化。`)||""),
     alternates: {
       canonical: `https://yamada-tools.jp/finance/jinko-suikei/${slug}`,
     },
     openGraph: {
       title: `${pref.name}の人口推移と2050年予測【2024年最新】`,
-      description: `${pref.name}の人口推移・高齢化率・年齢別構成を政府統計データで確認。`,
+      description: ((`${pref.name}の人口推移・高齢化率・年齢別構成を政府統計データで確認。`)||"").length>150?((`${pref.name}の人口推移・高齢化率・年齢別構成を政府統計データで確認。`)||"").slice(0,150)+"…":((`${pref.name}の人口推移・高齢化率・年齢別構成を政府統計データで確認。`)||""),
       url: `https://yamada-tools.jp/finance/jinko-suikei/${slug}`,
       siteName: "山田ツール",
       locale: "ja_JP",

@@ -93,18 +93,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const siteUrl = "https://yamada-tools.jp";
   return {
     title,
-    description: desc,
+    description: (desc||"").length > 150 ? (desc||"").slice(0,150)+"…" : (desc||""),
     ...(post.noindex ? { robots: "noindex" } : {}),
     alternates: { canonical: `${siteUrl}/ai-recipe/${slug}` },
     openGraph: {
-      title, description: desc,
+      title, description: (desc||"").length > 150 ? (desc||"").slice(0,150)+"…" : (desc||""),
       url: `${siteUrl}/ai-recipe/${slug}`,
       type: "article",
       publishedTime: post.publishedAt ?? post.publishDate,
       modifiedTime: post.lastUpdated ?? post.publishedAt ?? post.publishDate,
       images: [{ url: post.featuredImage ?? `${siteUrl}/api/og?title=${encodeURIComponent(title)}&type=ai-recipe&category=${encodeURIComponent(post.category ?? "")}`, width: 1200, height: 630 }],
     },
-    twitter: { card: "summary_large_image", title, description: desc, images: [post.featuredImage ?? `${siteUrl}/api/og?title=${encodeURIComponent(title)}&type=ai-recipe&category=${encodeURIComponent(post.category ?? "")}`] },
+    twitter: { card: "summary_large_image", title, description: (desc||"").length > 150 ? (desc||"").slice(0,150)+"…" : (desc||""), images: [post.featuredImage ?? `${siteUrl}/api/og?title=${encodeURIComponent(title)}&type=ai-recipe&category=${encodeURIComponent(post.category ?? "")}`] },
   };
 }
 

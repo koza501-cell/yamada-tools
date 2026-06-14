@@ -163,7 +163,7 @@ export async function generateMetadata({
   if (!niche) return {};
   return {
     title: niche.title + ' | yamada-tools.jp',
-    description: niche.metaDescription,
+    description: ((niche.metaDescription)||"").length>150?((niche.metaDescription)||"").slice(0,150)+"…":((niche.metaDescription)||""),
     keywords: niche.keywords,
   };
 }

@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const posts = getAllPosts();
   const post = posts.find((p: any) => p.slug === slug);
   const siteUrl = 'https://yamada-tools.jp';
-  const description = post.metaDescription || post.seoDescription || post.description || post.excerpt || '';
+  const _d = post.metaDescription || post.seoDescription || post.description || post.excerpt || '';
+  const description = _d.length > 150 ? _d.slice(0, 150) + '…' : _d;
   const keywords = post.keywords || (Array.isArray(post.tags) ? post.tags.join(',') : '');
   return {
     title: post.title + ' | ' + NICHE.name,

@@ -50,13 +50,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   return {
     title: blog.title,
-    description: blog.excerpt || blog.title,
+    description: (() => { const d = blog.excerpt || blog.title || ''; return d.length > 150 ? d.slice(0, 150) + '…' : d; })(),
     alternates: {
       canonical: `${siteUrl}/blog/${slug}`,
     },
     openGraph: {
       title: blog.title,
-      description: blog.excerpt || blog.title,
+      description: (() => { const d = blog.excerpt || blog.title || ''; return d.length > 150 ? d.slice(0, 150) + '…' : d; })(),
       url: `${siteUrl}/blog/${slug}`,
       type: 'article',
       publishedTime: blog.publishDate,
@@ -67,7 +67,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     twitter: {
       card: 'summary_large_image',
       title: blog.title,
-      description: blog.excerpt || blog.title,
+      description: (() => { const d = blog.excerpt || blog.title || ''; return d.length > 150 ? d.slice(0, 150) + '…' : d; })(),
       images: [(blog.eyecatch as any)?.src || blog.featuredImage || 'https://yamada-tools.jp/og-image.png'],
     },
   };

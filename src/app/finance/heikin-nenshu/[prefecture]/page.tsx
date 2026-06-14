@@ -189,7 +189,7 @@ export default function PrefecturePage({ params }: { params: Promise<{ prefectur
                   "@context": "https://schema.org",
                   "@type": "Dataset",
                   name: `${prefName}の平均年収データ（2023年）`,
-                  description: `${prefName}の平均年収。賃金構造基本統計調査（厚生労働省）2023年データ。`,
+                  description: ((`${prefName}の平均年収。賃金構造基本統計調査（厚生労働省）2023年データ。`)||"").length>150?((`${prefName}の平均年収。賃金構造基本統計調査（厚生労働省）2023年データ。`)||"").slice(0,150)+"…":((`${prefName}の平均年収。賃金構造基本統計調査（厚生労働省）2023年データ。`)||""),
                   url: `https://yamada-tools.jp/finance/heikin-nenshu/${prefecture}`,
                   creator: { "@type": "Organization", name: "厚生労働省" },
                   license: "https://www.e-stat.go.jp/terms-of-use",
