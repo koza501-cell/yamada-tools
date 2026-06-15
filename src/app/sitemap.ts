@@ -64,8 +64,8 @@ export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
       { url: baseUrl + "/about/story", lastModified: currentDate, changeFrequency: "monthly", priority: 0.5 },
       { url: baseUrl + "/about/faq", lastModified: currentDate, changeFrequency: "monthly", priority: 0.5 },
       { url: baseUrl + "/about/business", lastModified: currentDate, changeFrequency: "monthly", priority: 0.7 },
-      { url: baseUrl + "/legal/terms", lastModified: currentDate, changeFrequency: "yearly", priority: 0.3 },
-      { url: baseUrl + "/legal/privacy", lastModified: currentDate, changeFrequency: "yearly", priority: 0.3 },
+      { url: baseUrl + "/terms", lastModified: currentDate, changeFrequency: "yearly", priority: 0.3 },
+      { url: baseUrl + "/privacy", lastModified: currentDate, changeFrequency: "yearly", priority: 0.3 },
       { url: baseUrl + "/legal/tokushoho", lastModified: currentDate, changeFrequency: "yearly", priority: 0.3 },
       { url: baseUrl + "/search", lastModified: currentDate, changeFrequency: "weekly", priority: 0.7 },
       // ─── English pages with hreflang alternates ─────────────────────
