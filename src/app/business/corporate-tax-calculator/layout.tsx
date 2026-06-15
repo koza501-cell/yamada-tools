@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [{ url: "https://api.easynihon.com/api/og?site=yamada&title=%E3%80%90%E7%84%A1%E6%96%99%E3%80%91%E6%B3%95%E4%BA%BA%E7%A8%8E%20%E8%A8%88%E7%AE%97%E6%A9%9F%EF%BD%9C%E6%B3%95%E4%BA%BA%E7%A8%8E%E3%83%BB%E4%BD%8F%E6%B0%91%E7%A8%8E%E3%83%BB%E4%BA%8B%E6%A5%AD%E7%A8%8E%E3%82%92%E4%B8%80%E6%8B%AC%E8%A8%88%E7%AE%97%202026%E5%B9%B4%E7%89%88" }],
   },
+  alternates: { canonical: "https://yamada-tools.jp/business/corporate-tax-calculator" },
 };
 
 const schema = {
