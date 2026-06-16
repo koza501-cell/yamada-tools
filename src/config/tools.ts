@@ -1627,6 +1627,21 @@ export const careerTools: Tool[] = [
     isNew: true,
     isFeatured: true,
   },
+  {
+    id: "zangyodai-keisan",
+    nameJa: "残業代計算ツール",
+    nameEn: "Overtime Pay Calculator",
+    description: "月給・日給・時給から残業代を自動計算2026年度最新レート。時間外・深夜・休日労働の割増賃金率対応。未払い残業代の総額も計算。",
+    icon: "⏰",
+    path: "/tools/zangyodai-keisan",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+    isNew: true,
+    isFeatured: true,
+  },
 ];
 // ============================================
 export const realestateTools: Tool[] = [
