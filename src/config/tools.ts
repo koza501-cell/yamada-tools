@@ -1612,6 +1612,21 @@ export const careerTools: Tool[] = [
     isNew: true,
     isFeatured: true,
   },
+  {
+    id: "furusato-nozei-keisan",
+    nameJa: "ふるさと納税控除上限額計算",
+    nameEn: "Furusato Nozei Limit Calculator",
+    description: "年収・家族構成からふるさと納税の控除上限額を計算2026年度最新レート・总務省公式方式対応、47都道府県対応",
+    icon: "❤️",
+    path: "/tools/furusato-nozei-keisan",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+    isNew: true,
+    isFeatured: true,
+  },
 ];
 // ============================================
 export const realestateTools: Tool[] = [
