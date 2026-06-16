@@ -1597,6 +1597,21 @@ export const careerTools: Tool[] = [
     category: "finance",
     available: true,
   },
+  {
+    id: "kyuyo-tedori-keisan",
+    nameJa: "給与手取り計算ツール",
+    nameEn: "Salary Take-Home Calculator",
+    description: "月収・年収から所得税・住民税・社会保険料を自動計算2026年度最新レート、47都道府県対応",
+    icon: "💴",
+    path: "/tools/kyuyo-tedori-keisan",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+    isNew: true,
+    isFeatured: true,
+  },
 ];
 // ============================================
 export const realestateTools: Tool[] = [
