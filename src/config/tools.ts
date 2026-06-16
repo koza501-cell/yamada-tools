@@ -1657,6 +1657,21 @@ export const careerTools: Tool[] = [
     isNew: true,
     isFeatured: true,
   },
+  {
+    id: "nenmatsu-chosei-keisan",
+    nameJa: "年末調整還付金計算ツール",
+    nameEn: "Year-End Tax Adjustment Calculator",
+    description: "年末調整でいくら戻るか事前シミュレーション。住宅ローン・生命保険・iDeCo・ふるさと納税など全控除対応。2026年度最新税率。",
+    icon: "📝",
+    path: "/tools/nenmatsu-chosei-keisan",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+    isNew: true,
+    isFeatured: true,
+  },
 ];
 // ============================================
 export const realestateTools: Tool[] = [
