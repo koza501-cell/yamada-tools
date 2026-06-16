@@ -1642,6 +1642,21 @@ export const careerTools: Tool[] = [
     isNew: true,
     isFeatured: true,
   },
+  {
+    id: "shakai-hoken-keisan",
+    nameJa: "社会保険料計算ツール",
+    nameEn: "Social Insurance Calculator",
+    description: "月給・賞与から社会保険料（厚生年金・健康保険・介護保険・雇用保険）の従業員負担と会社負担を自動計算。2026年度最新レート。標準報酬月額等級表示。都道府県別対応。",
+    icon: "🏥",
+    path: "/tools/shakai-hoken-keisan",
+    apiEndpoint: "",
+    acceptedTypes: "",
+    maxFiles: 0,
+    category: "finance",
+    available: true,
+    isNew: true,
+    isFeatured: true,
+  },
 ];
 // ============================================
 export const realestateTools: Tool[] = [
