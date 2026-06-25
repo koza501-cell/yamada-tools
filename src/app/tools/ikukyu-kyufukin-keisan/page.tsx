@@ -14,10 +14,17 @@ export const metadata: Metadata = {
   },
 };
 
+const faq = [
+  { question: "育児休業給付金はいくらもらえますか？", answer: "育休開始から180日間は休業前賃金の67%、181日目以降は50%が支給されます。" },
+  { question: "育児休業給付金に税金はかかりますか？", answer: "育児休業給付金は非課税です。所得税・住民税はかかりません。社会保険料も育休中は免除されます。" },
+  { question: "パパ育休（産後パパ育休）の給付金はいくらですか？", answer: "出生後8週間以内に取得する産後パパ育休は、休業前賃金の最大100%相当が給付されます（2025年度拡充）。" },
+  { question: "育児休業給付金の申請はどこにしますか？", answer: "会社を通じてハローワークに申請します。個人で直接申請することはできません。" },
+];
+
 export default function Page() {
   return (
     <>
-      <ToolSchema tool={{ nameJa: "育児休業給付金計算ツール", description: "育休前の給与から育児休業給付金の受給額を自動計算。", path: "/tools/ikukyu-kyufukin-keisan" }} />
+      <ToolSchema tool={{ nameJa: "育児休業給付金計算ツール", description: "育休前の給与から育児休業給付金の受給額を自動計算。", path: "/tools/ikukyu-kyufukin-keisan" }} faq={faq} />
       <IkukyuKyufukinCalculator />
     </>
   );

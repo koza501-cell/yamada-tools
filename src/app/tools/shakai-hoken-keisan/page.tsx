@@ -28,10 +28,17 @@ export const metadata: Metadata = {
   },
 };
 
+const faq = [
+  { question: "社会保険料はいつから変わりますか？", answer: "協会けんぽの料率は毎年3月分（4月納付分）から改定されます。本ツールは2026年度最新料率に対応しています。" },
+  { question: "社会保険料の会社負担分はどのくらいですか？", answer: "健康保険・厚生年金はほぼ労使折半です。雇用保険は会社負担が従業員よりわずかに多くなっています。" },
+  { question: "標準報酬月額とは何ですか？", answer: "社会保険料計算の基準となる金額で、毎年4〜6月の平均給与をもとに決定されます。" },
+  { question: "パートタイムでも社会保険に加入しますか？", answer: "週20時間以上・月収8.8万円以上などの条件を満たす場合、社会保険への加入が義務付けられています。" },
+];
+
 export default function Page() {
   return (
     <>
-      <ToolSchema tool={{ nameJa: "社会保険料シミュレーター", description: "月収から健康保険料・厚生年金・雇用保険料を都道府県別に自動計算。", path: "/tools/shakai-hoken-keisan" }} />
+      <ToolSchema tool={{ nameJa: "社会保険料シミュレーター", description: "月収から健康保険料・厚生年金・雇用保険料を都道府県別に自動計算。", path: "/tools/shakai-hoken-keisan" }} faq={faq} />
       <ShakaiHokenCalculator />
     </>
   );

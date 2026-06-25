@@ -14,10 +14,17 @@ export const metadata: Metadata = {
   },
 };
 
+const faq = [
+  { question: "最低賃金は全国一律ですか？", answer: "いいえ。都道府県ごとに地域別最低賃金が設定されています。本ツールで都道府県を選択して確認できます。" },
+  { question: "最低賃金を下回る賃金を払うとどうなりますか？", answer: "50万円以下の罰金が科せられます。また差額の支払い義務も生じます。" },
+  { question: "特定最低賃金とは何ですか？", answer: "特定の産業・職種に適用される最低賃金で、地域別最低賃金より高い場合はそちらが優先されます。" },
+  { question: "2026年の最低賃金はいくらですか？", answer: "都道府県により異なります。本ツールで都道府県を選択すると2026年度の最新最低賃金を確認できます。" },
+];
+
 export default function Page() {
   return (
     <>
-      <ToolSchema tool={{ nameJa: "最低賃金チェックツール", description: "都道府県・時給・労働時間から最低賃金違反がないか自動チェック。", path: "/tools/saiteichingin-check" }} />
+      <ToolSchema tool={{ nameJa: "最低賃金チェックツール", description: "都道府県・時給・労働時間から最低賃金違反がないか自動チェック。", path: "/tools/saiteichingin-check" }} faq={faq} />
       <SaiteichinginCheck />
     </>
   );

@@ -28,10 +28,17 @@ export const metadata: Metadata = {
   },
 };
 
+const faq = [
+  { question: "残業代の計算方法を教えてください。", answer: "基本給を月所定労働時間で割った時給に、法定割増率（時間外25%・深夜25%・休日35%）を掛けて計算します。" },
+  { question: "残業代が支払われない場合はどうすればいいですか？", answer: "労働基準監督署に相談するか、弁護士・社労士に未払い残業代の請求を依頼することができます。" },
+  { question: "管理職でも残業代は請求できますか？", answer: "名ばかり管理職の場合は請求できます。実態として管理権限がない場合は一般労働者として扱われます。" },
+  { question: "残業代の時効はありますか？", answer: "2020年4月以降の残業代は3年間請求できます。" },
+];
+
 export default function Page() {
   return (
     <>
-      <ToolSchema tool={{ nameJa: "残業代計算ツール", description: "基本給・残業時間から法定割増賃金を自動計算。深夜・休日割増にも対応。", path: "/tools/zangyodai-keisan" }} />
+      <ToolSchema tool={{ nameJa: "残業代計算ツール", description: "基本給・残業時間から法定割増賃金を自動計算。深夜・休日割増にも対応。", path: "/tools/zangyodai-keisan" }} faq={faq} />
       <ZangyodaiCalculator />
     </>
   );

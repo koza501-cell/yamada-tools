@@ -14,10 +14,17 @@ export const metadata: Metadata = {
   },
 };
 
+const faq = [
+  { question: "法人税率は何パーセントですか？", answer: "資本金1億円以下の中小法人は課税所得800万円以下が15%、超過分が23.2%です。" },
+  { question: "法人住民税とは何ですか？", answer: "都道府県民税と市区町村民税の総称です。法人税額を基に計算する法人税割と、所得に関係なく課される均等割があります。" },
+  { question: "地方法人税とは何ですか？", answer: "国税の一種で、法人税額の10.3%が課されます。地方交付税の財源として使われます。" },
+  { question: "赤字でも法人住民税はかかりますか？", answer: "均等割部分は赤字でも課税されます。資本金等の額と従業員数によって金額が決まります。" },
+];
+
 export default function Page() {
   return (
     <>
-      <ToolSchema tool={{ nameJa: "法人税シミュレーター", description: "法人の課税所得から法人税・地方法人税・法人住民税を自動計算。", path: "/tools/hojin-zei-simulator" }} />
+      <ToolSchema tool={{ nameJa: "法人税シミュレーター", description: "法人の課税所得から法人税・地方法人税・法人住民税を自動計算。", path: "/tools/hojin-zei-simulator" }} faq={faq} />
       <HojinZeiSimulator />
     </>
   );

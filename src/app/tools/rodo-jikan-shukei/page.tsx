@@ -14,10 +14,17 @@ export const metadata: Metadata = {
   },
 };
 
+const faq = [
+  { question: "法定労働時間は1日何時間ですか？", answer: "1日8時間・週40時間が法定労働時間です。これを超える分は時間外労働として割増賃金が必要です。" },
+  { question: "フレックスタイム制の労働時間はどう計算しますか？", answer: "清算期間（最長3ヶ月）の総労働時間で判断します。本ツールで日別入力後に合計を確認できます。" },
+  { question: "深夜労働とは何時から何時までですか？", answer: "22時から翌5時までが深夜労働時間帯です。この時間帯の労働には25%以上の割増賃金が必要です。" },
+  { question: "36協定なしで残業させることはできますか？", answer: "できません。時間外労働には労使間で36協定の締結・届出が必要です。" },
+];
+
 export default function Page() {
   return (
     <>
-      <ToolSchema tool={{ nameJa: "労働時間集計ツール", description: "出退勤時間を入力して労働時間・残業時間・深夜割増を自動集計。", path: "/tools/rodo-jikan-shukei" }} />
+      <ToolSchema tool={{ nameJa: "労働時間集計ツール", description: "出退勤時間を入力して労働時間・残業時間・深夜割増を自動集計。", path: "/tools/rodo-jikan-shukei" }} faq={faq} />
       <RodoJikanShukei />
     </>
   );

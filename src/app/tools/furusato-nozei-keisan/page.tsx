@@ -26,10 +26,17 @@ export const metadata: Metadata = {
   },
 };
 
+const faq = [
+  { question: "ふるさと納税の上限額はどうやって決まりますか？", answer: "年収・家族構成・住宅ローン控除の有無などによって決まります。本ツールでは2026年度の最新ルールで自動計算します。" },
+  { question: "ふるさと納税は何自治体まで寄附できますか？", answer: "自治体数に制限はありませんが、ワンストップ特例制度を使う場合は5自治体以内が条件です。" },
+  { question: "上限額を超えて寄附したらどうなりますか？", answer: "上限額を超えた分は税控除の対象外となり、実質的な自己負担が増えます。" },
+  { question: "計算結果はあくまで目安ですか？", answer: "はい。正確な控除額は年末調整・確定申告の結果によります。税理士にご相談ください。" },
+];
+
 export default function Page() {
   return (
     <>
-      <ToolSchema tool={{ nameJa: "ふるさと納税上限額計算ツール", description: "年収・家族構成から最適なふるさと納税上限額を自動計算。2026年度対応。", path: "/tools/furusato-nozei-keisan" }} />
+      <ToolSchema tool={{ nameJa: "ふるさと納税上限額計算ツール", description: "年収・家族構成から最適なふるさと納税上限額を自動計算。2026年度対応。", path: "/tools/furusato-nozei-keisan" }} faq={faq} />
       <FurusatoNozeiCalculator />
     </>
   );
