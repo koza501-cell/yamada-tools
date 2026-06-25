@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import ToolSchema from "@/components/tools/ToolSchema";
 import KoyoKeiyakushoGenerator from "@/components/tools/KoyoKeiyakushoGenerator";
 
 export const metadata: Metadata = {
@@ -13,4 +14,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() { return <KoyoKeiyakushoGenerator />; }
+export default function Page() {
+  return (
+    <>
+      <ToolSchema tool={{ nameJa: "雇用契約書作成ツール", description: "必要事項を入力するだけで雇用契約書を自動作成・PDF出力。", path: "/tools/koyo-keiyakusho-sakusei" }} />
+      <KoyoKeiyakushoGenerator />
+    </>
+  );
+}

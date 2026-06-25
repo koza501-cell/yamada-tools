@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import ToolSchema from "@/components/tools/ToolSchema";
 import FurusatoNozeiCalculator from "@/components/tools/FurusatoNozeiCalculator";
 
 export const metadata: Metadata = {
@@ -26,5 +27,10 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <FurusatoNozeiCalculator />;
+  return (
+    <>
+      <ToolSchema tool={{ nameJa: "ふるさと納税上限額計算ツール", description: "年収・家族構成から最適なふるさと納税上限額を自動計算。2026年度対応。", path: "/tools/furusato-nozei-keisan" }} />
+      <FurusatoNozeiCalculator />
+    </>
+  );
 }

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import ToolSchema from "@/components/tools/ToolSchema";
 import NenmatsuChoseiCalculator from "@/components/tools/NenmatsuChoseiCalculator";
 
 export const metadata: Metadata = {
@@ -28,5 +29,10 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <NenmatsuChoseiCalculator />;
+  return (
+    <>
+      <ToolSchema tool={{ nameJa: "年末調整還付金計算ツール", description: "源泉徴収票の数字を入力して年末調整の還付金・追加納税額を計算。", path: "/tools/nenmatsu-chosei-keisan" }} />
+      <NenmatsuChoseiCalculator />
+    </>
+  );
 }

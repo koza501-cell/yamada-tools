@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import ToolSchema from "@/components/tools/ToolSchema";
 import ShakaiHokenCalculator from "@/components/tools/ShakaiHokenCalculator";
 
 export const metadata: Metadata = {
@@ -28,5 +29,10 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <ShakaiHokenCalculator />;
+  return (
+    <>
+      <ToolSchema tool={{ nameJa: "社会保険料シミュレーター", description: "月収から健康保険料・厚生年金・雇用保険料を都道府県別に自動計算。", path: "/tools/shakai-hoken-keisan" }} />
+      <ShakaiHokenCalculator />
+    </>
+  );
 }

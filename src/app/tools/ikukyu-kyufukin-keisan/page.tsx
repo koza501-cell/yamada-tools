@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import ToolSchema from "@/components/tools/ToolSchema";
 import IkukyuKyufukinCalculator from "@/components/tools/IkukyuKyufukinCalculator";
 
 export const metadata: Metadata = {
@@ -13,4 +14,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() { return <IkukyuKyufukinCalculator />; }
+export default function Page() {
+  return (
+    <>
+      <ToolSchema tool={{ nameJa: "育児休業給付金計算ツール", description: "育休前の給与から育児休業給付金の受給額を自動計算。", path: "/tools/ikukyu-kyufukin-keisan" }} />
+      <IkukyuKyufukinCalculator />
+    </>
+  );
+}

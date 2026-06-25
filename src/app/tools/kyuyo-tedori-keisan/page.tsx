@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import KyuyoTedoriCalculator from "@/components/tools/KyuyoTedoriCalculator";
+import ToolSchema from "@/components/tools/ToolSchema";
 
 export const metadata: Metadata = {
   title: "給与手取り計算ツール2026｜月収・年収から社会保険料・税金を自動計算",
@@ -28,5 +29,14 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <KyuyoTedoriCalculator />;
+  return (
+    <>
+      <ToolSchema tool={{
+        nameJa: "給与手取り計算ツール",
+        description: "月収・年収を入力するだけで所得税・住民税・社会保険料を自動計算。2026年度最新レートに対応。",
+        path: "/tools/kyuyo-tedori-keisan"
+      }} />
+      <KyuyoTedoriCalculator />
+    </>
+  );
 }

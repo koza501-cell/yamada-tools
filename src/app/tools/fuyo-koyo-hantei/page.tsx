@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import ToolSchema from "@/components/tools/ToolSchema";
 import FuyoHanteiTool from "@/components/tools/FuyoHanteiTool";
 
 export const metadata: Metadata = {
@@ -13,4 +14,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() { return <FuyoHanteiTool />; }
+export default function Page() {
+  return (
+    <>
+      <ToolSchema tool={{ nameJa: "扶養控除判定ツール", description: "収入・続柄から扶養控除の適用可否を判定。所得税・住民税の節税額も表示。", path: "/tools/fuyo-koyo-hantei" }} />
+      <FuyoHanteiTool />
+    </>
+  );
+}

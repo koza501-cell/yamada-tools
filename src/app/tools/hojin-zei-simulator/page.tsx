@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import ToolSchema from "@/components/tools/ToolSchema";
 import HojinZeiSimulator from "@/components/tools/HojinZeiSimulator";
 
 export const metadata: Metadata = {
@@ -13,4 +14,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() { return <HojinZeiSimulator />; }
+export default function Page() {
+  return (
+    <>
+      <ToolSchema tool={{ nameJa: "法人税シミュレーター", description: "法人の課税所得から法人税・地方法人税・法人住民税を自動計算。", path: "/tools/hojin-zei-simulator" }} />
+      <HojinZeiSimulator />
+    </>
+  );
+}

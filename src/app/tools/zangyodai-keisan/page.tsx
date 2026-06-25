@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import ToolSchema from "@/components/tools/ToolSchema";
 import ZangyodaiCalculator from "@/components/tools/ZangyodaiCalculator";
 
 export const metadata: Metadata = {
@@ -28,5 +29,10 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <ZangyodaiCalculator />;
+  return (
+    <>
+      <ToolSchema tool={{ nameJa: "残業代計算ツール", description: "基本給・残業時間から法定割増賃金を自動計算。深夜・休日割増にも対応。", path: "/tools/zangyodai-keisan" }} />
+      <ZangyodaiCalculator />
+    </>
+  );
 }

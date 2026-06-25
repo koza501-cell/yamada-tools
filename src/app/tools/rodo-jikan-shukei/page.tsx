@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import ToolSchema from "@/components/tools/ToolSchema";
 import RodoJikanShukei from "@/components/tools/RodoJikanShukei";
 
 export const metadata: Metadata = {
@@ -13,4 +14,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() { return <RodoJikanShukei />; }
+export default function Page() {
+  return (
+    <>
+      <ToolSchema tool={{ nameJa: "労働時間集計ツール", description: "出退勤時間を入力して労働時間・残業時間・深夜割増を自動集計。", path: "/tools/rodo-jikan-shukei" }} />
+      <RodoJikanShukei />
+    </>
+  );
+}

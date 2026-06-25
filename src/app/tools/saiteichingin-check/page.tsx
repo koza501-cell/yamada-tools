@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import ToolSchema from "@/components/tools/ToolSchema";
 import SaiteichinginCheck from "@/components/tools/SaiteichinginCheck";
 
 export const metadata: Metadata = {
@@ -13,4 +14,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() { return <SaiteichinginCheck />; }
+export default function Page() {
+  return (
+    <>
+      <ToolSchema tool={{ nameJa: "最低賃金チェックツール", description: "都道府県・時給・労働時間から最低賃金違反がないか自動チェック。", path: "/tools/saiteichingin-check" }} />
+      <SaiteichinginCheck />
+    </>
+  );
+}
