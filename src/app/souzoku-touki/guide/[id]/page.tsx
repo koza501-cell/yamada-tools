@@ -261,11 +261,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!article) return {};
   return {
     title: `${article.title} | 相続登記ガイド`,
-    description: (article.description||"").length > 150 ? (article.description||"").slice(0,150)+"…" : (article.description||""),
+    description: article.description,
     alternates: { canonical: `https://yamada-tools.jp/souzoku-touki/guide/${id}` },
     openGraph: {
       title: article.title,
-      description: (article.description||"").length > 150 ? (article.description||"").slice(0,150)+"…" : (article.description||""),
+      description: article.description,
       url: `https://yamada-tools.jp/souzoku-touki/guide/${id}`,
       siteName: "山田ツール",
       locale: "ja_JP",
@@ -284,7 +284,7 @@ export default async function GuideArticlePage({ params }: Props) {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: article.title,
-    description: (article.description||"").length > 150 ? (article.description||"").slice(0,150)+"…" : (article.description||""),
+    description: article.description,
     url: `https://yamada-tools.jp/souzoku-touki/guide/${id}`,
     publisher: { "@type": "Organization", name: "山田ツール", url: "https://yamada-tools.jp" },
     inLanguage: "ja-JP",

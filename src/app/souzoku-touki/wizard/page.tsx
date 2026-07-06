@@ -1,8 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/contexts/AuthContext";
 import { DISCLAIMER } from "../data";
+
+const API_SOUZOKU = (process.env.NEXT_PUBLIC_API_URL || "https://api.yamada-tools.jp") + "/api/souzoku";
 
 const QUESTIONS = [
   {
@@ -142,20 +146,52 @@ function calcResult(answers: Answers): { caseType: string; complexity: "low" | "
 }
 
 export default function WizardPage() {
+  const router = useRouter();
+  const { user, loading: authLoading } = useAuth();
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Answers>({});
   const [result, setResult] = useState<ReturnType<typeof calcResult> | null>(null);
+  const [creatingCase, setCreatingCase] = useState(false);
+
+  useEffect(() => {
+    if (authLoading) return;
+    if (!user) {
+      router.push("/auth/login?redirect=/souzoku-touki/wizard");
+    }
+  }, [user, authLoading, router]);
 
   const current = QUESTIONS[step];
   const progress = Math.round((step / QUESTIONS.length) * 100);
 
-  function handleAnswer(value: string) {
+  async function handleAnswer(value: string) {
     const newAnswers = { ...answers, [current.id]: value };
     setAnswers(newAnswers);
     if (step + 1 < QUESTIONS.length) {
       setStep(step + 1);
     } else {
-      setResult(calcResult(newAnswers));
+      const r = calcResult(newAnswers);
+      setResult(r);
+      if (r.diy && r.nextStep.startsWith("/")) {
+        setCreatingCase(true);
+        try {
+          const token = typeof window !== "undefined" ? localStorage.getItem("session_token") || "" : "";
+          const caseTypeMatch = r.nextStep.match(/[?&]case=([^&]+)/);
+          const caseType = caseTypeMatch ? caseTypeMatch[1] : "isan_bunkatsu";
+          const res = await fetch(`${API_SOUZOKU}/cases`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+            body: JSON.stringify({ case_type: caseType, name: `相続登記ケース（${r.caseType}）` }),
+          });
+          if (res.ok) {
+            const data = await res.json();
+            if (typeof window !== "undefined") {
+              sessionStorage.setItem("souzoku_wizard_session", String(data.id));
+            }
+          }
+        } finally {
+          setCreatingCase(false);
+        }
+      }
     }
   }
 
@@ -163,6 +199,7 @@ export default function WizardPage() {
     setStep(0);
     setAnswers({});
     setResult(null);
+    if (typeof window !== "undefined") sessionStorage.removeItem("souzoku_wizard_session");
   }
 
   const complexityColor = {
@@ -171,6 +208,14 @@ export default function WizardPage() {
     high: "text-danger dark:text-danger",
   };
   const complexityLabel = { low: "低（DIY向き）", medium: "中（要注意）", high: "高（専門家推奨）" };
+
+  if (authLoading || (!user && !authLoading)) {
+    return (
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+        <div className="text-gray-500 text-sm">読み込み中...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
@@ -247,10 +292,15 @@ export default function WizardPage() {
               {result.diy && result.nextStep.startsWith("/") ? (
                 <div className="space-y-3">
                   <Link
-                    href={result.nextStep}
-                    className="block w-full text-center bg-ai text-white font-bold py-4 px-6 rounded-xl hover:bg-ai transition-colors"
+                    href={creatingCase ? "#" : "/souzoku-touki/checklist"}
+                    onClick={creatingCase ? (e) => e.preventDefault() : undefined}
+                    className={`block w-full text-center font-bold py-4 px-6 rounded-xl transition-colors ${
+                      creatingCase
+                        ? "bg-gray-300 dark:bg-gray-600 text-gray-500 cursor-not-allowed"
+                        : "bg-ai text-white hover:opacity-90"
+                    }`}
                   >
-                    📋 必要書類チェックリストを見る
+                    {creatingCase ? "準備中..." : "📋 必要書類チェックリストを見る"}
                   </Link>
                   <Link
                     href="/souzoku-touki/tax"

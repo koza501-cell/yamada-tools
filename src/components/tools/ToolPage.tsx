@@ -53,7 +53,7 @@ interface ToolPageProps {
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://api.yamada-tools.jp";
 
 export default function ToolPage({ tool, customH1, extraFields, extraFormData, faq, seoContent, onSuccess, feedbackWidget, feedbackDisplay }: ToolPageProps) {
-  const { triggerSuccess } = usePricingContext();
+  const { triggerSuccess, setRemainingUses } = usePricingContext();
 
   const [files, setFiles] = useState<File[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -77,6 +77,13 @@ export default function ToolPage({ tool, customH1, extraFields, extraFormData, f
     }
   }, [usage]);
 
+  // Sync per-tool remaining count into PricingContext so banner/limit-modal fire
+  useEffect(() => {
+    if (usage?.remaining !== undefined) {
+      setRemainingUses(usage.remaining);
+    }
+  }, [usage?.remaining]);
+
   // Fetch dynamic SEO content from admin API
   useEffect(() => {
     const fetchContent = async () => {
@@ -99,6 +106,63 @@ export default function ToolPage({ tool, customH1, extraFields, extraFormData, f
   useEffect(() => {
     trackToolUsage(tool.path, tool.nameJa, tool.icon);
   }, [tool.path, tool.nameJa, tool.icon]);
+
+  // Inject per-tool JSON-LD schema for GEO/SEO
+  useEffect(() => {
+    const schemas: object[] = [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": tool.nameJa,
+        "description": tool.description,
+        "url": `https://yamada-tools.jp${tool.path}`,
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "All",
+        "inLanguage": "ja-JP",
+        "isAccessibleForFree": true,
+        "provider": {
+          "@type": "Organization",
+          "@id": "https://yamada-tools.jp/#organization",
+          "name": "合同会社山田トレード"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "JPY"
+        }
+      }
+    ];
+
+    if (faq && faq.length > 0) {
+      schemas.push({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faq.map(item => ({
+          "@type": "Question",
+          "name": item.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": item.answer
+          }
+        }))
+      });
+    }
+
+    const existing = document.querySelectorAll('script[data-yamada-tool-schema]');
+    existing.forEach(el => el.remove());
+
+    schemas.forEach(schema => {
+      const script = document.createElement("script");
+      script.type = "application/ld+json";
+      script.setAttribute("data-yamada-tool-schema", "true");
+      script.textContent = JSON.stringify(schema);
+      document.head.appendChild(script);
+    });
+
+    return () => {
+      document.querySelectorAll('script[data-yamada-tool-schema]').forEach(el => el.remove());
+    };
+  }, [tool.nameJa, tool.description, tool.path, faq]);
   const handleFilesSelected = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = Array.from(e.target.files || []);
     setFiles((prev) => [...prev, ...selectedFiles].slice(0, tool.maxFiles));
