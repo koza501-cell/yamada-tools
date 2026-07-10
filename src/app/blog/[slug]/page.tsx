@@ -136,12 +136,13 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   const _ctaHaystack = [blog.category ?? '', ...(blog.tags ?? [])].join(' ');
   const _ctaMatch = _ctaMap.find(c => c.test.test(_ctaHaystack))
     ?? { emoji: '🛠️', title: '山田ツール — 無料業務ツール200種', desc: 'インボイス・PDF・画像変換など登録不要で即使える', href: '/tools', btn: 'ツール一覧を見る' };
-  const _ctaHtml = `<div style="margin:2rem 0;padding:1.25rem 1.5rem;background:linear-gradient(135deg,#EEF2FF 0%,#E0E7FF 100%);border:1px solid #C7D2FE;border-radius:1rem;display:flex;align-items:center;gap:1rem;justify-content:space-between;flex-wrap:wrap;not-prose:true">` +
+  const _ctaHtml =
+    `<div class="blog-inline-cta" style="margin:2rem 0;padding:1.25rem 1.5rem;border-radius:1rem;display:flex;align-items:center;gap:1rem;justify-content:space-between;flex-wrap:wrap">` +
     `<div style="display:flex;align-items:center;gap:0.75rem;min-width:0">` +
     `<span style="font-size:2rem;line-height:1;flex-shrink:0">${_ctaMatch.emoji}</span>` +
-    `<div><p style="font-weight:700;color:#1e3a6e;margin:0;font-size:0.95rem">${_ctaMatch.title}</p>` +
-    `<p style="color:#4B5563;margin:0.25rem 0 0;font-size:0.8rem">${_ctaMatch.desc}</p></div></div>` +
-    `<a href="${_ctaMatch.href}" style="display:inline-block;background:#223A70;color:#fff;font-weight:600;font-size:0.85rem;padding:0.6rem 1.25rem;border-radius:0.75rem;text-decoration:none;white-space:nowrap;flex-shrink:0">${_ctaMatch.btn} →</a></div>`;
+    `<div><p class="blog-inline-cta-title" style="margin:0;font-size:0.95rem">${_ctaMatch.title}</p>` +
+    `<p class="blog-inline-cta-desc" style="margin:0.25rem 0 0;font-size:0.8rem">${_ctaMatch.desc}</p></div></div>` +
+    `<a href="${_ctaMatch.href}" class="blog-inline-cta-btn" style="display:inline-block;font-weight:600;font-size:0.85rem;padding:0.6rem 1.25rem;border-radius:0.75rem;text-decoration:none;white-space:nowrap;flex-shrink:0">${_ctaMatch.btn} →</a></div>`;
   let _h2Ctr = 0;
   htmlContent = htmlContent.replace(/<\/h2>/g, (m: string) => {
     _h2Ctr++;

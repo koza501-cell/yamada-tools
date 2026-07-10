@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import fs from "fs";
 import path from "path";
-import { redirect } from "next/navigation";
+import { redirect, notFound } from "next/navigation";
 import { getPublishedPosts } from "@/data/blogPosts";
 import BlogIndexClient from "./client";
 
@@ -66,7 +66,7 @@ export default async function BlogPage({
     const p = parseInt(params.page);
     const maxPage = Math.ceil(allBlogs.length / PER_PAGE);
     if (p > maxPage) {
-      redirect("/blog");
+      notFound();
     }
   }
 

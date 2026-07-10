@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function IryoHokenSimulation2026Blog() {
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
+    <article className="max-w-[680px] mx-auto px-4 py-8">
       {/* JSON-LD Schema */}
       <script
         type="application/ld+json"
