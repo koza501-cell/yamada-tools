@@ -61,7 +61,7 @@ function getBmiCategory(bmi: number) {
     label: "低体重（やせ）", labelShort: "低体重", degree: "やせ",
     colorClass: "text-kon", colorBg: "bg-gray-50", colorBorder: "border-kon", colorText: "text-kon",
     riskLevel: "注意", advice: "体重がやや低めです。栄養バランスの良い食事を心がけ、タンパク質・カルシウムをしっかり摂りましょう。急激な体重増加は避け、必要に応じて医療機関にご相談ください。",
-    risks: ["栄養不足・貧血のリスク", "骨粗しょう症のリスク", "免疫機能低下のリスク", "若い女性の場合は生殖機能への影響も"],
+    risks: ["栄養不足・貧血のリスク", "骨粗しょう症のリスク", "免疫機能低下のリスク", "若い女性の場合は生殖機能への影響も懸念されます"],
   };
   if (bmi < 25.0) return {
     label: "普通体重", labelShort: "普通体重", degree: "普通",

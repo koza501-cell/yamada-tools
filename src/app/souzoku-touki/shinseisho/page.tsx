@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 type FormData = {
   deceased_name: string;
@@ -69,19 +70,30 @@ const Icons = {
       <line x1="12" y1="17" x2="12.01" y2="17" />
     </svg>
   ),
+  Star: () => (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+    </svg>
+  ),
 };
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://api.yamada-tools.jp';
 
-export default function ShinseishoPage() {
+function ShinseishoPageInner() {
   const [form, setForm] = useState<FormData>(initialForm);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [wasWatermarked, setWasWatermarked] = useState(false);
+  const searchParams = useSearchParams();
+
+  const caseIdParam = searchParams.get('case_id');
+  const caseId = caseIdParam ? parseInt(caseIdParam, 10) : null;
 
   const update = (k: keyof FormData, v: string) => setForm((f) => ({ ...f, [k]: v }));
 
   const handleGenerate = async () => {
     setError(null);
+    setWasWatermarked(false);
     const required: (keyof FormData)[] = [
       'deceased_name', 'deceased_death_date', 'deceased_honseki', 'deceased_last_address',
       'heir_name', 'heir_address',
@@ -97,6 +109,7 @@ export default function ShinseishoPage() {
 
     setLoading(true);
     try {
+      const token = typeof window !== 'undefined' ? localStorage.getItem('session_token') : null;
       const payload = {
         ...form,
         property_value: Number(form.property_value) || 0,
@@ -107,16 +120,24 @@ export default function ShinseishoPage() {
         property_kaoku_number: form.property_kaoku_number || null,
         property_chimoku: form.property_chimoku || null,
         property_structure: form.property_structure || null,
+        case_id: (token && caseId) ? caseId : null,
       };
+      const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+      if (token) headers['Authorization'] = `Bearer ${token}`;
+
       const res = await fetch(`${API_BASE}/api/souzoku-touki/shinseisho/generate`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers,
         body: JSON.stringify(payload),
       });
       if (!res.ok) {
         const text = await res.text();
         throw new Error(text || `生成失敗 (${res.status})`);
       }
+
+      const watermarked = res.headers.get('X-Watermarked') !== 'false';
+      setWasWatermarked(watermarked);
+
       const blob = await res.blob();
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -300,6 +321,27 @@ export default function ShinseishoPage() {
             </div>
           )}
 
+          {/* 透かしなしCTA（ダウンロード後に表示） */}
+          {wasWatermarked && (
+            <div className="bg-blue-50 border border-blue-200 rounded-xl p-5">
+              <div className="flex items-start gap-3">
+                <div className="text-yellow-500 flex-shrink-0 mt-0.5"><Icons.Star /></div>
+                <div className="flex-1">
+                  <p className="font-bold text-slate-900 mb-1">ダウンロードしたPDFにはサンプル透かしが含まれています</p>
+                  <p className="text-sm text-slate-600 mb-3">
+                    法務局への提出に使える透かしなしの書類を取得するには、相続登記DIYプランのご購入が必要です。
+                  </p>
+                  <a
+                    href="/souzoku-touki"
+                    className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold px-4 py-2 rounded-lg transition"
+                  >
+                    透かしなしで印刷可能な書類を取得する →
+                  </a>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* CTA */}
           <div className="sticky bottom-4">
             <button
@@ -309,8 +351,13 @@ export default function ShinseishoPage() {
               className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-slate-400 text-white font-bold py-4 px-6 rounded-xl shadow-lg flex items-center justify-center gap-2 transition"
             >
               <Icons.Download />
-              {loading ? 'PDF生成中...' : '登記申請書PDFをダウンロード'}
+              {loading ? 'PDF生成中...' : 'サンプルPDFをダウンロード（無料）'}
             </button>
+            {!caseId && (
+              <p className="text-center text-xs text-slate-500 mt-2">
+                ※ 無料版にはサンプル透かしが入ります。透かしなし版は<a href="/souzoku-touki" className="text-blue-600 hover:underline">相続登記DIYプラン</a>でご利用いただけます。
+              </p>
+            )}
           </div>
         </form>
 
@@ -319,5 +366,13 @@ export default function ShinseishoPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function ShinseishoPage() {
+  return (
+    <Suspense>
+      <ShinseishoPageInner />
+    </Suspense>
   );
 }

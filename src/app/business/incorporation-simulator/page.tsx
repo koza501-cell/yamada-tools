@@ -984,7 +984,7 @@ export default function IncorporationSimulatorPage() {
                 <ol className="list-decimal pl-5 space-y-1">
                   <li><strong>設立費用：</strong>株式会社約25万円、合同会社約10万円</li>
                   <li><strong>維持費：</strong>税理士顧問料（年30〜60万円）、法人住民税均等割（最低7万円/年）</li>
-                  <li><strong>社会保険料の増加：</strong>国保から社会保険に切り替えで負担が増える場合も</li>
+                  <li><strong>社会保険料の増加：</strong>国保から社会保険に切り替えで負担が増える場合もあります</li>
                   <li><strong>事務作業の増加：</strong>決算書作成・法人税申告が必要</li>
                 </ol>
               </div>

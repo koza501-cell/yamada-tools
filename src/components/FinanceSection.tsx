@@ -23,7 +23,7 @@ const financeTools = [
   {
     id: "fx-calculator",
     name: "FX損益計算機",
-    description: "損益・証拠金・スワップ・確定申告を完全対応。複数取引の一括計算も",
+    description: "損益・証拠金・スワップ・確定申告に完全対応。複数取引の一括計算も可能。",
     icon: "💹",
     url: "/finance/fx-calculator",
     keywords: "FX 損益計算",
