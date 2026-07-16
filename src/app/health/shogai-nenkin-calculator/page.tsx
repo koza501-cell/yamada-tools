@@ -40,7 +40,7 @@ const jsonLd = {
       url: "https://yamada-tools.jp/health/shogai-nenkin-calculator",
       offers: { "@type": "Offer", price: "0", priceCurrency: "JPY" },
       description:
-        "障害基礎年金・障害厚生年金の受給額を障害等級・加入状況から計算します。",
+        "障害基礎年金・障害厚生年金の受給額が障害等級・加入状況からわかります。",
       featureList: [
         "障害基礎年金計算",
         "障害厚生年金計算",

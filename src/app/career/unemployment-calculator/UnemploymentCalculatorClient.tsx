@@ -242,7 +242,7 @@ export default function UnemploymentCalculatorPage() {
   ];
   return (
     <>
-      <IntroSection title="失業給付金計算機" paragraphs={["離職理由・年齢・勤続期間・直近の給与から失業給付の日額・給付日数・総受給額を自動計算します。", "自己都合・会社都合の違いや給付制限期間、受給スケジュールも表示。再就職手当の試算もできます。", "登録不要・完全無料。退職前に受け取れる給付額を事前に把握したい方に最適です。"]} />
+      <IntroSection title="失業給付金計算機" paragraphs={["離職理由・年齢・勤続期間・直近の給与から失業給付の日額・給付日数・総受給額がわかります。", "自己都合・会社都合の違いや給付制限期間、受給スケジュールも表示。再就職手当の試算もできます。", "登録不要・完全無料。退職前に受け取れる給付額を事前に把握したい方に最適です。"]} />
       <div className="min-h-screen bg-gray-50">
         <Mascot state={mascotState} className="mb-6" />
       <div className="max-w-4xl mx-auto px-4 py-8">

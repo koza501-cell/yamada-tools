@@ -314,7 +314,7 @@ export default function OvertimeCalculatorPage() {
             残業代オールインワン計算機
           </h1>
           <p className="text-gray-600 text-sm">
-            法定時間外・深夜・休日・固定残業代を一括計算。種別ごとの内訳と年間概算を表示します。
+            法定時間外・深夜・休日・固定残業代を一括計算。種別ごとの内訳と年間概算がわかります。
           </p>
         </div>
 

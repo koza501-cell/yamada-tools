@@ -291,7 +291,7 @@ export default function HoujinIjiHiyoClient() {
           法人維持費シミュレーター
         </h1>
         <p className="text-gray-600 dark:text-gray-400 text-base leading-relaxed">
-          会社を維持するために<strong>毎月・毎年かかるランニングコスト</strong>を計算します。
+          会社を維持するために<strong>毎月・毎年かかるランニングコスト</strong>がわかります。
           法人住民税・社会保険料・税理士費用など、赤字でも発生する固定費の全体像がわかります。
         </p>
       </div>

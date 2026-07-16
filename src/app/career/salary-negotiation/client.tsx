@@ -558,7 +558,7 @@ export default function SalaryNegotiationClient() {
   ];
   return (
     <>
-      <IntroSection title="給与交渉シミュレーター" paragraphs={["業界・職種・経験年数から市場年収レンジを算出し、給与交渉の最低ライン・目標額・ストレッチ目標を提示します。", "現職昇給交渉・転職時のオファー交渉・昇格時の交渉それぞれに最適な交渉アドバイスを提供します。", "登録不要・完全無料。市場データに基づいた根拠ある交渉準備に活用できます。"]} />
+      <IntroSection title="給与交渉シミュレーター" paragraphs={["業界・職種・経験年数から市場年収レンジを算出し、給与交渉の最低ライン・目標額・ストレッチ目標を提示します。", "現職昇給交渉・転職時のオファー交渉・昇格時の交渉それぞれに最適な交渉アドバイスが得られます。", "登録不要・完全無料。市場データに基づいた根拠ある交渉準備に活用できます。"]} />
       <div className="min-h-screen bg-gray-50">
         <Mascot state={mascotState} className="mb-6" />
       <script

@@ -206,7 +206,7 @@ export default function KyosaiSimulatorClient() {
           小規模企業共済シミュレーター
         </h1>
         <p className="text-gray-600 dark:text-gray-400 text-base leading-relaxed">
-          掛金月額と加入年数を入力するだけで、<strong>節税効果</strong>と<strong>受取見込み額</strong>を計算します。
+          掛金月額と加入年数を入力するだけで、<strong>節税効果</strong>と<strong>受取見込み額</strong>がわかります。
           共済金A・共済金B・準共済金・解約手当金の4パターンに対応。
         </p>
       </div>

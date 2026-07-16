@@ -5,7 +5,7 @@ import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   title: "【無料】パスワード生成｜安全な強力パスワード作成",
-  description: "安全なパスワードを自動生成。大文字、小文字、数字、記号を組み合わせた強力なパスワードを作成します。",
+  description: "安全なパスワードを自動生成。大文字、小文字、数字、記号を組み合わせた強力なパスワードが作れます。",
   keywords: ["パスワード生成", "パスワード 作成", "強力なパスワード", "パスワード ジェネレーター"],
   alternates: {
     canonical: 'https://yamada-tools.jp/generator/password',
@@ -18,7 +18,7 @@ const faq = [
 ];
 
 const seoContent = {
-  intro: "安全なパスワードを自動生成。大文字、小文字、数字、記号を組み合わせた強力なパスワードを作成します。",
+  intro: "安全なパスワードを自動生成。大文字、小文字、数字、記号を組み合わせた強力なパスワードが作れます。",
   useCases: [
     { title: "🔐 新規登録", desc: "サービス登録時のパスワード" },
     { title: "🔄 パスワード変更", desc: "定期的なパスワード更新" },

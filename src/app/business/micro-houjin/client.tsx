@@ -191,7 +191,7 @@ export default function MicroHoujinClient() {
           マイクロ法人シミュレーター
         </h1>
         <p className="text-gray-600 dark:text-gray-400 text-base leading-relaxed">
-          個人事業主がマイクロ法人を設立した場合の<strong>社会保険料の節約額</strong>を計算します。
+          個人事業主がマイクロ法人を設立した場合の<strong>社会保険料の節約額</strong>がわかります。
           国保＋国民年金と、協会けんぽ＋厚生年金（最低等級）の保険料を比較し、法人維持費を差し引いた<strong>実質メリット</strong>を算出します。
         </p>
       </div>

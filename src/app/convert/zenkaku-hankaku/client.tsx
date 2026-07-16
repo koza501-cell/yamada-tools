@@ -243,7 +243,7 @@ export default function ZenkakuHankakuClient({
         <header className="text-center mb-8">
           <div className="text-5xl mb-4">🔄</div>
           <h1 className="text-3xl font-bold text-kon mb-2">全角・半角を変換する無料ツール — 英数字・カタカナ・スペース一括変換</h1>
-          <p className="text-gray-600 text-lg">全角↔半角を一括変換します</p>
+          <p className="text-gray-600 text-lg">全角↔半角を一括変換できます</p>
           
           <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
             <span className="bg-green-50 text-green-700 px-3 py-1 rounded-full">✓ 完全無料</span>

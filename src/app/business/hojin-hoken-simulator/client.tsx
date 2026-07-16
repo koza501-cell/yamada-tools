@@ -177,7 +177,7 @@ export default function HojinHokenSimulatorClient() {
         </h1>
         <p className="text-gray-600 dark:text-gray-400 text-base leading-relaxed">
           年間保険料と<strong>最高解約返戻率</strong>を入力するだけで、2019年税制改正後のルールに基づく
-          <strong>損金算入額</strong>と<strong>資産計上額</strong>を即計算します。
+          <strong>損金算入額</strong>と<strong>資産計上額</strong>がすぐわかります。
         </p>
       </div>
 

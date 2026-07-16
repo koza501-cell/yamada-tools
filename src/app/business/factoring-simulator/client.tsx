@@ -143,7 +143,7 @@ export default function FactoringSimulatorClient() {
           ファクタリング手数料シミュレーター
         </h1>
         <p className="text-gray-600 dark:text-gray-400 text-base leading-relaxed">
-          売掛金額・手数料率を入力するだけで、<strong>手取り額</strong>と<strong>実質年率換算コスト</strong>を即計算します。
+          売掛金額・手数料率を入力するだけで、<strong>手取り額</strong>と<strong>実質年率換算コスト</strong>がすぐわかります。
           銀行融資との実質コスト比較にも使えます。
         </p>
       </div>

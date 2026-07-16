@@ -111,7 +111,7 @@ const SIDE_CONFIG: SideConfig[] = [
     incomeLabel: "給与収入",
     showExpenses: false,
     showAoiro: false,
-    note: "給与所得控除が自動適用されます。本業給与と合算して計算します。",
+    note: "給与所得控除が自動適用されます。本業給与と合算して計算できます。",
   },
   {
     type: "net_sales",

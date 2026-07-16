@@ -247,7 +247,7 @@ export default function RetirementBonusCalculatorPage() {
           </nav>
           <h1 className="text-2xl font-bold text-gray-900 mb-2">退職金計算機（手取りシミュレーター）</h1>
           <p className="text-gray-600 text-sm">
-            退職金額・勤続年数を入力するだけで、退職所得控除・所得税・住民税を自動計算。実際の手取り額を表示します。2026年最新税制対応。
+            退職金額・勤続年数を入力するだけで、退職所得控除・所得税・住民税を自動計算。実際の手取り額を確認できます。2026年最新税制対応。
           </p>
           <div className="flex flex-wrap gap-2 mt-3">
             <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-medium">登録不要</span>
