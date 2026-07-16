@@ -178,7 +178,7 @@ export default function KaigoClient() {
       <details className="mb-8">
         <summary className="cursor-pointer text-sm font-medium text-gray-600 hover:text-gray-900">よくある質問</summary>
         <div className="mt-3 space-y-3 text-sm text-gray-700">
-          <div><p className="font-medium">介護報酬の単位数とは？</p><p className="mt-1 text-gray-500">各サービスに厚生労働省が定めた基準単位数に地域区分の単価を乗じて報酬額を算出します。地域ごとに人件費格差を補正するために単価が異なります（10.00〜11.40円）。</p></div>
+          <div><p className="font-medium">介護報酬の単位数とは？</p><p className="mt-1 text-gray-500">各サービスに厚生労働省が定めた基準単位数に地域区分の単価を乗じて報酬額がわかります。地域ごとに人件費格差を補正するために単価が異なります（10.00〜11.40円）。</p></div>
           <div><p className="font-medium">この計算は概算ですか？</p><p className="mt-1 text-gray-500">はい、概算です。実際の報酬は体制加算・減算・個別の算定要件によって変わります。正確な請求は国保連または事業所システムをご確認ください。</p></div>
         </div>
       </details>

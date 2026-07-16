@@ -578,7 +578,7 @@ export default function SalaryNegotiationClient() {
           </nav>
           <h1 className="text-2xl font-bold text-gray-900 mb-2">給与交渉額シミュレーター</h1>
           <p className="text-sm text-gray-500">
-            業界・職種・経験・スキルから市場適正年収と交渉レンジを自動計算。交渉で使えるトーキングポイントも生成します。
+            業界・職種・経験・スキルから市場適正年収と交渉レンジを自動計算。交渉で使えるトーキングポイントも作れます。
           </p>
         </div>
 
