@@ -1,4 +1,5 @@
 import { Noto_Sans_JP } from "next/font/google";
+import Script from "next/script";
 import type { Metadata, Viewport } from "next";
 import { headers } from "next/headers";
 import "./globals.css";
@@ -184,7 +185,6 @@ export default async function RootLayout({
   return (
     <html lang={htmlLang} suppressHydrationWarning>
       <script dangerouslySetInnerHTML={{__html: `(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.classList.add("dark")}}catch(e){}})();`}} />
-      <script dangerouslySetInnerHTML={{__html: `if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js')});}`}} />
       <head>
         <script
           type="application/ld+json"
@@ -218,6 +218,9 @@ export default async function RootLayout({
       </head>
       <body className={`antialiased min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 ${notoSansJP.className}`}>
         <GoogleAnalytics />
+        <Script id="sw-register" strategy="lazyOnload">
+          {`if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js')});}`}
+        </Script>
         <StagingBanner />
         <AuthProvider>
         <PricingTriggerProvider>
