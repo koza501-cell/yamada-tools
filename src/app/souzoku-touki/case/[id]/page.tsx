@@ -228,7 +228,7 @@ export default function CaseIdPage({ params }: { params: Promise<{ id: string }>
       </div>
 
       {paymentMsg && (
-        <div className={`text-center py-2 text-sm font-medium ${paymentMsg.startsWith("✅") ? "bg-green-100 text-green-800" : "bg-yellow-100 text-yellow-800"}`}>
+        <div className={`text-center py-2 text-sm font-medium ${paymentMsg.startsWith("ご購入") ? "bg-green-100 text-green-800" : "bg-yellow-100 text-yellow-800"}`}>
           {paymentMsg}
         </div>
       )}

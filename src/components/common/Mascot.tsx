@@ -360,7 +360,7 @@ function buildWelcomeState(category?: string): {
   if (isMilestoneCount(v)) {
     return {
       state: "welcome_milestone",
-      message: `${v}回目のご来店、ありがとうございます♪`,
+      message: `${v}回目も来てくれてありがとう♪`,
     };
   }
 
