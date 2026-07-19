@@ -52,7 +52,7 @@ export default function NicheBentoSection() {
               Categories
             </p>
             <h2 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
-              目的から選ぶ
+              やりたいことから選ぶ
             </h2>
           </div>
         </div>

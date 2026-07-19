@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import Emoji from "@/components/ui/Emoji";
 
 const STEPS = [
-  { icon: "✏️", label: "情報を入力",  sub: "住所・金額・ファイルなど", subIcon: null,  color: "bg-kon border-kon" },
-  { icon: "⚡",  label: "即時処理",    sub: "国内サーバー",             subIcon: "🇯🇵", color: "bg-kon border-kon" },
-  { icon: "✅", label: "結果を確認",  sub: "無料・登録不要",           subIcon: null,  color: "bg-green-500 border-green-500" },
+  { icon: "✏️", label: "入力する",  sub: "住所・金額・ファイルなど", subIcon: null,  color: "bg-kon border-kon" },
+  { icon: "⚡",  label: "すぐ変換",    sub: "国内サーバー",             subIcon: "🇯🇵", color: "bg-kon border-kon" },
+  { icon: "✅", label: "できあがり",  sub: "無料・登録不要",           subIcon: null,  color: "bg-green-500 border-green-500" },
 ];
 
 export default function HeroAnimation() {

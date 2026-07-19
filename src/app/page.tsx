@@ -99,13 +99,13 @@ export default function Home() {
 
           {/* H1 — 2 lines, no emoji */}
           <h1 className="text-3xl sm:text-4xl md:text-display font-extrabold tracking-tight text-gray-900 dark:text-white text-center mb-4">
-            日本のビジネスを支える、<br />
-            無料オンラインツール{availableTools.length}種
+            面倒な事務作業、ここで片づく。<br />
+            国内サーバーの無料ツール{availableTools.length}種
           </h1>
 
           {/* Subheadline */}
           <p className="text-lead text-neutral-600 dark:text-gray-400 max-w-[640px] mx-auto mb-8">
-            日本国内サーバーで安全に処理。登録不要・完全無料。
+            登録は不要。国内サーバーで安全に処理するので、そのまま安心してお使いいただけます。
           </p>
 
           {/* 2 CTAs */}
@@ -174,8 +174,8 @@ export default function Home() {
       <section id="tools" className="py-section bg-white dark:bg-gray-900" style={{scrollMarginTop: "80px"}}>
         <div className="max-w-6xl mx-auto px-4">
           <div className="mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-kon dark:text-white mb-2">役割別に探す</h2>
-            <p className="text-sm text-sumi dark:text-gray-400">お仕事や立場に合わせて、必要なツールをまとめています。</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-kon dark:text-white mb-2">お仕事別に探す</h2>
+            <p className="text-sm text-sumi dark:text-gray-400">お仕事や立場ごとに、よく使うツールをまとめました。ここから探せます。</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
@@ -213,7 +213,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white">人気ツール - 今すぐ使う</h2>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">多くの方にご利用いただいています</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">たくさんの方に使われている定番ツールです</p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-3">
             {popularTools.map((tool) => (
@@ -239,7 +239,7 @@ export default function Home() {
             <div className="mb-8">
               <div className="flex items-center gap-3 mb-8">
                 <span className="inline-block px-3 py-1 bg-kon text-white text-sm font-bold rounded-full">新ツール</span>
-                <h2 className="text-xl font-bold text-gray-900 dark:text-white">新しいツールが登場！</h2>
+                <h2 className="text-xl font-bold text-gray-900 dark:text-white">新しいツールが仲間入り</h2>
               </div>
               <div className="grid md:grid-cols-2 gap-6 max-w-4xl">
                 {getNewTools().filter(t => t.category !== "finance").slice(0, 8).map((tool) => (
@@ -275,7 +275,7 @@ export default function Home() {
               </div>
               <Link href="/finance" className="text-sm text-kon dark:text-gray-300 hover:underline">すべて見る →</Link>
             </div>
-            <p className="text-sm text-gray-600 dark:text-gray-300 mb-8">NISA・住宅ローン・老後資金まで、無料で高精度シミュレーション。登録不要。</p>
+            <p className="text-sm text-gray-600 dark:text-gray-300 mb-8">NISAから住宅ローン、老後資金まで。登録なしで、無料で精度の高いシミュレーションができます。</p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {availableFinanceTools.map((tool) => (
                 <Link
@@ -336,7 +336,7 @@ export default function Home() {
                   <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">最新ブログ</h2>
                 </div>
                 <p className="text-gray-600 dark:text-gray-300">
-                  PDFツールの活用方法やビジネス効率化のヒントをお届けします
+                  PDF活用術から業務効率化のコツまで、実務で役立つ話をお届けします
                 </p>
               </div>
 
@@ -473,7 +473,7 @@ export default function Home() {
             {([
               {
                 q: "山田ツールは本当に無料ですか？",
-                a: "はい、すべてのツールを完全無料でご利用いただけます。会員登録も不要です。一部の高度な機能はPROプランで提供していますが、基本機能はすべて無料です。",
+                a: "はい、基本機能はすべて無料で、会員登録もいりません。より高度な機能だけPROプランでご用意していますが、ふだんの作業は無料のままで十分お使いいただけます。",
               },
               {
                 q: "何種類のツールが使えますか？",
