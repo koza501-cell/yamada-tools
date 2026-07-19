@@ -98,7 +98,7 @@ export default function CaseIdPage({ params }: { params: Promise<{ id: string }>
   useEffect(() => {
     const payment = searchParams.get("payment");
     if (payment === "success") {
-      setPaymentMsg("✅ ご購入ありがとうございます！書類の生成が可能になりました。");
+      setPaymentMsg("ご購入ありがとうございます。書類の生成が可能になりました。");
       loadCase();
     } else if (payment === "cancelled") {
       setPaymentMsg("購入がキャンセルされました。");

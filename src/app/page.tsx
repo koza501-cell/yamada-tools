@@ -445,7 +445,7 @@ export default function Home() {
                 <span className="text-white font-bold text-lg">法人・企業様向け</span>
               </div>
               <p className="text-gray-300 text-sm">
-                情報システム部門も安心のセキュリティ基準。<br className="hidden md:block" />
+                情報システム部門も安心してご利用いただけます。<br className="hidden md:block" />
                 日本国内サーバー完結・60分自動削除・SSL暗号化
               </p>
             </div>
