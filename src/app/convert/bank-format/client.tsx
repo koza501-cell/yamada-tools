@@ -1357,7 +1357,7 @@ export default function BankFormatClient({
             全銀フォーマット変換
           </h1>
           <p className="text-gray-600 text-lg">
-            振込データを全銀協規定形式に変換
+            給与振込・総合振込のデータを、全銀フォーマットに一発変換
           </p>
         </header>
 
@@ -1563,9 +1563,9 @@ export default function BankFormatClient({
           );
           const currentStep = !headerComplete ? 1 : !transfersValid ? 2 : 3;
           const steps = [
-            { n: 1, label: '委託者情報' },
-            { n: 2, label: '振込先データ' },
-            { n: 3, label: '確認・変換' },
+            { n: 1, label: '委託者を入力' },
+            { n: 2, label: '振込先を入力' },
+            { n: 3, label: '内容を確認' },
           ];
           return (
             <div className="flex items-center my-4" role="list" aria-label="進行ステップ">
@@ -1597,13 +1597,13 @@ export default function BankFormatClient({
         {/* Header Information */}
         <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-6 mb-6">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-bold text-kon">委託者情報（依頼元）</h2>
+            <h2 className="text-lg font-bold text-kon">委託者を入力</h2>
             <button
               type="button"
               onClick={fillSampleData}
               className="text-xs px-2 py-1 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-500 dark:text-gray-400 hover:border-kon hover:text-kon transition-colors"
             >
-              📋 サンプルデータを入力
+              📋 サンプルを入れて試す
             </button>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -2168,7 +2168,7 @@ export default function BankFormatClient({
         <section ref={formSectionRef} id="form-section" className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-6 mb-4">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-bold text-kon">
-              振込先データ（{transfers.length}件）
+              振込先を入力（{transfers.length}件）
             </h2>
             <button type="button"
               onClick={addTransferRow}
@@ -2449,7 +2449,7 @@ export default function BankFormatClient({
                   : 'bg-gradient-to-r from-kon to-ai text-white hover:shadow-lg'
               }`}
             >
-              全銀フォーマットに変換
+              全銀フォーマットに変換する
               {disabled && (
                 <span className="ml-2 bg-danger text-white text-xs rounded-full px-2 py-0.5">
                   {errCount}エラー

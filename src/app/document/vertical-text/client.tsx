@@ -987,7 +987,7 @@ export default function VerticalTextClient() {
               value={doc.text}
               onChange={e => updateDoc({ text: e.target.value })}
               rows={10}
-              placeholder="ここに本文を入力してください..."
+              placeholder="本文をここに入力してください"
               className="w-full px-3 py-2 text-sm border border-gray-200 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-kon/30 resize-y"
             />
             <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">
@@ -1371,7 +1371,7 @@ export default function VerticalTextClient() {
               >
                 {copied ? 'コピーしました ✓' : '📝 Wordにコピー'}
               </button>
-              <p className="text-xs text-gray-400 mt-1">WordやGoogleドキュメントに貼り付けると縦書きになります</p>
+              <p className="text-xs text-gray-400 mt-1">貼り付けるだけで、Wordや Googleドキュメントでも縦書きに。</p>
             </div>
 
             {/* URLをコピー */}
