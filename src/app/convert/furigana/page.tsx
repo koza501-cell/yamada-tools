@@ -9,13 +9,12 @@ const tool = getToolById("furigana")!;
 
 const faq = [
   { question: "人名も正確に変換できますか？", answer: "一般的な読み方は対応していますが、珍しい読み方は異なる場合があります。" },
-  { question: "カタカナで出力できますか？", answer: "はい、ひらがな・カタカナ・ローマ字どれでも出力可能です。" },
+  { question: "カタカナやローマ字でフリガナを振れますか？", answer: "はい、出力形式でひらがな・カタカナ・ローマ字のいずれかを選択できます。カタカナを選ぶとフリガナがすべてカタカナで表示されます。" },
   { question: "文章全体を一括変換できますか？", answer: "はい、長文でも一括でふりがなを振れます。" },
   { question: "無料で使えますか？", answer: "はい、完全無料で登録も不要です。" },
   { question: "スマホからも使えますか？", answer: "はい、iPhone・Androidどちらからも利用可能です。" },
   { question: "データは安全ですか？", answer: "日本国内サーバーで処理され、入力テキストは保存されません。" },
   { question: "ひらがなツールとして使えますか？", answer: "はい、漢字をひらがなに変換するツールとしてご利用いただけます。" },
-  { question: "フリガナをカタカナで振れますか？", answer: "はい、出力形式でカタカナを選択すれば、フリガナをカタカナで表示できます。" },
 ];
 
 // Target keywords (from Search Console data):
@@ -28,9 +27,9 @@ const faq = [
 // Total: ~5,000+ impressions
 
 export const metadata: Metadata = generateToolMetadata({
-  customTitle: "ふりがな変換【3形式対応】漢字→ひらがな・カタカナ・ローマ字｜登録不要・無料",
+  customTitle: "ふりがな変換【無料】漢字→ひらがな・カタカナ・ローマ字を瞬時に変換",
   tool,
-  longDescription: "コピペするだけで漢字をひらがな・カタカナ・ローマ字に即変換。登録不要・完全無料。名簿・請求書・Excel対応。外国人向け文書作成にも。",
+  longDescription: "漢字テキストをひらがな・カタカナ・ローマ字に即変換。登録不要・コピペするだけ。請求書・名簿・Excelデータのふりがな付けに対応。",
   keywords: [
     'ふりがなツール',
     'フリガナツール', 
