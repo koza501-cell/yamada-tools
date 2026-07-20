@@ -261,7 +261,7 @@ export default function VerticalTextClient() {
   const [mobileTab, setMobileTab] = useState<'edit' | 'preview'>('edit');
   const [shareToast, setShareToast] = useState(false);
   const [mascotState, setMascotState] = useState<MascotState>('idle');
-  const [mascotMessage, setMascotMessage] = useState('縦書き文書を作成しましょう。テンプレートも使えます！');
+  const [mascotMessage, setMascotMessage] = useState('縦書きの文書がかんたんに作れます。テンプレートもご用意しました。');
 
   const [activeTemplate, setActiveTemplate] = useState<string | null>(null);
   // Feature B: debounced preview state
@@ -449,7 +449,7 @@ export default function VerticalTextClient() {
     setMascotState('success')
       triggerSuccess('vertical-text');;
     setMascotMessage(`「${tpl.label}」のテンプレートを読み込みました！`);
-    setTimeout(() => { setMascotState('idle'); setMascotMessage('縦書き文書を作成しましょう。テンプレートも使えます！'); }, 3000);
+    setTimeout(() => { setMascotState('idle'); setMascotMessage('縦書きの文書がかんたんに作れます。テンプレートもご用意しました。'); }, 3000);
   };
 
   // Feature E: insert formatting character(s) at cursor / wrap selection
