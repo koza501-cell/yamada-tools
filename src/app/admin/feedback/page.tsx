@@ -28,9 +28,11 @@ export default function FeedbackModerationPage() {
   const [rejectReason, setRejectReason] = useState("");
   const [rejectLoading, setRejectLoading] = useState(false);
   const didMount = useRef(false);
+  const [tokenPrompt, setTokenPrompt] = useState(false);
+  const [manualToken, setManualToken] = useState("");
 
   const redirectToLogin = useCallback(() => {
-    router.replace("/admin/login");
+    router.replace("/admin/login?returnTo=/admin/feedback");
   }, [router]);
 
   useEffect(() => {
@@ -57,7 +59,7 @@ export default function FeedbackModerationPage() {
         setOffset(currentOffset);
       } catch (e) {
         if (e instanceof Error && e.message === "NOT_AUTHENTICATED") {
-          redirectToLogin();
+          setTokenPrompt(true);
         }
       } finally {
         setLoading(false);
@@ -68,10 +70,6 @@ export default function FeedbackModerationPage() {
 
   // Auth check on mount + initial load
   useEffect(() => {
-    if (!localStorage.getItem("admin_token")) {
-      redirectToLogin();
-      return;
-    }
     loadData(0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -102,7 +100,7 @@ export default function FeedbackModerationPage() {
       );
       showToast("✅ 承認しました");
     } catch (e) {
-      if (e instanceof Error && e.message === "NOT_AUTHENTICATED") redirectToLogin();
+      if (e instanceof Error && e.message === "NOT_AUTHENTICATED") setTokenPrompt(true);
       else showToast("❌ エラーが発生しました");
     }
   };
@@ -123,7 +121,7 @@ export default function FeedbackModerationPage() {
       setRejectReason("");
       showToast("✅ 却下しました");
     } catch (e) {
-      if (e instanceof Error && e.message === "NOT_AUTHENTICATED") redirectToLogin();
+      if (e instanceof Error && e.message === "NOT_AUTHENTICATED") setTokenPrompt(true);
       else showToast("❌ エラーが発生しました");
     } finally {
       setRejectLoading(false);
@@ -295,6 +293,39 @@ export default function FeedbackModerationPage() {
                 次のページ
               </button>
             )}
+          </div>
+        </div>
+      )}
+
+      {/* Token Prompt Modal */}
+      {tokenPrompt && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4">
+          <div className="bg-white rounded-2xl p-6 w-full max-w-md shadow-xl">
+            <h2 className="text-lg font-bold text-kon mb-2">管理者トークンを入力</h2>
+            <p className="text-sm text-gray-500 mb-4">セッションが切れました。トークンを再入力してください。</p>
+            <input
+              type="password"
+              value={manualToken}
+              onChange={(e) => setManualToken(e.target.value)}
+              placeholder="アクセストークン"
+              className="w-full px-4 py-3 border border-gray-300 rounded-xl text-sm mb-4 focus:outline-none focus:ring-2 focus:ring-kon"
+            />
+            <div className="flex gap-3">
+              <button type="button"
+                onClick={() => setTokenPrompt(false)}
+                className="flex-1 px-4 py-2.5 border border-gray-300 rounded-xl text-sm"
+              >キャンセル</button>
+              <button type="button"
+                onClick={() => {
+                  if (manualToken.trim()) {
+                    localStorage.setItem("admin_token", manualToken.trim());
+                    setTokenPrompt(false);
+                    loadData(0);
+                  }
+                }}
+                className="flex-1 px-4 py-2.5 bg-kon text-white rounded-xl text-sm font-medium"
+              >認証</button>
+            </div>
           </div>
         </div>
       )}

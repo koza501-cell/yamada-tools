@@ -15,7 +15,7 @@ const faq = [
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】画像切り抜き｜トリミング・範囲指定",
   tool,
-  longDescription: "画像の必要な部分だけを切り抜き。SNSのプロフィール画像や、バナー作成に便利です。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。freee・マネーフォワード等の会計ソフトとも連携可能。",
+  longDescription: "画像の必要な部分だけを切り抜き。SNSのプロフィール画像や、バナー作成に便利です。",
   keywords: ['画像 切り抜き', '画像 トリミング', '写真 切り抜き', '画像 crop'],
 });
 

@@ -1652,7 +1652,7 @@ img{width:${env.width}mm;height:${env.height}mm;display:block;image-rendering:hi
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3 text-gray-900 dark:text-white"><span className="text-4xl mr-3">✉️</span>封筒印刷・宛名印刷<span className="ml-3 text-sm bg-green-500 text-white px-3 py-1 rounded-full">300 DPI</span></h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3 text-gray-900 dark:text-white"><span className="text-4xl mr-3">✉️</span>封筒印刷・宛名印刷【無料】</h1>
             <p className="text-gray-600">日本の全封筒サイズに対応。高解像度印刷で美しい仕上がり。</p>
           </div>
 

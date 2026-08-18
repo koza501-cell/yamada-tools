@@ -23,7 +23,7 @@ const seoContent = {
 export const metadata: Metadata = generateToolMetadata({
   customTitle: "【無料】画像リサイズ｜サイズ変更・縮小拡大",
   tool,
-  longDescription: "画像のサイズを変更。ピクセル指定やパーセント指定で、SNS投稿やWeb用に最適なサイズに調整できます。中小企業・個人事業主・フリーランスのビジネス文書作成に最適。日本国内サーバーで安全処理、SSL暗号化対応、登録不要・完全無料・60分自動削除。freee・マネーフォワード等の会計ソフトとも連携可能。",
+  longDescription: "画像のサイズを変更。ピクセル指定やパーセント指定で、SNS投稿やWeb用に最適なサイズに調整できます。",
   keywords: ['画像リサイズ', '画像 サイズ変更', '写真 リサイズ', '画像 縮小', '画像 拡大'],
 });
 const jsonLd = generateToolJsonLd(tool, faq);

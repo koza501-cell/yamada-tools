@@ -2,14 +2,14 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "日本の祝日一覧（2024年〜2026年）",
-  description: "日本の祝日・国民の休日一覧。2024年、2025年、2026年の祝日カレンダー。振替休日も含めた完全版。",
+  title: "日本の祝日一覧【2025年・2026年・2027年】振替休日・連休も完全網羅",
+  description: "2025年・2026年・2027年の日本の祝日カレンダー。振替休日・連休情報も完全網羅。登録不要・無料。",
   keywords: ["祝日", "国民の祝日", "祝日一覧", "祝日カレンダー", "振替休日"],
   alternates: {
     canonical: 'https://yamada-tools.jp/reference/holidays',
   },
   openGraph: {
-    title: "日本の祝日一覧（2024年〜2026年）",
+    title: "日本の祝日一覧【2025年・2026年・2027年】振替休日・連休も完全網羅",
     description: "2024年・2025年・2026年の日本の国民の祝日一覧。振替休日・連休情報も網羅。登録不要・完全無料。",
     url: "https://yamada-tools.jp/reference/holidays",
     siteName: "山田ツール",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "日本の祝日一覧（2024年〜2026年）",
+    title: "日本の祝日一覧【2025年・2026年・2027年】振替休日・連休も完全網羅",
     description: "2024年・2025年・2026年の国民の祝日カレンダー。振替休日も含めた完全版。",
   },
 };

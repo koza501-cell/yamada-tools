@@ -7,7 +7,7 @@ const baseUrl = "https://yamada-tools.jp";
 
 // Sitemap IDs: 0 = static pages, 1 = tool pages
 export function generateSitemaps() {
-  return [{ id: 0 }, { id: 1 }, { id: 2 }];
+  return [{ id: 0 }, { id: 1 }, { id: 2 }, { id: 3 }];
 }
 
 export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
@@ -64,8 +64,8 @@ export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
       { url: baseUrl + "/about/story", lastModified: currentDate, changeFrequency: "monthly", priority: 0.5 },
       { url: baseUrl + "/about/faq", lastModified: currentDate, changeFrequency: "monthly", priority: 0.5 },
       { url: baseUrl + "/about/business", lastModified: currentDate, changeFrequency: "monthly", priority: 0.7 },
-      { url: baseUrl + "/legal/terms", lastModified: currentDate, changeFrequency: "yearly", priority: 0.3 },
-      { url: baseUrl + "/legal/privacy", lastModified: currentDate, changeFrequency: "yearly", priority: 0.3 },
+      { url: baseUrl + "/terms", lastModified: currentDate, changeFrequency: "yearly", priority: 0.3 },
+      { url: baseUrl + "/privacy", lastModified: currentDate, changeFrequency: "yearly", priority: 0.3 },
       { url: baseUrl + "/legal/tokushoho", lastModified: currentDate, changeFrequency: "yearly", priority: 0.3 },
       { url: baseUrl + "/search", lastModified: currentDate, changeFrequency: "weekly", priority: 0.7 },
       // ─── English pages with hreflang alternates ─────────────────────
@@ -144,6 +144,19 @@ export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
     if (!fs.existsSync(seedPath)) return [];
     const seeds: string[] = JSON.parse(fs.readFileSync(seedPath, "utf-8"));
     return seeds.map(cn => ({
+      url: `${baseUrl}/business/houjin/${cn}`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    }));
+  }
+
+  // numId === 3: Houjin company pages sitemap (batch 2)
+  if (numId === 3) {
+    const seedPath2 = path.join(process.cwd(), "src/data/houjin_seed_batch2.json");
+    if (!fs.existsSync(seedPath2)) return [];
+    const seeds2: string[] = JSON.parse(fs.readFileSync(seedPath2, "utf-8"));
+    return seeds2.map(cn => ({
       url: `${baseUrl}/business/houjin/${cn}`,
       lastModified: currentDate,
       changeFrequency: "monthly" as const,

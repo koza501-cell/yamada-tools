@@ -113,6 +113,16 @@ done
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo -e "${GREEN}  ✓ DEPLOYMENT SUCCESSFUL!${NC}"
+
+echo -e "Step 7: Submitting to IndexNow (Bing)..."
+node scripts/submit-indexnow.js
+INDEXNOW_EXIT=$?
+if [ $INDEXNOW_EXIT -eq 0 ]; then
+  echo -e "✓ IndexNow submission successful"
+else
+  echo -e "⚠ IndexNow submission failed (non-fatal)"
+fi
+echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
 echo "Public URLs:"
