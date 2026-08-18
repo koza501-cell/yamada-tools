@@ -6,7 +6,14 @@ import JinkoSuikeiAgePyramidClient from "./client";
 
 const tool = getToolById("jinko-suikei")!;
 
-export const metadata: Metadata = generateToolMetadata({ tool });
+// Override canonical so ?slug= query variants point to the base age-pyramid page,
+// not to the parent /finance/jinko-suikei tool (which generateToolMetadata would produce).
+export const metadata: Metadata = {
+  ...generateToolMetadata({ tool }),
+  alternates: {
+    canonical: "https://yamada-tools.jp/finance/jinko-suikei/age-pyramid",
+  },
+};
 
 export default function Page() {
   return (

@@ -3,6 +3,7 @@ import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
+import { BlogByline } from '@/components/BlogByline';
 
 const title = "老後資金は本当に2,000万円必要？夫婦・単身の必要額を年齢別に計算";
 const description = "夫婦で月25万円・65歳以降30年なら9,000万円必要。年金と退職金を差し引いた本当の不足額を、世帯タイプ別早見表＋無料シミュレーターで算出。今からの月積立額もわかります。";
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function RougoShikinSimulation2026Blog() {
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
+    <article className="max-w-[680px] mx-auto px-4 py-8">
       {/* JSON-LD Schema */}
       <script
         type="application/ld+json"
@@ -29,7 +30,7 @@ export default function RougoShikinSimulation2026Blog() {
             "description": "老後資金の必要額を徹底シミュレーション。夫婦で月25万円なら65歳から30年で約9,000万円必要。年金・退職金を差し引いた不足額と、今から始める対策を解説。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/rougo-shikin-simulation-2026"}
           })
@@ -41,7 +42,7 @@ export default function RougoShikinSimulation2026Blog() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            "mainEntity": [{"@type":"Question","name":"年金だけで生活できる？","acceptedAnswer":{"@type":"Answer","text":"持ち家があり、生活費を月15万円程度に抑えられれば可能なケースもあります。ただし、医療費や介護費用の備えは別途必要です。"}},{"@type":"Question","name":"老後資金はいつから使い始める？","acceptedAnswer":{"@type":"Answer","text":"年金受給開始の65歳からが一般的。ただし、退職から年金受給までの60〜65歳の生活費も考慮が必要です。"}},{"@type":"Question","name":"インフレで老後資金が目減りする？","acceptedAnswer":{"@type":"Answer","text":"現金だけで持っているとリスクがあります。株式や投資信託など、インフレに強い資産も組み入れることが重要です。"}},{"@type":"Question","name":"持ち家と賃貸、老後はどっちが有利？","acceptedAnswer":{"@type":"Answer","text":"持ち家は住居費が抑えられるメリットがありますが、修繕費・固定資産税が必要。賃貸は柔軟性がある一方、一生家賃がかかります。"}}]
+            "mainEntity": [{"@type":"Question","name":"年金だけで生活できる？","acceptedAnswer":{"@type":"Answer","text":"持ち家があり、生活費を月15万円程度に抑えられれば可能なケースもあります。ただし、医療費や介護費用の備えは別途必要です。"}},{"@type":"Question","name":"老後資金はいつから使い始める？","acceptedAnswer":{"@type":"Answer","text":"年金受給開始の65歳からが一般的ですが、60歳定年退職の場合は年金が出るまでの5年間（生活費月20万円なら合計1,200万円）を自力で賄う必要があります。この「橋渡し期間」を見落として資金不足になるケースが多いため、65歳以降だけでなく60〜65歳分も含めて試算することが重要です。"}},{"@type":"Question","name":"インフレで老後資金が目減りする？","acceptedAnswer":{"@type":"Answer","text":"インフレが年1%続くと30年後の購買力は約74%に落ちます。現金の一部を株式・投資信託などインフレに強い資産に振り向けましょう。"}},{"@type":"Question","name":"持ち家と賃貸、老後はどっちが有利？","acceptedAnswer":{"@type":"Answer","text":"持ち家は住居費が抑えられるメリットがありますが、修繕費・固定資産税が必要。賃貸は柔軟性がある一方、一生家賃がかかります。"}}]
           })
         }}
       />
@@ -58,6 +59,7 @@ export default function RougoShikinSimulation2026Blog() {
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】老後資金はいくら必要？2000万円問題の真実とシミュレーション</h1>
+      <BlogByline />
       <p className="text-gray-500 text-sm mb-8">最終更新: 2026年4月</p>
 
       <div className="bg-violet-50 border-l-4 border-violet-400 p-4 mb-8">
@@ -225,6 +227,10 @@ export default function RougoShikinSimulation2026Blog() {
         </div>
       </section>
 
+      <p className="text-gray-700 mb-4">夫婦で月25万円・30年の試算が9,000万円になるという数字は、2,000万円という通説がいかに過小評価かを示しているかもしれません。</p>
+
+
+
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">よくある質問（FAQ）</h2>
         <div className="space-y-4">
@@ -234,11 +240,11 @@ export default function RougoShikinSimulation2026Blog() {
           </details>
           <details className="bg-gray-50 rounded-lg p-4">
             <summary className="font-bold text-gray-800 cursor-pointer">Q. 老後資金はいつから使い始める？</summary>
-            <p className="mt-3 text-gray-700 border-t pt-3"><strong>年金受給開始の65歳から</strong>が一般的。ただし、退職から年金受給までの60〜65歳の生活費も考慮が必要です。</p>
+            <p className="mt-3 text-gray-700 border-t pt-3"><strong>年金受給開始の65歳から</strong>が一般的ですが、60歳定年退職の場合は年金が出るまでの5年間（生活費月20万円なら合計1,200万円）を自力で賄う必要があります。この「橋渡し期間」を見落として資金不足になるケースが多いため、65歳以降だけでなく60〜65歳分も含めて試算することが重要です。</p>
           </details>
           <details className="bg-gray-50 rounded-lg p-4">
             <summary className="font-bold text-gray-800 cursor-pointer">Q. インフレで老後資金が目減りする？</summary>
-            <p className="mt-3 text-gray-700 border-t pt-3"><strong>現金だけで持っているとリスクがあります</strong>。株式や投資信託など、インフレに強い資産も組み入れることが重要です。</p>
+            <p className="mt-3 text-gray-700 border-t pt-3">インフレが年1%続くと30年後の購買力は約74%に落ちます。<strong>現金の一部を株式・投資信託などインフレに強い資産に振り向け</strong>ましょう。</p>
           </details>
           <details className="bg-gray-50 rounded-lg p-4">
             <summary className="font-bold text-gray-800 cursor-pointer">Q. 持ち家と賃貸、老後はどっちが有利？</summary>

@@ -50,24 +50,24 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   return {
     title: blog.title,
-    description: blog.excerpt || blog.title,
+    description: (() => { const d = blog.excerpt || blog.title || ''; return d.length > 150 ? d.slice(0, 150) + '…' : d; })(),
     alternates: {
       canonical: `${siteUrl}/blog/${slug}`,
     },
     openGraph: {
       title: blog.title,
-      description: blog.excerpt || blog.title,
+      description: (() => { const d = blog.excerpt || blog.title || ''; return d.length > 150 ? d.slice(0, 150) + '…' : d; })(),
       url: `${siteUrl}/blog/${slug}`,
       type: 'article',
       publishedTime: blog.publishDate,
-      modifiedTime: blog.updatedAt || blog.publishDate,
+      modifiedTime: blog.lastUpdated || blog.updatedAt || blog.publishDate,
       authors: [blog.author || '合同会社山田トレード'],
       images: [{ url: (blog.eyecatch as any)?.src || blog.featuredImage || 'https://yamada-tools.jp/og-image.png', width: 1200, height: 630, alt: blog.title }],
     },
     twitter: {
       card: 'summary_large_image',
       title: blog.title,
-      description: blog.excerpt || blog.title,
+      description: (() => { const d = blog.excerpt || blog.title || ''; return d.length > 150 ? d.slice(0, 150) + '…' : d; })(),
       images: [(blog.eyecatch as any)?.src || blog.featuredImage || 'https://yamada-tools.jp/og-image.png'],
     },
   };
@@ -136,12 +136,13 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   const _ctaHaystack = [blog.category ?? '', ...(blog.tags ?? [])].join(' ');
   const _ctaMatch = _ctaMap.find(c => c.test.test(_ctaHaystack))
     ?? { emoji: '🛠️', title: '山田ツール — 無料業務ツール200種', desc: 'インボイス・PDF・画像変換など登録不要で即使える', href: '/tools', btn: 'ツール一覧を見る' };
-  const _ctaHtml = `<div style="margin:2rem 0;padding:1.25rem 1.5rem;background:linear-gradient(135deg,#EEF2FF 0%,#E0E7FF 100%);border:1px solid #C7D2FE;border-radius:1rem;display:flex;align-items:center;gap:1rem;justify-content:space-between;flex-wrap:wrap;not-prose:true">` +
+  const _ctaHtml =
+    `<div class="blog-inline-cta" style="margin:2rem 0;padding:1.25rem 1.5rem;border-radius:1rem;display:flex;align-items:center;gap:1rem;justify-content:space-between;flex-wrap:wrap">` +
     `<div style="display:flex;align-items:center;gap:0.75rem;min-width:0">` +
     `<span style="font-size:2rem;line-height:1;flex-shrink:0">${_ctaMatch.emoji}</span>` +
-    `<div><p style="font-weight:700;color:#1e3a6e;margin:0;font-size:0.95rem">${_ctaMatch.title}</p>` +
-    `<p style="color:#4B5563;margin:0.25rem 0 0;font-size:0.8rem">${_ctaMatch.desc}</p></div></div>` +
-    `<a href="${_ctaMatch.href}" style="display:inline-block;background:#223A70;color:#fff;font-weight:600;font-size:0.85rem;padding:0.6rem 1.25rem;border-radius:0.75rem;text-decoration:none;white-space:nowrap;flex-shrink:0">${_ctaMatch.btn} →</a></div>`;
+    `<div><p class="blog-inline-cta-title" style="margin:0;font-size:0.95rem">${_ctaMatch.title}</p>` +
+    `<p class="blog-inline-cta-desc" style="margin:0.25rem 0 0;font-size:0.8rem">${_ctaMatch.desc}</p></div></div>` +
+    `<a href="${_ctaMatch.href}" class="blog-inline-cta-btn" style="display:inline-block;font-weight:600;font-size:0.85rem;padding:0.6rem 1.25rem;border-radius:0.75rem;text-decoration:none;white-space:nowrap;flex-shrink:0">${_ctaMatch.btn} →</a></div>`;
   let _h2Ctr = 0;
   htmlContent = htmlContent.replace(/<\/h2>/g, (m: string) => {
     _h2Ctr++;
@@ -155,7 +156,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     headline: blog.title,
     description: blog.excerpt || blog.description || blog.title,
     datePublished: blog.publishDate,
-    dateModified: blog.updatedAt || blog.modifiedDate || blog.publishDate,
+    dateModified: blog.lastUpdated || blog.updatedAt || blog.modifiedDate || blog.publishDate,
     author: blog.supervisor ? {
       "@type": "Person",
       name: (blog.supervisor as any).name,
@@ -291,14 +292,14 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             </svg>
             公開日: {formatJaDate(blog.publishDate)}
           </span>
-          {blog.updatedAt && blog.updatedAt > blog.publishDate && (
+          {(blog.lastUpdated || blog.updatedAt) && (blog.lastUpdated || blog.updatedAt) > blog.publishDate && (
             <>
               <span>•</span>
               <span className="flex items-center gap-2 text-blue-600 dark:text-blue-400">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                 </svg>
-                更新日: {formatJaDate(blog.updatedAt)}
+                更新日: {formatJaDate(blog.lastUpdated || blog.updatedAt)}
               </span>
             </>
           )}

@@ -3,6 +3,7 @@ import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
+import { BlogByline } from '@/components/BlogByline';
 
 const title = "【2026年最新】失業保険はいくらもらえる？受給額・期間シミュレーション完全ガイド";
 const description = "失業保険（雇用保険）の受給額を徹底解説。月給30万円なら日額約6,000円、総額約100万円が目安。自己都合・会社都合の違い、受給期間、手続き方法まで網羅。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function ShitsugyouHokenSimulation2026Blog() {
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
+    <article className="max-w-[680px] mx-auto px-4 py-8">
       {/* JSON-LD Schema */}
       <script
         type="application/ld+json"
@@ -29,7 +30,7 @@ export default function ShitsugyouHokenSimulation2026Blog() {
             "description": "失業保険（雇用保険）の受給額を徹底解説。月給30万円なら日額約6,000円、総額約100万円が目安。自己都合・会社都合の違い、受給期間、手続き方法まで網羅。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/shitsugyou-hoken-simulation-2026"}
           })
@@ -58,6 +59,7 @@ export default function ShitsugyouHokenSimulation2026Blog() {
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】失業保険はいくらもらえる？受給額・期間シミュレーション完全ガイド</h1>
+      <BlogByline />
       <p className="text-gray-500 text-sm mb-8">最終更新: 2026年4月</p>
 
       <div className="bg-sky-50 border-l-4 border-sky-400 p-4 mb-8">
@@ -234,6 +236,10 @@ export default function ShitsugyouHokenSimulation2026Blog() {
           </div>
         </div>
       </section>
+
+      <p className="text-gray-700 mb-4">月給30万円なら総受給額が約100万円になるという試算は、自己都合退職でも3ヶ月の待機を乗り越える価値があると感じます。</p>
+
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">よくある質問（FAQ）</h2>

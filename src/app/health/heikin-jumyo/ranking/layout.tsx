@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "平均寿命ランキング【都道府県別2020年】男女別長寿県・短命県 | 山田ツール",
+  title: "平均寿命ランキング【都道府県別2020年】男女別長寿県・短命県",
   description: "47都道府県の平均寿命ランキング。男性1位は滋賀県（82.73歳）、女性1位は岡山県（88.29歳）。厚生労働省 令和2年都道府県別生命表データ。",
   alternates: { canonical: "https://yamada-tools.jp/health/heikin-jumyo/ranking" },
   openGraph: {

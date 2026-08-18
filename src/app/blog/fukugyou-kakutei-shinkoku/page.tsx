@@ -3,6 +3,7 @@ import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
+import { BlogByline } from '@/components/BlogByline';
 
 const title = "副業の確定申告はいくらから必要？20万円ルール・住民税・経費を完全解説【2025年版】";
 const description = "会社員・サラリーマンの副業確定申告を完全解説。20万円ルール、住民税の落とし穴、会社バレ防止、経費の認め方まで。無料の判定ツールで今すぐチェック。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function FukugyouKakuteiShinkokuBlog() {
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
+    <article className="max-w-[680px] mx-auto px-4 py-8">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -29,7 +30,7 @@ export default function FukugyouKakuteiShinkokuBlog() {
             "description": description,
             "datePublished": "2025-05-07",
             "dateModified": "2025-05-07",
-            "author": { "@type": "Organization", "name": "山田ツール編集部" },
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": { "@type": "Organization", "name": "合同会社山田トレード", "logo": { "@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp" } },
             "mainEntityOfPage": { "@type": "WebPage", "@id": "https://yamada-tools.jp/blog/fukugyou-kakutei-shinkoku" }
           })
@@ -64,6 +65,7 @@ export default function FukugyouKakuteiShinkokuBlog() {
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">{title}</h1>
+      <BlogByline />
       <p className="text-gray-500 text-sm mb-8">最終更新: 2025年5月 ｜ 読了時間: 約8分</p>
 
       <div className="bg-gray-50 border-l-4 border-kon p-4 mb-8">
@@ -317,6 +319,10 @@ export default function FukugyouKakuteiShinkokuBlog() {
           </div>
         </div>
       </section>
+
+      <p className="text-gray-700 mb-4">正直、20万円以下だから申告不要と安心している人の多くは、住民税の申告義務を見落としているかもしれません。</p>
+
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">まとめ：副業確定申告の重要ポイント</h2>

@@ -222,7 +222,7 @@ function diagnose(answers: string[]): DiagnosisResult {
       "繰り上げ返済で総利息を大幅削減できる",
       "低金利ローンへの借り換えを検討する",
       "家計の見直しで返済余力を作る",
-      "複数社からの借入は任意整理で整理できる場合も",
+      "複数社からの借入は任意整理で整理できる場合もあります",
     ],
     monthlyReduction: null,
   };

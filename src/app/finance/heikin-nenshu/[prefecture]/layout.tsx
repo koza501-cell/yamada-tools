@@ -66,13 +66,13 @@ export async function generateMetadata({
 
   return {
     title: `${pref.name}の平均年収【2023年最新】業種・年齢別データ | 山田ツール`,
-    description: `${pref.name}の平均年収を業種・年齢・性別で確認。全国ランキングとの比較や年齢別推移も。政府統計（賃金構造基本統計調査 2023年）準拠。`,
+    description: ((`${pref.name}の平均年収を業種・年齢・性別で確認。全国ランキングとの比較や年齢別推移も。政府統計（賃金構造基本統計調査 2023年）準拠。`)||"").length>150?((`${pref.name}の平均年収を業種・年齢・性別で確認。全国ランキングとの比較や年齢別推移も。政府統計（賃金構造基本統計調査 2023年）準拠。`)||"").slice(0,150)+"…":((`${pref.name}の平均年収を業種・年齢・性別で確認。全国ランキングとの比較や年齢別推移も。政府統計（賃金構造基本統計調査 2023年）準拠。`)||""),
     alternates: {
       canonical: `https://yamada-tools.jp/finance/heikin-nenshu/${prefecture}`,
     },
     openGraph: {
       title: `${pref.name}の平均年収【2023年最新】`,
-      description: `${pref.name}の平均年収・年齢別推移・全国ランキングを確認。政府統計準拠。`,
+      description: ((`${pref.name}の平均年収・年齢別推移・全国ランキングを確認。政府統計準拠。`)||"").length>150?((`${pref.name}の平均年収・年齢別推移・全国ランキングを確認。政府統計準拠。`)||"").slice(0,150)+"…":((`${pref.name}の平均年収・年齢別推移・全国ランキングを確認。政府統計準拠。`)||""),
       url: `https://yamada-tools.jp/finance/heikin-nenshu/${prefecture}`,
       siteName: "山田ツール",
       locale: "ja_JP",

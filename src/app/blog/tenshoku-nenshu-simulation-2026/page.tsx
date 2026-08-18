@@ -3,6 +3,7 @@ import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
+import { BlogByline } from '@/components/BlogByline';
 
 const title = "【2026年最新】転職で年収はいくら上がる？年収アップシミュレーション完全ガイド";
 const description = "転職による年収アップの相場を徹底解説。20代は平均+50万円、30代は+80万円が目安。業界別・職種別の年収アップ率と、年収交渉のコツを紹介。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function TenshokuNenshuSimulation2026Blog() {
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
+    <article className="max-w-[680px] mx-auto px-4 py-8">
       {/* JSON-LD Schema */}
       <script
         type="application/ld+json"
@@ -29,7 +30,7 @@ export default function TenshokuNenshuSimulation2026Blog() {
             "description": "転職による年収アップの相場を徹底解説。20代は平均+50万円、30代は+80万円が目安。業界別・職種別の年収アップ率と、年収交渉のコツを紹介。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/tenshoku-nenshu-simulation-2026"}
           })
@@ -41,7 +42,7 @@ export default function TenshokuNenshuSimulation2026Blog() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            "mainEntity": [{"@type":"Question","name":"転職回数が多いと年収に影響する？","acceptedAnswer":{"@type":"Answer","text":"3回までは大きな影響なし。ただし短期離職の繰り返しはマイナス評価に。各社で何を成し遂げたかをアピールできれば問題ありません。"}},{"@type":"Question","name":"年収交渉でどのくらい上がる？","acceptedAnswer":{"@type":"Answer","text":"提示額から+30〜50万円が一般的な交渉成功ライン。根拠（他社オファー、市場相場）があれば+100万円も可能です。"}},{"@type":"Question","name":"転職エージェントは使うべき？","acceptedAnswer":{"@type":"Answer","text":"年収アップを狙うなら必須。非公開求人へのアクセス、年収交渉の代行など、エージェントを使うメリットは大きいです。"}},{"@type":"Question","name":"同業他社への転職は有利？","acceptedAnswer":{"@type":"Answer","text":"年収アップには最も有利。即戦力として評価され、競合の内情を知っていることも価値になります。ただし競業避止義務には注意。"}}]
+            "mainEntity": [{"@type":"Question","name":"転職回数が多いと年収に影響する？","acceptedAnswer":{"@type":"Answer","text":"3回程度なら大きな影響はなく、各社での成果を具体的に語れれば評価されます。"}},{"@type":"Question","name":"年収交渉でどのくらい上がる？","acceptedAnswer":{"@type":"Answer","text":"提示額から+30〜50万円が一般的な交渉成功ライン。根拠（他社オファー、市場相場）があれば+100万円も可能です。"}},{"@type":"Question","name":"転職エージェントは使うべき？","acceptedAnswer":{"@type":"Answer","text":"年収アップを狙うなら積極的に使うべきです。転職エージェントが持つ非公開求人は全体の約70%とも言われており、自力では見つけられない高年収ポジションにアクセスできます。また年収交渉をエージェントが代行することで、自己交渉より平均20〜50万円高い条件を引き出せるケースが多いです。"}},{"@type":"Question","name":"同業他社への転職は有利？","acceptedAnswer":{"@type":"Answer","text":"年収アップには最も有利。即戦力として評価され、競合の内情を知っていることも価値があります。ただし競業避止義務には注意。"}}]
           })
         }}
       />
@@ -58,6 +59,7 @@ export default function TenshokuNenshuSimulation2026Blog() {
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】転職で年収はいくら上がる？年収アップシミュレーション完全ガイド</h1>
+      <BlogByline />
       <p className="text-gray-500 text-sm mb-8">最終更新: 2026年4月</p>
 
       <div className="bg-emerald-50 border-l-4 border-emerald-400 p-4 mb-8">
@@ -222,12 +224,16 @@ export default function TenshokuNenshuSimulation2026Blog() {
         </div>
       </section>
 
+      <p className="text-gray-700 mb-4">20代の転職で平均50万円の年収アップというデータは、在職中から転職市場を意識する価値がいかに大きいかを示しているかもしれません。</p>
+
+
+
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">よくある質問（FAQ）</h2>
         <div className="space-y-4">
           <details className="bg-gray-50 rounded-lg p-4">
             <summary className="font-bold text-gray-800 cursor-pointer">Q. 転職回数が多いと年収に影響する？</summary>
-            <p className="mt-3 text-gray-700 border-t pt-3"><strong>3回までは大きな影響なし</strong>。ただし短期離職の繰り返しはマイナス評価に。各社で何を成し遂げたかをアピールできれば問題ありません。</p>
+            <p className="mt-3 text-gray-700 border-t pt-3"><strong>3回程度なら大きな影響はなく</strong>、各社での成果を具体的に語れれば評価されます。</p>
           </details>
           <details className="bg-gray-50 rounded-lg p-4">
             <summary className="font-bold text-gray-800 cursor-pointer">Q. 年収交渉でどのくらい上がる？</summary>
@@ -235,11 +241,11 @@ export default function TenshokuNenshuSimulation2026Blog() {
           </details>
           <details className="bg-gray-50 rounded-lg p-4">
             <summary className="font-bold text-gray-800 cursor-pointer">Q. 転職エージェントは使うべき？</summary>
-            <p className="mt-3 text-gray-700 border-t pt-3"><strong>年収アップを狙うなら必須</strong>。非公開求人へのアクセス、年収交渉の代行など、エージェントを使うメリットは大きいです。</p>
+            <p className="mt-3 text-gray-700 border-t pt-3"><strong>年収アップを狙うなら積極的に使うべき</strong>です。転職エージェントが持つ非公開求人は全体の約70%とも言われており、自力では見つけられない高年収ポジションにアクセスできます。また年収交渉をエージェントが代行することで、自己交渉より平均20〜50万円高い条件を引き出せるケースが多いです。</p>
           </details>
           <details className="bg-gray-50 rounded-lg p-4">
             <summary className="font-bold text-gray-800 cursor-pointer">Q. 同業他社への転職は有利？</summary>
-            <p className="mt-3 text-gray-700 border-t pt-3"><strong>年収アップには最も有利</strong>。即戦力として評価され、競合の内情を知っていることも価値になります。ただし競業避止義務には注意。</p>
+            <p className="mt-3 text-gray-700 border-t pt-3"><strong>年収アップには最も有利</strong>。即戦力として評価され、競合の内情を知っていることも価値があります。ただし競業避止義務には注意。</p>
           </details>
         </div>
       </section>

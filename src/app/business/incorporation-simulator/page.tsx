@@ -393,7 +393,7 @@ export default function IncorporationSimulatorPage() {
 
   return (
     <>
-      <IntroSection title="個人事業主 vs 法人化 比較ツール" paragraphs={["年間売上・経費・家族構成を入力すると、個人事業主と法人の税負担・社会保険料・手取りを比較します。法人化することで節税できる金額と、税理士費用などのコストも含めた判断ができます。", "売上規模ごとの推奨判定（個人事業主のまま/法人化推奨）も表示。合同会社と株式会社の違いも解説します。", "登録不要・完全無料。法人化のタイミングを数字で判断したい方に最適です。"]} />
+      <IntroSection title="個人事業主 vs 法人化 比較ツール" paragraphs={["年間売上・経費・家族構成を入力すると、個人事業主と法人の税負担・社会保険料・手取りを比較します。法人化することで節税できる金額と、税理士費用などのコストも含めて判断できます。", "売上規模ごとの推奨判定（個人事業主のまま/法人化推奨）も表示。合同会社と株式会社の違いも解説します。", "登録不要・完全無料。法人化のタイミングを数字で判断したい方に最適です。"]} />
     <div className="min-h-screen bg-gray-50">
         <Mascot state={mascotState} className="mb-6" />
       {/* Header */}
@@ -984,7 +984,7 @@ export default function IncorporationSimulatorPage() {
                 <ol className="list-decimal pl-5 space-y-1">
                   <li><strong>設立費用：</strong>株式会社約25万円、合同会社約10万円</li>
                   <li><strong>維持費：</strong>税理士顧問料（年30〜60万円）、法人住民税均等割（最低7万円/年）</li>
-                  <li><strong>社会保険料の増加：</strong>国保から社会保険に切り替えで負担が増える場合も</li>
+                  <li><strong>社会保険料の増加：</strong>国保から社会保険に切り替えで負担が増える場合もあります</li>
                   <li><strong>事務作業の増加：</strong>決算書作成・法人税申告が必要</li>
                 </ol>
               </div>

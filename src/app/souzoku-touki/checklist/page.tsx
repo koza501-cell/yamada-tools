@@ -1,9 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/contexts/AuthContext";
 import { DOCUMENTS_BY_CASE, DISCLAIMER } from "../data";
+
+const API_SOUZOKU = (process.env.NEXT_PUBLIC_API_URL || "https://api.yamada-tools.jp") + "/api/souzoku";
 
 const CASE_OPTIONS = [
   { value: "isan_bunkatsu", label: "遺産分割協議", icon: "📋" },
@@ -12,15 +15,63 @@ const CASE_OPTIONS = [
   { value: "kazoku_kouku", label: "相続人申告登記", icon: "📝" },
 ];
 
+const VALID_CASES = new Set(CASE_OPTIONS.map((o) => o.value));
+
 export default function ChecklistPage() {
-  const searchParams = useSearchParams();
+  const router = useRouter();
+  const { user, loading: authLoading } = useAuth();
   const [selectedCase, setSelectedCase] = useState("isan_bunkatsu");
   const [checked, setChecked] = useState<Record<number, boolean>>({});
+  const [gated, setGated] = useState(true);
+  const printingRef = useRef(false);
 
   useEffect(() => {
-    const c = searchParams.get("case");
-    if (c && DOCUMENTS_BY_CASE[c]) setSelectedCase(c);
-  }, [searchParams]);
+    if (authLoading) return;
+    if (!user) {
+      router.push("/auth/login?redirect=/souzoku-touki/checklist");
+      return;
+    }
+
+    const raw = typeof window !== "undefined" ? sessionStorage.getItem("souzoku_wizard_session") : null;
+    const caseId = raw ? parseInt(raw, 10) : NaN;
+
+    if (!caseId || isNaN(caseId)) {
+      router.push("/souzoku-touki/wizard");
+      return;
+    }
+
+    let cancelled = false;
+    const token = typeof window !== "undefined" ? localStorage.getItem("session_token") || "" : "";
+
+    fetch(`${API_SOUZOKU}/cases/${caseId}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("not_found");
+        return res.json();
+      })
+      .then((data) => {
+        if (cancelled) return;
+        if (data.status !== "paid") {
+          router.push(`/souzoku-touki/case/${caseId}`);
+          return;
+        }
+        if (data.expires_at && new Date(data.expires_at) < new Date()) {
+          router.push(`/souzoku-touki/case/${caseId}`);
+          return;
+        }
+        if (VALID_CASES.has(data.case_type)) {
+          setSelectedCase(data.case_type);
+        }
+        setGated(false);
+      })
+      .catch(() => {
+        if (cancelled) return;
+        router.push("/souzoku-touki");
+      });
+
+    return () => { cancelled = true; };
+  }, [user, authLoading, router]);
 
   useEffect(() => {
     setChecked({});
@@ -34,7 +85,20 @@ export default function ChecklistPage() {
   }
 
   function handlePrint() {
-    window.print();
+    if (printingRef.current) return;
+    printingRef.current = true;
+    setTimeout(() => {
+      window.print();
+      printingRef.current = false;
+    }, 50);
+  }
+
+  if (gated) {
+    return (
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+        <div className="text-gray-500 text-sm">読み込み中...</div>
+      </div>
+    );
   }
 
   return (

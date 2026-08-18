@@ -863,7 +863,7 @@ export default function IdecoNisaComparisonClient() {
             <p>
               iDeCo（個人型確定拠出年金）とNISA（少額投資非課税制度）は、どちらも日本の個人投資家向けの
               税制優遇制度ですが、仕組みとメリットが大きく異なります。この比較ツールでは、
-              あなたの年収や職業に応じてどちらがお得かを自動計算します。
+              あなたの年収や職業に応じてどちらがお得かがわかります。
             </p>
 
             <h3 className="text-lg font-bold text-gray-800">iDeCoとNISAの主な違い</h3>

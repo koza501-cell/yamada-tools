@@ -3,6 +3,7 @@ import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
+import { BlogByline } from '@/components/BlogByline';
 
 const title = "【2026年最新】副業の税金はいくら？確定申告が必要な条件と節税方法を解説";
 const description = "副業収入20万円以下でも住民税は申告必要？副業バレを防ぐ方法、経費で落とせるもの、確定申告のやり方まで完全解説。副業税金シミュレーターで試算。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function FukugyouZeikinSimulation2026Blog() {
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
+    <article className="max-w-[680px] mx-auto px-4 py-8">
       {/* JSON-LD Schema */}
       <script
         type="application/ld+json"
@@ -29,7 +30,7 @@ export default function FukugyouZeikinSimulation2026Blog() {
             "description": "副業収入20万円以下でも住民税は申告必要？副業バレを防ぐ方法、経費で落とせるもの、確定申告のやり方まで完全解説。副業税金シミュレーターで試算。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/fukugyou-zeikin-simulation-2026"}
           })
@@ -58,6 +59,7 @@ export default function FukugyouZeikinSimulation2026Blog() {
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】副業の税金はいくら？確定申告が必要な条件と節税方法を解説</h1>
+      <BlogByline />
       <p className="text-gray-500 text-sm mb-8">最終更新: 2026年4月</p>
 
       <div className="bg-indigo-50 border-l-4 border-indigo-400 p-4 mb-8">
@@ -254,6 +256,10 @@ export default function FukugyouZeikinSimulation2026Blog() {
           </div>
         </div>
       </section>
+
+      <p className="text-gray-700 mb-4">副業収入が少額でも住民税を通じて会社にバレるリスクがある点は、想像以上に見落とされがちだと思います。</p>
+
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">よくある質問（FAQ）</h2>

@@ -190,7 +190,7 @@ export default function KeishinClient() {
               <tr className="border-t"><td className="px-4 py-2">A</td><td className="px-4 py-2">900以上</td><td className="px-4 py-2">大規模公共工事参加可</td></tr>
               <tr className="border-t"><td className="px-4 py-2">B</td><td className="px-4 py-2">700〜899</td><td className="px-4 py-2">中規模工事中心</td></tr>
               <tr className="border-t"><td className="px-4 py-2">C</td><td className="px-4 py-2">600〜699</td><td className="px-4 py-2">小〜中規模</td></tr>
-              <tr className="border-t"><td className="px-4 py-2">D</td><td className="px-4 py-2">600未満</td><td className="px-4 py-2">入札参加困難な場合も</td></tr>
+              <tr className="border-t"><td className="px-4 py-2">D</td><td className="px-4 py-2">600未満</td><td className="px-4 py-2">入札参加困難な場合もあり</td></tr>
             </tbody>
           </table>
         )}

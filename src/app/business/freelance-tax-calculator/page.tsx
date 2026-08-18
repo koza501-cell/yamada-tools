@@ -370,7 +370,7 @@ export default function FreelanceTaxCalculatorPage() {
 
   return (
     <>
-      <IntroSection title="フリーランス税金・経費計算機" paragraphs={["フリーランス・個人事業主の売上・経費を入力すると、所得税・住民税・国民健康保険料・国民年金の合計税社会保険料と手取り額を計算します。", "青色申告特別控除（65万円・10万円）の節税効果、小規模企業共済やiDeCoの活用メリットも試算できます。", "登録不要・完全無料。確定申告前の税額確認や、独立前の手取りシミュレーションに最適です。"]} />
+      <IntroSection title="フリーランス税金・経費計算機" paragraphs={["フリーランス・個人事業主の売上・経費を入力すると、所得税・住民税・国民健康保険料・国民年金の合計税社会保険料と手取り額がわかります。", "青色申告特別控除（65万円・10万円）の節税効果、小規模企業共済やiDeCoの活用メリットも試算できます。", "登録不要・完全無料。確定申告前の税額確認や、独立前の手取りシミュレーションに最適です。"]} />
     <div className="min-h-screen bg-gray-50">
         <Mascot state={mascotState} className="mb-6" />
       <div className="max-w-4xl mx-auto px-4 py-8">

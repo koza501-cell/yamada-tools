@@ -3,6 +3,7 @@ import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
+import { BlogByline } from '@/components/BlogByline';
 
 const title = "飲食店の原価率の目安と計算方法・フードロス削減で利益を最大化【無料計算ツール付き】";
 const description = "飲食店の原価率の業態別目安（ラーメン・カフェ・居酒屋）と正しい計算方法を解説。フードロス削減で年間数百万円の利益改善も可能。無料ツールで今すぐ計算。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function InshokuteiGenkaFoodlossBlog() {
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
+    <article className="max-w-[680px] mx-auto px-4 py-8">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -29,7 +30,7 @@ export default function InshokuteiGenkaFoodlossBlog() {
             "description": description,
             "datePublished": "2025-05-07",
             "dateModified": "2025-05-07",
-            "author": { "@type": "Organization", "name": "山田ツール編集部" },
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": { "@type": "Organization", "name": "合同会社山田トレード", "logo": { "@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp" } },
             "mainEntityOfPage": { "@type": "WebPage", "@id": "https://yamada-tools.jp/blog/inshokuten-genka-foodloss" }
           })
@@ -42,10 +43,10 @@ export default function InshokuteiGenkaFoodlossBlog() {
             "@context": "https://schema.org",
             "@type": "FAQPage",
             "mainEntity": [
-              { "@type": "Question", "name": "飲食店の適正原価率はいくら？", "acceptedAnswer": { "@type": "Answer", "text": "業態によって異なりますが、一般的な目安は25〜35%です。カフェや居酒屋のドリンクは20〜25%と低め、寿司・高級食材を使う店は40〜50%になることもあります。重要なのは原価率単体より、人件費を加えたFL比率（60%以内が目安）で管理することです。" } },
+              { "@type": "Question", "name": "飲食店の適正原価率はいくら？", "acceptedAnswer": { "@type": "Answer", "text": "業態によって異なりますが、一般的な目安は25〜35%です。高利益率を維持するには原価率単体ではなく、人件費も合わせたFL比率（Food＋Labor、60%以内が目安）で管理することが重要です。" } },
               { "@type": "Question", "name": "FL比率が60%を超えたらどうすれば良い？", "acceptedAnswer": { "@type": "Answer", "text": "食材費（F）か人件費（L）のどちらが高いかを特定して対策を立てます。食材費が高い場合は仕入れ先の見直し・メニュー改廃・フードロス削減、人件費が高い場合はシフト最適化・ホールとキッチンの兼務検討が有効です。どちらか一方だけ下げると品質低下につながるため、バランスを見て対処します。" } },
               { "@type": "Question", "name": "フードロスはどれくらい飲食店の利益を圧迫している？", "acceptedAnswer": { "@type": "Answer", "text": "飲食店の平均フードロス率は10〜15%と言われています。月仕入れ100万円の店でロス率12%なら年間144万円が無駄になっている計算です。ロスを5%に下げるだけで年間84万円の利益改善効果があり、これは売上を約300万円伸ばすのと同等の効果があります。" } },
-              { "@type": "Question", "name": "メニューの売価はどうやって決める？", "acceptedAnswer": { "@type": "Answer", "text": "目標原価率から逆算します。食材費が300円で原価率30%に収めたい場合、売価=300÷0.30=1,000円となります。ただし、競合店の価格・地域の相場・客単価との兼ね合いも重要です。原価率が多少高くなっても、集客力がある看板メニューとして機能するなら許容できるケースもあります。" } }
+              { "@type": "Question", "name": "メニューの売価はどうやって決める？", "acceptedAnswer": { "@type": "Answer", "text": "目標原価率から逆算します。例：食材費300円・目標原価率30%なら売価=300÷0.30=1,000円。競合相場・客単価との兼ね合いも必ず確認しましょう。" } }
             ]
           })
         }}
@@ -64,6 +65,7 @@ export default function InshokuteiGenkaFoodlossBlog() {
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">{title}</h1>
+      <BlogByline />
       <p className="text-gray-500 text-sm mb-8">最終更新: 2025年5月 ｜ 読了時間: 約8分</p>
 
       <div className="bg-gray-50 border-l-4 border-kon p-4 mb-8">
@@ -412,6 +414,10 @@ export default function InshokuteiGenkaFoodlossBlog() {
           </div>
         </div>
       </section>
+
+      <p className="text-gray-700 mb-4">フードロス削減で年間数百万円の利益改善が可能という点は、原価率改善と合わせて取り組めば飲食経営が変わると感じています。</p>
+
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">まとめ：飲食店の利益を最大化するポイント</h2>

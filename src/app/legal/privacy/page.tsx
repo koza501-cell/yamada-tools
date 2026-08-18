@@ -120,7 +120,7 @@ export default function PrivacyPage() {
                 </p>
               </div>
               <p className="text-sm mt-3">
-                Cookieの使用を望まない場合は、ブラウザの設定でCookieを無効にすることができます。ただし、Cookieを無効にした場合、本サービスの一部機能が正常に動作しない可能性があります。
+                Cookieの使用を望まない場合は、ブラウザの設定でCookieを無効にできます。ただし、Cookieを無効にした場合、本サービスの一部機能が正常に動作しない可能性があります。
               </p>
             </section>
 

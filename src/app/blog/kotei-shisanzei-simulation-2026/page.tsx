@@ -3,6 +3,7 @@ import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
+import { BlogByline } from '@/components/BlogByline';
 
 const title = "【2026年最新】固定資産税の計算方法｜新築・中古・土地別シミュレーション";
 const description = "固定資産税の計算方法を徹底解説。新築住宅の軽減措置、土地の特例、評価額の調べ方。マンション・戸建て別の計算例と節税方法を紹介。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function KoteiShisanzeiSimulation2026Blog() {
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
+    <article className="max-w-[680px] mx-auto px-4 py-8">
       {/* JSON-LD Schema */}
       <script
         type="application/ld+json"
@@ -29,7 +30,7 @@ export default function KoteiShisanzeiSimulation2026Blog() {
             "description": "固定資産税の計算方法を徹底解説。新築住宅の軽減措置、土地の特例、評価額の調べ方。マンション・戸建て別の計算例と節税方法を紹介。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/kotei-shisanzei-simulation-2026"}
           })
@@ -41,7 +42,7 @@ export default function KoteiShisanzeiSimulation2026Blog() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            "mainEntity": [{"@type":"Question","name":"固定資産税はいつ払う？","acceptedAnswer":{"@type":"Answer","text":"年4回（4月・7月・12月・翌2月頃）の分割払い、または一括払いを選択できます。納期限は市区町村によって異なります。"}},{"@type":"Question","name":"空き家にすると固定資産税が上がる？","acceptedAnswer":{"@type":"Answer","text":"「特定空き家」に指定されると住宅用地の特例が外れ、最大6倍になる可能性があります。適切な管理が必要です。"}},{"@type":"Question","name":"評価額が高すぎる場合は？","acceptedAnswer":{"@type":"Answer","text":"審査申出ができます。評価替えの年（3年ごと）に、固定資産評価審査委員会に不服を申し立てることが可能です。"}},{"@type":"Question","name":"マンションの固定資産税は戸建てより安い？","acceptedAnswer":{"@type":"Answer","text":"一概には言えません。マンションは土地持分が小さいため土地分は安くなりますが、建物評価額は戸建てより高くなることが多いです。"}}]
+            "mainEntity": [{"@type":"Question","name":"固定資産税はいつ払う？","acceptedAnswer":{"@type":"Answer","text":"年4回（4月・7月・12月・翌2月頃）の分割払い、または4月の第1期にまとめて一括払いを選択できます。納期限は市区町村によって若干異なり、第1期に一括払いすると少額の割引（市区町村による）を受けられる場合があります。固定資産税が年20万円なら1回あたり5万円の支払いになります。"}},{"@type":"Question","name":"空き家にすると固定資産税が上がる？","acceptedAnswer":{"@type":"Answer","text":"「特定空き家」に指定されると住宅用地の特例が外れ、最大6倍になる可能性があります。適切な管理が必要です。"}},{"@type":"Question","name":"評価額が高すぎる場合は？","acceptedAnswer":{"@type":"Answer","text":"評価替えの年（3年ごと）に固定資産評価審査委員会へ審査申出が可能です。"}},{"@type":"Question","name":"マンションの固定資産税は戸建てより安い？","acceptedAnswer":{"@type":"Answer","text":"一概には言えません。マンションは土地持分が小さいため土地分は安くなりますが、建物評価額は戸建てより高くなることが多いです。"}}]
           })
         }}
       />
@@ -58,6 +59,7 @@ export default function KoteiShisanzeiSimulation2026Blog() {
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】固定資産税の計算方法｜新築・中古・土地別シミュレーション</h1>
+      <BlogByline />
       <p className="text-gray-500 text-sm mb-8">最終更新: 2026年4月</p>
 
       <div className="bg-teal-50 border-l-4 border-teal-400 p-4 mb-8">
@@ -243,12 +245,16 @@ export default function KoteiShisanzeiSimulation2026Blog() {
         </div>
       </section>
 
+      <p className="text-gray-700 mb-4">固定資産税の軽減措置は新築後3年で終わるため、その後の税負担増を購入前に把握しないと想定外の出費になりかねません。</p>
+
+
+
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">よくある質問（FAQ）</h2>
         <div className="space-y-4">
           <details className="bg-gray-50 rounded-lg p-4">
             <summary className="font-bold text-gray-800 cursor-pointer">Q. 固定資産税はいつ払う？</summary>
-            <p className="mt-3 text-gray-700 border-t pt-3"><strong>年4回（4月・7月・12月・翌2月頃）の分割払い</strong>、または一括払いを選択できます。納期限は市区町村によって異なります。</p>
+            <p className="mt-3 text-gray-700 border-t pt-3"><strong>年4回（4月・7月・12月・翌2月頃）の分割払い</strong>、または4月の第1期にまとめて一括払いを選択できます。納期限は市区町村によって若干異なり、第1期に一括払いすると少額の割引（市区町村による）を受けられる場合があります。固定資産税が年20万円なら1回あたり5万円の支払いになります。</p>
           </details>
           <details className="bg-gray-50 rounded-lg p-4">
             <summary className="font-bold text-gray-800 cursor-pointer">Q. 空き家にすると固定資産税が上がる？</summary>
@@ -256,7 +262,7 @@ export default function KoteiShisanzeiSimulation2026Blog() {
           </details>
           <details className="bg-gray-50 rounded-lg p-4">
             <summary className="font-bold text-gray-800 cursor-pointer">Q. 評価額が高すぎる場合は？</summary>
-            <p className="mt-3 text-gray-700 border-t pt-3"><strong>審査申出ができます</strong>。評価替えの年（3年ごと）に、固定資産評価審査委員会に不服を申し立てることが可能です。</p>
+            <p className="mt-3 text-gray-700 border-t pt-3"><strong>評価替えの年（3年ごと）に固定資産評価審査委員会へ審査申出が可能</strong>です。</p>
           </details>
           <details className="bg-gray-50 rounded-lg p-4">
             <summary className="font-bold text-gray-800 cursor-pointer">Q. マンションの固定資産税は戸建てより安い？</summary>

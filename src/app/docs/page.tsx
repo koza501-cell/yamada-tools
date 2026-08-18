@@ -108,7 +108,7 @@ export default function DocsPage() {
               <span className="bg-green-100 text-green-700 px-2 py-1 rounded text-sm font-mono">POST</span>
               <code className="text-gray-800">/api/pdf/pdf-to-image</code>
             </div>
-            <p className="text-gray-600 mb-4">PDFを画像に変換します</p>
+            <p className="text-gray-600 mb-4">PDFを画像に変換できます</p>
             <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg text-sm overflow-x-auto">
 {`curl -X POST https://api.yamada-tools.jp/api/pdf/pdf-to-image \\
   -F "files=@document.pdf" \\

@@ -231,7 +231,7 @@ export default function CalorieCalculatorPage() {
 
   return (
     <>
-      <IntroSection title="基礎代謝・カロリー計算機" paragraphs={["性別・年齢・身長・体重・活動量から基礎代謝（BMR）と1日の総消費カロリー（TDEE）を計算します。", "目標（減量・維持・増量）に合わせた目標摂取カロリーとPFCバランス（タンパク質・脂質・炭水化物比率）も自動算出。", "登録不要・完全無料。ダイエット・筋肥大・維持食のカロリー管理に最適です。"]} />
+      <IntroSection title="基礎代謝・カロリー計算機" paragraphs={["性別・年齢・身長・体重・活動量から基礎代謝（BMR）と1日の総消費カロリー（TDEE）がわかります。", "目標（減量・維持・増量）に合わせた目標摂取カロリーとPFCバランス（タンパク質・脂質・炭水化物比率）も自動算出。", "登録不要・完全無料。ダイエット・筋肥大・維持食のカロリー管理に最適です。"]} />
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white border-b border-gray-200">

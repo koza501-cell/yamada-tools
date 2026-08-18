@@ -1,12 +1,12 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "都道府県別 人口推移・将来予測【2024年最新】e-Stat政府統計 | 山田ツール",
-  description: "都道府県ごとの人口推移（1980〜2024年）と将来予測（2050年まで）を可視化。高齢化率・少子化率・増減ランキングを政府統計データで確認。",
+  title: "都道府県別 人口推計【無料】将来推計人口を公的統計で確認",
+  description: "都道府県の過去人口推移と将来推計人口を公的統計から検索。移住・不動産・事業立地の参考に。無料・登録不要。",
   alternates: { canonical: "https://yamada-tools.jp/finance/jinko-suikei" },
   openGraph: {
-    title: "都道府県別 人口推移・将来予測【2024年最新】",
-    description: "1980〜2050年の都道府県人口推移を政府統計データで可視化。高齢化率・人口ランキングも。",
+    title: "都道府県別 人口推計【無料】将来推計人口を公的統計で確認",
+    description: "都道府県の過去人口推移と将来推計人口を公的統計から検索。移住・不動産・事業立地の参考に。無料・登録不要。",
     url: "https://yamada-tools.jp/finance/jinko-suikei",
     siteName: "山田ツール",
     locale: "ja_JP",
@@ -14,6 +14,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function JinkoLayout({ children }: { children: React.ReactNode }) {
-  return children;
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return <>{children}</>;
 }

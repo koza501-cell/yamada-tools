@@ -3,6 +3,7 @@ import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
+import { BlogByline } from '@/components/BlogByline';
 
 const title = "年収の壁・配偶者控除・扶養控除を完全解説【2025年・2026年改正対応】";
 const description = "103万円→123万円→136万円の壁の変化を図解。配偶者控除・扶養控除の節税額を無料計算。パートの損しない働き方を徹底解説。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function NennshuKabeHaigushaFuyouBlog() {
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
+    <article className="max-w-[680px] mx-auto px-4 py-8">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -29,7 +30,7 @@ export default function NennshuKabeHaigushaFuyouBlog() {
             "description": description,
             "datePublished": "2025-05-07",
             "dateModified": "2025-05-07",
-            "author": { "@type": "Organization", "name": "山田ツール編集部" },
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": { "@type": "Organization", "name": "合同会社山田トレード", "logo": { "@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp" } },
             "mainEntityOfPage": { "@type": "WebPage", "@id": "https://yamada-tools.jp/blog/nennshu-kabe-haigusha-fuyou" }
           })
@@ -64,6 +65,7 @@ export default function NennshuKabeHaigushaFuyouBlog() {
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">{title}</h1>
+      <BlogByline />
       <p className="text-gray-500 text-sm mb-8">最終更新: 2025年5月 ｜ 読了時間: 約9分</p>
 
       <div className="bg-green-50 border-l-4 border-green-400 p-4 mb-8">
@@ -301,6 +303,10 @@ export default function NennshuKabeHaigushaFuyouBlog() {
           </div>
         </div>
       </section>
+
+      <p className="text-gray-700 mb-4">103万円から136万円へと壁が変化した今、制度改正のたびに損しない働き方を見直す必要があると感じています。</p>
+
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">まとめ：2025年年収の壁の変更点</h2>

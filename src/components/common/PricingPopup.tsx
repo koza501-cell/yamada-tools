@@ -35,17 +35,15 @@ export function PricingPopup({ type, onClose, remainingUses = 0 }: PricingPopupP
       {/* Modal */}
       <div className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 animate-in fade-in zoom-in duration-300">
         {/* Close button */}
-        {!isLimitReached && (
-          <button
-            onClick={onClose}
-            aria-label="閉じる"
-            className="absolute top-4 right-4 w-11 h-11 flex items-center justify-center text-gray-500 hover:text-gray-700 transition-colors"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        )}
+        <button
+          onClick={onClose}
+          aria-label="閉じる"
+          className="absolute top-4 right-4 w-11 h-11 flex items-center justify-center text-gray-500 hover:text-gray-700 transition-colors"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
 
         {/* Mascot */}
         <div className="flex justify-center mb-4">

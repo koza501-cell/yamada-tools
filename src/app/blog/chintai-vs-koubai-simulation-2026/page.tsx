@@ -3,6 +3,7 @@ import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
+import { BlogByline } from '@/components/BlogByline';
 
 const title = "【2026年最新】賃貸と購入どっちが得？50年シミュレーションで徹底比較";
 const description = "賃貸と購入の総コストを50年間でシミュレーション。家賃10万円 vs 住宅ローン3,500万円の比較結果。ライフスタイル別のおすすめと判断基準を解説。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function ChintaiVsKoubaiSimulation2026Blog() {
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
+    <article className="max-w-[680px] mx-auto px-4 py-8">
       {/* JSON-LD Schema */}
       <script
         type="application/ld+json"
@@ -29,7 +30,7 @@ export default function ChintaiVsKoubaiSimulation2026Blog() {
             "description": "賃貸と購入の総コストを50年間でシミュレーション。家賃10万円 vs 住宅ローン3,500万円の比較結果。ライフスタイル別のおすすめと判断基準を解説。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/chintai-vs-koubai-simulation-2026"}
           })
@@ -41,7 +42,7 @@ export default function ChintaiVsKoubaiSimulation2026Blog() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            "mainEntity": [{"@type":"Question","name":"何年住めば購入が有利になる？","acceptedAnswer":{"@type":"Answer","text":"一般的には15〜20年以上住む場合に購入が有利になることが多いです。ただし、物件の資産価値、金利、家賃水準によって大きく変わります。"}},{"@type":"Question","name":"頭金なしでも購入すべき？","acceptedAnswer":{"@type":"Answer","text":"おすすめしません。頭金なしだと借入額が増え、総支払額が大きくなります。最低でも物件価格の10〜20%は頭金を用意したいところ。"}},{"@type":"Question","name":"購入後に転勤になったらどうする？","acceptedAnswer":{"@type":"Answer","text":"売却か賃貸に出すことになります。住宅ローン返済中の賃貸は銀行の承認が必要。売却の場合、ローン残高より低い価格だと自己資金で補填が必要です。"}},{"@type":"Question","name":"マンションと戸建て、どっちが良い？","acceptedAnswer":{"@type":"Answer","text":"マンションは管理費・修繕積立金がかかるが管理が楽。戸建ては自由度が高いが修繕は自己負担。ライフスタイルと立地で選ぶのがベストです。"}}]
+            "mainEntity": [{"@type":"Question","name":"何年住めば購入が有利になる？","acceptedAnswer":{"@type":"Answer","text":"一般的には15〜20年以上住む場合に購入が有利になることが多いです。ただし、物件の資産価値、金利、家賃水準によって大きく変わります。たとえば物件価格4,000万円・家賃15万円のケースでは、シミュレーション上の損益分岐点は概ね18〜22年前後になることが多いです。"}},{"@type":"Question","name":"頭金なしでも購入すべき？","acceptedAnswer":{"@type":"Answer","text":"基本的にはおすすめしません。頭金ゼロでは借入額と総利息が膨らみ、物件価格の10〜20%（2,000〜4,000万円の物件なら200〜800万円）を用意してから購入するのが安全です。"}},{"@type":"Question","name":"購入後に転勤になったらどうする？","acceptedAnswer":{"@type":"Answer","text":"売却か賃貸に出すことになります。住宅ローン返済中の賃貸は銀行の承認が必要。売却の場合、ローン残高より低い価格だと自己資金で補填が必要です。"}},{"@type":"Question","name":"マンションと戸建て、どっちが良い？","acceptedAnswer":{"@type":"Answer","text":"マンションは管理費・修繕積立金がかかるが管理が楽。戸建ては自由度が高いが修繕は自己負担。ライフスタイルと立地で選ぶのがベストです。"}}]
           })
         }}
       />
@@ -58,6 +59,7 @@ export default function ChintaiVsKoubaiSimulation2026Blog() {
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】賃貸と購入どっちが得？50年シミュレーションで徹底比較</h1>
+      <BlogByline />
       <p className="text-gray-500 text-sm mb-8">最終更新: 2026年4月</p>
 
       <div className="bg-gray-50 border-l-4 border-gray-200 p-4 mb-8">
@@ -257,16 +259,20 @@ export default function ChintaiVsKoubaiSimulation2026Blog() {
         </div>
       </section>
 
+      <p className="text-gray-700 mb-4">個人的には、15年以上同じ場所に住む確信がない限り、購入より賃貸を選ぶほうが無難だと感じています。</p>
+
+
+
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">よくある質問（FAQ）</h2>
         <div className="space-y-4">
           <details className="bg-gray-50 rounded-lg p-4">
             <summary className="font-bold text-gray-800 cursor-pointer">Q. 何年住めば購入が有利になる？</summary>
-            <p className="mt-3 text-gray-700 border-t pt-3"><strong>一般的には15〜20年以上</strong>住む場合に購入が有利になることが多いです。ただし、物件の資産価値、金利、家賃水準によって大きく変わります。</p>
+            <p className="mt-3 text-gray-700 border-t pt-3"><strong>一般的には15〜20年以上</strong>住む場合に購入が有利になることが多いです。ただし、物件の資産価値、金利、家賃水準によって大きく変わります。たとえば物件価格4,000万円・家賃15万円のケースでは、シミュレーション上の損益分岐点は概ね18〜22年前後になることが多いです。</p>
           </details>
           <details className="bg-gray-50 rounded-lg p-4">
             <summary className="font-bold text-gray-800 cursor-pointer">Q. 頭金なしでも購入すべき？</summary>
-            <p className="mt-3 text-gray-700 border-t pt-3"><strong>おすすめしません</strong>。頭金なしだと借入額が増え、総支払額が大きくなります。最低でも物件価格の10〜20%は頭金を用意したいところ。</p>
+            <p className="mt-3 text-gray-700 border-t pt-3"><strong>基本的にはおすすめしません</strong>。頭金ゼロでは借入額と総利息が膨らみ、物件価格の10〜20%（2,000〜4,000万円の物件なら200〜800万円）を用意してから購入するのが安全です。</p>
           </details>
           <details className="bg-gray-50 rounded-lg p-4">
             <summary className="font-bold text-gray-800 cursor-pointer">Q. 購入後に転勤になったらどうする？</summary>

@@ -40,7 +40,7 @@ const jsonLd = {
       url: "https://yamada-tools.jp/business/gaikokujin-visa-calculator",
       offers: { "@type": "Offer", price: "0", priceCurrency: "JPY" },
       description:
-        "技術・人文知識・国際業務ビザの申請から継続更新までの費用を計算します。",
+        "技術・人文知識・国際業務ビザの申請から継続更新までの費用がわかります。",
       featureList: [
         "海外招へい費用計算",
         "国内在留資格変更費用計算",

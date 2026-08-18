@@ -3,6 +3,7 @@ import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
+import { BlogByline } from '@/components/BlogByline';
 
 const title = "【2026年最新】医療保険は必要？不要？シミュレーションで判断する方法";
 const description = "医療保険の必要性を徹底解説。高額療養費制度との関係、年齢・家族構成別の判断基準、保険料の相場、選び方のポイント。シミュレーターで必要額を計算。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function IryoHokenSimulation2026Blog() {
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
+    <article className="max-w-[680px] mx-auto px-4 py-8">
       {/* JSON-LD Schema */}
       <script
         type="application/ld+json"
@@ -29,7 +30,7 @@ export default function IryoHokenSimulation2026Blog() {
             "description": "医療保険の必要性を徹底解説。高額療養費制度との関係、年齢・家族構成別の判断基準、保険料の相場、選び方のポイント。シミュレーターで必要額を計算。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/iryo-hoken-simulation-2026"}
           })
@@ -58,6 +59,7 @@ export default function IryoHokenSimulation2026Blog() {
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】医療保険は必要？不要？シミュレーションで判断する方法</h1>
+      <BlogByline />
       <p className="text-gray-500 text-sm mb-8">最終更新: 2026年4月</p>
 
       <div className="bg-green-50 border-l-4 border-green-400 p-4 mb-8">
@@ -281,6 +283,10 @@ export default function IryoHokenSimulation2026Blog() {
           </div>
         </div>
       </section>
+
+      <p className="text-gray-700 mb-4">貯蓄が200万円以上あり傷病手当金もある会社員なら、医療保険の優先度は低いとはっきり言えるのではないでしょうか。</p>
+
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">よくある質問（FAQ）</h2>

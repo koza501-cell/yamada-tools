@@ -30,7 +30,7 @@ export function usePricingTrigger(): PricingTriggerState {
   const [remainingUses, setRemainingUses] = useState(5);
   const [showAccountPrompt, setShowAccountPrompt] = useState(false);
 
-  // Soft-modal: show after 15s or 30% scroll depth, whichever comes first
+  // Soft-modal: show at 70% scroll depth
   useEffect(() => {
     if (typeof window === 'undefined') return;
     if (localStorage.getItem(LS_DISMISSED)) return;
@@ -45,17 +45,14 @@ export function usePricingTrigger(): PricingTriggerState {
       sessionStorage.setItem(SS_SHOWN, 'true');
     };
 
-    const timer = setTimeout(trigger, 15000);
-
     const handleScroll = () => {
       const scrollPct = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
-      if (scrollPct >= 0.3) trigger();
+      if (scrollPct >= 0.7) trigger();
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
-      clearTimeout(timer);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);

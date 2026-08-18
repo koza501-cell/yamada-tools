@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
   images: {
     remotePatterns: [
@@ -15,7 +16,8 @@ const nextConfig = {
   experimental: {
     serverActions: {
       bodySizeLimit: '10mb'
-    }
+    },
+    nodeMiddleware: true,
   },
   async headers() {
     return [
@@ -71,6 +73,25 @@ const nextConfig = {
       { source: '/ideco-nisa-comparison', destination: '/finance/ideco-nisa-comparison', permanent: true },
       { source: '/souzoku-touki/guide/gikaku-and-bassoku', destination: '/souzoku-touki/guide/gimuka-and-bassoku', permanent: true },
       { source: '/business/houjin-bangou-search', destination: '/business/houjin-bangou-lookup', permanent: true },
+      { source: '/document/bank-format', destination: '/convert/bank-format', statusCode: 301 },
+      { source: '/pdf-text-input', destination: '/pdf/text-input', statusCode: 301 },
+      { source: '/pdf/fill', destination: '/pdf/text-input', statusCode: 301 },
+      { source: '/image/to-pdf', destination: '/pdf/image-to-pdf', statusCode: 301 },
+      { source: '/image/jpg-to-png', destination: '/image/format-convert', statusCode: 301 },
+      { source: '/image/convert', destination: '/image/format-convert', statusCode: 301 },
+      { source: '/convert/csv-to-excel', destination: '/', statusCode: 301 },
+      { source: '/document/quote', destination: '/document', statusCode: 301 },
+      { source: '/business/houjin', destination: '/business/houjin-search', statusCode: 301 },
+      { source: '/generator/shouhizei', destination: '/', statusCode: 301 },
+      { source: '/generator/charcount', destination: '/generator/text-counter', statusCode: 301 },
+      { source: '/business/jinkenhi-shiyuki', destination: '/business', statusCode: 301 },
+      { source: '/generator/zangyou-tegata', destination: '/generator', statusCode: 301 },
+      { source: '/education/scholarship-repayment', destination: '/', statusCode: 301 },
+      { source: '/debt/debt-free-calculator', destination: '/', statusCode: 301 },
+      { source: '/loan/mortgage-calculator', destination: '/', statusCode: 301 },
+      { source: '/utility/hourly-to-annual', destination: '/', statusCode: 301 },
+      { source: '/utility/discount-calculator', destination: '/', statusCode: 301 },
+      { source: '/cdn-cgi/l/email-protection', destination: '/', statusCode: 301 },
       { source: '/business/corporate-number-lookup', destination: '/business/houjin-bangou-lookup', permanent: true },
       { source: '/career/shitsugyo-ritsu/hokkaido', destination: '/career/shitsugyo-ritsu', statusCode: 301 },
       { source: '/career/shitsugyo-ritsu/aomori', destination: '/career/shitsugyo-ritsu', statusCode: 301 },
@@ -120,22 +141,27 @@ const nextConfig = {
       { source: '/career/shitsugyo-ritsu/kagoshima', destination: '/career/shitsugyo-ritsu', statusCode: 301 },
       { source: '/career/shitsugyo-ritsu/okinawa', destination: '/career/shitsugyo-ritsu', statusCode: 301 },
       { source: '/use-cases', destination: '/', permanent: true },
-      { source: '/pdf-text-input', destination: '/pdf/text-input', permanent: true },
-      { source: '/pdf/fill', destination: '/pdf/text-input', permanent: true },
-      { source: '/image/convert', destination: '/image', permanent: true },
-      { source: '/generator/charcount', destination: '/generator/text-counter', permanent: true },
-      { source: '/generator/zangyou-tegata', destination: '/generator', permanent: true },
       { source: '/generator/password-gen', destination: '/generator/password', permanent: true },
       { source: '/finance/houjinka-setsuzei-calculator', destination: '/finance', permanent: true },
       { source: '/finance/retirement-simulator', destination: '/blog/rougo-shikin-simulation-2026', permanent: true },
       { source: '/savings/interest-calculator', destination: '/finance', permanent: true },
-      { source: '/utility/hourly-to-annual', destination: '/career', permanent: true },
-      { source: '/business/jinkenhi-shiyuki', destination: '/business', permanent: true },
-      { source: '/document/quote', destination: '/document', permanent: true },
       { source: '/care/kaigo-hoshu-calc', destination: '/', permanent: true },
-      { source: '/en/utility', destination: '/en/business/company-search', permanent: true },
-      { source: '/en/realestate', destination: '/en/business/company-search', permanent: true },
       { source: '/en/business', destination: '/en/business/company-search', permanent: true },
+      
+      // Priority 7: missing redirects (renamed tool paths → current live paths)
+      { source: '/calculator/salary', destination: '/generator/salary-calc', statusCode: 301 },
+      { source: '/calculator/nisa-tsumitate', destination: '/finance/nisa-simulator', statusCode: 301 },
+      { source: '/finance/jutaku-loan-calculator', destination: '/finance/jutaku-loan', statusCode: 301 },
+      { source: '/tools/freelance-tax-calculator', destination: '/business/freelance-tax-calculator', statusCode: 301 },
+      { source: '/tools/kyosai-simulator', destination: '/business/kyosai-simulator', statusCode: 301 },
+      { source: '/tools/business-loan-simulator', destination: '/business/business-loan-simulator', statusCode: 301 },
+      { source: '/tools/simplified-tax-calculator', destination: '/business/simplified-tax-calculator', statusCode: 301 },
+      { source: '/tools/incorporation-simulator', destination: '/business/incorporation-simulator', statusCode: 301 },
+      { source: '/calculator/furusato-nouzei', destination: '/tax/furusato-nozei-calculator', statusCode: 301 },
+      { source: '/finance/furusato-nozei-calculator', destination: '/tax/furusato-nozei-calculator', statusCode: 301 },
+      { source: '/generator/qr-code', destination: '/image/qr-code', statusCode: 301 },
+      { source: '/generator/kyuyo-meisai', destination: '/document/kyuyo-meisai', statusCode: 301 },
+      { source: '/document/envelope', destination: '/generator/envelope-print', statusCode: 301 },
       { source: '/blog/zengin-format-kanzen-guide', destination: '/blog/zengin-format-complete-guide-2026', statusCode: 301 }
     ]
   }

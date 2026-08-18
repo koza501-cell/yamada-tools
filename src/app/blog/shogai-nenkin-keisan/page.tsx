@@ -3,6 +3,7 @@ import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
+import { BlogByline } from '@/components/BlogByline';
 
 const title = "障害年金はいくらもらえる？2026年度版・等級別受給額と計算方法を完全解説";
 const description = "障害基礎年金・障害厚生年金の2026年度受給額を等級別に解説。子の加算・配偶者加給年金も含めた合計額を無料計算ツールで今すぐ確認。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function ShogaiNenkinKeisanBlog() {
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
+    <article className="max-w-[680px] mx-auto px-4 py-8">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -29,7 +30,7 @@ export default function ShogaiNenkinKeisanBlog() {
             "description": description,
             "datePublished": "2025-05-08",
             "dateModified": "2025-05-08",
-            "author": { "@type": "Organization", "name": "山田ツール編集部" },
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": { "@type": "Organization", "name": "合同会社山田トレード", "logo": { "@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp" } },
             "mainEntityOfPage": { "@type": "WebPage", "@id": "https://yamada-tools.jp/blog/shogai-nenkin-keisan" }
           })
@@ -64,6 +65,7 @@ export default function ShogaiNenkinKeisanBlog() {
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">{title}</h1>
+      <BlogByline />
       <p className="text-gray-500 text-sm mb-8">最終更新: 2025年5月 ｜ 読了時間: 約9分</p>
 
       <div className="bg-gray-50 border-l-4 border-kon p-4 mb-8">
@@ -414,6 +416,10 @@ export default function ShogaiNenkinKeisanBlog() {
           </div>
         </div>
       </section>
+
+      <p className="text-gray-700 mb-4">障害年金が非課税であることは意外と知られておらず、申請できる状態でも受給していない方が多いのではないでしょうか。</p>
+
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">まとめ：障害年金の重要ポイント</h2>

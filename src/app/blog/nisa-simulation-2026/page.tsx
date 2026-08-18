@@ -3,6 +3,7 @@ import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
+import { BlogByline } from '@/components/BlogByline';
 
 const title = "【2026年最新】新NISAシミュレーション完全ガイド｜初心者でも5分でわかる積立計算";
 const description = "新NISAの積立シミュレーションを無料で計算。毎月1万円で20年後にいくら？つみたて投資枠と成長投資枠の違い、2026年税制改正のポイントを初心者向けにわかりやすく解説。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
 
 export default function NisaSimulation2026Blog() {
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
+    <article className="max-w-[680px] mx-auto px-4 py-8">
       {/* JSON-LD Schema */}
       <script
         type="application/ld+json"
@@ -40,7 +41,7 @@ export default function NisaSimulation2026Blog() {
             "description": "新NISAの積立シミュレーションを無料で計算。毎月1万円で20年後にいくら？つみたて投資枠と成長投資枠の違い、2026年税制改正のポイントを初心者向けにわかりやすく解説。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/nisa-simulation-2026"}
           })
@@ -67,6 +68,7 @@ export default function NisaSimulation2026Blog() {
       <h1 className="text-3xl font-bold text-gray-800 mb-4">
         【2026年最新】新NISAシミュレーション完全ガイド｜初心者でも5分でわかる積立計算と運用戦略
       </h1>
+      <BlogByline />
       
       <p className="text-gray-500 text-sm mb-8">最終更新: 2026年4月</p>
 
@@ -309,6 +311,10 @@ export default function NisaSimulation2026Blog() {
           </div>
         </div>
       </section>
+
+      <p className="text-gray-700 mb-4">毎月1万円でも20年後に300万円超になり得るという事実は、少額からでも始める価値の大きさを改めて考えさせられるだろうか。</p>
+
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">よくある質問（FAQ）</h2>

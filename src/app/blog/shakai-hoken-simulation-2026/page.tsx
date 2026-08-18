@@ -3,6 +3,7 @@ import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
+import { BlogByline } from '@/components/BlogByline';
 
 const title = "【2026年最新】社会保険料の計算方法｜年収別早見表と手取り額シミュレーション";
 const description = "社会保険料の計算方法を徹底解説。健康保険・厚生年金・雇用保険の料率、年収別の保険料早見表、標準報酬月額の決まり方。手取り額シミュレーターで計算。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function ShakaiHokenSimulation2026Blog() {
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
+    <article className="max-w-[680px] mx-auto px-4 py-8">
       {/* JSON-LD Schema */}
       <script
         type="application/ld+json"
@@ -29,7 +30,7 @@ export default function ShakaiHokenSimulation2026Blog() {
             "description": "社会保険料の計算方法を徹底解説。健康保険・厚生年金・雇用保険の料率、年収別の保険料早見表、標準報酬月額の決まり方。手取り額シミュレーターで計算。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/shakai-hoken-simulation-2026"}
           })
@@ -58,6 +59,7 @@ export default function ShakaiHokenSimulation2026Blog() {
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】社会保険料の計算方法｜年収別早見表と手取り額シミュレーション</h1>
+      <BlogByline />
       <p className="text-gray-500 text-sm mb-8">最終更新: 2026年4月</p>
 
       <div className="bg-sky-50 border-l-4 border-sky-400 p-4 mb-8">
@@ -263,6 +265,10 @@ export default function ShakaiHokenSimulation2026Blog() {
           </div>
         </div>
       </section>
+
+      <p className="text-gray-700 mb-4">個人的には、標準報酬月額の等級制度で給与が上がっても保険料が変わらない月が続く仕組みは、少し不思議だと感じています。</p>
+
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">よくある質問（FAQ）</h2>

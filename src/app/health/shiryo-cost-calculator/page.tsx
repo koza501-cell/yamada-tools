@@ -40,7 +40,7 @@ const jsonLd = {
       url: "https://yamada-tools.jp/health/shiryo-cost-calculator",
       offers: { "@type": "Offer", price: "0", priceCurrency: "JPY" },
       description:
-        "乳牛・肉牛・豚・鶏の頭数と飼料種別から月間・年間の飼料費を計算します。",
+        "乳牛・肉牛・豚・鶏の頭数と飼料種別から月間・年間の飼料費がわかります。",
       featureList: [
         "乳牛飼料費計算",
         "肉牛飼料費計算",

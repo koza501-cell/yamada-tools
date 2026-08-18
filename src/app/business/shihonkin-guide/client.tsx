@@ -231,7 +231,7 @@ export default function ShihonkinGuideClient() {
           資本金決定ガイド
         </h1>
         <p className="text-gray-600 dark:text-gray-400 text-base leading-relaxed">
-          月間経費・許認可要件・融資計画・信用力の4つの観点から、<strong>最適な資本金額</strong>を自動算出します。
+          月間経費・許認可要件・融資計画・信用力の4つの観点から、<strong>最適な資本金額</strong>がわかります。
           消費税の1,000万円ラインや均等割への影響も考慮します。
         </p>
       </div>

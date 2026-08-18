@@ -186,24 +186,36 @@ export default function RegisterPage() {
             </div>
 
             <div className="mb-6">
-              <label className="flex items-start gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={agreeTerms}
-                  onChange={(e) => setAgreeTerms(e.target.checked)}
-                  className="mt-1 w-4 h-4 text-kon border-gray-300 rounded focus:ring-kon"
-                />
+              <div className="flex items-start gap-3">
+                <label className="mt-1 shrink-0 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={agreeTerms}
+                    onChange={(e) => setAgreeTerms(e.target.checked)}
+                    className="w-4 h-4 text-kon border-gray-300 rounded focus:ring-kon"
+                  />
+                </label>
                 <span className="text-sm text-gray-600">
-                  <Link href="/legal/terms" className="text-kon hover:underline" target="_blank">
+                  <Link
+                    href="/legal/terms"
+                    className="text-kon hover:underline"
+                    target="_blank"
+                    onClick={(e) => e.stopPropagation()}
+                  >
                     利用規約
                   </Link>
                   および
-                  <Link href="/legal/privacy" className="text-kon hover:underline" target="_blank">
+                  <Link
+                    href="/legal/privacy"
+                    className="text-kon hover:underline"
+                    target="_blank"
+                    onClick={(e) => e.stopPropagation()}
+                  >
                     プライバシーポリシー
                   </Link>
                   に同意します
                 </span>
-              </label>
+              </div>
             </div>
 
             {error && (

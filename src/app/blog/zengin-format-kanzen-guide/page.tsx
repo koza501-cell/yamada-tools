@@ -3,6 +3,7 @@ import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
+import { BlogByline } from '@/components/BlogByline';
 
 const title = "全銀フォーマット完全ガイド【2026年最新】経理担当者のための変換・作り方・エラー対処法";
 const description =
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
 
 export default function ZenginFormatKanzenGuideBlog() {
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
+    <article className="max-w-[680px] mx-auto px-4 py-8">
       {/* JSON-LD: BlogPosting */}
       <script
         type="application/ld+json"
@@ -57,7 +58,7 @@ export default function ZenginFormatKanzenGuideBlog() {
             description,
             datePublished: "2026-05-06",
             dateModified: "2026-05-06",
-            author: { "@type": "Organization", name: "山田ツール編集部" },
+            author: {"@type": "Person", "name": "山田フェサル"},
             publisher: {
               "@type": "Organization",
               name: "合同会社山田トレード",
@@ -235,6 +236,7 @@ export default function ZenginFormatKanzenGuideBlog() {
         全銀フォーマット完全ガイド【2026年最新】<br className="hidden md:block" />
         経理担当者のための変換・作り方・エラー対処法
       </h1>
+      <BlogByline />
 
       <p className="text-gray-500 text-sm mb-8">公開日: 2026年5月6日　｜　山田ツール編集部</p>
 

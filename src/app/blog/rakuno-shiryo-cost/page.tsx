@@ -3,6 +3,7 @@ import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
+import { BlogByline } from '@/components/BlogByline';
 
 const title = "酪農・畜産の飼料コスト計算と削減方法【飼料高騰対策2025年版】";
 const description = "乳牛・肉牛・豚・鶏の頭数別飼料費を無料計算。配合飼料は2020年比40%高騰。自給飼料・補助金活用による飼料費削減の具体策を解説。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function RakunoShiryoCostBlog() {
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
+    <article className="max-w-[680px] mx-auto px-4 py-8">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -29,7 +30,7 @@ export default function RakunoShiryoCostBlog() {
             "description": description,
             "datePublished": "2025-05-08",
             "dateModified": "2025-05-08",
-            "author": { "@type": "Organization", "name": "山田ツール編集部" },
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": { "@type": "Organization", "name": "合同会社山田トレード", "logo": { "@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp" } },
             "mainEntityOfPage": { "@type": "WebPage", "@id": "https://yamada-tools.jp/blog/rakuno-shiryo-cost" }
           })
@@ -64,6 +65,7 @@ export default function RakunoShiryoCostBlog() {
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">{title}</h1>
+      <BlogByline />
       <p className="text-gray-500 text-sm mb-8">最終更新: 2025年5月 ｜ 読了時間: 約8分</p>
 
       <div className="bg-gray-50 border-l-4 border-kon p-4 mb-8">
@@ -402,6 +404,10 @@ export default function RakunoShiryoCostBlog() {
           </div>
         </div>
       </section>
+
+      <p className="text-gray-700 mb-4">配合飼料が2020年比40%高騰した今、自給飼料の拡大なしに酪農経営を維持し続けるのは率直に言って厳しい局面です。</p>
+
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">まとめ：飼料費管理と削減の重要ポイント</h2>

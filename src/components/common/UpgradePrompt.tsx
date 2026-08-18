@@ -41,7 +41,7 @@ function getContent(tier: Tier, t: UsageTotals): TierContent {
     case 'engaged':
       return {
         badge: 'ありがとうございます',
-        heading: '山田ツールをよく使っていただいています',
+        heading: '山田ツールをよくご利用いただいております',
         body: 'PROプランで広告なし・無制限に。月額¥980、いつでもキャンセル可能。',
       };
   }

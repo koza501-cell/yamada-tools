@@ -196,7 +196,7 @@ export default function MedicalInsuranceSimClient() {
             医療保険 入院給付金シミュレーター
           </h1>
           <p className="text-gray-600 text-sm">
-            入院日数・日額・手術の有無を入力して、医療保険の給付金と実質自己負担額を自動計算します。
+            入院日数・日額・手術の有無を入力して、医療保険の給付金と実質自己負担額がわかります。
           </p>
         </div>
 

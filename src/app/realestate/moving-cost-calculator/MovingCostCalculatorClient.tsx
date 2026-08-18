@@ -701,8 +701,7 @@ export default function MovingCostCalculatorPage() {
                   <div className="flex gap-3 bg-yellow-50 border border-yellow-200 rounded-lg p-3">
                     <span className="text-yellow-500 text-lg shrink-0">💡</span>
                     <p className="text-sm text-yellow-800">
-                      <strong>平日引越しに変更すると約20%節約できます。</strong>
-                      約{fmtMan(Math.round(result.total * 0.167))}の節約が見込めます。
+                      <strong>平日引越しに変更すると、約20%（約{fmtMan(Math.round(result.total * 0.167))}）お得になります。</strong>
                     </p>
                   </div>
                 )}
@@ -710,8 +709,7 @@ export default function MovingCostCalculatorPage() {
                   <div className="flex gap-3 bg-yellow-50 border border-yellow-200 rounded-lg p-3">
                     <span className="text-yellow-500 text-lg shrink-0">💡</span>
                     <p className="text-sm text-yellow-800">
-                      <strong>時間おまかせに変更すると約10%節約できます。</strong>
-                      約{fmtMan(Math.round(result.total * 0.091))}の節約が見込めます。
+                      <strong>時間おまかせに変更すると、約10%（約{fmtMan(Math.round(result.total * 0.091))}）お得になります。</strong>
                     </p>
                   </div>
                 )}

@@ -3,6 +3,7 @@ import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
+import { BlogByline } from '@/components/BlogByline';
 
 const title = "引越し費用の相場 2026｜単身・2人・家族の距離別早見表＋見積もりシミュ";
 const description = "単身近距離4万円、家族長距離20万円が目安。距離×荷物量×時期で変わる料金を表で整理し、初期費用込みの総額を無料シミュレーターで瞬時に算出。閑散期・繁忙期の差も解説。";
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function HikkoshiHiyouSimulation2026Blog() {
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
+    <article className="max-w-[680px] mx-auto px-4 py-8">
       {/* JSON-LD Schema */}
       <script
         type="application/ld+json"
@@ -29,7 +30,7 @@ export default function HikkoshiHiyouSimulation2026Blog() {
             "description": "引越し費用の相場を徹底解説。単身・2人・家族の距離別料金表、初期費用の内訳、安く抑えるコツ。引越し費用シミュレーターで今すぐ計算。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/hikkoshi-hiyou-simulation-2026"}
           })
@@ -41,7 +42,7 @@ export default function HikkoshiHiyouSimulation2026Blog() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            "mainEntity": [{"@type":"Question","name":"一番安い時期はいつ？","acceptedAnswer":{"@type":"Answer","text":"11月〜1月が最安です。需要が少なく、業者も予約が取りやすいため値引き交渉もしやすくなります。逆に3〜4月は繁忙期で1.5〜2倍になることも。"}},{"@type":"Question","name":"見積もりは何社取るべき？","acceptedAnswer":{"@type":"Answer","text":"最低3社、できれば5社程度から見積もりを取りましょう。相場を把握でき、価格交渉の材料にもなります。一括見積もりサイトが便利です。"}},{"@type":"Question","name":"自力引越しはどれくらい安い？","acceptedAnswer":{"@type":"Answer","text":"レンタカー代と高速代程度で済むので1〜3万円に抑えられます。ただし大型家具や家電の運搬は難しく、時間と体力も必要。単身で荷物少なめなら検討の価値あり。"}},{"@type":"Question","name":"不用品の処分費用は？","acceptedAnswer":{"@type":"Answer","text":"自治体の粗大ゴミは数百〜数千円/個。業者に依頼すると軽トラ1台分で1〜3万円。リサイクルショップやフリマアプリで売れば逆にお金になることも。"}}]
+            "mainEntity": [{"@type":"Question","name":"一番安い時期はいつ？","acceptedAnswer":{"@type":"Answer","text":"11月〜1月が最安です。需要が少なく、業者も予約が取りやすいため値引き交渉もしやすくなります。逆に3〜4月は繁忙期で1.5〜2倍になることも。"}},{"@type":"Question","name":"見積もりは何社取るべき？","acceptedAnswer":{"@type":"Answer","text":"最低3社は比較しましょう。同じ引越し条件でも業者によって1〜3万円以上の差が出ることがあり、一括見積もりサイトを使えば10分で揃います。"}},{"@type":"Question","name":"自力引越しはどれくらい安い？","acceptedAnswer":{"@type":"Answer","text":"レンタカー代と高速代程度で済むので1〜3万円に抑えられます。ただし大型家具や家電の運搬は難しく、時間と体力も必要。単身で荷物少なめなら検討の価値あり。"}},{"@type":"Question","name":"不用品の処分費用は？","acceptedAnswer":{"@type":"Answer","text":"自治体の粗大ゴミ収集は1点300〜2,000円程度、業者に一括依頼すると軽トラ1台分で1〜3万円が相場です。ソファや洗濯機などの大型品はリサイクルショップに持ち込むか、メルカリ等フリマアプリで売ると費用ゼロ〜むしろ収入になります。"}}]
           })
         }}
       />
@@ -58,6 +59,7 @@ export default function HikkoshiHiyouSimulation2026Blog() {
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】引越し費用の相場と計算方法｜単身・家族別シミュレーション</h1>
+      <BlogByline />
       <p className="text-gray-500 text-sm mb-8">最終更新: 2026年4月</p>
 
       <div className="bg-gray-50 border-l-4 border-gray-200 p-4 mb-8">
@@ -267,6 +269,10 @@ export default function HikkoshiHiyouSimulation2026Blog() {
         </div>
       </section>
 
+      <p className="text-gray-700 mb-4">単身近距離の引越し費用も、閑散期を選ぶだけで相場の半額近くまで下がることがあるかもしれません。</p>
+
+
+
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">よくある質問（FAQ）</h2>
         <div className="space-y-4">
@@ -276,7 +282,7 @@ export default function HikkoshiHiyouSimulation2026Blog() {
           </details>
           <details className="bg-gray-50 rounded-lg p-4">
             <summary className="font-bold text-gray-800 cursor-pointer">Q. 見積もりは何社取るべき？</summary>
-            <p className="mt-3 text-gray-700 border-t pt-3"><strong>最低3社、できれば5社</strong>程度から見積もりを取りましょう。相場を把握でき、価格交渉の材料にもなります。一括見積もりサイトが便利です。</p>
+            <p className="mt-3 text-gray-700 border-t pt-3"><strong>最低3社は比較</strong>しましょう。同じ引越し条件でも業者によって1〜3万円以上の差が出ることがあり、一括見積もりサイトを使えば10分で揃います。</p>
           </details>
           <details className="bg-gray-50 rounded-lg p-4">
             <summary className="font-bold text-gray-800 cursor-pointer">Q. 自力引越しはどれくらい安い？</summary>
@@ -284,7 +290,7 @@ export default function HikkoshiHiyouSimulation2026Blog() {
           </details>
           <details className="bg-gray-50 rounded-lg p-4">
             <summary className="font-bold text-gray-800 cursor-pointer">Q. 不用品の処分費用は？</summary>
-            <p className="mt-3 text-gray-700 border-t pt-3">自治体の粗大ゴミは<strong>数百〜数千円/個</strong>。業者に依頼すると軽トラ1台分で1〜3万円。リサイクルショップやフリマアプリで売れば逆にお金になることも。</p>
+            <p className="mt-3 text-gray-700 border-t pt-3">自治体の粗大ゴミ収集は1点300〜2,000円程度、業者に一括依頼すると軽トラ1台分で<strong>1〜3万円</strong>が相場です。ソファや洗濯機などの大型品はリサイクルショップに持ち込むか、メルカリ等フリマアプリで売ると費用ゼロ〜むしろ収入になります。</p>
           </details>
         </div>
       </section>

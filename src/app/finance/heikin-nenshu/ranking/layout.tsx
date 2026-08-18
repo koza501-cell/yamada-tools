@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "都道府県別 平均年収ランキング【2023年最新】47都道府県を比較 | 山田ツール",
+  title: "都道府県別 平均年収ランキング【2023年最新】47都道府県を比較",
   description:
     "47都道府県の平均年収ランキング。東京・神奈川・大阪などの上位から、沖縄・青森などの下位まで一覧で比較。年齢・業種・性別で絞り込み可能。政府統計準拠。",
   alternates: { canonical: "https://yamada-tools.jp/finance/heikin-nenshu/ranking" },

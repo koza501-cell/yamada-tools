@@ -171,7 +171,7 @@ export default function ChintaiVsKounyuClient() {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8 px-4">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-1">賃貸 vs 購入 比較シミュレーター</h1>
-        <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">中立・バイアスなし。生涯コストを計算します。</p>
+        <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">中立・バイアスなし。生涯コストがわかります。</p>
         <div className="flex gap-3 mb-6">
           {PERIODS.map(p => (
             <button type="button" key={p} onClick={() => setPeriod(p)}
@@ -343,7 +343,7 @@ export default function ChintaiVsKounyuClient() {
 
             <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-xl p-4 text-xs text-yellow-700 dark:text-yellow-300 space-y-1">
               <p className="font-semibold">⚠️ 免責事項</p>
-              <p>このシミュレーターは経済的側面のみを計算します。物件価値の変動リスク・金利変動・生活の質・心理的な満足度は含まれません。実際の意思決定には専門家にご相談ください。</p>
+              <p>経済的側面のみを計算対象としています。物件価値の変動リスク・金利変動・生活の質・心理的な満足度は含まれません。実際の意思決定には専門家にご相談ください。</p>
             </div>
           </div>
         </div>

@@ -3,6 +3,7 @@ import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
+import { BlogByline } from '@/components/BlogByline';
 
 const title = "引越し費用の相場と賃貸vs購入を完全比較【2025年最新・無料計算ツール付き】";
 const description = "引越し費用の相場を時期・距離・人数別に解説。賃貸と購入どちらが得かも中立シミュレーターで比較。繁忙期を避けて50%節約する方法も。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function HikkoshiChintaiKounyuBlog() {
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
+    <article className="max-w-[680px] mx-auto px-4 py-8">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -29,7 +30,7 @@ export default function HikkoshiChintaiKounyuBlog() {
             "description": description,
             "datePublished": "2025-05-07",
             "dateModified": "2025-05-07",
-            "author": { "@type": "Organization", "name": "山田ツール編集部" },
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": { "@type": "Organization", "name": "合同会社山田トレード", "logo": { "@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp" } },
             "mainEntityOfPage": { "@type": "WebPage", "@id": "https://yamada-tools.jp/blog/hikkoshi-chintai-kounyu" }
           })
@@ -64,6 +65,7 @@ export default function HikkoshiChintaiKounyuBlog() {
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">{title}</h1>
+      <BlogByline />
       <p className="text-gray-500 text-sm mb-8">最終更新: 2025年5月 ｜ 読了時間: 約8分</p>
 
       <div className="bg-gray-50 border-l-4 border-kon p-4 mb-8">
@@ -199,7 +201,7 @@ export default function HikkoshiChintaiKounyuBlog() {
             {
               num: "4",
               title: "梱包を自分で行う",
-              desc: "業者の梱包サービスは便利ですが、1〜3万円追加になります。ダンボールは業者からもらい、梱包作業は自分で行うことで節約可能。",
+              desc: "業者の梱包サービスは便利ですが、1〜3万円の追加料金がかかります。ダンボールは業者からもらい、梱包作業は自分で行うことで節約可能。",
               color: "green"
             },
             {
@@ -370,6 +372,10 @@ export default function HikkoshiChintaiKounyuBlog() {
           </div>
         </div>
       </section>
+
+      <p className="text-gray-700 mb-4">率直に言って、繁忙期の3月を避けるだけで引越し費用を50%程度抑えられるのは、知っている人と知らない人で大きな差があります。</p>
+
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">まとめ：引越し費用と賃貸vs購入の判断基準</h2>

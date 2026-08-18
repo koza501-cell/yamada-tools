@@ -14,7 +14,7 @@ interface CompanyBasic {
   representative_name: string;
   company_url: string;
   date_of_establishment: string;
-  founding_year: string;
+  founding_year: number | string;
   business_summary: string;
   update_date: string;
   status: string;
@@ -37,7 +37,7 @@ interface ProcurementItem {
   date_of_order?: string;
   amount?: number;
   government_departments?: string;
-  joint_signatures?: string | null;
+  joint_signatures?: string[] | string | null;
 }
 
 interface CertificationItem {
@@ -77,7 +77,7 @@ interface CompanyProfile {
 }
 
 // ─── Data Fetching (Server-Side) ───────────────────────────────────────────
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://api.yamada-tools.jp";
+const API_BASE = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || "http://localhost:8001";
 
 async function fetchProfile(corporateNumber: string): Promise<CompanyProfile | null> {
   try {
@@ -85,7 +85,23 @@ async function fetchProfile(corporateNumber: string): Promise<CompanyProfile | n
       next: { revalidate: 2592000 }, // 30 days
     });
     if (!res.ok) return null;
-    return await res.json();
+    const data = await res.json();
+    if (data?.detail || !data?.basic) return null;
+    return data as CompanyProfile;
+  } catch {
+    return null;
+  }
+}
+
+async function fetchProfileFresh(corporateNumber: string): Promise<CompanyProfile | null> {
+  try {
+    const res = await fetch(`${API_BASE}/api/gbiz/profile/${corporateNumber}`, {
+      cache: 'no-store',
+    });
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (data?.detail || !data?.basic) return null;
+    return data as CompanyProfile;
   } catch {
     return null;
   }
@@ -106,7 +122,8 @@ export async function generateMetadata({
   const name = profile.basic.name;
   const location = profile.basic.location || "";
   const title = `${name}（法人番号：${corporateNumber}）| 法人情報・補助金・財務データ | 山田ツール`;
-  const description = `${name}の法人情報を無料で閲覧。所在地：${location}。基本情報に加え、補助金・入札・認定・財務データを1ページで確認。出典：経済産業省Gビズインフォ`;
+  const rawDesc = `${name}の法人情報を無料で閲覧。所在地：${location}。基本情報に加え、補助金・入札・認定・財務データを1ページで確認。出典：経済産業省Gビズインフォ`;
+  const description = rawDesc.length > 150 ? rawDesc.slice(0, 150) + "…" : rawDesc;
 
   return {
     title,
@@ -331,7 +348,7 @@ function CompanySchema({ profile }: { profile: CompanyProfile }) {
 
 // ─── Page Component ────────────────────────────────────────────────────────
 export const dynamicParams = true;
-export const revalidate = 2592000; // 30 days
+// revalidate handled per-fetch
 
 export default async function HoujinProfilePage({
   params,
@@ -356,6 +373,16 @@ export default async function HoujinProfilePage({
   const hasProcurement = profile.procurement.length > 0;
   const hasCertification = profile.certification.length > 0;
   const hasCommendation = profile.commendation.length > 0;
+
+  const subsidyHasResource = profile.subsidy.some((s) => s.subsidy_resource);
+  const subsidyHasTarget = profile.subsidy.some((s) => s.target);
+  const procHasJoint = profile.procurement.some((p) =>
+    Array.isArray(p.joint_signatures) ? p.joint_signatures.length > 0 : !!p.joint_signatures
+  );
+  const certHasTarget = profile.certification.some((c) => c.target);
+  const commendHasTarget = profile.commendation.some((c) => c.target);
+  const financeAccounting = profile.finance.find((f) => f.accounting_standards)?.accounting_standards;
+  const hasMajorShareholders = profile.finance.some((f) => f.major_shareholders);
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8 px-4 sm:px-6">
@@ -427,6 +454,22 @@ export default async function HoujinProfilePage({
               }
             />
             <InfoRow label="設立日" value={formatDate(b.date_of_establishment)} />
+            {b.founding_year ? (
+              <InfoRow label="設立年" value={`${b.founding_year}年`} />
+            ) : null}
+            <InfoRow
+              label="従業員内訳"
+              value={
+                b.company_size_male || b.company_size_female
+                  ? [
+                      b.company_size_male ? `男性 ${Number(b.company_size_male).toLocaleString()}名` : "",
+                      b.company_size_female ? `女性 ${Number(b.company_size_female).toLocaleString()}名` : "",
+                    ]
+                      .filter(Boolean)
+                      .join(" / ")
+                  : ""
+              }
+            />
             <InfoRow label="事業概要" value={b.business_summary} />
             {b.company_url && (
               <InfoRow
@@ -456,7 +499,11 @@ export default async function HoujinProfilePage({
           emptyText="補助金の受給実績はありません。国の補助金を受給した法人のみ表示されます。"
         >
           <DataTable
-            headers={["補助金名", "省庁", "金額", "交付日"]}
+            headers={[
+              "補助金名", "省庁", "金額", "交付日",
+              ...(subsidyHasResource ? ["財源"] : []),
+              ...(subsidyHasTarget ? ["対象"] : []),
+            ]}
             rows={profile.subsidy.slice(0, 20).map((s) => [
               <span key="t" className="font-medium max-w-[280px] block truncate" title={s.title}>
                 {s.title || "-"}
@@ -464,6 +511,8 @@ export default async function HoujinProfilePage({
               s.government_departments || "-",
               s.amount ? formatCurrency(s.amount) : "-",
               formatDate(s.date_of_approval) || "-",
+              ...(subsidyHasResource ? [s.subsidy_resource || ""] : []),
+              ...(subsidyHasTarget ? [s.target || ""] : []),
             ])}
           />
           {profile.subsidy.length > 20 && (
@@ -481,7 +530,10 @@ export default async function HoujinProfilePage({
           emptyText="官公庁との調達・入札実績はありません。政府調達で落札した法人のみ表示されます。"
         >
           <DataTable
-            headers={["案件名", "発注機関", "金額", "契約日"]}
+            headers={[
+              "案件名", "発注機関", "金額", "契約日",
+              ...(procHasJoint ? ["共同受注"] : []),
+            ]}
             rows={profile.procurement.slice(0, 20).map((p) => [
               <span key="t" className="font-medium max-w-[280px] block truncate" title={p.title}>
                 {p.title || "-"}
@@ -489,6 +541,13 @@ export default async function HoujinProfilePage({
               p.government_departments || "-",
               p.amount ? formatCurrency(p.amount) : "-",
               formatDate(p.date_of_order) || "-",
+              ...(procHasJoint
+                ? [
+                    Array.isArray(p.joint_signatures)
+                      ? p.joint_signatures.join("・")
+                      : p.joint_signatures || "",
+                  ]
+                : []),
             ])}
           />
           {profile.procurement.length > 20 && (
@@ -506,13 +565,17 @@ export default async function HoujinProfilePage({
           emptyText="届出・認定の実績はありません。各種認定を取得した法人のみ表示されます。"
         >
           <DataTable
-            headers={["認定名", "認定機関", "認定日"]}
+            headers={[
+              "認定名", "認定機関", "認定日",
+              ...(certHasTarget ? ["対象"] : []),
+            ]}
             rows={profile.certification.slice(0, 20).map((c) => [
               <span key="t" className="font-medium max-w-[280px] block truncate" title={c.title}>
                 {c.title || "-"}
               </span>,
               c.government_departments || "-",
               formatDate(c.date_of_approval) || "-",
+              ...(certHasTarget ? [c.target || ""] : []),
             ])}
           />
           {profile.certification.length > 20 && (
@@ -539,6 +602,36 @@ export default async function HoujinProfilePage({
               f.total_assets != null ? formatCurrency(f.total_assets) : "-",
             ])}
           />
+          {financeAccounting && (
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-3">
+              会計基準：{financeAccounting}
+            </p>
+          )}
+          {hasMajorShareholders && (
+            <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
+              <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">
+                主要株主
+              </p>
+              {profile.finance
+                .filter((f) => f.major_shareholders)
+                .slice(0, 1)
+                .map((f, i) => (
+                  <div key={i} className="text-sm text-gray-700 dark:text-gray-300">
+                    {Array.isArray(f.major_shareholders) ? (
+                      <ul className="space-y-0.5 list-disc list-inside">
+                        {(f.major_shareholders as any[]).map((sh, j) => (
+                          <li key={j}>
+                            {typeof sh === "string" ? sh : (sh as any).name ?? JSON.stringify(sh)}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p>{String(f.major_shareholders)}</p>
+                    )}
+                  </div>
+                ))}
+            </div>
+          )}
         </Section>
 
         {/* 6. Commendation */}
@@ -549,13 +642,17 @@ export default async function HoujinProfilePage({
           emptyText="官公庁からの表彰実績はありません。政府から表彰を受けた法人のみ表示されます。"
         >
           <DataTable
-            headers={["表彰名", "省庁", "表彰日"]}
+            headers={[
+              "表彰名", "省庁", "表彰日",
+              ...(commendHasTarget ? ["対象"] : []),
+            ]}
             rows={profile.commendation.slice(0, 20).map((c) => [
               <span key="t" className="font-medium max-w-[280px] block truncate" title={c.title}>
                 {c.title || "-"}
               </span>,
               c.government_departments || "-",
               formatDate(c.date_of_commendation) || "-",
+              ...(commendHasTarget ? [c.target || ""] : []),
             ])}
           />
         </Section>

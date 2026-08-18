@@ -352,7 +352,7 @@ export default function SalaryIncreaseSimulatorClient() {
         <div className="mb-6">
           <h1 className="text-2xl font-bold text-gray-900 mb-2">年収アップシミュレーター</h1>
           <p className="text-gray-600 text-sm">
-            転職・昇給・副業・スキルアップの4戦略を組み合わせて、目標年収への最短ルートを計算します。
+            転職・昇給・副業・スキルアップの4戦略を組み合わせ、目標年収への最短ルートがわかります。
           </p>
         </div>
 

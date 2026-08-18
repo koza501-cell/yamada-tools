@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import fs from "fs";
 import path from "path";
-import { redirect } from "next/navigation";
+import { redirect, notFound } from "next/navigation";
 import { getPublishedPosts } from "@/data/blogPosts";
 import BlogIndexClient from "./client";
 
@@ -15,12 +15,12 @@ export async function generateMetadata({
   const isFirstPage = !page || pageNum === 1;
 
   return {
-    title: isFirstPage ? "ブログ | 山田ツール" : `ブログ (${pageNum}ページ目) | 山田ツール`,
+    title: isFirstPage ? "ビジネス効率化・PDF・税務の実践ノウハウ | 山田ツール ブログ" : `ブログ (${pageNum}ページ目) | 山田ツール`,
     description: "ビジネス効率化・PDF活用・不動産情報・税金・金融の実践ノウハウを発信。全銀フォーマット、確定申告、不動産情報ライブラリの使い方など。",
     alternates: { canonical: isFirstPage ? "https://yamada-tools.jp/blog" : `https://yamada-tools.jp/blog?page=${pageNum}` },
     robots: isFirstPage ? "index, follow" : "noindex, follow",
     openGraph: {
-      title: "ブログ | 山田ツール",
+      title: "ビジネス効率化・PDF・税務の実践ノウハウ | 山田ツール ブログ",
       description: "ビジネス効率化・PDF活用・不動産情報の実践ノウハウを発信。",
       url: isFirstPage ? "https://yamada-tools.jp/blog" : `https://yamada-tools.jp/blog?page=${pageNum}`,
       type: "website",
@@ -66,9 +66,32 @@ export default async function BlogPage({
     const p = parseInt(params.page);
     const maxPage = Math.ceil(allBlogs.length / PER_PAGE);
     if (p > maxPage) {
-      redirect("/blog");
+      notFound();
     }
   }
 
-  return <BlogIndexClient blogs={allBlogs} />;
+  const itemListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "山田ツール ブログ",
+    "description": "ビジネス効率化・PDF活用・不動産情報・税金・金融の実践ノウハウ",
+    "url": "https://yamada-tools.jp/blog",
+    "numberOfItems": allBlogs.slice(0, 20).length,
+    "itemListElement": allBlogs.slice(0, 20).map((post, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "url": `https://yamada-tools.jp/blog/${post.slug}`,
+      "name": post.title,
+    })),
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
+      <BlogIndexClient blogs={allBlogs} />
+    </>
+  );
 }

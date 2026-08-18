@@ -78,7 +78,7 @@ interface InvoiceClientProps {
 export default function InvoiceClient({ faq, seoContent }: InvoiceClientProps) {
   const { triggerSuccess } = usePricingContext();
   const [mascotState, setMascotState] = useState<MascotState>("idle");
-  const [mascotMessage, setMascotMessage] = useState("請求書を作成しよう！");
+  const [mascotMessage, setMascotMessage] = useState("請求書を作ってみよう");
   const [mascotDismissed, setMascotDismissed] = useState(false);
   const errorBannerRef = useRef<HTMLDivElement>(null);
 

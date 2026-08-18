@@ -3,6 +3,7 @@ import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
+import { BlogByline } from '@/components/BlogByline';
 
 const title = "住所を入れるだけで不動産情報が全部わかる！国土交通省データを簡単に使う方法";
 const description =
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
 
 export default function FudousanJohoLibraryBlog() {
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
+    <article className="max-w-[680px] mx-auto px-4 py-8">
       {/* JSON-LD: BlogPosting */}
       <script
         type="application/ld+json"
@@ -55,7 +56,7 @@ export default function FudousanJohoLibraryBlog() {
             description,
             datePublished: "2026-05-05",
             dateModified: "2026-05-05",
-            author: { "@type": "Organization", "name": "山田ツール編集部" },
+            author: {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             publisher: {
               "@type": "Organization",
               name: "合同会社山田トレード",
@@ -135,6 +136,7 @@ export default function FudousanJohoLibraryBlog() {
         住所を入れるだけで不動産情報が全部わかる！<br className="hidden md:block" />
         国土交通省データを簡単に使う方法
       </h1>
+      <BlogByline />
 
       <p className="text-gray-500 text-sm mb-8">公開日: 2026年5月5日　｜　山田ツール編集部</p>
 
@@ -430,6 +432,10 @@ export default function FudousanJohoLibraryBlog() {
       </section>
 
       {/* FAQ */}
+
+      <p className="text-gray-700 mb-4">住所一つでハザードマップから地価まで確認できるのは、不動産購入を検討する方にとって大きな恩恵だという印象があります。</p>
+
+
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">よくある質問</h2>
         <div className="space-y-4">

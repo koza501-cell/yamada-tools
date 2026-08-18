@@ -3,6 +3,7 @@ import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
+import { BlogByline } from '@/components/BlogByline';
 
 const title = "iDeCo・NISA・相続税・法人化の節税を完全解説【無料シミュレーターで計算】";
 const description = "iDeCoで年間最大27万円節税、NISAで非課税運用、相続税の基礎控除計算、法人化の損益分岐点まで。日本一わかりやすく解説。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function IdecoNisaSozokuzeiSetsuzei() {
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
+    <article className="max-w-[680px] mx-auto px-4 py-8">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -29,7 +30,7 @@ export default function IdecoNisaSozokuzeiSetsuzei() {
             "description": description,
             "datePublished": "2025-05-07",
             "dateModified": "2025-05-07",
-            "author": { "@type": "Organization", "name": "山田ツール編集部" },
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": { "@type": "Organization", "name": "合同会社山田トレード", "logo": { "@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp" } },
             "mainEntityOfPage": { "@type": "WebPage", "@id": "https://yamada-tools.jp/blog/ideco-nisa-sozokuzei-setsuzei" }
           })
@@ -44,8 +45,8 @@ export default function IdecoNisaSozokuzeiSetsuzei() {
             "mainEntity": [
               { "@type": "Question", "name": "iDeCoとNISA、どちらを先に始めるべき？", "acceptedAnswer": { "@type": "Answer", "text": "まずiDeCoがおすすめです。掛金が全額所得控除になるため、現在の税負担を直接下げられます。NISAは運用益の非課税が主なメリットで投資余力がある場合に追加で活用しましょう。どちらも早く始めるほど複利効果が高まります。" } },
               { "@type": "Question", "name": "相続税がかかるかどうかはどう判断する？", "acceptedAnswer": { "@type": "Answer", "text": "遺産総額が「3,000万円＋600万円×法定相続人数」の基礎控除額を超えた場合に相続税がかかります。たとえば法定相続人が3人なら基礎控除は4,800万円です。これを超えた部分に10〜55%の税率が適用されます。" } },
-              { "@type": "Question", "name": "個人事業主の法人化はいくらから得？", "acceptedAnswer": { "@type": "Answer", "text": "一般的な目安は年収（売上）700万〜1,000万円超です。法人税率は実効税率約33%であるのに対し、個人の所得税は累進課税で最高45%。さらに役員報酬・経費の幅が広がるため、高所得ほど節税効果が大きくなります。" } },
-              { "@type": "Question", "name": "iDeCoの60歳まで引き出せないデメリットはどう考えるべき？", "acceptedAnswer": { "@type": "Answer", "text": "生活費の緊急資金（3〜6か月分）を別途確保した上でiDeCoに拠出するのが基本です。NISAは引き出し制限がないため、中期の資金もNISAで運用し、長期の老後資金はiDeCoに分けて考えると安心です。" } }
+              { "@type": "Question", "name": "個人事業主の法人化はいくらから得？", "acceptedAnswer": { "@type": "Answer", "text": "一般的な目安は年収（売上）700万〜1,000万円超です。法人税率は実効税率約33%であるのに対し、個人の所得税は累進課税で最高45%。さらに役員報酬を設定することで給与所得控除（最大195万円）も使えるため、年収1,000万円超の個人事業主が法人化すると年間50〜100万円規模の節税になるケースもあります。" } },
+              { "@type": "Question", "name": "iDeCoの60歳まで引き出せないデメリットはどう考えるべき？", "acceptedAnswer": { "@type": "Answer", "text": "緊急資金（生活費3〜6か月分）を手元に残した上でiDeCoに拠出しましょう。中期のお金はNISA、老後専用がiDeCoと役割を分けると両制度を最大活用できます。" } }
             ]
           })
         }}
@@ -64,6 +65,7 @@ export default function IdecoNisaSozokuzeiSetsuzei() {
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">{title}</h1>
+      <BlogByline />
       <p className="text-gray-500 text-sm mb-8">最終更新: 2025年5月 ｜ 読了時間: 約10分</p>
 
       <div className="bg-gray-50 border-l-4 border-kon p-4 mb-8">
@@ -382,6 +384,10 @@ export default function IdecoNisaSozokuzeiSetsuzei() {
           </div>
         </div>
       </section>
+
+      <p className="text-gray-700 mb-4">iDeCoで自営業者なら年間最大27万円超の節税ができると知っても、手続きの複雑さを理由に後回しにしている方が多いのではないでしょうか。</p>
+
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">まとめ：節税4本柱のポイント</h2>

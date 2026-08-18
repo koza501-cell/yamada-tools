@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { AdUnit } from "@/components/common/AdUnit";
 
 // ---- Calculation helpers ----
 function normalCDF(z: number): number {
@@ -53,16 +54,18 @@ function getSubjectRating(h: number): string {
 }
 
 function getGaugeColor(h: number): string {
-  if (h < 40) return "bg-danger";
-  if (h < 50) return "bg-kon";
+  if (h < 35) return "bg-red-600";
+  if (h < 40) return "bg-red-400";
+  if (h < 50) return "bg-orange-400";
   if (h < 60) return "bg-yellow-400";
   if (h < 70) return "bg-sky-400";
   return "bg-kon";
 }
 
 function getHensachiTextColor(h: number): string {
-  if (h < 40) return "text-danger";
-  if (h < 50) return "text-kon";
+  if (h < 35) return "text-red-700";
+  if (h < 40) return "text-red-500";
+  if (h < 50) return "text-orange-500";
   if (h < 60) return "text-yellow-600";
   if (h < 70) return "text-sky-500";
   return "text-kon";
@@ -139,6 +142,10 @@ interface Result {
   subjects?: Array<{ name: string; score: number; hensachi: number; percentile: number }>;
 }
 
+function normalizeNumber(v: string): string {
+  return v.replace(/[０-９]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0xfee0));
+}
+
 export default function DeviationScoreClient() {
   const [mode, setMode] = useState<"score" | "reverse">("score");
   const [inputMode, setInputMode] = useState<"manual" | "auto">("manual");
@@ -171,7 +178,9 @@ export default function DeviationScoreClient() {
   function calculate() {
     setError("");
     setResult(null);
-    const cs = parseInt(classSize) || 40;
+    const csRaw = parseInt(classSize);
+    if (!isNaN(csRaw) && csRaw <= 0) { setError("クラス人数は1以上を入力してください。"); return; }
+    const cs = (!csRaw || csRaw <= 0) ? 40 : csRaw;
 
     if (mode === "score") {
       let myScore: number, myMean: number, mySd: number;
@@ -197,8 +206,12 @@ export default function DeviationScoreClient() {
           setError("点数・平均点・標準偏差を入力してください。"); return;
         }
         if (mySd < 0) { setError("標準偏差は0以上の値を入力してください。"); return; }
+        if (mySd === 0) { setError("標準偏差が0の場合は計算できません（クラス全員が同じ点数を意味します）。"); return; }
       }
 
+      if (Math.abs(myScore) > 9999 || Math.abs(myMean) > 9999 || mySd > 9999) {
+        setError("入力値が通常の試験の範囲を超えています（最大99999）。"); return;
+      }
       const h = calcHensachi(myScore, myMean, mySd);
       const pct = calcPercentile(h);
       const rnk = calcRank(pct, cs);
@@ -293,7 +306,8 @@ export default function DeviationScoreClient() {
                 <input
                   type="number"
                   value={score}
-                  onChange={(e) => setScore(e.target.value)}
+                  onChange={(e) => setScore(normalizeNumber(e.target.value))}
+                  onKeyDown={(e) => { if (e.key === 'Enter') calculate(); }}
                   placeholder="例: 72"
                   className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                 />
@@ -319,7 +333,8 @@ export default function DeviationScoreClient() {
                     <input
                       type="number"
                       value={mean}
-                      onChange={(e) => setMean(e.target.value)}
+                      onChange={(e) => setMean(normalizeNumber(e.target.value))}
+                      onKeyDown={(e) => { if (e.key === 'Enter') calculate(); }}
                       placeholder="例: 60"
                       className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                     />
@@ -329,10 +344,12 @@ export default function DeviationScoreClient() {
                     <input
                       type="number"
                       value={sd}
-                      onChange={(e) => setSd(e.target.value)}
+                      onChange={(e) => setSd(normalizeNumber(e.target.value))}
+                      onKeyDown={(e) => { if (e.key === 'Enter') calculate(); }}
                       placeholder="例: 15"
                       className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-kon"
                     />
+                    <p className="text-xs text-gray-400 mt-1">わからない場合：平均点×0.2～0.3が目安（平均60点なら12～18程度）。または上のトグルで自動計算できます。</p>
                   </div>
                 </div>
               )}
@@ -410,7 +427,7 @@ export default function DeviationScoreClient() {
               <div className="px-5 pb-5 space-y-3 border-t border-gray-100">
                 <p className="text-xs text-gray-500 pt-3">科目名・点数・平均点・標準偏差を入力すると比較表が表示されます。</p>
                 {subjects.map((s, i) => (
-                  <div key={i} className="grid grid-cols-4 gap-2">
+                  <div key={i} className="grid grid-cols-2 gap-2 md:grid-cols-4">
                     <input type="text" value={s.name} onChange={(e) => updateSubject(i, "name", e.target.value)}
                       placeholder="科目名" className="border border-gray-300 rounded-lg px-2 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-kon" />
                     <input type="number" value={s.score} onChange={(e) => updateSubject(i, "score", e.target.value)}
@@ -445,9 +462,21 @@ export default function DeviationScoreClient() {
               <p className="text-sm text-gray-500 mb-1">
                 {mode === "reverse" ? "目標偏差値" : "あなたの偏差値"}
               </p>
-              <p className={`text-6xl font-extrabold mb-4 ${getHensachiTextColor(result.hensachi)}`}>
-                {result.hensachi.toFixed(1)}
+              <p className={`text-6xl font-extrabold mb-2 ${getHensachiTextColor(result.hensachi)}`}>
+                {Math.min(Math.max(Math.round(result.hensachi * 10) / 10, -99), 999).toFixed(1)}
               </p>
+              {(result.hensachi < 0 || result.hensachi > 150) && (
+                <p className="text-xs text-orange-500 mb-2">入力値が通常の試験の範囲を超えています</p>
+              )}
+              {mode === "score" && (
+                <p className="text-sm font-medium text-gray-600 mb-4">
+                  {result.hensachi >= 70 ? "クラス上位約2.3%のトップ層です 🏆" :
+                   result.hensachi >= 60 ? "クラス上位約15.9%の優秀層です ✨" :
+                   result.hensachi >= 50 ? "クラス平均より上です 👍" :
+                   result.hensachi >= 40 ? "クラス平均より少し下です。あと一息！" :
+                   "まだ伸びしろがあります。一緒に頑張りましょう 💪"}
+                </p>
+              )}
               <div className="mb-2">
                 <div className="relative h-6 rounded-full bg-gradient-to-r from-red-400 via-yellow-300 to-kon overflow-hidden">
                   <div
@@ -581,8 +610,19 @@ export default function DeviationScoreClient() {
                 })}
               </div>
             </div>
+            <button
+              type="button"
+              onClick={() => { setResult(null); setScore(""); setMean(""); setSd(""); setError(""); }}
+              className="text-sm text-gray-500 underline hover:text-gray-700 text-center w-full pb-2"
+            >
+              もう一度計算する
+            </button>
           </div>
         )}
+
+        <div style={{ minHeight: '280px' }}>
+          <AdUnit slot="5612038947" format="horizontal" />
+        </div>
 
         {/* SEO: Quick table */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">

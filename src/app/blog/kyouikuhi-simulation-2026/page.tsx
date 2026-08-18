@@ -3,6 +3,7 @@ import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
+import { BlogByline } from '@/components/BlogByline';
 
 const title = "【2026年最新】教育費シミュレーション｜幼稚園から大学までいくらかかる？";
 const description = "子どもの教育費を徹底解説。幼稚園・小学校・中学校・高校・大学の公立/私立別費用、学費の準備方法、教育費を抑えるコツ。シミュレーターで今すぐ計算。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function KyouikuhiSimulation2026Blog() {
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
+    <article className="max-w-[680px] mx-auto px-4 py-8">
       {/* JSON-LD Schema */}
       <script
         type="application/ld+json"
@@ -29,7 +30,7 @@ export default function KyouikuhiSimulation2026Blog() {
             "description": "子どもの教育費を徹底解説。幼稚園・小学校・中学校・高校・大学の公立/私立別費用、学費の準備方法、教育費を抑えるコツ。シミュレーターで今すぐ計算。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/kyouikuhi-simulation-2026"}
           })
@@ -41,7 +42,7 @@ export default function KyouikuhiSimulation2026Blog() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            "mainEntity": [{"@type":"Question","name":"教育費の準備はいつから始めるべき？","acceptedAnswer":{"@type":"Answer","text":"子どもが生まれたらすぐに始めるのが理想です。18年間で準備できれば月々の負担は軽くなります。大学入学までに500万円を目指すなら月2.3万円の積立が目安。"}},{"@type":"Question","name":"奨学金は借りるべき？","acceptedAnswer":{"@type":"Answer","text":"給付型（返済不要）は積極的に活用すべきです。貸与型は第一種（無利子）を優先し、第二種（有利子）は慎重に。卒業後の返済負担も考慮しましょう。"}},{"@type":"Question","name":"学資保険と新NISA、どちらがいい？","acceptedAnswer":{"@type":"Answer","text":"学資保険は死亡保障付きで確実、新NISAはリターンが期待できるが元本割れリスクあり。両方を組み合わせるか、リスク許容度で選びましょう。"}},{"@type":"Question","name":"私立中学に行かせる年収の目安は？","acceptedAnswer":{"@type":"Answer","text":"一般的に世帯年収800万円以上が目安とされています。ただし兄弟の有無や住宅ローンの有無によっても変わります。教育費が収入の10〜15%以内に収まるかがポイント。"}}]
+            "mainEntity": [{"@type":"Question","name":"教育費の準備はいつから始めるべき？","acceptedAnswer":{"@type":"Answer","text":"子どもが生まれたらすぐに始めるのが理想です。大学入学までに500万円を目指すなら、18年積立で月2.3万円、10年積立なら月4.2万円が目安です。早く始めるほど月額負担が半分近くで済み、新NISAの運用益（年率3〜5%想定）も含めると積立額をさらに圧縮できます。"}},{"@type":"Question","name":"奨学金は借りるべき？","acceptedAnswer":{"@type":"Answer","text":"給付型（返済不要）は積極的に活用すべきです。貸与型は第一種（無利子）を優先し、第二種（有利子）は慎重に。卒業後の返済負担も考慮しましょう。"}},{"@type":"Question","name":"学資保険と新NISA、どちらがいい？","acceptedAnswer":{"@type":"Answer","text":"リスクを取れるなら新NISA、確実性重視なら学資保険で、両方を半々にするのも有効な選択肢です。"}},{"@type":"Question","name":"私立中学に行かせる年収の目安は？","acceptedAnswer":{"@type":"Answer","text":"一般的に世帯年収800万円以上が目安とされています。ただし兄弟の有無や住宅ローンの有無によっても変わります。教育費が収入の10〜15%以内に収まるかがポイント。"}}]
           })
         }}
       />
@@ -58,6 +59,7 @@ export default function KyouikuhiSimulation2026Blog() {
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】教育費シミュレーション｜幼稚園から大学までいくらかかる？</h1>
+      <BlogByline />
       <p className="text-gray-500 text-sm mb-8">最終更新: 2026年4月</p>
 
       <div className="bg-emerald-50 border-l-4 border-emerald-400 p-4 mb-8">
@@ -282,12 +284,16 @@ export default function KyouikuhiSimulation2026Blog() {
         </div>
       </section>
 
+      <p className="text-gray-700 mb-4">幼稚園から大学まで全て私立だと総額2,000万円を超えるケースもあり、早期からの積立計画が不可欠だと感じています。</p>
+
+
+
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">よくある質問（FAQ）</h2>
         <div className="space-y-4">
           <details className="bg-gray-50 rounded-lg p-4">
             <summary className="font-bold text-gray-800 cursor-pointer">Q. 教育費の準備はいつから始めるべき？</summary>
-            <p className="mt-3 text-gray-700 border-t pt-3"><strong>子どもが生まれたらすぐに</strong>始めるのが理想です。18年間で準備できれば月々の負担は軽くなります。大学入学までに500万円を目指すなら月2.3万円の積立が目安。</p>
+            <p className="mt-3 text-gray-700 border-t pt-3"><strong>子どもが生まれたらすぐに</strong>始めるのが理想です。大学入学までに500万円を目指すなら、18年積立で月2.3万円、10年積立なら月4.2万円が目安です。早く始めるほど月額負担が半分近くで済み、新NISAの運用益（年率3〜5%想定）も含めると積立額をさらに圧縮できます。</p>
           </details>
           <details className="bg-gray-50 rounded-lg p-4">
             <summary className="font-bold text-gray-800 cursor-pointer">Q. 奨学金は借りるべき？</summary>
@@ -295,7 +301,7 @@ export default function KyouikuhiSimulation2026Blog() {
           </details>
           <details className="bg-gray-50 rounded-lg p-4">
             <summary className="font-bold text-gray-800 cursor-pointer">Q. 学資保険と新NISA、どちらがいい？</summary>
-            <p className="mt-3 text-gray-700 border-t pt-3">学資保険は<strong>死亡保障付きで確実</strong>、新NISAは<strong>リターンが期待できるが元本割れリスクあり</strong>。両方を組み合わせるか、リスク許容度で選びましょう。</p>
+            <p className="mt-3 text-gray-700 border-t pt-3">リスクを取れるなら<strong>新NISA</strong>、確実性重視なら<strong>学資保険</strong>で、両方を半々にするのも有効な選択肢です。</p>
           </details>
           <details className="bg-gray-50 rounded-lg p-4">
             <summary className="font-bold text-gray-800 cursor-pointer">Q. 私立中学に行かせる年収の目安は？</summary>

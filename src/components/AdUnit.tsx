@@ -18,6 +18,13 @@ interface AdUnitProps {
   showUpgradeHint?: boolean;
 }
 
+const FORMAT_MIN_HEIGHT: Record<string, string> = {
+  auto: '280px',
+  rectangle: '250px',
+  horizontal: '90px',
+  vertical: '600px',
+};
+
 export default function AdUnit({
   slot,
   format = 'auto',
@@ -34,26 +41,26 @@ export default function AdUnit({
     } catch (e) {}
   }, [loading, isPro]);
 
-  if (loading || isPro) return null;
+  const showAd = !loading && !isPro;
+  // Reserve space during loading; collapse only after auth confirms isPro
+  const minHeight = !loading && isPro ? '0' : (FORMAT_MIN_HEIGHT[format] || '280px');
 
-  const formatMinHeight: Record<string, string> = {
-    auto: '280px',
-    rectangle: '250px',
-    horizontal: '90px',
-    vertical: '600px',
-  };
-
-    return (
-    <div className={`text-center my-4 ${className ?? ''}`} style={{ minHeight: formatMinHeight[format] || '280px' }}>
-      <ins
-        className="adsbygoogle"
-        style={{ display: 'block' }}
-        data-ad-client="ca-pub-2272972805493752"
-        data-ad-slot={slot}
-        data-ad-format={format}
-        data-full-width-responsive={responsive ? 'true' : 'false'}
-      />
-      {showUpgradeHint && (
+  return (
+    <div
+      className={`text-center my-4 ${className ?? ''}`}
+      style={{ minHeight, overflow: 'hidden' }}
+    >
+      {showAd && (
+        <ins
+          className="adsbygoogle"
+          style={{ display: 'block' }}
+          data-ad-client="ca-pub-2272972805493752"
+          data-ad-slot={slot}
+          data-ad-format={format}
+          data-full-width-responsive={responsive ? 'true' : 'false'}
+        />
+      )}
+      {showUpgradeHint && showAd && (
         <p className="text-xs text-gray-400 mt-1">
           <Link href="/pricing" className="hover:underline">
             広告を非表示にする

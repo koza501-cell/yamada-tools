@@ -432,7 +432,7 @@ export default function IdealWeightCalculatorPage() {
 
   return (
     <>
-      <IntroSection title="標準体重・肥満度判定ツール" paragraphs={["BMI式・ブローカ式・ブローカ桂変法など複数の計算方式で標準体重を算出。肥満度の判定と腹囲によるメタボリックシンドロームのチェックも行います。", "男女別・年齢別の詳細な判定基準に対応。体脂肪率の目安も参考表示します。", "登録不要・完全無料。健康診断前の予備確認や体型改善の目標設定に活用できます。"]} />
+      <IntroSection title="標準体重・肥満度判定ツール" paragraphs={["BMI式・ブローカ式・ブローカ桂変法など複数の計算方式で標準体重を算出。肥満度の判定と腹囲によるメタボリックシンドロームのチェックも行います。", "男女別・年齢別の詳細な判定基準に対応。体脂肪率の目安も参考として確認できます。", "登録不要・完全無料。健康診断前の予備確認や体型改善の目標設定に活用できます。"]} />
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white border-b border-gray-200">

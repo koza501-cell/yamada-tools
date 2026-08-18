@@ -263,7 +263,7 @@ export default function JigyouMokutekiClient() {
           事業目的ジェネレーター
         </h1>
         <p className="text-gray-600 dark:text-gray-400 text-base leading-relaxed">
-          業種を選ぶだけで、定款に記載する<strong>事業目的</strong>を自動生成します。
+          業種を選ぶだけで、定款に記載する<strong>事業目的</strong>が作成できます。
           複数業種の選択可能。許認可が必要な業種には警告を表示します。
         </p>
       </div>

@@ -220,7 +220,7 @@ export default function InheritanceTaxCalculatorClient() {
 
   return (
     <>
-      <IntroSection title="相続税 簡易計算機" paragraphs={["遺産総額・法定相続人の数を入力すると相続税の基礎控除額と概算税額を計算します。配偶者控除（1億6,000万円）や各相続人の取得分に応じた税額配分も確認できます。", "二次相続（配偶者が亡くなった際の再課税）のリスクも考慮した試算が可能です。", "登録不要・完全無料。相続対策の検討や、申告が必要かどうかの概算確認に最適です。"]} />
+      <IntroSection title="相続税 簡易計算機" paragraphs={["遺産総額・法定相続人の数を入力すると相続税の基礎控除額と概算税額がわかります。配偶者控除（1億6,000万円）や各相続人の取得分に応じた税額配分も確認できます。", "二次相続（配偶者が亡くなった際の再課税）のリスクも考慮した試算が可能です。", "登録不要・完全無料。相続対策の検討や、申告が必要かどうかの概算確認に最適です。"]} />
       <div className="min-h-screen bg-gray-50">
         <Mascot state={mascotState} className="mb-6" />
       <script

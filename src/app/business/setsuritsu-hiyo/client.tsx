@@ -239,7 +239,7 @@ export default function SetsuritsuHiyoClient() {
           会社設立費用シミュレーター
         </h1>
         <p className="text-gray-600 dark:text-gray-400 text-base leading-relaxed">
-          株式会社・合同会社・一般社団法人の設立にかかる<strong>本当の総額</strong>を計算します。
+          株式会社・合同会社・一般社団法人の設立にかかる<strong>本当の総額</strong>がわかります。
           法定費用だけでなく、印鑑代・専門家報酬・設立後の維持費まで含めた「1年目の全コスト」がわかります。
         </p>
       </div>

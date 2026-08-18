@@ -14,8 +14,8 @@ type AnimMode = "default" | "slot" | "roulette";
 export default function RandomPickerClient({ faq }: Props) {
   const { triggerSuccess } = usePricingContext();
 
-  const [items, setItems] = useState<string[]>([]);
-  const [weights, setWeights] = useState<Record<string, number>>({});
+  const [items, setItems] = useState<string[]>(["グー", "チョキ", "パー"]);
+  const [weights, setWeights] = useState<Record<string, number>>({ "グー": 1, "チョキ": 1, "パー": 1 });
   const [inputValue, setInputValue] = useState("");
   const [mascotState, setMascotState] = useState<MascotState>("idle");
   const [mascotMessage, setMascotMessage] = useState("抽選する項目を追加してね！");
@@ -24,6 +24,7 @@ export default function RandomPickerClient({ faq }: Props) {
   const [pickCount, setPickCount] = useState(1);
   const [results, setResults] = useState<string[]>([]);
   const [isSpinning, setIsSpinning] = useState(false);
+  const [previewItem, setPreviewItem] = useState("");
   const [history, setHistory] = useState<string[][]>([]);
   const [shareVisible, setShareVisible] = useState(false);
   const [shareUrl, setShareUrl] = useState("");
@@ -36,6 +37,19 @@ export default function RandomPickerClient({ faq }: Props) {
   const [teamResult, setTeamResult] = useState<string[][]>([]);
   const [bracketRounds, setBracketRounds] = useState<(string | null)[][]>([]);
   const [bracketComplete, setBracketComplete] = useState(false);
+
+  const cryptoRand = () => {
+    const arr = new Uint32Array(1);
+    crypto.getRandomValues(arr);
+    return arr[0] / (0xFFFFFFFF + 1);
+  };
+
+  useEffect(() => {
+    if (items.length > 0 && pickCount > items.length) {
+      setPickCount(items.length);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [items]);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -51,7 +65,7 @@ export default function RandomPickerClient({ faq }: Props) {
 
   const shuffle = <T,>(arr: T[]): T[] => {
     const a = [...arr];
-    for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+    for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(cryptoRand() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
     return a;
   };
 
@@ -59,7 +73,7 @@ export default function RandomPickerClient({ faq }: Props) {
 
   const weightedRandom = (pool: string[]): string => {
     const total = pool.reduce((s, it) => s + getWeight(it), 0);
-    let r = Math.random() * total;
+    let r = cryptoRand() * total;
     for (const it of pool) { r -= getWeight(it); if (r <= 0) return it; }
     return pool[pool.length - 1];
   };
@@ -76,6 +90,10 @@ export default function RandomPickerClient({ faq }: Props) {
       setWeights(p => ({ ...p, [t]: 1 }));
       setInputValue("");
       setMascotMessage(`「${t}」を追加したよ！`);
+    } else if (t && items.includes(t)) {
+      setMascotState("error");
+      setMascotMessage(`「${t}」はすでに追加されています`);
+      setInputValue("");
     }
   }, [inputValue, items]);
 
@@ -114,7 +132,6 @@ export default function RandomPickerClient({ faq }: Props) {
   const showShare = (winners: string[], all: string[]) => {
     const enc = btoa(encodeURIComponent(JSON.stringify({ w: winners, t: Date.now(), c: all.length })));
     const url = `${window.location.origin}${window.location.pathname}?result=${enc}`;
-    window.history.pushState({}, "", `?result=${enc}`);
     setShareUrl(url);
     setShareVisible(true);
   };
@@ -125,6 +142,8 @@ export default function RandomPickerClient({ faq }: Props) {
   };
 
   const handleCopyUrl = async () => {
+    const resultEnc = shareUrl.split("?result=")[1];
+    if (resultEnc) window.history.pushState({}, "", `?result=${resultEnc}`);
     await navigator.clipboard.writeText(shareUrl);
     setCopyFeedback(true);
     setTimeout(() => setCopyFeedback(false), 2000);
@@ -149,11 +168,14 @@ export default function RandomPickerClient({ faq }: Props) {
     setMascotState("working");
     setMascotMessage("抽選中...");
     setResults([]);
+    setPreviewItem("");
     setShareVisible(false);
     let elapsed = 0;
     const iv = setInterval(() => {
       elapsed += 100;
-      setResults([items[Math.floor(Math.random() * items.length)]]);
+      const flickerItem = items[Math.floor(cryptoRand() * items.length)];
+      setResults([flickerItem]);
+      setPreviewItem(flickerItem);
       if (elapsed >= 2000) {
         clearInterval(iv);
         let selected: string[];
@@ -167,6 +189,7 @@ export default function RandomPickerClient({ faq }: Props) {
         } else {
           selected = shuffle(items).slice(0, pickCount);
         }
+        setPreviewItem("");
         setIsSpinning(false);
         doPickComplete(selected);
       }
@@ -179,11 +202,12 @@ export default function RandomPickerClient({ faq }: Props) {
     setMascotState("working");
     setMascotMessage("ルーレット回転中...");
     setResults([]);
+    setPreviewItem("");
     setShareVisible(false);
     const selected = mode === "weighted" ? weightedRandom(items) : shuffle(items)[0];
     const segAngle = 360 / items.length;
     const itemIdx = items.indexOf(selected);
-    const targetAngle = wheelAngle + (5 + Math.random() * 5) * 360 + (360 - itemIdx * segAngle - segAngle / 2);
+    const targetAngle = wheelAngle + (5 + cryptoRand() * 5) * 360 + (360 - itemIdx * segAngle - segAngle / 2);
     setWheelAngle(targetAngle);
     await new Promise(r => setTimeout(r, 4000));
     setIsSpinningWheel(false);
@@ -200,7 +224,7 @@ export default function RandomPickerClient({ faq }: Props) {
     const shuffled = shuffle(items);
     const teams: string[][] = Array.from({ length: teamCount }, () => []);
     shuffled.forEach((item, i) => {
-      teams[teamDistribution === "equal" ? i % teamCount : Math.floor(Math.random() * teamCount)].push(item);
+      teams[teamDistribution === "equal" ? i % teamCount : Math.floor(cryptoRand() * teamCount)].push(item);
     });
     setTeamResult(teams);
     setMascotState("success");
@@ -442,7 +466,7 @@ export default function RandomPickerClient({ faq }: Props) {
           <div className="mb-6">
             <label className="block text-sm font-medium text-gray-700 mb-2">項目を追加（名前、アイテムなど）</label>
             <div className="flex gap-2">
-              <input type="text" value={inputValue} onChange={e => setInputValue(e.target.value)} onKeyPress={handleKeyPress} onPaste={handlePaste} placeholder="入力してEnter（複数ペースト可）" className="flex-1 p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-kon focus:border-transparent" />
+              <input type="text" value={inputValue} onChange={e => setInputValue(e.target.value)} onKeyDown={handleKeyPress} onPaste={handlePaste} placeholder="入力してEnter（複数ペースト可）" className="flex-1 p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-kon focus:border-transparent" />
               <button type="button" onClick={addItem} className="px-6 py-3 bg-kon text-white rounded-xl font-bold hover:bg-ai transition-colors">追加</button>
             </div>
             <div className="flex flex-wrap items-center gap-3 mt-2">
@@ -522,9 +546,15 @@ export default function RandomPickerClient({ faq }: Props) {
                   <div className="flex items-center gap-4">
                     <button type="button" onClick={() => setPickCount(Math.max(1, pickCount - 1))} className="w-10 h-10 bg-gray-100 rounded-full text-xl font-bold hover:bg-gray-200">-</button>
                     <span className="text-2xl font-bold text-kon w-16 text-center">{pickCount}</span>
-                    <button type="button" onClick={() => setPickCount(Math.min(items.length || 10, pickCount + 1))} className="w-10 h-10 bg-gray-100 rounded-full text-xl font-bold hover:bg-gray-200">+</button>
+                    <button type="button" onClick={() => setPickCount(prev => Math.min(items.length || 1, prev + 1))} className="w-10 h-10 bg-gray-100 rounded-full text-xl font-bold hover:bg-gray-200">+</button>
                     <span className="text-gray-500 text-sm">人を選ぶ</span>
                   </div>
+                </div>
+              )}
+
+              {animMode === "default" && isSpinning && previewItem && (
+                <div className="mb-4 h-20 border-4 border-kon rounded-xl flex items-center justify-center bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+                  <span className="text-3xl font-bold text-kon animate-pulse">{previewItem}</span>
                 </div>
               )}
 
@@ -544,7 +574,7 @@ export default function RandomPickerClient({ faq }: Props) {
                     <p className="text-sm text-gray-600 mb-2">🎉 結果発表！</p>
                     <div className="flex flex-wrap justify-center gap-3">
                       {results.map((result, i) => (
-                        <div key={i} className="px-6 py-3 bg-white rounded-xl shadow-md border-2 border-kon text-xl font-bold text-kon animate-bounce" style={{ animationDelay: `${i * 0.1}s` }}>{result}</div>
+                        <div key={i} className="px-6 py-3 bg-white rounded-xl shadow-md border-2 border-kon text-xl font-bold text-kon animate-bounce max-w-xs md:max-w-sm overflow-hidden break-all" style={{ animationDelay: `${i * 0.1}s` }}>{result}</div>
                       ))}
                     </div>
                     <button type="button" onClick={() => { setResults([]); setShareVisible(false); setMascotState("idle"); setMascotMessage("もう一度抽選してみよう！"); window.history.replaceState({}, "", window.location.pathname); }} className="mt-4 text-sm text-kon hover:text-ai underline">もう一度抽選する</button>

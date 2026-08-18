@@ -3,6 +3,7 @@ import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
+import { BlogByline } from '@/components/BlogByline';
 
 const title = "【2026年最新】借金返済シミュレーション｜完済までの期間と総支払額を計算";
 const description = "借金返済の計画を徹底解説。毎月の返済額から完済期間を計算、繰り上げ返済の効果、おまとめローンのメリット・デメリット。シミュレーターで返済計画を立てる。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function ShakkinHensaiSimulation2026Blog() {
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
+    <article className="max-w-[680px] mx-auto px-4 py-8">
       {/* JSON-LD Schema */}
       <script
         type="application/ld+json"
@@ -41,7 +42,7 @@ export default function ShakkinHensaiSimulation2026Blog() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            "mainEntity": [{"@type":"Question","name":"リボ払いの残高が減らないのはなぜ？","acceptedAnswer":{"@type":"Answer","text":"リボ払いは毎月の返済額が一定ですが、その多くが利息に充てられるためです。残高が多いと利息も大きくなり、元本がほとんど減りません。可能な限り繰り上げ返済するか、一括返済を検討しましょう。"}},{"@type":"Question","name":"借金があっても住宅ローンは組める？","acceptedAnswer":{"@type":"Answer","text":"完済していれば問題ないことが多いです。ただし、延滞履歴が信用情報に残っている場合（5年間）は審査に影響します。住宅ローンを考えているなら、まず借金を完済し、数年待つことをおすすめします。"}},{"@type":"Question","name":"過払い金は請求できる？","acceptedAnswer":{"@type":"Answer","text":"2010年以前に金利20%超で借りていた場合、過払い金が発生している可能性があります。完済から10年で時効となるため、心当たりがある方は早めに弁護士・司法書士に相談しましょう。"}},{"@type":"Question","name":"家族に内緒で借金返済できる？","acceptedAnswer":{"@type":"Answer","text":"通常の返済であれば、郵便物をWEB明細に変更するなどで対応可能です。ただし、延滞すると督促状が届くため、計画的な返済が必須です。任意整理も本人のみで進められます。"}}]
+            "mainEntity": [{"@type":"Question","name":"リボ払いの残高が減らないのはなぜ？","acceptedAnswer":{"@type":"Answer","text":"リボ払いは毎月の返済額が一定ですが、その多くが利息に充てられるためです。例えば残高50万円・金利15%のリボ払いで月1万円返済の場合、最初の1回目の返済で利息が約625円かかり元本は375円しか減りません。残高が大きいほど元本がほとんど減らない構造になっており、可能な限り繰り上げ返済か一括返済を検討しましょう。"}},{"@type":"Question","name":"借金があっても住宅ローンは組める？","acceptedAnswer":{"@type":"Answer","text":"完済していれば問題ないことが多いです。ただし、延滞履歴が信用情報に残っている場合（5年間）は審査に影響します。住宅ローンを考えているなら、まず借金を完済し、数年待つことをおすすめします。"}},{"@type":"Question","name":"過払い金は請求できる？","acceptedAnswer":{"@type":"Answer","text":"2010年以前に金利20%超で借りていた場合、過払い金が発生している可能性があります。完済から10年で時効となるため、心当たりがある方は早めに弁護士・司法書士に相談しましょう。"}},{"@type":"Question","name":"家族に内緒で借金返済できる？","acceptedAnswer":{"@type":"Answer","text":"郵便物をWEB明細に切り替えれば通常の返済は家族に知られにくくなりますが、延滞すると督促状が届くため計画的な返済が前提です。"}}]
           })
         }}
       />
@@ -58,6 +59,7 @@ export default function ShakkinHensaiSimulation2026Blog() {
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】借金返済シミュレーション｜完済までの期間と総支払額を計算</h1>
+      <BlogByline />
       <p className="text-gray-500 text-sm mb-8">最終更新: 2026年4月</p>
 
       <div className="bg-gray-50 border-l-4 border-gray-200 p-4 mb-8">
@@ -226,7 +228,7 @@ export default function ShakkinHensaiSimulation2026Blog() {
             <ul className="text-gray-700 space-y-2 text-sm">
               <li>・返済期間が長くなると総額が増える</li>
               <li>・追加借入の誘惑</li>
-              <li>・審査に通らない場合も</li>
+              <li>・審査に通らない場合もあります</li>
             </ul>
           </div>
         </div>
@@ -279,7 +281,7 @@ export default function ShakkinHensaiSimulation2026Blog() {
         <div className="space-y-4">
           <details className="bg-gray-50 rounded-lg p-4">
             <summary className="font-bold text-gray-800 cursor-pointer">Q. リボ払いの残高が減らないのはなぜ？</summary>
-            <p className="mt-3 text-gray-700 border-t pt-3">リボ払いは毎月の返済額が一定ですが、その多くが<strong>利息に充てられる</strong>ためです。残高が多いと利息も大きくなり、元本がほとんど減りません。可能な限り繰り上げ返済するか、一括返済を検討しましょう。</p>
+            <p className="mt-3 text-gray-700 border-t pt-3">リボ払いは毎月の返済額が一定ですが、その多くが<strong>利息に充てられる</strong>ためです。例えば残高50万円・金利15%のリボ払いで月1万円返済の場合、最初の1回目の返済で利息が約625円かかり元本は375円しか減りません。残高が大きいほど元本がほとんど減らない構造になっており、可能な限り繰り上げ返済か一括返済を検討しましょう。</p>
           </details>
           <details className="bg-gray-50 rounded-lg p-4">
             <summary className="font-bold text-gray-800 cursor-pointer">Q. 借金があっても住宅ローンは組める？</summary>
@@ -291,7 +293,7 @@ export default function ShakkinHensaiSimulation2026Blog() {
           </details>
           <details className="bg-gray-50 rounded-lg p-4">
             <summary className="font-bold text-gray-800 cursor-pointer">Q. 家族に内緒で借金返済できる？</summary>
-            <p className="mt-3 text-gray-700 border-t pt-3">通常の返済であれば、郵便物をWEB明細に変更するなどで対応可能です。ただし、<strong>延滞すると督促状</strong>が届くため、計画的な返済が必須です。任意整理も本人のみで進められます。</p>
+            <p className="mt-3 text-gray-700 border-t pt-3">郵便物をWEB明細に切り替えれば通常の返済は家族に知られにくくなりますが、<strong>延滞すると督促状</strong>が届くため計画的な返済が前提です。</p>
           </details>
         </div>
       </section>

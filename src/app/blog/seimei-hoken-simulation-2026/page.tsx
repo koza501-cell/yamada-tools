@@ -3,6 +3,7 @@ import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
+import { BlogByline } from '@/components/BlogByline';
 
 const title = "生命保険の必要保障額シミュレーター｜家族構成別の目安をすぐ計算";
 const description = "子1人なら3,000万、住宅ローン残あり共働きなら5,000万が目安。年収・家族・遺族年金から本当に必要な保障額を無料シミュレーターで算出。保険会社の言い値で契約しないために。";
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function SeimeiHokenSimulation2026Blog() {
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
+    <article className="max-w-[680px] mx-auto px-4 py-8">
       {/* JSON-LD Schema */}
       <script
         type="application/ld+json"
@@ -29,7 +30,7 @@ export default function SeimeiHokenSimulation2026Blog() {
             "description": "生命保険の必要保障額を徹底解説。家族構成・年収・住宅ローン別の目安、遺族年金との関係、保険料の相場。必要額シミュレーターで今すぐ計算。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/seimei-hoken-simulation-2026"}
           })
@@ -58,6 +59,7 @@ export default function SeimeiHokenSimulation2026Blog() {
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】生命保険の必要額シミュレーション｜家族構成別の目安と計算方法</h1>
+      <BlogByline />
       <p className="text-gray-500 text-sm mb-8">最終更新: 2026年4月</p>
 
       <div className="bg-teal-50 border-l-4 border-teal-400 p-4 mb-8">
@@ -263,6 +265,10 @@ export default function SeimeiHokenSimulation2026Blog() {
           </p>
         </div>
       </section>
+
+      <p className="text-gray-700 mb-4">住宅ローンありの共働き世帯に5,000万円の保障が目安という点は、保険会社の提案額と必ずしも一致しないかもしれません。</p>
+
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">よくある質問（FAQ）</h2>

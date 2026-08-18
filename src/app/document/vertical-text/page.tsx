@@ -49,6 +49,7 @@ export default function Page() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <link rel="preload" as="font" crossOrigin="anonymous" href="https://fonts.gstatic.com/s/notoserifjp/v30/xn77YHs72GKoTvER4Gn3b5eMZBaPRkgfU8fEwb0.woff2" />
       <AdFreeZone><VerticalTextClient /></AdFreeZone>
       <AdUnit slot="2847591036" format="horizontal" />
 

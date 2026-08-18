@@ -19,7 +19,7 @@ export default function UsageLimitBanner({ usage }: UsageLimitBannerProps) {
         <div className="flex items-center justify-between">
           <div>
             <p className="font-bold text-danger">本日の無料枠を使い切りました</p>
-            <p className="text-sm text-danger">明日0時にリセットされます。今すぐ使いたい場合はPROプランへ</p>
+            <p className="text-sm text-danger">明日0時にリセットされます。今すぐ使いたい場合はPROプランへお進みください</p>
           </div>
           <Link href="/pricing" className="bg-sakura hover:bg-sakura/90 text-white px-4 py-2 rounded-lg font-bold text-sm transition-colors">
             PROで無制限に →

@@ -9,7 +9,7 @@ const tool = getToolById("watermark")!;
 const faq = [
   { question: "画像を透かしにできますか？", answer: "はい、テキストだけでなく画像も透かしとして追加できます。" },
   { question: "透明度は調整できますか？", answer: "はい、0-100%で透明度を設定できます。" },
-  { question: "特定のページだけに追加できますか？", answer: "はい、全ページまたは指定ページのみに追加できます。" },
+  { question: "特定のページだけに追加できますか？", answer: "もちろんです。全ページ一括でも、指定ページだけに絞ることもできます。" },
 ];
 
 const seoContent = {

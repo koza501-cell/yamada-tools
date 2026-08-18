@@ -80,12 +80,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 216,
+                  "duration": 194,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-06-02T06:00:05.912Z",
+                  "startTime": "2026-08-18T00:00:05.993Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -114,7 +114,7 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "failed",
-                  "duration": 16685,
+                  "duration": 16480,
                   "error": {
                     "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('h1:has-text(\"日本のビジネスに特化\")').first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('h1:has-text(\"日本のビジネスに特化\")').first()\u001b[22m\n",
                     "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('h1:has-text(\"日本のビジネスに特化\")').first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('h1:has-text(\"日本のビジネスに特化\")').first()\u001b[22m\n\n    at /home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts:57:7",
@@ -138,7 +138,7 @@
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-06-02T06:00:06.344Z",
+                  "startTime": "2026-08-18T00:00:06.357Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -157,7 +157,7 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "failed",
-                  "duration": 16554,
+                  "duration": 16413,
                   "error": {
                     "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('h1:has-text(\"日本のビジネスに特化\")').first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('h1:has-text(\"日本のビジネスに特化\")').first()\u001b[22m\n",
                     "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('h1:has-text(\"日本のビジネスに特化\")').first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('h1:has-text(\"日本のビジネスに特化\")').first()\u001b[22m\n\n    at /home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts:57:7",
@@ -181,7 +181,7 @@
                   "stdout": [],
                   "stderr": [],
                   "retry": 1,
-                  "startTime": "2026-06-02T06:00:24.308Z",
+                  "startTime": "2026-08-18T00:00:23.957Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -221,12 +221,12 @@
                   "workerIndex": 2,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1039,
+                  "duration": 684,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-06-02T06:00:42.335Z",
+                  "startTime": "2026-08-18T00:00:41.635Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -255,12 +255,12 @@
                   "workerIndex": 2,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 823,
+                  "duration": 722,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-06-02T06:00:43.566Z",
+                  "startTime": "2026-08-18T00:00:42.484Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -289,12 +289,12 @@
                   "workerIndex": 2,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 730,
+                  "duration": 592,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-06-02T06:00:44.435Z",
+                  "startTime": "2026-08-18T00:00:43.238Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -323,7 +323,7 @@
                   "workerIndex": 2,
                   "parallelIndex": 0,
                   "status": "failed",
-                  "duration": 11602,
+                  "duration": 11187,
                   "error": {
                     "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=多くの法人様にご利用いただいています').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=多くの法人様にご利用いただいています').first()\u001b[22m\n",
                     "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=多くの法人様にご利用いただいています').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=多くの法人様にご利用いただいています').first()\u001b[22m\n\n    at /home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts:71:65",
@@ -347,7 +347,7 @@
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-06-02T06:00:45.207Z",
+                  "startTime": "2026-08-18T00:00:43.856Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -366,7 +366,7 @@
                   "workerIndex": 3,
                   "parallelIndex": 0,
                   "status": "failed",
-                  "duration": 11557,
+                  "duration": 11783,
                   "error": {
                     "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=多くの法人様にご利用いただいています').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=多くの法人様にご利用いただいています').first()\u001b[22m\n",
                     "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=多くの法人様にご利用いただいています').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=多くの法人様にご利用いただいています').first()\u001b[22m\n\n    at /home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts:71:65",
@@ -390,7 +390,7 @@
                   "stdout": [],
                   "stderr": [],
                   "retry": 1,
-                  "startTime": "2026-06-02T06:00:58.035Z",
+                  "startTime": "2026-08-18T00:00:56.139Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -430,7 +430,7 @@
                   "workerIndex": 4,
                   "parallelIndex": 0,
                   "status": "failed",
-                  "duration": 1064,
+                  "duration": 1126,
                   "error": {
                     "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('button[type=submit]')\nExpected: visible\nError: strict mode violation: locator('button[type=submit]') resolved to 2 elements:\n    1) <button type=\"submit\" class=\"w-full bg-kon text-white font-medium py-2.5 rounded-lg text-sm hover:bg-kon/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed\">送信する</button> aka getByRole('button', { name: '送信する' })\n    2) <button type=\"submit\" class=\"px-4 py-2 bg-sakura hover:bg-sakura/80 dark:bg-kon dark:hover:bg-ai text-[#223A70] dark:text-white rounded-lg font-bold text-sm transition-colors disabled:opacity-50\">登録</button> aka getByRole('button', { name: '登録' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('button[type=submit]')\u001b[22m\n",
                     "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('button[type=submit]')\nExpected: visible\nError: strict mode violation: locator('button[type=submit]') resolved to 2 elements:\n    1) <button type=\"submit\" class=\"w-full bg-kon text-white font-medium py-2.5 rounded-lg text-sm hover:bg-kon/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed\">送信する</button> aka getByRole('button', { name: '送信する' })\n    2) <button type=\"submit\" class=\"px-4 py-2 bg-sakura hover:bg-sakura/80 dark:bg-kon dark:hover:bg-ai text-[#223A70] dark:text-white rounded-lg font-bold text-sm transition-colors disabled:opacity-50\">登録</button> aka getByRole('button', { name: '登録' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('button[type=submit]')\u001b[22m\n\n    at /home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts:80:53",
@@ -454,7 +454,7 @@
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-06-02T06:01:11.041Z",
+                  "startTime": "2026-08-18T00:01:09.206Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -473,7 +473,7 @@
                   "workerIndex": 5,
                   "parallelIndex": 0,
                   "status": "failed",
-                  "duration": 1038,
+                  "duration": 1108,
                   "error": {
                     "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('button[type=submit]')\nExpected: visible\nError: strict mode violation: locator('button[type=submit]') resolved to 2 elements:\n    1) <button type=\"submit\" class=\"w-full bg-kon text-white font-medium py-2.5 rounded-lg text-sm hover:bg-kon/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed\">送信する</button> aka getByRole('button', { name: '送信する' })\n    2) <button type=\"submit\" class=\"px-4 py-2 bg-sakura hover:bg-sakura/80 dark:bg-kon dark:hover:bg-ai text-[#223A70] dark:text-white rounded-lg font-bold text-sm transition-colors disabled:opacity-50\">登録</button> aka getByRole('button', { name: '登録' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('button[type=submit]')\u001b[22m\n",
                     "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('button[type=submit]')\nExpected: visible\nError: strict mode violation: locator('button[type=submit]') resolved to 2 elements:\n    1) <button type=\"submit\" class=\"w-full bg-kon text-white font-medium py-2.5 rounded-lg text-sm hover:bg-kon/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed\">送信する</button> aka getByRole('button', { name: '送信する' })\n    2) <button type=\"submit\" class=\"px-4 py-2 bg-sakura hover:bg-sakura/80 dark:bg-kon dark:hover:bg-ai text-[#223A70] dark:text-white rounded-lg font-bold text-sm transition-colors disabled:opacity-50\">登録</button> aka getByRole('button', { name: '登録' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('button[type=submit]')\u001b[22m\n\n    at /home/yamada/projects/3websitepassive_income/yamada-tools/frontend-staging/tests/staging-health.spec.ts:80:53",
@@ -497,7 +497,7 @@
                   "stdout": [],
                   "stderr": [],
                   "retry": 1,
-                  "startTime": "2026-06-02T06:01:13.543Z",
+                  "startTime": "2026-08-18T00:01:11.733Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -537,12 +537,12 @@
                   "workerIndex": 6,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1064,
+                  "duration": 879,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-06-02T06:01:16.024Z",
+                  "startTime": "2026-08-18T00:01:14.085Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -560,8 +560,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-06-02T06:00:03.844Z",
-    "duration": 73533.652,
+    "startTime": "2026-08-18T00:00:03.770Z",
+    "duration": 71439.063,
     "expected": 5,
     "skipped": 0,
     "unexpected": 3,

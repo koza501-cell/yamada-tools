@@ -294,7 +294,7 @@ export default function SocialInsuranceCalculatorPage() {
   ];
   return (
     <>
-      <IntroSection title="社会保険料計算機" paragraphs={["健康保険料・厚生年金・雇用保険・介護保険（40歳以上）を一括計算。本人負担額と会社負担額の内訳も表示します。", "都道府県別の健康保険料率、標準報酬月額の等級、2024年10月の社会保険適用拡大にも対応しています。", "登録不要・完全無料。手取り計算・転職検討・フリーランス転身の比較に活用できます。"]} />
+      <IntroSection title="社会保険料計算機" paragraphs={["健康保険料・厚生年金・雇用保険・介護保険（40歳以上）を一括計算。本人負担額と会社負担額の内訳も確認できます。", "都道府県別の健康保険料率、標準報酬月額の等級、2024年10月の社会保険適用拡大にも対応しています。", "登録不要・完全無料。手取り計算・転職検討・フリーランス転身の比較に活用できます。"]} />
       <div className="min-h-screen bg-gray-50">
         <Mascot state={mascotState} className="mb-6" />
       {/* Hero */}

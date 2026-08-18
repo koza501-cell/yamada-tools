@@ -15,9 +15,16 @@ declare global {
   }
 }
 
+const FORMAT_MIN_HEIGHT: Record<string, string> = {
+  horizontal: '90px',
+  rectangle: '250px',
+  auto: '280px',
+  vertical: '600px',
+};
+
 export function AdUnit({ slot, format = 'auto', className = '' }: AdUnitProps) {
   const pathname = usePathname();
-  const { isPro } = useAuth();
+  const { isPro, loading } = useAuth();
   const adRef = useRef<HTMLModElement>(null);
   const pushedRef = useRef(false);
 
@@ -25,10 +32,11 @@ export function AdUnit({ slot, format = 'auto', className = '' }: AdUnitProps) {
     pathname === '/' ||
     pathname === '/pricing' ||
     pathname.startsWith('/about') ||
-    pathname.startsWith('/auth');
+    pathname.startsWith('/auth') ||
+    pathname.startsWith('/admin');
 
   useEffect(() => {
-    if (isExcluded || isPro || pushedRef.current) return;
+    if (loading || isExcluded || isPro || pushedRef.current) return;
 
     const element = adRef.current;
     if (!element) return;
@@ -56,35 +64,41 @@ export function AdUnit({ slot, format = 'auto', className = '' }: AdUnitProps) {
     observer.observe(element);
 
     return () => observer.disconnect();
-  }, [isExcluded, isPro]);
+  }, [loading, isExcluded, isPro]);
 
-  if (isExcluded || isPro) return null;
+  // isExcluded is synchronous (pathname-based) — safe to skip container entirely
+  if (isExcluded) return null;
+
+  const showAd = !loading && !isPro;
+  // Reserve space during loading; collapse only after auth confirms isPro
+  const minHeight = !loading && isPro ? '0' : (FORMAT_MIN_HEIGHT[format] || '280px');
 
   return (
     <div
       className={`ad-container my-6 ${className}`}
       style={{
-        aspectRatio: '728 / 280',
+        minHeight,
         width: '100%',
         maxWidth: '728px',
         margin: '1.5rem auto',
-        contain: 'layout style size',
-        minHeight: '280px',
+        overflow: 'hidden',
       }}
     >
-      <ins
-        ref={adRef}
-        className="adsbygoogle"
-        style={{
-          display: 'block',
-          width: '100%',
-          height: '100%',
-        }}
-        data-ad-client="ca-pub-2272972805493752"
-        data-ad-slot={slot}
-        data-ad-format={format}
-        data-full-width-responsive="true"
-      />
+      {showAd && (
+        <ins
+          ref={adRef}
+          className="adsbygoogle"
+          style={{
+            display: 'block',
+            width: '100%',
+            height: '100%',
+          }}
+          data-ad-client="ca-pub-2272972805493752"
+          data-ad-slot={slot}
+          data-ad-format={format}
+          data-full-width-responsive="true"
+        />
+      )}
     </div>
   );
 }

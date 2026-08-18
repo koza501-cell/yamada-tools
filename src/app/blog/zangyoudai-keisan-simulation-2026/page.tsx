@@ -3,6 +3,7 @@ import BlogAdUnit from "@/components/common/BlogAdUnit";
 import StaticAdSlot from "@/components/common/StaticAdSlot";
 import Link from "next/link";
 import ShareButtons from "@/components/blog/ShareButtons";
+import { BlogByline } from '@/components/BlogByline';
 
 const title = "【2026年最新】残業代の計算方法｜時給換算・割増率・未払い請求まで完全解説";
 const description = "残業代の正しい計算方法を徹底解説。基本給からの時給換算、25%・35%・50%の割増率、深夜・休日の計算例。未払い残業代の請求方法も紹介。yamada-tools.jpの無料ツールで実際にシミュレーション・計算が可能。中小企業・個人事業主・フリーランスの実務に役立つ情報を提供。";
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function ZangyoudaiKeisanSimulation2026Blog() {
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
+    <article className="max-w-[680px] mx-auto px-4 py-8">
       {/* JSON-LD Schema */}
       <script
         type="application/ld+json"
@@ -29,7 +30,7 @@ export default function ZangyoudaiKeisanSimulation2026Blog() {
             "description": "残業代の正しい計算方法を徹底解説。基本給からの時給換算、25%・35%・50%の割増率、深夜・休日の計算例。未払い残業代の請求方法も紹介。",
             "datePublished": "2026-04-14",
             "dateModified": "2026-04-14",
-            "author": {"@type": "Organization", "name": "山田ツール編集部"},
+            "author": {"@type": "Person", "name": "山田 フェサル", "knowsAbout": ["日本の経理実務", "PDF活用術", "ビジネス効率化", "日本の税務", "不動産情報"]},
             "publisher": {"@type": "Organization", "name": "合同会社山田トレード", "logo": {"@type": "ImageObject", "url": "https://yamada-tools.jp/logo-icon.webp"}},
             "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yamada-tools.jp/blog/zangyoudai-keisan-simulation-2026"}
           })
@@ -41,7 +42,7 @@ export default function ZangyoudaiKeisanSimulation2026Blog() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            "mainEntity": [{"@type":"Question","name":"固定残業代（みなし残業）の場合は？","acceptedAnswer":{"@type":"Answer","text":"固定残業代を超えた分は別途支払いが必要です。例えば「月30時間分の固定残業代」が含まれている場合、31時間目以降は追加で残業代が発生します。"}},{"@type":"Question","name":"管理職でも残業代はもらえる？","acceptedAnswer":{"@type":"Answer","text":"「名ばかり管理職」なら残業代の対象です。労働基準法の「管理監督者」に該当するには、経営に関する決定権、出退勤の自由、相応の待遇が必要。実態がなければ請求可能です。"}},{"@type":"Question","name":"休日出勤と残業の違いは？","acceptedAnswer":{"@type":"Answer","text":"法定休日（週1日）の出勤は35%割増。それ以外の休日（所定休日）は通常の時間外労働として25%割増になります。会社の就業規則で法定休日がいつか確認しましょう。"}},{"@type":"Question","name":"サービス残業は違法？","acceptedAnswer":{"@type":"Answer","text":"違法です。労働した時間に対して賃金を支払わないのは労働基準法違反。会社には是正勧告や罰則が科される可能性があります。"}}]
+            "mainEntity": [{"@type":"Question","name":"固定残業代（みなし残業）の場合は？","acceptedAnswer":{"@type":"Answer","text":"固定残業代を超えた分は別途支払いが必要です。例えば「月30時間分の固定残業代」が含まれている場合、31時間目以降は追加で残業代が発生します。"}},{"@type":"Question","name":"管理職でも残業代はもらえる？","acceptedAnswer":{"@type":"Answer","text":"「名ばかり管理職」なら残業代の対象です。労働基準法の「管理監督者」に該当するには、経営に関する決定権、出退勤の自由、相応の待遇が必要。実態がなければ請求可能です。"}},{"@type":"Question","name":"休日出勤と残業の違いは？","acceptedAnswer":{"@type":"Answer","text":"法定休日（週1日）の出勤は35%割増。それ以外の休日（所定休日）は通常の時間外労働として25%割増が適用されます。会社の就業規則で法定休日がいつか確認しましょう。"}},{"@type":"Question","name":"サービス残業は違法？","acceptedAnswer":{"@type":"Answer","text":"違法です。労働した時間に対して賃金を支払わないのは労働基準法違反。会社には是正勧告や罰則が科される可能性があります。"}}]
           })
         }}
       />
@@ -58,6 +59,7 @@ export default function ZangyoudaiKeisanSimulation2026Blog() {
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】残業代の計算方法｜時給換算・割増率・未払い請求まで完全解説</h1>
+      <BlogByline />
       <p className="text-gray-500 text-sm mb-8">最終更新: 2026年4月</p>
 
       <div className="bg-gray-50 border-l-4 border-gray-200 p-4 mb-8">
@@ -259,6 +261,10 @@ export default function ZangyoudaiKeisanSimulation2026Blog() {
         </div>
       </section>
 
+      <p className="text-gray-700 mb-4">未払い残業代は2年で時効になるため、心当たりのある方はぶっちゃけ早めに動いたほうがいいと思います。</p>
+
+
+
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">よくある質問（FAQ）</h2>
         <div className="space-y-4">
@@ -272,7 +278,7 @@ export default function ZangyoudaiKeisanSimulation2026Blog() {
           </details>
           <details className="bg-gray-50 rounded-lg p-4">
             <summary className="font-bold text-gray-800 cursor-pointer">Q. 休日出勤と残業の違いは？</summary>
-            <p className="mt-3 text-gray-700 border-t pt-3"><strong>法定休日（週1日）の出勤は35%割増</strong>。それ以外の休日（所定休日）は通常の時間外労働として25%割増になります。会社の就業規則で法定休日がいつか確認しましょう。</p>
+            <p className="mt-3 text-gray-700 border-t pt-3"><strong>法定休日（週1日）の出勤は35%割増</strong>。それ以外の休日（所定休日）は通常の時間外労働として25%割増が適用されます。会社の就業規則で法定休日がいつか確認しましょう。</p>
           </details>
           <details className="bg-gray-50 rounded-lg p-4">
             <summary className="font-bold text-gray-800 cursor-pointer">Q. サービス残業は違法？</summary>
