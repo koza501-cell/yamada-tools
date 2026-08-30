@@ -16,7 +16,7 @@ declare global {
 }
 
 const FORMAT_MIN_HEIGHT: Record<string, string> = {
-  horizontal: '90px',
+  horizontal: '100px', // Google full-width-responsive documented example for <=500px viewports is 320x100 (was 90px)
   rectangle: '250px',
   auto: '280px',
   vertical: '600px',
