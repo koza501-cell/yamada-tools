@@ -3,17 +3,43 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
+import { allTools } from '@/config/tools';
+
+// Slug -> Japanese name, sourced from the central tools registry (covers most
+// /tools, /tax, /finance, /realestate, /business, /career, ... tool pages).
+const registryToolNames: { [key: string]: string } = {};
+allTools.forEach((t) => {
+  const seg = t.path.split('/').filter(Boolean).pop();
+  if (seg && !registryToolNames[seg]) registryToolNames[seg] = t.nameJa;
+});
+
+// Readable fallback for slugs with no mapping anywhere (e.g. "kyuyo-tedori-keisan"
+// -> "Kyuyo Tedori Keisan"). Deterministic from the URL alone, so it never changes
+// after first paint - unlike a document.title-derived value, it can't cause CLS.
+function humanizeSlug(slug: string): string {
+  return slug
+    .split('-')
+    .map((w) => (w ? w.charAt(0).toUpperCase() + w.slice(1) : w))
+    .join(' ');
+}
 
 export default function Breadcrumbs() {
   const pathname = usePathname();
-  // FIX 6: track page title to show article title instead of raw slug
+  const isBlogPost = pathname.startsWith('/blog/');
+  // FIX 6: track page title to show article title instead of raw slug.
+  // Blog posts only - blog titles aren't in a static registry, so this is the
+  // only route type that still relies on a client-side document.title swap.
+  // (This causes a small late layout shift on blog pages; out of scope here -
+  // see CLS fix for /tools and /business/houjin, which removed this pattern
+  // for those templates because the async swap was the actual CLS root cause.)
   const [pageTitle, setPageTitle] = useState<string>('');
 
   useEffect(() => {
+    if (!isBlogPost) return;
     // document.title format: "記事タイトル | 山田ツール" → strip the suffix
     const title = document.title.replace(/ \| 山田ツール$/, '').trim();
     setPageTitle(title);
-  }, [pathname]);
+  }, [pathname, isBlogPost]);
 
   // Don't show breadcrumbs on homepage
   if (pathname === '/') return null;
@@ -164,6 +190,11 @@ export default function Breadcrumbs() {
     'formation-cost': 'Formation Cost Calculator',
     'visa-checker': 'Business Manager Visa Checker',
     'company-search': 'Company Search',
+
+    // Standalone tool pages not present in the config/tools.ts registry
+    'houjin': '法人情報',
+    'kyuyo-tedori-keisan': '給与手取り計算',
+    'zangyodai-keisan': '残業代計算',
   };
 
   // Build breadcrumb path
@@ -183,9 +214,16 @@ export default function Breadcrumbs() {
       name = categoryNames[segment] || segment;
     }
     // Second level: Tool/Page name
-    // FIX 6: for last segment, fall back to document.title-derived pageTitle
+    // FIX 6: for last segment, fall back to document.title-derived pageTitle -
+    // blog posts only. All other templates resolve synchronously (registry ->
+    // manual map -> humanized slug) so the label is correct on first paint and
+    // never changes afterward, avoiding the CLS this used to cause.
     else {
-      name = toolNames[segment] || (isLast && pageTitle) || segment;
+      name =
+        toolNames[segment] ||
+        registryToolNames[segment] ||
+        (isLast && isBlogPost && pageTitle) ||
+        (isLast ? humanizeSlug(segment) : segment);
     }
 
     breadcrumbs.push({
