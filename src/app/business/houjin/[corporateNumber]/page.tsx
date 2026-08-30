@@ -76,6 +76,11 @@ interface CompanyProfile {
   fetched_at: string;
 }
 
+interface RelatedCompany {
+  corporate_number: string;
+  name: string;
+}
+
 // ─── Data Fetching (Server-Side) ───────────────────────────────────────────
 const API_BASE = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || "http://localhost:8001";
 
@@ -90,6 +95,19 @@ async function fetchProfile(corporateNumber: string): Promise<CompanyProfile | n
     return data as CompanyProfile;
   } catch {
     return null;
+  }
+}
+
+async function fetchRelated(corporateNumber: string): Promise<RelatedCompany[]> {
+  try {
+    const res = await fetch(`${API_BASE}/api/gbiz/related/${corporateNumber}`, {
+      next: { revalidate: 2592000 }, // 30 days, matches profile cache
+    });
+    if (!res.ok) return [];
+    const data = await res.json();
+    return Array.isArray(data?.related) ? data.related : [];
+  } catch {
+    return [];
   }
 }
 
@@ -366,6 +384,8 @@ export default async function HoujinProfilePage({
   if (!profile) {
     notFound();
   }
+
+  const related = await fetchRelated(corporateNumber);
 
   const b = profile.basic;
   const hasFinance = profile.finance.length > 0;
@@ -656,6 +676,30 @@ export default async function HoujinProfilePage({
             ])}
           />
         </Section>
+
+        {/* 6.5. Related Companies (same registered postal-code area) */}
+        {related.length > 0 && (
+          <section className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-5">
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
+              近隣の企業
+            </h2>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">
+              登記上の郵便番号が近い法人（国税庁法人番号公表サイトのデータに基づく）
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {related.map((r) => (
+                <Link
+                  key={r.corporate_number}
+                  href={`/business/houjin/${r.corporate_number}`}
+                  className="text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:underline truncate py-1"
+                  title={r.name}
+                >
+                  {r.name}
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* 7. Related Tools */}
         <section className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-5">
