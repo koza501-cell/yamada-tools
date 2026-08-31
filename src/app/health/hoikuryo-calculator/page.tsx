@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   keywords: ["保育料 無償化 判定", "幼児教育 無償化 計算", "保育料 計算機", "認可保育所 料金", "幼稚園 無償化", "保育料 計算 シミュレーション", "認可外保育施設 補助", "保育料 第2子 第3子"],
   alternates: { canonical: "https://yamada-tools.jp/health/hoikuryo-calculator" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "保育料・幼稚園費用 無償化判定計算機【2026年版】",
     description: "世帯年収・子供の年齢から保育料と幼児教育無償化の適用を判定。完全無料・登録不要。",
     type: "website",

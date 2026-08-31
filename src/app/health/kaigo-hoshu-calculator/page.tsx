@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   keywords: ["介護報酬 計算機", "介護報酬 2024 改定", "介護サービス 利用者負担 計算", "訪問介護 報酬 単位数", "通所介護 報酬計算", "地域区分 単価", "処遇改善加算 計算"],
   alternates: { canonical: "https://yamada-tools.jp/health/kaigo-hoshu-calculator" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "介護報酬計算機【2024年改定対応】",
     description: "介護サービスの利用者負担・事業者受取額を自動計算。地域区分・加算対応。",
     type: "website",

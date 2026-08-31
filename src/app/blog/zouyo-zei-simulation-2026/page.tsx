@@ -10,6 +10,7 @@ const description = "年110万円の基礎控除、住宅取得資金の最大1,
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("贈与税はいくら？")}&type=blog&category=${encodeURIComponent("税金・贈与")}`;
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://yamada-tools.jp/blog/zouyo-zei-simulation-2026" },
   title, description,
   keywords: ["贈与税", "シミュレーション", "計算", "生前贈与", "110万円", "非課税"],
   openGraph: { title, description, type: "article", images: [{ url: ogImage, width: 1200, height: 630 }] },

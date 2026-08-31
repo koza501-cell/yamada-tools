@@ -10,6 +10,7 @@ const description = "副業収入20万円以下でも住民税は申告必要？
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("副業の税金はいくら？")}&type=blog&category=${encodeURIComponent("副業・税金")}`;
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://yamada-tools.jp/blog/fukugyou-zeikin-simulation-2026" },
   title, description,
   keywords: ["副業", "税金", "確定申告", "20万円", "住民税", "節税"],
   openGraph: { title, description, type: "article", images: [{ url: ogImage, width: 1200, height: 630 }] },

@@ -77,7 +77,7 @@ export default function VisaCheckerClient() {
         <nav className="text-sm text-gray-500 dark:text-gray-400">
           <Link href="/en" className="hover:text-pink-500 transition-colors">Home</Link>
           <span className="mx-2">{'>'}</span>
-          <Link href="/en/business" className="hover:text-pink-500 transition-colors">Business</Link>
+          <Link href="/en/business/company-search" className="hover:text-pink-500 transition-colors">Business</Link>
           <span className="mx-2">{'>'}</span>
           <span className="text-gray-900 dark:text-gray-100">Visa Checker</span>
         </nav>

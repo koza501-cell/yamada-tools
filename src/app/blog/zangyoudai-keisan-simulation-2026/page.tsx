@@ -10,6 +10,7 @@ const description = "残業代の正しい計算方法を徹底解説。基本�
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("残業代の計算方法")}&type=blog&category=${encodeURIComponent("給与・労働")}`;
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://yamada-tools.jp/blog/zangyoudai-keisan-simulation-2026" },
   title, description,
   keywords: ["残業代", "計算", "時給", "割増", "未払い", "請求"],
   openGraph: { title, description, type: "article", images: [{ url: ogImage, width: 1200, height: 630 }] },

@@ -10,6 +10,7 @@ const description = "資格取得の費用対効果を徹底解説。取得費�
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("資格取得ROI計算")}&type=blog&category=${encodeURIComponent("キャリア・資格")}`;
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://yamada-tools.jp/blog/shikaku-toshi-simulation-2026" },
   title, description,
   keywords: ["資格", "取得", "費用対効果", "ROI", "年収アップ", "投資回収"],
   openGraph: { title, description, type: "article", images: [{ url: ogImage, width: 1200, height: 630 }] },

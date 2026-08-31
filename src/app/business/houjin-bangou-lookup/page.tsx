@@ -136,6 +136,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://yamada-tools.jp/business/houjin-bangou-lookup" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "法人番号検索・確認ツール｜国税庁公式データ",
     description: "13桁の法人番号から会社情報・変更履歴を即取得。最大100件まで一括チェック可能。",
     type: "website",

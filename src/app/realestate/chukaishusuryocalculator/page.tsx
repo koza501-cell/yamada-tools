@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   keywords: ["仲介手数料 計算", "不動産 仲介手数料 上限", "仲介手数料 計算機", "3%+6万 計算", "賃貸 仲介手数料", "仲介手数料 無料 交渉"],
   alternates: { canonical: "https://yamada-tools.jp/realestate/chukaishusuryocalculator" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "不動産 仲介手数料計算機【法定上限・早見表付き】",
     description: "売買・賃貸の仲介手数料の法定上限を即計算。2024年改正対応。早見表付き。",
     type: "website",

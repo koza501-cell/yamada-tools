@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     '定款 目的 例', '事業目的 許認可', '法人 事業目的 サンプル',
   ],
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: '事業目的ジェネレーター【無料】定款の事業目的を業種から自動作成｜山田ツール',
     description: '業種を選ぶだけで定款の事業目的を自動生成。許認可警告付き。コピーしてそのまま使える。',
     type: 'website',

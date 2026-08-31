@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   description: "個人事業主と法人の税金・社会保険料を比較シミュレーション。法人化のタイミングを年収・売上から判断。無料・登録不要。",
   alternates: { canonical: "https://yamada-tools.jp/business/incorporation-simulator" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "法人化シミュレーター【無料】個人事業主vs法人を税金・社保で比較",
     description: "個人事業主と法人の税金・社会保険料を比較シミュレーション。法人化のタイミングを年収・売上から判断。無料・登録不要。",
     url: "https://yamada-tools.jp/business/incorporation-simulator",

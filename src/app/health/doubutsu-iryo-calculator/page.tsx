@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   keywords: ["ペット医療費 相場", "動物病院 費用", "ペット保険 計算", "犬 治療費", "猫 手術費用"],
   alternates: { canonical: "https://yamada-tools.jp/health/doubutsu-iryo-calculator" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "ペット医療費計算機【動物病院 費用相場チェッカー】",
     description: "犬・猫の治療・手術費用の全国相場を確認。ペット保険の自己負担額も計算。",
     type: "website",

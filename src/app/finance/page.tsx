@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://pub-a1dbb3c658b341fabe5015e209050298.r2.dev/og-finance-hub.png",
+        url: "https://yamada-tools.jp/api/og?title=%E9%87%91%E8%9E%8D%E3%83%BB%E8%B3%87%E7%94%A3%E9%81%8B%E7%94%A8%E3%83%84%E3%83%BC%E3%83%AB&type=blog&category=%E9%87%91%E8%9E%8D%E3%83%BB%E8%B3%87%E7%94%A3%E9%81%8B%E7%94%A8",
         width: 1200,
         height: 630,
         alt: "金融計算ツール",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "金融・資産運用ツール【無料】 | 山田ツール",
     description: "新NISA・iDeCo・住宅ローン・FX・老後資金など30種以上の金融計算ツール。",
-    images: ["https://pub-a1dbb3c658b341fabe5015e209050298.r2.dev/og-finance-hub.png"],
+    images: ["https://yamada-tools.jp/api/og?title=%E9%87%91%E8%9E%8D%E3%83%BB%E8%B3%87%E7%94%A3%E9%81%8B%E7%94%A8%E3%83%84%E3%83%BC%E3%83%AB&type=blog&category=%E9%87%91%E8%9E%8D%E3%83%BB%E8%B3%87%E7%94%A3%E9%81%8B%E7%94%A8"],
   },
 };
 

@@ -22,6 +22,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://yamada-tools.jp/realestate/hazard-checker" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "ハザードマップチェッカー — 5つの災害リスクを一括確認",
     description: "住所だけで洪水・土砂・液状化・津波・高潮リスクを即座に確認。国土交通省データ使用、無料。",
     type: "website",

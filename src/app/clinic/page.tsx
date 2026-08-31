@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { clinicTools } from '@/config/tools';
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://yamada-tools.jp/clinic" },
   title: 'クリニック経営ツール｜損益分岐点・人件費率・給与計算 | yamada-tools.jp',
   description: 'クリニック院長・医療事務向けの経営支援ツール集。損益分岐点シミュレーター、人件費率診断、医療スタッフ給与計算機など、厚労省データに基づいた完全無料ツール。',
   keywords: 'クリニック経営, 開業医 ツール, 医療法人 経営, 院長 業務効率化, クリニック 計算',

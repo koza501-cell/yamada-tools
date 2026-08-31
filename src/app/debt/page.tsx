@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   keywords: ["借金 返済 計算", "債務整理 診断", "リボ払い 計算", "ローン 利息 計算", "任意整理"],
   alternates: { canonical: "https://yamada-tools.jp/debt" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "借金返済シミュレーター【無料】返済計画・債務整理・リボ払い計算",
     description: "借金返済の完済期間・利息計算・任意整理・個人再生・自己破産の判定を無料で。リボ払いの危険度診断、繰り上げ返済の効果も計算。日本国内サーバー処理で安心。登録不要・完全無料の借金問題解決ツール集。",
     url: "https://yamada-tools.jp/debt",

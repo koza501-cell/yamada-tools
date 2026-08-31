@@ -40,6 +40,7 @@ export const metadata: Metadata = {
   keywords: ["給与明細 作成 無料", "給与明細 自動計算", "社会保険料 計算 自動", "健康保険料 都道府県別", "源泉徴収 所得税 計算", "給与明細 PDF 出力", "標準報酬月額 計算"],
   alternates: { canonical: "https://yamada-tools.jp/document/kyuyo-meisai" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "給与明細作成ツール【無料・登録不要・PDF出力】",
     description: "基本給を入力するだけで社会保険料・所得税を自動計算。美しいA4給与明細をPDF出力。",
     type: "website",

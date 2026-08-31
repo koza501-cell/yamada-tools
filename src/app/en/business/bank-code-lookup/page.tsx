@@ -107,7 +107,7 @@ export default function BankCodePage() {
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: "https://yamada-tools.jp/" },
       { "@type": "ListItem", position: 2, name: "English Tools", item: "https://yamada-tools.jp/en" },
-      { "@type": "ListItem", position: 3, name: "Business Tools", item: "https://yamada-tools.jp/en/business" },
+      { "@type": "ListItem", position: 3, name: "Business Tools", item: "https://yamada-tools.jp/en/business/company-search" },
       { "@type": "ListItem", position: 4, name: "Bank Code Lookup", item: pageUrl },
     ],
   };

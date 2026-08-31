@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/tools/koukousei-fuyoukoujo-minaoshi",
   },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "高校生扶養控除 見直し動向シミュレーター2026",
     description:
       "縮小案（未確定）実施時の増税影響と児童手当との差し引きを年収別に計算。16〜18歳の子どもを扶養する全世帯向け。",

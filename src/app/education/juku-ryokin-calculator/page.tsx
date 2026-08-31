@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   keywords: ["塾 月謝 計算", "習い事 費用 計算", "年間 教育費", "学習塾 費用", "子育て 費用", "教育費 比率", "季節講習 費用", "教育費 シミュレーション"],
   alternates: { canonical: "https://yamada-tools.jp/education/juku-ryokin-calculator" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "学習塾・習い事 月謝計算機【2026年版】",
     description: "複数の習い事の年間費用を合計。教育費比率・文科省統計との比較も。完全無料。",
     type: "website",

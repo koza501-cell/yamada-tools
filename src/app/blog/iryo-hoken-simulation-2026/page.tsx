@@ -10,6 +10,7 @@ const description = "医療保険の必要性を徹底解説。高額療養費�
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("医療保険シミュレーション")}&type=blog&category=${encodeURIComponent("保険・医療")}`;
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://yamada-tools.jp/blog/iryo-hoken-simulation-2026" },
   title, description,
   keywords: ["医療保険", "必要", "不要", "シミュレーション", "高額療養費", "保険料"],
   openGraph: { title, description, type: "article", images: [{ url: ogImage, width: 1200, height: 630 }] },

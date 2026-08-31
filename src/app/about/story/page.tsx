@@ -7,6 +7,7 @@ export const metadata: Metadata = {
     '日本の中小企業・個人事業主の方が、安心して使える業務ツールを。yamada-tools.jpの運営方針と、これまでの歩みについてご紹介します。',
   alternates: { canonical: 'https://yamada-tools.jp/about/story' },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: 'yamada-tools.jpができるまで｜運営ストーリー',
     description:
       '国内サーバー運営・公的データ活用・1人会社からでも使える価格帯。yamada-tools.jpが大切にしていること。',

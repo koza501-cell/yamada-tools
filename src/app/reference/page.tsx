@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   keywords: ["銀行コード 一覧", "支店コード", "日本 祝日", "祝日 カレンダー", "祝日 API"],
   alternates: { canonical: "https://yamada-tools.jp/reference" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "リファレンス情報【無料】銀行コード一覧・日本の祝日カレンダー",
     description: "全国の銀行コード・支店コード一覧、日本の祝日カレンダー（年間・月別・カスタムAPI対応）を無料で確認。経理担当者・システム開発者・スケジュール管理に。データは公式情報源から取得し常に最新。登録不要・完全無料。",
     url: "https://yamada-tools.jp/reference",

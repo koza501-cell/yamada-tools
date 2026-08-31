@@ -636,7 +636,7 @@ export default function PropertyReportClient() {
         <ol className="flex items-center gap-2 flex-wrap">
           <li><Link href="/" className="hover:underline">Home</Link></li>
           <li>›</li>
-          <li><Link href="/en/business" className="hover:underline">Business Tools</Link></li>
+          <li><Link href="/en/business/company-search" className="hover:underline">Business Tools</Link></li>
           <li>›</li>
           <li className="text-gray-700 dark:text-gray-200 font-medium">Property Report</li>
         </ol>

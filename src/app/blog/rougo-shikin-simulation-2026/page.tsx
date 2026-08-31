@@ -10,6 +10,7 @@ const description = "夫婦で月25万円・65歳以降30年なら9,000万円必
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("老後資金はいくら必要？")}&type=blog&category=${encodeURIComponent("資産運用・老後")}`;
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://yamada-tools.jp/blog/rougo-shikin-simulation-2026" },
   title, description,
   keywords: ["老後資金", "2000万円問題", "シミュレーション", "年金", "必要額"],
   openGraph: { title, description, type: "article", images: [{ url: ogImage, width: 1200, height: 630 }] },
@@ -142,7 +143,7 @@ export default function RougoShikinSimulation2026Blog() {
         <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
           <p className="text-lg font-bold text-kon mb-2">🔧 あなたの老後資金を計算！</p>
           <p className="text-gray-700 mb-4">年齢・収入・生活費を入力して、必要な老後資金をシミュレーションしましょう。</p>
-          <Link href="/finance/retirement-simulator" className="inline-block bg-violet-500 hover:bg-violet-600 text-white font-bold py-3 px-6 rounded-lg transition">
+          <Link href="/blog/rougo-shikin-simulation-2026" className="inline-block bg-violet-500 hover:bg-violet-600 text-white font-bold py-3 px-6 rounded-lg transition">
             → 老後資金シミュレーターを使う
           </Link>
         </div>
@@ -264,7 +265,7 @@ export default function RougoShikinSimulation2026Blog() {
         
         <div className="bg-gradient-to-r from-violet-500 to-kon text-white rounded-lg p-6 text-center">
           <p className="text-lg font-bold mb-4">あなたの老後資金をシミュレーション</p>
-          <Link href="/finance/retirement-simulator" className="inline-block bg-white text-violet-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition">
+          <Link href="/blog/rougo-shikin-simulation-2026" className="inline-block bg-white text-violet-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition">
             → 老後資金シミュレーターを使う
           </Link>
         </div>
@@ -273,7 +274,7 @@ export default function RougoShikinSimulation2026Blog() {
       <section className="mb-10">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">🔗 あわせて使えるツール</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Link href="/finance/retirement-simulator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-violet-300 transition">
+          <Link href="/blog/rougo-shikin-simulation-2026" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-violet-300 transition">
             <span className="font-bold text-gray-800">老後資金シミュレーター</span>
             <p className="text-sm text-gray-600">必要な老後資金を計算</p>
           </Link>

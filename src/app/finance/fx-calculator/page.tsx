@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     locale: "ja_JP",
     type: "website",
     images: [{
-      url: "https://pub-a1dbb3c658b341fabe5015e209050298.r2.dev/og-finance-fx-calculator.png",
+      url: "https://yamada-tools.jp/api/og?title=FX%E6%90%8D%E7%9B%8A%E8%A8%88%E7%AE%97%E6%A9%9F&type=blog&category=%E8%B3%87%E7%94%A3%E9%81%8B%E7%94%A8",
       width: 1200,
       height: 630,
       alt: "FX損益計算機",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "FX損益計算機【無料】損益・証拠金・ロスカット・確定申告計算",
     description: "FX取引の損益・必要証拠金・ロスカットレート・スワップ収益・確定申告税額を無料で計算。複数取引の一括計算や損失繰越控除シミュレーターも対応。登録不要。",
-    images: ["https://pub-a1dbb3c658b341fabe5015e209050298.r2.dev/og-finance-fx-calculator.png"],
+    images: ["https://yamada-tools.jp/api/og?title=FX%E6%90%8D%E7%9B%8A%E8%A8%88%E7%AE%97%E6%A9%9F&type=blog&category=%E8%B3%87%E7%94%A3%E9%81%8B%E7%94%A8"],
   },
 };
 

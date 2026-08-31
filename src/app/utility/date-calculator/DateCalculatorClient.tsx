@@ -404,8 +404,6 @@ export default function DateCalculatorPage() {
   const relatedTools = [
     { href: "/utility/age-calculator", label: "年齢計算機", desc: "生年月日から年齢・和暦を計算" },
     { href: "/health/pregnancy-calculator", label: "妊娠週数・出産予定日計算機", desc: "妊娠期間・出産予定日を計算" },
-    { href: "/utility/hourly-to-annual", label: "時給→年収換算ツール", desc: "時給から年収・月収を計算" },
-    { href: "/utility/discount-calculator", label: "割引・値引き計算機", desc: "割引後の金額を計算" },
   ];
 
   return (

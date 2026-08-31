@@ -10,6 +10,7 @@ const description = "所得税の計算方法を徹底解説。年収300万〜15
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("所得税の計算方法")}&type=blog&category=${encodeURIComponent("税金・給与")}`;
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://yamada-tools.jp/blog/shotokuzei-keisan-simulation-2026" },
   title, description,
   keywords: ["所得税", "計算", "年収", "手取り", "早見表", "控除"],
   openGraph: { title, description, type: "article", images: [{ url: ogImage, width: 1200, height: 630 }] },

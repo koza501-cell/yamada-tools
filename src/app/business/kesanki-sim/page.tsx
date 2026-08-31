@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     '会社設立月 決算期 関係', '決算期 届出期限',
   ],
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: '決算期シミュレーター【無料】最適な決算月を即判定｜山田ツール',
     description: '設立月から最適な決算期を自動計算。消費税免税の最大化、届出期限、繁忙期回避まで考慮。',
     type: 'website',

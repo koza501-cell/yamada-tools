@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   keywords: ["建設 材料費 見積もり", "内装工事 費用 計算", "フローリング 材料費", "クロス張替え 費用", "外壁塗装 費用計算"],
   alternates: { canonical: "https://yamada-tools.jp/business/kensetsu-mitsumori-calculator" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "建設・内装工事 材料費見積もり計算機",
     description: "工事種別・面積から必要材料量と費用目安を自動計算。",
     type: "website",

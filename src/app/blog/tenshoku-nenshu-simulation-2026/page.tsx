@@ -10,6 +10,7 @@ const description = "転職による年収アップの相場を徹底解説。20
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("転職で年収はいくら上がる？")}&type=blog&category=${encodeURIComponent("転職・キャリア")}`;
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://yamada-tools.jp/blog/tenshoku-nenshu-simulation-2026" },
   title, description,
   keywords: ["転職", "年収アップ", "シミュレーション", "年収交渉", "転職相場"],
   openGraph: { title, description, type: "article", images: [{ url: ogImage, width: 1200, height: 630 }] },

@@ -4,6 +4,7 @@ import { getToolById } from "@/config/tools";
 import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://yamada-tools.jp/finance/invoice-soneki-calculator" },
   title: "インボイス登録 損益判定ツール【免税事業者向け】| 山田ツール",
   description: "免税事業者がインボイス登録すべきか、消費税負担と手取りの変化を計算。原則課税・簡易課税・2割特例を比較して最適な選択を判定。",
 };

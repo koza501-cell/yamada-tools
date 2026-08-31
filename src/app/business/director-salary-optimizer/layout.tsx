@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://yamada-tools.jp/business/director-salary-optimizer" },
   title: "【無料】役員報酬 最適化シミュレーター｜法人税と所得税の総負担を最小化する報酬額を自動計算",
   description: "法人税・個人所得税・社会保険料の総負担を最小化する最適役員報酬を自動計算。複数シナリオ比較・配偶者役員対応。2026年最新税制対応。登録不要・完全無料。",
   openGraph: {

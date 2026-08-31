@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   keywords: ["整骨院 療養費 計算", "接骨院 保険適用 費用", "柔道整復師 療養費", "整骨院 料金 相場", "捻挫 接骨院 費用"],
   alternates: { canonical: "https://yamada-tools.jp/health/seikotsuin-ryoyohi-calculator" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "整骨院・接骨院 療養費目安計算機【保険適用チェック】",
     description: "施術部位・回数から保険適用の目安を計算。捻挫・打撲・骨折の自己負担額を算出。",
     type: "website",

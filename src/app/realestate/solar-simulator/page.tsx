@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   keywords: ["太陽光発電 投資回収", "ソーラーパネル シミュレーション", "太陽光 元が取れる", "FIT 売電 計算", "太陽光発電 費用対効果", "発電量 計算"],
   alternates: { canonical: "https://yamada-tools.jp/realestate/solar-simulator" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "太陽光発電 投資回収シミュレーター【中立・無料】",
     description: "全47都道府県対応。設置費用・発電量から投資回収年数を中立計算。完全無料。",
     type: "website",

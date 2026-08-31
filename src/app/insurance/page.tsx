@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   keywords: ["保険 シミュレーター", "医療保険 計算", "生命保険 必要額", "高額療養費 計算", "遺族年金"],
   alternates: { canonical: "https://yamada-tools.jp/insurance" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "保険シミュレーター【無料】医療保険・生命保険の必要保障額を計算",
     description: "医療保険の給付金・生命保険の必要保障額を無料シミュレーション。高額療養費制度・遺族年金を考慮した正確な試算で、あなたに本当に必要な保険金額がわかります。登録不要・日本国内サーバー処理。",
     url: "https://yamada-tools.jp/insurance",

@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   description: "フリーランス・個人事業主の所得税・住民税・国民健康保険料を一括計算。確定申告前の手取り試算に。無料・登録不要。",
   alternates: { canonical: "https://yamada-tools.jp/business/freelance-tax-calculator" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "フリーランス税金計算機【無料】所得税・住民税・国保を一括計算",
     description: "フリーランス・個人事業主の所得税・住民税・国民健康保険料を一括計算。確定申告前の手取り試算に。無料・登録不要。",
     url: "https://yamada-tools.jp/business/freelance-tax-calculator",

@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://yamada-tools.jp/finance/overtime-calculator" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "残業代計算機 — 固定残業代・深夜・休日対応",
     description: "月給から残業代を即座に計算。固定残業代・60時間超え対応。登録不要・無料。",
     type: "website",

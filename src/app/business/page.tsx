@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://yamada-tools.jp/business" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "ビジネス・法人ツール【無料35種】会社設立・法人税・社会保険・補助金",
     description: "会社設立から税務シミュレーション、公的データ照会まで。中小企業・フリーランスの経営判断を支える無料ツール集。",
     url: "https://yamada-tools.jp/business",

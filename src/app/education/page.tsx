@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   keywords: ["教育費 シミュレーター", "塾代 計算", "偏差値 計算", "資格 ROI", "学費 比較"],
   alternates: { canonical: "https://yamada-tools.jp/education" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "教育費シミュレーター【無料】塾代・学費・偏差値・資格ROI計算",
     description: "幼稚園から大学までの教育費総額、塾代の比較、偏差値の計算、資格取得の費用対効果を無料で算出。公立・私立の選択別比較、学資保険vsNISA比較も対応。子育て家庭の教育費計画を支援する完全無料ツール集。",
     url: "https://yamada-tools.jp/education",

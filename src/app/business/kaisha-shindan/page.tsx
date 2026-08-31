@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     '会社形態 選び方', '会社設立 診断', '法人成り 判断',
   ],
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: '会社形態診断ツール【無料】あなたに最適な法人形態は？｜山田ツール',
     description: '8つの質問に答えるだけ。株式会社・合同会社・社団法人・個人事業から最適な形態を診断。',
     type: 'website',

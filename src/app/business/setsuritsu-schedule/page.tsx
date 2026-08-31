@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     '法務局 登記 日数', '会社設立 最短', '設立準備 チェックリスト',
   ],
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: '設立スケジュールシミュレーター【無料】逆算カレンダーを自動作成｜山田ツール',
     description: '設立希望日を入力 → 全ステップの日程を土日祝考慮で自動逆算。KK・GK対応。',
     type: 'website',

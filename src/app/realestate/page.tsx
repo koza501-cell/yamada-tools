@@ -18,6 +18,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://yamada-tools.jp/realestate" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "不動産情報ツール【無料】用途地域・ハザード・地価・学区",
     description: "住所だけで用途地域・ハザードマップ・地価・学区を確認。国土交通省データ使用、完全無料。",
     url: "https://yamada-tools.jp/realestate",

@@ -304,7 +304,7 @@ export const relatedToolSets = {
   ],
   imageCompress: [
     { id: "resize-image", nameJa: "画像のサイズを変更する", icon: "📐", path: "/image/resize" },
-    { id: "convert-image", nameJa: "JPG・PNG・WebPを相互変換する", icon: "🔄", path: "/image/convert" },
+    { id: "convert-image", nameJa: "JPG・PNG・WebPを相互変換する", icon: "🔄", path: "/image/format-convert" },
     { id: "compress", nameJa: "PDFファイルを圧縮して軽くする", icon: "📦", path: "/pdf/compress" },
     { id: "image-to-pdf", nameJa: "複数の画像をPDFにまとめる", icon: "📄", path: "/pdf/image-to-pdf" },
   ],

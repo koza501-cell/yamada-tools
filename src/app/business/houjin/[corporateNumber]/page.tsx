@@ -143,6 +143,8 @@ export async function generateMetadata({
   const rawDesc = `${name}の法人情報を無料で閲覧。所在地：${location}。基本情報に加え、補助金・入札・認定・財務データを1ページで確認。出典：経済産業省Gビズインフォ`;
   const description = rawDesc.length > 150 ? rawDesc.slice(0, 150) + "…" : rawDesc;
 
+  const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent(name)}&type=blog&category=${encodeURIComponent("法人情報")}`;
+
   return {
     title,
     description,
@@ -150,6 +152,13 @@ export async function generateMetadata({
       title: `${name} | 法人情報 | 山田ツール`,
       description,
       type: "website",
+      images: [{ url: ogImage, width: 1200, height: 630, alt: name }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${name} | 法人情報 | 山田ツール`,
+      description,
+      images: [ogImage],
     },
     alternates: {
       canonical: `https://yamada-tools.jp/business/houjin/${corporateNumber}`,

@@ -130,7 +130,6 @@ const COST_TABLE = [
 ];
 
 const RELATED_TOOLS = [
-  { href: "/education/scholarship-repayment", label: "奨学金返済シミュレーター" },
   { href: "/education/deviation-score", label: "偏差値計算機" },
   { href: "/finance/nisa-simulator", label: "NISAシミュレーター" },
   { href: "/insurance/life-insurance-calculator", label: "生命保険必要保障額計算機" },

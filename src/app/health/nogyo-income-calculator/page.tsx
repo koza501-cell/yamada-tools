@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://yamada-tools.jp/health/nogyo-income-calculator" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "農業所得計算機 — 確定申告・青色申告控除対応",
     description: "農業の売上・経費から所得と所得税を自動計算。青色申告控除・確定申告必要判定付き。無料。",
     type: "website",

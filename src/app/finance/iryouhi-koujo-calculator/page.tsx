@@ -4,6 +4,7 @@ import { getToolById } from "@/config/tools";
 import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://yamada-tools.jp/finance/iryouhi-koujo-calculator" },
   title: "医療費控除 計算機【セルフメディケーション税制比較対応】| 山田ツール",
   description: "年間の医療費から医療費控除額と節税効果を計算。セルフメディケーション税制との比較・どちらが有利か判定付き。家族全員分の医療費を合算可能。",
 };

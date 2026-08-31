@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     "全銀フォーマット 半角カナ",
   ],
   alternates: {
-    canonical: "https://yamada-tools.jp/blog/zengin-format-kanzen-guide",
+    canonical: "https://yamada-tools.jp/blog/zengin-format-complete-guide-2026",
   },
   openGraph: {
     title,
@@ -66,7 +66,7 @@ export default function ZenginFormatKanzenGuideBlog() {
             },
             mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": "https://yamada-tools.jp/blog/zengin-format-kanzen-guide",
+              "@id": "https://yamada-tools.jp/blog/zengin-format-complete-guide-2026",
             },
             keywords: "全銀フォーマット,FBフォーマット,全銀ファイル,CSV変換,給与振込,総合振込,経理",
           }),
@@ -86,7 +86,7 @@ export default function ZenginFormatKanzenGuideBlog() {
                 "@type": "ListItem",
                 position: 3,
                 name: "全銀フォーマット完全ガイド",
-                item: "https://yamada-tools.jp/blog/zengin-format-kanzen-guide",
+                item: "https://yamada-tools.jp/blog/zengin-format-complete-guide-2026",
               },
             ],
           }),
@@ -831,7 +831,7 @@ export default function ZenginFormatKanzenGuideBlog() {
         </div>
       </section>
 
-      <ShareButtons url="https://yamada-tools.jp/blog/zengin-format-kanzen-guide" title="全銀フォーマット完全ガイド【2026年最新】" />
+      <ShareButtons url="https://yamada-tools.jp/blog/zengin-format-complete-guide-2026" title="全銀フォーマット完全ガイド【2026年最新】" />
 
       <p className="text-xs text-gray-400 mt-8 leading-relaxed border-t pt-4">
         この記事は2026年5月時点の情報に基づいています。全銀フォーマットの仕様や各銀行のサービス内容は変更される場合があります。実際の振込作業の前に、取引銀行のマニュアルや担当者にご確認ください。

@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     locale: "ja_JP",
     type: "website",
     images: [{
-      url: "https://pub-a1dbb3c658b341fabe5015e209050298.r2.dev/og-finance-nisa-simulator.png",
+      url: "https://yamada-tools.jp/api/og?title=%E6%96%B0NISA%E3%82%B7%E3%83%9F%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC&type=blog&category=%E8%B3%87%E7%94%A3%E9%81%8B%E7%94%A8",
       width: 1200,
       height: 630,
       alt: "新NISAシミュレーター",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "新NISAシミュレーター【無料】積立・節税額・1800万枠を計算｜複数シナリオ比較",
     description: "新NISAの積立シミュレーションを無料で。毎月の積立額・利回り・期間を入力するだけで将来資産・節税額・非課税枠の使用率を自動計算。",
-    images: ["https://pub-a1dbb3c658b341fabe5015e209050298.r2.dev/og-finance-nisa-simulator.png"],
+    images: ["https://yamada-tools.jp/api/og?title=%E6%96%B0NISA%E3%82%B7%E3%83%9F%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC&type=blog&category=%E8%B3%87%E7%94%A3%E9%81%8B%E7%94%A8"],
   },
 };
 
@@ -127,7 +127,7 @@ const tool = getToolById("nisa-simulator")!;
 export default function Page() {
   const relatedTools = [
     { href: "/finance/ideco-nisa-comparison", icon: "📊", label: "iDeCo vs NISA比較", description: "どちらが得か徹底比較" },
-    { href: "/finance/retirement-simulator", icon: "👴", label: "老後資金シミュレーター", description: "老後に必要な資金を計算" },
+    { href: "/blog/rougo-shikin-simulation-2026", icon: "👴", label: "老後資金シミュレーター", description: "老後に必要な資金を計算" },
     { href: "/finance/net-salary-calculator", icon: "💴", label: "給与手取り計算機", description: "月給から手取り額を計算" },
     { href: "/finance/depreciation-calculator", icon: "📉", label: "減価償却計算機", description: "定額法・定率法を比較計算" },
   ];

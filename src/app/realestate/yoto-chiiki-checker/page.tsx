@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import YotoChiikiClient from "./client";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://yamada-tools.jp/realestate/yoto-chiiki-checker" },
   title: "用途地域チェッカー — 住所を入力するだけ | 山田ツール",
   description:
     "住所を入力するだけで用途地域を即座に確認。第一種低層住居専用地域など13種類をわかりやすく解説。建ぺい率・容積率も自動表示。国土交通省データ使用、完全無料。",
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
     "Japan zoning regulations English",
   ],
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "用途地域チェッカー — 住所を入力するだけ",
     description: "住所だけで用途地域・建ぺい率・容積率を即座に確認。13種類を平易な日本語で解説。",
     type: "website",

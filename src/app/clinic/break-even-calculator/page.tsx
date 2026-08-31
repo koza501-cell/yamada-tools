@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   keywords: ["クリニック 損益分岐点", "必要患者数 計算", "開業医 シミュレーション", "損益分岐点比率", "限界利益率", "診療科別 単価"],
   alternates: { canonical: "https://yamada-tools.jp/clinic/break-even-calculator" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "クリニック損益分岐点・必要患者数シミュレーター",
     description: "診療科別の平均診療単価から損益分岐点と1日に必要な患者数を即計算。完全無料・登録不要。",
     type: "website",

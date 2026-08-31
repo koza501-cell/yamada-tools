@@ -10,6 +10,7 @@ const description = "法人化のメリット・デメリットを徹底解説�
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("法人化シミュレーション")}&type=blog&category=${encodeURIComponent("ビジネス・起業")}`;
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://yamada-tools.jp/blog/houjinka-simulation-2026" },
   title, description,
   keywords: ["法人化", "法人成り", "個人事業主", "会社設立", "節税", "シミュレーション"],
   openGraph: { title, description, type: "article", images: [{ url: ogImage, width: 1200, height: 630 }] },

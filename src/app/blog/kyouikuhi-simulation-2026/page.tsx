@@ -10,6 +10,7 @@ const description = "子どもの教育費を徹底解説。幼稚園・小学�
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("教育費シミュレーション")}&type=blog&category=${encodeURIComponent("教育・子育て")}`;
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://yamada-tools.jp/blog/kyouikuhi-simulation-2026" },
   title, description,
   keywords: ["教育費", "学費", "シミュレーション", "大学", "私立", "公立"],
   openGraph: { title, description, type: "article", images: [{ url: ogImage, width: 1200, height: 630 }] },

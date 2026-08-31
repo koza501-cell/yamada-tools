@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   keywords: ["美容室 歩合 計算", "美容師 給料 計算", "スタイリスト 歩合給", "美容室 人件費率", "業務委託 美容師 計算", "指名料 歩合"],
   alternates: { canonical: "https://yamada-tools.jp/business/biyoshitsu-buai-calculator" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "美容室 スタッフ歩合給計算機【無料】",
     description: "売上・指名・店販歩合から手取りまで一発計算。社保・所得税控除対応。",
     type: "website",

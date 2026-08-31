@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     '法人 最低限 コスト', '会社維持費 シミュレーション',
   ],
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: '法人維持費シミュレーター【無料】年間ランニングコストを即計算｜山田ツール',
     description: '赤字でも必ずかかる法人住民税・社会保険・税理士費用まで。会社の年間維持費の全体像を無料で計算。',
     type: 'website',

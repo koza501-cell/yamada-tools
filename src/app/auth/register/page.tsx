@@ -197,7 +197,7 @@ export default function RegisterPage() {
                 </label>
                 <span className="text-sm text-gray-600">
                   <Link
-                    href="/legal/terms"
+                    href="/terms"
                     className="text-kon hover:underline"
                     target="_blank"
                     onClick={(e) => e.stopPropagation()}
@@ -245,7 +245,7 @@ export default function RegisterPage() {
 
         <div className="mt-6 text-center text-xs text-gray-500">
           <div className="flex items-center justify-center gap-4">
-            <Link href="/legal/terms" className="hover:underline">利用規約</Link>
+            <Link href="/terms" className="hover:underline">利用規約</Link>
             <Link href="/legal/privacy" className="hover:underline">プライバシーポリシー</Link>
             <Link href="/about/company" className="hover:underline">会社概要</Link>
           </div>

@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/tools/130man-no-kabe-2026",
   },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "130万円の壁 シミュレーター2026｜2026年4月改正対応",
     description:
       "契約ベース判定（2026年4月〜）対応。通勤手当込みの正確な計算で扶養内か即判定。超過時の保険料負担も試算。",

@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/business/gaikokujin-visa-calculator",
   },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "外国人採用 ビザ費用計算機【技術・人文・国際業務ビザ対応】",
     description:
       "技術・人文知識・国際業務ビザの申請費用を採用人数・国籍から計算。行政書士費用・更新費用を試算。",

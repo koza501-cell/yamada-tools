@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     '雇用保険 適用事業所設置届', '法人設立後 税務署', '会社設立後 届出 いつまで',
   ],
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: '設立後届出ナビゲーター【無料】会社設立後にやること完全チェックリスト｜山田ツール',
     description: '設立日を入力 → 届出先・期限・書類が自動表示。税務署から年金事務所まで全手続きをカバー。',
     type: 'website',

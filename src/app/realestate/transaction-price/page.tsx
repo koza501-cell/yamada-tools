@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://yamada-tools.jp/realestate/transaction-price" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "不動産取引価格チェッカー — 住所で実際の売買相場を確認",
     description: "住所だけで近隣の不動産実取引価格を確認。㎡単価・坪単価・総額表示。土地・マンション・一戸建て対応。",
     type: "website",

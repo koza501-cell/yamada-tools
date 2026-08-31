@@ -829,7 +829,7 @@ export default function OvertimeCalculatorPage() {
               { href: "/career/job-change-simulator", label: "転職年収シミュレーター", desc: "転職後の手取りと年収変化を計算" },
               { href: "/tax/income-tax-calculator", label: "所得税・住民税 計算機", desc: "年収から税負担をシミュレーション" },
               { href: "/career/unemployment-calculator", label: "失業給付金計算機", desc: "雇用保険の給付額と受給期間を計算" },
-              { href: "/finance/retirement-simulator", label: "老後資金シミュレーター", desc: "老後に必要な資金と不足額を計算" },
+              { href: "/blog/rougo-shikin-simulation-2026", label: "老後資金シミュレーター", desc: "老後に必要な資金と不足額を計算" },
             ].map((tool) => (
               <Link
                 key={tool.href}

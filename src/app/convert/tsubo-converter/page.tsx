@@ -60,6 +60,7 @@ export const metadata: Metadata = {
     "Japanese area unit converter", "坪 ㎡ 変換"
   ],
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "坪・面積変換ツール | Tsubo Area Converter",
     description: "坪（tsubo）⇄ 平米・畳・sq ft・acres・hectares を一括変換。Free Japanese tsubo converter for real estate.",
     url: "https://yamada-tools.jp/convert/tsubo-converter",

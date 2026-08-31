@@ -10,6 +10,7 @@ const description = "子1人なら3,000万、住宅ローン残あり共働き�
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("生命保険の必要額")}&type=blog&category=${encodeURIComponent("保険・ライフプラン")}`;
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://yamada-tools.jp/blog/seimei-hoken-simulation-2026" },
   title, description,
   keywords: ["生命保険", "必要額", "シミュレーション", "遺族年金", "死亡保障", "保険金"],
   openGraph: { title, description, type: "article", images: [{ url: ogImage, width: 1200, height: 630 }] },
@@ -318,7 +319,7 @@ export default function SeimeiHokenSimulation2026Blog() {
             <span className="font-bold text-gray-800">医療保険シミュレーター</span>
             <p className="text-sm text-gray-600">医療保険の必要性を診断</p>
           </Link>
-          <Link href="/finance/retirement-simulator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-teal-300 transition">
+          <Link href="/blog/rougo-shikin-simulation-2026" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-teal-300 transition">
             <span className="font-bold text-gray-800">老後資金シミュレーター</span>
             <p className="text-sm text-gray-600">老後に必要な資金を計算</p>
           </Link>

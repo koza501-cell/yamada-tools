@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   keywords: ["転職 シミュレーター", "残業代 計算", "失業保険 計算", "社会保険 計算", "副業 税金", "年収の壁"],
   alternates: { canonical: "https://yamada-tools.jp/career" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "キャリア・給与計算ツール【無料】転職・残業代・失業保険・社会保険",
     description: "転職シミュレーター・残業代計算・失業保険・年収の壁チェッカー・副業税金・社会保険料・退職金・昇給シミュレーターなどキャリアと給与の計算を無料で。手取り額の正確な試算で転職判断・年収交渉に役立つ。登録不要・日本国内サーバー処理。",
     url: "https://yamada-tools.jp/career",

@@ -20,6 +20,7 @@ export async function generateMetadata({
     alternates: { canonical: isFirstPage ? "https://yamada-tools.jp/blog" : `https://yamada-tools.jp/blog?page=${pageNum}` },
     robots: isFirstPage ? "index, follow" : "noindex, follow",
     openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
       title: "ビジネス効率化・PDF・税務の実践ノウハウ | 山田ツール ブログ",
       description: "ビジネス効率化・PDF活用・不動産情報の実践ノウハウを発信。",
       url: isFirstPage ? "https://yamada-tools.jp/blog" : `https://yamada-tools.jp/blog?page=${pageNum}`,

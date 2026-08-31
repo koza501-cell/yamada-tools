@@ -197,7 +197,7 @@ export default function TransparencyPage() {
 
           <div className="mt-8 text-center space-y-4">
             <div className="flex justify-center gap-4 flex-wrap">
-              <Link href="/legal/terms" className="text-kon hover:underline text-sm">
+              <Link href="/terms" className="text-kon hover:underline text-sm">
                 利用規約
               </Link>
               <Link href="/legal/privacy" className="text-kon hover:underline text-sm">

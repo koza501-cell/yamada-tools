@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/health/shogai-nenkin-calculator",
   },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "障害年金 受給額 簡易計算機【等級別・基礎年金・厚生年金対応】",
     description:
       "障害等級・加入状況から障害年金の受給額を計算。申請前の目安確認に。無料・登録不要。",

@@ -76,8 +76,8 @@ const RELATED_TOOLS = [
   { nameJa: '📖 クリニック経営の数字管理ガイド', path: '/blog/clinic-keiei-suji-kanri-guide' },
   { nameJa: 'クリニック損益分岐点シミュレーター', path: '/clinic/break-even-calculator' },
   { nameJa: '医療スタッフ給与計算機', path: '/clinic/medical-staff-payroll-calculator', coming: true },
-  { nameJa: '法人化節税シミュレーター', path: '/finance/houjinka-setsuzei-calculator' },
-  { nameJa: '人件費シミュレーター', path: '/business/jinkenhi-shiyuki' },
+  { nameJa: '法人化節税シミュレーター', path: '/finance' },
+  { nameJa: '人件費シミュレーター', path: '/business' },
 ];
 
 function BarChart({ own, official, ideal }: { own: number; official: number; ideal: number }) {

@@ -10,6 +10,7 @@ const description = "固定資産税の計算方法を徹底解説。新築住�
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("固定資産税の計算方法")}&type=blog&category=${encodeURIComponent("不動産・税金")}`;
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://yamada-tools.jp/blog/kotei-shisanzei-simulation-2026" },
   title, description,
   keywords: ["固定資産税", "計算", "新築", "軽減", "評価額", "シミュレーション"],
   openGraph: { title, description, type: "article", images: [{ url: ogImage, width: 1200, height: 630 }] },

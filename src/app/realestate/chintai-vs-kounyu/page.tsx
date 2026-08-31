@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/realestate/chintai-vs-kounyu",
   },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "賃貸 vs 購入 比較シミュレーター【中立・35年コスト計算】",
     description:
       "賃貸と購入の生涯コストを中立的に比較。35年・50年の総費用と損益分岐点を計算。不動産会社のバイアスなし。",

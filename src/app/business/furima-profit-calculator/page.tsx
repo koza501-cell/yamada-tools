@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://yamada-tools.jp/business/furima-profit-calculator" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "古物商・フリマ仕入れ利益計算機 — メルカリ・eBay・ヤフオク対応",
     description: "仕入れ値・手数料・送料から利益と利益率を自動計算。損益分岐点・目標利益率逆算付き。無料。",
     type: "website",

@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://yamada-tools.jp/finance/depreciation-calculator" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "減価償却計算機 — 定額法・定率法を比較",
     description: "定額法・定率法の減価償却を比較計算。耐用年数プルダウン・グラフ付き。無料。",
     type: "website",

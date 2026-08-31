@@ -43,6 +43,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       url: `${siteUrl}/ai/${slug}`,
       type: 'article',
       publishedTime: post.publishDate || post.publishedAt,
+      images: [{
+        url: post.featuredImage || `${siteUrl}/api/og?title=${encodeURIComponent(post.title)}&type=ai-recipe&category=${encodeURIComponent(post.category || '')}`,
+        width: 1200,
+        height: 630,
+      }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description,
+      images: [post.featuredImage || `${siteUrl}/api/og?title=${encodeURIComponent(post.title)}&type=ai-recipe&category=${encodeURIComponent(post.category || '')}`],
     },
   };
 }

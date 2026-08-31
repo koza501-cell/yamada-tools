@@ -24,6 +24,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://yamada-tools.jp/health" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "健康計算ツール【無料】 | 山田ツール",
     description:
       "BMI・カロリー・理想体重・睡眠・妊娠・アルコール・平均寿命を無料で計算。登録不要。",

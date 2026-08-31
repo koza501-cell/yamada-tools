@@ -7,7 +7,8 @@ export const metadata: Metadata = {
   title: "法人財務情報ツール【無料】売上・利益・株主を法人番号で検索｜gBizINFO",
   description: "13桁の法人番号から売上高・営業利益・純利益・総資産などの経営指標と主要株主情報を無料で検索。経済産業省gBizINFO公式データ。登録不要。",
   keywords: ["法人財務情報", "企業財務", "売上高", "営業利益", "主要株主", "法人番号", "gBizINFO", "無料"],
-  openGraph: { title: "法人財務情報ツール【無料】", description: "法人番号から売上高・利益・総資産・主要株主を無料で確認。", type: "website" },
+  openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }], title: "法人財務情報ツール【無料】", description: "法人番号から売上高・利益・総資産・主要株主を無料で確認。", type: "website" },
   alternates: { canonical: "https://yamada-tools.jp/business/houjin-zaimu" },
 };
 

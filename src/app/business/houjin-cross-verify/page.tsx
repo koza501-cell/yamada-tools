@@ -89,6 +89,7 @@ export const metadata: Metadata = {
   keywords: ["法人番号 名前 一致", "法人名 法人番号 確認", "クロス検証", "インボイス 取引先 検証", "T番号 名前 確認", "KYC 法人番号", "法人番号 照合", "会社名 法人番号 一致確認"],
   alternates: { canonical: "https://yamada-tools.jp/business/houjin-cross-verify" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "法人名×法人番号 クロス検証ツール｜国税庁公式データ",
     description: "会社名と13桁/T番号が一致するか即座にクロス検証。最大50件まで一括検証可能。",
     type: "website",

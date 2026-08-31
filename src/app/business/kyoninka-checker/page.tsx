@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     '許認可 届出先', '許認可 費用', '開業 届出 一覧',
   ],
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: '許認可チェッカー【無料】業種別に必要な免許・届出を即判定｜山田ツール',
     description: '事業内容を選ぶだけで必要な許認可を即判定。届出先・費用・期間まで一覧表示。',
     type: 'website',

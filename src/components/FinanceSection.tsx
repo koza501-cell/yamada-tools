@@ -33,7 +33,7 @@ const financeTools = [
     name: "老後資金シミュレーター",
     description: "年金・iDeCo・NISA・退職金・取り崩しを総合シミュレーション",
     icon: "🏦",
-    url: "/finance/retirement-simulator",
+    url: "/blog/rougo-shikin-simulation-2026",
     keywords: "老後資金 シミュレーター",
   },
   {
@@ -78,7 +78,7 @@ function generateFinanceSectionSchema(siteUrl: string) {
         "@type": "ListItem",
         "position": 4,
         "name": "老後資金シミュレーター",
-        "url": `${siteUrl}/finance/retirement-simulator`,
+        "url": `${siteUrl}/blog/rougo-shikin-simulation-2026`,
       },
       {
         "@type": "ListItem",

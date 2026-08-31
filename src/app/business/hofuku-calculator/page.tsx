@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://yamada-tools.jp/business/hofuku-calculator" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "建設業 法定福利費計算機 — 見積書記載額を自動計算",
     description: "労務費から法定福利費を自動計算。見積書テキスト一括コピー付き。2024年度最新保険料率対応。",
     type: "website",

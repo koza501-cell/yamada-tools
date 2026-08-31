@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/health/shiryo-cost-calculator",
   },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "酪農・畜産 飼料コスト計算機【頭数別・月間飼料費計算】",
     description:
       "乳牛・肉牛・豚・鶏の頭数と飼料種別から月間飼料費を計算。飼料高騰対策の経営改善に。",

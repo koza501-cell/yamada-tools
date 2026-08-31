@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   keywords: ["iDeCo 節税 計算", "NISA 効果 計算", "iDeCo シミュレーター", "新NISA 積立 計算", "老後資金 計算"],
   alternates: { canonical: "https://yamada-tools.jp/finance/ideco-nisa-calculator" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "iDeCo・NISA 節税効果計算機【2025年最新】",
     description: "iDeCo・NISAで実際にいくら節税・資産形成できるか中立的に計算。",
     type: "website",

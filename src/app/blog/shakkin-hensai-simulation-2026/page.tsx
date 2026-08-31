@@ -10,6 +10,7 @@ const description = "借金返済の計画を徹底解説。毎月の返済額�
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("借金返済シミュレーション")}&type=blog&category=${encodeURIComponent("借金・ローン")}`;
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://yamada-tools.jp/blog/shakkin-hensai-simulation-2026" },
   title, description,
   keywords: ["借金返済", "シミュレーション", "完済", "繰り上げ返済", "おまとめローン", "利息"],
   openGraph: { title, description, type: "article", images: [{ url: ogImage, width: 1200, height: 630 }] },

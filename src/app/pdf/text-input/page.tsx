@@ -106,13 +106,13 @@ export const metadata: Metadata = {
     url: "https://yamada-tools.jp/pdf/text-input",
     siteName: "山田ツール",
     locale: "ja_JP",
-    images: [{ url: "https://yamada-tools.jp/og-tools/pdf-text-input.png", width: 1200, height: 630, alt: "PDFに文字入力 - 山田ツール" }],
+    images: [{ url: "https://yamada-tools.jp/api/og?title=PDF%E3%81%AB%E6%96%87%E5%AD%97%E5%85%A5%E5%8A%9B&type=blog&category=PDF%E3%83%BB%E6%9B%B8%E9%A1%9E", width: 1200, height: 630, alt: "PDFに文字入力 - 山田ツール" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "PDFに文字入力・電子ハンコ 無料",
     description: "登録不要・ゼロアップロードでPDFに文字やハンコを追加。完全無料。",
-    images: ["https://yamada-tools.jp/og-tools/pdf-text-input.png"],
+    images: ["https://yamada-tools.jp/api/og?title=PDF%E3%81%AB%E6%96%87%E5%AD%97%E5%85%A5%E5%8A%9B&type=blog&category=PDF%E3%83%BB%E6%9B%B8%E9%A1%9E"],
   },
   alternates: {
     canonical: "https://yamada-tools.jp/pdf/text-input",

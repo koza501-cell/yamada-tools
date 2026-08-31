@@ -107,7 +107,6 @@ const QUICK_TABLE = [
 ];
 
 const RELATED_TOOLS = [
-  { href: "/education/scholarship-repayment", label: "奨学金返済シミュレーター" },
   { href: "/education/education-cost-simulator", label: "教育費積立シミュレーター" },
   { href: "/education/certification-roi", label: "資格取得費用対効果計算機" },
   { href: "/utility/age-calculator", label: "年齢計算機" },

@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   keywords: ["年収の壁", "103万円の壁", "123万円の壁", "扶養 計算", "パート 年収 損", "配偶者控除"],
   alternates: { canonical: "https://yamada-tools.jp/finance/nennshu-kabe-simulator" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "年収の壁シミュレーター【2025年改正・123万円対応】",
     description: "パート・配偶者の年収が壁を超えたらいくら損するか計算。",
     type: "website",

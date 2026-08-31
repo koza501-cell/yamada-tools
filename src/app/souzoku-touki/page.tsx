@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   keywords:
     "相続登記, 相続登記 自分で, 相続登記 義務化, 登録免許税 計算, 法務局 検索, 相続登記 必要書類, 無料",
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "相続登記、自分でできる。最大15万円節約 | 山田ツール",
     description:
       "ケース診断・書類チェック・税額計算・法務局検索まで、相続登記DIYに必要なツールをすべて無料で提供。",

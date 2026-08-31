@@ -10,6 +10,7 @@ const description = "退職金の計算方法を徹底解説。勤続20年で約
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("退職金の計算方法と相場")}&type=blog&category=${encodeURIComponent("転職・キャリア")}`;
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://yamada-tools.jp/blog/taishokukin-simulation-2026" },
   title, description,
   keywords: ["退職金", "計算", "シミュレーション", "相場", "勤続年数", "税金"],
   openGraph: { title, description, type: "article", images: [{ url: ogImage, width: 1200, height: 630 }] },
@@ -306,7 +307,7 @@ export default function TaishokukinSimulation2026Blog() {
             <span className="font-bold text-gray-800">転職年収シミュレーター</span>
             <p className="text-sm text-gray-600">転職後の年収を試算</p>
           </Link>
-          <Link href="/finance/retirement-simulator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-gray-200 transition">
+          <Link href="/blog/rougo-shikin-simulation-2026" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-gray-200 transition">
             <span className="font-bold text-gray-800">老後資金シミュレーター</span>
             <p className="text-sm text-gray-600">退職金を含めた老後資金を計算</p>
           </Link>

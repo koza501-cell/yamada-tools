@@ -219,7 +219,7 @@ export default function FairUsagePage() {
                 よくある質問（FAQ）
               </Link>
               <Link
-                href="/legal/terms"
+                href="/terms"
                 className="text-kon hover:underline text-sm"
               >
                 利用規約

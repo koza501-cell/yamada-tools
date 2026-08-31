@@ -10,6 +10,7 @@ const description = "パート・アルバイトの年収の壁を徹底解説�
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("年収の壁 103万・130万・150万")}&type=blog&category=${encodeURIComponent("税金・社会保険")}`;
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://yamada-tools.jp/blog/nenshu-kabe-simulation-2026" },
   title, description,
   keywords: ["年収の壁", "103万", "106万", "130万", "150万", "扶養", "社会保険"],
   openGraph: { title, description, type: "article", images: [{ url: ogImage, width: 1200, height: 630 }] },

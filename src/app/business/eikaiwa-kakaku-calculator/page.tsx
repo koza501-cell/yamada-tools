@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   keywords: ["英会話 レッスン料金 相場", "フリーランス 英語講師 単価", "英会話教室 料金設定", "語学教室 適正価格"],
   alternates: { canonical: "https://yamada-tools.jp/business/eikaiwa-kakaku-calculator" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "英会話・語学教室 レッスン単価計算機",
     description: "目標年収から適正なレッスン料金を逆算。経費・税・社保を含む損益計算。",
     type: "website",

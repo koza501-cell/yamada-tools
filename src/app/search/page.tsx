@@ -10,6 +10,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   return {
     title: q ? `「${q}」の検索結果 | 山田ツール` : "ツール検索 | 山田ツール",
     description: ((`山田ツールで「${q}」に関するツールを検索した結果です。`)||"").length>150?((`山田ツールで「${q}」に関するツールを検索した結果です。`)||"").slice(0,150)+"…":((`山田ツールで「${q}」に関するツールを検索した結果です。`)||""),
+    alternates: { canonical: "https://yamada-tools.jp/search" },
   };
 }
 

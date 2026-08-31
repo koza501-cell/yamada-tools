@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   keywords: ["年齢 計算", "日付 計算", "単位 変換", "坪 畳 変換", "曜日 計算"],
   alternates: { canonical: "https://yamada-tools.jp/utility" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "便利計算ツール【無料】年齢計算・日付計算・単位変換",
     description: "年齢・干支・星座の自動計算、日数計算・日付加算・曜日計算、坪・畳・尺など日本独自の単位変換に完全対応。日常業務や手続きで頻繁に使う計算をブラウザだけで瞬時に処理。登録不要・完全無料・スマホ対応。",
     url: "https://yamada-tools.jp/utility",

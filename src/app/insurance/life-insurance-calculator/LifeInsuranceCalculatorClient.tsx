@@ -657,7 +657,7 @@ export default function LifeInsuranceCalculatorPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {[
               { href: "/insurance/medical-insurance-sim", label: "医療保険 入院給付金シミュレーター", desc: "入院日数・手術から給付金を試算" },
-              { href: "/finance/retirement-simulator", label: "老後資金シミュレーター", desc: "老後に必要な資金と不足額を計算" },
+              { href: "/blog/rougo-shikin-simulation-2026", label: "老後資金シミュレーター", desc: "老後に必要な資金と不足額を計算" },
               { href: "/tax/income-tax-calculator", label: "所得税・住民税 計算機", desc: "年収から税負担をシミュレーション" },
               { href: "/finance/ideco-nisa-comparison", label: "iDeCo・NISA 比較ツール", desc: "非課税制度の節税効果を比較" },
             ].map((tool) => (

@@ -13,13 +13,13 @@ export const metadata: Metadata = {
     url: "https://yamada-tools.jp/en/pdf-text-input",
     siteName: "Yamada Tools",
     locale: "en_US",
-    images: [{ url: "https://yamada-tools.jp/og-tools/pdf-text-input.png", width: 1200, height: 630, alt: "Add Text to PDF - Yamada Tools" }],
+    images: [{ url: "https://yamada-tools.jp/api/og?title=Add%20Text%20to%20PDF%20Free%20Online&type=blog&category=PDF%20Tools", width: 1200, height: 630, alt: "Add Text to PDF - Yamada Tools" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Add Text to PDF Free Online | Yamada Tools",
     description: "Free browser-based PDF editor. No sign-up, no file upload.",
-    images: ["https://yamada-tools.jp/og-tools/pdf-text-input.png"],
+    images: ["https://yamada-tools.jp/api/og?title=Add%20Text%20to%20PDF%20Free%20Online&type=blog&category=PDF%20Tools"],
   },
   alternates: {
     canonical: "https://yamada-tools.jp/en/pdf-text-input",

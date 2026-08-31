@@ -529,7 +529,7 @@ export default function InheritanceTaxCalculatorClient() {
               { href: "/tax/gift-tax-calculator", label: "贈与税 計算機", desc: "贈与金額から贈与税額を計算" },
               { href: "/tax/income-tax-calculator", label: "所得税・住民税 計算機", desc: "年収・家族構成から税負担をシミュレーション" },
               { href: "/insurance/life-insurance-calculator", label: "生命保険 必要保障額計算機", desc: "年収・家族構成から必要な保険金額を診断" },
-              { href: "/finance/retirement-simulator", label: "老後資金シミュレーター", desc: "老後に必要な資金と不足額を計算" },
+              { href: "/blog/rougo-shikin-simulation-2026", label: "老後資金シミュレーター", desc: "老後に必要な資金と不足額を計算" },
             ].map((tool) => (
               <Link
                 key={tool.href}

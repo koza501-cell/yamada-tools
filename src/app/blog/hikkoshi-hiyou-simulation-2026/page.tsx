@@ -10,6 +10,7 @@ const description = "単身近距離4万円、家族長距離20万円が目安�
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("引越し費用の相場")}&type=blog&category=${encodeURIComponent("不動産・引越し")}`;
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://yamada-tools.jp/blog/hikkoshi-hiyou-simulation-2026" },
   title, description,
   keywords: ["引越し費用", "相場", "単身", "家族", "初期費用", "シミュレーション"],
   openGraph: { title, description, type: "article", images: [{ url: ogImage, width: 1200, height: 630 }] },

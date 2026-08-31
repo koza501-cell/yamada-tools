@@ -10,6 +10,7 @@ const description = "社会保険料の計算方法を徹底解説。健康保�
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("社会保険料の計算")}&type=blog&category=${encodeURIComponent("給与・社会保険")}`;
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://yamada-tools.jp/blog/shakai-hoken-simulation-2026" },
   title, description,
   keywords: ["社会保険料", "計算", "健康保険", "厚生年金", "標準報酬月額", "手取り"],
   openGraph: { title, description, type: "article", images: [{ url: ogImage, width: 1200, height: 630 }] },

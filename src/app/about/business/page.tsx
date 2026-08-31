@@ -267,7 +267,7 @@ export default function BusinessPage() {
             <div className="flex flex-wrap gap-3">
               <Link href="/legal/privacy" className="text-sm text-kon hover:underline">プライバシーポリシー</Link>
               <span className="text-gray-300">|</span>
-              <Link href="/legal/terms" className="text-sm text-kon hover:underline">利用規約</Link>
+              <Link href="/terms" className="text-sm text-kon hover:underline">利用規約</Link>
               <span className="text-gray-300">|</span>
               <Link href="/legal/tokushoho" className="text-sm text-kon hover:underline">特定商取引法に基づく表記</Link>
               <span className="text-gray-300">|</span>

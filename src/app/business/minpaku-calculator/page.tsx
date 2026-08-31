@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   keywords: ["民泊 収益 計算", "Airbnb 収益 シミュレーター", "民泊 180日制限", "住宅宿泊事業法", "民泊 投資回収", "民泊 利回り", "民泊 経営 試算", "Airbnb 経費"],
   alternates: { canonical: "https://yamada-tools.jp/business/minpaku-calculator" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "民泊・Airbnb 収益計算機【180日制限対応・2026年版】",
     description: "民泊の年間収益・投資回収を計算。住宅宿泊事業法の180日制限対応。完全無料。",
     type: "website",

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     locale: "ja_JP",
     type: "website",
     images: [{
-      url: "https://pub-a1dbb3c658b341fabe5015e209050298.r2.dev/og-finance-jutaku-loan.png",
+      url: "https://yamada-tools.jp/api/og?title=%E4%BD%8F%E5%AE%85%E3%83%AD%E3%83%BC%E3%83%B3%E8%A8%88%E7%AE%97%E6%A9%9F&type=blog&category=%E4%BD%8F%E5%AE%85%E3%83%AD%E3%83%BC%E3%83%B3",
       width: 1200,
       height: 630,
       alt: "住宅ローン計算機",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "住宅ローン計算機【無料】月返済額・繰上返済・控除・借り換えを計算",
     description: "住宅ローンの月々返済額・総返済額・住宅ローン控除を無料計算。",
-    images: ["https://pub-a1dbb3c658b341fabe5015e209050298.r2.dev/og-finance-jutaku-loan.png"],
+    images: ["https://yamada-tools.jp/api/og?title=%E4%BD%8F%E5%AE%85%E3%83%AD%E3%83%BC%E3%83%B3%E8%A8%88%E7%AE%97%E6%A9%9F&type=blog&category=%E4%BD%8F%E5%AE%85%E3%83%AD%E3%83%BC%E3%83%B3"],
   },
 };
 

@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   keywords: ["法人化 節税 計算", "個人事業主 法人化 目安", "法人化 メリット シミュレーター", "法人税 個人税 比較", "合同会社 節税"],
   alternates: { canonical: "https://yamada-tools.jp/finance/hojinka-simulator" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "個人事業主 法人化 節税シミュレーター",
     description: "年収・経費から個人事業と法人の税負担を比較。いくら稼いだら法人化すべきか？",
     type: "website",

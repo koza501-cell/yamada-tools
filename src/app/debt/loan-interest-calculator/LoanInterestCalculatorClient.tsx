@@ -658,15 +658,11 @@ export default function LoanInterestCalculator() {
               <div className="font-medium text-gray-700 text-sm mb-1">借金返済シミュレーター</div>
               <div className="text-xs text-gray-400">完済日・総利息を詳細計算</div>
             </Link>
-            <Link href="/debt/debt-free-calculator" className="block p-4 bg-white border border-gray-200 rounded-xl hover:border-ai hover:shadow-sm transition">
-              <div className="font-medium text-gray-700 text-sm mb-1">借金完済計算機</div>
-              <div className="text-xs text-gray-400">目標期間から必要返済額を逆算</div>
-            </Link>
-            <Link href="/loan/mortgage-calculator" className="block p-4 bg-white border border-gray-200 rounded-xl hover:border-ai hover:shadow-sm transition">
+            <Link href="/finance/jutaku-loan" className="block p-4 bg-white border border-gray-200 rounded-xl hover:border-ai hover:shadow-sm transition">
               <div className="font-medium text-gray-700 text-sm mb-1">住宅ローン計算機</div>
               <div className="text-xs text-gray-400">月々返済額・総返済額を計算</div>
             </Link>
-            <Link href="/savings/interest-calculator" className="block p-4 bg-white border border-gray-200 rounded-xl hover:border-ai hover:shadow-sm transition">
+            <Link href="/finance" className="block p-4 bg-white border border-gray-200 rounded-xl hover:border-ai hover:shadow-sm transition">
               <div className="font-medium text-gray-700 text-sm mb-1">預金利息計算機</div>
               <div className="text-xs text-gray-400">預金の利息を複利・単利で計算</div>
             </Link>

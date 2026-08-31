@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   keywords: ["駐車場 収益 計算", "コインパーキング 収益シミュレーション", "月極駐車場 利回り 計算", "駐車場 投資 回収期間", "コインパーキング 月極 比較", "土地活用 駐車場 収益"],
   alternates: { canonical: "https://yamada-tools.jp/realestate/parking-revenue-calculator" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "駐車場収益計算機 — 月極・コインパーキング比較",
     description: "月極・コインパーキングの収益・投資回収期間を比較計算。空き率スライダー対応。",
     type: "website",

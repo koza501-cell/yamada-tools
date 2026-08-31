@@ -4,6 +4,7 @@ import { getToolById } from "@/config/tools";
 import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://yamada-tools.jp/finance/haigusha-kojo-calculator" },
   title: "配偶者控除・配偶者特別控除 計算機【2026年改正対応】| 山田ツール",
   description: "配偶者の年収と世帯主の年収を入力するだけで控除額を自動計算。2026年改正の136万円・178万円の壁にも対応。年末調整・確定申告に。",
 };

@@ -10,6 +10,7 @@ const description = "相続税の基礎控除は3,000万円＋600万円×法定�
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("【2026年最新】相続税シミュレーション完全ガイド")}&type=blog&category=${encodeURIComponent("相続・贈与")}`;
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://yamada-tools.jp/blog/souzokuzei-simulation-2026" },
   title, description,
   keywords: ["相続税", "シミュレーション", "基礎控除", "計算", "税率", "節税"],
   openGraph: { title, description, type: "article", images: [{ url: ogImage, width: 1200, height: 630 }] },
@@ -276,7 +277,7 @@ export default function SouzokuzeiSimulation2026Blog() {
             <span className="font-bold text-gray-800">ふるさと納税シミュレーター</span>
             <p className="text-sm text-gray-600">相続人自身の節税対策に</p>
           </Link>
-          <Link href="/finance/retirement-simulator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-indigo-300 transition">
+          <Link href="/blog/rougo-shikin-simulation-2026" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-indigo-300 transition">
             <span className="font-bold text-gray-800">老後資金シミュレーター</span>
             <p className="text-sm text-gray-600">相続と老後資金の両面で計画を</p>
           </Link>

@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://yamada-tools.jp/realestate/school-district" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "学区チェッカー — 住所で小学校・中学校の学区を確認",
     description: "住所だけで小学校区・中学校区を即座に確認。引越し・不動産購入前の学区確認に。子育て世帯向け無料ツール。",
     type: "website",

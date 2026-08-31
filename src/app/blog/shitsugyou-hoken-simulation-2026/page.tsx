@@ -10,6 +10,7 @@ const description = "失業保険（雇用保険）の受給額を徹底解説�
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("失業保険はいくらもらえる？")}&type=blog&category=${encodeURIComponent("転職・キャリア")}`;
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://yamada-tools.jp/blog/shitsugyou-hoken-simulation-2026" },
   title, description,
   keywords: ["失業保険", "雇用保険", "シミュレーション", "受給額", "いくら", "計算"],
   openGraph: { title, description, type: "article", images: [{ url: ogImage, width: 1200, height: 630 }] },

@@ -23,6 +23,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://yamada-tools.jp/tax" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "税金計算ツール【無料】 | 山田ツール",
     description:
       "所得税・消費税・ふるさと納税控除上限・相続税・贈与税を無料で計算。登録不要。",

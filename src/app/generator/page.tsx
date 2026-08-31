@@ -26,6 +26,7 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/generator",
   },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "暮らし・便利ツール【無料】 | 山田ツール",
     description:
       "QR・パスワード・和暦・電子印鑑など、暮らしや業務に役立つ無料ツール集。",

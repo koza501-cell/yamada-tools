@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     '資本金 目安', '合同会社 資本金', '株式会社 資本金 最低',
   ],
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: '資本金決定ガイド【無料】最適な資本金額を自動計算｜山田ツール',
     description: '業種・経費・融資・許認可から最適な資本金額を算出。消費税免税ラインも考慮。',
     type: 'website',

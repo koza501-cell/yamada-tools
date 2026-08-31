@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     locale: "ja_JP",
     type: "website",
     images: [{
-      url: "https://pub-a1dbb3c658b341fabe5015e209050298.r2.dev/og-finance-ideco-nisa-comparison.png",
+      url: "https://yamada-tools.jp/api/og?title=iDeCo%20vs%20NISA%20%E6%AF%94%E8%BC%83%E3%83%84%E3%83%BC%E3%83%AB&type=blog&category=%E8%B3%87%E7%94%A3%E9%81%8B%E7%94%A8",
       width: 1200,
       height: 630,
       alt: "iDeCo vs NISA 比較ツール",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "iDeCo vs NISA 比較ツール【無料】節税額・手取り・最適配分を自動計算",
     description: "iDeCoとNISAをあなたの年収・職業・予算で徹底比較。節税額・最終手取り・最適配分を自動計算。併用シミュレーション・おすすめ診断・職業別iDeCo上限も無料。登録不要。",
-    images: ["https://pub-a1dbb3c658b341fabe5015e209050298.r2.dev/og-finance-ideco-nisa-comparison.png"],
+    images: ["https://yamada-tools.jp/api/og?title=iDeCo%20vs%20NISA%20%E6%AF%94%E8%BC%83%E3%83%84%E3%83%BC%E3%83%AB&type=blog&category=%E8%B3%87%E7%94%A3%E9%81%8B%E7%94%A8"],
   },
 };
 

@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     'KK設立費用', 'GK設立費用', '会社設立コスト'
   ],
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: '会社設立費用シミュレーター【2026年最新】｜山田ツール',
     description: '株式会社・合同会社・社団法人の設立にかかる全費用を即計算。法定費用＋隠れコスト＋月間維持費まで一目でわかる。',
     type: 'website',

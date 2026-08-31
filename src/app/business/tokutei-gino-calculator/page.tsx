@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   keywords: ["特定技能 費用 計算", "特定技能 採用費用", "特定技能 登録支援機関 費用", "特定技能外国人 雇用 費用", "在留資格 特定技能 申請費", "送り出し機関 手数料"],
   alternates: { canonical: "https://yamada-tools.jp/business/tokutei-gino-calculator" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "特定技能 在留資格 費用計算機",
     description: "特定技能外国人採用の総費用を職種・国籍別に自動計算。費用内訳・手続き期間も確認。",
     type: "website",

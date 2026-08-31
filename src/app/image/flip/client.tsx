@@ -13,7 +13,7 @@ const RELATED_TOOLS = [
   { emoji: "🔄", label: "画像回転", href: "/image/rotate", desc: "画像を任意の角度に回転" },
   { emoji: "✂️", label: "リサイズ", href: "/image/resize", desc: "画像のサイズを変更" },
   { emoji: "🖼️", label: "圧縮", href: "/image/compress", desc: "画像ファイルを軽量化" },
-  { emoji: "📄", label: "PDF変換", href: "/image/to-pdf", desc: "画像をPDFに変換" },
+  { emoji: "📄", label: "PDF変換", href: "/pdf/image-to-pdf", desc: "画像をPDFに変換" },
 ];
 
 const MIME = { PNG: "image/png", JPG: "image/jpeg", WebP: "image/webp" };

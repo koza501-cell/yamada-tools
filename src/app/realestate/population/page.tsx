@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://yamada-tools.jp/realestate/population" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "人口推計チェッカー — 住所で2050年までの人口変化を確認",
     description: "住所だけで500mメッシュ単位の人口推計（2020〜2070年）を確認。移住・不動産・事業立地の参考に。",
     type: "website",

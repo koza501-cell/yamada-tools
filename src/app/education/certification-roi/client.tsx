@@ -143,7 +143,6 @@ const FAQ_LIST = [
 ];
 
 const RELATED_TOOLS = [
-  { href: "/education/scholarship-repayment", label: "奨学金返済シミュレーター" },
   { href: "/education/deviation-score", label: "偏差値計算機" },
   { href: "/career/job-change-simulator", label: "転職年収シミュレーター" },
   { href: "/career/salary-negotiation", label: "給与交渉額シミュレーター" },

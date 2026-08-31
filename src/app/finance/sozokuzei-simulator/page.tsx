@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   keywords: ["相続税 計算", "相続税 シミュレーター", "相続税 いくら", "基礎控除 計算", "相続税 かかるか"],
   alternates: { canonical: "https://yamada-tools.jp/finance/sozokuzei-simulator" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "相続税 簡易シミュレーター【相続税がかかるかチェック】",
     description: "遺産と相続人を入力するだけで相続税の有無と概算額を計算。",
     type: "website",

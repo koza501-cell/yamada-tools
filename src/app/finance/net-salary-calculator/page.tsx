@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://yamada-tools.jp/finance/net-salary-calculator" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "給与手取り計算機 — 月給から手取りを即座に計算",
     description: "月給から手取り額・社会保険内訳を計算。扶養家族考慮。登録不要・無料。",
     type: "website",

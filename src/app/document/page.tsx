@@ -19,6 +19,7 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/document",
   },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "ビジネス書類作成ツール【無料】 | 山田ツール",
     description:
       "請求書・見積書・封筒印刷・全銀フォーマットなど、日本のビジネスに必要な25種以上のツールを無料で。",

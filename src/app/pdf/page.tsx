@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/pdf",
   },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "PDFツール【無料】 | 山田ツール",
     description:
       "PDF結合・圧縮・分割・変換など35種以上の無料PDFツール。日本国内サーバーで安心。",

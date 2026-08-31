@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   keywords: ["軽貨物 運賃 計算", "配送料金 計算機", "軽貨物ドライバー 単価", "運賃 見積もり", "運送業 料金", "標準的運賃", "軽貨物 相場", "ドライバー 手取り 計算"],
   alternates: { canonical: "https://yamada-tools.jp/business/unchin-calculator" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "軽貨物・運送業 運賃計算機【標準的運賃 令和6年版】",
     description: "距離・荷物・待機時間から配送料金の目安を計算。軽貨物ドライバー向け。完全無料。",
     type: "website",

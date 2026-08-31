@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     'マイクロ法人 国保 比較', 'マイクロ法人 厚生年金', 'マイクロ法人 損益分岐点',
   ],
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: 'マイクロ法人シミュレーター【無料】社会保険料の節約額を即計算｜山田ツール',
     description: '個人事業主 vs マイクロ法人二刀流。国保＋国民年金と協会けんぽ＋厚生年金の保険料差額を計算。',
     type: 'website',

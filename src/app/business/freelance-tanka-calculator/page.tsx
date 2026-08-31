@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   keywords: ["フリーランス 単価 相場", "ITエンジニア 単価 2025", "フリーランス 年収 診断", "適正単価 計算", "フリーランス 時間単価"],
   alternates: { canonical: "https://yamada-tools.jp/business/freelance-tanka-calculator" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "フリーランス 適正単価・年収診断ツール【2025年最新相場】",
     description: "スキル・経験・職種から適正な時間単価・月額単価を診断。",
     type: "website",

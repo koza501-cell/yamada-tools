@@ -10,6 +10,7 @@ const description = "新NISAの積立シミュレーションを無料で計算�
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("【2026年最新】新NISAシミュレーション完全ガイド")}&type=blog&category=${encodeURIComponent("資産運用")}`;
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://yamada-tools.jp/blog/nisa-simulation-2026" },
   title,
   description,
   keywords: ["新NISA", "シミュレーション", "2026", "積立", "つみたて投資枠", "成長投資枠"],
@@ -382,7 +383,7 @@ export default function NisaSimulation2026Blog() {
             <span className="font-bold text-gray-800">住宅ローンシミュレーター</span>
             <p className="text-sm text-gray-600">住宅購入と資産形成を両立させたい方に</p>
           </Link>
-          <Link href="/finance/retirement-simulator" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-sakura transition">
+          <Link href="/blog/rougo-shikin-simulation-2026" className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-sakura transition">
             <span className="font-bold text-gray-800">老後資金シミュレーター</span>
             <p className="text-sm text-gray-600">何歳まで働けば大丈夫？を計算</p>
           </Link>

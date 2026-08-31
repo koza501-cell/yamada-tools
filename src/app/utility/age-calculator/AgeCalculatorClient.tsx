@@ -643,7 +643,6 @@ export default function AgeCalculatorPage() {
           <div className="space-y-2">
             {[
               { href: "/utility/date-calculator", label: "日付・日数 計算機" },
-              { href: "/utility/hourly-to-annual", label: "時給→年収換算ツール" },
               { href: "/health/bmi-calculator", label: "BMI・適正体重 計算機" },
               { href: "/tax/income-tax-calculator", label: "所得税・住民税 計算機" },
             ].map((l) => (

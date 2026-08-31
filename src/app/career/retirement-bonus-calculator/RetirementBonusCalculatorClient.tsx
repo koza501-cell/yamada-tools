@@ -687,7 +687,7 @@ export default function RetirementBonusCalculatorPage() {
                 { href: "/career/job-change-simulator", label: "転職年収シミュレーター", desc: "転職後の手取り変化をシミュレーション" },
                 { href: "/career/unemployment-calculator", label: "失業給付金計算機", desc: "給付日数・受給額を自動計算" },
                 { href: "/tax/income-tax-calculator", label: "所得税・住民税 計算機", desc: "年収から税額と手取りを自動計算" },
-                { href: "/finance/retirement-simulator", label: "老後資金シミュレーター", desc: "老後に必要な資金を試算" },
+                { href: "/blog/rougo-shikin-simulation-2026", label: "老後資金シミュレーター", desc: "老後に必要な資金を試算" },
               ].map((tool) => (
                 <Link
                   key={tool.href}

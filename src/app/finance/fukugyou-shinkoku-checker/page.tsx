@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     canonical: "https://yamada-tools.jp/finance/fukugyou-shinkoku-checker",
   },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "副業 確定申告 必要判定ツール【会社員向け・20万円ルール】",
     description:
       "副業収入・所得から確定申告が必要かを瞬時に判定。会社員の20万円ルール対応。無料・登録不要。",

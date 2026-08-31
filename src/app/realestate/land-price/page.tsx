@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://yamada-tools.jp/realestate/land-price" },
   openGraph: {
+    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
     title: "地価チェッカー — 住所で地価公示・坪単価を確認",
     description: "住所だけで近隣の地価公示・地価調査データ、㎡単価・坪単価・前年比を確認。相続・売買の参考に。",
     type: "website",

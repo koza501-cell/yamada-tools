@@ -10,6 +10,7 @@ const description = "賃貸と購入の総コストを50年間でシミュレー
 const ogImage = `https://yamada-tools.jp/api/og?title=${encodeURIComponent("賃貸vs購入どっちが得？")}&type=blog&category=${encodeURIComponent("不動産・住まい")}`;
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://yamada-tools.jp/blog/chintai-vs-koubai-simulation-2026" },
   title, description,
   keywords: ["賃貸", "購入", "比較", "シミュレーション", "住宅ローン", "どっちが得"],
   openGraph: { title, description, type: "article", images: [{ url: ogImage, width: 1200, height: 630 }] },
