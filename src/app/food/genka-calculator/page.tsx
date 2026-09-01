@@ -4,7 +4,7 @@ import { getToolById } from "@/config/tools";
 import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
-  title: "飲食店 メニュー原価率計算機【無料】食材費・FLコスト自動計算 | 山田ツール",
+  title: "飲食店 メニュー原価率計算機【無料】食材費・FLコスト自動計算",
   description: "食材費からメニューの原価率・適正売価・FLコストを自動計算。飲食店経営の利益改善に。目標原価率から適正売価を逆算。登録不要・完全無料。",
   keywords: ["原価率 計算", "飲食店 原価 計算機", "メニュー 原価率", "FL比率 計算", "適正売価 計算", "食材費 計算"],
   alternates: { canonical: "https://yamada-tools.jp/food/genka-calculator" },

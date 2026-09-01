@@ -4,7 +4,7 @@ import { getToolById } from "@/config/tools";
 import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
-  title: "年収の壁シミュレーター【2025年改正・123万円対応】| 山田ツール",
+  title: "年収の壁シミュレーター【2025年改正・123万円対応】",
   description: "パート・配偶者の年収が壁を超えたらいくら損する？2025年改正後の123万円の壁を正確に計算。社会保険・所得税・住民税・配偶者控除への影響を一括シミュレーション。",
   keywords: ["年収の壁", "103万円の壁", "123万円の壁", "扶養 計算", "パート 年収 損", "配偶者控除"],
   alternates: { canonical: "https://yamada-tools.jp/finance/nennshu-kabe-simulator" },

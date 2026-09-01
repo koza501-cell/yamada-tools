@@ -4,7 +4,7 @@ import { getToolById } from "@/config/tools";
 import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
-  title: "美容室 スタッフ歩合給計算機【無料】美容師・スタイリスト対応 | 山田ツール",
+  title: "美容室 スタッフ歩合給計算機【無料】美容師・スタイリスト対応",
   description: "美容師・スタイリストの歩合給を自動計算。売上・指名料・店販歩合から手取り額まで一発計算。社会保険料・所得税控除も対応。登録不要・完全無料。",
   keywords: ["美容室 歩合 計算", "美容師 給料 計算", "スタイリスト 歩合給", "美容室 人件費率", "業務委託 美容師 計算", "指名料 歩合"],
   alternates: { canonical: "https://yamada-tools.jp/business/biyoshitsu-buai-calculator" },

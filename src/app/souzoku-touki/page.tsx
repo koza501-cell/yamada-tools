@@ -13,7 +13,7 @@ import { NicheIcon } from "@/components/home/NicheIcons";
 // ============================================================
 
 export const metadata: Metadata = {
-  title: "相続登記DIYガイド【無料】自分でできる相続登記ツール集 | 山田ツール",
+  title: "相続登記DIYガイド【無料】自分でできる相続登記ツール集",
   description:
     "2024年義務化された相続登記をDIYで進めるための無料ツール。ケース診断・必要書類チェックリスト・登録免許税計算機・管轄法務局検索まで。最大15万円節約。",
   keywords:

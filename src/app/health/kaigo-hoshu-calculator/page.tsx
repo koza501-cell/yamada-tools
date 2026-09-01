@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import KaigoClient from "./client";
 
 export const metadata: Metadata = {
-  title: "介護報酬計算機【2024年改定対応】— 利用者負担・給付額を自動計算 | 山田ツール",
+  title: "介護報酬計算機【2024年改定対応】— 利用者負担・給付額を自動計算",
   description: "介護サービスの報酬額を利用者負担と事業者受取額の両方で計算。地域区分・処遇改善加算・2024年改定に対応。登録不要・完全無料。",
   keywords: ["介護報酬 計算機", "介護報酬 2024 改定", "介護サービス 利用者負担 計算", "訪問介護 報酬 単位数", "通所介護 報酬計算", "地域区分 単価", "処遇改善加算 計算"],
   alternates: { canonical: "https://yamada-tools.jp/health/kaigo-hoshu-calculator" },

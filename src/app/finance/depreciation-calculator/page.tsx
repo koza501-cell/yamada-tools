@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import DepreciationClient from "./client";
 
 export const metadata: Metadata = {
-  title: "減価償却計算機 — 定額法・定率法を比較 | 山田ツール",
+  title: "減価償却計算機 — 定額法・定率法を比較",
   description:
     "取得価額・耐用年数を入力するだけで定額法・定率法の減価償却費を計算・比較。年次テーブルとグラフで可視化。少額減価償却特例（30万円未満）判定付き。無料・登録不要。",
   keywords: [

@@ -4,7 +4,7 @@ import { getToolById } from "@/config/tools";
 import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
-  title: "障害年金 受給額 簡易計算機【等級別・基礎年金・厚生年金対応】| 山田ツール",
+  title: "障害年金 受給額 簡易計算機【等級別・基礎年金・厚生年金対応】",
   description:
     "障害基礎年金・障害厚生年金の受給額を障害等級・加入月数・子の人数から計算。申請前の目安確認に。非課税所得・初診日証明の注意事項も掲載。無料・登録不要。",
   keywords: [

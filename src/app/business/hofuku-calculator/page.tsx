@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import HofukuClient from "./client";
 
 export const metadata: Metadata = {
-  title: "建設業 法定福利費計算機 — 見積書記載額を自動計算 | 山田ツール",
+  title: "建設業 法定福利費計算機 — 見積書記載額を自動計算",
   description:
     "建設業の法定福利費を労務費から自動計算。2024年度最新保険料率（健康保険・厚生年金・雇用保険・労災保険）対応。見積書テキスト一括コピー機能付き。国土交通省通達準拠。",
   keywords: [

@@ -3,7 +3,7 @@ import HubLayout, { HubSection } from "@/components/hub/HubLayout";
 import { foodTools } from "@/config/tools";
 
 export const metadata: Metadata = {
-  title: "飲食・食品ツール【無料】原価率・栄養成分表示・フードロス | 山田ツール",
+  title: "飲食・食品ツール【無料】原価率・栄養成分表示・フードロス",
   description:
     "飲食店の原価率計算・適正売価・FLコスト、食品の栄養成分表示値計算、フードロスコスト管理など飲食・食品業向けの無料ツール。登録不要・日本国内サーバー処理。",
   alternates: { canonical: "https://yamada-tools.jp/food" },

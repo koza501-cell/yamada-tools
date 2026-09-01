@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import HikkoshiHiyouClient from "./client";
 
 export const metadata: Metadata = {
-  title: "引越し費用 見積もり計算機【時期・距離・荷物量で相場チェック】| 山田ツール",
+  title: "引越し費用 見積もり計算機【時期・距離・荷物量で相場チェック】",
   description: "引越し業者に頼む前に相場を把握。時期・距離・荷物量から費用目安を計算。繁忙期割増・特殊事情オプション対応。2025年相場。",
 };
 

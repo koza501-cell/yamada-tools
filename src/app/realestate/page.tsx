@@ -3,7 +3,7 @@ import HubLayout, { HubSection } from "@/components/hub/HubLayout";
 import { realestateTools } from "@/config/tools";
 
 export const metadata: Metadata = {
-  title: "不動産情報ツール【無料】用途地域・ハザードマップ・地価・学区 | 山田ツール",
+  title: "不動産情報ツール【無料】用途地域・ハザードマップ・地価・学区",
   description:
     "住所を入力するだけで用途地域・ハザードマップ・地価・不動産取引価格・学区・人口推計を確認。国土交通省データ使用。賃貸vs購入・固定資産税の計算も無料。",
   keywords: [

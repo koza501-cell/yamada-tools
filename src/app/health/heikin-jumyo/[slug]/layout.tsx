@@ -65,7 +65,7 @@ export async function generateMetadata({
   if (!pref) return {};
 
   return {
-    title: `${pref.name}の平均寿命【男女別・2020年最新データ】全国順位は？ | 山田ツール`,
+    title: `${pref.name}の平均寿命【男女別・2020年最新データ】全国順位は？`,
     description: ((`${pref.name}の平均寿命を男女別に掲載。全国47都道府県内の順位・全国平均との差・余命計算も。厚生労働省 令和2年都道府県別生命表データ。`)||"").length>150?((`${pref.name}の平均寿命を男女別に掲載。全国47都道府県内の順位・全国平均との差・余命計算も。厚生労働省 令和2年都道府県別生命表データ。`)||"").slice(0,150)+"…":((`${pref.name}の平均寿命を男女別に掲載。全国47都道府県内の順位・全国平均との差・余命計算も。厚生労働省 令和2年都道府県別生命表データ。`)||""),
     alternates: {
       canonical: `https://yamada-tools.jp/health/heikin-jumyo/${slug}`,

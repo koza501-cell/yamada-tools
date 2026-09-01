@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import HazardClient from "./client";
 
 export const metadata: Metadata = {
-  title: "ハザードマップチェッカー — 住所で洪水・土砂・津波リスクを確認 | 山田ツール",
+  title: "ハザードマップチェッカー — 住所で洪水・土砂・津波リスクを確認",
   description:
     "住所を入力するだけで洪水・土砂災害・液状化・津波・高潮の5つのリスクを一括確認。国土交通省データ使用。不動産購入・引越し前の防災確認に。完全無料・登録不要。",
   keywords: [

@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import ParkingClient from "./client";
 
 export const metadata: Metadata = {
-  title: "駐車場収益計算機 — 月極・コインパーキング比較・投資回収シミュレーション | 山田ツール",
+  title: "駐車場収益計算機 — 月極・コインパーキング比較・投資回収シミュレーション",
   description: "月極・コインパーキングの収益・月次利益・投資回収期間を比較計算。空き率シミュレーション・10年/20年累計収益・利回りを一覧表示。登録不要・無料。",
   keywords: ["駐車場 収益 計算", "コインパーキング 収益シミュレーション", "月極駐車場 利回り 計算", "駐車場 投資 回収期間", "コインパーキング 月極 比較", "土地活用 駐車場 収益"],
   alternates: { canonical: "https://yamada-tools.jp/realestate/parking-revenue-calculator" },

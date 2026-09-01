@@ -5,7 +5,7 @@ import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://yamada-tools.jp/business/retail-markup-calculator" },
-  title: "小売・販売 値入率・粗利率 計算機【原価から売価を決める】| 山田ツール",
+  title: "小売・販売 値入率・粗利率 計算機【原価から売価を決める】",
   description: "値入率（マークアップ）と粗利率（マージン）の違いを正確に計算。小売店・ECショップの価格設定に。業種別粗利率の目安も掲載。",
 };
 

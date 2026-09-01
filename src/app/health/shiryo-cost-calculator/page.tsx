@@ -4,7 +4,7 @@ import { getToolById } from "@/config/tools";
 import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
-  title: "酪農・畜産 飼料コスト計算機【頭数別・月間飼料費計算】| 山田ツール",
+  title: "酪農・畜産 飼料コスト計算機【頭数別・月間飼料費計算】",
   description:
     "乳牛・肉牛・豚・鶏の頭数と飼料種別から月間飼料費を計算。飼料高騰対策の経営改善に役立つ無料ツール。登録不要。",
   keywords: [

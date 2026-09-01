@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import TokuteiClient from "./client";
 
 export const metadata: Metadata = {
-  title: "特定技能 在留資格 費用計算機 — 採用総費用を職種・国籍別に計算 | 山田ツール",
+  title: "特定技能 在留資格 費用計算機 — 採用総費用を職種・国籍別に計算",
   description: "特定技能外国人の採用にかかる総費用を職種・国籍別に計算。送り出し機関費・登録支援機関費・在留申請費など費用内訳を一覧表示。登録不要・無料。",
   keywords: ["特定技能 費用 計算", "特定技能 採用費用", "特定技能 登録支援機関 費用", "特定技能外国人 雇用 費用", "在留資格 特定技能 申請費", "送り出し機関 手数料"],
   alternates: { canonical: "https://yamada-tools.jp/business/tokutei-gino-calculator" },

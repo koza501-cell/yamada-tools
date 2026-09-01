@@ -3,7 +3,7 @@ import HubLayout, { HubSection } from "@/components/hub/HubLayout";
 import { lifeTools } from "@/config/tools";
 
 export const metadata: Metadata = {
-  title: "生活・家計ツール【無料】家計簿・引越し費用・葬儀費用・保育料 | 山田ツール",
+  title: "生活・家計ツール【無料】家計簿・引越し費用・葬儀費用・保育料",
   description:
     "家計簿貯蓄シミュレーター・引越し費用見積もり・葬儀費用計算・保育料無償化判定など、暮らしのお金に関する無料ツール。登録不要・日本国内サーバー処理。",
   alternates: { canonical: "https://yamada-tools.jp/life" },

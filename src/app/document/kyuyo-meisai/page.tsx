@@ -35,7 +35,7 @@ const faq = [
 ];
 
 export const metadata: Metadata = {
-  title: "給与明細作成ツール【無料・登録不要・PDF出力】社会保険料・所得税自動計算 | 山田ツール",
+  title: "給与明細作成ツール【無料・登録不要・PDF出力】社会保険料・所得税自動計算",
   description: "基本給を入力するだけで健康保険・厚生年金・雇用保険・所得税を自動計算。都道府県別保険料率2026年度対応。美しいA4明細をPDF出力。完全無料・登録不要。",
   keywords: ["給与明細 作成 無料", "給与明細 自動計算", "社会保険料 計算 自動", "健康保険料 都道府県別", "源泉徴収 所得税 計算", "給与明細 PDF 出力", "標準報酬月額 計算"],
   alternates: { canonical: "https://yamada-tools.jp/document/kyuyo-meisai" },

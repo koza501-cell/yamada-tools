@@ -12,7 +12,7 @@ import PdfWorkflows from "@/components/pdf/PdfWorkflows";
 // ============================================================
 
 export const metadata: Metadata = {
-  title: "PDFツール【無料】結合・圧縮・分割・変換・文字入力 | 山田ツール",
+  title: "PDFツール【無料】結合・圧縮・分割・変換・文字入力",
   description:
     "PDF結合・圧縮・分割・回転・OCR・Word/Excel変換・パスワード保護・電子署名・透かし追加など35種以上の無料PDFツール。日本国内サーバーで安心・安全。登録不要・60分自動削除でセキュア。インストール不要、ブラウザだけで完結。",
   keywords:

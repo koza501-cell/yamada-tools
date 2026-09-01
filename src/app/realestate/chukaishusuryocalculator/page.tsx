@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import ChukaiClient from "./client";
 
 export const metadata: Metadata = {
-  title: "不動産 仲介手数料計算機【法定上限・早見表付き】売買・賃貸対応 | 山田ツール",
+  title: "不動産 仲介手数料計算機【法定上限・早見表付き】売買・賃貸対応",
   description: "売買・賃貸の仲介手数料の法定上限を自動計算。400万円以下の特例・2024年改正対応。早見表付き。賃貸の借主・貸主上限も計算。登録不要・無料。",
   keywords: ["仲介手数料 計算", "不動産 仲介手数料 上限", "仲介手数料 計算機", "3%+6万 計算", "賃貸 仲介手数料", "仲介手数料 無料 交渉"],
   alternates: { canonical: "https://yamada-tools.jp/realestate/chukaishusuryocalculator" },

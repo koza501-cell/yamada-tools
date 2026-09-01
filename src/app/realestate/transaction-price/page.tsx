@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import TransactionPriceClient from "./client";
 
 export const metadata: Metadata = {
-  title: "不動産取引価格チェッカー — 住所で実際の売買価格を確認 | 山田ツール",
+  title: "不動産取引価格チェッカー — 住所で実際の売買価格を確認",
   description:
     "住所を入力するだけで近隣の実際の不動産売買取引価格を確認。土地・マンション・一戸建ての㎡単価・坪単価・取引総額を表示。売却・購入前の相場調査に。国土交通省データ使用、完全無料。",
   keywords: [

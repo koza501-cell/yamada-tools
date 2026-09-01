@@ -10,7 +10,7 @@ import { documentTools, generatorTools, convertTools } from "@/config/tools";
 // ============================================================
 
 export const metadata: Metadata = {
-  title: "ビジネス書類作成ツール【無料】請求書・見積書・封筒印刷・全銀フォーマット | 山田ツール",
+  title: "ビジネス書類作成ツール【無料】請求書・見積書・封筒印刷・全銀フォーマット",
   description:
     "請求書・見積書・履歴書・封筒印刷・全銀フォーマット・電子印鑑など、日本のビジネスに必要な書類を無料で作成。インボイス対応・登録不要・日本国内サーバー処理。",
   keywords:
