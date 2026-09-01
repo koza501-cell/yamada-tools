@@ -56,7 +56,7 @@ export default function ShakaiHokenSimulation2026Blog() {
       </nav>
 
       <div className="relative w-full h-48 md:h-64 mb-6 rounded-xl overflow-hidden">
-        <img src="/api/og?title=社会保険料の計算&type=blog&category=給与・社会保険" alt="社会保険料計算" className="w-full h-full object-cover" />
+        <img src={`/api/og?title=${encodeURIComponent("社会保険料の計算")}&type=blog&category=${encodeURIComponent("給与・社会保険")}`} alt="社会保険料計算" className="w-full h-full object-cover" />
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】社会保険料の計算方法｜年収別早見表と手取り額シミュレーション</h1>

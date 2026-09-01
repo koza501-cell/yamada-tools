@@ -56,7 +56,7 @@ export default function ShikakuToshiSimulation2026Blog() {
       </nav>
 
       <div className="relative w-full h-48 md:h-64 mb-6 rounded-xl overflow-hidden">
-        <img src="/api/og?title=資格取得ROI計算&type=blog&category=キャリア・資格" alt="資格取得ROI計算" className="w-full h-full object-cover" />
+        <img src={`/api/og?title=${encodeURIComponent("資格取得ROI計算")}&type=blog&category=${encodeURIComponent("キャリア・資格")}`} alt="資格取得ROI計算" className="w-full h-full object-cover" />
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】資格取得は投資になる？費用対効果（ROI）をシミュレーション</h1>

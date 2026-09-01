@@ -56,7 +56,7 @@ export default function HoujinkaSimulation2026Blog() {
       </nav>
 
       <div className="relative w-full h-48 md:h-64 mb-6 rounded-xl overflow-hidden">
-        <img src="/api/og?title=法人化シミュレーション&type=blog&category=ビジネス・起業" alt="法人化シミュレーション" className="w-full h-full object-cover" />
+        <img src={`/api/og?title=${encodeURIComponent("法人化シミュレーション")}&type=blog&category=${encodeURIComponent("ビジネス・起業")}`} alt="法人化シミュレーション" className="w-full h-full object-cover" />
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】法人化シミュレーション｜個人事業主が会社設立すべき年収は？</h1>

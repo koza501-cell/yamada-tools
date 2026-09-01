@@ -56,7 +56,7 @@ export default function FukugyouZeikinSimulation2026Blog() {
       </nav>
 
       <div className="relative w-full h-48 md:h-64 mb-6 rounded-xl overflow-hidden">
-        <img src="/api/og?title=副業の税金はいくら？&type=blog&category=副業・税金" alt="副業税金シミュレーション" className="w-full h-full object-cover" />
+        <img src={`/api/og?title=${encodeURIComponent("副業の税金はいくら？")}&type=blog&category=${encodeURIComponent("副業・税金")}`} alt="副業税金シミュレーション" className="w-full h-full object-cover" />
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】副業の税金はいくら？確定申告が必要な条件と節税方法を解説</h1>
