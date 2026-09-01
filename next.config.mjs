@@ -143,7 +143,6 @@ const nextConfig = {
       { source: '/use-cases', destination: '/', permanent: true },
       { source: '/generator/password-gen', destination: '/generator/password', permanent: true },
       { source: '/finance/houjinka-setsuzei-calculator', destination: '/finance', permanent: true },
-      { source: '/finance/retirement-simulator', destination: '/blog/rougo-shikin-simulation-2026', permanent: true },
       { source: '/savings/interest-calculator', destination: '/finance', permanent: true },
       { source: '/care/kaigo-hoshu-calc', destination: '/', permanent: true },
       { source: '/en/business', destination: '/en/business/company-search', permanent: true },
