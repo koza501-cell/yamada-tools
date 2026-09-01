@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { useAuth } from "@/contexts/AuthContext";
@@ -165,6 +166,8 @@ function ToolsDropdown() {
 }
 
 export default function Header() {
+  const pathname = usePathname();
+  const isEnglish = pathname?.startsWith("/en") ?? false;
   const { user, loading, logout } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -213,6 +216,27 @@ export default function Header() {
     }
     setShowUserMenu(!showUserMenu);
   };
+
+  if (isEnglish) {
+    return (
+      <header className="bg-kon text-white shadow-lg sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex items-center justify-between h-14">
+            <Link href="/en" className="flex items-center gap-2 shrink-0">
+              <img src="/logo-icon.webp" alt="Yamada Tools" width="32" height="32" className="w-8 h-8" />
+              <span className="font-bold text-lg">Yamada Tools</span>
+            </Link>
+            <div className="flex items-center gap-4">
+              <Link href="/" className="text-sm text-white/90 hover:text-white hover:underline">
+                日本語
+              </Link>
+              <ThemeToggle />
+            </div>
+          </div>
+        </div>
+      </header>
+    );
+  }
 
   return (
     <>
