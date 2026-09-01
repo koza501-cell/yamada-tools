@@ -4,7 +4,7 @@ import { getToolById } from "@/config/tools";
 import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
-  title: "個人事業主 法人化 節税シミュレーター | 山田ツール",
+  title: "個人事業主 法人化 節税シミュレーター",
   description: "年収・経費から個人事業と法人の税負担を比較。いくら稼いだら法人化すべきか？所得税・法人税・社会保険を総合計算。合同会社・株式会社の検討にも。",
   keywords: ["法人化 節税 計算", "個人事業主 法人化 目安", "法人化 メリット シミュレーター", "法人税 個人税 比較", "合同会社 節税"],
   alternates: { canonical: "https://yamada-tools.jp/finance/hojinka-simulator" },

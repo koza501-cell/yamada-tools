@@ -56,7 +56,7 @@ export default function ZouyoZeiSimulation2026Blog() {
       </nav>
 
       <div className="relative w-full h-48 md:h-64 mb-6 rounded-xl overflow-hidden">
-        <img src="/api/og?title=贈与税はいくら？&type=blog&category=税金・贈与" alt="贈与税シミュレーション" className="w-full h-full object-cover" />
+        <img src={`/api/og?title=${encodeURIComponent("贈与税はいくら？")}&type=blog&category=${encodeURIComponent("税金・贈与")}`} alt="贈与税シミュレーション" className="w-full h-full object-cover" />
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】贈与税はいくら？親からの援助・生前贈与の税金シミュレーション</h1>

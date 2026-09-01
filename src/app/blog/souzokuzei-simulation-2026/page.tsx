@@ -56,7 +56,7 @@ export default function SouzokuzeiSimulation2026Blog() {
       </nav>
 
       <div className="relative w-full h-48 md:h-64 mb-6 rounded-xl overflow-hidden">
-        <img src="/api/og?title=【2026年最新】相続税シミュレーション完全ガイド&type=blog&category=相続・贈与" alt="相続税シミュレーション" className="w-full h-full object-cover" />
+        <img src={`/api/og?title=${encodeURIComponent("【2026年最新】相続税シミュレーション完全ガイド")}&type=blog&category=${encodeURIComponent("相続・贈与")}`} alt="相続税シミュレーション" className="w-full h-full object-cover" />
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】相続税シミュレーション完全ガイド｜基礎控除・税率・計算方法を徹底解説</h1>

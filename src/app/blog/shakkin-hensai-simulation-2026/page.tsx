@@ -56,7 +56,7 @@ export default function ShakkinHensaiSimulation2026Blog() {
       </nav>
 
       <div className="relative w-full h-48 md:h-64 mb-6 rounded-xl overflow-hidden">
-        <img src="/api/og?title=借金返済シミュレーション&type=blog&category=借金・ローン" alt="借金返済シミュレーション" className="w-full h-full object-cover" />
+        <img src={`/api/og?title=${encodeURIComponent("借金返済シミュレーション")}&type=blog&category=${encodeURIComponent("借金・ローン")}`} alt="借金返済シミュレーション" className="w-full h-full object-cover" />
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】借金返済シミュレーション｜完済までの期間と総支払額を計算</h1>

@@ -56,7 +56,7 @@ export default function NenshuKabeSimulation2026Blog() {
       </nav>
 
       <div className="relative w-full h-48 md:h-64 mb-6 rounded-xl overflow-hidden">
-        <img src="/api/og?title=年収の壁 103万・130万・150万&type=blog&category=税金・社会保険" alt="年収の壁シミュレーション" className="w-full h-full object-cover" />
+        <img src={`/api/og?title=${encodeURIComponent("年収の壁 103万・130万・150万")}&type=blog&category=${encodeURIComponent("税金・社会保険")}`} alt="年収の壁シミュレーション" className="w-full h-full object-cover" />
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】年収の壁とは？103万・106万・130万・150万の壁を完全解説</h1>

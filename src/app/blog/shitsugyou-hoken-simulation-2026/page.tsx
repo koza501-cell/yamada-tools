@@ -56,7 +56,7 @@ export default function ShitsugyouHokenSimulation2026Blog() {
       </nav>
 
       <div className="relative w-full h-48 md:h-64 mb-6 rounded-xl overflow-hidden">
-        <img src="/api/og?title=失業保険はいくらもらえる？&type=blog&category=転職・キャリア" alt="失業保険シミュレーション" className="w-full h-full object-cover" />
+        <img src={`/api/og?title=${encodeURIComponent("失業保険はいくらもらえる？")}&type=blog&category=${encodeURIComponent("転職・キャリア")}`} alt="失業保険シミュレーション" className="w-full h-full object-cover" />
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】失業保険はいくらもらえる？受給額・期間シミュレーション完全ガイド</h1>

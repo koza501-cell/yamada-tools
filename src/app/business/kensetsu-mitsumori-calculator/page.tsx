@@ -4,7 +4,7 @@ import { getToolById } from "@/config/tools";
 import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
-  title: "建設・内装工事 材料費見積もり計算機【面積から自動計算】| 山田ツール",
+  title: "建設・内装工事 材料費見積もり計算機【面積から自動計算】",
   description: "工事種別・面積から必要材料量と費用目安を自動計算。フローリング・クロス・外壁塗装・防水工事対応。工賃込み概算も表示。小規模工務店・DIY向け。",
   keywords: ["建設 材料費 見積もり", "内装工事 費用 計算", "フローリング 材料費", "クロス張替え 費用", "外壁塗装 費用計算"],
   alternates: { canonical: "https://yamada-tools.jp/business/kensetsu-mitsumori-calculator" },

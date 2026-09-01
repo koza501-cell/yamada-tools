@@ -4,7 +4,7 @@ import { getToolById } from "@/config/tools";
 import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
-  title: "フードロス コスト計算機【飲食店・食品スーパー向け】| 山田ツール",
+  title: "フードロス コスト計算機【飲食店・食品スーパー向け】",
   description: "廃棄ロス率から年間損失額を計算。フードロス削減で利益がどれだけ改善するか見える化。業界別ベンチマーク・CO2削減効果・改善ヒント付き。",
   keywords: ["フードロス 計算", "食品廃棄 コスト", "飲食店 廃棄 削減", "フードロス 削減 効果", "食品ロス 計算ツール"],
   alternates: { canonical: "https://yamada-tools.jp/food/foodloss-calculator" },

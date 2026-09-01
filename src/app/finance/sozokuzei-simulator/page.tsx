@@ -4,7 +4,7 @@ import { getToolById } from "@/config/tools";
 import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
-  title: "相続税 簡易シミュレーター【相続税がかかるかチェック】| 山田ツール",
+  title: "相続税 簡易シミュレーター【相続税がかかるかチェック】",
   description: "遺産総額と相続人数を入力するだけで相続税の有無と概算額を計算。基礎控除・配偶者控除・小規模宅地等の特例対応。専門家に相談前の事前確認に。",
   keywords: ["相続税 計算", "相続税 シミュレーター", "相続税 いくら", "基礎控除 計算", "相続税 かかるか"],
   alternates: { canonical: "https://yamada-tools.jp/finance/sozokuzei-simulator" },

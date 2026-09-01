@@ -56,7 +56,7 @@ export default function RougoShikinSimulation2026Blog() {
       </nav>
 
       <div className="relative w-full h-48 md:h-64 mb-6 rounded-xl overflow-hidden">
-        <img src="/api/og?title=老後資金はいくら必要？&type=blog&category=資産運用・老後" alt="老後資金シミュレーション" className="w-full h-full object-cover" />
+        <img src={`/api/og?title=${encodeURIComponent("老後資金はいくら必要？")}&type=blog&category=${encodeURIComponent("資産運用・老後")}`} alt="老後資金シミュレーション" className="w-full h-full object-cover" />
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】老後資金はいくら必要？2000万円問題の真実とシミュレーション</h1>

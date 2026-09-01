@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import OvertimeClient from "./client";
 
 export const metadata: Metadata = {
-  title: "残業代計算機 — 固定残業代・深夜・休日対応 | 山田ツール",
+  title: "残業代計算機 — 固定残業代・深夜・休日対応",
   description:
     "月給から残業代を即座に計算。固定残業代（みなし残業）・深夜残業・休日出勤・60時間超え50%割増（2023年法改正）に対応。登録不要・完全無料。",
   keywords: [

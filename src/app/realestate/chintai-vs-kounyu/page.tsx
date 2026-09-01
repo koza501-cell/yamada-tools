@@ -4,7 +4,7 @@ import { getToolById } from "@/config/tools";
 import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
-  title: "賃貸 vs 購入 比較シミュレーター【中立・35年コスト計算】| 山田ツール",
+  title: "賃貸 vs 購入 比較シミュレーター【中立・35年コスト計算】",
   description:
     "賃貸と購入の生涯コストを中立的に比較。不動産会社のバイアスなし。35年・50年の総費用、住宅ローン控除、売却後の実質コストまで計算。",
   keywords: [

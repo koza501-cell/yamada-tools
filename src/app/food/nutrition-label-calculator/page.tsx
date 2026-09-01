@@ -4,7 +4,7 @@ import { getToolById } from "@/config/tools";
 import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
-  title: "食品 栄養成分表示 計算機【食品表示法対応】無料 | 山田ツール",
+  title: "食品 栄養成分表示 計算機【食品表示法対応】無料",
   description: "原材料の配合割合から栄養成分表示値を計算。食品表示法の義務表示5項目（エネルギー・たんぱく質・脂質・炭水化物・食塩相当量）に対応。100g・1食表示の切替も。",
   keywords: ["栄養成分表示 計算", "食品表示法 計算機", "原材料 栄養計算", "カロリー計算 レシピ", "食塩相当量 計算"],
   alternates: { canonical: "https://yamada-tools.jp/food/nutrition-label-calculator" },

@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import SolarClient from "./client";
 
 export const metadata: Metadata = {
-  title: "太陽光発電 投資回収シミュレーター【中立・無料】全47都道府県対応 | 山田ツール",
+  title: "太陽光発電 投資回収シミュレーター【中立・無料】全47都道府県対応",
   description: "設置費用・発電量・売電収入から投資回収年数を中立的に計算。全47都道府県の日照時間データ対応。業者の営業資料に頼らない判断を。FIT売電・20年収益試算。",
   keywords: ["太陽光発電 投資回収", "ソーラーパネル シミュレーション", "太陽光 元が取れる", "FIT 売電 計算", "太陽光発電 費用対効果", "発電量 計算"],
   alternates: { canonical: "https://yamada-tools.jp/realestate/solar-simulator" },

@@ -56,7 +56,7 @@ export default function ChintaiVsKoubaiSimulation2026Blog() {
       </nav>
 
       <div className="relative w-full h-48 md:h-64 mb-6 rounded-xl overflow-hidden">
-        <img src="/api/og?title=賃貸vs購入どっちが得？&type=blog&category=不動産・住まい" alt="賃貸vs購入シミュレーション" className="w-full h-full object-cover" />
+        <img src={`/api/og?title=${encodeURIComponent("賃貸vs購入どっちが得？")}&type=blog&category=${encodeURIComponent("不動産・住まい")}`} alt="賃貸vs購入シミュレーション" className="w-full h-full object-cover" />
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】賃貸と購入どっちが得？50年シミュレーションで徹底比較</h1>

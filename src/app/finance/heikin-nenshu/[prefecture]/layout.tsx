@@ -65,7 +65,7 @@ export async function generateMetadata({
   if (!pref) return {};
 
   return {
-    title: `${pref.name}の平均年収【2023年最新】業種・年齢別データ | 山田ツール`,
+    title: `${pref.name}の平均年収【2023年最新】業種・年齢別データ`,
     description: ((`${pref.name}の平均年収を業種・年齢・性別で確認。全国ランキングとの比較や年齢別推移も。政府統計（賃金構造基本統計調査 2023年）準拠。`)||"").length>150?((`${pref.name}の平均年収を業種・年齢・性別で確認。全国ランキングとの比較や年齢別推移も。政府統計（賃金構造基本統計調査 2023年）準拠。`)||"").slice(0,150)+"…":((`${pref.name}の平均年収を業種・年齢・性別で確認。全国ランキングとの比較や年齢別推移も。政府統計（賃金構造基本統計調査 2023年）準拠。`)||""),
     alternates: {
       canonical: `https://yamada-tools.jp/finance/heikin-nenshu/${prefecture}`,

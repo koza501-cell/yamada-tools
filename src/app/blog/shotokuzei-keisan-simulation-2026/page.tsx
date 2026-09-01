@@ -56,7 +56,7 @@ export default function ShotokuzeiKeisanSimulation2026Blog() {
       </nav>
 
       <div className="relative w-full h-48 md:h-64 mb-6 rounded-xl overflow-hidden">
-        <img src="/api/og?title=所得税の計算方法&type=blog&category=税金・給与" alt="所得税計算" className="w-full h-full object-cover" />
+        <img src={`/api/og?title=${encodeURIComponent("所得税の計算方法")}&type=blog&category=${encodeURIComponent("税金・給与")}`} alt="所得税計算" className="w-full h-full object-cover" />
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】所得税の計算方法｜年収別早見表と手取り額シミュレーション</h1>

@@ -4,7 +4,7 @@ import path from "path";
 import AiRecipeClient from "./client";
 
 export const metadata: Metadata = {
-  title: "AIレシピ | 山田ツール",
+  title: "AIレシピ",
   description: "ChatGPT・Claude・NotionAIなど最新AIツールの実践的な使い方レシピを紹介。業務効率化・文章作成・データ分析に今すぐ使えるプロンプトテンプレート付き。",
   alternates: { canonical: "https://yamada-tools.jp/ai-recipe" },
   openGraph: {

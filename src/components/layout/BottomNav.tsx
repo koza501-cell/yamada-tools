@@ -4,7 +4,11 @@ import { usePathname } from "next/navigation";
 
 export default function BottomNav() {
   const pathname = usePathname();
-  
+
+  // No English equivalent of the Japanese tool categories below; showing this
+  // bar (labels + links, all Japanese) on English pages is worse than omitting it.
+  if (pathname?.startsWith("/en")) return null;
+
   const navItems = [
     { href: "/", icon: "🏠", label: "ホーム" },
     { href: "/pdf", icon: "📄", label: "PDF" },

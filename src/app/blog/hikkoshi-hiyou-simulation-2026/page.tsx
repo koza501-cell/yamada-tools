@@ -56,7 +56,7 @@ export default function HikkoshiHiyouSimulation2026Blog() {
       </nav>
 
       <div className="relative w-full h-48 md:h-64 mb-6 rounded-xl overflow-hidden">
-        <img src="/api/og?title=引越し費用の相場&type=blog&category=不動産・引越し" alt="引越し費用シミュレーション" className="w-full h-full object-cover" />
+        <img src={`/api/og?title=${encodeURIComponent("引越し費用の相場")}&type=blog&category=${encodeURIComponent("不動産・引越し")}`} alt="引越し費用シミュレーション" className="w-full h-full object-cover" />
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】引越し費用の相場と計算方法｜単身・家族別シミュレーション</h1>

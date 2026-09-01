@@ -4,7 +4,7 @@ import { getToolById } from "@/config/tools";
 import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
-  title: "葬儀費用 見積もり計算機【2025年版】費用相場・補助金対応 | 山田ツール",
+  title: "葬儀費用 見積もり計算機【2025年版】費用相場・補助金対応",
   description: "葬儀の形式・規模・オプションから費用の目安を計算。一般葬・家族葬・直葬の相場と比較。葬祭費補助金の控除も自動計算。登録不要・無料。",
   keywords: ["葬儀費用 計算", "葬儀 相場", "家族葬 費用", "直葬 費用", "葬祭費 補助金", "お布施 相場", "葬儀 見積もり"],
   alternates: { canonical: "https://yamada-tools.jp/life/sougi-calculator" },

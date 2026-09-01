@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import SchoolDistrictClient from "./client";
 
 export const metadata: Metadata = {
-  title: "学区チェッカー — 住所で小学校・中学校の学区を確認 | 山田ツール",
+  title: "学区チェッカー — 住所で小学校・中学校の学区を確認",
   description:
     "住所を入力するだけで小学校区・中学校区を即座に確認。引越し・不動産購入前の学区確認に。子育て世帯の住まい選びをサポート。国土交通省データ使用、完全無料・登録不要。",
   keywords: [

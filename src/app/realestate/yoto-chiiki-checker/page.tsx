@@ -3,7 +3,7 @@ import YotoChiikiClient from "./client";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://yamada-tools.jp/realestate/yoto-chiiki-checker" },
-  title: "用途地域チェッカー — 住所を入力するだけ | 山田ツール",
+  title: "用途地域チェッカー — 住所を入力するだけ",
   description:
     "住所を入力するだけで用途地域を即座に確認。第一種低層住居専用地域など13種類をわかりやすく解説。建ぺい率・容積率も自動表示。国土交通省データ使用、完全無料。",
   keywords: [

@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import FurimaClient from "./client";
 
 export const metadata: Metadata = {
-  title: "古物商・フリマ仕入れ利益計算機 — メルカリ・eBay・ヤフオク対応 | 山田ツール",
+  title: "古物商・フリマ仕入れ利益計算機 — メルカリ・eBay・ヤフオク対応",
   description:
     "仕入れ値・販売価格・手数料・送料から利益と利益率を自動計算。メルカリ・eBay・ヤフオク・Amazon・ラクマ対応。損益分岐点・目標利益率逆算機能付き。登録不要・完全無料。",
   keywords: [

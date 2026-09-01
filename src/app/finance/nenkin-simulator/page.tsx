@@ -5,7 +5,7 @@ import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://yamada-tools.jp/finance/nenkin-simulator" },
-  title: "年金 受給額 簡易シミュレーター【繰上げ・繰下げ 損得比較】| 山田ツール",
+  title: "年金 受給額 簡易シミュレーター【繰上げ・繰下げ 損得比較】",
   description: "老齢基礎年金・老齢厚生年金の概算受給額を計算。繰上げ（60歳〜）・繰下げ（66〜75歳）の月額増減と損益分岐点まで一覧表示。",
 };
 

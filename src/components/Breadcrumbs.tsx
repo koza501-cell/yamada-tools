@@ -44,6 +44,10 @@ export default function Breadcrumbs() {
   // Don't show breadcrumbs on homepage
   if (pathname === '/') return null;
 
+  // English pages render their own localized breadcrumb inline; avoid a
+  // duplicate Japanese-labeled breadcrumb stacking on top of it.
+  if (pathname.startsWith('/en')) return null;
+
   // Parse pathname into breadcrumb segments
   const segments = pathname.split('/').filter(Boolean);
 

@@ -56,7 +56,7 @@ export default function KyouikuhiSimulation2026Blog() {
       </nav>
 
       <div className="relative w-full h-48 md:h-64 mb-6 rounded-xl overflow-hidden">
-        <img src="/api/og?title=教育費シミュレーション&type=blog&category=教育・子育て" alt="教育費シミュレーション" className="w-full h-full object-cover" />
+        <img src={`/api/og?title=${encodeURIComponent("教育費シミュレーション")}&type=blog&category=${encodeURIComponent("教育・子育て")}`} alt="教育費シミュレーション" className="w-full h-full object-cover" />
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】教育費シミュレーション｜幼稚園から大学までいくらかかる？</h1>

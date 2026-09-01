@@ -4,7 +4,7 @@ import { getToolById } from "@/config/tools";
 import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
-  title: "副業 確定申告 必要判定ツール【会社員向け・20万円ルール】| 山田ツール",
+  title: "副業 確定申告 必要判定ツール【会社員向け・20万円ルール】",
   description:
     "副業収入・所得から確定申告が必要かを瞬時に判定。会社員の20万円ルール・住民税申告も完全対応。フリーランス・アルバイト・不動産収入など複数副業に対応。",
   keywords: [

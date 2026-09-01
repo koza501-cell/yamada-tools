@@ -56,7 +56,7 @@ export default function ZangyoudaiKeisanSimulation2026Blog() {
       </nav>
 
       <div className="relative w-full h-48 md:h-64 mb-6 rounded-xl overflow-hidden">
-        <img src="/api/og?title=残業代の計算方法&type=blog&category=給与・労働" alt="残業代計算" className="w-full h-full object-cover" />
+        <img src={`/api/og?title=${encodeURIComponent("残業代の計算方法")}&type=blog&category=${encodeURIComponent("給与・労働")}`} alt="残業代計算" className="w-full h-full object-cover" />
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】残業代の計算方法｜時給換算・割増率・未払い請求まで完全解説</h1>

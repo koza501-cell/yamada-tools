@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import PopulationClient from "./client";
 
 export const metadata: Metadata = {
-  title: "人口推計チェッカー — 住所で2050年までの人口変化を確認 | 山田ツール",
+  title: "人口推計チェッカー — 住所で2050年までの人口変化を確認",
   description:
     "住所を入力するだけで2020〜2070年の人口推移・将来推計を確認。人口増加・減少エリアの把握に。不動産購入・移住検討・事業立地の参考に。国土交通省データ使用、完全無料・登録不要。",
   keywords: [

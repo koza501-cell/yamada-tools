@@ -4,7 +4,7 @@ import { getToolById } from "@/config/tools";
 import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
-  title: "外国人採用 ビザ費用計算機【技術・人文・国際業務ビザ対応】| 山田ツール",
+  title: "外国人採用 ビザ費用計算機【技術・人文・国際業務ビザ対応】",
   description:
     "技術・人文知識・国際業務ビザの申請費用を採用人数・国籍・サポート方法から計算。特定技能との比較も。行政書士費用・更新費用・継続雇用コストを一括試算。無料・登録不要。",
   keywords: [

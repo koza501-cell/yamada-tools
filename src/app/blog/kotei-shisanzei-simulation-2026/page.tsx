@@ -56,7 +56,7 @@ export default function KoteiShisanzeiSimulation2026Blog() {
       </nav>
 
       <div className="relative w-full h-48 md:h-64 mb-6 rounded-xl overflow-hidden">
-        <img src="/api/og?title=固定資産税の計算方法&type=blog&category=不動産・税金" alt="固定資産税計算" className="w-full h-full object-cover" />
+        <img src={`/api/og?title=${encodeURIComponent("固定資産税の計算方法")}&type=blog&category=${encodeURIComponent("不動産・税金")}`} alt="固定資産税計算" className="w-full h-full object-cover" />
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】固定資産税の計算方法｜新築・中古・土地別シミュレーション</h1>

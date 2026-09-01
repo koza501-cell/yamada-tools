@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import NetSalaryClient from "./client";
 
 export const metadata: Metadata = {
-  title: "給与手取り計算機 — 月給・年収から手取りを計算 | 山田ツール",
+  title: "給与手取り計算機 — 月給・年収から手取りを計算",
   description:
     "月給（額面）から手取り額を計算。健康保険・厚生年金・雇用保険・所得税・住民税の内訳を表示。扶養家族の影響も考慮。登録不要・完全無料。",
   keywords: [

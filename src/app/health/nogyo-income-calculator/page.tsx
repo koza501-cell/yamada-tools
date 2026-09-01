@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import NogyoClient from "./client";
 
 export const metadata: Metadata = {
-  title: "農業所得計算機 — 確定申告・青色申告控除対応 | 山田ツール",
+  title: "農業所得計算機 — 確定申告・青色申告控除対応",
   description:
     "農業の売上・経費から農業所得と確定申告の目安を計算。青色申告65万・10万控除、農業共済金対応。所得税の簡易計算・確定申告必要判定付き。登録不要・完全無料。",
   keywords: [

@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import LandPriceClient from "./client";
 
 export const metadata: Metadata = {
-  title: "地価チェッカー — 住所で地価公示・地価調査を確認 | 山田ツール",
+  title: "地価チェッカー — 住所で地価公示・地価調査を確認",
   description:
     "住所を入力するだけで近隣の地価公示・地価調査データを確認。㎡単価・坪単価・前年比変動率・エリア平均価格も表示。相続・売買・固定資産税・土地評価の参考に。国土交通省データ使用、完全無料。",
   keywords: [

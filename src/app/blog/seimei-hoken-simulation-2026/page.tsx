@@ -56,7 +56,7 @@ export default function SeimeiHokenSimulation2026Blog() {
       </nav>
 
       <div className="relative w-full h-48 md:h-64 mb-6 rounded-xl overflow-hidden">
-        <img src="/api/og?title=生命保険の必要額&type=blog&category=保険・ライフプラン" alt="生命保険必要額シミュレーション" className="w-full h-full object-cover" />
+        <img src={`/api/og?title=${encodeURIComponent("生命保険の必要額")}&type=blog&category=${encodeURIComponent("保険・ライフプラン")}`} alt="生命保険必要額シミュレーション" className="w-full h-full object-cover" />
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】生命保険の必要額シミュレーション｜家族構成別の目安と計算方法</h1>

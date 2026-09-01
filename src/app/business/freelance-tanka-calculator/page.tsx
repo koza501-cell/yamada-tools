@@ -4,7 +4,7 @@ import { getToolById } from "@/config/tools";
 import RelatedTools from "@/components/common/RelatedTools";
 
 export const metadata: Metadata = {
-  title: "フリーランス 適正単価・年収診断ツール【2025年最新相場】| 山田ツール",
+  title: "フリーランス 適正単価・年収診断ツール【2025年最新相場】",
   description: "スキル・経験・職種から適正な時間単価・月額単価を診断。2025年ITエンジニア・デザイナー・ライター等の市場相場と比較。目標年収からの逆算も対応。",
   keywords: ["フリーランス 単価 相場", "ITエンジニア 単価 2025", "フリーランス 年収 診断", "適正単価 計算", "フリーランス 時間単価"],
   alternates: { canonical: "https://yamada-tools.jp/business/freelance-tanka-calculator" },

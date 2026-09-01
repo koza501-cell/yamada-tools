@@ -56,7 +56,7 @@ export default function IryoHokenSimulation2026Blog() {
       </nav>
 
       <div className="relative w-full h-48 md:h-64 mb-6 rounded-xl overflow-hidden">
-        <img src="/api/og?title=医療保険シミュレーション&type=blog&category=保険・医療" alt="医療保険シミュレーション" className="w-full h-full object-cover" />
+        <img src={`/api/og?title=${encodeURIComponent("医療保険シミュレーション")}&type=blog&category=${encodeURIComponent("保険・医療")}`} alt="医療保険シミュレーション" className="w-full h-full object-cover" />
       </div>
 
       <h1 className="text-3xl font-bold text-gray-800 mb-4">【2026年最新】医療保険は必要？不要？シミュレーションで判断する方法</h1>
