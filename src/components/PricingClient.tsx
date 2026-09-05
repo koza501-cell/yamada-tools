@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
 import { trackBeginCheckout, trackPurchase, trackTrialStart } from '@/lib/analytics';
+import PaymentMethodsTrustBanner from '@/components/PaymentMethodsTrustBanner';
 
 type BillingPeriod = 'monthly' | 'annual';
 
@@ -415,7 +416,8 @@ export default function PricingClient() {
             <div className="relative flex flex-col items-center rounded-xl border-2 border-kon bg-gray-50 dark:bg-kon p-4"><span className="absolute -top-2.5 left-1/2 -translate-x-1/2 text-xs font-bold px-2 py-0.5 rounded-full whitespace-nowrap bg-kon text-white">おすすめ</span><div className="text-sm font-semibold text-gray-700 dark:text-gray-200 mt-1">3日パス</div><div className="text-2xl font-bold text-gray-900 dark:text-white mt-1">¥290</div><div className="text-xs text-gray-400 mb-2">税込</div></div>
             <div className="relative flex flex-col items-center rounded-xl border-2 border-green-500 bg-green-50 dark:bg-green-950 p-4"><span className="absolute -top-2.5 left-1/2 -translate-x-1/2 text-xs font-bold px-2 py-0.5 rounded-full whitespace-nowrap bg-green-500 text-white">最もお得</span><div className="text-sm font-semibold text-gray-700 dark:text-gray-200 mt-1">7日パス</div><div className="text-2xl font-bold text-gray-900 dark:text-white mt-1">¥490</div><div className="text-xs text-gray-400 mb-2">税込</div></div>
           </div>
-          <p className="text-center text-xs text-gray-400 mt-3">デイパスはツール利用時に購入できます（Stripe・KOMOJU決済対応）</p>
+          <p className="text-center text-xs text-gray-400 mt-3 mb-4">デイパスはツール利用時に購入できます</p>
+          <PaymentMethodsTrustBanner />
         </div>
 
         {/* Comparison Table */}

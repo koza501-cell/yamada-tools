@@ -72,7 +72,8 @@ export default function LegalPage() {
               <tr>
                 <td className="py-4 pr-4 font-bold text-kon align-top">商品以外に必要な代金</td>
                 <td className="py-4">
-                  サービス料金以外に必要な費用はございません<br />
+                  コンビニ決済を選択された場合、決済手数料220円（税込）が別途発生します。<br />
+                  <span className="text-sm text-gray-500">※ 決済手数料はコンビニ決済のみに発生し、上記「支払方法」に記載のその他のお支払い方法に追加料金はありません</span><br /><br />
                   <span className="text-sm text-gray-500">※ インターネット接続料金等はお客様のご負担となります</span>
                 </td>
               </tr>

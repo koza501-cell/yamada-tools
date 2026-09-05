@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import { Coffee } from "lucide-react";
+import PaymentMethodsTrustBanner from "./PaymentMethodsTrustBanner";
 
 interface DayPassPaywallProps {
   open: boolean;
@@ -73,7 +75,17 @@ export default function DayPassPaywall({ open, onClose, apiBase, rowCount, onCon
         </button>
 
         <h2 className="text-xl font-bold text-center text-gray-900 dark:text-white mb-1">今すぐ続ける</h2>
-        <p className="text-sm text-center text-gray-500 dark:text-gray-400 mb-5">広告なし・全機能利用可能</p>
+        <p className="text-sm text-center text-gray-500 dark:text-gray-400 mb-3">広告なし・全機能利用可能</p>
+
+        <div className="text-center mb-5">
+          <div className="flex items-center justify-center gap-2 text-3xl font-extrabold text-kon dark:text-white">
+            <Coffee size={28} className="shrink-0" />
+            <span>
+              ¥120<span className="text-base font-normal text-gray-400">〜</span>
+            </span>
+          </div>
+          <p className="text-xs text-gray-400 mt-1">コーヒー1杯より、ずっとお得</p>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5">
           {PASSES.map((p) => (
@@ -118,6 +130,10 @@ export default function DayPassPaywall({ open, onClose, apiBase, rowCount, onCon
           ))}
         </div>
 
+        <div className="mb-5">
+          <PaymentMethodsTrustBanner />
+        </div>
+
         <ul className="space-y-1.5 mb-5">
           {FEATURES.map((f) => (
             <li key={f} className="flex items-center gap-2 text-base text-gray-600 dark:text-gray-300">
@@ -132,7 +148,6 @@ export default function DayPassPaywall({ open, onClose, apiBase, rowCount, onCon
             サブスクリプションをご希望ですか？
             <Link href="/pricing" className="text-kon hover:underline ml-1">プランを見る →</Link>
           </p>
-          <p className="text-xs text-center text-gray-400">コンビニ払い・PayPayは近日対応予定</p>
         </div>
       </div>
     </div>

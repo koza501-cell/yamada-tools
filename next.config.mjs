@@ -34,6 +34,12 @@ const nextConfig = {
         ],
       },
       {
+        source: '/generator/envelope-print/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'private, no-cache, no-store' },
+        ],
+      },
+      {
         source: '/(account|auth|admin)/:path*',
         headers: [
           { key: 'Cache-Control', value: 'private, no-cache, no-store' },
