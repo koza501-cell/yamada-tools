@@ -14,6 +14,7 @@ interface User {
   trial_days_remaining?: number;
   effective_plan?: string;
   day_pass_expires_at?: string;
+  is_pro_pass?: boolean;
 }
 
 interface AuthContextType {

@@ -28,6 +28,8 @@ export default function AccountLayout({ children }: { children: React.ReactNode 
   const navItems = [
     { href: "/account", label: "ダッシュボード", icon: "🏠" },
     { href: "/account/profile", label: "プロフィール", icon: "👤" },
+    { href: "/account/wallet", label: "yamadaチャージ", icon: "💰" },
+    { href: "/account/wallet-history", label: "チャージ利用履歴", icon: "📊" },
     { href: "/account/billing", label: "請求履歴", icon: "🧾" },
     { href: "/account/subscription", label: "サブスクリプション", icon: "💳" },
     ...(user.effective_plan === "team"

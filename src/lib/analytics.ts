@@ -13,7 +13,7 @@ export const trackEvent = (eventName: string, params?: Record<string, any>) => {
 };
 
 // Track when user starts checkout/trial
-export const trackBeginCheckout = (plan: 'pro_monthly' | 'pro_annual' | 'pro_yearly' | 'trial' | 'team_monthly' | 'team_annual') => {
+export const trackBeginCheckout = (plan: 'pro_monthly' | 'pro_annual' | 'pro_yearly' | 'trial' | 'team_monthly' | 'team_annual' | 'pro_30day' | 'pro_90day') => {
   const valueMap: Record<string, number> = {
     pro_monthly: 980,
     pro_annual: 7980,
@@ -21,6 +21,8 @@ export const trackBeginCheckout = (plan: 'pro_monthly' | 'pro_annual' | 'pro_yea
     trial: 0,
     team_monthly: 1480,
     team_annual: 11760,
+    pro_30day: 980,
+    pro_90day: 2480,
   };
   const nameMap: Record<string, string> = {
     pro_monthly: 'PRO 月額',
@@ -29,6 +31,8 @@ export const trackBeginCheckout = (plan: 'pro_monthly' | 'pro_annual' | 'pro_yea
     trial: '10日間無料トライアル',
     team_monthly: 'TEAM 月額',
     team_annual: 'TEAM 年額',
+    pro_30day: 'PROパス（30日）',
+    pro_90day: 'PROパス（90日）',
   };
   const value = valueMap[plan] ?? 0;
   trackEvent('begin_checkout', {
@@ -50,6 +54,8 @@ export const trackPurchase = (plan: string, transactionId: string) => {
     pro_annual: 7980,
     team_monthly: 1480,
     team_annual: 11760,
+    pro_30day: 980,
+    pro_90day: 2480,
   };
   const value = valueMap[plan] ?? 980;
   trackEvent('purchase', {

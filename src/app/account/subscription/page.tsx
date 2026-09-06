@@ -107,7 +107,11 @@ export default function SubscriptionPage() {
             <div className="h-4 bg-gray-100 rounded w-1/3" />
           </div>
         ) : isDayPass ? (
-          <p className="text-sm text-gray-500">デイパスをご利用中です。月額サブスクリプションの詳細はありません。</p>
+          <p className="text-sm text-gray-500">
+            {user.is_pro_pass
+              ? "PROパスをご利用中です。月額サブスクリプションの詳細はありません。"
+              : "デイパスをご利用中です。月額サブスクリプションの詳細はありません。"}
+          </p>
         ) : (
           <div className="space-y-3 text-sm">
             {subscription?.status && (

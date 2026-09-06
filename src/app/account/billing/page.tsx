@@ -87,7 +87,8 @@ export default function BillingPage() {
   const paidCases = souzokuCases.filter((c) => c.status === "paid");
   const draftCases = souzokuCases.filter((c) => c.status !== "paid");
   const souzokuReceipts = receipts.filter((r) => r.pass_type.startsWith("souzoku_"));
-  const dayPassReceipts = receipts.filter((r) => !r.pass_type.startsWith("souzoku_"));
+  const proPassReceipts = receipts.filter((r) => r.pass_type.startsWith("pro_"));
+  const dayPassReceipts = receipts.filter((r) => !r.pass_type.startsWith("souzoku_") && !r.pass_type.startsWith("pro_") && r.pass_type !== "wallet_topup");
 
   return (
     <div className="space-y-6">
@@ -171,6 +172,60 @@ export default function BillingPage() {
               </thead>
               <tbody className="divide-y divide-gray-50">
                 {souzokuReceipts.map((r) => {
+                  const tax = r.tax_amount; const subtotal = r.amount - tax;
+                  return (
+                    <tr key={r.id} className="hover:bg-gray-50">
+                      <td className="py-3 text-gray-700">{formatDateStr(r.issued_at)}</td>
+                      <td className="py-3 text-gray-500 font-mono text-xs">{r.receipt_number}</td>
+                      <td className="py-3">
+                        <div className="space-y-0.5 text-xs">
+                          <div className="text-gray-500">税抜: ¥{subtotal.toLocaleString()}</div>
+                          <div className="text-gray-500">消費税(10%): ¥{tax.toLocaleString()}</div>
+                          <div className="font-semibold text-gray-900">合計: ¥{r.amount.toLocaleString()}</div>
+                        </div>
+                      </td>
+                      <td className="py-3">
+                        <div className="space-y-1.5">
+                          <div className="flex items-center gap-1">
+                            <span className="text-xs text-gray-400 whitespace-nowrap">宛名:</span>
+                            <input type="text" value={atenaMap[r.id] ?? r.payer_name}
+                              onChange={(e) => setAtenaMap((m) => ({ ...m, [r.id]: e.target.value }))}
+                              className="text-xs border border-gray-200 rounded px-1.5 py-0.5 w-32 focus:outline-none focus:border-ai"
+                              placeholder="お客様" />
+                          </div>
+                          <button type="button" onClick={() => handleDownloadReceipt(r)} disabled={downloadingId === r.id}
+                            className="text-xs px-2 py-1 border border-gray-200 rounded hover:bg-gray-50 text-gray-600 transition-colors disabled:opacity-50">
+                            {downloadingId === r.id ? "処理中..." : "領収書PDF"}
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+
+      {/* PRO pass receipts */}
+      <div className="bg-white rounded-xl shadow-sm p-6">
+        <h2 className="text-base font-semibold text-gray-900 mb-5">PROパス 購入履歴</h2>
+        {receiptsLoading ? (
+          <div className="animate-pulse space-y-3">{[...Array(2)].map((_, i) => <div key={i} className="h-10 bg-gray-100 rounded" />)}</div>
+        ) : proPassReceipts.length === 0 ? (
+          <div className="text-center py-8 text-sm text-gray-500">PROパスの購入履歴がありません</div>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-gray-100 text-left text-xs text-gray-500">
+                  <th className="pb-3 font-medium">購入日</th><th className="pb-3 font-medium">領収書番号</th>
+                  <th className="pb-3 font-medium">金額</th><th className="pb-3 font-medium">領収書</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-50">
+                {proPassReceipts.map((r) => {
                   const tax = r.tax_amount; const subtotal = r.amount - tax;
                   return (
                     <tr key={r.id} className="hover:bg-gray-50">

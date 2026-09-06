@@ -18,6 +18,7 @@ function formatRemaining(expiresAt: string): string {
 const PLAN_CFG: Record<string, { label: string; badge: string; border: string }> = {
   free:      { label: "FREE",    badge: "bg-gray-100 text-gray-600",   border: "border-gray-200" },
   pro_trial: { label: "デイパス", badge: "bg-gray-50 text-kon", border: "border-gray-200" },
+  pro_pass:  { label: "PROパス",  badge: "bg-[#223A70] text-white",      border: "border-gray-200" },
   pro:       { label: "PRO",     badge: "bg-[#223A70] text-white",      border: "border-gray-200" },
   team:      { label: "TEAM",    badge: "bg-kon text-white",     border: "border-kon" },
 };
@@ -35,7 +36,7 @@ export function PlanStatusCard() {
 
   if (!user) return null;
 
-  const plan = user.effective_plan ?? "free";
+  const plan = user.is_pro_pass ? "pro_pass" : (user.effective_plan ?? "free");
   const cfg = PLAN_CFG[plan] ?? PLAN_CFG.free;
   const expiresAt = user.day_pass_expires_at;
 

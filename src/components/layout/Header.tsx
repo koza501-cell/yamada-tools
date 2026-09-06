@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import ThemeToggle from "@/components/common/ThemeToggle";
+import WalletBalanceIndicator from "@/components/WalletBalanceIndicator";
 import { buttonCls } from "@/components/ui/Button";
 import { pdfTools, documentTools, convertTools, imageTools, generatorTools, financeTools, insuranceTools, taxTools, careerTools, realestateTools, businessTools, healthTools, educationTools, debtTools, utilityTools } from "@/config/tools";
 import { searchTools } from "@/lib/searchUtils";
@@ -280,6 +281,8 @@ export default function Header() {
 
               {/* Login / user menu */}
               {!loading && (user ? (
+                <>
+                <WalletBalanceIndicator />
                 <div className="relative">
                   <button
                     ref={userBtnRef}
@@ -290,6 +293,7 @@ export default function Header() {
                     <span className="text-sm max-w-[80px] truncate hidden sm:inline">{user.email.split("@")[0]}</span>
                   </button>
                 </div>
+                </>
               ) : (
                 <Link href="/auth/login" className={buttonCls('primary', 'sm')}>
                   ログイン

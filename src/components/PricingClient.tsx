@@ -4,12 +4,15 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
-import { trackBeginCheckout, trackPurchase, trackTrialStart } from '@/lib/analytics';
+import { trackBeginCheckout, trackPurchase } from '@/lib/analytics';
 import PaymentMethodsTrustBanner from '@/components/PaymentMethodsTrustBanner';
 
-type BillingPeriod = 'monthly' | 'annual';
+const API_URL = (process.env.NEXT_PUBLIC_API_URL || 'https://api.yamada-tools.jp') + '/api/payment';
 
-const API_URL = 'https://api.yamada-tools.jp/api/payment';
+const PRO_PASSES = [
+  { type: 'pro_30day', label: '30日パス', price: 980, days: 30, badge: '' },
+  { type: 'pro_90day', label: '90日パス', price: 2480, days: 90, badge: 'お得' },
+] as const;
 
 const faqs = [
   {
@@ -17,20 +20,16 @@ const faqs = [
     a: 'いいえ、無料プランは永久にご利用いただけます。1日5回までの利用制限がありますが、基本的な機能はすべてお使いいただけます。',
   },
   {
-    q: 'プランの変更やキャンセルはいつでもできますか？',
-    a: 'はい、いつでもプランの変更・キャンセルが可能です。解約後は当月末までご利用いただけます。デジタルサービスの性質上、お支払い後の返金は原則として承っておりません。',
+    q: 'PROパスの自動更新はありますか？',
+    a: 'いいえ、PROパスは30日/90日の一回払いです。自動更新・自動課金は一切ありません。期限が来たら必要に応じて再度購入してください。',
   },
   {
     q: '請求書払いは可能ですか？',
-    a: 'TEAMプラン以上で請求書払い（NP掛け払い）に対応しています。月末締め翌月末払いなど、お客様の経理フローに合わせた対応が可能です。',
+    a: 'TEAMプランは法人のお客様向けに請求書払い（NP掛け払い）に対応しています。まずはお問い合わせください。',
   },
   {
     q: 'セキュリティ対策について教えてください。',
     a: 'すべてのデータは処理完了後に自動削除されます。ファイルはサーバーに保存されず、SSL/TLS暗号化通信で保護されています。',
-  },
-  {
-    q: 'チームプランの最低利用人数はありますか？',
-    a: 'チームプランは5ユーザーからご利用いただけます。ユーザー数の追加・削減はいつでも可能です。',
   },
   {
     q: 'サポートはどのように受けられますか？',
@@ -68,48 +67,39 @@ const envelopeRows = [
 
 // BRAND-COLOR-FIX-v1: sakura → kon for professional B2B aesthetic
 export default function PricingClient() {
-  const [billing, setBilling] = useState<BillingPeriod>('monthly');
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
   const [loadingPlan, setLoadingPlan] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [walletBalance, setWalletBalance] = useState<number | null>(null);
   const { user, refreshUser } = useAuth();
   const router = useRouter();
 
-  // Handle Stripe redirect back after payment
+  // Handle KOMOJU redirect back after payment
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const payment = params.get('payment');
-    const sessionId = params.get('session_id');
 
-    if (payment === 'success' && sessionId) {
-      const token = localStorage.getItem('session_token');
-      if (token) {
-        fetch(`${API_URL}/verify/${sessionId}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        })
-          .then(r => r.json())
-          .then(data => {
-            if (data.success) {
-              const planNames: Record<string, string> = { pro: 'PRO', team: 'TEAM' };
-              const name = planNames[data.plan] || data.plan?.toUpperCase() || 'PRO';
-              setSuccessMessage(`${name}プランへのアップグレードが完了しました！`);
-              const pendingPlan = localStorage.getItem('pending_plan') || 'pro_monthly';
-              trackPurchase(pendingPlan, sessionId);
-              localStorage.removeItem('pending_plan');
-              refreshUser();
-            }
-          })
-          .catch(() => {});
-        // Clean URL
-        window.history.replaceState({}, '', '/pricing');
-      }
+    if (payment === 'success') {
+      setSuccessMessage('PROパスへのアップグレードが完了しました！');
+      refreshUser();
+      window.history.replaceState({}, '', '/pricing');
     } else if (payment === 'cancelled') {
       window.history.replaceState({}, '', '/pricing');
     }
   }, []);
 
-  const handleUpgrade = async (planKey: string) => {
+  // Wallet balance (for "残高から支払う" option on PRO passes)
+  useEffect(() => {
+    const token = typeof window !== 'undefined' ? localStorage.getItem('session_token') : null;
+    if (!token) return;
+    fetch(`${API_URL}/wallet/balance`, { headers: { Authorization: `Bearer ${token}` } })
+      .then((r) => r.json())
+      .then((d) => setWalletBalance(typeof d.balance_jpy === 'number' ? d.balance_jpy : 0))
+      .catch(() => {});
+  }, [user]);
+
+  const handlePurchasePass = async (passType: string) => {
     if (!user) {
       router.push('/auth/login?redirect=/pricing');
       return;
@@ -120,24 +110,24 @@ export default function PricingClient() {
       return;
     }
 
-    setLoadingPlan(planKey);
+    setLoadingPlan(passType);
     try {
-      const res = await fetch(`${API_URL}/checkout`, {
+      const res = await fetch(`${API_URL}/day-pass-checkout`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ plan: planKey }),
+        body: JSON.stringify({ pass_type: passType }),
       });
-      const data = await res.json();
-      if (data.checkout_url) {
-        localStorage.setItem('pending_plan', planKey);
-        trackBeginCheckout(planKey as any);
+      if (res.ok) {
+        const data = await res.json();
+        trackBeginCheckout(passType as any);
         window.location.href = data.checkout_url;
       } else {
+        const data = await res.json().catch(() => ({}));
         console.error('Checkout error:', data);
-        setErrorMessage('決済処理に失敗しました。しばらくしてからお試しください。');
+        setErrorMessage(data.detail || '決済処理に失敗しました。しばらくしてからお試しください。');
         setLoadingPlan(null);
       }
     } catch (err) {
@@ -147,14 +137,43 @@ export default function PricingClient() {
     }
   };
 
-  const proKey  = billing === 'monthly' ? 'pro_monthly'  : 'pro_annual';
-  const teamKey = billing === 'monthly' ? 'team_monthly' : 'team_annual';
+  const handleSpendWalletForPass = async (passType: string) => {
+    const token = localStorage.getItem('session_token');
+    if (!token) {
+      router.push('/auth/login?redirect=/pricing');
+      return;
+    }
+    setLoadingPlan(`wallet_${passType}`);
+    try {
+      const res = await fetch(`${API_URL}/wallet/spend-for-day-pass`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ pass_type: passType }),
+      });
+      if (res.ok) {
+        trackPurchase(passType, `wallet_${Date.now()}`);
+        setSuccessMessage('PROパスへのアップグレードが完了しました！');
+        refreshUser();
+      } else {
+        const data = await res.json().catch(() => ({}));
+        setErrorMessage(data.detail || '残高からの支払いに失敗しました');
+      }
+    } catch {
+      setErrorMessage('ネットワークエラーが発生しました');
+    } finally {
+      setLoadingPlan(null);
+    }
+  };
 
-  // user.plan is 'free' | 'pro' | 'team' from DB
+  // user.plan is 'free' | 'pro' | 'team' from DB (real, legacy recurring subscribers only)
   const userPlan = user?.plan || 'free';
   const isFreePlan = userPlan === 'free';
-  const isProPlan  = userPlan === 'pro';
-  const isTeamPlan = userPlan === 'team';
+  const isLegacyProSubscriber = user?.effective_plan === 'pro';
+  const isProPassActive = !!user?.is_pro_pass && user?.effective_plan === 'pro_trial';
+  const isTeamPlan = userPlan === 'team' || user?.effective_plan === 'team';
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
@@ -182,30 +201,6 @@ export default function PricingClient() {
         </p>
       </div>
 
-      {/* Billing Toggle */}
-      <div className="flex items-center justify-center gap-4 mb-10 px-4">
-        <span className={`text-sm font-medium transition-colors ${billing === 'monthly' ? 'text-kon dark:text-white' : 'text-gray-400'}`}>
-          月払い
-        </span>
-        <button
-          onClick={() => setBilling(b => b === 'monthly' ? 'annual' : 'monthly')}
-          className={`relative w-14 h-7 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-kon focus:ring-offset-2 ${billing === 'annual' ? 'bg-kon' : 'bg-gray-300'}`}
-          aria-label="支払いサイクル切り替え"
-        >
-          <span
-            className={`absolute top-1 left-1 w-5 h-5 bg-white rounded-full shadow transition-transform duration-300 ${billing === 'annual' ? 'translate-x-7' : 'translate-x-0'}`}
-          />
-        </button>
-        <span className={`text-sm font-medium transition-colors flex items-center gap-2 ${billing === 'annual' ? 'text-kon dark:text-white' : 'text-gray-400'}`}>
-          年払い
-          {billing === 'annual' && (
-            <span className="bg-kon text-white text-xs font-bold px-2.5 py-0.5 rounded-full">
-              17%お得！
-            </span>
-          )}
-        </span>
-      </div>
-
       {/* Pricing Cards */}
       <div className="max-w-7xl mx-auto px-4 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
@@ -213,7 +208,7 @@ export default function PricingClient() {
           {/* FREE */}
           <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 flex flex-col shadow-sm hover:shadow-md transition-shadow">
             <div>
-              {isFreePlan ? (
+              {isFreePlan && !isProPassActive ? (
                 <span className="inline-block text-xs font-bold text-green-600 bg-green-100 dark:bg-green-900/40 dark:text-green-400 px-3 py-1 rounded-full">
                   契約中
                 </span>
@@ -239,16 +234,16 @@ export default function PricingClient() {
               disabled
               className="w-full py-3 bg-gray-100 dark:bg-gray-700 text-gray-400 rounded-xl font-medium cursor-not-allowed text-sm"
             >
-              {isFreePlan ? '現在ご利用中' : 'ダウングレード不可'}
+              {isFreePlan && !isProPassActive ? '現在ご利用中' : 'ダウングレード不可'}
             </button>
           </div>
 
           {/* PRO */}
           <div className="bg-white dark:bg-gray-800 rounded-2xl border-2 border-kon p-6 flex flex-col shadow-lg relative hover:shadow-xl transition-shadow lg:scale-[1.03]">
             <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-              {isProPlan ? (
+              {isLegacyProSubscriber || isProPassActive ? (
                 <span className="bg-green-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow whitespace-nowrap">
-                  契約中
+                  ご利用中
                 </span>
               ) : (
                 <span className="bg-kon text-white text-xs font-bold px-4 py-1.5 rounded-full shadow whitespace-nowrap">
@@ -257,60 +252,80 @@ export default function PricingClient() {
               )}
             </div>
             <h2 className="text-xl font-bold text-gray-800 dark:text-white mt-4 mb-1">
-              PRO <span className="text-sm font-normal text-gray-400">プロ</span>
+              PRO <span className="text-sm font-normal text-gray-400">プロ・買い切りパス</span>
             </h2>
-            <div className="mt-2 min-h-[72px]">
-              {billing === 'monthly' ? (
-                <>
-                  <div>
-                    <span className="text-4xl font-bold text-kon">¥980</span>
-                    <span className="text-gray-500 text-sm ml-1">/月</span>
+            <p className="text-xs text-gray-400 mb-3">月額サブスクリプションではありません。使いたい期間だけ購入する一回払いです。</p>
+
+            {isLegacyProSubscriber ? (
+              <div className="mt-2 min-h-[72px] flex items-center">
+                <span className="text-sm text-gray-500">現在PROプランをご利用中です</span>
+              </div>
+            ) : isProPassActive ? (
+              <div className="mt-2 min-h-[72px] flex flex-col justify-center">
+                <span className="text-lg font-bold text-green-600">PROパス利用中</span>
+                {user?.day_pass_expires_at && (
+                  <span className="text-xs text-gray-400 mt-1">
+                    {new Date(user.day_pass_expires_at).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })} まで
+                  </span>
+                )}
+              </div>
+            ) : (
+              <div className="grid grid-cols-2 gap-3 mt-2 mb-2">
+                {PRO_PASSES.map((p) => (
+                  <div
+                    key={p.type}
+                    className={`relative flex flex-col items-center rounded-xl border-2 p-3 ${
+                      p.badge ? 'border-kon bg-gray-50 dark:bg-kon' : 'border-gray-200 bg-gray-50 dark:bg-gray-800'
+                    }`}
+                  >
+                    {p.badge && (
+                      <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 text-xs font-bold px-2 py-0.5 rounded-full whitespace-nowrap bg-kon text-white">
+                        {p.badge}
+                      </span>
+                    )}
+                    <div className="text-xs font-semibold text-gray-700 dark:text-gray-200 mt-1">{p.label}</div>
+                    <div className="text-xl font-bold text-gray-900 dark:text-white mt-1">¥{p.price.toLocaleString()}</div>
+                    <div className="text-[10px] text-gray-400 mb-2">税込・一回払い</div>
+                    <button
+                      onClick={() => handlePurchasePass(p.type)}
+                      disabled={loadingPlan !== null}
+                      className="w-full py-2 rounded-lg text-xs font-medium transition-colors disabled:opacity-50 bg-kon hover:bg-kon/90 text-white"
+                    >
+                      {loadingPlan === p.type ? '処理中...' : '購入する'}
+                    </button>
                   </div>
-                  <p className="text-gray-400 text-xs mt-1">（税込）</p>
-                </>
-              ) : (
-                <>
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-4xl font-bold text-kon">¥817</span>
-                    <span className="text-gray-500 text-sm">/月</span>
-                  </div>
-                  <p className="text-gray-600 dark:text-gray-300 text-xs mt-0.5">
-                    <span className="line-through mr-1 text-gray-500">¥980</span>年額 <strong>¥9,800</strong>（税込）
-                  </p>
-                  <span className="inline-block mt-1 text-xs font-bold text-white bg-kon px-2 py-0.5 rounded-full">17%お得</span>
-                </>
-              )}
-            </div>
-            <ul className="space-y-2.5 mt-5 mb-8 flex-1">
-              {['全140+ツール利用可能', '無制限利用', '最大ファイルサイズ: 200MB', '広告なし', 'FAQチャットボット', '領収書自動発行', '利用状況レポート', '会社ロゴ・バーコード・QR対応'].map(f => (
+                ))}
+              </div>
+            )}
+
+            {!isLegacyProSubscriber && !isProPassActive && walletBalance !== null && walletBalance >= PRO_PASSES[0].price && (
+              <div className="space-y-2 mb-4">
+                {PRO_PASSES.filter((p) => walletBalance >= p.price).map((p) => (
+                  <button
+                    key={`wallet_${p.type}`}
+                    onClick={() => handleSpendWalletForPass(p.type)}
+                    disabled={loadingPlan !== null}
+                    className="w-full py-2 rounded-lg border-2 border-kon bg-kon/5 hover:bg-kon/10 dark:border-white/30 dark:bg-white/5 dark:hover:bg-white/10 text-kon dark:text-white font-medium text-xs transition-colors disabled:opacity-50"
+                  >
+                    {loadingPlan === `wallet_${p.type}`
+                      ? '処理中...'
+                      : `💰 残高から支払う（${p.label}・¥${p.price.toLocaleString()}） ・ 残高 ¥${walletBalance.toLocaleString()}`}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            <ul className="space-y-2.5 mt-3 mb-5 flex-1">
+              {['全140+ツール利用可能', '無制限利用', '最大ファイルサイズ: 200MB', '広告なし', 'FAQチャットボット', '領収書自動発行', '会社ロゴ・バーコード・QR対応'].map(f => (
                 <li key={f} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
                   <span className="text-green-500 mt-0.5 shrink-0">✓</span>{f}
                 </li>
               ))}
             </ul>
-            {isProPlan ? (
-              <button
-                disabled
-                className="w-full py-3 bg-gray-100 dark:bg-gray-700 text-gray-400 rounded-xl font-medium cursor-not-allowed text-sm"
-              >
-                現在のプラン
-              </button>
-            ) : isTeamPlan ? (
-              <button
-                disabled
-                className="w-full py-3 bg-gray-100 dark:bg-gray-700 text-gray-400 rounded-xl font-medium cursor-not-allowed text-sm"
-              >
-                現在より下位プラン
-              </button>
-            ) : (
-              <button
-                onClick={() => handleUpgrade(proKey)}
-                disabled={loadingPlan === proKey}
-                className="w-full py-3 bg-kon hover:bg-kon/90 text-white rounded-xl font-bold transition-colors text-sm disabled:opacity-60 disabled:cursor-not-allowed shadow-md"
-              >
-                {loadingPlan === proKey ? '処理中...' : 'PROプランを始める'}
-              </button>
-            )}
+
+            <p className="text-xs text-gray-400 border-t border-gray-100 dark:border-gray-700 pt-3">
+              ※相続登記ガイドは別途購入が必要です
+            </p>
           </div>
 
           {/* TEAM */}
@@ -330,28 +345,11 @@ export default function PricingClient() {
               TEAM <span className="text-sm font-normal text-gray-400">チーム</span>
             </h2>
             <div className="mt-2 min-h-[72px]">
-              {billing === 'monthly' ? (
-                <>
-                  <div>
-                    <span className="text-4xl font-bold text-kon dark:text-gray-300">¥1,480</span>
-                  </div>
-                  <p className="text-gray-400 text-xs mt-1">/ユーザー/月（税込）</p>
-                </>
-              ) : (
-                <>
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-4xl font-bold text-kon dark:text-gray-300">¥980</span>
-                    <span className="text-gray-500 text-sm">/ユーザー/月</span>
-                  </div>
-                  <p className="text-gray-600 dark:text-gray-300 text-xs mt-0.5">
-                    <span className="line-through mr-1 text-gray-500">¥1,480</span>年額 <strong>¥11,760</strong>/ユーザー（税込）
-                  </p>
-                  <span className="inline-block mt-1 text-xs font-bold text-white bg-kon px-2 py-0.5 rounded-full">33%お得</span>
-                </>
-              )}
+              <span className="text-2xl font-bold text-gray-800 dark:text-white">お問い合わせ</span>
+              <p className="text-gray-400 text-sm mt-1">請求書払い（NP掛け払い）対応・ご要望に応じたお見積り</p>
             </div>
             <ul className="space-y-2.5 mt-5 mb-8 flex-1">
-              {['PROの全機能', '5ユーザーから利用可能', 'チーム管理ダッシュボード', '請求書払い対応（NP掛け払い）', '利用状況レポート', 'AIチャットボット（24時間対応）', '領収書・請求書自動発行', '共有アドレス帳・500件一括印刷'].map(f => (
+              {['PROの全機能', '5ユーザーから利用可能', 'チーム管理ダッシュボード', '請求書払い対応（NP掛け払い）', 'AIチャットボット（24時間対応）', '領収書・請求書自動発行', '共有アドレス帳・500件一括印刷'].map(f => (
                 <li key={f} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
                   <span className="text-green-500 mt-0.5 shrink-0">✓</span>{f}
                 </li>
@@ -365,13 +363,12 @@ export default function PricingClient() {
                 現在のプラン
               </button>
             ) : (
-              <button
-                onClick={() => handleUpgrade(teamKey)}
-                disabled={loadingPlan === teamKey}
-                className="w-full py-3 bg-kon hover:bg-kon/90 text-white rounded-xl font-bold transition-colors text-sm disabled:opacity-60 disabled:cursor-not-allowed"
+              <a
+                href="mailto:support@yamada-tools.jp?subject=TEAMプランのお問い合わせ&body=会社名：%0D%0Aご担当者名：%0D%0Aご利用予定人数：%0D%0Aご質問・ご要望："
+                className="w-full py-3 bg-kon hover:bg-kon/90 text-white rounded-xl font-bold transition-colors text-sm text-center block"
               >
-                {loadingPlan === teamKey ? '処理中...' : 'チームプランを始める'}
-              </button>
+                お問い合わせ
+              </a>
             )}
           </div>
 
@@ -409,7 +406,7 @@ export default function PricingClient() {
 
         {/* Day Pass */}
         <div className="mt-16 max-w-2xl mx-auto">
-          <h2 className="text-xl font-bold text-center text-gray-800 dark:text-white mb-2">デイパス <span className="text-sm font-normal text-gray-400">— 月額不要、1日から使える</span></h2>
+          <h2 className="text-xl font-bold text-center text-gray-800 dark:text-white mb-2">デイパス <span className="text-sm font-normal text-gray-400">— 封筒印刷を1日から使える</span></h2>
           <p className="text-center text-sm text-gray-500 mb-6">広告なし・全機能・当日限り有効</p>
           <div className="grid grid-cols-3 gap-4">
             <div className="flex flex-col items-center rounded-xl border-2 border-gray-200 bg-gray-50 dark:bg-gray-800 p-4"><div className="text-sm font-semibold text-gray-700 dark:text-gray-200 mt-1">1日パス</div><div className="text-2xl font-bold text-gray-900 dark:text-white mt-1">¥120</div><div className="text-xs text-gray-400 mb-2">税込</div></div>

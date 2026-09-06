@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Coffee } from "lucide-react";
 import PaymentMethodsTrustBanner from "./PaymentMethodsTrustBanner";
@@ -18,6 +18,9 @@ const PASSES = [
   { type: "7day", label: "7日パス", price: "¥490", badge: "最もお得" },
 ] as const;
 
+const WALLET_SPEND_PASS_TYPE = "1day";
+const WALLET_SPEND_PRICE_JPY = 120;
+
 const FEATURES = [
   "CSV一括印刷（50件まで）",
   "宛名帳に保存（50件まで）",
@@ -27,6 +30,17 @@ const FEATURES = [
 
 export default function DayPassPaywall({ open, onClose, apiBase, rowCount, onContinueFree }: DayPassPaywallProps) {
   const [loading, setLoading] = useState<string | null>(null);
+  const [walletBalance, setWalletBalance] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (!open) { setWalletBalance(null); return; }
+    const token = typeof window !== "undefined" ? localStorage.getItem("session_token") : null;
+    if (!token) { setWalletBalance(null); return; }
+    fetch(apiBase + "/api/payment/wallet/balance", { headers: { Authorization: "Bearer " + token } })
+      .then((r) => r.json())
+      .then((d) => setWalletBalance(typeof d.balance_jpy === "number" ? d.balance_jpy : 0))
+      .catch(() => setWalletBalance(null));
+  }, [open, apiBase]);
 
   if (!open) return null;
 
@@ -38,9 +52,9 @@ export default function DayPassPaywall({ open, onClose, apiBase, rowCount, onCon
     }
     setLoading(passType);
     try {
-      const res = await fetch(`${apiBase}/api/payment/day-pass-checkout`, {
+      const res = await fetch(apiBase + "/api/payment/day-pass-checkout", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+        headers: { "Content-Type": "application/json", Authorization: "Bearer " + token },
         body: JSON.stringify({ pass_type: passType }),
       });
       if (res.ok) {
@@ -49,6 +63,34 @@ export default function DayPassPaywall({ open, onClose, apiBase, rowCount, onCon
       } else {
         const data = await res.json();
         alert(data.detail || "購入処理に失敗しました");
+        setLoading(null);
+      }
+    } catch {
+      alert("ネットワークエラーが発生しました");
+      setLoading(null);
+    }
+  };
+
+  const handleSpendWallet = async () => {
+    const token = typeof window !== "undefined" ? localStorage.getItem("session_token") : null;
+    if (!token) {
+      window.location.href = "/auth/login?redirect=/generator/envelope-print";
+      return;
+    }
+    setLoading("wallet");
+    try {
+      const res = await fetch(apiBase + "/api/payment/wallet/spend-for-day-pass", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Authorization: "Bearer " + token },
+        body: JSON.stringify({ pass_type: WALLET_SPEND_PASS_TYPE }),
+      });
+      if (res.ok) {
+        const url = new URL(window.location.href);
+        url.searchParams.set("payment", "success");
+        window.location.href = url.toString();
+      } else {
+        const data = await res.json();
+        alert(data.detail || "残高からの支払いに失敗しました");
         setLoading(null);
       }
     } catch {
@@ -86,6 +128,18 @@ export default function DayPassPaywall({ open, onClose, apiBase, rowCount, onCon
           </div>
           <p className="text-xs text-gray-400 mt-1">コーヒー1杯より、ずっとお得</p>
         </div>
+
+        {walletBalance !== null && walletBalance >= WALLET_SPEND_PRICE_JPY && (
+          <button
+            onClick={handleSpendWallet}
+            disabled={loading !== null}
+            className="w-full mb-4 py-3 rounded-xl border-2 border-kon bg-kon/5 hover:bg-kon/10 dark:border-white/30 dark:bg-white/5 dark:hover:bg-white/10 text-kon dark:text-white font-semibold text-sm transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+          >
+            {loading === "wallet"
+              ? "処理中..."
+              : `💰 残高から支払う（¥${WALLET_SPEND_PRICE_JPY}） ・ 残高 ¥${walletBalance.toLocaleString()}`}
+          </button>
+        )}
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5">
           {PASSES.map((p) => (
