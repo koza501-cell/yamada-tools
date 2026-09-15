@@ -13,6 +13,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import { ThemeProvider } from "@/components/common/ThemeProvider";
 import GoogleAnalytics from "@/components/common/GoogleAnalytics";
 import StagingBanner from "@/components/common/StagingBanner";
+import PaymentAnnouncementBar from "@/components/common/PaymentAnnouncementBar";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { PricingTriggerProvider } from "@/components/common/PricingTriggerProvider";
 import AdSenseLoader from "@/components/AdSenseLoader";
@@ -222,6 +223,7 @@ export default async function RootLayout({
           {`if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js')});}`}
         </Script>
         <StagingBanner />
+        <PaymentAnnouncementBar />
         <AuthProvider>
         <PricingTriggerProvider>
         <ThemeProvider>

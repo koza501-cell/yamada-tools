@@ -11,6 +11,7 @@ import TabbedToolsSection from "@/components/common/TabbedToolsSection";
 import StatsCounter from "@/components/common/StatsCounter";
 import FooterCta from "@/components/common/FooterCta";
 import NicheBentoSection from "@/components/home/NicheBentoSection";
+import PaymentMethodsHomeSection from "@/components/home/PaymentMethodsHomeSection";
 import { buttonCls } from "@/components/ui/Button";
 import Card, { cardCls } from "@/components/ui/Card";
 import Badge from "@/components/ui/Badge";
@@ -157,6 +158,11 @@ export default function Home() {
 
         </div>
       </section>
+
+      {/* ============================================================ */}
+      {/* 決済方法アナウンス (new payment methods)                     */}
+      {/* ============================================================ */}
+      <PaymentMethodsHomeSection />
 
       {/* ============================================================ */}
       {/* ご利用の流れ (3-step diagram, below fold)                    */}
