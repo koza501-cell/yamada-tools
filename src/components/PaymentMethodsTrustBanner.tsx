@@ -5,9 +5,7 @@ const FEE_FREE_METHODS = [
   "PayPay",
   "銀行振込",
   "Merpay",
-  "LINE Pay",
   "Rakuten Pay",
-  "au PAY",
   "Pay Easy",
 ];
 
