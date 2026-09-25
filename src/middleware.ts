@@ -70,8 +70,12 @@ export function middleware(request: NextRequest) {
     response.headers.set('x-pathname', '/');
   }
 
-  // Noindex for staging and local dev — production guard ensures yamada-tools.jp is never blocked
-  if (!host.includes('yamada-tools.jp') && (host.includes('staging') || host.includes('localhost'))) {
+  // Noindex for staging and local dev — production guard ensures yamada-tools.jp is never blocked.
+  // NOTE: host.includes('yamada-tools.jp') is true for staging.yamada-tools.jp too, so that check
+  // must NOT be used to detect staging (it previously made this block a no-op on the real staging
+  // hostname). Detect staging/local explicitly instead; the production hostname itself never matches.
+  const isNonProdHost = host === 'staging.yamada-tools.jp' || host.includes('localhost') || host.includes('127.0.0.1');
+  if (isNonProdHost) {
     response.headers.set('X-Robots-Tag', 'noindex, nofollow');
   }
 
