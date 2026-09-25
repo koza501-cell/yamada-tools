@@ -1248,3 +1248,9 @@ body {
 /* CLS prevention: reserve intrinsic size for images */
 img { width: auto; height: auto; }
 img[width][height] { aspect-ratio: attr(width) / attr(height); }
+
+/* Payment announcement bar: hidden via pre-hydration script (see layout.tsx)
+   when previously dismissed, to avoid a post-mount pop-in/CLS. */
+html.hide-payment-banner #payment-announcement-bar {
+  display: none;
+}

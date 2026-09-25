@@ -1,30 +1,26 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
 
 const DISMISS_KEY = "yamada_payment_announcement_dismissed";
 
-export default function PaymentAnnouncementBar() {
-  const [dismissed, setDismissed] = useState(true);
-  const [isStaging, setIsStaging] = useState(false);
-
-  useEffect(() => {
-    const stored = localStorage.getItem(DISMISS_KEY);
-    if (!stored) setDismissed(false);
-    const host = window.location.hostname;
-    setIsStaging(host.includes("staging") || host === "localhost" || host === "127.0.0.1");
-  }, []);
-
+// NOTE on CLS: visibility is controlled purely via CSS (see .hide-payment-banner
+// in globals.css) driven by a synchronous pre-hydration script in layout.tsx that
+// reads localStorage BEFORE first paint. This component always renders the same
+// markup on server and client, so there is no post-mount state change that pops
+// the bar in/out and shifts content below it (which the previous
+// useState/useEffect-based implementation did).
+export default function PaymentAnnouncementBar({ isStaging = false }: { isStaging?: boolean }) {
   const handleDismiss = () => {
-    localStorage.setItem(DISMISS_KEY, "1");
-    setDismissed(true);
+    try {
+      localStorage.setItem(DISMISS_KEY, "1");
+    } catch {}
+    document.documentElement.classList.add("hide-payment-banner");
   };
-
-  if (dismissed) return null;
 
   return (
     <div
+      id="payment-announcement-bar"
       className={`relative bg-kon text-white text-xs sm:text-sm py-2 px-4 ${isStaging ? "mt-6" : ""}`}
     >
       <div className="max-w-6xl mx-auto flex items-center justify-center gap-3 pr-6">

@@ -186,6 +186,7 @@ export default async function RootLayout({
   return (
     <html lang={htmlLang} suppressHydrationWarning>
       <script dangerouslySetInnerHTML={{__html: `(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.classList.add("dark")}}catch(e){}})();`}} />
+      <script dangerouslySetInnerHTML={{__html: `(function(){try{if(localStorage.getItem("yamada_payment_announcement_dismissed")){document.documentElement.classList.add("hide-payment-banner")}}catch(e){}})();`}} />
       <head>
         <script
           type="application/ld+json"
@@ -223,7 +224,7 @@ export default async function RootLayout({
           {`if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js')});}`}
         </Script>
         <StagingBanner />
-        <PaymentAnnouncementBar />
+        <PaymentAnnouncementBar isStaging={!isProduction} />
         <AuthProvider>
         <PricingTriggerProvider>
         <ThemeProvider>
