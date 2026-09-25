@@ -1,5 +1,6 @@
 "use client";
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { trackEvent } from "@/lib/analytics";
 
 interface User {
   id: number;
@@ -65,7 +66,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       const res = await fetch(API_URL + "/register", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email, password, company_name: companyName || "" }) });
       const data = await res.json();
-      return res.ok ? { success: true, message: data.message } : { success: false, message: data.detail || "登録に失敗しました" };
+      if (res.ok) {
+        trackEvent("sign_up", { method: "email" });
+        return { success: true, message: data.message };
+      }
+      return { success: false, message: data.detail || "登録に失敗しました" };
     } catch { return { success: false, message: "ネットワークエラー" }; }
   };
 
@@ -73,7 +78,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       const res = await fetch(API_URL + "/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email, password }) });
       const data = await res.json();
-      if (res.ok) { localStorage.setItem("session_token", data.session_token); setUser(data.user); return { success: true, message: "ログイン成功" }; }
+      if (res.ok) {
+        localStorage.setItem("session_token", data.session_token);
+        setUser(data.user);
+        trackEvent("login", { method: "email" });
+        return { success: true, message: "ログイン成功" };
+      }
       return { success: false, message: data.detail || "ログインに失敗しました" };
     } catch { return { success: false, message: "ネットワークエラー" }; }
   };

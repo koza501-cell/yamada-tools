@@ -5,6 +5,7 @@ import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import ShareButtons from "@/components/common/ShareButtons";
 import { usePricingContext } from '@/components/common/PricingTriggerProvider';
+import { trackEvent } from '@/lib/analytics';
 
 /* ── Types ───────────────────────────────────────────────────────────────── */
 interface FAQ { question: string; answer: string; }
@@ -538,7 +539,7 @@ export default function PdfTextClient({
         const _saved = localStorage.getItem(_dKey);
         if (_saved) { const _p = JSON.parse(_saved); if (_p.elements?.length > 0) setDraftBanner({ elements: _p.elements, filename: _p.filename }); }
       } catch {}
-      triggerSuccess('text-input');;
+      triggerSuccess('text-input');; trackEvent('pdf_generate', { tool_id: 'text-input' });
       if (doc.numPages >= 5) setShowMinimap(true);
       setTimeout(() => setMascotState("idle"), 2000);
     } catch (e: any) {
@@ -796,7 +797,7 @@ export default function PdfTextClient({
       document.body.appendChild(a); a.click(); document.body.removeChild(a);
       setTimeout(() => URL.revokeObjectURL(url), 1000);
       setMascotState("success")
-      triggerSuccess('text-input');; setStep(3);
+      triggerSuccess('text-input');; trackEvent('pdf_generate', { tool_id: 'text-input' }); setStep(3);
     } catch (e: any) { setError("ダウンロードに失敗しました: " + (e?.message ?? e)); setMascotState("error"); }
     finally { setIsDownloading(false); }
   }, [pdfBytes, pdfDoc, pdfFile, validEls]);

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { PlanStatusCard } from "../_components/PlanStatusCard";
+import { trackPurchase } from "@/lib/analytics";
 
 const API_PAYMENT = (process.env.NEXT_PUBLIC_API_URL || "https://api.yamada-tools.jp") + "/api/payment";
 
@@ -30,9 +31,21 @@ export default function SubscriptionPage() {
     const params = new URLSearchParams(window.location.search);
     if (params.get("payment") === "success") {
       const plan = params.get("plan") || null;
+      const sessionId = params.get("session_id");
       setPaymentSuccess(true);
       setPaymentPlan(plan);
       localStorage.setItem("yamada_payment_success", JSON.stringify({ plan, ts: Date.now() }));
+
+      // GA4 purchase — dedupe per checkout session so a refresh/back-nav on this
+      // same return URL never double-fires the event.
+      if (plan && sessionId) {
+        const dedupeKey = `yamada_ga4_purchase_${sessionId}`;
+        if (!sessionStorage.getItem(dedupeKey)) {
+          trackPurchase(plan, sessionId);
+          sessionStorage.setItem(dedupeKey, "1");
+        }
+      }
+
       refreshUser();
       const url = new URL(window.location.href);
       url.searchParams.delete("payment");

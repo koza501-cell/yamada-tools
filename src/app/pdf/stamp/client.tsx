@@ -4,6 +4,7 @@ import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import ShareButtons from "@/components/common/ShareButtons";
 import { usePricingContext } from '@/components/common/PricingTriggerProvider';
+import { trackEvent } from '@/lib/analytics';
 interface FAQ { question: string; answer: string; }
 interface SeoContent { intro: string; useCases?: { title: string; desc: string }[]; tips?: string; }
 interface Props { faq: FAQ[]; seoContent?: SeoContent; }
@@ -294,7 +295,7 @@ export default function PdfStampClient({
     setTotalPages(doc.numPages);
     setCurrentPage(1);
     setMascotState("success")
-      triggerSuccess('stamp');;
+      triggerSuccess('stamp');; trackEvent('pdf_generate', { tool_id: 'stamp' });
     setMascotMessage("PDF読み込み完了！印鑑を用意して、PDFをクリックして押印してね！");
   };
 
@@ -319,7 +320,7 @@ export default function PdfStampClient({
     const dataUrl = generateHanko(hankoName.trim(), hankoShape, hankoColor, hankoDate);
     loadStampImage(dataUrl);
     setMascotState("success")
-      triggerSuccess('stamp');;
+      triggerSuccess('stamp');; trackEvent('pdf_generate', { tool_id: 'stamp' });
     setMascotMessage("印影を作成しました！PDFをクリックして押印してね！");
   };
 
@@ -422,7 +423,7 @@ export default function PdfStampClient({
     setPlacements([]);
     setIsComplete(false);
     setMascotState("success")
-      triggerSuccess('stamp');;
+      triggerSuccess('stamp');; trackEvent('pdf_generate', { tool_id: 'stamp' });
     setMascotMessage("押印をリセットしました。もう一度押印してね！");
   };
 
@@ -447,7 +448,7 @@ export default function PdfStampClient({
     setPlacements([]);
     setIsComplete(false);
     setMascotState("success")
-      triggerSuccess('stamp');;
+      triggerSuccess('stamp');; trackEvent('pdf_generate', { tool_id: 'stamp' });
     setMascotMessage("押印をリセットしました。PDFはそのまま残っています。");
   };
         stampImage = await pdfDocLib.embedJpg(stampDataUrl);
@@ -489,7 +490,7 @@ export default function PdfStampClient({
 
       setIsComplete(true);
       setMascotState("success")
-      triggerSuccess('stamp');;
+      triggerSuccess('stamp');; trackEvent('pdf_generate', { tool_id: 'stamp' });
       setMascotMessage("押印済みPDFをダウンロードしました！友達にもシェアしてね♪");
     } catch (err) {
       setMascotState("idle");

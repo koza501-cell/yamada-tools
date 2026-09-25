@@ -5,6 +5,7 @@ import Link from "next/link";
 import Mascot, { MascotState } from "@/components/common/Mascot";
 import ShareButtons from "@/components/common/ShareButtons";
 import { usePricingContext } from '@/components/common/PricingTriggerProvider';
+import { trackEvent } from '@/lib/analytics';
 
 interface FAQ { question: string; answer: string; }
 interface SeoContent { intro: string; useCases?: { title: string; desc: string }[]; tips?: string; }
@@ -162,7 +163,7 @@ export default function CombiniPrintClient({
       setPageCount(doc.numPages);
       setCurrentPreview(1);
       setMascotState("success")
-      triggerSuccess('combini-print');;
+      triggerSuccess('combini-print');; trackEvent('pdf_generate', { tool_id: 'combini-print' });
       doc.destroy();
     } catch (e: any) {
       setError("PDFの読み込みに失敗しました: " + e.message);
@@ -244,7 +245,7 @@ export default function CombiniPrintClient({
 
       setIsDone(true);
       setMascotState("success")
-      triggerSuccess('combini-print');;
+      triggerSuccess('combini-print');; trackEvent('pdf_generate', { tool_id: 'combini-print' });
     } catch (e: any) {
       setError("処理に失敗しました: " + e.message);
       setMascotState("error");
