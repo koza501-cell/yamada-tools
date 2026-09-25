@@ -155,6 +155,7 @@ const nextConfig = {
       
       // Priority 7: missing redirects (renamed tool paths → current live paths)
       { source: '/calculator/salary', destination: '/generator/salary-calc', statusCode: 301 },
+      { source: '/calculator/tax', destination: '/generator/tax-calculator', statusCode: 301 },
       { source: '/calculator/nisa-tsumitate', destination: '/finance/nisa-simulator', statusCode: 301 },
       { source: '/finance/jutaku-loan-calculator', destination: '/finance/jutaku-loan', statusCode: 301 },
       { source: '/tools/freelance-tax-calculator', destination: '/business/freelance-tax-calculator', statusCode: 301 },
