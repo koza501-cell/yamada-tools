@@ -3,18 +3,28 @@ import fs from "fs";
 import path from "path";
 import AiRecipeClient from "./client";
 
-export const metadata: Metadata = {
-  title: "AIレシピ",
-  description: "ChatGPT・Claude・NotionAIなど最新AIツールの実践的な使い方レシピを紹介。業務効率化・文章作成・データ分析に今すぐ使えるプロンプトテンプレート付き。",
-  alternates: { canonical: "https://yamada-tools.jp/ai-recipe" },
-  openGraph: {
-    images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
-    title: "AIレシピ | 山田ツール",
-    description: "AIツールの実践レシピ集。コピペOKプロンプト付き。",
-    url: "https://yamada-tools.jp/ai-recipe",
-    type: "website",
-  },
-};
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ tag?: string }>;
+}): Promise<Metadata> {
+  const { tag } = await searchParams;
+  const hasTag = !!tag;
+
+  return {
+    title: "AIレシピ",
+    description: "ChatGPT・Claude・NotionAIなど最新AIツールの実践的な使い方レシピを紹介。業務効率化・文章作成・データ分析に今すぐ使えるプロンプトテンプレート付き。",
+    alternates: { canonical: "https://yamada-tools.jp/ai-recipe" },
+    robots: hasTag ? "noindex, follow" : "index, follow",
+    openGraph: {
+      images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
+      title: "AIレシピ | 山田ツール",
+      description: "AIツールの実践レシピ集。コピペOKプロンプト付き。",
+      url: "https://yamada-tools.jp/ai-recipe",
+      type: "website",
+    },
+  };
+}
 
 function getAiPosts() {
   try {

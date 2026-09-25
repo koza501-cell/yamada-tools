@@ -8,22 +8,23 @@ import BlogIndexClient from "./client";
 export async function generateMetadata({
   searchParams,
 }: {
-  searchParams: Promise<{ page?: string }>;
+  searchParams: Promise<{ page?: string; tag?: string }>;
 }): Promise<Metadata> {
-  const { page } = await searchParams;
+  const { page, tag } = await searchParams;
   const pageNum = page ? parseInt(page) : 1;
   const isFirstPage = !page || pageNum === 1;
+  const hasTag = !!tag;
 
   return {
     title: isFirstPage ? "ビジネス効率化・PDF・税務の実践ノウハウ | 山田ツール ブログ" : `ブログ (${pageNum}ページ目) | 山田ツール`,
     description: "ビジネス効率化・PDF活用・不動産情報・税金・金融の実践ノウハウを発信。全銀フォーマット、確定申告、不動産情報ライブラリの使い方など。",
-    alternates: { canonical: isFirstPage ? "https://yamada-tools.jp/blog" : `https://yamada-tools.jp/blog?page=${pageNum}` },
-    robots: isFirstPage ? "index, follow" : "noindex, follow",
+    alternates: { canonical: "https://yamada-tools.jp/blog" + (isFirstPage || hasTag ? "" : `?page=${pageNum}`) },
+    robots: hasTag ? "noindex, follow" : (isFirstPage ? "index, follow" : "noindex, follow"),
     openGraph: {
     images: [{ url: "https://yamada-tools.jp/og-image.png", width: 1200, height: 630 }],
       title: "ビジネス効率化・PDF・税務の実践ノウハウ | 山田ツール ブログ",
       description: "ビジネス効率化・PDF活用・不動産情報の実践ノウハウを発信。",
-      url: isFirstPage ? "https://yamada-tools.jp/blog" : `https://yamada-tools.jp/blog?page=${pageNum}`,
+      url: "https://yamada-tools.jp/blog" + (isFirstPage || hasTag ? "" : `?page=${pageNum}`),
       type: "website",
     },
   };
