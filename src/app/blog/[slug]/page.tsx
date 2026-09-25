@@ -324,7 +324,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                 <div className="w-10 h-10 rounded-full bg-gray-300 dark:bg-gray-600 flex items-center justify-center text-sm font-bold flex-shrink-0">山</div>
                 <div>
                   <p className="text-xs text-gray-500 dark:text-gray-400">編集</p>
-                  <Link href="/about" className="text-sm font-semibold text-gray-900 dark:text-white hover:text-kon transition-colors">山田ツール編集部</Link>
+                  <Link href="/about/company" className="text-sm font-semibold text-gray-900 dark:text-white hover:text-kon transition-colors">山田ツール編集部</Link>
                 </div>
               </div>
             )}
