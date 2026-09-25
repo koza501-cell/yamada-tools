@@ -5,9 +5,41 @@ import { pdfTools, documentTools, convertTools, imageTools, generatorTools, fina
 
 const baseUrl = "https://yamada-tools.jp";
 
-// Sitemap IDs: 0 = static pages, 1 = tool pages
+// Max URLs per sitemap file (kept well under the 50k protocol limit for
+// faster crawling/parsing).
+const MAX_URLS_PER_SITEMAP = 10000;
+
+function getHoujinSeeds(): string[] {
+  const seeds: string[] = [];
+  for (const file of ["src/data/houjin_seed.json", "src/data/houjin_seed_batch2.json"]) {
+    const p = path.join(process.cwd(), file);
+    if (!fs.existsSync(p)) continue;
+    try {
+      const data: string[] = JSON.parse(fs.readFileSync(p, "utf-8"));
+      if (Array.isArray(data)) seeds.push(...data);
+    } catch {
+      // skip malformed seed file
+    }
+  }
+  return seeds;
+}
+
+function houjinChunkCount(): number {
+  const total = getHoujinSeeds().length;
+  return Math.max(1, Math.ceil(total / MAX_URLS_PER_SITEMAP));
+}
+
+// Sitemap IDs:
+//   0 = static/home/tool-hub/blog/other pages
+//   1 = individual tool pages
+//   2..N = houjin (corporate registry) pages, chunked to <= MAX_URLS_PER_SITEMAP each
 export function generateSitemaps() {
-  return [{ id: 0 }, { id: 1 }, { id: 2 }, { id: 3 }];
+  const houjinChunks = houjinChunkCount();
+  const ids = [{ id: 0 }, { id: 1 }];
+  for (let i = 0; i < houjinChunks; i++) {
+    ids.push({ id: 2 + i });
+  }
+  return ids;
 }
 
 export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
@@ -15,15 +47,35 @@ export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
   const numId = Number(id);
 
   if (numId === 0) {
-    // Static pages sitemap
-    return [
+    // ─── Home ────────────────────────────────────────────────────────────
+    const home: MetadataRoute.Sitemap = [
       { url: baseUrl, lastModified: currentDate, changeFrequency: "weekly", priority: 1.0 },
+    ];
+
+    // ─── Tool hub / category pages ──────────────────────────────────────
+    const toolHubs: MetadataRoute.Sitemap = [
       { url: baseUrl + "/pdf", lastModified: currentDate, changeFrequency: "weekly", priority: 0.9 },
       { url: baseUrl + "/document", lastModified: currentDate, changeFrequency: "weekly", priority: 0.9 },
       { url: baseUrl + "/convert", lastModified: currentDate, changeFrequency: "weekly", priority: 0.9 },
       { url: baseUrl + "/image", lastModified: currentDate, changeFrequency: "weekly", priority: 0.9 },
       { url: baseUrl + "/generator", lastModified: currentDate, changeFrequency: "weekly", priority: 0.9 },
       { url: baseUrl + "/finance", lastModified: currentDate, changeFrequency: "weekly", priority: 0.95 },
+      { url: baseUrl + "/career", lastModified: currentDate, changeFrequency: "weekly", priority: 0.8 },
+      { url: baseUrl + "/health", lastModified: currentDate, changeFrequency: "weekly", priority: 0.8 },
+      { url: baseUrl + "/insurance", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },
+      { url: baseUrl + "/realestate", lastModified: currentDate, changeFrequency: "weekly", priority: 0.9 },
+      { url: baseUrl + "/souzoku-touki", lastModified: currentDate, changeFrequency: "monthly", priority: 0.85 },
+      { url: baseUrl + "/business", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },
+      { url: baseUrl + "/tax", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },
+      { url: baseUrl + "/debt", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },
+      { url: baseUrl + "/education", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },
+      { url: baseUrl + "/utility", lastModified: currentDate, changeFrequency: "monthly", priority: 0.75 },
+      { url: baseUrl + "/clinic", lastModified: currentDate, changeFrequency: "weekly", priority: 0.85 },
+      { url: baseUrl + "/reference", lastModified: currentDate, changeFrequency: "monthly", priority: 0.75 },
+    ];
+
+    // ─── Blog / AI recipe ────────────────────────────────────────────────
+    const blogAndAi: MetadataRoute.Sitemap = [
       { url: baseUrl + "/blog", lastModified: currentDate, changeFrequency: "weekly", priority: 0.8 },
       { url: baseUrl + "/ai-recipe", lastModified: currentDate, changeFrequency: "weekly", priority: 0.85 },
       ...(() => {
@@ -48,18 +100,10 @@ export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
           priority: 0.7,
         }));
       })(),
-      { url: baseUrl + "/career", lastModified: currentDate, changeFrequency: "weekly", priority: 0.8 },
-      { url: baseUrl + "/health", lastModified: currentDate, changeFrequency: "weekly", priority: 0.8 },
-      { url: baseUrl + "/insurance", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },
-      { url: baseUrl + "/realestate", lastModified: currentDate, changeFrequency: "weekly", priority: 0.9 },
-      { url: baseUrl + "/souzoku-touki", lastModified: currentDate, changeFrequency: "monthly", priority: 0.85 },
-      { url: baseUrl + "/business", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },
-      { url: baseUrl + "/tax", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },
-      { url: baseUrl + "/debt", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },
-      { url: baseUrl + "/education", lastModified: currentDate, changeFrequency: "monthly", priority: 0.8 },
-      { url: baseUrl + "/utility", lastModified: currentDate, changeFrequency: "monthly", priority: 0.75 },
-      { url: baseUrl + "/clinic", lastModified: currentDate, changeFrequency: "weekly", priority: 0.85 },
-      { url: baseUrl + "/reference", lastModified: currentDate, changeFrequency: "monthly", priority: 0.75 },
+    ];
+
+    // ─── Other (static/legal/about/EN pages) ────────────────────────────
+    const other: MetadataRoute.Sitemap = [
       { url: baseUrl + "/about/company", lastModified: currentDate, changeFrequency: "monthly", priority: 0.5 },
       { url: baseUrl + "/about/story", lastModified: currentDate, changeFrequency: "monthly", priority: 0.5 },
       { url: baseUrl + "/about/faq", lastModified: currentDate, changeFrequency: "monthly", priority: 0.5 },
@@ -135,87 +179,79 @@ export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
         },
       },
     ];
+
+    // Order: home + tools (hubs) -> blog -> other
+    return [...home, ...toolHubs, ...blogAndAi, ...other];
   }
 
+  if (numId === 1) {
+    // ─── Individual tool pages ───────────────────────────────────────────
+    const allTools = [
+      ...pdfTools.filter(t => t.available),
+      ...documentTools.filter(t => t.available),
+      ...convertTools.filter(t => t.available),
+      ...imageTools.filter(t => t.available),
+      ...generatorTools.filter(t => t.available),
+      ...financeTools.filter(t => t.available),
+      ...careerTools.filter(t => t.available),
+      ...realestateTools.filter(t => t.available),
+      ...statTools.filter(t => t.available),
+      ...businessTools.filter(t => t.available),
+      ...healthTools.filter(t => t.available),
+      ...educationTools.filter(t => t.available),
+      ...debtTools.filter(t => t.available),
+      ...utilityTools.filter(t => t.available),
+      ...insuranceTools.filter(t => t.available),
+      ...taxTools.filter(t => t.available),
+      ...clinicTools.filter(t => t.available),
+    ];
 
-  // numId === 2: Houjin company pages sitemap
-  if (numId === 2) {
-    const seedPath = path.join(process.cwd(), "src/data/houjin_seed.json");
-    if (!fs.existsSync(seedPath)) return [];
-    const seeds: string[] = JSON.parse(fs.readFileSync(seedPath, "utf-8"));
-    return seeds.map(cn => ({
-      url: `${baseUrl}/business/houjin/${cn}`,
-      lastModified: currentDate,
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
-    }));
-  }
-
-  // numId === 3: Houjin company pages sitemap (batch 2)
-  if (numId === 3) {
-    const seedPath2 = path.join(process.cwd(), "src/data/houjin_seed_batch2.json");
-    if (!fs.existsSync(seedPath2)) return [];
-    const seeds2: string[] = JSON.parse(fs.readFileSync(seedPath2, "utf-8"));
-    return seeds2.map(cn => ({
-      url: `${baseUrl}/business/houjin/${cn}`,
-      lastModified: currentDate,
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
-    }));
-  }
-
-  // numId === 1: Tool pages sitemap
-  const allTools = [
-    ...pdfTools.filter(t => t.available),
-    ...documentTools.filter(t => t.available),
-    ...convertTools.filter(t => t.available),
-    ...imageTools.filter(t => t.available),
-    ...generatorTools.filter(t => t.available),
-    ...financeTools.filter(t => t.available),
-    ...careerTools.filter(t => t.available),
-    ...realestateTools.filter(t => t.available),
-    ...statTools.filter(t => t.available),
-    ...businessTools.filter(t => t.available),
-    ...healthTools.filter(t => t.available),
-    ...educationTools.filter(t => t.available),
-    ...debtTools.filter(t => t.available),
-    ...utilityTools.filter(t => t.available),
-    ...insuranceTools.filter(t => t.available),
-    ...taxTools.filter(t => t.available),
-    ...clinicTools.filter(t => t.available),
-  ];
-
-  // Map of Japanese tool paths -> English alternate paths.
-  // Add new entries here when you build more English versions.
-  const englishAlternates: Record<string, string> = {
-    "/business/houjin-search": "/en/business/company-search",
-    "/pdf-text-input": "/en/pdf-text-input",
-    "/realestate/yoto-chiiki-checker": "/en/realestate/property-report",
-    "/realestate/hazard-checker": "/en/realestate/property-report",
-    "/realestate/land-price": "/en/realestate/property-report",
-    "/realestate/transaction-price": "/en/realestate/property-report",
-    "/realestate/school-district": "/en/realestate/property-report",
-    "/realestate/population": "/en/realestate/property-report",
-  };
-
-  return allTools.map(tool => {
-    const enPath = englishAlternates[tool.path];
-    const entry: any = {
-      url: baseUrl + tool.path,
-      lastModified: currentDate,
-      changeFrequency: "monthly" as const,
-      priority: tool.category === "finance" ? 0.9 :
-                ["career", "realestate", "business", "health", "education"].includes(tool.category) ? 0.85 : 0.8,
+    // Map of Japanese tool paths -> English alternate paths.
+    // Add new entries here when you build more English versions.
+    const englishAlternates: Record<string, string> = {
+      "/business/houjin-search": "/en/business/company-search",
+      "/pdf-text-input": "/en/pdf-text-input",
+      "/realestate/yoto-chiiki-checker": "/en/realestate/property-report",
+      "/realestate/hazard-checker": "/en/realestate/property-report",
+      "/realestate/land-price": "/en/realestate/property-report",
+      "/realestate/transaction-price": "/en/realestate/property-report",
+      "/realestate/school-district": "/en/realestate/property-report",
+      "/realestate/population": "/en/realestate/property-report",
     };
-    if (enPath) {
-      entry.alternates = {
-        languages: {
-          "ja-JP": baseUrl + tool.path,
-          "en-US": baseUrl + enPath,
-          "x-default": baseUrl + enPath,
-        },
+
+    return allTools.map(tool => {
+      const enPath = englishAlternates[tool.path];
+      const entry: any = {
+        url: baseUrl + tool.path,
+        lastModified: currentDate,
+        changeFrequency: "monthly" as const,
+        priority: tool.category === "finance" ? 0.9 :
+                  ["career", "realestate", "business", "health", "education"].includes(tool.category) ? 0.85 : 0.8,
       };
-    }
-    return entry;
-  });
+      if (enPath) {
+        entry.alternates = {
+          languages: {
+            "ja-JP": baseUrl + tool.path,
+            "en-US": baseUrl + enPath,
+            "x-default": baseUrl + enPath,
+          },
+        };
+      }
+      return entry;
+    });
+  }
+
+  // numId >= 2: Houjin (corporate registry) pages, chunked to <= MAX_URLS_PER_SITEMAP each
+  const seeds = getHoujinSeeds();
+  const chunkIndex = numId - 2;
+  const start = chunkIndex * MAX_URLS_PER_SITEMAP;
+  const end = start + MAX_URLS_PER_SITEMAP;
+  const chunk = seeds.slice(start, end);
+
+  return chunk.map(cn => ({
+    url: `${baseUrl}/business/houjin/${cn}`,
+    lastModified: currentDate,
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
 }
