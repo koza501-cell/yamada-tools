@@ -4,6 +4,9 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: '役割別ツール一覧｜仕事・立場から探す | yamada-tools.jp',
   description: '経営者・フリーランス・クリニック・不動産・飲食店・家族向けに、必要なツールをまとめた役割別ツール集。登録不要・完全無料。',
+  alternates: {
+    canonical: 'https://yamada-tools.jp/for',
+  },
 };
 
 const roles = [

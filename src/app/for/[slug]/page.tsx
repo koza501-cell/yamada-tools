@@ -165,6 +165,9 @@ export async function generateMetadata({
     title: niche.title + ' | yamada-tools.jp',
     description: ((niche.metaDescription)||"").length>150?((niche.metaDescription)||"").slice(0,150)+"…":((niche.metaDescription)||""),
     keywords: niche.keywords,
+    alternates: {
+      canonical: `https://yamada-tools.jp/for/${slug}`,
+    },
   };
 }
 
