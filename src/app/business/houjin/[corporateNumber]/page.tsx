@@ -21,6 +21,8 @@ interface CompanyBasic {
   company_size_male: string;
   company_size_female: string;
   business_items: string | string[];
+  prefecture: string | null;
+  city: string | null;
 }
 
 interface SubsidyItem {
@@ -74,6 +76,7 @@ interface CompanyProfile {
   certification: CertificationItem[];
   commendation: CommendationItem[];
   fetched_at: string;
+  has_traffic?: boolean;
 }
 
 interface RelatedCompany {
@@ -84,18 +87,34 @@ interface RelatedCompany {
 // ─── Data Fetching (Server-Side) ───────────────────────────────────────────
 const API_BASE = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || "http://localhost:8001";
 
-async function fetchProfile(corporateNumber: string): Promise<CompanyProfile | null> {
+type ProfileResult =
+  | { status: "ok"; profile: CompanyProfile }
+  | { status: "not_found" }
+  | { status: "error" };
+
+async function fetchProfile(corporateNumber: string): Promise<ProfileResult> {
   try {
     const res = await fetch(`${API_BASE}/api/gbiz/profile/${corporateNumber}`, {
       next: { revalidate: 2592000 }, // 30 days
     });
-    if (!res.ok) return null;
+    if (res.status === 404) return { status: "not_found" };
+    if (!res.ok) return { status: "error" }; // upstream failure (e.g. 503) -- never treat as not-found
     const data = await res.json();
-    if (data?.detail || !data?.basic) return null;
-    return data as CompanyProfile;
+    if (data?.detail || !data?.basic) return { status: "not_found" };
+    return { status: "ok", profile: data as CompanyProfile };
   } catch {
-    return null;
+    return { status: "error" };
   }
+}
+
+function profileIsRich(profile: CompanyProfile): boolean {
+  return (
+    profile.finance.length > 0 ||
+    profile.subsidy.length > 0 ||
+    profile.procurement.length > 0 ||
+    profile.certification.length > 0 ||
+    profile.commendation.length > 0
+  );
 }
 
 async function fetchRelated(corporateNumber: string): Promise<RelatedCompany[]> {
@@ -132,10 +151,22 @@ export async function generateMetadata({
   params: Promise<{ corporateNumber: string }>;
 }): Promise<Metadata> {
   const { corporateNumber } = await params;
-  const profile = await fetchProfile(corporateNumber);
-  if (!profile) {
-    return { title: "法人情報が見つかりません | 山田ツール" };
+  const result = await fetchProfile(corporateNumber);
+  if (result.status === "not_found") {
+    return {
+      title: "法人情報が見つかりません | 山田ツール",
+      robots: { index: false, follow: true },
+    };
   }
+  if (result.status === "error") {
+    return {
+      title: "法人情報 | 山田ツール",
+      robots: { index: false, follow: true },
+    };
+  }
+
+  const profile = result.profile;
+  const isRich = profileIsRich(profile) || profile.has_traffic === true;
 
   const name = profile.basic.name;
   const location = profile.basic.location || "";
@@ -163,6 +194,7 @@ export async function generateMetadata({
     alternates: {
       canonical: `https://yamada-tools.jp/business/houjin/${corporateNumber}`,
     },
+    robots: isRich ? { index: true, follow: true } : { index: false, follow: true },
   };
 }
 
@@ -344,19 +376,37 @@ function CompanySchema({ profile }: { profile: CompanyProfile }) {
     }),
   };
 
+  const breadcrumbItems: { "@type": string; position: number; name: string; item?: string }[] = [
+    { "@type": "ListItem", position: 1, name: "ホーム", item: "https://yamada-tools.jp" },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "ビジネスツール",
+      item: "https://yamada-tools.jp/business/houjin-search",
+    },
+  ];
+  if (b.prefecture) {
+    breadcrumbItems.push({
+      "@type": "ListItem",
+      position: breadcrumbItems.length + 1,
+      name: b.prefecture,
+      item: `https://yamada-tools.jp/business/houjin/pref/${encodeURIComponent(b.prefecture)}`,
+    });
+    if (b.city) {
+      breadcrumbItems.push({
+        "@type": "ListItem",
+        position: breadcrumbItems.length + 1,
+        name: b.city,
+        item: `https://yamada-tools.jp/business/houjin/pref/${encodeURIComponent(b.prefecture)}/${encodeURIComponent(b.city)}`,
+      });
+    }
+  }
+  breadcrumbItems.push({ "@type": "ListItem", position: breadcrumbItems.length + 1, name: b.name });
+
   const breadcrumb = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "ホーム", item: "https://yamada-tools.jp" },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "ビジネスツール",
-        item: "https://yamada-tools.jp/business/houjin-search",
-      },
-      { "@type": "ListItem", position: 3, name: b.name },
-    ],
+    itemListElement: breadcrumbItems,
   };
 
   return (
@@ -389,10 +439,17 @@ export default async function HoujinProfilePage({
     notFound();
   }
 
-  const profile = await fetchProfile(corporateNumber);
-  if (!profile) {
+  const result = await fetchProfile(corporateNumber);
+  if (result.status === "not_found") {
     notFound();
   }
+  if (result.status === "error") {
+    // Upstream (gBizINFO) failure with no cached fallback available on the
+    // backend -- a temporary outage, not a real 404. Let the nearest
+    // error.tsx boundary handle it (renders a non-2xx status, never "not found").
+    throw new Error("gBizINFO profile temporarily unavailable");
+  }
+  const profile = result.profile;
 
   const related = await fetchRelated(corporateNumber);
 
@@ -430,6 +487,28 @@ export default async function HoujinProfilePage({
           >
             法人検索
           </Link>
+          {b.prefecture && (
+            <>
+              <span>/</span>
+              <Link
+                href={`/business/houjin/pref/${encodeURIComponent(b.prefecture)}`}
+                className="hover:text-blue-600 dark:hover:text-blue-400"
+              >
+                {b.prefecture}
+              </Link>
+            </>
+          )}
+          {b.prefecture && b.city && (
+            <>
+              <span>/</span>
+              <Link
+                href={`/business/houjin/pref/${encodeURIComponent(b.prefecture)}/${encodeURIComponent(b.city)}`}
+                className="hover:text-blue-600 dark:hover:text-blue-400"
+              >
+                {b.city}
+              </Link>
+            </>
+          )}
           <span>/</span>
           <span className="text-gray-700 dark:text-gray-300 font-medium">{b.name}</span>
         </nav>

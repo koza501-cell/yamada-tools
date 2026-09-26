@@ -5,6 +5,8 @@ import { pdfTools, documentTools, convertTools, imageTools, generatorTools, fina
 
 const baseUrl = "https://yamada-tools.jp";
 
+export const dynamic = "force-dynamic";
+
 // Max URLs per sitemap file (kept well under the 50k protocol limit for
 // faster crawling/parsing).
 const MAX_URLS_PER_SITEMAP = 10000;
@@ -24,8 +26,42 @@ function getHoujinSeeds(): string[] {
   return seeds;
 }
 
-function houjinChunkCount(): number {
-  const total = getHoujinSeeds().length;
+let _richHoujinPromise: Promise<Set<string>> | null = null;
+
+// Only corporate numbers already confirmed (via the backend quality-index)
+// to have >=1 data block beyond name/address are indexable -- see B4 in the
+// 2026-09-25 SEO batch 2 audit. Numbers never fetched via /api/gbiz/profile
+// are conservatively excluded (unevaluated != indexable).
+function getRichHoujinSet(): Promise<Set<string>> {
+  if (_richHoujinPromise) return _richHoujinPromise;
+  const promise = (async () => {
+    const apiBase = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || "http://localhost:8001";
+    try {
+      const res = await fetch(`${apiBase}/api/gbiz/quality-index`, { cache: "no-store" });
+      if (!res.ok) {
+        console.error(`[sitemap] quality-index fetch failed: status=${res.status}`);
+        _richHoujinPromise = null; // don't poison future calls with a transient failure
+        return new Set<string>();
+      }
+      const data = await res.json();
+      return new Set<string>(Array.isArray(data?.rich) ? data.rich : []);
+    } catch (err) {
+      console.error(`[sitemap] quality-index fetch threw: ${err instanceof Error ? err.message : String(err)}`);
+      _richHoujinPromise = null;
+      return new Set<string>();
+    }
+  })();
+  _richHoujinPromise = promise;
+  return promise;
+}
+
+async function getIndexableHoujinSeeds(): Promise<string[]> {
+  const rich = await getRichHoujinSet();
+  return getHoujinSeeds().filter((cn) => rich.has(cn));
+}
+
+async function houjinChunkCount(): Promise<number> {
+  const total = (await getIndexableHoujinSeeds()).length;
   return Math.max(1, Math.ceil(total / MAX_URLS_PER_SITEMAP));
 }
 
@@ -33,16 +69,50 @@ function houjinChunkCount(): number {
 //   0 = static/home/tool-hub/blog/other pages
 //   1 = individual tool pages
 //   2..N = houjin (corporate registry) pages, chunked to <= MAX_URLS_PER_SITEMAP each
-export function generateSitemaps() {
-  const houjinChunks = houjinChunkCount();
+export async function generateSitemaps() {
+  const houjinChunks = await houjinChunkCount();
   const ids = [{ id: 0 }, { id: 1 }];
   for (let i = 0; i < houjinChunks; i++) {
     ids.push({ id: 2 + i });
   }
+  ids.push({ id: 2 + houjinChunks }); // pref/city hub pages
   return ids;
 }
 
-export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
+
+async function getGeoHubEntries(): Promise<{ prefecture: string; city: string | null }[]> {
+  const apiBase = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || "http://localhost:8001";
+  const entries: { prefecture: string; city: string | null }[] = [];
+  try {
+    const prefRes = await fetch(`${apiBase}/api/gbiz/geo/prefectures`, { cache: "no-store" });
+    if (!prefRes.ok) return entries;
+    const prefData = await prefRes.json();
+    const prefectures: string[] = Array.isArray(prefData?.prefectures)
+      ? prefData.prefectures.map((p: { prefecture: string }) => p.prefecture)
+      : [];
+    for (const pref of prefectures) {
+      entries.push({ prefecture: pref, city: null });
+      try {
+        const cityRes = await fetch(`${apiBase}/api/gbiz/geo/${encodeURIComponent(pref)}/cities`, { cache: "no-store" });
+        if (!cityRes.ok) continue;
+        const cityData = await cityRes.json();
+        const cities: string[] = Array.isArray(cityData?.cities)
+          ? cityData.cities.map((c: { city: string }) => c.city)
+          : [];
+        for (const city of cities) {
+          entries.push({ prefecture: pref, city });
+        }
+      } catch {
+        // skip this prefecture's cities on failure, keep the rest
+      }
+    }
+  } catch {
+    return entries;
+  }
+  return entries;
+}
+
+export default async function sitemap({ id }: { id: number }): Promise<MetadataRoute.Sitemap> {
   const currentDate = new Date().toISOString();
   const numId = Number(id);
 
@@ -241,8 +311,33 @@ export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
     });
   }
 
-  // numId >= 2: Houjin (corporate registry) pages, chunked to <= MAX_URLS_PER_SITEMAP each
-  const seeds = getHoujinSeeds();
+  const houjinChunks = await houjinChunkCount();
+  const hubId = 2 + houjinChunks;
+
+  if (numId === hubId) {
+    // Pref/city hub pages -- own sitemap file, only first page of each
+    // (paginated pages are still crawlable via in-page pagination links).
+    const entries = await getGeoHubEntries();
+    const hubUrls: MetadataRoute.Sitemap = [
+      { url: `${baseUrl}/business/houjin/pref`, lastModified: currentDate, changeFrequency: "weekly", priority: 0.7 },
+    ];
+    for (const e of entries) {
+      const url = e.city
+        ? `${baseUrl}/business/houjin/pref/${encodeURIComponent(e.prefecture)}/${encodeURIComponent(e.city)}`
+        : `${baseUrl}/business/houjin/pref/${encodeURIComponent(e.prefecture)}`;
+      hubUrls.push({
+        url,
+        lastModified: currentDate,
+        changeFrequency: "weekly",
+        priority: e.city ? 0.6 : 0.65,
+      });
+    }
+    return hubUrls;
+  }
+
+  // numId >= 2: Houjin (corporate registry) pages -- only companies with
+  // >=1 data block beyond name/address are indexable (quality-index gate).
+  const seeds = await getIndexableHoujinSeeds();
   const chunkIndex = numId - 2;
   const start = chunkIndex * MAX_URLS_PER_SITEMAP;
   const end = start + MAX_URLS_PER_SITEMAP;

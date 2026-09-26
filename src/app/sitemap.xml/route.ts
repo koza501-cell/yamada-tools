@@ -3,8 +3,10 @@ import { generateSitemaps } from '../sitemap';
 
 const baseUrl = 'https://yamada-tools.jp';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
-  const sitemapIds = generateSitemaps();
+  const sitemapIds = await generateSitemaps();
 
   const sitemapEntries = sitemapIds
     .map(({ id }) => `  <sitemap>\n    <loc>${baseUrl}/sitemap/${id}.xml</loc>\n  </sitemap>`)
