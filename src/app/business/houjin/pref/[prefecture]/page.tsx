@@ -24,6 +24,14 @@ interface PrefPage {
   companies: CompanyRow[];
 }
 
+function safeDecode(value: string): string {
+  try {
+    return decodeURIComponent(value);
+  } catch {
+    return value;
+  }
+}
+
 async function fetchCities(prefecture: string): Promise<CityRow[]> {
   try {
     const res = await fetch(`${API_BASE}/api/gbiz/geo/${encodeURIComponent(prefecture)}/cities`, {
@@ -57,7 +65,8 @@ export async function generateMetadata({
   params: Promise<{ prefecture: string }>;
   searchParams: Promise<{ page?: string }>;
 }): Promise<Metadata> {
-  const { prefecture } = await params;
+  const { prefecture: rawPrefecture } = await params;
+  const prefecture = safeDecode(rawPrefecture);
   const { page: pageParam } = await searchParams;
   const page = Math.max(1, parseInt(pageParam || "1", 10) || 1);
 
@@ -79,7 +88,8 @@ export default async function HoujinPrefPage({
   params: Promise<{ prefecture: string }>;
   searchParams: Promise<{ page?: string }>;
 }) {
-  const { prefecture } = await params;
+  const { prefecture: rawPrefecture } = await params;
+  const prefecture = safeDecode(rawPrefecture);
   const { page: pageParam } = await searchParams;
   const page = Math.max(1, parseInt(pageParam || "1", 10) || 1);
 

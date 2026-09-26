@@ -20,6 +20,14 @@ interface CityPage {
   companies: CompanyRow[];
 }
 
+function safeDecode(value: string): string {
+  try {
+    return decodeURIComponent(value);
+  } catch {
+    return value;
+  }
+}
+
 async function fetchCityPage(prefecture: string, city: string, page: number): Promise<CityPage | null> {
   try {
     const res = await fetch(
@@ -40,7 +48,9 @@ export async function generateMetadata({
   params: Promise<{ prefecture: string; city: string }>;
   searchParams: Promise<{ page?: string }>;
 }): Promise<Metadata> {
-  const { prefecture, city } = await params;
+  const { prefecture: rawPrefecture, city: rawCity } = await params;
+  const prefecture = safeDecode(rawPrefecture);
+  const city = safeDecode(rawCity);
   const { page: pageParam } = await searchParams;
   const page = Math.max(1, parseInt(pageParam || "1", 10) || 1);
 
@@ -62,7 +72,9 @@ export default async function HoujinCityPage({
   params: Promise<{ prefecture: string; city: string }>;
   searchParams: Promise<{ page?: string }>;
 }) {
-  const { prefecture, city } = await params;
+  const { prefecture: rawPrefecture, city: rawCity } = await params;
+  const prefecture = safeDecode(rawPrefecture);
+  const city = safeDecode(rawCity);
   const { page: pageParam } = await searchParams;
   const page = Math.max(1, parseInt(pageParam || "1", 10) || 1);
 
