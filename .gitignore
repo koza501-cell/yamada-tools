@@ -47,3 +47,4 @@ test-results.json
 *.bak
 .env.production
 .env.staging
+scripts/indexnow-snapshot.json

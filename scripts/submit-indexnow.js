@@ -7,6 +7,8 @@
  */
 
 const https = require('https');
+const fs = require('fs');
+const path = require('path');
 
 const CONFIG = {
   host: 'yamada-tools.jp',
@@ -15,7 +17,27 @@ const CONFIG = {
   sitemapIndex: 'https://yamada-tools.jp/sitemap.xml',
   indexnowEndpoint: 'https://api.indexnow.org/indexnow',
   batchSize: 10000, // IndexNow max per request
+  snapshotPath: path.join(__dirname, 'indexnow-snapshot.json'),
 };
+
+// Only URLs not present in the previous run's snapshot are submitted --
+// avoids re-submitting the full ~89k-URL sitemap on every deploy. This is
+// a set-membership diff (new URLs only); there's no per-URL lastmod/hash
+// in the sitemap today, so true content-"changed" detection is out of
+// scope until that exists.
+function loadPreviousSnapshot() {
+  try {
+    const raw = fs.readFileSync(CONFIG.snapshotPath, 'utf-8');
+    const arr = JSON.parse(raw);
+    return new Set(Array.isArray(arr) ? arr : []);
+  } catch {
+    return new Set(); // first run -- nothing seen before
+  }
+}
+
+function saveSnapshot(urls) {
+  fs.writeFileSync(CONFIG.snapshotPath, JSON.stringify(urls), 'utf-8');
+}
 
 // Fetch URL and return body as string
 function fetchUrl(url) {
@@ -105,15 +127,26 @@ async function main() {
       process.exit(1);
     }
 
+    // Step 2.5: diff against previous snapshot -- only submit new URLs
+    const previousUrls = loadPreviousSnapshot();
+    const newUrls = uniqueUrls.filter((u) => !previousUrls.has(u));
+    console.log(`   New/unseen URLs vs previous snapshot: ${newUrls.length}`);
+
+    if (newUrls.length === 0) {
+      console.log('\nNo new or changed URLs since last run. Nothing to submit.');
+      saveSnapshot(uniqueUrls);
+      process.exit(0);
+    }
+
     // Step 3: Submit in batches
     console.log('\n3. Submitting to IndexNow...');
     let successCount = 0;
     let failCount = 0;
 
-    for (let i = 0; i < uniqueUrls.length; i += CONFIG.batchSize) {
-      const batch = uniqueUrls.slice(i, i + CONFIG.batchSize);
+    for (let i = 0; i < newUrls.length; i += CONFIG.batchSize) {
+      const batch = newUrls.slice(i, i + CONFIG.batchSize);
       const batchNum = Math.floor(i / CONFIG.batchSize) + 1;
-      const totalBatches = Math.ceil(uniqueUrls.length / CONFIG.batchSize);
+      const totalBatches = Math.ceil(newUrls.length / CONFIG.batchSize);
 
       try {
         const result = await submitBatch(batch);
@@ -136,6 +169,7 @@ async function main() {
     console.log(`Failed: ${failCount}`);
     console.log(`Done: ${new Date().toISOString()}`);
 
+    saveSnapshot(uniqueUrls);
     process.exit(failCount > 0 ? 1 : 0);
   } catch (err) {
     console.error('\nFATAL ERROR:', err.message);
