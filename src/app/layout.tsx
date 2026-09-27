@@ -6,9 +6,6 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import BottomNav from "@/components/layout/BottomNav";
-import FloatingActions from "@/components/common/FloatingActions";
-import FavoritePrompt from "@/components/common/FavoritePrompt";
-import PWAInstallPrompt from "@/components/common/PWAInstallPrompt";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { ThemeProvider } from "@/components/common/ThemeProvider";
 import GoogleAnalytics from "@/components/common/GoogleAnalytics";
@@ -17,9 +14,7 @@ import PaymentAnnouncementBar from "@/components/common/PaymentAnnouncementBar";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { PricingTriggerProvider } from "@/components/common/PricingTriggerProvider";
 import AdSenseLoader from "@/components/AdSenseLoader";
-import SupportChatbot from "@/components/SupportChatbot";
-import GlobalSearchModal from "@/components/common/GlobalSearchModal";
-import GlobalToolTracker from "@/components/common/GlobalToolTracker";
+import DeferredWidgets from "@/components/common/DeferredWidgets";
 import { homepageItemListSchema, homepageFaqSchema, homepageSoftwareApplicationSchema, homepageBreadcrumbSchema } from "./homepage-schemas";
 
 const notoSansJP = Noto_Sans_JP({
@@ -240,13 +235,8 @@ export default async function RootLayout({
         </main>
         <Footer />
         <BottomNav />
-        <FloatingActions />
-        <FavoritePrompt />
-        <PWAInstallPrompt />
         <AdSenseLoader />
-        <SupportChatbot />
-        <GlobalSearchModal />
-        <GlobalToolTracker />
+        <DeferredWidgets />
         </ThemeProvider>
         </PricingTriggerProvider>
         </AuthProvider>
