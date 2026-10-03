@@ -1,0 +1,5 @@
+# Allowlist of corporate numbers (13 digits) that stay indexable at
+# /business/houjin/<corporateNumber>. One number per line. Lines starting
+# with # are ignored. Everything NOT listed here is noindex,follow.
+#
+# Populate this with the numbers supplied for the index-cleanup task.

@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import fs from "fs";
 import path from "path";
 import { pdfTools, documentTools, convertTools, imageTools, generatorTools, financeTools, careerTools, realestateTools, businessTools, healthTools, educationTools, debtTools, utilityTools, insuranceTools, taxTools, statTools, clinicTools } from "@/config/tools";
+import { getHoujinKeepSet } from "@/lib/houjinKeep";
 
 const baseUrl = "https://yamada-tools.jp";
 
@@ -26,38 +27,13 @@ function getHoujinSeeds(): string[] {
   return seeds;
 }
 
-let _richHoujinPromise: Promise<Set<string>> | null = null;
-
-// Only corporate numbers already confirmed (via the backend quality-index)
-// to have >=1 data block beyond name/address are indexable -- see B4 in the
-// 2026-09-25 SEO batch 2 audit. Numbers never fetched via /api/gbiz/profile
-// are conservatively excluded (unevaluated != indexable).
-function getRichHoujinSet(): Promise<Set<string>> {
-  if (_richHoujinPromise) return _richHoujinPromise;
-  const promise = (async () => {
-    const apiBase = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || "http://localhost:8001";
-    try {
-      const res = await fetch(`${apiBase}/api/gbiz/quality-index`, { cache: "no-store" });
-      if (!res.ok) {
-        console.error(`[sitemap] quality-index fetch failed: status=${res.status}`);
-        _richHoujinPromise = null; // don't poison future calls with a transient failure
-        return new Set<string>();
-      }
-      const data = await res.json();
-      return new Set<string>(Array.isArray(data?.rich) ? data.rich : []);
-    } catch (err) {
-      console.error(`[sitemap] quality-index fetch threw: ${err instanceof Error ? err.message : String(err)}`);
-      _richHoujinPromise = null;
-      return new Set<string>();
-    }
-  })();
-  _richHoujinPromise = promise;
-  return promise;
-}
-
+// Only corporate numbers on the explicit allowlist (src/data/houjin-keep.txt)
+// are indexable/submitted in the sitemap -- everything else is noindex,follow
+// on the page itself and left out of the sitemap entirely (still reachable
+// via the pref/city hub pages, just not actively pushed to crawlers).
 async function getIndexableHoujinSeeds(): Promise<string[]> {
-  const rich = await getRichHoujinSet();
-  return getHoujinSeeds().filter((cn) => rich.has(cn));
+  const keep = getHoujinKeepSet();
+  return getHoujinSeeds().filter((cn) => keep.has(cn));
 }
 
 async function houjinChunkCount(): Promise<number> {
@@ -317,19 +293,20 @@ export default async function sitemap({ id }: { id: number }): Promise<MetadataR
   if (numId === hubId) {
     // Pref/city hub pages -- own sitemap file, only first page of each
     // (paginated pages are still crawlable via in-page pagination links).
+    // Prefecture-level hubs only -- city-level hubs stay crawlable via links
+    // on their prefecture page but aren't actively submitted, to keep the
+    // sitemap to indexable quality pages.
     const entries = await getGeoHubEntries();
     const hubUrls: MetadataRoute.Sitemap = [
       { url: `${baseUrl}/business/houjin/pref`, lastModified: currentDate, changeFrequency: "weekly", priority: 0.7 },
     ];
     for (const e of entries) {
-      const url = e.city
-        ? `${baseUrl}/business/houjin/pref/${encodeURIComponent(e.prefecture)}/${encodeURIComponent(e.city)}`
-        : `${baseUrl}/business/houjin/pref/${encodeURIComponent(e.prefecture)}`;
+      if (e.city) continue;
       hubUrls.push({
-        url,
+        url: `${baseUrl}/business/houjin/pref/${encodeURIComponent(e.prefecture)}`,
         lastModified: currentDate,
         changeFrequency: "weekly",
-        priority: e.city ? 0.6 : 0.65,
+        priority: 0.65,
       });
     }
     return hubUrls;

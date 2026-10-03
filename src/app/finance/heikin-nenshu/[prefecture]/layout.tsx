@@ -70,6 +70,7 @@ export async function generateMetadata({
     alternates: {
       canonical: `https://yamada-tools.jp/finance/heikin-nenshu/${prefecture}`,
     },
+    robots: { index: false, follow: true },
     openGraph: {
       title: `${pref.name}の平均年収【2023年最新】`,
       description: ((`${pref.name}の平均年収・年齢別推移・全国ランキングを確認。政府統計準拠。`)||"").length>150?((`${pref.name}の平均年収・年齢別推移・全国ランキングを確認。政府統計準拠。`)||"").slice(0,150)+"…":((`${pref.name}の平均年収・年齢別推移・全国ランキングを確認。政府統計準拠。`)||""),

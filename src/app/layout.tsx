@@ -154,14 +154,11 @@ const websiteSchema = {
   publisher: {
     "@id": `${siteUrl}/#organization`,
   },
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: `${siteUrl}/search?q={search_term_string}`,
-    },
-    "query-input": "required name=search_term_string",
-  },
+  // No SearchAction/sitelinks-search-box here on purpose: Google was crawling
+  // arbitrary /search?q={term} combinations from this markup, and the search
+  // page returns generic "no results" content for most of them -- flagged as
+  // soft 404 in Search Console. /search is still a real, linkable page; it
+  // just isn't advertised to Google as a site search entry point.
   inLanguage: "ja-JP",
 };
 

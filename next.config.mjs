@@ -148,10 +148,14 @@ const nextConfig = {
       { source: '/career/shitsugyo-ritsu/okinawa', destination: '/career/shitsugyo-ritsu', statusCode: 301 },
       { source: '/use-cases', destination: '/', permanent: true },
       { source: '/generator/password-gen', destination: '/generator/password', permanent: true },
-      { source: '/finance/houjinka-setsuzei-calculator', destination: '/finance', permanent: true },
+      { source: '/finance/houjinka-setsuzei-calculator', destination: '/business/incorporation-simulator', permanent: true },
+      { source: '/finance/houjinka-setsuzei-calculator/', destination: '/business/incorporation-simulator', permanent: true },
       { source: '/savings/interest-calculator', destination: '/finance', permanent: true },
+      { source: '/savings/interest-calculator/', destination: '/finance', permanent: true },
       { source: '/care/kaigo-hoshu-calc', destination: '/', permanent: true },
       { source: '/en/business', destination: '/en/business/company-search', permanent: true },
+      { source: '/en/business/', destination: '/en/business/company-search', permanent: true },
+      { source: '/calculator/shakai-hoken', destination: '/career/social-insurance-calculator', statusCode: 301 },
       
       // Priority 7: missing redirects (renamed tool paths → current live paths)
       { source: '/calculator/salary', destination: '/generator/salary-calc', statusCode: 301 },

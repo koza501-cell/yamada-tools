@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { getHoujinKeepSet } from "@/lib/houjinKeep";
 
 // ─── Types ─────────────────────────────────────────────────────────────────
 interface CompanyBasic {
@@ -107,16 +108,6 @@ async function fetchProfile(corporateNumber: string): Promise<ProfileResult> {
   }
 }
 
-function profileIsRich(profile: CompanyProfile): boolean {
-  return (
-    profile.finance.length > 0 ||
-    profile.subsidy.length > 0 ||
-    profile.procurement.length > 0 ||
-    profile.certification.length > 0 ||
-    profile.commendation.length > 0
-  );
-}
-
 async function fetchRelated(corporateNumber: string): Promise<RelatedCompany[]> {
   try {
     const res = await fetch(`${API_BASE}/api/gbiz/related/${corporateNumber}`, {
@@ -166,7 +157,7 @@ export async function generateMetadata({
   }
 
   const profile = result.profile;
-  const isRich = profileIsRich(profile) || profile.has_traffic === true;
+  const indexable = getHoujinKeepSet().has(corporateNumber);
 
   const name = profile.basic.name;
   const location = profile.basic.location || "";
@@ -194,7 +185,7 @@ export async function generateMetadata({
     alternates: {
       canonical: `https://yamada-tools.jp/business/houjin/${corporateNumber}`,
     },
-    robots: isRich ? { index: true, follow: true } : { index: false, follow: true },
+    robots: indexable ? { index: true, follow: true } : { index: false, follow: true },
   };
 }
 
@@ -444,10 +435,24 @@ export default async function HoujinProfilePage({
     notFound();
   }
   if (result.status === "error") {
-    // Upstream (gBizINFO) failure with no cached fallback available on the
-    // backend -- a temporary outage, not a real 404. Let the nearest
-    // error.tsx boundary handle it (renders a non-2xx status, never "not found").
-    throw new Error("gBizINFO profile temporarily unavailable");
+    // Upstream (gBizINFO) failure -- render a 200 "temporarily unavailable"
+    // page instead of throwing. Throwing here forces a 500 response, and bulk
+    // 5xx across /business/houjin/* reads to Google as a reliability problem
+    // and suppresses crawling of the whole section. generateMetadata already
+    // marks this response noindex,follow for the "error" status above.
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center px-4 text-center">
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+          法人情報を一時的に取得できません
+        </h1>
+        <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-md">
+          データ取得元（gBizINFO）が一時的に応答していません。しばらくしてから再度お試しください。
+        </p>
+        <Link href="/business/houjin-search" className="text-kon hover:underline">
+          法人検索に戻る →
+        </Link>
+      </div>
+    );
   }
   const profile = result.profile;
 
