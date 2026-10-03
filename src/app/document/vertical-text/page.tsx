@@ -37,9 +37,9 @@ const seoContent = {
 // - 縦書き サイト (29 imp)
 
 export const metadata: Metadata = generateToolMetadata({
-  customTitle: "縦書き変換ツール【無料】横書き→縦書きに一瞬変換｜PDF出力対応",
+  customTitle: "縦書き変換ツール｜横書き→縦書きに一瞬変換",
   tool,
-  longDescription: "横書きテキストを縦書きに瞬時変換。挨拶状・式辞・祝辞・のし書きに最適。PDF出力対応。登録不要・完全無料。スマホからもOK。",
+  longDescription: "横書きテキストを縦書きに瞬時変換できる無料ツール。挨拶状・式辞・祝辞・のし書きの作成に最適で、PDF出力にも対応。登録不要・完全無料、スマホからもすぐ使えます。",
   keywords: ['縦書き変換', '縦書き 変換', '横書き 縦書き 変換', '縦書き ツール', '縦書き エディタ', '縦書き サイト', '縦書き PDF', '小説 縦書き'],
 });
 

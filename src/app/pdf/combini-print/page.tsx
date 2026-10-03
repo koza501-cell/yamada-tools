@@ -62,9 +62,9 @@ const seoContent = {
 };
 
 export const metadata: Metadata = generateToolMetadata({
-  customTitle: "コンビニ印刷で端が切れる問題を解決【無料】セブン・ローソン・ファミマ対応",
+  customTitle: "コンビニ印刷の端切れ解決｜セブン・ローソン対応",
   tool,
-  longDescription: "PDFの余白を自動追加してコンビニ印刷の端切れを解決。セブン・ローソン・ファミマ全対応。登録不要・完全無料。スマホからもOK。",
+  longDescription: "PDFの余白を自動追加してコンビニ印刷で端が切れる問題を解決する無料ツール。セブンイレブン・ローソン・ファミリーマートの全マルチコピー機に対応。登録不要・完全無料、スマホからもすぐ使えます。",
   keywords: [
     "コンビニ印刷 端が切れる",
     "PDF 余白を追加",

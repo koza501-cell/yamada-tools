@@ -8,8 +8,8 @@ const tool = getToolById("sleep-calculator")!;
 
 export const metadata: Metadata = generateToolMetadata({
   tool,
-  customTitle: "睡眠計算機【無料】起床時間から逆算・就寝時間の目安を瞬時に計算",
-  longDescription: "起床時間を入力するだけで最適な就寝時間を計算。90分サイクルで疲れが取れる睡眠時間がわかる。登録不要・完全無料。スマホからもOK。",
+  customTitle: "睡眠計算｜レム睡眠で逆算｜今から寝たら何時に起きる？",
+  longDescription: "今から寝たら何時に起きるか、起きたい時間から何時に寝るべきかを90分の睡眠サイクル（レム睡眠）で瞬時に計算。疲れが取れる最適な睡眠時間がわかる無料ツール。登録不要・スマホ対応。",
 });
 
 export default function SleepCalculatorPage() {
