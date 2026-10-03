@@ -7,6 +7,7 @@ import { IntroSection } from "@/components/IntroSection";
 import { UseCasesSection } from "@/components/UseCasesSection";
 import { FAQSection } from "@/components/FAQSection";
 import { CitationsSection } from "@/components/CitationsSection";
+import { trackToolUse } from "@/lib/analytics";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -199,6 +200,7 @@ export default function SleepCalculatorPage() {
     }
     const res = calculate(mode, wakeTime, sleepTime, fallAsleepMin, ageGroup, weekdaySleep, weekendSleep);
     setResult(res);
+    trackToolUse("sleep-calculator", "睡眠計算", "health");
     setTimeout(() => {
       document.getElementById("results")?.scrollIntoView({ behavior: "smooth" });
     }, 100);

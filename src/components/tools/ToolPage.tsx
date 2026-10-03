@@ -11,7 +11,7 @@ import ShareButtons from "@/components/common/ShareButtons";
 import ToolUsageBadge from "@/components/common/ToolUsageBadge";
 import UsageLimitBanner from "@/components/common/UsageLimitBanner";
 import { usePricingContext } from "@/components/common/PricingTriggerProvider";
-import { trackEvent } from "@/lib/analytics";
+import { trackEvent, trackToolUse } from "@/lib/analytics";
 
 // GA4 event tracking helper
 declare global {
@@ -244,6 +244,10 @@ export default function ToolPage({ tool, customH1, extraFields, extraFormData, f
 
       // Track tool completed event (THIS IS THE KEY METRIC)
       trackToolEvent(tool, 'completed');
+
+      // Shared tool_use rollup, fired for every tool on this shared component
+      // regardless of category (see src/lib/analytics.ts).
+      trackToolUse(tool.id, tool.nameJa, tool.category);
 
       // GA4 pdf_generate — PDF-category tools only, via the existing analytics.ts wrapper
       if (tool.category === 'pdf') {

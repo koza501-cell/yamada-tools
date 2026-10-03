@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Coffee } from "lucide-react";
 import PaymentMethodsTrustBanner from "./PaymentMethodsTrustBanner";
+import { trackDayPassModalOpen, trackDayPassCheckoutClick } from "@/lib/analytics";
 
 interface DayPassPaywallProps {
   open: boolean;
@@ -34,6 +35,7 @@ export default function DayPassPaywall({ open, onClose, apiBase, rowCount, onCon
 
   useEffect(() => {
     if (!open) { setWalletBalance(null); return; }
+    trackDayPassModalOpen("envelope-print");
     const token = typeof window !== "undefined" ? localStorage.getItem("session_token") : null;
     if (!token) { setWalletBalance(null); return; }
     fetch(apiBase + "/api/payment/wallet/balance", { headers: { Authorization: "Bearer " + token } })
@@ -45,6 +47,10 @@ export default function DayPassPaywall({ open, onClose, apiBase, rowCount, onCon
   if (!open) return null;
 
   const handlePurchase = async (passType: string) => {
+    const price = PASSES.find((p) => p.type === passType)?.price;
+    const priceJpy = price ? Number(price.replace(/[^\d]/g, "")) : 0;
+    trackDayPassCheckoutClick(passType as "1day" | "3day" | "7day", priceJpy, "envelope-print");
+
     const token = typeof window !== "undefined" ? localStorage.getItem("session_token") : null;
     if (!token) {
       window.location.href = "/auth/login?redirect=/generator/envelope-print";

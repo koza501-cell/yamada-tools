@@ -12,6 +12,28 @@ export const trackEvent = (eventName: string, params?: Record<string, any>) => {
   }
 };
 
+// Shared "main action" hook: fire this alongside any tool-specific event
+// (pdf_generate, etc.) on a tool page's primary action button, so every
+// tool rolls up into one consistent tool_use funnel regardless of its
+// own category-specific events.
+export const trackToolUse = (toolId: string, toolName: string, category?: string) => {
+  trackEvent('tool_use', { tool_id: toolId, tool_name: toolName, tool_category: category });
+};
+
+// Day Pass funnel
+export const trackDayPassModalOpen = (toolId?: string) => {
+  trackEvent('day_pass_modal_open', { tool_id: toolId });
+};
+
+export const trackDayPassCheckoutClick = (plan: '1day' | '3day' | '7day', value: number, toolId?: string) => {
+  trackEvent('day_pass_checkout_click', {
+    currency: 'JPY',
+    value,
+    plan,
+    tool_id: toolId,
+  });
+};
+
 // Track when user starts checkout/trial
 export const trackBeginCheckout = (plan: 'pro_monthly' | 'pro_annual' | 'pro_yearly' | 'trial' | 'team_monthly' | 'team_annual' | 'pro_30day' | 'pro_90day') => {
   const valueMap: Record<string, number> = {
