@@ -98,6 +98,11 @@ export const metadata: Metadata = {
   },
   verification: {
     google: "google499885782131bde1",
+    // Set NEXT_PUBLIC_BING_VERIFICATION once Bing Webmaster Tools issues a
+    // code for this property -- renders nothing until then.
+    ...(process.env.NEXT_PUBLIC_BING_VERIFICATION && {
+      other: { "msvalidate.01": process.env.NEXT_PUBLIC_BING_VERIFICATION },
+    }),
   },
   manifest: "/manifest.json",
 };

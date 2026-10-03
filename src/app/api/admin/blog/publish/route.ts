@@ -3,6 +3,7 @@ import { cookies } from 'next/headers';
 import fs from 'fs';
 import path from 'path';
 import { revalidatePath } from 'next/cache';
+import { submitToIndexNow } from '@/lib/indexNow';
 
 export async function POST(request: NextRequest) {
   // Auth check
@@ -81,6 +82,11 @@ export async function POST(request: NextRequest) {
 
     revalidatePath('/blog');
     revalidatePath('/');
+
+    // Bing/IndexNow: push the new URL immediately instead of waiting for
+    // the next scheduled sitemap crawl. Fire-and-forget -- never blocks
+    // or fails the publish response.
+    submitToIndexNow([`/blog/${slug}`]);
 
     return NextResponse.json({
       success: true,
