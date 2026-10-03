@@ -551,7 +551,13 @@ export default function Mascot({
   customMessage,
   showUpgradeLink = false,
   className = "",
-  priority = true,
+  // Defaults to lazy: the mascot is a supporting UI element, not the LCP
+  // candidate on any of the pages that use it (confirmed via Lighthouse's
+  // largest-contentful-paint-element audit). Eager-loading it on every one
+  // of its ~40+ call sites was competing with the real LCP resource for
+  // priority. Pages where it genuinely sits above the fold can still pass
+  // priority explicitly.
+  priority = false,
   category,
 }: MascotProps) {
   const [resolved, setResolved] = useState<{
