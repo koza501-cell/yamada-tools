@@ -156,6 +156,9 @@ const nextConfig = {
       { source: '/en/business', destination: '/en/business/company-search', permanent: true },
       { source: '/en/business/', destination: '/en/business/company-search', permanent: true },
       { source: '/calculator/shakai-hoken', destination: '/career/social-insurance-calculator', statusCode: 301 },
+      // Consolidated cannibalizing blog posts into the pages that now own this content (item 6)
+      { source: '/blog/pdf-ketsugou-kanzen-guide', destination: '/pdf/merge', permanent: true },
+      { source: '/blog/gazou-asshuku-kanzen-guide', destination: '/blog/image-compress-guide-2026', permanent: true },
       
       // Priority 7: missing redirects (renamed tool paths → current live paths)
       { source: '/calculator/salary', destination: '/generator/salary-calc', statusCode: 301 },
