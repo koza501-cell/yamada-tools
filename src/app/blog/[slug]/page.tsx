@@ -18,6 +18,30 @@ import { getCategoryStyle } from '@/lib/categoryStyles';
 import BlogHero from '@/components/blog/BlogHero';
 import TableOfContents from '@/components/blog/TableOfContents';
 import ShareButtons from '@/components/blog/ShareButtons';
+import ToolCtaCard from '@/components/blog/ToolCtaCard';
+import EndOfArticleCta from '@/components/blog/EndOfArticleCta';
+
+// Above-fold tool CTA pilot: scoped to these specific high-intent posts
+// rather than every article, per the blog->tool conversion task. Add more
+// slugs here once this batch's cta_click data shows it's worth widening.
+const ABOVE_FOLD_CTA: Record<string, { toolName: string; blurb: string }> = {
+  'zengin-format-complete-guide-2026': {
+    toolName: 'Excel→全銀フォーマット変換',
+    blurb: 'Excelの振込データをアップロードするだけで全銀フォーマットに変換',
+  },
+  'pdf-asshuku-kanzen-guide': {
+    toolName: 'PDF圧縮',
+    blurb: 'PDFをドラッグ＆ドロップするだけでファイルサイズを縮小',
+  },
+  'kogaku-kaigo-service-guide': {
+    toolName: '高額介護サービス費 計算機',
+    blurb: '所得区分と利用料を入力するだけで上限額・支給額を算出',
+  },
+  'hoikushi-haichi-kijun-guide': {
+    toolName: '保育士配置基準計算機',
+    blurb: '年齢別園児数を入力するだけで必要保育士数を算出',
+  },
+};
 
 // FIX 1+2: Custom marked instance — demotes h1→h2 in content (prevents duplicate h1)
 // and preserves bold/italic via gfm. walkTokens runs before rendering.
@@ -347,6 +371,15 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         )}
       </header>
 
+      {ABOVE_FOLD_CTA[slug] && blog.toolLink && (
+        <ToolCtaCard
+          href={blog.toolLink}
+          slug={slug}
+          toolName={ABOVE_FOLD_CTA[slug].toolName}
+          blurb={ABOVE_FOLD_CTA[slug].blurb}
+        />
+      )}
+
       {/* TASK 4: 2-col layout — left: prose, right: sticky TOC */}
       <div className={tocItems.length >= 3
         ? "lg:grid lg:grid-cols-[60px_1fr_240px] lg:gap-4 lg:items-start"
@@ -440,15 +473,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           <p className="text-gray-600 dark:text-gray-300 mb-6">
             この記事で紹介した機能を、無料でお試しいただけます
           </p>
-          <a
-            href={blog.toolLink || '/pdf'}
-            className="inline-flex items-center px-8 py-4 bg-kon text-white rounded-lg hover:bg-ai transition-colors font-medium shadow-lg hover:shadow-xl"
-          >
-            ツールを使ってみる
-            <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </a>
+          <EndOfArticleCta href={blog.toolLink || '/pdf'} slug={slug} />
         </div>
       </footer>
       {blog.faq?.length > 0 && (
